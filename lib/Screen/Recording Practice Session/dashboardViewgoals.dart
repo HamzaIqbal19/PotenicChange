@@ -79,7 +79,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
         setState(() {
           goalDetails = response[0];
           goalName = response[0]["name"];
-
+          // pracColor = response['userPractices'] [0]['color'];
           identity = response[0]["identityStatement"][0]["text"];
           color = response[0]["color"] ?? 0;
           no_activegoals = false;
@@ -1272,6 +1272,16 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 const Alignment(0.9, 0.9),
                                             child: AnimatedScaleButton(
                                               onTap: () async {
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                var dash_boardRoute =
+                                                    prefs.setBool(
+                                                        'behaviour_route',
+                                                        false);
+                                                var prac_id = prefs.setInt(
+                                                    'prac_num',
+                                                    goalDetails['userPractices']
+                                                        [0]['id']);
                                                 widget.saved
                                                     ? Navigator.push(
                                                         context,
@@ -1304,12 +1314,6 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                 pracColor:
                                                                     pracColor,
                                                                 color: color)));
-                                                final SharedPreferences prefs =
-                                                    await _prefs;
-                                                var dash_boardRoute =
-                                                    prefs.setBool(
-                                                        'behaviour_route',
-                                                        false);
                                               },
                                               child: Container(
                                                 height: widget.saved
@@ -1326,58 +1330,88 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                     : AppDimensions.height10(
                                                             context) *
                                                         13.8,
-                                                padding: EdgeInsets.all(
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.2),
+                                                padding: widget.saved
+                                                    ? EdgeInsets.all(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.4)
+                                                    : EdgeInsets.all(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.2),
                                                 decoration: BoxDecoration(
                                                     //color: Colors.amber,
                                                     shape: BoxShape.circle,
                                                     image: DecorationImage(
                                                         image: widget.saved
-                                                            ? AssetImage(goalDetails['userPractices']
-                                                                            [0][
-                                                                        'color'] ==
+                                                            ? AssetImage(pracColor ==
                                                                     '1'
                                                                 ? "assets/images/Practice_Completed_1.webp"
-                                                                : goalDetails['userPractices'][0]['color'] ==
+                                                                : pracColor ==
                                                                         '2'
                                                                     ? 'assets/images/Practice_Completed_2.webp'
-                                                                    : goalDetails['userPractices'][0]['color'] ==
+                                                                    : pracColor ==
                                                                             '3'
                                                                         ? "assets/images/Practice_Completed_3.webp"
-                                                                        : goalDetails['userPractices'][0]['color'] ==
+                                                                        : pracColor ==
                                                                                 '4'
                                                                             ? "assets/images/Practice_Completed_4.webp"
-                                                                            : goalDetails['userPractices'][0]['color'] ==
+                                                                            : pracColor ==
                                                                                     '5'
                                                                                 ? "assets/images/Practice_Completed_4.webp"
                                                                                 : 'assets/images/Practice_Completed_1.webp')
-                                                            : AssetImage(goalDetails['userPractices']
-                                                                            [0]
-                                                                        ['color'] ==
+                                                            : AssetImage(pracColor ==
                                                                     '1'
                                                                 ? "assets/images/Ellipse orange.webp"
-                                                                : goalDetails['userPractices'][0]['color'] == '2'
+                                                                : pracColor ==
+                                                                        '2'
                                                                     ? 'assets/images/Ellipse 158.webp'
-                                                                    : goalDetails['userPractices'][0]['color'] == '3'
+                                                                    : pracColor ==
+                                                                            '3'
                                                                         ? "assets/images/Ellipse 157.webp"
-                                                                        : goalDetails['userPractices'][0]['color'] == '4'
+                                                                        : pracColor ==
+                                                                                '4'
                                                                             ? "assets/images/Ellipse light-blue.webp"
-                                                                            : goalDetails['userPractices'][0]['color'] == '5'
+                                                                            : pracColor ==
+                                                                                    '5'
                                                                                 ? "assets/images/Ellipse blue.webp"
                                                                                 : 'assets/images/Ellipse 158.webp'),
-                                                        fit: widget.saved ? BoxFit.contain : BoxFit.cover)),
+                                                        fit: widget.saved
+                                                            ? BoxFit.contain
+                                                            : BoxFit.cover)),
                                                 child: Center(
                                                   child: Text(
                                                     goalDetails['userPractices']
                                                         [0]['name'],
-                                                    textAlign: TextAlign.center,
+                                                    maxLines: 3,
                                                     overflow:
                                                         TextOverflow.ellipsis,
-                                                    maxLines: 1,
+                                                    textAlign: TextAlign.center,
                                                     style: TextStyle(
-                                                        color: Colors.white,
+                                                        color: widget.saved
+                                                            ? pracColor == '1'
+                                                                ? const Color(
+                                                                    0XFFFC7133)
+                                                                : pracColor ==
+                                                                        '2'
+                                                                    ? const Color(
+                                                                        0xFF1A481C)
+                                                                    : pracColor ==
+                                                                            '3'
+                                                                        ? const Color(
+                                                                            0xFF6D4B77)
+                                                                        : pracColor ==
+                                                                                '4'
+                                                                            ? const Color(
+                                                                                0xFF5C75A6)
+                                                                            : pracColor ==
+                                                                                    '5'
+                                                                                ? const Color(
+                                                                                    0xFF315291)
+                                                                                : const Color(
+                                                                                    0XFFFC7133)
+                                                            : const Color(
+                                                                0xFFFBFBFB),
                                                         fontSize: AppDimensions
                                                                 .height10(
                                                                     context) *
@@ -2564,6 +2598,8 @@ void __share_experience(context, String goalName, String identity, String color,
                                 child: Text(
                                   goalName,
                                   textAlign: TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.height10(context) * 2.0,
@@ -2581,6 +2617,8 @@ void __share_experience(context, String goalName, String identity, String color,
                                       AppDimensions.height10(context) * 2.0),
                               child: Text(identity,
                                   textAlign: TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
                                       fontSize:
@@ -2630,7 +2668,7 @@ void __share_experience(context, String goalName, String identity, String color,
                                                 ? const Color(0xFF5C75A6)
                                                 : pracColor == "5"
                                                     ? const Color(0xFF315291)
-                                                    : const Color(0xFF1FC7133),
+                                                    : const Color(0XFFFC7133),
                                 fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w500),
                           ),

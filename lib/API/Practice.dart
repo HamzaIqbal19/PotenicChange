@@ -160,6 +160,7 @@ class PracticeGoalApi {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var prac_num = prefs.getInt("prac_num");
+    print("======================IDID${prefs.getInt("prac_num")}");
 
     print('$prac_num');
     var headers = {

@@ -66,9 +66,13 @@ class _endofSessionState extends State<endofSession> {
       afterSession = prefs.getInt('afterSession');
       afterSessionNotes = prefs.getString('sessionFeedback');
       emotionsNotes = prefs.getString('emotionsFeedback');
-      timeSlot = prefs.getString('recording_Time1');
+      timeSlot = prefs.getString('recording_Time1') == null
+          ? "12:00 am"
+          : prefs.getString('recording_Time1');
       behaviour_route = prefs.getBool('behaviour_route');
-      selected_date = prefs.getString('record_date');
+      selected_date = prefs.getString('record_date') == null
+          ? "2023:08:12"
+          : prefs.getString('record_date');
     });
     feedback.text = prefs.getString('endSessionFeedback')!;
     print("=============================Practice num:$prac_num");
@@ -766,8 +770,8 @@ class _endofSessionState extends State<endofSession> {
                                       : " "
                                 }
                               ],
-                              prac_num,
                               '$sessionEnd',
+                              prac_num,
                               timeSlot.toString(),
                               selected_date.toString().isEmpty
                                   ? '2023-08-08'

@@ -719,7 +719,9 @@ class _photo_infoState extends State<photo_info> {
                                             image,
                                             title.text.toString(),
                                             tagList,
-                                            link.text.toString(),
+                                            link.text.toString().isEmpty
+                                                ? " "
+                                                : link.text.toString(),
                                             true,
                                             statement.text.toString(),
                                             selectedGoals)
@@ -759,7 +761,12 @@ class _photo_infoState extends State<photo_info> {
                                           AppDimensions.height10(context) * 1.5,
                                       fontWeight: FontWeight.w400,
                                       color: title.text.toString().isNotEmpty &&
-                                      statement.text.toString().isNotEmpty?const Color(0xff007AFF):const Color(0xff007AFF).withOpacity(0.5)),
+                                              statement.text
+                                                  .toString()
+                                                  .isNotEmpty
+                                          ? const Color(0xff007AFF)
+                                          : const Color(0xff007AFF)
+                                              .withOpacity(0.5)),
                                 ),
                               ),
                       )

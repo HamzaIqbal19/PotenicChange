@@ -1744,18 +1744,47 @@ class _StarReviewState extends State<StarReview> {
                                               onPressed: () {
                                                 AdminGoal()
                                                     .deleteUserGoal()
-                                                    .then((response) {
+                                                    .then((response) async {
                                                   if (response == true) {
                                                     print(
                                                         "==================>Successfully deleted");
-                                                    Navigator.pushReplacement(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const HomeScreen(
-                                                            login: true,
-                                                          ),
-                                                        ));
+                                                    if (route ==
+                                                        'view_all_goals') {
+                                                      Navigator.pushReplacement(
+                                                          context,
+                                                          FadePageRoute(
+                                                              page:
+                                                                  const veiw_all_goals_menu()));
+                                                    } else {
+                                                      if (widget.route ==
+                                                          'menu') {
+                                                        Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    const goal_menu_inactive(
+                                                              goal_evaluation:
+                                                                  true,
+                                                              isActive: true,
+                                                              premium: true,
+                                                            )));
+                                                      } else {
+                                                        Navigator
+                                                            .pushReplacement(
+                                                                context,
+                                                                FadePageRoute(
+                                                                  page:
+                                                                      const HomeScreen(
+                                                                    login: true,
+                                                                  ),
+                                                                ));
+                                                      }
+                                                      final SharedPreferences
+                                                          prefs = await _prefs;
+
+                                                      await prefs
+                                                          .remove('route');
+                                                    }
                                                   } else {
                                                     print(
                                                         'Goal is not deleted');

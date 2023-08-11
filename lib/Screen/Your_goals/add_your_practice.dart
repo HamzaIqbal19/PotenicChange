@@ -11,9 +11,30 @@ import '../../utils/app_dimensions.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-class add_your_practice extends StatelessWidget {
+class add_your_practice extends StatefulWidget {
   final String goalName;
   const add_your_practice({super.key, required this.goalName});
+
+  @override
+  State<add_your_practice> createState() => _add_your_practiceState();
+}
+
+class _add_your_practiceState extends State<add_your_practice> {
+  String goalColor = '';
+  void getRecorDetails() async {
+    final SharedPreferences prefs = await _prefs;
+
+    setState(() {
+      goalColor = prefs.getString('dash_goalColor')!;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getRecorDetails();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +97,7 @@ class add_your_practice extends StatelessWidget {
                 left: AppDimensions.height10(context) * 12.2,
                 right: AppDimensions.height10(context) * 12.1),
             child: Text(
-              goalName,
+              widget.goalName,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
@@ -86,15 +107,27 @@ class add_your_practice extends StatelessWidget {
             ),
           ),
           Container(
-            width: AppDimensions.height10(context) * 8.39,
-            height: AppDimensions.height10(context) * 9.3,
-            margin:
-                EdgeInsets.only(top: AppDimensions.height10(context) * 2.03),
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage('assets/images/orange_flair.webp'),
-              fit: BoxFit.cover,
-            )),
+            width: AppDimensions.height10(context) * 7.9,
+            height: AppDimensions.height10(context) * 7.9,
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.3),
+            decoration: BoxDecoration(
+              // color: Colors.amber,
+              image: DecorationImage(
+                  image: AssetImage(goalColor == '1'
+                      ? "assets/images/red_gradient.webp"
+                      : goalColor == '2'
+                          ? 'assets/images/orange_moon.webp'
+                          : goalColor == '3'
+                              ? "assets/images/lightGrey_gradient.webp"
+                              : goalColor == '4'
+                                  ? "assets/images/lightBlue_gradient.webp"
+                                  : goalColor == '5'
+                                      ? "assets/images/medBlue_gradient.webp"
+                                      : goalColor == '6'
+                                          ? "assets/images/Blue_gradient.webp"
+                                          : 'assets/images/orange_moon.webp'),
+                  fit: BoxFit.contain),
+            ),
           ),
           Container(
             width: double.infinity,

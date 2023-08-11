@@ -906,24 +906,24 @@ class _view_goalsState extends State<view_goals> {
                                                         asset_1: allGoals[index]
                                                                         ['userGoal']
                                                                     ['color'] ==
-                                                                1
+                                                                "1"
                                                             ? "assets/images/red_gradient.webp"
                                                             : allGoals[index]
                                                                             ['userGoal']
                                                                         [
                                                                         'color'] ==
-                                                                    2
+                                                                    "2"
                                                                 ? 'assets/images/orange_moon.webp'
                                                                 : allGoals[index]['userGoal']
                                                                             [
                                                                             'color'] ==
-                                                                        3
+                                                                        "3"
                                                                     ? "assets/images/lightGrey_gradient.webp"
                                                                     : allGoals[index]['userGoal']['color'] ==
-                                                                            4
+                                                                            "4"
                                                                         ? "assets/images/lightBlue_gradient.webp"
                                                                         : allGoals[index]['userGoal']['color'] ==
-                                                                                5
+                                                                                "5"
                                                                             ? "assets/images/medBlue_gradient.webp"
                                                                             : allGoals[index]['userGoal']['color'] == 6
                                                                                 ? "assets/images/Blue_gradient.webp"
@@ -936,19 +936,19 @@ class _view_goalsState extends State<view_goals> {
                                                                 "missed"
                                                             ? allGoals[index][
                                                                         'color'] ==
-                                                                    1
+                                                                    "1"
                                                                 ? 'assets/images/Missed_3.webp'
                                                                 : allGoals[index]['color'] ==
-                                                                        2
+                                                                        "2"
                                                                     ? 'assets/images/Missed_1.webp'
                                                                     : allGoals[index]['color'] ==
-                                                                            3
+                                                                            "3"
                                                                         ? "assets/images/Missed_2.webp"
                                                                         : allGoals[index]['color'] ==
-                                                                                4
+                                                                                "4"
                                                                             ? "assets/images/Missed_4.webp"
                                                                             : allGoals[index]['color'] ==
-                                                                                    5
+                                                                                    "5"
                                                                                 ? "assets/images/Missed_4.webp"
                                                                                 : 'assets/images/Missed_2.webp'
                                                             : allGoals[index][
@@ -956,26 +956,26 @@ class _view_goalsState extends State<view_goals> {
                                                                     "completed"
                                                                 ? allGoals[index]
                                                                             ['color'] ==
-                                                                        1
+                                                                        "1"
                                                                     ? "assets/images/Practice_Completed_1.webp"
-                                                                    : allGoals[index]['color'] == 2
+                                                                    : allGoals[index]['color'] == "2"
                                                                         ? 'assets/images/Practice_Completed_2.webp'
-                                                                        : allGoals[index]['color'] == 3
+                                                                        : allGoals[index]['color'] == "3"
                                                                             ? "assets/images/Practice_Completed_3.webp"
-                                                                            : allGoals[index]['color'] == 4
+                                                                            : allGoals[index]['color'] == "4"
                                                                                 ? "assets/images/Practice_Completed_4.webp"
-                                                                                : allGoals[index]['color'] == 5
+                                                                                : allGoals[index]['color'] == "5"
                                                                                     ? "assets/images/Practice_Completed_4.webp"
                                                                                     : 'assets/images/Practice_Completed_2.webp'
-                                                                : allGoals[index]['color'] == 1
+                                                                : allGoals[index]['color'] == "1"
                                                                     ? "assets/images/Ellipse orange_wb.webp"
-                                                                    : allGoals[index]['color'] == 2
+                                                                    : allGoals[index]['color'] == "2"
                                                                         ? 'assets/images/Ellipse 158_wb.webp'
-                                                                        : allGoals[index]['color'] == 3
+                                                                        : allGoals[index]['color'] == "3"
                                                                             ? "assets/images/Ellipse 157_wb.webp"
-                                                                            : allGoals[index]['color'] == 4
+                                                                            : allGoals[index]['color'] == "4"
                                                                                 ? "assets/images/Ellipse light-blue_wb.webp"
-                                                                                : allGoals[index]['color'] == 5
+                                                                                : allGoals[index]['color'] == "5"
                                                                                     ? "assets/images/Ellipse blue_wb.webp"
                                                                                     : 'assets/images/Ellipse 158_wb.webp',
                                                         head_text:
@@ -1007,27 +1007,28 @@ class _view_goalsState extends State<view_goals> {
                                                                 ? false
                                                                 : true,
                                                         is_right: false,
-                                                        s_circle_text_col: allGoals[
-                                                                            index]
+                                                        s_circle_text_col: allGoals[index]
                                                                         [
                                                                         'recordingStatusTime1'] ==
                                                                     "missed" ||
                                                                 allGoals[index][
                                                                         'recordingStatusTime1'] ==
-                                                                    "Completed"
+                                                                    "completed"
                                                             ? allGoals[index][
                                                                         'color'] ==
-                                                                    1
+                                                                    "1"
                                                                 ? 0XFFFC7133
                                                                 : allGoals[index]
-                                                                            ['color'] ==
-                                                                        2
+                                                                            [
+                                                                            'color'] ==
+                                                                        "2"
                                                                     ? 0xFF1A481C
-                                                                    : allGoals[index]['color'] == 3
+                                                                    : allGoals[index]['color'] ==
+                                                                            "3"
                                                                         ? 0xFF6D4B77
-                                                                        : allGoals[index]['color'] == 4
+                                                                        : allGoals[index]['color'] == "4"
                                                                             ? 0xFF5C75A6
-                                                                            : allGoals[index]['color'] == 5
+                                                                            : allGoals[index]['color'] == '5'
                                                                                 ? 0xFF315291
                                                                                 : 0xFF1FC7133
                                                             : 0xFFFBFBFB,
@@ -1255,21 +1256,21 @@ class _view_goalsState extends State<view_goals> {
                                                                               'userGoal']
                                                                           [
                                                                           'color'] ==
-                                                                      1
+                                                                      "1"
                                                                   ? "assets/images/red_gradient.webp"
                                                                   : allGoals[index]['userGoal']
                                                                               [
                                                                               'color'] ==
-                                                                          2
+                                                                          "2"
                                                                       ? 'assets/images/orange_moon.webp'
                                                                       : allGoals[index]['userGoal']['color'] ==
-                                                                              3
+                                                                              "3"
                                                                           ? "assets/images/lightGrey_gradient.webp"
-                                                                          : allGoals[index]['userGoal']['color'] == 4
+                                                                          : allGoals[index]['userGoal']['color'] == "4"
                                                                               ? "assets/images/lightBlue_gradient.webp"
-                                                                              : allGoals[index]['userGoal']['color'] == 5
+                                                                              : allGoals[index]['userGoal']['color'] == "5"
                                                                                   ? "assets/images/medBlue_gradient.webp"
-                                                                                  : allGoals[index]['userGoal']['color'] == 6
+                                                                                  : allGoals[index]['userGoal']['color'] == "6"
                                                                                       ? "assets/images/Blue_gradient.webp"
                                                                                       : 'assets/images/orange_moon.webp',
                                                               s_circle_text:
@@ -1284,39 +1285,39 @@ class _view_goalsState extends State<view_goals> {
                                                                   ? allGoals[index]
                                                                               [
                                                                               'color'] ==
-                                                                          1
+                                                                          "1"
                                                                       ? 'assets/images/Missed_3.webp'
                                                                       : allGoals[index]['color'] ==
-                                                                              2
+                                                                              "2"
                                                                           ? 'assets/images/Missed_1.webp'
-                                                                          : allGoals[index]['color'] == 3
+                                                                          : allGoals[index]['color'] == "3"
                                                                               ? "assets/images/Missed_2.webp"
-                                                                              : allGoals[index]['color'] == 4
+                                                                              : allGoals[index]['color'] == "4"
                                                                                   ? "assets/images/Missed_4.webp"
-                                                                                  : allGoals[index]['color'] == 5
+                                                                                  : allGoals[index]['color'] == "5"
                                                                                       ? "assets/images/Missed_4.webp"
                                                                                       : 'assets/images/Missed_2.webp'
                                                                   : allGoals[index]['recordingStatusTime2'] == "completed"
-                                                                      ? allGoals[index]['color'] == 1
+                                                                      ? allGoals[index]['color'] == "1"
                                                                           ? "assets/images/Practice_Completed_1.webp"
-                                                                          : allGoals[index]['color'] == 2
+                                                                          : allGoals[index]['color'] == "2"
                                                                               ? 'assets/images/Practice_Completed_2.webp'
-                                                                              : allGoals[index]['color'] == 3
+                                                                              : allGoals[index]['color'] == "3"
                                                                                   ? "assets/images/Practice_Completed_3.webp"
-                                                                                  : allGoals[index]['color'] == 4
+                                                                                  : allGoals[index]['color'] == "4"
                                                                                       ? "assets/images/Practice_Completed_4.webp"
-                                                                                      : allGoals[index]['color'] == 5
+                                                                                      : allGoals[index]['color'] == "5"
                                                                                           ? "assets/images/Practice_Completed_4.webp"
                                                                                           : 'assets/images/Practice_Completed_2.webp'
-                                                                      : allGoals[index]['color'] == 1
+                                                                      : allGoals[index]['color'] == "1"
                                                                           ? "assets/images/Ellipse orange_wb.webp"
-                                                                          : allGoals[index]['color'] == 2
+                                                                          : allGoals[index]['color'] == '2'
                                                                               ? 'assets/images/Ellipse 158_wb.webp'
-                                                                              : allGoals[index]['color'] == 3
+                                                                              : allGoals[index]['color'] == "3"
                                                                                   ? "assets/images/Ellipse 157_wb.webp"
-                                                                                  : allGoals[index]['color'] == 4
+                                                                                  : allGoals[index]['color'] == "4"
                                                                                       ? "assets/images/Ellipse light-blue_wb.webp"
-                                                                                      : allGoals[index]['color'] == 5
+                                                                                      : allGoals[index]['color'] == "5"
                                                                                           ? "assets/images/Ellipse blue_wb.webp"
                                                                                           : 'assets/images/Ellipse 158_wb.webp',
                                                               head_text: allGoals[
@@ -1356,20 +1357,20 @@ class _view_goalsState extends State<view_goals> {
                                                                       allGoals[index]
                                                                               [
                                                                               'recordingStatusTime2'] ==
-                                                                          "Completed"
+                                                                          "completed"
                                                                   ? allGoals[index]
                                                                               [
                                                                               'color'] ==
-                                                                          1
+                                                                          "1"
                                                                       ? 0XFFFC7133
                                                                       : allGoals[index]['color'] ==
-                                                                              2
+                                                                              "2"
                                                                           ? 0xFF1A481C
-                                                                          : allGoals[index]['color'] == 3
+                                                                          : allGoals[index]['color'] == "3"
                                                                               ? 0xFF6D4B77
-                                                                              : allGoals[index]['color'] == 4
+                                                                              : allGoals[index]['color'] == "4"
                                                                                   ? 0xFF5C75A6
-                                                                                  : allGoals[index]['color'] == 5
+                                                                                  : allGoals[index]['color'] == "5"
                                                                                       ? 0xFF315291
                                                                                       : 0xFF1FC7133
                                                                   : 0xFFFBFBFB,

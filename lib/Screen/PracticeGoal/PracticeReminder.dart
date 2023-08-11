@@ -994,6 +994,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                   }
                                   final SharedPreferences prefs = await _prefs;
 
+                                  await prefs.remove('goal_route');
                                   await prefs.remove('route');
                                 } else if (response == false) {
                                   print('Api call failed');

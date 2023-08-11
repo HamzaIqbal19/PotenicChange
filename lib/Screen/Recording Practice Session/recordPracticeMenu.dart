@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/Practice.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
@@ -51,34 +52,73 @@ class _practiceMenuState extends State<practiceMenu> {
   //   });
   // }
 
-  void _fetchGoalNames() async {
-    AdminGoal.getUserGoal().then((response) {
+  // void _fetchGoalNames() async {
+  //   AdminGoal.getUserGoal().then((response) {
+  //     if (response.length != 0) {
+  //       setState(() {
+  //         goalName = response["name"];
+  //         identity = response["identityStatement"][0]["text"];
+  //         color = response["color"];
+  //         pracName = response["userPractices"][0]["name"];
+  //         pracColor = response["userPractices"][0]["color"];
+  //       });
+  //       // loadData();
+  //     } else {
+  //       setState(() {
+  //         //Loading = false;
+  //       });
+  //     }
+  //   }).catchError((error) {
+  //     setState(() {
+  //       // Loading = false;
+  //     });
+  //     print("error");
+  //   });
+  // }
+
+  void _fetchPracticeDetails() async {
+    PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
+        print(
+            "---------------------------------PRACTICE RESPONSE===>$response");
         setState(() {
-          goalName = response["name"];
-          identity = response["identityStatement"][0]["text"];
-          color = response["color"];
-          pracName = response["userPractices"][0]["name"];
-          pracColor = response["userPractices"][0]["color"];
+          pracName =
+              response["name"] == null ? widget.pracName : response["name"];
+
+          pracColor =
+              response["color"] == null ? widget.pracColor : response["color"];
         });
-        // loadData();
+        print(pracName + pracColor);
+        AdminGoal.getUserGoalById(response['userGoalId']).then(
+          (value) {
+            if (value.length != 0) {
+              print("---------------------------------Goal RESPONSE===>$value");
+              setState(() {
+                goalName = response["name"];
+                identity = response["identityStatement"][0]["text"];
+                color = response["color"];
+              });
+            }
+          },
+        );
+
+        print("---------------------------------");
+        print("response123:${response["color"]}");
       } else {
-        setState(() {
-          //Loading = false;
-        });
+        // loadData();
+        print("response:$response");
       }
     }).catchError((error) {
-      setState(() {
-        // Loading = false;
-      });
-      print("error");
+      // loadData();
+      print("hell");
     });
   }
 
   @override
   initState() {
     super.initState();
-    _fetchGoalNames();
+    // _fetchGoalNames();
+    _fetchPracticeDetails();
     // Initialize AnimationController
   }
 

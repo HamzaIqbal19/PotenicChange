@@ -598,6 +598,7 @@ class _veiw_all_goals_menuState extends State<veiw_all_goals_menu> {
                                                                           goalsDetails[index]
                                                                               [
                                                                               'name'],
+                                                                      
                                                                     )));
                                                                 final SharedPreferences
                                                                     prefs =

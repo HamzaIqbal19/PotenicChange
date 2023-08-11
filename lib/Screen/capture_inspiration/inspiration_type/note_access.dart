@@ -1016,7 +1016,10 @@ class _noteSavedState extends State<noteSaved> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const inspiration_type()));
+                                          page: const updatedLandingPage(
+                                        delete: false,
+                                        is_Updated: true,
+                                      )));
                                   final SharedPreferences prefs = await _prefs;
                                   var remove = prefs.remove('ImageLink');
 

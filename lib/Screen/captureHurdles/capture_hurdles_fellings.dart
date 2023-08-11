@@ -597,10 +597,32 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                         print('Selected goals $selectedGoals');
                         print(hurdleStatement);
                         if (widget.update == true) {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const summary_hurdles(
+                                delete_hurdle: false,
+                              )));
                           Hurdles()
                               .updateHurdle("thoughtsAndFeelings", statements)
                               .then((response) {
-                            return null;
+                            if (response == true) {
+                              print('Updated');
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const summary_hurdles(
+                                    delete_hurdle: false,
+                                  )));
+                            } else {
+                              print(response);
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const summary_hurdles(
+                                    delete_hurdle: false,
+                                  )));
+                            }
                           });
                         } else {
                           Hurdles()
