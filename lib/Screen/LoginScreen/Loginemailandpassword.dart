@@ -228,35 +228,40 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                   width: AppDimensions.height10(context) * 36.0,
                                   height: AppDimensions.height10(context) * 2.2,
                                   child: TextFormField(
-                                    keyboardType: TextInputType.emailAddress,
-                                    style: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontWeight: FontWeight.w600,
-                                        decoration: TextDecoration.none,
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8),
-                                    decoration: InputDecoration(
-                                        errorBorder: InputBorder.none,
-                                        contentPadding: EdgeInsets.zero,
-                                        hintText: "JohnSmith@yahoo.com",
-                                        hintStyle: TextStyle(
+                                      keyboardType: TextInputType.emailAddress,
+                                      style: TextStyle(
                                           color: const Color(0xFF8C648A),
                                           fontWeight: FontWeight.w600,
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.8,
-                                        ),
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent))),
-                                    controller: emailController,
-                                    validator: (val) {
-                                      if (val != null && val.isNotEmpty) {
-                                        val = val.trim();
+                                          decoration: TextDecoration.none,
+                                          fontSize: AppDimensions.height10(
+                                                  context) *
+                                              1.8),
+                                      decoration: InputDecoration(
+                                          errorBorder: InputBorder.none,
+                                          contentPadding: EdgeInsets.zero,
+                                          hintText: "JohnSmith@yahoo.com",
+                                          hintStyle: TextStyle(
+                                            color: const Color(0xFF8C648A),
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                          ),
+                                          focusedBorder:
+                                              const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors
+                                                          .transparent)),
+                                          enabledBorder:
+                                              const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color:
+                                                          Colors.transparent))),
+                                      controller: emailController,
+                                      validator: (val) {
+                                        if (val != null && val.isNotEmpty) {
+                                          val = val.trim();
+                                        }
 
                                         if (val == null ||
                                             !EmailValidator.validate(val) ||
@@ -270,8 +275,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                           });
                                         }
                                       }
-                                    },
-                                  ),
+                                      // },
+                                      ),
                                 )
                               ],
                             )),
@@ -420,13 +425,15 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                             ],
                           ),
                         ),
-                        PasswordError != ""
+                        errorPassword
                             ? Container(
                                 padding: EdgeInsets.only(
                                     left:
                                         AppDimensions.height10(context) * 1.2),
                                 child: Text(
-                                  PasswordError,
+                                  "Minimum 8 characters",
+                                  // PasswordError,
+
                                   style: TextStyle(
                                     color: const Color(0xFFFE6624),
                                     fontSize:
@@ -435,9 +442,9 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                   ),
                                 ),
                               )
-                            : Container(),
+                            : SizedBox(),
                         SizedBox(
-                            height: PasswordError != ""
+                            height: errorPassword
                                 ? AppDimensions.height10(context)
                                 : AppDimensions.height10(context) * 3),
                         Container(
@@ -523,17 +530,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                   ),
 
                   SizedBox(height: AppDimensions.height10(context) * 3.0),
-                  MaterialButton(
-                    color: Colors.white,
-                    onPressed: () {
-                      if (_formkey.currentState!.validate()) {
-                        print("login ");
-                      }
-                    },
-                    child: Text("Log in"),
-                  )
 
-                  /*
                   GestureDetector(
                     onTapDown: (TapDownDetails details) {
                       setState(() {
@@ -641,7 +638,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       ),
                     ),
                   ),
-*/
 
                   // SizedBox(height: AppDimensions.height120+90),
                 ],

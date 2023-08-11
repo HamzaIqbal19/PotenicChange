@@ -293,38 +293,39 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                               borderRadius: BorderRadius.all(Radius.circular(
                                   AppDimensions.height10(context) * 1.8))),
                           child: TextFormField(
-                            style: TextStyle(
-                                color: const Color(0xFF8C648A),
-                                fontWeight: FontWeight.w600,
-                                decoration: TextDecoration.none,
-                                fontSize:
-                                    AppDimensions.height10(context) * 1.8),
-                            decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.only(
-                                    top: 5.0,
-                                    //bottom: 15.0,
-                                    left: 10.0,
-                                    right: 10.0),
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
-                                hintText: "abc@gmail.com",
-                                hintStyle: TextStyle(
+                              style: TextStyle(
                                   color: const Color(0xFF8C648A),
                                   fontWeight: FontWeight.w600,
+                                  decoration: TextDecoration.none,
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                ),
-                                labelText: "Email",
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent)),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent))),
-                            controller: emailController,
-                            validator: (val) {
-                              if (val != null && val.isNotEmpty) {
-                                val = val.trim();
+                                      AppDimensions.height10(context) * 1.8),
+                              decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.only(
+                                      top: 5.0,
+                                      //bottom: 15.0,
+                                      left: 10.0,
+                                      right: 10.0),
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.always,
+                                  hintText: "abc@gmail.com",
+                                  hintStyle: TextStyle(
+                                    color: const Color(0xFF8C648A),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
+                                  ),
+                                  labelText: "Email",
+                                  focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  enabledBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent))),
+                              controller: emailController,
+                              validator: (val) {
+                                if (val != null && val.isNotEmpty) {
+                                  val = val.trim();
+                                }
 
                                 if (val == null ||
                                     !EmailValidator.validate(val) ||
@@ -337,9 +338,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     errorEmail = false;
                                   });
                                 }
-                              }
-                            },
-                          ),
+                              }),
                         ),
                         errorEmail
                             ? Container(
@@ -614,10 +613,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           rememberMe == true) {
                         setState(() {
                           Loading = true;
-                          errorEmail = false;
-                          errorPassword = false;
-                          errorName = false;
-                          userExist = "";
+                          // errorEmail = false;
+                          // errorPassword = false;
+                          // errorName = false;
+                          // userExist = "";
                         });
                         print("Hello WOrld 12345");
                         Authentication()
@@ -686,9 +685,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         }).whenComplete(() {
                           setState(() {
                             Loading = false;
-                            errorEmail = false;
-                            errorPassword = false;
-                            errorName = false;
+                            // errorEmail = false;
+                            // errorPassword = false;
+                            // errorName = false;
                           });
                         });
                       } else if (rememberMe == false) {

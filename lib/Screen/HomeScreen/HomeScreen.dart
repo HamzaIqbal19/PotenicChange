@@ -109,9 +109,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             ),
                           );
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text("User is not logged in !!")));
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                                  content: Text(
+                            "User is not logged in !!",
+                            style: TextStyle(color: Colors.red),
+                          )));
                         }
                       },
                       child: centeredImage(
@@ -438,10 +441,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               AnimatedScaleButton(
                                 onTap: () {
                                   if (widget.login == false) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(const SnackBar(
                                             content: Text(
-                                                "User is not logged in !!")));
+                                      "User is not logged in !!",
+                                      style: TextStyle(color: Colors.red),
+                                    )));
                                   } else {
                                     signupSheet(
                                         context, "Introduction", "OnBoarding");
