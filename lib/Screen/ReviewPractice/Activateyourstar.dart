@@ -8,6 +8,7 @@ import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/review_habits_dashboard/dashboard.dart';
 import 'package:potenic_app/Screen/ReviewPractice/loader/activateStar_shimmer.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
@@ -138,7 +139,7 @@ class _ActivateStarState extends State<ActivateStar> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomeScreen(
+                    builder: (context) => const HomeScreen(
                       login: true,
                     ),
                   ),
@@ -376,7 +377,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                           duration: const Duration(seconds: 1),
                                           context: context,
                                           builder: (BuildContext context) =>
-                                              Container(
+                                              SizedBox(
                                                 width: AppDimensions.height10(
                                                         context) *
                                                     27.0,
@@ -476,7 +477,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                                                     0.29),
                                                           ),
                                                         ),
-                                                        Container(
+                                                        SizedBox(
                                                           height: AppDimensions
                                                                   .height10(
                                                                       context) *
@@ -485,8 +486,11 @@ class _ActivateStarState extends State<ActivateStar> {
                                                               double.infinity,
                                                           child: TextButton(
                                                             onPressed: () {
-                                                              Navigator.pop(
-                                                                  context);
+                                                              Navigator.push(
+                                                                  context,
+                                                                  FadePageRoute(
+                                                                      page:
+                                                                          const veiw_all_goals_menu()));
                                                             },
                                                             child: Text(
                                                               'View goal',
@@ -518,7 +522,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                                                     0.29),
                                                           ),
                                                         ),
-                                                        Container(
+                                                        SizedBox(
                                                           height: AppDimensions
                                                                   .height10(
                                                                       context) *
@@ -998,7 +1002,7 @@ class maxActivation extends StatelessWidget {
           curve: Curves.easeInOut,
           duration: const Duration(seconds: 1),
           context: context,
-          builder: (BuildContext context) => Container(
+          builder: (BuildContext context) => SizedBox(
                 width: AppDimensions.height10(context) * 27.0,
                 height: AppDimensions.height10(context) * 23.6,
                 child: AlertDialog(
@@ -1075,7 +1079,7 @@ class maxActivation extends StatelessWidget {
                             color: const Color(0XFF3C3C43).withOpacity(0.29),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           height: AppDimensions.height10(context) * 4.4,
                           width: double.infinity,
                           child: TextButton(

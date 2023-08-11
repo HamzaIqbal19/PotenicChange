@@ -140,32 +140,36 @@ class _video_infoState extends State<video_info> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            InspirationApi()
-                                .addInspiration(
-                                    3,
-                                    " ",
-                                    " ",
-                                    tagList,
-                                    link.text.toString(),
-                                    true,
-                                    statement.text.toString(),
-                                    selectedGoals)
-                                .then((response) async {
-                              if (response.length != 0) {
-                                print('----------------');
-                                link.clear();
-                                final SharedPreferences prefs = await _prefs;
-                                var remove = prefs.remove('ImageLink');
-                                statement.clear();
-                                hastags.clear();
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const updatedLandingPage(
-                                            delete: false, is_Updated: true)));
-                                print(response);
-                              }
-                            });
+                            if (link.text.toString().isNotEmpty &&
+                                statement.text.toString().isNotEmpty) {
+                              InspirationApi()
+                                  .addInspiration(
+                                      3,
+                                      " ",
+                                      " ",
+                                      tagList,
+                                      link.text.toString(),
+                                      true,
+                                      statement.text.toString(),
+                                      selectedGoals)
+                                  .then((response) async {
+                                if (response.length != 0) {
+                                  print('----------------');
+                                  link.clear();
+                                  final SharedPreferences prefs = await _prefs;
+                                  var remove = prefs.remove('ImageLink');
+                                  statement.clear();
+                                  hastags.clear();
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const updatedLandingPage(
+                                              delete: false,
+                                              is_Updated: true)));
+                                  print(response);
+                                }
+                              });
+                            }
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 2.2,
@@ -178,7 +182,11 @@ class _video_infoState extends State<video_info> {
                                   fontSize:
                                       AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
-                                  color: const Color(0xff007AFF)),
+                                  color: link.text.toString().isNotEmpty &&
+                                          statement.text.toString().isNotEmpty
+                                      ? const Color(0xff007AFF)
+                                      : const Color(0xff007AFF)
+                                          .withOpacity(0.5)),
                             ),
                           ),
                         )
@@ -414,7 +422,7 @@ class _video_infoState extends State<video_info> {
                               right: AppDimensions.height10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
-                            'Tags',
+                            'Tags (optional)',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.5,
                                 fontWeight: FontWeight.w400,

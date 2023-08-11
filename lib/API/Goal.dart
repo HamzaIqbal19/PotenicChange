@@ -659,6 +659,9 @@ class AdminGoal {
       print("Result:$jsonData");
 
       return jsonData;
+    } else if (response.statusCode == 404) {
+      print('There are no active goals');
+      return response.statusCode;
     } else {
       throw Exception('Failed to fetch goal names');
     }

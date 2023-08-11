@@ -142,45 +142,49 @@ class _link_infoState extends State<link_info> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            print('LINK----------------');
-                            print(link.text.toString());
-                            InspirationApi()
-                                .addInspiration(
-                                    4,
-                                    author.text.toString().isEmpty
-                                        ? " "
-                                        : author.text.toString(),
-                                    " ",
-                                    tagList.isEmpty ? " " : tagList,
-                                    link.text.toString().isEmpty
-                                        ? " "
-                                        : link.text.toString(),
-                                    true,
-                                    statement.text.toString().isEmpty
-                                        ? " "
-                                        : statement.text.toString(),
-                                    selectedGoals)
-                                .then((response) async {
-                              if (response.length != 0) {
-                                print('----------------');
-                                statement.clear();
-                                author.clear();
-                                hastags.clear();
-                                link.clear();
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const updatedLandingPage(
-                                            delete: false, is_Updated: false)));
+                            if (link.text.toString().isNotEmpty &&
+                                statement.text.toString().isNotEmpty) {
+                              print('LINK----------------');
+                              print(link.text.toString());
+                              InspirationApi()
+                                  .addInspiration(
+                                      4,
+                                      author.text.toString().isEmpty
+                                          ? " "
+                                          : author.text.toString(),
+                                      " ",
+                                      tagList.isEmpty ? " " : tagList,
+                                      link.text.toString().isEmpty
+                                          ? " "
+                                          : link.text.toString(),
+                                      true,
+                                      statement.text.toString().isEmpty
+                                          ? " "
+                                          : statement.text.toString(),
+                                      selectedGoals)
+                                  .then((response) async {
+                                if (response.length != 0) {
+                                  print('----------------');
+                                  statement.clear();
+                                  author.clear();
+                                  hastags.clear();
+                                  link.clear();
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const updatedLandingPage(
+                                              delete: false,
+                                              is_Updated: false)));
 
-                                final SharedPreferences prefs = await _prefs;
-                                var remove = prefs.remove('ImageLink');
+                                  final SharedPreferences prefs = await _prefs;
+                                  var remove = prefs.remove('ImageLink');
 
-                                print(response);
-                              }
+                                  print(response);
+                                }
 
-                              // return null;
-                            });
+                                // return null;
+                              });
+                            }
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 2.2,
@@ -193,7 +197,11 @@ class _link_infoState extends State<link_info> {
                                   fontSize:
                                       AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
-                                  color: const Color(0xff007AFF)),
+                                  color: link.text.toString().isNotEmpty &&
+                                          statement.text.toString().isNotEmpty
+                                      ? const Color(0xff007AFF)
+                                      : const Color(0xff007AFF)
+                                          .withOpacity(0.5)),
                             ),
                           ),
                         )
@@ -429,7 +437,7 @@ class _link_infoState extends State<link_info> {
                               right: AppDimensions.height10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
-                            'Content Author',
+                            'Content Author (optional)',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.5,
                                 fontWeight: FontWeight.w400,
@@ -481,7 +489,7 @@ class _link_infoState extends State<link_info> {
                               right: AppDimensions.height10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
-                            'Tags',
+                            'Tags (optional)',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.5,
                                 fontWeight: FontWeight.w400,
@@ -513,7 +521,7 @@ class _link_infoState extends State<link_info> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w500,
-                                color: Color.fromARGB(255, 80, 33, 33)),
+                                color: const Color.fromARGB(255, 80, 33, 33)),
                             decoration: InputDecoration(
                                 isCollapsed: true,
                                 contentPadding: EdgeInsets.fromLTRB(

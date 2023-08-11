@@ -160,6 +160,7 @@ class PracticeGoalApi {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var prac_num = prefs.getInt("prac_num");
+    print("======================IDID${prefs.getInt("prac_num")}");
 
     print('$prac_num');
     var headers = {
@@ -348,7 +349,7 @@ class PracticeGoalApi {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
-    var body = jsonEncode({"goalStatus": "$status"});
+    var body = jsonEncode({"practiceStatus": "$status"});
 
     var request = await client.put(
         Uri.parse(
@@ -356,7 +357,9 @@ class PracticeGoalApi {
         headers: headers,
         body: body);
     print("request: Update");
-    print('=====>$request.statusCode');
+    print('=====>${request.statusCode}');
+    print("===================================");
+    print(request.statusCode);
     print(request.body);
     if (request.statusCode == 200) {
       print("request: Update successful");

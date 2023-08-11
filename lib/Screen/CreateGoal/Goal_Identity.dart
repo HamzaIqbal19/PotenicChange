@@ -9,6 +9,7 @@ import 'package:potenic_app/Screen/CreateGoal/Goal-Visualising.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -36,6 +37,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
   List<Map<String, String>> myIdentity = [];
   var identity;
   int listReason = 0;
+  String route = '';
 
   bool Loading = true;
 
@@ -46,7 +48,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
   @override
   void initState() {
     super.initState();
-
+    getRoute();
     // Add one element to the list when the screen is initialized.
     myIdentity.add({
       'key': 'Reason ${myIdentity.length}',
@@ -96,6 +98,16 @@ class _Goal_IdentityState extends State<Goal_Identity> {
       goalName = prefs.getString("goalName")!;
     });
     print("goalName:$goalName");
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   int item = 1;
@@ -201,7 +213,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 exitPage: const Goal_Identity(
                   comingFromEditScreen: false,
                 ),
-                enterPage: Visualising(
+                enterPage: const Visualising(
                   comingFromEditScreen: false,
                 ),
               ),
@@ -314,10 +326,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                 child: AnimatedScaleButton(
                                   onTap: () async {
                                     updateGoalReason(myIdentity);
-                                    final SharedPreferences prefs =
-                                        await _prefs;
-                                    var GoalIdentity = prefs.setString(
-                                        'route', "GoalIdentity");
+
                                     Navigator.push(
                                       context,
                                       FadePageRoute2(
@@ -331,9 +340,13 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                 route: "GoalIdentity"),
                                       ),
                                     );
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    var GoalIdentity = prefs.setString(
+                                        'route', "GoalIdentity");
                                   },
-                                  child: Center(
-                                    child: const Text(
+                                  child: const Center(
+                                    child: Text(
                                       'Exit & save progress',
                                       style: TextStyle(
                                           color: Color(0xFF007AFF),
@@ -357,20 +370,30 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                 width: double.infinity,
                                 child: TextButton(
                                   onPressed: () async {
+                                    if (route == 'view_all_goals') {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          FadePageRoute(
+                                              page:
+                                                  const veiw_all_goals_menu()));
+                                    } else {
+                                      Navigator.push(
+                                        context,
+                                        FadePageRoute2(
+                                          true,
+                                          exitPage: const Goal_Identity(
+                                            comingFromEditScreen: false,
+                                          ),
+                                          enterPage:
+                                              const HomeScreen(login: true),
+                                        ),
+                                      );
+                                    }
                                     final SharedPreferences prefs =
                                         await _prefs;
-                                    var goalwhy = prefs.remove('route');
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute2(
-                                        true,
-                                        exitPage: const Goal_Identity(
-                                          comingFromEditScreen: false,
-                                        ),
-                                        enterPage:
-                                            const HomeScreen(login: true),
-                                      ),
-                                    );
+                                    await prefs.remove('goal');
+                                    await prefs.remove('route');
+                                    await prefs.remove('goal_route');
                                   },
                                   child: const Text(
                                     'Exit & delete progress',
@@ -425,8 +448,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: widget.comingFromEditScreen
-                    ? AssetImage("assets/images/GoalReviewBg.webp")
-                    : AssetImage("assets/images/Categories.webp"),
+                    ? const AssetImage("assets/images/GoalReviewBg.webp")
+                    : const AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -448,7 +471,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: widget.comingFromEditScreen
-                                  ? Color(0xFF437296)
+                                  ? const Color(0xFF437296)
                                   : Colors.white,
                               fontSize: AppDimensions.height10(context) * 1.8,
                             ),
@@ -467,7 +490,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: widget.comingFromEditScreen
-                                  ? Color(0xFF437296)
+                                  ? const Color(0xFF437296)
                                   : Colors.white,
                               fontSize: AppDimensions.height10(context) * 2.2,
                             ),
@@ -502,7 +525,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: widget.comingFromEditScreen
-                                  ? Color(0xFF437296)
+                                  ? const Color(0xFF437296)
                                   : Colors.white,
                               fontSize: AppDimensions.height10(context) * 2.8,
                             ),
@@ -523,8 +546,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                 fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w600,
                                 color: widget.comingFromEditScreen
-                                    ? Color(0xFF437296)
-                                    : Color(0xFFFFFFFF)),
+                                    ? const Color(0xFF437296)
+                                    : const Color(0xFFFFFFFF)),
                           ),
                         ),
                       ),
@@ -992,7 +1015,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                       ? BoxDecoration(
                                           color: Colors.white,
                                           border: Border.all(
-                                              color: Color(0xffFA9934)),
+                                              color: const Color(0xffFA9934)),
                                           borderRadius: const BorderRadius.all(
                                               Radius.circular(50.0)),
                                         )
@@ -1015,8 +1038,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                           fontFamily: "Laila",
                                           fontWeight: FontWeight.w600,
                                           color: myIdentity[0]['text'] != ""
-                                              ? Color(0xffFA9934)
-                                              : Color(0xff282828),
+                                              ? const Color(0xffFA9934)
+                                              : const Color(0xff282828),
                                           fontSize:
                                               AppDimensions.height10(context) *
                                                   1.8),

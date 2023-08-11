@@ -400,13 +400,14 @@ class _progress_reportState extends State<progress_report> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 17.9,
+                                  width: AppDimensions.height10(context) * 27.9,
                                   height: AppDimensions.height10(context) * 2.7,
                                   child: Text(
                                     noData == true
                                         ? 'No data found'
                                         : report['practice']["name"],
                                     textAlign: TextAlign.start,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontSize:
                                             AppDimensions.height10(context) *
@@ -447,7 +448,7 @@ class _progress_reportState extends State<progress_report> {
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 27.4,
+                            width: AppDimensions.height10(context) * 25.4,
                             height: AppDimensions.height10(context) * 2.9,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 7.0),
@@ -489,6 +490,8 @@ class _progress_reportState extends State<progress_report> {
                                         AppDimensions.height10(context) * 34.7,
                                     height:
                                         AppDimensions.height10(context) * 10.9,
+                                    padding: EdgeInsets.all(
+                                        AppDimensions.height10(context)),
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
                                             1.9),
@@ -502,6 +505,8 @@ class _progress_reportState extends State<progress_report> {
                                                     ["identityStatement"][0]
                                                 ['text'],
                                         textAlign: TextAlign.center,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 3,
                                         style: TextStyle(
                                             fontStyle: FontStyle.italic,
                                             // height: AppDimensions.height10(context) * 0.15,
@@ -1396,12 +1401,14 @@ class _progress_reportState extends State<progress_report> {
                             ),
                             AnimatedScaleButton(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const prac_score(
-                                      saved: false,
-                                    )));
+                                if (noData != true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const prac_score(
+                                        saved: false,
+                                      )));
+                                }
                               },
                               child: button_feilds(
                                 feild_text: 'Practice score ',

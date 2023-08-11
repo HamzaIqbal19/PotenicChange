@@ -7,11 +7,15 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReviewWhy.dart';
+import 'package:potenic_app/Screen/Your_goals/add_your_practice.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -22,6 +26,8 @@ import '../CreateGoal/Goal-Why.dart';
 import '../CreateGoal/GoalName.dart';
 import '../CreateGoal/Goal_Identity.dart';
 import '../HomeScreen/HomeScreen.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class StarReview extends StatefulWidget {
   final String route;
@@ -48,6 +54,7 @@ class _StarReviewState extends State<StarReview> {
   var color;
   bool Loading = true;
   late FocusNode _focusNode;
+  String route = '';
   @override
   void initState() {
     _focusNode = FocusNode()..addListener(_onFocus);
@@ -57,6 +64,16 @@ class _StarReviewState extends State<StarReview> {
 
   void _onFocus() {
     setState(() {});
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   void _fetchGoalNames() async {
@@ -92,24 +109,46 @@ class _StarReviewState extends State<StarReview> {
   Widget build(BuildContext context) {
     // GoalReviewBg.webp
     return WillPopScope(
-      onWillPop: () {
+      onWillPop: () async {
         print('==============================');
         print(widget.route);
-        Navigator.push(
-          context,
-          widget.route == 'goal'
-              ? FadePageRoute3(
-                  exitPage: StarReview(
-                    route: widget.route,
-                  ),
-                  enterPage: const GoalFinished(),
-                )
-              : FadePageRoute3(
-                  exitPage: StarReview(
-                    route: widget.route,
-                  ),
-                  enterPage: const PracticeFinished()),
-        );
+
+        if (route == 'view_all_goals') {
+          Navigator.pushReplacement(
+              context, FadePageRoute(page: const veiw_all_goals_menu()));
+        } else {
+          if (widget.route == 'goal') {
+            Navigator.push(context, FadePageRoute(page: const GoalFinished()));
+          } else if (widget.route == 'menu') {
+            Navigator.push(
+                context,
+                FadePageRoute(
+                    page: const goal_menu_inactive(
+                  goal_evaluation: true,
+                  isActive: true,
+                  premium: true,
+                )));
+          } else if (widget.route == 'add_your_practice') {
+            Navigator.push(
+                context,
+                FadePageRoute(
+                    page: add_your_practice(
+                  goalName: goalName,
+                )));
+          } else {
+            Navigator.push(
+                context,
+                FadePageRoute3(
+                    exitPage: StarReview(
+                      route: widget.route,
+                    ),
+                    enterPage: const PracticeFinished()));
+          }
+          final SharedPreferences prefs = await _prefs;
+
+          await prefs.remove('route');
+          return Future.value(true);
+        }
 
         return Future.value(false);
       },
@@ -132,21 +171,35 @@ class _StarReviewState extends State<StarReview> {
                       fit: BoxFit.contain,
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        widget.route == 'goal'
-                            ? FadePageRoute3(
+                      if (widget.route == 'goal') {
+                        Navigator.push(
+                            context, FadePageRoute(page: const GoalFinished()));
+                      } else if (widget.route == 'menu') {
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const goal_menu_inactive(
+                              goal_evaluation: true,
+                              isActive: true,
+                              premium: true,
+                            )));
+                      } else if (widget.route == 'add_your_practice') {
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: add_your_practice(
+                              goalName: goalName,
+                            )));
+                      } else {
+                        Navigator.push(
+                            context,
+                            FadePageRoute3(
                                 exitPage: StarReview(
                                   route: widget.route,
                                 ),
-                                enterPage: const GoalFinished(),
-                              )
-                            : FadePageRoute3(
-                                exitPage: StarReview(
-                                  route: widget.route,
-                                ),
-                                enterPage: const PracticeFinished()),
-                      );
+                                enterPage: const PracticeFinished()));
+                      }
+
                       //Navigator.pop(context);
 
                       // Add code for performing close action
@@ -1246,7 +1299,8 @@ class _StarReviewState extends State<StarReview> {
                                                   exitPage: StarReview(
                                                     route: widget.route,
                                                   ),
-                                                  enterPage: Goal_Identity(
+                                                  enterPage:
+                                                      const Goal_Identity(
                                                     // catId,
                                                     comingFromEditScreen: true,
                                                   ),
@@ -1410,7 +1464,7 @@ class _StarReviewState extends State<StarReview> {
                                                   exitPage: StarReview(
                                                     route: widget.route,
                                                   ),
-                                                  enterPage: Visualising(
+                                                  enterPage: const Visualising(
                                                     // catId,
                                                     comingFromEditScreen: true,
                                                   ),
@@ -1690,18 +1744,47 @@ class _StarReviewState extends State<StarReview> {
                                               onPressed: () {
                                                 AdminGoal()
                                                     .deleteUserGoal()
-                                                    .then((response) {
+                                                    .then((response) async {
                                                   if (response == true) {
                                                     print(
                                                         "==================>Successfully deleted");
-                                                    Navigator.pushReplacement(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const HomeScreen(
-                                                            login: true,
-                                                          ),
-                                                        ));
+                                                    if (route ==
+                                                        'view_all_goals') {
+                                                      Navigator.pushReplacement(
+                                                          context,
+                                                          FadePageRoute(
+                                                              page:
+                                                                  const veiw_all_goals_menu()));
+                                                    } else {
+                                                      if (widget.route ==
+                                                          'menu') {
+                                                        Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    const goal_menu_inactive(
+                                                              goal_evaluation:
+                                                                  true,
+                                                              isActive: true,
+                                                              premium: true,
+                                                            )));
+                                                      } else {
+                                                        Navigator
+                                                            .pushReplacement(
+                                                                context,
+                                                                FadePageRoute(
+                                                                  page:
+                                                                      const HomeScreen(
+                                                                    login: true,
+                                                                  ),
+                                                                ));
+                                                      }
+                                                      final SharedPreferences
+                                                          prefs = await _prefs;
+
+                                                      await prefs
+                                                          .remove('route');
+                                                    }
                                                   } else {
                                                     print(
                                                         'Goal is not deleted');

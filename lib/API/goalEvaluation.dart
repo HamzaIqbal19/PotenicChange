@@ -197,7 +197,7 @@ class PracticeEvaluation {
       var jsonData = jsonDecode(response.body);
       print("Result:$jsonData");
 
-      return response;
+      return jsonData;
     } else if (response.statusCode == 404) {
       print('nOT fOUND');
       return false;

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -54,6 +56,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
   var practiceName = TextEditingController();
   var practice = TextEditingController();
   var color;
+  String route = '';
   int index1 = 0;
 
   Future<void> saveTimesPerDay(List<Map<String, dynamic>> timesPerDay) async {
@@ -68,8 +71,19 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
 
   @override
   void initState() {
-    getGoalName();
     super.initState();
+    getGoalName();
+    getRoute();
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -137,15 +151,26 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomeScreen(
-                          login: true,
+                  onPressed: () async {
+                    if (route == 'view_all_goals') {
+                      Navigator.pushReplacement(context,
+                          FadePageRoute(page: const veiw_all_goals_menu()));
+                    } else if (route == 'view_all_goals_2') {
+                      Navigator.pushReplacement(context,
+                          FadePageRoute(page: const multiple_goal_inactive()));
+                    } else {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute(
+                          page: const HomeScreen(
+                            login: true,
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    }
+                    final SharedPreferences prefs = await _prefs;
+
+                    await prefs.remove('route');
                     // Add code for performing close action
                   },
                 ),
@@ -267,7 +292,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF156F6D),
+                                  color: const Color(0xFF156F6D),
                                   fontSize:
                                       AppDimensions.height10(context) * 2.0,
                                 ),
@@ -278,7 +303,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                 ),
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF156F6D),
+                                  color: const Color(0xFF156F6D),
                                   fontSize:
                                       AppDimensions.height10(context) * 2.0,
                                 ),
@@ -439,7 +464,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           Navigator.push(
                             context,
                             FadePageRoute(
-                              page: PracticeReminder(
+                              page: const PracticeReminder(
                                 comingFromEditScreen: false,
                               ),
                             ),

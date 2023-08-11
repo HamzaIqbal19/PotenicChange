@@ -41,7 +41,7 @@ class _missed_MenuState extends State<missed_Menu> {
       goalName = prefs.getString('dash_goalName')!;
       pracColor = prefs.getString('dash_pracColor')!;
       pracName = prefs.getString('dash_pracName')!;
-      goalColor = prefs.getString('dash_goalName')!;
+      goalColor = prefs.getString('dash_goalColor')!;
     });
   }
 

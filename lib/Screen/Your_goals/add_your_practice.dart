@@ -1,9 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
+import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/fading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
 
-class add_your_practice extends StatelessWidget {
-  const add_your_practice({super.key});
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+class add_your_practice extends StatefulWidget {
+  final String goalName;
+  const add_your_practice({super.key, required this.goalName});
+
+  @override
+  State<add_your_practice> createState() => _add_your_practiceState();
+}
+
+class _add_your_practiceState extends State<add_your_practice> {
+  String goalColor = '';
+  void getRecorDetails() async {
+    final SharedPreferences prefs = await _prefs;
+
+    setState(() {
+      goalColor = prefs.getString('dash_goalColor')!;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getRecorDetails();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +48,8 @@ class add_your_practice extends StatelessWidget {
             Center(
               child: IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.push(context,
+                        FadePageRoute(page: const veiw_all_goals_menu()));
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
@@ -65,8 +97,9 @@ class add_your_practice extends StatelessWidget {
                 left: AppDimensions.height10(context) * 12.2,
                 right: AppDimensions.height10(context) * 12.1),
             child: Text(
-              'Control my anger',
+              widget.goalName,
               textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                   fontSize: AppDimensions.height10(context) * 2.0,
                   fontWeight: FontWeight.w600,
@@ -74,15 +107,27 @@ class add_your_practice extends StatelessWidget {
             ),
           ),
           Container(
-            width: AppDimensions.height10(context) * 8.39,
-            height: AppDimensions.height10(context) * 9.3,
-            margin:
-                EdgeInsets.only(top: AppDimensions.height10(context) * 2.03),
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage('assets/images/orange_flair.webp'),
-              fit: BoxFit.cover,
-            )),
+            width: AppDimensions.height10(context) * 7.9,
+            height: AppDimensions.height10(context) * 7.9,
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.3),
+            decoration: BoxDecoration(
+              // color: Colors.amber,
+              image: DecorationImage(
+                  image: AssetImage(goalColor == '1'
+                      ? "assets/images/red_gradient.webp"
+                      : goalColor == '2'
+                          ? 'assets/images/orange_moon.webp'
+                          : goalColor == '3'
+                              ? "assets/images/lightGrey_gradient.webp"
+                              : goalColor == '4'
+                                  ? "assets/images/lightBlue_gradient.webp"
+                                  : goalColor == '5'
+                                      ? "assets/images/medBlue_gradient.webp"
+                                      : goalColor == '6'
+                                          ? "assets/images/Blue_gradient.webp"
+                                          : 'assets/images/orange_moon.webp'),
+                  fit: BoxFit.contain),
+            ),
           ),
           Container(
             width: double.infinity,
@@ -90,36 +135,46 @@ class add_your_practice extends StatelessWidget {
             color: const Color(0xFFFFFFFF).withOpacity(0.5),
             margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.9),
           ),
-          Container(
-            width: AppDimensions.height10(context) * 17.5,
-            height: AppDimensions.height10(context) * 17.5,
-            padding: EdgeInsets.all(AppDimensions.height10(context) * 1.0),
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: const Color(0xFFFFFFFF), width: 3)),
+          AnimatedScaleButton(
+            onTap: () async {
+              Navigator.push(
+                  context, FadePageRoute(page: const CreatePractice()));
+              final SharedPreferences prefs = await _prefs;
+              var route = prefs.setString('goal_route', 'view_all_goals');
+            },
             child: Container(
-              width: AppDimensions.height10(context) * 15.5,
-              height: AppDimensions.height10(context) * 15.5,
-              padding: EdgeInsets.all(AppDimensions.height10(context) * 1.2),
+              width: AppDimensions.height10(context) * 17.5,
+              height: AppDimensions.height10(context) * 17.5,
+              padding: EdgeInsets.all(AppDimensions.height10(context) * 1.0),
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: const Color(0xFFFFFFFF), width: 4)),
+                  border: Border.all(color: const Color(0xFFFFFFFF), width: 3)),
               child: Container(
-                width: AppDimensions.height10(context) * 13.4,
-                height: AppDimensions.height10(context) * 13.2,
-                decoration: const BoxDecoration(
+                width: AppDimensions.height10(context) * 15.5,
+                height: AppDimensions.height10(context) * 15.5,
+                padding: EdgeInsets.all(AppDimensions.height10(context) * 1.2),
+                decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/circle_grey.webp'))),
-                child: Center(
-                  child: Text(
-                    'Add new\npractice',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.8,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFFFFFFFF)),
+                    border:
+                        Border.all(color: const Color(0xFFFFFFFF), width: 4)),
+                child: Container(
+                  width: AppDimensions.height10(context) * 13.4,
+                  height: AppDimensions.height10(context) * 13.2,
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/circle_grey.webp'))),
+                  child: Center(
+                    child: Text(
+                      'Add new\npractice',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10(context) * 1.8,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFFFFFFFF)),
+                    ),
                   ),
                 ),
               ),
@@ -131,47 +186,57 @@ class add_your_practice extends StatelessWidget {
             color: const Color(0xFFFFFFFF).withOpacity(0.5),
             margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
           ),
-          Container(
-            width: AppDimensions.height10(context) * 36.4,
-            height: AppDimensions.height10(context) * 6.0,
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
-            decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.circular(AppDimensions.height10(context) * 2.0),
-              color: const Color(0xFFFFFFFF),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: AppDimensions.height10(context) * 18.5,
-                  height: AppDimensions.height10(context) * 2.2,
-                  margin: EdgeInsets.only(
-                      left: AppDimensions.height10(context) * 1.99),
-                  child: Text(
-                    'Goal details',
-                    style: TextStyle(
-                      color: const Color(0xff646464),
-                      fontSize: AppDimensions.height10(context) * 1.8,
-                      fontWeight: FontWeight.w500,
+          AnimatedScaleButton(
+            onTap: () async {
+              Navigator.push(
+                  context,
+                  FadePageRoute(
+                      page: const StarReview(
+                    route: 'add_your_practice',
+                  )));
+              final SharedPreferences prefs = await _prefs;
+              var route = prefs.setString('goal_route', 'view_all_goals');
+            },
+            child: Container(
+              width: AppDimensions.height10(context) * 36.4,
+              height: AppDimensions.height10(context) * 6.0,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                    AppDimensions.height10(context) * 2.0),
+                color: const Color(0xFFFFFFFF),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: AppDimensions.height10(context) * 18.5,
+                    height: AppDimensions.height10(context) * 2.2,
+                    margin: EdgeInsets.only(
+                        left: AppDimensions.height10(context) * 1.99),
+                    child: Text(
+                      'Goal details',
+                      style: TextStyle(
+                        color: const Color(0xff646464),
+                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                    width: AppDimensions.height10(context) * 2.4,
-                    height: AppDimensions.height10(context) * 1.39,
-                    margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 2.391),
-                    child: GestureDetector(
-                      onTap: () {},
+                  Container(
+                      width: AppDimensions.height10(context) * 2.4,
+                      height: AppDimensions.height10(context) * 1.39,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 2.391),
                       child: Image.asset(
                         'assets/images/BTN Back.webp',
                         //width: AppDimensions.height10(context) * 2.6,
                         //height: AppDimensions.height10(context) * 2.6,
                         fit: BoxFit.cover,
-                      ),
-                    ))
-              ],
+                      ))
+                ],
+              ),
             ),
           ),
         ]),
