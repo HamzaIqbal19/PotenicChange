@@ -523,7 +523,17 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                   ),
 
                   SizedBox(height: AppDimensions.height10(context) * 3.0),
+                  MaterialButton(
+                    color: Colors.white,
+                    onPressed: () {
+                      if (_formkey.currentState!.validate()) {
+                        print("login ");
+                      }
+                    },
+                    child: Text("Log in"),
+                  )
 
+                  /*
                   GestureDetector(
                     onTapDown: (TapDownDetails details) {
                       setState(() {
@@ -631,6 +641,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       ),
                     ),
                   ),
+*/
 
                   // SizedBox(height: AppDimensions.height120+90),
                 ],

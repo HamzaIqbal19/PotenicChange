@@ -24,6 +24,7 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         key: _globalKey,
         body: OnboardingPage(
           bgColor: Colors.white,
