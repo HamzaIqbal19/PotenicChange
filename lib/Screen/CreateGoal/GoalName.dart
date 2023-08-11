@@ -71,12 +71,13 @@ class _GoalNameState extends State<GoalName> {
     var catId = prefs.setInt('goalCategoryId', widget.catId);
     setState(() {
       goalName = prefs.getString("goalName")!;
-      goalCategory = prefs.getString("GoalCategory")!;
       mygoal.text = capitalizeFirstLetter(prefs.getString("goalName")!);
+      goalCategory = prefs.getString("GoalCategory")!;
+
       id = prefs.getInt("goalId");
     });
 
-    print("mygoal.text:${mygoal.text}");
+    print("mygoal.text:${capitalizeFirstLetter(prefs.getString("goalName")!)}");
     print("goalName:$goalName");
   }
 

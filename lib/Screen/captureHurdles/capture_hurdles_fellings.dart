@@ -34,16 +34,14 @@ class _felling_hurdlesState extends State<felling_hurdles> {
   List updatedSummary = [];
   bool Loader = true;
   int? hurdleId;
+  var hurdleDetails;
+  var trigger;
   List<TextEditingController> control = [TextEditingController(text: 'I feel')];
 
   int char = 0;
 
   int getMaxCharacters() {
     return 100;
-  }
-
-  int getCurrentCharacters() {
-    return control[circle_state].text.length;
   }
 
   void _getHurdleDetail() async {
@@ -78,15 +76,30 @@ class _felling_hurdlesState extends State<felling_hurdles> {
   void _fetchHurdleSummary() async {
     Hurdles().getHurdleById().then((response) {
       if (response.length != 0) {
-        print("============================");
-        print(response);
+        setState(() {
+          hurdleDetails = response;
+          trigger = response['hurdle']['thoughtsAndFeelings'];
+        });
+        // print("=================================>Response$response");
+        print("=================================>Trigger${trigger[0]}");
 
         for (int i = 0;
-            i == response['hurdle']['thoughtsAndFeelings'].length;
+            i <= response['hurdle']['thoughtsAndFeelings'].length;
             i++) {
-          statements.add(response['hurdle']['thoughtsAndFeelings'][i]);
+          print('Function 1 called');
+          print(i);
+          i != trigger.length ? statements.add('${trigger[i]}') : print('full');
+        }
+        print(statements);
+        for (int i = 0;
+            i <= response['hurdle']['thoughtsAndFeelings'].length;
+            i++) {
+          i != trigger.length
+              ? control.add(TextEditingController(text: '${trigger[i]}'))
+              : control.add(TextEditingController(text: 'I feel'));
         }
         setState(() {
+          scroll = false;
           // statements = response['hurdle']['thoughtsAndFeelings'];
           circle_state = response['hurdle']['thoughtsAndFeelings'].length;
         });
@@ -94,8 +107,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
         print(circle_state);
         print(updatedSummary);
         loadData();
-        controllersUpdate();
-        controllersUpdateText();
+        // controllersUpdate();
+        // controllersUpdateText();
 
         return response;
       } else {
@@ -107,15 +120,18 @@ class _felling_hurdlesState extends State<felling_hurdles> {
   }
 
   void controllersUpdate() {
-    for (int i = 0; i == statements.length; i++) {
-      control.add(TextEditingController(text: 'I feel'));
+    for (int i = 0;
+        i >= hurdleDetails['hurdle']['thoughtsAndFeelings'].length;
+        i++) {
+      control.add(TextEditingController(
+          text: hurdleDetails['hurdle']['thoughtsAndFeelings'][i]));
     }
   }
 
   void controllersUpdateText() {
-    for (int i = 0; i == control.length; i++) {
+    for (int i = 0; i >= control.length; i++) {
       //control.add(TextEditingController(text: 'I feel'));
-      control[i].text = statements[i];
+      control.add(TextEditingController(text: 'I feel'));
     }
   }
 
@@ -400,7 +416,11 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                       //     : AppDimensions.height10(context) * 30.7,
                       child: Column(
                         children: [
-                          for (int i = 0; i <= circle_state; i++, char++) ...[
+                          for (int i = widget.update ? 1 : 0;
+                              widget.update
+                                  ? i <= circle_state
+                                  : i <= circle_state;
+                              i++) ...[
                             Column(
                               children: [
                                 Container(
@@ -436,35 +456,70 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                           maxLines: null,
                                           minLines: null,
                                           onChanged: (newText) {
-                                            setState(() {
-                                              statements[circle_state - 1] =
-                                                  newText;
-                                              scroll = true;
-                                            });
-                                            if (!newText
-                                                .startsWith("I feel ")) {
-                                              control[i].text = "I feel ";
-                                              control[i].selection =
-                                                  TextSelection.fromPosition(
-                                                TextPosition(
-                                                    offset:
-                                                        control[i].text.length),
-                                              );
+                                            if (widget.update == false) {
+                                              setState(() {
+                                                statements[i] = newText;
+                                                scroll = true;
+                                              });
+                                              if (!newText
+                                                  .startsWith("I feel ")) {
+                                                control[i].text = "I feel ";
+
+                                                control[i].selection =
+                                                    TextSelection.fromPosition(
+                                                  TextPosition(
+                                                      offset: control[i]
+                                                          .text
+                                                          .length),
+                                                );
+                                              }
+                                            } else {
+                                              setState(() {
+                                                statements[i - 1] = newText;
+                                                scroll = true;
+                                              });
+                                              if (!newText
+                                                  .startsWith("I feel ")) {
+                                                control[i - 1].text = "I feel ";
+
+                                                control[i - 1].selection =
+                                                    TextSelection.fromPosition(
+                                                  TextPosition(
+                                                      offset: control[i - 1]
+                                                          .text
+                                                          .length),
+                                                );
+                                              }
                                             }
 
                                             print(newText);
                                           },
                                           onFieldSubmitted: (submittedText) {
                                             // Check if the submitted text is empty
-                                            if (submittedText.isEmpty) {
-                                              // Replace it with "I feel " and move the cursor to the end
-                                              control[i].text = "I feel ";
-                                              control[i].selection =
-                                                  TextSelection.fromPosition(
-                                                TextPosition(
-                                                    offset:
-                                                        control[i].text.length),
-                                              );
+                                            if (widget.update == false) {
+                                              if (submittedText.isEmpty) {
+                                                // Replace it with "I feel " and move the cursor to the end
+                                                control[i].text = "I feel ";
+                                                control[i].selection =
+                                                    TextSelection.fromPosition(
+                                                  TextPosition(
+                                                      offset: control[i]
+                                                          .text
+                                                          .length),
+                                                );
+                                              }
+                                            } else {
+                                              if (submittedText.isEmpty) {
+                                                // Replace it with "I feel " and move the cursor to the end
+                                                control[i - 1].text = "I feel ";
+                                                control[i - 1].selection =
+                                                    TextSelection.fromPosition(
+                                                  TextPosition(
+                                                      offset: control[i - 1]
+                                                          .text
+                                                          .length),
+                                                );
+                                              }
                                             }
                                           },
                                           scrollPhysics:
@@ -521,7 +576,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                             color: Colors.white),
                                       ),
                                       Text(
-                                        '${getCurrentCharacters()}/100',
+                                        '${control[i].text.length}/100',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: AppDimensions.height10(
@@ -597,15 +652,16 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                         print('Selected goals $selectedGoals');
                         print(hurdleStatement);
                         if (widget.update == true) {
-                          Navigator.push(
-                              context,
-                              FadePageRoute(
-                                  page: const summary_hurdles(
-                                delete_hurdle: false,
-                              )));
+                          // Navigator.push(
+                          //     context,
+                          //     FadePageRoute(
+                          //         page: const summary_hurdles(
+                          //       delete_hurdle: false,
+                          //     )));
                           Hurdles()
                               .updateHurdle("thoughtsAndFeelings", statements)
                               .then((response) {
+                            print(statements);
                             if (response == true) {
                               print('Updated');
                               Navigator.push(
@@ -616,12 +672,12 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                   )));
                             } else {
                               print(response);
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const summary_hurdles(
-                                    delete_hurdle: false,
-                                  )));
+                              // Navigator.push(
+                              //     context,
+                              //     FadePageRoute(
+                              //         page: const summary_hurdles(
+                              //       delete_hurdle: false,
+                              //     )));
                             }
                           });
                         } else {

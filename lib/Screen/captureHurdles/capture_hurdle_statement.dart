@@ -416,6 +416,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                         child: TextFormField(
                                           maxLength: 150,
                                           controller: controller,
+                                          onChanged: (value) {},
                                           style: TextStyle(
                                               decoration: TextDecoration.none,
                                               decorationThickness: 0,
@@ -496,66 +497,91 @@ class _hurdle_statementState extends State<hurdle_statement> {
                             : SizedBox(
                                 height: AppDimensions.height10(context) * 3.0,
                               ),
-                        AnimatedScaleButton(
-                          onTap: () async {
-                            if (widget.update == true) {
-                              Hurdles()
-                                  .updateHurdle("triggerStatment",
-                                      controller.text.toString())
-                                  .then((response) {
-                                if (response == true) {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: summary_hurdles(
-                                              delete_hurdle: false)));
-                                }
-                              });
-                            } else {
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const felling_hurdles(
-                                    update: false,
-                                  )));
-                              final SharedPreferences prefs = await _prefs;
-                              var statement = prefs.setString('hurdleStatement',
-                                  controller.text.toString());
-                            }
-                          },
-                          child: Container(
-                              height: AppDimensions.height10(context) * 5.0,
-                              width: AppDimensions.height10(context) * 25.4,
-                              margin: EdgeInsets.only(
-                                  bottom: MediaQuery.of(context)
-                                              .viewInsets
-                                              .bottom ==
-                                          0
-                                      ? AppDimensions.height10(context) * 2.6
-                                      : AppDimensions.height10(context) * 1.0),
-                              decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    Color(0xffFCC10D),
-                                    Color(0xffFDA210),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 5.0),
-                              ),
-                              child: Center(
-                                  child: Text(
-                                widget.update ? 'Update Summary' : 'Next',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Poppins'),
-                              ))),
-                        ),
+                        ValueListenableBuilder<TextEditingValue>(
+                            valueListenable: controller,
+                            builder: (context, value, child) {
+                              return AnimatedScaleButton(
+                                onTap: () async {
+                                  if (widget.update == true) {
+                                    Hurdles()
+                                        .updateHurdle("triggerStatment",
+                                            controller.text.toString())
+                                        .then((response) {
+                                      if (response == true) {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: summary_hurdles(
+                                                    delete_hurdle: false)));
+                                      }
+                                    });
+                                  } else {
+                                    if (controller.text.isNotEmpty) {
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const felling_hurdles(
+                                            update: false,
+                                          )));
+                                      final SharedPreferences prefs =
+                                          await _prefs;
+                                      var statement = prefs.setString(
+                                          'hurdleStatement',
+                                          controller.text.toString());
+                                    }
+                                  }
+                                },
+                                child: Container(
+                                    height:
+                                        AppDimensions.height10(context) * 5.0,
+                                    width:
+                                        AppDimensions.height10(context) * 25.4,
+                                    margin: EdgeInsets.only(
+                                        bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom ==
+                                                0
+                                            ? AppDimensions.height10(context) *
+                                                2.6
+                                            : AppDimensions.height10(context) *
+                                                1.0),
+                                    decoration: BoxDecoration(
+                                      gradient: controller.text.isNotEmpty
+                                          ? const LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Color(0xffFCC10D),
+                                                Color(0xffFDA210),
+                                              ],
+                                            )
+                                          : LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                const Color(0xff282828)
+                                                    .withOpacity(0.5),
+                                                const Color(0xff282828)
+                                                    .withOpacity(0.5),
+                                              ],
+                                            ),
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              5.0),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                      widget.update ? 'Update Summary' : 'Next',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Poppins'),
+                                    ))),
+                              );
+                            }),
                         MediaQuery.of(context).viewInsets.bottom == 0
                             ? Container(
                                 width: AppDimensions.height10(context) * 17.0,

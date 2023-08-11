@@ -57,7 +57,9 @@ class _emotionsState extends State<emotions> {
   @override
   void initState() {
     super.initState();
-    onLoad();
+    if (widget.summary == true) {
+      onLoad();
+    }
   }
 
   @override

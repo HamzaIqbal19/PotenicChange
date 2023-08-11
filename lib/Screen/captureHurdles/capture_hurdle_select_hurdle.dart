@@ -59,7 +59,7 @@ class _select_hurdleState extends State<select_hurdle> {
     Hurdles().getHurdleById().then((response) {
       if (response.length != 0) {
         setState(() {
-          selectBox = response['hurdle']['hurdleId'];
+          selectBox = response['hurdle']['hurdleId'] - 1;
         });
         loadData();
         return response;
@@ -368,14 +368,22 @@ class _select_hurdleState extends State<select_hurdle> {
                                       var hurdleName = prefs.setString(
                                           'hurdleName',
                                           hurdlesList[index]['hurdleName']);
-                                      var hurdleId = prefs.setInt('hurdleId',
-                                          hurdlesList[index - 1]['id']);
+
+                                      var hurdleId = prefs.setInt(
+                                          'hurdleId',
+                                          index == 0
+                                              ? hurdlesList[0]['id']
+                                              : hurdlesList[index - 1]['id']);
+                                      print(index);
                                       setState(() {
                                         selectBox = index;
                                       });
                                       if (widget.update == true) {
-                                        Hurdles().updateHurdle('hurdleId',
-                                            hurdlesList[index - 1]['id']);
+                                        Hurdles().updateHurdle(
+                                            'hurdleId',
+                                            index == 0
+                                                ? hurdlesList[0]['id']
+                                                : hurdlesList[index - 1]['id']);
                                       }
                                     },
                                     child: Container(

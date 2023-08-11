@@ -1237,6 +1237,7 @@ class _noteSavedState extends State<noteSaved> {
                           width: AppDimensions.height10(context) * 30.5,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
+                              bottom: AppDimensions.height10(context) * 0.5,
                               right: AppDimensions.height10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
@@ -1268,8 +1269,7 @@ class _noteSavedState extends State<noteSaved> {
                               // bottom: AppDimensions.height10(context) * 1.0
                             ),
                             decoration: BoxDecoration(
-                                border: Border.all(
-                                    width: 1, color: const Color(0xFF464646)),
+                                color: const Color(0xFFFBFBFB),
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10(context) * 2.0)),
                             child: Row(

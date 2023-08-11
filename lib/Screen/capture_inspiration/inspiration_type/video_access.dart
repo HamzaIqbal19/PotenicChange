@@ -485,6 +485,7 @@ class _video_infoState extends State<video_info> {
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
                               right: AppDimensions.height10(context) * 8.9,
+                              bottom: AppDimensions.height10(context) * 0.5,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
                             'Attached goals',
@@ -514,8 +515,7 @@ class _video_infoState extends State<video_info> {
                               right: AppDimensions.height10(context) * 1.9,
                             ),
                             decoration: BoxDecoration(
-                                border: Border.all(
-                                    width: 1, color: const Color(0xFF464646)),
+                                color: const Color(0xFFFBFBFB),
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10(context) * 2.0)),
                             child: Row(

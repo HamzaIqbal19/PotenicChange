@@ -229,7 +229,7 @@ class Hurdles {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
-    var body = jsonEncode({"$destination": "$update"});
+    var body = jsonEncode({"$destination": update});
     // var userGoalId = prefs.getInt('goalId');
     // print('$userGoalId');
 

@@ -164,8 +164,9 @@ class RecordingPractice {
     //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
     var recording_Time = prefs.getString('recording_Time1');
-    var Date = prefs.getString('recordDate');
+    var Date = prefs.getString('record_date');
     var Id = prefs.getInt('prac_num');
+    print(prefs.getString('record_date'));
 
     //int UserGoalId = 12;
     print("request: Update");

@@ -43,11 +43,11 @@ class _missed_MenuState extends State<missed_Menu> {
       pracName = prefs.getString('dash_pracName')!;
       goalColor = prefs.getString('dash_goalColor')!;
     });
+    print(prefs.getString('dash_pracName'));
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getRecorDetails();
   }

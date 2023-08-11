@@ -40,12 +40,14 @@ class inspiraton_goals extends StatefulWidget {
   State<inspiraton_goals> createState() => _inspiraton_goalsState();
 }
 
+List<int> selectedIndices = [];
+List<int> selectedInActiveIndices = [];
+
 class _inspiraton_goalsState extends State<inspiraton_goals> {
   var goals = [];
   int selectBox = -1;
   int selectinActive = -1;
-  List<int> selectedIndices = [];
-  List<int> selectedInActiveIndices = [];
+
   bool selectAll = false;
   List<Map<String, dynamic>> Active = [];
   List<Map<String, dynamic>> inActive = [];
@@ -98,6 +100,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
   @override
   void initState() {
     super.initState();
+    if (widget.data_saved == false) {
+      selectedInActiveIndices.clear();
+      selectedIndices.clear();
+    }
     _fetchUserGoal();
   }
 

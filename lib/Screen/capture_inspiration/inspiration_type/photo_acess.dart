@@ -1206,7 +1206,7 @@ class _photo_infoState extends State<photo_info> {
                                 margin: EdgeInsets.only(
                                     left: AppDimensions.height10(context) * 2.0,
                                     bottom:
-                                        AppDimensions.height10(context) * 2.0,
+                                        AppDimensions.height10(context) * 0.5,
                                     right:
                                         AppDimensions.height10(context) * 8.9,
                                     top: widget.image_detals
@@ -1253,9 +1253,7 @@ class _photo_infoState extends State<photo_info> {
                                         AppDimensions.height10(context) * 1.9,
                                   ),
                                   decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width: 1,
-                                          color: const Color(0xFF464646)),
+                                      color: const Color(0xFFFBFBFB),
                                       borderRadius: BorderRadius.circular(
                                           AppDimensions.height10(context) *
                                               2.0)),

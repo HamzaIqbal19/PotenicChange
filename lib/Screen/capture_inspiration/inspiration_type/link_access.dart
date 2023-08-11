@@ -32,19 +32,6 @@ class _link_infoState extends State<link_info> {
   List<String> tagList = [];
   String? imageLink;
 
-  void getImageLink() async {
-    final SharedPreferences prefs = await _prefs;
-
-    var imageLinked = prefs.getString('ImageLink');
-
-    setState(() {
-      imageLink = imageLinked;
-    });
-    print('---------------==============================$imageLink');
-
-    link.text = imageLink!;
-  }
-
   void getInspiration() async {
     final SharedPreferences prefs = await _prefs;
     final encodedGoals = prefs.getString('selected_goals_inspiration');
@@ -61,7 +48,6 @@ class _link_infoState extends State<link_info> {
   void initState() {
     super.initState();
     getInspiration();
-    getImageLink();
   }
 
   @override
@@ -153,7 +139,7 @@ class _link_infoState extends State<link_info> {
                                           ? " "
                                           : author.text.toString(),
                                       " ",
-                                      tagList.isEmpty ? " " : tagList,
+                                      tagList.isEmpty ? [] : tagList,
                                       link.text.toString().isEmpty
                                           ? " "
                                           : link.text.toString(),
@@ -549,6 +535,7 @@ class _link_infoState extends State<link_info> {
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
                               right: AppDimensions.height10(context) * 8.9,
+                              bottom: AppDimensions.height10(context) * 0.5,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
                             'Attached goals',
@@ -578,8 +565,7 @@ class _link_infoState extends State<link_info> {
                               right: AppDimensions.height10(context) * 1.9,
                             ),
                             decoration: BoxDecoration(
-                                border: Border.all(
-                                    width: 1, color: const Color(0xFF464646)),
+                                color: const Color(0xFFFBFBFB),
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10(context) * 2.0)),
                             child: Row(

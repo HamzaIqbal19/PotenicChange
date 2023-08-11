@@ -40,7 +40,9 @@ class _feelingsAfterState extends State<feelingsAfter> {
   void initState() {
     super.initState();
     _fetchPracticeNames();
-    onLoad();
+    if (widget.summary == true) {
+      onLoad();
+    }
   }
 
   var endSession;

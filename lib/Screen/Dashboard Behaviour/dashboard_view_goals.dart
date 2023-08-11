@@ -815,6 +815,7 @@ class _view_goalsState extends State<view_goals> {
                                                                 'record_date',
                                                                 getFormattedDate(
                                                                     current));
+
                                                         var goalName =
                                                             prefs.setString(
                                                                 'dash_goalName',
@@ -1007,31 +1008,43 @@ class _view_goalsState extends State<view_goals> {
                                                                 ? false
                                                                 : true,
                                                         is_right: false,
-                                                        s_circle_text_col: allGoals[index]
-                                                                        [
-                                                                        'recordingStatusTime1'] ==
-                                                                    "missed" ||
-                                                                allGoals[index][
-                                                                        'recordingStatusTime1'] ==
-                                                                    "completed"
-                                                            ? allGoals[index][
-                                                                        'color'] ==
+                                                        s_circle_text_col: allGoals[
+                                                                        index][
+                                                                    'recordingStatusTime1'] ==
+                                                                "missed"
+                                                            ? allGoals[index]['color'] ==
                                                                     "1"
                                                                 ? 0XFFFC7133
-                                                                : allGoals[index]
-                                                                            [
-                                                                            'color'] ==
+                                                                : allGoals[index]['color'] ==
                                                                         "2"
                                                                     ? 0xFF1A481C
                                                                     : allGoals[index]['color'] ==
                                                                             "3"
                                                                         ? 0xFF6D4B77
-                                                                        : allGoals[index]['color'] == "4"
+                                                                        : allGoals[index]['color'] ==
+                                                                                "4"
                                                                             ? 0xFF5C75A6
-                                                                            : allGoals[index]['color'] == '5'
+                                                                            : allGoals[index]['color'] ==
+                                                                                    "5"
                                                                                 ? 0xFF315291
                                                                                 : 0xFF1FC7133
-                                                            : 0xFFFBFBFB,
+                                                            : allGoals[index][
+                                                                        'recordingStatusTime1'] ==
+                                                                    "completed"
+                                                                ? allGoals[index]
+                                                                            ['color'] ==
+                                                                        "1"
+                                                                    ? 0XFFFC7133
+                                                                    : allGoals[index]['color'] == "2"
+                                                                        ? 0xFF1A481C
+                                                                        : allGoals[index]['color'] == "3"
+                                                                            ? 0xFF6D4B77
+                                                                            : allGoals[index]['color'] == "4"
+                                                                                ? 0xFF5C75A6
+                                                                                : allGoals[index]['color'] == "5"
+                                                                                    ? 0xFF315291
+                                                                                    : 0xFF1FC7133
+                                                                : 0xFFFBFBFB,
                                                       )),
                                                     ),
                                                     SizedBox(
