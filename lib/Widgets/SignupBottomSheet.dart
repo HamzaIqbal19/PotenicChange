@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
@@ -62,19 +63,31 @@ void signupSheet(context, String ButtonName, String Route) {
                               width: AppDimensions.height10(context) * 0.1))),
                   child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          FadePageRoute(
-                            page: const dashBoard(
-                              saved: false,
-                              helpful_tips: false,
-                              dashboard_ctrl: false,
-                              membership: true,
-                              cancel: false,
-                              trial: false,
-                            ),
-                          ),
-                        );
+                        AdminGoal.checkUserActiveGoal().then((response) {
+                          if (response == 200) {
+                            Navigator.push(
+                              context,
+                              FadePageRoute(
+                                page: const dashBoard(
+                                  saved: false,
+                                  helpful_tips: false,
+                                  dashboard_ctrl: false,
+                                  membership: true,
+                                  cancel: false,
+                                  trial: false,
+                                ),
+                              ),
+                            );
+                          } else if (response == 404) {
+                            Navigator.pop(context);
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                                    content: Text(
+                              "There are no active goals !!",
+                              style: TextStyle(color: Colors.red),
+                            )));
+                          }
+                        });
                       },
                       child: const Text(
                         " (Dev only) Dashboard logged in",

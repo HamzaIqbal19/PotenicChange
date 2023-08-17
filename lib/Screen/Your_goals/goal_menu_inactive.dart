@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
@@ -35,6 +36,10 @@ class goal_menu_inactive extends StatefulWidget {
 class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   bool Loader = true;
   var goalDetails;
+  String goalName = '';
+  int color = 0;
+  String pracName = '';
+  int pracColor = 0;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -476,7 +481,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           color: const Color(0xff464646)),
                                     ),
                                     Text(
-                                      '-00',
+                                      '-${goalDetails['nextEvaluationInDays']}',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
@@ -663,57 +668,88 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       AppDimensions.height10(context) * 1.7),
                               itemCount: goalDetails['userPractices'].length,
                               itemBuilder: ((context, index) {
-                                return Container(
-                                  width: AppDimensions.height10(context) * 13.8,
-                                  height:
-                                      AppDimensions.height10(context) * 13.8,
-                                  padding: EdgeInsets.all(
-                                      AppDimensions.height10(context) * 0.8),
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context)),
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                    image: AssetImage(goalDetails[
-                                                    'userPractices'][index]
-                                                ['color'] ==
-                                            '1'
-                                        ? "assets/images/Ellipse orange_wb.webp"
-                                        : goalDetails['userPractices'][index]
-                                                    ['color'] ==
-                                                '2'
-                                            ? 'assets/images/Ellipse 158_wb.webp'
-                                            : goalDetails['userPractices']
-                                                        [index]['color'] ==
-                                                    '3'
-                                                ? "assets/images/Ellipse 157_wb.webp"
-                                                : goalDetails['userPractices']
-                                                            [index]['color'] ==
-                                                        '4'
-                                                    ? "assets/images/Ellipse light-blue_wb.webp"
-                                                    : goalDetails['userPractices']
-                                                                    [index]
-                                                                ['color'] ==
-                                                            '5'
-                                                        ? "assets/images/Ellipse blue_wb.webp"
-                                                        : 'assets/images/Ellipse 158_wb.webp'),
-                                    fit: BoxFit.contain,
-                                  )),
-                                  child: Container(
-                                    padding: EdgeInsets.all(
-                                        AppDimensions.height10(context)),
-                                    child: Center(
-                                      child: Text(
+                                return AnimatedScaleButton(
+                                  onTap: () async {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: practiceMenu(
+                                          color: goalDetails['color'] == null
+                                              ? "0"
+                                              : goalDetails['color'].toString(),
+                                          goalName: goalDetails['name'],
+                                          goal_eval: false,
+                                          pracColor:
+                                              goalDetails['userPractices']
+                                                          [index]['color'] ==
+                                                      null
+                                                  ? '0'
+                                                  : goalDetails['userPractices']
+                                                          [index]['color']
+                                                      .toString(),
+                                          pracName: goalDetails['userPractices']
+                                              [index]['name'],
+                                        )));
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    var prac_id = prefs.setInt(
+                                        'prac_num',
                                         goalDetails['userPractices'][index]
-                                            ['name'],
-                                        textAlign: TextAlign.center,
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 3,
-                                        style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.8,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFFFFFF),
+                                            ['id']);
+                                  },
+                                  child: Container(
+                                    width:
+                                        AppDimensions.height10(context) * 13.8,
+                                    height:
+                                        AppDimensions.height10(context) * 13.8,
+                                    padding: EdgeInsets.all(
+                                        AppDimensions.height10(context) * 0.8),
+                                    margin: EdgeInsets.only(
+                                        left: AppDimensions.height10(context)),
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                      image: AssetImage(goalDetails['userPractices']
+                                                  [index]['color'] ==
+                                              '1'
+                                          ? "assets/images/Ellipse orange_wb.webp"
+                                          : goalDetails['userPractices'][index]
+                                                      ['color'] ==
+                                                  '2'
+                                              ? 'assets/images/Ellipse 158_wb.webp'
+                                              : goalDetails['userPractices']
+                                                          [index]['color'] ==
+                                                      '3'
+                                                  ? "assets/images/Ellipse 157_wb.webp"
+                                                  : goalDetails['userPractices']
+                                                                  [index]
+                                                              ['color'] ==
+                                                          '4'
+                                                      ? "assets/images/Ellipse light-blue_wb.webp"
+                                                      : goalDetails['userPractices']
+                                                                      [index]
+                                                                  ['color'] ==
+                                                              '5'
+                                                          ? "assets/images/Ellipse blue_wb.webp"
+                                                          : 'assets/images/Ellipse 158_wb.webp'),
+                                      fit: BoxFit.contain,
+                                    )),
+                                    child: Container(
+                                      padding: EdgeInsets.all(
+                                          AppDimensions.height10(context)),
+                                      child: Center(
+                                        child: Text(
+                                          goalDetails['userPractices'][index]
+                                              ['name'],
+                                          textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 3,
+                                          style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                            fontWeight: FontWeight.w500,
+                                            color: const Color(0xFFFFFFFF),
+                                          ),
                                         ),
                                       ),
                                     ),

@@ -217,10 +217,8 @@ class _GoalFinishedState extends State<GoalFinished> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  FadePageRoute2(
-                                    false,
-                                    exitPage: const GoalFinished(),
-                                    enterPage: const StarReview(
+                                  FadePageRoute(
+                                    page: const StarReview(
                                       route: 'goal',
                                     ),
                                   ),

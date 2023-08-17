@@ -116,40 +116,36 @@ class _StarReviewState extends State<StarReview> {
         if (route == 'view_all_goals') {
           Navigator.pushReplacement(
               context, FadePageRoute(page: const veiw_all_goals_menu()));
+        } else if (widget.route == 'goal') {
+          Navigator.push(context, FadePageRoute(page: const GoalFinished()));
+        } else if (widget.route == 'menu') {
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: const goal_menu_inactive(
+                goal_evaluation: true,
+                isActive: true,
+                premium: true,
+              )));
+        } else if (widget.route == 'add_your_practice') {
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: add_your_practice(
+                goalName: goalName,
+              )));
         } else {
-          if (widget.route == 'goal') {
-            Navigator.push(context, FadePageRoute(page: const GoalFinished()));
-          } else if (widget.route == 'menu') {
-            Navigator.push(
-                context,
-                FadePageRoute(
-                    page: const goal_menu_inactive(
-                  goal_evaluation: true,
-                  isActive: true,
-                  premium: true,
-                )));
-          } else if (widget.route == 'add_your_practice') {
-            Navigator.push(
-                context,
-                FadePageRoute(
-                    page: add_your_practice(
-                  goalName: goalName,
-                )));
-          } else {
-            Navigator.push(
-                context,
-                FadePageRoute3(
-                    exitPage: StarReview(
-                      route: widget.route,
-                    ),
-                    enterPage: const PracticeFinished()));
-          }
-          final SharedPreferences prefs = await _prefs;
-
-          await prefs.remove('route');
-          return Future.value(true);
+          Navigator.push(
+              context,
+              FadePageRoute3(
+                  exitPage: StarReview(
+                    route: widget.route,
+                  ),
+                  enterPage: const PracticeFinished()));
         }
+        final SharedPreferences prefs = await _prefs;
 
+        await prefs.remove('route');
         return Future.value(false);
       },
       child: Scaffold(
@@ -190,6 +186,14 @@ class _StarReviewState extends State<StarReview> {
                                 page: add_your_practice(
                               goalName: goalName,
                             )));
+                      } else if (widget.route == '') {
+                        Navigator.push(
+                            context,
+                            FadePageRoute3(
+                                exitPage: StarReview(
+                                  route: widget.route,
+                                ),
+                                enterPage: const GoalFinished()));
                       } else {
                         Navigator.push(
                             context,
@@ -363,11 +367,9 @@ class _StarReviewState extends State<StarReview> {
                                             onTap: () {
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute3(
-                                                  exitPage: StarReview(
+                                                FadePageRoute(
+                                                  page: GoalName(
                                                     route: widget.route,
-                                                  ),
-                                                  enterPage: GoalName(
                                                     catId,
                                                     comingFromEditScreen: true,
                                                   ),
@@ -1135,29 +1137,14 @@ class _StarReviewState extends State<StarReview> {
                                             onTap: () {
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute3(
-                                                  exitPage: StarReview(
+                                                FadePageRoute(
+                                                  page: GoalWhy(
                                                     route: widget.route,
-                                                  ),
-                                                  enterPage: GoalWhy(
                                                     // catId,
                                                     comingFromEditScreen: true,
                                                   ),
                                                 ),
                                               );
-                                              // Navigator.push(
-                                              //   context,
-                                              //   FadePageRoute2(
-                                              //     true,
-                                              //     exitPage: StarReview(
-                                              //       route: widget.route,
-                                              //     ),
-                                              //     enterPage:
-                                              //         const StarReviewWhy(
-                                              //       updatedCategory: 1,
-                                              //     ),
-                                              //   ),
-                                              // );
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
@@ -1295,31 +1282,13 @@ class _StarReviewState extends State<StarReview> {
                                             onTap: () {
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute3(
-                                                  exitPage: StarReview(
+                                                FadePageRoute(
+                                                  page: Goal_Identity(
                                                     route: widget.route,
-                                                  ),
-                                                  enterPage:
-                                                      const Goal_Identity(
-                                                    // catId,
                                                     comingFromEditScreen: true,
                                                   ),
                                                 ),
                                               );
-
-                                              // Navigator.push(
-                                              //   context,
-                                              //   FadePageRoute2(
-                                              //     true,
-                                              //     exitPage: StarReview(
-                                              //       route: widget.route,
-                                              //     ),
-                                              //     enterPage:
-                                              //         const StarReviewWhy(
-                                              //       updatedCategory: 2,
-                                              //     ),
-                                              //   ),
-                                              // );
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
@@ -1460,30 +1429,14 @@ class _StarReviewState extends State<StarReview> {
 
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute3(
-                                                  exitPage: StarReview(
+                                                FadePageRoute(
+                                                  page: Visualising(
                                                     route: widget.route,
-                                                  ),
-                                                  enterPage: const Visualising(
                                                     // catId,
                                                     comingFromEditScreen: true,
                                                   ),
                                                 ),
                                               );
-
-                                              // Navigator.push(
-                                              //   context,
-                                              //   FadePageRoute2(
-                                              //     true,
-                                              //     exitPage: StarReview(
-                                              //       route: widget.route,
-                                              //     ),
-                                              //     enterPage:
-                                              //         const StarReviewWhy(
-                                              //       updatedCategory: 3,
-                                              //     ),
-                                              //   ),
-                                              // );
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(

@@ -31,7 +31,7 @@ class hurdles_splashState extends State<hurdles_splash> {
   void getHurdleRoute() async {
     final SharedPreferences prefs = await _prefs;
     Route = prefs.getString('HurdleRoute');
-    print(Route);
+    print(prefs.getString('HurdleRoute'));
   }
 
   @override
@@ -126,7 +126,10 @@ class hurdles_splashState extends State<hurdles_splash> {
                   if (Route == 'Impact') {
                     Navigator.push(
                       context,
-                      FadePageRoute(page: const hurdles_goal_impact()),
+                      FadePageRoute(
+                          page: const hurdles_goal_impact(
+                        summary: false,
+                      )),
                     );
                   } else if (Route == 'Select') {
                     Navigator.push(
@@ -155,7 +158,10 @@ class hurdles_splashState extends State<hurdles_splash> {
                   } else {
                     Navigator.push(
                       context,
-                      FadePageRoute(page: const hurdles_goal_impact()),
+                      FadePageRoute(
+                          page: const hurdles_goal_impact(
+                        summary: false,
+                      )),
                     );
                   }
                 },

@@ -17,6 +17,7 @@ class routinecommitment extends StatefulWidget {
 
 class _routinecommitmentState extends State<routinecommitment> {
   var pracDetails;
+  var schedule;
   @override
   void initState() {
     super.initState();
@@ -29,7 +30,26 @@ class _routinecommitmentState extends State<routinecommitment> {
         print("---------------------------------");
         setState(() {
           pracDetails = response;
+          schedule = response['schedule'];
         });
+        mapItems(schedule, updates);
+        print(updates);
+        updates.sort((a, b) {
+          final daysOrder = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ];
+          return daysOrder
+              .indexOf(a['day'])
+              .compareTo(daysOrder.indexOf(b['day']));
+        });
+        print(updates);
+
         print('$pracDetails');
       } else {
         print("response:$response");
@@ -37,6 +57,13 @@ class _routinecommitmentState extends State<routinecommitment> {
     }).catchError((error) {
       print("hell");
     });
+  }
+
+  List<Map<String, dynamic>> updates = [];
+  void mapItems(list1, list2) {
+    for (var item in list1) {
+      list2.add(item);
+    }
   }
 
   @override
@@ -51,17 +78,16 @@ class _routinecommitmentState extends State<routinecommitment> {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
-              itemCount:
-                  pracDetails != null ? pracDetails['schedule'].length : 0,
+              itemCount: updates != null ? updates.length : 0,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 1.0,
                   ),
                   child: schedule_card(
-                    days: pracDetails['schedule'][index]['day'],
-                    endTime: pracDetails['schedule'][index]['time2'],
-                    startTime: pracDetails['schedule'][index]['time1'],
+                    days: updates[index]['day'],
+                    endTime: updates[index]['time2'],
+                    startTime: updates[index]['time1'],
                   ),
                 );
               },

@@ -37,6 +37,7 @@ class PracticeReminder extends StatefulWidget {
 class _PracticeReminderState extends State<PracticeReminder> {
   bool radio1 = false;
   bool radio2 = false;
+  bool updated = false;
   bool reminderSelected = false;
   var Start_time;
   var End_time;
@@ -156,7 +157,17 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
-                  Navigator.pop(context);
+                  widget.comingFromEditScreen
+                      ? updated == false
+                          ? showAnimatedDialog(
+                              animationType: DialogTransitionType.fadeScale,
+                              curve: Curves.easeInOut,
+                              duration: const Duration(seconds: 1),
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  const pop_up_practices())
+                          : Navigator.pop(context)
+                      : Navigator.pop(context);
                   // Navigator.pushReplacement(
                   //   context,
                   //   MaterialPageRoute(
@@ -170,128 +181,250 @@ class _PracticeReminderState extends State<PracticeReminder> {
             actions: [
               Center(
                 // alignment: Alignment.center,
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 3.0,
-                    height: AppDimensions.height10(context) * 3.0,
-                    fit: BoxFit.contain,
-                  ),
-                  onPressed: () async {
-                    if (route == 'view_all_goals') {
-                      Navigator.pushReplacement(context,
-                          FadePageRoute(page: const veiw_all_goals_menu()));
-                    } else if (route == 'view_all_goals_2') {
-                      Navigator.pushReplacement(context,
-                          FadePageRoute(page: const multiple_goal_inactive()));
-                    } else {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomeScreen(
-                              login: true,
-                            ),
-                          ));
-                    }
-                    final SharedPreferences prefs = await _prefs;
+                child: widget.comingFromEditScreen == true
+                    ? Container()
+                    : IconButton(
+                        icon: Image.asset(
+                          'assets/images/Close.webp',
+                          width: AppDimensions.height10(context) * 3.0,
+                          height: AppDimensions.height10(context) * 3.0,
+                          fit: BoxFit.contain,
+                        ),
+                        onPressed: () async {
+                          if (widget.comingFromEditScreen == true) {
+                            Navigator.pop(context);
+                          } else {
+                            showAnimatedDialog(
+                              animationType: DialogTransitionType.fadeScale,
+                              curve: Curves.easeInOut,
+                              duration: const Duration(seconds: 1),
+                              context: context,
+                              builder: (BuildContext context) => SizedBox(
+                                width: AppDimensions.height10(context) * 27.0,
+                                height: AppDimensions.height10(context) * 18.2,
+                                child: AlertDialog(
+                                  contentPadding: EdgeInsets.zero,
+                                  actionsPadding: EdgeInsets.zero,
+                                  titlePadding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              1.4)),
+                                  title: Container(
+                                    margin: const EdgeInsets.only(
+                                        top: 19,
+                                        right: 16,
+                                        left: 16,
+                                        bottom: 2),
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    width:
+                                        AppDimensions.height10(context) * 23.8,
+                                    child: Text(
+                                      "Are you sure?",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: const Color(0xFF000000),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.7,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  content: Container(
+                                    margin: EdgeInsets.only(
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.9,
+                                        left: AppDimensions.height10(context) *
+                                            1.6,
+                                        right: AppDimensions.height10(context) *
+                                            1.6),
+                                    height:
+                                        AppDimensions.height10(context) * 3.2,
+                                    width:
+                                        AppDimensions.height10(context) * 23.8,
+                                    child: Text(
+                                      "If you close it now, you will lose all your progress.",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.15,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    Column(
+                                      children: [
+                                        Container(
+                                          height: 42,
+                                          width: double.infinity,
+                                          color: const Color(0xFF007AFF),
+                                          child: TextButton(
+                                            onPressed: () async {
+                                              if (route == 'view_all_goals') {
+                                                Navigator.pushReplacement(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const veiw_all_goals_menu()));
+                                              } else if (route ==
+                                                  'view_all_goals_2') {
+                                                Navigator.pushReplacement(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const multiple_goal_inactive()));
+                                              } else {
+                                                Navigator.pushReplacement(
+                                                  context,
+                                                  FadePageRoute(
+                                                    page: const HomeScreen(
+                                                      login: true,
+                                                    ),
+                                                  ),
+                                                );
 
-                    await prefs.remove('route');
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
 
-                    // showDialog<String>(
-                    //   context: context,
-                    //   builder: (BuildContext context) => Container(
-                    //     width: AppDimensions.height10(context) * 27.0,
-                    //     height: AppDimensions.height10(context) * 15.8,
-                    //     child: AlertDialog(
-                    //       shape: RoundedRectangleBorder(
-                    //           borderRadius: BorderRadius.circular(
-                    //               AppDimensions.height10(context) * 1.4)),
-                    //       contentPadding: EdgeInsets.zero,
-                    //       actionsPadding: EdgeInsets.zero,
-                    //       titlePadding: EdgeInsets.zero,
-                    //       title: Container(
-                    //         margin: const EdgeInsets.only(
-                    //             top: 19, right: 16, left: 16, bottom: 0),
-                    //         height: AppDimensions.height10(context) * 2.4,
-                    //         width: AppDimensions.height10(context) * 23.8,
-                    //         child: Text(
-                    //           "Exit Practice?",
-                    //           textAlign: TextAlign.center,
-                    //           style: TextStyle(
-                    //             fontSize: AppDimensions.height10(context) * 1.7,
-                    //             fontWeight: FontWeight.w600,
-                    //           ),
-                    //         ),
-                    //       ),
-                    //       content: Container(
-                    //         margin: EdgeInsets.only(
-                    //             bottom: AppDimensions.height10(context) * 1.9,
-                    //             left: AppDimensions.height10(context) * 1.6,
-                    //             right: AppDimensions.height10(context) * 1.6),
-                    //         height: AppDimensions.height10(context) * 1.8,
-                    //         width: AppDimensions.height10(context) * 23.8,
-                    //         child: const Text(
-                    //           "Are you sure you want to exit?",
-                    //           textAlign: TextAlign.center,
-                    //           style: TextStyle(
-                    //             fontSize: 13,
-                    //             fontWeight: FontWeight.w400,
-                    //           ),
-                    //         ),
-                    //       ),
-                    //       actions: <Widget>[
-                    //         Column(
-                    //           children: [
-                    //             Container(
-                    //               height: 42,
-                    //               width: double.infinity,
-                    //               color: const Color(0xFF007AFF),
-                    //               child: TextButton(
-                    //                 onPressed: () {
-                    //                   Navigator.pushReplacement(
-                    //                     context,
-                    //                     MaterialPageRoute(
-                    //                       builder: (context) => HomeScreen(
-                    //                         login: true,
-                    //                       ),
-                    //                     ),
-                    //                   );
-                    //                 },
-                    //                 child: const Text(
-                    //                   'Yes',
-                    //                   style: TextStyle(
-                    //                       color: Color(0xFFFFFFFF),
-                    //                       fontSize: 17,
-                    //                       fontFamily: "Laila",
-                    //                       fontWeight: FontWeight.w400),
-                    //                 ),
-                    //               ),
-                    //             ),
-                    //             Container(
-                    //               height: 44,
-                    //               width: double.infinity,
-                    //               child: TextButton(
-                    //                 onPressed: () {
-                    //                   Navigator.pop(context);
-                    //                 },
-                    //                 child: const Text(
-                    //                   'No',
-                    //                   style: TextStyle(
-                    //                       fontSize: 17,
-                    //                       fontFamily: "Laila",
-                    //                       fontWeight: FontWeight.w400,
-                    //                       color: Color(0xFF007AFF)),
-                    //                 ),
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // );
-                  },
-                ),
+                                                await prefs.remove('route');
+                                              }
+                                            },
+                                            child: const Text(
+                                              'Close',
+                                              style: TextStyle(
+                                                  color: Color(0xFFFFFFFF),
+                                                  fontSize: 17,
+                                                  fontFamily: "Laila",
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 44,
+                                          width: double.infinity,
+                                          child: TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text(
+                                              'Cancel',
+                                              style: TextStyle(
+                                                  fontSize: 17,
+                                                  fontFamily: "Laila",
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Color(0xFF007AFF)),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }
+
+                          // showDialog<String>(
+                          //   context: context,
+                          //   builder: (BuildContext context) => Container(
+                          //     width: AppDimensions.height10(context) * 27.0,
+                          //     height: AppDimensions.height10(context) * 15.8,
+                          //     child: AlertDialog(
+                          //       shape: RoundedRectangleBorder(
+                          //           borderRadius: BorderRadius.circular(
+                          //               AppDimensions.height10(context) * 1.4)),
+                          //       contentPadding: EdgeInsets.zero,
+                          //       actionsPadding: EdgeInsets.zero,
+                          //       titlePadding: EdgeInsets.zero,
+                          //       title: Container(
+                          //         margin: const EdgeInsets.only(
+                          //             top: 19, right: 16, left: 16, bottom: 0),
+                          //         height: AppDimensions.height10(context) * 2.4,
+                          //         width: AppDimensions.height10(context) * 23.8,
+                          //         child: Text(
+                          //           "Exit Practice?",
+                          //           textAlign: TextAlign.center,
+                          //           style: TextStyle(
+                          //             fontSize: AppDimensions.height10(context) * 1.7,
+                          //             fontWeight: FontWeight.w600,
+                          //           ),
+                          //         ),
+                          //       ),
+                          //       content: Container(
+                          //         margin: EdgeInsets.only(
+                          //             bottom: AppDimensions.height10(context) * 1.9,
+                          //             left: AppDimensions.height10(context) * 1.6,
+                          //             right: AppDimensions.height10(context) * 1.6),
+                          //         height: AppDimensions.height10(context) * 1.8,
+                          //         width: AppDimensions.height10(context) * 23.8,
+                          //         child: const Text(
+                          //           "Are you sure you want to exit?",
+                          //           textAlign: TextAlign.center,
+                          //           style: TextStyle(
+                          //             fontSize: 13,
+                          //             fontWeight: FontWeight.w400,
+                          //           ),
+                          //         ),
+                          //       ),
+                          //       actions: <Widget>[
+                          //         Column(
+                          //           children: [
+                          //             Container(
+                          //               height: 42,
+                          //               width: double.infinity,
+                          //               color: const Color(0xFF007AFF),
+                          //               child: TextButton(
+                          //                 onPressed: () {
+                          //                   Navigator.pushReplacement(
+                          //                     context,
+                          //                     MaterialPageRoute(
+                          //                       builder: (context) => HomeScreen(
+                          //                         login: true,
+                          //                       ),
+                          //                     ),
+                          //                   );
+                          //                 },
+                          //                 child: const Text(
+                          //                   'Yes',
+                          //                   style: TextStyle(
+                          //                       color: Color(0xFFFFFFFF),
+                          //                       fontSize: 17,
+                          //                       fontFamily: "Laila",
+                          //                       fontWeight: FontWeight.w400),
+                          //                 ),
+                          //               ),
+                          //             ),
+                          //             Container(
+                          //               height: 44,
+                          //               width: double.infinity,
+                          //               child: TextButton(
+                          //                 onPressed: () {
+                          //                   Navigator.pop(context);
+                          //                 },
+                          //                 child: const Text(
+                          //                   'No',
+                          //                   style: TextStyle(
+                          //                       fontSize: 17,
+                          //                       fontFamily: "Laila",
+                          //                       fontWeight: FontWeight.w400,
+                          //                       color: Color(0xFF007AFF)),
+                          //                 ),
+                          //               ),
+                          //             ),
+                          //           ],
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // );
+                        },
+                      ),
               ),
             ],
           )),
@@ -333,7 +466,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 0.5,
                 ),
-                Container(
+                SizedBox(
                   width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
@@ -356,7 +489,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       width: AppDimensions.height10(context) * 7.9,
                       height: AppDimensions.height10(context) * 7.9,
                       // color: Colors.amber,
@@ -440,7 +573,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 2.3,
                 ),
-                Container(
+                SizedBox(
                   height: AppDimensions.height10(context) * 3.4,
                   width: AppDimensions.height10(context) * 22.3,
                   child: Center(
@@ -511,7 +644,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             // color: Colors.blue,
                             width: AppDimensions.height10(context) * 25.9,
                             height: AppDimensions.height10(context) * 3.6,
@@ -519,7 +652,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Container(
+                                SizedBox(
                                     width:
                                         AppDimensions.height10(context) * 3.5,
                                     height:
@@ -528,7 +661,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       "assets/images/notifications.webp",
                                       fit: BoxFit.contain,
                                     )),
-                                Container(
+                                SizedBox(
                                     width:
                                         AppDimensions.height10(context) * 20.4,
                                     height:
@@ -557,7 +690,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               } else if (radio1 == false) {
                                 showDialog<String>(
                                   context: context,
-                                  builder: (BuildContext context) => Container(
+                                  builder: (BuildContext context) => SizedBox(
                                     width:
                                         AppDimensions.height10(context) * 27.0,
                                     height:
@@ -644,7 +777,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                                 ),
                                               ),
                                             ),
-                                            Container(
+                                            SizedBox(
                                               height: 44,
                                               width: double.infinity,
                                               child: TextButton(
@@ -670,7 +803,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 );
                               }
                             },
-                            child: Container(
+                            child: SizedBox(
                                 width: AppDimensions.height10(context) * 3.3,
                                 height: AppDimensions.height10(context) * 3.3,
                                 child: radio1 == true
@@ -754,14 +887,14 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             // color: Colors.blue,
                             width: AppDimensions.height10(context) * 25.9,
                             height: AppDimensions.height10(context) * 3.6,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Container(
+                                SizedBox(
                                     width:
                                         AppDimensions.height10(context) * 3.5,
                                     height:
@@ -770,7 +903,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       "assets/images/notificationsoff.webp",
                                       fit: BoxFit.contain,
                                     )),
-                                Container(
+                                SizedBox(
                                   width: AppDimensions.height10(context) * 20.4,
                                   height: AppDimensions.height10(context) * 2.4,
                                   child: Text(
@@ -802,7 +935,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 });
                               }
                             },
-                            child: Container(
+                            child: SizedBox(
                                 width: AppDimensions.height10(context) * 3.3,
                                 height: AppDimensions.height10(context) * 3.3,
                                 child: radio2 == true
@@ -845,219 +978,338 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 7.0,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    widget.comingFromEditScreen
-                        ? Container(
-                            width: AppDimensions.height10(context) * 10.0,
-                            height: AppDimensions.height10(context) * 5.0,
-                            decoration: reminderSelected
-                                ? BoxDecoration(
-                                    color: Colors.white,
-                                    border: Border.all(
-                                        color: const Color(0xffFA9934)),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(50.0)),
-                                  )
-                                : BoxDecoration(
-                                    // color: Color(0xFFFF7D50),
-                                    border: Border.all(
-                                        color: const Color(0xff282828)),
-                                    color: Colors.transparent,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(50.0)),
-                                  ),
-                            child: AnimatedScaleButton(
-                              onTap: () {
-                                //   signupSheet(context, "Sign up / login", "login");
-                              },
-                              child: Center(
-                                  child: Text(
-                                "Reset",
-                                style: TextStyle(
-                                    fontFamily: "Laila",
-                                    fontWeight: FontWeight.w600,
-                                    color: reminderSelected
-                                        ? const Color(0xffFA9934)
-                                        : const Color(0xff282828),
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.8),
-                              )),
-                            ))
-                        : Container(
-                            // color: Colors.blue,
-                            width: AppDimensions.height10(context) * 5.0,
-                            height: AppDimensions.height10(context) * 5.0,
-                            child: Image.asset(
-                              "assets/images/Moreactions.webp",
-                              fit: BoxFit.contain,
-                            )),
-                    Stack(alignment: Alignment.center, children: [
-                      AnimatedScaleButton(
-                        onTap: () async {
-                          if (widget.comingFromEditScreen) {
-                            if (reminderSelected == true) {
-                              setState(() {
-                                Loader =
-                                    true; // Show loader when the API call starts
-                              });
-
-                              List<Map<String, dynamic>> loadedTimesPerDay =
-                                  await loadTimesPerDay();
-                              final SharedPreferences prefs = await _prefs;
-
-                              var reminder =
-                                  prefs.setBool('pracReminder', radio1);
-                              //add Id
-                              PracticeGoalApi()
-                                  .userAddPractice(
-                                practiceName.text.toString(),
-                                radio1,
-                                loadedTimesPerDay,
-                              )
-                                  .then((response) {
-                                print('$response');
-                                if (response == true) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text(
-                                              "Practice updated Successfully!!")));
-                                  print('========Done');
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                        page: const PracticeReview(),
-                                      ));
-                                } else if (response == false) {
-                                  print('Api call failed');
-                                }
-                              }).catchError((error) {
-                                print('===>Error');
-                              }).whenComplete(() {
-                                setState(() {
-                                  Loader =
-                                      false; // Hide loader when the API call completes
-                                });
-                              });
-                            }
-                          } else {
-                            if (reminderSelected == true) {
-                              setState(() {
-                                Loader =
-                                    true; // Show loader when the API call starts
-                              });
-
-                              List<Map<String, dynamic>> loadedTimesPerDay =
-                                  await loadTimesPerDay();
-                              final SharedPreferences prefs = await _prefs;
-
-                              var reminder =
-                                  prefs.setBool('pracReminder', radio1);
-                              //add Id
-                              PracticeGoalApi()
-                                  .userAddPractice(
-                                practiceName.text.toString(),
-                                radio1,
-                                loadedTimesPerDay,
-                              )
-                                  .then((response) async {
-                                print('$response');
-                                if (response == true) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text(
-                                              "Practice Added Successfully!!")));
-                                  print('========Done');
-                                  if (route == 'view_all_goals') {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        FadePageRoute(
-                                            page: const veiw_all_goals_menu()));
-                                  } else if (route == 'view_all_goals_2') {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        FadePageRoute(
-                                            page:
-                                                const multiple_goal_inactive()));
-                                  } else {
-                                    Navigator.pushReplacement(
-                                      context,
-                                      FadePageRoute2(
-                                        true,
-                                        exitPage: const PracticeReminder(
-                                          comingFromEditScreen: false,
-                                        ),
-                                        enterPage: const PracticeFinished(),
-                                      ),
-                                    );
-                                  }
-                                  final SharedPreferences prefs = await _prefs;
-
-                                  await prefs.remove('goal_route');
-                                  await prefs.remove('route');
-                                } else if (response == false) {
-                                  print('Api call failed');
-                                }
-                              }).catchError((error) {
-                                print('===>Error');
-                              }).whenComplete(() {
-                                setState(() {
-                                  Loader =
-                                      false; // Hide loader when the API call completes
-                                });
-                              });
-                            }
-                          }
-                        },
-                        child: Container(
-                          height: AppDimensions.height10(context) * 5,
-                          width: AppDimensions.height10(context) * 31.3,
-                          decoration: BoxDecoration(
-                            // color: Color(0xFFFF7D50),
-                            border: Border.all(color: Colors.transparent),
-                            gradient: LinearGradient(
+                updated
+                    ? Container(
+                        width: AppDimensions.height10(context) * 38.259,
+                        height: AppDimensions.height10(context) * 9.707,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                            gradient: const LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
-                                colors: reminderSelected
-                                    ? [
-                                        const Color(0xFFFCC10D),
-                                        const Color(0xFFFDA210)
-                                      ]
-                                    : [
-                                        const Color(0xFFFCC10D)
-                                            .withOpacity(0.5),
-                                        const Color(0xFFFDA210).withOpacity(0.5)
-                                      ]),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(50.0)),
-                          ),
-                          child: Center(
-                            child: Loader
-                                ? SpinKitThreeBounce(
-                                    color: const Color(0xFF8C648A),
-                                    // delay: Duration(milliseconds: 0),
-                                    size: AppDimensions.height10(context) * 3.5,
-                                  )
-                                : Text(
-                                    widget.comingFromEditScreen
-                                        ? "Save"
-                                        : "Finished",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: "Laila",
-                                      // height: AppDimensions.height10(context) *0.1,
-                                      fontSize:
-                                          AppDimensions.height10(context) * 2.0,
-                                      fontWeight: FontWeight.w600,
+                                colors: [
+                                  Color(0xFFD4B7B9),
+                                  Color(0xFF91698C)
+                                ])),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.261),
+                              width: AppDimensions.height10(context) * 4.437,
+                              height: AppDimensions.height10(context) * 4.437,
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/circle_tick.webp'))),
+                            ),
+                            Container(
+                              //width: AppDimensions.height10(context) * 6.9,
+                              height: AppDimensions.height10(context) * 3.6,
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.232),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 4.6,
+                                    height:
+                                        AppDimensions.height10(context) * 1.4,
+                                    //   color: Colors.amber,
+                                    child: Text(
+                                      'Updates saved',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
                                     ),
                                   ),
-                          ),
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 16.9,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    child: Text(
+                                      'Your Reminder',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                setState(() {
+                                  updated = false;
+                                });
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 8.1,
+                                height: AppDimensions.height10(context) * 6.0,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 5,
+                                    right:
+                                        AppDimensions.height10(context) * 1.23),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: const Color(0xFFFFFFFF), width: 1),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Undo',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFFFFFFFF)),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          widget.comingFromEditScreen
+                              ? Container(
+                                  width: AppDimensions.height10(context) * 10.0,
+                                  height: AppDimensions.height10(context) * 5.0,
+                                  decoration: reminderSelected
+                                      ? BoxDecoration(
+                                          color: Colors.white,
+                                          border: Border.all(
+                                              color: const Color(0xffFA9934)),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(50.0)),
+                                        )
+                                      : BoxDecoration(
+                                          // color: Color(0xFFFF7D50),
+                                          border: Border.all(
+                                              color: const Color(0xff282828)),
+                                          color: Colors.transparent,
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(50.0)),
+                                        ),
+                                  child: AnimatedScaleButton(
+                                    onTap: () {
+                                      //   signupSheet(context, "Sign up / login", "login");
+                                    },
+                                    child: Center(
+                                        child: Text(
+                                      "Reset",
+                                      style: TextStyle(
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w600,
+                                          color: reminderSelected
+                                              ? const Color(0xffFA9934)
+                                              : const Color(0xff282828),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8),
+                                    )),
+                                  ))
+                              : SizedBox(
+                                  // color: Colors.blue,
+                                  width: AppDimensions.height10(context) * 5.0,
+                                  height: AppDimensions.height10(context) * 5.0,
+                                  child: Image.asset(
+                                    "assets/images/Moreactions.webp",
+                                    fit: BoxFit.contain,
+                                  )),
+                          Stack(alignment: Alignment.center, children: [
+                            AnimatedScaleButton(
+                              onTap: () async {
+                                if (widget.comingFromEditScreen) {
+                                  if (reminderSelected == true) {
+                                    setState(() {
+                                      Loader =
+                                          true; // Show loader when the API call starts
+                                    });
+
+                                    List<Map<String, dynamic>>
+                                        loadedTimesPerDay =
+                                        await loadTimesPerDay();
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+
+                                    var reminder =
+                                        prefs.setBool('pracReminder', radio1);
+                                    //add Id
+                                    PracticeGoalApi()
+                                        .userAddPractice(
+                                      practiceName.text.toString(),
+                                      radio1,
+                                      loadedTimesPerDay,
+                                    )
+                                        .then((response) {
+                                      print('$response');
+                                      if (response == true) {
+                                        // ScaffoldMessenger.of(context)
+                                        //     .showSnackBar(const SnackBar(
+                                        //         content: Text(
+                                        //             "Practice updated Successfully!!")));
+                                        // print('========Done');
+                                        setState(() {
+                                          updated = true;
+                                        });
+                                      } else if (response == false) {
+                                        print('Api call failed');
+                                      }
+                                    }).catchError((error) {
+                                      print('===>Error');
+                                    }).whenComplete(() {
+                                      setState(() {
+                                        Loader =
+                                            false; // Hide loader when the API call completes
+                                      });
+                                    });
+                                  }
+                                } else {
+                                  if (reminderSelected == true) {
+                                    setState(() {
+                                      Loader =
+                                          true; // Show loader when the API call starts
+                                    });
+
+                                    List<Map<String, dynamic>>
+                                        loadedTimesPerDay =
+                                        await loadTimesPerDay();
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+
+                                    var reminder =
+                                        prefs.setBool('pracReminder', radio1);
+                                    //add Id
+                                    PracticeGoalApi()
+                                        .userAddPractice(
+                                      practiceName.text.toString(),
+                                      radio1,
+                                      loadedTimesPerDay,
+                                    )
+                                        .then((response) async {
+                                      print('$response');
+                                      if (response == true) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text(
+                                                    "Practice Added Successfully!!")));
+                                        print('========Done');
+                                        if (route == 'view_all_goals') {
+                                          Navigator.pushReplacement(
+                                              context,
+                                              FadePageRoute(
+                                                  page:
+                                                      const veiw_all_goals_menu()));
+                                        } else if (route ==
+                                            'view_all_goals_2') {
+                                          Navigator.pushReplacement(
+                                              context,
+                                              FadePageRoute(
+                                                  page:
+                                                      const multiple_goal_inactive()));
+                                        } else {
+                                          Navigator.pushReplacement(
+                                            context,
+                                            FadePageRoute2(
+                                              true,
+                                              exitPage: const PracticeReminder(
+                                                comingFromEditScreen: false,
+                                              ),
+                                              enterPage:
+                                                  const PracticeFinished(),
+                                            ),
+                                          );
+                                        }
+                                        final SharedPreferences prefs =
+                                            await _prefs;
+
+                                        await prefs.remove('goal_route');
+                                        await prefs.remove('route');
+                                      } else if (response == false) {
+                                        print('Api call failed');
+                                      }
+                                    }).catchError((error) {
+                                      print('===>Error');
+                                    }).whenComplete(() {
+                                      setState(() {
+                                        Loader =
+                                            false; // Hide loader when the API call completes
+                                      });
+                                    });
+                                  }
+                                }
+                              },
+                              child: Container(
+                                height: AppDimensions.height10(context) * 5,
+                                width: AppDimensions.height10(context) * 31.3,
+                                decoration: BoxDecoration(
+                                  // color: Color(0xFFFF7D50),
+                                  border: Border.all(color: Colors.transparent),
+                                  gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: reminderSelected
+                                          ? [
+                                              const Color(0xFFFCC10D),
+                                              const Color(0xFFFDA210)
+                                            ]
+                                          : [
+                                              const Color(0xFFFCC10D)
+                                                  .withOpacity(0.5),
+                                              const Color(0xFFFDA210)
+                                                  .withOpacity(0.5)
+                                            ]),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(50.0)),
+                                ),
+                                child: Center(
+                                  child: Loader
+                                      ? SpinKitThreeBounce(
+                                          color: const Color(0xFF8C648A),
+                                          // delay: Duration(milliseconds: 0),
+                                          size:
+                                              AppDimensions.height10(context) *
+                                                  3.5,
+                                        )
+                                      : Text(
+                                          widget.comingFromEditScreen
+                                              ? "Save"
+                                              : "Finished",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: "Laila",
+                                            // height: AppDimensions.height10(context) *0.1,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ],
                       ),
-                    ]),
-                  ],
-                ),
                 SizedBox(
                   height: AppDimensions.height10(context) * 2.5,
                 ),

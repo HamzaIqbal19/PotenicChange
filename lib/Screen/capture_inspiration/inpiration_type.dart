@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/captureHurdles/hurdle_positive_alternates/select_image.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
@@ -136,12 +138,31 @@ class _inspiration_typeState extends State<inspiration_type> {
                                       color: Colors.white,
                                       child: TextButton(
                                         onPressed: () async {
-                                          Navigator.push(
-                                              context,
-                                              FadePageRoute(
-                                                  page:
-                                                      const inspiration_motivation(
-                                                          goal_delete: false)));
+                                          InspirationApi()
+                                              .checkUserInspiration()
+                                              .then((response) {
+                                                if (response == true) {
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const inspiration_landing(
+                                                                  is_Updated:
+                                                                      false)));
+                                                } else if (response == false) {
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const inspiration_motivation(
+                                                        goal_delete: false,
+                                                      )));
+                                                  // print(response.statusCode);
+                                                }
+                                              })
+                                              .catchError((error) {})
+                                              .whenComplete(() {});
+
                                           final SharedPreferences prefs =
                                               await _prefs;
                                           var savedRoute = prefs.setString(
@@ -171,12 +192,31 @@ class _inspiration_typeState extends State<inspiration_type> {
                                       width: double.infinity,
                                       child: TextButton(
                                         onPressed: () async {
-                                          Navigator.push(
-                                              context,
-                                              FadePageRoute(
-                                                  page:
-                                                      const inspiration_motivation(
-                                                          goal_delete: false)));
+                                          InspirationApi()
+                                              .checkUserInspiration()
+                                              .then((response) {
+                                                if (response == true) {
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const inspiration_landing(
+                                                                  is_Updated:
+                                                                      false)));
+                                                } else if (response == false) {
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const inspiration_motivation(
+                                                        goal_delete: false,
+                                                      )));
+                                                  // print(response.statusCode);
+                                                }
+                                              })
+                                              .catchError((error) {})
+                                              .whenComplete(() {});
+
                                           final SharedPreferences prefs =
                                               await _prefs;
                                           var deleted = prefs.remove(

@@ -6,6 +6,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
+import 'package:potenic_app/Screen/capture_inspiration/record_inpiration_type.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -125,7 +126,8 @@ class _photo_EditState extends State<photo_Edit> {
                         right: AppDimensions.height10(context) * 4.9),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.push(context,
+                            FadePageRoute(page: const record_inspiration()));
                       },
                       child: Text(
                         'Back',
@@ -264,20 +266,19 @@ class _photo_EditState extends State<photo_Edit> {
                                                           ' ')
                                                       .then((response) async {
                                                     if (response == true) {
-                                                      final SharedPreferences
-                                                          prefs = await _prefs;
-
-                                                      var hurdleId = prefs.setInt(
-                                                          'userInspirationId',
-                                                          inspirationDetails[
-                                                              'inspirationId']);
                                                       Navigator.push(
                                                           context,
                                                           FadePageRoute(
                                                               page: const updatedLandingPage(
                                                                   delete: false,
                                                                   is_Updated:
-                                                                      false)));
+                                                                      true)));
+                                                      final SharedPreferences
+                                                          prefs = await _prefs;
+                                                      var hurdleId = prefs.setInt(
+                                                          'userInspirationId',
+                                                          inspirationDetails[
+                                                              'inspirationId']);
                                                     }
                                                   });
                                                 },
@@ -755,114 +756,117 @@ class _photo_EditState extends State<photo_Edit> {
                                                             Colors.transparent))),
                                       ),
                                     ),
-                                    Container(
-                                      height:
-                                          AppDimensions.height10(context) * 2.1,
-                                      width: AppDimensions.height10(context) *
-                                          30.5,
-                                      margin: EdgeInsets.only(
-                                          left:
-                                              AppDimensions.height10(context) *
-                                                  2.0,
-                                          right:
-                                              AppDimensions.height10(context) *
-                                                  8.9,
-                                          top: AppDimensions.height10(context) *
-                                              4.0),
-                                      child: Text(
-                                        'Attached goals',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.5,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xff828282)),
-                                      ),
-                                    ),
                                     AnimatedScaleButton(
                                       onTap: () {
                                         Navigator.push(
                                             context,
                                             FadePageRoute(
-                                                page:  const inspiraton_goals(
-                                              data_saved: true,
-                                              route: 'photo_edit', context: false, note: false,
+                                                page: const inspiraton_goals(
+                                              update: true,
+                                              data_saved: false,
+                                              route: 'photo_edit',
+                                              context: false,
+                                              note: false,
                                             )));
                                       },
                                       child: Container(
                                         height:
                                             AppDimensions.height10(context) *
-                                                6.0,
+                                                2.1,
                                         width: AppDimensions.height10(context) *
-                                            37.5,
+                                            30.5,
                                         margin: EdgeInsets.only(
-                                          // bottom: AppDimensions.height10(context) * 1.0,
-                                          left:
-                                              AppDimensions.height10(context) *
-                                                  2.0,
-                                          right:
-                                              AppDimensions.height10(context) *
-                                                  1.9,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
+                                            bottom: AppDimensions.height10(
+                                                    context) *
+                                                0.5,
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                4.0),
+                                        child: Text(
+                                          'Attached goals',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xff828282)),
                                         ),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                width: 1,
-                                                color: const Color(0xFF464646)),
-                                            borderRadius: BorderRadius.circular(
-                                                AppDimensions.height10(
+                                      ),
+                                    ),
+                                    Container(
+                                      height:
+                                          AppDimensions.height10(context) * 6.0,
+                                      width: AppDimensions.height10(context) *
+                                          37.5,
+                                      margin: EdgeInsets.only(
+                                        // bottom: AppDimensions.height10(context) * 1.0,
+                                        left: AppDimensions.height10(context) *
+                                            2.0,
+                                        right: AppDimensions.height10(context) *
+                                            1.9,
+                                      ),
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xFFFBFBFB),
+                                          borderRadius: BorderRadius.circular(
+                                              AppDimensions.height10(context) *
+                                                  2.0)),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                23.9,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.2,
+                                            margin: EdgeInsets.only(
+                                                left: AppDimensions.height10(
                                                         context) *
-                                                    2.0)),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  23.9,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.2,
-                                              margin: EdgeInsets.only(
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      1.99),
-                                              child: Text(
-                                                '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
-                                                style: TextStyle(
-                                                  fontFamily: 'laila',
-                                                  color:
-                                                      const Color(0xFF646464),
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.8,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                                    1.99),
+                                            child: Text(
+                                              '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
+                                              style: TextStyle(
+                                                fontFamily: 'laila',
+                                                color: const Color(0xFF646464),
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.8,
+                                                fontWeight: FontWeight.w500,
                                               ),
                                             ),
-                                            Container(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    2.4,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    1.39,
-                                                margin: EdgeInsets.only(
-                                                    right:
+                                          ),
+                                          Container(
+                                              margin: EdgeInsets.only(
+                                                  right: AppDimensions.height10(
+                                                          context) *
+                                                      2.391),
+                                              child: Text(
+                                                'View',
+                                                style: TextStyle(
+                                                    color:
+                                                        const Color(0xFF437296),
+                                                    fontWeight: FontWeight.w700,
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                    decorationThickness:
                                                         AppDimensions.height10(
                                                                 context) *
-                                                            2.391),
-                                                child: Image.asset(
-                                                  'assets/images/BTN Back.webp',
-                                                  //width: AppDimensions.height10(context) * 2.6,
-                                                  //height: AppDimensions.height10(context) * 2.6,
-                                                  color:
-                                                      const Color(0xFF646464),
-                                                  fit: BoxFit.cover,
-                                                ))
-                                          ],
-                                        ),
+                                                            0.2,
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.4),
+                                              ))
+                                        ],
                                       ),
                                     ),
                                   ]),

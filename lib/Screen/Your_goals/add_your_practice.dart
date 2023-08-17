@@ -145,7 +145,7 @@ class _add_your_practiceState extends State<add_your_practice> {
             child: Container(
               width: AppDimensions.height10(context) * 17.5,
               height: AppDimensions.height10(context) * 17.5,
-              padding: EdgeInsets.all(AppDimensions.height10(context) * 1.0),
+              padding: EdgeInsets.all(AppDimensions.height10(context) * 0.5),
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               decoration: BoxDecoration(
@@ -154,7 +154,7 @@ class _add_your_practiceState extends State<add_your_practice> {
               child: Container(
                 width: AppDimensions.height10(context) * 15.5,
                 height: AppDimensions.height10(context) * 15.5,
-                padding: EdgeInsets.all(AppDimensions.height10(context) * 1.2),
+                padding: EdgeInsets.all(AppDimensions.height10(context) * 0.7),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border:

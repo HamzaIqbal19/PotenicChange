@@ -126,6 +126,7 @@ class _AllGoalsState extends State<AllGoals> {
         context,
         FadePageRoute(
           page: GoalName(
+            route: '',
             4,
             comingFromEditScreen: false,
           ),

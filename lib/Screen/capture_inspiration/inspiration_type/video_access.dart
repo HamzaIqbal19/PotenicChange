@@ -138,58 +138,82 @@ class _video_infoState extends State<video_info> {
                             ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            if (link.text.toString().isNotEmpty &&
-                                statement.text.toString().isNotEmpty) {
-                              InspirationApi()
-                                  .addInspiration(
-                                      3,
-                                      " ",
-                                      " ",
-                                      tagList,
-                                      link.text.toString(),
-                                      true,
-                                      statement.text.toString(),
-                                      selectedGoals)
-                                  .then((response) async {
-                                if (response.length != 0) {
-                                  print('----------------');
-                                  link.clear();
-                                  final SharedPreferences prefs = await _prefs;
-                                  var remove = prefs.remove('ImageLink');
-                                  statement.clear();
-                                  hastags.clear();
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const updatedLandingPage(
-                                              delete: false,
-                                              is_Updated: true)));
-                                  print(response);
-                                }
-                              });
-                            }
-                          },
-                          child: Container(
-                            height: AppDimensions.height10(context) * 2.2,
-                            width: AppDimensions.height10(context) * 4.3,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 4.0),
-                            child: Text(
-                              'Create',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.5,
-                                  fontWeight: FontWeight.w400,
-                                  color: link.text.toString().isNotEmpty &&
-                                          statement.text.toString().isNotEmpty
-                                      ? const Color(0xff007AFF)
-                                      : const Color(0xff007AFF)
-                                          .withOpacity(0.5)),
-                            ),
-                          ),
-                        )
+                        ValueListenableBuilder<TextEditingValue>(
+                            valueListenable: link,
+                            builder: (context, value, child) {
+                              return ValueListenableBuilder<TextEditingValue>(
+                                  valueListenable: statement,
+                                  builder: (context, value, child) {
+                                    return GestureDetector(
+                                      onTap: () {
+                                        if (link.text.toString().isNotEmpty &&
+                                            statement.text
+                                                .toString()
+                                                .isNotEmpty) {
+                                          InspirationApi()
+                                              .addInspiration(
+                                                  3,
+                                                  null,
+                                                  " ",
+                                                  tagList,
+                                                  link.text.toString(),
+                                                  true,
+                                                  statement.text.toString(),
+                                                  selectedGoals)
+                                              .then((response) async {
+                                            if (response.length != 0) {
+                                              print('----------------');
+                                              link.clear();
+                                              final SharedPreferences prefs =
+                                                  await _prefs;
+                                              var remove =
+                                                  prefs.remove('ImageLink');
+                                              statement.clear();
+                                              hastags.clear();
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page:
+                                                          const updatedLandingPage(
+                                                              delete: false,
+                                                              is_Updated:
+                                                                  true)));
+                                              print(response);
+                                            }
+                                          });
+                                        }
+                                      },
+                                      child: Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.2,
+                                        width: AppDimensions.height10(context) *
+                                            4.3,
+                                        margin: EdgeInsets.only(
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                4.0),
+                                        child: Text(
+                                          'Create',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
+                                              fontWeight: FontWeight.w400,
+                                              color: link.text
+                                                          .toString()
+                                                          .isNotEmpty &&
+                                                      statement.text
+                                                          .toString()
+                                                          .isNotEmpty
+                                                  ? const Color(0xff007AFF)
+                                                  : const Color(0xff007AFF)
+                                                      .withOpacity(0.5)),
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            })
                       ]),
                 ),
                 Container(
@@ -501,10 +525,11 @@ class _video_infoState extends State<video_info> {
                                 context,
                                 FadePageRoute(
                                     page: const inspiraton_goals(
+                                  update: false,
                                   data_saved: false,
                                   route: 'video_create',
                                   context: false,
-                                  note: false,
+                                  note: true,
                                 )));
                           },
                           child: Container(
@@ -538,19 +563,21 @@ class _video_infoState extends State<video_info> {
                                   ),
                                 ),
                                 Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.39,
                                     margin: EdgeInsets.only(
                                         right: AppDimensions.height10(context) *
                                             2.391),
-                                    child: Image.asset(
-                                      'assets/images/BTN Back.webp',
-                                      //width: AppDimensions.height10(context) * 2.6,
-                                      //height: AppDimensions.height10(context) * 2.6,
-                                      color: const Color(0xFF646464),
-                                      fit: BoxFit.cover,
+                                    child: Text(
+                                      'View',
+                                      style: TextStyle(
+                                          color: const Color(0xFF437296),
+                                          fontWeight: FontWeight.w700,
+                                          decoration: TextDecoration.underline,
+                                          decorationThickness:
+                                              AppDimensions.height10(context) *
+                                                  0.2,
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.4),
                                     ))
                               ],
                             ),

@@ -6,6 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
+import 'package:potenic_app/Screen/capture_inspiration/record_inpiration_type.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 
 import '../../../Widgets/fading.dart';
@@ -125,7 +126,8 @@ class video_EditState extends State<videoEdit> {
                               right: AppDimensions.height10(context) * 4.9),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.pop(context);
+                              Navigator.push(context,
+                                  FadePageRoute(page: const record_inspiration()));
                             },
                             child: Text(
                               'Back',
@@ -672,21 +674,40 @@ class video_EditState extends State<videoEdit> {
                                               color: Colors.transparent))),
                                 ),
                               ),
-                              Container(
-                                height: AppDimensions.height10(context) * 2.1,
-                                width: AppDimensions.height10(context) * 30.5,
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 2.0,
-                                    right:
-                                        AppDimensions.height10(context) * 8.9,
-                                    top: AppDimensions.height10(context) * 3.9),
-                                child: Text(
-                                  'Attached goals',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.5,
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xff828282)),
+                              AnimatedScaleButton(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: inspiraton_goals(
+                                            update: true,
+                                        data_saved: true,
+                                        context: widget.context,
+                                        note: widget.note,
+                                        route: 'edit',
+                                      )));
+                                },
+                                child: Container(
+                                  height: AppDimensions.height10(context) * 2.1,
+                                  width: AppDimensions.height10(context) * 30.5,
+                                  margin: EdgeInsets.only(
+                                      left:
+                                          AppDimensions.height10(context) * 2.0,
+                                      bottom:
+                                          AppDimensions.height10(context) * 0.5,
+                                      right:
+                                          AppDimensions.height10(context) * 8.9,
+                                      top: AppDimensions.height10(context) *
+                                          3.9),
+                                  child: Text(
+                                    'Attached goals',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xff828282)),
+                                  ),
                                 ),
                               ),
                               AnimatedScaleButton(
@@ -694,10 +715,12 @@ class video_EditState extends State<videoEdit> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page:  inspiraton_goals(
-                                        data_saved: true,
-                                        context: widget.context, note: widget.note,
-                                        route: 'edit',
+                                          page: const inspiraton_goals(
+                                            update: true,
+                                        data_saved:false,
+                                        route: 'note_saved',
+                                        context: false,
+                                        note: false,
                                       )));
                                 },
                                 child: Container(
@@ -710,9 +733,7 @@ class video_EditState extends State<videoEdit> {
                                     // bottom: AppDimensions.height10(context) * 1.0
                                   ),
                                   decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width: 1,
-                                          color: const Color(0xFF464646)),
+                                      color: const Color(0xFFFBFBFB),
                                       borderRadius: BorderRadius.circular(
                                           AppDimensions.height10(context) *
                                               2.0)),
@@ -742,22 +763,25 @@ class video_EditState extends State<videoEdit> {
                                         ),
                                       ),
                                       Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  2.4,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.39,
                                           margin: EdgeInsets.only(
                                               right: AppDimensions.height10(
                                                       context) *
                                                   2.391),
-                                          child: Image.asset(
-                                            'assets/images/BTN Back.webp',
-                                            //width: AppDimensions.height10(context) * 2.6,
-                                            //height: AppDimensions.height10(context) * 2.6,
-                                            color: const Color(0xFF646464),
-                                            fit: BoxFit.cover,
+                                          child: Text(
+                                            'View',
+                                            style: TextStyle(
+                                                color: const Color(0xFF437296),
+                                                fontWeight: FontWeight.w700,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                decorationThickness:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.2,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.4),
                                           ))
                                     ],
                                   ),

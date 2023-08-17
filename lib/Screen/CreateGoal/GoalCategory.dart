@@ -118,6 +118,7 @@ class _GoalCategoryState extends State<GoalCategory> {
         context,
         FadePageRoute(
           page: GoalName(
+            route: '',
             widget.id,
             comingFromEditScreen: false,
           ),

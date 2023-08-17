@@ -284,7 +284,7 @@ class _StartProcessState extends State<StartProcess> {
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)])),
                       child: Center(
                         child: Text(
-                          'Start your jouney',
+                          'Start your journey',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,

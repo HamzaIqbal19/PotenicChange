@@ -6,6 +6,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:potenic_app/API/Hurdles.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -156,6 +157,23 @@ class _felling_hurdlesState extends State<felling_hurdles> {
     }
   }
 
+  void checkHurdle() async {
+    Hurdles().checkUserHurdles().then((response) {
+      if (response == true) {
+        Navigator.push(
+          context,
+          FadePageRoute(page: const landing_hurdles()),
+        );
+
+        return response;
+      } else if (response == false) {
+        Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
+      }
+    }).catchError((error) {
+      print("Hello world error");
+    });
+  }
+
   int circle_state = 0;
   @override
   Widget build(BuildContext context) {
@@ -219,7 +237,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     showAnimatedDialog(
                         animationType: DialogTransitionType.fadeScale,
                         curve: Curves.easeInOut,
-                        duration: Duration(seconds: 1),
+                        duration: const Duration(seconds: 1),
                         context: context,
                         builder: (BuildContext context) => SizedBox(
                               width: AppDimensions.height10(context) * 27.0,
@@ -277,14 +295,11 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                         color: Colors.white,
                                         child: TextButton(
                                           onPressed: () async {
+                                            checkHurdle();
                                             final SharedPreferences prefs =
                                                 await _prefs;
                                             var hurdleRoute = prefs.setString(
                                                 'HurdleRoute', 'Feelings');
-                                            Navigator.push(
-                                                context,
-                                                FadePageRoute(
-                                                    page: hurdles_splash()));
                                           },
                                           child: const Text(
                                             'Exit & save progress',
@@ -310,14 +325,11 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                         width: double.infinity,
                                         child: TextButton(
                                           onPressed: () async {
+                                            checkHurdle();
                                             final SharedPreferences prefs =
                                                 await _prefs;
                                             var hurdleRoute =
                                                 prefs.remove('HurdleRoute');
-                                            Navigator.push(
-                                                context,
-                                                FadePageRoute(
-                                                    page: hurdles_splash()));
                                           },
                                           child: const Text(
                                             'Exit & delete progress',

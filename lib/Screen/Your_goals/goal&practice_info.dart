@@ -106,7 +106,7 @@ class goal_prac_info extends StatelessWidget {
         elevation: 0,
         child: Container(
             width: AppDimensions.height10(context) * 39.4,
-            height: AppDimensions.height10(context) * 51.2,
+            height: AppDimensions.height10(context) * 53.2,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft:
@@ -172,7 +172,8 @@ class goal_prac_info extends StatelessWidget {
                   //  height: AppDimensions.height10(context) * 23.8,
                   width: AppDimensions.height10(context) * 35.2,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 1.1),
+                      top: AppDimensions.height10(context) * 1.1,
+                      bottom: AppDimensions.height10(context)),
                   child: RichText(
                     text: TextSpan(
                         style: TextStyle(
@@ -182,69 +183,68 @@ class goal_prac_info extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF437296),
                         ),
-                        children: [
-                          const TextSpan(
+                        children: const [
+                          TextSpan(
                             text:
                                 'This is a place to view your goals and their practices.\nYou can view all your ',
                           ),
-                          const TextSpan(
+                          TextSpan(
                               text: 'active goals',
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                               )),
-                          const TextSpan(
+                          TextSpan(
                               text:
                                   ' that you’re\ncurrently working on and also check your '),
-                          const TextSpan(
+                          TextSpan(
                               text: 'inactive\ngoals ',
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                               )),
-                          const TextSpan(
+                          TextSpan(
                               text:
                                   'that you’ve created and saved for later.\n\n'),
-                          const TextSpan(
-                              text: 'You will be able to identify which '),
-                          const TextSpan(
+                          TextSpan(text: 'You will be able to identify which '),
+                          TextSpan(
                               text: 'goal is active ',
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                               )),
-                          const TextSpan(text: 'or\n'),
-                          const TextSpan(
+                          TextSpan(text: 'or\n'),
+                          TextSpan(
                               text: 'inactive',
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                               )),
-                          const TextSpan(text: ' by checking their '),
-                          const TextSpan(
+                          TextSpan(text: ' by checking their '),
+                          TextSpan(
                               text: ' status',
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                               )),
-                          const TextSpan(
+                          TextSpan(
                               text:
                                   '. If you click on a\ngoal panel window it will take you to a menu, where\nyou can further manage your goal status and\npractices assigned to it.'),
-                          const TextSpan(text: '\n\nIf your '),
-                          const TextSpan(
+                          TextSpan(text: '\n\nIf your '),
+                          TextSpan(
                               text: 'goal is active',
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                               )),
-                          const TextSpan(
+                          TextSpan(
                               text: ', you will be able to see your\ncurrent '),
-                          const TextSpan(
+                          TextSpan(
                               text: 'goal level ',
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                               )),
-                          const TextSpan(text: 'and '),
-                          const TextSpan(
+                          TextSpan(text: 'and '),
+                          TextSpan(
                               text: 'number of active days',
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                               )),
-                          const TextSpan(text: ' you’ve\nbeen working on it.')
+                          TextSpan(text: ' you’ve\nbeen working on it.')
                         ]),
                   ),
                 )

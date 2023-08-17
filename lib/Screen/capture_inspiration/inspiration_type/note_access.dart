@@ -467,37 +467,15 @@ class _note_infoState extends State<note_info> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    if (widget.type_switch == 1) ...[
-                                      Text(
-                                        'Description',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.5,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xff828282)),
-                                      ),
-                                    ] else if (widget.type_switch == 2) ...[
-                                      Text(
-                                        'Why is it inspirational to you',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.5,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xff828282)),
-                                      ),
-                                    ] else if (widget.type_switch == 3) ...[
-                                      Text(
-                                        'What it means to me',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.5,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xff828282)),
-                                      ),
-                                    ]
+                                    Text(
+                                      'Why is it inspirational to you',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.5,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff828282)),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -773,6 +751,7 @@ class _note_infoState extends State<note_info> {
                                           context,
                                           FadePageRoute(
                                               page: const inspiraton_goals(
+                                            update: false,
                                             data_saved: false,
                                             route: 'note_create',
                                             context: false,
@@ -986,69 +965,95 @@ class _noteSavedState extends State<noteSaved> {
                             ),
                           ),
                         ),
-                        AnimatedScaleButton(
-                          onTap: () {
-                            if (title.text.toString().isNotEmpty &&
-                                statement.text.toString().isNotEmpty) {
-                              InspirationApi()
-                                  .addInspiration(
-                                      2,
-                                      " ",
-                                      title.text.toString(),
-                                      tagList,
-                                      " ",
-                                      true,
-                                      statement.text.toString(),
-                                      selectedGoals)
-                                  .then((response) async {
-                                if (response.length != 0) {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const updatedLandingPage(
-                                              delete: false,
-                                              is_Updated: false)));
-                                  print('----------------');
-                                  title.clear();
-                                  tagList.clear();
-                                  hastags.clear();
-                                  statement.clear();
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const updatedLandingPage(
-                                        delete: false,
-                                        is_Updated: true,
-                                      )));
-                                  final SharedPreferences prefs = await _prefs;
-                                  var remove = prefs.remove('ImageLink');
+                        ValueListenableBuilder<TextEditingValue>(
+                            valueListenable: statement,
+                            builder: (context, value, child) {
+                              return ValueListenableBuilder<TextEditingValue>(
+                                  valueListenable: title,
+                                  builder: (context, value, child) {
+                                    return AnimatedScaleButton(
+                                      onTap: () {
+                                        if (title.text.isNotEmpty &&
+                                            statement.text.isNotEmpty) {
+                                          print("Api");
+                                          InspirationApi()
+                                              .addInspiration(
+                                                  2,
+                                                  null,
+                                                  title.text.toString(),
+                                                  tagList,
+                                                  " ",
+                                                  true,
+                                                  statement.text.toString(),
+                                                  selectedGoals)
+                                              .then((response) async {
+                                            print("Api 2");
+                                            print(response);
+                                            if (response.length != 0) {
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page:
+                                                          const updatedLandingPage(
+                                                              delete: false,
+                                                              is_Updated:
+                                                                  false)));
+                                              print('----------------');
+                                              title.clear();
+                                              tagList.clear();
+                                              hastags.clear();
+                                              statement.clear();
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page:
+                                                          const updatedLandingPage(
+                                                    delete: false,
+                                                    is_Updated: true,
+                                                  )));
+                                              final SharedPreferences prefs =
+                                                  await _prefs;
+                                              var remove =
+                                                  prefs.remove('ImageLink');
 
-                                  print(response);
-                                }
+                                              print(response);
+                                            }
 
-                                // return null;
-                              });
-                            }
-                          },
-                          child: Container(
-                            height: AppDimensions.height10(context) * 2.2,
-                            width: AppDimensions.height10(context) * 4.3,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 4.9),
-                            child: Text(
-                              'Create',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.5,
-                                  fontWeight: FontWeight.w400,
-                                  color: title.text.toString().isNotEmpty &&
-                                          statement.text.toString().isNotEmpty
-                                      ? const Color(0xff007AFF)
-                                      : const Color(0xff007AFF)
-                                          .withOpacity(0.5)),
-                            ),
-                          ),
-                        )
+                                            // return null;
+                                          });
+                                        }
+                                      },
+                                      child: Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.2,
+                                        width: AppDimensions.height10(context) *
+                                            4.3,
+                                        margin: EdgeInsets.only(
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                4.9),
+                                        child: Text(
+                                          'Create',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
+                                              fontWeight: FontWeight.w400,
+                                              color: title.text
+                                                          .toString()
+                                                          .isNotEmpty &&
+                                                      statement.text
+                                                          .toString()
+                                                          .isNotEmpty
+                                                  ? const Color(0xff007AFF)
+                                                  : const Color(0xff007AFF)
+                                                      .withOpacity(0.5)),
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            })
                       ]),
                 ),
                 Container(
@@ -1125,7 +1130,7 @@ class _noteSavedState extends State<noteSaved> {
                               left: AppDimensions.height10(context) * 2.0,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
-                            'Description',
+                            'Why is it inspirational to you',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.5,
                                 fontWeight: FontWeight.w400,
@@ -1254,7 +1259,8 @@ class _noteSavedState extends State<noteSaved> {
                                 context,
                                 FadePageRoute(
                                     page: const inspiraton_goals(
-                                  data_saved: false,
+                                  update: false,
+                                  data_saved: true,
                                   route: 'note_saved',
                                   context: false,
                                   note: false,
@@ -1292,19 +1298,21 @@ class _noteSavedState extends State<noteSaved> {
                                   ),
                                 ),
                                 Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.39,
                                     margin: EdgeInsets.only(
                                         right: AppDimensions.height10(context) *
                                             2.391),
-                                    child: Image.asset(
-                                      'assets/images/BTN Back.webp',
-                                      //width: AppDimensions.height10(context) * 2.6,
-                                      //height: AppDimensions.height10(context) * 2.6,
-                                      color: const Color(0xFF646464),
-                                      fit: BoxFit.cover,
+                                    child: Text(
+                                      'View',
+                                      style: TextStyle(
+                                          color: const Color(0xFF437296),
+                                          fontWeight: FontWeight.w700,
+                                          decoration: TextDecoration.underline,
+                                          decorationThickness:
+                                              AppDimensions.height10(context) *
+                                                  0.2,
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.4),
                                     ))
                               ],
                             ),

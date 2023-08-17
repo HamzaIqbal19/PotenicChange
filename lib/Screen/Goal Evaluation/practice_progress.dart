@@ -64,6 +64,12 @@ class _practice_progressState extends State<practice_progress> {
         print('Done===============================');
       }
       //print(response);
+    }).catchError((error) {
+      print('Faliure');
+      setState(() {
+        noData = true;
+      });
+      loadData();
     });
   }
 

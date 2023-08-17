@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:potenic_app/API/Apispecs.dart';
@@ -14,7 +16,7 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 class InspirationApi {
   Future addInspiration(
       int inspirationId,
-      String file,
+      File? file,
       String title,
       hashTags,
       String destinationLink,
@@ -24,45 +26,53 @@ class InspirationApi {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
-
+    print(prefs.getString("usertoken"));
+    print("Path=====================${file!.path}");
     var headers = {
-      'Content-Type': 'application/json',
+      //'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
     };
-    var Body = json.encode({
+
+    var request = http.MultipartRequest('POST',
+        Uri.parse('${URL.BASE_URL}api/userInspiration/add-userInspiration'));
+    print("Fields: ${request.fields}");
+
+    request.fields.addAll({
       "inspirationId": "$inspirationId",
-      "file": file,
       "title": title,
-      "hashTags": hashTags,
+      "hashTags": hashTags.toString(),
       "visibility": "$visibility",
       "destinationLink": destinationLink,
-      "userGoalId": userGoalId,
+      "userGoalId": userGoalId.toString(),
       "description": description,
-      "userId": UserId
+      "userId": "$UserId"
     });
-    print(Body);
 
-    var request = await client.post(
-        Uri.parse('${URL.BASE_URL}api/userInspiration/add-userInspiration'),
-        headers: headers,
-        body: Body);
+    print("Fields: ${request.fields}");
+    request.headers.addAll(headers);
 
-    var responses = jsonDecode(request.body);
-    print(responses);
+    if (file != null) {
+      // File newFile = File(file);
 
-    if (request.statusCode == 200) {
-      var inspirationId =
-          prefs.setInt('userInspirationId', responses['result']['id']);
+      print("Path=====================${Uri.parse(file.path)}");
+      request.files.add(http.MultipartFile.fromBytes(
+          'file', await File.fromUri(Uri.parse(file.path)).readAsBytes()));
+      print("Path=====================${file.path}");
+    }
+    print("Request==${request.files.toString()}");
 
-      print(responses['result']['id']);
+    http.StreamedResponse response = await request.send();
+    print(response.statusCode);
+    print(response);
 
+    if (response.statusCode == 200) {
+      var responses = await response.stream.bytesToString();
+      print("response==========>$responses"); // Printing the response
       return responses;
+      // You can parse the response here and return appropriate data
     } else {
-      //client.close();
-
-      // print("response:${}");
-      print("request==========>$request");
-      return responses;
+      print("request==========>$response.statusCode");
+      // Handle error here
     }
   }
 
@@ -219,7 +229,7 @@ class InspirationApi {
     }
   }
 
-  Future filterUserInspiration(tag, goalId) async {
+  Future filterUserInspiration(type, goalId, tag) async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
@@ -230,13 +240,21 @@ class InspirationApi {
     };
 
     var response = await http.get(
-      Uri.parse(goalId != 0 && tag.length != 0
-          ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag&userGoalId=$goalId'
-          : tag.length != 0
-              ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag'
-              : goalId != 0
-                  ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId'
-                  : '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId'),
+      Uri.parse(goalId != 0 && type != 0 && tag != null
+          ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId&inspirationId=$type&tag=$tag'
+          : type != 0 && goalId != 0
+              ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId&inspirationId=$type'
+              : goalId != 0 && tag != null
+                  ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId$tag=$tag'
+                  : tag != null && type != 0
+                      ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag&inspirationId=$type'
+                      : type != 0
+                          ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?inspirationId=$type'
+                          : goalId != 0
+                              ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId'
+                              : tag != null
+                                  ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag'
+                                  : '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId'),
       headers: headers,
     );
 

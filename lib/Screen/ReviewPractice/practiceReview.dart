@@ -6,6 +6,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
+import 'package:potenic_app/Screen/PracticeGoal/Routine%20Edit/routine_edit.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -46,12 +47,24 @@ class _PracticeReviewState extends State<PracticeReview> {
   var color;
   var pracColor;
   var visualize;
+  String route = '';
 
   @override
   void initState() {
     //  getGoalDetail();
     super.initState();
     _fetchGoalNames();
+    getRoute();
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var review_route = prefs.getString('practice_review');
+    print("================Route=${prefs.getString('practice_review')}");
+    setState(() {
+      route = review_route!;
+    });
+    print("================Route=$route");
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -146,12 +159,18 @@ class _PracticeReviewState extends State<PracticeReview> {
                 fit: BoxFit.contain,
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  FadePageRoute(
-                    page: const PracticeFinished(),
-                  ),
-                );
+                if (route == 'practice_menu' ||
+                    route == 'practice_missed' ||
+                    route == 'practice_completed') {
+                  Navigator.pop(context);
+                } else {
+                  Navigator.push(
+                    context,
+                    FadePageRoute(
+                      page: const PracticeFinished(),
+                    ),
+                  );
+                }
 
                 //Navigator.pop(context);
                 // Navigator.pushReplacement(
@@ -398,9 +417,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                               print("new");
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute3(
-                                                  exitPage: PracticeReview(),
-                                                  enterPage: PracticeName(
+                                                FadePageRoute(
+                                                  page: const PracticeName(
                                                     comingFromEditScreen: true,
                                                   ),
                                                 ),
@@ -993,25 +1011,35 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             ),
                                           ),
                                           // SizedBox(width: ),
-                                          Container(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
-
-                                            // color: Colors.blue,
-                                            margin: EdgeInsets.only(
-                                              bottom: AppDimensions.height10(
+                                          AnimatedScaleButton(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: PracticeRoutineEdit(
+                                                    goalName: goalName,
+                                                  )));
+                                            },
+                                            child: Container(
+                                              height: AppDimensions.height10(
                                                       context) *
-                                                  1.5,
-                                            ),
-                                            decoration: const BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/btnedit.webp"),
-                                                fit: BoxFit.fitHeight,
+                                                  3.0,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  3.0,
+
+                                              // color: Colors.blue,
+                                              margin: EdgeInsets.only(
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    1.5,
+                                              ),
+                                              decoration: const BoxDecoration(
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/btnedit.webp"),
+                                                  fit: BoxFit.fitHeight,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1144,9 +1172,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             onTap: () {
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute3(
-                                                  exitPage: PracticeReview(),
-                                                  enterPage: PracticeReminder(
+                                                FadePageRoute(
+                                                  page: const PracticeReminder(
                                                     comingFromEditScreen: true,
                                                   ),
                                                 ),

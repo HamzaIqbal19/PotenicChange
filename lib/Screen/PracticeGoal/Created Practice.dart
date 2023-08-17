@@ -262,10 +262,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                FadePageRoute2(
-                                  true,
-                                  exitPage: const PracticeFinished(),
-                                  enterPage: const StarReview(
+                                FadePageRoute(
+                                  page: const StarReview(
                                     route: 'practice',
                                   ),
                                 ),
@@ -376,7 +374,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                       SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
-                                                1.5,
+                                                1.0,
                                       ),
                                       Text('Review',
                                           textAlign: TextAlign.center,

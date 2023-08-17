@@ -15,6 +15,7 @@ class schedule_card extends StatefulWidget {
   final String days;
   String startTime;
   String endTime;
+  final bool expansion;
   final ValueChanged<int> onCountChanged;
   final ValueChanged<String> onChangedStart;
   final ValueChanged<String> onChangedEnd;
@@ -26,7 +27,8 @@ class schedule_card extends StatefulWidget {
       required this.days,
       required this.onCountChanged,
       required this.onChangedStart,
-      required this.onChangedEnd})
+      required this.onChangedEnd,
+      required this.expansion})
       : super(key: key);
 
   @override
@@ -119,6 +121,7 @@ class _schedule_cardState extends State<schedule_card> {
             Container(
               child: AdvanceExpansionTile(
                 key: _globalKey,
+                initiallyExpanded: widget.expansion,
                 decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
@@ -154,8 +157,7 @@ class _schedule_cardState extends State<schedule_card> {
                                         if (Done) {
                                           selectedDays.add(days_name);
                                           _globalKey.currentState?.expand();
-                                          _globalKey.currentState?.expand();
-                                          _globalKey.currentState?.expand();
+
                                           setState(() {
                                             start_time =
                                                 "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
@@ -378,7 +380,7 @@ class _startTimerStateState extends State<startTimerState> {
       width: AppDimensions.height10(context) * 31.6,
       height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
-          color: Color.fromRGBO(0, 0, 0, 0.1),
+          color: const Color.fromRGBO(0, 0, 0, 0.1),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: Row(
@@ -412,12 +414,8 @@ class _startTimerStateState extends State<startTimerState> {
           ),
           Container(
             width: AppDimensions.height10(context) * 2.4,
-            // height: AppDimensions.height10*1.7,
-            // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
             child: Center(
               child: GestureDetector(
-                  // elevation: 0,
-                  // backgroundColor: Colors.transparent,
                   onTap: () {
                     showModalBottomSheet(
                       context: context,
@@ -455,10 +453,10 @@ class _startTimerStateState extends State<startTimerState> {
                       ),
                     );
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_drop_down,
-                    color: const Color.fromRGBO(250, 153, 52, 1),
-                    // size: AppDimensions.height10*3.5,
+                    color: Color.fromRGBO(250, 153, 52, 1),
+                    //size: AppDimensions.height10(context) * 3.5,
                   )),
             ),
           ),
@@ -517,7 +515,7 @@ class _endTimerStateState extends State<endTimerState> {
       width: AppDimensions.height10(context) * 31.6,
       height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
-          color: Color.fromRGBO(0, 0, 0, 0.1),
+          color: const Color.fromRGBO(0, 0, 0, 0.1),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: Row(
@@ -529,7 +527,7 @@ class _endTimerStateState extends State<endTimerState> {
                 text_state,
                 //textAlign: TextAlign.left,
                 style: TextStyle(
-                  color: Color.fromRGBO(100, 100, 100, 1),
+                  color: const Color.fromRGBO(100, 100, 100, 1),
                   fontSize: AppDimensions.height10(context) * 1.6,
                   fontFamily: "Laila",
                   fontWeight: FontWeight.w700,
@@ -540,7 +538,7 @@ class _endTimerStateState extends State<endTimerState> {
                 child: Text(
                   widget.endTime,
                   style: TextStyle(
-                    color: Color.fromRGBO(250, 153, 52, 1),
+                    color: const Color.fromRGBO(250, 153, 52, 1),
                     fontSize: AppDimensions.height10(context) * 1.6,
                     fontFamily: "Laila",
                     fontWeight: FontWeight.w700,

@@ -40,8 +40,8 @@ class OnboardingPageState extends State<OnboardingPage>
   final PageController _pageController = PageController(initialPage: 0);
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   int _currentPage = 0;
-  String Accestoken = "";
-  var Routes = '';
+  var Accestoken;
+  var Routes;
 
   double _value = 0.0;
 
@@ -64,15 +64,19 @@ class OnboardingPageState extends State<OnboardingPage>
 
   @override
   void initState() {
-    loadData();
-
     super.initState();
+    loadData();
   }
 
   Future loadData() async {
     final SharedPreferences prefs = await _prefs;
-    Accestoken = prefs.getString("usertoken")!;
-    Routes = prefs.getString("route")!;
+    print(prefs.getString("usertoken"));
+    setState(() {
+      Accestoken = prefs.getString("usertoken");
+      Routes = prefs.getString("route").toString().isEmpty
+          ? ''
+          : prefs.getString("route");
+    });
   }
 
   Widget _indicator(bool isActive) {
@@ -104,6 +108,7 @@ class OnboardingPageState extends State<OnboardingPage>
     BuildContext context,
   ) {
     print("AccessToken:$Accestoken");
+    print('Route: $Routes');
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -157,19 +162,22 @@ class OnboardingPageState extends State<OnboardingPage>
                   fit: BoxFit.cover,
                 ),
                 onPressed: () async {
-                  if (Accestoken != "" || Routes != "") {
+                  if (Accestoken != null && Routes != null) {
+                    print(Routes);
+                    print('Condition 1');
                     Navigator.pushReplacement(
                       context,
                       FadePageRoute2(
                         true,
                         enterPage: HomeScreenProgressSaved(
                           login: true,
-                          route: '$Routes',
+                          route: Routes.toString(),
                         ),
                         exitPage: OnBoarding(),
                       ),
                     );
-                  } else if (Accestoken != "" || Routes == null) {
+                  } else if (Accestoken != null && Routes == null) {
+                    print('Condition 2');
                     Navigator.pushReplacement(
                       context,
                       FadePageRoute2(
@@ -178,7 +186,8 @@ class OnboardingPageState extends State<OnboardingPage>
                         exitPage: OnBoarding(),
                       ),
                     );
-                  } else if (Accestoken == "" || Routes.isEmpty) {
+                  } else if (Accestoken == null && Routes == null) {
+                    print('Condition 3');
                     Navigator.pushReplacement(
                       context,
                       FadePageRoute2(
@@ -447,19 +456,22 @@ class OnboardingPageState extends State<OnboardingPage>
                 duration: Duration(milliseconds: 500), curve: Curves.ease);
           } else {
             // ignore: use_build_context_synchronously
-            if (Accestoken != "" || Routes != "") {
+            if (Accestoken != null && Routes != null) {
+              print(Routes);
+              print('Condition 1');
               Navigator.pushReplacement(
                 context,
                 FadePageRoute2(
                   true,
                   enterPage: HomeScreenProgressSaved(
                     login: true,
-                    route: '$Routes',
+                    route: Routes.toString(),
                   ),
                   exitPage: OnBoarding(),
                 ),
               );
-            } else if (Accestoken != "" || Routes == null) {
+            } else if (Accestoken != null && Routes == null) {
+              print('Condition 2');
               Navigator.pushReplacement(
                 context,
                 FadePageRoute2(
@@ -468,7 +480,8 @@ class OnboardingPageState extends State<OnboardingPage>
                   exitPage: OnBoarding(),
                 ),
               );
-            } else if (Accestoken == "" || Routes == null) {
+            } else if (Accestoken == null && Routes == null) {
+              print('Condition 3');
               Navigator.pushReplacement(
                 context,
                 FadePageRoute2(

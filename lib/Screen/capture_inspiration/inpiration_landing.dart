@@ -10,11 +10,13 @@ import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dar
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Screen/capture_inspiration/record_inpiration_type.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/dashboardViewgoals.dart';
+import 'inpiration_veiw_detail.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -37,6 +39,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
   List goalName = [];
   int goalId = 0;
   String selectionTag = '';
+  int inspirationId = 0;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -48,8 +51,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
     });
   }
 
-  void filterInspiratonByTag(search, id) {
-    InspirationApi().filterUserInspiration(search, id).then((response) {
+  void filterInspiratonByTag(search, id, tag) {
+    InspirationApi().filterUserInspiration(search, id, tag).then((response) {
       if (response.length != 0) {
         setState(() {
           InspirationList = response;
@@ -81,6 +84,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
     }).whenComplete(() {
       loadData();
       setState(() {
+        _getTagNames();
         //  noData = true;
       });
     });
@@ -91,6 +95,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
       setState(() {
         goals = response;
       });
+
       _newFunction();
     });
   }
@@ -106,10 +111,12 @@ class _inspiration_landingState extends State<inspiration_landing> {
     print('Tag function called');
     for (int i = 0; i <= InspirationList.length; i++) {
       if (InspirationList[i]['hashTags']?.length != 0) {
-        tagNames.add(InspirationList[i]['hashTags']
-            .toString()
-            .replaceAll('[', ' ')
-            .replaceAll(']', ' '));
+        if (InspirationList[i]['hashTags'] != null) {
+          tagNames.add(InspirationList[i]['hashTags']
+              .toString()
+              .replaceAll('[', ' ')
+              .replaceAll(']', ' '));
+        }
       } else {
         print("No tags");
       }
@@ -130,8 +137,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
   final List<String> type = [
     'All ',
     'Image',
-    'Video',
     'Note',
+    'Video',
     'Content',
   ];
   final List<String> _goals = [
@@ -142,6 +149,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
     'Practice name 1 (goal name)',
   ];
   int _selectedTag = 0;
+  int TagIndex = 0;
+  String selectedTag = 'All';
   int _Goal_Index = 0;
   int type_index = 0;
   String _selected_activity = 'All';
@@ -198,7 +207,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         width: AppDimensions.height10(context) * 34.3,
                         height: AppDimensions.height10(context) * 27.0,
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 12.0),
+                          top: AppDimensions.height10(context) * 12.0,
+                        ),
                         child: Stack(
                           children: [
                             GestureDetector(
@@ -232,6 +242,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       context,
                                       FadePageRoute(
                                           page: const inspiraton_goals(
+                                              update: false,
                                               data_saved: false,
                                               context: false,
                                               note: false,
@@ -284,180 +295,474 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 ),
                               ),
                             ),
-                            Align(
-                              alignment: const Alignment(0.1, 0.85),
-                              child: SizedBox(
-                                width: AppDimensions.height10(context) * 13.5,
-                                height: AppDimensions.height10(context) * 2.2,
-                                child: Text(
-                                  'New inspiration',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.8,
-                                      fontWeight: FontWeight.w500,
-                                      color: const Color(0xFFFFFFFF)),
-                                ),
-                              ),
-                            )
                           ],
                         ),
                       ),
-                      noData == false
-                          ? GridView.builder(
-                              shrinkWrap: true,
-                              padding: EdgeInsets.only(
-                                  bottom:
-                                      AppDimensions.height10(context) * 8.0),
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                // childAspectRatio: 3.5 / 3, // Two items in each row
+                      Container(
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 6.8,
+                            bottom: AppDimensions.height10(context) * 9.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: (InspirationList.length + 1) ~/
+                                    2, // Half of the items, rounded up
+                                itemBuilder: (context, index) {
+                                  return Container(
+                                    width:
+                                        AppDimensions.height10(context) * 16.7,
+                                    height:
+                                        AppDimensions.height10(context) * 23.8,
+                                    child: Column(children: [
+                                      AnimatedScaleButton(
+                                        onTap: () async {
+                                          final SharedPreferences prefs =
+                                              await _prefs;
 
-                                mainAxisSpacing: 30,
-                                crossAxisSpacing: 0,
-                              ),
-                              itemCount: InspirationList.length,
-                              itemBuilder: ((context, index) {
-                                return Container(
-                                  // color: Colors.red,
-                                  width: AppDimensions.height10(context) * 16.7,
-                                  height: AppDimensions.height10(context) * 30,
-                                  child: Column(children: [
-                                    AnimatedScaleButton(
-                                      onTap: () async {
-                                        final SharedPreferences prefs =
-                                            await _prefs;
-
-                                        var hurdleId = prefs.setInt(
-                                            'userInspirationId',
-                                            InspirationList[index]['id']);
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                    const record_inspiration()));
-                                      },
-                                      child: Container(
-                                        width: AppDimensions.height10(context) *
-                                            16.7,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                16.7,
-                                        decoration: BoxDecoration(
-                                            gradient: InspirationList[index]
-                                                        ['inspirationId'] ==
-                                                    2
-                                                ? const RadialGradient(colors: [
-                                                    Color(0xFFE9A594),
-                                                    Color(0xFFEEBEB2)
-                                                  ])
-                                                : const RadialGradient(colors: [
-                                                    Color(0xFFD9D9D9),
-                                                    Color(0xFFD9D9D9)
-                                                  ]),
-                                            shape: BoxShape.circle,
-                                            image: InspirationList[index]
-                                                        ['inspirationId'] ==
-                                                    1
-                                                ? DecorationImage(
-                                                    image: FileImage(File(
-                                                        InspirationList[index]
-                                                            ['file'])),
-                                                    fit: BoxFit.cover)
-                                                : DecorationImage(
-                                                    image: AssetImage(InspirationList[index]['inspirationId'] == 4
-                                                        ? 'assets/images/distraction content.webp'
-                                                        : InspirationList[index]['inspirationId'] == 3
-                                                            ? 'assets/images/video_play.webp'
-                                                            : ''),
-                                                    fit: BoxFit.cover)),
-                                        child: InspirationList[index]
-                                                    ['inspirationId'] ==
-                                                2
-                                            ? Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.7),
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    6.3,
-                                                child: Center(
-                                                    child: Text(
-                                                  InspirationList[index]
-                                                      ['description'],
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  maxLines: 3,
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontSize: AppDimensions
+                                          var hurdleId = prefs.setInt(
+                                              'userInspirationId',
+                                              InspirationList[index * 2]['id']);
+                                          Navigator.push(
+                                              context,
+                                              FadePageRoute(
+                                                  page:
+                                                      const record_inspiration()));
+                                        },
+                                        child: Container(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  16.7,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  16.7,
+                                          decoration: BoxDecoration(
+                                              gradient: InspirationList[index * 2]
+                                                          ['inspirationId'] ==
+                                                      2
+                                                  ? const RadialGradient(
+                                                      colors: [
+                                                          Color(0xFFE9A594),
+                                                          Color(0xFFEEBEB2)
+                                                        ])
+                                                  : const RadialGradient(
+                                                      colors: [
+                                                          Color(0xFFD9D9D9),
+                                                          Color(0xFFD9D9D9)
+                                                        ]),
+                                              shape: BoxShape.circle,
+                                              image: InspirationList[index * 2]
+                                                          ['inspirationId'] ==
+                                                      1
+                                                  ? DecorationImage(
+                                                      image: FileImage(File(
+                                                          InspirationList[index * 2]['file'])),
+                                                      fit: BoxFit.cover)
+                                                  : DecorationImage(
+                                                      image: AssetImage(InspirationList[index * 2]['inspirationId'] == 4
+                                                          ? 'assets/images/distraction content.webp'
+                                                          : InspirationList[index]['inspirationId'] == 3
+                                                              ? 'assets/images/video_play.webp'
+                                                              : ''),
+                                                      fit: BoxFit.cover)),
+                                          child: InspirationList[index * 2]
+                                                      ['inspirationId'] ==
+                                                  2
+                                              ? Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          1.4,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: const Color(
-                                                          0xFFFFFFFF)),
-                                                )),
-                                              )
-                                            : Container(),
+                                                          1.7),
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          6.3,
+                                                  child: Center(
+                                                      child: Text(
+                                                    InspirationList[index * 2]
+                                                        ['description'],
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 2,
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.4,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: const Color(
+                                                            0xFFFFFFFF)),
+                                                  )),
+                                                )
+                                              : Container(),
+                                        ),
                                       ),
-                                    ),
-                                    Container(
+                                      Container(
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        //height: AppDimensions.height10(context) * 1.9,
+                                        margin: EdgeInsets.only(
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                0.2),
+                                        child: Center(
+                                            child: Text(
+                                          InspirationList[index * 2]['title'],
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xFFFFFFFF)),
+                                        )),
+                                      ),
+                                      SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            15.7,
+                                        child: Center(
+                                            child: Text(
+                                          InspirationList[index * 2]
+                                              ['description'],
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.0,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xFFFFFFFF)),
+                                        )),
+                                      )
+                                    ]),
+                                  );
+                                  // Replace YourItemWidget with the widget for each item
+                                },
+                              ),
+                            ),
+                            // Second column
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                    top: AppDimensions.height10(context) *
+                                        7.4), // Extra padding for the second column
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.zero,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount: InspirationList.length ~/
+                                      2, // Half of the items, rounded down
+                                  itemBuilder: (context, index) {
+                                    return Container(
                                       width: AppDimensions.height10(context) *
                                           16.7,
-                                      //height: AppDimensions.height10(context) * 1.9,
-                                      margin: EdgeInsets.only(
-                                          top: AppDimensions.height10(context) *
-                                              0.2),
-                                      child: Center(
-                                          child: Text(
-                                        InspirationList[index]['title'],
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
+                                      height: AppDimensions.height10(context) *
+                                          23.8,
+                                      child: Column(children: [
+                                        AnimatedScaleButton(
+                                          onTap: () async {
+                                            final SharedPreferences prefs =
+                                                await _prefs;
+
+                                            var hurdleId = prefs.setInt(
+                                                'userInspirationId',
+                                                InspirationList[index * 2 + 1]
+                                                    ['id']);
+                                            Navigator.push(
+                                                context,
+                                                FadePageRoute(
+                                                    page:
+                                                        const record_inspiration()));
+                                          },
+                                          child: Container(
+                                            width: AppDimensions.height10(
                                                     context) *
-                                                1.4,
-                                            fontWeight: FontWeight.w600,
-                                            color: const Color(0xFFFFFFFF)),
-                                      )),
-                                    ),
-                                    SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          15.7,
-                                      child: Center(
-                                          child: Text(
-                                        InspirationList[index]['description'],
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
+                                                16.7,
+                                            height: AppDimensions.height10(
                                                     context) *
-                                                1.0,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xFFFFFFFF)),
-                                      )),
-                                    )
-                                  ]),
-                                );
-                              }))
-                          : Container(
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 4.0),
-                              width: AppDimensions.height10(context) * 26,
-                              child: Center(
-                                  child: Text(
-                                'There are no recorded inspiration',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: const Color(0xFFFBFBFB),
-                                    fontSize:
-                                        AppDimensions.height10(context) * 3),
-                              )),
+                                                16.7,
+                                            decoration: BoxDecoration(
+                                                gradient: InspirationList[index * 2 + 1]
+                                                            ['inspirationId'] ==
+                                                        2
+                                                    ? const RadialGradient(
+                                                        colors: [
+                                                            Color(0xFFE9A594),
+                                                            Color(0xFFEEBEB2)
+                                                          ])
+                                                    : const RadialGradient(
+                                                        colors: [
+                                                            Color(0xFFD9D9D9),
+                                                            Color(0xFFD9D9D9)
+                                                          ]),
+                                                shape: BoxShape.circle,
+                                                image: InspirationList[index * 2 + 1]
+                                                            ['inspirationId'] ==
+                                                        1
+                                                    ? DecorationImage(
+                                                        image: FileImage(
+                                                            File(InspirationList[index * 2 + 1]['file'])),
+                                                        fit: BoxFit.cover)
+                                                    : DecorationImage(
+                                                        image: AssetImage(InspirationList[index * 2 + 1]['inspirationId'] == 4
+                                                            ? 'assets/images/distraction content.webp'
+                                                            : InspirationList[index]['inspirationId'] == 3
+                                                                ? 'assets/images/video_play.webp'
+                                                                : ''),
+                                                        fit: BoxFit.cover)),
+                                            child: InspirationList[index * 2 +
+                                                        1]['inspirationId'] ==
+                                                    2
+                                                ? Container(
+                                                    padding: EdgeInsets.symmetric(
+                                                        horizontal: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.7),
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.3,
+                                                    child: Center(
+                                                        child: Text(
+                                                      InspirationList[
+                                                              index * 2 + 1]
+                                                          ['description'],
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      maxLines: 2,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.4,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: const Color(
+                                                              0xFFFFFFFF)),
+                                                    )),
+                                                  )
+                                                : Container(),
+                                          ),
+                                        ),
+                                        Container(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  16.7,
+                                          //height: AppDimensions.height10(context) * 1.9,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.2),
+                                          child: Center(
+                                              child: Text(
+                                            InspirationList[index * 2 + 1]
+                                                ['title'],
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.4,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xFFFFFFFF)),
+                                          )),
+                                        ),
+                                        SizedBox(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  15.7,
+                                          child: Center(
+                                              child: Text(
+                                            InspirationList[index * 2 + 1]
+                                                ['description'],
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.0,
+                                                fontWeight: FontWeight.w400,
+                                                color: const Color(0xFFFFFFFF)),
+                                          )),
+                                        )
+                                      ]),
+                                    );
+                                    ; // Replace YourItemWidget with the widget for each item
+                                  },
+                                ),
+                              ),
                             ),
+                          ],
+                        ),
+                      ),
+
+                      // noData == false
+                      //     ? GridView.builder(
+                      //         shrinkWrap: true,
+                      //         padding: EdgeInsets.only(
+                      //           bottom: AppDimensions.height10(context) * 8.0,
+                      //         ),
+                      //         physics: const NeverScrollableScrollPhysics(),
+                      //         gridDelegate:
+                      //             const SliverGridDelegateWithFixedCrossAxisCount(
+                      //           crossAxisCount: 2,
+                      //           // childAspectRatio: 3.5 / 3, // Two items in each row
+
+                      //           mainAxisSpacing: 30,
+                      //           crossAxisSpacing: 0,
+                      //         ),
+                      //         itemCount: InspirationList.length,
+                      //         itemBuilder: ((context, index) {
+                      //           return Container(
+                      //             width: AppDimensions.height10(context) * 16.7,
+                      //             height: AppDimensions.height10(context) * 30,
+                      //             child: Column(children: [
+                      //               AnimatedScaleButton(
+                      //                 onTap: () async {
+                      //                   final SharedPreferences prefs =
+                      //                       await _prefs;
+
+                      //                   var hurdleId = prefs.setInt(
+                      //                       'userInspirationId',
+                      //                       InspirationList[index]['id']);
+                      //                   Navigator.push(
+                      //                       context,
+                      //                       FadePageRoute(
+                      //                           page:
+                      //                               const record_inspiration()));
+                      //                 },
+                      //                 child: Container(
+                      //                   width: AppDimensions.height10(context) *
+                      //                       16.7,
+                      //                   height:
+                      //                       AppDimensions.height10(context) *
+                      //                           16.7,
+                      //                   decoration: BoxDecoration(
+                      //                       gradient: InspirationList[index]
+                      //                                   ['inspirationId'] ==
+                      //                               2
+                      //                           ? const RadialGradient(colors: [
+                      //                               Color(0xFFE9A594),
+                      //                               Color(0xFFEEBEB2)
+                      //                             ])
+                      //                           : const RadialGradient(colors: [
+                      //                               Color(0xFFD9D9D9),
+                      //                               Color(0xFFD9D9D9)
+                      //                             ]),
+                      //                       shape: BoxShape.circle,
+                      //                       image: InspirationList[index]
+                      //                                   ['inspirationId'] ==
+                      //                               1
+                      //                           ? DecorationImage(
+                      //                               image: FileImage(File(
+                      //                                   InspirationList[index]
+                      //                                       ['file'])),
+                      //                               fit: BoxFit.cover)
+                      //                           : DecorationImage(
+                      //                               image: AssetImage(InspirationList[index]['inspirationId'] == 4
+                      //                                   ? 'assets/images/distraction content.webp'
+                      //                                   : InspirationList[index]['inspirationId'] == 3
+                      //                                       ? 'assets/images/video_play.webp'
+                      //                                       : ''),
+                      //                               fit: BoxFit.cover)),
+                      //                   child: InspirationList[index]
+                      //                               ['inspirationId'] ==
+                      //                           2
+                      //                       ? Container(
+                      //                           padding: EdgeInsets.symmetric(
+                      //                               horizontal:
+                      //                                   AppDimensions.height10(
+                      //                                           context) *
+                      //                                       1.7),
+                      //                           height: AppDimensions.height10(
+                      //                                   context) *
+                      //                               6.3,
+                      //                           child: Center(
+                      //                               child: Text(
+                      //                             InspirationList[index]
+                      //                                 ['description'],
+                      //                             overflow:
+                      //                                 TextOverflow.ellipsis,
+                      //                             maxLines: 3,
+                      //                             textAlign: TextAlign.center,
+                      //                             style: TextStyle(
+                      //                                 fontSize: AppDimensions
+                      //                                         .height10(
+                      //                                             context) *
+                      //                                     1.4,
+                      //                                 fontWeight:
+                      //                                     FontWeight.w400,
+                      //                                 color: const Color(
+                      //                                     0xFFFFFFFF)),
+                      //                           )),
+                      //                         )
+                      //                       : Container(),
+                      //                 ),
+                      //               ),
+                      //               Container(
+                      //                 width: AppDimensions.height10(context) *
+                      //                     16.7,
+                      //                 //height: AppDimensions.height10(context) * 1.9,
+                      //                 margin: EdgeInsets.only(
+                      //                     top: AppDimensions.height10(context) *
+                      //                         0.2),
+                      //                 child: Center(
+                      //                     child: Text(
+                      //                   InspirationList[index]['title'],
+                      //                   overflow: TextOverflow.ellipsis,
+                      //                   style: TextStyle(
+                      //                       fontSize: AppDimensions.height10(
+                      //                               context) *
+                      //                           1.4,
+                      //                       fontWeight: FontWeight.w600,
+                      //                       color: const Color(0xFFFFFFFF)),
+                      //                 )),
+                      //               ),
+                      //               SizedBox(
+                      //                 width: AppDimensions.height10(context) *
+                      //                     15.7,
+                      //                 child: Center(
+                      //                     child: Text(
+                      //                   InspirationList[index]['description'],
+                      //                   overflow: TextOverflow.ellipsis,
+                      //                   maxLines: 2,
+                      //                   style: TextStyle(
+                      //                       fontSize: AppDimensions.height10(
+                      //                               context) *
+                      //                           1.0,
+                      //                       fontWeight: FontWeight.w400,
+                      //                       color: const Color(0xFFFFFFFF)),
+                      //                 )),
+                      //               )
+                      //             ]),
+                      //           );
+                      //         }))
+                      //     : Container(
+                      //         margin: EdgeInsets.only(
+                      //             top: AppDimensions.height10(context) * 4.0),
+                      //         width: AppDimensions.height10(context) * 26,
+                      //         child: Center(
+                      //             child: Text(
+                      //           'There are no recorded inspiration',
+                      //           textAlign: TextAlign.center,
+                      //           style: TextStyle(
+                      //               color: const Color(0xFFFBFBFB),
+                      //               fontSize:
+                      //                   AppDimensions.height10(context) * 3),
+                      //         )),
+                      //       ),
+
                       // widget.is_Updated
                       //     ? Container(
                       //         width: AppDimensions.height10(context) * 38.259,
@@ -660,123 +965,164 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                         decoration: const BoxDecoration(
                                           color: Colors.white,
                                         ),
-                                        child: Column(
+                                        child: Stack(
                                           children: [
-                                            Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  41.4,
-                                              decoration: BoxDecoration(
-                                                  border: Border(
-                                                      bottom: BorderSide(
+                                            Column(
+                                              children: [
+                                                Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.0,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      41.4,
+                                                  decoration: BoxDecoration(
+                                                      border: Border(
+                                                          bottom: BorderSide(
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  0.1,
+                                                              color: const Color(
+                                                                  0xFF828282)))),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Container(
                                                           width: AppDimensions
                                                                   .height10(
                                                                       context) *
-                                                              0.1,
-                                                          color: const Color(
-                                                              0xFF828282)))),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Container(
-                                                      width: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          5.0,
-                                                      margin: EdgeInsets.only(
-                                                          right: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.0),
-                                                      child: Text(
-                                                        'Cancel',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: const Color(
-                                                                0xFF2F80ED)),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        _selected_goal =
-                                                            goalName[
-                                                                _Goal_Index];
-                                                        goalId =
-                                                            goals[_Goal_Index]
-                                                                ['id'];
-                                                      });
-                                                      filterInspiratonByTag(
-                                                          selectionTag,
-                                                          goals[_Goal_Index]
-                                                              ['id']);
-
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: SizedBox(
-                                                      width: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          3.7,
-                                                      child: Text(
-                                                        'Done',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: const Color(
-                                                                0xFF2F80ED)),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: ListWheelScrollView(
-                                                itemExtent: 40,
-                                                magnification: 1.2,
-                                                useMagnifier:
-                                                    true, // Set the height of each statement
-                                                children: goalName
-                                                    .map((statement) =>
-                                                        Text(statement,
-                                                            style: TextStyle(
-                                                              fontSize: AppDimensions
+                                                              5.0,
+                                                          margin: EdgeInsets.only(
+                                                              right: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  2.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                            )))
-                                                    .toList(),
-                                                onSelectedItemChanged:
-                                                    (int index) {
-                                                  setState(() {
-                                                    _Goal_Index = index;
-                                                    //activity_duration = _statements[_selectedIndex];
-                                                    // _selected_activity =
-                                                    //     _statements[index];
-                                                  });
-                                                },
+                                                                  2.0),
+                                                          child: Text(
+                                                            'Cancel',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            _selected_goal =
+                                                                goalName[
+                                                                    _Goal_Index];
+                                                            goalId = goals[
+                                                                    _Goal_Index]
+                                                                ['id'];
+                                                          });
+                                                          filterInspiratonByTag(
+                                                              type_index,
+                                                              goals[_Goal_Index]
+                                                                  ['id'],
+                                                              selectionTag);
+
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: SizedBox(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              3.7,
+                                                          child: Text(
+                                                            'Done',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: ListWheelScrollView(
+                                                    itemExtent: 40,
+                                                    magnification: 1.3,
+                                                    useMagnifier: true,
+                                                    onSelectedItemChanged:
+                                                        (int index) {
+                                                      setState(() {
+                                                        _Goal_Index = index;
+                                                        //activity_duration = _statements[_selectedIndex];
+                                                        // _selected_activity =
+                                                        //     _statements[index];
+                                                      });
+                                                    },
+                                                    // Set the height of each statement
+                                                    children: goalName
+                                                        .map((statement) =>
+                                                            Text(statement,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          2.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )))
+                                                        .toList(),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Positioned(
+                                              top: 112,
+                                              right: 20,
+                                              left: 20,
+                                              child: Align(
+                                                alignment:
+                                                    const Alignment(0, 0),
+                                                child: Container(
+                                                    width: 400,
+                                                    height: 1,
+                                                    color:
+                                                        const Color(0xFF828282)
+                                                            .withOpacity(0.5)),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              top: 152,
+                                              right: 20,
+                                              left: 20,
+                                              child: Align(
+                                                alignment:
+                                                    const Alignment(0, 0),
+                                                child: Container(
+                                                    width: 400,
+                                                    height: 1,
+                                                    color:
+                                                        const Color(0xFF828282)
+                                                            .withOpacity(0.5)),
                                               ),
                                             ),
                                           ],
@@ -874,124 +1220,171 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                         decoration: const BoxDecoration(
                                           color: Colors.white,
                                         ),
-                                        child: Column(
+                                        child: Stack(
                                           children: [
-                                            Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  41.4,
-                                              decoration: BoxDecoration(
-                                                  border: Border(
-                                                      bottom: BorderSide(
+                                            Column(
+                                              children: [
+                                                Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.0,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      41.4,
+                                                  decoration: BoxDecoration(
+                                                      border: Border(
+                                                          bottom: BorderSide(
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  0.1,
+                                                              color: const Color(
+                                                                  0xFF828282)))),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Container(
                                                           width: AppDimensions
                                                                   .height10(
                                                                       context) *
-                                                              0.1,
-                                                          color: const Color(
-                                                              0xFF828282)))),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Container(
-                                                      width: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          5.0,
-                                                      margin: EdgeInsets.only(
-                                                          right: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.0),
-                                                      child: Text(
-                                                        'Cancel',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: const Color(
-                                                                0xFF2F80ED)),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        selectionTag = tagNames[
-                                                                _selectedTag]
-                                                            .toString()
-                                                            .trim();
-                                                      });
-                                                      print(tagNames[
-                                                          _selectedTag]);
-                                                      filterInspiratonByTag(
-                                                          tagNames[_selectedTag]
-                                                              .toString()
-                                                              .trim(),
-                                                          goalId);
-                                                      print('asf');
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: SizedBox(
-                                                      width: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          3.7,
-                                                      child: Text(
-                                                        'Done',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: const Color(
-                                                                0xFF2F80ED)),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: ListWheelScrollView(
-                                                itemExtent: 40,
-                                                magnification: 1.2,
-                                                useMagnifier:
-                                                    true, // Set the height of each statement
-                                                children: tagNames
-                                                    .map((statement) =>
-                                                        Text(statement,
-                                                            style: TextStyle(
-                                                              fontSize: AppDimensions
+                                                              5.0,
+                                                          margin: EdgeInsets.only(
+                                                              right: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  2.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                            )))
-                                                    .toList(),
-                                                onSelectedItemChanged:
-                                                    (int index) {
-                                                  setState(() {
-                                                    _selectedTag = index;
-                                                    //activity_duration = _statements[_selectedIndex];
-                                                    // _selected_activity =
-                                                    //     _statements[index];
-                                                  });
-                                                },
+                                                                  2.0),
+                                                          child: Text(
+                                                            'Cancel',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            selectedTag =
+                                                                tagNames[
+                                                                        TagIndex]
+                                                                    .toString()
+                                                                    .trim();
+                                                            selectionTag =
+                                                                tagNames[
+                                                                        TagIndex]
+                                                                    .toString()
+                                                                    .trim();
+                                                          });
+                                                          print(tagNames[
+                                                              TagIndex]);
+                                                          filterInspiratonByTag(
+                                                              type_index,
+                                                              goalId,
+                                                              tagNames[TagIndex]
+                                                                  .toString()
+                                                                  .trim());
+                                                          print('asf');
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: SizedBox(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              3.7,
+                                                          child: Text(
+                                                            'Done',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: ListWheelScrollView(
+                                                    itemExtent: 40,
+                                                    magnification: 1.3,
+                                                    useMagnifier:
+                                                        true, // Set the height of each statement
+                                                    children: tagNames
+                                                        .map((statement) =>
+                                                            Text(statement,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          2.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )))
+                                                        .toList(),
+                                                    onSelectedItemChanged:
+                                                        (int index) {
+                                                      setState(() {
+                                                        TagIndex = index;
+                                                        //activity_duration = _statements[_selectedIndex];
+                                                        // _selected_activity =
+                                                        //     _statements[index];
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Positioned(
+                                              top: 112,
+                                              right: 20,
+                                              left: 20,
+                                              child: Align(
+                                                alignment:
+                                                    const Alignment(0, 0),
+                                                child: Container(
+                                                    width: 400,
+                                                    height: 1,
+                                                    color:
+                                                        const Color(0xFF828282)
+                                                            .withOpacity(0.5)),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              top: 152,
+                                              right: 20,
+                                              left: 20,
+                                              child: Align(
+                                                alignment:
+                                                    const Alignment(0, 0),
+                                                child: Container(
+                                                    width: 400,
+                                                    height: 1,
+                                                    color:
+                                                        const Color(0xFF828282)
+                                                            .withOpacity(0.5)),
                                               ),
                                             ),
                                           ],
@@ -1038,7 +1431,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                           0.8),
                                   child: Center(
                                     child: Text(
-                                      _selected_activity,
+                                      selectedTag,
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
@@ -1089,119 +1482,162 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                         decoration: const BoxDecoration(
                                           color: Colors.white,
                                         ),
-                                        child: Column(
+                                        child: Stack(
                                           children: [
-                                            Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  41.4,
-                                              decoration: BoxDecoration(
-                                                  border: Border(
-                                                      bottom: BorderSide(
+                                            Column(
+                                              children: [
+                                                Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.0,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      41.4,
+                                                  decoration: BoxDecoration(
+                                                      border: Border(
+                                                          bottom: BorderSide(
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  0.1,
+                                                              color: const Color(
+                                                                  0xFF828282)))),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Container(
                                                           width: AppDimensions
                                                                   .height10(
                                                                       context) *
-                                                              0.1,
-                                                          color: const Color(
-                                                              0xFF828282)))),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Container(
-                                                      width: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          5.0,
-                                                      margin: EdgeInsets.only(
-                                                          right: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.0),
-                                                      child: Text(
-                                                        'Cancel',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: const Color(
-                                                                0xFF2F80ED)),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        selected_type =
-                                                            type[type_index];
-                                                      });
-                                                      print(type[type_index]);
-                                                      filterInspiratonByTag(
-                                                          type[type_index],
-                                                          goalId);
-                                                      print('asf');
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: SizedBox(
-                                                      width: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          3.7,
-                                                      child: Text(
-                                                        'Done',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: const Color(
-                                                                0xFF2F80ED)),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: ListWheelScrollView(
-                                                itemExtent: 40,
-                                                magnification: 1.2,
-                                                useMagnifier:
-                                                    true, // Set the height of each statement
-                                                children: type
-                                                    .map((statement) =>
-                                                        Text(statement,
-                                                            style: TextStyle(
-                                                              fontSize: AppDimensions
+                                                              5.0,
+                                                          margin: EdgeInsets.only(
+                                                              right: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  2.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                            )))
-                                                    .toList(),
-                                                onSelectedItemChanged:
-                                                    (int index) {
-                                                  setState(() {
-                                                    type_index = index;
-                                                    //activity_duration = _statements[_selectedIndex];
-                                                    // _selected_activity =
-                                                    //     _statements[index];
-                                                  });
-                                                },
+                                                                  2.0),
+                                                          child: Text(
+                                                            'Cancel',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            selected_type =
+                                                                type[
+                                                                    type_index];
+                                                          });
+                                                          print(
+                                                              type[type_index]);
+                                                          filterInspiratonByTag(
+                                                              type_index,
+                                                              goalId,
+                                                              selectionTag);
+                                                          print('asf');
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: SizedBox(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              3.7,
+                                                          child: Text(
+                                                            'Done',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: ListWheelScrollView(
+                                                    itemExtent: 40,
+                                                    magnification: 1.3,
+                                                    useMagnifier:
+                                                        true, // Set the height of each statement
+                                                    children: type
+                                                        .map((statement) =>
+                                                            Text(statement,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          2.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )))
+                                                        .toList(),
+                                                    onSelectedItemChanged:
+                                                        (int index) {
+                                                      setState(() {
+                                                        type_index = index;
+                                                        //activity_duration = _statements[_selectedIndex];
+                                                        // _selected_activity =
+                                                        //     _statements[index];
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Positioned(
+                                              top: 112,
+                                              right: 20,
+                                              left: 20,
+                                              child: Align(
+                                                alignment:
+                                                    const Alignment(0, 0),
+                                                child: Container(
+                                                    width: 400,
+                                                    height: 1,
+                                                    color:
+                                                        const Color(0xFF828282)
+                                                            .withOpacity(0.5)),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              top: 152,
+                                              right: 20,
+                                              left: 20,
+                                              child: Align(
+                                                alignment:
+                                                    const Alignment(0, 0),
+                                                child: Container(
+                                                    width: 400,
+                                                    height: 1,
+                                                    color:
+                                                        const Color(0xFF828282)
+                                                            .withOpacity(0.5)),
                                               ),
                                             ),
                                           ],
@@ -1248,7 +1684,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                           0.8),
                                   child: Center(
                                     child: Text(
-                                      _selected_activity,
+                                      selected_type,
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
@@ -1283,26 +1719,27 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               InspirationList = InspirationAll;
                               selectionTag = '';
                               goalId = 0;
-                              _selected_activity = 'All';
+                              type_index = 0;
+                              selected_type = 'All';
                               _selected_goal = "All";
+                              selectedTag = 'All';
                             });
                           },
                           child: Container(
-                            width: AppDimensions.height10(context) * 3.9,
+                            //width: AppDimensions.height10(context) * 3.9,
                             height: AppDimensions.height10(context) * 3.4,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 1.0,
-                                right: AppDimensions.height10(context) * 3.0),
+                                right: AppDimensions.height10(context) * 7.0),
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'Clear',
+                              'Clear all',
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   decoration: TextDecoration.underline,
-                                  color: const Color(0xFFFA9934)
-                                      .withOpacity(0.30)),
+                                  color: const Color(0xFFFA9934)),
                             ),
                           ),
                         )
@@ -1776,6 +2213,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                     context,
                                     FadePageRoute(
                                         page: const inspiraton_goals(
+                                      update: false,
                                       data_saved: false,
                                       route: 'landing',
                                       context: false,
@@ -2036,26 +2474,35 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                               ],
                             ),
                           ),
-                          Container(
-                            width: AppDimensions.height10(context) * 8.1,
-                            height: AppDimensions.height10(context) * 6.0,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 5,
-                                right: AppDimensions.height10(context) * 1.23),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: const Color(0xFFFFFFFF), width: 1),
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10(context) * 2.0),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Veiw',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.8,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0xFFFFFFFF)),
+                          AnimatedScaleButton(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                FadePageRoute(page: const veiw_details()),
+                              );
+                            },
+                            child: Container(
+                              width: AppDimensions.height10(context) * 8.1,
+                              height: AppDimensions.height10(context) * 6.0,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 5,
+                                  right:
+                                      AppDimensions.height10(context) * 1.23),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: const Color(0xFFFFFFFF), width: 1),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 2.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'View',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xFFFFFFFF)),
+                                ),
                               ),
                             ),
                           )

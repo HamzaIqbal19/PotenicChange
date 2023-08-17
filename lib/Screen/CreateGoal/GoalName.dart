@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:get/get.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
@@ -21,9 +23,11 @@ import '../Your_goals/veiw_all_goals.dart';
 
 class GoalName extends StatefulWidget {
   final int catId;
+  final String route;
   final bool comingFromEditScreen;
 
-  const GoalName(this.catId, {required this.comingFromEditScreen, Key? key})
+  const GoalName(this.catId,
+      {required this.comingFromEditScreen, Key? key, required this.route})
       : super(key: key);
 
   @override
@@ -33,6 +37,8 @@ class GoalName extends StatefulWidget {
 class _GoalNameState extends State<GoalName> {
   String goalCategory = "";
   String goalName = "";
+  bool updated = false;
+
   String route = '';
   var id;
   String capitalizeFirstLetter(String text) {
@@ -168,7 +174,22 @@ class _GoalNameState extends State<GoalName> {
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
-                  Navigator.pop(context);
+                  widget.comingFromEditScreen
+                      ? updated == false
+                          ? showAnimatedDialog(
+                              animationType: DialogTransitionType.fadeScale,
+                              curve: Curves.easeInOut,
+                              duration: const Duration(seconds: 1),
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  const pop_up_goals())
+                          : Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: StarReview(
+                                route: widget.route,
+                              )))
+                      : Navigator.pop(context);
                   // Add code for performing close action
                 },
               ),
@@ -176,181 +197,187 @@ class _GoalNameState extends State<GoalName> {
             actions: [
               Center(
                 // alignment: Alignment.center,
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 3.0,
-                    height: AppDimensions.height10(context) * 3.0,
-                    fit: BoxFit.contain,
-                  ),
-                  onPressed: () => showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) => Container(
-                      width: AppDimensions.height10(context) * 27.0,
-                      height: AppDimensions.height10(context) * 21.0,
-                      child: AlertDialog(
-                        contentPadding: EdgeInsets.zero,
-                        actionsPadding: EdgeInsets.zero,
-                        titlePadding: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 1.4)),
-                        title: Container(
-                          margin: EdgeInsets.only(
-                              top: 19, right: 16, left: 16, bottom: 4),
-                          height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.height10(context) * 23.8,
-                          child: const Text(
-                            "Exit onboarding?",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+                child: widget.comingFromEditScreen
+                    ? Container()
+                    : IconButton(
+                        icon: Image.asset(
+                          'assets/images/Close.webp',
+                          width: AppDimensions.height10(context) * 3.0,
+                          height: AppDimensions.height10(context) * 3.0,
+                          fit: BoxFit.contain,
                         ),
-                        content: Container(
-                          margin:
-                              EdgeInsets.only(bottom: 19, left: 16, right: 16),
-                          height: 32,
-                          width: 238,
-                          child: const Text(
-                            "Please select from the options below",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        actions: <Widget>[
-                          Column(
-                            children: [
-                              FDottedLine(
-                                color:
-                                    const Color(0xFF3C3C43).withOpacity(0.29),
-                                width: double.infinity,
-                                strokeWidth: 2.0,
-                                dottedLength: 10.0,
-                                space: 0.7,
+                        onPressed: () => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => Container(
+                            width: AppDimensions.height10(context) * 27.0,
+                            height: AppDimensions.height10(context) * 21.0,
+                            child: AlertDialog(
+                              contentPadding: EdgeInsets.zero,
+                              actionsPadding: EdgeInsets.zero,
+                              titlePadding: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 1.4)),
+                              title: Container(
+                                margin: const EdgeInsets.only(
+                                    top: 19, right: 16, left: 16, bottom: 4),
+                                height: AppDimensions.height10(context) * 2.2,
+                                width: AppDimensions.height10(context) * 23.8,
+                                child: const Text(
+                                  "Exit onboarding?",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
                               ),
-                              Container(
-                                height: 42,
-                                width: double.infinity,
-                                color: Colors.white,
-                                child: TextButton(
-                                  onPressed: () async {
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute3(
-                                        exitPage: GoalName(
-                                          widget.catId,
-                                          comingFromEditScreen: false,
-                                        ),
-                                        enterPage:
-                                            const HomeScreenProgressSaved(
-                                          login: true,
-                                          route: 'GoalName',
+                              content: Container(
+                                margin: const EdgeInsets.only(
+                                    bottom: 19, left: 16, right: 16),
+                                height: 32,
+                                width: 238,
+                                child: const Text(
+                                  "Please select from the options below",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                              actions: <Widget>[
+                                Column(
+                                  children: [
+                                    FDottedLine(
+                                      color: const Color(0xFF3C3C43)
+                                          .withOpacity(0.29),
+                                      width: double.infinity,
+                                      strokeWidth: 2.0,
+                                      dottedLength: 10.0,
+                                      space: 0.7,
+                                    ),
+                                    Container(
+                                      height: 42,
+                                      width: double.infinity,
+                                      color: Colors.white,
+                                      child: TextButton(
+                                        onPressed: () async {
+                                          Navigator.push(
+                                            context,
+                                            FadePageRoute3(
+                                              exitPage: GoalName(
+                                                widget.catId,
+                                                comingFromEditScreen: false,
+                                                route: widget.route,
+                                              ),
+                                              enterPage:
+                                                  const HomeScreenProgressSaved(
+                                                login: true,
+                                                route: 'GoalName',
+                                              ),
+                                            ),
+                                          );
+
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+                                          await prefs.setString(
+                                              'route', "GoalName");
+                                        },
+                                        child: const Text(
+                                          'Exit & save progress',
+                                          style: TextStyle(
+                                              color: Color(0xFF007AFF),
+                                              fontSize: 17,
+                                              fontFamily: "Laila",
+                                              fontWeight: FontWeight.w400),
                                         ),
                                       ),
-                                    );
-
-                                    final SharedPreferences prefs =
-                                        await _prefs;
-                                    await prefs.setString('route', "GoalName");
-                                  },
-                                  child: const Text(
-                                    'Exit & save progress',
-                                    style: TextStyle(
-                                        color: Color(0xFF007AFF),
-                                        fontSize: 17,
-                                        fontFamily: "Laila",
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                              ),
-                              FDottedLine(
-                                color:
-                                    const Color(0xFF3C3C43).withOpacity(0.29),
-                                width: double.infinity,
-                                strokeWidth: 2.0,
-                                dottedLength: 10.0,
-                                space: 0.7,
-                              ),
-                              Container(
-                                height: 44,
-                                width: double.infinity,
-                                child: TextButton(
-                                  onPressed: () async {
-                                    if (route == 'view_all_goals') {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          FadePageRoute(
-                                              page:
-                                                  const veiw_all_goals_menu()));
-                                    } else {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute2(
-                                          true,
-                                          exitPage: GoalName(
-                                            widget.catId,
-                                            comingFromEditScreen: false,
-                                          ),
-                                          enterPage:
-                                              const HomeScreen(login: true),
+                                    ),
+                                    FDottedLine(
+                                      color: const Color(0xFF3C3C43)
+                                          .withOpacity(0.29),
+                                      width: double.infinity,
+                                      strokeWidth: 2.0,
+                                      dottedLength: 10.0,
+                                      space: 0.7,
+                                    ),
+                                    Container(
+                                      height: 44,
+                                      width: double.infinity,
+                                      child: TextButton(
+                                        onPressed: () async {
+                                          if (route == 'view_all_goals') {
+                                            Navigator.pushReplacement(
+                                                context,
+                                                FadePageRoute(
+                                                    page:
+                                                        const veiw_all_goals_menu()));
+                                          } else {
+                                            Navigator.push(
+                                              context,
+                                              FadePageRoute2(
+                                                true,
+                                                exitPage: GoalName(
+                                                  route: widget.route,
+                                                  widget.catId,
+                                                  comingFromEditScreen: false,
+                                                ),
+                                                enterPage: const HomeScreen(
+                                                    login: true),
+                                              ),
+                                            );
+                                          }
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+                                          await prefs.remove('goal');
+                                          await prefs.remove('route');
+                                          await prefs.remove('goal_route');
+                                        },
+                                        child: const Text(
+                                          'Exit & delete progress',
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontFamily: "Laila",
+                                              fontWeight: FontWeight.w400,
+                                              color: Color(0xFF007AFF)),
                                         ),
-                                      );
-                                    }
-                                    final SharedPreferences prefs =
-                                        await _prefs;
-                                    await prefs.remove('goal');
-                                    await prefs.remove('route');
-                                    await prefs.remove('goal_route');
-                                  },
-                                  child: const Text(
-                                    'Exit & delete progress',
-                                    style: TextStyle(
-                                        fontSize: 17,
-                                        fontFamily: "Laila",
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xFF007AFF)),
-                                  ),
+                                      ),
+                                    ),
+                                    FDottedLine(
+                                      color: const Color(0xFF3C3C43)
+                                          .withOpacity(0.29),
+                                      width: double.infinity,
+                                      strokeWidth: 2.0,
+                                      dottedLength: 10.0,
+                                      space: 0.7,
+                                    ),
+                                    Container(
+                                      height: 42,
+                                      width: AppDimensions.height10(context) *
+                                          27.0,
+                                      child: TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text(
+                                          'Cancel exit',
+                                          style: TextStyle(
+                                              color: Color(0xFF007AFF),
+                                              fontSize: 17,
+                                              fontFamily: "Laila",
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              FDottedLine(
-                                color:
-                                    const Color(0xFF3C3C43).withOpacity(0.29),
-                                width: double.infinity,
-                                strokeWidth: 2.0,
-                                dottedLength: 10.0,
-                                space: 0.7,
-                              ),
-                              Container(
-                                height: 42,
-                                width: AppDimensions.height10(context) * 27.0,
-                                child: TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text(
-                                    'Cancel exit',
-                                    style: TextStyle(
-                                        color: Color(0xFF007AFF),
-                                        fontSize: 17,
-                                        fontFamily: "Laila",
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ],
+                        ),
+                        // Add code for performing close action
                       ),
-                    ),
-                  ),
-                  // Add code for performing close action
-                ),
               ),
             ],
           )),
@@ -360,15 +387,15 @@ class _GoalNameState extends State<GoalName> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: widget.comingFromEditScreen
-                    ? AssetImage("assets/images/GoalReviewBg.webp")
-                    : AssetImage("assets/images/Categories.webp"),
+                    ? const AssetImage("assets/images/GoalReviewBg.webp")
+                    : const AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           SingleChildScrollView(
             reverse: true,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -382,7 +409,7 @@ class _GoalNameState extends State<GoalName> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontSize: AppDimensions.height10(context) * 1.8,
                       ),
@@ -401,7 +428,7 @@ class _GoalNameState extends State<GoalName> {
                         overflow: TextOverflow.ellipsis,
                         fontWeight: FontWeight.w600,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ),
@@ -432,7 +459,7 @@ class _GoalNameState extends State<GoalName> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.8,
                       ),
@@ -452,8 +479,8 @@ class _GoalNameState extends State<GoalName> {
                           fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
                           color: widget.comingFromEditScreen
-                              ? Color(0xff437296)
-                              : Color(0xFFFFFFFF)),
+                              ? const Color(0xff437296)
+                              : const Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
@@ -533,7 +560,7 @@ class _GoalNameState extends State<GoalName> {
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             color: widget.comingFromEditScreen
-                                ? Color(0xff437296)
+                                ? const Color(0xff437296)
                                 : Colors.white,
                             fontSize: AppDimensions.height10(context) * 1.4,
                           ),
@@ -545,7 +572,7 @@ class _GoalNameState extends State<GoalName> {
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             color: widget.comingFromEditScreen
-                                ? Color(0xff437296)
+                                ? const Color(0xff437296)
                                 : Colors.white,
                             fontSize: AppDimensions.height10(context) * 1.4,
                           ),
@@ -568,7 +595,7 @@ class _GoalNameState extends State<GoalName> {
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontSize: AppDimensions.height10(context) * 1.6,
                       ),
@@ -576,117 +603,232 @@ class _GoalNameState extends State<GoalName> {
                   ),
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
-                    ? SizedBox(
-                        height: AppDimensions.height10(context) * 29.3,
-                      )
+                    ? updated
+                        ? SizedBox(
+                            height: AppDimensions.height10(context) * 26.3,
+                          )
+                        : SizedBox(
+                            height: AppDimensions.height10(context) * 29.3,
+                          )
                     : SizedBox(
                         height: AppDimensions.height10(context) * 9.6,
                       ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        // color: Colors.blue,
-                        width: AppDimensions.height10(context) * 5.0,
-                        height: AppDimensions.height10(context) * 5.0,
-                        child: AnimatedScaleButton(
-                          onTap: () {
-                            // signupSheet(context, "Sign up / login", "login");
-                          },
-                          child: Image.asset(
-                            "assets/images/Moreactions.webp",
-                            fit: BoxFit.contain,
-                          ),
-                        )),
-                    SizedBox(
-                      width: AppDimensions.height10(context) * 2.0,
-                    ),
-                    ValueListenableBuilder<TextEditingValue>(
-                      valueListenable: mygoal,
-                      builder: (context, value, child) {
-                        return AnimatedScaleButton(
-                          onTap: () async {
-                            if (widget.comingFromEditScreen) {
-                              final SharedPreferences prefs = await _prefs;
-                              prefs.setString('goalName', mygoal.text);
-                              AdminGoal()
-                                  .updateUserGoal('name', mygoal.text)
-                                  .then((value) {
-                                if (value == true) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (_) => StarReview(
-                                          route: 'goal',
-                                        ),
-                                      ));
-                                }
-                              });
-                              // Navigator.pop(context, mygoal.text);
-                            } else {
-                              if (mygoal.text != "") {
-                                getUserId(
-                                  mygoal.text.toString(),
-                                );
-                                print('=====================>');
-                                print(mygoal.text.toString());
-                                final SharedPreferences prefs = await _prefs;
-
-                                // getUserId(
-                                //   mygoal.text.toString(),
-                                // );
-                                Navigator.push(
-                                  context,
-                                  FadePageRoute2(
-                                    true,
-                                    exitPage: GoalName(
-                                      widget.catId,
-                                      comingFromEditScreen: false,
-                                    ),
-                                    enterPage: GoalWhy(
-                                      comingFromEditScreen: false,
+                updated
+                    ? Container(
+                        width: AppDimensions.height10(context) * 38.259,
+                        height: AppDimensions.height10(context) * 9.707,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFFD4B7B9),
+                                  Color(0xFF91698C)
+                                ])),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.261),
+                              width: AppDimensions.height10(context) * 4.437,
+                              height: AppDimensions.height10(context) * 4.437,
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/circle_tick.webp'))),
+                            ),
+                            Container(
+                              //width: AppDimensions.height10(context) * 6.9,
+                              height: AppDimensions.height10(context) * 3.6,
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.232),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 4.6,
+                                    height:
+                                        AppDimensions.height10(context) * 1.4,
+                                    //   color: Colors.amber,
+                                    child: Text(
+                                      'Updates saved',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
                                     ),
                                   ),
-                                );
-                              } else {}
-                            }
-                          },
-                          child: Container(
-                            height: AppDimensions.height10(context) * 5,
-                            width: AppDimensions.height10(context) * 31.3,
-                            decoration: value.text.isNotEmpty
-                                ? BoxDecoration(
-                                    gradient: const LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Color(0xFFFCC10D),
-                                          Color(0xFFFDA210)
-                                        ]),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(50.0)),
-                                  )
-                                : BoxDecoration(
-                                    color: const Color(0xFF282828)
-                                        .withOpacity(0.5),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(50.0)),
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 16.9,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    child: Text(
+                                      'Goal Name',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
                                   ),
-                            child: Center(
-                              child: Text(
-                                widget.comingFromEditScreen ? "Update" : "Next",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                                ],
                               ),
                             ),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                setState(() {
+                                  updated = false;
+                                });
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 8.1,
+                                height: AppDimensions.height10(context) * 6.0,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 5,
+                                    right:
+                                        AppDimensions.height10(context) * 1.23),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: const Color(0xFFFFFFFF), width: 1),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Undo',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFFFFFFFF)),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              // color: Colors.blue,
+                              width: AppDimensions.height10(context) * 5.0,
+                              height: AppDimensions.height10(context) * 5.0,
+                              child: AnimatedScaleButton(
+                                onTap: () {
+                                  // signupSheet(context, "Sign up / login", "login");
+                                },
+                                child: Image.asset(
+                                  "assets/images/Moreactions.webp",
+                                  fit: BoxFit.contain,
+                                ),
+                              )),
+                          SizedBox(
+                            width: AppDimensions.height10(context) * 2.0,
                           ),
-                        );
-                      },
-                    ),
+                          ValueListenableBuilder<TextEditingValue>(
+                            valueListenable: mygoal,
+                            builder: (context, value, child) {
+                              return AnimatedScaleButton(
+                                onTap: () async {
+                                  if (widget.comingFromEditScreen) {
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    prefs.setString('goalName', mygoal.text);
+                                    AdminGoal()
+                                        .updateUserGoal('name', mygoal.text)
+                                        .then((value) {
+                                      if (value == true) {
+                                        setState(() {
+                                          updated = true;
+                                        });
+                                      }
+                                    });
+                                    // Navigator.pop(context, mygoal.text);
+                                  } else {
+                                    if (mygoal.text != "") {
+                                      getUserId(
+                                        mygoal.text.toString(),
+                                      );
+                                      print('=====================>');
+                                      print(mygoal.text.toString());
+                                      final SharedPreferences prefs =
+                                          await _prefs;
+
+                                      // getUserId(
+                                      //   mygoal.text.toString(),
+                                      // );
+                                      Navigator.push(
+                                        context,
+                                        FadePageRoute2(
+                                          true,
+                                          exitPage: GoalName(
+                                            route: widget.route,
+                                            widget.catId,
+                                            comingFromEditScreen: false,
+                                          ),
+                                          enterPage: const GoalWhy(
+                                            route: '',
+                                            comingFromEditScreen: false,
+                                          ),
+                                        ),
+                                      );
+                                    } else {}
+                                  }
+                                },
+                                child: Container(
+                                  height: AppDimensions.height10(context) * 5,
+                                  width: AppDimensions.height10(context) * 31.3,
+                                  decoration: value.text.isNotEmpty
+                                      ? const BoxDecoration(
+                                          gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Color(0xFFFCC10D),
+                                                Color(0xFFFDA210)
+                                              ]),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(50.0)),
+                                        )
+                                      : BoxDecoration(
+                                          color: const Color(0xFF282828)
+                                              .withOpacity(0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(50.0)),
+                                        ),
+                                  child: Center(
+                                    child: Text(
+                                      widget.comingFromEditScreen
+                                          ? "Update"
+                                          : "Next",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.6,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
 /*
                     AnimatedScaleButton(
                       onTap: () async {
@@ -775,8 +917,8 @@ class _GoalNameState extends State<GoalName> {
                       ),
                     ),
                 */
-                  ],
-                ),
+                        ],
+                      ),
                 SizedBox(
                   height: AppDimensions.height10(context) * 1.0,
                 ),
@@ -784,6 +926,110 @@ class _GoalNameState extends State<GoalName> {
                     padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class updateBox extends StatefulWidget {
+  final onTap;
+  final String text;
+  const updateBox({super.key, required this.onTap, required this.text});
+
+  @override
+  State<updateBox> createState() => _updateBoxState();
+}
+
+class _updateBoxState extends State<updateBox> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: AppDimensions.height10(context) * 38.259,
+      height: AppDimensions.height10(context) * 9.707,
+      decoration: BoxDecoration(
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 2.0),
+          gradient: const LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            margin:
+                EdgeInsets.only(left: AppDimensions.height10(context) * 1.261),
+            width: AppDimensions.height10(context) * 4.437,
+            height: AppDimensions.height10(context) * 4.437,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/circle_tick.webp'))),
+          ),
+          Container(
+            //width: AppDimensions.height10(context) * 6.9,
+            height: AppDimensions.height10(context) * 3.6,
+            margin:
+                EdgeInsets.only(left: AppDimensions.height10(context) * 1.232),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: AppDimensions.height10(context) * 4.6,
+                  height: AppDimensions.height10(context) * 1.4,
+                  //   color: Colors.amber,
+                  child: Text(
+                    'Updates saved',
+                    style: TextStyle(
+                        fontSize: AppDimensions.height10(context) * 1.3,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xFFFFFFFF)),
+                  ),
+                ),
+                SizedBox(
+                  width: AppDimensions.height10(context) * 16.9,
+                  height: AppDimensions.height10(context) * 2.2,
+                  child: Text(
+                    widget.text,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xFFFFFFFF)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          AnimatedScaleButton(
+            onTap: () {
+              OnTap() {
+                setState(() {});
+              }
+            },
+            child: Container(
+              width: AppDimensions.height10(context) * 8.1,
+              height: AppDimensions.height10(context) * 6.0,
+              margin: EdgeInsets.only(
+                  left: AppDimensions.height10(context) * 5,
+                  right: AppDimensions.height10(context) * 1.23),
+              decoration: BoxDecoration(
+                border: Border.all(color: const Color(0xFFFFFFFF), width: 1),
+                borderRadius: BorderRadius.circular(
+                    AppDimensions.height10(context) * 2.0),
+              ),
+              child: Center(
+                child: Text(
+                  'View',
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10(context) * 1.8,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xFFFFFFFF)),
+                ),
+              ),
             ),
           )
         ],

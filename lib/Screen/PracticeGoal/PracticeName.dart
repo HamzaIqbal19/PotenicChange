@@ -1,7 +1,9 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
@@ -39,6 +41,7 @@ class _PracticeNameState extends State<PracticeName> {
   var practiceName = TextEditingController();
   var practice = TextEditingController();
   var color;
+  bool updated = false;
   String route = '';
 
   @override
@@ -98,7 +101,17 @@ class _PracticeNameState extends State<PracticeName> {
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
-                  Navigator.pop(context);
+                  widget.comingFromEditScreen
+                      ? updated == false
+                          ? showAnimatedDialog(
+                              animationType: DialogTransitionType.fadeScale,
+                              curve: Curves.easeInOut,
+                              duration: const Duration(seconds: 1),
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  const pop_up_practices())
+                          : Navigator.pop(context)
+                      : Navigator.pop(context);
                   // Navigator.pushReplacement(
                   //   context,
                   //   MaterialPageRoute(
@@ -112,42 +125,164 @@ class _PracticeNameState extends State<PracticeName> {
             actions: [
               Center(
                 // alignment: Alignment.center,
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 3.0,
-                    height: AppDimensions.height10(context) * 3.0,
-                    fit: BoxFit.contain,
-                  ),
-                  onPressed: () async {
-                    if (route == 'view_all_goals') {
-                      Navigator.pushReplacement(context,
-                          FadePageRoute(page: const veiw_all_goals_menu()));
-                    } else if (route == 'view_all_goals_2') {
-                      Navigator.pushReplacement(context,
-                          FadePageRoute(page: const multiple_goal_inactive()));
-                    } else {
-                      Navigator.pushReplacement(
-                        context,
-                        FadePageRoute(
-                          page: const HomeScreen(
-                            login: true,
-                          ),
+                child: widget.comingFromEditScreen
+                    ? Container()
+                    : IconButton(
+                        icon: Image.asset(
+                          'assets/images/Close.webp',
+                          width: AppDimensions.height10(context) * 3.0,
+                          height: AppDimensions.height10(context) * 3.0,
+                          fit: BoxFit.contain,
                         ),
-                      );
-                    }
-                    final SharedPreferences prefs = await _prefs;
+                        onPressed: () async {
+                          if (widget.comingFromEditScreen == true) {
+                            Navigator.pop(context);
+                          } else {
+                            showAnimatedDialog(
+                              animationType: DialogTransitionType.fadeScale,
+                              curve: Curves.easeInOut,
+                              duration: const Duration(seconds: 1),
+                              context: context,
+                              builder: (BuildContext context) => Container(
+                                width: AppDimensions.height10(context) * 27.0,
+                                height: AppDimensions.height10(context) * 18.2,
+                                child: AlertDialog(
+                                  contentPadding: EdgeInsets.zero,
+                                  actionsPadding: EdgeInsets.zero,
+                                  titlePadding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              1.4)),
+                                  title: Container(
+                                    margin: const EdgeInsets.only(
+                                        top: 19,
+                                        right: 16,
+                                        left: 16,
+                                        bottom: 2),
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    width:
+                                        AppDimensions.height10(context) * 23.8,
+                                    child: Text(
+                                      "Are you sure?",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: const Color(0xFF000000),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.7,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  content: Container(
+                                    margin: EdgeInsets.only(
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.9,
+                                        left: AppDimensions.height10(context) *
+                                            1.6,
+                                        right: AppDimensions.height10(context) *
+                                            1.6),
+                                    height:
+                                        AppDimensions.height10(context) * 3.2,
+                                    width:
+                                        AppDimensions.height10(context) * 23.8,
+                                    child: Text(
+                                      "If you close it now, you will lose all your progress.",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.15,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    Column(
+                                      children: [
+                                        Container(
+                                          height: 42,
+                                          width: double.infinity,
+                                          color: const Color(0xFF007AFF),
+                                          child: TextButton(
+                                            onPressed: () async {
+                                              if (route == 'view_all_goals') {
+                                                Navigator.pushReplacement(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const veiw_all_goals_menu()));
+                                              } else if (route ==
+                                                  'view_all_goals_2') {
+                                                Navigator.pushReplacement(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const multiple_goal_inactive()));
+                                              } else {
+                                                Navigator.pushReplacement(
+                                                  context,
+                                                  FadePageRoute(
+                                                    page: const HomeScreen(
+                                                      login: true,
+                                                    ),
+                                                  ),
+                                                );
 
-                    await prefs.remove('route');
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => HomeScreen(),
-                    //   ),
-                    // );
-                    // Add code for performing close action
-                  },
-                ),
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+
+                                                await prefs.remove('route');
+                                              }
+                                            },
+                                            child: const Text(
+                                              'Close',
+                                              style: TextStyle(
+                                                  color: Color(0xFFFFFFFF),
+                                                  fontSize: 17,
+                                                  fontFamily: "Laila",
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 44,
+                                          width: double.infinity,
+                                          child: TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text(
+                                              'Cancel',
+                                              style: TextStyle(
+                                                  fontSize: 17,
+                                                  fontFamily: "Laila",
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Color(0xFF007AFF)),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }
+
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => HomeScreen(),
+                          //   ),
+                          // );
+                          // Add code for performing close action
+                        },
+                      ),
               ),
             ],
           )),
@@ -157,15 +292,15 @@ class _PracticeNameState extends State<PracticeName> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: widget.comingFromEditScreen
-                    ? AssetImage("assets/images/GoalReviewBg.webp")
-                    : AssetImage("assets/images/Categories.webp"),
+                    ? const AssetImage("assets/images/GoalReviewBg.webp")
+                    : const AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           SingleChildScrollView(
             reverse: true,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -179,7 +314,7 @@ class _PracticeNameState extends State<PracticeName> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontSize: AppDimensions.height10(context) * 1.8,
                       ),
@@ -198,7 +333,7 @@ class _PracticeNameState extends State<PracticeName> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ),
@@ -276,8 +411,8 @@ class _PracticeNameState extends State<PracticeName> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: widget.comingFromEditScreen
-                                      ? Color(0xff437296)
-                                      : Color(0xFF156F6D),
+                                      ? const Color(0xff437296)
+                                      : const Color(0xFF156F6D),
                                   fontSize:
                                       AppDimensions.height10(context) * 2.0,
                                 ),
@@ -288,7 +423,7 @@ class _PracticeNameState extends State<PracticeName> {
                                 ),
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF156F6D),
+                                  color: const Color(0xFF156F6D),
                                   fontSize:
                                       AppDimensions.height10(context) * 2.0,
                                 ),
@@ -306,7 +441,7 @@ class _PracticeNameState extends State<PracticeName> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.8,
                       ),
@@ -327,8 +462,8 @@ class _PracticeNameState extends State<PracticeName> {
                           fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
                           color: widget.comingFromEditScreen
-                              ? Color(0xff437296)
-                              : Color(0xFFFFFFFF)),
+                              ? const Color(0xff437296)
+                              : const Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
@@ -359,7 +494,7 @@ class _PracticeNameState extends State<PracticeName> {
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFFFA9934)),
                       decoration: InputDecoration(
-                          counterStyle: TextStyle(
+                          counterStyle: const TextStyle(
                             height: double.minPositive,
                           ),
                           contentPadding: EdgeInsets.zero,
@@ -437,123 +572,261 @@ class _PracticeNameState extends State<PracticeName> {
                     : SizedBox(
                         height: AppDimensions.height10(context) * 11.2,
                       ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // widget.comingFromEditScreen
-                    //       ? Container(
-                    //           width: AppDimensions.height10(context) * 10.0,
-                    //           height: AppDimensions.height10(context) * 5.0,
-                    //           decoration: myTextFields[0]['text'] != ""
-                    //               ? BoxDecoration(
-                    //                   color: Colors.white,
-                    //                   border:
-                    //                       Border.all(color: Color(0xffFA9934)),
-                    //                   borderRadius: const BorderRadius.all(
-                    //                       Radius.circular(50.0)),
-                    //                 )
-                    //               : BoxDecoration(
-                    //                   // color: Color(0xFFFF7D50),
-                    //                   border: Border.all(
-                    //                       color: const Color(0xff282828)),
-                    //                   color: Colors.transparent,
-                    //                   borderRadius: const BorderRadius.all(
-                    //                       Radius.circular(50.0)),
-                    //                 ),
-                    //           child: AnimatedScaleButton(
-                    //             onTap: () {
-                    //               //   signupSheet(context, "Sign up / login", "login");
-                    //             },
-                    //             child: Center(
-                    //                 child: Text(
-                    //               "Reset",
-                    //               style: TextStyle(
-                    //                   fontFamily: "Laila",
-                    //                   fontWeight: FontWeight.w600,
-                    //                   color: myTextFields[0]['text'] != ""
-                    //                       ? Color(0xffFA9934)
-                    //                       : Color(0xff282828),
-                    //                   fontSize:
-                    //                       AppDimensions.height10(context) * 1.8),
-                    //             )),
-                    //           ))
-                    //       :
-
-                    Container(
-                        // color: Colors.blue,
-                        width: AppDimensions.height10(context) * 5.0,
-                        height: AppDimensions.height10(context) * 5.0,
-                        child: Image.asset(
-                          "assets/images/Moreactions.webp",
-                          fit: BoxFit.contain,
-                        )),
-                    SizedBox(
-                      width: AppDimensions.height10(context) * 2.0,
-                    ),
-
-                    AnimatedScaleButton(
-                      onTap: () async {
-                        print("updating the practice $practiceName");
-                        if (widget.comingFromEditScreen) {
-                          final SharedPreferences prefs = await _prefs;
-                          var goal_Name = prefs.setString(
-                              'pracName', practiceName.text.toString());
-                          PracticeGoalApi()
-                              .updateUserPractice('name', practiceName.text)
-                              .then((value) {
-                            if (value == true) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) => PracticeReview(),
-                                  ));
-                            }
-                          });
-                        } else {
-                          if (practiceName.text != '') {
-                            final SharedPreferences prefs = await _prefs;
-                            var goal_Name = prefs.setString(
-                                'pracName', practiceName.text.toString());
-                            Navigator.push(
-                              context,
-                              FadePageRoute2(
-                                true,
-                                exitPage: PracticeName(
-                                  comingFromEditScreen: false,
-                                ),
-                                enterPage: PracticeRoutine(),
-                              ),
-                            );
-                          }
-                        }
-                      },
-                      child: Container(
-                        height: AppDimensions.height10(context) * 5,
-                        width: AppDimensions.height10(context) * 31.3,
+                updated
+                    ? Container(
+                        width: AppDimensions.height10(context) * 38.259,
+                        height: AppDimensions.height10(context) * 9.707,
                         decoration: BoxDecoration(
-                          // color: Color(0xFFFF7D50),
-                          border: Border.all(color: Colors.transparent),
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(50.0)),
-                        ),
-                        child: Center(
-                          child: Text(
-                            widget.comingFromEditScreen ? "Save" : "Next",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.6,
-                              fontWeight: FontWeight.w600,
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFFD4B7B9),
+                                  Color(0xFF91698C)
+                                ])),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.261),
+                              width: AppDimensions.height10(context) * 4.437,
+                              height: AppDimensions.height10(context) * 4.437,
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/circle_tick.webp'))),
                             ),
-                          ),
+                            Container(
+                              //width: AppDimensions.height10(context) * 6.9,
+                              height: AppDimensions.height10(context) * 3.6,
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.232),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 4.6,
+                                    height:
+                                        AppDimensions.height10(context) * 1.4,
+                                    //   color: Colors.amber,
+                                    child: Text(
+                                      'Updates saved',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 16.9,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    child: Text(
+                                      'Practice Name',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                setState(() {
+                                  updated = false;
+                                });
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 8.1,
+                                height: AppDimensions.height10(context) * 6.0,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 5,
+                                    right:
+                                        AppDimensions.height10(context) * 1.23),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: const Color(0xFFFFFFFF), width: 1),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Undo',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFFFFFFFF)),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // widget.comingFromEditScreen
+                          //       ? Container(
+                          //           width: AppDimensions.height10(context) * 10.0,
+                          //           height: AppDimensions.height10(context) * 5.0,
+                          //           decoration: myTextFields[0]['text'] != ""
+                          //               ? BoxDecoration(
+                          //                   color: Colors.white,
+                          //                   border:
+                          //                       Border.all(color: Color(0xffFA9934)),
+                          //                   borderRadius: const BorderRadius.all(
+                          //                       Radius.circular(50.0)),
+                          //                 )
+                          //               : BoxDecoration(
+                          //                   // color: Color(0xFFFF7D50),
+                          //                   border: Border.all(
+                          //                       color: const Color(0xff282828)),
+                          //                   color: Colors.transparent,
+                          //                   borderRadius: const BorderRadius.all(
+                          //                       Radius.circular(50.0)),
+                          //                 ),
+                          //           child: AnimatedScaleButton(
+                          //             onTap: () {
+                          //               //   signupSheet(context, "Sign up / login", "login");
+                          //             },
+                          //             child: Center(
+                          //                 child: Text(
+                          //               "Reset",
+                          //               style: TextStyle(
+                          //                   fontFamily: "Laila",
+                          //                   fontWeight: FontWeight.w600,
+                          //                   color: myTextFields[0]['text'] != ""
+                          //                       ? Color(0xffFA9934)
+                          //                       : Color(0xff282828),
+                          //                   fontSize:
+                          //                       AppDimensions.height10(context) * 1.8),
+                          //             )),
+                          //           ))
+                          //       :
+
+                          Container(
+                              // color: Colors.blue,
+                              width: AppDimensions.height10(context) * 5.0,
+                              height: AppDimensions.height10(context) * 5.0,
+                              child: Image.asset(
+                                "assets/images/Moreactions.webp",
+                                fit: BoxFit.contain,
+                              )),
+                          SizedBox(
+                            width: AppDimensions.height10(context) * 2.0,
+                          ),
+
+                          ValueListenableBuilder<TextEditingValue>(
+                              valueListenable: practiceName,
+                              builder: (context, value, child) {
+                                return AnimatedScaleButton(
+                                  onTap: () async {
+                                    print(
+                                        "updating the practice $practiceName");
+                                    if (practiceName.text.isNotEmpty) {
+                                      if (widget.comingFromEditScreen) {
+                                        final SharedPreferences prefs =
+                                            await _prefs;
+                                        var goal_Name = prefs.setString(
+                                            'pracName',
+                                            practiceName.text.toString());
+                                        PracticeGoalApi()
+                                            .updateUserPractice(
+                                                'name', practiceName.text)
+                                            .then((value) {
+                                          if (value == true) {
+                                            setState(() {
+                                              updated = true;
+                                            });
+                                          }
+                                        });
+                                      } else {
+                                        if (practiceName.text != '') {
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+                                          var goal_Name = prefs.setString(
+                                              'pracName',
+                                              practiceName.text.toString());
+                                          Navigator.push(
+                                            context,
+                                            FadePageRoute2(
+                                              true,
+                                              exitPage: const PracticeName(
+                                                comingFromEditScreen: false,
+                                              ),
+                                              enterPage:
+                                                  const PracticeRoutine(),
+                                            ),
+                                          );
+                                        }
+                                      }
+                                    }
+                                  },
+                                  child: Container(
+                                    height: AppDimensions.height10(context) * 5,
+                                    width:
+                                        AppDimensions.height10(context) * 31.3,
+                                    decoration: BoxDecoration(
+                                      // color: Color(0xFFFF7D50),
+                                      border:
+                                          Border.all(color: Colors.transparent),
+                                      gradient: practiceName.text.isNotEmpty
+                                          ? const LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                  Color(0xFFFCC10D),
+                                                  Color(0xFFFDA210)
+                                                ])
+                                          : LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                  const Color(0xFFFCC10D)
+                                                      .withOpacity(0.5),
+                                                  const Color(0xFFFDA210)
+                                                      .withOpacity(0.5)
+                                                ]),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(50.0)),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        widget.comingFromEditScreen
+                                            ? "Save"
+                                            : "Next",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
                 SizedBox(
                   height: AppDimensions.height10(context) * 2.5,
                 ),
@@ -563,6 +836,100 @@ class _PracticeNameState extends State<PracticeName> {
               ],
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class pop_up_practices extends StatelessWidget {
+  const pop_up_practices({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: AppDimensions.height10(context) * 27.0,
+      height: AppDimensions.height10(context) * 18.2,
+      child: AlertDialog(
+        contentPadding: EdgeInsets.zero,
+        actionsPadding: EdgeInsets.zero,
+        titlePadding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+            borderRadius:
+                BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
+        title: Container(
+          margin:
+              const EdgeInsets.only(top: 19, right: 16, left: 16, bottom: 2),
+          height: AppDimensions.height10(context) * 2.2,
+          width: AppDimensions.height10(context) * 23.8,
+          child: Text(
+            "Exit?",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: const Color(0xFF000000),
+              fontSize: AppDimensions.height10(context) * 1.7,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+        content: Container(
+          margin: EdgeInsets.only(
+              bottom: AppDimensions.height10(context) * 1.9,
+              left: AppDimensions.height10(context) * 1.6,
+              right: AppDimensions.height10(context) * 1.6),
+          height: AppDimensions.height10(context) * 3.2,
+          width: AppDimensions.height10(context) * 23.8,
+          child: Text(
+            "Your new updates have not been saved.\nIf you exit now, your new updates will\nbe cancelled.",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              height: AppDimensions.height10(context) * 0.15,
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+        actions: <Widget>[
+          Column(
+            children: [
+              Container(
+                height: 42,
+                width: double.infinity,
+                color: const Color(0xFF007AFF),
+                child: TextButton(
+                  onPressed: () async {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    'Go back',
+                    style: TextStyle(
+                        color: Color(0xFFFFFFFF),
+                        fontSize: 17,
+                        fontFamily: "Laila",
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+              ),
+              Container(
+                height: 44,
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context, FadePageRoute(page: const PracticeReview()));
+                  },
+                  child: const Text(
+                    'Yes, cancel and exit',
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontFamily: "Laila",
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF007AFF)),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

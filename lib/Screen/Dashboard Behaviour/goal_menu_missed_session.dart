@@ -469,9 +469,12 @@ class _missed_MenuState extends State<missed_Menu> {
                           bottom: AppDimensions.height10(context) * 1.0,
                           top: AppDimensions.height10(context) * 1.0),
                       child: AnimatedScaleButton(
-                        onTap: () {
+                        onTap: () async {
                           Navigator.push(context,
                               FadePageRoute(page: const PracticeReview()));
+                          final SharedPreferences prefs = await _prefs;
+                          var pracName = prefs.setString(
+                              'practice_review', 'practice_missed');
                         },
                         child: const button_feilds(
                           feild_text: 'View practice settings',

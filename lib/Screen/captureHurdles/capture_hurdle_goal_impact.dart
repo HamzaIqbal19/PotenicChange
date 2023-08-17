@@ -6,9 +6,12 @@ import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/GoalModel.dart';
+import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -22,7 +25,8 @@ import '../../utils/app_dimensions.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class hurdles_goal_impact extends StatefulWidget {
-  const hurdles_goal_impact({super.key});
+  final bool summary;
+  const hurdles_goal_impact({super.key, required this.summary});
 
   @override
   State<hurdles_goal_impact> createState() => _hurdles_goal_impactState();
@@ -32,8 +36,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
   var goals = [];
   int selectBox = -1;
   int selectinActive = -1;
-  List<int> selectedIndices = [];
-  List<int> selectedInActiveIndices = [];
+  var hurdlesSummary;
   bool selectAll = false;
   List<Map<String, dynamic>> Active = [];
   List<Map<String, dynamic>> inActive = [];
@@ -41,6 +44,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
   List multiGoals = [];
   List allgoalsSelected = [];
   bool Loading = true;
+  List<int> selectedIndices = [];
+  List<int> selectedInActiveIndices = [];
 
   Future<void> saveGoalsToSharedPreferences(List goals) async {
     final SharedPreferences prefs = await _prefs;
@@ -65,8 +70,62 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
       setState(() {
         goals = response;
       });
+      if (widget.summary == true) {
+        _fetchHurdleSummary();
+      }
       loadData();
       _newFunction();
+    });
+  }
+
+  void _fetchHurdleSummary() async {
+    Hurdles().getHurdleById().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          hurdlesSummary = response['hurdle']['userGoalId'];
+        });
+        _sort();
+        loadData();
+        return response;
+      } else {
+        return response.statusCode;
+      }
+    }).catchError((error) {
+      print("error");
+    });
+  }
+
+  _sort() {
+    print('2nd Function Called');
+    for (int i = 0; i <= goals.length; i++) {
+      if (goals[i]['isActive'] == true) {
+        print('====Active===');
+        if (hurdlesSummary.contains(goals[i]['id'])) {
+          selectedIndices.add(Active.indexOf(goals[i]));
+        }
+      } else {
+        print('====Inactive===');
+        if (hurdlesSummary.contains(goals[i]['id'])) {
+          selectedInActiveIndices.add(inActive.indexOf(goals[i]));
+        }
+      }
+    }
+  }
+
+  void checkHurdle() async {
+    Hurdles().checkUserHurdles().then((response) {
+      if (response == true) {
+        Navigator.push(
+          context,
+          FadePageRoute(page: const landing_hurdles()),
+        );
+
+        return response;
+      } else if (response == false) {
+        Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
+      }
+    }).catchError((error) {
+      print("Hello world error");
     });
   }
 
@@ -86,6 +145,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
   @override
   void initState() {
     super.initState();
+
     _fetchUserGoal();
   }
 
@@ -139,155 +199,163 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
             Center(
               child: IconButton(
                   onPressed: () {
-                    showAnimatedDialog(
-                        animationType: DialogTransitionType.fadeScale,
-                        curve: Curves.easeInOut,
-                        duration: Duration(seconds: 1),
-                        context: context,
-                        builder: (BuildContext context) => SizedBox(
-                              width: AppDimensions.height10(context) * 27.0,
-                              height: AppDimensions.height10(context) * 24.0,
-                              child: AlertDialog(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        AppDimensions.height10(context) * 1.4)),
-                                contentPadding: EdgeInsets.zero,
-                                actionsPadding: EdgeInsets.zero,
-                                titlePadding: EdgeInsets.zero,
-                                title: Container(
-                                  margin: const EdgeInsets.only(
-                                      top: 19, right: 16, left: 16, bottom: 2),
-                                  height: AppDimensions.height10(context) * 2.2,
-                                  width: AppDimensions.height10(context) * 23.8,
-                                  child: const Text(
-                                    "Exit hurdle?",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w400,
+                    widget.summary
+                        ? Navigator.pop(context)
+                        : showAnimatedDialog(
+                            animationType: DialogTransitionType.fadeScale,
+                            curve: Curves.easeInOut,
+                            duration: const Duration(seconds: 1),
+                            context: context,
+                            builder: (BuildContext context) => SizedBox(
+                                  width: AppDimensions.height10(context) * 27.0,
+                                  height:
+                                      AppDimensions.height10(context) * 24.0,
+                                  child: AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10(context) *
+                                                1.4)),
+                                    contentPadding: EdgeInsets.zero,
+                                    actionsPadding: EdgeInsets.zero,
+                                    titlePadding: EdgeInsets.zero,
+                                    title: Container(
+                                      margin: const EdgeInsets.only(
+                                          top: 19,
+                                          right: 16,
+                                          left: 16,
+                                          bottom: 2),
+                                      height:
+                                          AppDimensions.height10(context) * 2.2,
+                                      width: AppDimensions.height10(context) *
+                                          23.8,
+                                      child: const Text(
+                                        "Exit hurdle?",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                content: Container(
-                                  margin: const EdgeInsets.only(
-                                      bottom: 19, left: 16, right: 16),
-                                  height: AppDimensions.height10(context) * 1.6,
-                                  width: 238,
-                                  child: const Text(
-                                    "Please select from the options below",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400,
+                                    content: Container(
+                                      margin: const EdgeInsets.only(
+                                          bottom: 19, left: 16, right: 16),
+                                      height:
+                                          AppDimensions.height10(context) * 1.6,
+                                      width: 238,
+                                      child: const Text(
+                                        "Please select from the options below",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                actions: <Widget>[
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.1,
-                                        child: Divider(
-                                          color: const Color(0XFF3C3C43)
-                                              .withOpacity(0.29),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 42,
-                                        width: double.infinity,
-                                        color: Colors.white,
-                                        child: TextButton(
-                                          onPressed: () async {
-                                            final SharedPreferences prefs =
-                                                await _prefs;
-                                            var hurdleRoute = prefs.setString(
-                                                'HurdleRoute', 'Impact');
-                                            Navigator.push(
-                                                context,
-                                                FadePageRoute(
-                                                    page: hurdles_splash()));
-                                          },
-                                          child: const Text(
-                                            'Exit & save progress',
-                                            style: TextStyle(
-                                                color: Color(0xFF007AFF),
-                                                fontSize: 17,
-                                                fontFamily: "Laila",
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.1,
-                                        child: Divider(
-                                          color: const Color(0XFF3C3C43)
-                                              .withOpacity(0.29),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 44,
-                                        width: double.infinity,
-                                        child: TextButton(
-                                          onPressed: () async {
-                                            final SharedPreferences prefs =
-                                                await _prefs;
-                                            var hurdleRoute =
-                                                prefs.remove('HurdleRoute');
-                                            Navigator.push(
-                                                context,
-                                                FadePageRoute(
-                                                    page: hurdles_splash()));
-                                          },
-                                          child: const Text(
-                                            'Exit & delete progress',
-                                            style: TextStyle(
-                                                fontSize: 17,
-                                                fontFamily: "Laila",
-                                                fontWeight: FontWeight.w400,
-                                                color: Color(0xFF007AFF)),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.1,
-                                        child: Divider(
-                                          color: const Color(0XFF3C3C43)
-                                              .withOpacity(0.29),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 42,
-                                        width: double.infinity,
-                                        margin: EdgeInsets.only(
-                                            bottom: AppDimensions.height10(
+                                    actions: <Widget>[
+                                      Column(
+                                        children: [
+                                          SizedBox(
+                                            height: AppDimensions.height10(
                                                     context) *
-                                                1.0),
-                                        color: Colors.white,
-                                        child: TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text(
-                                            'Cancel exit',
-                                            style: TextStyle(
-                                                color: Color(0xFF007AFF),
-                                                fontSize: 17,
-                                                fontFamily: "Laila",
-                                                fontWeight: FontWeight.w400),
+                                                0.1,
+                                            child: Divider(
+                                              color: const Color(0XFF3C3C43)
+                                                  .withOpacity(0.29),
+                                            ),
                                           ),
-                                        ),
+                                          Container(
+                                            height: 42,
+                                            width: double.infinity,
+                                            color: Colors.white,
+                                            child: TextButton(
+                                              onPressed: () async {
+                                                checkHurdle();
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                var hurdleRoute =
+                                                    prefs.setString(
+                                                        'HurdleRoute',
+                                                        'Impact');
+                                              },
+                                              child: const Text(
+                                                'Exit & save progress',
+                                                style: TextStyle(
+                                                    color: Color(0xFF007AFF),
+                                                    fontSize: 17,
+                                                    fontFamily: "Laila",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.1,
+                                            child: Divider(
+                                              color: const Color(0XFF3C3C43)
+                                                  .withOpacity(0.29),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 44,
+                                            width: double.infinity,
+                                            child: TextButton(
+                                              onPressed: () async {
+                                                checkHurdle();
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                var hurdleRoute =
+                                                    prefs.remove('HurdleRoute');
+                                              },
+                                              child: const Text(
+                                                'Exit & delete progress',
+                                                style: TextStyle(
+                                                    fontSize: 17,
+                                                    fontFamily: "Laila",
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Color(0xFF007AFF)),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.1,
+                                            child: Divider(
+                                              color: const Color(0XFF3C3C43)
+                                                  .withOpacity(0.29),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 42,
+                                            width: double.infinity,
+                                            margin: EdgeInsets.only(
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    1.0),
+                                            color: Colors.white,
+                                            child: TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text(
+                                                'Cancel exit',
+                                                style: TextStyle(
+                                                    color: Color(0xFF007AFF),
+                                                    fontSize: 17,
+                                                    fontFamily: "Laila",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
-                            ));
+                                ));
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
@@ -457,24 +525,22 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 itemBuilder: ((context, index) {
                                   return AnimatedScaleButton(
                                     onTap: () {
-                                      setState(() {
-                                        if (selectedIndices.contains(index)) {
-                                          multiGoals
-                                              .remove(Active[index]['id']);
-                                          selectedIndices.remove(index);
-                                        } else {
-                                          selectedIndices.add(index);
-                                          multiGoals.add(Active[index]['id']);
-                                        }
-                                      });
-                                      setState(() {
-                                        selectAll = false;
-                                        //selectinActive = index;
-                                        // selectBox = -1;
-                                        // selectedGoals
-                                        //     .add(Active[index]['goalId']);
-                                      });
-                                      print(selectedGoals);
+                                      if (widget.summary == true) {
+                                      } else {
+                                        setState(() {
+                                          if (selectedIndices.contains(index)) {
+                                            multiGoals
+                                                .remove(Active[index]['id']);
+                                            selectedIndices.remove(index);
+                                          } else {
+                                            selectedIndices.add(index);
+                                            multiGoals.add(Active[index]['id']);
+                                          }
+                                        });
+                                        setState(() {
+                                          selectAll = false;
+                                        });
+                                      }
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
@@ -600,25 +666,25 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 itemBuilder: ((context, index) {
                                   return AnimatedScaleButton(
                                     onTap: () {
-                                      setState(() {
-                                        if (selectedInActiveIndices
-                                            .contains(index)) {
-                                          multiGoals
-                                              .remove(inActive[index]['id']);
-                                          selectedInActiveIndices.remove(index);
-                                        } else {
-                                          multiGoals.add(inActive[index]['id']);
-                                          selectedInActiveIndices.add(index);
-                                        }
-                                      });
-                                      setState(() {
-                                        //selectBox = index;
-                                        // selectinActive = -1;
-                                        selectAll = false;
-                                        // selectedGoals
-                                        //     .add(inActive[index]['goalId']);
-                                      });
-                                      print(selectedGoals);
+                                      if (widget.summary == true) {
+                                      } else {
+                                        setState(() {
+                                          if (selectedInActiveIndices
+                                              .contains(index)) {
+                                            multiGoals
+                                                .remove(inActive[index]['id']);
+                                            selectedInActiveIndices
+                                                .remove(index);
+                                          } else {
+                                            multiGoals
+                                                .add(inActive[index]['id']);
+                                            selectedInActiveIndices.add(index);
+                                          }
+                                        });
+                                        setState(() {
+                                          selectAll = false;
+                                        });
+                                      }
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
@@ -711,26 +777,30 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                 ),
                 AnimatedScaleButton(
                   onTap: () {
-                    if (selectAll == true || multiGoals.length != 0) {
-                      if (selectAll == true) {
-                        saveGoalsToSharedPreferences(allgoalsSelected);
-                        Navigator.push(
-                          context,
-                          FadePageRoute(
-                              page: const select_hurdle(
-                            update: false,
-                          )),
-                        );
-                      } else {
-                        saveGoalsToSharedPreferences(multiGoals);
-                        print(multiGoals);
-                        Navigator.push(
-                          context,
-                          FadePageRoute(
-                              page: const select_hurdle(
-                            update: false,
-                          )),
-                        );
+                    if (widget.summary == true) {
+                      Navigator.pop(context);
+                    } else {
+                      if (selectAll == true || multiGoals.length != 0) {
+                        if (selectAll == true) {
+                          saveGoalsToSharedPreferences(allgoalsSelected);
+                          Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const select_hurdle(
+                              update: false,
+                            )),
+                          );
+                        } else {
+                          saveGoalsToSharedPreferences(multiGoals);
+                          print(multiGoals);
+                          Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const select_hurdle(
+                              update: false,
+                            )),
+                          );
+                        }
                       }
                     }
                   },
@@ -745,12 +815,16 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                          selectAll == true || multiGoals.length != 0
-                              ? Color(0xffFCC10D)
-                              : Color(0xffFCC10D).withOpacity(0.5),
-                          selectAll == true || multiGoals.length != 0
-                              ? Color(0xffFDA210)
-                              : Color(0xffFDA210).withOpacity(0.5),
+                          selectAll == true ||
+                                  multiGoals.length != 0 ||
+                                  widget.summary
+                              ? const Color(0xffFCC10D)
+                              : const Color(0xffFCC10D).withOpacity(0.5),
+                          selectAll == true ||
+                                  multiGoals.length != 0 ||
+                                  widget.summary
+                              ? const Color(0xffFDA210)
+                              : const Color(0xffFDA210).withOpacity(0.5),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(

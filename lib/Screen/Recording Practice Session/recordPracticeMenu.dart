@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
@@ -11,10 +14,13 @@ import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
 import '../Goal Evaluation/practice_score.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class practiceMenu extends StatefulWidget {
   final bool goal_eval;
@@ -38,6 +44,7 @@ class _practiceMenuState extends State<practiceMenu> {
   String goalName = "";
   String identity = "";
   String pracName = "";
+  var pracDetails;
   bool Loader = true;
   var pracColor;
   var color;
@@ -82,12 +89,14 @@ class _practiceMenuState extends State<practiceMenu> {
         print(
             "---------------------------------PRACTICE RESPONSE===>$response");
         setState(() {
+          pracDetails = response;
           pracName =
               response["name"] == null ? widget.pracName : response["name"];
 
           pracColor =
               response["color"] == null ? widget.pracColor : response["color"];
         });
+        loadData();
         print(pracName + pracColor);
         AdminGoal.getUserGoalById(response['userGoalId']).then(
           (value) {
@@ -111,6 +120,16 @@ class _practiceMenuState extends State<practiceMenu> {
     }).catchError((error) {
       // loadData();
       print("hell");
+    });
+  }
+
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loader = false;
     });
   }
 
@@ -166,473 +185,555 @@ class _practiceMenuState extends State<practiceMenu> {
           width: double.infinity,
           height: double.infinity,
           child: Stack(children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: [
-                  Container(
-                    width: AppDimensions.height10(context) * 30.4,
-                    height: AppDimensions.height10(context) * 18.2,
-                    margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 5.2,
-                    ),
+            Loader == false
+                ? SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
                     child: Column(
                       children: [
                         Container(
-                          height: AppDimensions.height10(context) * 2.4,
-                          child: Text(
-                            'Practice Menu',
-                            style: TextStyle(
-                                color: Colors.white,
-                                height: AppDimensions.height10(context) * 0.12,
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                        Container(
-                          width: AppDimensions.height10(context) * 30,
-                          child: Center(
-                            child: Text(
-                              widget.goalName,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  height:
-                                      AppDimensions.height10(context) * 0.12,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          //width: AppDimensions.height10(context) * 2.0,
-                          height: AppDimensions.height10(context) * 9.3,
-                          // color: Colors.amber,
+                          width: AppDimensions.height10(context) * 30.4,
+                          height: AppDimensions.height10(context) * 18.2,
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 0.6),
-                          // color: Colors.blue,
-                          child: Stack(
+                            top: AppDimensions.height10(context) * 5.2,
+                          ),
+                          child: Column(
                             children: [
-                              Align(
-                                alignment: const Alignment(-0.55, -0.3),
-                                child: Container(
-                                  width: AppDimensions.height10(context) * 6.56,
-                                  height:
-                                      AppDimensions.height10(context) * 6.56,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    // color: Colors.amber,
-                                    image: DecorationImage(
-                                        image: AssetImage(widget.color == '1'
-                                            ? "assets/images/red_gradient.webp"
-                                            : widget.color == '2'
-                                                ? 'assets/images/orange_moon.webp'
-                                                : widget.color == '3'
-                                                    ? "assets/images/lightGrey_gradient.webp"
-                                                    : widget.color == '4'
-                                                        ? "assets/images/lightBlue_gradient.webp"
-                                                        : widget.color == '5'
-                                                            ? "assets/images/medBlue_gradient.webp"
-                                                            : widget.color ==
-                                                                    '6'
-                                                                ? "assets/images/Blue_gradient.webp"
-                                                                : 'assets/images/orange_moon.webp'),
-                                        fit: BoxFit.contain),
+                              Container(
+                                height: AppDimensions.height10(context) * 2.4,
+                                child: Text(
+                                  'Practice Menu',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      height: AppDimensions.height10(context) *
+                                          0.12,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 30,
+                                child: Center(
+                                  child: Text(
+                                    widget.goalName,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.12,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.0,
+                                        fontWeight: FontWeight.w600),
                                   ),
                                 ),
                               ),
-                              Align(
-                                alignment: const Alignment(-0.395, -0.2),
-                                child: Container(
-                                  height: AppDimensions.height10(context) * 4.1,
-                                  width: AppDimensions.height10(context) * 4.06,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                          image: AssetImage(widget.pracColor ==
-                                                  '1'
-                                              ? "assets/images/Ellipse orange_wb.webp"
-                                              : widget.pracColor == '2'
-                                                  ? 'assets/images/Ellipse 158_wb.webp'
-                                                  : widget.pracColor == '3'
-                                                      ? "assets/images/Ellipse 157_wb.webp"
-                                                      : widget.pracColor == '4'
-                                                          ? "assets/images/Ellipse light-blue_wb.webp"
-                                                          : widget.pracColor ==
-                                                                  '5'
-                                                              ? "assets/images/Ellipse blue_wb.webp"
-                                                              : 'assets/images/Ellipse 158_wb.webp'),
-                                          fit: BoxFit.cover)),
-                                ),
-                              ),
-                              Align(
-                                alignment: const Alignment(1.6, -0.3),
-                                child: Container(
-                                  width: AppDimensions.height10(context) * 20.6,
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  child: widget.pracName.length > 20
-                                      ? Text(
-                                          widget.pracName,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              color: const Color(0xff156F6D),
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              fontWeight: FontWeight.w600),
-                                        )
-                                      : Text(
-                                          widget.pracName,
-                                          style: TextStyle(
-                                              color: const Color(0xff156F6D),
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              fontWeight: FontWeight.w600),
+                              Container(
+                                //width: AppDimensions.height10(context) * 2.0,
+                                height: AppDimensions.height10(context) * 9.3,
+                                // color: Colors.amber,
+                                margin: EdgeInsets.only(
+                                    top: AppDimensions.height10(context) * 0.6),
+                                // color: Colors.blue,
+                                child: Stack(
+                                  children: [
+                                    Align(
+                                      alignment: const Alignment(-0.55, -0.3),
+                                      child: Container(
+                                        width: AppDimensions.height10(context) *
+                                            6.56,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                6.56,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          // color: Colors.amber,
+                                          image: DecorationImage(
+                                              image: AssetImage(widget.color ==
+                                                      '1'
+                                                  ? "assets/images/red_gradient.webp"
+                                                  : widget.color == '2'
+                                                      ? 'assets/images/orange_moon.webp'
+                                                      : widget.color == '3'
+                                                          ? "assets/images/lightGrey_gradient.webp"
+                                                          : widget.color == '4'
+                                                              ? "assets/images/lightBlue_gradient.webp"
+                                                              : widget.color ==
+                                                                      '5'
+                                                                  ? "assets/images/medBlue_gradient.webp"
+                                                                  : widget.color ==
+                                                                          '6'
+                                                                      ? "assets/images/Blue_gradient.webp"
+                                                                      : 'assets/images/orange_moon.webp'),
+                                              fit: BoxFit.contain),
                                         ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: const Alignment(-0.395, -0.2),
+                                      child: Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                4.1,
+                                        width: AppDimensions.height10(context) *
+                                            4.06,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                                image: AssetImage(widget
+                                                            .pracColor ==
+                                                        '1'
+                                                    ? "assets/images/Ellipse orange_wb.webp"
+                                                    : widget.pracColor == '2'
+                                                        ? 'assets/images/Ellipse 158_wb.webp'
+                                                        : widget.pracColor ==
+                                                                '3'
+                                                            ? "assets/images/Ellipse 157_wb.webp"
+                                                            : widget.pracColor ==
+                                                                    '4'
+                                                                ? "assets/images/Ellipse light-blue_wb.webp"
+                                                                : widget.pracColor ==
+                                                                        '5'
+                                                                    ? "assets/images/Ellipse blue_wb.webp"
+                                                                    : 'assets/images/Ellipse 158_wb.webp'),
+                                                fit: BoxFit.cover)),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: const Alignment(1.6, -0.3),
+                                      child: Container(
+                                        width: AppDimensions.height10(context) *
+                                            20.6,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.4,
+                                        child: widget.pracName.length > 20
+                                            ? Text(
+                                                widget.pracName,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    color:
+                                                        const Color(0xff156F6D),
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              )
+                                            : Text(
+                                                widget.pracName,
+                                                style: TextStyle(
+                                                    color:
+                                                        const Color(0xff156F6D),
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: AppDimensions.height10(context) * 9.36,
-                    height: AppDimensions.height10(context) * 12.0,
-                    //color: Colors.amber,
-                    margin: EdgeInsets.only(
-                        bottom: AppDimensions.height10(context) * 1.6),
-                    child: Column(
-                      children: [
-                        AnimatedScaleButton(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                FadePageRoute2(true,
-                                    exitPage: practiceMenu(
-                                        goal_eval: false,
-                                        goalName: widget.goalName,
-                                        pracName: widget.pracName,
-                                        pracColor: widget.pracColor,
-                                        color: widget.color),
-                                    enterPage: emotions(
-                                      summary: false,
-                                      pracName: widget.pracName,
-                                      record: false,
-                                    )));
-                          },
-                          child: Container(
-                            width: AppDimensions.height10(context) * 7.0,
-                            height: AppDimensions.height10(context) * 7.0,
-                            decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xffFCC10D),
-                                      Color(0xffFDA210),
-                                    ]),
-                                shape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10(context) * 13.9)),
-                                border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.3,
-                                    color: Colors.white)),
-                            child: Center(
-                              child: Icon(
-                                Icons.add_task,
-                                color: Colors.white,
-                                // fill: AppDimensions.height10(context) * 0.10,
-                                size: AppDimensions.height10(context) * 2.8,
+                        Container(
+                          width: AppDimensions.height10(context) * 9.36,
+                          height: AppDimensions.height10(context) * 12.0,
+                          //color: Colors.amber,
+                          margin: EdgeInsets.only(
+                              bottom: AppDimensions.height10(context) * 1.6),
+                          child: Column(
+                            children: [
+                              AnimatedScaleButton(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute2(true,
+                                          exitPage: practiceMenu(
+                                              goal_eval: false,
+                                              goalName: widget.goalName,
+                                              pracName: widget.pracName,
+                                              pracColor: widget.pracColor,
+                                              color: widget.color),
+                                          enterPage: emotions(
+                                            summary: false,
+                                            pracName: widget.pracName,
+                                            record: false,
+                                          )));
+                                },
+                                child: Container(
+                                  width: AppDimensions.height10(context) * 7.0,
+                                  height: AppDimensions.height10(context) * 7.0,
+                                  decoration: BoxDecoration(
+                                      gradient: const LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Color(0xffFCC10D),
+                                            Color(0xffFDA210),
+                                          ]),
+                                      shape: BoxShape.rectangle,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(
+                                              AppDimensions.height10(context) *
+                                                  13.9)),
+                                      border: Border.all(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  0.3,
+                                          color: Colors.white)),
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.add_task,
+                                      color: Colors.white,
+                                      // fill: AppDimensions.height10(context) * 0.10,
+                                      size:
+                                          AppDimensions.height10(context) * 2.8,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
+                              Container(
+                                // color: Colors.red,
+                                height: AppDimensions.height10(context) * 4.921,
+                                width: AppDimensions.height10(context) * 9.36,
+                                child: Center(
+                                  child: Text(
+                                    'Record\npractice',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.12,
+                                        color: Colors.white,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.6,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         ),
                         Container(
-                          // color: Colors.red,
-                          height: AppDimensions.height10(context) * 4.921,
-                          width: AppDimensions.height10(context) * 9.36,
-                          child: Center(
-                            child: Text(
-                              'Record\npractice',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  height:
-                                      AppDimensions.height10(context) * 0.12,
-                                  color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: AppDimensions.height10(context) * 0.1,
-                    color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                    // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
-                  ),
-                  Container(
-                    width: AppDimensions.height10(context) * 41.3,
-                    height: AppDimensions.height10(context) * 22.9,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 2.2),
-                    child: Stack(children: [
-                      Align(
-                        alignment: const Alignment(1, -1.125),
-                        child: AnimatedScaleButton(
-                            onTap: () {
-                              info_sheet(context);
-                            },
-                            child: Image.asset(
-                              'assets/images/ic_info_outline.webp',
-                              height: AppDimensions.height10(context) * 3.0,
-                              width: AppDimensions.height10(context) * 3.0,
-                            )),
-                      ),
-                      Align(
-                        alignment: const Alignment(0, -1),
-                        child: Container(
-                          width: AppDimensions.height10(context) * 36.0,
-                          height: widget.goal_eval
-                              ? AppDimensions.height10(context) * 24.7
-                              : AppDimensions.height10(context) * 18.8,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: widget.goal_eval
-                                    ? AppDimensions.height10(context) * 5.9
-                                    : AppDimensions.height10(context) * 4.4,
-                                width: AppDimensions.height10(context) * 36.0,
-                                margin: EdgeInsets.only(
-                                    bottom:
-                                        AppDimensions.height10(context) * 1.2),
-                                child: Column(children: [
-                                  Container(
+                          width: double.infinity,
+                          height: AppDimensions.height10(context) * 0.1,
+                          color: const Color(0xFFFFFFFF).withOpacity(0.5),
+                          // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
+                        ),
+                        Container(
+                          width: AppDimensions.height10(context) * 41.3,
+                          height: AppDimensions.height10(context) * 22.9,
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 2.2),
+                          child: Stack(children: [
+                            Align(
+                              alignment: const Alignment(1, -1.125),
+                              child: AnimatedScaleButton(
+                                  onTap: () {
+                                    info_sheet(context);
+                                  },
+                                  child: Image.asset(
+                                    'assets/images/ic_info_outline.webp',
                                     height:
-                                        AppDimensions.height10(context) * 1.9,
-                                    child: Text(
-                                      'Practice Assessment',
-                                      style: TextStyle(
-                                          //increase font size by 2 px
-                                          fontSize:
+                                        AppDimensions.height10(context) * 3.0,
+                                    width:
+                                        AppDimensions.height10(context) * 3.0,
+                                  )),
+                            ),
+                            Align(
+                              alignment: const Alignment(0, -1),
+                              child: Container(
+                                width: AppDimensions.height10(context) * 36.0,
+                                height: widget.goal_eval
+                                    ? AppDimensions.height10(context) * 24.7
+                                    : AppDimensions.height10(context) * 18.8,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: widget.goal_eval
+                                          ? AppDimensions.height10(context) *
+                                              5.9
+                                          : AppDimensions.height10(context) *
+                                              4.4,
+                                      width: AppDimensions.height10(context) *
+                                          36.0,
+                                      margin: EdgeInsets.only(
+                                          bottom:
                                               AppDimensions.height10(context) *
-                                                  1.8,
-                                          fontWeight: FontWeight.w700,
-                                          color: const Color(0xfff5f5f5)),
-                                    ),
-                                  ),
-                                  widget.goal_eval
-                                      ? Container(
+                                                  1.2),
+                                      child: Column(children: [
+                                        Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.9,
+                                          child: Text(
+                                            'Practice Assessment',
+                                            style: TextStyle(
+                                                //increase font size by 2 px
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.8,
+                                                fontWeight: FontWeight.w700,
+                                                color: const Color(0xfff5f5f5)),
+                                          ),
+                                        ),
+                                        widget.goal_eval
+                                            ? Container(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    1.7,
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        0.2),
+                                                child: Text(
+                                                  'Here is your latest 20 active day evaluation.',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.4,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xfff5f5f5)),
+                                                ),
+                                              )
+                                            : Container(),
+                                        Container(
                                           height:
                                               AppDimensions.height10(context) *
                                                   1.7,
                                           margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              top: widget.goal_eval
+                                                  ? AppDimensions.height10(
+                                                          context) *
+                                                      0.3
+                                                  : AppDimensions.height10(
+                                                          context) *
+                                                      0.8),
+                                          child: RichText(
+                                              text: TextSpan(
+                                                  style: TextStyle(
+                                                      fontFamily: 'laila',
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.15,
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.4,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xfff5f5f5)),
+                                                  children: [
+                                                TextSpan(
+                                                    text: widget.goal_eval
+                                                        ? 'Next assessment is in'
+                                                        : 'You can evaluate your progress in '),
+                                                TextSpan(
+                                                    text:
+                                                        '${pracDetails['activeDaysInMonth'] - 20} active days.',
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700))
+                                              ])),
+                                        )
+                                      ]),
+                                    ),
+                                    Column(
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                              bottom: AppDimensions.height10(
                                                       context) *
-                                                  0.2),
-                                          child: Text(
-                                            'Here is your latest 20 active day evaluation.',
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.4,
-                                                fontWeight: FontWeight.w400,
-                                                color: const Color(0xfff5f5f5)),
+                                                  1.2),
+                                          child: AnimatedScaleButton(
+                                            onTap: () {
+                                              if (pracDetails['report'] ==
+                                                  true) {
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const progress_report()));
+                                              }
+                                            },
+                                            child: button_feilds(
+                                              feild_text: 'Progress report',
+                                              icon_viible: widget.goal_eval
+                                                  ? true
+                                                  : false,
+                                              text_color: 0xff646464,
+                                              feild_text_2: widget.goal_eval
+                                                  ? ' DD/MMM/YY'
+                                                  : '',
+                                              text_color_2: 0xff8EA1B1,
+                                              feild_text_3: '',
+                                              feild_text_4: '',
+                                            ),
+                                          ),
+                                        ),
+                                        AnimatedScaleButton(
+                                          onTap: () {
+                                            if (pracDetails['report'] == true) {
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const prac_score(
+                                                    saved: false,
+                                                  )));
+                                            }
+                                          },
+                                          child: button_feilds(
+                                            feild_text: widget.goal_eval
+                                                ? 'Evaluation level '
+                                                : 'Practice score ',
+                                            icon_viible:
+                                                widget.goal_eval ? true : false,
+                                            text_color: 0xff646464,
+                                            feild_text_2: '(',
+                                            text_color_2: 0xff8EA1B1,
+                                            feild_text_3: widget.goal_eval
+                                                ? '2'
+                                                : pracDetails['practiceLevel'] ==
+                                                            null ||
+                                                        pracDetails[
+                                                                'practiceLevel'] ==
+                                                            0
+                                                    ? '-'
+                                                    : pracDetails[
+                                                            'practiceLevel']
+                                                        .toString(),
+                                            feild_text_4: '/5)',
                                           ),
                                         )
-                                      : Container(),
-                                  Container(
-                                    height:
-                                        AppDimensions.height10(context) * 1.7,
-                                    margin: EdgeInsets.only(
-                                        top: widget.goal_eval
-                                            ? AppDimensions.height10(context) *
-                                                0.3
-                                            : AppDimensions.height10(context) *
-                                                0.8),
-                                    child: RichText(
-                                        text: TextSpan(
-                                            style: TextStyle(
-                                                fontFamily: 'laila',
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.15,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.4,
-                                                fontWeight: FontWeight.w400,
-                                                color: const Color(0xfff5f5f5)),
-                                            children: [
-                                          TextSpan(
-                                              text: widget.goal_eval
-                                                  ? 'Next assessment is in'
-                                                  : 'You can evaluate your progress in '),
-                                          const TextSpan(
-                                              text: ' -19 active days.',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w700))
-                                        ])),
-                                  )
-                                ]),
-                              ),
-                              Column(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                1.2),
-                                    child: AnimatedScaleButton(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const progress_report()));
-                                      },
-                                      child: button_feilds(
-                                        feild_text: 'Progress report',
-                                        icon_viible:
-                                            widget.goal_eval ? true : false,
-                                        text_color: 0xff646464,
-                                        feild_text_2: widget.goal_eval
-                                            ? ' DD/MMM/YY'
-                                            : '',
-                                        text_color_2: 0xff8EA1B1,
-                                        feild_text_3: '',
-                                        feild_text_4: '',
-                                      ),
+                                      ],
                                     ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: AppDimensions.height10(context) * 0.1,
+                          color: const Color(0xFFFFFFFF).withOpacity(0.5),
+                          // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
+                        ),
+                        Container(
+                          height: AppDimensions.height10(context) * 28.0,
+                          width: AppDimensions.height10(context) * 36.0,
+                          margin: EdgeInsets.only(
+                              bottom: AppDimensions.height10(context) * 2.5,
+                              top: AppDimensions.height10(context) * 3.0),
+                          child: Column(
+                            children: [
+                              AnimatedScaleButton(
+                                onTap: () {
+                                  if (pracDetails['report'] == true) {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const practice_progress()));
+                                  }
+                                },
+                                child: const button_feilds(
+                                  feild_text: 'View practice progress',
+                                  icon_viible: true,
+                                  text_color: 0xff646464,
+                                  feild_text_2: '',
+                                  text_color_2: 0xff8EA1B1,
+                                  feild_text_4: '',
+                                  feild_text_3: '',
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.0,
+                                    top: AppDimensions.height10(context) * 1.0),
+                                child: AnimatedScaleButton(
+                                  onTap: () async {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const PracticeReview()));
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    var pracName = prefs.setString(
+                                        'practice_review', 'practice_menu');
+                                  },
+                                  child: const button_feilds(
+                                    feild_text: 'View practice settings',
+                                    icon_viible: true,
+                                    text_color: 0xff646464,
+                                    feild_text_2: '',
+                                    text_color_2: 0xffEA1B1,
+                                    feild_text_3: '',
+                                    feild_text_4: '',
                                   ),
-                                  AnimatedScaleButton(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const prac_score(
-                                            saved: false,
-                                          )));
-                                    },
-                                    child: button_feilds(
-                                      feild_text: widget.goal_eval
-                                          ? 'Evaluation level '
-                                          : 'Practice score ',
-                                      icon_viible:
-                                          widget.goal_eval ? true : false,
-                                      text_color: 0xff646464,
-                                      feild_text_2: '(',
-                                      text_color_2: 0xff8EA1B1,
-                                      feild_text_3:
-                                          widget.goal_eval ? '2' : '-',
-                                      feild_text_4: '/5)',
-                                    ),
-                                  )
-                                ],
+                                ),
                               ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.0),
+                                child: AnimatedScaleButton(
+                                  onTap: () {},
+                                  child: const button_feilds(
+                                    feild_text: 'Veiw upcoming schedules',
+                                    icon_viible: true,
+                                    text_color: 0xff646464,
+                                    feild_text_2: '',
+                                    text_color_2: 0xffEA1B1,
+                                    feild_text_3: '',
+                                    feild_text_4: '',
+                                  ),
+                                ),
+                              ),
+                              AnimatedScaleButton(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const practice_assesment()));
+                                },
+                                child: const button_feilds(
+                                  feild_text: 'Practice assesment history',
+                                  icon_viible: true,
+                                  text_color: 0xff646464,
+                                  feild_text_2: '',
+                                  text_color_2: 0xffEA1B1,
+                                  feild_text_3: '',
+                                  feild_text_4: '',
+                                ),
+                              )
                             ],
                           ),
                         ),
-                      ),
-                    ]),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: AppDimensions.height10(context) * 0.1,
-                    color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                    // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
-                  ),
-                  Container(
-                    height: AppDimensions.height10(context) * 28.0,
-                    width: AppDimensions.height10(context) * 36.0,
-                    margin: EdgeInsets.only(
-                        bottom: AppDimensions.height10(context) * 2.5,
-                        top: AppDimensions.height10(context) * 3.0),
-                    child: Column(
-                      children: [
-                        AnimatedScaleButton(
-                          onTap: () {
-                            Navigator.push(context,
-                                FadePageRoute(page: const practice_progress()));
-                          },
-                          child: const button_feilds(
-                            feild_text: 'View practice progress',
-                            icon_viible: true,
-                            text_color: 0xff646464,
-                            feild_text_2: '',
-                            text_color_2: 0xff8EA1B1,
-                            feild_text_4: '',
-                            feild_text_3: '',
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10(context) * 1.0,
-                              top: AppDimensions.height10(context) * 1.0),
-                          child: AnimatedScaleButton(
-                            onTap: () {
-                              Navigator.push(context,
-                                  FadePageRoute(page: const PracticeReview()));
-                            },
-                            child: const button_feilds(
-                              feild_text: 'View practice settings',
-                              icon_viible: true,
-                              text_color: 0xff646464,
-                              feild_text_2: '',
-                              text_color_2: 0xffEA1B1,
-                              feild_text_3: '',
-                              feild_text_4: '',
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10(context) * 1.0),
-                          child: AnimatedScaleButton(
-                            onTap: () {},
-                            child: const button_feilds(
-                              feild_text: 'Veiw upcoming schedules',
-                              icon_viible: true,
-                              text_color: 0xff646464,
-                              feild_text_2: '',
-                              text_color_2: 0xffEA1B1,
-                              feild_text_3: '',
-                              feild_text_4: '',
-                            ),
-                          ),
-                        ),
-                        AnimatedScaleButton(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: const practice_assesment()));
-                          },
-                          child: const button_feilds(
-                            feild_text: 'Practice assesment history',
-                            icon_viible: true,
-                            text_color: 0xff646464,
-                            feild_text_2: '',
-                            text_color_2: 0xffEA1B1,
-                            feild_text_3: '',
-                            feild_text_4: '',
-                          ),
-                        )
                       ],
                     ),
+                  )
+                : const Center(
+                    child: SpinKitFadingCircle(
+                      color: Color(0xFFB1B8FF),
+                      size: 80,
+                    ),
                   ),
-                ],
-              ),
-            ),
             // OfflineBuilder(
             //     debounceDuration: Duration(milliseconds: 3),
             //     connectivityBuilder: (

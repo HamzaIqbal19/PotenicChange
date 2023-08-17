@@ -6,6 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_goal_impact.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_new_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
@@ -232,7 +233,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: hurdle_name(
+                                        page: const hurdle_name(
                                       update: true,
                                     )));
                               },
@@ -358,53 +359,61 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                         ),
                       ),
                     ),
-                    Container(
-                      height: AppDimensions.height10(context) * 6.0,
-                      width: AppDimensions.height10(context) * 37.5,
-                      margin: EdgeInsets.only(
-                          bottom: AppDimensions.height10(context) * 4.0,
-                          top: AppDimensions.height10(context) * 3.0),
-                      decoration: BoxDecoration(
-                          color: const Color(0xFFFBFBFB),
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 2.0)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: AppDimensions.height10(context) * 23.9,
-                            height: AppDimensions.height10(context) * 2.2,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 1.99),
-                            child: GestureDetector(
-                                onTap: () {},
-                                child: Text(
-                                  '${hurdlesSummary['userGoalId'].length} impacted goals',
-                                  style: TextStyle(
-                                    color: const Color(0xFF646464),
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                )),
-                          ),
-                          Container(
-                              width: AppDimensions.height10(context) * 2.4,
-                              height: AppDimensions.height10(context) * 1.39,
+                    AnimatedScaleButton(
+                      onTap: () {
+                        Navigator.push(context,
+                            FadePageRoute(page: const hurdles_goal_impact(summary: true,)));
+                      },
+                      child: Container(
+                        height: AppDimensions.height10(context) * 6.0,
+                        width: AppDimensions.height10(context) * 37.5,
+                        margin: EdgeInsets.only(
+                            bottom: AppDimensions.height10(context) * 4.0,
+                            top: AppDimensions.height10(context) * 3.0),
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFFBFBFB),
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 2.0)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: AppDimensions.height10(context) * 23.9,
+                              height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
-                                  right:
-                                      AppDimensions.height10(context) * 2.391),
+                                  left: AppDimensions.height10(context) * 1.99),
                               child: GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/images/BTN Back.webp',
-                                  //width:   AppDimensions.height10(context)(context)* 2.6,
-                                  //height:   AppDimensions.height10(context)(context)* 2.6,
-                                  color: const Color(0xFF646464),
-                                  fit: BoxFit.cover,
-                                ),
-                              ))
-                        ],
+                                  onTap: () {},
+                                  child: Text(
+                                    '${hurdlesSummary['userGoalId'].length} impacted goals',
+                                    style: TextStyle(
+                                      color: const Color(0xFF646464),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  )),
+                            ),
+                            Container(
+                                //width: AppDimensions.height10(context) * 2.4,
+                                // height: AppDimensions.height10(context) * 1.39,
+                                margin: EdgeInsets.only(
+                                    right: AppDimensions.height10(context) *
+                                        2.391),
+                                child: Text(
+                                  'View',
+                                  style: TextStyle(
+                                      color: const Color(0xFF437296),
+                                      fontWeight: FontWeight.w700,
+                                      decoration: TextDecoration.underline,
+                                      decorationThickness:
+                                          AppDimensions.height10(context) * 0.2,
+                                      fontSize:
+                                          AppDimensions.height10(context) *
+                                              1.4),
+                                ))
+                          ],
+                        ),
                       ),
                     ),
                     Container(
@@ -500,7 +509,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                       animationType:
                                           DialogTransitionType.fadeScale,
                                       curve: Curves.easeInOut,
-                                      duration: Duration(seconds: 1),
+                                      duration: const Duration(seconds: 1),
                                       context: context,
                                       builder: (BuildContext context) =>
                                           SizedBox(
@@ -669,7 +678,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                                   context,
                                                                   FadePageRoute(
                                                                       page:
-                                                                          landing_hurdles()));
+                                                                          const landing_hurdles()));
                                                             }
                                                           });
                                                         },

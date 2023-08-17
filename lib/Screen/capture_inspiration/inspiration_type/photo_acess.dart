@@ -238,7 +238,7 @@ class photo_info extends StatefulWidget {
 
 class _photo_infoState extends State<photo_info> {
   var image;
-  String? imageLink;
+  var imageLink;
   List selectedGoals = [];
   List<String> tagList = [];
 
@@ -263,9 +263,8 @@ class _photo_infoState extends State<photo_info> {
       image = imagePick;
       imageLink = imageLinked;
     });
-    print('---------------==============================$imageLink');
-
-    link.text = imageLink!;
+    print(
+        '---------------==============================${prefs.getString('imagePicked')}');
   }
 
   void getImageLink() async {
@@ -277,8 +276,6 @@ class _photo_infoState extends State<photo_info> {
       imageLink = imageLinked;
     });
     print('---------------==============================$imageLink');
-
-    link.text = imageLink!;
   }
 
   @override
@@ -394,11 +391,13 @@ class _photo_infoState extends State<photo_info> {
                                               await _prefs;
                                           var remove =
                                               prefs.remove('ImageLink');
+                                          print(
+                                              "===================================>$imageLink");
                                           widget.image_create
                                               ? InspirationApi()
                                                   .addInspiration(
                                                       1,
-                                                      image,
+                                                      File(image),
                                                       title.text.toString(),
                                                       tagList,
                                                       link.text.toString(),
@@ -567,8 +566,10 @@ class _photo_infoState extends State<photo_info> {
                                                                           TextButton(
                                                                         onPressed:
                                                                             () async {
+                                                                          print(
+                                                                              "===================================>$imageLink");
                                                                           InspirationApi()
-                                                                              .addInspiration(1, image, title.text.toString(), ['#tags'], link.text.toString(), true, statement.text.toString(), [19])
+                                                                              .addInspiration(1, imageLink, title.text.toString(), ['#tags'], link.text.toString(), true, statement.text.toString(), [19])
                                                                               .then((response) {
                                                                             if (response.statusCode ==
                                                                                 200) {
@@ -670,10 +671,12 @@ class _photo_infoState extends State<photo_info> {
                                       )
                                     : AnimatedScaleButton(
                                         onTap: () {
+                                          print(
+                                              "===================================>$imageLink");
                                           InspirationApi()
                                               .addInspiration(
                                                   1,
-                                                  image,
+                                                  File(image),
                                                   title.text.toString(),
                                                   tagList,
                                                   link.text.toString(),
@@ -709,66 +712,92 @@ class _photo_infoState extends State<photo_info> {
                                         ),
                                       ),
                               )
-                            : AnimatedScaleButton(
-                                onTap: () {
-                                  if (title.text.toString().isNotEmpty &&
-                                      statement.text.toString().isNotEmpty) {
-                                    InspirationApi()
-                                        .addInspiration(
-                                            1,
-                                            image,
-                                            title.text.toString(),
-                                            tagList,
-                                            link.text.toString().isEmpty
-                                                ? " "
-                                                : link.text.toString(),
-                                            true,
-                                            statement.text.toString(),
-                                            selectedGoals)
-                                        .then((response) {
-                                      if (response.length != 0) {
-                                        print('Success======================');
-                                        title.clear();
-                                        link.clear();
-                                        statement.clear();
-                                        hastags.clear();
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const inspiration_landing(
-                                              is_Updated: false,
-                                            )));
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const updatedLandingPage(
-                                                    delete: false,
-                                                    is_Updated: false)));
-                                      }
-                                    });
-                                  } else {
-                                    print('empty');
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                            content: Text(
-                                                "Title or Inspiration is empty!!")));
-                                  }
-                                },
-                                child: Text(
-                                  'Create',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.5,
-                                      fontWeight: FontWeight.w400,
-                                      color: title.text.toString().isNotEmpty &&
-                                              statement.text
-                                                  .toString()
-                                                  .isNotEmpty
-                                          ? const Color(0xff007AFF)
-                                          : const Color(0xff007AFF)
-                                              .withOpacity(0.5)),
-                                ),
-                              ),
+                            : ValueListenableBuilder<TextEditingValue>(
+                                valueListenable: title,
+                                builder: (context, value, child) {
+                                  return ValueListenableBuilder<
+                                          TextEditingValue>(
+                                      valueListenable: statement,
+                                      builder: (context, value, child) {
+                                        return AnimatedScaleButton(
+                                          onTap: () async {
+                                            if (title.text
+                                                    .toString()
+                                                    .isNotEmpty &&
+                                                statement.text
+                                                    .toString()
+                                                    .isNotEmpty) {
+                                              final SharedPreferences prefs =
+                                                  await _prefs;
+                                              var imagePicked = prefs
+                                                  .getString('imagePicked');
+                                              print(
+                                                  '==================================>$imagePicked');
+                                              InspirationApi()
+                                                  .addInspiration(
+                                                      1,
+                                                      File(imagePicked!),
+                                                      title.text.toString(),
+                                                      tagList,
+                                                      link.text
+                                                              .toString()
+                                                              .isEmpty
+                                                          ? " "
+                                                          : link.text
+                                                              .toString(),
+                                                      true,
+                                                      statement.text.toString(),
+                                                      selectedGoals)
+                                                  .then((response) {
+                                                if (response.length != 0) {
+                                                  print(
+                                                      'Success======================');
+                                                  title.clear();
+                                                  link.clear();
+                                                  statement.clear();
+                                                  hastags.clear();
+
+                                                  // Navigator.push(
+                                                  //     context,
+                                                  //     FadePageRoute(
+                                                  //         page:
+                                                  //             const updatedLandingPage(
+                                                  //                 delete: false,
+                                                  //                 is_Updated:
+                                                  //                     false)));
+                                                } else {
+                                                  print("Failed");
+                                                }
+                                              });
+                                            } else {
+                                              print('empty');
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(const SnackBar(
+                                                      content: Text(
+                                                          "Title or Inspiration is empty!!")));
+                                            }
+                                          },
+                                          child: Text(
+                                            'Create',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.5,
+                                                fontWeight: FontWeight.w400,
+                                                color: title.text
+                                                            .toString()
+                                                            .isNotEmpty &&
+                                                        statement.text
+                                                            .toString()
+                                                            .isNotEmpty
+                                                    ? const Color(0xff007AFF)
+                                                    : const Color(0xff007AFF)
+                                                        .withOpacity(0.5)),
+                                          ),
+                                        );
+                                      });
+                                }),
                       )
                     ]),
               ),
@@ -1229,6 +1258,7 @@ class _photo_infoState extends State<photo_info> {
                                           context,
                                           FadePageRoute(
                                               page: const inspiraton_goals(
+                                            update: false,
                                             data_saved: true,
                                             route: 'photo_create',
                                             context: false,
@@ -1238,10 +1268,11 @@ class _photo_infoState extends State<photo_info> {
                                           context,
                                           FadePageRoute(
                                               page: const inspiraton_goals(
+                                                  update: false,
                                                   route: 'photo_create',
                                                   context: false,
                                                   note: false,
-                                                  data_saved: false)));
+                                                  data_saved: true)));
                                 },
                                 child: Container(
                                   height: AppDimensions.height10(context) * 6.0,
@@ -1284,22 +1315,25 @@ class _photo_infoState extends State<photo_info> {
                                         ),
                                       ),
                                       Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  2.4,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.39,
                                           margin: EdgeInsets.only(
                                               right: AppDimensions.height10(
                                                       context) *
                                                   2.391),
-                                          child: Image.asset(
-                                            'assets/images/BTN Back.webp',
-                                            //width: AppDimensions.height10(context) * 2.6,
-                                            //height: AppDimensions.height10(context) * 2.6,
-                                            color: const Color(0xFF646464),
-                                            fit: BoxFit.cover,
+                                          child: Text(
+                                            'View',
+                                            style: TextStyle(
+                                                color: const Color(0xFF437296),
+                                                fontWeight: FontWeight.w700,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                decorationThickness:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.2,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.4),
                                           ))
                                     ],
                                   ),

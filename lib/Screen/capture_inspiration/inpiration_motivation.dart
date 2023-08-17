@@ -93,6 +93,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           context,
                           FadePageRoute(
                               page: (const inspiraton_goals(
+                            update: false,
                             data_saved: false,
                             route: 'motivation',
                             context: false,

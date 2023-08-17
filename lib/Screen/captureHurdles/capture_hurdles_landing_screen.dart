@@ -7,6 +7,10 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_goal_impact.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_statement.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -39,6 +43,17 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   List goalName = [];
   var allHurdle;
   bool Loading = true;
+  var Route;
+
+  void getHurdleRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      Route = prefs.getString('HurdleRoute');
+    });
+
+    print(prefs.getString('HurdleRoute'));
+  }
+
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
@@ -128,6 +143,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
     print(
         "---------------------------------------------------------------------");
     _fetchHurdle();
+    getHurdleRoute();
   }
 
   bool deleted = false;
@@ -228,115 +244,150 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                       decoration: const BoxDecoration(
                                         color: Colors.white,
                                       ),
-                                      child: Column(
+                                      child: Stack(
                                         children: [
-                                          Container(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                4.0,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                41.4,
-                                            decoration: BoxDecoration(
-                                                border: Border(
-                                                    bottom: BorderSide(
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.0,
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    41.4,
+                                                decoration: BoxDecoration(
+                                                    border: Border(
+                                                        bottom: BorderSide(
+                                                            width: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.1,
+                                                            color: const Color(
+                                                                0xFF828282)))),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Container(
                                                         width: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            0.1,
-                                                        color: const Color(
-                                                            0xFF828282)))),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
                                                             5.0,
-                                                    margin: EdgeInsets.only(
-                                                        right: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.0),
-                                                    child: Text(
-                                                      'Cancel',
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: const Color(
-                                                              0xFF2F80ED)),
-                                                    ),
-                                                  ),
-                                                ),
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      _selected_goal =
-                                                          goalName[_Goal_Index];
-                                                      goalId =
-                                                          goals[index]['id'];
-                                                    });
-                                                    filterTerm(hurdleId,
-                                                        goals[index]['id']);
-
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: SizedBox(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            3.7,
-                                                    child: Text(
-                                                      'Done',
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: const Color(
-                                                              0xFF2F80ED)),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: ListWheelScrollView(
-                                              itemExtent: 40,
-                                              magnification: 1.2,
-                                              useMagnifier:
-                                                  true, // Set the height of each statement
-                                              children: goalName
-                                                  .map((statement) =>
-                                                      Text(statement,
-                                                          style: TextStyle(
-                                                            fontSize: AppDimensions
+                                                        margin: EdgeInsets.only(
+                                                            right: AppDimensions
                                                                     .height10(
                                                                         context) *
-                                                                2.0,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          )))
-                                                  .toList(),
-                                              onSelectedItemChanged:
-                                                  (int index) {
-                                                setState(() {
-                                                  _Goal_Index = index;
-                                                });
-                                              },
+                                                                2.0),
+                                                        child: Text(
+                                                          'Cancel',
+                                                          style: TextStyle(
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.4,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: const Color(
+                                                                  0xFF2F80ED)),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          _selected_goal =
+                                                              goalName[
+                                                                  _Goal_Index];
+                                                          goalId = goals[index]
+                                                              ['id'];
+                                                        });
+                                                        filterTerm(hurdleId,
+                                                            goals[index]['id']);
+
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: SizedBox(
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            3.7,
+                                                        child: Text(
+                                                          'Done',
+                                                          style: TextStyle(
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.4,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: const Color(
+                                                                  0xFF2F80ED)),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: ListWheelScrollView(
+                                                  itemExtent: 40,
+                                                  magnification: 1.3,
+                                                  useMagnifier:
+                                                      true, // Set the height of each statement
+                                                  children: goalName
+                                                      .map(
+                                                          (statement) =>
+                                                              Text(statement,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        AppDimensions.height10(context) *
+                                                                            2.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                  )))
+                                                      .toList(),
+                                                  onSelectedItemChanged:
+                                                      (int index) {
+                                                    setState(() {
+                                                      _Goal_Index = index;
+                                                    });
+                                                  },
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Positioned(
+                                            top: 112,
+                                            right: 20,
+                                            left: 20,
+                                            child: Align(
+                                              alignment: const Alignment(0, 0),
+                                              child: Container(
+                                                  width: 400,
+                                                  height: 1,
+                                                  color: const Color(0xFF828282)
+                                                      .withOpacity(0.5)),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            top: 152,
+                                            right: 20,
+                                            left: 20,
+                                            child: Align(
+                                              alignment: const Alignment(0, 0),
+                                              child: Container(
+                                                  width: 400,
+                                                  height: 1,
+                                                  color: const Color(0xFF828282)
+                                                      .withOpacity(0.5)),
                                             ),
                                           ),
                                         ],
@@ -431,128 +482,163 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                       decoration: const BoxDecoration(
                                         color: Colors.white,
                                       ),
-                                      child: Column(
+                                      child: Stack(
                                         children: [
-                                          Container(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                4.0,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                41.4,
-                                            decoration: BoxDecoration(
-                                                border: Border(
-                                                    bottom: BorderSide(
+                                          Column(
+                                            children: [
+                                              Container(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.0,
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    41.4,
+                                                decoration: BoxDecoration(
+                                                    border: Border(
+                                                        bottom: BorderSide(
+                                                            width: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.1,
+                                                            color: const Color(
+                                                                0xFF828282)))),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Container(
                                                         width: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            0.1,
-                                                        color: const Color(
-                                                            0xFF828282)))),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
                                                             5.0,
-                                                    margin: EdgeInsets.only(
-                                                        right: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.0),
-                                                    child: Text(
-                                                      'Cancel',
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: const Color(
-                                                              0xFF2F80ED)),
-                                                    ),
-                                                  ),
-                                                ),
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    print(
-                                                        '=============HrurdleID============');
-                                                    print(hurdlesList[
-                                                            _selectedTag]
-                                                        ['hurdleId']);
-                                                    setState(() {
-                                                      _selected_activity =
-                                                          hurdleName[
-                                                              _selectedTag];
-                                                      hurdleId =
-                                                          hurdlesListName[
-                                                                  _selectedTag]
-                                                              ['id'];
-                                                      // search = hurdlesList[
-                                                      //         _selectedTag]
-                                                      //     ['hurdleId'];
-                                                    });
-                                                    filterTerm(
-                                                        hurdlesListName[
-                                                            _selectedTag]['id'],
-                                                        goalId);
-
-                                                    print('asf');
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: SizedBox(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            3.7,
-                                                    child: Text(
-                                                      'Done',
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: const Color(
-                                                              0xFF2F80ED)),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: ListWheelScrollView(
-                                              itemExtent: 40,
-                                              magnification: 1.2,
-                                              useMagnifier: true,
-                                              children: hurdleName
-                                                  .map((statement) =>
-                                                      Text(statement,
-                                                          style: TextStyle(
-                                                            fontSize: AppDimensions
+                                                        margin: EdgeInsets.only(
+                                                            right: AppDimensions
                                                                     .height10(
                                                                         context) *
-                                                                2.0,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          )))
-                                                  .toList(),
-                                              onSelectedItemChanged:
-                                                  (int index) {
-                                                setState(() {
-                                                  _selectedTag = index;
-                                                });
-                                              },
+                                                                2.0),
+                                                        child: Text(
+                                                          'Cancel',
+                                                          style: TextStyle(
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.4,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: const Color(
+                                                                  0xFF2F80ED)),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        print(
+                                                            '=============HrurdleID============');
+                                                        print(hurdlesList[
+                                                                _selectedTag]
+                                                            ['hurdleId']);
+                                                        setState(() {
+                                                          _selected_activity =
+                                                              hurdleName[
+                                                                  _selectedTag];
+                                                          hurdleId =
+                                                              hurdlesListName[
+                                                                      _selectedTag]
+                                                                  ['id'];
+                                                          // search = hurdlesList[
+                                                          //         _selectedTag]
+                                                          //     ['hurdleId'];
+                                                        });
+                                                        filterTerm(
+                                                            hurdlesListName[
+                                                                    _selectedTag]
+                                                                ['id'],
+                                                            goalId);
+
+                                                        print('asf');
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: SizedBox(
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            3.7,
+                                                        child: Text(
+                                                          'Done',
+                                                          style: TextStyle(
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.4,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: const Color(
+                                                                  0xFF2F80ED)),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: ListWheelScrollView(
+                                                  itemExtent: 40,
+                                                  magnification: 1.3,
+                                                  useMagnifier: true,
+                                                  children: hurdleName
+                                                      .map(
+                                                          (statement) =>
+                                                              Text(statement,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        AppDimensions.height10(context) *
+                                                                            2.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                  )))
+                                                      .toList(),
+                                                  onSelectedItemChanged:
+                                                      (int index) {
+                                                    setState(() {
+                                                      _selectedTag = index;
+                                                    });
+                                                  },
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Positioned(
+                                            top: 112,
+                                            right: 20,
+                                            left: 20,
+                                            child: Align(
+                                              alignment: const Alignment(0, 0),
+                                              child: Container(
+                                                  width: 400,
+                                                  height: 1,
+                                                  color: const Color(0xFF828282)
+                                                      .withOpacity(0.5)),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            top: 152,
+                                            right: 20,
+                                            left: 20,
+                                            child: Align(
+                                              alignment: const Alignment(0, 0),
+                                              child: Container(
+                                                  width: 400,
+                                                  height: 1,
+                                                  color: const Color(0xFF828282)
+                                                      .withOpacity(0.5)),
                                             ),
                                           ),
                                         ],
@@ -648,8 +734,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                 fontSize: AppDimensions.height10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                                 decoration: TextDecoration.underline,
-                                color:
-                                    const Color(0xFFFA9934).withOpacity(0.30)),
+                                color: const Color(0xFFFA9934)),
                           ),
                         ),
                       )
@@ -752,13 +837,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                     ),
                                     AnimatedScaleButton(
                                       onTap: () {
-                                        if (deleted == false) {
-                                          setState(() {
-                                            deleted = true;
-                                          });
-                                        } else {
-                                          hurdle_sheet(context);
-                                        }
+                                        hurdle_sheet(context);
                                       },
                                       child: Container(
                                           width:
@@ -767,11 +846,10 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                           height:
                                               AppDimensions.height10(context) *
                                                   3.0,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                               image: DecorationImage(
-                                                  image: AssetImage(deleted
-                                                      ? 'assets/images/ic_info_outline_orange.webp'
-                                                      : 'assets/images/ic_info_outline.webp')))),
+                                                  image: AssetImage(
+                                                      'assets/images/ic_info_outline_orange.webp')))),
                                     ),
                                   ],
                                 ),
@@ -793,11 +871,53 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                         fontFamily: 'laila')),
                               ),
                               AnimatedScaleButton(
-                                onTap: () {
-                                  Navigator.push(
+                                onTap: () async {
+                                  if (Route == 'Impact') {
+                                    Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const hurdles_goal_impact()));
+                                          page: const hurdles_goal_impact(
+                                        summary: false,
+                                      )),
+                                    );
+                                  } else if (Route == 'Select') {
+                                    Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const select_hurdle(
+                                              update: false)),
+                                    );
+                                  } else if (Route == 'Name') {
+                                    Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page:
+                                              const hurdle_name(update: false)),
+                                    );
+                                  } else if (Route == 'Statements') {
+                                    Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const hurdle_statement(
+                                              update: false)),
+                                    );
+                                  } else if (Route == 'Feelings') {
+                                    Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const felling_hurdles(
+                                        update: false,
+                                      )),
+                                    );
+                                  } else {
+                                    Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const hurdles_goal_impact(
+                                        summary: false,
+                                      )),
+                                    );
+                                  }
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(

@@ -84,6 +84,7 @@ class _progress_reportState extends State<progress_report> {
         });
 
         loadData();
+
         response['report']["howPracticeGoing"].forEach((date, value) {
           if (value is int) {
             if (value == 1) {
@@ -116,8 +117,8 @@ class _progress_reportState extends State<progress_report> {
             }
           }
         });
-
         practiceProgress = json.decode(response['report']['practiceProgress']);
+
         print('Report===============================');
 
         // colorsAdd(response['report']['howPracticeGoing']);
@@ -132,6 +133,11 @@ class _progress_reportState extends State<progress_report> {
         print('Done===============================');
       }
       //print(response);
+    }).catchError((error) {
+      setState(() {
+        noData = true;
+      });
+      loadData();
     });
   }
 

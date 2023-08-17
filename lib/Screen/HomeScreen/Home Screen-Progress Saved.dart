@@ -127,6 +127,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => GoalName(
+                            route: '',
                             catId,
                             comingFromEditScreen: false,
                           ),
@@ -137,7 +138,8 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Visualising(
+                          builder: (context) => const Visualising(
+                            route: '',
                             comingFromEditScreen: false,
                           ),
                         ),
@@ -148,6 +150,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const Goal_Identity(
+                            route: '',
                             comingFromEditScreen: false,
                           ),
                         ),
@@ -157,8 +160,9 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GoalWhy(
+                          builder: (context) => const GoalWhy(
                             comingFromEditScreen: false,
+                            route: '',
                           ),
                         ),
                       );
@@ -166,8 +170,9 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GoalWhy(
+                          builder: (context) => const GoalWhy(
                             comingFromEditScreen: false,
+                            route: '',
                           ),
                         ),
                       );
@@ -193,7 +198,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                               showAnimatedDialog(
                                   animationType: DialogTransitionType.fadeScale,
                                   curve: Curves.easeInOut,
-                                  duration: Duration(seconds: 1),
+                                  duration: const Duration(seconds: 1),
                                   context: context,
                                   builder: (BuildContext context) => SizedBox(
                                         width: AppDimensions.height10(context) *
@@ -413,7 +418,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => SignUpPage(),
+                                  builder: (context) => const SignUpPage(),
                                 ),
                               );
                             },

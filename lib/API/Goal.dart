@@ -149,9 +149,9 @@ class AdminGoal {
       var jsonData = jsonDecode(response.body);
       print("Result:$jsonData");
 
-      return true;
-    } else {
-      return false;
+      return response.statusCode;
+    } else if (response.statusCode == 404) {
+      return response.statusCode;
     }
   }
 

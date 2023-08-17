@@ -30,15 +30,15 @@ class Authentication {
     if (request.statusCode == 200) {
       print("response:${responses["message"]}");
 
-      var response={
-        "message":responses["message"],
+      var response = {
+        "message": responses["message"],
         "statusCode": request.statusCode,
       };
       print("return this value:$response");
       return response;
     } else {
-      var response={
-        "message":responses["message"],
+      var response = {
+        "message": responses["message"],
         "statusCode": request.statusCode,
       };
       // print("response:${}");
@@ -62,10 +62,10 @@ class Authentication {
     print("request:${responses}");
 
     if (request.statusCode == 200) {
-      String token = responses;
+      //  String token = responses;
 
       final SharedPreferences prefs = await _prefs;
-      var accesstoken = prefs.setString('usertoken', token);
+      var accesstoken = prefs.setString('usertoken', responses);
 
       return true;
     } else {
@@ -84,12 +84,10 @@ class Authentication {
       "password": "$password",
     });
 
-
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signin'),
         headers: headers, body: Body);
 
     var response = jsonDecode(request.body);
-
 
     print("statusCode:${request.statusCode}");
 
@@ -97,19 +95,21 @@ class Authentication {
       final SharedPreferences prefs = await _prefs;
       var accesstoken = prefs.setString('usertoken', response["accessToken"]);
       var UserId = prefs.setInt('userid', response['id']);
-      var RefreshToken = prefs.setString("refreshtoken", response["sessionToken"]);
-      var responses={
-        "message":response["message"],
+      var RefreshToken =
+          prefs.setString("refreshtoken", response["sessionToken"]);
+      var responses = {
+        "message": response["message"],
         "statusCode": request.statusCode,
       };
       return responses;
-    }
-    else if (request.statusCode == 404 || request.statusCode == 401 || request.statusCode==400){
+    } else if (request.statusCode == 404 ||
+        request.statusCode == 401 ||
+        request.statusCode == 400) {
       print("request12234344:$response");
       // print("response:${}");
-      var responses={
-        "message":response["message"],
-         "statusCode": request.statusCode,
+      var responses = {
+        "message": response["message"],
+        "statusCode": request.statusCode,
       };
       print("responseMessage:${responses["message"]}");
       return responses;
