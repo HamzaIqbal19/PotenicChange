@@ -397,7 +397,7 @@ class _photo_infoState extends State<photo_info> {
                                               ? InspirationApi()
                                                   .addInspiration(
                                                       1,
-                                                      File(image),
+                                                      image,
                                                       title.text.toString(),
                                                       tagList,
                                                       link.text.toString(),
@@ -676,7 +676,7 @@ class _photo_infoState extends State<photo_info> {
                                           InspirationApi()
                                               .addInspiration(
                                                   1,
-                                                  File(image),
+                                                  image,
                                                   title.text.toString(),
                                                   tagList,
                                                   link.text.toString(),
@@ -736,7 +736,7 @@ class _photo_infoState extends State<photo_info> {
                                               InspirationApi()
                                                   .addInspiration(
                                                       1,
-                                                      File(imagePicked!),
+                                                      File(image),
                                                       title.text.toString(),
                                                       tagList,
                                                       link.text
@@ -757,14 +757,14 @@ class _photo_infoState extends State<photo_info> {
                                                   statement.clear();
                                                   hastags.clear();
 
-                                                  // Navigator.push(
-                                                  //     context,
-                                                  //     FadePageRoute(
-                                                  //         page:
-                                                  //             const updatedLandingPage(
-                                                  //                 delete: false,
-                                                  //                 is_Updated:
-                                                  //                     false)));
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const updatedLandingPage(
+                                                                  delete: false,
+                                                                  is_Updated:
+                                                                      false)));
                                                 } else {
                                                   print("Failed");
                                                 }

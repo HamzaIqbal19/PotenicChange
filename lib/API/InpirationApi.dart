@@ -9,6 +9,7 @@ import 'package:potenic_app/API/Apispecs.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:sentry/sentry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http_parser/http_parser.dart';
 
 var client = SentryHttpClient();
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -50,16 +51,18 @@ class InspirationApi {
 
     print("Fields: ${request.fields}");
     request.headers.addAll(headers);
+    http.MultipartFile multipartFile = await http.MultipartFile.fromPath(
+        'file', file.path,
+        contentType: MediaType('image', 'jpeg'));
 
     if (file != null) {
       // File newFile = File(file);
+      //  var multipartFileSign = new http.MultipartFile('profile_pic', stream, length,
+      // filename: basename(file.path));
 
-      print("Path=====================${Uri.parse(file.path)}");
-      request.files.add(http.MultipartFile.fromBytes(
-          'file', await File.fromUri(Uri.parse(file.path)).readAsBytes()));
-      print("Path=====================${file.path}");
+      request.files.add(multipartFile);
     }
-    print("Request==${request.files.toString()}");
+    print("Request==${request.files}");
 
     http.StreamedResponse response = await request.send();
     print(response.statusCode);
@@ -152,7 +155,6 @@ class InspirationApi {
     var userInspirationId = prefs.getInt('userInspirationId');
 
     var headers = {
-      'Content-Type': 'application/json',
       'x-access-token': '$Accestoken',
     };
     print('-=--=----===-==');
@@ -169,7 +171,7 @@ class InspirationApi {
       return jsonData;
     } else {
       print(
-          'Failed to fetch hurdle names Request failed with status: ${response.statusCode}');
+          'Failed to fetch inspiration names Request failed with status: ${response.statusCode}');
     }
   }
 

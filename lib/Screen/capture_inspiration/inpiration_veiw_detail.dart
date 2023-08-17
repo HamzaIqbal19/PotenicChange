@@ -120,9 +120,9 @@ class _veiw_detailsState extends State<veiw_details> {
                           ),
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: FileImage(File(
-                                      inspirationDetails['inspiration']
-                                          ['file'])),
+                                  image: NetworkImage(
+                                      inspirationDetails['inspiration']['file']
+                                          .toString()),
                                   fit: BoxFit.cover)),
                         ),
                       ),

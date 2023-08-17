@@ -1245,7 +1245,9 @@ class _VisualisingState extends State<Visualising> {
                                         ? AppDimensions.height10(context) * 26.2
                                         : AppDimensions.height10(context) *
                                             31.3,
-                                    decoration: goalVisualising[0]['text'] != ""
+                                    decoration: goalVisualising[0]['text'] !=
+                                                "" ||
+                                            widget.comingFromEditScreen == true
                                         ? BoxDecoration(
                                             border: Border.all(
                                                 color: Colors.transparent),
@@ -1295,7 +1297,9 @@ class _VisualisingState extends State<Visualising> {
                                             : "Next",
                                         style: TextStyle(
                                           color: goalVisualising[0]['text'] !=
-                                                  ""
+                                                      "" ||
+                                                  widget.comingFromEditScreen ==
+                                                      true
                                               ? Colors.white
                                               : Colors.white.withOpacity(0.5),
                                           fontSize:

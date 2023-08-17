@@ -459,7 +459,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                   pracName,
                                                   //  "Meditation",
                                                   textAlign: TextAlign.center,
-                                                  maxLines: 1,
+                                                  maxLines: 2,
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: TextStyle(

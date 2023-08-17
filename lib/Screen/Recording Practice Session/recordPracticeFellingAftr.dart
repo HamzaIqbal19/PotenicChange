@@ -42,6 +42,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
     _fetchPracticeNames();
     if (widget.summary == true) {
       onLoad();
+    } else {
+      feedback.clear();
     }
   }
 

@@ -1118,12 +1118,6 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  SizedBox(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            2.5,
-                                                  ),
                                                   Container(
                                                     // color: Colors.red,
                                                     height:
@@ -1383,7 +1377,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                   child: Text(
                                                     goalDetails['userPractices']
                                                         [0]['name'],
-                                                    maxLines: 3,
+                                                    maxLines: 2,
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     textAlign: TextAlign.center,

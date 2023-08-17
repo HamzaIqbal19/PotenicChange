@@ -1243,7 +1243,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                         ? AppDimensions.height10(context) * 26.3
                                         : AppDimensions.height10(context) *
                                             31.3,
-                                    decoration: myIdentity[0]['text'] != ""
+                                    decoration: myIdentity[0]['text'] != "" ||
+                                            widget.comingFromEditScreen == true
                                         ? BoxDecoration(
                                             // color: Color(0xFFFF7D50),
                                             border: Border.all(
@@ -1275,7 +1276,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                             ? "Save"
                                             : "Next",
                                         style: TextStyle(
-                                          color: myIdentity[0]['text'] != ""
+                                          color: myIdentity[0]['text'] != "" ||
+                                                  widget.comingFromEditScreen ==
+                                                      true
                                               ? Colors.white
                                               : Colors.white.withOpacity(0.5),
                                           fontSize:

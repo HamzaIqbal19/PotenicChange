@@ -1229,7 +1229,9 @@ class _goalwhyState extends State<GoalWhy> {
                                       ? AppDimensions.height10(context) * 26.3
                                       : AppDimensions.height10(context) * 31.3,
                                   decoration: widget.comingFromEditScreen
-                                      ? myTextFields[0]['text'] != ""
+                                      ? myTextFields[0]['text'] != "" ||
+                                              widget.comingFromEditScreen ==
+                                                  true
                                           ? BoxDecoration(
                                               // color: Color(0xFFFF7D50),
                                               border: Border.all(
@@ -1255,7 +1257,9 @@ class _goalwhyState extends State<GoalWhy> {
                                                   const BorderRadius.all(
                                                       Radius.circular(50.0)),
                                             )
-                                      : myTextFields[0]['text'] != ""
+                                      : myTextFields[0]['text'] != "" ||
+                                              widget.comingFromEditScreen ==
+                                                  true
                                           ? BoxDecoration(
                                               // color: Color(0xFFFF7D50),
                                               border: Border.all(
@@ -1288,7 +1292,9 @@ class _goalwhyState extends State<GoalWhy> {
                                           : "Next",
                                       style: TextStyle(
                                         color: widget.comingFromEditScreen
-                                            ? myTextFields[0]['text'] != ""
+                                            ? myTextFields[0]['text'] != "" ||
+                                                    widget.comingFromEditScreen ==
+                                                        true
                                                 ? Colors.white
                                                 : Colors.white.withOpacity(0.5)
                                             : myTextFields[0]['text'] != ""

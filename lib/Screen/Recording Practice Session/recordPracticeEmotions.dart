@@ -59,6 +59,8 @@ class _emotionsState extends State<emotions> {
     super.initState();
     if (widget.summary == true) {
       onLoad();
+    } else {
+      feedback.clear();
     }
   }
 

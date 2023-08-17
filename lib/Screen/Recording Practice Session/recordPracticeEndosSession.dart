@@ -22,6 +22,8 @@ class endofSession extends StatefulWidget {
   State<endofSession> createState() => _endofSessionState();
 }
 
+TextEditingController feedback3 = TextEditingController();
+
 class _endofSessionState extends State<endofSession> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   int sessionEnd = 0;
@@ -42,6 +44,9 @@ class _endofSessionState extends State<endofSession> {
     onLoad();
     super.initState();
     _fetchPracticeNames();
+    if (widget.summary == false) {
+      feedback3.clear();
+    }
     print(
         "==============================$selected_date} ============$timeSlot");
   }
@@ -57,7 +62,6 @@ class _endofSessionState extends State<endofSession> {
   }
   // String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
-  TextEditingController feedback3 = TextEditingController();
   void onLoad() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
@@ -74,7 +78,7 @@ class _endofSessionState extends State<endofSession> {
           ? "2023:08:12"
           : prefs.getString('record_date');
     });
-    feedback.text = prefs.getString('endSessionFeedback')!;
+    feedback3.text = prefs.getString('endSessionFeedback')!;
     print("=============================Practice num:$prac_num");
   }
 
@@ -737,8 +741,8 @@ class _endofSessionState extends State<endofSession> {
                                 {
                                   "beforeNote": emotionsNotes,
                                   "afterNote": afterSessionNotes,
-                                  "endNote": feedback.text.isNotEmpty
-                                      ? feedback.text.toString()
+                                  "endNote": feedback3.text.isNotEmpty
+                                      ? feedback3.text.toString()
                                       : " "
                                 }
                               ],
@@ -765,8 +769,8 @@ class _endofSessionState extends State<endofSession> {
                                 {
                                   "beforeNote": emotionsNotes,
                                   "afterNote": afterSessionNotes,
-                                  "endNote": feedback.text.isNotEmpty
-                                      ? feedback.text.toString()
+                                  "endNote": feedback3.text.isNotEmpty
+                                      ? feedback3.text.toString()
                                       : " "
                                 }
                               ],
@@ -966,7 +970,7 @@ class notes extends StatelessWidget {
             children: [
               Container(
                 child: TextField(
-                  controller: feedback,
+                  controller: feedback3,
                   maxLength: 200,
                   maxLines: null,
                   minLines: null,

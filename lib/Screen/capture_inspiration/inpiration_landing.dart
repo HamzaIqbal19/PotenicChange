@@ -344,11 +344,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               gradient: InspirationList[index * 2]
                                                           ['inspirationId'] ==
                                                       2
-                                                  ? const RadialGradient(
-                                                      colors: [
-                                                          Color(0xFFE9A594),
-                                                          Color(0xFFEEBEB2)
-                                                        ])
+                                                  ? const RadialGradient(colors: [
+                                                      Color(0xFFE9A594),
+                                                      Color(0xFFEEBEB2)
+                                                    ])
                                                   : const RadialGradient(
                                                       colors: [
                                                           Color(0xFFD9D9D9),
@@ -359,8 +358,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                           ['inspirationId'] ==
                                                       1
                                                   ? DecorationImage(
-                                                      image: FileImage(File(
-                                                          InspirationList[index * 2]['file'])),
+                                                      image: NetworkImage(
+                                                          InspirationList[index * 2]
+                                                                  ['file']
+                                                              .toString()),
                                                       fit: BoxFit.cover)
                                                   : DecorationImage(
                                                       image: AssetImage(InspirationList[index * 2]['inspirationId'] == 4
@@ -492,23 +493,23 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                 gradient: InspirationList[index * 2 + 1]
                                                             ['inspirationId'] ==
                                                         2
-                                                    ? const RadialGradient(
-                                                        colors: [
-                                                            Color(0xFFE9A594),
-                                                            Color(0xFFEEBEB2)
-                                                          ])
-                                                    : const RadialGradient(
-                                                        colors: [
-                                                            Color(0xFFD9D9D9),
-                                                            Color(0xFFD9D9D9)
-                                                          ]),
+                                                    ? const RadialGradient(colors: [
+                                                        Color(0xFFE9A594),
+                                                        Color(0xFFEEBEB2)
+                                                      ])
+                                                    : const RadialGradient(colors: [
+                                                        Color(0xFFD9D9D9),
+                                                        Color(0xFFD9D9D9)
+                                                      ]),
                                                 shape: BoxShape.circle,
                                                 image: InspirationList[index * 2 + 1]
                                                             ['inspirationId'] ==
                                                         1
                                                     ? DecorationImage(
-                                                        image: FileImage(
-                                                            File(InspirationList[index * 2 + 1]['file'])),
+                                                        image: NetworkImage(
+                                                            InspirationList[index * 2 + 1]
+                                                                    ['file']
+                                                                .toString()),
                                                         fit: BoxFit.cover)
                                                     : DecorationImage(
                                                         image: AssetImage(InspirationList[index * 2 + 1]['inspirationId'] == 4
@@ -2318,9 +2319,10 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                                 ['inspirationId'] ==
                                             1
                                         ? DecorationImage(
-                                            image: FileImage(File(
-                                                inspirationDetails['inspiration']
-                                                    ['file'])),
+                                            image: NetworkImage(
+                                                inspirationDetails[
+                                                        'inspiration']['file']
+                                                    .toString()),
                                             fit: BoxFit.cover)
                                         : DecorationImage(
                                             image: AssetImage(inspirationDetails['inspiration']['inspirationId'] == 4

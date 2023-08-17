@@ -595,6 +595,11 @@ class _practiceMenuState extends State<practiceMenu> {
                                                       page: const prac_score(
                                                     saved: false,
                                                   )));
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(const SnackBar(
+                                                      content: Text(
+                                                          "Practice report is not active!!")));
                                             }
                                           },
                                           child: button_feilds(
@@ -649,6 +654,11 @@ class _practiceMenuState extends State<practiceMenu> {
                                         context,
                                         FadePageRoute(
                                             page: const practice_progress()));
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                "Practice report is not active!!")));
                                   }
                                 },
                                 child: const button_feilds(

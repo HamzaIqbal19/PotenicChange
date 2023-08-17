@@ -629,6 +629,7 @@ class _ActivateStarState extends State<ActivateStar> {
 
                                           child: Text(
                                             pracName,
+                                            maxLines: 2,
                                             textAlign: TextAlign.center,
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
@@ -643,7 +644,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                         SizedBox(
                                           height:
                                               AppDimensions.height10(context) *
-                                                  1.1,
+                                                  0.3,
                                         ),
                                         Image(
                                           image: const AssetImage(
