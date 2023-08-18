@@ -742,7 +742,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                               ['name'],
                                           textAlign: TextAlign.center,
                                           overflow: TextOverflow.ellipsis,
-                                          maxLines: 3,
+                                          maxLines: 2,
                                           style: TextStyle(
                                             fontSize: AppDimensions.height10(
                                                     context) *

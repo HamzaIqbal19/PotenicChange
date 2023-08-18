@@ -1,10 +1,52 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Goal.dart';
 
 import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class practice_assesment extends StatelessWidget {
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+class practice_assesment extends StatefulWidget {
   const practice_assesment({super.key});
+
+  @override
+  State<practice_assesment> createState() => _practice_assesmentState();
+}
+
+class _practice_assesmentState extends State<practice_assesment> {
+  var goalDetails;
+  bool Loader = true;
+
+  Future<void> _fetchGoalDetails() async {
+    final SharedPreferences prefs = await _prefs;
+
+    AdminGoal.getUserGoalById(prefs.get('goal_num')).then((response) async {
+      if (response.length != 0) {
+        setState(() {
+          goalDetails = response;
+        });
+        loadData();
+        print(response);
+      } else {
+        loadData();
+      }
+    }).catchError((error) {
+      print("error");
+    }).whenComplete(() {});
+  }
+
+  Future<Timer> loadData() async {
+    return Timer(const Duration(milliseconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loader = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

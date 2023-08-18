@@ -126,8 +126,10 @@ class video_EditState extends State<videoEdit> {
                               right: AppDimensions.height10(context) * 4.9),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.push(context,
-                                  FadePageRoute(page: const record_inspiration()));
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const record_inspiration()));
                             },
                             child: Text(
                               'Back',
@@ -271,15 +273,11 @@ class video_EditState extends State<videoEdit> {
                                                   onPressed: () async {
                                                     InspirationApi()
                                                         .updateInspiration(
-                                                            title.text
-                                                                .toString(),
-                                                            tagList,
-                                                            link.text
-                                                                .toString(),
-                                                            statement.text
-                                                                .toString(),
-                                                            file.text
-                                                                .toString())
+                                                      title.text.toString(),
+                                                      tagList,
+                                                      link.text.toString(),
+                                                      statement.text.toString(),
+                                                    )
                                                         .then((response) {
                                                       if (response == true) {
                                                         Navigator.push(
@@ -680,7 +678,7 @@ class video_EditState extends State<videoEdit> {
                                       context,
                                       FadePageRoute(
                                           page: inspiraton_goals(
-                                            update: true,
+                                        update: true,
                                         data_saved: true,
                                         context: widget.context,
                                         note: widget.note,
@@ -716,8 +714,8 @@ class video_EditState extends State<videoEdit> {
                                       context,
                                       FadePageRoute(
                                           page: const inspiraton_goals(
-                                            update: true,
-                                        data_saved:false,
+                                        update: true,
+                                        data_saved: false,
                                         route: 'note_saved',
                                         context: false,
                                         note: false,

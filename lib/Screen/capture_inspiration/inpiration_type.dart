@@ -96,7 +96,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                               title: Container(
                                 margin: const EdgeInsets.only(
                                     top: 19, right: 16, left: 16, bottom: 2),
-                                height: AppDimensions.height10(context) * 2.2,
+                                //  height: AppDimensions.height10(context) * 2.2,
                                 width: AppDimensions.height10(context) * 23.8,
                                 child: const Text(
                                   "Exit Inspiration?",
@@ -110,7 +110,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                               content: Container(
                                 margin: const EdgeInsets.only(
                                     bottom: 19, left: 16, right: 16),
-                                height: 32,
+                                //  height: 32,
                                 width: 238,
                                 child: const Text(
                                   "Please select from the options below",
@@ -220,7 +220,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                           final SharedPreferences prefs =
                                               await _prefs;
                                           var deleted = prefs.remove(
-                                              'selected_goals_inspiration');
+                                              'inspiration_saved_route');
                                         },
                                         child: const Text(
                                           'Exit & delete progress',
@@ -243,6 +243,10 @@ class _inspiration_typeState extends State<inspiration_type> {
                                     Container(
                                       height: 42,
                                       width: double.infinity,
+                                      margin: EdgeInsets.only(
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  1.0),
                                       color: Colors.white,
                                       child: TextButton(
                                         onPressed: () {

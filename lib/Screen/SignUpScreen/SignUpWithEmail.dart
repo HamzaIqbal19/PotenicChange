@@ -410,8 +410,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                   validator: (val) {
                                     if (val == null ||
                                         val == "" ||
-                                        val.length < 8 ||
-                                        val == "") {
+                                        val.length < 8) {
                                       setState(() {
                                         errorPassword = true;
                                       });
@@ -439,8 +438,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                           1.0),
                                   child: Image.asset(
                                     pass_obscure
-                                        ? 'assets/images/ic_remove_red_eye.webp'
-                                        : 'assets/images/visible-icon-9.webp',
+                                        ? 'assets/images/visible-icon-9.webp'
+                                        : 'assets/images/ic_remove_red_eye.webp',
                                     color: const Color(0xFF8C648A),
                                     height:
                                         AppDimensions.height10(context) * 2.4,
@@ -610,7 +609,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                       await Future.delayed(Duration(milliseconds: 200));
 
                       if (_formkey1.currentState!.validate() &&
-                          rememberMe == true) {
+                          rememberMe == true &&
+                          errorPassword == false) {
                         setState(() {
                           Loading = true;
                           // errorEmail = false;
@@ -675,7 +675,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           });
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
-                              'error',
+                              'ERROR',
                               style:
                                   TextStyle(color: Colors.red.withOpacity(0.8)),
                             ),
@@ -699,6 +699,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           'User Agreement is not checked',
                           style: TextStyle(color: Colors.red.withOpacity(0.8)),
                         )));
+                      } else {
+                        setState(() {
+                          Loading = false;
+                        });
                       }
                     },
                     child: Transform.scale(

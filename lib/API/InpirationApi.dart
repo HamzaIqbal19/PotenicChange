@@ -28,7 +28,6 @@ class InspirationApi {
     var accessToken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
     print(prefs.getString("usertoken"));
-    print("Path=====================${file!.path}");
     var headers = {
       //'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
@@ -51,14 +50,11 @@ class InspirationApi {
 
     print("Fields: ${request.fields}");
     request.headers.addAll(headers);
-    http.MultipartFile multipartFile = await http.MultipartFile.fromPath(
-        'file', file.path,
-        contentType: MediaType('image', 'jpeg'));
 
     if (file != null) {
-      // File newFile = File(file);
-      //  var multipartFileSign = new http.MultipartFile('profile_pic', stream, length,
-      // filename: basename(file.path));
+      http.MultipartFile multipartFile = await http.MultipartFile.fromPath(
+          'file', file.path,
+          contentType: MediaType('image', 'jpeg'));
 
       request.files.add(multipartFile);
     }
@@ -70,8 +66,13 @@ class InspirationApi {
 
     if (response.statusCode == 200) {
       var responses = await response.stream.bytesToString();
-      print("response==========>$responses"); // Printing the response
-      return responses;
+      var responseBody = jsonDecode(responses);
+      print(responseBody['result']['id']);
+      var inspirationId =
+          prefs.setInt('userInspirationId', responseBody['result']['id']);
+
+      print("response==========>$responses['result']"); // Printing the response
+      return responseBody;
       // You can parse the response here and return appropriate data
     } else {
       print("request==========>$response.statusCode");
@@ -79,8 +80,12 @@ class InspirationApi {
     }
   }
 
-  Future updateInspiration(String title, hashTags, String destinationLink,
-      String description, String file) async {
+  Future updateInspiration(
+    String title,
+    hashTags,
+    String destinationLink,
+    String description,
+  ) async {
     final SharedPreferences prefs = await _prefs;
     //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
@@ -97,7 +102,6 @@ class InspirationApi {
       "hashTags": hashTags,
       "destinationLink": destinationLink,
       "description": description,
-      "file": file,
     });
     // var userGoalId = prefs.getInt('goalId');
     // print('$userGoalId');
@@ -123,6 +127,7 @@ class InspirationApi {
   }
 
   Future deleteUserInspiraton() async {
+    print('Delete Called');
     final SharedPreferences prefs = await _prefs;
     var userInspirationId = prefs.getInt('userInspirationId');
     var Accestoken = prefs.getString("usertoken");
@@ -235,6 +240,8 @@ class InspirationApi {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
+    print("type================>$type");
+    print(Accestoken);
 
     var headers = {
       'Content-Type': 'application/json',
@@ -247,7 +254,7 @@ class InspirationApi {
           : type != 0 && goalId != 0
               ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId&inspirationId=$type'
               : goalId != 0 && tag != null
-                  ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId$tag=$tag'
+                  ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId&$tag=$tag'
                   : tag != null && type != 0
                       ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag&inspirationId=$type'
                       : type != 0
@@ -262,9 +269,12 @@ class InspirationApi {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
+
       print("Result:$jsonData");
 
       return jsonData;
+    } else if (response.statusCode == 404) {
+      return response.statusCode;
     } else {
       print(
           'Failed to fetch inspiration names Request failed with status: ${response.statusCode}');

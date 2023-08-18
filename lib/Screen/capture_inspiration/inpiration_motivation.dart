@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/dashboardViewgoals.dart';
 import 'inpiration_landing.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class inspiration_motivation extends StatefulWidget {
   final bool goal_delete;
@@ -17,6 +21,17 @@ class inspiration_motivation extends StatefulWidget {
 }
 
 class _inspiration_motivationState extends State<inspiration_motivation> {
+  var Route;
+
+  void getInspirationRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      Route = prefs.getString('inspiration_saved_route');
+    });
+
+    print(prefs.getString('inspiration_saved_route'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,17 +104,30 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                   child: Center(
                     child: AnimatedScaleButton(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          FadePageRoute(
-                              page: (const inspiraton_goals(
-                            update: false,
-                            data_saved: false,
-                            route: 'motivation',
-                            context: false,
-                            note: false,
-                          ))),
-                        );
+                        if (Route == null) {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const inspiraton_goals(
+                                      update: false,
+                                      data_saved: false,
+                                      context: false,
+                                      note: false,
+                                      route: 'landing')));
+                        } else if (Route == 'goals_inspiration') {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const inspiraton_goals(
+                                      update: false,
+                                      data_saved: false,
+                                      context: false,
+                                      note: false,
+                                      route: 'landing')));
+                        } else if (Route == "type_inspiration") {
+                          Navigator.push(context,
+                              FadePageRoute(page: const inspiration_type()));
+                        }
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 16.7,

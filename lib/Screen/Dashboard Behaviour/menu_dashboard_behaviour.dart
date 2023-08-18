@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
@@ -32,6 +36,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
   String pracName = '';
   String goalColor = '';
   String pracColor = '';
+  var pracDetails;
 
   void getRecorDetails() async {
     final SharedPreferences prefs = await _prefs;
@@ -44,10 +49,55 @@ class _menu_behaviourState extends State<menu_behaviour> {
     });
   }
 
+  void _fetchPracticeDetails() async {
+    PracticeGoalApi.getUserPractice().then((response) {
+      if (response.length != 0) {
+        print(
+            "---------------------------------PRACTICE RESPONSE===>$response");
+        setState(() {
+          pracDetails = response;
+        });
+        loadData();
+        print(pracName + pracColor);
+        AdminGoal.getUserGoalById(response['userGoalId']).then(
+          (value) {
+            if (value.length != 0) {
+              print("---------------------------------Goal RESPONSE===>$value");
+              setState(() {
+                goalName = response["name"];
+              });
+            }
+          },
+        );
+
+        print("---------------------------------");
+        print("response123:${response["color"]}");
+      } else {
+        // loadData();
+        print("response:$response");
+      }
+    }).catchError((error) {
+      // loadData();
+      print("hell");
+    });
+  }
+
+  bool Loader = true;
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loader = false;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     getRecorDetails();
+    _fetchPracticeDetails();
   }
 
   @override
@@ -648,10 +698,17 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                         AppDimensions.height10(context) * 1.2),
                                 child: AnimatedScaleButton(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const progress_report()));
+                                    if (pracDetails['report'] == true) {
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const progress_report()));
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  "Practice report is not active!!")));
+                                    }
                                   },
                                   child: const button_feilds(
                                     feild_text: 'Progress report',
@@ -666,11 +723,19 @@ class _menu_behaviourState extends State<menu_behaviour> {
                               ),
                               AnimatedScaleButton(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page:
-                                              const prac_score(saved: false)));
+                                  if (pracDetails['report'] == true) {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const prac_score(
+                                          saved: false,
+                                        )));
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                "Practice score is not active!!")));
+                                  }
                                 },
                                 child: const button_feilds(
                                   feild_text: 'Evaluation level ',
@@ -706,8 +771,15 @@ class _menu_behaviourState extends State<menu_behaviour> {
                   children: [
                     AnimatedScaleButton(
                       onTap: () {
-                        Navigator.push(context,
-                            FadePageRoute(page: const practice_progress()));
+                        if (pracDetails['report'] == true) {
+                          Navigator.push(context,
+                              FadePageRoute(page: const practice_progress()));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text(
+                                      "Practice progress is not active!!")));
+                        }
                       },
                       child: const button_feilds(
                         feild_text: 'View practice progress',

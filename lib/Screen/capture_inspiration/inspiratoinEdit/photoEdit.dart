@@ -263,7 +263,7 @@ class _photo_EditState extends State<photo_Edit> {
                                                           link.text.toString(),
                                                           statement.text
                                                               .toString(),
-                                                          ' ')
+                                                          )
                                                       .then((response) async {
                                                     if (response == true) {
                                                       Navigator.push(
@@ -376,7 +376,7 @@ class _photo_EditState extends State<photo_Edit> {
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
-                                      image: FileImage(File(image)),
+                                      image: NetworkImage(image),
                                       fit: BoxFit.cover)),
                             ),
                             SingleChildScrollView(

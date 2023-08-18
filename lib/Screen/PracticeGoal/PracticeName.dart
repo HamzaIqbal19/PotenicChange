@@ -110,7 +110,8 @@ class _PracticeNameState extends State<PracticeName> {
                               context: context,
                               builder: (BuildContext context) =>
                                   const pop_up_practices())
-                          : Navigator.pop(context)
+                          : Navigator.push(context,
+                              FadePageRoute(page: const PracticeReview()))
                       : Navigator.pop(context);
                   // Navigator.pushReplacement(
                   //   context,

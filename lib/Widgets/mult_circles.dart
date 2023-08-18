@@ -147,7 +147,7 @@ class align_circles extends StatelessWidget {
                   width: AppDimensions.height10(context) * 11.225,
                   child: Text(
                     s_circle_text,
-                    maxLines: 3,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                     style: TextStyle(

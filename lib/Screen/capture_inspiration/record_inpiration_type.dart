@@ -150,24 +150,22 @@ class _record_inspirationState extends State<record_inspiration> {
                                 gradient: inspirationDetails['inspiration']
                                             ['inspirationId'] ==
                                         2
-                                    ? const RadialGradient(colors: [
-                                        Color(0xFFE9A594),
-                                        Color(0xFFEEBEB2)
-                                      ])
-                                    : const RadialGradient(colors: [
-                                        Color(0xFFD9D9D9),
-                                        Color(0xFFD9D9D9)
-                                      ]),
+                                    ? const RadialGradient(
+                                        colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)])
+                                    : const RadialGradient(
+                                        colors: [Color(0xFFD9D9D9), Color(0xFFD9D9D9)]),
                                 image: inspirationDetails['inspiration']
                                             ['inspirationId'] ==
                                         1
                                     ? DecorationImage(
-                                        image: FileImage(File(
-                                            inspirationDetails['inspiration']
-                                                ['file'])),
+                                        image: NetworkImage(
+                                            inspirationDetails['inspiration']['file']
+                                                .toString()),
                                         fit: BoxFit.cover)
                                     : DecorationImage(
-                                        image: AssetImage(inspirationDetails['inspiration']['inspirationId'] == 4
+                                        image: AssetImage(inspirationDetails['inspiration']
+                                                    ['inspirationId'] ==
+                                                4
                                             ? 'assets/images/distraction content.webp'
                                             : inspirationDetails['inspiration']['inspirationId'] == 3
                                                 ? 'assets/images/video_play.webp'
@@ -387,8 +385,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                     style: TextStyle(
                                       color: const Color(0xFF646464),
                                       fontSize:
-                                          AppDimensions.height10(context) *
-                                              1.8,
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),

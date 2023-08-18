@@ -1163,7 +1163,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                           height: AppDimensions
                                                                   .height10(
                                                                       context) *
-                                                              0.3,
+                                                              0.7,
                                                         ),
                                                         SizedBox(
                                                           // color: Colors.green,
@@ -1377,7 +1377,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                   child: Text(
                                                     goalDetails['userPractices']
                                                         [0]['name'],
-                                                    maxLines: 2,
+                                                    maxLines: 1,
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     textAlign: TextAlign.center,

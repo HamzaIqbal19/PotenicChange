@@ -265,7 +265,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
 
                                         if (val == null ||
                                             !EmailValidator.validate(val) ||
-                                            val == "") {
+                                            val.isEmpty) {
                                           setState(() {
                                             errorEmail = true;
                                           });
@@ -274,6 +274,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                             errorEmail = false;
                                           });
                                         }
+                                        return null;
                                       }
                                       // },
                                       ),
@@ -380,9 +381,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                                             .transparent))),
                                         controller: passwordController,
                                         validator: (val) {
-                                          if (val == null ||
-                                              val == "" ||
-                                              val.length < 8) {
+                                          if ((val == null && val == '') ||
+                                              val!.length < 8) {
                                             setState(() {
                                               errorPassword = true;
                                             });
@@ -391,6 +391,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                               errorPassword = false;
                                             });
                                           }
+                                          return null;
                                         },
                                       ),
                                     ),
@@ -412,8 +413,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                   width: AppDimensions.height10(context) * 2.4,
                                   child: Image.asset(
                                     pass_obscure
-                                        ? 'assets/images/ic_remove_red_eye.webp'
-                                        : 'assets/images/visible-icon-9.webp',
+                                        ? 'assets/images/visible-icon-9.webp'
+                                        : 'assets/images/ic_remove_red_eye.webp',
                                     color: const Color(0xFF8C648A),
                                     height:
                                         AppDimensions.height10(context) * 2.4,
@@ -551,7 +552,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       _controller.reverse();
 
                       await Future.delayed(const Duration(milliseconds: 200));
-                      if (_formkey.currentState!.validate()) {
+                      if (_formkey.currentState!.validate() &&
+                          errorPassword == false) {
                         Authentication()
                             .SignIn(
                           fcm,
@@ -604,6 +606,10 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                             Loading = false;
                             credentials = false;
                           });
+                        });
+                      } else {
+                        setState(() {
+                          Loading = false;
                         });
                       }
                     },

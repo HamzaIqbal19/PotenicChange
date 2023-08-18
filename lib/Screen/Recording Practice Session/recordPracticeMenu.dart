@@ -569,6 +569,11 @@ class _practiceMenuState extends State<practiceMenu> {
                                                     FadePageRoute(
                                                         page:
                                                             const progress_report()));
+                                              } else {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(const SnackBar(
+                                                        content: Text(
+                                                            "Practice report is not active!!")));
                                               }
                                             },
                                             child: button_feilds(
@@ -599,7 +604,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(const SnackBar(
                                                       content: Text(
-                                                          "Practice report is not active!!")));
+                                                          "Practice score is not active!!")));
                                             }
                                           },
                                           child: button_feilds(
@@ -658,7 +663,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         const SnackBar(
                                             content: Text(
-                                                "Practice report is not active!!")));
+                                                "Practice progress is not active!!")));
                                   }
                                 },
                                 child: const button_feilds(

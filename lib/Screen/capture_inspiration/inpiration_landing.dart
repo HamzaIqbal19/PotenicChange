@@ -40,6 +40,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
   int goalId = 0;
   String selectionTag = '';
   int inspirationId = 0;
+  var Route;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -53,10 +54,19 @@ class _inspiration_landingState extends State<inspiration_landing> {
 
   void filterInspiratonByTag(search, id, tag) {
     InspirationApi().filterUserInspiration(search, id, tag).then((response) {
-      if (response.length != 0) {
+      print(response);
+      if (response != 404) {
         setState(() {
           InspirationList = response;
+          noData = false;
         });
+      } else if (response == 404) {
+        print('Response == $response');
+        setState(() {
+          noData = true;
+        });
+      } else {
+        print(response);
       }
     });
   }
@@ -67,6 +77,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
         setState(() {
           InspirationList = response;
           InspirationAll = response;
+          noData = false;
         });
 
         loadData();
@@ -127,10 +138,20 @@ class _inspiration_landingState extends State<inspiration_landing> {
     // print(tagNames);
   }
 
+  void getInspirationRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      Route = prefs.getString('inspiration_saved_route');
+    });
+
+    print(prefs.getString('inspiration_saved_route'));
+  }
+
   @override
   void initState() {
     super.initState();
     _fetchInspiraion();
+    getInspirationRoute();
   }
 
   @override
@@ -238,15 +259,32 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               alignment: const Alignment(0, 0.525),
                               child: AnimatedScaleButton(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const inspiraton_goals(
-                                              update: false,
-                                              data_saved: false,
-                                              context: false,
-                                              note: false,
-                                              route: 'landing')));
+                                  if (Route == null) {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const inspiraton_goals(
+                                                update: false,
+                                                data_saved: false,
+                                                context: false,
+                                                note: false,
+                                                route: 'landing')));
+                                  } else if (Route == 'goals_inspiration') {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const inspiraton_goals(
+                                                update: false,
+                                                data_saved: false,
+                                                context: false,
+                                                note: false,
+                                                route: 'landing')));
+                                  } else if (Route == "type_inspiration") {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const inspiration_type()));
+                                  }
                                 },
                                 child: Container(
                                   width:
@@ -298,315 +336,359 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           ],
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 6.8,
-                            bottom: AppDimensions.height10(context) * 9.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                padding: EdgeInsets.zero,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: (InspirationList.length + 1) ~/
-                                    2, // Half of the items, rounded up
-                                itemBuilder: (context, index) {
-                                  return Container(
-                                    width:
-                                        AppDimensions.height10(context) * 16.7,
-                                    height:
-                                        AppDimensions.height10(context) * 23.8,
-                                    child: Column(children: [
-                                      AnimatedScaleButton(
-                                        onTap: () async {
-                                          final SharedPreferences prefs =
-                                              await _prefs;
-
-                                          var hurdleId = prefs.setInt(
-                                              'userInspirationId',
-                                              InspirationList[index * 2]['id']);
-                                          Navigator.push(
-                                              context,
-                                              FadePageRoute(
-                                                  page:
-                                                      const record_inspiration()));
-                                        },
-                                        child: Container(
+                      noData == true
+                          ? Container(
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 4.0),
+                              width: AppDimensions.height10(context) * 26,
+                              child: Center(
+                                  child: Text(
+                                'There are no recorded inspiration',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: const Color(0xFFFBFBFB),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 3),
+                              )),
+                            )
+                          : Container(
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 6.8,
+                                  bottom:
+                                      AppDimensions.height10(context) * 9.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      padding: EdgeInsets.zero,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: (InspirationList.length + 1) ~/
+                                          2, // Half of the items, rounded up
+                                      itemBuilder: (context, index) {
+                                        return Container(
                                           width:
                                               AppDimensions.height10(context) *
                                                   16.7,
                                           height:
                                               AppDimensions.height10(context) *
-                                                  16.7,
-                                          decoration: BoxDecoration(
-                                              gradient: InspirationList[index * 2]
-                                                          ['inspirationId'] ==
-                                                      2
-                                                  ? const RadialGradient(colors: [
-                                                      Color(0xFFE9A594),
-                                                      Color(0xFFEEBEB2)
-                                                    ])
-                                                  : const RadialGradient(
-                                                      colors: [
-                                                          Color(0xFFD9D9D9),
-                                                          Color(0xFFD9D9D9)
-                                                        ]),
-                                              shape: BoxShape.circle,
-                                              image: InspirationList[index * 2]
-                                                          ['inspirationId'] ==
-                                                      1
-                                                  ? DecorationImage(
-                                                      image: NetworkImage(
-                                                          InspirationList[index * 2]
-                                                                  ['file']
-                                                              .toString()),
-                                                      fit: BoxFit.cover)
-                                                  : DecorationImage(
-                                                      image: AssetImage(InspirationList[index * 2]['inspirationId'] == 4
-                                                          ? 'assets/images/distraction content.webp'
-                                                          : InspirationList[index]['inspirationId'] == 3
-                                                              ? 'assets/images/video_play.webp'
-                                                              : ''),
-                                                      fit: BoxFit.cover)),
-                                          child: InspirationList[index * 2]
-                                                      ['inspirationId'] ==
-                                                  2
-                                              ? Container(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.7),
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          6.3,
-                                                  child: Center(
-                                                      child: Text(
+                                                  23.8,
+                                          child: Column(children: [
+                                            AnimatedScaleButton(
+                                              onTap: () async {
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+
+                                                var hurdleId = prefs.setInt(
+                                                    'userInspirationId',
                                                     InspirationList[index * 2]
-                                                        ['description'],
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    maxLines: 2,
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
+                                                        ['id']);
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const record_inspiration()));
+                                              },
+                                              child: Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    16.7,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    16.7,
+                                                decoration: BoxDecoration(
+                                                    gradient: InspirationList[index * 2]['inspirationId'] ==
+                                                            2
+                                                        ? const RadialGradient(colors: [
+                                                            Color(0xFFE9A594),
+                                                            Color(0xFFEEBEB2)
+                                                          ])
+                                                        : const RadialGradient(colors: [
+                                                            Color(0xFFD9D9D9),
+                                                            Color(0xFFD9D9D9)
+                                                          ]),
+                                                    shape: BoxShape.circle,
+                                                    image: InspirationList[index * 2]
+                                                                [
+                                                                'inspirationId'] ==
+                                                            1
+                                                        ? DecorationImage(
+                                                            image: NetworkImage(
+                                                                InspirationList[index * 2]
+                                                                        ['file']
+                                                                    .toString()),
+                                                            fit: BoxFit.cover)
+                                                        : DecorationImage(
+                                                            image: AssetImage(InspirationList[index * 2]['inspirationId'] == 4
+                                                                ? 'assets/images/distraction content.webp'
+                                                                : InspirationList[index * 2]['inspirationId'] == 3
+                                                                    ? 'assets/images/video_play.webp'
+                                                                    : ''),
+                                                            fit: BoxFit.cover)),
+                                                child: InspirationList[
+                                                                index * 2]
+                                                            ['inspirationId'] ==
+                                                        2
+                                                    ? Container(
+                                                        padding: EdgeInsets.symmetric(
+                                                            horizontal: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.7),
+                                                        height: AppDimensions
                                                                 .height10(
                                                                     context) *
+                                                            6.3,
+                                                        child: Center(
+                                                            child: Text(
+                                                          InspirationList[
+                                                                  index * 2]
+                                                              ['description'],
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          maxLines: 2,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.4,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: const Color(
+                                                                  0xFFFFFFFF)),
+                                                        )),
+                                                      )
+                                                    : Container(),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  16.7,
+                                              //height: AppDimensions.height10(context) * 1.9,
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      0.2),
+                                              child: Center(
+                                                  child: Text(
+                                                InspirationList[index * 2]
+                                                    ['title'],
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             1.4,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFFFFFFFF)),
-                                                  )),
-                                                )
-                                              : Container(),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: AppDimensions.height10(context) *
-                                            16.7,
-                                        //height: AppDimensions.height10(context) * 1.9,
-                                        margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
-                                                    context) *
-                                                0.2),
-                                        child: Center(
-                                            child: Text(
-                                          InspirationList[index * 2]['title'],
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                                    fontWeight: FontWeight.w600,
+                                                    color: const Color(
+                                                        0xFFFFFFFF)),
+                                              )),
+                                            ),
+                                            SizedBox(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  1.4,
-                                              fontWeight: FontWeight.w600,
-                                              color: const Color(0xFFFFFFFF)),
-                                        )),
-                                      ),
-                                      SizedBox(
-                                        width: AppDimensions.height10(context) *
-                                            15.7,
-                                        child: Center(
-                                            child: Text(
-                                          InspirationList[index * 2]
-                                              ['description'],
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 2,
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.0,
-                                              fontWeight: FontWeight.w400,
-                                              color: const Color(0xFFFFFFFF)),
-                                        )),
-                                      )
-                                    ]),
-                                  );
-                                  // Replace YourItemWidget with the widget for each item
-                                },
-                              ),
-                            ),
-                            // Second column
-                            Expanded(
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) *
-                                        7.4), // Extra padding for the second column
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  padding: EdgeInsets.zero,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: InspirationList.length ~/
-                                      2, // Half of the items, rounded down
-                                  itemBuilder: (context, index) {
-                                    return Container(
-                                      width: AppDimensions.height10(context) *
-                                          16.7,
-                                      height: AppDimensions.height10(context) *
-                                          23.8,
-                                      child: Column(children: [
-                                        AnimatedScaleButton(
-                                          onTap: () async {
-                                            final SharedPreferences prefs =
-                                                await _prefs;
-
-                                            var hurdleId = prefs.setInt(
-                                                'userInspirationId',
-                                                InspirationList[index * 2 + 1]
-                                                    ['id']);
-                                            Navigator.push(
-                                                context,
-                                                FadePageRoute(
-                                                    page:
-                                                        const record_inspiration()));
-                                          },
-                                          child: Container(
+                                                  15.7,
+                                              child: Center(
+                                                  child: Text(
+                                                InspirationList[index * 2]
+                                                    ['description'],
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 2,
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.0,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: const Color(
+                                                        0xFFFFFFFF)),
+                                              )),
+                                            )
+                                          ]),
+                                        );
+                                        // Replace YourItemWidget with the widget for each item
+                                      },
+                                    ),
+                                  ),
+                                  // Second column
+                                  Expanded(
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              7.4), // Extra padding for the second column
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        padding: EdgeInsets.zero,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: InspirationList.length ~/
+                                            2, // Half of the items, rounded down
+                                        itemBuilder: (context, index) {
+                                          return Container(
                                             width: AppDimensions.height10(
                                                     context) *
                                                 16.7,
                                             height: AppDimensions.height10(
                                                     context) *
-                                                16.7,
-                                            decoration: BoxDecoration(
-                                                gradient: InspirationList[index * 2 + 1]
-                                                            ['inspirationId'] ==
-                                                        2
-                                                    ? const RadialGradient(colors: [
-                                                        Color(0xFFE9A594),
-                                                        Color(0xFFEEBEB2)
-                                                      ])
-                                                    : const RadialGradient(colors: [
-                                                        Color(0xFFD9D9D9),
-                                                        Color(0xFFD9D9D9)
-                                                      ]),
-                                                shape: BoxShape.circle,
-                                                image: InspirationList[index * 2 + 1]
-                                                            ['inspirationId'] ==
-                                                        1
-                                                    ? DecorationImage(
-                                                        image: NetworkImage(
-                                                            InspirationList[index * 2 + 1]
-                                                                    ['file']
-                                                                .toString()),
-                                                        fit: BoxFit.cover)
-                                                    : DecorationImage(
-                                                        image: AssetImage(InspirationList[index * 2 + 1]['inspirationId'] == 4
-                                                            ? 'assets/images/distraction content.webp'
-                                                            : InspirationList[index]['inspirationId'] == 3
-                                                                ? 'assets/images/video_play.webp'
-                                                                : ''),
-                                                        fit: BoxFit.cover)),
-                                            child: InspirationList[index * 2 +
-                                                        1]['inspirationId'] ==
-                                                    2
-                                                ? Container(
-                                                    padding: EdgeInsets.symmetric(
-                                                        horizontal: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7),
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            6.3,
-                                                    child: Center(
-                                                        child: Text(
+                                                23.8,
+                                            child: Column(children: [
+                                              AnimatedScaleButton(
+                                                onTap: () async {
+                                                  final SharedPreferences
+                                                      prefs = await _prefs;
+
+                                                  var hurdleId = prefs.setInt(
+                                                      'userInspirationId',
                                                       InspirationList[
-                                                              index * 2 + 1]
-                                                          ['description'],
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      maxLines: 2,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
+                                                          index * 2 + 1]['id']);
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const record_inspiration()));
+                                                },
+                                                child: Container(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      16.7,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          16.7,
+                                                  decoration: BoxDecoration(
+                                                      gradient: InspirationList[index * 2 + 1]['inspirationId'] ==
+                                                              2
+                                                          ? const RadialGradient(colors: [
+                                                              Color(0xFFE9A594),
+                                                              Color(0xFFEEBEB2)
+                                                            ])
+                                                          : const RadialGradient(colors: [
+                                                              Color(0xFFD9D9D9),
+                                                              Color(0xFFD9D9D9)
+                                                            ]),
+                                                      shape: BoxShape.circle,
+                                                      image: InspirationList[index * 2 + 1][
+                                                                  'inspirationId'] ==
+                                                              1
+                                                          ? DecorationImage(
+                                                              image: NetworkImage(
+                                                                  InspirationList[index * 2 + 1]
+                                                                          ['file']
+                                                                      .toString()),
+                                                              fit: BoxFit.cover)
+                                                          : DecorationImage(
+                                                              image: AssetImage(InspirationList[index * 2 + 1]['inspirationId'] == 4
+                                                                  ? 'assets/images/distraction content.webp'
+                                                                  : InspirationList[index * 2 + 1]['inspirationId'] == 3
+                                                                      ? 'assets/images/video_play.webp'
+                                                                      : ''),
+                                                              fit: BoxFit.cover)),
+                                                  child: InspirationList[
+                                                                  index * 2 + 1]
+                                                              [
+                                                              'inspirationId'] ==
+                                                          2
+                                                      ? Container(
+                                                          padding: EdgeInsets.symmetric(
+                                                              horizontal: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.7),
+                                                          height: AppDimensions
                                                                   .height10(
                                                                       context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: const Color(
-                                                              0xFFFFFFFF)),
-                                                    )),
-                                                  )
-                                                : Container(),
-                                          ),
-                                        ),
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  16.7,
-                                          //height: AppDimensions.height10(context) * 1.9,
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  0.2),
-                                          child: Center(
-                                              child: Text(
-                                            InspirationList[index * 2 + 1]
-                                                ['title'],
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
+                                                              6.3,
+                                                          child: Center(
+                                                              child: Text(
+                                                            InspirationList[
+                                                                    index * 2 +
+                                                                        1]
+                                                                ['description'],
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            maxLines: 2,
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFFFFFFFF)),
+                                                          )),
+                                                        )
+                                                      : Container(),
+                                                ),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    16.7,
+                                                //height: AppDimensions.height10(context) * 1.9,
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
                                                             context) *
-                                                        1.4,
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color(0xFFFFFFFF)),
-                                          )),
-                                        ),
-                                        SizedBox(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  15.7,
-                                          child: Center(
-                                              child: Text(
-                                            InspirationList[index * 2 + 1]
-                                                ['description'],
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 2,
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.0,
-                                                fontWeight: FontWeight.w400,
-                                                color: const Color(0xFFFFFFFF)),
-                                          )),
-                                        )
-                                      ]),
-                                    );
-                                    ; // Replace YourItemWidget with the widget for each item
-                                  },
-                                ),
+                                                        0.2),
+                                                child: Center(
+                                                    child: Text(
+                                                  InspirationList[index * 2 + 1]
+                                                      ['title'],
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.4,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: const Color(
+                                                          0xFFFFFFFF)),
+                                                )),
+                                              ),
+                                              SizedBox(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    15.7,
+                                                child: Center(
+                                                    child: Text(
+                                                  InspirationList[index * 2 + 1]
+                                                      ['description'],
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.0,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xFFFFFFFF)),
+                                                )),
+                                              )
+                                            ]),
+                                          );
+                                          ; // Replace YourItemWidget with the widget for each item
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
-                      ),
 
                       // noData == false
                       //     ? GridView.builder(
@@ -1097,9 +1179,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               ],
                                             ),
                                             Positioned(
-                                              top: 112,
-                                              right: 20,
-                                              left: 20,
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  13.5,
+                                              right: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
                                               child: Align(
                                                 alignment:
                                                     const Alignment(0, 0),
@@ -1112,9 +1200,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               ),
                                             ),
                                             Positioned(
-                                              top: 152,
-                                              right: 20,
-                                              left: 20,
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  18.0,
+                                              right: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
                                               child: Align(
                                                 alignment:
                                                     const Alignment(0, 0),
@@ -1612,9 +1706,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               ],
                                             ),
                                             Positioned(
-                                              top: 112,
-                                              right: 20,
-                                              left: 20,
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  13.5,
+                                              right: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
                                               child: Align(
                                                 alignment:
                                                     const Alignment(0, 0),
@@ -1627,9 +1727,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               ),
                                             ),
                                             Positioned(
-                                              top: 152,
-                                              right: 20,
-                                              left: 20,
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  18.0,
+                                              right: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
                                               child: Align(
                                                 alignment:
                                                     const Alignment(0, 0),
@@ -1719,6 +1825,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             setState(() {
                               InspirationList = InspirationAll;
                               selectionTag = '';
+                              noData = false;
                               goalId = 0;
                               type_index = 0;
                               selected_type = 'All';

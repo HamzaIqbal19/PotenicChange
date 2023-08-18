@@ -144,10 +144,25 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
     });
   }
 
+  var Route;
+
+  void getInspirationRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      Route = prefs.getString('inspiration_saved_route').toString().isEmpty
+          ? ''
+          : prefs.getString('inspiration_saved_route');
+    });
+
+    print(prefs.getString('inspiration_saved_route'));
+  }
+
   @override
   void initState() {
     super.initState();
-    if (widget.data_saved == false) {
+    _fetchUserGoal();
+    getInspirationRoute();
+    if (widget.data_saved == false && Route == '') {
       selectedInActiveIndices.clear();
       selectedIndices.clear();
       selectedGoals.clear();
@@ -157,8 +172,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
         selectAll = false;
       });
     }
-
-    _fetchUserGoal();
   }
 
   @override
@@ -234,7 +247,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             builder: (BuildContext context) => SizedBox(
                                   width: AppDimensions.height10(context) * 27.0,
                                   height:
-                                      AppDimensions.height10(context) * 21.0,
+                                      AppDimensions.height10(context) * 24.0,
                                   child: AlertDialog(
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(
@@ -249,8 +262,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                           right: 16,
                                           left: 16,
                                           bottom: 2),
-                                      height:
-                                          AppDimensions.height10(context) * 2.2,
+                                      // height:
+                                      //     AppDimensions.height10(context) * 2.2,
                                       width: AppDimensions.height10(context) *
                                           23.8,
                                       child: const Text(
@@ -265,7 +278,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                     content: Container(
                                       margin: const EdgeInsets.only(
                                           bottom: 19, left: 16, right: 16),
-                                      height: 32,
+                                      // height:
+                                      //     AppDimensions.height10(context) * 1.6,
                                       width: 238,
                                       child: const Text(
                                         "Please select from the options below",
@@ -387,7 +401,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                 final SharedPreferences prefs =
                                                     await _prefs;
                                                 var deleted = prefs.remove(
-                                                    'selected_goals_inspiration');
+                                                    'inspiration_saved_route');
                                               },
                                               child: const Text(
                                                 'Exit & delete progress',
@@ -411,6 +425,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                           Container(
                                             height: 42,
                                             width: double.infinity,
+                                            margin: EdgeInsets.only(
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    1.0),
                                             color: Colors.white,
                                             child: TextButton(
                                               onPressed: () {
@@ -681,7 +699,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                         child: Center(
                                           child: Text(
                                             Active[index]['name'],
-                                            maxLines: 3,
+                                            maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
@@ -827,7 +845,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                         child: Center(
                                           child: Text(
                                             inActive[index]['name'],
-                                            maxLines: 3,
+                                            maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.center,
                                             style: TextStyle(

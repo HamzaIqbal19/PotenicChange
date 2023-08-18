@@ -35,7 +35,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   var hurdlesList;
   var hurdlesListName;
   List hurdleName = [];
-
+  bool noData = false;
   var goals = [];
   int search = 0;
   int goalId = 0;
@@ -86,11 +86,19 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   void filterTerm(searchTerm, goalId) {
     Hurdles().filterUserHurdles(searchTerm, goalId).then((response) {
       print(searchTerm);
-      if (response.length != 0) {
+      if (response != 404) {
         setState(() {
           hurdlesList = response;
+          noData = false;
         });
         print(hurdlesList);
+      } else if (response == 404) {
+        print('Response == $response');
+        setState(() {
+          noData = true;
+        });
+      } else {
+        print(response);
       }
     });
   }
@@ -365,9 +373,15 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                             ],
                                           ),
                                           Positioned(
-                                            top: 112,
-                                            right: 20,
-                                            left: 20,
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                13.5,
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
                                             child: Align(
                                               alignment: const Alignment(0, 0),
                                               child: Container(
@@ -378,9 +392,15 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                             ),
                                           ),
                                           Positioned(
-                                            top: 152,
-                                            right: 20,
-                                            left: 20,
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                18.0,
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
                                             child: Align(
                                               alignment: const Alignment(0, 0),
                                               child: Container(
@@ -538,10 +558,9 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                     GestureDetector(
                                                       onTap: () {
                                                         print(
-                                                            '=============HrurdleID============');
-                                                        print(hurdlesList[
-                                                                _selectedTag]
-                                                            ['hurdleId']);
+                                                            '=============HrurdleID===========Id=');
+                                                        print(_selectedTag);
+
                                                         setState(() {
                                                           _selected_activity =
                                                               hurdleName[
@@ -555,10 +574,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                           //     ['hurdleId'];
                                                         });
                                                         filterTerm(
-                                                            hurdlesListName[
-                                                                    _selectedTag]
-                                                                ['id'],
-                                                            goalId);
+                                                            hurdleId, goalId);
 
                                                         print('asf');
                                                         Navigator.pop(context);
@@ -593,20 +609,24 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                   useMagnifier: true,
                                                   children: hurdleName
                                                       .map(
-                                                          (statement) =>
-                                                              Text(statement,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.height10(context) *
-                                                                            2.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                  )))
+                                                          (statement) => Column(
+                                                                children: [
+                                                                  Text(
+                                                                      statement,
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            AppDimensions.height10(context) *
+                                                                                2.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w400,
+                                                                      )),
+                                                                ],
+                                                              ))
                                                       .toList(),
                                                   onSelectedItemChanged:
                                                       (int index) {
+                                                    print(hurdleName[index]);
                                                     setState(() {
                                                       _selectedTag = index;
                                                     });
@@ -616,9 +636,15 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                             ],
                                           ),
                                           Positioned(
-                                            top: 112,
-                                            right: 20,
-                                            left: 20,
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                13.5,
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
                                             child: Align(
                                               alignment: const Alignment(0, 0),
                                               child: Container(
@@ -629,9 +655,15 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                             ),
                                           ),
                                           Positioned(
-                                            top: 152,
-                                            right: 20,
-                                            left: 20,
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                18.0,
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
                                             child: Align(
                                               alignment: const Alignment(0, 0),
                                               child: Container(
@@ -715,6 +747,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                         onTap: () {
                           setState(() {
                             hurdlesList = allHurdle;
+                            noData = false;
                             hurdleId = 0;
                             goalId = 0;
                             _selected_activity = "All";
@@ -950,123 +983,147 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                       //           fontFamily: 'laila')),
                       // ),
 
-                      Container(
-                        //height: AppDimensions.height10(context) * 45,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 4,
-                            bottom: AppDimensions.height10(context) * 10),
-                        child: GridView.builder(
-                            shrinkWrap: true,
-                            padding: EdgeInsets.only(
-                              top: 0,
-                              bottom: AppDimensions.height10(context) * 5,
-                            ),
-                            physics: const NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              childAspectRatio:
-                                  3.5 / 3, // Two items in each row
+                      noData == true
+                          ? Container(
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 4.0),
+                              width: AppDimensions.height10(context) * 26,
+                              child: Center(
+                                  child: Text(
+                                'There are no recorded hurdle',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: const Color(0xFFFBFBFB),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 3),
+                              )),
+                            )
+                          : Container(
+                              //height: AppDimensions.height10(context) * 45,
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 4,
+                                  bottom: AppDimensions.height10(context) * 10),
+                              child: GridView.builder(
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.only(
+                                    top: 0,
+                                    bottom: AppDimensions.height10(context) * 5,
+                                  ),
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    childAspectRatio:
+                                        3.5 / 3, // Two items in each row
 
-                              mainAxisSpacing: 1.0,
-                              crossAxisSpacing: 0.1,
-                            ),
-                            itemCount: hurdlesList.length,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      AnimatedScaleButton(
-                                        onTap: () async {
-                                          final SharedPreferences prefs =
-                                              await _prefs;
+                                    mainAxisSpacing: 1.0,
+                                    crossAxisSpacing: 0.1,
+                                  ),
+                                  itemCount: hurdlesList.length,
+                                  itemBuilder: (context, index) {
+                                    return Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            AnimatedScaleButton(
+                                              onTap: () async {
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
 
-                                          var hurdleId = prefs.setInt(
-                                              'userHurdleId',
-                                              hurdlesList[index]['id']);
-                                          Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const hurdle_menu()),
-                                          );
-                                        },
-                                        child: Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  17.6,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  18.207,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal:
-                                                  AppDimensions.height10(
-                                                      context)),
-                                          decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              image: DecorationImage(
-                                                  image: AssetImage(
-                                                      'assets/images/black_hole.webp'))),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              SizedBox(
+                                                var hurdleId = prefs.setInt(
+                                                    'userHurdleId',
+                                                    hurdlesList[index]['id']);
+                                                Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page:
+                                                          const hurdle_menu()),
+                                                );
+                                              },
+                                              child: Container(
                                                 width: AppDimensions.height10(
                                                         context) *
-                                                    7.1,
+                                                    17.6,
                                                 height: AppDimensions.height10(
                                                         context) *
-                                                    1.9,
-                                                child: Text(
-                                                  capitalizeFirstLetter(
-                                                      hurdlesList[index]
-                                                          ['hurdleName']),
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: AppDimensions
+                                                    18.207,
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        AppDimensions.height10(
+                                                            context)),
+                                                decoration: const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    image: DecorationImage(
+                                                        image: AssetImage(
+                                                            'assets/images/black_hole.webp'))),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    SizedBox(
+                                                      width: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          1.6,
-                                                      fontWeight:
-                                                          FontWeight.w700),
+                                                          7.1,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.9,
+                                                      child: Text(
+                                                        capitalizeFirstLetter(
+                                                            hurdlesList[index]
+                                                                ['hurdleName']),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.6,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.6),
+                                                      child: Text(
+                                                        capitalizeFirstLetter(
+                                                            hurdlesList[index][
+                                                                'triggerStatment']),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        maxLines: 4,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.4,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                    )
+                                                  ],
                                                 ),
                                               ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        0.6),
-                                                child: Text(
-                                                  capitalizeFirstLetter(
-                                                      hurdlesList[index]
-                                                          ['triggerStatment']),
-                                                  textAlign: TextAlign.center,
-                                                  maxLines: 4,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.4,
-                                                      fontWeight:
-                                                          FontWeight.w400),
-                                                ),
-                                              )
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              );
-                            }),
-                      ),
+                                      ],
+                                    );
+                                  }),
+                            ),
                     ],
                   ),
                 )

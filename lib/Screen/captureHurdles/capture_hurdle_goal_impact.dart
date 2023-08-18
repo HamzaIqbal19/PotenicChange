@@ -32,20 +32,22 @@ class hurdles_goal_impact extends StatefulWidget {
   State<hurdles_goal_impact> createState() => _hurdles_goal_impactState();
 }
 
+List<int> selectedIndices = [];
+List<int> selectedInActiveIndices = [];
+bool selectAll = false;
+
+List selectedGoals = [];
+List multiGoals = [];
+List allgoalsSelected = [];
+
 class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
-  var goals = [];
   int selectBox = -1;
   int selectinActive = -1;
   var hurdlesSummary;
-  bool selectAll = false;
+  var goals = [];
+  bool Loading = true;
   List<Map<String, dynamic>> Active = [];
   List<Map<String, dynamic>> inActive = [];
-  List selectedGoals = [];
-  List multiGoals = [];
-  List allgoalsSelected = [];
-  bool Loading = true;
-  List<int> selectedIndices = [];
-  List<int> selectedInActiveIndices = [];
 
   Future<void> saveGoalsToSharedPreferences(List goals) async {
     final SharedPreferences prefs = await _prefs;
@@ -142,11 +144,35 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
     }
   }
 
+  var Route;
+
+  void getHurdleRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      Route = prefs.getString('HurdleRoute').toString().isEmpty
+          ? ''
+          : prefs.getString('HurdleRoute');
+    });
+
+    print(prefs.getString('HurdleRoute'));
+  }
+
   @override
   void initState() {
     super.initState();
 
     _fetchUserGoal();
+    getHurdleRoute();
+    if (Route == '') {
+      selectedInActiveIndices.clear();
+      selectedIndices.clear();
+      selectedGoals.clear();
+      multiGoals.clear();
+      allgoalsSelected.clear();
+      setState(() {
+        selectAll = false;
+      });
+    }
   }
 
   @override
@@ -609,7 +635,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                         child: Center(
                                           child: Text(
                                             Active[index]['name'],
-                                            maxLines: 3,
+                                            maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
@@ -755,7 +781,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                         child: Center(
                                           child: Text(
                                             inActive[index]['name'],
-                                            maxLines: 3,
+                                            maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
