@@ -18,16 +18,19 @@ class practice_assesment extends StatefulWidget {
 
 class _practice_assesmentState extends State<practice_assesment> {
   var goalDetails;
+  var pracDetails;
   bool Loader = true;
 
-  Future<void> _fetchGoalDetails() async {
+  void fetchGoalDetails() async {
     final SharedPreferences prefs = await _prefs;
 
     AdminGoal.getUserGoalById(prefs.get('goal_num')).then((response) async {
       if (response.length != 0) {
         setState(() {
           goalDetails = response;
+          pracDetails = response['userPractices'];
         });
+        print('Practices<==================>$pracDetails');
         loadData();
         print(response);
       } else {
@@ -46,6 +49,12 @@ class _practice_assesmentState extends State<practice_assesment> {
     setState(() {
       Loader = false;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchGoalDetails();
   }
 
   @override
