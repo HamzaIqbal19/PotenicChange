@@ -27,7 +27,7 @@ class hurdle_name extends StatefulWidget {
 
 class _hurdle_nameState extends State<hurdle_name> {
   bool button_state = false;
-  String? hurdleName;
+  var hurdleName;
   TextEditingController controller = TextEditingController();
   var hurdlesSummary;
   var hurdlesList;
@@ -99,12 +99,28 @@ class _hurdle_nameState extends State<hurdle_name> {
     setState(() {
       hurdleName = prefs.getString('hurdleName');
     });
+
     print(hurdleName);
+  }
+
+  void _getName() async {
+    final SharedPreferences prefs = await _prefs;
+    var Name;
+    setState(() {
+      Name = prefs.getString('NameHurdle').toString().isEmpty
+          ? ''
+          : prefs.getString('NameHurdle');
+    });
+    if (Name != '' && Name != null) {
+      controller.text = Name;
+    }
+    print(Name);
   }
 
   @override
   void initState() {
     super.initState();
+    _getName();
     if (widget.update == false) {
       setState(() {
         Loading = false;
@@ -240,6 +256,9 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                 await _prefs;
                                             var hurdleRoute = prefs.setString(
                                                 'HurdleRoute', 'Name');
+
+                                            await prefs.setString('NameHurdle',
+                                                controller.text.toString());
                                           },
                                           child: const Text(
                                             'Exit & save progress',
@@ -270,6 +289,13 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                 await _prefs;
                                             var hurdleRoute =
                                                 prefs.remove('HurdleRoute');
+                                            await prefs.remove('hurdleName');
+                                            await prefs.remove('NameHurdle');
+                                            await prefs
+                                                .remove('hurdleStatement');
+                                            await prefs.remove('hurdleId');
+                                            await prefs
+                                                .remove('selected_goals');
                                           },
                                           child: const Text(
                                             'Exit & delete progress',
@@ -557,7 +583,8 @@ class _hurdle_nameState extends State<hurdle_name> {
                             builder: (context, value, child) {
                               return AnimatedScaleButton(
                                 onTap: () async {
-                                  if (widget.update == true) {
+                                  if (widget.update == true &&
+                                      controller.text.isNotEmpty) {
                                     Hurdles().updateHurdle('hurdleName',
                                         controller.text.toString());
                                     Navigator.push(
@@ -569,7 +596,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                   } else {
                                     final SharedPreferences prefs =
                                         await _prefs;
-                                    var Name = prefs.setString('hurdleName',
+                                    var Name = prefs.setString('NameHurdle',
                                         controller.text.toString());
                                     if (controller.text.isNotEmpty) {
                                       Navigator.push(
@@ -596,8 +623,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                             : AppDimensions.height10(context) *
                                                 1.0),
                                     decoration: BoxDecoration(
-                                      gradient: controller.text.isNotEmpty ||
-                                              widget.update
+                                      gradient: controller.text.isNotEmpty
                                           ? const LinearGradient(
                                               begin: Alignment.topCenter,
                                               end: Alignment.bottomCenter,

@@ -76,6 +76,23 @@ class _summary_hurdlesState extends State<summary_hurdles> {
     });
   }
 
+  void checkHurdle() async {
+    Hurdles().checkUserHurdles().then((response) {
+      if (response == true) {
+        Navigator.push(
+          context,
+          FadePageRoute(page: const landing_hurdles()),
+        );
+
+        return response;
+      } else if (response == false) {
+        Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
+      }
+    }).catchError((error) {
+      print("Hello world error");
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -678,11 +695,12 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                               .then((response) {
                                                             if (response ==
                                                                 true) {
-                                                              Navigator.push(
-                                                                  context,
-                                                                  FadePageRoute(
-                                                                      page:
-                                                                          const landing_hurdles()));
+                                                              checkHurdle();
+                                                              // Navigator.push(
+                                                              //     context,
+                                                              //     FadePageRoute(
+                                                              //         page:
+                                                              //             const landing_hurdles()));
                                                             }
                                                           });
                                                         },
@@ -810,7 +828,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             ])),
                     widget.delete_hurdle
                         ? SizedBox(
-                            height: AppDimensions.height10(context) * 16.0,
+                            height: AppDimensions.height10(context) * 1.0,
                           )
                         : Container(
                             // width:   AppDimensions.height10(context)(context)* 34.0,
@@ -846,7 +864,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                       width: AppDimensions.height10(context) * 17.0,
                       height: AppDimensions.height10(context) * 0.5,
                       margin: EdgeInsets.only(
-                          bottom: AppDimensions.height10(context) * 1.8),
+                          bottom: AppDimensions.height10(context) * 2.8),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 2.0),

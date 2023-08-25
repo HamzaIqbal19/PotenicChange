@@ -65,7 +65,21 @@ class _hurdle_statementState extends State<hurdle_statement> {
       }
     }).catchError((error) {
       print("Hello world error");
+    }).whenComplete(() => null);
+  }
+
+  void _getStatement() async {
+    final SharedPreferences prefs = await _prefs;
+    var Name;
+    setState(() {
+      Name = prefs.getString('hurdleStatement').toString().isEmpty
+          ? ''
+          : prefs.getString('hurdleStatement');
     });
+    if (Name != '' && Name != null) {
+      controller.text = Name;
+    }
+    print(Name);
   }
 
   void _fetchHurdleSummary() async {
@@ -88,7 +102,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
   @override
   void initState() {
     super.initState();
-
+    _getStatement();
     if (widget.update == false) {
       setState(() {
         Loading = false;
@@ -223,8 +237,11 @@ class _hurdle_statementState extends State<hurdle_statement> {
 
                                             final SharedPreferences prefs =
                                                 await _prefs;
-                                            var hurdleRoute = prefs.setString(
+                                            await prefs.setString(
                                                 'HurdleRoute', 'Statements');
+                                            await prefs.setString(
+                                                'hurdleStatement',
+                                                controller.text.toString());
                                           },
                                           child: const Text(
                                             'Exit & save progress',
@@ -255,6 +272,13 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                                 await _prefs;
                                             var hurdleRoute =
                                                 prefs.remove('HurdleRoute');
+                                            await prefs.remove('hurdleName');
+                                            await prefs.remove('NameHurdle');
+                                            await prefs
+                                                .remove('hurdleStatement');
+                                            await prefs.remove('hurdleId');
+                                            await prefs
+                                                .remove('selected_goals');
                                           },
                                           child: const Text(
                                             'Exit & delete progress',
@@ -515,7 +539,8 @@ class _hurdle_statementState extends State<hurdle_statement> {
                             builder: (context, value, child) {
                               return AnimatedScaleButton(
                                 onTap: () async {
-                                  if (widget.update == true) {
+                                  if (widget.update == true &&
+                                      controller.text.isNotEmpty) {
                                     Hurdles()
                                         .updateHurdle("triggerStatment",
                                             controller.text.toString())

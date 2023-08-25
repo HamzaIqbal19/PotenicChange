@@ -49,7 +49,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
     final SharedPreferences prefs = await _prefs;
 
     setState(() {
-      hurdleName = prefs.getString('hurdleName');
+      hurdleName = prefs.getString('NameHurdle');
       hurdleStatement = prefs.getString('hurdleStatement');
       hurdleId = prefs.getInt('hurdleId');
     });
@@ -60,7 +60,6 @@ class _felling_hurdlesState extends State<felling_hurdles> {
       setState(() {
         selectedGoals = decodedGoals;
       });
-      print('SelectedGoals==============================$selectedGoals');
     }
   }
 
@@ -82,16 +81,12 @@ class _felling_hurdlesState extends State<felling_hurdles> {
           trigger = response['hurdle']['thoughtsAndFeelings'];
         });
         // print("=================================>Response$response");
-        print("=================================>Trigger${trigger[0]}");
 
         for (int i = 0;
             i <= response['hurdle']['thoughtsAndFeelings'].length;
             i++) {
-          print('Function 1 called');
-          print(i);
           i != trigger.length ? statements.add('${trigger[i]}') : print('full');
         }
-        print(statements);
         for (int i = 0;
             i <= response['hurdle']['thoughtsAndFeelings'].length;
             i++) {
@@ -104,9 +99,6 @@ class _felling_hurdlesState extends State<felling_hurdles> {
           // statements = response['hurdle']['thoughtsAndFeelings'];
           circle_state = response['hurdle']['thoughtsAndFeelings'].length;
         });
-        print(statements);
-        print(circle_state);
-        print(updatedSummary);
         loadData();
         // controllersUpdate();
         // controllersUpdateText();
@@ -115,9 +107,46 @@ class _felling_hurdlesState extends State<felling_hurdles> {
       } else {
         return response.statusCode;
       }
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
+  }
+
+  void saveListToSharedPreferences(List<String> myList) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    print(myList);
+    await prefs.setStringList('feelingsList', myList);
+  }
+
+  getListFromSharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> myList = prefs.getStringList('feelingsList') ?? [];
+    print(myList);
+
+    if (myList.isNotEmpty) {
+      for (int i = 0; i <= myList.length; i++) {
+        i != myList.length ? statements.add(myList[i]) : print('full');
+      }
+      for (int i = 0; i <= myList.length; i++) {
+        i != myList.length
+            ? control.insert(i, TextEditingController(text: myList[i]))
+            : control.add(TextEditingController(text: 'I feel'));
+      }
+      print(myList.length);
+      setState(() {
+        scroll = false;
+        // statements = response['hurdle']['thoughtsAndFeelings'];
+
+        circle_state = myList.length - 1;
+      });
+      print(circle_state);
+      print(statements);
+    } else if (myList.isEmpty) {
+      statements.add('i feel');
+      control.add(TextEditingController(text: 'I feel'));
+    }
+  }
+
+  Future<void> _loadList() async {
+    List<String> tempList = await getListFromSharedPreferences();
   }
 
   void controllersUpdate() {
@@ -148,12 +177,9 @@ class _felling_hurdlesState extends State<felling_hurdles> {
       setState(() {
         Loader = false;
       });
-      statements.add('i feel');
-      control.add(TextEditingController(text: 'I feel'));
+
+      getListFromSharedPreferences();
       _getHurdleDetail();
-      print(hurdleId);
-      print(hurdleName);
-      print(hurdleStatement);
     }
   }
 
@@ -169,9 +195,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
       } else if (response == false) {
         Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
       }
-    }).catchError((error) {
-      print("Hello world error");
-    });
+    }).catchError((error) {});
   }
 
   int circle_state = 0;
@@ -300,6 +324,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                 await _prefs;
                                             var hurdleRoute = prefs.setString(
                                                 'HurdleRoute', 'Feelings');
+                                            saveListToSharedPreferences(
+                                                statements);
                                           },
                                           child: const Text(
                                             'Exit & save progress',
@@ -330,6 +356,14 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                 await _prefs;
                                             var hurdleRoute =
                                                 prefs.remove('HurdleRoute');
+                                            await prefs.remove('hurdleName');
+                                            await prefs.remove('NameHurdle');
+                                            await prefs
+                                                .remove('hurdleStatement');
+                                            await prefs.remove('hurdleId');
+                                            await prefs
+                                                .remove('selected_goals');
+                                            await prefs.remove('feelingsList');
                                           },
                                           child: const Text(
                                             'Exit & delete progress',
@@ -503,8 +537,6 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                 );
                                               }
                                             }
-
-                                            print(newText);
                                           },
                                           onFieldSubmitted: (submittedText) {
                                             // Check if the submitted text is empty
@@ -657,12 +689,6 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     ),
                     AnimatedScaleButton(
                       onTap: () async {
-                        print(statements);
-                        print(hurdleId);
-                        print(hurdleName);
-
-                        print('Selected goals $selectedGoals');
-                        print(hurdleStatement);
                         if (widget.update == true) {
                           // Navigator.push(
                           //     context,
@@ -673,9 +699,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                           Hurdles()
                               .updateHurdle("thoughtsAndFeelings", statements)
                               .then((response) {
-                            print(statements);
                             if (response == true) {
-                              print('Updated');
                               Navigator.push(
                                   context,
                                   FadePageRoute(
@@ -683,7 +707,6 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                     delete_hurdle: false,
                                   )));
                             } else {
-                              print(response);
                               // Navigator.push(
                               //     context,
                               //     FadePageRoute(
@@ -706,11 +729,16 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                   )));
                               final SharedPreferences prefs = await _prefs;
                               var hurdleRoute = prefs.remove('HurdleRoute');
+                              await prefs.remove('hurdleName');
+                              await prefs.remove('NameHurdle');
+                              await prefs.remove('hurdleStatement');
+                              await prefs.remove('hurdleId');
+                              await prefs.remove('selected_goals');
+                              await prefs.remove('feelingsList');
                             }
                             final SharedPreferences prefs = await _prefs;
                             var userHurdleId = prefs.setInt(
                                 'userHurdleId', response['result']['id']);
-                            print(response['result']['id']);
                           });
                         }
                       },

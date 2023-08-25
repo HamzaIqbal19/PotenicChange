@@ -25,9 +25,11 @@ class select_hurdle extends StatefulWidget {
   State<select_hurdle> createState() => _select_hurdleState();
 }
 
+int selectBox = -1;
+
 class _select_hurdleState extends State<select_hurdle> {
   var hurdlesList;
-  int selectBox = -1;
+
   bool Loading = true;
 
   Future<Timer> loadData() async {
@@ -38,6 +40,24 @@ class _select_hurdleState extends State<select_hurdle> {
     setState(() {
       Loading = false;
     });
+  }
+
+  var Route;
+
+  void getHurdleRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      Route = prefs.getString('HurdleRoute').toString().isEmpty
+          ? ''
+          : prefs.getString('HurdleRoute');
+    });
+
+    print("Route ${prefs.getString('HurdleRoute')}");
+    if (Route == '' || Route == null) {
+      setState(() {
+        selectBox = -1;
+      });
+    }
   }
 
   void _fetchHurdle() async {
@@ -60,7 +80,7 @@ class _select_hurdleState extends State<select_hurdle> {
     Hurdles().getHurdleById().then((response) {
       if (response.length != 0) {
         setState(() {
-          selectBox = response['hurdle']['hurdleId'] - 1;
+          selectBox = response['hurdle']['hurdleId'];
         });
         loadData();
         return response;
@@ -75,6 +95,7 @@ class _select_hurdleState extends State<select_hurdle> {
   @override
   void initState() {
     super.initState();
+    getHurdleRoute();
     print(
         "---------------------------------------------------------------------");
     _fetchHurdle();
@@ -256,6 +277,13 @@ class _select_hurdleState extends State<select_hurdle> {
                                                 await _prefs;
                                             var hurdleRoute =
                                                 prefs.remove('HurdleRoute');
+                                            await prefs.remove('hurdleName');
+                                            await prefs.remove('NameHurdle');
+                                            await prefs
+                                                .remove('hurdleStatement');
+                                            await prefs.remove('hurdleId');
+                                            await prefs
+                                                .remove('selected_goals');
                                           },
                                           child: const Text(
                                             'Exit & delete progress',

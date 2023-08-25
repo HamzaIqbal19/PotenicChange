@@ -43,15 +43,17 @@ class _endofSessionState extends State<endofSession> {
 
   @override
   void initState() {
+    super.initState();
+    feedback3.clear();
+    setState(() {
+      sessionEnd = 0;
+    });
     setState(() {
       sessionEnd = widget.selected;
     });
     onLoad();
-    super.initState();
+
     _fetchPracticeNames();
-    if (widget.summary == false) {
-      feedback3.clear();
-    }
   }
 
   void _fetchPracticeNames() async {
@@ -62,6 +64,9 @@ class _endofSessionState extends State<endofSession> {
       pracName = '$Name';
     });
     onLoad();
+    if (widget.summary == true) {
+      recording();
+    }
   }
   // String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
@@ -81,6 +86,34 @@ class _endofSessionState extends State<endofSession> {
         "==============================${prefs.getString('record_date')} ============${prefs.getString('recording_Time1')}");
     feedback3.text = prefs.getString('endSessionFeedback')!;
     print("=============================Practice num:$prac_num");
+  }
+
+  void recording() {
+    RecordingPractice.getUserPracticeRecord().then((response) {
+      if (response.length != 0) {
+        print('======================================================');
+        print(response['recording']['notes'][0]['endNote']);
+        String SessionFeedBack = '';
+
+        print(response);
+        setState(() {
+          afterSessionNotes =
+              response['recording']['notes'][0]['afterNote'].toString();
+          emotionsNotes =
+              response['recording']['notes'][0]['beforeNote'].toString();
+          SessionFeedBack =
+              response['recording']['notes'][0]['endNote'].toString().isEmpty
+                  ? ''
+                  : response['recording']['notes'][0]['endNote'];
+          sessionEnd = response['recording']['practiceSummary'];
+        });
+        if (SessionFeedBack != '') {
+          feedback3.text = SessionFeedBack;
+        }
+
+        //print(response);
+      }
+    });
   }
 
   @override
@@ -740,7 +773,7 @@ class _endofSessionState extends State<endofSession> {
                           final SharedPreferences prefs = await _prefs;
                           var afterSessionFeedback = feedback.text.isNotEmpty
                               ? prefs.setString('endSessionFeedback',
-                                  feedback.text.toString())
+                                  feedback3.text.toString())
                               : prefs.setString('endSessionFeedback', " ");
                           if (widget.summary == true) {
                             RecordingPractice().updateRecording(
@@ -758,7 +791,7 @@ class _endofSessionState extends State<endofSession> {
                             ).then((value) {
                               if (value == true) {
                                 print('Updated Summary');
-                                feedback.clear();
+                                feedback3.clear();
                                 Navigator.push(
                                     context,
                                     FadePageRoute(

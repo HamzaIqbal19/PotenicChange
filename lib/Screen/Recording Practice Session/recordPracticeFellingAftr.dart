@@ -41,14 +41,17 @@ class _feelingsAfterState extends State<feelingsAfter> {
   @override
   void initState() {
     super.initState();
+    feedback.clear();
+    setState(() {
+      EmotionsAfter = 0;
+    });
     setState(() {
       EmotionsAfter = widget.selected;
     });
     _fetchPracticeNames();
     if (widget.summary == true) {
       onLoad();
-    } else {
-      feedback.clear();
+      recording();
     }
   }
 
@@ -58,10 +61,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
   void onLoad() async {
     final SharedPreferences prefs = await _prefs;
 
-    emotionsNotes = prefs.getString('emotionsFeedback');
-    endSession = prefs.getString('endSessionFeedback');
     behaviour_route = prefs.getBool('behaviour_route');
-    feedback.text = prefs.getString('sessionFeedback')!;
   }
 
   void _fetchPracticeNames() async {
@@ -70,6 +70,32 @@ class _feelingsAfterState extends State<feelingsAfter> {
 
     setState(() {
       pracName = '$Name';
+    });
+  }
+
+  void recording() {
+    RecordingPractice.getUserPracticeRecord().then((response) {
+      if (response.length != 0) {
+        print(
+            '===================================================$response===');
+        print(response['recording']['notes'][0]['endNote']);
+        String SessionFeedBack = '';
+
+        setState(() {
+          emotionsNotes = response['recording']['notes'][0]['beforeNote'];
+          endSession = response['recording']['notes'][0]['endNote'];
+          SessionFeedBack =
+              response['recording']['notes'][0]['afterNote'].toString().isEmpty
+                  ? ''
+                  : response['recording']['notes'][0]['afterNote'];
+          EmotionsAfter = response['recording']['feelingsAfterSession'];
+        });
+        if (SessionFeedBack != '') {
+          feedback.text = SessionFeedBack;
+        }
+
+        //print(response);
+      }
     });
   }
 
@@ -587,6 +613,125 @@ class _feelingsAfterState extends State<feelingsAfter> {
                 addNotes(
                   state_: widget.summary,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    widget.summary
+                        ? AnimatedScaleButton(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                                height: AppDimensions.height10(context) * 5.0,
+                                width: AppDimensions.height10(context) * 14.3,
+                                margin: EdgeInsets.only(
+                                    right:
+                                        AppDimensions.height10(context) * 1.2),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                        AppDimensions.height10(context) * 5.0),
+                                    border: Border.all(
+                                        width: AppDimensions.height10(context) *
+                                            0.2,
+                                        color: const Color(0xffFA9934))),
+                                child: Center(
+                                    child: Text(
+                                  'Cancel',
+                                  style: TextStyle(
+                                      color: const Color(0xffFA9934),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
+                                      fontWeight: FontWeight.w600),
+                                ))),
+                          )
+                        : Container(),
+                    AnimatedScaleButton(
+                      onTap: () async {
+                        if (EmotionsAfter != 0) {
+                          final SharedPreferences prefs = await _prefs;
+                          var emotionResult =
+                              prefs.setInt('afterSession', EmotionsAfter);
+                          var afterSessionFeedback = prefs.setString(
+                              'sessionFeedback',
+                              feedback.text.toString().isNotEmpty
+                                  ? feedback.text.toString()
+                                  : " ");
+                          print("======================>$EmotionsAfter");
+                          print("================>${feedback.text.toString()}");
+
+                          if (widget.summary == true) {
+                            print(emotionsNotes);
+                            print(endSession);
+                            RecordingPractice().updateRecording(
+                                "feelingsAfterSession", EmotionsAfter, [
+                              {
+                                "beforeNote": emotionsNotes ?? " ",
+                                "afterNote": feedback.text.toString().isNotEmpty
+                                    ? feedback.text.toString()
+                                    : " ",
+                                "endNote": endSession ?? " "
+                              }
+                            ]).then((value) {
+                              if (value == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const practice_summary()));
+                              }
+                            });
+                          } else {
+                            Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const endofSession(
+                                  summary: false,
+                                  selected: 0,
+                                )));
+                          }
+
+                          setState(() {
+                            note_check = false;
+                          });
+                        }
+                      },
+                      child: Container(
+                          height: AppDimensions.height10(context) * 5.0,
+                          width: widget.summary
+                              ? AppDimensions.width10(context) * 21.0
+                              : AppDimensions.width10(context) * 25.4,
+                          // margin: EdgeInsets.only(bottom: 62, top: 46),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: EmotionsAfter != 0
+                                    ? [
+                                        const Color(0xffFCC10D),
+                                        const Color(0xffFDA210),
+                                      ]
+                                    : [
+                                        const Color(0xffFCC10D)
+                                            .withOpacity(0.5),
+                                        const Color(0xffFDA210)
+                                            .withOpacity(0.5),
+                                      ]),
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 5.0),
+                          ),
+                          child: Center(
+                            child: Text(
+                              widget.summary ? 'Update Summary' : 'Next',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          )),
+                    ),
+                  ],
+                )
                 // Padding(
                 //     padding: EdgeInsets.only(
                 //         bottom: MediaQuery.of(context).viewInsets.bottom))
@@ -681,21 +826,14 @@ class _addNotesState extends State<addNotes> {
             child: note_check
                 ? Container(
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.0),
+                        top: AppDimensions.height10(context) * 1.0,
+                        bottom: AppDimensions.height10(context) * 2.0),
                     child: notes(
                       state: widget.state_,
                     ))
-                : Container(
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 10.1,
-                        bottom: AppDimensions.height10(context) * 4.4),
-                    child: next_botton(state: widget.state_),
+                : SizedBox(
+                    height: AppDimensions.height10(context) * 11.1,
                   )),
-
-        // Container(margin: EdgeInsets.only(top: 10), child: notes()),
-
-        // //next button
-        // next_botton()
       ],
     );
   }
@@ -768,21 +906,6 @@ class notes extends StatelessWidget {
             ],
           ),
         ),
-        Container(
-            margin: EdgeInsets.only(
-                top: AppDimensions.height10(context) * 4.6,
-                bottom: AppDimensions.height10(context) * 2.6),
-            child: next_botton(
-              state: state,
-            )),
-        note_check
-            ? SizedBox(
-                // height: AppDimensions.height10(context) * 2.6,
-                child: Container(
-                  color: Colors.amber,
-                ),
-              )
-            : Container()
       ],
     );
   }
@@ -843,24 +966,24 @@ class _next_bottonState extends State<next_botton> {
               print("================>${feedback.text.toString()}");
 
               if (widget.state == true) {
+                print(emotionsNotes);
+                print(endSession);
                 RecordingPractice()
                     .updateRecording("feelingsAfterSession", EmotionsAfter, [
                   {
-                    "beforeNote": emotionsNotes == null ? " " : emotionsNotes,
+                    "beforeNote": emotionsNotes ?? " ",
                     "afterNote": feedback.text.toString().isNotEmpty
                         ? feedback.text.toString()
                         : " ",
-                    "endNote": endSession == null ? " " : endSession
+                    "endNote": endSession ?? " "
                   }
                 ]).then((value) {
                   if (value == true) {
-                    feedback.clear();
                     Navigator.push(
                         context, FadePageRoute(page: const practice_summary()));
                   }
                 });
               } else {
-                feedback.clear();
                 Navigator.push(
                     context,
                     FadePageRoute(
@@ -869,9 +992,8 @@ class _next_bottonState extends State<next_botton> {
                       selected: 0,
                     )));
               }
-              feedback.clear();
+
               setState(() {
-                EmotionsAfter = 0;
                 note_check = false;
               });
             }

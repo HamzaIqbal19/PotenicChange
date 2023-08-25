@@ -154,16 +154,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
           : prefs.getString('HurdleRoute');
     });
 
-    print(prefs.getString('HurdleRoute'));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    _fetchUserGoal();
-    getHurdleRoute();
-    if (Route == '') {
+    print("Route ${prefs.getString('HurdleRoute')}");
+    if (Route == '' || Route == null) {
       selectedInActiveIndices.clear();
       selectedIndices.clear();
       selectedGoals.clear();
@@ -173,6 +165,14 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
         selectAll = false;
       });
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getHurdleRoute();
+
+    _fetchUserGoal();
   }
 
   @override
@@ -303,6 +303,16 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                     prefs.setString(
                                                         'HurdleRoute',
                                                         'Impact');
+                                                if (selectAll == true ||
+                                                    multiGoals.isNotEmpty) {
+                                                  if (selectAll == true) {
+                                                    saveGoalsToSharedPreferences(
+                                                        allgoalsSelected);
+                                                  } else {
+                                                    saveGoalsToSharedPreferences(
+                                                        multiGoals);
+                                                  }
+                                                }
                                               },
                                               child: const Text(
                                                 'Exit & save progress',
@@ -332,8 +342,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                 checkHurdle();
                                                 final SharedPreferences prefs =
                                                     await _prefs;
-                                                var hurdleRoute =
-                                                    prefs.remove('HurdleRoute');
+
                                                 selectedInActiveIndices.clear();
                                                 selectedIndices.clear();
                                                 selectedGoals.clear();
@@ -342,6 +351,17 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                 setState(() {
                                                   selectAll = false;
                                                 });
+                                                var hurdleRoute =
+                                                    prefs.remove('HurdleRoute');
+                                                await prefs
+                                                    .remove('hurdleName');
+                                                await prefs
+                                                    .remove('NameHurdle');
+                                                await prefs
+                                                    .remove('hurdleStatement');
+                                                await prefs.remove('hurdleId');
+                                                await prefs
+                                                    .remove('selected_goals');
                                               },
                                               child: const Text(
                                                 'Exit & delete progress',

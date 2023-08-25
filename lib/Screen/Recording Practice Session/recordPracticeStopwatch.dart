@@ -290,6 +290,7 @@ class _watch_timeState extends State<watch_time> {
   int _seconds = 00;
   int _minutes = 00;
   int _hours = 0;
+  bool enabled = false;
 
   // The state of the timer (running or not)
   bool _isRunning = false;
@@ -301,6 +302,7 @@ class _watch_timeState extends State<watch_time> {
   void _startTimer() {
     setState(() {
       _isRunning = true;
+      enabled = true;
     });
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
@@ -317,6 +319,7 @@ class _watch_timeState extends State<watch_time> {
               _seconds = 59;
             } else {
               _isRunning = false;
+              enabled = false;
               _timer?.cancel();
             }
           }
@@ -342,6 +345,7 @@ class _watch_timeState extends State<watch_time> {
       _minutes = 00;
       _seconds = 00;
       _isRunning = false;
+      enabled = false;
     });
     _timer?.cancel();
   }
@@ -561,16 +565,19 @@ class _watch_timeState extends State<watch_time> {
                         });
                       }
                     } else {
-                      if (_isRunning) {
-                        _pauseTimer();
-                        setState(() {
-                          button_text = 'start';
-                        });
-                      } else {
-                        _startTimer();
-                        setState(() {
-                          button_text = 'Pause';
-                        });
+                      print(enabled);
+                      if (enabled == true) {
+                        if (_isRunning) {
+                          _pauseTimer();
+                          setState(() {
+                            button_text = 'start';
+                          });
+                        } else {
+                          _startTimer();
+                          setState(() {
+                            button_text = 'Pause';
+                          });
+                        }
                       }
                     }
                   },
@@ -579,10 +586,18 @@ class _watch_timeState extends State<watch_time> {
                     width: AppDimensions.height10(context) * 9.1,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.white,
+                        color: _minutes == 00 &&
+                                _seconds == 00 &&
+                                clock_state == false
+                            ? const Color(0xFFFFFFFF).withOpacity(0.5)
+                            : const Color(0xFFFFFFFF),
                         border: Border.all(
                             width: AppDimensions.height10(context) * 0.5,
-                            color: const Color(0xffFEBD0F))),
+                            color: _minutes == 00 &&
+                                    _seconds == 00 &&
+                                    clock_state == false
+                                ? const Color(0xffFEBD0F).withOpacity(0.5)
+                                : const Color(0xffFEBD0F))),
                     child: SizedBox(
                       height: AppDimensions.height10(context) * 7,
                       width: AppDimensions.height10(context) * 7,
@@ -744,8 +759,7 @@ class _watch_timeState extends State<watch_time> {
                   onPressed: () {
                     // When the "Done" button is pressed, update the timer values
                     setState(() {
-                      // No need for _selectedMinutes and _selectedSeconds
-                      // The values are directly updated in _minutes and _seconds
+                      enabled = true;
                     });
                     Navigator.pop(context);
                   },

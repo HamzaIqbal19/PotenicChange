@@ -48,25 +48,51 @@ class _emotionsState extends State<emotions> {
   void onLoad() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
-      afterSessionNotes = prefs.getString('sessionFeedback');
-      endSession = prefs.getString('endSessionFeedback');
       behaviour_route = prefs.getBool('behaviour_route');
     });
-
-    feedback.text = prefs.getString('emotionsFeedback')!;
   }
 
   @override
   void initState() {
     super.initState();
+    feedback.clear();
+    setState(() {
+      pracEmotions = 0;
+    });
     setState(() {
       pracEmotions = widget.selected;
     });
     if (widget.summary == true) {
       onLoad();
-    } else {
-      feedback.clear();
+      recording();
     }
+  }
+
+  void recording() {
+    RecordingPractice.getUserPracticeRecord().then((response) {
+      if (response.length != 0) {
+        print('======================================================');
+        print(response['recording']['notes'][0]['endNote']);
+        String SessionFeedBack = '';
+
+        print(response);
+        setState(() {
+          afterSessionNotes =
+              response['recording']['notes'][0]['afterNote'].toString();
+          endSession = response['recording']['notes'][0]['endNote'].toString();
+          SessionFeedBack =
+              response['recording']['notes'][0]['beforeNote'].toString().isEmpty
+                  ? ''
+                  : response['recording']['notes'][0]['beforeNote'];
+          pracEmotions = response['recording']['feelingsBeforeSession'];
+        });
+        if (SessionFeedBack != '') {
+          feedback.text = SessionFeedBack;
+        }
+
+        //print(response);
+      }
+    });
   }
 
   @override
@@ -679,7 +705,7 @@ class _emotionsState extends State<emotions> {
                                   ]).then((reaponse) {
                                     if (reaponse == true) {
                                       print("Emotions Updated");
-                                      feedback.clear();
+
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
@@ -689,24 +715,11 @@ class _emotionsState extends State<emotions> {
                                     }
                                   });
                                 } else {
-                                  feedback.clear();
                                   Navigator.push(context,
                                       FadePageRoute(page: const clocks()));
                                 }
                               }
-
-                              setState(() {
-                                pracEmotions = 0;
-                              });
                             },
-                            // onTap: () {
-                            //   if (pracEmotions != 0) {
-                            //     widget.summary
-                            //         ? Navigator.pop(context)
-                            //         : Navigator.push(context,
-                            //             FadePageRoute(page: const clocks()));
-                            //   }
-
                             child: Container(
                               height: AppDimensions.height10(context) * 5.0,
                               width: widget.summary
