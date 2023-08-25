@@ -21,11 +21,13 @@ class emotions extends StatefulWidget {
   final bool summary;
   final String pracName;
   final bool record;
+  final int selected;
   const emotions(
       {super.key,
       required this.summary,
       required this.pracName,
-      required this.record});
+      required this.record,
+      required this.selected});
 
   @override
   State<emotions> createState() => _emotionsState();
@@ -57,6 +59,9 @@ class _emotionsState extends State<emotions> {
   @override
   void initState() {
     super.initState();
+    setState(() {
+      pracEmotions = widget.selected;
+    });
     if (widget.summary == true) {
       onLoad();
     } else {
@@ -84,14 +89,14 @@ class _emotionsState extends State<emotions> {
             Center(
               child: IconButton(
                   onPressed: () {
-                    widget.record
+                    widget.record || widget.summary
                         ? Navigator.pop(context)
                         : showAnimatedDialog(
                             animationType: DialogTransitionType.fadeScale,
                             curve: Curves.easeInOut,
                             duration: const Duration(seconds: 1),
                             context: context,
-                            builder: (BuildContext context) => Container(
+                            builder: (BuildContext context) => SizedBox(
                               width: AppDimensions.height10(context) * 27.0,
                               height: AppDimensions.height10(context) * 18.2,
                               child: AlertDialog(
@@ -151,22 +156,16 @@ class _emotionsState extends State<emotions> {
                                               if (widget.summary == false) {
                                                 Navigator.pushReplacement(
                                                     context,
-                                                    FadePageRoute3(
-                                                        enterPage:
-                                                            const dashBoard(
-                                                          saved: false,
-                                                          helpful_tips: false,
-                                                          membership: true,
-                                                          dashboard_ctrl: false,
-                                                          cancel: false,
-                                                          trial: false,
-                                                        ),
-                                                        exitPage: emotions(
-                                                          summary: false,
-                                                          pracName:
-                                                              widget.pracName,
-                                                          record: false,
-                                                        )));
+                                                    FadePageRoute(
+                                                      page: const dashBoard(
+                                                        saved: false,
+                                                        helpful_tips: false,
+                                                        membership: true,
+                                                        dashboard_ctrl: false,
+                                                        cancel: false,
+                                                        trial: false,
+                                                      ),
+                                                    ));
                                               }
                                             } else {
                                               Navigator.push(
@@ -186,7 +185,7 @@ class _emotionsState extends State<emotions> {
                                           ),
                                         ),
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height: 44,
                                         width: double.infinity,
                                         child: TextButton(
@@ -606,7 +605,7 @@ class _emotionsState extends State<emotions> {
                   ),
                  */
 
-                  Container(
+                  SizedBox(
                     //width: AppDimensions.height10(context) * 32.5,
                     height: AppDimensions.height10(context) * 6.0,
                     child: Row(
@@ -822,7 +821,7 @@ class _addNotesState extends State<addNotes> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: AppDimensions.height10(context) * 7.6,
           height: AppDimensions.height10(context) * 7.6,
           //margin: EdgeInsets.only(bottom: 113),

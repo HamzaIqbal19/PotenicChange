@@ -15,8 +15,10 @@ import 'dashboardViewgoals.dart';
 
 class endofSession extends StatefulWidget {
   final bool summary;
+  final int selected;
 
-  const endofSession({super.key, required this.summary});
+  const endofSession(
+      {super.key, required this.summary, required this.selected});
 
   @override
   State<endofSession> createState() => _endofSessionState();
@@ -41,14 +43,15 @@ class _endofSessionState extends State<endofSession> {
 
   @override
   void initState() {
+    setState(() {
+      sessionEnd = widget.selected;
+    });
     onLoad();
     super.initState();
     _fetchPracticeNames();
     if (widget.summary == false) {
       feedback3.clear();
     }
-    print(
-        "==============================$selected_date} ============$timeSlot");
   }
 
   void _fetchPracticeNames() async {
@@ -70,14 +73,12 @@ class _endofSessionState extends State<endofSession> {
       afterSession = prefs.getInt('afterSession');
       afterSessionNotes = prefs.getString('sessionFeedback');
       emotionsNotes = prefs.getString('emotionsFeedback');
-      timeSlot = prefs.getString('recording_Time1') == null
-          ? "12:00 am"
-          : prefs.getString('recording_Time1');
+      timeSlot = prefs.getString('recording_Time1') ?? "12:00 am";
       behaviour_route = prefs.getBool('behaviour_route');
-      selected_date = prefs.getString('record_date') == null
-          ? "2023:08:12"
-          : prefs.getString('record_date');
+      selected_date = prefs.getString('record_date') ?? "2023:08:12";
     });
+    print(
+        "==============================${prefs.getString('record_date')} ============${prefs.getString('recording_Time1')}");
     feedback3.text = prefs.getString('endSessionFeedback')!;
     print("=============================Practice num:$prac_num");
   }
@@ -90,7 +91,9 @@ class _endofSessionState extends State<endofSession> {
         elevation: 0,
         leading: Center(
           child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               icon: Image.asset(
                 'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
@@ -102,115 +105,121 @@ class _endofSessionState extends State<endofSession> {
           Center(
             child: IconButton(
                 onPressed: () {
-                  showAnimatedDialog(
-                    animationType: DialogTransitionType.fadeScale,
-                    curve: Curves.easeInOut,
-                    duration: const Duration(seconds: 1),
-                    context: context,
-                    builder: (BuildContext context) => Container(
-                      width: AppDimensions.height10(context) * 27.0,
-                      height: AppDimensions.height10(context) * 18.2,
-                      child: AlertDialog(
-                        contentPadding: EdgeInsets.zero,
-                        actionsPadding: EdgeInsets.zero,
-                        titlePadding: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 1.4)),
-                        title: Container(
-                          margin: const EdgeInsets.only(
-                              top: 19, right: 16, left: 16, bottom: 2),
-                          height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.height10(context) * 23.8,
-                          child: Text(
-                            "Are you sure?",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: const Color(0xFF000000),
-                              fontSize: AppDimensions.height10(context) * 1.7,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        content: Container(
-                          margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10(context) * 1.9,
-                              left: AppDimensions.height10(context) * 1.6,
-                              right: AppDimensions.height10(context) * 1.6),
-                          height: AppDimensions.height10(context) * 3.2,
-                          width: AppDimensions.height10(context) * 23.8,
-                          child: Text(
-                            "If you close it now, you will lose all your progress.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              height: AppDimensions.height10(context) * 0.15,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        actions: <Widget>[
-                          Column(
-                            children: [
-                              Container(
-                                height: 42,
-                                width: double.infinity,
-                                color: const Color(0xFF007AFF),
-                                child: TextButton(
-                                  onPressed: () {
-                                    if (behaviour_route == false) {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          FadePageRoute(
-                                              page: const dashBoard(
-                                            saved: false,
-                                            helpful_tips: false,
-                                            membership: true,
-                                            dashboard_ctrl: false,
-                                            cancel: false,
-                                            trial: false,
-                                          )));
-                                    } else {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const view_goals(
-                                                  missed: false)));
-                                    }
-                                  },
-                                  child: const Text(
-                                    'Close',
-                                    style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 17,
-                                        fontFamily: "Laila",
-                                        fontWeight: FontWeight.w400),
+                  widget.summary
+                      ? showAnimatedDialog(
+                          animationType: DialogTransitionType.fadeScale,
+                          curve: Curves.easeInOut,
+                          duration: const Duration(seconds: 1),
+                          context: context,
+                          builder: (BuildContext context) => SizedBox(
+                            width: AppDimensions.height10(context) * 27.0,
+                            height: AppDimensions.height10(context) * 18.2,
+                            child: AlertDialog(
+                              contentPadding: EdgeInsets.zero,
+                              actionsPadding: EdgeInsets.zero,
+                              titlePadding: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 1.4)),
+                              title: Container(
+                                margin: const EdgeInsets.only(
+                                    top: 19, right: 16, left: 16, bottom: 2),
+                                height: AppDimensions.height10(context) * 2.2,
+                                width: AppDimensions.height10(context) * 23.8,
+                                child: Text(
+                                  "Are you sure?",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: const Color(0xFF000000),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.7,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ),
-                              Container(
-                                height: 44,
-                                width: double.infinity,
-                                child: TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text(
-                                    'Cancel',
-                                    style: TextStyle(
-                                        fontSize: 17,
-                                        fontFamily: "Laila",
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xFF007AFF)),
+                              content: Container(
+                                margin: EdgeInsets.only(
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.9,
+                                    left: AppDimensions.height10(context) * 1.6,
+                                    right:
+                                        AppDimensions.height10(context) * 1.6),
+                                height: AppDimensions.height10(context) * 3.2,
+                                width: AppDimensions.height10(context) * 23.8,
+                                child: Text(
+                                  "If you close it now, you will lose all your progress.",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    height:
+                                        AppDimensions.height10(context) * 0.15,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ),
-                            ],
+                              actions: <Widget>[
+                                Column(
+                                  children: [
+                                    Container(
+                                      height: 42,
+                                      width: double.infinity,
+                                      color: const Color(0xFF007AFF),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          if (behaviour_route == false) {
+                                            Navigator.pushReplacement(
+                                                context,
+                                                FadePageRoute(
+                                                    page: const dashBoard(
+                                                  saved: false,
+                                                  helpful_tips: false,
+                                                  membership: true,
+                                                  dashboard_ctrl: false,
+                                                  cancel: false,
+                                                  trial: false,
+                                                )));
+                                          } else {
+                                            Navigator.push(
+                                                context,
+                                                FadePageRoute(
+                                                    page: const view_goals(
+                                                        missed: false)));
+                                          }
+                                        },
+                                        child: const Text(
+                                          'Close',
+                                          style: TextStyle(
+                                              color: Color(0xFFFFFFFF),
+                                              fontSize: 17,
+                                              fontFamily: "Laila",
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 44,
+                                      width: double.infinity,
+                                      child: TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text(
+                                          'Cancel',
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontFamily: "Laila",
+                                              fontWeight: FontWeight.w400,
+                                              color: Color(0xFF007AFF)),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
-                    ),
-                  );
+                        )
+                      : Navigator.pop(context);
                 },
                 icon: Image.asset(
                   'assets/images/Close.webp',
@@ -752,10 +761,8 @@ class _endofSessionState extends State<endofSession> {
                                 feedback.clear();
                                 Navigator.push(
                                     context,
-                                    FadePageRoute2(true,
-                                        exitPage:
-                                            const endofSession(summary: true),
-                                        enterPage: const practice_summary()));
+                                    FadePageRoute(
+                                        page: const practice_summary()));
                               } else {
                                 print('Update Failed');
                               }
@@ -792,10 +799,8 @@ class _endofSessionState extends State<endofSession> {
                                 print('========Done');
                                 Navigator.push(
                                     context,
-                                    FadePageRoute2(true,
-                                        exitPage:
-                                            const endofSession(summary: false),
-                                        enterPage: const practice_summary()));
+                                    FadePageRoute(
+                                        page: const practice_summary()));
                               } else if (response == false) {
                                 print('Api call failed');
                               }
@@ -874,7 +879,7 @@ class _addNotesState extends State<addNotes> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: AppDimensions.height10(context) * 7.6,
           height: AppDimensions.height10(context) * 7.6,
           //margin: EdgeInsets.only(bottom: 113),

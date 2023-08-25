@@ -97,6 +97,8 @@ class Authentication {
       var UserId = prefs.setInt('userid', response['id']);
       var RefreshToken =
           prefs.setString("refreshtoken", response["sessionToken"]);
+
+      print("Session Token ===============${response["sessionToken"]}");
       var responses = {
         "message": response["message"],
         "statusCode": request.statusCode,
@@ -132,15 +134,18 @@ class Authentication {
 
     var responses = jsonDecode(request.body);
 
-    print("request:${responses}");
-    print("request:${responses["status"]}");
+    print(request.statusCode);
+    print("request:${responses["userId"]}");
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
       var resetEmail = prefs.setString('resetEmail', email);
+      var resetId = prefs.setInt('ResetId', responses["userId"]);
       var reset = prefs.getString('resetEmail');
       print('=====>$reset');
 
       return true;
+    } else if (request.statusCode == 404) {
+      return request.statusCode;
     } else {
       // client.close();
       // print("response:${}");
@@ -153,10 +158,10 @@ class Authentication {
       'Content-Type': 'application/json',
     };
     final SharedPreferences prefs = await _prefs;
-    var reset = prefs.getString('resetEmail');
+    var reset = prefs.getInt('ResetId');
     String token =
         'KEeQ5q3JlCOwXC5IgPw3Qnwakrs0wwgfI%2FDnm%2BiQRmYSc7CqniIDXi6QeDnB4wzsSnZNBcilk6YdIMx1QWAz1A%3D%3D';
-    var Body = json.encode({"email": "$reset", "password": "$password"});
+    var Body = json.encode({"userId": "$reset", "newPassword": "$password"});
 
     var request = await client.put(
         Uri.parse('${URL.BASE_URL}api/auth/reset-password?token=$token'),
@@ -173,9 +178,44 @@ class Authentication {
       print('============================object');
 
       return true;
+    } else if (request.statusCode == 400) {
+      return request.statusCode;
     } else {
       // client.close();
       // print("response:${}");
+      return false;
+    }
+  }
+
+  Future verifyOtp(otp) async {
+    var headers = {
+      'Content-Type': 'application/json',
+    };
+    final SharedPreferences prefs = await _prefs;
+    var resetId = prefs.getInt('ResetId');
+
+    var Body = json.encode({"userId": resetId, "otp": otp});
+
+    var request = await client.post(
+        Uri.parse('${URL.BASE_URL}api/auth/verify-otp'),
+        headers: headers,
+        body: Body);
+    print("request:");
+
+    var responses = jsonDecode(request.body);
+    print("status:${request.statusCode}");
+    print("request:$Body");
+    print("request:$responses");
+
+    if (request.statusCode == 200) {
+      print('============================object');
+
+      return true;
+    } else if (request.statusCode == 400) {
+      // client.close();
+      // print("response:${}");
+      return request.statusCode;
+    } else {
       return false;
     }
   }

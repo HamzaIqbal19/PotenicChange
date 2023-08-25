@@ -663,6 +663,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     summary: true,
                                     pracName: pracName,
                                     record: false,
+                                    selected: Before,
                                   )));
                             },
                             child: Container(
@@ -800,8 +801,9 @@ class _practice_summaryState extends State<practice_summary> {
                               Navigator.push(
                                   context,
                                   FadePageRoute(
-                                      page: const feelingsAfter(
+                                      page: feelingsAfter(
                                     summary: true,
+                                    selected: After,
                                   )));
                             },
                             child: Container(
@@ -923,8 +925,9 @@ class _practice_summaryState extends State<practice_summary> {
                               Navigator.push(
                                   context,
                                   FadePageRoute(
-                                      page: const endofSession(
+                                      page: endofSession(
                                     summary: true,
+                                    selected: Session,
                                   )));
                             },
                             child: Container(

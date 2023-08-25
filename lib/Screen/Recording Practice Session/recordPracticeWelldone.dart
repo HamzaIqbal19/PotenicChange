@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -38,11 +39,10 @@ class welldone_splashState extends State<welldone_splash> {
     setState(() {
       pracName = '$Name';
     });
-    loadData();
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 1), onDoneLoading);
+    return Timer(const Duration(seconds: 3), onDoneLoading);
   }
 
   onDoneLoading() async {
@@ -51,6 +51,7 @@ class welldone_splashState extends State<welldone_splash> {
       FadePageRoute(
         page: const feelingsAfter(
           summary: false,
+          selected: 0,
         ),
       ),
     );
@@ -102,26 +103,17 @@ class welldone_splashState extends State<welldone_splash> {
             image: AssetImage('assets/images/Mask Group.webp'),
             fit: BoxFit.cover,
           )),
-          child: Center(
-            child: Container(
-              width: AppDimensions.height10(context) * 35.9,
-              height: AppDimensions.height10(context) * 14.8,
-              margin: EdgeInsets.only(
-                  left: AppDimensions.height10(context) * 2.7,
-                  right: AppDimensions.height10(context) * 2.7),
-              child: Column(
-                children: [
-                  // Container(
-                  //   child: Text(
-                  //     'Well Done!',
-                  //     style: TextStyle(
-                  //         fontSize: AppDimensions.height10(context) * 3.0,
-                  //         fontWeight: FontWeight.w700,
-                  //         color: Colors.white,
-                  //         fontFamily: 'laila'),
-                  //   ),
-                  // ),
-                  Container(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Center(
+                child: Container(
+                  width: AppDimensions.height10(context) * 35.9,
+                  height: AppDimensions.height10(context) * 14.8,
+                  margin: EdgeInsets.only(
+                      left: AppDimensions.height10(context) * 2.7,
+                      right: AppDimensions.height10(context) * 2.7),
+                  child: Container(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0),
                     child: Text('Let\'s continue recording\n your practice.',
@@ -131,10 +123,52 @@ class welldone_splashState extends State<welldone_splash> {
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                             fontFamily: 'laila')),
-                  )
-                ],
+                  ),
+                ),
               ),
-            ),
+              Positioned(
+                bottom: AppDimensions.height10(context) * 6,
+                child: AnimatedScaleButton(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      FadePageRoute(
+                        page: const feelingsAfter(
+                          summary: false,
+                          selected: 0,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                      height: AppDimensions.height10(context) * 5.0,
+                      width: AppDimensions.height10(context) * 20.7,
+                      decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xffFCC10D),
+                              Color(0xffFDA210),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 5.0),
+                          border: Border.all(
+                              width: AppDimensions.height10(context) * 0.2,
+                              color: Colors.transparent)),
+                      child: Center(
+                        child: Text(
+                          'Next',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      )),
+                ),
+              ),
+            ],
           ),
         ),
       ),

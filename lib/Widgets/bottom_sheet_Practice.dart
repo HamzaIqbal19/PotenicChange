@@ -167,11 +167,14 @@ void bottom_sheet(context, String goal) {
                               final SharedPreferences prefs = await _prefs;
                               var pracName = prefs.setString(
                                   'pracName', '${goalName.text.toString()}');
+                              var pracId = prefs.remove(
+                                'pracId',
+                              );
                               Navigator.push(
                                   context,
                                   FadePageRoute2(true,
                                       exitPage: const CreatePractice(),
-                                      enterPage: PracticeName(
+                                      enterPage: const PracticeName(
                                         comingFromEditScreen: false,
                                       )));
                               goalName.clear();

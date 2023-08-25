@@ -520,7 +520,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   fontSize:
                                       AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w700,
-                                  color: const Color(0xFFDE7A11)),
+                                  color: goalDetails['goalStatus'] == "active"
+                                      ? const Color(0xFF156F6D)
+                                      : const Color(0xFFDE7A11)),
                             )
                           ],
                         ),
@@ -660,7 +662,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               top: AppDimensions.height10(context) * 3.8),
                           child: Center(
                             child: Text(
-                              'Assign up to 5 practices:',
+                              subscriptions == 'inactive'
+                                  ? 'Assign up to 3 practices:'
+                                  : 'Assign up to 5 practices:',
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 2.4,
@@ -991,107 +995,135 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
           elevation: 0,
           color: Colors.transparent,
           child: Loader == false
-              ? update
-                  ? Container(
-                      width: AppDimensions.height10(context) * 38.259,
-                      height: AppDimensions.height10(context) * 9.707,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 15.319),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 2.0),
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 1.261),
-                            width: AppDimensions.height10(context) * 4.437,
-                            height: AppDimensions.height10(context) * 4.437,
-                            decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/circle_tick.webp'))),
-                          ),
-                          Container(
-                            //width: AppDimensions.height10(context) * 6.9,
-                            height: AppDimensions.height10(context) * 3.6,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 1.232),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: AppDimensions.height10(context) * 4.2,
-                                  height: AppDimensions.height10(context) * 1.4,
-                                  child: Text(
-                                    'Goal Active',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.3,
-                                        fontWeight: FontWeight.w500,
-                                        color: const Color(0xFFFFFFFF)),
-                                  ),
-                                ),
-                                SizedBox(
-                                  // width: AppDimensions.height10(context) * 6.9,
-                                  height: AppDimensions.height10(context) * 2.2,
-                                  child: Text(
-                                    goalDetails['name'],
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
-                                        fontWeight: FontWeight.w500,
-                                        color: const Color(0xFFFFFFFF)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              showAnimatedDialog(
-                                  animationType: DialogTransitionType.fadeScale,
-                                  curve: Curves.easeInOut,
-                                  duration: const Duration(seconds: 1),
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return goalActive(context);
-                                  });
-                            },
-                            child: Container(
-                              width: AppDimensions.height10(context) * 8.1,
-                              height: AppDimensions.height10(context) * 6.0,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 14.1),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: const Color(0xFFFFFFFF), width: 1),
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    update
+                        ? Container(
+                            width: AppDimensions.height10(context) * 38.259,
+                            height: AppDimensions.height10(context) * 9.707,
+                            margin: EdgeInsets.symmetric(
+                                horizontal:
+                                    AppDimensions.height10(context) * 1.6,
+                                vertical:
+                                    AppDimensions.height10(context) * 2.0),
+                            decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10(context) * 2.0),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Undo',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.8,
-                                      fontWeight: FontWeight.w500,
-                                      color: const Color(0xFFFFFFFF)),
+                                gradient: const LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xFFD4B7B9),
+                                      Color(0xFF91698C)
+                                    ])),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10(context) *
+                                          1.261),
+                                  width:
+                                      AppDimensions.height10(context) * 4.437,
+                                  height:
+                                      AppDimensions.height10(context) * 4.437,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/circle_tick.webp'))),
                                 ),
-                              ),
+                                Container(
+                                  //width: AppDimensions.height10(context) * 6.9,
+                                  height: AppDimensions.height10(context) * 3.6,
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10(context) *
+                                          1.232),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        //width: AppDimensions.height10(context) * 4.2,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.4,
+                                        child: Text(
+                                          'Goal Active',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.3,
+                                              fontWeight: FontWeight.w500,
+                                              color: const Color(0xFFFFFFFF)),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            18.0,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.2,
+                                        child: Text(
+                                          goalDetails['name'],
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.8,
+                                              fontWeight: FontWeight.w500,
+                                              color: const Color(0xFFFFFFFF)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                AnimatedScaleButton(
+                                  onTap: () {
+                                    showAnimatedDialog(
+                                        animationType:
+                                            DialogTransitionType.fadeScale,
+                                        curve: Curves.easeInOut,
+                                        duration: const Duration(seconds: 1),
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return goalActive(context);
+                                        });
+                                  },
+                                  child: Container(
+                                    width:
+                                        AppDimensions.height10(context) * 8.1,
+                                    height:
+                                        AppDimensions.height10(context) * 6.0,
+                                    margin: EdgeInsets.only(
+                                        left: AppDimensions.height10(context) *
+                                            4.5),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: const Color(0xFFFFFFFF),
+                                          width: 1),
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              2.0),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        'Undo',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                            fontWeight: FontWeight.w500,
+                                            color: const Color(0xFFFFFFFF)),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
                           )
-                        ],
-                      ),
-                    )
-                  : Container(
+                        : Container(),
+                    Container(
                       color: const Color(0xFFFBFBFB),
                       height: AppDimensions.height10(context) * 12.0,
                       width: AppDimensions.height10(context) * 41.6,
@@ -1533,7 +1565,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                           update = true;
                                         });
                                         _fetchGoalDetails();
-                                        Navigator.pop(context);
                                       } else if (response == 400) {
                                         showAnimatedDialog(
                                             animationType:
@@ -1601,7 +1632,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 )
                         ],
                       ),
-                    )
+                    ),
+                  ],
+                )
               : Container(),
         ),
       ),

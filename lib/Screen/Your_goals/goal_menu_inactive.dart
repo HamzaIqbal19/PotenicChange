@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
@@ -40,6 +41,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   int color = 0;
   String pracName = '';
   int pracColor = 0;
+  String route = '';
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -75,10 +77,21 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
     });
   }
 
+  getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+
+    var menuRoute = prefs.getString('goal_menu_route');
+    setState(() {
+      route = menuRoute!;
+    });
+    print(prefs.getString('goal_menu_route'));
+  }
+
   @override
   void initState() {
     super.initState();
     _fetchGoalDetails();
+    getRoute();
   }
 
   @override
@@ -87,8 +100,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
     //bool premium = false;
     return WillPopScope(
       onWillPop: () {
-        Navigator.push(
-            context, FadePageRoute(page: const veiw_all_goals_menu()));
+        if (route != 'your_goal') {
+          Navigator.push(
+              context, FadePageRoute(page: const view_goals(missed: false)));
+        } else {
+          Navigator.push(
+              context, FadePageRoute(page: const veiw_all_goals_menu()));
+        }
+
         return Future.value(true);
       },
       child: Scaffold(
@@ -211,31 +230,34 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               )),
                         ),
                       ),
-                      Container(
-                        width: AppDimensions.height10(context) * 37.4,
-                        height: AppDimensions.height10(context) * 14.7,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 4.81),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0),
-                            color: const Color(0xFFF5F5F5)),
-                        child: Stack(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                if (goal_level == 0) {
-                                  setState(() {
-                                    goal_level = 2;
-                                  });
-                                } else if (goal_level == 2) {
-                                  setState(() {
-                                    goal_level = 0;
-                                  });
-                                }
-                                print(goal_level);
-                              },
-                              child: Container(
+                      AnimatedScaleButton(
+                        onTap: () {
+                          if (goalDetails['goalStatus'] == "active") {
+                            Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: new_progress_score(
+                                  premium: widget.premium,
+                                )));
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text(
+                                        "Evaluation is only availabe for active goals!!")));
+                          }
+                        },
+                        child: Container(
+                          width: AppDimensions.height10(context) * 37.4,
+                          height: AppDimensions.height10(context) * 14.7,
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 4.81),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) * 2.0),
+                              color: const Color(0xFFF5F5F5)),
+                          child: Stack(
+                            children: [
+                              Container(
                                 width: AppDimensions.height10(context) * 37.4,
                                 height: AppDimensions.height10(context) * 12.0,
                                 decoration: widget.premium
@@ -260,82 +282,60 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        if (goalDetails['goalStatus'] ==
-                                            "active") {
-                                          Navigator.push(
-                                              context,
-                                              FadePageRoute(
-                                                  page: new_progress_score(
-                                                premium: widget.premium,
-                                              )));
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(const SnackBar(
-                                                  content: Text(
-                                                      "Evaluation is only availabe for active goals!!")));
-                                        }
-                                      },
-                                      child: Container(
-                                        width: goal_level == 2
-                                            ? AppDimensions.height10(context) *
-                                                10.135
-                                            : AppDimensions.height10(context) *
-                                                10.1,
-                                        height: goal_level == 2
-                                            ? AppDimensions.height10(context) *
-                                                10.135
-                                            : AppDimensions.height10(context) *
-                                                10.1,
-                                        margin: EdgeInsets.only(
-                                            right: AppDimensions.height10(
-                                                    context) *
-                                                0.6),
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          image: DecorationImage(
-                                            image: AssetImage(goalDetails[
-                                                        'goalLevel'] ==
-                                                    "2"
-                                                ? 'assets/images/Nebula pie 2.webp'
-                                                : goalDetails['goalLevel'] ==
-                                                        "3"
-                                                    ? 'assets/images/Nebula Pie 3.webp'
-                                                    : goalDetails[
-                                                                'goalLevel'] ==
-                                                            "4"
-                                                        ? "assets/images/goal_level_4.webp"
-                                                        : "assets/images/Nebula Pie.webp"),
-                                          ),
-                                          // color: Colors.amber,
+                                    Container(
+                                      width: goal_level == 2
+                                          ? AppDimensions.height10(context) *
+                                              10.135
+                                          : AppDimensions.height10(context) *
+                                              10.1,
+                                      height: goal_level == 2
+                                          ? AppDimensions.height10(context) *
+                                              10.135
+                                          : AppDimensions.height10(context) *
+                                              10.1,
+                                      margin: EdgeInsets.only(
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  0.6),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          image: AssetImage(goalDetails[
+                                                      'goalLevel'] ==
+                                                  "2"
+                                              ? 'assets/images/Nebula pie 2.webp'
+                                              : goalDetails['goalLevel'] == "3"
+                                                  ? 'assets/images/Nebula Pie 3.webp'
+                                                  : goalDetails['goalLevel'] ==
+                                                          "4"
+                                                      ? "assets/images/goal_level_4.webp"
+                                                      : "assets/images/Nebula Pie.webp"),
                                         ),
-                                        child: Align(
-                                          alignment: goal_level != 0
-                                              ? const Alignment(0, -0.1)
-                                              : const Alignment(0, -0.07),
-                                          child: Text(
-                                            goalDetails['goalLevel'] == 0
-                                                ? '-'
-                                                : goalDetails['goalLevel']
-                                                    .toString(),
-                                            style: TextStyle(
-                                                fontSize: widget.premium
-                                                    ? goal_level == 0
-                                                        ? AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.8
-                                                        : AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.0
-                                                    : AppDimensions.height10(
-                                                            context) *
-                                                        2.8,
-                                                fontWeight: FontWeight.w500,
-                                                color: const Color(0xFF464646)),
-                                          ),
+                                        // color: Colors.amber,
+                                      ),
+                                      child: Align(
+                                        alignment: goal_level != 0
+                                            ? const Alignment(0, -0.1)
+                                            : const Alignment(0, -0.07),
+                                        child: Text(
+                                          goalDetails['goalLevel'] == 0
+                                              ? '-'
+                                              : goalDetails['goalLevel']
+                                                  .toString(),
+                                          style: TextStyle(
+                                              fontSize: widget.premium
+                                                  ? goal_level == 0
+                                                      ? AppDimensions.height10(
+                                                              context) *
+                                                          2.8
+                                                      : AppDimensions.height10(
+                                                              context) *
+                                                          2.0
+                                                  : AppDimensions.height10(
+                                                          context) *
+                                                      2.8,
+                                              fontWeight: FontWeight.w500,
+                                              color: const Color(0xFF464646)),
                                         ),
                                       ),
                                     ),
@@ -450,106 +450,104 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             left: AppDimensions.height10(
                                                     context) *
                                                 0.8),
-                                        child: GestureDetector(
-                                          onTap: () {},
-                                          child: Image.asset(
-                                            'assets/images/BTN Back.webp',
-                                            color: const Color(0xFFFFFFFF),
-                                            //width: AppDimensions.height10(context) * 2.6,
-                                            //height: AppDimensions.height10(context) * 2.6,
-                                            fit: BoxFit.cover,
-                                          ),
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.webp',
+                                          color: const Color(0xFFFFFFFF),
+                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //height: AppDimensions.height10(context) * 2.6,
+                                          fit: BoxFit.cover,
                                         )),
                                   ],
                                 ),
                               ),
-                            ),
-                            Align(
-                              alignment: const Alignment(-0.8, 0.875),
-                              child: Container(
-                                width: AppDimensions.height10(context) * 18.5,
-                                height: AppDimensions.height10(context) * 1.6,
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      'Next score needed in ',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w400,
-                                          color: const Color(0xff464646)),
-                                    ),
-                                    Text(
-                                      '-${goalDetails['nextEvaluationInDays']}',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w700,
-                                          color: const Color(0xff464646)),
-                                    ),
-                                    Text(
-                                      ' days',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w400,
-                                          color: const Color(0xff464646)),
-                                    ),
-                                  ],
+                              Align(
+                                alignment: const Alignment(-0.8, 0.875),
+                                child: Container(
+                                  width: AppDimensions.height10(context) * 18.5,
+                                  height: AppDimensions.height10(context) * 1.6,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Next score needed in ',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xff464646)),
+                                      ),
+                                      Text(
+                                        '-${goalDetails['nextEvaluationInDays']}',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color(0xff464646)),
+                                      ),
+                                      Text(
+                                        ' days',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xff464646)),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            widget.goal_evaluation
-                                ? Container()
-                                : goalDetails['goalLevel'] != 0 ||
-                                        goalDetails['goalLevel'] != null
-                                    ? Container()
-                                    : Align(
-                                        alignment:
-                                            const Alignment(-0.975, -1.275),
-                                        child: Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  11.9,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.9,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.0),
-                                              color: const Color(0xFFFFFFFF)),
+                              widget.goal_evaluation
+                                  ? Container()
+                                  : goalDetails['goalLevel'] != 0 ||
+                                          goalDetails['goalLevel'] != null
+                                      ? Container()
+                                      : Align(
+                                          alignment:
+                                              const Alignment(-0.975, -1.275),
                                           child: Container(
-                                            margin: EdgeInsets.only(
-                                                left: AppDimensions.height10(
-                                                        context) *
-                                                    0.8,
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    0.5,
-                                                bottom: AppDimensions.height10(
-                                                        context) *
-                                                    0.5),
-                                            child: Text(
-                                              'Score needed!',
-                                              style: TextStyle(
-                                                  fontSize:
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                11.9,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.9,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0),
+                                                color: const Color(0xFFFFFFFF)),
+                                            child: Container(
+                                              margin: EdgeInsets.only(
+                                                  left: AppDimensions.height10(
+                                                          context) *
+                                                      0.8,
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      0.5,
+                                                  bottom:
                                                       AppDimensions.height10(
                                                               context) *
-                                                          1.6,
-                                                  fontWeight: FontWeight.w600,
-                                                  color:
-                                                      const Color(0xFF646464)),
+                                                          0.5),
+                                              child: Text(
+                                                'Score needed!',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.6,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: const Color(
+                                                        0xFF646464)),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      )
-                          ],
+                                        )
+                            ],
+                          ),
                         ),
                       ),
                       AnimatedScaleButton(

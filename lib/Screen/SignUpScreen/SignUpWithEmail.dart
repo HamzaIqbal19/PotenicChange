@@ -31,6 +31,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
   final emailController = TextEditingController();
   late AnimationController _controller;
   final passwordController = TextEditingController();
+  String passwordMsg = "Minimum 8 characters";
+  String emailMsg = "Ooops! Needs to be an email format";
+  String nameMsg = "Name is required";
 
   // final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
@@ -249,15 +252,27 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                 enabledBorder: const OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.transparent))),
+                            onChanged: (value) {
+                              setState(() {
+                                passwordMsg = "";
+                                errorPassword = false;
+                                emailMsg = '';
+                                errorEmail = false;
+                                errorName = false;
+                                nameMsg = '';
+                              });
+                            },
                             controller: nameController,
                             keyboardType: TextInputType.name,
                             validator: (val) {
                               if (val == null || val == "") {
                                 setState(() {
                                   errorName = true;
+                                  nameMsg = 'Name is required';
                                 });
                               } else {
                                 setState(() {
+                                  nameMsg = '';
                                   errorName = false;
                                 });
                               }
@@ -267,7 +282,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         errorName
                             ? Container(
                                 child: Text(
-                                  "Full name is required",
+                                  "Name is required",
                                   style: TextStyle(
                                     color: const Color(0xFFFE6624),
                                     fontSize:
@@ -321,29 +336,46 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                   enabledBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(
                                           color: Colors.transparent))),
+                              onChanged: (value) {
+                                setState(() {
+                                  passwordMsg = "";
+                                  errorPassword = false;
+                                  emailMsg = '';
+                                  errorEmail = false;
+                                  errorName = false;
+                                  nameMsg = '';
+                                });
+                              },
                               controller: emailController,
                               validator: (val) {
                                 if (val != null && val.isNotEmpty) {
                                   val = val.trim();
                                 }
 
-                                if (val == null ||
-                                    !EmailValidator.validate(val) ||
-                                    val == "") {
+                                if (val == null || val.isEmpty) {
                                   setState(() {
                                     errorEmail = true;
+                                    emailMsg = 'Email is required';
+                                  });
+                                } else if (!EmailValidator.validate(val)) {
+                                  setState(() {
+                                    errorEmail = true;
+                                    emailMsg =
+                                        ' Ooops! Needs to be an email format';
                                   });
                                 } else {
                                   setState(() {
                                     errorEmail = false;
+                                    emailMsg = '';
                                   });
                                 }
+                                return null;
                               }),
                         ),
                         errorEmail
                             ? Container(
                                 child: Text(
-                                  "Ooops! Needs to be an email format",
+                                  emailMsg,
                                   style: TextStyle(
                                     color: const Color(0xFFFE6624),
                                     fontSize:
@@ -406,16 +438,33 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                       enabledBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(
                                               color: Colors.transparent))),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      passwordMsg = "";
+                                      errorPassword = false;
+                                      emailMsg = '';
+                                      errorEmail = false;
+                                      errorName = false;
+                                      nameMsg = '';
+                                    });
+                                  },
                                   controller: passwordController,
                                   validator: (val) {
-                                    if (val == null ||
-                                        val == "" ||
-                                        val.length < 8) {
+                                    if ((val == null && val == '')) {
                                       setState(() {
+                                        passwordMsg = "Password is required";
+                                        errorPassword = true;
+                                      });
+                                    } else if (val!.length < 8) {
+                                      setState(() {
+                                        passwordMsg = "Minimum 8 characters";
                                         errorPassword = true;
                                       });
                                     } else {
-                                      errorPassword = false;
+                                      setState(() {
+                                        passwordMsg = "";
+                                        errorPassword = false;
+                                      });
                                     }
                                   },
                                 ),
@@ -453,7 +502,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         ),
                         errorPassword
                             ? Text(
-                                "Minimum 8 characters",
+                                passwordMsg,
                                 style: TextStyle(
                                   color: const Color(0xFFFE6624),
                                   fontSize:

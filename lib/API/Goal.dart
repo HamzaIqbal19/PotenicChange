@@ -194,6 +194,8 @@ class AdminGoal {
       print("Result:$jsonData");
 
       return List<Map<String, dynamic>>.from(jsonData);
+    } else if (response.statusCode == 404) {
+      return [];
     } else {
       throw Exception('Failed to fetch goal names');
     }
@@ -219,6 +221,8 @@ class AdminGoal {
       print("Result:$jsonData");
 
       return List<Map<String, dynamic>>.from(jsonData);
+    } else if (response.statusCode == 404) {
+      return [];
     } else {
       throw Exception('Failed to fetch goal names');
     }
@@ -637,6 +641,38 @@ class AdminGoal {
     }
   }
 
+  static Future checkUserGoalByUserId() async {
+    // var goalName;
+
+    final SharedPreferences prefs = await _prefs;
+    var userId = prefs.getInt('userid');
+    var Accestoken = prefs.getString("usertoken");
+    print(prefs.getInt('userid'));
+    // var userGoalId = prefs.getInt('goalId');
+    // print('$userGoalId');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/userGoal/userGoals-by-userId/$userId'),
+      headers: headers,
+    );
+    print("Staues Code for checking  ${response.statusCode}");
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+      if (jsonData.length != 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
   static Future getUserActiveGoal() async {
     // var goalName;
 
@@ -666,6 +702,4 @@ class AdminGoal {
       throw Exception('Failed to fetch goal names');
     }
   }
-
-  updateUserPractice_GoalStatus(String s) {}
 }

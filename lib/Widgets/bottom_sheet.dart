@@ -372,6 +372,7 @@ void bottom_sheet(context) {
                               context,
                               FadePageRoute(
                                 page: GoalName(
+                                  saved: false,
                                   route: '',
                                   catId,
                                   comingFromEditScreen: false,

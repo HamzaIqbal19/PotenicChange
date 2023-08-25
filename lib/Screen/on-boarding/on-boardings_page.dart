@@ -196,6 +196,16 @@ class OnboardingPageState extends State<OnboardingPage>
                         exitPage: OnBoarding(),
                       ),
                     );
+                  } else if (Accestoken == null && Routes != null) {
+                    print('Condition 3');
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRoute2(
+                        true,
+                        enterPage: HomeScreen(login: false),
+                        exitPage: OnBoarding(),
+                      ),
+                    );
                   }
                   // Add code for performing close action
                 },
@@ -481,6 +491,16 @@ class OnboardingPageState extends State<OnboardingPage>
                 ),
               );
             } else if (Accestoken == null && Routes == null) {
+              print('Condition 3');
+              Navigator.pushReplacement(
+                context,
+                FadePageRoute2(
+                  true,
+                  enterPage: HomeScreen(login: false),
+                  exitPage: OnBoarding(),
+                ),
+              );
+            } else if (Accestoken == null && Routes != null) {
               print('Condition 3');
               Navigator.pushReplacement(
                 context,

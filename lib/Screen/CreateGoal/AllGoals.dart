@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
@@ -28,10 +29,9 @@ class AllGoals extends StatefulWidget {
 
 class _AllGoalsState extends State<AllGoals> {
   bool SearchIcon = false;
-
+  bool noData = false;
   bool Loading = true;
-
-  // Future<List<String>>? _goalNamesAndCategoriesFuture;
+  var AllGoals;
 
   List<Map<String, dynamic>>? goalNamesAndCategories;
 
@@ -56,6 +56,7 @@ class _AllGoalsState extends State<AllGoals> {
       if (response.length != 0) {
         setState(() {
           goalNamesAndCategories = response;
+          AllGoals = response;
         });
         loadData();
       } else {
@@ -126,6 +127,7 @@ class _AllGoalsState extends State<AllGoals> {
         context,
         FadePageRoute(
           page: GoalName(
+            saved: false,
             route: '',
             4,
             comingFromEditScreen: false,
@@ -148,11 +150,23 @@ class _AllGoalsState extends State<AllGoals> {
       //if (searchTerm) {
       AdminGoal().searchAllGoal(searchTerm).then((value) => {
             print("value:$value"),
-            setState(() {
-              goalNamesAndCategories = value;
-              Loading = false;
-              print("responses:${value[1]["goals"]}");
-            }),
+            if (value.isEmpty)
+              {
+                setState(() {
+                  goalNamesAndCategories = AllGoals;
+                  Loading = false;
+                  noData = true;
+                }),
+              }
+            else
+              {
+                setState(() {
+                  goalNamesAndCategories = value;
+                  Loading = false;
+                  noData = false;
+                  print("responses:${value[1]["goals"]}");
+                }),
+              }
           });
       // } else {
       //_searchResults = [];
@@ -305,161 +319,188 @@ class _AllGoalsState extends State<AllGoals> {
                       Container(
                         margin: EdgeInsets.symmetric(
                             horizontal: AppDimensions.height10(context) * 2.0),
-                        child: ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: goalNamesAndCategories!.length,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                        child: noData == true
+                            ? Container(
+                                height: AppDimensions.height10(context) * 21.2,
+                                margin: EdgeInsets.only(
+                                    top: AppDimensions.height10(context) * 5),
+                                child: Center(
+                                    child: Text(
+                                  'Sorry no\nresults found',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: const Color(0xFFFFFFFF),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 2.8,
+                                      fontWeight: FontWeight.w700),
+                                )),
+                              )
+                            : ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: goalNamesAndCategories!.length,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  return Column(
                                     children: [
-                                      Container(
-                                        padding: EdgeInsets.only(
-                                            top: AppDimensions.height10(
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            padding: EdgeInsets.only(
+                                                top: AppDimensions.height10(
+                                                        context) *
+                                                    0.1),
+                                            child: circles(
+                                                circle_text: '',
+                                                circle_color1: 0xFFFC854F,
+                                                circle_color2: 0xFFFAA960,
+                                                circle_border: 1,
+                                                circle_bordercolor: 0xFFFFFFFF,
+                                                circle_height:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        2.5,
+                                                circle_width:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        2.5,
+                                                textfont: 0,
+                                                textcolor: 0),
+                                          ),
+                                          SizedBox(
+                                            width: AppDimensions.height10(
                                                     context) *
-                                                0.1),
-                                        child: circles(
-                                            circle_text: '',
-                                            circle_color1: 0xFFFC854F,
-                                            circle_color2: 0xFFFAA960,
-                                            circle_border: 1,
-                                            circle_bordercolor: 0xFFFFFFFF,
-                                            circle_height:
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    2.5,
-                                            circle_width:
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    2.5,
-                                            textfont: 0,
-                                            textcolor: 0),
+                                                1.0,
+                                          ),
+                                          Container(
+                                            // color: Colors.yellow,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.4,
+                                            child: Text(
+                                              capitalizeFirstLetter(
+                                                goalNamesAndCategories![index]
+                                                    ["name"],
+                                              ),
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        2.0,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                       SizedBox(
-                                        width: AppDimensions.height10(context) *
-                                            1.0,
-                                      ),
-                                      Container(
-                                        // color: Colors.yellow,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2.4,
-                                        child: Text(
-                                          capitalizeFirstLetter(
-                                            goalNamesAndCategories![index]
-                                                ["name"],
-                                          ),
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                          ),
-                                        ),
+                                                3.0,
                                       ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height:
-                                        AppDimensions.height10(context) * 3.0,
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10(context) * 38,
-                                    padding: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
+                                      Container(
+                                        width: AppDimensions.height10(context) *
+                                            38,
+                                        padding: EdgeInsets.only(
+                                            bottom: AppDimensions.height10(
+                                                    context) *
                                                 3.1),
-                                    child: GridView.builder(
-                                        shrinkWrap: true,
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        gridDelegate:
-                                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 2,
-                                          childAspectRatio:
-                                              3.5 / 3, // Two items in each row
+                                        child: GridView.builder(
+                                            shrinkWrap: true,
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            gridDelegate:
+                                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 2,
+                                              childAspectRatio: 3.5 /
+                                                  3, // Two items in each row
 
-                                          mainAxisSpacing: 1.0,
-                                          crossAxisSpacing: 0.1,
-                                        ),
-                                        itemCount:
-                                            goalNamesAndCategories![index]
-                                                    ["goals"]
-                                                .length,
-                                        itemBuilder: (context, index1) {
-                                          return SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  41.9,
-                                              child: Column(children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    AnimatedScaleButton(
-                                                        onTap: () {
-                                                          getUserId(
-                                                              goalNamesAndCategories![
-                                                                  index]['id'],
-                                                              goalNamesAndCategories![
+                                              mainAxisSpacing: 1.0,
+                                              crossAxisSpacing: 0.1,
+                                            ),
+                                            itemCount:
+                                                goalNamesAndCategories![index]
+                                                        ["goals"]
+                                                    .length,
+                                            itemBuilder: (context, index1) {
+                                              return SizedBox(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          41.9,
+                                                  child: Column(children: [
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      children: [
+                                                        AnimatedScaleButton(
+                                                            onTap: () {
+                                                              getUserId(
+                                                                  goalNamesAndCategories![
                                                                           index]
+                                                                      ['id'],
+                                                                  goalNamesAndCategories![
+                                                                              index]["goals"]
+                                                                          [
+                                                                          index1]
                                                                       [
-                                                                      "goals"][index1]
-                                                                  ["goalName"],
-                                                              goalNamesAndCategories![
-                                                                          index]
-                                                                      ["goals"][
-                                                                  index1]["id"]);
-                                                        },
-                                                        child: circles(
-                                                          circle_text:
-                                                              capitalizeFirstLetter(
-                                                            goalNamesAndCategories![
-                                                                            index]
+                                                                      "goalName"],
+                                                                  goalNamesAndCategories![
+                                                                              index]
+                                                                          [
+                                                                          "goals"]
+                                                                      [
+                                                                      index1]["id"]);
+                                                            },
+                                                            child: circles(
+                                                              circle_text:
+                                                                  capitalizeFirstLetter(
+                                                                goalNamesAndCategories![index]["goals"]
+                                                                            [
+                                                                            index1]
                                                                         [
-                                                                        "goals"]
-                                                                    [
-                                                                    index1]["goalName"]
-                                                                .toString(),
-                                                          ),
-                                                          circle_color1:
-                                                              0xFFFFFFFF,
-                                                          circle_color2:
-                                                              0xFFFFFFFF,
-                                                          circle_border: 3.0,
-                                                          circle_bordercolor:
-                                                              0xFFEE8E6F,
-                                                          circle_height:
-                                                              AppDimensions
+                                                                        "goalName"]
+                                                                    .toString(),
+                                                              ),
+                                                              circle_color1:
+                                                                  0xFFFFFFFF,
+                                                              circle_color2:
+                                                                  0xFFFFFFFF,
+                                                              circle_border:
+                                                                  3.0,
+                                                              circle_bordercolor:
+                                                                  0xFFEE8E6F,
+                                                              circle_height:
+                                                                  AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      13.4,
+                                                              circle_width:
+                                                                  AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      13.4,
+                                                              textfont: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  13.4,
-                                                          circle_width:
-                                                              AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  13.4,
-                                                          textfont: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.6,
-                                                          textcolor: 0xFFFA9934,
-                                                        )),
-                                                  ],
-                                                ),
-                                              ]));
-                                        }),
-                                  )
-                                ],
-                              );
-                            }),
+                                                                  1.6,
+                                                              textcolor:
+                                                                  0xFFFA9934,
+                                                            )),
+                                                      ],
+                                                    ),
+                                                  ]));
+                                            }),
+                                      )
+                                    ],
+                                  );
+                                }),
                       ),
                     ],
                   ),

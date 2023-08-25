@@ -36,6 +36,7 @@ class _GoalCategoryState extends State<GoalCategory> {
   bool SearchIcon = false;
   bool Loading = true;
   String route = '';
+  bool noData = false;
   String searchText = ''; // Add this line
   final double overlapFactor = 0.85;
   final Random _random = Random();
@@ -118,6 +119,7 @@ class _GoalCategoryState extends State<GoalCategory> {
         context,
         FadePageRoute(
           page: GoalName(
+            saved: false,
             route: '',
             widget.id,
             comingFromEditScreen: false,
@@ -174,13 +176,26 @@ class _GoalCategoryState extends State<GoalCategory> {
   void _searchGoals(String searchTerm, int id) {
     setState(() {
       //if (searchTerm) {
-      AdminGoal().searchAllGoalById(searchTerm, widget.id).then((value) => {
-            print("======>:$value"),
-            setState(() {
-              Allgoal = value;
-              Loading = false;
-              print("responses:${value[1]["goals"]}");
-            }),
+      AdminGoal().searchAllGoalById(searchTerm, widget.id).then((response) => {
+            print("======>:$response"),
+            if (response.isEmpty)
+              {
+                setState(() {
+                  Loading = false;
+                  Allgoal = goalNamesAndCategories;
+                  noData = true;
+                  print("responses:${response[1]["goals"]}");
+                }),
+              }
+            else
+              {
+                setState(() {
+                  Allgoal = response;
+                  Loading = false;
+                  noData = false;
+                  print("responses:${response[1]["goals"]}");
+                }),
+              }
           });
       // } else {
       //_searchResults = [];
@@ -336,68 +351,89 @@ class _GoalCategoryState extends State<GoalCategory> {
                               bottom: AppDimensions.height10(context) * 8.0,
                               left: AppDimensions.height10(context) * 2.0,
                               right: AppDimensions.height10(context) * 2.0),
-                          child: GridView.builder(
-                              padding: EdgeInsets.zero,
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio:
-                                    4.2 / 3, // Two items in each row
+                          child: noData == true
+                              ? Container(
+                                  height:
+                                      AppDimensions.height10(context) * 21.2,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) * 5),
+                                  child: Center(
+                                      child: Text(
+                                    'Sorry no\nresults found',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: const Color(0xFFFFFFFF),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.8,
+                                        fontWeight: FontWeight.w700),
+                                  )),
+                                )
+                              : GridView.builder(
+                                  padding: EdgeInsets.zero,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    childAspectRatio:
+                                        4.2 / 3, // Two items in each row
 
-                                mainAxisSpacing: 9.0,
-                                crossAxisSpacing: 0.0,
-                              ),
-                              itemCount: Allgoal![0]["goals"].length,
-                              itemBuilder: (context, index1) {
-                                final goalName =
-                                    Allgoal![0]["goals"][index1]["goalName"];
+                                    mainAxisSpacing: 9.0,
+                                    crossAxisSpacing: 0.0,
+                                  ),
+                                  itemCount: Allgoal![0]["goals"].length,
+                                  itemBuilder: (context, index1) {
+                                    final goalName = Allgoal![0]["goals"]
+                                        [index1]["goalName"];
 
-                                return Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
+                                    return Column(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                          MainAxisAlignment.start,
                                       children: [
-                                        AnimatedScaleButton(
-                                          onTap: () {
-                                            getUserId(
-                                                widget.id,
-                                                Allgoal![0]["goals"][index1]
-                                                    ["goalName"],
-                                                Allgoal![0]["goals"][index1]
-                                                    ["id"]);
-                                          },
-                                          child: circles(
-                                              circle_text:
-                                                  capitalizeFirstLetter(
-                                                Allgoal![0]["goals"][index1]
-                                                    ["goalName"],
-                                              ),
-                                              circle_color1: 0xFFFFFFFF,
-                                              circle_color2: 0xFFFFFFFF,
-                                              circle_border: 3.0,
-                                              circle_bordercolor: 0xFFEE8E6F,
-                                              circle_height:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      13.4,
-                                              circle_width:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      13.4,
-                                              textfont: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              textcolor: 0xFFFA9934),
-                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            AnimatedScaleButton(
+                                              onTap: () {
+                                                getUserId(
+                                                    widget.id,
+                                                    Allgoal![0]["goals"][index1]
+                                                        ["goalName"],
+                                                    Allgoal![0]["goals"][index1]
+                                                        ["id"]);
+                                              },
+                                              child: circles(
+                                                  circle_text:
+                                                      capitalizeFirstLetter(
+                                                    Allgoal![0]["goals"][index1]
+                                                        ["goalName"],
+                                                  ),
+                                                  circle_color1: 0xFFFFFFFF,
+                                                  circle_color2: 0xFFFFFFFF,
+                                                  circle_border: 3.0,
+                                                  circle_bordercolor:
+                                                      0xFFEE8E6F,
+                                                  circle_height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          13.4,
+                                                  circle_width:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          13.4,
+                                                  textfont:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.6,
+                                                  textcolor: 0xFFFA9934),
+                                            ),
+                                          ],
+                                        )
                                       ],
-                                    )
-                                  ],
-                                );
-                              }),
+                                    );
+                                  }),
                         ),
                       ],
                     ),
@@ -467,6 +503,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                             _searchController.clear();
                                             searchText = '';
                                             _searchGoals('', widget.id);
+                                            noData = false;
                                           },
                                           child: Image.asset(
                                             'assets/images/cancel.webp',

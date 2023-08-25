@@ -361,8 +361,12 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                     ),
                     AnimatedScaleButton(
                       onTap: () {
-                        Navigator.push(context,
-                            FadePageRoute(page: const hurdles_goal_impact(summary: true,)));
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const hurdles_goal_impact(
+                              summary: true,
+                            )));
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 6.0,
@@ -806,7 +810,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             ])),
                     widget.delete_hurdle
                         ? SizedBox(
-                            height: AppDimensions.height10(context) * 29.9,
+                            height: AppDimensions.height10(context) * 16.0,
                           )
                         : Container(
                             // width:   AppDimensions.height10(context)(context)* 34.0,
@@ -842,7 +846,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                       width: AppDimensions.height10(context) * 17.0,
                       height: AppDimensions.height10(context) * 0.5,
                       margin: EdgeInsets.only(
-                          bottom: AppDimensions.height10(context) * 11.8),
+                          bottom: AppDimensions.height10(context) * 1.8),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 2.0),

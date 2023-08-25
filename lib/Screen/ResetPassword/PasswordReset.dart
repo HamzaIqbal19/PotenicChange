@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
 import 'package:potenic_app/Screen/ResetPassword/reset.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -20,6 +21,7 @@ class PasswordReset extends StatefulWidget {
 class _PasswordResetState extends State<PasswordReset> {
   bool Loading = false;
   bool errorEmail = false;
+  bool noEmail = false;
   final email = TextEditingController();
   @override
   void initState() {
@@ -75,12 +77,7 @@ class _PasswordResetState extends State<PasswordReset> {
                       fit: BoxFit.contain,
                     ),
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(login: false),
-                        ),
-                      );
+                      Navigator.pop(context);
                       // Add code for performing close action
                     },
                   ),
@@ -218,6 +215,12 @@ class _PasswordResetState extends State<PasswordReset> {
                                             borderSide: BorderSide(
                                                 color: Colors.transparent))),
                                     controller: email,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        errorEmail = false;
+                                        noEmail = false;
+                                      });
+                                    },
                                     validator: (val) {
                                       if (val == null ||
                                           !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -236,6 +239,26 @@ class _PasswordResetState extends State<PasswordReset> {
                               ],
                             )),
                         SizedBox(height: AppDimensions.height10(context) * 0.3),
+                        noEmail
+                            ? Container(
+                                // color: Colors.blue,
+
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 4.4,
+                                    right:
+                                        AppDimensions.height10(context) * 10.6),
+                                child: Text(
+                                  "This email is not associated with any account.",
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                    color: const Color(0xFFFE6624),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              )
+                            : Container(),
                         errorEmail
                             ? Container(
                                 // color: Colors.blue,
@@ -303,63 +326,64 @@ class _PasswordResetState extends State<PasswordReset> {
                     ),
                   ),
 
-                  SizedBox(height: AppDimensions.height10(context) * 5.0),
+                  SizedBox(height: AppDimensions.height10(context) * 2.0),
 
-                  SizedBox(
-                    height: AppDimensions.height10(context) * 4.4,
-                    width: AppDimensions.height10(context) * 26.7,
-                    // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.height10(context) *0.8),
+                  AnimatedScaleButton(
+                    onTap: () {
+                      if (_formkey1.currentState!.validate() &&
+                          errorEmail == false) {
+                        setState(() {
+                          Loading = true;
+                        });
 
-                    child: OutlinedButton.icon(
-                      // <-- OutlinedButton
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: const Color(0xFFFFFFFF),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 5.0),
-                        ),
-                        //<-- SEE HERE
-                      ),
-                      onPressed: () {
-                        if (_formkey1.currentState!.validate()) {
-                          setState(() {
-                            Loading = true;
-                          });
-
-                          Authentication()
-                              .passReset(
-                            '${email.text.toString()}',
-                          )
-                              .then((response) {
-                            if (response == true) {
-                              setState(() {
-                                Loading = false;
-                              });
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const EmailSent(),
-                                ),
-                              );
-                            } else {
-                              setState(() {
-                                Loading = false;
-                              });
-                            }
-                          }).catchError((error) {
+                        Authentication()
+                            .passReset(
+                          '${email.text.toString()}',
+                        )
+                            .then((response) {
+                          if (response == true) {
                             setState(() {
                               Loading = false;
+                              noEmail = false;
                             });
-                            print("error");
+                            Navigator.pushReplacement(
+                              context,
+                              FadePageRoute(
+                                page: EmailSent(
+                                  email: email.text.toString(),
+                                ),
+                              ),
+                            );
+                          } else if (response == 404) {
+                            setState(() {
+                              Loading = false;
+                              noEmail = true;
+                            });
+                          } else {
+                            setState(() {
+                              Loading = false;
+                              noEmail = false;
+                            });
+                          }
+                        }).catchError((error) {
+                          setState(() {
+                            Loading = false;
                           });
-                        }
-                      },
-                      icon: Image.asset(
-                        "assets/images/fb.webp",
-                        width: 0.0,
-                        height: 0.0,
+                          print("error");
+                        });
+                      }
+                    },
+                    child: Container(
+                      height: AppDimensions.height10(context) * 4.4,
+                      width: AppDimensions.height10(context) * 26.7,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFFFFF),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
                       ),
-                      label: Center(
+                      // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.height10(context) *0.8),
+
+                      child: Center(
                           child: Loading == false
                               ? Text(
                                   'Reset password',
@@ -376,6 +400,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                 )),
                     ),
                   ),
+
                   // SizedBox(height: AppDimensions.height120+90),
                 ],
                 // child:  Text("Hello background"),

@@ -77,7 +77,7 @@ class _progress_reportState extends State<progress_report> {
           noData = true;
         });
         loadData();
-      } else if (response.length != 0) {
+      } else if (response.length != 0 && response != false) {
         print('===============================');
         setState(() {
           report = response['report'];
@@ -134,11 +134,11 @@ class _progress_reportState extends State<progress_report> {
       }
       //print(response);
     }).catchError((error) {
-      setState(() {
-        noData = true;
-      });
+      // setState(() {
+      //   noData = true;
+      // });
       loadData();
-    });
+    }).whenComplete(() => null);
   }
 
   List<Widget> generateCircleContainers(BuildContext context, int count,
@@ -616,7 +616,7 @@ class _progress_reportState extends State<progress_report> {
                                     generateCircleContainers(
                                         context,
                                         practiceProgress
-                                            .containsValue('completed')
+                                            .containsValue('missed')
                                             .toString()
                                             .length),
                             centerContainer: Container(

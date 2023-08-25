@@ -704,6 +704,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                       page: const summary_hurdles(
                                     delete_hurdle: false,
                                   )));
+                              final SharedPreferences prefs = await _prefs;
+                              var hurdleRoute = prefs.remove('HurdleRoute');
                             }
                             final SharedPreferences prefs = await _prefs;
                             var userHurdleId = prefs.setInt(

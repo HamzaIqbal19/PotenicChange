@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:potenic_app/API/Authentication.dart';
+import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
@@ -14,6 +15,8 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Dashboard Behaviour/dashboard_view_goals.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -63,17 +66,36 @@ class SplashPageState extends State<SplashPage> {
     var SessionToken = prefs.getString("refreshtoken");
     var Routes = prefs.getString("route");
 //
-    print("======================>$Routes");
+    print("======================>${prefs.getString("refreshtoken")}");
     if (Accestoken != null && Routes == null) {
       print("====================>");
 
       Authentication().refreshTokenApi(SessionToken!).then((response) {
         print("???????????:$response");
         if (response == true) {
+          AdminGoal.checkUserGoalByUserId().then((response) {
+            print(response);
+            if (response == true) {
+              Navigator.push(
+                  context,
+                  FadePageRoute(
+                    page: view_goals(missed: false),
+                    // exitPage:SplashPage(),
+                  ));
+            } else if (response == false) {
+              Navigator.push(
+                  context,
+                  FadePageRoute(
+                    page: HomeScreen(login: true),
+                    // exitPage:SplashPage(),
+                  ));
+            }
+          });
+        } else if (response == false) {
           Navigator.push(
               context,
               FadePageRoute(
-                page: HomeScreen(login: true),
+                page: HomeScreen(login: false),
                 // enterPage: const HomeScreen(login: true),
               ));
         } else {

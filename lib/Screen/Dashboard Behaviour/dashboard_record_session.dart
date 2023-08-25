@@ -246,7 +246,7 @@ class _record_sessionState extends State<record_session> {
                                                     pracName: allGoals[
                                                             'userPractices']
                                                         [index1]['name'],
-                                                    record: true,
+                                                    record: true, selected: 0,
                                                   )))
                                               : Navigator.push(
                                                   context,

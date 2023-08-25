@@ -104,11 +104,14 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: AppDimensions.height10(context) * 2.0,
-                width: AppDimensions.height10(context) * 2.0,
+                height: AppDimensions.height10(context) * 2.3,
+                width: AppDimensions.height10(context) * 2.3,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100.0),
-                  border: Border.all(color: const Color(0xFF8EA1B1)),
+                  border: Border.all(
+                      color: status == 'completed' || status == 'missed'
+                          ? Colors.transparent
+                          : const Color(0xFF8EA1B1)),
                   color: status == 'completed'
                       ? const Color(0xFF196F6E)
                       : status == 'missed'
@@ -137,7 +140,11 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
                 '${date.day}',
                 style: TextStyle(
                     fontSize: AppDimensions.height10(context) * 1.4,
-                    color: const Color(0xFF8EA1B1)),
+                    color: status == 'completed'
+                        ? const Color(0xFF156F6D)
+                        : status == 'missed'
+                            ? const Color(0xFFFE6624)
+                            : const Color(0xFF8EA1B1)),
               ),
               // Container(
               //   height: AppDimensions.height10(context) * 0.05,
@@ -156,12 +163,14 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
       backgroundColor: Colors.transparent,
       body: Container(
         decoration: BoxDecoration(
+          //color: Colors.red,
           borderRadius:
               BorderRadius.circular(AppDimensions.height10(context) * 2.0),
           //color: status == 'completed'? Color(0xFF196F6E):status == 'missed'?Color(0xFFFE6624):Color(0xFFFFFFFF),
         ),
         child: TableCalendar(
           availableGestures: AvailableGestures.none,
+          rowHeight: AppDimensions.height10(context) * 6.2,
           firstDay: DateTime.utc(2021, 1, 1),
           lastDay: DateTime.utc(2030, 12, 31),
           focusedDay: DateTime.now(),
@@ -194,9 +203,15 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
           eventLoader: (day) {
             return [];
           },
-          calendarStyle: const CalendarStyle(
-            outsideDaysVisible: false,
-          ),
+          calendarStyle: CalendarStyle(
+              outsideDaysVisible: false,
+              tablePadding: EdgeInsets.symmetric(
+                  horizontal: AppDimensions.height10(context) * 3.7),
+              rowDecoration: BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(
+                          color: const Color(0xFF828282),
+                          width: AppDimensions.height10(context) * 0.05)))),
         ),
       ),
     );

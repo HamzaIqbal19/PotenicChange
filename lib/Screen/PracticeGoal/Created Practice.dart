@@ -123,43 +123,44 @@ class _PracticeFinishedState extends State<PracticeFinished> {
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: true,
-          leading: Center(
-            // alignment: Alignment.center,
-            child: IconButton(
-              icon: Image.asset(
-                'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 3,
-                height: AppDimensions.height10(context) * 3,
-                fit: BoxFit.contain,
-              ),
-              onPressed: () async {
-                if (route == 'view_all_goals') {
-                  Navigator.pushReplacement(context,
-                      FadePageRoute(page: const veiw_all_goals_menu()));
-                } else {
-                  Navigator.push(
-                    context,
-                    FadePageRoute3(
-                      exitPage: const PracticeFinished(),
-                      enterPage: const CreatePractice(),
-                    ),
-                  );
-                }
-                final SharedPreferences prefs = await _prefs;
+          automaticallyImplyLeading: false,
+          // leading: Center(
+          //   // alignment: Alignment.center,
+          //   child: IconButton(
+          //     icon: Image.asset(
+          //       'assets/images/Back.webp',
+          //       width: AppDimensions.height10(context) * 3,
+          //       height: AppDimensions.height10(context) * 3,
+          //       fit: BoxFit.contain,
+          //     ),
+          //     onPressed: () async {
+          //       if (route == 'view_all_goals') {
+          //         Navigator.pushReplacement(context,
+          //             FadePageRoute(page: const veiw_all_goals_menu()));
+          //       } else {
+          //         Navigator.push(
+          //           context,
+          //           FadePageRoute3(
+          //             exitPage: const PracticeFinished(),
+          //             enterPage: const CreatePractice(),
+          //           ),
+          //         );
+          //       }
+          //       final SharedPreferences prefs = await _prefs;
 
-                await prefs.remove('route');
-                // Navigator.pop(context);
-                // Navigator.pushReplacement(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => HomeScreen(),
-                //   ),
-                // );
-                // Add code for performing close action
-              },
-            ),
-          ),
+          //       await prefs.remove('route');
+          //       // Navigator.pop(context);
+          //       // Navigator.pushReplacement(
+          //       //   context,
+          //       //   MaterialPageRoute(
+          //       //     builder: (context) => HomeScreen(),
+          //       //   ),
+          //       // );
+          //       // Add code for performing close action
+          //     },
+          //   ),
+          // ),
+
           actions: [
             Center(
               // alignment: Alignment.center,

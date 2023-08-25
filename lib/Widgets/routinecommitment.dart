@@ -86,13 +86,13 @@ class _routinecommitmentState extends State<routinecommitment> {
                   ),
                   child: schedule_card(
                     days: updates[index]['day'],
-                    endTime: updates[index]['time2'],
+                    // endTime: updates[index]['time2'],
                     startTime: updates[index]['time1'],
                   ),
                 );
               },
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: AppDimensions.height10(context) * 0.5),
           ],
         ),
       ),
@@ -103,14 +103,14 @@ class _routinecommitmentState extends State<routinecommitment> {
 class schedule_card extends StatefulWidget {
   final String days;
   final String startTime;
-  final String endTime;
+  // final String endTime;
 
-  const schedule_card(
-      {Key? key,
-      required this.days,
-      required this.startTime,
-      required this.endTime})
-      : super(key: key);
+  const schedule_card({
+    Key? key,
+    required this.days,
+    required this.startTime,
+    // required this.endTime
+  }) : super(key: key);
 
   @override
   State<schedule_card> createState() => _schedule_cardState();
@@ -160,20 +160,20 @@ class _schedule_cardState extends State<schedule_card> {
                       ],
                     ),
                   ),
-                  Container(
-                    // color:Colors.orange,
-                    width: AppDimensions.height10(context) * 36.2,
-                    padding: const EdgeInsets.only(left: 0.0, bottom: 10),
-                    child: Row(
-                      children: [
-                        endTimerState(
-                          key: Key("${widget.key}"),
-                          text: '1) Time: ',
-                          endTime: widget.endTime,
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   // color:Colors.orange,
+                  //   width: AppDimensions.height10(context) * 36.2,
+                  //   padding: const EdgeInsets.only(left: 0.0, bottom: 10),
+                  //   child: Row(
+                  //     children: [
+                  //       endTimerState(
+                  //         key: Key("${widget.key}"),
+                  //         text: '1) Time: ',
+                  //         endTime: widget.endTime,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
 
                   // add more data that you want like this
                 ],

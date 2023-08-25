@@ -19,6 +19,8 @@ import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -241,6 +243,8 @@ class _photo_infoState extends State<photo_info> {
   var imageLink;
   List selectedGoals = [];
   List<String> tagList = [];
+  List<String> stringTagList = [];
+  bool bt_enable = true;
 
   void getInspiration() async {
     final SharedPreferences prefs = await _prefs;
@@ -275,6 +279,8 @@ class _photo_infoState extends State<photo_info> {
     setState(() {
       imageLink = imageLinked;
     });
+    link.text = imageLink!;
+
     print('---------------==============================$imageLink');
   }
 
@@ -721,60 +727,70 @@ class _photo_infoState extends State<photo_info> {
                                       builder: (context, value, child) {
                                         return AnimatedScaleButton(
                                           onTap: () async {
-                                            if (title.text
-                                                    .toString()
-                                                    .isNotEmpty &&
-                                                statement.text
-                                                    .toString()
-                                                    .isNotEmpty) {
-                                              final SharedPreferences prefs =
-                                                  await _prefs;
-                                              var imagePicked = prefs
-                                                  .getString('imagePicked');
-                                              print(
-                                                  '==================================>$imagePicked');
-                                              InspirationApi()
-                                                  .addInspiration(
-                                                      1,
-                                                      File(image),
-                                                      title.text.toString(),
-                                                      tagList,
-                                                      link.text
-                                                              .toString()
-                                                              .isEmpty
-                                                          ? " "
-                                                          : link.text
-                                                              .toString(),
-                                                      true,
-                                                      statement.text.toString(),
-                                                      selectedGoals)
-                                                  .then((response) {
-                                                if (response.length != 0) {
-                                                  print(
-                                                      'Success======================');
-                                                  title.clear();
-                                                  link.clear();
-                                                  statement.clear();
-                                                  hastags.clear();
-
-                                                  Navigator.push(
-                                                      context,
-                                                      FadePageRoute(
-                                                          page:
-                                                              const updatedLandingPage(
-                                                                  delete: false,
-                                                                  is_Updated:
-                                                                      false)));
-                                                } else {
-                                                  print("Failed");
-                                                }
+                                            if (bt_enable == true) {
+                                              setState(() {
+                                                bt_enable = false;
                                               });
-                                            } else {
-                                              print('empty');
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(const SnackBar(
-                                                      content: Text(
-                                                          "Title or Inspiration is empty!!")));
+                                              if (title.text
+                                                      .toString()
+                                                      .isNotEmpty &&
+                                                  statement.text
+                                                      .toString()
+                                                      .isNotEmpty) {
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                var imagePicked = prefs
+                                                    .getString('imagePicked');
+                                                print(
+                                                    '==================================>${tagList.toString}');
+                                                InspirationApi()
+                                                    .addInspiration(
+                                                        1,
+                                                        File(image),
+                                                        title.text.toString(),
+                                                        tagList,
+                                                        link.text
+                                                                .toString()
+                                                                .isEmpty
+                                                            ? " "
+                                                            : link.text
+                                                                .toString(),
+                                                        true,
+                                                        statement.text
+                                                            .toString(),
+                                                        selectedGoals)
+                                                    .then((response) {
+                                                  if (response.length != 0) {
+                                                    setState(() {
+                                                      bt_enable = true;
+                                                    });
+                                                    print(
+                                                        'Success======================');
+                                                    title.clear();
+                                                    link.clear();
+                                                    statement.clear();
+                                                    hastags.clear();
+
+                                                    Navigator.push(
+                                                        context,
+                                                        FadePageRoute(
+                                                            page:
+                                                                const updatedLandingPage(
+                                                                    delete:
+                                                                        false,
+                                                                    is_Updated:
+                                                                        false)));
+                                                  } else {
+                                                    print("Failed");
+                                                  }
+                                                });
+                                              } else {
+                                                print('empty');
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(const SnackBar(
+                                                        content: Text(
+                                                            "Title or Inspiration is empty!!")));
+                                              }
                                             }
                                           },
                                           child: Text(
@@ -1194,6 +1210,9 @@ class _photo_infoState extends State<photo_info> {
                                     List<String> tags = words
                                         .where((word) => word.startsWith('#'))
                                         .toList();
+                                    stringTagList = tagList
+                                        .map((tag) => tag.toString())
+                                        .toList();
 
                                     tagList.clear();
 
@@ -1373,6 +1392,22 @@ class _link_setState extends State<link_set> {
 
   bool link_bt = false;
   bool showKeyboardOverlay = false;
+  String link_url = '';
+  final WebViewController _controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..setNavigationDelegate(
+      NavigationDelegate(
+        onProgress: (int progress) {
+          debugPrint("Loading: $progress%");
+        },
+        onPageStarted: (String url) {},
+        onPageFinished: (String url) {},
+        onWebResourceError: (WebResourceError error) {},
+        onNavigationRequest: (NavigationRequest request) {
+          return NavigationDecision.navigate;
+        },
+      ),
+    );
 
   @override
   Widget build(BuildContext context) {
@@ -1389,13 +1424,17 @@ class _link_setState extends State<link_set> {
         body: Container(
           width: double.infinity,
           height: double.infinity,
-          color: const Color(0xffC4C4C4),
+          color: const Color(0xFFC4C4C4),
+          child: link_url == ''
+              ? Container()
+              : WebViewWidget(controller: _controller),
         ),
-        bottomNavigationBar: BottomAppBar(
-          // elevation: 0,
-          color: const Color(0xffC4C4C4),
-          child: Container(
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: const Color(0xFFC4C4C4),
+          flexibleSpace: Container(
+            margin:
+                EdgeInsets.only(top: AppDimensions.height10(context) * 5.37),
             //height: AppDimensions.height10(context) * 83.517,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -1427,6 +1466,7 @@ class _link_setState extends State<link_set> {
                                   setState(() {
                                     link_bt = false;
                                   });
+                                  Navigator.pop(context);
                                   linkController.clear();
                                 },
                                 child: Container(
@@ -1523,12 +1563,21 @@ class _link_setState extends State<link_set> {
                                                 borderSide: BorderSide(
                                                     color:
                                                         Colors.transparent))),
+                                        onFieldSubmitted: (value) async {
+                                          _controller.loadRequest(Uri.parse(
+                                              "https://${linkController.text}/"));
+                                          setState(() {
+                                            link_url =
+                                                linkController.text.toString();
+                                          });
+                                        },
                                       ),
                                     ),
                                     AnimatedScaleButton(
                                       onTap: () {
                                         setState(() {});
                                         linkController.clear();
+                                        link_url = '';
                                       },
                                       child: Container(
                                         width: AppDimensions.height10(context) *
@@ -1761,13 +1810,406 @@ class _link_setState extends State<link_set> {
                               )
                             ]),
                 ),
-                Container(
-                  color: Colors.white,
-                ),
               ],
             ),
           ),
+          automaticallyImplyLeading: false,
         ),
+        // bottomNavigationBar: BottomAppBar(
+        //   // elevation: 0,
+        //   color: const Color(0xffC4C4C4),
+        //   child: Container(
+        //     margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
+        //     //height: AppDimensions.height10(context) * 83.517,
+        //     decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.only(
+        //           topLeft:
+        //               Radius.circular(AppDimensions.height10(context) * 1.0),
+        //           topRight:
+        //               Radius.circular(AppDimensions.height10(context) * 1.0)),
+        //       color: const Color(0xFF828282),
+        //     ),
+        //     child: Column(
+        //       children: [
+        //         Container(
+        //           // width: AppDimensions.height10(context) * 41.1,
+        //           height: AppDimensions.height10(context) * 5.1,
+        //           // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
+        //           decoration: BoxDecoration(
+        //               color: const Color(0xffF5F5F5).withOpacity(0.8),
+        //               borderRadius: BorderRadius.only(
+        //                   topLeft: Radius.circular(
+        //                       AppDimensions.height10(context) * 1.0),
+        //                   topRight: Radius.circular(
+        //                       AppDimensions.height10(context) * 1.0))),
+        //           child: link_bt
+        //               ? Row(
+        //                   mainAxisAlignment: MainAxisAlignment.center,
+        //                   children: [
+        //                       GestureDetector(
+        //                         onTap: () {
+        //                           setState(() {
+        //                             link_bt = false;
+        //                           });
+        //                           linkController.clear();
+        //                         },
+        //                         child: Container(
+        //                           width: AppDimensions.height10(context) * 3.0,
+        //                           height: AppDimensions.height10(context) * 3.0,
+        //                           margin: EdgeInsets.only(
+        //                               right: AppDimensions.height10(context) *
+        //                                   0.8),
+        //                           decoration: BoxDecoration(
+        //                               shape: BoxShape.circle,
+        //                               color: const Color(0xFF828282)
+        //                                   .withOpacity(0.85),
+        //                               image: const DecorationImage(
+        //                                   image: AssetImage(
+        //                                       'assets/images/Close.webp'))),
+        //                         ),
+        //                       ),
+        //                       Container(
+        //                         width: AppDimensions.height10(context) * 29.2,
+        //                         height: AppDimensions.height10(context) * 3.4,
+        //                         // color: Colors.amber,
+        //                         decoration: BoxDecoration(
+        //                             borderRadius: BorderRadius.circular(
+        //                                 AppDimensions.height10(context) * 1.0),
+        //                             color: const Color(0xff767680)
+        //                                 .withOpacity(0.12)),
+        //                         child: Row(
+        //                           // mainAxisAlignment: MainAxisAlignment.center,
+        //                           children: [
+        //                             Container(
+        //                               width:
+        //                                   AppDimensions.height10(context) * 1.4,
+        //                               height: AppDimensions.height10(context) *
+        //                                   1.413,
+        //                               margin: EdgeInsets.only(
+        //                                   left:
+        //                                       AppDimensions.height10(context) *
+        //                                           0.8),
+        //                               decoration: const BoxDecoration(
+        //                                   //shape: BoxShape.circle,
+        //                                   image: DecorationImage(
+        //                                       image: AssetImage(
+        //                                           'assets/images/Light.webp'),
+        //                                       fit: BoxFit.fill)),
+        //                             ),
+        //                             SizedBox(
+        //                               width: AppDimensions.height10(context) *
+        //                                   23.8,
+        //                               height:
+        //                                   AppDimensions.height10(context) * 2.2,
+        //                               //color: Colors.amber,
+        //                               // margin: EdgeInsets.only(
+        //                               //     top: AppDimensions.height10(context) * 1.5),
+        //                               child: TextFormField(
+        //                                 controller: linkController,
+        //                                 key: key,
+        //                                 onChanged: (value) {
+        //                                   setState(() {
+        //                                     link_bt = true;
+        //                                   });
+        //                                 },
+        //                                 textAlign: TextAlign.left,
+        //                                 textAlignVertical:
+        //                                     TextAlignVertical.center,
+        //                                 style: TextStyle(
+        //                                     decoration: TextDecoration.none,
+        //                                     decorationThickness: 0,
+        //                                     fontSize: AppDimensions.height10(
+        //                                             context) *
+        //                                         1.4,
+        //                                     fontWeight: FontWeight.w400,
+        //                                     color: const Color(0xff3C3C43)
+        //                                         .withOpacity(0.6)),
+        //                                 decoration: InputDecoration(
+        //                                     contentPadding: EdgeInsets.fromLTRB(
+        //                                         AppDimensions.height10(context) *
+        //                                             0.6,
+        //                                         AppDimensions.height10(context) *
+        //                                             0.4,
+        //                                         0,
+        //                                         0),
+        //                                     hintText: 'Enter website address',
+        //                                     hintStyle: TextStyle(
+        //                                         fontSize:
+        //                                             AppDimensions.height10(context) *
+        //                                                 1.4,
+        //                                         fontWeight: FontWeight.w400,
+        //                                         color: const Color(0xff3C3C43)
+        //                                             .withOpacity(0.6)),
+        //                                     focusedBorder: const OutlineInputBorder(
+        //                                         borderSide: BorderSide(
+        //                                             color: Colors.transparent)),
+        //                                     enabledBorder: const OutlineInputBorder(
+        //                                         borderSide: BorderSide(
+        //                                             color:
+        //                                                 Colors.transparent))),
+        //                                 onFieldSubmitted: (value) async {
+        //                                   await FlutterWebBrowser.openWebPage(
+        //                                     url:
+        //                                         'https://${linkController.text.toString()}/',
+        //                                     // safariVCOptions:
+        //                                     //     SafariViewControllerOptions(
+        //                                     //       modalPresentationCapturesStatusBarAppearance: tr,
+        //                                     //         modalPresentationStyle:
+        //                                     //             UIModalPresentationStyle
+        //                                     //                 .formSheet),
+        //                                     // customTabsOptions:
+        //                                     //     const CustomTabsOptions(
+        //                                     //         shareState:
+        //                                     //             CustomTabsShareState
+        //                                     //                 .on)
+        //                                   );
+        //                                 },
+        //                               ),
+        //                             ),
+        //                             AnimatedScaleButton(
+        //                               onTap: () {
+        //                                 setState(() {});
+        //                                 linkController.clear();
+        //                               },
+        //                               child: Container(
+        //                                 width: AppDimensions.height10(context) *
+        //                                     2.3,
+        //                                 height:
+        //                                     AppDimensions.height10(context) *
+        //                                         2.3,
+        //                                 decoration: const BoxDecoration(
+        //                                     shape: BoxShape.circle,
+        //                                     image: DecorationImage(
+        //                                         image: AssetImage(
+        //                                             'assets/images/ic_refresh.webp'))
+        //                                     // color: Color(0xff282828),
+        //                                     ),
+        //                                 // child: Image.asset(
+        //                                 //   'assets/images/ic_refresh.webp',
+        //                                 //  // width: AppDimensions.height10(context) * 0.941,
+        //                                 //   //height: AppDimensions.height10(context) * 1.4,
+        //                                 //   color: Color(0xff282828),
+        //                                 // ),
+        //                               ),
+        //                             )
+        //                           ],
+        //                         ),
+        //                       ),
+        //                       AnimatedScaleButton(
+        //                         onTap: () async {
+        //                           final SharedPreferences prefs = await _prefs;
+        //                           var link = prefs.setString('ImageLink',
+        //                               linkController.text.toString());
+        //                           print(linkController.text.toString());
+        //                           if (widget.route == 'image') {
+        //                             Navigator.push(
+        //                                 context,
+        //                                 FadePageRoute(
+        //                                     page: const photo_info(
+        //                                   edit_details: false,
+        //                                   image_detals: true,
+        //                                   image_save: true,
+        //                                   image_create: true,
+        //                                 )));
+        //                           } else if (widget.route == 'link') {
+        //                             Navigator.push(
+        //                                 context,
+        //                                 FadePageRoute(
+        //                                     page: const link_info(
+        //                                   link_state: true,
+        //                                 )));
+        //                           } else if (widget.route == 'video') {
+        //                             Navigator.push(
+        //                                 context,
+        //                                 FadePageRoute(
+        //                                     page: const video_info(
+        //                                   link_state: true,
+        //                                 )));
+        //                           }
+        //                           linkController.clear();
+        //                         },
+        //                         child: Container(
+        //                           height: AppDimensions.height10(context) * 4.2,
+        //                           width: AppDimensions.height10(context) * 6.2,
+        //                           margin: EdgeInsets.only(
+        //                               left: AppDimensions.height10(context) *
+        //                                   0.9),
+        //                           child: Center(
+        //                             child: Text(
+        //                               'Add link',
+        //                               style: TextStyle(
+        //                                   fontSize:
+        //                                       AppDimensions.height10(context) *
+        //                                           1.5,
+        //                                   fontWeight: FontWeight.w400,
+        //                                   color: const Color(0xff007AFF)),
+        //                             ),
+        //                           ),
+        //                         ),
+        //                       )
+        //                     ])
+        //               : Row(
+        //                   //it is centered to make it consistent on differernt devices
+        //                   mainAxisAlignment: MainAxisAlignment.center,
+        //                   children: [
+        //                       Container(
+        //                         width: AppDimensions.height10(context) * 33.7,
+        //                         height: AppDimensions.height10(context) * 3.4,
+        //                         // color: Colors.amber,
+        //                         decoration: BoxDecoration(
+        //                             borderRadius: BorderRadius.circular(
+        //                                 AppDimensions.height10(context) * 1.0),
+        //                             color: const Color(0xff767680)
+        //                                 .withOpacity(0.12)),
+        //                         child: Row(
+        //                           // mainAxisAlignment: MainAxisAlignment.center,
+        //                           children: [
+        //                             Container(
+        //                               width:
+        //                                   AppDimensions.height10(context) * 1.4,
+        //                               height: AppDimensions.height10(context) *
+        //                                   1.413,
+        //                               margin: EdgeInsets.only(
+        //                                   left:
+        //                                       AppDimensions.height10(context) *
+        //                                           0.8),
+        //                               decoration: const BoxDecoration(
+        //                                   //shape: BoxShape.circle,
+        //                                   image: DecorationImage(
+        //                                       image: AssetImage(
+        //                                           'assets/images/Light.webp'),
+        //                                       fit: BoxFit.fill)),
+        //                             ),
+        //                             SizedBox(
+        //                               width: AppDimensions.height10(context) *
+        //                                   28.3,
+        //                               height:
+        //                                   AppDimensions.height10(context) * 2.2,
+        //                               //color: Colors.amber,
+        //                               // margin: EdgeInsets.only(
+        //                               //     top: AppDimensions.height10(context) * 1.5),
+        //                               child: TextFormField(
+        //                                 controller: linkController,
+        //                                 onChanged: (value) {
+        //                                   setState(() {
+        //                                     link_bt = true;
+        //                                     showKeyboardOverlay = true;
+        //                                   });
+        //                                 },
+        //                                 textAlign: TextAlign.left,
+        //                                 textAlignVertical:
+        //                                     TextAlignVertical.bottom,
+        //                                 style: TextStyle(
+        //                                     decoration: TextDecoration.none,
+        //                                     decorationThickness: 0,
+        //                                     fontSize: AppDimensions.height10(
+        //                                             context) *
+        //                                         1.4,
+        //                                     fontWeight: FontWeight.w400,
+        //                                     color: const Color(0xff3C3C43)
+        //                                         .withOpacity(0.6)),
+        //                                 decoration: InputDecoration(
+        //                                     hintText: 'Enter website address',
+        //                                     hintStyle: TextStyle(
+        //                                         fontSize: AppDimensions.height10(
+        //                                                 context) *
+        //                                             1.4,
+        //                                         fontWeight: FontWeight.w400,
+        //                                         color: const Color(0xff3C3C43)
+        //                                             .withOpacity(0.6)),
+        //                                     focusedBorder:
+        //                                         const OutlineInputBorder(
+        //                                             borderSide: BorderSide(
+        //                                                 color: Colors
+        //                                                     .transparent)),
+        //                                     enabledBorder:
+        //                                         const OutlineInputBorder(
+        //                                             borderSide: BorderSide(
+        //                                                 color: Colors
+        //                                                     .transparent))),
+        //                               ),
+        //                             ),
+        //                             AnimatedScaleButton(
+        //                               onTap: () {
+        //                                 setState(() {});
+        //                               },
+        //                               child: Container(
+        //                                 width: AppDimensions.height10(context) *
+        //                                     2.3,
+        //                                 height:
+        //                                     AppDimensions.height10(context) *
+        //                                         2.3,
+        //                                 decoration: const BoxDecoration(
+        //                                     image: DecorationImage(
+        //                                         image: AssetImage(
+        //                                             'assets/images/close_dark.webp'))),
+        //                               ),
+        //                             )
+        //                           ],
+        //                         ),
+        //                       ),
+        //                       SizedBox(
+        //                         height: AppDimensions.height10(context) * 4.2,
+        //                         width: AppDimensions.height10(context) * 6.2,
+        //                         child: Center(
+        //                           child: link_bt
+        //                               ? AnimatedScaleButton(
+        //                                   onTap: () async {
+        //                                     final SharedPreferences prefs =
+        //                                         await _prefs;
+        //                                     var link = prefs.setString(
+        //                                         'ImageLink',
+        //                                         linkController.text.toString());
+        //                                     print(
+        //                                         linkController.text.toString());
+        //                                     Navigator.push(
+        //                                         context,
+        //                                         FadePageRoute(
+        //                                             page: const photo_info(
+        //                                           edit_details: false,
+        //                                           image_detals: true,
+        //                                           image_save: false,
+        //                                           image_create: false,
+        //                                         )));
+        //                                   },
+        //                                   child: Text(
+        //                                     'Add Link',
+        //                                     style: TextStyle(
+        //                                         fontSize:
+        //                                             AppDimensions.height10(
+        //                                                     context) *
+        //                                                 1.5,
+        //                                         fontWeight: FontWeight.w400,
+        //                                         color: const Color(0xff007AFF)),
+        //                                   ),
+        //                                 )
+        //                               : GestureDetector(
+        //                                   onTap: () {
+        //                                     Navigator.pop(context);
+        //                                   },
+        //                                   child: Text(
+        //                                     'Cancel',
+        //                                     style: TextStyle(
+        //                                         fontSize:
+        //                                             AppDimensions.height10(
+        //                                                     context) *
+        //                                                 1.5,
+        //                                         fontWeight: FontWeight.w400,
+        //                                         color: const Color(0xff007AFF)),
+        //                                   ),
+        //                                 ),
+        //                         ),
+        //                       )
+        //                     ]),
+        //         ),
+        //         Container(
+        //           color: Colors.white,
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+
+        // ),
       ),
     );
   }

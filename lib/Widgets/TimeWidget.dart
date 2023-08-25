@@ -18,7 +18,8 @@ class schedule_card extends StatefulWidget {
   final bool expansion;
   final ValueChanged<int> onCountChanged;
   final ValueChanged<String> onChangedStart;
-  final ValueChanged<String> onChangedEnd;
+  final ValueChanged<int> onDelete;
+  // final ValueChanged<String> onChangedEnd;
 
   schedule_card(
       {Key? key,
@@ -27,8 +28,9 @@ class schedule_card extends StatefulWidget {
       required this.days,
       required this.onCountChanged,
       required this.onChangedStart,
-      required this.onChangedEnd,
-      required this.expansion})
+      // required this.onChangedEnd,
+      required this.expansion,
+      required this.onDelete})
       : super(key: key);
 
   @override
@@ -67,6 +69,14 @@ class _schedule_cardState extends State<schedule_card> {
     }
   }
 
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      count = 0;
+    });
+  }
+
   // final ValueChanged<String> onChangedStart;
   // final ValueChanged<String> onChangedEnd;
 
@@ -85,11 +95,6 @@ class _schedule_cardState extends State<schedule_card> {
       // timesPerDay.firstWhere((day) => day['day'] == days_name)['end'] = value;
     });
     print(value);
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   _schedule_cardState(
@@ -122,6 +127,14 @@ class _schedule_cardState extends State<schedule_card> {
               child: AdvanceExpansionTile(
                 key: _globalKey,
                 initiallyExpanded: widget.expansion,
+                onExpansionChanged: (expanded) {
+                  if (expanded) {
+                    count = count + 1;
+                  } else {
+                    count = count - 1;
+                  }
+                },
+                disabled: true,
                 decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
@@ -182,7 +195,7 @@ class _schedule_cardState extends State<schedule_card> {
                                               widget.onChangedStart(start_time);
                                             });
                                             // onChangedStart(start_time);
-                                            count = count + 1;
+
                                             onCountChanged(count);
                                             _globalKey.currentState?.expand();
                                             Navigator.pop(context);
@@ -253,11 +266,9 @@ class _schedule_cardState extends State<schedule_card> {
                                 elevation: 0,
                                 backgroundColor: Colors.transparent,
                                 onPressed: () {
-                                  setState(() {
-                                    widget.startTime = '00:00';
-                                    // removeSelectedDay(days_name);
-                                  });
-                                  //   _globalKey.currentState?.collapse();
+                                  _globalKey.currentState?.collapse();
+
+                                  widget.onDelete(count);
                                 },
                                 child: const Icon(
                                   Icons.delete,
@@ -270,56 +281,56 @@ class _schedule_cardState extends State<schedule_card> {
                     ),
                   ),
 
-                  Container(
-                    width: AppDimensions.height10(context) * 38.2,
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [
-                        endTimerState(
-                          key: Key("$widget.key"),
-                          text: '2) Time: ',
-                          endTime: widget.endTime,
-                          onChanged: (value) {
-                            setState(() {
-                              end_time = value;
-                            });
-                          },
-                          onChangedEnd: (String value) {
-                            setState(() {
-                              end_time = value;
-                            });
-                            widget.onChangedEnd(value);
-                          },
-                        ),
-                        Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Container(
-                                height: 37,
-                                width: 37,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color.fromRGBO(0, 0, 0, 0.1),
-                                ),
-                                child: FloatingActionButton(
-                                  elevation: 0,
-                                  backgroundColor: Colors.transparent,
-                                  onPressed: () {
-                                    setState(() {
-                                      widget.endTime = null!;
+                  // Container(
+                  //   width: AppDimensions.height10(context) * 38.2,
+                  //   padding: const EdgeInsets.only(bottom: 10),
+                  //   child: Row(
+                  //     children: [
+                  //       endTimerState(
+                  //         key: Key("$widget.key"),
+                  //         text: '2) Time: ',
+                  //         endTime: widget.endTime,
+                  //         onChanged: (value) {
+                  //           setState(() {
+                  //             end_time = value;
+                  //           });
+                  //         },
+                  //         onChangedEnd: (String value) {
+                  //           setState(() {
+                  //             end_time = value;
+                  //           });
+                  //           widget.onChangedEnd(value);
+                  //         },
+                  //       ),
+                  //       Padding(
+                  //           padding: const EdgeInsets.only(left: 8.0),
+                  //           child: Container(
+                  //               height: 37,
+                  //               width: 37,
+                  //               decoration: const BoxDecoration(
+                  //                 shape: BoxShape.circle,
+                  //                 color: Color.fromRGBO(0, 0, 0, 0.1),
+                  //               ),
+                  //               child: FloatingActionButton(
+                  //                 elevation: 0,
+                  //                 backgroundColor: Colors.transparent,
+                  //                 onPressed: () {
+                  //                   setState(() {
+                  //                     widget.endTime = null!;
 
-                                      //  removeSelectedDay(days_name);
-                                    });
-                                    //  _globalKey.currentState?.collapse();
-                                  },
-                                  child: const Icon(
-                                    Icons.delete,
-                                    color: Colors.black,
-                                    size: 15,
-                                  ),
-                                )))
-                      ],
-                    ),
-                  ),
+                  //                     //  removeSelectedDay(days_name);
+                  //                   });
+                  //                   //  _globalKey.currentState?.collapse();
+                  //                 },
+                  //                 child: const Icon(
+                  //                   Icons.delete,
+                  //                   color: Colors.black,
+                  //                   size: 15,
+                  //                 ),
+                  //               )))
+                  //     ],
+                  //   ),
+                  // ),
 
                   // add more data that you want like this
                 ],
@@ -398,7 +409,7 @@ class _startTimerStateState extends State<startTimerState> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              Container(
+              SizedBox(
                 width: AppDimensions.height10(context) * 17.2,
                 child: Text(
                   widget.start_Time,
@@ -412,7 +423,7 @@ class _startTimerStateState extends State<startTimerState> {
               ),
             ],
           ),
-          Container(
+          SizedBox(
             width: AppDimensions.height10(context) * 2.4,
             child: Center(
               child: GestureDetector(
@@ -453,11 +464,12 @@ class _startTimerStateState extends State<startTimerState> {
                       ),
                     );
                   },
-                  child: const Icon(
-                    Icons.arrow_drop_down,
-                    color: Color.fromRGBO(250, 153, 52, 1),
-                    //size: AppDimensions.height10(context) * 3.5,
-                  )),
+                  child: SizedBox(
+                      child: Image.asset(
+                    'assets/images/Polygon_orange.webp',
+                    width: AppDimensions.height10(context) * 1.7,
+                    height: AppDimensions.height10(context) * 1.7,
+                  ))),
             ),
           ),
         ],
@@ -533,8 +545,8 @@ class _endTimerStateState extends State<endTimerState> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              Container(
-                width: AppDimensions.height10(context) * 16.2,
+              SizedBox(
+                width: AppDimensions.height10(context) * 17.2,
                 child: Text(
                   widget.endTime,
                   style: TextStyle(
@@ -547,7 +559,7 @@ class _endTimerStateState extends State<endTimerState> {
               ),
             ],
           ),
-          Container(
+          SizedBox(
             width: AppDimensions.height10(context) * 2.4,
             // height: AppDimensions.height10*1.7,
             // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
@@ -588,11 +600,12 @@ class _endTimerStateState extends State<endTimerState> {
                       ),
                     );
                   },
-                  child: const Icon(
-                    Icons.arrow_drop_down,
-                    color: Color.fromRGBO(250, 153, 52, 1),
-                    // size: AppDimensions.height10*3.5,
-                  )),
+                  child: SizedBox(
+                      child: Image.asset(
+                    'assets/images/Polygon_orange.webp',
+                    width: AppDimensions.height10(context) * 1.7,
+                    height: AppDimensions.height10(context) * 1.7,
+                  ))),
             ),
           ),
         ],

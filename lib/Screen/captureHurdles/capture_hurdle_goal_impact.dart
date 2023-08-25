@@ -334,6 +334,14 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                     await _prefs;
                                                 var hurdleRoute =
                                                     prefs.remove('HurdleRoute');
+                                                selectedInActiveIndices.clear();
+                                                selectedIndices.clear();
+                                                selectedGoals.clear();
+                                                multiGoals.clear();
+                                                allgoalsSelected.clear();
+                                                setState(() {
+                                                  selectAll = false;
+                                                });
                                               },
                                               child: const Text(
                                                 'Exit & delete progress',

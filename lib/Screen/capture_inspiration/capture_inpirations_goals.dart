@@ -148,11 +148,22 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
 
   void getInspirationRoute() async {
     final SharedPreferences prefs = await _prefs;
+
     setState(() {
       Route = prefs.getString('inspiration_saved_route').toString().isEmpty
           ? ''
           : prefs.getString('inspiration_saved_route');
     });
+    if (prefs.getString('inspiration_saved_route').toString().isEmpty) {
+      selectedInActiveIndices.clear();
+      selectedIndices.clear();
+      selectedGoals.clear();
+      multiGoals.clear();
+      allgoalsSelected.clear();
+      setState(() {
+        selectAll = false;
+      });
+    }
 
     print(prefs.getString('inspiration_saved_route'));
   }
@@ -162,7 +173,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
     super.initState();
     _fetchUserGoal();
     getInspirationRoute();
-    if (widget.data_saved == false && Route == '') {
+    if (widget.data_saved == false) {
       selectedInActiveIndices.clear();
       selectedIndices.clear();
       selectedGoals.clear();
@@ -374,7 +385,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               onPressed: () async {
                                                 InspirationApi()
                                                     .checkUserInspiration()
-                                                    .then((response) {
+                                                    .then((response) async {
                                                       if (response == true) {
                                                         Navigator.push(
                                                             context,
@@ -382,6 +393,21 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                                 page: const inspiration_landing(
                                                                     is_Updated:
                                                                         false)));
+                                                        selectedInActiveIndices
+                                                            .clear();
+                                                        selectedIndices.clear();
+                                                        selectedGoals.clear();
+                                                        multiGoals.clear();
+                                                        allgoalsSelected
+                                                            .clear();
+                                                        setState(() {
+                                                          selectAll = false;
+                                                        });
+                                                        final SharedPreferences
+                                                            prefs =
+                                                            await _prefs;
+                                                        var deleted = prefs.remove(
+                                                            'inspiration_saved_route');
                                                       } else if (response ==
                                                           false) {
                                                         Navigator.push(
@@ -392,16 +418,26 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                               goal_delete:
                                                                   false,
                                                             )));
+                                                        final SharedPreferences
+                                                            prefs =
+                                                            await _prefs;
+                                                        var deleted = prefs.remove(
+                                                            'inspiration_saved_route');
+                                                        selectedInActiveIndices
+                                                            .clear();
+                                                        selectedIndices.clear();
+                                                        selectedGoals.clear();
+                                                        multiGoals.clear();
+                                                        allgoalsSelected
+                                                            .clear();
+                                                        setState(() {
+                                                          selectAll = false;
+                                                        });
                                                         // print(response.statusCode);
                                                       }
                                                     })
                                                     .catchError((error) {})
                                                     .whenComplete(() {});
-
-                                                final SharedPreferences prefs =
-                                                    await _prefs;
-                                                var deleted = prefs.remove(
-                                                    'inspiration_saved_route');
                                               },
                                               child: const Text(
                                                 'Exit & delete progress',

@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -125,8 +126,12 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                     if (widget.route == "GoalName" && widget.login == true) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => GoalName(
+                        FadePageRoute2(
+                          true,
+                          exitPage: HomeScreenProgressSaved(
+                              login: false, route: widget.route),
+                          enterPage: GoalName(
+                            saved: true,
                             route: '',
                             catId,
                             comingFromEditScreen: false,
@@ -137,10 +142,14 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                         widget.login == true) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const Visualising(
+                        FadePageRoute2(
+                          true,
+                          exitPage: HomeScreenProgressSaved(
+                              login: false, route: widget.route),
+                          enterPage: const Visualising(
                             route: '',
                             comingFromEditScreen: false,
+                            saved: true,
                           ),
                         ),
                       );
@@ -148,9 +157,13 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                         widget.login == true) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const Goal_Identity(
+                        FadePageRoute2(
+                          true,
+                          exitPage: HomeScreenProgressSaved(
+                              login: false, route: widget.route),
+                          enterPage: const Goal_Identity(
                             route: '',
+                            saved: true,
                             comingFromEditScreen: false,
                           ),
                         ),
@@ -159,26 +172,34 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                         widget.login == true) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const GoalWhy(
+                        FadePageRoute2(
+                          true,
+                          exitPage: HomeScreenProgressSaved(
+                              login: false, route: widget.route),
+                          enterPage: const GoalWhy(
                             comingFromEditScreen: false,
                             route: '',
+                            saved: true,
                           ),
                         ),
                       );
                     } else if (widget.route == "" && widget.login == true) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const GoalWhy(
+                        FadePageRoute2(
+                          true,
+                          exitPage: HomeScreenProgressSaved(
+                              login: false, route: widget.route),
+                          enterPage: const GoalWhy(
                             comingFromEditScreen: false,
                             route: '',
+                            saved: false,
                           ),
                         ),
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text("User is not logged in !!")));
+                          content: Text("You are not logged in.")));
                     }
                   },
                   child: Image(
@@ -273,6 +294,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                                         "======================>");
                                                     final SharedPreferences
                                                         prefs = await _prefs;
+                                                    await prefs.remove('route');
                                                     await prefs
                                                         .remove('usertoken');
                                                     await prefs

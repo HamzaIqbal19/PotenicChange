@@ -353,7 +353,10 @@ class _record_summaryState extends State<record_summary> {
                           Navigator.push(
                               context,
                               FadePageRoute(
-                                  page: const feelingsAfter(summary: true)));
+                                  page: const feelingsAfter(
+                                summary: true,
+                                selected: 0,
+                              )));
                         },
                         child: Container(
                             height: AppDimensions.height10(context) * 2.8,
@@ -416,7 +419,10 @@ class _record_summaryState extends State<record_summary> {
                           Navigator.push(
                               context,
                               FadePageRoute(
-                                  page: const endofSession(summary: true)));
+                                  page: endofSession(
+                                summary: true,
+                                selected: 0,
+                              )));
                         },
                         child: Container(
                             height: AppDimensions.height10(context) * 2.8,

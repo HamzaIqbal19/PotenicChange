@@ -107,7 +107,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
       if (goalDetails["goalEvaluations"][i]['goalLevel'] == null ||
           goalDetails["goalEvaluations"][i]['goalLevel'] == 0) {
         _dates.add('$formattedDate to $formattedFutureDate (-/5)');
-      } else  {
+      } else {
         _dates.add(
             '$formattedDate to $formattedFutureDate (${goalDetails["goalEvaluations"][i]['goalLevel']}/5)');
       }
@@ -457,9 +457,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                   0.8,
                                             ),
                                             SizedBox(
-                                                // width: AppDimensions.height10(context) * 2.4,
-                                                // height: AppDimensions.height10(context) * 2.4,
-                                                // color: Colors.green,
                                                 child: Image.asset(
                                               'assets/images/Polygon 9.webp',
                                               width: AppDimensions.height10(
@@ -831,7 +828,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       FadePageRoute(
                                           page: const your_why(
                                         destination: 'reason',
-                                        saved: false,
                                       )));
                                 }
                               },
@@ -905,7 +901,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       FadePageRoute(
                                           page: const your_why(
                                         destination: 'identityStatement',
-                                        saved: false,
                                       )));
                                 }
                               },
@@ -968,7 +963,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       FadePageRoute(
                                           page: const your_why(
                                         destination: 'visualizingYourSelf',
-                                        saved: false,
                                       )));
                                 }
                               },
@@ -1028,12 +1022,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                             AnimatedScaleButton(
                               onTap: () {
                                 if (widget.premium == true) {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const your_impact(
-                                        saved: false,
-                                      )));
+                                  Navigator.push(context,
+                                      FadePageRoute(page: const your_impact()));
                                 }
                               },
                               child: goal_criteria(
@@ -1482,105 +1472,111 @@ void evaluation_sheet(context) {
                   borderRadius: BorderRadius.vertical(
                       top: Radius.circular(
                           AppDimensions.height10(context) * 2.0)),
-                  color: const Color(0xFFFBFBFB)),
-              child: Column(
-                children: [
-                  Container(
-                    //color: Colors.amber,
-                    // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
-                    alignment: const Alignment(1, 0),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        width: AppDimensions.height10(context) * 2.6,
-                        height: AppDimensions.height10(context) * 2.6,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 1.5,
-                            right: AppDimensions.height10(context) * 1.5),
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/Close_blue.webp'))),
+                  color: const Color(0xFFF5F5F5)),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: [
+                    Container(
+                      //color: Colors.amber,
+                      // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                      alignment: const Alignment(1, 0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          width: AppDimensions.height10(context) * 2.6,
+                          height: AppDimensions.height10(context) * 2.6,
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 1.5,
+                              right: AppDimensions.height10(context) * 1.5),
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/Close_blue.webp'))),
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    // width: AppDimensions.height10(context) * 8.202,
-                    // height: AppDimensions.height10(context) * 11.2,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.9),
-                    // decoration: BoxDecoration(
-                    //     image: DecorationImage(
-                    //         image:
-                    //             AssetImage('assets/images/potenic__icon.webp'),
-                    //         fit: BoxFit.contain)),
-                    child: Image.asset(
-                      'assets/images/potenic__icon.webp',
-                      width: AppDimensions.height10(context) * 8.202,
-                      height: AppDimensions.height10(context) * 11.2,
+                    Container(
+                      // width: AppDimensions.height10(context) * 8.202,
+                      // height: AppDimensions.height10(context) * 11.2,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.9),
+                      // decoration: BoxDecoration(
+                      //     image: DecorationImage(
+                      //         image:
+                      //             AssetImage('assets/images/potenic__icon.webp'),
+                      //         fit: BoxFit.contain)),
+                      child: Image.asset(
+                        'assets/images/potenic__icon.webp',
+                        width: AppDimensions.height10(context) * 8.202,
+                        height: AppDimensions.height10(context) * 11.2,
+                      ),
                     ),
-                  ),
-                  Container(
-                    // width: AppDimensions.height10(context) * 35.5,
-                    height: AppDimensions.height10(context) * 3.6,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.9),
-                    child: Text(
-                      'Goal Level Evaluation',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 3.0,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF437296)),
+                    Container(
+                      // width: AppDimensions.height10(context) * 35.5,
+                      height: AppDimensions.height10(context) * 3.6,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.9),
+                      child: Text(
+                        'Goal Level Evaluation',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 3.0,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xFF437296)),
+                      ),
                     ),
-                  ),
-                  Container(
-                    width: AppDimensions.height10(context) * 35.2,
-                    height: AppDimensions.height10(context) * 56.0,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.1),
-                    child: RichText(
-                        text: TextSpan(
-                            style: TextStyle(
-                                height: AppDimensions.height10(context) * 0.15,
-                                fontFamily: 'laila',
-                                fontSize: AppDimensions.height10(context) * 1.4,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xFF437296)),
-                            children: const [
-                          TextSpan(
-                              text:
-                                  'It’s important to have clarity on the progress you’re\nmaking with your personal development goals.\n\nThis is why we’ve created a '),
-                          TextSpan(
-                              text: 'Goal Level Evaluation\n',
-                              style: TextStyle(fontWeight: FontWeight.w700)),
-                          TextSpan(
-                              text:
-                                  'feature to help you assess your goal progress in\nrelation to your original reasons for wanting to\nachieve it (remember the statements you had to\ncomplete during onboarding when creating your\ngoal)? We use these statements for you to evaluate.\n\n'),
-                          TextSpan(
-                              text: 'Goal Level Evaluation ',
-                              style: TextStyle(fontWeight: FontWeight.w700)),
-                          TextSpan(
-                              text:
-                                  'has four core criteria that you’ll need to assess:\n\n 1.Your why’s\n 2.Your new identity\n 3.Your vision for new self\n 4.Impact on your life\n\nBy navigating to each of different criteria, you would\nbe able to '),
-                          TextSpan(
-                              text: 'evaluate your progress.\n\n',
-                              style: TextStyle(fontWeight: FontWeight.w700)),
-                          TextSpan(
-                              text:
-                                  'Have fun with it, but also make sure you’re honest\nwith yourself. It’s totally ok to give yourself a low \nscore if you feel you’re not making a considerable\nprogress. This way, we can better support you.\n\nDepending on a goal, some take longer that others to\nachieve. What matters is the '),
-                          TextSpan(
-                              text: 'daily practices ',
-                              style: TextStyle(fontWeight: FontWeight.w700)),
-                          TextSpan(
-                              text:
-                                  ' you\nperform that will eventually help you observe\nmeaningful changes into your life.'),
-                        ])),
-                  )
-                ],
+                    Container(
+                      width: AppDimensions.height10(context) * 35.2,
+                      // height: AppDimensions.height10(context) * 56.0,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.1,
+                          bottom: AppDimensions.height10(context) * 2.5),
+                      child: RichText(
+                          text: TextSpan(
+                              style: TextStyle(
+                                  height:
+                                      AppDimensions.height10(context) * 0.15,
+                                  fontFamily: 'laila',
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xFF437296)),
+                              children: const [
+                            TextSpan(
+                                text:
+                                    'It’s important to have clarity on the progress you’re\nmaking with your personal development goals.\n\nThis is why we’ve created a '),
+                            TextSpan(
+                                text: 'Goal Level Evaluation\n',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text:
+                                    'feature to help you assess your goal progress in\nrelation to your original reasons for wanting to\nachieve it (remember the statements you had to\ncomplete during onboarding when creating your\ngoal)? We use these statements for you to evaluate.\n\n'),
+                            TextSpan(
+                                text: 'Goal Level Evaluation ',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text:
+                                    'has four core criteria that you’ll need to assess:\n\n 1.Your why’s\n 2.Your new identity\n 3.Your vision for new self\n 4.Impact on your life\n\nBy navigating to each of different criteria, you would\nbe able to '),
+                            TextSpan(
+                                text: 'evaluate your progress.\n\n',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text:
+                                    'Have fun with it, but also make sure you’re honest\nwith yourself. It’s totally ok to give yourself a low \nscore if you feel you’re not making a considerable\nprogress. This way, we can better support you.\n\nDepending on a goal, some take longer that others to\nachieve. What matters is the '),
+                            TextSpan(
+                                text: 'daily practices ',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text:
+                                    ' you\nperform that will eventually help you observe\nmeaningful changes into your life.'),
+                          ])),
+                    )
+                  ],
+                ),
               ),
             ),
           ));

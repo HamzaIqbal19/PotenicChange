@@ -66,7 +66,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
 
   void _fetchHurdle() async {
     Hurdles().getUserHurdles().then((response) {
-      if (response.length != 0) {
+      if (response.length != 0 && response != 404) {
         setState(() {
           hurdlesList = response;
           allHurdle = response;
@@ -74,11 +74,19 @@ class _landing_hurdlesState extends State<landing_hurdles> {
         _fetchUserGoal();
         _fetchAllHurdle();
         loadData();
-        return response;
-      } else {
-        return response.statusCode;
+      } else if (response == 404) {
+        setState(() {
+          noData = true;
+        });
+        loadData();
       }
     }).catchError((error) {
+      setState(() {
+        noData = true;
+      });
+      _fetchUserGoal();
+      _fetchAllHurdle();
+      loadData();
       print("Hello world error");
     });
   }
@@ -105,15 +113,18 @@ class _landing_hurdlesState extends State<landing_hurdles> {
 
   void _fetchAllHurdle() async {
     Hurdles().getAllHurdles().then((response) {
-      if (response.length != 0) {
+      if (response.length != 0 && response != false) {
         setState(() {
           hurdlesListName = response['hurdle'];
         });
         _newFunctionForHurdle();
 
         return response;
-      } else {
-        return response.statusCode;
+      } else if (response == false) {
+        setState(() {
+          noData = true;
+        });
+        loadData();
       }
     }).catchError((error) {
       print("Hell error");
@@ -2057,7 +2068,7 @@ void hurdle_sheet(context) {
                   top: AppDimensions.height10(context) * 1.2,
                 ),
                 child: Text(
-                  'This is your private space to capture any\nobstacles and hurdles that are coming your\nway.\n\nAt Potenic, our aim is to empower you to own\nyour personal development journey. We want\nyou to stay focused and this is why we also\nwant you to be prepared, so you can build a\nself-reliance and awareness.\n\nWhen you know and are ready to face your\nchallenges that could distract you of course,\nyou will be more prepared to deal with them.\nWith time, you will start seeing patterns (with\nthe help of Potenic app) and will be more aware\nof situations when you get triggered.',
+                  'This is your private space to capture any\nobstacles that may divert you of course.\n\nAt Potenic, our aim is to empower you to own\nand enjoy your personal development journey.\n\nWe want you to stay focused and this is\nwhy we also want you to be prepared for\n challenges ahead, so you can build a self-\nreliance and awareness.\n\nWith time, you will start seeing patterns (with\nthe help of Potenic’s frameworks) and will be\nmore aware of situations that get you\ntriggered.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: AppDimensions.height10(context) * 1.6,

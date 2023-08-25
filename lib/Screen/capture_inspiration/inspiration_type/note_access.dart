@@ -860,6 +860,7 @@ class noteSaved extends StatefulWidget {
 class _noteSavedState extends State<noteSaved> {
   List selectedGoals = [];
   List<String> tagList = [];
+  bool bt_enable = true;
 
   void getInspiration() async {
     final SharedPreferences prefs = await _prefs;
@@ -973,54 +974,59 @@ class _noteSavedState extends State<noteSaved> {
                                   builder: (context, value, child) {
                                     return AnimatedScaleButton(
                                       onTap: () {
-                                        if (title.text.isNotEmpty &&
-                                            statement.text.isNotEmpty) {
-                                          print("Api");
-                                          InspirationApi()
-                                              .addInspiration(
-                                                  2,
-                                                  null,
-                                                  title.text.toString(),
-                                                  tagList,
-                                                  " ",
-                                                  true,
-                                                  statement.text.toString(),
-                                                  selectedGoals)
-                                              .then((response) async {
-                                            print("Api 2");
-                                            print(response);
-                                            if (response.length != 0) {
-                                              Navigator.push(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page:
-                                                          const updatedLandingPage(
-                                                              delete: false,
-                                                              is_Updated:
-                                                                  false)));
-                                              print('----------------');
-                                              title.clear();
-                                              tagList.clear();
-                                              hastags.clear();
-                                              statement.clear();
-                                              Navigator.push(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page:
-                                                          const updatedLandingPage(
-                                                    delete: false,
-                                                    is_Updated: true,
-                                                  )));
-                                              final SharedPreferences prefs =
-                                                  await _prefs;
-                                              var remove =
-                                                  prefs.remove('ImageLink');
-
-                                              print(response);
-                                            }
-
-                                            // return null;
+                                        if (bt_enable == true) {
+                                          setState(() {
+                                            bt_enable = false;
                                           });
+                                          if (title.text.isNotEmpty &&
+                                              statement.text.isNotEmpty) {
+                                            print("Api");
+                                            InspirationApi()
+                                                .addInspiration(
+                                                    2,
+                                                    null,
+                                                    title.text.toString(),
+                                                    tagList,
+                                                    " ",
+                                                    true,
+                                                    statement.text.toString(),
+                                                    selectedGoals)
+                                                .then((response) async {
+                                              print("Api 2");
+                                              print(response);
+                                              if (response.length != 0) {
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const updatedLandingPage(
+                                                                delete: false,
+                                                                is_Updated:
+                                                                    false)));
+                                                print('----------------');
+                                                title.clear();
+                                                tagList.clear();
+                                                hastags.clear();
+                                                statement.clear();
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const updatedLandingPage(
+                                                      delete: false,
+                                                      is_Updated: true,
+                                                    )));
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                var remove =
+                                                    prefs.remove('ImageLink');
+
+                                                print(response);
+                                              }
+
+                                              // return null;
+                                            });
+                                          }
                                         }
                                       },
                                       child: Container(

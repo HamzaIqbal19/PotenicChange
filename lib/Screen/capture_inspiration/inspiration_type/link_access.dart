@@ -31,6 +31,7 @@ class _link_infoState extends State<link_info> {
   List selectedGoals = [];
   List<String> tagList = [];
   String? imageLink;
+  bool bt_enable = true;
 
   void getInspiration() async {
     final SharedPreferences prefs = await _prefs;
@@ -44,10 +45,24 @@ class _link_infoState extends State<link_info> {
     }
   }
 
+  void getImageLink() async {
+    final SharedPreferences prefs = await _prefs;
+
+    var imageLinked = prefs.getString('ImageLink');
+
+    setState(() {
+      imageLink = imageLinked;
+    });
+    print('---------------==============================$imageLink');
+
+    link.text = imageLink!;
+  }
+
   @override
   void initState() {
     super.initState();
     getInspiration();
+    getImageLink();
   }
 
   @override
@@ -134,57 +149,65 @@ class _link_infoState extends State<link_info> {
                                   builder: (context, value, child) {
                                     return AnimatedScaleButton(
                                       onTap: () {
-                                        if (link.text.isNotEmpty &&
-                                            statement.text.isNotEmpty) {
-                                          print('LINK----------------');
-                                          print(link.text.toString());
-                                          InspirationApi()
-                                              .addInspiration(
-                                                  4,
-                                                  null,
-                                                  author.text.toString().isEmpty
-                                                      ? " "
-                                                      : author.text.toString(),
-                                                  tagList.isEmpty
-                                                      ? []
-                                                      : tagList,
-                                                  link.text.toString().isEmpty
-                                                      ? " "
-                                                      : link.text.toString(),
-                                                  true,
-                                                  statement.text
-                                                          .toString()
-                                                          .isEmpty
-                                                      ? " "
-                                                      : statement.text
-                                                          .toString(),
-                                                  selectedGoals)
-                                              .then((response) async {
-                                            if (response.length != 0) {
-                                              print('----------------');
-                                              statement.clear();
-                                              author.clear();
-                                              hastags.clear();
-                                              link.clear();
-                                              Navigator.push(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page:
-                                                          const updatedLandingPage(
-                                                              delete: false,
-                                                              is_Updated:
-                                                                  false)));
-
-                                              final SharedPreferences prefs =
-                                                  await _prefs;
-                                              var remove =
-                                                  prefs.remove('ImageLink');
-
-                                              print(response);
-                                            }
-
-                                            // return null;
+                                        if (bt_enable == true) {
+                                          setState(() {
+                                            bt_enable = false;
                                           });
+                                          if (link.text.isNotEmpty &&
+                                              statement.text.isNotEmpty) {
+                                            print('LINK----------------');
+                                            print(link.text.toString());
+                                            InspirationApi()
+                                                .addInspiration(
+                                                    4,
+                                                    null,
+                                                    author.text
+                                                            .toString()
+                                                            .isEmpty
+                                                        ? " "
+                                                        : author.text
+                                                            .toString(),
+                                                    tagList.isEmpty
+                                                        ? []
+                                                        : tagList,
+                                                    link.text.toString().isEmpty
+                                                        ? " "
+                                                        : link.text.toString(),
+                                                    true,
+                                                    statement.text
+                                                            .toString()
+                                                            .isEmpty
+                                                        ? " "
+                                                        : statement.text
+                                                            .toString(),
+                                                    selectedGoals)
+                                                .then((response) async {
+                                              if (response.length != 0) {
+                                                print('----------------');
+                                                statement.clear();
+                                                author.clear();
+                                                hastags.clear();
+                                                link.clear();
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const updatedLandingPage(
+                                                                delete: false,
+                                                                is_Updated:
+                                                                    false)));
+
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                var remove =
+                                                    prefs.remove('ImageLink');
+
+                                                print(response);
+                                              }
+
+                                              // return null;
+                                            });
+                                          }
                                         }
                                       },
                                       child: Container(

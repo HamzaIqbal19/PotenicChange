@@ -26,13 +26,13 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
   int Count = 0;
 
   List<Map<String, dynamic>> timesPerDay = [
-    {'day': 'Monday', 'time1': '9:00 am', 'time2': '7:00 pm'},
-    {'day': 'Tuesday', 'time1': '9:00 am', 'time2': '7:00 pm'},
-    {'day': 'Wednesday', 'time1': '9:00 am', 'time2': '7:00 pm'},
-    {'day': 'Thursday', 'time1': '9:00 am', 'time2': '7:00 pm'},
-    {'day': 'Friday', 'time1': '9:00 am', 'time2': '7:00 pm'},
-    {'day': 'Saturday', 'time1': '9:00 am', 'time2': '7:00 pm'},
-    {'day': 'Sunday', 'time1': '9:00 am', 'time2': '7:00 pm'}
+    {'day': 'Monday', 'time1': '9:00 am'},
+    {'day': 'Tuesday', 'time1': '9:00 am'},
+    {'day': 'Wednesday', 'time1': '9:00 am'},
+    {'day': 'Thursday', 'time1': '9:00 am'},
+    {'day': 'Friday', 'time1': '9:00 am'},
+    {'day': 'Saturday', 'time1': '9:00 am'},
+    {'day': 'Sunday', 'time1': '9:00 am'}
   ];
   List<String> selectedDay = [
     'Monday',
@@ -495,17 +495,17 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                       index1 = index;
                                     });
                                   },
-                                  onChangedEnd: (value) {
-                                    print(value);
-                                    print(
-                                        "End index printing${timesPerDay[index]}");
+                                  // onChangedEnd: (value) {
+                                  //   print(value);
+                                  //   print(
+                                  //       "End index printing${timesPerDay[index]}");
 
-                                    setState(() {
-                                      timesPerDay[index]['time2'] = value;
+                                  //   setState(() {
+                                  //     timesPerDay[index]['time2'] = value;
 
-                                      index1 = index;
-                                    });
-                                  },
+                                  //     index1 = index;
+                                  //   });
+                                  // },
                                   onCountChanged: (value) {
                                     // Clear the existing selectedDays list
                                     // selectedDays.clear();
@@ -516,13 +516,14 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                     if (isAlreadySelected) {
                                       print(
                                           "The list is alredy exist in object");
+
                                       // If it's already selected, remove it from the list
                                       // selectedDays.remove(timesPerDay[index]);
                                     } else {
                                       // If it's not already selected, add it to the list
                                       selectedDays.add(timesPerDay[index]);
                                       setState(() {
-                                        Count = value;
+                                        Count = count;
                                         index1 = index;
                                       });
 
@@ -533,6 +534,16 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                     print(selectedDays);
                                   },
                                   expansion: false,
+                                  onDelete: (value) {
+                                    print(selectedDays);
+                                    selectedDays.removeWhere((element) =>
+                                        element['day'] == selectedDay[index]);
+                                    print(selectedDays);
+                                    setState(() {
+                                      Count = value;
+                                      index1 = index;
+                                    });
+                                  },
                                 ),
                                 SizedBox(
                                   height: AppDimensions.height10(context) * 1.6,
@@ -552,7 +563,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                     AnimatedScaleButton(
                       onTap: () async {
                         print(timesPerDay);
-                        if (count >= 3) {
+                        if (Count >= 3) {
                           saveTimesPerDay(selectedDays);
 
                           print(timesPerDay[6]['start']);
@@ -580,7 +591,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
 
-                          gradient: count >= 3
+                          gradient: Count >= 3
                               ? const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,

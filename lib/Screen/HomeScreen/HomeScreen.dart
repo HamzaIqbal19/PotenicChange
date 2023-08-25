@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
                                   content: Text(
-                            "User is not logged in !!",
+                            "You are not logged in.",
                             style: TextStyle(color: Colors.red),
                           )));
                         }
@@ -217,6 +217,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                             .remove('userId');
                                                         await prefs.remove(
                                                             'refreshtoken');
+                                                        await prefs
+                                                            .remove('route');
 
                                                         Navigator.push(
                                                           context,
@@ -446,7 +448,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(const SnackBar(
                                             content: Text(
-                                      "User is not logged in !!",
+                                      "You are not logged in.",
                                       style: TextStyle(color: Colors.red),
                                     )));
                                   } else {

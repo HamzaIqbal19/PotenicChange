@@ -31,6 +31,8 @@ class video_info extends StatefulWidget {
 class _video_infoState extends State<video_info> {
   List selectedGoals = [];
   List<String> tagList = [];
+  List<String> stringTagList = [];
+  bool bt_enable = true;
   String? imageLink;
 
   void getImageLink() async {
@@ -146,41 +148,49 @@ class _video_infoState extends State<video_info> {
                                   builder: (context, value, child) {
                                     return GestureDetector(
                                       onTap: () {
-                                        if (link.text.toString().isNotEmpty &&
-                                            statement.text
-                                                .toString()
-                                                .isNotEmpty) {
-                                          InspirationApi()
-                                              .addInspiration(
-                                                  3,
-                                                  null,
-                                                  " ",
-                                                  tagList,
-                                                  link.text.toString(),
-                                                  true,
-                                                  statement.text.toString(),
-                                                  selectedGoals)
-                                              .then((response) async {
-                                            if (response.length != 0) {
-                                              print('----------------');
-                                              link.clear();
-                                              final SharedPreferences prefs =
-                                                  await _prefs;
-                                              var remove =
-                                                  prefs.remove('ImageLink');
-                                              statement.clear();
-                                              hastags.clear();
-                                              Navigator.push(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page:
-                                                          const updatedLandingPage(
-                                                              delete: false,
-                                                              is_Updated:
-                                                                  true)));
-                                              print(response);
-                                            }
+                                        if (bt_enable == true) {
+                                          setState(() {
+                                            bt_enable = false;
                                           });
+                                          if (link.text.toString().isNotEmpty &&
+                                              statement.text
+                                                  .toString()
+                                                  .isNotEmpty) {
+                                            InspirationApi()
+                                                .addInspiration(
+                                                    3,
+                                                    null,
+                                                    " ",
+                                                    tagList,
+                                                    link.text.toString(),
+                                                    true,
+                                                    statement.text.toString(),
+                                                    selectedGoals)
+                                                .then((response) async {
+                                              if (response.length != 0) {
+                                                print('----------------');
+                                                setState(() {
+                                                  bt_enable = true;
+                                                });
+                                                link.clear();
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                var remove =
+                                                    prefs.remove('ImageLink');
+                                                statement.clear();
+                                                hastags.clear();
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const updatedLandingPage(
+                                                                delete: false,
+                                                                is_Updated:
+                                                                    true)));
+                                                print(response);
+                                              }
+                                            });
+                                          }
                                         }
                                       },
                                       child: Container(

@@ -150,9 +150,10 @@ class Hurdles {
       print("Result:$jsonData");
 
       return jsonData;
-    } else {
+    } else if (response.statusCode == 404) {
       print(
           'Failed to fetch hurdle names by user id Request failed with status: ${response.statusCode}');
+      return response.statusCode;
     }
   }
 

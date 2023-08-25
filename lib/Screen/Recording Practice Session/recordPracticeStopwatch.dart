@@ -73,7 +73,7 @@ class _clocksState extends State<clocks> {
                     curve: Curves.easeInOut,
                     duration: const Duration(seconds: 1),
                     context: context,
-                    builder: (BuildContext context) => Container(
+                    builder: (BuildContext context) => SizedBox(
                       width: AppDimensions.height10(context) * 27.0,
                       height: AppDimensions.height10(context) * 18.2,
                       child: AlertDialog(
@@ -154,7 +154,7 @@ class _clocksState extends State<clocks> {
                                   ),
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 height: 44,
                                 width: double.infinity,
                                 child: TextButton(
@@ -233,71 +233,37 @@ class _clocksState extends State<clocks> {
                 ),
               ),
               Container(child: const watch_time()),
-              Container(
-                width: AppDimensions.height10(context) * 25.4,
-                height: AppDimensions.height10(context) * 6.0,
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  /*
-                  AnimatedScaleButton(
-                    onTap: () {
-                      Navigator.push(
-                          context, FadePageRoute(page: (welldone_splash())));
-                    },
-                    child: Container(
-                        height: AppDimensions.height10(context) * 5.0,
-                        width: AppDimensions.height10(context) * 10.6,
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.0),
-                        decoration: BoxDecoration(
+              AnimatedScaleButton(
+                onTap: () {
+                  Navigator.push(
+                      context, FadePageRoute(page: (const welldone_splash())));
+                },
+                child: Container(
+                    height: AppDimensions.height10(context) * 5.0,
+                    width: AppDimensions.height10(context) * 20.7,
+                    decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color(0xffFCC10D),
+                            Color(0xffFDA210),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
+                        border: Border.all(
+                            width: AppDimensions.height10(context) * 0.2,
+                            color: Colors.transparent)),
+                    child: Center(
+                      child: Text(
+                        'Next',
+                        style: TextStyle(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 5.0),
-                            border:
-                                Border.all(width: 2, color: Color(0xffFA9934))),
-                        child: Center(
-                            child: Text(
-                          'Skip',
-                          style: TextStyle(
-                              color: Color(0xffFA9934),
-                              fontSize: AppDimensions.height10(context) * 1.6,
-                              fontWeight: FontWeight.w600),
-                        ))),
-                  ),
-                  */
-                  AnimatedScaleButton(
-                    onTap: () {
-                      Navigator.push(context,
-                          FadePageRoute(page: (const welldone_splash())));
-                    },
-                    child: Container(
-                        height: AppDimensions.height10(context) * 5.0,
-                        width: AppDimensions.height10(context) * 20.7,
-                        decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color(0xffFCC10D),
-                                Color(0xffFDA210),
-                              ],
-                            ),
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 5.0),
-                            border: Border.all(
-                                width: AppDimensions.height10(context) * 0.2,
-                                color: Colors.transparent)),
-                        child: Center(
-                          child: Text(
-                            'Next',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.6,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        )),
-                  )
-                ]),
+                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    )),
               ),
             ],
           ),
@@ -435,7 +401,7 @@ class _watch_timeState extends State<watch_time> {
                     ;
                   },
                   child: clock_state
-                      ? Container(
+                      ? SizedBox(
                           //width: AppDimensions.height10(context) * 9.2,
                           height: AppDimensions.height10(context) * 2.4,
                           child: Text(
@@ -446,7 +412,7 @@ class _watch_timeState extends State<watch_time> {
                                 color: const Color(0xff437296)),
                           ),
                         )
-                      : Container(
+                      : SizedBox(
                           //width: AppDimensions.height10(context) * 5.4,
                           height: AppDimensions.height10(context) * 2.4,
                           child: Text(
@@ -480,7 +446,7 @@ class _watch_timeState extends State<watch_time> {
                       });
                     },
                     child: clock_state
-                        ? Container(
+                        ? SizedBox(
                             height: AppDimensions.height10(context) * 2.4,
                             // width: AppDimensions.height10(context) * 5.4,
                             child: Text('Timer',
@@ -490,7 +456,7 @@ class _watch_timeState extends State<watch_time> {
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white)),
                           )
-                        : Container(
+                        : SizedBox(
                             height: AppDimensions.height10(context) * 2.4,
                             // width: AppDimensions.height10(context) * 5.4,
                             child: Text('Timer',
@@ -531,7 +497,7 @@ class _watch_timeState extends State<watch_time> {
               //timer
               Align(
                 alignment: const Alignment(0, -0.4),
-                child: Container(
+                child: SizedBox(
                   height: AppDimensions.height10(context) * 7.2,
                   width: AppDimensions.height10(context) * 12.8,
                   // color: Colors.red,
@@ -617,7 +583,7 @@ class _watch_timeState extends State<watch_time> {
                         border: Border.all(
                             width: AppDimensions.height10(context) * 0.5,
                             color: const Color(0xffFEBD0F))),
-                    child: Container(
+                    child: SizedBox(
                       height: AppDimensions.height10(context) * 7,
                       width: AppDimensions.height10(context) * 7,
                       child: Column(
@@ -752,7 +718,7 @@ class _watch_timeState extends State<watch_time> {
       color: CupertinoColors.white,
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: AppDimensions.height10(context) * 3.8,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

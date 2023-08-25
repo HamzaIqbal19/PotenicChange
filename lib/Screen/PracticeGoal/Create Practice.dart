@@ -37,6 +37,7 @@ class _CreatePracticeState extends State<CreatePractice> {
   var mygoal;
   var color = '0';
   String route = '';
+  bool noDate = false;
 
   List<Map<String, dynamic>>? practiceName;
   @override
@@ -119,11 +120,21 @@ class _CreatePracticeState extends State<CreatePractice> {
       //if (searchTerm) {
       PracticeGoalApi.SearchPractice(searchTerm).then((value) {
         print("value:$value");
-        setState(() {
-          practiceName = value;
-          Loading = false;
-          print("responses:${value[1]["goals"]}");
-        });
+        if (value.isEmpty) {
+          setState(() {
+            noDate = true;
+            practiceName = value;
+            Loading = false;
+            print("responses:${value[1]["goals"]}");
+          });
+        } else {
+          setState(() {
+            practiceName = value;
+            noDate = false;
+            Loading = false;
+            print("responses:${value[1]["goals"]}");
+          });
+        }
       });
       // } else {
       //_searchResults = [];
@@ -188,8 +199,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                       Navigator.push(
                           context,
                           FadePageRoute3(
-                              enterPage: GoalFinished(),
-                              exitPage: CreatePractice()));
+                              enterPage: const GoalFinished(),
+                              exitPage: const CreatePractice()));
                     }
                     final SharedPreferences prefs = await _prefs;
 
@@ -365,80 +376,100 @@ class _CreatePracticeState extends State<CreatePractice> {
                       Container(
                         margin: EdgeInsets.symmetric(
                             horizontal: AppDimensions.height10(context) * 2.0),
-                        child: GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              childAspectRatio: 4.2 / 3,
-                              mainAxisSpacing:
-                                  AppDimensions.height10(context) * 1.4,
-                              crossAxisSpacing: 0.1,
-                            ),
-                            itemCount: practiceName!.length,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                        child: noDate == true
+                            ? Container(
+                                height: AppDimensions.height10(context) * 21.2,
+                                margin: EdgeInsets.only(
+                                    top: AppDimensions.height10(context) * 5),
+                                child: Center(
+                                    child: Text(
+                                  'Sorry no\nresults found',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: const Color(0xFFFFFFFF),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 2.8,
+                                      fontWeight: FontWeight.w700),
+                                )),
+                              )
+                            : GridView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 4.2 / 3,
+                                  mainAxisSpacing:
+                                      AppDimensions.height10(context) * 1.4,
+                                  crossAxisSpacing: 0.1,
+                                ),
+                                itemCount: practiceName!.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      AnimatedScaleButton(
-                                        onTap: () async {
-                                          final SharedPreferences prefs =
-                                              await _prefs;
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          AnimatedScaleButton(
+                                            onTap: () async {
+                                              final SharedPreferences prefs =
+                                                  await _prefs;
 
-                                          var goalColor = prefs.setString(
-                                              'goalColor', color);
-                                          var pracName = prefs.setString(
-                                            'pracName',
-                                            practiceName?[index]["name"],
-                                          );
-                                          var pracId = prefs.setInt(
-                                            'pracId',
-                                            practiceName?[index]["id"],
-                                          );
-                                          print(2);
-                                          Navigator.push(
-                                            context,
-                                            FadePageRoute2(
-                                              true,
-                                              exitPage: const CreatePractice(),
-                                              enterPage: PracticeName(
-                                                comingFromEditScreen: false,
-                                              ),
-                                            ),
-                                          );
+                                              var goalColor = prefs.setString(
+                                                  'goalColor', color);
+                                              var pracName = prefs.setString(
+                                                'pracName',
+                                                practiceName?[index]["name"],
+                                              );
+                                              var pracId = prefs.setInt(
+                                                'pracId',
+                                                practiceName?[index]["id"],
+                                              );
+                                              print(2);
+                                              Navigator.push(
+                                                context,
+                                                FadePageRoute2(
+                                                  true,
+                                                  exitPage:
+                                                      const CreatePractice(),
+                                                  enterPage: const PracticeName(
+                                                    comingFromEditScreen: false,
+                                                  ),
+                                                ),
+                                              );
 
-                                          print(index);
-                                          // bottom_sheet(context,Allgoal![0]["goals"][index1]
-                                          // ["id"]);
-                                        },
-                                        child: circles(
-                                            circle_text: practiceName![index]
-                                                ['name'],
-                                            circle_color1: 0xFF83BB9A,
-                                            circle_color2: 0xFF1E4A22,
-                                            circle_border: 3.0,
-                                            circle_bordercolor: 0xFFFFFFFF,
-                                            circle_height: AppDimensions
-                                                    .height10(context) *
-                                                13.4,
-                                            circle_width:
-                                                AppDimensions.height10(
-                                                        context) *
+                                              print(index);
+                                              // bottom_sheet(context,Allgoal![0]["goals"][index1]
+                                              // ["id"]);
+                                            },
+                                            child: circles(
+                                                circle_text:
+                                                    practiceName![index]
+                                                        ['name'],
+                                                circle_color1: 0xFF83BB9A,
+                                                circle_color2: 0xFF1E4A22,
+                                                circle_border: 3.0,
+                                                circle_bordercolor: 0xFFFFFFFF,
+                                                circle_height: AppDimensions
+                                                        .height10(context) *
                                                     13.4,
-                                            textfont: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
-                                            textcolor: 0xFFFFFFFF),
-                                      ),
+                                                circle_width:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        13.4,
+                                                textfont:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.6,
+                                                textcolor: 0xFFFFFFFF),
+                                          ),
+                                        ],
+                                      )
                                     ],
-                                  )
-                                ],
-                              );
-                            }),
+                                  );
+                                }),
                       ),
                     ],
                   ),
@@ -510,6 +541,9 @@ class _CreatePracticeState extends State<CreatePractice> {
                                             _searchController.clear();
                                             _searchPractice('');
                                             searchText = '';
+                                            setState(() {
+                                              noDate = false;
+                                            });
                                           },
                                           child: Image.asset(
                                             'assets/images/cancel.webp',

@@ -49,14 +49,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
         Navigator.pushReplacement(
             context,
             FadePageRoute(
-              page: dashBoard(
-                saved: false,
-                helpful_tips: false,
-                membership: widget.membership,
-                dashboard_ctrl: false,
-                cancel: widget.cancel,
-                trial: widget.trial,
-              ),
+              page: const view_goals(missed: false),
             ));
         return Future.value(false);
       },
@@ -71,14 +64,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                     Navigator.pushReplacement(
                         context,
                         FadePageRoute(
-                          page: dashBoard(
-                            saved: false,
-                            helpful_tips: false,
-                            membership: widget.membership,
-                            dashboard_ctrl: false,
-                            cancel: widget.cancel,
-                            trial: widget.trial,
-                          ),
+                          page: const view_goals(missed: false),
                         ));
                   },
                   icon: Image.asset(

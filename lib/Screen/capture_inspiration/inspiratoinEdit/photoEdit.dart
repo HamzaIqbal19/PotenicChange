@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/record_inpiration_type.dart';
@@ -56,31 +57,31 @@ class _photo_EditState extends State<photo_Edit> {
         setState(() {
           image = inspirationDetails['inspiration']['file']!;
         });
+
         print('2');
         link.text = inspirationDetails['inspiration']['destinationLink']
-                .toString()
-                .isEmpty
-            ? ''
-            : inspirationDetails['inspiration']['destinationLink'];
-        title.text =
-            inspirationDetails['inspiration']['title'].toString().isEmpty
-                ? ''
-                : inspirationDetails['inspiration']['title'];
-        statement.text =
-            inspirationDetails['inspiration']['description'].toString().isEmpty
-                ? ''
-                : inspirationDetails['inspiration']['description'];
-        hastags.text = inspirationDetails['inspiration']['hashTags'].length != 0
-            ? inspirationDetails['inspiration']['hashTags']
+                    .toString() !=
+                'null'
+            ? inspirationDetails['inspiration']['destinationLink'].toString()
             : '';
+        title.text = inspirationDetails['inspiration']['title'].toString();
+        statement.text =
+            inspirationDetails['inspiration']['description'].toString();
+        hastags.text =
+            inspirationDetails['inspiration']['hashTags'].toString() == '[]'
+                ? ''
+                : inspirationDetails['inspiration']['hashTags'].toString();
+
         loadData();
+
         print(inspirationDetails['inspiration']['title']);
         print("1212312312321321");
-        return response;
       }
 
       // return null;
-    });
+    }).catchError((error) {
+      print('An errro ha occured $error');
+    }).whenComplete(() => null);
   }
 
   @override
@@ -258,12 +259,11 @@ class _photo_EditState extends State<photo_Edit> {
                                                 onPressed: () async {
                                                   InspirationApi()
                                                       .updateInspiration(
-                                                          ' ',
-                                                          ['tag'],
-                                                          link.text.toString(),
-                                                          statement.text
-                                                              .toString(),
-                                                          )
+                                                    title.text.toString(),
+                                                    ['tag'],
+                                                    link.text.toString(),
+                                                    statement.text.toString(),
+                                                  )
                                                       .then((response) async {
                                                     if (response == true) {
                                                       Navigator.push(

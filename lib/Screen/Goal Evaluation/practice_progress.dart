@@ -70,7 +70,7 @@ class _practice_progressState extends State<practice_progress> {
         noData = true;
       });
       loadData();
-    });
+    }).whenComplete(() => null);
   }
 
   List<Widget> generateCircleContainers(BuildContext context, int count,
@@ -219,7 +219,7 @@ class _practice_progressState extends State<practice_progress> {
                             Align(
                               alignment: const Alignment(0.7, -0.175),
                               child: SizedBox(
-                                width: AppDimensions.height10(context) * 10.6,
+                                // width: AppDimensions.height10(context) * 10.6,
                                 height: AppDimensions.height10(context) * 2.4,
                                 child: Text(
                                   noData == true
@@ -328,9 +328,9 @@ class _practice_progressState extends State<practice_progress> {
                       ),
                       Container(
                           width: AppDimensions.height10(context) * 38.2,
-                          height: AppDimensions.height10(context) * 66.4,
+                          //height: AppDimensions.height10(context) * 66.4,
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 4.0),
+                              top: AppDimensions.height10(context) * 3.0),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
                                   AppDimensions.height10(context) * 2.0),
@@ -341,7 +341,7 @@ class _practice_progressState extends State<practice_progress> {
                                 width: AppDimensions.height10(context) * 33.4,
                                 height: AppDimensions.height10(context) * 9.1,
                                 margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 3.0),
+                                    top: AppDimensions.height10(context) * 5.0),
                                 child: Center(
                                   child: Text(
                                     'How did you feel after\nfinishing your practice?',
@@ -700,12 +700,15 @@ class _practice_progressState extends State<practice_progress> {
                                                 fit: BoxFit.cover,
                                               ),
                                             ))
-                                      ]))
+                                      ])),
+                              SizedBox(
+                                height: AppDimensions.height10(context) * 4,
+                              )
                             ],
                           )),
                       Container(
                         width: AppDimensions.height10(context) * 38.2,
-                        height: AppDimensions.height10(context) * 59.6,
+                        //height: AppDimensions.height10(context) * 59.6,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 2.0),
                         decoration: BoxDecoration(
@@ -718,7 +721,7 @@ class _practice_progressState extends State<practice_progress> {
                               width: AppDimensions.height10(context) * 33.4,
                               height: AppDimensions.height10(context) * 9.1,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 3.0),
+                                  top: AppDimensions.height10(context) * 5.0),
                               child: Center(
                                 child: Text(
                                   'How has your practice\nbeen going?',
@@ -1010,6 +1013,9 @@ class _practice_progressState extends State<practice_progress> {
                                 ],
                               ),
                             ),
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 4,
+                            )
                           ],
                         ),
                       ),
@@ -1061,7 +1067,7 @@ class _practice_progressState extends State<practice_progress> {
                       ),
                       Container(
                         width: AppDimensions.height10(context) * 38.2,
-                        height: AppDimensions.height10(context) * 111.2,
+                        //height: AppDimensions.height10(context) * 111.2,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 2.0),
                         decoration: BoxDecoration(
@@ -1074,7 +1080,7 @@ class _practice_progressState extends State<practice_progress> {
                               width: AppDimensions.height10(context) * 34.2,
                               height: AppDimensions.height10(context) * 7.2,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 3.0),
+                                  top: AppDimensions.height10(context) * 5.0),
                               child: Center(
                                 child: Text(
                                   'How effective has this practice\nbeen in moving you closer towards\nyour goal?',
@@ -1869,7 +1875,10 @@ class _practice_progressState extends State<practice_progress> {
                                               fit: BoxFit.cover,
                                             ),
                                           ))
-                                    ]))
+                                    ])),
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 4,
+                            )
                           ],
                         ),
                       ),
@@ -1904,7 +1913,7 @@ class _practice_progressState extends State<practice_progress> {
                       ),
                       Container(
                         width: AppDimensions.height10(context) * 38.5,
-                        height: AppDimensions.height10(context) * 84.669,
+                        //height: AppDimensions.height10(context) * 84.669,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 2.0),
                         decoration: BoxDecoration(
@@ -2199,10 +2208,10 @@ class _practice_progressState extends State<practice_progress> {
           // getReport();
         } else if (value == 1) {
           setState(() {
-            Loader = true;
+            //Loader = true;
             days = 14;
           });
-          getReport();
+          //getReport();
         } else if (value == 2) {
           setState(() {
             // Loader = true;

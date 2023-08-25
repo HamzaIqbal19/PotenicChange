@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
@@ -76,6 +78,34 @@ class _PracticeNameState extends State<PracticeName> {
       practiceName.text = capitalizeFirstLetter(practice_Name);
     });
     print('=======================>$color');
+  }
+
+  bool showContainer = false;
+  double swipeOffset = 0.0;
+
+  Timer? _timer;
+
+  void startTimer() {
+    _timer = Timer(const Duration(seconds: 3), () {
+      setState(() {
+        showContainer = false;
+      });
+      Timer(const Duration(seconds: 1), () {
+        Navigator.push(context, FadePageRoute(page: const PracticeReview()));
+      });
+    });
+  }
+
+  void stopTimer() {
+    if (_timer != null && _timer!.isActive) {
+      _timer!.cancel(); // Cancel the timer if it's active
+    }
+  }
+
+  @override
+  void dispose() {
+    stopTimer(); // Make sure to cancel the timer when the widget is disposed
+    super.dispose();
   }
 
   @override
@@ -574,111 +604,150 @@ class _PracticeNameState extends State<PracticeName> {
                         height: AppDimensions.height10(context) * 11.2,
                       ),
                 updated
-                    ? Container(
-                        width: AppDimensions.height10(context) * 38.259,
-                        height: AppDimensions.height10(context) * 9.707,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0),
-                            gradient: const LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Color(0xFFD4B7B9),
-                                  Color(0xFF91698C)
-                                ])),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left:
-                                      AppDimensions.height10(context) * 1.261),
-                              width: AppDimensions.height10(context) * 4.437,
-                              height: AppDimensions.height10(context) * 4.437,
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/circle_tick.webp'))),
-                            ),
-                            Container(
-                              //width: AppDimensions.height10(context) * 6.9,
-                              height: AppDimensions.height10(context) * 3.6,
-                              margin: EdgeInsets.only(
-                                  left:
-                                      AppDimensions.height10(context) * 1.232),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                    ? GestureDetector(
+                        onPanUpdate: (details) {
+                          setState(() {
+                            swipeOffset += details.delta.dx;
+                          });
+
+                          if (swipeOffset.abs() >=
+                              MediaQuery.of(context).size.width / 3.0) {
+                            setState(() {
+                              showContainer = false;
+                            });
+                          }
+                        },
+                        child: AnimatedOpacity(
+                          duration: const Duration(milliseconds: 700),
+                          opacity: showContainer ? 1.0 : 0.0,
+                          child: Transform.translate(
+                            offset: Offset(swipeOffset, 0.0),
+                            child: Container(
+                              width: AppDimensions.height10(context) * 38.259,
+                              height: AppDimensions.height10(context) * 9.707,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0),
+                                  gradient: const LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Color(0xFFD4B7B9),
+                                        Color(0xFF91698C)
+                                      ])),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  SizedBox(
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        left: AppDimensions.height10(context) *
+                                            1.261),
                                     width:
-                                        AppDimensions.height10(context) * 4.6,
+                                        AppDimensions.height10(context) * 4.437,
                                     height:
-                                        AppDimensions.height10(context) * 1.4,
-                                    //   color: Colors.amber,
-                                    child: Text(
-                                      'Updates saved',
-                                      style: TextStyle(
-                                          fontSize:
+                                        AppDimensions.height10(context) * 4.437,
+                                    decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/circle_tick.webp'))),
+                                  ),
+                                  Container(
+                                    //width: AppDimensions.height10(context) * 6.9,
+                                    height:
+                                        AppDimensions.height10(context) * 3.6,
+                                    margin: EdgeInsets.only(
+                                        left: AppDimensions.height10(context) *
+                                            1.232),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width:
                                               AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFFFFFF)),
+                                                  4.6,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.4,
+                                          //   color: Colors.amber,
+                                          child: Text(
+                                            'Updates saved',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.3,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  16.9,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.2,
+                                          child: Text(
+                                            'Practice Name',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.8,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 16.9,
-                                    height:
-                                        AppDimensions.height10(context) * 2.2,
-                                    child: Text(
-                                      'Practice Name',
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontSize:
+                                  AnimatedScaleButton(
+                                    onTap: () {
+                                      setState(() {
+                                        updated = false;
+                                      });
+                                      stopTimer();
+                                    },
+                                    child: Container(
+                                      width:
+                                          AppDimensions.height10(context) * 8.1,
+                                      height:
+                                          AppDimensions.height10(context) * 6.0,
+                                      margin: EdgeInsets.only(
+                                          left:
                                               AppDimensions.height10(context) *
+                                                  5,
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  1.23),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: const Color(0xFFFFFFFF),
+                                            width: 1),
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10(context) *
+                                                2.0),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'Undo',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
                                                   1.8,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFFFFFF)),
+                                              fontWeight: FontWeight.w500,
+                                              color: const Color(0xFFFFFFFF)),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  )
                                 ],
                               ),
                             ),
-                            AnimatedScaleButton(
-                              onTap: () {
-                                setState(() {
-                                  updated = false;
-                                });
-                              },
-                              child: Container(
-                                width: AppDimensions.height10(context) * 8.1,
-                                height: AppDimensions.height10(context) * 6.0,
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 5,
-                                    right:
-                                        AppDimensions.height10(context) * 1.23),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: const Color(0xFFFFFFFF), width: 1),
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 2.0),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Undo',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
-                                        fontWeight: FontWeight.w500,
-                                        color: const Color(0xFFFFFFFF)),
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
+                          ),
                         ),
                       )
                     : Row(
@@ -756,7 +825,9 @@ class _PracticeNameState extends State<PracticeName> {
                                           if (value == true) {
                                             setState(() {
                                               updated = true;
+                                              showContainer = true;
                                             });
+                                            startTimer();
                                           }
                                         });
                                       } else {
@@ -843,6 +914,8 @@ class _PracticeNameState extends State<PracticeName> {
   }
 }
 
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
 class pop_up_practices extends StatelessWidget {
   const pop_up_practices({super.key});
 
@@ -859,8 +932,11 @@ class pop_up_practices extends StatelessWidget {
             borderRadius:
                 BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
         title: Container(
-          margin:
-              const EdgeInsets.only(top: 19, right: 16, left: 16, bottom: 2),
+          margin: EdgeInsets.only(
+              top: AppDimensions.height10(context) * 1.9,
+              right: AppDimensions.height10(context) * 1.6,
+              left: AppDimensions.height10(context) * 1.6,
+              bottom: AppDimensions.height10(context) * 0.2),
           height: AppDimensions.height10(context) * 2.2,
           width: AppDimensions.height10(context) * 23.8,
           child: Text(
@@ -878,7 +954,7 @@ class pop_up_practices extends StatelessWidget {
               bottom: AppDimensions.height10(context) * 1.9,
               left: AppDimensions.height10(context) * 1.6,
               right: AppDimensions.height10(context) * 1.6),
-          height: AppDimensions.height10(context) * 3.2,
+          // height: AppDimensions.height10(context) * 3.2,
           width: AppDimensions.height10(context) * 23.8,
           child: Text(
             "Your new updates have not been saved.\nIf you exit now, your new updates will\nbe cancelled.",
@@ -915,9 +991,12 @@ class pop_up_practices extends StatelessWidget {
                 height: 44,
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {
+                  onPressed: () async {
                     Navigator.push(
                         context, FadePageRoute(page: const PracticeReview()));
+                    final SharedPreferences prefs = await _prefs;
+                    var review_route =
+                        prefs.setString('practice_review', 'practice_edit');
                   },
                   child: const Text(
                     'Yes, cancel and exit',

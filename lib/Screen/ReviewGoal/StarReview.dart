@@ -127,6 +127,14 @@ class _StarReviewState extends State<StarReview> {
                 isActive: true,
                 premium: true,
               )));
+        } else if (widget.route == '') {
+          Navigator.push(
+              context,
+              FadePageRoute3(
+                  exitPage: StarReview(
+                    route: widget.route,
+                  ),
+                  enterPage: const GoalFinished()));
         } else if (widget.route == 'add_your_practice') {
           Navigator.push(
               context,
@@ -369,6 +377,7 @@ class _StarReviewState extends State<StarReview> {
                                                 context,
                                                 FadePageRoute(
                                                   page: GoalName(
+                                                    saved: false,
                                                     route: widget.route,
                                                     catId,
                                                     comingFromEditScreen: true,
@@ -1142,6 +1151,7 @@ class _StarReviewState extends State<StarReview> {
                                                     route: widget.route,
                                                     // catId,
                                                     comingFromEditScreen: true,
+                                                    saved: false,
                                                   ),
                                                 ),
                                               );
@@ -1285,6 +1295,7 @@ class _StarReviewState extends State<StarReview> {
                                                 FadePageRoute(
                                                   page: Goal_Identity(
                                                     route: widget.route,
+                                                    saved: false,
                                                     comingFromEditScreen: true,
                                                   ),
                                                 ),
@@ -1432,6 +1443,7 @@ class _StarReviewState extends State<StarReview> {
                                                 FadePageRoute(
                                                   page: Visualising(
                                                     route: widget.route,
+                                                    saved: false,
                                                     // catId,
                                                     comingFromEditScreen: true,
                                                   ),

@@ -366,6 +366,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                             summary: false,
                                             pracName: widget.pracName,
                                             record: false,
+                                            selected: 0,
                                           )));
                                 },
                                 child: Container(
@@ -573,7 +574,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(const SnackBar(
                                                         content: Text(
-                                                            "Practice report is not active!!")));
+                                                            "Practice report is not active")));
                                               }
                                             },
                                             child: button_feilds(
@@ -604,29 +605,25 @@ class _practiceMenuState extends State<practiceMenu> {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(const SnackBar(
                                                       content: Text(
-                                                          "Practice score is not active!!")));
+                                                          "Practice score is not active")));
                                             }
                                           },
                                           child: button_feilds(
-                                            feild_text: widget.goal_eval
-                                                ? 'Evaluation level '
-                                                : 'Practice score ',
+                                            feild_text: 'Evaluation level ',
                                             icon_viible:
                                                 widget.goal_eval ? true : false,
                                             text_color: 0xff646464,
                                             feild_text_2: '(',
                                             text_color_2: 0xff8EA1B1,
-                                            feild_text_3: widget.goal_eval
-                                                ? '2'
-                                                : pracDetails['practiceLevel'] ==
-                                                            null ||
-                                                        pracDetails[
-                                                                'practiceLevel'] ==
-                                                            0
-                                                    ? '-'
-                                                    : pracDetails[
-                                                            'practiceLevel']
-                                                        .toString(),
+                                            feild_text_3: pracDetails[
+                                                            'practiceLevel'] ==
+                                                        null ||
+                                                    pracDetails[
+                                                            'practiceLevel'] ==
+                                                        0
+                                                ? '-'
+                                                : pracDetails['practiceLevel']
+                                                    .toString(),
                                             feild_text_4: '/5)',
                                           ),
                                         )
@@ -663,7 +660,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         const SnackBar(
                                             content: Text(
-                                                "Practice progress is not active!!")));
+                                                "Practice progress is not active")));
                                   }
                                 },
                                 child: const button_feilds(

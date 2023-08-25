@@ -23,14 +23,19 @@ class PracticeGoalApi {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
-    var Body = json.encode({
+
+    Map<String, dynamic> requestBody = {
       "name": "$name",
       "reminder": "$reminder",
       "schedule": day,
       "userGoalId": "$userGoalId",
       "userId": "$userId",
-      "practiceId": "$practiceId",
-    });
+    };
+
+    if (practiceId != null) {
+      requestBody["practiceId"] = "$practiceId";
+    }
+    var Body = json.encode(requestBody);
     print('===============================');
     print("request:$Body");
     var request = await client.post(
@@ -52,6 +57,7 @@ class PracticeGoalApi {
 
       return true;
     } else {
+      print(request.statusCode);
       client.close();
       // print("response:${}");
       print('Practice error');

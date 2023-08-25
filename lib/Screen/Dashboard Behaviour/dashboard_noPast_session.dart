@@ -1120,10 +1120,11 @@ class _no_past_sessionState extends State<no_past_session> {
                                                       Navigator.push(
                                                           context,
                                                           FadePageRoute(
-                                                              page:
-                                                                  missed_Menu(pracName:  allGoals[index]
-                                                                              [
-                                                                              'name'],)));
+                                                              page: missed_Menu(
+                                                            pracName:
+                                                                allGoals[index]
+                                                                    ['name'],
+                                                          )));
                                                     } else {
                                                       print("CON 1");
                                                       print(
@@ -1224,6 +1225,8 @@ class _no_past_sessionState extends State<no_past_session> {
                                                     is_right: false,
                                                     s_circle_text_col:
                                                         0xffFD6727,
+                                                    onTap1: () {},
+                                                    onTap2: () {},
                                                   )),
                                                 ),
                                                 SizedBox(

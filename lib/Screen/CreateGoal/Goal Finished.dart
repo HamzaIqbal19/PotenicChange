@@ -98,25 +98,26 @@ class _GoalFinishedState extends State<GoalFinished> {
             elevation: 0,
             centerTitle: true,
             backgroundColor: Colors.transparent,
-            automaticallyImplyLeading: true,
-            leading: Center(
-              // alignment: Alignment.center,
-              child: IconButton(
-                icon: Image.asset(
-                  'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 3,
-                  height: AppDimensions.height10(context) * 3,
-                  fit: BoxFit.contain,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      FadePageRoute3(
-                          enterPage: const StartProcess(),
-                          exitPage: const GoalFinished()));
-                },
-              ),
-            ),
+            automaticallyImplyLeading: false,
+            // leading: Center(
+            //   // alignment: Alignment.center,
+            //   child: IconButton(
+            //     icon: Image.asset(
+            //       'assets/images/Back.webp',
+            //       width: AppDimensions.height10(context) * 3,
+            //       height: AppDimensions.height10(context) * 3,
+            //       fit: BoxFit.contain,
+            //     ),
+            //     onPressed: () {
+            //       Navigator.push(
+            //           context,
+            //           FadePageRoute3(
+            //               enterPage: const StartProcess(),
+            //               exitPage: const GoalFinished()));
+            //     },
+            //   ),
+            // ),
+
             actions: [
               Center(
                 // alignment: Alignment.center,

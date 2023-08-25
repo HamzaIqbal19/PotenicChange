@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/ResetPassword/Verification.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 import '../../Widgets/fading.dart';
 
 class EmailSent extends StatefulWidget {
-  const EmailSent({Key? key}) : super(key: key);
+  final String email;
+  const EmailSent({Key? key, required this.email}) : super(key: key);
 
   @override
   State<EmailSent> createState() => _EmailSentState();
@@ -89,10 +92,11 @@ class _EmailSentState extends State<EmailSent> {
                   height: AppDimensions.height10(context) * 6.8,
                   width: AppDimensions.height10(context) * 32.0,
                   child: Text(
-                    "Password reset email sent",
+                    "Password reset email\nsent",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
+                      height: AppDimensions.height10(context) * 0.15,
                       color: Colors.white,
                       fontSize: AppDimensions.height10(context) * 2.8,
                     ),
@@ -126,37 +130,29 @@ class _EmailSentState extends State<EmailSent> {
                       ),
                     )),
                 SizedBox(height: AppDimensions.height10(context) * 4.2),
-                Container(
-                  height: AppDimensions.height10(context) * 4.4,
-                  width: AppDimensions.height10(context) * 26.7,
-                  // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.height10(context) *0.8),
-
-                  child: OutlinedButton.icon(
-                    // <-- OutlinedButton
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFFFFFF),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 5.0),
-                      ),
-                      //<-- SEE HERE
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(login: false),
+                AnimatedScaleButton(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRoute(
+                        page: Verification(
+                          email: widget.email,
                         ),
-                      );
-                    },
-                    icon: Image.asset(
-                      "assets/images/fb.webp",
-                      width: 0.0,
-                      height: 0.0,
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: AppDimensions.height10(context) * 4.4,
+                    width: AppDimensions.height10(context) * 26.7,
+                    // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.height10(context) *0.8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFFFFF),
+                      borderRadius: BorderRadius.circular(
+                          AppDimensions.height10(context) * 5.0),
                     ),
-                    label: Center(
+                    child: Center(
                         child: Text(
-                      'Go to Home page',
+                      'Go to Verification page',
                       style: TextStyle(
                         color: const Color(0xFF8C648A),
                         fontSize: AppDimensions.height10(context) * 1.6,

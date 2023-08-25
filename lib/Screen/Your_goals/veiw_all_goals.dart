@@ -348,6 +348,9 @@ class _veiw_all_goals_menuState extends State<veiw_all_goals_menu> {
                                                 await _prefs;
                                             var setId = prefs.setInt('goal_num',
                                                 goalsDetails[index]['id']);
+                                                 await prefs.setString(
+                                                                    'goal_menu_route',
+                                                                    'your_goal');
                                           },
                                           child: Container(
                                             // width:

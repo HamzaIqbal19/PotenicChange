@@ -1195,6 +1195,8 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                     is_right: false,
                                                     s_circle_text_col:
                                                         0xffFD6727,
+                                                    onTap1: () {},
+                                                    onTap2: () {},
                                                   )),
                                                 ),
                                                 SizedBox(

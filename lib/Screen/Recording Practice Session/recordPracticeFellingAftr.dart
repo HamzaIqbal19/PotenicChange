@@ -25,8 +25,10 @@ var emotionsNotes;
 
 class feelingsAfter extends StatefulWidget {
   final bool summary;
+  final int selected;
 
-  const feelingsAfter({super.key, required this.summary});
+  const feelingsAfter(
+      {super.key, required this.summary, required this.selected});
 
   @override
   State<feelingsAfter> createState() => _feelingsAfterState();
@@ -39,6 +41,9 @@ class _feelingsAfterState extends State<feelingsAfter> {
   @override
   void initState() {
     super.initState();
+    setState(() {
+      EmotionsAfter = widget.selected;
+    });
     _fetchPracticeNames();
     if (widget.summary == true) {
       onLoad();
@@ -72,17 +77,22 @@ class _feelingsAfterState extends State<feelingsAfter> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        Navigator.push(
-          context,
-          FadePageRoute3(
-            exitPage: const feelingsAfter(summary: false),
-            enterPage: emotions(
-              summary: false,
-              pracName: pracName,
-              record: false,
+        if (widget.summary == false) {
+          Navigator.push(
+            context,
+            FadePageRoute(
+              page: emotions(
+                summary: false,
+                pracName: pracName,
+                record: false,
+                selected: 0,
+              ),
             ),
-          ),
-        );
+          );
+        } else {
+          Navigator.pop(context);
+        }
+
         return Future.value(false);
       },
       child: Scaffold(
@@ -93,17 +103,21 @@ class _feelingsAfterState extends State<feelingsAfter> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    FadePageRoute3(
-                      exitPage: const feelingsAfter(summary: false),
-                      enterPage: emotions(
-                        summary: false,
-                        pracName: pracName,
-                        record: false,
+                  if (widget.summary == false) {
+                    Navigator.push(
+                      context,
+                      FadePageRoute(
+                        page: emotions(
+                          summary: false,
+                          pracName: pracName,
+                          record: false,
+                          selected: 0,
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  } else {
+                    Navigator.pop(context);
+                  }
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
@@ -116,115 +130,122 @@ class _feelingsAfterState extends State<feelingsAfter> {
             Center(
               child: IconButton(
                   onPressed: () {
-                    showAnimatedDialog(
-                      animationType: DialogTransitionType.fadeScale,
-                      curve: Curves.easeInOut,
-                      duration: const Duration(seconds: 1),
-                      context: context,
-                      builder: (BuildContext context) => Container(
-                        width: AppDimensions.height10(context) * 27.0,
-                        height: AppDimensions.height10(context) * 18.2,
-                        child: AlertDialog(
-                          contentPadding: EdgeInsets.zero,
-                          actionsPadding: EdgeInsets.zero,
-                          titlePadding: EdgeInsets.zero,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10(context) * 1.4)),
-                          title: Container(
-                            margin: const EdgeInsets.only(
-                                top: 19, right: 16, left: 16, bottom: 2),
-                            height: AppDimensions.height10(context) * 2.2,
-                            width: AppDimensions.height10(context) * 23.8,
-                            child: Text(
-                              "Are you sure?",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: const Color(0xFF000000),
-                                fontSize: AppDimensions.height10(context) * 1.7,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          content: Container(
-                            margin: EdgeInsets.only(
-                                bottom: AppDimensions.height10(context) * 1.9,
-                                left: AppDimensions.height10(context) * 1.6,
-                                right: AppDimensions.height10(context) * 1.6),
-                            height: AppDimensions.height10(context) * 3.2,
-                            width: AppDimensions.height10(context) * 23.8,
-                            child: Text(
-                              "If you close it now, you will lose all your progress.",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                height: AppDimensions.height10(context) * 0.15,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          actions: <Widget>[
-                            Column(
-                              children: [
-                                Container(
-                                  height: 42,
-                                  width: double.infinity,
-                                  color: const Color(0xFF007AFF),
-                                  child: TextButton(
-                                    onPressed: () {
-                                      if (behaviour_route == false) {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            FadePageRoute(
-                                                page: const dashBoard(
-                                              saved: false,
-                                              helpful_tips: false,
-                                              membership: true,
-                                              dashboard_ctrl: false,
-                                              cancel: false,
-                                              trial: false,
-                                            )));
-                                      } else {
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const view_goals(
-                                                    missed: false)));
-                                      }
-                                    },
-                                    child: const Text(
-                                      'Close',
-                                      style: TextStyle(
-                                          color: Color(0xFFFFFFFF),
-                                          fontSize: 17,
-                                          fontFamily: "Laila",
-                                          fontWeight: FontWeight.w400),
+                    widget.summary
+                        ? showAnimatedDialog(
+                            animationType: DialogTransitionType.fadeScale,
+                            curve: Curves.easeInOut,
+                            duration: const Duration(seconds: 1),
+                            context: context,
+                            builder: (BuildContext context) => Container(
+                              width: AppDimensions.height10(context) * 27.0,
+                              height: AppDimensions.height10(context) * 18.2,
+                              child: AlertDialog(
+                                contentPadding: EdgeInsets.zero,
+                                actionsPadding: EdgeInsets.zero,
+                                titlePadding: EdgeInsets.zero,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        AppDimensions.height10(context) * 1.4)),
+                                title: Container(
+                                  margin: const EdgeInsets.only(
+                                      top: 19, right: 16, left: 16, bottom: 2),
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  width: AppDimensions.height10(context) * 23.8,
+                                  child: Text(
+                                    "Are you sure?",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: const Color(0xFF000000),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  height: 44,
-                                  width: double.infinity,
-                                  child: TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: const Text(
-                                      'Cancel',
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          fontFamily: "Laila",
-                                          fontWeight: FontWeight.w400,
-                                          color: Color(0xFF007AFF)),
+                                content: Container(
+                                  margin: EdgeInsets.only(
+                                      bottom:
+                                          AppDimensions.height10(context) * 1.9,
+                                      left:
+                                          AppDimensions.height10(context) * 1.6,
+                                      right: AppDimensions.height10(context) *
+                                          1.6),
+                                  height: AppDimensions.height10(context) * 3.2,
+                                  width: AppDimensions.height10(context) * 23.8,
+                                  child: Text(
+                                    "If you close it now, you will lose all your progress.",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      height: AppDimensions.height10(context) *
+                                          0.15,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                 ),
-                              ],
+                                actions: <Widget>[
+                                  Column(
+                                    children: [
+                                      Container(
+                                        height: 42,
+                                        width: double.infinity,
+                                        color: const Color(0xFF007AFF),
+                                        child: TextButton(
+                                          onPressed: () {
+                                            if (behaviour_route == false) {
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const dashBoard(
+                                                    saved: false,
+                                                    helpful_tips: false,
+                                                    membership: true,
+                                                    dashboard_ctrl: false,
+                                                    cancel: false,
+                                                    trial: false,
+                                                  )));
+                                            } else {
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const view_goals(
+                                                          missed: false)));
+                                            }
+                                          },
+                                          child: const Text(
+                                            'Close',
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF),
+                                                fontSize: 17,
+                                                fontFamily: "Laila",
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 44,
+                                        width: double.infinity,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text(
+                                            'Cancel',
+                                            style: TextStyle(
+                                                fontSize: 17,
+                                                fontFamily: "Laila",
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xFF007AFF)),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ],
-                        ),
-                      ),
-                    );
+                          )
+                        : Navigator.pop(context);
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
@@ -835,21 +856,18 @@ class _next_bottonState extends State<next_botton> {
                   if (value == true) {
                     feedback.clear();
                     Navigator.push(
-                        context,
-                        FadePageRoute2(true,
-                            exitPage: const feelingsAfter(summary: true),
-                            enterPage: const practice_summary()));
+                        context, FadePageRoute(page: const practice_summary()));
                   }
                 });
               } else {
                 feedback.clear();
                 Navigator.push(
                     context,
-                    FadePageRoute2(true,
-                        exitPage: const feelingsAfter(summary: false),
-                        enterPage: const endofSession(
-                          summary: false,
-                        )));
+                    FadePageRoute(
+                        page: const endofSession(
+                      summary: false,
+                      selected: 0,
+                    )));
               }
               feedback.clear();
               setState(() {
