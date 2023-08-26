@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Hurdles.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_goal_impact.dart';
@@ -127,14 +128,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                           Navigator.push(
                               context,
                               FadePageRoute(
-                                  page: const dashBoard(
-                                saved: false,
-                                helpful_tips: false,
-                                membership: true,
-                                dashboard_ctrl: false,
-                                cancel: false,
-                                trial: false,
-                              )));
+                                  page: const view_goals(missed: false)));
                         },
                         icon: Image.asset(
                           'assets/images/Close.webp',

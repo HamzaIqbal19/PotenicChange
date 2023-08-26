@@ -105,7 +105,7 @@ class _emotionsState extends State<emotions> {
         //     page: const practiceMenu(goal_eval: false, goalName: goalName, pracName: pracName, pracColor: pracColor, color: color),
         //   ),
         // );
-        return Future.value(false);
+        return Future.value(true);
       },
       child: Scaffold(
         appBar: AppBar(

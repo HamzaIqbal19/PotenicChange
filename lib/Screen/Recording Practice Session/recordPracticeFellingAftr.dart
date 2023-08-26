@@ -156,7 +156,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
             Center(
               child: IconButton(
                   onPressed: () {
-                    widget.summary
+                    widget.summary == false
                         ? showAnimatedDialog(
                             animationType: DialogTransitionType.fadeScale,
                             curve: Curves.easeInOut,

@@ -138,7 +138,7 @@ class _endofSessionState extends State<endofSession> {
           Center(
             child: IconButton(
                 onPressed: () {
-                  widget.summary
+                  widget.summary == false
                       ? showAnimatedDialog(
                           animationType: DialogTransitionType.fadeScale,
                           curve: Curves.easeInOut,

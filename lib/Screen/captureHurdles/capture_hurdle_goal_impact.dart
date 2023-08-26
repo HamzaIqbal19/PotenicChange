@@ -103,11 +103,13 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
       if (goals[i]['isActive'] == true) {
         print('====Active===');
         if (hurdlesSummary.contains(goals[i]['id'])) {
+          multiGoals.add(goals[i]['id']);
           selectedIndices.add(Active.indexOf(goals[i]));
         }
       } else {
         print('====Inactive===');
         if (hurdlesSummary.contains(goals[i]['id'])) {
+          multiGoals.add(goals[i]['id']);
           selectedInActiveIndices.add(inActive.indexOf(goals[i]));
         }
       }
@@ -154,6 +156,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
           : prefs.getString('HurdleRoute');
     });
 
+    multiGoals.clear();
+    allgoalsSelected.clear();
     print("Route ${prefs.getString('HurdleRoute')}");
     if (Route == '' || Route == null) {
       selectedInActiveIndices.clear();
@@ -579,22 +583,19 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 itemBuilder: ((context, index) {
                                   return AnimatedScaleButton(
                                     onTap: () {
-                                      if (widget.summary == true) {
-                                      } else {
-                                        setState(() {
-                                          if (selectedIndices.contains(index)) {
-                                            multiGoals
-                                                .remove(Active[index]['id']);
-                                            selectedIndices.remove(index);
-                                          } else {
-                                            selectedIndices.add(index);
-                                            multiGoals.add(Active[index]['id']);
-                                          }
-                                        });
-                                        setState(() {
-                                          selectAll = false;
-                                        });
-                                      }
+                                      setState(() {
+                                        if (selectedIndices.contains(index)) {
+                                          multiGoals
+                                              .remove(Active[index]['id']);
+                                          selectedIndices.remove(index);
+                                        } else {
+                                          selectedIndices.add(index);
+                                          multiGoals.add(Active[index]['id']);
+                                        }
+                                      });
+                                      setState(() {
+                                        selectAll = false;
+                                      });
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
@@ -720,25 +721,20 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 itemBuilder: ((context, index) {
                                   return AnimatedScaleButton(
                                     onTap: () {
-                                      if (widget.summary == true) {
-                                      } else {
-                                        setState(() {
-                                          if (selectedInActiveIndices
-                                              .contains(index)) {
-                                            multiGoals
-                                                .remove(inActive[index]['id']);
-                                            selectedInActiveIndices
-                                                .remove(index);
-                                          } else {
-                                            multiGoals
-                                                .add(inActive[index]['id']);
-                                            selectedInActiveIndices.add(index);
-                                          }
-                                        });
-                                        setState(() {
-                                          selectAll = false;
-                                        });
-                                      }
+                                      setState(() {
+                                        if (selectedInActiveIndices
+                                            .contains(index)) {
+                                          multiGoals
+                                              .remove(inActive[index]['id']);
+                                          selectedInActiveIndices.remove(index);
+                                        } else {
+                                          multiGoals.add(inActive[index]['id']);
+                                          selectedInActiveIndices.add(index);
+                                        }
+                                      });
+                                      setState(() {
+                                        selectAll = false;
+                                      });
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
@@ -830,10 +826,26 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                   ),
                 ),
                 AnimatedScaleButton(
-                  onTap: () {
+                  onTap: () async {
                     if (widget.summary == true) {
-                      Navigator.pop(context);
+                      if (selectAll == true) {
+                        Hurdles().updateHurdle('userGoalId', allgoalsSelected);
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const summary_hurdles(
+                                    delete_hurdle: false)));
+                      } else {
+                        Hurdles().updateHurdle('userGoalId', multiGoals);
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const summary_hurdles(
+                                    delete_hurdle: false)));
+                      }
                     } else {
+                      final SharedPreferences prefs = await _prefs;
+                      var hurdleRoute = prefs.setString('HurdleRoute', 'data');
                       if (selectAll == true || multiGoals.length != 0) {
                         if (selectAll == true) {
                           saveGoalsToSharedPreferences(allgoalsSelected);
@@ -886,9 +898,11 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                     ),
                     child: Center(
                         child: Text(
-                      selectAll == true
-                          ? '(${allgoalsSelected.length}/${allgoalsSelected.length} goals selected) Next'
-                          : '(${multiGoals.length}/${allgoalsSelected.length} goals selected) Next',
+                      widget.summary
+                          ? "Update Summary"
+                          : selectAll == true
+                              ? '(${allgoalsSelected.length}/${goals.length} goals selected) Next'
+                              : '(${multiGoals.length}/${goals.length} goals selected) Next',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.6,
