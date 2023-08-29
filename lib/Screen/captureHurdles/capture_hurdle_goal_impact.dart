@@ -836,21 +836,24 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                 ),
                 AnimatedScaleButton(
                   onTap: () async {
-                    if (selectAll == true || multiGoals.length != 0) {
-                      if (selectAll == true) {
-                        Hurdles().updateHurdle('userGoalId', allgoalsSelected);
-                        Navigator.push(
-                            context,
-                            FadePageRoute(
-                                page: const summary_hurdles(
-                                    delete_hurdle: false)));
-                      } else {
-                        Hurdles().updateHurdle('userGoalId', multiGoals);
-                        Navigator.push(
-                            context,
-                            FadePageRoute(
-                                page: const summary_hurdles(
-                                    delete_hurdle: false)));
+                    if (widget.summary == true) {
+                      if (selectAll == true || multiGoals.length != 0) {
+                        if (selectAll == true) {
+                          Hurdles()
+                              .updateHurdle('userGoalId', allgoalsSelected);
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const summary_hurdles(
+                                      delete_hurdle: false)));
+                        } else {
+                          Hurdles().updateHurdle('userGoalId', multiGoals);
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const summary_hurdles(
+                                      delete_hurdle: false)));
+                        }
                       }
                     } else {
                       final SharedPreferences prefs = await _prefs;

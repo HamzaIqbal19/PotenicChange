@@ -755,16 +755,22 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                 ),
                                               ),
                                               Center(
-                                                child: Text(
-                                                  "150",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    color:
-                                                        const Color(0xFF464646),
-                                                    fontSize:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.3,
+                                                child: SizedBox(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      6,
+                                                  child: Text(
+                                                    "${identity[index]['text'].toString().length}/150",
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: const Color(
+                                                          0xFF464646),
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.3,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -782,7 +788,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                     left:
                                                         AppDimensions.height10(
                                                                 context) *
-                                                            4.0),
+                                                            0.1),
                                                 decoration: BoxDecoration(
                                                     color:
                                                         const Color(0xFF282828)
@@ -845,17 +851,23 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                   ),
                                                 ),
                                                 Center(
-                                                  child: Text(
-                                                    "150",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      color: const Color(
-                                                          0xFF464646),
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.3,
+                                                  child: SizedBox(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6,
+                                                    child: Text(
+                                                      "${myIdentity[index]['text'].toString().length}/150",
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: const Color(
+                                                            0xFF464646),
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.3,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -875,7 +887,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                       left: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          4.0),
+                                                          0.1),
                                                   decoration: BoxDecoration(
                                                       color: const Color(
                                                               0xFF282828)

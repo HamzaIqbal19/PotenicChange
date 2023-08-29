@@ -321,501 +321,541 @@ class _photo_infoState extends State<photo_info> {
                             AppDimensions.height10(context) * 1.0),
                         topRight: Radius.circular(
                             AppDimensions.height10(context) * 1.0))),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: AppDimensions.height10(context) * 2.2,
-                        width: AppDimensions.height10(context) * 3.3,
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 4.9),
-                        child: GestureDetector(
-                          onTap: () async {
-                            final SharedPreferences prefs = await _prefs;
-                            var remove = prefs.remove('ImageLink');
-                            if (widget.image_detals == true) {
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const inspiration_type()));
-                              title.clear();
-                              link.clear();
-                              statement.clear();
-                            } else {
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const inspiration_type()));
-                            }
-                          },
-                          child: Text(
-                            'Back',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.5,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff007AFF)),
-                          ),
-                        ),
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Container(
+                    height: AppDimensions.height10(context) * 2.2,
+                    width: AppDimensions.height10(context) * 3.3,
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 4.9),
+                    child: GestureDetector(
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+                        var remove = prefs.remove('ImageLink');
+                        if (widget.image_detals == true) {
+                          Navigator.push(context,
+                              FadePageRoute(page: const inspiration_type()));
+                          title.clear();
+                          link.clear();
+                          statement.clear();
+                        } else {
+                          Navigator.push(context,
+                              FadePageRoute(page: const inspiration_type()));
+                        }
+                      },
+                      child: Text(
+                        'Back',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.5,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xff007AFF)),
                       ),
-                      Center(
-                        child: SizedBox(
-                          height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.height10(context) * 19.9,
-                          child: Center(
-                              child: widget.edit_details
-                                  ? Text(
-                                      'Edit image inspiration',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.7,
-                                          fontWeight: FontWeight.w700,
-                                          color: const Color(0xff282828)),
-                                    )
-                                  : Text(
-                                      'Create image inspiration',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.7,
-                                          fontWeight: FontWeight.w700,
-                                          color: const Color(0xff282828)),
-                                    )),
-                        ),
-                      ),
-                      Container(
-                        height: AppDimensions.height10(context) * 2.2,
-                        width: AppDimensions.height10(context) * 4.3,
-                        margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 4.9),
-                        child: widget.image_detals
-                            ? Container(
-                                child: widget.image_save
-                                    ? AnimatedScaleButton(
-                                        onTap: () async {
-                                          final SharedPreferences prefs =
-                                              await _prefs;
-                                          var remove =
-                                              prefs.remove('ImageLink');
-                                          print(
-                                              "===================================>$imageLink");
-                                          widget.image_create
-                                              ? InspirationApi()
-                                                  .addInspiration(
-                                                      1,
-                                                      image,
-                                                      title.text.toString(),
-                                                      tagList,
-                                                      link.text.toString(),
-                                                      true,
-                                                      statement.text.toString(),
-                                                      selectedGoals)
-                                                  .then((response) async {
-                                                  if (response.length != 0) {
-                                                    print(
-                                                        'Success======================');
-                                                    title.clear();
-                                                    link.clear();
-                                                    statement.clear();
-                                                    hastags.clear();
-                                                    // final SharedPreferences
-                                                    //     prefs = await _prefs;
+                    ),
+                  ),
+                  Center(
+                    child: SizedBox(
+                      height: AppDimensions.height10(context) * 2.2,
+                      width: AppDimensions.height10(context) * 19.9,
+                      child: Center(
+                          child: widget.edit_details
+                              ? Text(
+                                  'Edit image inspiration',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontWeight: FontWeight.w700,
+                                      color: const Color(0xff282828)),
+                                )
+                              : Text(
+                                  'Create image inspiration',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontWeight: FontWeight.w700,
+                                      color: const Color(0xff282828)),
+                                )),
+                    ),
+                  ),
+                  Container(
+                    height: AppDimensions.height10(context) * 2.2,
+                    width: AppDimensions.height10(context) * 4.3,
+                    margin: EdgeInsets.only(
+                        left: AppDimensions.height10(context) * 4.9),
+                    child: widget.image_detals
+                        ? Container(
+                            child: widget.image_save
+                                ? AnimatedScaleButton(
+                                    onTap: () async {
+                                      final SharedPreferences prefs =
+                                          await _prefs;
+                                      var remove = prefs.remove('ImageLink');
+                                      print(
+                                          "===================================>$imageLink");
+                                      if (widget.image_create == true) {
+                                        if (bt_enable == true) {
+                                          setState(() {
+                                            bt_enable = false;
+                                          });
+                                          if (title.text
+                                                  .toString()
+                                                  .isNotEmpty &&
+                                              statement.text
+                                                  .toString()
+                                                  .isNotEmpty) {
+                                            final SharedPreferences prefs =
+                                                await _prefs;
+                                            var imagePicked =
+                                                prefs.getString('imagePicked');
+                                            print(
+                                                '==================================>${link.text}');
+                                            InspirationApi()
+                                                .addInspiration(
+                                                    1,
+                                                    File(image),
+                                                    title.text.toString(),
+                                                    tagList,
+                                                    link.text.toString().isEmpty
+                                                        ? " "
+                                                        : link.text.toString(),
+                                                    true,
+                                                    statement.text.toString(),
+                                                    selectedGoals)
+                                                .then((response) {
+                                              if (response.length != 0) {
+                                                setState(() {
+                                                  bt_enable = true;
+                                                });
+                                                print(
+                                                    'Success======================');
+                                                title.clear();
+                                                link.clear();
+                                                statement.clear();
+                                                hastags.clear();
 
-                                                    // var hurdleId = prefs.setInt(
-                                                    //     'userInspirationId',
-                                                    //     response[
-                                                    //         'inspirationId']);
-                                                    Navigator.push(
-                                                        context,
-                                                        FadePageRoute(
-                                                            page:
-                                                                const inspiration_landing(
-                                                          is_Updated: false,
-                                                        )));
-                                                  }
-                                                })
-                                              : showAnimatedDialog(
-                                                  animationType:
-                                                      DialogTransitionType
-                                                          .fadeScale,
-                                                  curve: Curves.easeInOut,
-                                                  duration: const Duration(
-                                                      seconds: 1),
-                                                  context: context,
-                                                  builder:
-                                                      (BuildContext context) =>
-                                                          SizedBox(
-                                                            width: AppDimensions
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const updatedLandingPage(
+                                                                delete: false,
+                                                                is_Updated:
+                                                                    false)));
+                                              } else {
+                                                print("Failed");
+                                              }
+                                            });
+                                          } else {
+                                            print('empty');
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(const SnackBar(
+                                                    content: Text(
+                                                        "Title or Inspiration is empty.")));
+                                          }
+                                        }
+                                      } else {
+                                        showAnimatedDialog(
+                                            animationType:
+                                                DialogTransitionType.fadeScale,
+                                            curve: Curves.easeInOut,
+                                            duration:
+                                                const Duration(seconds: 1),
+                                            context: context,
+                                            builder: (BuildContext context) =>
+                                                SizedBox(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      27.0,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          18.2,
+                                                  child: AlertDialog(
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius
+                                                            .circular(AppDimensions
                                                                     .height10(
                                                                         context) *
-                                                                27.0,
+                                                                1.4)),
+                                                    contentPadding:
+                                                        EdgeInsets.zero,
+                                                    actionsPadding:
+                                                        EdgeInsets.zero,
+                                                    titlePadding:
+                                                        EdgeInsets.zero,
+                                                    title: Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.9,
+                                                          right: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6,
+                                                          left: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6,
+                                                          bottom: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.2),
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.2,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          23.8,
+                                                      child: Text(
+                                                        "Save changes?",
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.7,
+                                                          fontFamily: 'laila',
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    content: Container(
+                                                      margin: EdgeInsets.only(
+                                                          bottom: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.5,
+                                                          left: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6,
+                                                          right: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6),
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          3.4,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          23.8,
+                                                      child: Text(
+                                                        "Are you sure you want to save your\nupdates?",
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.3,
+                                                          fontFamily: 'laila',
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    actions: <Widget>[
+                                                      Column(
+                                                        children: [
+                                                          SizedBox(
                                                             height: AppDimensions
                                                                     .height10(
                                                                         context) *
-                                                                18.2,
-                                                            child: AlertDialog(
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius.circular(
-                                                                          AppDimensions.height10(context) *
-                                                                              1.4)),
-                                                              contentPadding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              actionsPadding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              titlePadding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              title: Container(
-                                                                margin: EdgeInsets.only(
-                                                                    top: AppDimensions.height10(
-                                                                            context) *
-                                                                        1.9,
-                                                                    right: AppDimensions
-                                                                            .height10(
-                                                                                context) *
-                                                                        1.6,
-                                                                    left: AppDimensions.height10(
-                                                                            context) *
-                                                                        1.6,
-                                                                    bottom: AppDimensions.height10(
-                                                                            context) *
-                                                                        0.2),
-                                                                height: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    2.2,
-                                                                width: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    23.8,
-                                                                child: Text(
-                                                                  "Save changes?",
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style:
-                                                                      TextStyle(
+                                                                0.1,
+                                                            child: Divider(
+                                                              color: const Color(
+                                                                      0XFF3C3C43)
+                                                                  .withOpacity(
+                                                                      0.29),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                4.2,
+                                                            width:
+                                                                double.infinity,
+                                                            color: const Color(
+                                                                0xFF007AFF),
+                                                            child: TextButton(
+                                                              onPressed:
+                                                                  () async {
+                                                                print(
+                                                                    "===================================>$imageLink");
+                                                                InspirationApi()
+                                                                    .addInspiration(
+                                                                        1,
+                                                                        imageLink,
+                                                                        title
+                                                                            .text
+                                                                            .toString(),
+                                                                        [
+                                                                          '#tags'
+                                                                        ],
+                                                                        link.text
+                                                                            .toString(),
+                                                                        true,
+                                                                        statement
+                                                                            .text
+                                                                            .toString(),
+                                                                        [19])
+                                                                    .then(
+                                                                        (response) {
+                                                                  if (response
+                                                                          .statusCode ==
+                                                                      200) {
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        FadePageRoute(
+                                                                            page: const note_info(
+                                                                          note_saved:
+                                                                              true,
+                                                                          type_switch:
+                                                                              1,
+                                                                        )));
+                                                                  }
+                                                                });
+                                                              },
+                                                              // Navigator.push(
+                                                              //     context,
+                                                              //     FadePageRoute(
+                                                              //         page: widget.edit_details
+                                                              //             ? const inspiration_landing(
+                                                              //                 muliple_insp: false,
+                                                              //                 is_Updated: true,
+                                                              //               )
+                                                              //             : const inspiration_landing(
+                                                              //                 muliple_insp: false,
+                                                              //                 is_Updated: false,
+                                                              //               )));
+
+                                                              child: Text(
+                                                                'Yes',
+                                                                style: TextStyle(
+                                                                    color: const Color(
+                                                                        0xFFFFFFFF),
                                                                     fontSize:
                                                                         AppDimensions.height10(context) *
                                                                             1.7,
                                                                     fontFamily:
-                                                                        'laila',
+                                                                        "Laila",
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .w400,
-                                                                  ),
-                                                                ),
+                                                                            .w400),
                                                               ),
-                                                              content:
-                                                                  Container(
-                                                                margin: EdgeInsets.only(
-                                                                    bottom:
-                                                                        AppDimensions.height10(context) *
-                                                                            1.5,
-                                                                    left: AppDimensions.height10(
-                                                                            context) *
-                                                                        1.6,
-                                                                    right: AppDimensions.height10(
-                                                                            context) *
-                                                                        1.6),
-                                                                height: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    3.4,
-                                                                width: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    23.8,
-                                                                child: Text(
-                                                                  "Are you sure you want to save your\nupdates?",
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style:
-                                                                      TextStyle(
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.1,
+                                                            child: Divider(
+                                                              color: const Color(
+                                                                      0XFF3C3C43)
+                                                                  .withOpacity(
+                                                                      0.29),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                4.4,
+                                                            width:
+                                                                double.infinity,
+                                                            child: TextButton(
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Text(
+                                                                'Cancel',
+                                                                style: TextStyle(
                                                                     fontSize:
                                                                         AppDimensions.height10(context) *
-                                                                            1.3,
+                                                                            1.7,
                                                                     fontFamily:
-                                                                        'laila',
+                                                                        "Laila",
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
-                                                                  ),
-                                                                ),
+                                                                    color: const Color(
+                                                                        0xFF007AFF)),
                                                               ),
-                                                              actions: <Widget>[
-                                                                Column(
-                                                                  children: [
-                                                                    SizedBox(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              0.1,
-                                                                      child:
-                                                                          Divider(
-                                                                        color: const Color(0XFF3C3C43)
-                                                                            .withOpacity(0.29),
-                                                                      ),
-                                                                    ),
-                                                                    Container(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              4.2,
-                                                                      width: double
-                                                                          .infinity,
-                                                                      color: const Color(
-                                                                          0xFF007AFF),
-                                                                      child:
-                                                                          TextButton(
-                                                                        onPressed:
-                                                                            () async {
-                                                                          print(
-                                                                              "===================================>$imageLink");
-                                                                          InspirationApi()
-                                                                              .addInspiration(1, imageLink, title.text.toString(), ['#tags'], link.text.toString(), true, statement.text.toString(), [19])
-                                                                              .then((response) {
-                                                                            if (response.statusCode ==
-                                                                                200) {
-                                                                              Navigator.push(
-                                                                                  context,
-                                                                                  FadePageRoute(
-                                                                                      page: const note_info(
-                                                                                    note_saved: true,
-                                                                                    type_switch: 1,
-                                                                                  )));
-                                                                            }
-                                                                          });
-                                                                        },
-                                                                        // Navigator.push(
-                                                                        //     context,
-                                                                        //     FadePageRoute(
-                                                                        //         page: widget.edit_details
-                                                                        //             ? const inspiration_landing(
-                                                                        //                 muliple_insp: false,
-                                                                        //                 is_Updated: true,
-                                                                        //               )
-                                                                        //             : const inspiration_landing(
-                                                                        //                 muliple_insp: false,
-                                                                        //                 is_Updated: false,
-                                                                        //               )));
-
-                                                                        child:
-                                                                            Text(
-                                                                          'Yes',
-                                                                          style: TextStyle(
-                                                                              color: const Color(0xFFFFFFFF),
-                                                                              fontSize: AppDimensions.height10(context) * 1.7,
-                                                                              fontFamily: "Laila",
-                                                                              fontWeight: FontWeight.w400),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              0.1,
-                                                                      child:
-                                                                          Divider(
-                                                                        color: const Color(0XFF3C3C43)
-                                                                            .withOpacity(0.29),
-                                                                      ),
-                                                                    ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              4.4,
-                                                                      width: double
-                                                                          .infinity,
-                                                                      child:
-                                                                          TextButton(
-                                                                        onPressed:
-                                                                            () {
-                                                                          Navigator.pop(
-                                                                              context);
-                                                                        },
-                                                                        child:
-                                                                            Text(
-                                                                          'Cancel',
-                                                                          style: TextStyle(
-                                                                              fontSize: AppDimensions.height10(context) * 1.7,
-                                                                              fontFamily: "Laila",
-                                                                              fontWeight: FontWeight.w400,
-                                                                              color: const Color(0xFF007AFF)),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              0.1,
-                                                                      child:
-                                                                          Divider(
-                                                                        color: const Color(0XFF3C3C43)
-                                                                            .withOpacity(0.29),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ],
                                                             ),
-                                                          ));
-                                        },
-                                        child: Text(
-                                          widget.image_create
-                                              ? 'Create'
-                                              : 'Save',
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
+                                                          ),
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.1,
+                                                            child: Divider(
+                                                              color: const Color(
+                                                                      0XFF3C3C43)
+                                                                  .withOpacity(
+                                                                      0.29),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ));
+                                      }
+                                    },
+                                    child: Text(
+                                      widget.image_create ? 'Create' : 'Save',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
                                                   1.5,
-                                              fontWeight: FontWeight.w400,
-                                              color: const Color(0xff007AFF)),
-                                        ),
-                                      )
-                                    : AnimatedScaleButton(
-                                        onTap: () {
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff007AFF)),
+                                    ),
+                                  )
+                                : AnimatedScaleButton(
+                                    onTap: () {
+                                      print(
+                                          "============================22=======>$imageLink");
+                                      InspirationApi()
+                                          .addInspiration(
+                                              1,
+                                              image,
+                                              title.text.toString(),
+                                              tagList,
+                                              link.text.toString(),
+                                              true,
+                                              statement.text.toString(),
+                                              selectedGoals)
+                                          .then((response) {
+                                        if (response.length != 0) {
                                           print(
-                                              "===================================>$imageLink");
-                                          InspirationApi()
-                                              .addInspiration(
-                                                  1,
-                                                  image,
-                                                  title.text.toString(),
-                                                  tagList,
-                                                  link.text.toString(),
-                                                  true,
-                                                  statement.text.toString(),
-                                                  selectedGoals)
-                                              .then((response) {
-                                            if (response.length != 0) {
-                                              print(
-                                                  'Success======================');
-                                              title.clear();
-                                              link.clear();
-                                              statement.clear();
-                                              hastags.clear();
-                                              Navigator.push(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page:
-                                                          const inspiration_landing(
-                                                    is_Updated: false,
-                                                  )));
-                                            }
-                                          });
-                                        },
-                                        child: Text(
-                                          'Create',
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.5,
-                                              fontWeight: FontWeight.w400,
-                                              color: const Color(0xff007AFF)),
-                                        ),
-                                      ),
-                              )
-                            : ValueListenableBuilder<TextEditingValue>(
-                                valueListenable: title,
-                                builder: (context, value, child) {
-                                  return ValueListenableBuilder<
-                                          TextEditingValue>(
-                                      valueListenable: statement,
-                                      builder: (context, value, child) {
-                                        return AnimatedScaleButton(
-                                          onTap: () async {
-                                            if (bt_enable == true) {
-                                              setState(() {
-                                                bt_enable = false;
-                                              });
-                                              if (title.text
-                                                      .toString()
-                                                      .isNotEmpty &&
-                                                  statement.text
-                                                      .toString()
-                                                      .isNotEmpty) {
-                                                final SharedPreferences prefs =
-                                                    await _prefs;
-                                                var imagePicked = prefs
-                                                    .getString('imagePicked');
-                                                print(
-                                                    '==================================>${tagList.toString}');
-                                                InspirationApi()
-                                                    .addInspiration(
-                                                        1,
-                                                        File(image),
-                                                        title.text.toString(),
-                                                        tagList,
-                                                        link.text
-                                                                .toString()
-                                                                .isEmpty
-                                                            ? " "
-                                                            : link.text
-                                                                .toString(),
-                                                        true,
-                                                        statement.text
-                                                            .toString(),
-                                                        selectedGoals)
-                                                    .then((response) {
-                                                  if (response.length != 0) {
-                                                    setState(() {
-                                                      bt_enable = true;
-                                                    });
-                                                    print(
-                                                        'Success======================');
-                                                    title.clear();
-                                                    link.clear();
-                                                    statement.clear();
-                                                    hastags.clear();
-
-                                                    Navigator.push(
-                                                        context,
-                                                        FadePageRoute(
-                                                            page:
-                                                                const updatedLandingPage(
-                                                                    delete:
-                                                                        false,
-                                                                    is_Updated:
-                                                                        false)));
-                                                  } else {
-                                                    print("Failed");
-                                                  }
-                                                });
-                                              } else {
-                                                print('empty');
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(const SnackBar(
-                                                        content: Text(
-                                                            "Title or Inspiration is empty.")));
-                                              }
-                                            }
-                                          },
-                                          child: Text(
-                                            'Create',
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.5,
-                                                fontWeight: FontWeight.w400,
-                                                color: title.text
-                                                            .toString()
-                                                            .isNotEmpty &&
-                                                        statement.text
-                                                            .toString()
-                                                            .isNotEmpty
-                                                    ? const Color(0xff007AFF)
-                                                    : const Color(0xff007AFF)
-                                                        .withOpacity(0.5)),
-                                          ),
-                                        );
+                                              'Success======================');
+                                          title.clear();
+                                          link.clear();
+                                          statement.clear();
+                                          hastags.clear();
+                                          Navigator.push(
+                                              context,
+                                              FadePageRoute(
+                                                  page:
+                                                      const inspiration_landing(
+                                                is_Updated: false,
+                                              )));
+                                        }
                                       });
-                                }),
-                      )
-                    ]),
+                                    },
+                                    child: Text(
+                                      'Create',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.5,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff007AFF)),
+                                    ),
+                                  ),
+                          )
+                        : ValueListenableBuilder<TextEditingValue>(
+                            valueListenable: title,
+                            builder: (context, value, child) {
+                              return ValueListenableBuilder<TextEditingValue>(
+                                  valueListenable: statement,
+                                  builder: (context, value, child) {
+                                    return AnimatedScaleButton(
+                                      onTap: () async {
+                                        print('pressed');
+                                        if (bt_enable == true) {
+                                          setState(() {
+                                            bt_enable = false;
+                                          });
+                                          if (title.text
+                                                  .toString()
+                                                  .isNotEmpty &&
+                                              statement.text
+                                                  .toString()
+                                                  .isNotEmpty) {
+                                            final SharedPreferences prefs =
+                                                await _prefs;
+                                            var imagePicked =
+                                                prefs.getString('imagePicked');
+                                            print(
+                                                '==================================>${tagList.toString}');
+                                            InspirationApi()
+                                                .addInspiration(
+                                                    1,
+                                                    File(image),
+                                                    title.text.toString(),
+                                                    tagList,
+                                                    link.text.toString().isEmpty
+                                                        ? " "
+                                                        : link.text.toString(),
+                                                    true,
+                                                    statement.text.toString(),
+                                                    selectedGoals)
+                                                .then((response) {
+                                              if (response.length != 0) {
+                                                setState(() {
+                                                  bt_enable = true;
+                                                });
+                                                print(
+                                                    'Success======================');
+                                                title.clear();
+                                                link.clear();
+                                                statement.clear();
+                                                hastags.clear();
+
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const updatedLandingPage(
+                                                                delete: false,
+                                                                is_Updated:
+                                                                    false)));
+                                              } else {
+                                                print("Failed");
+                                              }
+                                            });
+                                          } else {
+                                            print('empty');
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(const SnackBar(
+                                                    content: Text(
+                                                        "Title or Inspiration is empty.")));
+                                          }
+                                        }
+                                      },
+                                      child: Text(
+                                        'Create',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.5,
+                                            fontWeight: FontWeight.w400,
+                                            color: title.text
+                                                        .toString()
+                                                        .isNotEmpty &&
+                                                    statement.text
+                                                        .toString()
+                                                        .isNotEmpty
+                                                ? const Color(0xff007AFF)
+                                                : const Color(0xff007AFF)
+                                                    .withOpacity(0.5)),
+                                      ),
+                                    );
+                                  });
+                            }),
+                  )
+                ]),
               ),
               Container(
                 height: AppDimensions.height10(context) * 79.65,
@@ -1388,7 +1428,7 @@ class link_set extends StatefulWidget {
 
 class _link_setState extends State<link_set> {
   final linkController = TextEditingController();
-  static final GlobalKey<FormState> key = GlobalKey<FormState>();
+  static final GlobalKey<FormState> key1 = GlobalKey<FormState>();
 
   bool link_bt = false;
   bool showKeyboardOverlay = false;
@@ -1522,7 +1562,6 @@ class _link_setState extends State<link_set> {
                                       //     top: AppDimensions.height10(context) * 1.5),
                                       child: TextFormField(
                                         controller: linkController,
-                                        key: key,
                                         onChanged: (value) {
                                           setState(() {
                                             link_bt = true;
@@ -1578,6 +1617,7 @@ class _link_setState extends State<link_set> {
                                         setState(() {});
                                         linkController.clear();
                                         link_url = '';
+                                        _controller.clearCache();
                                       },
                                       child: Container(
                                         width: AppDimensions.height10(context) *
@@ -1634,6 +1674,7 @@ class _link_setState extends State<link_set> {
                                           link_state: true,
                                         )));
                                   }
+                                  _controller.clearCache();
                                   linkController.clear();
                                 },
                                 child: Container(

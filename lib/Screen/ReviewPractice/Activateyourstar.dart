@@ -32,6 +32,7 @@ class _ActivateStarState extends State<ActivateStar> {
   String pracName = "";
   var pracColor;
   bool Loading = true;
+  String subscription = '';
 
   @override
   void initState() {
@@ -56,6 +57,7 @@ class _ActivateStarState extends State<ActivateStar> {
           goalName = response["name"];
           color = response["color"];
           identity = response["identityStatement"][0]["text"];
+          subscription = response['subscriptionsStatus'].toString();
         });
         _fetchPracticeNames();
       } else {
@@ -438,7 +440,9 @@ class _ActivateStarState extends State<ActivateStar> {
                                                                 context) *
                                                             23.8,
                                                     child: Text(
-                                                      "You can't start this goal because you\nalready have the maximum  active\ngoals. You must stop one of your active\ngoals to start a new one.",
+                                                      subscription == 'active'
+                                                          ? "You can't start this goal because you\nalready have the maximum of 3 active\ngoals. You must stop one of your active\ngoals to start a new one."
+                                                          : "You can't start this goal because you\nalready have the maximum of 1 active\ngoals. You must stop one of your active\ngoals to start a new one.",
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: TextStyle(

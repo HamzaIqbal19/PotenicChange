@@ -7,8 +7,7 @@ import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -347,11 +346,31 @@ class _veiw_detailsState extends State<veiw_details> {
                                         var url =
                                             inspirationDetails['inspiration']
                                                 ['destinationLink'];
-                                        if (await canLaunchUrlString(url)) {
-                                          await launchUrlString(url);
-                                        } else {
-                                          throw 'Could not launch $url';
-                                        }
+                                        FlutterWebBrowser.openWebPage(
+                                          url:
+                                              "https://app.getterms.io/view/XWpOJ/tos/en-au",
+                                          customTabsOptions:
+                                              const CustomTabsOptions(
+                                            colorScheme:
+                                                CustomTabsColorScheme.dark,
+                                            shareState: CustomTabsShareState.on,
+                                            instantAppsEnabled: true,
+                                            showTitle: true,
+                                            urlBarHidingEnabled: true,
+                                          ),
+                                          safariVCOptions:
+                                              const SafariViewControllerOptions(
+                                            barCollapsingEnabled: true,
+                                            preferredBarTintColor: Colors.green,
+                                            preferredControlTintColor:
+                                                Colors.amber,
+                                            dismissButtonStyle:
+                                                SafariViewControllerDismissButtonStyle
+                                                    .close,
+                                            modalPresentationCapturesStatusBarAppearance:
+                                                true,
+                                          ),
+                                        );
                                       },
                                       child: Container(
                                         height:
@@ -395,14 +414,32 @@ class _veiw_detailsState extends State<veiw_details> {
                                   ] else ...[
                                     AnimatedScaleButton(
                                       onTap: () async {
-                                        var url =
-                                            inspirationDetails['inspiration']
-                                                ['destinationLink'];
-                                        if (await canLaunchUrlString(url)) {
-                                          await launchUrlString(url);
-                                        } else {
-                                          throw 'Could not launch $url';
-                                        }
+                                        String url =
+                                            "https://${inspirationDetails['inspiration']['destinationLink']}/";
+                                        FlutterWebBrowser.openWebPage(
+                                          url: url,
+                                          customTabsOptions:
+                                              const CustomTabsOptions(
+                                            colorScheme:
+                                                CustomTabsColorScheme.dark,
+                                            shareState: CustomTabsShareState.on,
+                                            instantAppsEnabled: true,
+                                            showTitle: true,
+                                            urlBarHidingEnabled: true,
+                                          ),
+                                          safariVCOptions:
+                                              const SafariViewControllerOptions(
+                                            barCollapsingEnabled: true,
+                                            preferredBarTintColor: Colors.green,
+                                            preferredControlTintColor:
+                                                Colors.amber,
+                                            dismissButtonStyle:
+                                                SafariViewControllerDismissButtonStyle
+                                                    .close,
+                                            modalPresentationCapturesStatusBarAppearance:
+                                                true,
+                                          ),
+                                        );
                                       },
                                       child: Container(
                                         height:

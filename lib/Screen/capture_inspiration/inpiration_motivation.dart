@@ -159,32 +159,21 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
             alignment: const Alignment(0, 0),
             child: Column(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      FadePageRoute(
-                          page: const inspiration_landing(
-                        is_Updated: false,
-                      )),
-                    );
-                  },
-                  child: Container(
-                    width: AppDimensions.height10(context) * 34.3,
-                    height: AppDimensions.height10(context) * 7.9,
-                    margin: EdgeInsets.only(
-                        //increased 10 px
-                        top: AppDimensions.height10(context) * 11.6,
-                        bottom: AppDimensions.height10(context) * 1.7),
-                    child: GradientText(
-                      'My current\ninspirations',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 3.0,
-                          fontWeight: FontWeight.w700,
-                          height: 1.3),
-                      colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
-                    ),
+                Container(
+                  width: AppDimensions.height10(context) * 34.3,
+                  height: AppDimensions.height10(context) * 7.9,
+                  margin: EdgeInsets.only(
+                      //increased 10 px
+                      top: AppDimensions.height10(context) * 11.6,
+                      bottom: AppDimensions.height10(context) * 1.7),
+                  child: GradientText(
+                    'My current\ninspirations',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: AppDimensions.height10(context) * 3.0,
+                        fontWeight: FontWeight.w700,
+                        height: 1.3),
+                    colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                   ),
                 ),
                 SizedBox(

@@ -140,7 +140,8 @@ class _add_your_practiceState extends State<add_your_practice> {
               Navigator.push(
                   context, FadePageRoute(page: const CreatePractice()));
               final SharedPreferences prefs = await _prefs;
-              var route = prefs.setString('goal_route', 'view_all_goals_2');
+              await prefs.setString('goal_route', 'view_all_goals_2');
+              await prefs.setString('goalName', widget.goalName);
             },
             child: Container(
               width: AppDimensions.height10(context) * 17.5,

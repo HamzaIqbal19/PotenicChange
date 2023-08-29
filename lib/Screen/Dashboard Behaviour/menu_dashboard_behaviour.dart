@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_score.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -214,52 +215,26 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                 Align(
                                   alignment: const Alignment(-0.6, -0.2),
                                   child: Container(
-                                      height:
-                                          AppDimensions.height10(context) * 5.0,
-                                      width:
-                                          AppDimensions.height10(context) * 4.6,
-                                      decoration: BoxDecoration(
-                                          //color: Colors.amber,
-                                          image: DecorationImage(
-                                              image: AssetImage(pracColor == '1'
-                                                  ? "assets/images/Practice_Completed_1.webp"
-                                                  : pracColor == '2'
-                                                      ? 'assets/images/Practice_Completed_2.webp'
-                                                      : pracColor == '3'
-                                                          ? "assets/images/Practice_Completed_3.webp"
-                                                          : pracColor == '4'
-                                                              ? "assets/images/Practice_Completed_4.webp"
-                                                              : pracColor == '5'
-                                                                  ? "assets/images/Practice_Completed_4.webp"
-                                                                  : 'assets/images/Practice_Completed_1.webp'),
-                                              fit: BoxFit.contain)),
-                                      child: Align(
-                                          alignment: const Alignment(0, 1.125),
-                                          child: Container(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.98,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.967,
-                                            padding: EdgeInsets.all(
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    0.2),
-                                            decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Color(0xff52855E)),
-                                            child: Image.asset(
-                                              'assets/images/tick_icon.webp',
-                                              color: const Color(0xFFFFFFFF),
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.5,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  0.5,
-                                            ),
-                                          ))),
+                                    height:
+                                        AppDimensions.height10(context) * 5.0,
+                                    width:
+                                        AppDimensions.height10(context) * 4.6,
+                                    decoration: BoxDecoration(
+                                        //color: Colors.amber,
+                                        image: DecorationImage(
+                                            image: AssetImage(pracColor == '1'
+                                                ? "assets/images/Practice_Completed_1.webp"
+                                                : pracColor == '2'
+                                                    ? 'assets/images/Practice_Completed_2.webp'
+                                                    : pracColor == '3'
+                                                        ? "assets/images/Practice_Completed_3.webp"
+                                                        : pracColor == '4'
+                                                            ? "assets/images/Practice_Completed_4.webp"
+                                                            : pracColor == '5'
+                                                                ? "assets/images/Practice_Completed_4.webp"
+                                                                : 'assets/images/Practice_Completed_1.webp'),
+                                            fit: BoxFit.contain)),
+                                  ),
                                 ),
                                 Align(
                                   alignment: const Alignment(1.3, 6),
@@ -321,35 +296,41 @@ class _menu_behaviourState extends State<menu_behaviour> {
                             //margin: EdgeInsets.only(bottom: 19),
                             child: Column(
                               children: [
-                                Container(
-                                  width: AppDimensions.height10(context) * 7.0,
-                                  height: AppDimensions.height10(context) * 7.0,
-                                  decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Color(0xffFCC10D),
-                                            Color(0xffFDA210),
-                                          ]),
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  0.3,
-                                          color: Colors.white)),
-                                  child: Center(
-                                      child: GestureDetector(
-                                          onTap: () {},
-                                          child: Image.asset(
-                                            'assets/images/visibility_black_24dp 1.webp',
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.9,
+                                AnimatedScaleButton(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const practice_summary()));
+                                  },
+                                  child: Container(
+                                    width:
+                                        AppDimensions.height10(context) * 7.0,
+                                    height:
+                                        AppDimensions.height10(context) * 7.0,
+                                    decoration: BoxDecoration(
+                                        gradient: const LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Color(0xffFCC10D),
+                                              Color(0xffFDA210),
+                                            ]),
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
                                             width: AppDimensions.height10(
                                                     context) *
-                                                21.9,
-                                          ))),
+                                                0.3,
+                                            color: Colors.white)),
+                                    child: Center(
+                                        child: Image.asset(
+                                      'assets/images/visibility_black_24dp 1.webp',
+                                      height:
+                                          AppDimensions.height10(context) * 2.9,
+                                      width: AppDimensions.height10(context) *
+                                          21.9,
+                                    )),
+                                  ),
                                 ),
                                 Text(
                                   'View/Edit',

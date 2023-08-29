@@ -86,6 +86,9 @@ class _endofSessionState extends State<endofSession> {
         "==============================${prefs.getString('record_date')} ============${prefs.getString('recording_Time1')} =================$selected_date");
     feedback3.text = prefs.getString('endSessionFeedback')!;
     print("=============================Practice num:$prac_num");
+    if (widget.summary == false) {
+      feedback3.clear();
+    }
   }
 
   void recording() {
@@ -126,6 +129,7 @@ class _endofSessionState extends State<endofSession> {
           child: IconButton(
               onPressed: () {
                 Navigator.pop(context);
+                feedback3.clear();
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
@@ -199,25 +203,12 @@ class _endofSessionState extends State<endofSession> {
                                       color: const Color(0xFF007AFF),
                                       child: TextButton(
                                         onPressed: () {
-                                          if (behaviour_route == false) {
-                                            Navigator.pushReplacement(
-                                                context,
-                                                FadePageRoute(
-                                                    page: const dashBoard(
-                                                  saved: false,
-                                                  helpful_tips: false,
-                                                  membership: true,
-                                                  dashboard_ctrl: false,
-                                                  cancel: false,
-                                                  trial: false,
-                                                )));
-                                          } else {
-                                            Navigator.push(
-                                                context,
-                                                FadePageRoute(
-                                                    page: const view_goals(
-                                                        missed: false)));
-                                          }
+                                          Navigator.push(
+                                              context,
+                                              FadePageRoute(
+                                                  page: const view_goals(
+                                                      missed: false)));
+                                          feedback3.clear();
                                         },
                                         child: const Text(
                                           'Close',
@@ -827,6 +818,7 @@ class _endofSessionState extends State<endofSession> {
                                     const SnackBar(
                                         content: Text(
                                             "Recording Added Successfully")));
+                                feedback3.clear();
                                 print('========Done');
                                 Navigator.push(
                                     context,

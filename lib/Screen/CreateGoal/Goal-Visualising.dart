@@ -749,16 +749,21 @@ class _VisualisingState extends State<Visualising> {
                                               ),
                                             ),
                                             Center(
-                                              child: Text(
-                                                "200",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w700,
-                                                  color:
-                                                      const Color(0xFF464646),
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.3,
+                                              child: SizedBox(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    6,
+                                                child: Text(
+                                                  "${visualize[index]['text'].toString().length}/200",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w700,
+                                                    color:
+                                                        const Color(0xFF464646),
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.3,
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -775,7 +780,7 @@ class _VisualisingState extends State<Visualising> {
                                                       0.5,
                                                   left: AppDimensions.height10(
                                                           context) *
-                                                      4.0),
+                                                      0.1),
                                               decoration: BoxDecoration(
                                                   color: const Color(0xFF282828)
                                                       .withOpacity(0.2)),
@@ -835,16 +840,21 @@ class _VisualisingState extends State<Visualising> {
                                               ),
                                             ),
                                             Center(
-                                              child: Text(
-                                                "200",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w700,
-                                                  color:
-                                                      const Color(0xFF464646),
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.3,
+                                              child: SizedBox(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    6,
+                                                child: Text(
+                                                  "${goalVisualising[index]['text'].toString().length}/200",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w700,
+                                                    color:
+                                                        const Color(0xFF464646),
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.3,
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -861,7 +871,7 @@ class _VisualisingState extends State<Visualising> {
                                                       0.5,
                                                   left: AppDimensions.height10(
                                                           context) *
-                                                      4.0),
+                                                      0.1),
                                               decoration: BoxDecoration(
                                                   color: const Color(0xFF282828)
                                                       .withOpacity(0.2)),

@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     ),
                     verticalSpacing(context, 4.4),
                     AnimatedScaleButton(
-                      onTap: () {
+                      onTap: () async {
                         if (widget.login == true) {
                           Navigator.push(
                             context,
@@ -110,6 +110,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               true,
                             ),
                           );
+                          final SharedPreferences prefs = await _prefs;
+                          await prefs.remove('goal_route');
                         } else {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(

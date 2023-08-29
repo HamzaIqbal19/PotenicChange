@@ -173,16 +173,16 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
     super.initState();
     _fetchUserGoal();
     getInspirationRoute();
-    if (widget.data_saved == false) {
-      selectedInActiveIndices.clear();
-      selectedIndices.clear();
-      selectedGoals.clear();
-      multiGoals.clear();
-      allgoalsSelected.clear();
-      setState(() {
-        selectAll = false;
-      });
-    }
+    // if (widget.data_saved == false) {
+    //   selectedInActiveIndices.clear();
+    //   selectedIndices.clear();
+    //   selectedGoals.clear();
+    //   multiGoals.clear();
+    //   allgoalsSelected.clear();
+    //   setState(() {
+    //     selectAll = false;
+    //   });
+    // }
   }
 
   @override

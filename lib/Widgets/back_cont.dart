@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
@@ -66,7 +67,7 @@ class _inner_textState extends State<inner_text> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.height10(context) * 13.0,
+      //height: AppDimensions.height10(context) * 17.0,
       width: AppDimensions.height10(context) * 36.0,
       padding: EdgeInsets.only(
           top: AppDimensions.height10(context) * 1,
@@ -115,7 +116,7 @@ class _inner_textState extends State<inner_text> {
                         showAnimatedDialog(
                           animationType: DialogTransitionType.fadeScale,
                           curve: Curves.easeInOut,
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           context: context,
                           builder: (BuildContext context) => Container(
                             width: AppDimensions.height10(context) * 27.0,
@@ -246,18 +247,24 @@ class _inner_textState extends State<inner_text> {
           //   height: AppDimensions.height10(context) * 0.9,
           // ),
           Container(
-              height: AppDimensions.height10(context) * 6.3,
+              //height: AppDimensions.height10(context) * 6.3,
+              margin: EdgeInsets.only(
+                  top: AppDimensions.height10(context) * 0.5,
+                  bottom: AppDimensions.height10(context)),
               width: AppDimensions.height10(context) * 32.0,
               child: TextFormField(
                 onChanged: widget.onChanged,
                 maxLength: widget.length,
-                maxLines: null,
-                minLines: null,
-                expands: true,
-
+                maxLines: 6,
+                minLines: 3,
+                scrollPadding: EdgeInsets.zero,
+                textAlignVertical: TextAlignVertical.top,
                 decoration: InputDecoration(
+                    isCollapsed: true,
                     contentPadding: EdgeInsets.zero,
                     hintText: widget.placeHolder,
+                    counterText: '',
+                    counterStyle: const TextStyle(height: double.minPositive),
                     hintStyle: TextStyle(
                         height: AppDimensions.height10(context) * 0.15,
                         fontSize: AppDimensions.height10(context) * 1.6,
@@ -267,10 +274,8 @@ class _inner_textState extends State<inner_text> {
                             : _focusNode.hasFocus
                                 ? const Color(0xFFFFFFFF)
                                 : const Color(0xFF828282)),
-                    focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent)),
-                    enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent))),
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none),
 
                 controller: body_text,
                 // maxLines: 4,
