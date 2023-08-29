@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
@@ -18,10 +21,22 @@ class routinecommitment extends StatefulWidget {
 class _routinecommitmentState extends State<routinecommitment> {
   var pracDetails;
   var schedule;
+  bool Loading = true;
+
   @override
   void initState() {
     super.initState();
     _fetchPracticeDetails();
+  }
+
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loading = false;
+    });
   }
 
   void _fetchPracticeDetails() async {
@@ -49,6 +64,7 @@ class _routinecommitmentState extends State<routinecommitment> {
               .compareTo(daysOrder.indexOf(b['day']));
         });
         print(updates);
+        loadData();
 
         print('$pracDetails');
       } else {
@@ -70,39 +86,49 @@ class _routinecommitmentState extends State<routinecommitment> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 13, right: 5, bottom: 5),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.zero,
-              itemCount: updates != null ? updates.length : 0,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.only(
-                    bottom: AppDimensions.height10(context) * 1.0,
+      child: Loading == true
+          ? const Center(
+              child: SpinKitFadingCircle(
+                color: Color(0xFFB1B8FF),
+                size: 80,
+              ),
+            )
+          : SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    padding: EdgeInsets.zero,
+                    itemCount: updates != null ? updates.length : 0,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          bottom: AppDimensions.height10(context) * 1.0,
+                        ),
+                        child: schedule_card(
+                          days: updates[index]['day'],
+                          // endTime: updates[index]['time2'],
+                          startTime: updates
+                              .where((element) =>
+                                  element['day'] == updates[index]['day'])
+                              .toList(),
+                        ),
+                      );
+                    },
                   ),
-                  child: schedule_card(
-                    days: updates[index]['day'],
-                    // endTime: updates[index]['time2'],
-                    startTime: updates[index]['time1'],
-                  ),
-                );
-              },
+                  SizedBox(height: AppDimensions.height10(context) * 0.5),
+                ],
+              ),
             ),
-            SizedBox(height: AppDimensions.height10(context) * 0.5),
-          ],
-        ),
-      ),
     );
   }
 }
 
 class schedule_card extends StatefulWidget {
   final String days;
-  final String startTime;
+  final List<Map<String, dynamic>> startTime;
   // final String endTime;
 
   const schedule_card({
@@ -146,20 +172,30 @@ class _schedule_cardState extends State<schedule_card> {
                       fontSize: 20.0),
                 ),
                 children: <Widget>[
-                  Container(
-                    // color:Colors.orange,
-                    width: AppDimensions.height10(context) * 36.2,
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [
-                        startTimerState(
-                          key: Key("${widget.key}"),
-                          text: ' 1) Time: ',
-                          startTime: widget.startTime,
-                        ),
-                      ],
+                  for (int i = 0;
+                      i < widget.startTime[0].keys.length - 1;
+                      i++) ...[
+                    Container(
+                      // color:Colors.orange,
+                      width: AppDimensions.height10(context) * 36.2,
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Row(
+                        children: [
+                          startTimerState(
+                            key: Key("${widget.key}"),
+                            text: ' ${i + 1}) Time: ',
+                            startTime: widget.startTime[0].values
+                                .elementAt(i + 1)
+                                // .firstWhere(
+                                //     (element) => element['day'] == widget.days)
+                                // .containsKey('time${i + 1}')
+                                .toString(),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                  ]
+
                   // Container(
                   //   // color:Colors.orange,
                   //   width: AppDimensions.height10(context) * 36.2,

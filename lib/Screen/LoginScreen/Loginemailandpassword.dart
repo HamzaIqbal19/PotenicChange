@@ -668,7 +668,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       content:
-                                          Text("User Login Successfully !!")));
+                                          Text("User Login Successfully")));
                             } else if (response["statusCode"] == 401) {
                               setState(() {
                                 Loading = false;

@@ -185,7 +185,7 @@ class _VerificationState extends State<Verification> {
                             children: [
                               const TextSpan(
                                   text:
-                                      "We've sent a 6 digit confirmation code to\n"),
+                                      "We've sent a 4 digit confirmation code to\n"),
                               TextSpan(
                                 text: widget.email,
                                 style: const TextStyle(
@@ -275,7 +275,7 @@ class _VerificationState extends State<Verification> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            "You can request OTP after ",
+                            "You can request a new OTP after ",
                             style: TextStyle(
                                 color: Color(0xFFFBFBFB),
                                 fontSize: 14,
@@ -302,13 +302,14 @@ class _VerificationState extends State<Verification> {
                     combinedValue =
                         controllers.map((controller) => controller.text).join();
                     print(combinedValue);
-                    if (combinedValue != '') {
-                      if (_timerActive == false) {
-                        setState(() {
-                          Loading = true;
-                        });
 
-                        print(combinedValue);
+                    if (_timerActive == false) {
+                      setState(() {
+                        Loading = true;
+                      });
+
+                      print(combinedValue);
+                      if (combinedValue != '') {
                         Authentication()
                             .verifyOtp(int.parse(combinedValue))
                             .then((response) {
@@ -350,33 +351,34 @@ class _VerificationState extends State<Verification> {
                           }
                         });
                       } else {
-                        setState(() {
-                          Loading = true;
-                        });
-                        Authentication()
-                            .passReset(
-                          widget.email,
-                        )
-                            .then((response) {
-                          if (response == true) {
-                            resetTimer();
-                            resetControllers(controllers);
-                            FocusScope.of(context).unfocus();
-                            setState(() {
-                              _timerActive = false;
-                              Loading = false;
-                            });
-                          } else {}
-                        }).catchError((error) {
-                          print("error");
-                        }).whenComplete(() => null);
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                                content: Text(
+                          "Empty OTP.",
+                          style: TextStyle(color: Colors.red),
+                        )));
                       }
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text(
-                        "Empty OTP.",
-                        style: TextStyle(color: Colors.red),
-                      )));
+                      setState(() {
+                        Loading = true;
+                      });
+                      Authentication()
+                          .passReset(
+                        widget.email,
+                      )
+                          .then((response) {
+                        if (response == true) {
+                          resetTimer();
+                          resetControllers(controllers);
+                          FocusScope.of(context).unfocus();
+                          setState(() {
+                            _timerActive = false;
+                            Loading = false;
+                          });
+                        } else {}
+                      }).catchError((error) {
+                        print("error");
+                      }).whenComplete(() => null);
                     }
                   },
                   child: Container(

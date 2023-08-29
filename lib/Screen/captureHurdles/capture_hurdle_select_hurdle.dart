@@ -36,6 +36,16 @@ class _select_hurdleState extends State<select_hurdle> {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
+  Future<Timer> clearData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void clear() {
+    setState(() {
+      selectBox = -1;
+    });
+  }
+
   void onDoneLoading() {
     setState(() {
       Loading = false;
@@ -319,9 +329,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                               child: TextButton(
                                                 onPressed: () async {
                                                   checkHurdle();
-                                                  setState(() {
-                                                    selectBox = -1;
-                                                  });
+
                                                   final SharedPreferences
                                                       prefs = await _prefs;
                                                   var hurdleRoute = prefs
@@ -338,6 +346,11 @@ class _select_hurdleState extends State<select_hurdle> {
                                                       .remove('selected_goals');
                                                   await prefs.remove(
                                                       'hurdle_selected');
+                                                  clearData();
+
+                                                  // setState(() {
+                                                  //   selectBox = -1;
+                                                  // });
                                                 },
                                                 child: const Text(
                                                   'Exit & delete progress',

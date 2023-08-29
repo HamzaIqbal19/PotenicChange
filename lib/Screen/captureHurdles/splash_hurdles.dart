@@ -82,10 +82,10 @@ class hurdles_splashState extends State<hurdles_splash> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      FadePageRoute(page: const landing_hurdles()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   FadePageRoute(page: const landing_hurdles()),
+                    // );
                   },
                   child: Container(
                     width: AppDimensions.height10(context) * 34.3,

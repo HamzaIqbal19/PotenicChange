@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 class cards extends StatelessWidget {
   cards({super.key});
@@ -67,86 +69,132 @@ void termsSheet(context) {
             ),
           ),
 
-          Container(
-              margin: EdgeInsets.only(
-                  top: AppDimensions.height10(context) * 2.0,
-                  left: AppDimensions.height10(context) * 1.8,
-                  right: AppDimensions.height10(context) * 1.8),
-              height: AppDimensions.height10(context) * 6.0,
-              width: AppDimensions.height10(context) * 36.0,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20), color: Colors.white),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                // crossAxisAlignment: CrossAxisAlignment.,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.99),
-                    // color: Colors.amberAccent,
-                    width: AppDimensions.height10(context) * 12.8,
-                    height: AppDimensions.height10(context) * 2.3,
-                    child: Text(
-                      'Terms of use',
-                      style: TextStyle(
-                        color: const Color(0xFF646464),
-                        fontSize: AppDimensions.height10(context) * 1.6,
-                        fontWeight: FontWeight.w500,
+          AnimatedScaleButton(
+            onTap: () {
+              FlutterWebBrowser.openWebPage(
+                url: "https://app.getterms.io/view/XWpOJ/tos/en-au",
+                customTabsOptions: const CustomTabsOptions(
+                  colorScheme: CustomTabsColorScheme.dark,
+                  shareState: CustomTabsShareState.on,
+                  instantAppsEnabled: true,
+                  showTitle: true,
+                  urlBarHidingEnabled: true,
+                ),
+                safariVCOptions: const SafariViewControllerOptions(
+                  barCollapsingEnabled: true,
+                  preferredBarTintColor: Colors.green,
+                  preferredControlTintColor: Colors.amber,
+                  dismissButtonStyle:
+                      SafariViewControllerDismissButtonStyle.close,
+                  modalPresentationCapturesStatusBarAppearance: true,
+                ),
+              );
+            },
+            child: Container(
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 2.0,
+                    left: AppDimensions.height10(context) * 1.8,
+                    right: AppDimensions.height10(context) * 1.8),
+                height: AppDimensions.height10(context) * 6.0,
+                width: AppDimensions.height10(context) * 36.0,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // crossAxisAlignment: CrossAxisAlignment.,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 1.99),
+                      // color: Colors.amberAccent,
+                      width: AppDimensions.height10(context) * 12.8,
+                      height: AppDimensions.height10(context) * 2.3,
+                      child: Text(
+                        'Terms of use',
+                        style: TextStyle(
+                          color: const Color(0xFF646464),
+                          fontSize: AppDimensions.height10(context) * 1.6,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: AppDimensions.height10(context) * 2.4,
-                    height: AppDimensions.height10(context) * 1.3,
-                    margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 2.3),
-                    child: Image.asset(
-                      'assets/images/backbtn.webp',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ],
-              )),
-          Container(
-              margin: EdgeInsets.only(
-                  top: AppDimensions.height10(context) * 1.0,
-                  left: AppDimensions.height10(context) * 1.8,
-                  right: AppDimensions.height10(context) * 1.8),
-              height: AppDimensions.height10(context) * 6.0,
-              width: AppDimensions.height10(context) * 36.0,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20), color: Colors.white),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                // crossAxisAlignment: CrossAxisAlignment.,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.99),
-                    // color: Colors.amberAccent,
-                    width: AppDimensions.height10(context) * 12.8,
-                    height: AppDimensions.height10(context) * 2.3,
-                    child: Text(
-                      'Privacy Policy',
-                      style: TextStyle(
-                        color: const Color(0xFF646464),
-                        fontSize: AppDimensions.height10(context) * 1.6,
-                        fontWeight: FontWeight.w500,
+                    Container(
+                      width: AppDimensions.height10(context) * 2.4,
+                      height: AppDimensions.height10(context) * 1.3,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 2.3),
+                      child: Image.asset(
+                        'assets/images/backbtn.webp',
+                        fit: BoxFit.cover,
                       ),
                     ),
-                  ),
-                  Container(
-                    width: AppDimensions.height10(context) * 2.4,
-                    height: AppDimensions.height10(context) * 1.3,
-                    margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 2.3),
-                    child: Image.asset(
-                      'assets/images/backbtn.webp',
-                      fit: BoxFit.cover,
+                  ],
+                )),
+          ),
+          AnimatedScaleButton(
+            onTap: () {
+              FlutterWebBrowser.openWebPage(
+                url: "https://app.getterms.io/view/XWpOJ/privacy/en-au",
+                customTabsOptions: const CustomTabsOptions(
+                  colorScheme: CustomTabsColorScheme.dark,
+                  shareState: CustomTabsShareState.on,
+                  instantAppsEnabled: true,
+                  showTitle: true,
+                  urlBarHidingEnabled: true,
+                ),
+                safariVCOptions: const SafariViewControllerOptions(
+                  barCollapsingEnabled: true,
+                  preferredBarTintColor: Colors.green,
+                  preferredControlTintColor: Colors.amber,
+                  dismissButtonStyle:
+                      SafariViewControllerDismissButtonStyle.close,
+                  modalPresentationCapturesStatusBarAppearance: true,
+                ),
+              );
+            },
+            child: Container(
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 1.0,
+                    left: AppDimensions.height10(context) * 1.8,
+                    right: AppDimensions.height10(context) * 1.8),
+                height: AppDimensions.height10(context) * 6.0,
+                width: AppDimensions.height10(context) * 36.0,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // crossAxisAlignment: CrossAxisAlignment.,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 1.99),
+                      // color: Colors.amberAccent,
+                      width: AppDimensions.height10(context) * 12.8,
+                      height: AppDimensions.height10(context) * 2.3,
+                      child: Text(
+                        'Privacy Policy',
+                        style: TextStyle(
+                          color: const Color(0xFF646464),
+                          fontSize: AppDimensions.height10(context) * 1.6,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
-                  ),
-                ],
-              )),
+                    Container(
+                      width: AppDimensions.height10(context) * 2.4,
+                      height: AppDimensions.height10(context) * 1.3,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 2.3),
+                      child: Image.asset(
+                        'assets/images/backbtn.webp',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ],
+                )),
+          ),
 
           SizedBox(
             height: AppDimensions.height10(context) * 3.1,

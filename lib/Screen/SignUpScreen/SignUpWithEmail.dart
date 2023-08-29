@@ -15,9 +15,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 class SignUpWithEmail extends StatefulWidget {
   @override
@@ -548,6 +549,39 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     children: <TextSpan>[
                                       TextSpan(
                                           text: 'User Agreement',
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () async {
+                                              FlutterWebBrowser.openWebPage(
+                                                url:
+                                                    "https://app.getterms.io/view/XWpOJ/tos/en-au",
+                                                customTabsOptions:
+                                                    const CustomTabsOptions(
+                                                  colorScheme:
+                                                      CustomTabsColorScheme
+                                                          .dark,
+                                                  shareState:
+                                                      CustomTabsShareState.on,
+                                                  instantAppsEnabled: true,
+                                                  showTitle: true,
+                                                  urlBarHidingEnabled: true,
+                                                ),
+                                                safariVCOptions:
+                                                    const SafariViewControllerOptions(
+                                                  barCollapsingEnabled: true,
+                                                  preferredBarTintColor:
+                                                      Colors.green,
+                                                  preferredControlTintColor:
+                                                      Colors.amber,
+                                                  dismissButtonStyle:
+                                                      SafariViewControllerDismissButtonStyle
+                                                          .close,
+                                                  modalPresentationCapturesStatusBarAppearance:
+                                                      true,
+                                                ),
+                                              );
+
+                                              //FlutterWebBrowser()
+                                            },
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -572,6 +606,37 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
 
                                       TextSpan(
                                           text: 'Privacy Policy',
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () async {
+                                              FlutterWebBrowser.openWebPage(
+                                                url:
+                                                    "https://app.getterms.io/view/XWpOJ/privacy/en-au",
+                                                customTabsOptions:
+                                                    const CustomTabsOptions(
+                                                  colorScheme:
+                                                      CustomTabsColorScheme
+                                                          .dark,
+                                                  shareState:
+                                                      CustomTabsShareState.on,
+                                                  instantAppsEnabled: true,
+                                                  showTitle: true,
+                                                  urlBarHidingEnabled: true,
+                                                ),
+                                                safariVCOptions:
+                                                    const SafariViewControllerOptions(
+                                                  barCollapsingEnabled: true,
+                                                  preferredBarTintColor:
+                                                      Colors.green,
+                                                  preferredControlTintColor:
+                                                      Colors.amber,
+                                                  dismissButtonStyle:
+                                                      SafariViewControllerDismissButtonStyle
+                                                          .close,
+                                                  modalPresentationCapturesStatusBarAppearance:
+                                                      true,
+                                                ),
+                                              );
+                                            },
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,

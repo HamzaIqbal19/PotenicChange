@@ -5,10 +5,13 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Menu&settings/account_deleted.dart';
 import 'package:potenic_app/Screen/Menu&settings/edit_credentials.dart';
 import 'package:potenic_app/Screen/Menu&settings/notifications.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import '../community/community.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -809,23 +812,46 @@ class Settings extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Container(
-                              width: AppDimensions.height10(context) * 33.4,
-                              height: AppDimensions.height10(context) * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  0.1,
-                                          color: colorC))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {},
-                                    child: SizedBox(
+                            AnimatedScaleButton(
+                              onTap: () {
+                                FlutterWebBrowser.openWebPage(
+                                  url:
+                                      "https://app.getterms.io/view/XWpOJ/tos/en-au",
+                                  customTabsOptions: const CustomTabsOptions(
+                                    colorScheme: CustomTabsColorScheme.dark,
+                                    shareState: CustomTabsShareState.on,
+                                    instantAppsEnabled: true,
+                                    showTitle: true,
+                                    urlBarHidingEnabled: true,
+                                  ),
+                                  safariVCOptions:
+                                      const SafariViewControllerOptions(
+                                    barCollapsingEnabled: true,
+                                    preferredBarTintColor: Colors.green,
+                                    preferredControlTintColor: Colors.amber,
+                                    dismissButtonStyle:
+                                        SafariViewControllerDismissButtonStyle
+                                            .close,
+                                    modalPresentationCapturesStatusBarAppearance:
+                                        true,
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 33.4,
+                                height: AppDimensions.height10(context) * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
                                       width: AppDimensions.height10(context) *
                                           20.6,
                                       height:
@@ -840,63 +866,85 @@ class Settings extends StatelessWidget {
                                             color: colorC),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                      width:
-                                          AppDimensions.height10(context) * 2.4,
-                                      height: AppDimensions.height10(context) *
-                                          1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
+                                    SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            2.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.39,
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
                                           fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
+                                        ))
+                                  ],
+                                ),
                               ),
                             ),
-                            SizedBox(
-                              width: AppDimensions.height10(context) * 33.4,
-                              height: AppDimensions.height10(context) * 5.0,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 20.6,
-                                    height:
-                                        AppDimensions.height10(context) * 1.9,
-                                    child: Text(
-                                      'Privacy policy',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: colorC),
-                                    ),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                FlutterWebBrowser.openWebPage(
+                                  url:
+                                      "https://app.getterms.io/view/XWpOJ/privacy/en-au",
+                                  customTabsOptions: const CustomTabsOptions(
+                                    colorScheme: CustomTabsColorScheme.dark,
+                                    shareState: CustomTabsShareState.on,
+                                    instantAppsEnabled: true,
+                                    showTitle: true,
+                                    urlBarHidingEnabled: true,
                                   ),
-                                  SizedBox(
-                                      width:
-                                          AppDimensions.height10(context) * 2.4,
-                                      height: AppDimensions.height10(context) *
-                                          1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
+                                  safariVCOptions:
+                                      const SafariViewControllerOptions(
+                                    barCollapsingEnabled: true,
+                                    preferredBarTintColor: Colors.green,
+                                    preferredControlTintColor: Colors.amber,
+                                    dismissButtonStyle:
+                                        SafariViewControllerDismissButtonStyle
+                                            .close,
+                                    modalPresentationCapturesStatusBarAppearance:
+                                        true,
+                                  ),
+                                );
+                              },
+                              child: SizedBox(
+                                width: AppDimensions.height10(context) * 33.4,
+                                height: AppDimensions.height10(context) * 5.0,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10(context) *
+                                          20.6,
+                                      height:
+                                          AppDimensions.height10(context) * 1.9,
+                                      child: Text(
+                                        'Privacy policy',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            2.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.39,
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
                                           fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
+                                        ))
+                                  ],
+                                ),
                               ),
                             ),
                           ],

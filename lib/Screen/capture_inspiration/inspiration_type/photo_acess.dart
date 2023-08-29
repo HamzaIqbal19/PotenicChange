@@ -789,7 +789,7 @@ class _photo_infoState extends State<photo_info> {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(const SnackBar(
                                                         content: Text(
-                                                            "Title or Inspiration is empty!!")));
+                                                            "Title or Inspiration is empty.")));
                                               }
                                             }
                                           },

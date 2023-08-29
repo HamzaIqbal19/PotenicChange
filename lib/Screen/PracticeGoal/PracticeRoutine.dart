@@ -480,7 +480,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                 schedule_card(
                                   key: Key('$index'),
                                   // days: '${timesPerDay[index]['day']}',
-                                  days: '${selectedDay[index]}',
+                                  days: selectedDay[index],
 
                                   startTime: "${timesPerDay[index]['time1']}",
                                   endTime: "${timesPerDay[index]['time2']}",
@@ -489,11 +489,30 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                     //  print(timesPerDay[index]['day']);
                                     print(
                                         "Start index printing${timesPerDay[index]}");
-
-                                    setState(() {
-                                      timesPerDay[index]['time1'] = value;
-                                      index1 = index;
-                                    });
+                                    if (value.value2 == 1) {
+                                      setState(() {
+                                        timesPerDay[index]['time1'] =
+                                            value.value1;
+                                        index1 = index;
+                                      });
+                                    } else if (value.value2 <= 9) {
+                                      Map<String, dynamic> DayMap =
+                                          timesPerDay.firstWhere(
+                                        (map) =>
+                                            map['day'] == selectedDay[index],
+                                      );
+                                      DayMap['time${value.value2}'] =
+                                          value.value1;
+                                      // timesPerDay.where((element) =>
+                                      //     timesPerDay[index]['day'] ==
+                                      //     selectedDay[index]);
+                                    } else {
+                                      print('Max per day limit reached');
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  "Practice routine in limited to 10 sessions par day.")));
+                                    }
                                   },
                                   // onChangedEnd: (value) {
                                   //   print(value);
@@ -536,13 +555,41 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                   expansion: false,
                                   onDelete: (value) {
                                     print(selectedDays);
-                                    selectedDays.removeWhere((element) =>
-                                        element['day'] == selectedDay[index]);
+                                    if (value.value3 >= 1) {
+                                      int ind = selectedDays.indexWhere(
+                                          (element) =>
+                                              element['day'] ==
+                                              selectedDay[index]);
+
+                                      selectedDays[ind]
+                                          .remove('time${value.value2}');
+
+                                      for (int i = value.value2 + 1;
+                                          i <= selectedDays[ind].length;
+                                          i++) {
+                                        String currentTimeKey = 'time$i';
+                                        if (selectedDays[ind]
+                                            .containsKey(currentTimeKey)) {
+                                          selectedDays[ind]['time${i - 1}'] =
+                                              selectedDays[ind][currentTimeKey];
+                                          selectedDays[ind]
+                                              .remove(currentTimeKey);
+                                        }
+                                      }
+                                    } else {
+                                      selectedDays.removeWhere((element) =>
+                                          element['day'] == selectedDay[index]);
+                                      setState(() {
+                                        Count = Count - 1;
+                                      });
+                                    }
+
                                     print(selectedDays);
                                     setState(() {
-                                      Count = value;
+                                      //Count = value.value1;
                                       index1 = index;
                                     });
+                                    print(Count);
                                   },
                                 ),
                                 SizedBox(

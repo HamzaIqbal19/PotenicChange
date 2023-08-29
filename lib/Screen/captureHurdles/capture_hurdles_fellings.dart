@@ -406,6 +406,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                       .remove('selected_goals');
                                                   await prefs
                                                       .remove('feelingsList');
+                                                  await prefs.remove(
+                                                      "hurdle_selected");
                                                 },
                                                 child: const Text(
                                                   'Exit & delete progress',
@@ -790,6 +792,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                 await prefs.remove('hurdleId');
                                 await prefs.remove('selected_goals');
                                 await prefs.remove('feelingsList');
+                                await prefs.remove("hurdle_selected");
                               }
                               final SharedPreferences prefs = await _prefs;
                               var userHurdleId = prefs.setInt(

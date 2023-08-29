@@ -35,7 +35,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
   void _getHurdleName() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
-      hurdleName = prefs.getString('hurdleName');
+      hurdleName = prefs.getString('NameHurdle');
     });
     print(hurdleName);
   }
@@ -319,6 +319,8 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                                       .remove('hurdleId');
                                                   await prefs
                                                       .remove('selected_goals');
+                                                  await prefs.remove(
+                                                      "hurdle_selected");
                                                 },
                                                 child: const Text(
                                                   'Exit & delete progress',
@@ -426,7 +428,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                         'assets/images/black_hole.webp'))),
                             child: Center(
                               child: Text(
-                                capitalizeFirstLetter(hurdleName!),
+                                hurdleName.toString(),
                                 textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,

@@ -142,13 +142,13 @@ class _resetState extends State<reset> {
                                             bottom: AppDimensions.height10(
                                                     context) *
                                                 0.5),
-                                        width: AppDimensions.height10(context) *
-                                            6.3,
+                                        // width: AppDimensions.height10(context) *
+                                        //     6.3,
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.7,
                                         child: Text(
-                                          "Password",
+                                          "New Password",
                                           style: TextStyle(
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFF282828),
@@ -308,7 +308,7 @@ class _resetState extends State<reset> {
                                             AppDimensions.height10(context) *
                                                 1.7,
                                         child: Text(
-                                          "Confirm Password",
+                                          "Confirm New Password",
                                           style: TextStyle(
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFF282828),

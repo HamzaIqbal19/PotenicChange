@@ -83,7 +83,7 @@ class _endofSessionState extends State<endofSession> {
       selected_date = prefs.getString('record_date') ?? "2023:08:12";
     });
     print(
-        "==============================${prefs.getString('record_date')} ============${prefs.getString('recording_Time1')}");
+        "==============================${prefs.getString('record_date')} ============${prefs.getString('recording_Time1')} =================$selected_date");
     feedback3.text = prefs.getString('endSessionFeedback')!;
     print("=============================Practice num:$prac_num");
   }
@@ -817,9 +817,7 @@ class _endofSessionState extends State<endofSession> {
                               '$sessionEnd',
                               prac_num,
                               timeSlot.toString(),
-                              selected_date.toString().isEmpty
-                                  ? '2023-08-08'
-                                  : selected_date.toString(),
+                              selected_date,
                             )
                                 .then((response) {
                               if (response == true) {
@@ -828,7 +826,7 @@ class _endofSessionState extends State<endofSession> {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                         content: Text(
-                                            "Recording Added Successfully!!")));
+                                            "Recording Added Successfully")));
                                 print('========Done');
                                 Navigator.push(
                                     context,

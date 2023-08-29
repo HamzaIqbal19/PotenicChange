@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -9,6 +10,7 @@ import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
+import 'package:potenic_app/Widgets/DateTimeBottomSheet.dart';
 
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -25,6 +27,8 @@ class PracticeRoutineEdit extends StatefulWidget {
   State<PracticeRoutineEdit> createState() => _PracticeRoutineEditState();
 }
 
+int count = 0;
+
 class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
   bool buttonActive = false;
   int Count = 0;
@@ -37,15 +41,31 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
   var color;
   var pracColor;
   var visualize;
+  int num = 0;
+  //final ValueKey<AdvanceExpansionTileState> _globalKeyNew =  ValueKey(Key(value));
 
   List<Map<String, dynamic>> timesPerDay = [
-    {'day': 'Monday', 'time1': '9:00 am'},
-    {'day': 'Tuesday', 'time1': '9:00 am'},
-    {'day': 'Wednesday', 'time1': '9:00 am'},
-    {'day': 'Thursday', 'time1': '9:00 am'},
-    {'day': 'Friday', 'time1': '9:00 am'},
-    {'day': 'Saturday', 'time1': '9:00 am'},
-    {'day': 'Sunday', 'time1': '9:00 am'}
+    {
+      'day': 'Monday',
+    },
+    {
+      'day': 'Tuesday',
+    },
+    {
+      'day': 'Wednesday',
+    },
+    {
+      'day': 'Thursday',
+    },
+    {
+      'day': 'Friday',
+    },
+    {
+      'day': 'Saturday',
+    },
+    {
+      'day': 'Sunday',
+    }
   ];
   List<String> selectedDay = [
     'Monday',
@@ -68,7 +88,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
         });
 
         replaceItems(schedule, timesPerDay);
-        mapItems(schedule, updates);
+        // mapItems(schedule, updates);
         loadData();
         print("---------------------------------");
         print("response123:$pracName");
@@ -311,108 +331,321 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             ListView.builder(
-                                itemCount: timesPerDay.length,
+                                itemCount: selectedDay.length,
                                 shrinkWrap: true,
                                 padding: EdgeInsets.zero,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: ((context, index) {
                                   return Column(
                                     children: [
-                                      schedule_card(
-                                        key: Key('$index'),
-                                        onDelete: (value) {
-                                          setState(() {
-                                            Count = value;
-                                            index1 = index;
-                                          });
-                                          timesPerDay.removeAt(index);
-                                        },
-                                        // days: '${timesPerDay[index]['day']}',
-                                        days: '${selectedDay[index]}',
+                                      Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              border: Border.all(
+                                                  color: Colors.white,
+                                                  width: 2),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.5),
+                                                  blurRadius: 10,
+                                                  spreadRadius:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.2,
+                                                  offset: Offset(
+                                                      0,
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.4), // Shadow position
+                                                ),
+                                              ],
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                      Radius.circular(18))),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                child: AdvanceExpansionTile(
+                                                  key: const Key('expand'),
+                                                  maintainState: true,
+                                                  initiallyExpanded: true,
+                                                  onExpansionChanged:
+                                                      (expanded) {
+                                                    if (expanded) {
+                                                      setState(() {
+                                                        count = count + 1;
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        count = count - 1;
+                                                      });
 
-                                        startTime:
-                                            "${timesPerDay[index]['time1']}",
-                                        endTime:
-                                            "${timesPerDay[index]['time2']}",
-                                        onChangedStart: (value) {
-                                          print(value);
-                                          //  print(timesPerDay[index]['day']);
-                                          print(
-                                              "Start index printing${timesPerDay[index]}");
+                                                      // num = 0;
+                                                    }
+                                                  },
+                                                  disabled: true,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                    shape: BoxShape.rectangle,
+                                                  ),
+                                                  trailing: Container(
+                                                      height: 32.5,
+                                                      width: 32.5,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: Color.fromRGBO(
+                                                            250, 153, 52, 1),
+                                                      ),
+                                                      child:
+                                                          FloatingActionButton(
+                                                              elevation: 0,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              child: const Icon(
+                                                                Icons.add,
+                                                                color: Colors
+                                                                    .white,
+                                                                size: 30,
+                                                              ),
+                                                              onPressed: () {
+                                                                showModalBottomSheet(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return MyListWheelForm(
+                                                                      key: Key(
+                                                                          "${widget.key}"),
+                                                                      onSelectionChanged: (selectedDay,
+                                                                          selectedHour,
+                                                                          selectedMinute,
+                                                                          selectedPeriod,
+                                                                          Done) {
+                                                                        setState(
+                                                                            () async {
+                                                                          if (Done) {
+                                                                            //selectedDays.add(days_name);
+                                                                            // _globalKey.currentState?.expand();
 
-                                          setState(() {
-                                            timesPerDay[index]['time1'] = value;
-                                            index1 = index;
-                                          });
+                                                                            setState(() {
+                                                                              // num = num + 1;
+                                                                              //   start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                                                            });
 
-                                          bool isAlreadySelected = updates
-                                              .contains(timesPerDay[index]);
+                                                                            // final SharedPreferences prefs =
+                                                                            //     await _prefs;
+                                                                            // var Start_Time = prefs.setString(
+                                                                            //     'startTime', '$start_time');
+                                                                            // var End_Time = prefs.setString(
+                                                                            //     'endTime', '$end_time');
 
-                                          // Add the selected day to selectedDays list based on the index
-                                          if (isAlreadySelected) {
-                                            print(
-                                                "The list is alredy exist in object");
-                                            updates[index]['time1'] = value;
-                                          } else {
-                                            updates.add(timesPerDay[index]);
-                                            print(updates);
+                                                                            Done =
+                                                                                Done;
+                                                                            print("Done:$Done");
+                                                                            if (Done ==
+                                                                                true) {
+                                                                              // _globalKey.currentState?.expand();
+                                                                              String start_time = '';
+                                                                              print("$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}");
+                                                                              setState(() {
+                                                                                start_time = "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
+                                                                              });
+                                                                              timesPerDay[index]['time${timesPerDay[index].keys.length}'] = start_time;
+                                                                              print(timesPerDay);
 
-                                            print("counter incress: $Count");
-                                          }
-                                        },
-                                        // onChangedEnd: (value) {
-                                        //   print(value);
-                                        //   print(
-                                        //       "End index printing${timesPerDay[index]}");
+                                                                              // times.add(start_time);
+                                                                              //// print(times);
+                                                                              // TwoValues<String, int> values = TwoValues<String, int>(start_time, num);
+                                                                              // widget.onChangedStart(values);
+                                                                              // onCountChanged(count);
+                                                                              // _globalKey.currentState?.expand();
+                                                                              Navigator.pop(context);
+                                                                            }
+                                                                          }
+                                                                          // day = selectedDay;
+                                                                          // hour = selectedHour;
+                                                                          // minute = selectedMinute;
+                                                                          // endday = selectedDay;
+                                                                          // endhour = selectedHour;
 
-                                        //   setState(() {
-                                        //     timesPerDay[index]['time2'] = value;
+                                                                          // period = selectedPeriod;
+                                                                          // endperiod = selectedPeriod;
+                                                                        });
+                                                                      },
+                                                                    );
+                                                                  },
+                                                                  isScrollControlled:
+                                                                      true,
+                                                                  shape:
+                                                                      const RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .vertical(
+                                                                      top: Radius
+                                                                          .circular(
+                                                                              16),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              })),
+                                                  title: Text(
+                                                    selectedDay[index],
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            67, 114, 150, 1),
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 20.0),
+                                                  ),
+                                                  children: <Widget>[
+                                                    for (int i = 0;
+                                                        i <
+                                                                timesPerDay[index]
+                                                                        .keys
+                                                                        .length -
+                                                                    1 &&
+                                                            i <= 9;
+                                                        i++) ...[
+                                                      Container(
+                                                        // color:Colors.orange,
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            38.2,
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                bottom: 10),
+                                                        child: Row(
+                                                          children: [
+                                                            startTimerState(
+                                                              key: Key(
+                                                                  "$widget.key"),
+                                                              text:
+                                                                  ' ${i + 1}) Time: ',
+                                                              start_Time:
+                                                                  timesPerDay[
+                                                                          index]
+                                                                      .values
+                                                                      .elementAt(
+                                                                          i + 1),
+                                                              onChanged:
+                                                                  (value) {
+                                                                setState(() {
+                                                                  // start_time = value;
+                                                                });
+                                                              },
+                                                              onChangedStart:
+                                                                  (value) {
+                                                                Map<String,
+                                                                        dynamic>
+                                                                    DayMap =
+                                                                    timesPerDay
+                                                                        .firstWhere(
+                                                                  (map) =>
+                                                                      map['day'] ==
+                                                                      selectedDay[
+                                                                          index],
+                                                                );
+                                                                DayMap['time${i + 1}'] =
+                                                                    value;
+                                                                setState(() {
+                                                                  //  start_time = value;
+                                                                });
+                                                                //times[i] = start_time;
+                                                              },
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      left:
+                                                                          8.0),
+                                                              child: Container(
+                                                                  height: 37,
+                                                                  width: 37,
+                                                                  decoration:
+                                                                      const BoxDecoration(
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                    color: Color
+                                                                        .fromRGBO(
+                                                                            0,
+                                                                            0,
+                                                                            0,
+                                                                            0.1),
+                                                                  ),
+                                                                  child:
+                                                                      FloatingActionButton(
+                                                                    elevation:
+                                                                        0,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(i);
 
-                                        //     index1 = index;
-                                        //   });
+                                                                      timesPerDay[
+                                                                              index]
+                                                                          .remove(
+                                                                              'time${i + 1}');
 
-                                        //   bool isAlreadySelected = updates
-                                        //       .contains(timesPerDay[index]);
-                                        //   print('2');
-                                        //   // Add the selected day to selectedDays list based on the index
-                                        //   if (isAlreadySelected) {
-                                        //     print(
-                                        //         "The list is alredy exist in object");
-                                        //     updates[index]['time2'] = value;
-                                        //   } else {
-                                        //     updates.add(timesPerDay[index]);
-                                        //     print(updates);
-                                        //   }
-                                        // },
-                                        onCountChanged: (value) {
-                                          // Clear the existing selectedDays list
-                                          // selectedDays.clear();
-                                          bool isAlreadySelected = updates
-                                              .contains(timesPerDay[index]);
+                                                                      for (int y = i +
+                                                                              1;
+                                                                          y <=
+                                                                              timesPerDay[index].keys.length;
+                                                                          y++) {
+                                                                        String
+                                                                            currentTimeKey =
+                                                                            'time${y}';
+                                                                        if (timesPerDay[index]
+                                                                            .containsKey(currentTimeKey)) {
+                                                                          timesPerDay[index]
+                                                                              [
+                                                                              'time${y - 1}'] = timesPerDay[
+                                                                                  index]
+                                                                              [
+                                                                              currentTimeKey];
+                                                                          timesPerDay[index]
+                                                                              .remove(currentTimeKey);
+                                                                        }
+                                                                      }
+                                                                      setState(
+                                                                          () {});
 
-                                          // Add the selected day to selectedDays list based on the index
-                                          if (isAlreadySelected) {
-                                            print(
-                                                "The list is alredy exist in object");
-                                            // If it's already selected, remove it from the list
-                                            // selectedDays.remove(timesPerDay[index]);
-                                          } else {
-                                            // If it's not already selected, add it to the list
-                                            updates.add(timesPerDay[index]);
-                                            print(updates);
-                                            setState(() {
-                                              Count = value;
-                                              index1 = index;
-                                            });
+                                                                      print(
+                                                                          'removes last');
 
-                                            print("counter incress: $Count");
-                                          }
-
-                                          print('Selected Days:');
-                                          print(updates);
-                                        },
-                                        expansion: true,
-                                      ),
+                                                                      print(
+                                                                          timesPerDay);
+                                                                      print(
+                                                                          'removes key');
+                                                                    },
+                                                                    child:
+                                                                        const Icon(
+                                                                      Icons
+                                                                          .delete,
+                                                                      color: Colors
+                                                                          .black,
+                                                                      size: 15,
+                                                                    ),
+                                                                  )),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ]
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          )),
                                       SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
@@ -600,6 +833,13 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                               children: [
                                 AnimatedScaleButton(
                                   onTap: () async {
+                                    for (int i = 0;
+                                        i < timesPerDay.length;
+                                        i++) {
+                                      if (timesPerDay[i].keys.length > 1) {
+                                        updates.add(timesPerDay[i]);
+                                      }
+                                    }
                                     print(updates);
 
                                     PracticeGoalApi()
@@ -621,7 +861,6 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                         // Hide loader when the API call completes
                                       });
                                     });
-                                    ;
 
                                     print(
                                         "===================SelectedDays$updates");

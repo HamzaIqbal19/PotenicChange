@@ -11,14 +11,30 @@ import 'package:shared_preferences/shared_preferences.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 int count = 0;
 
+class TwoValues<T1, T2> {
+  final T1 value1;
+  final T2 value2;
+
+  TwoValues(this.value1, this.value2);
+}
+
+class ThreeValues<T1, T2, T3> {
+  final T1 value1;
+  final T2 value2;
+  final T3 value3;
+
+  ThreeValues(this.value1, this.value2, this.value3);
+}
+
 class schedule_card extends StatefulWidget {
   final String days;
   String startTime;
   String endTime;
   final bool expansion;
   final ValueChanged<int> onCountChanged;
-  final ValueChanged<String> onChangedStart;
-  final ValueChanged<int> onDelete;
+
+  final ValueChanged<TwoValues<String, int>> onChangedStart;
+  final ValueChanged<ThreeValues<int, int, int>> onDelete;
   // final ValueChanged<String> onChangedEnd;
 
   schedule_card(
@@ -43,6 +59,8 @@ class schedule_card extends StatefulWidget {
 class _schedule_cardState extends State<schedule_card> {
   String? minutes;
   String? hours;
+  int num = 0;
+  List<String> times = [];
 
   List<String> selectedDays = []; // Declare the selectedDays list here
 
@@ -129,9 +147,15 @@ class _schedule_cardState extends State<schedule_card> {
                 initiallyExpanded: widget.expansion,
                 onExpansionChanged: (expanded) {
                   if (expanded) {
-                    count = count + 1;
+                    setState(() {
+                      count = count + 1;
+                    });
                   } else {
-                    count = count - 1;
+                    setState(() {
+                      count = count - 1;
+                    });
+
+                    // num = 0;
                   }
                 },
                 disabled: true,
@@ -169,9 +193,10 @@ class _schedule_cardState extends State<schedule_card> {
                                       setState(() async {
                                         if (Done) {
                                           selectedDays.add(days_name);
-                                          _globalKey.currentState?.expand();
+                                          // _globalKey.currentState?.expand();
 
                                           setState(() {
+                                            num = num + 1;
                                             start_time =
                                                 "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
                                           });
@@ -188,20 +213,20 @@ class _schedule_cardState extends State<schedule_card> {
                                           if (Done == true) {
                                             _globalKey.currentState?.expand();
                                             setState(() {
-                                              setState(() {
-                                                start_time =
-                                                    "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
-                                              });
-                                              widget.onChangedStart(start_time);
+                                              start_time =
+                                                  "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                                             });
-                                            // onChangedStart(start_time);
-
+                                            times.add(start_time);
+                                            print(times);
+                                            TwoValues<String, int> values =
+                                                TwoValues<String, int>(
+                                                    start_time, num);
+                                            widget.onChangedStart(values);
                                             onCountChanged(count);
                                             _globalKey.currentState?.expand();
                                             Navigator.pop(context);
                                           }
                                         }
-                                        // date.hour.toString();
                                         day = selectedDay;
                                         hour = selectedHour;
                                         minute = selectedMinute;
@@ -211,7 +236,6 @@ class _schedule_cardState extends State<schedule_card> {
                                         period = selectedPeriod;
                                         endperiod = selectedPeriod;
                                       });
-                                      //_globalKey.currentState?.collapse();
                                     },
                                   );
                                 },
@@ -231,55 +255,74 @@ class _schedule_cardState extends State<schedule_card> {
                       fontSize: 20.0),
                 ),
                 children: <Widget>[
-                  Container(
-                    // color:Colors.orange,
-                    width: AppDimensions.height10(context) * 38.2,
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [
-                        startTimerState(
-                          key: Key("$widget.key"),
-                          text: ' 1) Time: ',
-                          start_Time: widget.startTime,
-                          onChanged: (value) {
-                            setState(() {
-                              start_time = value;
-                            });
-                            widget.onChangedStart(value);
-                          },
-                          onChangedStart: (String value) {
-                            setState(() {
-                              start_time = value;
-                            });
-                          },
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: Container(
-                              height: 37,
-                              width: 37,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color.fromRGBO(0, 0, 0, 0.1),
-                              ),
-                              child: FloatingActionButton(
-                                elevation: 0,
-                                backgroundColor: Colors.transparent,
-                                onPressed: () {
-                                  _globalKey.currentState?.collapse();
+                  for (int i = 0; i < num && i <= 9; i++) ...[
+                    Container(
+                      // color:Colors.orange,
+                      width: AppDimensions.height10(context) * 38.2,
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Row(
+                        children: [
+                          startTimerState(
+                            key: Key("$widget.key"),
+                            text: ' $num) Time: ',
+                            start_Time: times[i],
+                            onChanged: (value) {
+                              setState(() {
+                                start_time = value;
+                              });
+                              times[i] = start_time;
+                              TwoValues<String, int> values =
+                                  TwoValues<String, int>(value, num);
 
-                                  widget.onDelete(count);
-                                },
-                                child: const Icon(
-                                  Icons.delete,
-                                  color: Colors.black,
-                                  size: 15,
+                              widget.onChangedStart(values);
+                            },
+                            onChangedStart: (String value) {
+                              setState(() {
+                                start_time = value;
+                              });
+                              times[i] = start_time;
+                            },
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Container(
+                                height: 37,
+                                width: 37,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color.fromRGBO(0, 0, 0, 0.1),
                                 ),
-                              )),
-                        )
-                      ],
+                                child: FloatingActionButton(
+                                  elevation: 0,
+                                  backgroundColor: Colors.transparent,
+                                  onPressed: () {
+                                    print(count);
+                                    if (num == 0) {
+                                      _globalKey.currentState?.collapse();
+                                    } else {
+                                      times.removeAt(i);
+                                      num = num - 1;
+                                    }
+
+                                    ThreeValues<int, int, int> values =
+                                        ThreeValues<int, int, int>(
+                                            count, i, num);
+
+                                    // TwoValues<int, int> values =
+                                    //     TwoValues<int, int>(count, i);
+                                    widget.onDelete(values);
+                                  },
+                                  child: const Icon(
+                                    Icons.delete,
+                                    color: Colors.black,
+                                    size: 15,
+                                  ),
+                                )),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
+                  ]
 
                   // Container(
                   //   width: AppDimensions.height10(context) * 38.2,

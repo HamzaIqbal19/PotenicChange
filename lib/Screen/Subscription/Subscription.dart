@@ -2,9 +2,10 @@ import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
-
+import 'package:flutter/gestures.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 class Subscription extends StatefulWidget {
   const Subscription({super.key});
@@ -1859,17 +1860,77 @@ class _SubscriptionState extends State<Subscription>
                                           fontFamily: 'laila',
                                           // height: AppDimensions.height10(context) * 0.15,
                                           color: const Color(0xFF437296)),
-                                      children: const [
-                                    TextSpan(text: 'Read our '),
+                                      children: [
+                                    const TextSpan(text: 'Read our '),
                                     TextSpan(
                                         text: 'Terms of service',
-                                        style: TextStyle(
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () async {
+                                            FlutterWebBrowser.openWebPage(
+                                              url:
+                                                  "https://app.getterms.io/view/XWpOJ/tos/en-au",
+                                              customTabsOptions:
+                                                  const CustomTabsOptions(
+                                                colorScheme:
+                                                    CustomTabsColorScheme.dark,
+                                                shareState:
+                                                    CustomTabsShareState.on,
+                                                instantAppsEnabled: true,
+                                                showTitle: true,
+                                                urlBarHidingEnabled: true,
+                                              ),
+                                              safariVCOptions:
+                                                  const SafariViewControllerOptions(
+                                                barCollapsingEnabled: true,
+                                                preferredBarTintColor:
+                                                    Colors.green,
+                                                preferredControlTintColor:
+                                                    Colors.amber,
+                                                dismissButtonStyle:
+                                                    SafariViewControllerDismissButtonStyle
+                                                        .close,
+                                                modalPresentationCapturesStatusBarAppearance:
+                                                    true,
+                                              ),
+                                            );
+                                          },
+                                        style: const TextStyle(
                                             decoration:
                                                 TextDecoration.underline)),
-                                    TextSpan(text: ' and '),
+                                    const TextSpan(text: ' and '),
                                     TextSpan(
                                         text: 'Privacy policy',
-                                        style: TextStyle(
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () async {
+                                            FlutterWebBrowser.openWebPage(
+                                              url:
+                                                  "https://app.getterms.io/view/XWpOJ/privacy/en-au",
+                                              customTabsOptions:
+                                                  const CustomTabsOptions(
+                                                colorScheme:
+                                                    CustomTabsColorScheme.dark,
+                                                shareState:
+                                                    CustomTabsShareState.on,
+                                                instantAppsEnabled: true,
+                                                showTitle: true,
+                                                urlBarHidingEnabled: true,
+                                              ),
+                                              safariVCOptions:
+                                                  const SafariViewControllerOptions(
+                                                barCollapsingEnabled: true,
+                                                preferredBarTintColor:
+                                                    Colors.green,
+                                                preferredControlTintColor:
+                                                    Colors.amber,
+                                                dismissButtonStyle:
+                                                    SafariViewControllerDismissButtonStyle
+                                                        .close,
+                                                modalPresentationCapturesStatusBarAppearance:
+                                                    true,
+                                              ),
+                                            );
+                                          },
+                                        style: const TextStyle(
                                             decoration:
                                                 TextDecoration.underline))
                                   ])),

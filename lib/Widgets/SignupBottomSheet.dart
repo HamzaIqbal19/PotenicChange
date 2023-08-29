@@ -83,7 +83,7 @@ void signupSheet(context, String ButtonName, String Route) {
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
                                     content: Text(
-                              "There are no active goals !!",
+                              "There are no active goals ",
                               style: TextStyle(color: Colors.red),
                             )));
                           }

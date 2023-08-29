@@ -322,7 +322,7 @@ class _StarReviewState extends State<StarReview> {
                         ),
                         Container(
                             width: AppDimensions.height10(context) * 38.2,
-                            height: AppDimensions.height10(context) * 40.6,
+                            //height: AppDimensions.height10(context) * 40.6,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 border: Border.all(
@@ -335,8 +335,8 @@ class _StarReviewState extends State<StarReview> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height:
-                                      AppDimensions.height10(context) * 39.5,
+                                  // height:
+                                  //     AppDimensions.height10(context) * 39.5,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -444,15 +444,18 @@ class _StarReviewState extends State<StarReview> {
                                                 2.3,
                                       ),
                                       Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                8.9,
                                         width: AppDimensions.height10(context) *
                                             36.0,
                                         padding: EdgeInsets.only(
-                                          top: AppDimensions.height10(context) *
-                                              1.3,
-                                        ),
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
+                                            bottom: 1,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                2,
+                                            right: AppDimensions.height10(
+                                                context)),
                                         decoration: BoxDecoration(
                                             gradient: _focusNode.hasFocus
                                                 ? const LinearGradient(
@@ -460,7 +463,7 @@ class _StarReviewState extends State<StarReview> {
                                                     end: Alignment.bottomCenter,
                                                     colors: [
                                                         Color(0xFFEFBEB2),
-                                                        Color(0xFFFEAA897)
+                                                        Color(0xFFEAA897)
                                                       ])
                                                 : const LinearGradient(
                                                     begin: Alignment.topCenter,
@@ -484,37 +487,27 @@ class _StarReviewState extends State<StarReview> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    3.6,
-                                                margin: EdgeInsets.only(
-                                                    left:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            2.0),
-                                                // width: AppDimensions.height10(
-                                                //         context) *
-                                                //     26.9,
-                                                child: Text(
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    goalName != null
-                                                        ? "$goalName"
-                                                        : "Control my anger",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: _focusNode.hasFocus
-                                                          ? const Color(
-                                                              0xFFFFFFFF)
-                                                          : const Color(
-                                                              0xFFFFFFFF),
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
+                                            Text(
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                                goalName != null
+                                                    ? "$goalName"
+                                                    : "Control my anger",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  color: _focusNode.hasFocus
+                                                      ? const Color(0xFFFFFFFF)
+                                                      : const Color(0xFFFFFFFF),
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           2.2,
-                                                    ))),
+                                                )),
+                                            SizedBox(
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  2,
+                                            )
                                           ],
                                         ),
                                       ),
@@ -1075,6 +1068,11 @@ class _StarReviewState extends State<StarReview> {
                                             ),
                                           ],
                                         ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.0,
                                       ),
                                     ],
                                   ),

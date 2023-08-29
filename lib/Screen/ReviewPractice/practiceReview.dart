@@ -108,7 +108,7 @@ class _PracticeReviewState extends State<PracticeReview> {
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
-        print("---------------------------------");
+        print("--------------------------------$response");
         setState(() {
           pracName = response["name"];
           reminder = response["reminder"];
@@ -136,7 +136,6 @@ class _PracticeReviewState extends State<PracticeReview> {
 
   @override
   Widget build(BuildContext context) {
-    print("Reminder========> $reminder");
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -304,7 +303,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                   width: AppDimensions.height10(context) * 20.6,
                                   height: AppDimensions.height10(context) * 2.4,
                                   child: Text(
-                                    pracName,
+                                    pracName.toString(),
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                         overflow: TextOverflow.ellipsis,
@@ -1710,19 +1709,19 @@ class _inner_text1State extends State<inner_text1> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.height10(context) * 8.9,
+      //height: AppDimensions.height10(context) * 8.9,
       width: AppDimensions.height10(context) * 36.0,
       padding: EdgeInsets.only(
-          top: AppDimensions.height10(context) * 2,
+          top: AppDimensions.height10(context) * 1.3,
           bottom: 1,
-          left: AppDimensions.height10(context),
-          right: AppDimensions.height10(context) * 6.0),
+          left: AppDimensions.height10(context) * 2,
+          right: AppDimensions.height10(context)),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
               ? const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Color(0xFFEFBEB2), Color(0xFFFEAA897)])
+                  colors: [Color(0xFFEFBEB2), Color(0xFFEAA897)])
               : const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -1734,11 +1733,13 @@ class _inner_text1State extends State<inner_text1> {
               Radius.circular(AppDimensions.height10(context) * 1.8))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-              height: AppDimensions.height10(context) * 3.6,
+              //height: AppDimensions.height10(context) * 3.6,
               width: AppDimensions.height10(context) * 26.9,
               child: Text(
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   "${widget.circle_text}",
                   style: TextStyle(
@@ -1748,6 +1749,9 @@ class _inner_text1State extends State<inner_text1> {
                         : const Color(0xFFFFFFFF),
                     fontSize: AppDimensions.height10(context) * 2.2,
                   ))),
+          SizedBox(
+            height: AppDimensions.height10(context),
+          )
         ],
       ),
     );

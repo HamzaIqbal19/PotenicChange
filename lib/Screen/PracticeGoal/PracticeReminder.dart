@@ -1281,7 +1281,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(const SnackBar(
                                                 content: Text(
-                                                    "Practice Added Successfully!!")));
+                                                    "Practice Added Successfully")));
                                         print('========Done');
                                         if (route == 'view_all_goals') {
                                           Navigator.pushReplacement(

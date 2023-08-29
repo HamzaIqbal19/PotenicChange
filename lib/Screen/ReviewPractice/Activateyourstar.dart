@@ -5,6 +5,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/review_habits_dashboard/dashboard.dart';
 import 'package:potenic_app/Screen/ReviewPractice/loader/activateStar_shimmer.dart';
@@ -343,14 +344,8 @@ class _ActivateStarState extends State<ActivateStar> {
                                         FadePageRoute2(
                                           true,
                                           exitPage: const ActivateStar(),
-                                          enterPage: const dashBoard(
-                                            saved: false,
-                                            helpful_tips: false,
-                                            membership: true,
-                                            dashboard_ctrl: false,
-                                            cancel: false,
-                                            trial: false,
-                                          ),
+                                          enterPage:
+                                              const view_goals(missed: false),
                                         ),
                                       );
                                     } else if (response == 400) {
@@ -360,14 +355,8 @@ class _ActivateStarState extends State<ActivateStar> {
                                         FadePageRoute2(
                                           true,
                                           exitPage: const ActivateStar(),
-                                          enterPage: const dashBoard(
-                                            saved: false,
-                                            helpful_tips: false,
-                                            membership: true,
-                                            dashboard_ctrl: false,
-                                            cancel: false,
-                                            trial: false,
-                                          ),
+                                          enterPage:
+                                              const view_goals(missed: false),
                                         ),
                                       );
                                       showAnimatedDialog(

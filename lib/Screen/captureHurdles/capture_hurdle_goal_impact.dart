@@ -80,6 +80,21 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
     });
   }
 
+  Future<Timer> clearData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void clear() {
+    selectedInActiveIndices.clear();
+    selectedIndices.clear();
+    selectedGoals.clear();
+    multiGoals.clear();
+    allgoalsSelected.clear();
+    setState(() {
+      selectAll = false;
+    });
+  }
+
   void _fetchHurdleSummary() async {
     Hurdles().getHurdleById().then((response) {
       if (response.length != 0) {
@@ -130,7 +145,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
       }
     }).catchError((error) {
       print("Hello world error");
-    });
+    }).whenComplete(() {});
   }
 
   _newFunction() {
@@ -156,8 +171,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
           : prefs.getString('HurdleRoute');
     });
 
-    multiGoals.clear();
-    allgoalsSelected.clear();
+    // multiGoals.clear();
+    // allgoalsSelected.clear();
     print("Route ${prefs.getString('HurdleRoute')}");
     if (Route == '' || Route == null) {
       selectedInActiveIndices.clear();
@@ -347,14 +362,6 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                 final SharedPreferences prefs =
                                                     await _prefs;
 
-                                                selectedInActiveIndices.clear();
-                                                selectedIndices.clear();
-                                                selectedGoals.clear();
-                                                multiGoals.clear();
-                                                allgoalsSelected.clear();
-                                                setState(() {
-                                                  selectAll = false;
-                                                });
                                                 var hurdleRoute =
                                                     prefs.remove('HurdleRoute');
                                                 await prefs
@@ -366,6 +373,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                 await prefs.remove('hurdleId');
                                                 await prefs
                                                     .remove('selected_goals');
+                                                await prefs
+                                                    .remove("hurdle_selected");
                                               },
                                               child: const Text(
                                                 'Exit & delete progress',
@@ -827,7 +836,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                 ),
                 AnimatedScaleButton(
                   onTap: () async {
-                    if (widget.summary == true) {
+                    if (selectAll == true || multiGoals.length != 0) {
                       if (selectAll == true) {
                         Hurdles().updateHurdle('userGoalId', allgoalsSelected);
                         Navigator.push(
@@ -881,14 +890,10 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                          selectAll == true ||
-                                  multiGoals.length != 0 ||
-                                  widget.summary
+                          selectAll == true || multiGoals.length != 0
                               ? const Color(0xffFCC10D)
                               : const Color(0xffFCC10D).withOpacity(0.5),
-                          selectAll == true ||
-                                  multiGoals.length != 0 ||
-                                  widget.summary
+                          selectAll == true || multiGoals.length != 0
                               ? const Color(0xffFDA210)
                               : const Color(0xffFDA210).withOpacity(0.5),
                         ],

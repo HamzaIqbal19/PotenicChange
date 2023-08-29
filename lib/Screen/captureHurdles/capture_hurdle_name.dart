@@ -340,6 +340,8 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                       .remove('hurdleId');
                                                   await prefs
                                                       .remove('selected_goals');
+                                                  await prefs.remove(
+                                                      "hurdle_selected");
                                                 },
                                                 child: const Text(
                                                   'Exit & delete progress',
