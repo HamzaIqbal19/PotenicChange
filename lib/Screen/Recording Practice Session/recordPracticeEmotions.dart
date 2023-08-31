@@ -198,7 +198,10 @@ class _emotionsState extends State<emotions> {
                                                   context,
                                                   FadePageRoute(
                                                       page: const view_goals(
-                                                          missed: false)));
+                                                    missed: false,
+                                                    name: '',
+                                                    update: false,
+                                                  )));
                                             }
                                           },
                                           child: const Text(

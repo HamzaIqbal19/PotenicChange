@@ -79,7 +79,11 @@ class SplashPageState extends State<SplashPage> {
               Navigator.push(
                   context,
                   FadePageRoute(
-                    page: view_goals(missed: false),
+                    page: view_goals(
+                      missed: false,
+                      name: '',
+                      update: false,
+                    ),
                     // exitPage:SplashPage(),
                   ));
             } else if (response == false) {

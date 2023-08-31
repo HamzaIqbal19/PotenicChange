@@ -276,59 +276,15 @@ class _veiw_detailsState extends State<veiw_details> {
                                 top: AppDimensions.height10(context) * 0.3),
                             child: Column(
                               children: [
-                                if (inspirationDetails['inspiration']
-                                        ['inspirationId'] ==
-                                    1) ...[
-                                  Text(
-                                    inspirationDetails['inspiration']['title'],
-                                    style: TextStyle(
-                                        height: 1.5,
-                                        color: const Color(0xFF282828),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ] else if (inspirationDetails['inspiration']
-                                        ['inspirationId'] ==
-                                    2) ...[
-                                  Text(
-                                    inspirationDetails['inspiration']['title'],
-                                    style: TextStyle(
-                                        height: 1.5,
-                                        color: const Color(0xFF282828),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ] else if (inspirationDetails['inspiration']
-                                        ['inspirationId'] ==
-                                    4) ...[
-                                  Text(
-                                    inspirationDetails['inspiration']['title'],
-                                    style: TextStyle(
-                                        height: 1.5,
-                                        color: const Color(0xFF282828),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ] else if (inspirationDetails['inspiration']
-                                        ['inspirationId'] ==
-                                    3) ...[
-                                  Text(
-                                    inspirationDetails['inspiration']['title'],
-                                    style: TextStyle(
-                                        height: 1.5,
-                                        color: const Color(0xFF282828),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ]
+                                Text(
+                                  inspirationDetails['inspiration']['title'],
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      color: const Color(0xFF282828),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ],
                             )),
                         inspirationDetails['inspiration']['inspirationId'] ==
@@ -343,12 +299,14 @@ class _veiw_detailsState extends State<veiw_details> {
                                       3) ...[
                                     AnimatedScaleButton(
                                       onTap: () async {
-                                        var url =
+                                        String url =
                                             inspirationDetails['inspiration']
                                                 ['destinationLink'];
+                                        if (!url.startsWith("https://")) {
+                                          url = "https://$url";
+                                        }
                                         FlutterWebBrowser.openWebPage(
-                                          url:
-                                              "https://app.getterms.io/view/XWpOJ/tos/en-au",
+                                          url: url,
                                           customTabsOptions:
                                               const CustomTabsOptions(
                                             colorScheme:
@@ -415,7 +373,12 @@ class _veiw_detailsState extends State<veiw_details> {
                                     AnimatedScaleButton(
                                       onTap: () async {
                                         String url =
-                                            "https://${inspirationDetails['inspiration']['destinationLink']}/";
+                                            inspirationDetails['inspiration']
+                                                ['destinationLink'];
+                                        if (!url.startsWith("https://")) {
+                                          url = "https://$url";
+                                        }
+
                                         FlutterWebBrowser.openWebPage(
                                           url: url,
                                           customTabsOptions:
@@ -551,65 +514,68 @@ class _veiw_detailsState extends State<veiw_details> {
                                 top: AppDimensions.height10(context) * 0.2),
                             child: Column(
                               children: [
-                                if (inspirationDetails['inspiration']
-                                        ['inspirationId'] ==
-                                    1) ...[
-                                  Text(
-                                    inspirationDetails['inspiration']
-                                        ['description'],
-                                    style: TextStyle(
-                                        height: 1.5,
-                                        color: const Color(0xFF282828),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ] else if (inspirationDetails['inspiration']
-                                        ['inspirationId'] ==
-                                    2) ...[
-                                  Text(
-                                    inspirationDetails['inspiration']
-                                        ['description'],
-                                    style: TextStyle(
-                                        height: 1.5,
-                                        color: const Color(0xFF282828),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ] else if (inspirationDetails['inspiration']
-                                        ['inspirationId'] ==
-                                    3) ...[
-                                  Text(
-                                    inspirationDetails['inspiration']
-                                        ['description'],
-                                    style: TextStyle(
-                                        height: 1.5,
-                                        color: const Color(0xFF282828),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ] else if (inspirationDetails['inspiration']
-                                        ['inspirationId'] ==
-                                    4) ...[
-                                  Text(
-                                    inspirationDetails['inspiration']
-                                        ['description'],
-                                    style: TextStyle(
-                                        height: 1.5,
-                                        color: const Color(0xFF282828),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ]
+                                Text(
+                                  inspirationDetails['inspiration']
+                                      ['description'],
+                                  style: TextStyle(
+                                      height: 1.5,
+                                      color: const Color(0xFF282828),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ],
                             )),
+                        inspirationDetails['inspiration']['inspirationId'] == 4
+                            ? Container(
+                                // height: AppDimensions.height10(context) * 2.1,
+                                // width: AppDimensions.height10(context) * 30.5,
+                                alignment: Alignment.centerLeft,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 3.6,
+                                    right:
+                                        AppDimensions.height10(context) * 8.9,
+                                    top: AppDimensions.height10(context) * 2.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'Content Author',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.4,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff828282)),
+                                    ),
+                                  ],
+                                ))
+                            : Container(),
+                        inspirationDetails['inspiration']['inspirationId'] == 4
+                            ? Container(
+                                // height: AppDimensions.height10(context) * 2.4,
+                                // width: AppDimensions.height10(context) * 30.5,
+                                alignment: Alignment.centerLeft,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 3.6,
+                                    right:
+                                        AppDimensions.height10(context) * 8.9,
+                                    top: AppDimensions.height10(context) * 0.2),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      inspirationDetails['inspiration']
+                                          ['author'],
+                                      style: TextStyle(
+                                          height: 1.5,
+                                          color: const Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ))
+                            : Container(),
                         inspirationDetails['inspiration']['hashTags'].length !=
                                 0
                             ? Container(

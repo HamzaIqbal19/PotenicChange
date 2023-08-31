@@ -1282,8 +1282,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                         FadePageRoute(
                                                             page:
                                                                 const view_goals(
-                                                                    missed:
-                                                                        false)))
+                                                          missed: false,
+                                                          name: '',
+                                                          update: false,
+                                                        )))
                                                     : Navigator.push(
                                                         context,
                                                         FadePageRoute2(true,

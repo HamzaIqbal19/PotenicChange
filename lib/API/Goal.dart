@@ -528,11 +528,12 @@ class AdminGoal {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
+    print(goal_num);
 
     var request = await client.delete(
         Uri.parse('${URL.BASE_URL}api/userGoal/$goal_num'),
         headers: headers);
-
+    print(request.statusCode);
     var responses = jsonDecode(request.body);
     print("Goal to be deleted");
     if (request.statusCode == 200) {

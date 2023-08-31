@@ -125,7 +125,16 @@ class _missed_MenuState extends State<missed_Menu> {
             Center(
               child: IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      FadePageRoute(
+                        page: const view_goals(
+                          missed: false,
+                          name: '',
+                          update: false,
+                        ),
+                      ),
+                    );
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',

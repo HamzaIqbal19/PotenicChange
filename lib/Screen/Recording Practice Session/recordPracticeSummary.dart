@@ -8,7 +8,6 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
@@ -163,22 +162,14 @@ class _practice_summaryState extends State<practice_summary> {
         leading: Center(
           child: IconButton(
               onPressed: () {
-                if (behaviour_route == false) {
-                  Navigator.pushReplacement(
-                      context,
-                      FadePageRoute(
-                          page: const dashBoard(
-                        saved: false,
-                        helpful_tips: false,
-                        membership: true,
-                        dashboard_ctrl: false,
-                        cancel: false,
-                        trial: false,
-                      )));
-                } else {
-                  Navigator.push(context,
-                      FadePageRoute(page: const view_goals(missed: false)));
-                }
+                Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page: const view_goals(
+                      missed: false,
+                      name: '',
+                      update: false,
+                    )));
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
@@ -251,20 +242,20 @@ class _practice_summaryState extends State<practice_summary> {
                                       Navigator.pushReplacement(
                                           context,
                                           FadePageRoute(
-                                              page: const dashBoard(
-                                            saved: false,
-                                            helpful_tips: false,
-                                            membership: true,
-                                            dashboard_ctrl: false,
-                                            cancel: false,
-                                            trial: false,
+                                              page: const view_goals(
+                                            missed: false,
+                                            name: '',
+                                            update: false,
                                           )));
                                     } else {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
                                               page: const view_goals(
-                                                  missed: false)));
+                                            missed: false,
+                                            name: '',
+                                            update: false,
+                                          )));
                                     }
                                   },
                                   child: const Text(
@@ -1156,22 +1147,12 @@ class _practice_summaryState extends State<practice_summary> {
                                                             Navigator.push(
                                                                 context,
                                                                 FadePageRoute(
-                                                                  page:
-                                                                      const dashBoard(
-                                                                    saved:
-                                                                        false,
-                                                                    helpful_tips:
-                                                                        false,
-                                                                    membership:
-                                                                        true,
-                                                                    dashboard_ctrl:
-                                                                        false,
-                                                                    cancel:
-                                                                        false,
-                                                                    trial:
-                                                                        false,
-                                                                  ),
-                                                                ));
+                                                                    page:
+                                                                        const view_goals(
+                                                                  missed: false,
+                                                                  name: '',
+                                                                  update: false,
+                                                                )));
 
                                                             print(
                                                                 'Api call success');
@@ -1269,13 +1250,10 @@ class _practice_summaryState extends State<practice_summary> {
                                     context,
                                     FadePageRoute2(true,
                                         exitPage: const practice_summary(),
-                                        enterPage: const dashBoard(
-                                          helpful_tips: false,
-                                          dashboard_ctrl: false,
-                                          membership: true,
-                                          trial: false,
-                                          cancel: false,
-                                          saved: true,
+                                        enterPage: view_goals(
+                                          missed: false,
+                                          name: goalName,
+                                          update: true,
                                         )));
                               },
                               child: Container(

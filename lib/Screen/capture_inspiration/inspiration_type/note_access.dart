@@ -64,6 +64,12 @@ class _note_infoState extends State<note_info> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     bool link_state = false;
     return Scaffold(
@@ -883,459 +889,489 @@ class _noteSavedState extends State<noteSaved> {
   @override
   Widget build(BuildContext context) {
     bool link_state = false;
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: const Color(0xffC4C4C4),
-      ),
-      bottomNavigationBar: BottomAppBar(
+    return WillPopScope(
+      onWillPop: () {
+        return Future.value(false);
+      },
+      child: Scaffold(
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
           color: const Color(0xffC4C4C4),
-          shape: const CircularNotchedRectangle(),
-          child: Container(
-            //  height: AppDimensions.height10(context) * 84.8,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              reverse: true,
-              child: Column(children: [
-                Container(
-                  // width: AppDimensions.height10(context) * 41.1,
-                  height: AppDimensions.height10(context) * 5.1,
-                  // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
-                  decoration: BoxDecoration(
-                      color: const Color(0xffF5F5F5).withOpacity(0.8),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(
-                              AppDimensions.height10(context) * 1.0),
-                          topRight: Radius.circular(
-                              AppDimensions.height10(context) * 1.0))),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.height10(context) * 3.3,
-                          margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 4.9),
-                          child: GestureDetector(
-                            onTap: () async {
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const inspiration_type()));
-                              title.clear();
-                              tagList.clear();
-                              hastags.clear();
-                              statement.clear();
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const inspiration_type()));
-                              final SharedPreferences prefs = await _prefs;
-                              var remove = prefs.remove('ImageLink');
-                            },
+        ),
+        bottomNavigationBar: BottomAppBar(
+            color: const Color(0xffC4C4C4),
+            shape: const CircularNotchedRectangle(),
+            child: Container(
+              //  height: AppDimensions.height10(context) * 84.8,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                reverse: true,
+                child: Column(children: [
+                  Container(
+                    // width: AppDimensions.height10(context) * 41.1,
+                    height: AppDimensions.height10(context) * 5.1,
+                    // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
+                    decoration: BoxDecoration(
+                        color: const Color(0xffF5F5F5).withOpacity(0.8),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(
+                                AppDimensions.height10(context) * 1.0),
+                            topRight: Radius.circular(
+                                AppDimensions.height10(context) * 1.0))),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: AppDimensions.height10(context) * 2.2,
+                            width: AppDimensions.height10(context) * 3.3,
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10(context) * 4.9),
+                            child: GestureDetector(
+                              onTap: () async {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const inspiration_type()));
+                                title.clear();
+                                tagList.clear();
+                                hastags.clear();
+                                statement.clear();
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const inspiration_type()));
+                                final SharedPreferences prefs = await _prefs;
+                                var remove = prefs.remove('ImageLink');
+                              },
+                              child: Text(
+                                'Back',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.5,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xff007AFF)),
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: SizedBox(
+                              height: AppDimensions.height10(context) * 2.2,
+                              width: AppDimensions.height10(context) * 23.1,
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Create note inspiration',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.7,
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xff282828)),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          ValueListenableBuilder<TextEditingValue>(
+                              valueListenable: statement,
+                              builder: (context, value, child) {
+                                return ValueListenableBuilder<TextEditingValue>(
+                                    valueListenable: title,
+                                    builder: (context, value, child) {
+                                      return AnimatedScaleButton(
+                                        onTap: () async {
+                                          if (bt_enable == true) {
+                                            setState(() {
+                                              bt_enable = false;
+                                            });
+                                            if (title.text.isNotEmpty &&
+                                                statement.text.isNotEmpty) {
+                                              print("Api");
+                                              InspirationApi()
+                                                  .addInspiration(
+                                                      2,
+                                                      null,
+                                                      title.text.toString(),
+                                                      tagList,
+                                                      ' ',
+                                                      " ",
+                                                      true,
+                                                      statement.text.toString(),
+                                                      selectedGoals)
+                                                  .then((response) async {
+                                                print("Api 2");
+                                                print(response);
+                                                if (response.length != 0) {
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const updatedLandingPage(
+                                                                  delete: false,
+                                                                  is_Updated:
+                                                                      false)));
+                                                  print('----------------');
+                                                  title.clear();
+                                                  tagList.clear();
+                                                  hastags.clear();
+                                                  statement.clear();
+                                                  final SharedPreferences
+                                                      prefs = await _prefs;
+                                                  var remove =
+                                                      prefs.remove('ImageLink');
+                                                  prefs.remove(
+                                                      'inspiration_saved_route');
+
+                                                  print(response);
+                                                }
+
+                                                // return null;
+                                              });
+                                            }
+                                          }
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+                                          prefs.remove(
+                                              'inspiration_saved_route');
+                                        },
+                                        child: Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.2,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  4.3,
+                                          margin: EdgeInsets.only(
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  4.9),
+                                          child: Text(
+                                            'Create',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.5,
+                                                fontWeight: FontWeight.w400,
+                                                color: title.text
+                                                            .toString()
+                                                            .isNotEmpty &&
+                                                        statement.text
+                                                            .toString()
+                                                            .isNotEmpty
+                                                    ? const Color(0xff007AFF)
+                                                    : const Color(0xff007AFF)
+                                                        .withOpacity(0.5)),
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              })
+                        ]),
+                  ),
+                  Container(
+                    height: AppDimensions.height10(context) * 79.7,
+                    width: double.infinity,
+                    color: Colors.white,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 8.9,
+                                top: AppDimensions.height10(context) * 3.2),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Title',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xff828282)),
+                                  ),
+                                ]),
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            // height: AppDimensions.height10(context) * 2.4,
+                            //width: AppDimensions.height10(context) * 30.5,
+                            margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 0.6,
+                            ),
+                            child: TextFormField(
+                              controller: title,
+                              textAlignVertical: TextAlignVertical.center,
+                              maxLines: null,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.7,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xff282828)),
+                              decoration: InputDecoration(
+                                  isCollapsed: true,
+                                  contentPadding: EdgeInsets.fromLTRB(
+                                      AppDimensions.height10(context) * 1.5,
+                                      AppDimensions.height10(context) * 0.4,
+                                      AppDimensions.height10(context) * 4,
+                                      0),
+                                  hintText: 'Give your inspiration a title',
+                                  hintStyle: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff828282)),
+                                  focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  enabledBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent))),
+                            ),
+                          ),
+                          Container(
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 2.0,
+                                top: AppDimensions.height10(context) * 3.9),
                             child: Text(
-                              'Back',
+                              'Why is it inspirational to you',
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
-                                  color: const Color(0xff007AFF)),
+                                  color: const Color(0xff828282)),
                             ),
                           ),
-                        ),
-                        Center(
-                          child: SizedBox(
-                            height: AppDimensions.height10(context) * 2.2,
-                            width: AppDimensions.height10(context) * 23.1,
-                            child: Center(
+                          Container(
+                            //width: AppDimensions.height10(context) * 30.5,
+                            margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 2.0,
+                            ),
+                            child: TextFormField(
+                              textAlignVertical: TextAlignVertical.top,
+                              controller: statement,
+                              maxLines: null,
+                              minLines: null,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.7,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xff282828)),
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                      right:
+                                          AppDimensions.height10(context) * 4),
+                                  isCollapsed: true,
+                                  hintText: 'Say more about this inspiration ',
+                                  hintStyle: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff828282)),
+                                  focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  enabledBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent))),
+                            ),
+                          ),
+                          Container(
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 8.9,
+                                top: AppDimensions.height10(context) * 3.9),
+                            child: Text(
+                              'Tags (optional)',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.5,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff828282)),
+                            ),
+                          ),
+                          Container(
+                            // height: AppDimensions.height10(context) * 2.4,
+                            // width: AppDimensions.height10(context) * 30.5,
+                            margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 0.6,
+                              right: AppDimensions.height10(context) * 10.0,
+                              // top: AppDimensions.height10(context) * 1.0
+                            ),
+                            child: TextFormField(
+                              controller: hastags,
+                              maxLines: null,
+                              textAlignVertical: TextAlignVertical.center,
+                              onTap: () {
+                                if (hastags.text.isEmpty) {
+                                  hastags.text = '#';
+                                }
+                                hastags.selection = TextSelection.fromPosition(
+                                  TextPosition(offset: hastags.text.length),
+                                );
+                              },
+                              onChanged: (text) {
+                                List<String> words = text.split(' ');
+
+                                // Filter the words to find the ones that start with '#'
+                                List<String> tags = words
+                                    .where((word) => word.startsWith('#'))
+                                    .toList();
+                                List<String> finalResult = tags
+                                    .map(
+                                        (tag) => '"${tag.replaceAll('#', '')}"')
+                                    .toList();
+
+                                tagList.clear();
+
+                                tagList.addAll(finalResult.toSet());
+                                print(tagList);
+                              },
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.7,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xff282828)),
+                              decoration: InputDecoration(
+                                  isCollapsed: true,
+                                  contentPadding: EdgeInsets.fromLTRB(
+                                      AppDimensions.height10(context) * 1.6,
+                                      AppDimensions.height10(context) * 0.4,
+                                      0,
+                                      0),
+                                  hintText: 'Add #hashtag',
+                                  hintStyle: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff828282)),
+                                  focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  enabledBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent))),
+                            ),
+                          ),
+                          Container(
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 2.0,
+                                bottom: AppDimensions.height10(context) * 0.5,
+                                right: AppDimensions.height10(context) * 8.9,
+                                top: AppDimensions.height10(context) * 3.9),
+                            child: Text(
+                              'Attached goals',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.5,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff828282)),
+                            ),
+                          ),
+                          AnimatedScaleButton(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const inspiraton_goals(
+                                    update: false,
+                                    data_saved: true,
+                                    route: 'note_saved',
+                                    context: false,
+                                    note: false,
+                                  )));
+                            },
+                            child: Container(
+                              height: AppDimensions.height10(context) * 6.0,
+                              width: AppDimensions.height10(context) * 37.5,
+                              margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 1.9,
+                                // bottom: AppDimensions.height10(context) * 1.0
+                              ),
+                              decoration: BoxDecoration(
+                                  color: const Color(0xFFFBFBFB),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0)),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    'Create note inspiration',
-                                    style: TextStyle(
+                                  Container(
+                                    width:
+                                        AppDimensions.height10(context) * 23.9,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    margin: EdgeInsets.only(
+                                        left: AppDimensions.height10(context) *
+                                            1.99),
+                                    child: Text(
+                                      '${selectedGoals.length} impacted goals',
+                                      style: TextStyle(
+                                        color: const Color(0xFF646464),
                                         fontSize:
                                             AppDimensions.height10(context) *
-                                                1.7,
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color(0xff282828)),
+                                                1.8,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                   ),
+                                  Container(
+                                      margin: EdgeInsets.only(
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  2.391),
+                                      child: Text(
+                                        'View',
+                                        style: TextStyle(
+                                            color: const Color(0xFF437296),
+                                            fontWeight: FontWeight.w700,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            decorationThickness:
+                                                AppDimensions.height10(
+                                                        context) *
+                                                    0.2,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.4),
+                                      ))
                                 ],
                               ),
                             ),
                           ),
-                        ),
-                        ValueListenableBuilder<TextEditingValue>(
-                            valueListenable: statement,
-                            builder: (context, value, child) {
-                              return ValueListenableBuilder<TextEditingValue>(
-                                  valueListenable: title,
-                                  builder: (context, value, child) {
-                                    return AnimatedScaleButton(
-                                      onTap: () {
-                                        if (bt_enable == true) {
-                                          setState(() {
-                                            bt_enable = false;
-                                          });
-                                          if (title.text.isNotEmpty &&
-                                              statement.text.isNotEmpty) {
-                                            print("Api");
-                                            InspirationApi()
-                                                .addInspiration(
-                                                    2,
-                                                    null,
-                                                    title.text.toString(),
-                                                    tagList,
-                                                    " ",
-                                                    true,
-                                                    statement.text.toString(),
-                                                    selectedGoals)
-                                                .then((response) async {
-                                              print("Api 2");
-                                              print(response);
-                                              if (response.length != 0) {
-                                                Navigator.push(
-                                                    context,
-                                                    FadePageRoute(
-                                                        page:
-                                                            const updatedLandingPage(
-                                                                delete: false,
-                                                                is_Updated:
-                                                                    false)));
-                                                print('----------------');
-                                                title.clear();
-                                                tagList.clear();
-                                                hastags.clear();
-                                                statement.clear();
-                                                Navigator.push(
-                                                    context,
-                                                    FadePageRoute(
-                                                        page:
-                                                            const updatedLandingPage(
-                                                      delete: false,
-                                                      is_Updated: true,
-                                                    )));
-                                                final SharedPreferences prefs =
-                                                    await _prefs;
-                                                var remove =
-                                                    prefs.remove('ImageLink');
-
-                                                print(response);
-                                              }
-
-                                              // return null;
-                                            });
-                                          }
-                                        }
-                                      },
-                                      child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.2,
-                                        width: AppDimensions.height10(context) *
-                                            4.3,
-                                        margin: EdgeInsets.only(
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                4.9),
-                                        child: Text(
-                                          'Create',
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.5,
-                                              fontWeight: FontWeight.w400,
-                                              color: title.text
-                                                          .toString()
-                                                          .isNotEmpty &&
-                                                      statement.text
-                                                          .toString()
-                                                          .isNotEmpty
-                                                  ? const Color(0xff007AFF)
-                                                  : const Color(0xff007AFF)
-                                                      .withOpacity(0.5)),
-                                        ),
-                                      ),
-                                    );
-                                  });
-                            })
-                      ]),
-                ),
-                Container(
-                  height: AppDimensions.height10(context) * 79.7,
-                  width: double.infinity,
-                  color: Colors.white,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
-                          alignment: Alignment.centerLeft,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 8.9,
-                              top: AppDimensions.height10(context) * 3.2),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Title',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.5,
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xff828282)),
-                                ),
-                              ]),
-                        ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          // height: AppDimensions.height10(context) * 2.4,
-                          //width: AppDimensions.height10(context) * 30.5,
-                          margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 0.6,
-                          ),
-                          child: TextFormField(
-                            controller: title,
-                            textAlignVertical: TextAlignVertical.center,
-                            maxLines: null,
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.7,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xff282828)),
-                            decoration: InputDecoration(
-                                isCollapsed: true,
-                                contentPadding: EdgeInsets.fromLTRB(
-                                    AppDimensions.height10(context) * 1.5,
-                                    AppDimensions.height10(context) * 0.4,
-                                    AppDimensions.height10(context) * 4,
-                                    0),
-                                hintText: 'Give your inspiration a title',
-                                hintStyle: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.7,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0xff828282)),
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent)),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent))),
-                          ),
-                        ),
-                        Container(
-                          height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
-                          alignment: Alignment.centerLeft,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              top: AppDimensions.height10(context) * 3.9),
-                          child: Text(
-                            'Why is it inspirational to you',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.5,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff828282)),
-                          ),
-                        ),
-                        Container(
-                          //width: AppDimensions.height10(context) * 30.5,
-                          margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 2.0,
-                          ),
-                          child: TextFormField(
-                            textAlignVertical: TextAlignVertical.top,
-                            controller: statement,
-                            maxLines: null,
-                            minLines: null,
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.7,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xff282828)),
-                            decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(
-                                    right: AppDimensions.height10(context) * 4),
-                                isCollapsed: true,
-                                hintText: 'Say more about this inspiration ',
-                                hintStyle: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.7,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0xff828282)),
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent)),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent))),
-                          ),
-                        ),
-                        Container(
-                          height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 8.9,
-                              top: AppDimensions.height10(context) * 3.9),
-                          child: Text(
-                            'Tags (optional)',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.5,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff828282)),
-                          ),
-                        ),
-                        Container(
-                          // height: AppDimensions.height10(context) * 2.4,
-                          // width: AppDimensions.height10(context) * 30.5,
-                          margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 0.6,
-                            right: AppDimensions.height10(context) * 10.0,
-                            // top: AppDimensions.height10(context) * 1.0
-                          ),
-                          child: TextFormField(
-                            controller: hastags,
-                            maxLines: null,
-                            textAlignVertical: TextAlignVertical.center,
-                            onChanged: (text) {
-                              List<String> words = text.split(' ');
-
-                              // Filter the words to find the ones that start with '#'
-                              List<String> tags = words
-                                  .where((word) => word.startsWith('#'))
-                                  .toList();
-
-                              // Add the unique tags to the tagsList
-                              tagList.clear();
-
-                              // Add the unique tags to the tagsList
-                              tagList.addAll(tags.toSet());
-
-                              print(tagList);
-                            },
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.7,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xff282828)),
-                            decoration: InputDecoration(
-                                isCollapsed: true,
-                                contentPadding: EdgeInsets.fromLTRB(
-                                    AppDimensions.height10(context) * 1.6,
-                                    AppDimensions.height10(context) * 0.4,
-                                    0,
-                                    0),
-                                hintText: 'Add #hashtag',
-                                hintStyle: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.7,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0xff828282)),
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent)),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent))),
-                          ),
-                        ),
-                        Container(
-                          height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              bottom: AppDimensions.height10(context) * 0.5,
-                              right: AppDimensions.height10(context) * 8.9,
-                              top: AppDimensions.height10(context) * 3.9),
-                          child: Text(
-                            'Attached goals',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.5,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff828282)),
-                          ),
-                        ),
-                        AnimatedScaleButton(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: const inspiraton_goals(
-                                  update: false,
-                                  data_saved: true,
-                                  route: 'note_saved',
-                                  context: false,
-                                  note: false,
-                                )));
-                          },
-                          child: Container(
-                            height: AppDimensions.height10(context) * 6.0,
-                            width: AppDimensions.height10(context) * 37.5,
-                            margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 1.9,
-                              // bottom: AppDimensions.height10(context) * 1.0
-                            ),
-                            decoration: BoxDecoration(
-                                color: const Color(0xFFFBFBFB),
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 2.0)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  width: AppDimensions.height10(context) * 23.9,
-                                  height: AppDimensions.height10(context) * 2.2,
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          1.99),
-                                  child: Text(
-                                    '${selectedGoals.length} impacted goals',
-                                    style: TextStyle(
-                                      color: const Color(0xFF646464),
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.8,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                    margin: EdgeInsets.only(
-                                        right: AppDimensions.height10(context) *
-                                            2.391),
-                                    child: Text(
-                                      'View',
-                                      style: TextStyle(
-                                          color: const Color(0xFF437296),
-                                          fontWeight: FontWeight.w700,
-                                          decoration: TextDecoration.underline,
-                                          decorationThickness:
-                                              AppDimensions.height10(context) *
-                                                  0.2,
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.4),
-                                    ))
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                // SizedBox(
-                //   height: MediaQuery.of(context).viewInsets.bottom == 0
-                //       ? AppDimensions.height10(context) * 0
-                //       : AppDimensions.height10(context) * 23.0,
-                // )
-              ]),
-            ),
-          )),
+                  // SizedBox(
+                  //   height: MediaQuery.of(context).viewInsets.bottom == 0
+                  //       ? AppDimensions.height10(context) * 0
+                  //       : AppDimensions.height10(context) * 23.0,
+                  // )
+                ]),
+              ),
+            )),
+      ),
     );
   }
 }

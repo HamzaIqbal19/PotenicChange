@@ -207,7 +207,10 @@ class _endofSessionState extends State<endofSession> {
                                               context,
                                               FadePageRoute(
                                                   page: const view_goals(
-                                                      missed: false)));
+                                                missed: false,
+                                                name: '',
+                                                update: false,
+                                              )));
                                           feedback3.clear();
                                         },
                                         child: const Text(

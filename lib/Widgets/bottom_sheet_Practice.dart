@@ -29,7 +29,7 @@ final goalName = TextEditingController();
 
 void bottom_sheet(context, String goal) {
   bool enable = false;
-  String? name = goal.length >= 35 ? '${goal.substring(0, 35)}...' : goal;
+  String? name = goal;
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,

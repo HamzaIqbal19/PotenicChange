@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
@@ -123,7 +124,16 @@ class _menu_behaviourState extends State<menu_behaviour> {
             Center(
               child: IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      FadePageRoute(
+                        page: const view_goals(
+                          missed: false,
+                          name: '',
+                          update: false,
+                        ),
+                      ),
+                    );
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
@@ -366,7 +376,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                       animationType:
                                           DialogTransitionType.fadeScale,
                                       curve: Curves.easeInOut,
-                                      duration: Duration(seconds: 1),
+                                      duration: const Duration(seconds: 1),
                                       context: context,
                                       builder: (BuildContext context) =>
                                           Container(
@@ -484,8 +494,12 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                                   context,
                                                                   FadePageRoute(
                                                                       page:
-                                                                          const view_goals(
+                                                                          view_goals(
                                                                     missed:
+                                                                        true,
+                                                                    name:
+                                                                        goalName,
+                                                                    update:
                                                                         false,
                                                                   )));
                                                             }

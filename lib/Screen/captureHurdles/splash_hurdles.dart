@@ -46,7 +46,13 @@ class hurdles_splashState extends State<hurdles_splash> {
     return WillPopScope(
       onWillPop: () {
         Navigator.push(
-            context, FadePageRoute(page: const view_goals(missed: false)));
+            context,
+            FadePageRoute(
+                page: const view_goals(
+              missed: false,
+              name: '',
+              update: false,
+            )));
         return Future.value(false);
       },
       child: Scaffold(
@@ -59,8 +65,14 @@ class hurdles_splashState extends State<hurdles_splash> {
               Center(
                 child: IconButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          FadePageRoute(page: const view_goals(missed: false)));
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: const view_goals(
+                            missed: false,
+                            name: '',
+                            update: false,
+                          )));
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',

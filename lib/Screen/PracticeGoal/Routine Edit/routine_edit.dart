@@ -455,7 +455,12 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                                               setState(() {
                                                                                 start_time = "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                                                                               });
-                                                                              timesPerDay[index]['time${timesPerDay[index].keys.length}'] = start_time;
+                                                                              if (timesPerDay[index].keys.length < 11) {
+                                                                                timesPerDay[index]['time${timesPerDay[index].keys.length}'] = start_time;
+                                                                              } else {
+                                                                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Practice routine in limited to 10 sessions par day.")));
+                                                                              }
+
                                                                               print(timesPerDay);
 
                                                                               // times.add(start_time);

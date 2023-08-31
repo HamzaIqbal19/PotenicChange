@@ -158,8 +158,14 @@ class _prac_scoreState extends State<prac_score> {
             child: IconButton(
                 onPressed: () {
                   if (widget.saved == true) {
-                    Navigator.push(context,
-                        FadePageRoute(page: const view_goals(missed: false)));
+                    Navigator.push(
+                        context,
+                        FadePageRoute(
+                            page: const view_goals(
+                          missed: false,
+                          name: '',
+                          update: false,
+                        )));
                   } else {
                     Navigator.pop(context);
                   }

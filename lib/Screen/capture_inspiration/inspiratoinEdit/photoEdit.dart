@@ -18,8 +18,10 @@ import '../capture_inpirations_goals.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class photo_Edit extends StatefulWidget {
+  final List updatedList;
   const photo_Edit({
     super.key,
+    required this.updatedList,
   });
 
   @override
@@ -32,7 +34,7 @@ class _photo_EditState extends State<photo_Edit> {
   TextEditingController statement = TextEditingController();
   TextEditingController title = TextEditingController();
   TextEditingController hastags = TextEditingController();
-
+  List<String> tagList = [];
   var inspirationDetails;
   bool Loading = true;
   Future<Timer> loadData() async {
@@ -60,19 +62,30 @@ class _photo_EditState extends State<photo_Edit> {
 
         print('2');
         link.text = inspirationDetails['inspiration']['destinationLink']
-                    .toString() !=
-                'null'
-            ? inspirationDetails['inspiration']['destinationLink'].toString()
-            : '';
+                .toString()
+                .isEmpty
+            ? ''
+            : inspirationDetails['inspiration']['destinationLink'];
         title.text = inspirationDetails['inspiration']['title'].toString();
         statement.text =
             inspirationDetails['inspiration']['description'].toString();
-        hastags.text =
-            inspirationDetails['inspiration']['hashTags'].toString() == '[]'
-                ? ''
-                : inspirationDetails['inspiration']['hashTags'].toString();
-
+        hastags.text = inspirationDetails['inspiration']['hashTags'].length == 0
+            ? ''
+            : inspirationDetails['inspiration']['hashTags']
+                .toString()
+                .replaceAll('[', '')
+                .replaceAll(']', '');
         loadData();
+
+        print(inspirationDetails['inspiration']['hashTags'][0]);
+        if (inspirationDetails['inspiration']['hashTags'].length != 0) {
+          for (int i = 0;
+              i < inspirationDetails['inspiration']['hashTags'].length;
+              i++) {
+            tagList.add(inspirationDetails['inspiration']['hashTags'][i]);
+          }
+        }
+        print(tagList);
 
         print(inspirationDetails['inspiration']['title']);
         print("1212312312321321");
@@ -88,6 +101,7 @@ class _photo_EditState extends State<photo_Edit> {
   void initState() {
     super.initState();
     _fetchInspiration();
+    print(widget.updatedList);
   }
 
   @override
@@ -153,206 +167,285 @@ class _photo_EditState extends State<photo_Edit> {
                       )),
                     ),
                   ),
-                  Container(
-                      height: AppDimensions.height10(context) * 2.2,
-                      width: AppDimensions.height10(context) * 4.3,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 4.9),
-                      child: AnimatedScaleButton(
-                        onTap: () {
-                          showAnimatedDialog(
-                              animationType: DialogTransitionType.fadeScale,
-                              curve: Curves.easeInOut,
-                              duration: const Duration(seconds: 1),
-                              context: context,
-                              builder: (BuildContext context) => SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 27.0,
-                                    height:
-                                        AppDimensions.height10(context) * 18.2,
-                                    child: AlertDialog(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                              AppDimensions.height10(context) *
-                                                  1.4)),
-                                      contentPadding: EdgeInsets.zero,
-                                      actionsPadding: EdgeInsets.zero,
-                                      titlePadding: EdgeInsets.zero,
-                                      title: Container(
-                                        margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
-                                                    context) *
-                                                1.9,
-                                            right: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
-                                            bottom: AppDimensions.height10(
-                                                    context) *
-                                                0.2),
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.2,
-                                        width: AppDimensions.height10(context) *
-                                            23.8,
-                                        child: Text(
-                                          "Save changes?",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
-                                            fontFamily: 'laila',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                      content: Container(
-                                        margin: EdgeInsets.only(
-                                            bottom: AppDimensions.height10(
-                                                    context) *
-                                                1.5,
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
-                                            right: AppDimensions.height10(
-                                                    context) *
-                                                1.6),
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                3.4,
-                                        width: AppDimensions.height10(context) *
-                                            23.8,
-                                        child: Text(
-                                          "Are you sure you want to save your\nupdates?",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.3,
-                                            fontFamily: 'laila',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                      actions: <Widget>[
-                                        Column(
-                                          children: [
+                  ValueListenableBuilder<TextEditingValue>(
+                      valueListenable: title,
+                      builder: (context, value, child) {
+                        return ValueListenableBuilder<TextEditingValue>(
+                            valueListenable: statement,
+                            builder: (context, value, child) {
+                              return AnimatedScaleButton(
+                                onTap: () {
+                                  if (title.text.isNotEmpty &&
+                                      statement.text.isNotEmpty) {
+                                    showAnimatedDialog(
+                                        animationType:
+                                            DialogTransitionType.fadeScale,
+                                        curve: Curves.easeInOut,
+                                        duration: const Duration(seconds: 1),
+                                        context: context,
+                                        builder: (BuildContext context) =>
                                             SizedBox(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  27.0,
                                               height: AppDimensions.height10(
                                                       context) *
-                                                  0.1,
-                                              child: Divider(
-                                                color: const Color(0XFF3C3C43)
-                                                    .withOpacity(0.29),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.2,
-                                              width: double.infinity,
-                                              color: const Color(0xFF007AFF),
-                                              child: TextButton(
-                                                onPressed: () async {
-                                                  InspirationApi()
-                                                      .updateInspiration(
-                                                    title.text.toString(),
-                                                    ['tag'],
-                                                    link.text.toString(),
-                                                    statement.text.toString(),
-                                                  )
-                                                      .then((response) async {
-                                                    if (response == true) {
-                                                      Navigator.push(
-                                                          context,
-                                                          FadePageRoute(
-                                                              page: const updatedLandingPage(
-                                                                  delete: false,
-                                                                  is_Updated:
-                                                                      true)));
-                                                      final SharedPreferences
-                                                          prefs = await _prefs;
-                                                      var hurdleId = prefs.setInt(
-                                                          'userInspirationId',
-                                                          inspirationDetails[
-                                                              'inspirationId']);
-                                                    }
-                                                  });
-                                                },
-                                                child: Text(
-                                                  'Yes',
-                                                  style: TextStyle(
-                                                      color: const Color(
-                                                          0xFFFFFFFF),
+                                                  18.2,
+                                              child: AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius
+                                                        .circular(AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.4)),
+                                                contentPadding: EdgeInsets.zero,
+                                                actionsPadding: EdgeInsets.zero,
+                                                titlePadding: EdgeInsets.zero,
+                                                title: Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.9,
+                                                      right: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.6,
+                                                      left: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.6,
+                                                      bottom: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.2),
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.2,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      23.8,
+                                                  child: Text(
+                                                    "Save changes?",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10(
                                                                   context) *
                                                           1.7,
-                                                      fontFamily: "Laila",
-                                                      fontWeight:
-                                                          FontWeight.w400),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.1,
-                                              child: Divider(
-                                                color: const Color(0XFF3C3C43)
-                                                    .withOpacity(0.29),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.4,
-                                              width: double.infinity,
-                                              child: TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(
-                                                  'Cancel',
-                                                  style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.7,
-                                                      fontFamily: "Laila",
+                                                      fontFamily: 'laila',
                                                       fontWeight:
                                                           FontWeight.w400,
-                                                      color: const Color(
-                                                          0xFF007AFF)),
+                                                    ),
+                                                  ),
                                                 ),
+                                                content: Container(
+                                                  margin: EdgeInsets.only(
+                                                      bottom: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.5,
+                                                      left: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.6,
+                                                      right: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.6),
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          3.4,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      23.8,
+                                                  child: Text(
+                                                    "Are you sure you want to save your\nupdates?",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.3,
+                                                      fontFamily: 'laila',
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                                actions: <Widget>[
+                                                  Column(
+                                                    children: [
+                                                      SizedBox(
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            0.1,
+                                                        child: Divider(
+                                                          color: const Color(
+                                                                  0XFF3C3C43)
+                                                              .withOpacity(
+                                                                  0.29),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            4.2,
+                                                        width: double.infinity,
+                                                        color: const Color(
+                                                            0xFF007AFF),
+                                                        child: TextButton(
+                                                          onPressed: () async {
+                                                            InspirationApi()
+                                                                .updateInspiration(
+                                                                    title.text
+                                                                        .toString(),
+                                                                    tagList,
+                                                                    link.text
+                                                                        .toString(),
+                                                                    statement
+                                                                        .text
+                                                                        .toString(),
+                                                                    widget.updatedList[0] ==
+                                                                            -1
+                                                                        ? inspirationDetails['inspiration']
+                                                                            [
+                                                                            'userGoalId']
+                                                                        : widget
+                                                                            .updatedList)
+                                                                .then(
+                                                                    (response) async {
+                                                              if (response ==
+                                                                  true) {
+                                                                Navigator.push(
+                                                                    context,
+                                                                    FadePageRoute(
+                                                                        page: const updatedLandingPage(
+                                                                            delete:
+                                                                                false,
+                                                                            is_Updated:
+                                                                                true)));
+                                                                final SharedPreferences
+                                                                    prefs =
+                                                                    await _prefs;
+                                                                var hurdleId = prefs.setInt(
+                                                                    'userInspirationId',
+                                                                    inspirationDetails[
+                                                                        'inspirationId']);
+                                                              }
+                                                            });
+                                                          },
+                                                          child: Text(
+                                                            'Yes',
+                                                            style: TextStyle(
+                                                                color: const Color(
+                                                                    0xFFFFFFFF),
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.7,
+                                                                fontFamily:
+                                                                    "Laila",
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            0.1,
+                                                        child: Divider(
+                                                          color: const Color(
+                                                                  0XFF3C3C43)
+                                                              .withOpacity(
+                                                                  0.29),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            4.4,
+                                                        width: double.infinity,
+                                                        child: TextButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: Text(
+                                                            'Cancel',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.7,
+                                                                fontFamily:
+                                                                    "Laila",
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF007AFF)),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            0.1,
+                                                        child: Divider(
+                                                          color: const Color(
+                                                                  0XFF3C3C43)
+                                                              .withOpacity(
+                                                                  0.29),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.1,
-                                              child: Divider(
-                                                color: const Color(0XFF3C3C43)
-                                                    .withOpacity(0.29),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ));
-                        },
-                        child: Text(
-                          'Save',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.5,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xff007AFF)),
-                        ),
-                      ))
+                                            ));
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                "Title or statement is empty.")));
+                                  }
+                                },
+                                child: Container(
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  width: AppDimensions.height10(context) * 4.3,
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10(context) *
+                                          4.9),
+                                  child: Text(
+                                    'Save',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                        fontWeight: FontWeight.w400,
+                                        color:
+                                            title.text.toString().isNotEmpty &&
+                                                    statement.text
+                                                        .toString()
+                                                        .isNotEmpty
+                                                ? const Color(0xff007AFF)
+                                                : const Color(0xff007AFF)
+                                                    .withOpacity(0.5)),
+                                  ),
+                                ),
+                              );
+                            });
+                      })
                 ]),
               ),
               Container(
@@ -411,16 +504,16 @@ class _photo_EditState extends State<photo_Edit> {
                                     ),
                                     Container(
                                       alignment: Alignment.centerLeft,
-                                      height:
-                                          AppDimensions.height10(context) * 2.4,
-                                      width: AppDimensions.height10(context) *
-                                          30.5,
+                                      // width: AppDimensions.height10(context) *
+                                      //     30.5,
                                       margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
                                             0.6,
                                       ),
                                       child: TextField(
                                         controller: title,
+                                        maxLines: null,
+                                        scrollPadding: EdgeInsets.zero,
                                         textAlignVertical:
                                             TextAlignVertical.center,
                                         style: TextStyle(
@@ -430,13 +523,13 @@ class _photo_EditState extends State<photo_Edit> {
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xff282828)),
                                         decoration: InputDecoration(
+                                            isCollapsed: true,
                                             contentPadding: EdgeInsets.fromLTRB(
                                                 AppDimensions.height10(context) *
                                                     1.5,
+                                                0,
                                                 AppDimensions.height10(context) *
-                                                    0.4,
-                                                AppDimensions.height10(context) *
-                                                    0.2,
+                                                    4,
                                                 0),
                                             hintText:
                                                 'Give your inspiration a title',
@@ -452,8 +545,8 @@ class _photo_EditState extends State<photo_Edit> {
                                             enabledBorder:
                                                 const OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent))),
+                                                        color: Colors
+                                                            .transparent))),
                                       ),
                                     ),
                                     Container(
@@ -484,10 +577,8 @@ class _photo_EditState extends State<photo_Edit> {
                                         )),
                                     Container(
                                       alignment: Alignment.centerLeft,
-                                      height:
-                                          AppDimensions.height10(context) * 2.4,
-                                      width: AppDimensions.height10(context) *
-                                          30.5,
+                                      // width: AppDimensions.height10(context) *
+                                      //     30.5,
                                       margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
                                             0.6,
@@ -496,6 +587,8 @@ class _photo_EditState extends State<photo_Edit> {
                                         controller: statement,
                                         textAlignVertical:
                                             TextAlignVertical.center,
+                                        maxLines: null,
+                                        scrollPadding: EdgeInsets.zero,
                                         style: TextStyle(
                                             fontSize: AppDimensions.height10(
                                                     context) *
@@ -503,13 +596,13 @@ class _photo_EditState extends State<photo_Edit> {
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xff282828)),
                                         decoration: InputDecoration(
+                                            isCollapsed: true,
                                             contentPadding: EdgeInsets.fromLTRB(
                                                 AppDimensions.height10(context) *
                                                     1.5,
+                                                0,
                                                 AppDimensions.height10(context) *
-                                                    0.4,
-                                                AppDimensions.height10(context) *
-                                                    0.2,
+                                                    4,
                                                 0),
                                             hintText:
                                                 'Say more about this inspiration',
@@ -525,8 +618,8 @@ class _photo_EditState extends State<photo_Edit> {
                                             enabledBorder:
                                                 const OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent))),
+                                                        color: Colors
+                                                            .transparent))),
                                       ),
                                     ),
                                     Container(
@@ -545,7 +638,7 @@ class _photo_EditState extends State<photo_Edit> {
                                           top: AppDimensions.height10(context) *
                                               4.0),
                                       child: Text(
-                                        'Destination website',
+                                        'Destination website (optional)',
                                         style: TextStyle(
                                             fontSize: AppDimensions.height10(
                                                     context) *
@@ -558,9 +651,6 @@ class _photo_EditState extends State<photo_Edit> {
                                       children: [
                                         Container(
                                           alignment: Alignment.centerLeft,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.4,
                                           width:
                                               AppDimensions.height10(context) *
                                                   30.5,
@@ -573,6 +663,8 @@ class _photo_EditState extends State<photo_Edit> {
                                             controller: link,
                                             textAlignVertical:
                                                 TextAlignVertical.center,
+                                            maxLines: null,
+                                            scrollPadding: EdgeInsets.zero,
                                             style: TextStyle(
                                                 fontSize:
                                                     AppDimensions.height10(
@@ -585,9 +677,9 @@ class _photo_EditState extends State<photo_Edit> {
                                                     AppDimensions.height10(context) *
                                                         1.5,
                                                     AppDimensions.height10(context) *
-                                                        0.4,
-                                                    AppDimensions.height10(context) *
                                                         0.2,
+                                                    AppDimensions.height10(context) *
+                                                        0.4,
                                                     0),
                                                 hintText: 'Add link',
                                                 hintStyle: TextStyle(
@@ -701,7 +793,7 @@ class _photo_EditState extends State<photo_Edit> {
                                           top: AppDimensions.height10(context) *
                                               4.0),
                                       child: Text(
-                                        'Tags',
+                                        'Tags (optional)',
                                         style: TextStyle(
                                             fontSize: AppDimensions.height10(
                                                     context) *
@@ -712,16 +804,44 @@ class _photo_EditState extends State<photo_Edit> {
                                     ),
                                     Container(
                                       alignment: Alignment.centerLeft,
-                                      height:
-                                          AppDimensions.height10(context) * 2.4,
-                                      width: AppDimensions.height10(context) *
-                                          30.5,
+                                      // width: AppDimensions.height10(context) *
+                                      //     30.5,
                                       margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
                                             0.6,
                                       ),
                                       child: TextField(
                                         controller: hastags,
+                                        maxLines: null,
+                                        scrollPadding: EdgeInsets.zero,
+                                        onTap: () {
+                                          if (hastags.text.isEmpty) {
+                                            hastags.text = '#';
+                                          }
+                                          hastags.selection =
+                                              TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: hastags.text.length),
+                                          );
+                                        },
+                                        onChanged: (text) {
+                                          List<String> words = text.split(' ');
+
+                                          List<String> tags = words
+                                              .where((word) =>
+                                                  word.startsWith('#'))
+                                              .toList();
+
+                                          List<String> finalResult = tags
+                                              .map((tag) =>
+                                                  '"${tag.replaceAll('#', '')}"')
+                                              .toList();
+                                          tagList.clear();
+
+                                          tagList.addAll(finalResult.toSet());
+
+                                          print(tagList);
+                                        },
                                         textAlignVertical:
                                             TextAlignVertical.center,
                                         style: TextStyle(
@@ -734,10 +854,9 @@ class _photo_EditState extends State<photo_Edit> {
                                             contentPadding: EdgeInsets.fromLTRB(
                                                 AppDimensions.height10(context) *
                                                     1.5,
+                                                0,
                                                 AppDimensions.height10(context) *
-                                                    0.4,
-                                                AppDimensions.height10(context) *
-                                                    0.2,
+                                                    4,
                                                 0),
                                             hintText: 'Add #hashtags',
                                             hintStyle: TextStyle(
@@ -752,8 +871,8 @@ class _photo_EditState extends State<photo_Edit> {
                                             enabledBorder:
                                                 const OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent))),
+                                                        color: Colors
+                                                            .transparent))),
                                       ),
                                     ),
                                     AnimatedScaleButton(
@@ -799,74 +918,98 @@ class _photo_EditState extends State<photo_Edit> {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      height:
-                                          AppDimensions.height10(context) * 6.0,
-                                      width: AppDimensions.height10(context) *
-                                          37.5,
-                                      margin: EdgeInsets.only(
-                                        // bottom: AppDimensions.height10(context) * 1.0,
-                                        left: AppDimensions.height10(context) *
-                                            2.0,
-                                        right: AppDimensions.height10(context) *
-                                            1.9,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xFFFBFBFB),
-                                          borderRadius: BorderRadius.circular(
+                                    AnimatedScaleButton(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const inspiraton_goals(
+                                              update: true,
+                                              data_saved: false,
+                                              route: 'note_saved',
+                                              context: false,
+                                              note: false,
+                                            )));
+                                      },
+                                      child: Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                6.0,
+                                        width: AppDimensions.height10(context) *
+                                            37.5,
+                                        margin: EdgeInsets.only(
+                                          // bottom: AppDimensions.height10(context) * 1.0,
+                                          left:
                                               AppDimensions.height10(context) *
-                                                  2.0)),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                23.9,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.2,
-                                            margin: EdgeInsets.only(
-                                                left: AppDimensions.height10(
+                                                  2.0,
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  1.9,
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xFFFBFBFB),
+                                            borderRadius: BorderRadius.circular(
+                                                AppDimensions.height10(
                                                         context) *
-                                                    1.99),
-                                            child: Text(
-                                              '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
-                                              style: TextStyle(
-                                                fontFamily: 'laila',
-                                                color: const Color(0xFF646464),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
-                                                fontWeight: FontWeight.w500,
+                                                    2.0)),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Container(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  23.9,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  2.2,
+                                              margin: EdgeInsets.only(
+                                                  left: AppDimensions.height10(
+                                                          context) *
+                                                      1.99),
+                                              child: Text(
+                                                widget.updatedList[0] == -1
+                                                    ? '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals'
+                                                    : '${widget.updatedList.length} impacted goals',
+                                                style: TextStyle(
+                                                  fontFamily: 'laila',
+                                                  color:
+                                                      const Color(0xFF646464),
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.8,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Container(
-                                              margin: EdgeInsets.only(
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      2.391),
-                                              child: Text(
-                                                'View',
-                                                style: TextStyle(
-                                                    color:
-                                                        const Color(0xFF437296),
-                                                    fontWeight: FontWeight.w700,
-                                                    decoration: TextDecoration
-                                                        .underline,
-                                                    decorationThickness:
+                                            Container(
+                                                margin: EdgeInsets.only(
+                                                    right:
                                                         AppDimensions.height10(
                                                                 context) *
-                                                            0.2,
-                                                    fontSize:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.4),
-                                              ))
-                                        ],
+                                                            2.391),
+                                                child: Text(
+                                                  'View',
+                                                  style: TextStyle(
+                                                      color: const Color(
+                                                          0xFF437296),
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                      decorationThickness:
+                                                          AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.2,
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.4),
+                                                ))
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ]),

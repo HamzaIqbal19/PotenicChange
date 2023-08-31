@@ -176,7 +176,13 @@ class _landing_hurdlesState extends State<landing_hurdles> {
     return WillPopScope(
       onWillPop: () {
         Navigator.push(
-            context, FadePageRoute(page: const view_goals(missed: false)));
+            context,
+            FadePageRoute(
+                page: const view_goals(
+              missed: false,
+              name: '',
+              update: false,
+            )));
         return Future.value(false);
       },
       child: Scaffold(
@@ -188,8 +194,14 @@ class _landing_hurdlesState extends State<landing_hurdles> {
             Center(
               child: IconButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        FadePageRoute(page: const view_goals(missed: false)));
+                    Navigator.push(
+                        context,
+                        FadePageRoute(
+                            page: const view_goals(
+                          missed: false,
+                          name: '',
+                          update: false,
+                        )));
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',

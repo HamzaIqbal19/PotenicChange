@@ -37,7 +37,7 @@ class _no_past_sessionState extends State<no_past_session> {
   bool Loader = true;
 
   String previousDayName =
-      DateFormat('EEEE').format(DateTime.now().subtract(Duration(days: 1)));
+      DateFormat('EEEE').format(DateTime.now().subtract(const Duration(days: 1)));
   String nextDayName = DateFormat('EEEE')
       .format(DateTime.now().subtract(const Duration(days: 2)));
   String currentDay = DateFormat('EEEE').format(DateTime.now());
@@ -117,7 +117,11 @@ class _no_past_sessionState extends State<no_past_session> {
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context,
-                          FadePageRoute(page: view_goals(missed: false)));
+                          FadePageRoute(page:  const view_goals(
+                            missed: false,
+                            name: '',
+                            update: false,
+                          )));
                     },
                     child: Container(
                       margin: EdgeInsets.only(
@@ -184,10 +188,10 @@ class _no_past_sessionState extends State<no_past_session> {
         body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/Mask Group.webp'),
+                image: const AssetImage('assets/images/Mask Group.webp'),
                 colorFilter: ColorFilter.mode(
                     goals_empty == false
-                        ? Color.fromRGBO(0, 0, 0, 0.2)
+                        ? const Color.fromRGBO(0, 0, 0, 0.2)
                         : Colors.transparent,
                     BlendMode.darken),
                 fit: BoxFit.cover,
@@ -258,7 +262,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                               context) *
                                                           1.4,
                                                   fontWeight: FontWeight.w400,
-                                                  color: Color(0xff5B74A6)),
+                                                  color: const Color(0xff5B74A6)),
                                             ),
                                             Container(
                                               height: AppDimensions.height10(
@@ -316,8 +320,11 @@ class _no_past_sessionState extends State<no_past_session> {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: const view_goals(
-                                                        missed: false)));
+                                                    page: const  view_goals(
+                            missed: false,
+                            name: '',
+                            update: false,
+                          )));
                                           },
                                           child: Container(
                                             height: AppDimensions.height10(
@@ -438,8 +445,11 @@ class _no_past_sessionState extends State<no_past_session> {
                                           Navigator.push(
                                               context,
                                               FadePageRoute(
-                                                  page: const view_goals(
-                                                      missed: false)));
+                                                  page: const  view_goals(
+                            missed: false,
+                            name: '',
+                            update: false,
+                          )));
                                         },
                                         child: Container(
                                             height: AppDimensions.height10(
@@ -496,7 +506,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                           1.4,
                                                       fontWeight:
                                                           FontWeight.w400,
-                                                      color: Color(0xff5B74A6)),
+                                                      color: const Color(0xff5B74A6)),
                                                 ),
                                                 Container(
                                                   height:
@@ -945,7 +955,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                                 context) *
                                                             1.4,
                                                     fontWeight: FontWeight.w400,
-                                                    color: Color(0xff5B74A6)),
+                                                    color: const Color(0xff5B74A6)),
                                               ),
                                               Container(
                                                 height: AppDimensions.height10(
@@ -959,7 +969,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                   shape: BoxShape.circle,
                                                   border: Border.all(
                                                       width: 1,
-                                                      color: Color(0xFFFBFBFB)),
+                                                      color: const Color(0xFFFBFBFB)),
                                                 ),
                                                 child: SizedBox(
                                                     width:
@@ -1433,7 +1443,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                 )
                               : Container(),
                         ]))
-                : DashBoardBehaviour_shimmer()));
+                : const DashBoardBehaviour_shimmer()));
   }
 }
 

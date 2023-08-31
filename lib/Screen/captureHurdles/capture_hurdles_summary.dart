@@ -129,10 +129,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                   ? Center(
                       child: IconButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: const view_goals(missed: false)));
+                            Navigator.push(context,
+                                FadePageRoute(page: const landing_hurdles()));
                           },
                           icon: Image.asset(
                             'assets/images/Close.webp',

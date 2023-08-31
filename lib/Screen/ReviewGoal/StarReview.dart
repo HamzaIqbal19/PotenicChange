@@ -1712,41 +1712,21 @@ class _StarReviewState extends State<StarReview> {
                                                     print(
                                                         "==================>Successfully deleted");
                                                     if (route ==
-                                                        'view_all_goals') {
+                                                            'view_all_goals' ||
+                                                        widget.route ==
+                                                            'menu') {
                                                       Navigator.pushReplacement(
                                                           context,
                                                           FadePageRoute(
                                                               page:
                                                                   const veiw_all_goals_menu()));
                                                     } else {
-                                                      if (widget.route ==
-                                                          'menu') {
-                                                        Navigator.push(
-                                                            context,
-                                                            FadePageRoute(
-                                                                page:
-                                                                    const goal_menu_inactive(
-                                                              goal_evaluation:
-                                                                  true,
-                                                              isActive: true,
-                                                              premium: true,
-                                                            )));
-                                                      } else {
-                                                        Navigator
-                                                            .pushReplacement(
-                                                                context,
-                                                                FadePageRoute(
-                                                                  page:
-                                                                      const HomeScreen(
-                                                                    login: true,
-                                                                  ),
-                                                                ));
-                                                      }
-                                                      final SharedPreferences
-                                                          prefs = await _prefs;
-
-                                                      await prefs
-                                                          .remove('route');
+                                                      Navigator.pushReplacement(
+                                                          context,
+                                                          FadePageRoute(
+                                                              page: const HomeScreen(
+                                                                  login:
+                                                                      true)));
                                                     }
                                                   } else {
                                                     print(

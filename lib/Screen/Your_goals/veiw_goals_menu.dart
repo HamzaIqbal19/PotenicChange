@@ -49,7 +49,11 @@ class _your_goals_menuState extends State<your_goals_menu> {
         Navigator.pushReplacement(
             context,
             FadePageRoute(
-              page: const view_goals(missed: false),
+              page: const view_goals(
+                missed: false,
+                name: '',
+                update: false,
+              ),
             ));
         return Future.value(false);
       },
@@ -64,7 +68,11 @@ class _your_goals_menuState extends State<your_goals_menu> {
                     Navigator.pushReplacement(
                         context,
                         FadePageRoute(
-                          page: const view_goals(missed: false),
+                          page: const view_goals(
+                            missed: false,
+                            name: '',
+                            update: false,
+                          ),
                         ));
                   },
                   icon: Image.asset(
@@ -1174,8 +1182,11 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page:
-                                              const view_goals(missed: false)));
+                                          page: const view_goals(
+                                        missed: false,
+                                        name: '',
+                                        update: false,
+                                      )));
                                 },
                                 child: Container(
                                   width: AppDimensions.height10(context) * 33.4,

@@ -235,7 +235,10 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                                   context,
                                                   FadePageRoute(
                                                       page: const view_goals(
-                                                          missed: false)));
+                                                    missed: false,
+                                                    name: '',
+                                                    update: false,
+                                                  )));
                                             }
                                           },
                                           child: const Text(
@@ -330,16 +333,17 @@ class _feelingsAfterState extends State<feelingsAfter> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        'How do you feel',
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.8,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white),
-                      ),
                       RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(children: [
+                          TextSpan(
+                            text: 'How do you feel\n',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 2.8,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'Laila',
+                                color: const Color(0xFFFBFBFB)),
+                          ),
                           TextSpan(
                             text: 'after',
                             style: TextStyle(
@@ -354,7 +358,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                 fontSize: AppDimensions.height10(context) * 2.8,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Laila',
-                                color: Colors.white),
+                                color: const Color(0xFFFBFBFB)),
                           ),
                         ]),
                       )

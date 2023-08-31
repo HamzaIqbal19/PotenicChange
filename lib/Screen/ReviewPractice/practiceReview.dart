@@ -4,9 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Routine%20Edit/routine_edit.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -158,10 +161,35 @@ class _PracticeReviewState extends State<PracticeReview> {
                 fit: BoxFit.contain,
               ),
               onPressed: () {
-                if (route == 'practice_menu' ||
-                    route == 'practice_missed' ||
-                    route == 'practice_completed') {
-                  Navigator.pop(context);
+                if (route == 'practice_menu') {
+                  Navigator.push(
+                    context,
+                    FadePageRoute(
+                      page: practiceMenu(
+                        color: color == null ? '0' : color.toString(),
+                        goalName: goalName,
+                        goal_eval: false,
+                        pracColor: pracColor ?? '0',
+                        pracName: pracName,
+                      ),
+                    ),
+                  );
+                } else if (route == 'practice_missed') {
+                  Navigator.push(
+                    context,
+                    FadePageRoute(
+                      page: missed_Menu(
+                        pracName: pracName,
+                      ),
+                    ),
+                  );
+                } else if (route == 'practice_completed') {
+                  Navigator.push(
+                    context,
+                    FadePageRoute(
+                      page: const menu_behaviour(),
+                    ),
+                  );
                 } else {
                   Navigator.push(
                     context,
@@ -219,7 +247,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                           width: AppDimensions.height10(context) * 30,
                           child: Center(
                             child: Text(
-                              goalName,
+                              goalName.length >= 30
+                                  ? '${goalName.substring(0, 29)}...'
+                                  : goalName,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
@@ -303,7 +333,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                                   width: AppDimensions.height10(context) * 20.6,
                                   height: AppDimensions.height10(context) * 2.4,
                                   child: Text(
-                                    pracName.toString(),
+                                    pracName.toString().length >= 20
+                                        ? '${pracName.toString().substring(0, 19)}...'
+                                        : pracName.toString(),
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                         overflow: TextOverflow.ellipsis,

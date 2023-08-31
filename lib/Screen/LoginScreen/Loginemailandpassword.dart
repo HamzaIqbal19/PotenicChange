@@ -76,7 +76,11 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
         Navigator.push(
             context,
             FadePageRoute(
-              page: const view_goals(missed: false),
+              page: const view_goals(
+                missed: false,
+                name: '',
+                update: false,
+              ),
               // exitPage:SplashPage(),
             ));
       } else if (response == false) {

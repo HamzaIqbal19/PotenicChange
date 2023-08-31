@@ -118,7 +118,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context,
-                          FadePageRoute(page: view_goals(missed: false)));
+                          FadePageRoute(page: view_goals(missed: false, name: '', update: false,)));
                     },
                     child: Container(
                       margin: EdgeInsets.only(
@@ -330,9 +330,11 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: const view_goals(
-                                                  missed: false,
-                                                )));
+                                                    page: const  view_goals(
+                            missed: false,
+                            name: '',
+                            update: false,
+                          )));
                                           },
                                           child: Container(
                                             width: AppDimensions.height10(

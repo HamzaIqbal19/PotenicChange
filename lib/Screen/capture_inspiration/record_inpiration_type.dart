@@ -31,6 +31,7 @@ class record_inspiration extends StatefulWidget {
 class _record_inspirationState extends State<record_inspiration> {
   var inspirationDetails;
   bool Loading = true;
+  List allgoalsSelected = [];
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -63,6 +64,7 @@ class _record_inspirationState extends State<record_inspiration> {
   void initState() {
     super.initState();
     _fetchInspiration();
+    allgoalsSelected.add(-1);
   }
 
   @override
@@ -221,7 +223,19 @@ class _record_inspirationState extends State<record_inspiration> {
                                       AppDimensions.height10(context) * 0.2),
                               child: Center(
                                   child: Text(
-                                inspirationDetails['inspiration']['title'],
+                                inspirationDetails['inspiration']
+                                            ['inspirationId'] ==
+                                        1
+                                    ? 'Image'
+                                    : inspirationDetails['inspiration']
+                                                ['inspirationId'] ==
+                                            2
+                                        ? 'Note'
+                                        : inspirationDetails['inspiration']
+                                                    ['inspirationId'] ==
+                                                3
+                                            ? "Video"
+                                            : 'Content',
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensions.height10(context) * 1.6,
@@ -235,8 +249,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               child: Align(
                                   alignment: Alignment.topCenter,
                                   child: Text(
-                                    inspirationDetails['inspiration']
-                                        ['description'],
+                                    inspirationDetails['inspiration']['title'],
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.center,
@@ -348,7 +361,10 @@ class _record_inspirationState extends State<record_inspiration> {
                                   1) {
                                 Navigator.push(
                                   context,
-                                  FadePageRoute(page: const photo_Edit()),
+                                  FadePageRoute(
+                                      page: photo_Edit(
+                                    updatedList: allgoalsSelected,
+                                  )),
                                 );
                               } else if (inspirationDetails['inspiration']
                                       ['inspirationId'] ==
@@ -356,9 +372,10 @@ class _record_inspirationState extends State<record_inspiration> {
                                 Navigator.push(
                                   context,
                                   FadePageRoute(
-                                      page: const videoEdit(
+                                      page: videoEdit(
                                     note: true,
                                     context: false,
+                                    updatedList: allgoalsSelected,
                                   )),
                                 );
                               } else if (inspirationDetails['inspiration']
@@ -367,10 +384,10 @@ class _record_inspirationState extends State<record_inspiration> {
                                 Navigator.push(
                                   context,
                                   FadePageRoute(
-                                      page: const videoEdit(
-                                    note: false,
-                                    context: true,
-                                  )),
+                                      page: videoEdit(
+                                          note: false,
+                                          context: true,
+                                          updatedList: allgoalsSelected)),
                                 );
                               } else if (inspirationDetails['inspiration']
                                       ['inspirationId'] ==
@@ -378,10 +395,10 @@ class _record_inspirationState extends State<record_inspiration> {
                                 Navigator.push(
                                   context,
                                   FadePageRoute(
-                                      page: const videoEdit(
-                                    note: false,
-                                    context: false,
-                                  )),
+                                      page: videoEdit(
+                                          note: false,
+                                          context: false,
+                                          updatedList: allgoalsSelected)),
                                 );
                               }
                             },

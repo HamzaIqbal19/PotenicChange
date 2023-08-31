@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
@@ -60,6 +61,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
           InspirationList = response;
           noData = false;
         });
+        print('============API HIT======================>');
       } else if (response == 404) {
         print('Response == $response');
         setState(() {
@@ -120,13 +122,18 @@ class _inspiration_landingState extends State<inspiration_landing> {
 
   _getTagNames() {
     print('Tag function called');
+
     for (int i = 0; i <= InspirationList.length; i++) {
+      print(InspirationList[i]['hashTags']);
       if (InspirationList[i]['hashTags']?.length != 0) {
         if (InspirationList[i]['hashTags'] != null) {
-          tagNames.add(InspirationList[i]['hashTags']
+          List<String> tags = InspirationList[i]['hashTags']
               .toString()
-              .replaceAll('[', ' ')
-              .replaceAll(']', ' '));
+              .replaceAll('[', '')
+              .replaceAll(']', '')
+              .split(', '); // Split the hashtags into individual tags
+
+          tagNames.addAll(tags);
         }
       } else {
         print("No tags");
@@ -141,7 +148,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
   void getInspirationRoute() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
-      Route = prefs.getString('inspiration_saved_route');
+      Route = prefs.getString('inspiration_saved_route').toString().isEmpty
+          ? ''
+          : prefs.getString('inspiration_saved_route');
     });
 
     print(prefs.getString('inspiration_saved_route'));
@@ -189,18 +198,17 @@ class _inspiration_landingState extends State<inspiration_landing> {
             actions: [
               Center(
                 child: IconButton(
-                    onPressed: () {
+                    onPressed: () async {
                       Navigator.push(
                           context,
                           FadePageRoute(
-                              page: const dashBoard(
-                            saved: false,
-                            helpful_tips: false,
-                            membership: true,
-                            dashboard_ctrl: false,
-                            cancel: false,
-                            trial: false,
+                              page: const view_goals(
+                            missed: false,
+                            name: '',
+                            update: false,
                           )));
+                      final SharedPreferences prefs = await _prefs;
+                      prefs.remove('inspiration_saved_route');
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
@@ -263,7 +271,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               Align(
                                 alignment: const Alignment(0, 0.525),
                                 child: AnimatedScaleButton(
-                                  onTap: () {
+                                  onTap: () async {
                                     if (Route == null) {
                                       Navigator.push(
                                           context,
@@ -289,6 +297,20 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                           context,
                                           FadePageRoute(
                                               page: const inspiration_type()));
+                                    } else {
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const inspiraton_goals(
+                                                  update: false,
+                                                  data_saved: false,
+                                                  context: false,
+                                                  note: false,
+                                                  route: 'landing')));
+                                      final SharedPreferences prefs =
+                                          await _prefs;
+                                      await prefs
+                                          .remove('inspiration_saved_route');
                                     }
                                   },
                                   child: Container(
@@ -1214,17 +1236,29 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       },
                                                       // Set the height of each statement
                                                       children: goalName
-                                                          .map((statement) =>
-                                                              Text(statement,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.height10(context) *
-                                                                            2.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                  )))
+                                                          .map(
+                                                              (statement) =>
+                                                                  SizedBox(
+                                                                    width: AppDimensions.height10(
+                                                                            context) *
+                                                                        26,
+                                                                    child:
+                                                                        Center(
+                                                                      child: Text(
+                                                                          statement,
+                                                                          overflow: TextOverflow
+                                                                              .ellipsis,
+                                                                          textAlign: TextAlign
+                                                                              .center,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                AppDimensions.height10(context) * 2.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                          )),
+                                                                    ),
+                                                                  ))
                                                           .toList(),
                                                     ),
                                                   ),
@@ -1233,7 +1267,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               Positioned(
                                                 top: AppDimensions.height10(
                                                         context) *
-                                                    13.5,
+                                                    14.5,
                                                 right: AppDimensions.height10(
                                                         context) *
                                                     2.0,
@@ -1254,7 +1288,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               Positioned(
                                                 top: AppDimensions.height10(
                                                         context) *
-                                                    18.0,
+                                                    19.5,
                                                 right: AppDimensions.height10(
                                                         context) *
                                                     2.0,
@@ -1452,6 +1486,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                     .toString()
                                                                     .trim());
                                                             print('asf');
+                                                            print(
+                                                                "Selected Tag ==================>${tagNames[TagIndex].toString().trim()}");
                                                             Navigator.pop(
                                                                 context);
                                                           },
@@ -1485,17 +1521,29 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       useMagnifier:
                                                           true, // Set the height of each statement
                                                       children: tagNames
-                                                          .map((statement) =>
-                                                              Text(statement,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.height10(context) *
-                                                                            2.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                  )))
+                                                          .map(
+                                                              (statement) =>
+                                                                  SizedBox(
+                                                                    width: AppDimensions.height10(
+                                                                            context) *
+                                                                        26,
+                                                                    child:
+                                                                        Center(
+                                                                      child: Text(
+                                                                          statement,
+                                                                          overflow: TextOverflow
+                                                                              .ellipsis,
+                                                                          textAlign: TextAlign
+                                                                              .center,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                AppDimensions.height10(context) * 2.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                          )),
+                                                                    ),
+                                                                  ))
                                                           .toList(),
                                                       onSelectedItemChanged:
                                                           (int index) {
@@ -1511,9 +1559,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                 ],
                                               ),
                                               Positioned(
-                                                top: 112,
-                                                right: 20,
-                                                left: 20,
+                                                top: AppDimensions.height10(
+                                                        context) *
+                                                    14.5,
+                                                right: AppDimensions.height10(
+                                                        context) *
+                                                    2.0,
+                                                left: AppDimensions.height10(
+                                                        context) *
+                                                    2.0,
                                                 child: Align(
                                                   alignment:
                                                       const Alignment(0, 0),
@@ -1526,9 +1580,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                 ),
                                               ),
                                               Positioned(
-                                                top: 152,
-                                                right: 20,
-                                                left: 20,
+                                                top: AppDimensions.height10(
+                                                        context) *
+                                                    19.5,
+                                                right: AppDimensions.height10(
+                                                        context) *
+                                                    2.0,
+                                                left: AppDimensions.height10(
+                                                        context) *
+                                                    2.0,
                                                 child: Align(
                                                   alignment:
                                                       const Alignment(0, 0),
@@ -2284,7 +2344,9 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
   void onDoneLoading() {
     setState(() {
       Loading = false;
+      showContainer = true;
     });
+    startTimer();
   }
 
   void _fetchInspiration() {
@@ -2294,6 +2356,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
         setState(() {
           inspirationDetails = response;
         });
+
         loadData();
         print(inspirationDetails['inspiration']['title']);
       } else {
@@ -2304,9 +2367,40 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
     });
   }
 
+  bool showContainer = false;
+  double swipeOffset = 0.0;
+  Timer? _timer;
+
+  void startTimer() {
+    _timer = Timer(const Duration(seconds: 3), () {
+      setState(() {
+        showContainer = false;
+      });
+      Timer(const Duration(seconds: 1), () {
+        // Navigator.push(
+        //   context,
+        //   FadePageRoute(page: const veiw_details()),
+        // );
+      });
+    });
+  }
+
+  void stopTimer() {
+    if (_timer != null && _timer!.isActive) {
+      _timer!.cancel(); // Cancel the timer if it's active
+    }
+  }
+
+  @override
+  void dispose() {
+    stopTimer(); // Make sure to cancel the timer when the widget is disposed
+    super.dispose();
+  }
+
   @override
   void initState() {
     super.initState();
+
     _fetchInspiration();
   }
 
@@ -2476,6 +2570,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                             Column(children: [
                               AnimatedScaleButton(
                                 onTap: () {
+                                  stopTimer();
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
@@ -2552,7 +2647,19 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                         AppDimensions.height10(context) * 0.2),
                                 child: Center(
                                     child: Text(
-                                  inspirationDetails['inspiration']['title'],
+                                  inspirationDetails['inspiration']
+                                              ['inspirationId'] ==
+                                          1
+                                      ? 'Image'
+                                      : inspirationDetails['inspiration']
+                                                  ['inspirationId'] ==
+                                              2
+                                          ? 'Note'
+                                          : inspirationDetails['inspiration']
+                                                      ['inspirationId'] ==
+                                                  3
+                                              ? "Video"
+                                              : 'Content',
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.height10(context) * 1.6,
@@ -2570,7 +2677,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                     alignment: Alignment.topCenter,
                                     child: Text(
                                       inspirationDetails['inspiration']
-                                          ['description'],
+                                          ['title'],
                                       textAlign: TextAlign.center,
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
@@ -2589,122 +2696,189 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                           ],
                         ),
                       ),
-
-                      Container(
-                        width: AppDimensions.height10(context) * 38.259,
-                        height: AppDimensions.height10(context) * 9.707,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 12.0),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0),
-                            gradient: const LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Color(0xFFD4B7B9),
-                                  Color(0xFF91698C)
-                                ])),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left:
-                                      AppDimensions.height10(context) * 1.261),
-                              width: AppDimensions.height10(context) * 4.437,
-                              height: AppDimensions.height10(context) * 4.437,
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/circle_tick.webp'))),
-                            ),
-                            Container(
-                              //width: AppDimensions.height10(context) * 6.9,
-                              height: AppDimensions.height10(context) * 3.6,
-                              margin: EdgeInsets.only(
-                                  left:
-                                      AppDimensions.height10(context) * 1.232),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 4.6,
-                                    height:
-                                        AppDimensions.height10(context) * 1.4,
-                                    //   color: Colors.amber,
-                                    child: Text(
-                                      widget.is_Updated ? 'Updated' : 'SAVED',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFFFFFF)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 16.9,
-                                    height:
-                                        AppDimensions.height10(context) * 2.2,
-                                    child: Text(
-                                      inspirationDetails['inspiration']['title']
-                                              .toString()
-                                              .isEmpty
-                                          ? 'Inspiraion'
-                                          : inspirationDetails['inspiration']
-                                              ['title'],
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.8,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFFFFFF)),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            AnimatedScaleButton(
-                              onTap: () {
+                      showContainer
+                          ? updateBox(
+                              headText: widget.is_Updated ? 'Updated' : 'SAVED',
+                              bodyText: inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      1
+                                  ? 'Image'
+                                  : inspirationDetails['inspiration']
+                                              ['inspirationId'] ==
+                                          2
+                                      ? 'Note'
+                                      : inspirationDetails['inspiration']
+                                                  ['inspirationId'] ==
+                                              3
+                                          ? "Video"
+                                          : 'Content',
+                              onTap1: () {
                                 Navigator.push(
                                   context,
                                   FadePageRoute(page: const veiw_details()),
                                 );
+                                stopTimer();
                               },
-                              child: Container(
-                                width: AppDimensions.height10(context) * 8.1,
-                                height: AppDimensions.height10(context) * 6.0,
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 5,
-                                    right:
-                                        AppDimensions.height10(context) * 1.23),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: const Color(0xFFFFFFFF), width: 1),
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 2.0),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'View',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
-                                        fontWeight: FontWeight.w500,
-                                        color: const Color(0xFFFFFFFF)),
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      )
+                              functionText: 'View')
+                          : Container(),
+
+                      // GestureDetector(
+                      //   onPanUpdate: (details) {
+                      //     setState(() {
+                      //       swipeOffset += details.delta.dx;
+                      //     });
+
+                      //     if (swipeOffset.abs() >=
+                      //         MediaQuery.of(context).size.width / 3.0) {
+                      //       setState(() {
+                      //         showContainer = false;
+                      //       });
+                      //     }
+                      //   },
+                      //   child: AnimatedOpacity(
+                      //     duration: const Duration(milliseconds: 700),
+                      //     opacity: showContainer ? 1.0 : 0.0,
+                      //     child: Transform.translate(
+                      //       offset: Offset(swipeOffset, 0.0),
+                      //       child: Container(
+                      //         width: AppDimensions.height10(context) * 38.259,
+                      //         height: AppDimensions.height10(context) * 9.707,
+                      //         margin: EdgeInsets.only(
+                      //             top: AppDimensions.height10(context) * 12.0),
+                      //         decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(
+                      //                 AppDimensions.height10(context) * 2.0),
+                      //             gradient: const LinearGradient(
+                      //                 begin: Alignment.topCenter,
+                      //                 end: Alignment.bottomCenter,
+                      //                 colors: [
+                      //                   Color(0xFFD4B7B9),
+                      //                   Color(0xFF91698C)
+                      //                 ])),
+                      //         child: Row(
+                      //           crossAxisAlignment: CrossAxisAlignment.center,
+                      //           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //           children: [
+                      //             Container(
+                      //               margin: EdgeInsets.only(
+                      //                   left: AppDimensions.height10(context) *
+                      //                       1.261),
+                      //               width:
+                      //                   AppDimensions.height10(context) * 4.437,
+                      //               height:
+                      //                   AppDimensions.height10(context) * 4.437,
+                      //               decoration: const BoxDecoration(
+                      //                   image: DecorationImage(
+                      //                       image: AssetImage(
+                      //                           'assets/images/circle_tick.webp'))),
+                      //             ),
+                      //             Container(
+                      //               //width: AppDimensions.height10(context) * 6.9,
+                      //               height:
+                      //                   AppDimensions.height10(context) * 3.6,
+                      //               margin: EdgeInsets.only(
+                      //                   left: AppDimensions.height10(context) *
+                      //                       1.232),
+                      //               child: Column(
+                      //                 crossAxisAlignment:
+                      //                     CrossAxisAlignment.start,
+                      //                 children: [
+                      //                   SizedBox(
+                      //                     width:
+                      //                         AppDimensions.height10(context) *
+                      //                             4.6,
+                      //                     height:
+                      //                         AppDimensions.height10(context) *
+                      //                             1.4,
+                      //                     //   color: Colors.amber,
+                      //                     child: Text(
+                      //                       widget.is_Updated
+                      //                           ? 'Updated'
+                      //                           : 'SAVED',
+                      //                       style: TextStyle(
+                      //                           fontSize:
+                      //                               AppDimensions.height10(
+                      //                                       context) *
+                      //                                   1.3,
+                      //                           fontWeight: FontWeight.w500,
+                      //                           color: const Color(0xFFFFFFFF)),
+                      //                     ),
+                      //                   ),
+                      //                   SizedBox(
+                      //                     width:
+                      //                         AppDimensions.height10(context) *
+                      //                             16.9,
+                      //                     height:
+                      //                         AppDimensions.height10(context) *
+                      //                             2.2,
+                      //                     child: Text(
+                      //                       inspirationDetails['inspiration']
+                      //                                   ['title']
+                      //                               .toString()
+                      //                               .isEmpty
+                      //                           ? 'Inspiraion'
+                      //                           : inspirationDetails[
+                      //                               'inspiration']['title'],
+                      //                       overflow: TextOverflow.ellipsis,
+                      //                       style: TextStyle(
+                      //                           fontSize:
+                      //                               AppDimensions.height10(
+                      //                                       context) *
+                      //                                   1.8,
+                      //                           fontWeight: FontWeight.w500,
+                      //                           color: const Color(0xFFFFFFFF)),
+                      //                     ),
+                      //                   ),
+                      //                 ],
+                      //               ),
+                      //             ),
+                      //             AnimatedScaleButton(
+                      //               onTap: () {
+                      //                 Navigator.push(
+                      //                   context,
+                      //                   FadePageRoute(
+                      //                       page: const veiw_details()),
+                      //                 );
+                      //               },
+                      //               child: Container(
+                      //                 width:
+                      //                     AppDimensions.height10(context) * 8.1,
+                      //                 height:
+                      //                     AppDimensions.height10(context) * 6.0,
+                      //                 margin: EdgeInsets.only(
+                      //                     left:
+                      //                         AppDimensions.height10(context) *
+                      //                             5,
+                      //                     right:
+                      //                         AppDimensions.height10(context) *
+                      //                             1.23),
+                      //                 decoration: BoxDecoration(
+                      //                   border: Border.all(
+                      //                       color: const Color(0xFFFFFFFF),
+                      //                       width: 1),
+                      //                   borderRadius: BorderRadius.circular(
+                      //                       AppDimensions.height10(context) *
+                      //                           2.0),
+                      //                 ),
+                      //                 child: Center(
+                      //                   child: Text(
+                      //                     'View',
+                      //                     style: TextStyle(
+                      //                         fontSize: AppDimensions.height10(
+                      //                                 context) *
+                      //                             1.8,
+                      //                         fontWeight: FontWeight.w500,
+                      //                         color: const Color(0xFFFFFFFF)),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             )
+                      //           ],
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // )
 
                       // noData == false
                       //     ? Container(
@@ -2729,6 +2903,172 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                 ),
         ),
         extendBody: true,
+      ),
+    );
+  }
+}
+
+class updateBox extends StatefulWidget {
+  final String headText;
+  final String bodyText;
+  final String functionText;
+  final Function onTap1;
+  const updateBox(
+      {super.key,
+      required this.headText,
+      required this.bodyText,
+      required this.onTap1,
+      required this.functionText});
+
+  @override
+  State<updateBox> createState() => _updateBoxState();
+}
+
+class _updateBoxState extends State<updateBox> {
+  bool showContainer = false;
+  double swipeOffset = 0.0;
+  Timer? _timer;
+
+  void startTimer() {
+    _timer = Timer(const Duration(seconds: 3), () {
+      setState(() {
+        showContainer = false;
+      });
+      Timer(const Duration(seconds: 1), () {
+        widget.onTap1;
+      });
+    });
+  }
+
+  void stopTimer() {
+    if (_timer != null && _timer!.isActive) {
+      _timer!.cancel(); // Cancel the timer if it's active
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      showContainer = true;
+    });
+    startTimer();
+  }
+
+  @override
+  void dispose() {
+    stopTimer(); // Make sure to cancel the timer when the widget is disposed
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onPanUpdate: (details) {
+        setState(() {
+          swipeOffset += details.delta.dx;
+        });
+
+        if (swipeOffset.abs() >= MediaQuery.of(context).size.width / 3.0) {
+          setState(() {
+            showContainer = false;
+          });
+        }
+      },
+      child: AnimatedOpacity(
+        duration: const Duration(milliseconds: 700),
+        opacity: showContainer ? 1.0 : 0.0,
+        child: Transform.translate(
+          offset: Offset(swipeOffset, 0.0),
+          child: Container(
+            width: AppDimensions.height10(context) * 38.259,
+            height: AppDimensions.height10(context) * 9.707,
+            margin:
+                EdgeInsets.only(top: AppDimensions.height10(context) * 12.0),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                    AppDimensions.height10(context) * 2.0),
+                gradient: const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                      left: AppDimensions.height10(context) * 1.261),
+                  width: AppDimensions.height10(context) * 4.437,
+                  height: AppDimensions.height10(context) * 4.437,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/circle_tick.webp'))),
+                ),
+                Container(
+                  //width: AppDimensions.height10(context) * 6.9,
+                  height: AppDimensions.height10(context) * 3.6,
+                  margin: EdgeInsets.only(
+                      left: AppDimensions.height10(context) * 1.232),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: AppDimensions.height10(context) * 4.6,
+                        height: AppDimensions.height10(context) * 1.4,
+                        //   color: Colors.amber,
+                        child: Text(
+                          widget.headText,
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.3,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFFFFFFFF)),
+                        ),
+                      ),
+                      SizedBox(
+                        width: AppDimensions.height10(context) * 16.9,
+                        height: AppDimensions.height10(context) * 2.2,
+                        child: Text(
+                          widget.bodyText,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.8,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFFFFFFFF)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                AnimatedScaleButton(
+                  onTap: widget.onTap1,
+                  child: Container(
+                    width: AppDimensions.height10(context) * 8.1,
+                    height: AppDimensions.height10(context) * 6.0,
+                    margin: EdgeInsets.only(
+                        left: AppDimensions.height10(context) * 5,
+                        right: AppDimensions.height10(context) * 1.23),
+                    decoration: BoxDecoration(
+                      border:
+                          Border.all(color: const Color(0xFFFFFFFF), width: 1),
+                      borderRadius: BorderRadius.circular(
+                          AppDimensions.height10(context) * 2.0),
+                    ),
+                    child: Center(
+                      child: Text(
+                        widget.functionText,
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.8,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFFFFFFFF)),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

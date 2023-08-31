@@ -18,6 +18,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
+import '../Dashboard Behaviour/dashboard_view_goals.dart';
 import '../Goal Evaluation/practice_score.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -151,7 +152,16 @@ class _practiceMenuState extends State<practiceMenu> {
         leading: Center(
           child: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  FadePageRoute(
+                    page: const view_goals(
+                      missed: false,
+                      name: '',
+                      update: false,
+                    ),
+                  ),
+                );
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
@@ -164,7 +174,15 @@ class _practiceMenuState extends State<practiceMenu> {
           Center(
             child: IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page: const view_goals(
+                      missed: false,
+                      name: '',
+                      update: false,
+                    )),
+                  );
                 },
                 icon: Image.asset(
                   'assets/images/Close.webp',

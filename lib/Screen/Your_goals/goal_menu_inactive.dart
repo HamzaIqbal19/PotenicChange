@@ -102,7 +102,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
       onWillPop: () {
         if (route != 'your_goal') {
           Navigator.push(
-              context, FadePageRoute(page: const view_goals(missed: false)));
+              context,
+              FadePageRoute(
+                  page: const view_goals(
+                missed: false,
+                name: '',
+                update: false,
+              )));
         } else {
           Navigator.push(
               context, FadePageRoute(page: const veiw_all_goals_menu()));

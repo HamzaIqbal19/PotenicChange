@@ -5,6 +5,7 @@ import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
+import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
@@ -304,12 +305,10 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                                     Navigator.pushReplacement(
                                                       context,
                                                       FadePageRoute(
-                                                        page:
-                                                            const HomeScreenProgressSaved(
-                                                          login: false,
-                                                          route: "",
-                                                        ),
-                                                      ),
+                                                          page:
+                                                              const HomeScreen(
+                                                                  login:
+                                                                      false)),
                                                     );
                                                   },
                                                   child: Container(
@@ -391,7 +390,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "Logout",
+                                  "Log out",
                                   style: TextStyle(
                                     color: const Color(0xFF8C648A),
                                     fontSize:

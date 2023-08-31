@@ -20,6 +20,7 @@ class InspirationApi {
       File? file,
       String title,
       hashTags,
+      String author,
       String destinationLink,
       bool visibility,
       String description,
@@ -42,6 +43,7 @@ class InspirationApi {
       "title": title,
       "hashTags": hashTags.toString(),
       "visibility": "$visibility",
+      "author": author,
       "destinationLink": destinationLink,
       "userGoalId": userGoalId.toString(),
       "description": description,
@@ -70,6 +72,7 @@ class InspirationApi {
       print(responseBody['result']['id']);
       var inspirationId =
           prefs.setInt('userInspirationId', responseBody['result']['id']);
+      prefs.remove('inspiration_saved_route');
 
       print("response==========>$responses['result']"); // Printing the response
       return responseBody;
@@ -80,12 +83,8 @@ class InspirationApi {
     }
   }
 
-  Future updateInspiration(
-    String title,
-    hashTags,
-    String destinationLink,
-    String description,
-  ) async {
+  Future updateInspiration(String title, hashTags, String destinationLink,
+      String description, userGoalId) async {
     final SharedPreferences prefs = await _prefs;
     //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
@@ -102,6 +101,7 @@ class InspirationApi {
       "hashTags": hashTags,
       "destinationLink": destinationLink,
       "description": description,
+      "userGoalId": userGoalId
     });
     // var userGoalId = prefs.getInt('goalId');
     // print('$userGoalId');
@@ -143,7 +143,7 @@ class InspirationApi {
 
     var responses = jsonDecode(request.body);
     print(responses);
-    print("Hurdle to be deleted");
+    print("Inspiration to be deleted");
     if (request.statusCode == 200) {
       print('object deleted');
       return true;
@@ -241,6 +241,13 @@ class InspirationApi {
     var Accestoken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
     print("type================>$type");
+    if (tag != '') {
+      print(
+          'tag=====================>${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag');
+    } else {
+      print('tag=====================>Empty&$tag');
+    }
+
     print(Accestoken);
 
     var headers = {
@@ -266,6 +273,7 @@ class InspirationApi {
                                   : '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId'),
       headers: headers,
     );
+    print(response.request);
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);

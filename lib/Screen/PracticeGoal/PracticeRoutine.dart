@@ -495,7 +495,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                             value.value1;
                                         index1 = index;
                                       });
-                                    } else if (value.value2 <= 9) {
+                                    } else if (value.value2 <= 10) {
                                       Map<String, dynamic> DayMap =
                                           timesPerDay.firstWhere(
                                         (map) =>

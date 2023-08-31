@@ -141,7 +141,10 @@ class _clocksState extends State<clocks> {
                                           context,
                                           FadePageRoute(
                                               page: const view_goals(
-                                                  missed: false)));
+                                            missed: false,
+                                            name: '',
+                                            update: false,
+                                          )));
                                     }
                                   },
                                   child: const Text(

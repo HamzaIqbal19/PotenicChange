@@ -346,8 +346,11 @@ class _ActivateStarState extends State<ActivateStar> {
                                         FadePageRoute2(
                                           true,
                                           exitPage: const ActivateStar(),
-                                          enterPage:
-                                              const view_goals(missed: false),
+                                          enterPage: const view_goals(
+                                            missed: false,
+                                            name: '',
+                                            update: false,
+                                          ),
                                         ),
                                       );
                                     } else if (response == 400) {
@@ -357,8 +360,11 @@ class _ActivateStarState extends State<ActivateStar> {
                                         FadePageRoute2(
                                           true,
                                           exitPage: const ActivateStar(),
-                                          enterPage:
-                                              const view_goals(missed: false),
+                                          enterPage: const view_goals(
+                                            missed: false,
+                                            name: '',
+                                            update: false,
+                                          ),
                                         ),
                                       );
                                       showAnimatedDialog(
