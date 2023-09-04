@@ -287,36 +287,27 @@ class _emotionsState extends State<emotions> {
                         bottom: AppDimensions.height10(context) * 8.6),
                     child: Column(
                       children: [
-                        Text(
-                          'How do you feel',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.8,
-                              fontFamily: 'Laila',
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'before',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.8,
-                                  fontFamily: 'Laila',
-                                  fontWeight: FontWeight.w700,
-                                  color: const Color(0xff8C648A)),
-                            ),
-                            Text(
-                              ' your practice?',
+                        RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 2.8,
                                   fontWeight: FontWeight.w700,
                                   fontFamily: 'Laila',
-                                  color: Colors.white),
-                            ),
-                          ],
+                                  color: const Color(0xFFFBFBFB)),
+                              children: const [
+                                TextSpan(
+                                  text: 'How do you feel\n',
+                                ),
+                                TextSpan(
+                                  text: 'before',
+                                  style: TextStyle(color: Color(0xff8C648A)),
+                                ),
+                                TextSpan(
+                                  text: ' your practice?',
+                                ),
+                              ]),
                         )
                       ],
                     ),

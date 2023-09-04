@@ -84,7 +84,7 @@ class InspirationApi {
   }
 
   Future updateInspiration(String title, hashTags, String destinationLink,
-      String description, userGoalId) async {
+      String description, userGoalId, String author) async {
     final SharedPreferences prefs = await _prefs;
     //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
@@ -98,7 +98,8 @@ class InspirationApi {
     };
     var body = jsonEncode({
       "title": title,
-      "hashTags": hashTags,
+      "hashTags": hashTags.toString(),
+      'author': author,
       "destinationLink": destinationLink,
       "description": description,
       "userGoalId": userGoalId

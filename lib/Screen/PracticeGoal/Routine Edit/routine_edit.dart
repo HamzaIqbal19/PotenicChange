@@ -500,7 +500,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                               })),
                                                   title: Text(
                                                     selectedDay[index],
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         color: Color.fromRGBO(
                                                             67, 114, 150, 1),
                                                         fontWeight:

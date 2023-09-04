@@ -174,7 +174,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   String _selected_goal = 'All';
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
+      onWillPop: () async {
         Navigator.push(
             context,
             FadePageRoute(
@@ -183,6 +183,15 @@ class _landing_hurdlesState extends State<landing_hurdles> {
               name: '',
               update: false,
             )));
+        final SharedPreferences prefs = await _prefs;
+        var hurdleRoute = prefs.remove('HurdleRoute');
+        await prefs.remove('hurdleName');
+        await prefs.remove('NameHurdle');
+        await prefs.remove('hurdleStatement');
+        await prefs.remove('hurdleId');
+        await prefs.remove('selected_goals');
+        await prefs.remove('feelingsList');
+        await prefs.remove("hurdle_selected");
         return Future.value(false);
       },
       child: Scaffold(
@@ -193,7 +202,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
           actions: [
             Center(
               child: IconButton(
-                  onPressed: () {
+                  onPressed: () async {
                     Navigator.push(
                         context,
                         FadePageRoute(
@@ -202,6 +211,15 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                           name: '',
                           update: false,
                         )));
+                    final SharedPreferences prefs = await _prefs;
+                    var hurdleRoute = prefs.remove('HurdleRoute');
+                    await prefs.remove('hurdleName');
+                    await prefs.remove('NameHurdle');
+                    await prefs.remove('hurdleStatement');
+                    await prefs.remove('hurdleId');
+                    await prefs.remove('selected_goals');
+                    await prefs.remove('feelingsList');
+                    await prefs.remove("hurdle_selected");
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
@@ -1052,6 +1070,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                     top: AppDimensions.height10(context) * 4,
                                     bottom:
                                         AppDimensions.height10(context) * 10),
+                                //color: Colors.red,
                                 child: GridView.builder(
                                     shrinkWrap: true,
                                     padding: EdgeInsets.only(
@@ -1065,10 +1084,10 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                         const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
                                       childAspectRatio:
-                                          3.5 / 3, // Two items in each row
+                                          1.0, // Two items in each row
 
-                                      mainAxisSpacing: 1.0,
-                                      crossAxisSpacing: 0.1,
+                                      mainAxisSpacing: 0.0,
+                                      crossAxisSpacing: 0.0,
                                     ),
                                     itemCount: hurdlesList.length,
                                     itemBuilder: (context, index) {
@@ -1096,14 +1115,16 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                 child: Container(
                                                   width: AppDimensions.height10(
                                                           context) *
-                                                      17.6,
+                                                      19.313,
                                                   height:
                                                       AppDimensions.height10(
                                                               context) *
-                                                          18.207,
+                                                          19.942,
                                                   padding: EdgeInsets.symmetric(
                                                       horizontal: AppDimensions
-                                                          .height10(context)),
+                                                              .height10(
+                                                                  context) *
+                                                          1.5),
                                                   decoration: const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       image: DecorationImage(
@@ -1118,11 +1139,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                         width: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            7.1,
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.9,
+                                                            14.0,
                                                         child: Text(
                                                           capitalizeFirstLetter(
                                                               hurdlesList[index]
@@ -1131,12 +1148,12 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
+                                                              color: const Color(
+                                                                  0xFFFFFFFF),
                                                               fontSize: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  1.6,
+                                                                  1.8,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w700),
@@ -1148,6 +1165,10 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                                     .height10(
                                                                         context) *
                                                                 0.6),
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            15.7,
                                                         child: Text(
                                                           capitalizeFirstLetter(
                                                               hurdlesList[index]
@@ -1159,12 +1180,12 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                           overflow: TextOverflow
                                                               .ellipsis,
                                                           style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
+                                                              color: const Color(
+                                                                  0xFFFFFFFF),
                                                               fontSize: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  1.4,
+                                                                  1.6,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400),
@@ -1338,8 +1359,8 @@ class _hurdle_menuState extends State<hurdle_menu> {
                             maxLines: 2,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                color: const Color(0xFFFBFBFB),
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w700),
                           ),
                         ),
@@ -1355,8 +1376,8 @@ class _hurdle_menuState extends State<hurdle_menu> {
                             maxLines: 3,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                color: const Color(0xFFFBFBFB),
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w400),
                           ),
                         )

@@ -32,14 +32,6 @@ class hurdles_goal_impact extends StatefulWidget {
   State<hurdles_goal_impact> createState() => _hurdles_goal_impactState();
 }
 
-List<int> selectedIndices = [];
-List<int> selectedInActiveIndices = [];
-bool selectAll = false;
-
-List selectedGoals = [];
-List multiGoals = [];
-List allgoalsSelected = [];
-
 class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
   int selectBox = -1;
   int selectinActive = -1;
@@ -48,6 +40,13 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
   bool Loading = true;
   List<Map<String, dynamic>> Active = [];
   List<Map<String, dynamic>> inActive = [];
+  List<int> selectedIndices = [];
+  List<int> selectedInActiveIndices = [];
+  bool selectAll = false;
+
+  List selectedGoals = [];
+  List multiGoals = [];
+  List allgoalsSelected = [];
 
   Future<void> saveGoalsToSharedPreferences(List goals) async {
     final SharedPreferences prefs = await _prefs;
@@ -74,6 +73,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
       });
       if (widget.summary == true) {
         _fetchHurdleSummary();
+      } else {
+        getHurdleRoute();
       }
       loadData();
       _newFunction();
@@ -82,17 +83,6 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
 
   Future<Timer> clearData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
-  }
-
-  void clear() {
-    selectedInActiveIndices.clear();
-    selectedIndices.clear();
-    selectedGoals.clear();
-    multiGoals.clear();
-    allgoalsSelected.clear();
-    setState(() {
-      selectAll = false;
-    });
   }
 
   void _fetchHurdleSummary() async {
@@ -114,6 +104,12 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
 
   _sort() {
     print('2nd Function Called');
+    if (hurdlesSummary.length >= goals.length) {
+      setState(() {
+        selectAll = true;
+      });
+      print(selectAll);
+    }
     for (int i = 0; i <= goals.length; i++) {
       if (goals[i]['isActive'] == true) {
         print('====Active===');
@@ -173,23 +169,48 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
 
     // multiGoals.clear();
     // allgoalsSelected.clear();
+    if (prefs.getString('HurdleRoute') != null) {
+      getHurdleGoals();
+    }
     print("Route ${prefs.getString('HurdleRoute')}");
-    if (Route == '' || Route == null) {
-      selectedInActiveIndices.clear();
-      selectedIndices.clear();
-      selectedGoals.clear();
-      multiGoals.clear();
-      allgoalsSelected.clear();
-      setState(() {
-        selectAll = false;
-      });
+  }
+
+  void getHurdleGoals() async {
+    final SharedPreferences prefs = await _prefs;
+    print(prefs.getString('selected_goals'));
+    final encodedGoals = prefs.getString('selected_goals');
+    print('Encoded==========>$encodedGoals');
+    if (encodedGoals != null) {
+      List decodedGoals = List.from(json.decode(encodedGoals));
+      if (decodedGoals.length >= goals.length) {
+        setState(() {
+          selectAll = true;
+        });
+        print(selectAll);
+      }
+      print("DecodedGoal========$decodedGoals");
+      for (int i = 0; i <= goals.length; i++) {
+        if (goals[i]['isActive'] == true) {
+          print('====Active===');
+          if (decodedGoals.contains(goals[i]['id'])) {
+            multiGoals.add(goals[i]['id']);
+            selectedIndices.add(Active.indexOf(goals[i]));
+          }
+        } else {
+          print('====Inactive===');
+          if (decodedGoals.contains(goals[i]['id'])) {
+            multiGoals.add(goals[i]['id']);
+            selectedInActiveIndices.add(inActive.indexOf(goals[i]));
+          }
+        }
+      }
+      print('SelectedGoals==============================$decodedGoals');
     }
   }
 
   @override
   void initState() {
     super.initState();
-    getHurdleRoute();
 
     _fetchUserGoal();
   }
@@ -488,7 +509,19 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                   selectinActive = -1;
                                   selectedIndices.clear();
                                   selectedInActiveIndices.clear();
+                                  multiGoals.clear();
                                 });
+                                print('=========================');
+                                for (int i = 0; i < Active.length; i++) {
+                                  selectedIndices.add(i);
+                                  multiGoals.add(Active[i]['id']);
+                                }
+                                print('=========================');
+                                for (int i = 0; i < inActive.length; i++) {
+                                  selectedInActiveIndices.add(i);
+                                  multiGoals.add(inActive[i]['id']);
+                                }
+                                print(selectedInActiveIndices);
 
                                 print(allgoalsSelected);
                               } else if (selectAll == true) {

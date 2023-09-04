@@ -294,13 +294,14 @@ class _endofSessionState extends State<endofSession> {
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 8.3),
-                child: Text(
-                  'How did the practice go?',
+                child: RichText(
+                    text: TextSpan(
+                  text: 'How did the practice go?',
                   style: TextStyle(
                       fontSize: AppDimensions.height10(context) * 2.8,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
-                ),
+                )),
               ),
               Container(
                 margin: EdgeInsets.only(

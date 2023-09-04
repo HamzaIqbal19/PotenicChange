@@ -722,6 +722,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                       FadePageRoute(
                                           page: const inspiration_motivation(
                                         goal_delete: false,
+                                        inspirationName: '',
                                       )));
                                 },
                                 child: Container(

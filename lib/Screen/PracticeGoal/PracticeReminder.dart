@@ -79,12 +79,12 @@ class _PracticeReminderState extends State<PracticeReminder> {
 
   @override
   void initState() {
-    getGoalName();
-    super.initState();
-    getRoute();
     if (widget.comingFromEditScreen) {
       _fetchPracticeDetails();
     }
+    getGoalName();
+    super.initState();
+    getRoute();
   }
 
   Future<void> getRoute() async {
@@ -1223,10 +1223,9 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                         prefs.setBool('pracReminder', radio1);
                                     //add Id
                                     PracticeGoalApi()
-                                        .userAddPractice(
-                                      practiceName.text.toString(),
+                                        .updateUserPractice(
+                                      'reminder',
                                       radio1,
-                                      loadedTimesPerDay,
                                     )
                                         .then((response) {
                                       print('$response');

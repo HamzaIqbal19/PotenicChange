@@ -26,6 +26,7 @@ import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/fading.dart';
 import '../../Widgets/mult_circles.dart';
 import '../../utils/app_dimensions.dart';
+import '../capture_inspiration/inpiration_landing.dart';
 import 'calender_bottom_sheet.dart';
 import 'menu_dashboard_behaviour.dart';
 
@@ -53,6 +54,7 @@ class _view_goalsState extends State<view_goals> {
   bool noPlanned = false;
   bool noData = false;
   bool Loader = true;
+  bool contain = false;
   bool single = false;
   int removeDay = 0;
   String RecordDate = '';
@@ -84,6 +86,12 @@ class _view_goalsState extends State<view_goals> {
     super.initState();
     // _fetchUserGoal();
     fetchPracticeByDay();
+    if (widget.update == true) {
+      setState(() {
+        contain = true;
+      });
+      startTimer();
+    }
     //fetchGoalsByDay();
   }
 
@@ -187,6 +195,16 @@ class _view_goalsState extends State<view_goals> {
     print("LoadingCompleted");
     setState(() {
       Loader = false;
+    });
+  }
+
+  Future<Timer> startTimer() async {
+    return Timer(const Duration(seconds: 4), stop);
+  }
+
+  void stop() {
+    setState(() {
+      contain = false;
     });
   }
 
@@ -387,12 +405,22 @@ class _view_goalsState extends State<view_goals> {
           extendBodyBehindAppBar: true,
           extendBody: true,
           backgroundColor: const Color(0xffD9B4B4),
-          bottomNavigationBar: const Navigation_Bar(
-            bg_colored: true,
-            membership: true,
-            cancel: false,
-            trial: false,
-          ),
+          bottomNavigationBar: contain
+              ? Container(
+                  margin: EdgeInsets.all(AppDimensions.height10(context) * 1.8),
+                  child: updateBox(
+                      headText: 'SAVED',
+                      bodyText: widget.name,
+                      edit: true,
+                      onTap1: () {},
+                      functionText: 'Edit'),
+                )
+              : const Navigation_Bar(
+                  bg_colored: true,
+                  membership: true,
+                  cancel: false,
+                  trial: false,
+                ),
           body: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -431,6 +459,12 @@ class _view_goalsState extends State<view_goals> {
                                               previous();
                                               print('$current');
                                               fetchPracticeByDay();
+                                              setState(() {
+                                                contain = false;
+
+                                                // past = past - 1;
+                                                // next = next - 1;
+                                              });
                                               // Navigator.push(
                                               //     context,
                                               //     FadePageRoute(
@@ -670,6 +704,12 @@ class _view_goalsState extends State<view_goals> {
                                               });
                                               future();
                                               fetchPracticeByDay();
+                                              setState(() {
+                                                contain = false;
+
+                                                // past = past - 1;
+                                                // next = next - 1;
+                                              });
                                               // Navigator.push(
                                               //     context,
                                               //     FadePageRoute(

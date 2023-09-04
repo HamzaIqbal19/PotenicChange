@@ -171,22 +171,18 @@ class _record_inspirationState extends State<record_inspiration> {
                                           Color(0xFFD9D9D9),
                                           Color(0xFFD9D9D9)
                                         ]),
-                                  image: inspirationDetails['inspiration']
-                                              ['inspirationId'] ==
-                                          1
-                                      ? DecorationImage(
-                                          image: NetworkImage(
-                                              inspirationDetails['inspiration']
-                                                      ['file']
-                                                  .toString()),
-                                          fit: BoxFit.cover)
-                                      : DecorationImage(
-                                          image: AssetImage(inspirationDetails['inspiration']['inspirationId'] == 4
-                                              ? 'assets/images/distraction content.webp'
-                                              : inspirationDetails['inspiration']['inspirationId'] == 3
-                                                  ? 'assets/images/video_play.webp'
-                                                  : ''),
-                                          fit: BoxFit.cover)),
+                                  image: DecorationImage(
+                                      image: AssetImage(inspirationDetails[
+                                                      'inspiration']
+                                                  ['inspirationId'] ==
+                                              4
+                                          ? 'assets/images/distraction content.webp'
+                                          : inspirationDetails['inspiration']
+                                                      ['inspirationId'] ==
+                                                  3
+                                              ? 'assets/images/video_play.webp'
+                                              : ''),
+                                      fit: BoxFit.cover)),
                               child: inspirationDetails['inspiration']
                                           ['inspirationId'] ==
                                       2
@@ -212,7 +208,25 @@ class _record_inspirationState extends State<record_inspiration> {
                                             color: const Color(0xFFFFFFFF)),
                                       )),
                                     )
-                                  : Container(),
+                                  : inspirationDetails['inspiration']
+                                              ['inspirationId'] ==
+                                          1
+                                      ? ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                              AppDimensions.height10(context) *
+                                                  18),
+                                          child: FadeInImage(
+                                            placeholder: const AssetImage(
+                                                'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                            image: NetworkImage(
+                                                inspirationDetails[
+                                                        'inspiration']['file']
+                                                    .toString()),
+                                            fit: BoxFit.cover,
+                                            placeholderFit: BoxFit.contain,
+                                          ),
+                                        )
+                                      : Container(),
                             ),
                             Container(
                               width: AppDimensions.height10(context) * 16.7,
@@ -362,8 +376,8 @@ class _record_inspirationState extends State<record_inspiration> {
                                 Navigator.push(
                                   context,
                                   FadePageRoute(
-                                      page: photo_Edit(
-                                    updatedList: allgoalsSelected,
+                                      page: const photo_Edit(
+                                    updateData: false,
                                   )),
                                 );
                               } else if (inspirationDetails['inspiration']
@@ -372,10 +386,10 @@ class _record_inspirationState extends State<record_inspiration> {
                                 Navigator.push(
                                   context,
                                   FadePageRoute(
-                                      page: videoEdit(
+                                      page: const videoEdit(
+                                    updateData: false,
                                     note: true,
                                     context: false,
-                                    updatedList: allgoalsSelected,
                                   )),
                                 );
                               } else if (inspirationDetails['inspiration']
@@ -384,10 +398,11 @@ class _record_inspirationState extends State<record_inspiration> {
                                 Navigator.push(
                                   context,
                                   FadePageRoute(
-                                      page: videoEdit(
-                                          note: false,
-                                          context: true,
-                                          updatedList: allgoalsSelected)),
+                                      page: const videoEdit(
+                                    updateData: false,
+                                    note: false,
+                                    context: true,
+                                  )),
                                 );
                               } else if (inspirationDetails['inspiration']
                                       ['inspirationId'] ==
@@ -395,10 +410,11 @@ class _record_inspirationState extends State<record_inspiration> {
                                 Navigator.push(
                                   context,
                                   FadePageRoute(
-                                      page: videoEdit(
-                                          note: false,
-                                          context: false,
-                                          updatedList: allgoalsSelected)),
+                                      page: const videoEdit(
+                                    updateData: false,
+                                    note: false,
+                                    context: false,
+                                  )),
                                 );
                               }
                             },
@@ -669,9 +685,14 @@ class _record_inspirationState extends State<record_inspiration> {
                                                               context,
                                                               FadePageRoute(
                                                                   page:
-                                                                      const inspiration_motivation(
+                                                                      inspiration_motivation(
                                                                 goal_delete:
                                                                     true,
+                                                                inspirationName:
+                                                                    inspirationDetails[
+                                                                            'inspiration']
+                                                                        [
+                                                                        'title'],
                                                               )));
                                                         }
                                                       });

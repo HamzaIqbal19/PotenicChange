@@ -42,6 +42,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   String pracName = '';
   int pracColor = 0;
   String route = '';
+  String subscriptions = '';
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -60,6 +61,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
       if (response.length != 0) {
         setState(() {
           goalDetails = response;
+          subscriptions = response['subscriptionsStatus'];
         });
         // var evalId =
         //     prefs.setInt('goal_eval_id', response['goalEvaluations'][0]['id']);
@@ -778,59 +780,62 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         ),
                         child: Column(
                           children: [
-                            Container(
-                              width: AppDimensions.height10(context) * 36.0,
-                              height: AppDimensions.height10(context) * 6.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 2.0),
-                                color: const Color(0xFFFFFFFF),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 18.5,
-                                    height:
-                                        AppDimensions.height10(context) * 2.2,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            1.99),
-                                    child: Text(
-                                      'Progress report  (00)',
-                                      style: TextStyle(
-                                        color: const Color(0xff646464),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
-                                        fontWeight: FontWeight.w500,
+                            AnimatedScaleButton(
+                              onTap: () {},
+                              child: Container(
+                                width: AppDimensions.height10(context) * 36.0,
+                                height: AppDimensions.height10(context) * 6.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0),
+                                  color: const Color(0xFFFFFFFF),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          18.5,
+                                      height:
+                                          AppDimensions.height10(context) * 2.2,
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  1.99),
+                                      child: Text(
+                                        'Progress report  (00)',
+                                        style: TextStyle(
+                                          color: const Color(0xff646464),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                      width:
-                                          AppDimensions.height10(context) * 2.4,
-                                      height: AppDimensions.height10(context) *
-                                          1.39,
-                                      margin: EdgeInsets.only(
-                                          right:
-                                              AppDimensions.height10(context) *
-                                                  2.391),
-                                      child: GestureDetector(
-                                        onTap: () {},
+                                    Container(
+                                        width: AppDimensions.height10(context) *
+                                            2.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.39,
+                                        margin: EdgeInsets.only(
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                2.391),
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
+                                        ))
+                                  ],
+                                ),
                               ),
                             ),
-                            GestureDetector(
+                            AnimatedScaleButton(
+                              onTap: () {},
                               child: Container(
                                 width: AppDimensions.height10(context) * 36.0,
                                 height: AppDimensions.height10(context) * 6.0,
@@ -858,7 +863,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                               AppDimensions.height10(context) *
                                                   1.99),
                                       child: Text(
-                                        widget.premium
+                                        subscriptions == 'active'
                                             ? 'Timeline'
                                             : 'Timeline (Premium only)',
                                         style: TextStyle(
@@ -880,20 +885,17 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             right: AppDimensions.height10(
                                                     context) *
                                                 2.391),
-                                        child: GestureDetector(
-                                          onTap: () {},
-                                          child: Image.asset(
-                                            'assets/images/BTN Back.webp',
-                                            //width: AppDimensions.height10(context) * 2.6,
-                                            //height: AppDimensions.height10(context) * 2.6,
-                                            fit: BoxFit.cover,
-                                          ),
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.webp',
+                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //height: AppDimensions.height10(context) * 2.6,
+                                          fit: BoxFit.cover,
                                         ))
                                   ],
                                 ),
                               ),
                             ),
-                            GestureDetector(
+                            AnimatedScaleButton(
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -946,14 +948,11 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             right: AppDimensions.height10(
                                                     context) *
                                                 2.391),
-                                        child: GestureDetector(
-                                          onTap: () {},
-                                          child: Image.asset(
-                                            'assets/images/BTN Back.webp',
-                                            //width: AppDimensions.height10(context) * 2.6,
-                                            //height: AppDimensions.height10(context) * 2.6,
-                                            fit: BoxFit.cover,
-                                          ),
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.webp',
+                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //height: AppDimensions.height10(context) * 2.6,
+                                          fit: BoxFit.cover,
                                         ))
                                   ],
                                 ),

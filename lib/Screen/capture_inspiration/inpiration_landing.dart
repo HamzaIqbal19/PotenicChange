@@ -17,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/dashboardViewgoals.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'inpiration_veiw_detail.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -68,6 +69,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
           noData = true;
         });
       } else {
+        //   setState(() {
+        //   noData = true;
+        // });
         print(response);
       }
     });
@@ -131,6 +135,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
               .toString()
               .replaceAll('[', '')
               .replaceAll(']', '')
+              .replaceAll('"', '')
               .split(', '); // Split the hashtags into individual tags
 
           tagNames.addAll(tags);
@@ -280,7 +285,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                   update: false,
                                                   data_saved: false,
                                                   context: false,
-                                                  note: false,
+                                                  note: true,
                                                   route: 'landing')));
                                     } else if (Route == 'goals_inspiration') {
                                       Navigator.push(
@@ -290,7 +295,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                   update: false,
                                                   data_saved: false,
                                                   context: false,
-                                                  note: false,
+                                                  note: true,
                                                   route: 'landing')));
                                     } else if (Route == "type_inspiration") {
                                       Navigator.push(
@@ -305,7 +310,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                   update: false,
                                                   data_saved: false,
                                                   context: false,
-                                                  note: false,
+                                                  note: true,
                                                   route: 'landing')));
                                       final SharedPreferences prefs =
                                           await _prefs;
@@ -318,46 +323,60 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                         AppDimensions.height10(context) * 16.43,
                                     height:
                                         AppDimensions.height10(context) * 16.43,
-                                    decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                      opacity: 0.2,
-                                      image:
-                                          AssetImage('assets/images/Star.webp'),
-                                    )),
-                                    child: Center(
-                                      child: Container(
-                                        width: AppDimensions.height10(context) *
-                                            15.6,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                15.6,
-                                        decoration: const BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/images/Inspiration_center 1.webp'))),
-                                        child: Center(
-                                            child: Container(
+                                    // decoration: const BoxDecoration(
+                                    //     image: DecorationImage(
+                                    //   opacity: 0.2,
+                                    //   image: AssetImage(
+                                    //       'assets/images/Inspriation Glare.webp'),
+                                    // )),
+                                    child: Container(
+                                      width: AppDimensions.height10(context) *
+                                          16.43,
+                                      height: AppDimensions.height10(context) *
+                                          16.43,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                        opacity: 0.2,
+                                        image: AssetImage(
+                                            'assets/images/Star.webp'),
+                                      )),
+                                      child: Center(
+                                        child: Container(
                                           width:
                                               AppDimensions.height10(context) *
-                                                  6.8,
+                                                  15.6,
                                           height:
                                               AppDimensions.height10(context) *
-                                                  6.8,
+                                                  15.6,
                                           decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Color(0xFFFFFFFF)),
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/Inspiration_center 1.webp'))),
                                           child: Center(
-                                              child: SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      3.2,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          3.2,
-                                                  child: Image.asset(
-                                                      'assets/images/plus.webp'))),
-                                        )),
+                                              child: Container(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                6.8,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                6.8,
+                                            decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Color(0xFFFFFFFF)),
+                                            child: Center(
+                                                child: SizedBox(
+                                                    width: AppDimensions
+                                                            .height10(context) *
+                                                        3.2,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            3.2,
+                                                    child: Image.asset(
+                                                      'assets/images/plus.webp',
+                                                    ))),
+                                          )),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -431,7 +450,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                               context) *
                                                           16.7,
                                                   decoration: BoxDecoration(
-                                                      gradient: InspirationList[index * 2]['inspirationId'] ==
+                                                      gradient: InspirationList[
+                                                                      index * 2][
+                                                                  'inspirationId'] ==
                                                               2
                                                           ? const RadialGradient(colors: [
                                                               Color(0xFFE9A594),
@@ -442,23 +463,17 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                               Color(0xFFD9D9D9)
                                                             ]),
                                                       shape: BoxShape.circle,
-                                                      image: InspirationList[index * 2]
-                                                                  [
-                                                                  'inspirationId'] ==
-                                                              1
-                                                          ? DecorationImage(
-                                                              image: NetworkImage(
-                                                                  InspirationList[index * 2]
-                                                                          ['file']
-                                                                      .toString()),
-                                                              fit: BoxFit.cover)
-                                                          : DecorationImage(
-                                                              image: AssetImage(InspirationList[index * 2]['inspirationId'] == 4
-                                                                  ? 'assets/images/distraction content.webp'
-                                                                  : InspirationList[index * 2]['inspirationId'] == 3
-                                                                      ? 'assets/images/video_play.webp'
-                                                                      : ''),
-                                                              fit: BoxFit.cover)),
+                                                      image: DecorationImage(
+                                                          image: AssetImage(InspirationList[
+                                                                          index *
+                                                                              2]
+                                                                      ['inspirationId'] ==
+                                                                  4
+                                                              ? 'assets/images/distraction content.webp'
+                                                              : InspirationList[index * 2]['inspirationId'] == 3
+                                                                  ? 'assets/images/video_play.webp'
+                                                                  : ''),
+                                                          fit: BoxFit.cover)),
                                                   child: InspirationList[
                                                                   index * 2][
                                                               'inspirationId'] ==
@@ -496,7 +511,34 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                     0xFFFFFFFF)),
                                                           )),
                                                         )
-                                                      : Container(),
+                                                      : InspirationList[index *
+                                                                      2][
+                                                                  'inspirationId'] ==
+                                                              1
+                                                          ? ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          18),
+                                                              child:
+                                                                  FadeInImage(
+                                                                placeholder:
+                                                                    const AssetImage(
+                                                                        'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                                                image: NetworkImage(
+                                                                    InspirationList[index * 2]
+                                                                            [
+                                                                            'file']
+                                                                        .toString()),
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                                placeholderFit:
+                                                                    BoxFit
+                                                                        .contain,
+                                                              ),
+                                                            )
+                                                          : Container(),
                                                 ),
                                               ),
                                               Container(
@@ -507,7 +549,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                 margin: EdgeInsets.only(
                                                     top: AppDimensions.height10(
                                                             context) *
-                                                        0.2),
+                                                        0.5),
                                                 child: Center(
                                                     child: Text(
                                                   InspirationList[index * 2][
@@ -555,7 +597,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       fontSize: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          1.0,
+                                                          1.6,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: const Color(
@@ -617,7 +659,11 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 context) *
                                                             16.7,
                                                     decoration: BoxDecoration(
-                                                        gradient: InspirationList[index * 2 + 1]['inspirationId'] == 2
+                                                        gradient: InspirationList[
+                                                                        index * 2 +
+                                                                            1][
+                                                                    'inspirationId'] ==
+                                                                2
                                                             ? const RadialGradient(
                                                                 colors: [
                                                                     Color(
@@ -633,18 +679,13 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                         0xFFD9D9D9)
                                                                   ]),
                                                         shape: BoxShape.circle,
-                                                        image: InspirationList[index * 2 + 1]['inspirationId'] ==
-                                                                1
-                                                            ? DecorationImage(
-                                                                image: NetworkImage(InspirationList[index * 2 + 1]['file'].toString()),
-                                                                fit: BoxFit.cover)
-                                                            : DecorationImage(
-                                                                image: AssetImage(InspirationList[index * 2 + 1]['inspirationId'] == 4
-                                                                    ? 'assets/images/distraction content.webp'
-                                                                    : InspirationList[index * 2 + 1]['inspirationId'] == 3
-                                                                        ? 'assets/images/video_play.webp'
-                                                                        : ''),
-                                                                fit: BoxFit.cover)),
+                                                        image: DecorationImage(
+                                                            image: AssetImage(InspirationList[index * 2 + 1]['inspirationId'] == 4
+                                                                ? 'assets/images/distraction content.webp'
+                                                                : InspirationList[index * 2 + 1]['inspirationId'] == 3
+                                                                    ? 'assets/images/video_play.webp'
+                                                                    : ''),
+                                                            fit: BoxFit.cover)),
                                                     child: InspirationList[
                                                                     index * 2 +
                                                                         1][
@@ -664,8 +705,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 child: Text(
                                                               InspirationList[
                                                                       index * 2 +
-                                                                          1]
-                                                                  ['title'],
+                                                                          1][
+                                                                  'description'],
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -685,7 +726,33 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                       0xFFFFFFFF)),
                                                             )),
                                                           )
-                                                        : Container(),
+                                                        : InspirationList[index *
+                                                                            2 +
+                                                                        1][
+                                                                    'inspirationId'] ==
+                                                                1
+                                                            ? ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius.circular(
+                                                                        AppDimensions.height10(context) *
+                                                                            18),
+                                                                child:
+                                                                    FadeInImage(
+                                                                  placeholder:
+                                                                      const AssetImage(
+                                                                          'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                                                  image: NetworkImage(InspirationList[index *
+                                                                              2 +
+                                                                          1]['file']
+                                                                      .toString()),
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                  placeholderFit:
+                                                                      BoxFit
+                                                                          .contain,
+                                                                ),
+                                                              )
+                                                            : Container(),
                                                   ),
                                                 ),
                                                 Container(
@@ -697,7 +764,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       top: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          0.2),
+                                                          0.5),
                                                   child: Center(
                                                       child: Text(
                                                     InspirationList[index * 2 +
@@ -736,8 +803,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       15.7,
                                                   child: Center(
                                                       child: Text(
-                                                    InspirationList[index * 2 +
-                                                        1]['description'],
+                                                    InspirationList[
+                                                        index * 2 + 1]['title'],
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     maxLines: 2,
@@ -745,7 +812,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                         fontSize: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            1.0,
+                                                            1.6,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         color: const Color(
@@ -1354,7 +1421,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             0.8),
                                     child: Center(
                                       child: Text(
-                                        _selected_goal,
+                                        _selected_goal.length <= 30
+                                            ? _selected_goal
+                                            : '${_selected_goal.substring(0, 29)}...',
                                         style: TextStyle(
                                             fontSize: AppDimensions.height10(
                                                     context) *
@@ -1645,7 +1714,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             0.8),
                                     child: Center(
                                       child: Text(
-                                        selectedTag,
+                                        selectedTag.length <= 30
+                                            ? selectedTag
+                                            : '${selectedTag.substring(0, 29)}...',
                                         style: TextStyle(
                                             fontSize: AppDimensions.height10(
                                                     context) *
@@ -2372,7 +2443,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
   Timer? _timer;
 
   void startTimer() {
-    _timer = Timer(const Duration(seconds: 3), () {
+    _timer = Timer(const Duration(seconds: 5), () {
       setState(() {
         showContainer = false;
       });
@@ -2582,33 +2653,31 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                       AppDimensions.height10(context) * 16.7,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      gradient: inspirationDetails['inspiration']
-                                                  ['inspirationId'] ==
-                                              2
-                                          ? const RadialGradient(colors: [
-                                              Color(0xFFE9A594),
-                                              Color(0xFFEEBEB2)
-                                            ])
-                                          : const RadialGradient(colors: [
-                                              Color(0xFFD9D9D9),
-                                              Color(0xFFD9D9D9)
-                                            ]),
-                                      image: inspirationDetails['inspiration']
-                                                  ['inspirationId'] ==
-                                              1
-                                          ? DecorationImage(
-                                              image: NetworkImage(
-                                                  inspirationDetails[
-                                                          'inspiration']['file']
-                                                      .toString()),
-                                              fit: BoxFit.cover)
-                                          : DecorationImage(
-                                              image: AssetImage(inspirationDetails['inspiration']['inspirationId'] == 4
-                                                  ? 'assets/images/distraction content.webp'
-                                                  : inspirationDetails['inspiration']['inspirationId'] == 3
-                                                      ? 'assets/images/video_play.webp'
-                                                      : ''),
-                                              fit: BoxFit.cover)),
+                                      gradient:
+                                          inspirationDetails['inspiration']
+                                                      ['inspirationId'] ==
+                                                  2
+                                              ? const RadialGradient(colors: [
+                                                  Color(0xFFE9A594),
+                                                  Color(0xFFEEBEB2)
+                                                ])
+                                              : const RadialGradient(colors: [
+                                                  Color(0xFFD9D9D9),
+                                                  Color(0xFFD9D9D9)
+                                                ]),
+                                      image: DecorationImage(
+                                          image: AssetImage(inspirationDetails[
+                                                          'inspiration']
+                                                      ['inspirationId'] ==
+                                                  4
+                                              ? 'assets/images/distraction content.webp'
+                                              : inspirationDetails[
+                                                              'inspiration']
+                                                          ['inspirationId'] ==
+                                                      3
+                                                  ? 'assets/images/video_play.webp'
+                                                  : ''),
+                                          fit: BoxFit.cover)),
                                   child: inspirationDetails['inspiration']
                                               ['inspirationId'] ==
                                           2
@@ -2635,7 +2704,28 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                                 color: const Color(0xFFFFFFFF)),
                                           )),
                                         )
-                                      : Container(),
+                                      : inspirationDetails['inspiration']
+                                                  ['inspirationId'] ==
+                                              1
+                                          ? ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          18),
+                                              child: FadeInImage(
+                                                placeholder: const AssetImage(
+                                                    'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                                image: NetworkImage(
+                                                    inspirationDetails[
+                                                                'inspiration']
+                                                            ['file']
+                                                        .toString()),
+                                                fit: BoxFit.cover,
+                                                placeholderFit: BoxFit.contain,
+                                              ),
+                                            )
+                                          : Container(),
                                 ),
                               ),
                               Container(
@@ -2700,18 +2790,8 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                           ? updateBox(
                               headText: widget.is_Updated ? 'Updated' : 'SAVED',
                               bodyText: inspirationDetails['inspiration']
-                                          ['inspirationId'] ==
-                                      1
-                                  ? 'Image'
-                                  : inspirationDetails['inspiration']
-                                              ['inspirationId'] ==
-                                          2
-                                      ? 'Note'
-                                      : inspirationDetails['inspiration']
-                                                  ['inspirationId'] ==
-                                              3
-                                          ? "Video"
-                                          : 'Content',
+                                  ['title'],
+                              edit: false,
                               onTap1: () {
                                 Navigator.push(
                                   context,
@@ -2913,12 +2993,14 @@ class updateBox extends StatefulWidget {
   final String bodyText;
   final String functionText;
   final Function onTap1;
+  final bool edit;
   const updateBox(
       {super.key,
       required this.headText,
       required this.bodyText,
       required this.onTap1,
-      required this.functionText});
+      required this.functionText,
+      required this.edit});
 
   @override
   State<updateBox> createState() => _updateBoxState();
@@ -3042,28 +3124,46 @@ class _updateBoxState extends State<updateBox> {
                 ),
                 AnimatedScaleButton(
                   onTap: widget.onTap1,
-                  child: Container(
-                    width: AppDimensions.height10(context) * 8.1,
-                    height: AppDimensions.height10(context) * 6.0,
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 5,
-                        right: AppDimensions.height10(context) * 1.23),
-                    decoration: BoxDecoration(
-                      border:
-                          Border.all(color: const Color(0xFFFFFFFF), width: 1),
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 2.0),
-                    ),
-                    child: Center(
-                      child: Text(
-                        widget.functionText,
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.8,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xFFFFFFFF)),
-                      ),
-                    ),
-                  ),
+                  child: widget.edit
+                      ? Container(
+                          height: AppDimensions.height10(context) * 2.4,
+                          width: AppDimensions.height10(context) * 2.4,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 8),
+                          padding: EdgeInsets.all(
+                              AppDimensions.height10(context) * 0.4),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.transparent,
+                              border:
+                                  Border.all(width: 1, color: Colors.white)),
+                          child: const ImageIcon(
+                            AssetImage('assets/images/edit_icon.webp'),
+                            color: Colors.white,
+                          ))
+                      : Container(
+                          width: AppDimensions.height10(context) * 8.1,
+                          height: AppDimensions.height10(context) * 6.0,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 5,
+                              right: AppDimensions.height10(context) * 1.23),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color(0xFFFFFFFF), width: 1),
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                          ),
+                          child: Center(
+                            child: Text(
+                              widget.functionText,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xFFFFFFFF)),
+                            ),
+                          ),
+                        ),
                 )
               ],
             ),

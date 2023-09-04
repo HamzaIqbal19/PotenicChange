@@ -122,7 +122,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                 SizedBox(height: AppDimensions.height10(context) * 4.4),
                 Center(
                     child: AnimatedScaleButton(
-                  onTap: () {
+                  onTap: () async {
                     Navigator.pop(context);
                     if (widget.route == "GoalName" && widget.login == true) {
                       Navigator.push(
@@ -202,6 +202,9 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text("You are not logged in.")));
                     }
+                    final SharedPreferences prefs = await _prefs;
+                    await prefs.remove('goal_route');
+                    await prefs.remove('practice_review');
                   },
                   child: Image(
                     // color: Colors.orange,

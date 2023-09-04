@@ -15,7 +15,9 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class inspiration_motivation extends StatefulWidget {
   final bool goal_delete;
-  const inspiration_motivation({super.key, required this.goal_delete});
+  final String inspirationName;
+  const inspiration_motivation(
+      {super.key, required this.goal_delete, required this.inspirationName});
 
   @override
   State<inspiration_motivation> createState() => _inspiration_motivationState();
@@ -147,7 +149,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                                         update: false,
                                         data_saved: false,
                                         context: false,
-                                        note: false,
+                                        note: true,
                                         route: 'landing')));
                             final SharedPreferences prefs = await _prefs;
                             await prefs.remove('inspiration_saved_route');
@@ -223,9 +225,10 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                 ? Align(
                     alignment: const Alignment(0, 0.9),
                     child: updateBox(
-                      bodyText: 'Inspiration',
+                      bodyText: widget.inspirationName,
                       functionText: 'Undo',
                       headText: 'Deleted',
+                      edit: false,
                       onTap1: () {},
                     ))
                 : Container(),

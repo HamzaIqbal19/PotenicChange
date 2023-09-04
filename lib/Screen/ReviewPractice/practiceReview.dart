@@ -444,8 +444,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                                           // SizedBox(width: ),
 
                                           AnimatedScaleButton(
-                                            onTap: () {
+                                            onTap: () async {
                                               print("new");
+
                                               Navigator.push(
                                                 context,
                                                 FadePageRoute(
@@ -454,6 +455,12 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                   ),
                                                 ),
                                               );
+                                              final SharedPreferences prefs =
+                                                  await _prefs;
+                                              await prefs.setString(
+                                                  'pracName', pracName);
+                                              await prefs.setString(
+                                                  'goalName', goalName);
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
@@ -1043,13 +1050,19 @@ class _PracticeReviewState extends State<PracticeReview> {
                                           ),
                                           // SizedBox(width: ),
                                           AnimatedScaleButton(
-                                            onTap: () {
+                                            onTap: () async {
                                               Navigator.push(
                                                   context,
                                                   FadePageRoute(
                                                       page: PracticeRoutineEdit(
                                                     goalName: goalName,
                                                   )));
+                                              final SharedPreferences prefs =
+                                                  await _prefs;
+                                              await prefs.setString(
+                                                  'pracName', pracName);
+                                              await prefs.setString(
+                                                  'goalName', goalName);
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(

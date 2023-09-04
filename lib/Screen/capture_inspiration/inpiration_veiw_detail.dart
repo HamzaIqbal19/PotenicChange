@@ -22,7 +22,7 @@ class veiw_details extends StatefulWidget {
 
 class _veiw_detailsState extends State<veiw_details> {
   var inspirationDetails;
-
+  List tags = [];
   bool Loading = true;
 
   Future<Timer> loadData() async {
@@ -44,6 +44,13 @@ class _veiw_detailsState extends State<veiw_details> {
         });
 
         print(inspirationDetails['inspiration']['title']);
+        if (inspirationDetails['inspiration']['hashTags'].length != 0) {
+          for (int i = 0;
+              i < inspirationDetails['inspiration']['hashTags'].length;
+              i++) {
+            tags.add('#${inspirationDetails['inspiration']['hashTags'][i]}');
+          }
+        }
         loadData();
 
         return response;
@@ -287,11 +294,12 @@ class _veiw_detailsState extends State<veiw_details> {
                                 ),
                               ],
                             )),
-                        inspirationDetails['inspiration']['inspirationId'] ==
-                                    3 ||
+                        inspirationDetails['inspiration']['inspirationId'] !=
+                                    2 &&
                                 inspirationDetails['inspiration']
-                                        ['inspirationId'] ==
-                                    4
+                                        ['destinationLink']
+                                    .toString()
+                                    .isNotEmpty
                             ? Column(
                                 children: [
                                   if (inspirationDetails['inspiration']
@@ -609,10 +617,11 @@ class _veiw_detailsState extends State<veiw_details> {
                                         AppDimensions.height10(context) * 8.9,
                                     top: AppDimensions.height10(context) * 0.2),
                                 child: Text(
-                                  inspirationDetails['inspiration']['hashTags']
+                                  tags
                                       .toString()
                                       .replaceAll('[', '')
-                                      .replaceAll(']', ''),
+                                      .replaceAll(']', '')
+                                      .replaceAll('"', ''),
                                   style: TextStyle(
                                       height: 1.5,
                                       color: const Color(0xFF282828),

@@ -110,8 +110,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               true,
                             ),
                           );
-                          final SharedPreferences prefs = await _prefs;
-                          await prefs.remove('goal_route');
                         } else {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
@@ -120,6 +118,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             style: TextStyle(color: Colors.red),
                           )));
                         }
+                        final SharedPreferences prefs = await _prefs;
+                        await prefs.remove('goal_route');
+                        await prefs.remove('practice_review');
                       },
                       child: centeredImage(
                           context, "assets/images/createstar.webp", 23, 26),

@@ -201,7 +201,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    //width: AppDimensions.height10(context) * 7.1,
+                                    width:
+                                        AppDimensions.height10(context) * 13.8,
                                     // height: AppDimensions.height10(context) * 1.9,
                                     child: Text(
                                       capitalizeFirstLetter(
@@ -210,15 +211,16 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 2,
                                       style: TextStyle(
-                                          color: Colors.white,
+                                          color: const Color(0xFFFBFBFB),
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.6,
+                                                  1.8,
                                           fontWeight: FontWeight.w700),
                                     ),
                                   ),
                                   Container(
-                                    // width:   AppDimensions.height10(context)(context)* 1571,
+                                    width:
+                                        AppDimensions.height10(context) * 15.71,
                                     // height:   AppDimensions.height10(context)(context)* 1.7,
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
@@ -230,10 +232,10 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                       maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                          color: Colors.white,
+                                          color: const Color(0xFFFBFBFB),
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.4,
+                                                  1.6,
                                           fontWeight: FontWeight.w400),
                                     ),
                                   ),
@@ -265,12 +267,16 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         shape: BoxShape.circle,
                                         color: Colors.transparent,
                                         border: Border.all(
-                                            width: 1, color: Colors.white)),
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  0.2,
+                                          color: const Color(0xFFFBFBFB),
+                                        )),
                                     child: const ImageIcon(
                                       AssetImage(
                                           'assets/images/edit_icon.webp'),
                                       color: Colors.white,
-                                      //size: 10,
+                                      size: 10,
                                     )),
                               ),
                             ),
@@ -303,8 +309,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                 hurdlesSummary['thoughtsAndFeelings'].length,
                             itemBuilder: ((context, index) {
                               return Container(
-                                height: AppDimensions.height10(context) * 14.5,
-                                width: AppDimensions.height10(context) * 14.5,
+                                height: AppDimensions.height10(context) * 15.5,
+                                width: AppDimensions.height10(context) * 15.5,
                                 padding: EdgeInsets.all(
                                     AppDimensions.height10(context) * 2),
                                 decoration: const BoxDecoration(
@@ -324,10 +330,10 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 4,
                                     style: TextStyle(
-                                        color: Colors.white,
+                                        color: const Color(0xFFFBFBFB),
                                         fontSize:
                                             AppDimensions.height10(context) *
-                                                1.4,
+                                                1.6,
                                         fontWeight: FontWeight.w400),
                                   ),
                                 ),
@@ -354,12 +360,14 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.transparent,
-                                border:
-                                    Border.all(width: 1, color: Colors.white)),
+                                border: Border.all(
+                                    width:
+                                        AppDimensions.height10(context) * 0.2,
+                                    color: const Color(0xFFFBFBFB))),
                             child: const ImageIcon(
                               AssetImage('assets/images/edit_icon.webp'),
                               color: Colors.white,
-                              //size: 10,
+                              size: 10,
                             )),
                       ),
                       Container(
@@ -485,7 +493,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
@@ -510,17 +518,20 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         top: AppDimensions.height10(context) *
                                             1.2),
                                     padding: EdgeInsets.all(
-                                        AppDimensions.height10(context) * 0.6),
+                                        AppDimensions.height10(context) * 0.5),
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.transparent,
                                         border: Border.all(
-                                            width: 2, color: Colors.white)),
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                0.2,
+                                            color: const Color(0XFFFBFBFB))),
                                     child: const ImageIcon(
                                       AssetImage(
                                           'assets/images/edit_icon.webp'),
                                       color: Colors.white,
-                                      //size: 10,
+                                      size: 10,
                                     )),
                               ),
                             ),

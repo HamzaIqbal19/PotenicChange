@@ -39,7 +39,7 @@ String capitalizeFirstLetter(String text) {
 }
 
 class _PracticeNameState extends State<PracticeName> {
-  var mygoal = TextEditingController();
+  var mygoal;
   var practiceName = TextEditingController();
   var practice = TextEditingController();
   var color;
@@ -51,6 +51,23 @@ class _PracticeNameState extends State<PracticeName> {
     getGoalName();
     super.initState();
     getRoute();
+  }
+
+  void _fetchPracticeDetails() async {
+    PracticeGoalApi.getUserPractice().then((response) {
+      if (response.length != 0) {
+        print("---------------------------------");
+
+        practiceName.text = response["name"];
+
+        // mapItems(schedule, updates);
+
+      } else {
+        print("response:$response");
+      }
+    }).catchError((error) {
+      print("hell");
+    });
   }
 
   Future<void> getRoute() async {
@@ -73,7 +90,7 @@ class _PracticeNameState extends State<PracticeName> {
     var goalColor = prefs.getString('goalColor');
     setState(() {
       color = goalColor;
-      mygoal.text = my_goal!;
+      mygoal = my_goal!;
       practice.text = practice_Name!;
       practiceName.text = capitalizeFirstLetter(practice_Name);
     });
@@ -359,7 +376,7 @@ class _PracticeNameState extends State<PracticeName> {
                   width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
-                      mygoal.text.toString(),
+                      mygoal.toString(),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,

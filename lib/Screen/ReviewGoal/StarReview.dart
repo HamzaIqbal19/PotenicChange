@@ -372,7 +372,7 @@ class _StarReviewState extends State<StarReview> {
                                           ),
                                           // SizedBox(width: ),
                                           AnimatedScaleButton(
-                                            onTap: () {
+                                            onTap: () async {
                                               Navigator.push(
                                                 context,
                                                 FadePageRoute(
@@ -384,6 +384,10 @@ class _StarReviewState extends State<StarReview> {
                                                   ),
                                                 ),
                                               );
+                                              final SharedPreferences prefs =
+                                                  await _prefs;
+                                              await prefs.setString(
+                                                  'goalName', goalName);
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(

@@ -335,32 +335,24 @@ class _feelingsAfterState extends State<feelingsAfter> {
                     children: [
                       RichText(
                         textAlign: TextAlign.center,
-                        text: TextSpan(children: [
-                          TextSpan(
-                            text: 'How do you feel\n',
+                        text: TextSpan(
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 2.8,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Laila',
                                 color: const Color(0xFFFBFBFB)),
-                          ),
-                          TextSpan(
-                            text: 'after',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.8,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Laila',
-                                color: const Color(0xff8C648A)),
-                          ),
-                          TextSpan(
-                            text: ' recording your\npractice?',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.8,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Laila',
-                                color: const Color(0xFFFBFBFB)),
-                          ),
-                        ]),
+                            children: const [
+                              TextSpan(
+                                text: 'How do you feel\n',
+                              ),
+                              TextSpan(
+                                text: 'after',
+                                style: TextStyle(color: Color(0xff8C648A)),
+                              ),
+                              TextSpan(
+                                text: ' recording your\npractice?',
+                              ),
+                            ]),
                       )
                     ],
                   ),

@@ -44,7 +44,7 @@ class hurdles_splashState extends State<hurdles_splash> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
+      onWillPop: () async {
         Navigator.push(
             context,
             FadePageRoute(
@@ -53,6 +53,15 @@ class hurdles_splashState extends State<hurdles_splash> {
               name: '',
               update: false,
             )));
+        final SharedPreferences prefs = await _prefs;
+        var hurdleRoute = prefs.remove('HurdleRoute');
+        await prefs.remove('hurdleName');
+        await prefs.remove('NameHurdle');
+        await prefs.remove('hurdleStatement');
+        await prefs.remove('hurdleId');
+        await prefs.remove('selected_goals');
+        await prefs.remove('feelingsList');
+        await prefs.remove("hurdle_selected");
         return Future.value(false);
       },
       child: Scaffold(
@@ -64,7 +73,7 @@ class hurdles_splashState extends State<hurdles_splash> {
             actions: [
               Center(
                 child: IconButton(
-                    onPressed: () {
+                    onPressed: () async {
                       Navigator.push(
                           context,
                           FadePageRoute(
@@ -73,6 +82,15 @@ class hurdles_splashState extends State<hurdles_splash> {
                             name: '',
                             update: false,
                           )));
+                      final SharedPreferences prefs = await _prefs;
+                      var hurdleRoute = prefs.remove('HurdleRoute');
+                      await prefs.remove('hurdleName');
+                      await prefs.remove('NameHurdle');
+                      await prefs.remove('hurdleStatement');
+                      await prefs.remove('hurdleId');
+                      await prefs.remove('selected_goals');
+                      await prefs.remove('feelingsList');
+                      await prefs.remove("hurdle_selected");
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',

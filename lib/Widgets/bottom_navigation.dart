@@ -56,6 +56,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                 FadePageRoute(
                     page: const inspiration_motivation(
                   goal_delete: false,
+                  inspirationName: '',
                 )));
             // print(response.statusCode);
           }
