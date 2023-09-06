@@ -169,6 +169,7 @@ class _practice_summaryState extends State<practice_summary> {
                       missed: false,
                       name: '',
                       update: false,
+                      helpfulTips: false,
                     )));
               },
               icon: Image.asset(
@@ -246,6 +247,7 @@ class _practice_summaryState extends State<practice_summary> {
                                             missed: false,
                                             name: '',
                                             update: false,
+                                            helpfulTips: false,
                                           )));
                                     } else {
                                       Navigator.push(
@@ -255,6 +257,7 @@ class _practice_summaryState extends State<practice_summary> {
                                             missed: false,
                                             name: '',
                                             update: false,
+                                            helpfulTips: false,
                                           )));
                                     }
                                   },
@@ -1152,6 +1155,8 @@ class _practice_summaryState extends State<practice_summary> {
                                                                   missed: false,
                                                                   name: '',
                                                                   update: false,
+                                                                  helpfulTips:
+                                                                      false,
                                                                 )));
 
                                                             print(
@@ -1254,6 +1259,7 @@ class _practice_summaryState extends State<practice_summary> {
                                           missed: false,
                                           name: goalName,
                                           update: true,
+                                          helpfulTips: false,
                                         )));
                               },
                               child: Container(

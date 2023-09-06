@@ -52,6 +52,7 @@ class hurdles_splashState extends State<hurdles_splash> {
               missed: false,
               name: '',
               update: false,
+              helpfulTips: false,
             )));
         final SharedPreferences prefs = await _prefs;
         var hurdleRoute = prefs.remove('HurdleRoute');
@@ -81,6 +82,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                             missed: false,
                             name: '',
                             update: false,
+                            helpfulTips: false,
                           )));
                       final SharedPreferences prefs = await _prefs;
                       var hurdleRoute = prefs.remove('HurdleRoute');

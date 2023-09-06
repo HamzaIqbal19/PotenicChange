@@ -117,12 +117,14 @@ class video_EditState extends State<videoEdit> {
 
           // }
 
+          print("============Tags==========$tagList");
           loadData();
           if (inspirationDetails['inspiration']['hashTags'].length != 0) {
             for (int i = 0;
                 i < inspirationDetails['inspiration']['hashTags'].length;
                 i++) {
-              tagList.add(inspirationDetails['inspiration']['hashTags'][i]);
+              tagList
+                  .add('"${inspirationDetails['inspiration']['hashTags'][i]}"');
             }
           }
         }
@@ -386,7 +388,11 @@ class video_EditState extends State<videoEdit> {
                                                                             'inspirationId'] !=
                                                                         2
                                                                     ? link.text
-                                                                        .toString()
+                                                                            .isEmpty
+                                                                        ? ''
+                                                                        : link
+                                                                            .text
+                                                                            .toString()
                                                                     : '',
                                                                 statement.text
                                                                     .toString(),
@@ -978,35 +984,20 @@ class video_EditState extends State<videoEdit> {
                                 }),
                               ]),
                         ),
-                        AnimatedScaleButton(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: inspiraton_goals(
-                                  update: true,
-                                  data_saved: true,
-                                  context: widget.context,
-                                  note: widget.note,
-                                  route: 'edit',
-                                )));
-                          },
-                          child: Container(
-                            height: AppDimensions.height10(context) * 2.1,
-                            width: AppDimensions.height10(context) * 30.5,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 2.0,
-                                bottom: AppDimensions.height10(context) * 0.5,
-                                right: AppDimensions.height10(context) * 8.9,
-                                top: AppDimensions.height10(context) * 3.9),
-                            child: Text(
-                              'Attached goals',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.5,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff828282)),
-                            ),
+                        Container(
+                          height: AppDimensions.height10(context) * 2.1,
+                          width: AppDimensions.height10(context) * 30.5,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 2.0,
+                              bottom: AppDimensions.height10(context) * 0.5,
+                              right: AppDimensions.height10(context) * 8.9,
+                              top: AppDimensions.height10(context) * 3.9),
+                          child: Text(
+                            'Attached goals',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.5,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff828282)),
                           ),
                         ),
                         AnimatedScaleButton(
@@ -1014,12 +1005,12 @@ class video_EditState extends State<videoEdit> {
                             Navigator.push(
                                 context,
                                 FadePageRoute(
-                                    page: const inspiraton_goals(
+                                    page: inspiraton_goals(
                                   update: true,
                                   data_saved: false,
                                   route: 'note_saved_video',
-                                  context: false,
-                                  note: false,
+                                  context: widget.context,
+                                  note: widget.note,
                                 )));
                           },
                           child: Container(

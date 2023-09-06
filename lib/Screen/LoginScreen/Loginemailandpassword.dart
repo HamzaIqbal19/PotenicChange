@@ -80,6 +80,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                 missed: false,
                 name: '',
                 update: false,
+                helpfulTips: false,
               ),
               // exitPage:SplashPage(),
             ));

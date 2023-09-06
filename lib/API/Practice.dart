@@ -407,8 +407,12 @@ class PracticeGoalApi {
     if (request.statusCode == 200) {
       print("request: Update successful");
       var jsonData = jsonDecode(request.body);
-      print("Result: $jsonData");
-      return true;
+      print("Result: ${jsonData['isTutorial']}");
+      if (jsonData['isTutorial'] == true) {
+        return false;
+      } else {
+        return true;
+      }
     } else if (request.statusCode == 400) {
       print("Maximum goal achieved");
       print('STATUSCODE: ${request.statusCode}');
@@ -424,7 +428,7 @@ class PracticeGoalApi {
   static Future getUserPracticeById() async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
-    var prac_num = prefs.getInt("prac_score_id");
+    var prac_num = prefs.getInt("prac_num");
 
     print('$prac_num');
     var headers = {

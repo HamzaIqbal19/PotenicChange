@@ -4,8 +4,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/calender.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../Widgets/circle_dates.dart';
 import '../../utils/app_dimensions.dart';
@@ -190,29 +193,69 @@ class _practice_progressState extends State<practice_progress> {
                         child: Stack(
                           children: [
                             Align(
-                              alignment: const Alignment(-1, 0),
+                              alignment: const Alignment(-1, -0.3),
                               child: Container(
-                                width: AppDimensions.height10(context) * 8.36,
-                                height: AppDimensions.height10(context) * 9.3,
-                                decoration: const BoxDecoration(
-                                  // color: Colors.amber,
+                                width: AppDimensions.height10(context) * 6.5,
+                                height: AppDimensions.height10(context) * 6.5,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
                                   image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/Group 9398.webp'),
-                                      fit: BoxFit.cover),
+                                      image: AssetImage(report['practice']
+                                                  ['userGoal']['color'] ==
+                                              "1"
+                                          ? "assets/images/red_gradient.webp"
+                                          : report['practice']['userGoal']
+                                                      ['color'] ==
+                                                  "2"
+                                              ? 'assets/images/orange_moon.webp'
+                                              : report['practice']['userGoal']
+                                                          ['color'] ==
+                                                      "3"
+                                                  ? "assets/images/lightGrey_gradient.webp"
+                                                  : report['practice']['userGoal']
+                                                              ['color'] ==
+                                                          "4"
+                                                      ? "assets/images/lightBlue_gradient.webp"
+                                                      : report['practice']['userGoal']
+                                                                  ['color'] ==
+                                                              "5"
+                                                          ? "assets/images/medBlue_gradient.webp"
+                                                          : report['practice']
+                                                                          ['userGoal']
+                                                                      ['color'] ==
+                                                                  6
+                                                              ? "assets/images/Blue_gradient.webp"
+                                                              : 'assets/images/orange_moon.webp'),
+                                      fit: BoxFit.contain),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: const Alignment(-0.495, -0.2),
+                              alignment: const Alignment(-0.595, -0.2),
                               child: Container(
                                 height: AppDimensions.height10(context) * 4.1,
                                 width: AppDimensions.height10(context) * 4.061,
-                                decoration: const BoxDecoration(
-                                    //color: Colors.amber,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
                                     image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/image2.webp'),
+                                        image: AssetImage(report['practice']
+                                                    ['color'] ==
+                                                "1"
+                                            ? "assets/images/Ellipse orange_wb.webp"
+                                            : report['practice']['color'] == "2"
+                                                ? 'assets/images/Ellipse 158_wb.webp'
+                                                : report['practice']['color'] ==
+                                                        "3"
+                                                    ? "assets/images/Ellipse 157_wb.webp"
+                                                    : report['practice']
+                                                                ['color'] ==
+                                                            "4"
+                                                        ? "assets/images/Ellipse light-blue_wb.webp"
+                                                        : report['practice']
+                                                                    ['color'] ==
+                                                                "5"
+                                                            ? "assets/images/Ellipse blue_wb.webp"
+                                                            : 'assets/images/Ellipse 158_wb.webp'),
                                         fit: BoxFit.cover)),
                               ),
                             ),
@@ -869,7 +912,7 @@ class _practice_progressState extends State<practice_progress> {
                                       child: Text(
                                         noData == true
                                             ? '0'
-                                            : '${report['endRecording'][3]['AfterTotal']}x',
+                                            : '${report['endRecording'][2]['AfterTotal']}x',
                                         style: TextStyle(
                                             color: const Color(0xFFB695B7),
                                             height: 1.2,
@@ -893,7 +936,7 @@ class _practice_progressState extends State<practice_progress> {
                                         noData == true
                                             ? 0
                                             : int.parse(report['endRecording']
-                                                    [3][
+                                                    [2][
                                                 'AfterTotal']), // Replace 5 with the number of containers you want to create
                                         (index) => Container(
                                           width:
@@ -965,7 +1008,7 @@ class _practice_progressState extends State<practice_progress> {
                                       child: Text(
                                         noData == true
                                             ? '0'
-                                            : '${report['endRecording'][4]['AfterTotal']}x',
+                                            : '${report['endRecording'][2]['AfterTotal']}x',
                                         style: TextStyle(
                                             color: const Color(0xFFB695B7),
                                             height: 1.2,
@@ -989,7 +1032,7 @@ class _practice_progressState extends State<practice_progress> {
                                         noData == true
                                             ? 0
                                             : int.parse(report['endRecording']
-                                                    [4][
+                                                    [2][
                                                 'AfterTotal']), // Replace 5with the number of containers you want to create
                                         (index) => Container(
                                           width:
@@ -1055,7 +1098,7 @@ class _practice_progressState extends State<practice_progress> {
                             top: AppDimensions.height10(context) * 0.6),
                         child: Center(
                           child: Text(
-                            'DD/MMM/YY to DD/MMM/YY.',
+                            '${report["practice"]["lastReportSentDate"].toString().substring(0, 10)} to ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)}',
                             style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 2.0,
                               height: AppDimensions.height10(context) * 0.12,
@@ -1816,66 +1859,70 @@ class _practice_progressState extends State<practice_progress> {
                                   bottom:
                                       AppDimensions.height10(context) * 2.7),
                             ),
-                            Container(
-                                height: AppDimensions.height10(context) * 6.0,
-                                width: AppDimensions.height10(context) * 34.2,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 1,
-                                      color: const Color(0xFFB695B7),
-                                    ),
-                                    borderRadius: BorderRadius.circular(
-                                        AppDimensions.height10(context) * 2.0)),
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: AppDimensions.height10(context) *
-                                            23.9,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.2,
-                                        margin: EdgeInsets.only(
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                1.99),
-                                        child: GestureDetector(
-                                            onTap: () {},
-                                            child: Text(
-                                              'Practice assessment history',
-                                              style: TextStyle(
-                                                color: const Color(0xFF828282),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            )),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const practice_assesment()));
+                              },
+                              child: Container(
+                                  height: AppDimensions.height10(context) * 6.0,
+                                  width: AppDimensions.height10(context) * 34.2,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 1,
+                                        color: const Color(0xFFB695B7),
                                       ),
-                                      Container(
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              2.0)),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
                                           width:
                                               AppDimensions.height10(context) *
-                                                  2.4,
+                                                  23.9,
                                           height:
                                               AppDimensions.height10(context) *
-                                                  1.39,
+                                                  2.2,
                                           margin: EdgeInsets.only(
-                                              right: AppDimensions.height10(
+                                              left: AppDimensions.height10(
                                                       context) *
-                                                  2.391),
-                                          child: GestureDetector(
-                                            onTap: () {},
+                                                  1.99),
+                                          child: Text(
+                                            'Practice assessment history',
+                                            style: TextStyle(
+                                              color: const Color(0xFF828282),
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.8,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                2.4,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                1.39,
+                                            margin: EdgeInsets.only(
+                                                right: AppDimensions.height10(
+                                                        context) *
+                                                    2.391),
                                             child: Image.asset(
                                               'assets/images/BTN Back.webp',
                                               //width: AppDimensions.height10(context) * 2.6,
                                               //height: AppDimensions.height10(context) * 2.6,
                                               color: const Color(0xFF828282),
                                               fit: BoxFit.cover,
-                                            ),
-                                          ))
-                                    ])),
+                                            ))
+                                      ])),
+                            ),
                             SizedBox(
                               height: AppDimensions.height10(context) * 4,
                             )

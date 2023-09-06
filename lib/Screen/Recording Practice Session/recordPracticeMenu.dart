@@ -159,6 +159,7 @@ class _practiceMenuState extends State<practiceMenu> {
                       missed: false,
                       name: '',
                       update: false,
+                      helpfulTips: false,
                     ),
                   ),
                 );
@@ -181,6 +182,7 @@ class _practiceMenuState extends State<practiceMenu> {
                       missed: false,
                       name: '',
                       update: false,
+                      helpfulTips: false,
                     )),
                   );
                 },

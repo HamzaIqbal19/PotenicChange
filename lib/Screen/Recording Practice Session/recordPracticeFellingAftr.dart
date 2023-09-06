@@ -238,6 +238,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                                     missed: false,
                                                     name: '',
                                                     update: false,
+                                                    helpfulTips: false,
                                                   )));
                                             }
                                           },

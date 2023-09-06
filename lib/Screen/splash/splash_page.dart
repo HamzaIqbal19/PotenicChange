@@ -83,6 +83,7 @@ class SplashPageState extends State<SplashPage> {
                       missed: false,
                       name: '',
                       update: false,
+                      helpfulTips: false,
                     ),
                     // exitPage:SplashPage(),
                   ));

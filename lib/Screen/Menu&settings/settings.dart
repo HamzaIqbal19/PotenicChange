@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/API/Authentication.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Menu&settings/account_deleted.dart';
 import 'package:potenic_app/Screen/Menu&settings/edit_credentials.dart';
 import 'package:potenic_app/Screen/Menu&settings/notifications.dart';
+import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import '../community/community.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -618,51 +624,64 @@ class Settings extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Container(
-                              width: AppDimensions.height10(context) * 33.4,
-                              height: AppDimensions.height10(context) * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  0.1,
-                                          color: colorC))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 20.6,
-                                    height:
-                                        AppDimensions.height10(context) * 1.9,
-                                    child: Text(
-                                      'Tutorial',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: colorC),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushReplacement(
+                                    context,
+                                    FadePageRoute(
+                                      page: const view_goals(
+                                        missed: false,
+                                        name: '',
+                                        update: false,
+                                        helpfulTips: true,
+                                      ),
+                                    ));
+                                dashboard_sheet(context);
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 33.4,
+                                height: AppDimensions.height10(context) * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10(context) *
+                                          20.6,
+                                      height:
+                                          AppDimensions.height10(context) * 1.9,
+                                      child: Text(
+                                        'Tutorial',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                      width:
-                                          AppDimensions.height10(context) * 2.4,
-                                      height: AppDimensions.height10(context) *
-                                          1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
+                                    SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            2.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.39,
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
                                           fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
+                                        ))
+                                  ],
+                                ),
                               ),
                             ),
                             Container(
@@ -699,15 +718,12 @@ class Settings extends StatelessWidget {
                                           AppDimensions.height10(context) * 2.4,
                                       height: AppDimensions.height10(context) *
                                           1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
-                                          //height: AppDimensions.height10(context) * 2.6,
-                                          color: colorC,
-                                          fit: BoxFit.cover,
-                                        ),
+                                      child: Image.asset(
+                                        'assets/images/BTN Back.webp',
+                                        //width: AppDimensions.height10(context) * 2.6,
+                                        //height: AppDimensions.height10(context) * 2.6,
+                                        color: colorC,
+                                        fit: BoxFit.cover,
                                       ))
                                 ],
                               ),
@@ -798,21 +814,18 @@ class Settings extends StatelessWidget {
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.39,
-                                        child: GestureDetector(
-                                          onTap: () {},
-                                          child: Image.asset(
-                                            'assets/images/BTN Back.webp',
-                                            //width: AppDimensions.height10(context) * 2.6,
-                                            //height: AppDimensions.height10(context) * 2.6,
-                                            color: colorC,
-                                            fit: BoxFit.cover,
-                                          ),
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.webp',
+                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //height: AppDimensions.height10(context) * 2.6,
+                                          color: colorC,
+                                          fit: BoxFit.cover,
                                         ))
                                   ],
                                 ),
                               ),
                             ),
-                            AnimatedScaleButton(
+                            GestureDetector(
                               onTap: () {
                                 FlutterWebBrowser.openWebPage(
                                   url:
@@ -883,7 +896,7 @@ class Settings extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            AnimatedScaleButton(
+                            GestureDetector(
                               onTap: () {
                                 FlutterWebBrowser.openWebPage(
                                   url:
@@ -953,11 +966,11 @@ class Settings extends StatelessWidget {
                     ],
                   ),
                 ),
-                GestureDetector(
+                AnimatedScaleButton(
                   onTap: () => showAnimatedDialog(
                       animationType: DialogTransitionType.fadeScale,
                       curve: Curves.easeInOut,
-                      duration: Duration(seconds: 1),
+                      duration: const Duration(seconds: 1),
                       context: context,
                       builder: (BuildContext context) => SizedBox(
                             width: AppDimensions.height10(context) * 27.0,
@@ -1032,12 +1045,18 @@ class Settings extends StatelessWidget {
                                       width: double.infinity,
                                       color: const Color(0xFF007AFF),
                                       child: TextButton(
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+                                          await prefs.remove('usertoken');
+                                          await prefs.remove('userId');
+                                          await prefs.remove('refreshtoken');
+                                          await prefs.remove('route');
                                           Navigator.push(
                                               context,
                                               FadePageRoute(
                                                   page: const HomeScreen(
-                                                login: true,
+                                                login: false,
                                               )));
                                         },
                                         child: Text(
@@ -1117,11 +1136,11 @@ class Settings extends StatelessWidget {
                     ),
                   ),
                 ),
-                GestureDetector(
+                AnimatedScaleButton(
                   onTap: () => showAnimatedDialog(
                       animationType: DialogTransitionType.fadeScale,
                       curve: Curves.easeInOut,
-                      duration: Duration(seconds: 1),
+                      duration: const Duration(seconds: 1),
                       context: context,
                       builder: (BuildContext context) => SizedBox(
                             width: AppDimensions.height10(context) * 27.0,
@@ -1197,10 +1216,20 @@ class Settings extends StatelessWidget {
                                       color: const Color(0xFF007AFF),
                                       child: TextButton(
                                         onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              FadePageRoute(
-                                                  page: const Acc_deleted()));
+                                          Authentication()
+                                              .deleteUserAccount()
+                                              .then((response) {
+                                            if (response == true) {
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page:
+                                                          const Acc_deleted()));
+                                            } else {
+                                              print(
+                                                  'Account deletion failde!.');
+                                            }
+                                          }).whenComplete(() => null);
                                         },
                                         child: Text(
                                           'Yes, delete my account',

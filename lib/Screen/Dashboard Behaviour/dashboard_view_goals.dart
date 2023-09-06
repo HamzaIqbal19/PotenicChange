@@ -16,6 +16,7 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_sessio
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/dashboard_behaviour_shimmer.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
+import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -34,12 +35,14 @@ class view_goals extends StatefulWidget {
   final bool missed;
   final bool update;
   final String name;
+  final bool helpfulTips;
 
   const view_goals(
       {super.key,
       required this.missed,
       required this.update,
-      required this.name});
+      required this.name,
+      required this.helpfulTips});
 
   @override
   State<view_goals> createState() => _view_goalsState();
@@ -58,7 +61,14 @@ class _view_goalsState extends State<view_goals> {
   bool single = false;
   int removeDay = 0;
   String RecordDate = '';
+  int goal_level = 0;
+  void _incrementValue() {
+    setState(() {
+      goal_level++;
+    });
+  }
 
+  bool _showOverlay = false;
   int current = 0;
   int next = -1;
   int past = 1;
@@ -91,6 +101,12 @@ class _view_goalsState extends State<view_goals> {
         contain = true;
       });
       startTimer();
+    }
+    if (widget.helpfulTips == true) {
+      //dashboard_sheet(context);
+      setState(() {
+        _showOverlay = true;
+      });
     }
     //fetchGoalsByDay();
   }
@@ -433,1422 +449,1487 @@ class _view_goalsState extends State<view_goals> {
               child: Loader == false
                   ? noData == false
                       ? noActive == false
-                          ? SizedBox(
-                              width: double.infinity,
-                              height: AppDimensions.height10(context) * 19.2,
-                              child: Stack(children: [
-                                SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: SizedBox(
-                                    height:
-                                        AppDimensions.height10(context) * 19.2,
-                                    width:
-                                        AppDimensions.height10(context) * 45.7,
-                                    child: Stack(
+                          ? GestureDetector(
+                              onTap: () {
+                                if (widget.helpfulTips) {
+                                  if (goal_level == 0) {
+                                    _incrementValue();
+                                  }
+                                }
+                              },
+                              child: SizedBox(
+                                  width: double.infinity,
+                                  height:
+                                      AppDimensions.height10(context) * 19.2,
+                                  child: Stack(children: [
+                                    Stack(
                                       children: [
-                                        Align(
-                                          alignment: const Alignment(-1, 1),
-                                          child: AnimatedScaleButton(
-                                            onTap: () {
-                                              setState(() {
-                                                Loader = true;
-
-                                                // past = past - 1;
-                                                // next = next - 1;
-                                              });
-                                              previous();
-                                              print('$current');
-                                              fetchPracticeByDay();
-                                              setState(() {
-                                                contain = false;
-
-                                                // past = past - 1;
-                                                // next = next - 1;
-                                              });
-                                              // Navigator.push(
-                                              //     context,
-                                              //     FadePageRoute(
-                                              //         page: no_past_session(
-                                              //       missed: widget.missed,
-                                              //     )));
-                                            },
-                                            child: Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  7.9,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  7.9,
-                                              //margin: const EdgeInsets.only(top: 84),
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                    width: 3,
-                                                    color: Colors.white),
-                                                gradient: const LinearGradient(
-                                                    begin: Alignment.topCenter,
-                                                    end: Alignment.bottomCenter,
-                                                    colors: [
-                                                      Color(0xffF5F1E0),
-                                                      Color(0xffEDDC97)
-                                                    ]),
-                                              ),
-                                              child: Container(
-                                                  alignment: Alignment.center,
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      SizedBox(
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-
-                                                        // color: Colors.blue,
-                                                        child: Text(
-                                                          getFormattedDay(past)
-                                                              .substring(0, 3),
-                                                          style: TextStyle(
-                                                              fontSize: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.2,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              color: const Color(
-                                                                  0xff5B74A6)),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        //width: AppDimensions.height10(context) * 4.0,
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        // color: Colors.amber,
-                                                        child: Text(
-                                                          '${getFormattedDate(past).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(past).split('-').reversed.join().substring(2, 4)}',
-                                                          style: TextStyle(
-                                                              color: const Color(
-                                                                  0xff5B74A6),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              fontSize: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.4),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.7,
-                                                          width: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.7,
-                                                          //  margin: const EdgeInsets.only(top: 3.32),
-                                                          decoration:
-                                                              const BoxDecoration(
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                  color: Color(
-                                                                      0xff156F6D)),
-                                                          child: const Center(
-                                                            child: Text(
-                                                              '0/0',
-                                                              style: TextStyle(
-                                                                  fontSize: 10,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: Colors
-                                                                      .white),
-                                                            ),
-                                                          ))
-                                                    ],
-                                                  )),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment: const Alignment(0, 0),
+                                        SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
                                           child: SizedBox(
                                             height: AppDimensions.height10(
                                                     context) *
                                                 19.2,
                                             width: AppDimensions.height10(
                                                     context) *
-                                                18.8,
-                                            // margin: EdgeInsets.only(left: 55.5, right: 55.5),
-                                            child: Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  13.81,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  13.265,
-                                              decoration: const BoxDecoration(
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/images/Asset 10 2.webp'),
-                                                      fit: BoxFit.cover)),
-                                              child: Stack(children: [
+                                                45.7,
+                                            child: Stack(
+                                              children: [
                                                 Align(
-                                                  alignment: const Alignment(
-                                                      0.185, 0.215),
-                                                  child: Container(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.3,
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.3,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                            shape:
-                                                                BoxShape.circle,
-                                                            gradient:
-                                                                LinearGradient(
-                                                                    colors: [
-                                                                  Color(
-                                                                      0xfff1e39a),
-                                                                  Color(
-                                                                      0xffEEDD96)
-                                                                ])),
+                                                  alignment:
+                                                      const Alignment(-1, 1),
+                                                  child: AnimatedScaleButton(
+                                                    onTap: () {
+                                                      if (_showOverlay ==
+                                                          false) {
+                                                        setState(() {
+                                                          Loader = true;
+
+                                                          // past = past - 1;
+                                                          // next = next - 1;
+                                                        });
+                                                        previous();
+                                                        print('$current');
+                                                        fetchPracticeByDay();
+                                                        setState(() {
+                                                          contain = false;
+
+                                                          // past = past - 1;
+                                                          // next = next - 1;
+                                                        });
+                                                      } else {
+                                                        if (goal_level == 0) {
+                                                          _incrementValue();
+                                                        }
+                                                      }
+
+                                                      // Navigator.push(
+                                                      //     context,
+                                                      //     FadePageRoute(
+                                                      //         page: no_past_session(
+                                                      //       missed: widget.missed,
+                                                      //     )));
+                                                    },
+                                                    child: Container(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          7.9,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          7.9,
+                                                      //margin: const EdgeInsets.only(top: 84),
+                                                      decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        border: Border.all(
+                                                            width: 3,
+                                                            color:
+                                                                Colors.white),
+                                                        gradient: const LinearGradient(
+                                                            begin: Alignment
+                                                                .topCenter,
+                                                            end: Alignment
+                                                                .bottomCenter,
+                                                            colors: [
+                                                              Color(0xffF5F1E0),
+                                                              Color(0xffEDDC97)
+                                                            ]),
+                                                      ),
+                                                      child: Container(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          child: Column(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              SizedBox(
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.7,
+
+                                                                // color: Colors.blue,
+                                                                child: Text(
+                                                                  getFormattedDay(
+                                                                          past)
+                                                                      .substring(
+                                                                          0, 3),
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          AppDimensions.height10(context) *
+                                                                              1.2,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      color: const Color(
+                                                                          0xff5B74A6)),
+                                                                ),
+                                                              ),
+                                                              SizedBox(
+                                                                //width: AppDimensions.height10(context) * 4.0,
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.7,
+                                                                // color: Colors.amber,
+                                                                child: Text(
+                                                                  '${getFormattedDate(past).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(past).split('-').reversed.join().substring(2, 4)}',
+                                                                  style: TextStyle(
+                                                                      color: const Color(
+                                                                          0xff5B74A6),
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      fontSize:
+                                                                          AppDimensions.height10(context) *
+                                                                              1.4),
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      2.7,
+                                                                  width: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      2.7,
+                                                                  //  margin: const EdgeInsets.only(top: 3.32),
+                                                                  decoration: const BoxDecoration(
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                      color: Color(
+                                                                          0xff156F6D)),
+                                                                  child:
+                                                                      const Center(
+                                                                    child: Text(
+                                                                      '0/0',
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              10,
+                                                                          fontWeight: FontWeight
+                                                                              .w400,
+                                                                          color:
+                                                                              Colors.white),
+                                                                    ),
+                                                                  ))
+                                                            ],
+                                                          )),
+                                                    ),
                                                   ),
                                                 ),
                                                 Align(
                                                   alignment:
                                                       const Alignment(0, 0),
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        getFormattedDay(current)
-                                                            .substring(0, 3),
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.2,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            color: const Color(
-                                                                0xff5B74A6)),
-                                                      ),
-                                                      Text(
-                                                        '${getFormattedDate(current).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(current).split('-').reversed.join().substring(2, 4)}',
-                                                        style: TextStyle(
-                                                            color: const Color(
-                                                                0xff5B74A6),
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400),
-                                                      ),
-                                                      Container(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.5,
-                                                          width: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.5,
-                                                          // margin: const EdgeInsets.only(top: 2),
-                                                          decoration:
-                                                              const BoxDecoration(
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                  color: Colors
-                                                                      .white),
-                                                          child: const Center(
-                                                            child: Text(
-                                                              '0/2',
-                                                              style: TextStyle(
-                                                                  fontSize: 10,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: Color(
-                                                                      0xff5B74A6)),
-                                                            ),
-                                                          )),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ]),
-                                            ),
-                                            //color: Colors.blue,
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment: const Alignment(1, 1),
-                                          child: AnimatedScaleButton(
-                                            onTap: () {
-                                              setState(() {
-                                                Loader = true;
-                                              });
-                                              future();
-                                              fetchPracticeByDay();
-                                              setState(() {
-                                                contain = false;
-
-                                                // past = past - 1;
-                                                // next = next - 1;
-                                              });
-                                              // Navigator.push(
-                                              //     context,
-                                              //     FadePageRoute(
-                                              //         page: no_planned_session(
-                                              //       missed: widget.missed,
-                                              //     )));
-                                            },
-                                            child: Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    7.9,
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    7.9,
-                                                // margin: const EdgeInsets.only(
-                                                //   top: 84,
-                                                // ),
-                                                decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    border: Border.all(
-                                                        width: 3,
-                                                        color: Colors.white),
-                                                    gradient: const LinearGradient(
-                                                        begin:
-                                                            Alignment.topCenter,
-                                                        end: Alignment
-                                                            .bottomCenter,
-                                                        colors: [
-                                                          Color(0xffFBF9EF),
-                                                          Color(0xffF8F3DA)
-                                                        ])),
-                                                // ignore: avoid_unnecessary_containers
-                                                child: Container(
-                                                    //margin: const EdgeInsets.only(top: 11.52),
-                                                    child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      getFormattedDay(next)
-                                                          .substring(0, 3),
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.2,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          color: const Color(
-                                                              0xff5B74A6)),
-                                                    ),
-                                                    Text(
-                                                      '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: const Color(
-                                                              0xff5B74A6)),
-                                                    ),
-                                                    Container(
+                                                  child: SizedBox(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            19.2,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            18.8,
+                                                    // margin: EdgeInsets.only(left: 55.5, right: 55.5),
+                                                    child: Container(
                                                       height: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          2.7,
+                                                          13.81,
                                                       width: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          2.7,
-                                                      //margin: const EdgeInsets.only(top: 3.32),
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                            width: 1,
-                                                            color: const Color(
-                                                                0xFFFBFBFB)),
-                                                      ),
-                                                      child: SizedBox(
-                                                          width: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.7,
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.5,
-                                                          // margin:
-                                                          //     const EdgeInsets.only(top: 3.32),
-                                                          // margin: const EdgeInsets.only(left: 1),
-                                                          child: const Center(
-                                                            child: Text(
-                                                              '0/2',
-                                                              style: TextStyle(
-                                                                  fontSize: 10,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: Color(
-                                                                      0xff5B74A6)),
-                                                            ),
-                                                          )),
-                                                    )
-                                                  ],
-                                                ))),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  height:
-                                      AppDimensions.height10(context) * 66.2,
-                                  margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 23.0,
-                                  ),
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.vertical,
-                                    child: Column(
-                                      children: [
-                                        ListView.builder(
-                                            physics:
-                                                const NeverScrollableScrollPhysics(),
-                                            itemCount: allGoals.length,
-                                            shrinkWrap: true,
-                                            padding: EdgeInsets.zero,
-                                            itemBuilder: ((context, index) {
-                                              // setState(() {
-                                              //   allPractice =
-                                              //       allGoals[index]['userPractices'];
-                                              // });
-                                              // print('---------------------------');
-                                              // print(allPractice);
-                                              return Column(
-                                                children: [
-                                                  for (int i = 0;
-                                                      i <
-                                                          allGoals[index][
-                                                                      'schedule']
-                                                                  .length -
-                                                              1;
-                                                      i++) ...[
-                                                    Column(
-                                                      children: [
-                                                        Container(
-                                                          width: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              35.6,
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              4.2,
-                                                          margin: EdgeInsets.only(
-                                                              left: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  2.4,
-                                                              right: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  3.4,
-                                                              top: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.1),
+                                                          13.265,
+                                                      decoration: const BoxDecoration(
+                                                          image: DecorationImage(
+                                                              image: AssetImage(
+                                                                  'assets/images/Asset 10 2.webp'),
+                                                              fit: BoxFit
+                                                                  .cover)),
+                                                      child: Stack(children: [
+                                                        Align(
+                                                          alignment:
+                                                              const Alignment(
+                                                                  0.185, 0.215),
+                                                          child: Container(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.3,
+                                                            width: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.3,
+                                                            decoration: const BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                gradient:
+                                                                    LinearGradient(
+                                                                        colors: [
+                                                                      Color(
+                                                                          0xfff1e39a),
+                                                                      Color(
+                                                                          0xffEEDD96)
+                                                                    ])),
+                                                          ),
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              const Alignment(
+                                                                  0, 0),
                                                           child: Column(
-                                                              children: [
-                                                                Container(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .centerLeft,
-                                                                  child: Text(
-                                                                    allGoals[index]['schedule']
-                                                                            [
-                                                                            'time${i + 1}']
-                                                                        .toString()
-                                                                        .substring(
-                                                                            0,
-                                                                            5),
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          AppDimensions.height10(context) *
-                                                                              1.8,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      color: Colors
-                                                                          .white,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Divider(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Text(
+                                                                getFormattedDay(
+                                                                        current)
+                                                                    .substring(
+                                                                        0, 3),
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        AppDimensions.height10(context) *
+                                                                            1.2,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    color: const Color(
+                                                                        0xff5B74A6)),
+                                                              ),
+                                                              Text(
+                                                                '${getFormattedDate(current).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(current).split('-').reversed.join().substring(2, 4)}',
+                                                                style: TextStyle(
+                                                                    color: const Color(
+                                                                        0xff5B74A6),
+                                                                    fontSize:
+                                                                        AppDimensions.height10(context) *
+                                                                            1.4,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400),
+                                                              ),
+                                                              Container(
                                                                   height: AppDimensions
                                                                           .height10(
                                                                               context) *
-                                                                      0.2,
-                                                                  color: Colors
-                                                                      .white,
-                                                                ),
-                                                                Container(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .centerLeft,
-                                                                  child: Text(
-                                                                    allGoals[index]['schedule']
-                                                                            [
-                                                                            'time${i + 1}']
-                                                                        .toString()
-                                                                        .substring(
-                                                                            5,
-                                                                            7)
-                                                                        .toUpperCase(),
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          AppDimensions.height10(context) *
-                                                                              1.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
+                                                                      2.5,
+                                                                  width: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      2.5,
+                                                                  // margin: const EdgeInsets.only(top: 2),
+                                                                  decoration: const BoxDecoration(
+                                                                      shape: BoxShape
+                                                                          .circle,
                                                                       color: Colors
-                                                                          .white,
+                                                                          .white),
+                                                                  child:
+                                                                      const Center(
+                                                                    child: Text(
+                                                                      '0/2',
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              10,
+                                                                          fontWeight: FontWeight
+                                                                              .w400,
+                                                                          color:
+                                                                              Color(0xff5B74A6)),
                                                                     ),
-                                                                  ),
-                                                                ),
-                                                              ]),
+                                                                  )),
+                                                            ],
+                                                          ),
                                                         ),
-                                                        Column(
+                                                      ]),
+                                                    ),
+                                                    //color: Colors.blue,
+                                                  ),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      const Alignment(1, 1),
+                                                  child: AnimatedScaleButton(
+                                                    onTap: () {
+                                                      if (_showOverlay ==
+                                                          false) {
+                                                        setState(() {
+                                                          Loader = true;
+                                                        });
+                                                        future();
+                                                        fetchPracticeByDay();
+                                                        setState(() {
+                                                          contain = false;
+
+                                                          // past = past - 1;
+                                                          // next = next - 1;
+                                                        });
+                                                      } else {
+                                                        if (goal_level == 0) {
+                                                          _incrementValue();
+                                                        }
+                                                      }
+                                                      // Navigator.push(
+                                                      //     context,
+                                                      //     FadePageRoute(
+                                                      //         page: no_planned_session(
+                                                      //       missed: widget.missed,
+                                                      //     )));
+                                                    },
+                                                    child: Container(
+                                                        height: AppDimensions.height10(context) *
+                                                            7.9,
+                                                        width: AppDimensions.height10(
+                                                                context) *
+                                                            7.9,
+                                                        // margin: const EdgeInsets.only(
+                                                        //   top: 84,
+                                                        // ),
+                                                        decoration: BoxDecoration(
+                                                            shape: BoxShape
+                                                                .circle,
+                                                            border: Border.all(
+                                                                width: 3,
+                                                                color:
+                                                                    Colors
+                                                                        .white),
+                                                            gradient: const LinearGradient(
+                                                                begin: Alignment
+                                                                    .topCenter,
+                                                                end: Alignment
+                                                                    .bottomCenter,
+                                                                colors: [
+                                                                  Color(
+                                                                      0xffFBF9EF),
+                                                                  Color(
+                                                                      0xffF8F3DA)
+                                                                ])),
+                                                        // ignore: avoid_unnecessary_containers
+                                                        child: Container(
+                                                            //margin: const EdgeInsets.only(top: 11.52),
+                                                            child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
                                                           children: [
-                                                            Center(
-                                                                child:
-                                                                    align_circles(
-                                                              onTap1: () async {
-                                                                Navigator.push(
-                                                                    context,
-                                                                    FadePageRoute(
-                                                                        page:
-                                                                            (const goal_menu_inactive(
-                                                                      premium:
-                                                                          true,
-                                                                      isActive:
-                                                                          false,
-                                                                      goal_evaluation:
-                                                                          false,
-                                                                    ))));
-                                                                final SharedPreferences
-                                                                    prefs =
-                                                                    await _prefs;
-                                                                var setId = prefs.setInt(
-                                                                    'goal_num',
-                                                                    allGoals[index]
-                                                                            [
-                                                                            'userGoal']
-                                                                        ['id']);
-
-                                                                await prefs.setString(
-                                                                    'goal_menu_route',
-                                                                    'dashboard');
-                                                              },
-                                                              onTap2: () async {
-                                                                final SharedPreferences
-                                                                    prefs =
-                                                                    await _prefs;
-                                                                var pracId = prefs.setInt(
-                                                                    'prac_num',
-                                                                    allGoals[
-                                                                            index]
-                                                                        ['id']);
-                                                                var setId = prefs.setInt(
-                                                                    'goal_num',
-                                                                    allGoals[index]
-                                                                            [
-                                                                            'userGoal']
-                                                                        ['id']);
-
-                                                                var pracName = prefs.setString(
-                                                                    'dash_pracName',
-                                                                    allGoals[
-                                                                            index]
-                                                                        [
-                                                                        'name']);
-                                                                var goalName = prefs.setString(
-                                                                    'dash_goalName',
-                                                                    allGoals[index]
-                                                                            [
-                                                                            'userGoal']
-                                                                        [
-                                                                        'name']);
-                                                                prefs.setString(
-                                                                    'record_date',
-                                                                    getFormattedDate(
-                                                                            current)
-                                                                        .toString());
-                                                                print(
-                                                                    "====================>PractiecId${allGoals[index]['id']}");
-                                                                var pracColor = allGoals[index]
-                                                                            [
-                                                                            'color'] !=
-                                                                        null
-                                                                    ? prefs.setString(
-                                                                        'dash_pracColor',
-                                                                        allGoals[index]
-                                                                            [
-                                                                            'color'])
-                                                                    : prefs.setString(
-                                                                        'dash_pracColor',
-                                                                        '0');
-                                                                var time = prefs.setString(
-                                                                    'recording_Time1',
-                                                                    allGoals[index]
-                                                                            [
-                                                                            'schedule']
-                                                                        [
-                                                                        'time${i + 1}']);
-                                                                var dash_boardRoute =
-                                                                    prefs.setBool(
-                                                                        'behaviour_route',
-                                                                        true);
-                                                                var goalColor = allGoals[index]['userGoal']
-                                                                            [
-                                                                            'color'] !=
-                                                                        null
-                                                                    ? prefs.setString(
-                                                                        'dash_goalColor',
-                                                                        allGoals[index]['userGoal']
-                                                                            [
-                                                                            'color'])
-                                                                    : '0';
-                                                                if (allGoals[
-                                                                            index]
-                                                                        [
-                                                                        'recordingStatusTime${i + 1}'] ==
-                                                                    "Not Started") {
-                                                                  print(
-                                                                      "CON 2");
-                                                                  Navigator.push(
-                                                                      context,
-                                                                      FadePageRoute(
-                                                                          page: practiceMenu(
-                                                                              goal_eval: false,
-                                                                              goalName: allGoals[index]['userGoal']['name'],
-                                                                              pracName: allGoals[index]['name'],
-                                                                              pracColor: allGoals[index]['color'] == null ? "0" : allGoals[index]['color'].toString(),
-                                                                              color: allGoals[index]['userGoal']['color'] != null ? allGoals[index]['userGoal']['color'].toString() : "0")));
-                                                                } else if (allGoals[
-                                                                            index]
-                                                                        [
-                                                                        'recordingStatusTime${i + 1}'] ==
-                                                                    "missed") {
-                                                                  print(
-                                                                      "CON 3");
-                                                                  Navigator.push(
-                                                                      context,
-                                                                      FadePageRoute(
-                                                                          page: missed_Menu(
-                                                                        pracName:
-                                                                            allGoals[index]['name'],
-                                                                      )));
-                                                                } else {
-                                                                  print(
-                                                                      "CON 1");
-                                                                  print(
-                                                                      "${allGoals[index]['color']}");
-                                                                  Navigator.push(
-                                                                      context,
-                                                                      FadePageRoute(
-                                                                          page:
-                                                                              const menu_behaviour()));
-                                                                }
-                                                              },
-                                                              asset_1: allGoals[index]
-                                                                              [
-                                                                              'userGoal']
-                                                                          [
-                                                                          'color'] ==
-                                                                      "1"
-                                                                  ? "assets/images/red_gradient.webp"
-                                                                  : allGoals[index]['userGoal']
-                                                                              [
-                                                                              'color'] ==
-                                                                          "2"
-                                                                      ? 'assets/images/orange_moon.webp'
-                                                                      : allGoals[index]['userGoal']['color'] ==
-                                                                              "3"
-                                                                          ? "assets/images/lightGrey_gradient.webp"
-                                                                          : allGoals[index]['userGoal']['color'] == "4"
-                                                                              ? "assets/images/lightBlue_gradient.webp"
-                                                                              : allGoals[index]['userGoal']['color'] == "5"
-                                                                                  ? "assets/images/medBlue_gradient.webp"
-                                                                                  : allGoals[index]['userGoal']['color'] == 6
-                                                                                      ? "assets/images/Blue_gradient.webp"
-                                                                                      : 'assets/images/orange_moon.webp',
-                                                              s_circle_text:
-                                                                  allGoals[
-                                                                          index]
-                                                                      ['name'],
-                                                              asset_2: allGoals[
-                                                                              index]
-                                                                          [
-                                                                          'recordingStatusTime${i + 1}'] ==
-                                                                      "missed"
-                                                                  ? allGoals[index]
-                                                                              [
-                                                                              'color'] ==
-                                                                          "1"
-                                                                      ? 'assets/images/Missed_3.webp'
-                                                                      : allGoals[index]['color'] ==
-                                                                              "2"
-                                                                          ? 'assets/images/Missed_1.webp'
-                                                                          : allGoals[index]['color'] == "3"
-                                                                              ? "assets/images/Missed_2.webp"
-                                                                              : allGoals[index]['color'] == "4"
-                                                                                  ? "assets/images/Missed_4.webp"
-                                                                                  : allGoals[index]['color'] == "5"
-                                                                                      ? "assets/images/Missed_4.webp"
-                                                                                      : 'assets/images/Missed_1.webp'
-                                                                  : allGoals[index]['recordingStatusTime${i + 1}'] == "completed"
-                                                                      ? allGoals[index]['color'] == "1"
-                                                                          ? "assets/images/Practice_Completed_1.webp"
-                                                                          : allGoals[index]['color'] == "2"
-                                                                              ? 'assets/images/Practice_Completed_2.webp'
-                                                                              : allGoals[index]['color'] == "3"
-                                                                                  ? "assets/images/Practice_Completed_3.webp"
-                                                                                  : allGoals[index]['color'] == "4"
-                                                                                      ? "assets/images/Practice_Completed_4.webp"
-                                                                                      : allGoals[index]['color'] == "5"
-                                                                                          ? "assets/images/Practice_Completed_4.webp"
-                                                                                          : 'assets/images/Practice_Completed_2.webp'
-                                                                      : allGoals[index]['color'] == "1"
-                                                                          ? "assets/images/Ellipse orange_wb.webp"
-                                                                          : allGoals[index]['color'] == "2"
-                                                                              ? 'assets/images/Ellipse 158_wb.webp'
-                                                                              : allGoals[index]['color'] == "3"
-                                                                                  ? "assets/images/Ellipse 157_wb.webp"
-                                                                                  : allGoals[index]['color'] == "4"
-                                                                                      ? "assets/images/Ellipse light-blue_wb.webp"
-                                                                                      : allGoals[index]['color'] == "5"
-                                                                                          ? "assets/images/Ellipse blue_wb.webp"
-                                                                                          : 'assets/images/Ellipse 158_wb.webp',
-                                                              head_text: allGoals[
-                                                                          index]
-                                                                      [
-                                                                      'userGoal']
-                                                                  ['name'],
-                                                              body_text: allGoals[
-                                                                          index]
-                                                                      [
-                                                                      'userGoal']
-                                                                  [
-                                                                  'identityStatement'][0]['text'],
-                                                              body_text_color:
-                                                                  0xff5B74A6,
-                                                              head_text_color:
-                                                                  0xff5B74A6,
-                                                              body_text_size:
-                                                                  AppDimensions
-                                                                          .height10(
+                                                            Text(
+                                                              getFormattedDay(
+                                                                      next)
+                                                                  .substring(
+                                                                      0, 3),
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
                                                                               context) *
-                                                                      1.6,
-                                                              head_text_size:
-                                                                  AppDimensions
-                                                                          .height10(
+                                                                          1.2,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  color: const Color(
+                                                                      0xff5B74A6)),
+                                                            ),
+                                                            Text(
+                                                              '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
                                                                               context) *
-                                                                      2.0,
-                                                              enable_icon:
-                                                                  widget.missed
-                                                                      ? false
-                                                                      : true,
-                                                              is_right: false,
-                                                              s_circle_text_col: allGoals[
-                                                                              index]
-                                                                          [
-                                                                          'recordingStatusTime${i + 1}'] ==
-                                                                      "Not Started"
-                                                                  ? 0xFFFBFBFB
-                                                                  : allGoals[index]
-                                                                              [
-                                                                              'color'] ==
-                                                                          "1"
-                                                                      ? 0XFFFC7133
-                                                                      : allGoals[index]['color'] ==
-                                                                              "2"
-                                                                          ? 0xFF1A481C
-                                                                          : allGoals[index]['color'] == "3"
-                                                                              ? 0xFF6D4B77
-                                                                              : allGoals[index]['color'] == "4"
-                                                                                  ? 0xFF5C75A6
-                                                                                  : allGoals[index]['color'] == "5"
-                                                                                      ? 0xFF315291
-                                                                                      : 0xFF1A481C,
-                                                            )),
-                                                            SizedBox(
+                                                                          1.4,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: const Color(
+                                                                      0xff5B74A6)),
+                                                            ),
+                                                            Container(
                                                               height: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  3.0,
+                                                                  2.7,
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.7,
+                                                              //margin: const EdgeInsets.only(top: 3.32),
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                border: Border.all(
+                                                                    width: 1,
+                                                                    color: const Color(
+                                                                        0xFFFBFBFB)),
+                                                              ),
+                                                              child: SizedBox(
+                                                                  width: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.7,
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.5,
+                                                                  // margin:
+                                                                  //     const EdgeInsets.only(top: 3.32),
+                                                                  // margin: const EdgeInsets.only(left: 1),
+                                                                  child:
+                                                                      const Center(
+                                                                    child: Text(
+                                                                      '0/2',
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              10,
+                                                                          fontWeight: FontWeight
+                                                                              .w400,
+                                                                          color:
+                                                                              Color(0xff5B74A6)),
+                                                                    ),
+                                                                  )),
                                                             )
                                                           ],
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ],
-
-                                                  single == true
-                                                      ? Container(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              14.432,
-                                                          width: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              35.335,
-                                                          decoration:
-                                                              const BoxDecoration(
-                                                                  image:
-                                                                      DecorationImage(
-                                                            image: AssetImage(
-                                                              'assets/images/Component 1.webp',
-                                                            ),
-                                                            fit: BoxFit.cover,
-                                                          )),
-
-                                                          //color: Colors.blue,
-                                                          child: Stack(
-                                                              children: [
-                                                                Align(
-                                                                  alignment:
-                                                                      const Alignment(
-                                                                          -0.930,
-                                                                          -1.42),
-                                                                  child:
-                                                                      AnimatedScaleButton(
-                                                                    onTap: () {
-                                                                      // Navigator.push(
-                                                                      //     context,
-                                                                      //     FadePageRoute(
-                                                                      //         page: const message_center()));
-                                                                    },
-                                                                    child: Image
-                                                                        .asset(
-                                                                      "assets/images/Group.webp",
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              5.0,
-                                                                      width: AppDimensions.height10(
-                                                                              context) *
-                                                                          5.0,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment:
-                                                                      const Alignment(
-                                                                          0.93,
-                                                                          0),
-                                                                  child: Image
-                                                                      .asset(
-                                                                    "assets/images/Vector Smart Object.webp",
-                                                                    height: AppDimensions.height10(
-                                                                            context) *
-                                                                        9.296,
-                                                                    width: AppDimensions.height10(
-                                                                            context) *
-                                                                        4.16,
-                                                                  ),
-                                                                ),
-                                                                Container(
-                                                                  margin:
-                                                                      EdgeInsets
-                                                                          .only(
-                                                                    top: AppDimensions.height10(
-                                                                            context) *
-                                                                        2.1,
-                                                                  ),
-                                                                  child: Column(
-                                                                    children: [
-                                                                      Container(
-                                                                        width: AppDimensions.height10(context) *
-                                                                            28.0,
-                                                                        height: AppDimensions.height10(context) *
-                                                                            2.3,
-                                                                        alignment: const Alignment(
-                                                                            -0.65,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          "Hi, it's Reda here",
-                                                                          style:
-                                                                              TextStyle(
-                                                                            fontSize:
-                                                                                AppDimensions.height10(context) * 1.6,
-                                                                            fontWeight:
-                                                                                FontWeight.w700,
-                                                                            color: const Color.fromRGBO(
-                                                                                91,
-                                                                                116,
-                                                                                166,
-                                                                                1),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                      Container(
-                                                                        width: AppDimensions.height10(context) *
-                                                                            5.245,
-                                                                        height: AppDimensions.height10(context) *
-                                                                            1.3,
-                                                                        margin: EdgeInsets.only(
-                                                                            right:
-                                                                                AppDimensions.height10(context) * 17.5),
-                                                                        child:
-                                                                            const Divider(
-                                                                          thickness:
-                                                                              1,
-                                                                          color: Color.fromRGBO(
-                                                                              91,
-                                                                              116,
-                                                                              166,
-                                                                              1),
-                                                                        ),
-                                                                      ),
-                                                                      Container(
-                                                                        width: AppDimensions.height10(context) *
-                                                                            26.7,
-                                                                        // height: AppDimensions.height10(context) * 5.3,
-                                                                        margin: EdgeInsets.only(
-                                                                            left: AppDimensions.height10(context) *
-                                                                                3.4,
-                                                                            bottom:
-                                                                                AppDimensions.height10(context) * 1.2),
-                                                                        child:
-                                                                            Text(
-                                                                          "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
-                                                                          // textAlign: TextAlign.left,
-
-                                                                          style: TextStyle(
-                                                                              fontSize: AppDimensions.height10(context) * 1.4,
-                                                                              fontWeight: FontWeight.w400,
-                                                                              color: const Color.fromRGBO(91, 116, 166, 1)),
-                                                                        ),
-                                                                      )
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ]),
-                                                        )
-                                                      : Container()
-
-                                                  // allGoals[index]['schedule'][0]
-                                                  //             ['time2']
-                                                  //         .toString()
-                                                  //         .isNotEmpty
-                                                  //     ? Column(
-                                                  //         children: [
-                                                  //           Container(
-                                                  //             width: AppDimensions
-                                                  //                     .height10(
-                                                  //                         context) *
-                                                  //                 35.6,
-                                                  //             height: AppDimensions
-                                                  //                     .height10(
-                                                  //                         context) *
-                                                  //                 4.2,
-                                                  //             margin: EdgeInsets.only(
-                                                  //                 left: AppDimensions
-                                                  //                         .height10(
-                                                  //                             context) *
-                                                  //                     2.4,
-                                                  //                 right: AppDimensions
-                                                  //                         .height10(
-                                                  //                             context) *
-                                                  //                     3.4,
-                                                  //                 top: AppDimensions
-                                                  //                         .height10(
-                                                  //                             context) *
-                                                  //                     1.1),
-                                                  //             child: Column(
-                                                  //                 children: [
-                                                  //                   Container(
-                                                  //                     alignment:
-                                                  //                         Alignment
-                                                  //                             .centerLeft,
-                                                  //                     child: Text(
-                                                  //                       allGoals[index]['schedule'][0]
-                                                  //                               [
-                                                  //                               'time2']
-                                                  //                           .toString()
-                                                  //                           .substring(
-                                                  //                               0,
-                                                  //                               5),
-                                                  //                       style:
-                                                  //                           TextStyle(
-                                                  //                         fontSize:
-                                                  //                             AppDimensions.height10(context) *
-                                                  //                                 1.8,
-                                                  //                         fontWeight:
-                                                  //                             FontWeight.w600,
-                                                  //                         color: Colors
-                                                  //                             .white,
-                                                  //                       ),
-                                                  //                     ),
-                                                  //                   ),
-                                                  //                   Divider(
-                                                  //                     height:
-                                                  //                         AppDimensions.height10(context) *
-                                                  //                             0.2,
-                                                  //                     color: Colors
-                                                  //                         .white,
-                                                  //                   ),
-                                                  //                   Container(
-                                                  //                     alignment:
-                                                  //                         Alignment
-                                                  //                             .centerLeft,
-                                                  //                     child: Text(
-                                                  //                       allGoals[index]['schedule'][0]
-                                                  //                               [
-                                                  //                               'time2']
-                                                  //                           .toString()
-                                                  //                           .substring(
-                                                  //                               5,
-                                                  //                               7)
-                                                  //                           .toUpperCase(),
-                                                  //                       style:
-                                                  //                           TextStyle(
-                                                  //                         fontSize:
-                                                  //                             AppDimensions.height10(context) *
-                                                  //                                 1.0,
-                                                  //                         fontWeight:
-                                                  //                             FontWeight.w500,
-                                                  //                         color: Colors
-                                                  //                             .white,
-                                                  //                       ),
-                                                  //                     ),
-                                                  //                   ),
-                                                  //                 ]),
-                                                  //           ),
-                                                  //           Column(
-                                                  //             children: [
-                                                  //               Center(
-                                                  //                   child: align_circles(
-                                                  //                       onTap1: () async {
-                                                  //                         Navigator.push(
-                                                  //                             context,
-                                                  //                             FadePageRoute(
-                                                  //                                 page: (const goal_menu_inactive(
-                                                  //                               premium: true,
-                                                  //                               isActive: false,
-                                                  //                               goal_evaluation: false,
-                                                  //                             ))));
-                                                  //                         final SharedPreferences
-                                                  //                             prefs =
-                                                  //                             await _prefs;
-                                                  //                         var setId = prefs.setInt(
-                                                  //                             'goal_num',
-                                                  //                             allGoals[index]['userGoal']['id']);
-
-                                                  //                         await prefs.setString(
-                                                  //                             'goal_menu_route',
-                                                  //                             'dashboard');
-                                                  //                       },
-                                                  //                       onTap2: () async {
-                                                  //                         final SharedPreferences
-                                                  //                             prefs =
-                                                  //                             await _prefs;
-                                                  //                         var pracId = prefs.setInt(
-                                                  //                             'prac_num',
-                                                  //                             allGoals[index]['id']);
-                                                  //                         var pracName = prefs.setString(
-                                                  //                             'dash_pracName',
-                                                  //                             allGoals[index]['name']);
-                                                  //                         var goalName = prefs.setString(
-                                                  //                             'dash_goalName',
-                                                  //                             allGoals[index]['userGoal']['name']);
-                                                  //                         var date = prefs.setString(
-                                                  //                             'record_date',
-                                                  //                             RecordDate);
-                                                  //                         print(
-                                                  //                             "====================>PractiecId${allGoals[index]['id']}");
-                                                  //                         var pracColor = allGoals[index]['color'] !=
-                                                  //                                 null
-                                                  //                             ? prefs.setString('dash_pracColor',
-                                                  //                                 allGoals[index]['color'])
-                                                  //                             : prefs.setString('dash_pracColor', '0');
-                                                  //                         var time = prefs.setString(
-                                                  //                             'recording_Time1',
-                                                  //                             allGoals[index]['schedule'][0]['time2']);
-                                                  //                         var dash_boardRoute = prefs.setBool(
-                                                  //                             'behaviour_route',
-                                                  //                             true);
-                                                  //                         var goalColor = allGoals[index]['userGoal']['color'] !=
-                                                  //                                 null
-                                                  //                             ? prefs.setString('dash_goalColor',
-                                                  //                                 allGoals[index]['userGoal']['color'])
-                                                  //                             : '0';
-                                                  //                         if (allGoals[index]['recordingStatusTime2'] ==
-                                                  //                             "Not Started") {
-                                                  //                           print(
-                                                  //                               "CON 2");
-                                                  //                           Navigator.push(
-                                                  //                               context,
-                                                  //                               FadePageRoute(page: practiceMenu(goal_eval: false, goalName: allGoals[index]['userGoal']['name'], pracName: allGoals[index]['name'], pracColor: allGoals[index]['color'] == null ? "0" : allGoals[index]['color'].toString(), color: allGoals[index]['userGoal']['color'] != null ? allGoals[index]['userGoal']['color'].toString() : "0")));
-                                                  //                         } else if (allGoals[index]['recordingStatusTime2'] ==
-                                                  //                             "missed") {
-                                                  //                           print(
-                                                  //                               "CON 3");
-                                                  //                           Navigator.push(
-                                                  //                               context,
-                                                  //                               FadePageRoute(
-                                                  //                                   page: missed_Menu(
-                                                  //                                 pracName: allGoals[index]['name'],
-                                                  //                               )));
-                                                  //                         } else {
-                                                  //                           print(
-                                                  //                               "CON 1");
-                                                  //                           print(
-                                                  //                               "${allGoals[index]['color']}");
-                                                  //                           // ignore: use_build_context_synchronously
-                                                  //                           Navigator.push(
-                                                  //                               context,
-                                                  //                               FadePageRoute(page: const menu_behaviour()));
-                                                  //                         }
-                                                  //                       },
-                                                  //                       asset_1: allGoals[index]['userGoal']['color'] == "1"
-                                                  //                           ? "assets/images/red_gradient.webp"
-                                                  //                           : allGoals[index]['userGoal']['color'] == "2"
-                                                  //                               ? 'assets/images/orange_moon.webp'
-                                                  //                               : allGoals[index]['userGoal']['color'] == "3"
-                                                  //                                   ? "assets/images/lightGrey_gradient.webp"
-                                                  //                                   : allGoals[index]['userGoal']['color'] == "4"
-                                                  //                                       ? "assets/images/lightBlue_gradient.webp"
-                                                  //                                       : allGoals[index]['userGoal']['color'] == "5"
-                                                  //                                           ? "assets/images/medBlue_gradient.webp"
-                                                  //                                           : allGoals[index]['userGoal']['color'] == "6"
-                                                  //                                               ? "assets/images/Blue_gradient.webp"
-                                                  //                                               : 'assets/images/orange_moon.webp',
-                                                  //                       s_circle_text: allGoals[index]['name'],
-                                                  //                       asset_2: allGoals[index]['recordingStatusTime2'] == "missed"
-                                                  //                           ? allGoals[index]['color'] == "1"
-                                                  //                               ? 'assets/images/Missed_3.webp'
-                                                  //                               : allGoals[index]['color'] == "2"
-                                                  //                                   ? 'assets/images/Missed_1.webp'
-                                                  //                                   : allGoals[index]['color'] == "3"
-                                                  //                                       ? "assets/images/Missed_2.webp"
-                                                  //                                       : allGoals[index]['color'] == "4"
-                                                  //                                           ? "assets/images/Missed_4.webp"
-                                                  //                                           : allGoals[index]['color'] == "5"
-                                                  //                                               ? "assets/images/Missed_4.webp"
-                                                  //                                               : 'assets/images/Missed_1.webp'
-                                                  //                           : allGoals[index]['recordingStatusTime2'] == "completed"
-                                                  //                               ? allGoals[index]['color'] == "1"
-                                                  //                                   ? "assets/images/Practice_Completed_1.webp"
-                                                  //                                   : allGoals[index]['color'] == "2"
-                                                  //                                       ? 'assets/images/Practice_Completed_2.webp'
-                                                  //                                       : allGoals[index]['color'] == "3"
-                                                  //                                           ? "assets/images/Practice_Completed_3.webp"
-                                                  //                                           : allGoals[index]['color'] == "4"
-                                                  //                                               ? "assets/images/Practice_Completed_4.webp"
-                                                  //                                               : allGoals[index]['color'] == "5"
-                                                  //                                                   ? "assets/images/Practice_Completed_4.webp"
-                                                  //                                                   : 'assets/images/Practice_Completed_2.webp'
-                                                  //                               : allGoals[index]['color'] == "1"
-                                                  //                                   ? "assets/images/Ellipse orange_wb.webp"
-                                                  //                                   : allGoals[index]['color'] == '2'
-                                                  //                                       ? 'assets/images/Ellipse 158_wb.webp'
-                                                  //                                       : allGoals[index]['color'] == "3"
-                                                  //                                           ? "assets/images/Ellipse 157_wb.webp"
-                                                  //                                           : allGoals[index]['color'] == "4"
-                                                  //                                               ? "assets/images/Ellipse light-blue_wb.webp"
-                                                  //                                               : allGoals[index]['color'] == "5"
-                                                  //                                                   ? "assets/images/Ellipse blue_wb.webp"
-                                                  //                                                   : 'assets/images/Ellipse 158_wb.webp',
-                                                  //                       head_text: allGoals[index]['userGoal']['name'],
-                                                  //                       body_text: allGoals[index]['userGoal']['identityStatement'][0]['text'],
-                                                  //                       body_text_color: 0xff5B74A6,
-                                                  //                       head_text_color: 0xff5B74A6,
-                                                  //                       body_text_size: AppDimensions.height10(context) * 1.6,
-                                                  //                       head_text_size: AppDimensions.height10(context) * 2.0,
-                                                  //                       enable_icon: widget.missed ? false : true,
-                                                  //                       is_right: false,
-                                                  //                       s_circle_text_col: allGoals[index]['recordingStatusTime2'] == "Not Started"
-                                                  //                           ? 0xFFFBFBFB
-                                                  //                           : (allGoals[index]['color'] == "1"
-                                                  //                               ? 0XFFFC7133
-                                                  //                               : allGoals[index]['color'] == "2"
-                                                  //                                   ? 0xFF1A481C
-                                                  //                                   : allGoals[index]['color'] == "3"
-                                                  //                                       ? 0xFF6D4B77
-                                                  //                                       : allGoals[index]['color'] == "4"
-                                                  //                                           ? 0xFF5C75A6
-                                                  //                                           : allGoals[index]['color'] == "5"
-                                                  //                                               ? 0xFF315291
-                                                  //                                               : 0xFF1A481C))),
-                                                  //               SizedBox(
-                                                  //                 height: AppDimensions
-                                                  //                         .height10(
-                                                  //                             context) *
-                                                  //                     3.0,
-                                                  //               )
-                                                  //             ],
-                                                  //           )
-                                                  //         ],
-                                                  //       )
-                                                  //     : Container()
-                                                ],
-                                              );
-                                            })),
+                                                        ))),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
                                         Container(
                                           height:
                                               AppDimensions.height10(context) *
-                                                  13,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                single == true
-                                    ? Container()
-                                    : Positioned(
-                                        top: AppDimensions.height10(context) *
-                                            68.0,
-                                        left: AppDimensions.height10(context) *
-                                            1.3,
-                                        child: Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  4.5,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  4.5,
-                                          padding: EdgeInsets.all(
-                                              AppDimensions.height10(context) *
-                                                  0.4),
-                                          decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Colors.white),
-                                          child: Container(
-                                            width: AppDimensions.height10(
+                                                  66.2,
+                                          margin: EdgeInsets.only(
+                                            top: AppDimensions.height10(
                                                     context) *
-                                                4.16,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                4.16,
-                                            decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Colors.white,
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/Smart Object_1.webp'))),
-                                            child: Align(
-                                              alignment:
-                                                  const Alignment(0, 2.8),
-                                              child: Container(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    2.1,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    2.1,
-                                                decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.white,
-                                                ),
-                                                child: Center(
-                                                  child: Text(
-                                                    allGoals.length.toString(),
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.2,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: const Color(
-                                                            0xFFFA9934)),
-                                                  ),
-                                                ),
-                                              ),
+                                                23.0,
+                                          ),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.vertical,
+                                            child: Column(
+                                              children: [
+                                                ListView.builder(
+                                                    physics:
+                                                        const NeverScrollableScrollPhysics(),
+                                                    itemCount: allGoals.length,
+                                                    shrinkWrap: true,
+                                                    padding: EdgeInsets.zero,
+                                                    itemBuilder:
+                                                        ((context, index) {
+                                                      // setState(() {
+                                                      //   allPractice =
+                                                      //       allGoals[index]['userPractices'];
+                                                      // });
+                                                      // print('---------------------------');
+                                                      // print(allPractice);
+                                                      return Column(
+                                                        children: [
+                                                          for (int i = 0;
+                                                              i <
+                                                                  allGoals[index]
+                                                                              [
+                                                                              'schedule']
+                                                                          .length -
+                                                                      1;
+                                                              i++) ...[
+                                                            Column(
+                                                              children: [
+                                                                Container(
+                                                                  width: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      35.6,
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      4.2,
+                                                                  margin: EdgeInsets.only(
+                                                                      left: AppDimensions.height10(
+                                                                              context) *
+                                                                          2.4,
+                                                                      right: AppDimensions.height10(
+                                                                              context) *
+                                                                          3.4,
+                                                                      top: AppDimensions.height10(
+                                                                              context) *
+                                                                          1.1),
+                                                                  child: Column(
+                                                                      children: [
+                                                                        Container(
+                                                                          alignment:
+                                                                              Alignment.centerLeft,
+                                                                          child:
+                                                                              Text(
+                                                                            allGoals[index]['schedule']['time${i + 1}'].toString().substring(0,
+                                                                                5),
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontSize: AppDimensions.height10(context) * 1.8,
+                                                                              fontWeight: FontWeight.w600,
+                                                                              color: Colors.white,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Divider(
+                                                                          height:
+                                                                              AppDimensions.height10(context) * 0.2,
+                                                                          color:
+                                                                              Colors.white,
+                                                                        ),
+                                                                        Container(
+                                                                          alignment:
+                                                                              Alignment.centerLeft,
+                                                                          child:
+                                                                              Text(
+                                                                            allGoals[index]['schedule']['time${i + 1}'].toString().substring(5, 7).toUpperCase(),
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontSize: AppDimensions.height10(context) * 1.0,
+                                                                              fontWeight: FontWeight.w500,
+                                                                              color: Colors.white,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ]),
+                                                                ),
+                                                                Column(
+                                                                  children: [
+                                                                    Center(
+                                                                        child:
+                                                                            align_circles(
+                                                                      onTap1:
+                                                                          () async {
+                                                                        if (_showOverlay ==
+                                                                            false) {
+                                                                          Navigator.push(
+                                                                              context,
+                                                                              FadePageRoute(
+                                                                                  page: (const goal_menu_inactive(
+                                                                                premium: true,
+                                                                                isActive: false,
+                                                                                goal_evaluation: false,
+                                                                              ))));
+                                                                          final SharedPreferences
+                                                                              prefs =
+                                                                              await _prefs;
+                                                                          var setId = prefs.setInt(
+                                                                              'goal_num',
+                                                                              allGoals[index]['userGoal']['id']);
+
+                                                                          await prefs.setString(
+                                                                              'goal_menu_route',
+                                                                              'dashboard');
+                                                                        } else {
+                                                                          if (goal_level ==
+                                                                              0) {
+                                                                            _incrementValue();
+                                                                          }
+                                                                        }
+                                                                      },
+                                                                      onTap2:
+                                                                          () async {
+                                                                        if (_showOverlay ==
+                                                                            false) {
+                                                                          final SharedPreferences
+                                                                              prefs =
+                                                                              await _prefs;
+                                                                          var pracId = prefs.setInt(
+                                                                              'prac_num',
+                                                                              allGoals[index]['id']);
+                                                                          var setId = prefs.setInt(
+                                                                              'goal_num',
+                                                                              allGoals[index]['userGoal']['id']);
+
+                                                                          var pracName = prefs.setString(
+                                                                              'dash_pracName',
+                                                                              allGoals[index]['name']);
+                                                                          var goalName = prefs.setString(
+                                                                              'dash_goalName',
+                                                                              allGoals[index]['userGoal']['name']);
+                                                                          prefs.setString(
+                                                                              'record_date',
+                                                                              getFormattedDate(current).toString());
+                                                                          print(
+                                                                              "====================>PractiecId${allGoals[index]['id']}");
+                                                                          var pracColor = allGoals[index]['color'] != null
+                                                                              ? prefs.setString('dash_pracColor', allGoals[index]['color'])
+                                                                              : prefs.setString('dash_pracColor', '0');
+                                                                          var time = prefs.setString(
+                                                                              'recording_Time1',
+                                                                              allGoals[index]['schedule']['time${i + 1}']);
+                                                                          var dash_boardRoute = prefs.setBool(
+                                                                              'behaviour_route',
+                                                                              true);
+                                                                          var goalColor = allGoals[index]['userGoal']['color'] != null
+                                                                              ? prefs.setString('dash_goalColor', allGoals[index]['userGoal']['color'])
+                                                                              : '0';
+                                                                          if (allGoals[index]['recordingStatusTime${i + 1}'] ==
+                                                                              "Not Started") {
+                                                                            print("CON 2");
+                                                                            Navigator.push(context,
+                                                                                FadePageRoute(page: practiceMenu(goal_eval: false, goalName: allGoals[index]['userGoal']['name'], pracName: allGoals[index]['name'], pracColor: allGoals[index]['color'] == null ? "0" : allGoals[index]['color'].toString(), color: allGoals[index]['userGoal']['color'] != null ? allGoals[index]['userGoal']['color'].toString() : "0")));
+                                                                          } else if (allGoals[index]['recordingStatusTime${i + 1}'] ==
+                                                                              "missed") {
+                                                                            print("CON 3");
+                                                                            Navigator.push(
+                                                                                context,
+                                                                                FadePageRoute(
+                                                                                    page: missed_Menu(
+                                                                                  pracName: allGoals[index]['name'],
+                                                                                )));
+                                                                          } else {
+                                                                            print("CON 1");
+                                                                            print("${allGoals[index]['color']}");
+                                                                            Navigator.push(context,
+                                                                                FadePageRoute(page: const menu_behaviour()));
+                                                                          }
+                                                                        } else {
+                                                                          if (goal_level ==
+                                                                              0) {
+                                                                            _incrementValue();
+                                                                          }
+                                                                        }
+                                                                      },
+                                                                      asset_1: allGoals[index]['userGoal']['color'] ==
+                                                                              "1"
+                                                                          ? "assets/images/red_gradient.webp"
+                                                                          : allGoals[index]['userGoal']['color'] == "2"
+                                                                              ? 'assets/images/orange_moon.webp'
+                                                                              : allGoals[index]['userGoal']['color'] == "3"
+                                                                                  ? "assets/images/lightGrey_gradient.webp"
+                                                                                  : allGoals[index]['userGoal']['color'] == "4"
+                                                                                      ? "assets/images/lightBlue_gradient.webp"
+                                                                                      : allGoals[index]['userGoal']['color'] == "5"
+                                                                                          ? "assets/images/medBlue_gradient.webp"
+                                                                                          : allGoals[index]['userGoal']['color'] == 6
+                                                                                              ? "assets/images/Blue_gradient.webp"
+                                                                                              : 'assets/images/orange_moon.webp',
+                                                                      s_circle_text:
+                                                                          allGoals[index]
+                                                                              [
+                                                                              'name'],
+                                                                      asset_2: allGoals[index]['recordingStatusTime${i + 1}'] ==
+                                                                              "missed"
+                                                                          ? allGoals[index]['color'] == "1"
+                                                                              ? 'assets/images/Missed_3.webp'
+                                                                              : allGoals[index]['color'] == "2"
+                                                                                  ? 'assets/images/Missed_1.webp'
+                                                                                  : allGoals[index]['color'] == "3"
+                                                                                      ? "assets/images/Missed_2.webp"
+                                                                                      : allGoals[index]['color'] == "4"
+                                                                                          ? "assets/images/Missed_4.webp"
+                                                                                          : allGoals[index]['color'] == "5"
+                                                                                              ? "assets/images/Missed_4.webp"
+                                                                                              : 'assets/images/Missed_1.webp'
+                                                                          : allGoals[index]['recordingStatusTime${i + 1}'] == "completed"
+                                                                              ? allGoals[index]['color'] == "1"
+                                                                                  ? "assets/images/Practice_Completed_1.webp"
+                                                                                  : allGoals[index]['color'] == "2"
+                                                                                      ? 'assets/images/Practice_Completed_2.webp'
+                                                                                      : allGoals[index]['color'] == "3"
+                                                                                          ? "assets/images/Practice_Completed_3.webp"
+                                                                                          : allGoals[index]['color'] == "4"
+                                                                                              ? "assets/images/Practice_Completed_4.webp"
+                                                                                              : allGoals[index]['color'] == "5"
+                                                                                                  ? "assets/images/Practice_Completed_4.webp"
+                                                                                                  : 'assets/images/Practice_Completed_2.webp'
+                                                                              : allGoals[index]['color'] == "1"
+                                                                                  ? "assets/images/Ellipse orange_wb.webp"
+                                                                                  : allGoals[index]['color'] == "2"
+                                                                                      ? 'assets/images/Ellipse 158_wb.webp'
+                                                                                      : allGoals[index]['color'] == "3"
+                                                                                          ? "assets/images/Ellipse 157_wb.webp"
+                                                                                          : allGoals[index]['color'] == "4"
+                                                                                              ? "assets/images/Ellipse light-blue_wb.webp"
+                                                                                              : allGoals[index]['color'] == "5"
+                                                                                                  ? "assets/images/Ellipse blue_wb.webp"
+                                                                                                  : 'assets/images/Ellipse 158_wb.webp',
+                                                                      head_text:
+                                                                          allGoals[index]['userGoal']
+                                                                              [
+                                                                              'name'],
+                                                                      body_text:
+                                                                          allGoals[index]['userGoal']['identityStatement'][0]
+                                                                              [
+                                                                              'text'],
+                                                                      body_text_color:
+                                                                          0xff5B74A6,
+                                                                      head_text_color:
+                                                                          0xff5B74A6,
+                                                                      body_text_size:
+                                                                          AppDimensions.height10(context) *
+                                                                              1.6,
+                                                                      head_text_size:
+                                                                          AppDimensions.height10(context) *
+                                                                              2.0,
+                                                                      enable_icon: widget
+                                                                              .missed
+                                                                          ? false
+                                                                          : true,
+                                                                      is_right:
+                                                                          true,
+                                                                      s_circle_text_col: allGoals[index]['recordingStatusTime${i + 1}'] ==
+                                                                              "Not Started"
+                                                                          ? 0xFFFBFBFB
+                                                                          : allGoals[index]['color'] == "1"
+                                                                              ? 0XFFFC7133
+                                                                              : allGoals[index]['color'] == "2"
+                                                                                  ? 0xFF1A481C
+                                                                                  : allGoals[index]['color'] == "3"
+                                                                                      ? 0xFF6D4B77
+                                                                                      : allGoals[index]['color'] == "4"
+                                                                                          ? 0xFF5C75A6
+                                                                                          : allGoals[index]['color'] == "5"
+                                                                                              ? 0xFF315291
+                                                                                              : 0xFF1A481C,
+                                                                    )),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          AppDimensions.height10(context) *
+                                                                              3.0,
+                                                                    )
+                                                                  ],
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ],
+                                                          single == true
+                                                              ? Container(
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      14.432,
+                                                                  width: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      35.335,
+                                                                  decoration:
+                                                                      const BoxDecoration(
+                                                                          image:
+                                                                              DecorationImage(
+                                                                    image:
+                                                                        AssetImage(
+                                                                      'assets/images/Component 1.webp',
+                                                                    ),
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  )),
+
+                                                                  //color: Colors.blue,
+                                                                  child: Stack(
+                                                                      children: [
+                                                                        Align(
+                                                                          alignment: const Alignment(
+                                                                              -0.930,
+                                                                              -1.42),
+                                                                          child:
+                                                                              AnimatedScaleButton(
+                                                                            onTap:
+                                                                                () {
+                                                                              // Navigator.push(
+                                                                              //     context,
+                                                                              //     FadePageRoute(
+                                                                              //         page: const message_center()));
+                                                                            },
+                                                                            child:
+                                                                                Image.asset(
+                                                                              "assets/images/Group.webp",
+                                                                              height: AppDimensions.height10(context) * 5.0,
+                                                                              width: AppDimensions.height10(context) * 5.0,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Align(
+                                                                          alignment: const Alignment(
+                                                                              0.93,
+                                                                              0),
+                                                                          child:
+                                                                              Image.asset(
+                                                                            "assets/images/Vector Smart Object.webp",
+                                                                            height:
+                                                                                AppDimensions.height10(context) * 9.296,
+                                                                            width:
+                                                                                AppDimensions.height10(context) * 4.16,
+                                                                          ),
+                                                                        ),
+                                                                        Container(
+                                                                          margin:
+                                                                              EdgeInsets.only(
+                                                                            top:
+                                                                                AppDimensions.height10(context) * 2.1,
+                                                                          ),
+                                                                          child:
+                                                                              Column(
+                                                                            children: [
+                                                                              Container(
+                                                                                width: AppDimensions.height10(context) * 28.0,
+                                                                                height: AppDimensions.height10(context) * 2.3,
+                                                                                alignment: const Alignment(-0.65, 0),
+                                                                                child: Text(
+                                                                                  "Hi, it's Reda here",
+                                                                                  style: TextStyle(
+                                                                                    fontSize: AppDimensions.height10(context) * 1.6,
+                                                                                    fontWeight: FontWeight.w700,
+                                                                                    color: const Color.fromRGBO(91, 116, 166, 1),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              Container(
+                                                                                width: AppDimensions.height10(context) * 5.245,
+                                                                                height: AppDimensions.height10(context) * 1.3,
+                                                                                margin: EdgeInsets.only(right: AppDimensions.height10(context) * 17.5),
+                                                                                child: const Divider(
+                                                                                  thickness: 1,
+                                                                                  color: Color.fromRGBO(91, 116, 166, 1),
+                                                                                ),
+                                                                              ),
+                                                                              Container(
+                                                                                width: AppDimensions.height10(context) * 26.7,
+                                                                                // height: AppDimensions.height10(context) * 5.3,
+                                                                                margin: EdgeInsets.only(left: AppDimensions.height10(context) * 3.4, bottom: AppDimensions.height10(context) * 1.2),
+                                                                                child: Text(
+                                                                                  "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
+                                                                                  // textAlign: TextAlign.left,
+
+                                                                                  style: TextStyle(fontSize: AppDimensions.height10(context) * 1.4, fontWeight: FontWeight.w400, color: const Color.fromRGBO(91, 116, 166, 1)),
+                                                                                ),
+                                                                              )
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      ]),
+                                                                )
+                                                              : Container()
+                                                        ],
+                                                      );
+                                                    })),
+                                                Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          13,
+                                                )
+                                              ],
                                             ),
                                           ),
-                                        )),
-                                // widget.missed
-                                //     ? Positioned(
-                                //         top: AppDimensions.height10(context) *
-                                //             56.8,
-                                //         left: AppDimensions.height10(context) *
-                                //             2.5,
-                                //         child: Container(
-                                //           width:
-                                //               AppDimensions.height10(context) *
-                                //                   38.259,
-                                //           height:
-                                //               AppDimensions.height10(context) *
-                                //                   9.707,
-                                //           margin: EdgeInsets.only(
-                                //               top: AppDimensions.height10(
-                                //                       context) *
-                                //                   12.0),
-                                //           decoration: BoxDecoration(
-                                //               borderRadius:
-                                //                   BorderRadius.circular(
-                                //                       AppDimensions.height10(
-                                //                               context) *
-                                //                           2.0),
-                                //               gradient: const LinearGradient(
-                                //                   begin: Alignment.topCenter,
-                                //                   end: Alignment.bottomCenter,
-                                //                   colors: [
-                                //                     Color(0xFFD4B7B9),
-                                //                     Color(0xFF91698C)
-                                //                   ])),
-                                //           child: Row(
-                                //             crossAxisAlignment:
-                                //                 CrossAxisAlignment.center,
-                                //             children: [
-                                //               Container(
-                                //                 margin: EdgeInsets.only(
-                                //                     left:
-                                //                         AppDimensions.height10(
-                                //                                 context) *
-                                //                             1.261),
-                                //                 width: AppDimensions.height10(
-                                //                         context) *
-                                //                     4.437,
-                                //                 height: AppDimensions.height10(
-                                //                         context) *
-                                //                     4.437,
-                                //                 decoration: const BoxDecoration(
-                                //                     image: DecorationImage(
-                                //                         image: AssetImage(
-                                //                             'assets/images/circle_tick.webp'))),
-                                //               ),
-                                //               Container(
-                                //                 width: AppDimensions.height10(
-                                //                         context) *
-                                //                     16.3,
-                                //                 height: AppDimensions.height10(
-                                //                         context) *
-                                //                     3.6,
-                                //                 margin: EdgeInsets.only(
-                                //                     left:
-                                //                         AppDimensions.height10(
-                                //                                 context) *
-                                //                             1.232),
-                                //                 child: Column(
-                                //                   crossAxisAlignment:
-                                //                       CrossAxisAlignment.start,
-                                //                   children: [
-                                //                     SizedBox(
-                                //                       //  / width: AppDimensions.height10(context) * 4.6,
-                                //                       height: AppDimensions
-                                //                               .height10(
-                                //                                   context) *
-                                //                           1.4,
-                                //                       //   color: Colors.amber,
-                                //                       child: Text(
-                                //                         'Session missed',
-                                //                         style: TextStyle(
-                                //                             fontSize: AppDimensions
-                                //                                     .height10(
-                                //                                         context) *
-                                //                                 1.3,
-                                //                             fontWeight:
-                                //                                 FontWeight.w500,
-                                //                             color: const Color(
-                                //                                 0xFFFFFFFF)),
-                                //                       ),
-                                //                     ),
-                                //                     SizedBox(
-                                //                       //width: AppDimensions.height10(context) * 6.9,
-                                //                       height: AppDimensions
-                                //                               .height10(
-                                //                                   context) *
-                                //                           2.2,
-                                //                       child: Text(
-                                //                         'Count temper ep...',
-                                //                         style: TextStyle(
-                                //                             fontSize: AppDimensions
-                                //                                     .height10(
-                                //                                         context) *
-                                //                                 1.8,
-                                //                             fontWeight:
-                                //                                 FontWeight.w500,
-                                //                             color: const Color(
-                                //                                 0xFFFFFFFF)),
-                                //                       ),
-                                //                     ),
-                                //                   ],
-                                //                 ),
-                                //               ),
-                                //               Container(
-                                //                 width: AppDimensions.height10(
-                                //                         context) *
-                                //                     8.1,
-                                //                 height: AppDimensions.height10(
-                                //                         context) *
-                                //                     6.0,
-                                //                 margin: EdgeInsets.only(
-                                //                     left:
-                                //                         AppDimensions.height10(
-                                //                                 context) *
-                                //                             5.1),
-                                //                 decoration: BoxDecoration(
-                                //                   border: Border.all(
-                                //                       color: const Color(
-                                //                           0xFFFFFFFF),
-                                //                       width: 1),
-                                //                   borderRadius:
-                                //                       BorderRadius.circular(
-                                //                           AppDimensions
-                                //                                   .height10(
-                                //                                       context) *
-                                //                               2.0),
-                                //                 ),
-                                //                 child: Center(
-                                //                   child: Text(
-                                //                     'Veiw',
-                                //                     style: TextStyle(
-                                //                         fontSize: AppDimensions
-                                //                                 .height10(
-                                //                                     context) *
-                                //                             1.8,
-                                //                         fontWeight:
-                                //                             FontWeight.w500,
-                                //                         color: const Color(
-                                //                             0xFFFFFFFF)),
-                                //                   ),
-                                //                 ),
-                                //               )
-                                //             ],
-                                //           ),
-                                //         ),
-                                //       )
-                                //     : Container(),
-                              ]))
+                                        ),
+                                        single == true
+                                            ? Container()
+                                            : Positioned(
+                                                top: AppDimensions.height10(
+                                                        context) *
+                                                    68.0,
+                                                left: AppDimensions.height10(
+                                                        context) *
+                                                    1.3,
+                                                child: Container(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      4.5,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.5,
+                                                  padding: EdgeInsets.all(
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.4),
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: Colors.white),
+                                                  child: Container(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.16,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.16,
+                                                    decoration: const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.white,
+                                                        image: DecorationImage(
+                                                            image: AssetImage(
+                                                                'assets/images/Smart Object_1.webp'))),
+                                                    child: Align(
+                                                      alignment:
+                                                          const Alignment(
+                                                              0, 2.8),
+                                                      child: Container(
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            2.1,
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            2.1,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            allGoals.length
+                                                                .toString(),
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.2,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                color: const Color(
+                                                                    0xFFFA9934)),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                )),
+                                      ],
+                                    ),
+
+                                    if (_showOverlay)
+                                      FutureBuilder(
+                                          future: Future.delayed(const Duration(
+                                              milliseconds: 200)),
+                                          builder:
+                                              (c, s) =>
+                                                  s.connectionState ==
+                                                          ConnectionState.done
+                                                      ? Align(
+                                                          alignment: goal_level ==
+                                                                  2
+                                                              ? const Alignment(
+                                                                  -0.9, -0.08)
+                                                              : goal_level == 3
+                                                                  ? const Alignment(
+                                                                      -0.67,
+                                                                      -0.07)
+                                                                  : goal_level ==
+                                                                          4
+                                                                      ? const Alignment(
+                                                                          0.25,
+                                                                          -0.45)
+                                                                      : goal_level ==
+                                                                              5
+                                                                          ? const Alignment(
+                                                                              0.36,
+                                                                              -0.67)
+                                                                          : goal_level == 6
+                                                                              ? const Alignment(0.99, -0.67)
+                                                                              : goal_level == 1
+                                                                                  ? const Alignment(0.3, -0.69)
+                                                                                  : goal_level == 7 && single
+                                                                                      ? const Alignment(0.4, 0.345)
+                                                                                      : goal_level == 7 && single == false
+                                                                                          ? const Alignment(-0.87, 0.55)
+                                                                                          : const Alignment(0, 0),
+                                                          child: SizedBox(
+                                                            width: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                30.6,
+                                                            height: goal_level ==
+                                                                    1
+                                                                ? AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    22.3
+                                                                : goal_level ==
+                                                                        2
+                                                                    ? AppDimensions.height10(
+                                                                            context) *
+                                                                        22.1
+                                                                    : goal_level ==
+                                                                            3
+                                                                        ? AppDimensions.height10(context) *
+                                                                            18.3
+                                                                        : goal_level ==
+                                                                                4
+                                                                            ? AppDimensions.height10(context) *
+                                                                                20.6
+                                                                            : goal_level == 5
+                                                                                ? AppDimensions.height10(context) * 22.6
+                                                                                : goal_level == 6
+                                                                                    ? AppDimensions.height10(context) * 18.4
+                                                                                    : AppDimensions.height10(context) * 20.6,
+                                                            child: Stack(
+                                                              children: [
+                                                                goal_level == 0
+                                                                    ? Container()
+                                                                    : Align(
+                                                                        alignment: goal_level ==
+                                                                                2
+                                                                            ? const Alignment(0.87,
+                                                                                1.1)
+                                                                            : goal_level == 3
+                                                                                ? const Alignment(-0.9, -1.1)
+                                                                                : goal_level == 4
+                                                                                    ? const Alignment(0, -1.1)
+                                                                                    : goal_level == 5
+                                                                                        ? const Alignment(0.9, -1.1)
+                                                                                        : goal_level == 6
+                                                                                            ? const Alignment(0.9, -1.1)
+                                                                                            : goal_level == 1
+                                                                                                ? const Alignment(0, 1.1)
+                                                                                                : goal_level == 7 && single
+                                                                                                    ? const Alignment(0, 1.1)
+                                                                                                    : goal_level == 7 && single == false
+                                                                                                        ? const Alignment(-0.88, 1.1)
+                                                                                                        : const Alignment(0, 1.1),
+                                                                        child:
+                                                                            Container(
+                                                                          child:
+                                                                              Image.asset(
+                                                                            (goal_level == 3 || goal_level == 4 || goal_level == 5 || goal_level == 6)
+                                                                                ? 'assets/images/arrow-192-up.webp'
+                                                                                : 'assets/images/arrow-192.webp',
+                                                                            height:
+                                                                                AppDimensions.height10(context) * 2.0,
+                                                                            width:
+                                                                                AppDimensions.height10(context) * 2.0,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                goal_level == 0
+                                                                    ? Container()
+                                                                    : Container(
+                                                                        width: AppDimensions.height10(context) *
+                                                                            30.6,
+                                                                        height: goal_level ==
+                                                                                1
+                                                                            ? AppDimensions.height10(context) *
+                                                                                22.3
+                                                                            : goal_level == 2
+                                                                                ? AppDimensions.height10(context) * 22.1
+                                                                                : goal_level == 3
+                                                                                    ? AppDimensions.height10(context) * 18.3
+                                                                                    : goal_level == 4
+                                                                                        ? AppDimensions.height10(context) * 20.6
+                                                                                        : goal_level == 5
+                                                                                            ? AppDimensions.height10(context) * 22.6
+                                                                                            : goal_level == 6
+                                                                                                ? AppDimensions.height10(context) * 18.4
+                                                                                                : AppDimensions.height10(context) * 20.6,
+                                                                        decoration: BoxDecoration(
+                                                                            color:
+                                                                                Colors.white,
+                                                                            borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 1.0)),
+                                                                        child:
+                                                                            Column(
+                                                                          children: [
+                                                                            Container(
+                                                                              width: AppDimensions.height10(context) * 21.6,
+                                                                              //height: AppDimensions.height10(context) * 2.2,
+                                                                              margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.7, left: AppDimensions.height10(context) * 1.6, right: AppDimensions.height10(context) * 7.4),
+                                                                              child: Text(
+                                                                                goal_level == 2
+                                                                                    ? 'Your Practice'
+                                                                                    : goal_level == 3
+                                                                                        ? 'Time'
+                                                                                        : goal_level == 4
+                                                                                            ? 'Your Schedule'
+                                                                                            : goal_level == 5
+                                                                                                ? 'Record Practice'
+                                                                                                : goal_level == 6
+                                                                                                    ? 'Your Calendar'
+                                                                                                    : goal_level == 1
+                                                                                                        ? 'Your Goal'
+                                                                                                        : 'Reda',
+                                                                                style: TextStyle(
+                                                                                  decoration: TextDecoration.none,
+                                                                                  fontFamily: 'Laila',
+                                                                                  color: const Color(0xFF000000),
+                                                                                  fontSize: AppDimensions.height10(context) * 1.6,
+                                                                                  fontWeight: FontWeight.w700,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Container(
+                                                                              width: AppDimensions.height10(context) * 27.4,
+                                                                              height: goal_level == 1
+                                                                                  ? AppDimensions.height10(context) * 11.8
+                                                                                  : goal_level == 2
+                                                                                      ? AppDimensions.height10(context) * 11.6
+                                                                                      : goal_level == 3
+                                                                                          ? AppDimensions.height10(context) * 7.8
+                                                                                          : goal_level == 4
+                                                                                              ? AppDimensions.height10(context) * 10.1
+                                                                                              : goal_level == 5
+                                                                                                  ? AppDimensions.height10(context) * 12.1
+                                                                                                  : goal_level == 6
+                                                                                                      ? AppDimensions.height10(context) * 7.9
+                                                                                                      : AppDimensions.height10(context) * 10.1,
+                                                                              margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.3),
+                                                                              child: RichText(
+                                                                                  text: TextSpan(style: TextStyle(fontWeight: FontWeight.w400, color: const Color(0xFF464646), decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: AppDimensions.height10(context) * 1.4, height: AppDimensions.height10(context) * 0.15), children: [
+                                                                                TextSpan(
+                                                                                  text: goal_level == 1
+                                                                                      ? 'This is your own star that you’ve created.\nRemember, '
+                                                                                      : goal_level == 2
+                                                                                          ? 'Smaller circles that spin around your\nstars are the planets. The '
+                                                                                          : goal_level == 3
+                                                                                              ? 'This shows the '
+                                                                                              : goal_level == 4 || goal_level == 6
+                                                                                                  ? 'This is your '
+                                                                                                  : goal_level == 5
+                                                                                                      ? 'If you want to '
+                                                                                                      : 'This is your friend who sends out',
+                                                                                ),
+                                                                                TextSpan(
+                                                                                    text: goal_level == 1
+                                                                                        ? '‘stars’ '
+                                                                                        : goal_level == 2
+                                                                                            ? '‘planets’ '
+                                                                                            : goal_level == 3
+                                                                                                ? 'actual time '
+                                                                                                : goal_level == 4
+                                                                                                    ? 'daily view '
+                                                                                                    : goal_level == 5
+                                                                                                        ? 'record a practice session\n'
+                                                                                                        : goal_level == 6
+                                                                                                            ? 'calender '
+                                                                                                            : ' helpful\nreminders ',
+                                                                                    style: const TextStyle(fontWeight: FontWeight.w700)),
+                                                                                TextSpan(
+                                                                                    text: goal_level == 1
+                                                                                        ? 'are your '
+                                                                                        : goal_level == 2
+                                                                                            ? 'are\nyour own '
+                                                                                            : goal_level == 3
+                                                                                                ? 'the practice\nis '
+                                                                                                : goal_level == 4
+                                                                                                    ? 'schedule.\nNavigate here if you want quick access to\nsee all your '
+                                                                                                    : goal_level == 5
+                                                                                                        ? 'that it’s not currently scheduled, navigate\nhere. You will see all your '
+                                                                                                        : goal_level == 6
+                                                                                                            ? 'It’s very similar to your schedule. Navigate here if you want to see your '
+                                                                                                            : 'and '),
+                                                                                TextSpan(
+                                                                                    text: goal_level == 1
+                                                                                        ? 'personal\ngrowth goals. '
+                                                                                        : goal_level == 2
+                                                                                            ? 'practices '
+                                                                                            : goal_level == 3
+                                                                                                ? 'scheduled '
+                                                                                                : goal_level == 4
+                                                                                                    ? 'scheduled practices '
+                                                                                                    : goal_level == 5
+                                                                                                        ? 'active goals '
+                                                                                                        : goal_level == 6
+                                                                                                            ? 'past '
+                                                                                                            : 'messages. ',
+                                                                                    style: const TextStyle(fontWeight: FontWeight.w700)),
+                                                                                TextSpan(
+                                                                                    text: goal_level == 1
+                                                                                        ? 'They wil always look bigger and will have '
+                                                                                        : goal_level == 2
+                                                                                            ? 'that you’ve created to help you progress with your goal. The\n'
+                                                                                            : goal_level == 3
+                                                                                                ? 'for on that day (centred daily calendar view at the top shows you the actual date).'
+                                                                                                : goal_level == 4
+                                                                                                    ? 'for that day. Scroll left or right to see your\n'
+                                                                                                    : goal_level == 5
+                                                                                                        ? 'with its'
+                                                                                                        : goal_level == 6
+                                                                                                            ? 'or'
+                                                                                                            : ' You will see\nReda appearing every time you have a new\nnotification with gentle prompts to help\nyou '),
+                                                                                TextSpan(
+                                                                                    text: goal_level == 1
+                                                                                        ? 'goal name '
+                                                                                        : goal_level == 2
+                                                                                            ? 'practice '
+                                                                                            : goal_level == 3
+                                                                                                ? ''
+                                                                                                : goal_level == 4
+                                                                                                    ? 'schedule '
+                                                                                                    : goal_level == 5
+                                                                                                        ? ' assigned practices.'
+                                                                                                        : goal_level == 6
+                                                                                                            ? ' future schedule '
+                                                                                                            : 'stay focused.',
+                                                                                    style: const TextStyle(fontWeight: FontWeight.w700)),
+                                                                                TextSpan(
+                                                                                    text: goal_level == 1
+                                                                                        ? 'with\n'
+                                                                                        : goal_level == 2
+                                                                                            ? 'will have a '
+                                                                                            : goal_level == 3
+                                                                                                ? ''
+                                                                                                : goal_level == 4
+                                                                                                    ? 'for previous or next day.'
+                                                                                                    : goal_level == 5
+                                                                                                        ? ' Click on the\npractice you want to record the session\nfor and you’ll be taken to capture it.'
+                                                                                                        : goal_level == 6
+                                                                                                            ? 'for a\ncertain date.'
+                                                                                                            : ''),
+                                                                                TextSpan(
+                                                                                    text: goal_level == 1
+                                                                                        ? 'identity statement  '
+                                                                                        : goal_level == 2
+                                                                                            ? 'name '
+                                                                                            : goal_level == 3
+                                                                                                ? ''
+                                                                                                : goal_level == 4
+                                                                                                    ? ''
+                                                                                                    : goal_level == 5
+                                                                                                        ? ''
+                                                                                                        : goal_level == 6
+                                                                                                            ? ''
+                                                                                                            : '',
+                                                                                    style: const TextStyle(fontWeight: FontWeight.w700)),
+                                                                                TextSpan(
+                                                                                    text: goal_level == 1
+                                                                                        ? 'written on it, so you\ncan easily identify it.'
+                                                                                        : goal_level == 2
+                                                                                            ? 'written on it to help you identify it.'
+                                                                                            : goal_level == 3
+                                                                                                ? ''
+                                                                                                : goal_level == 4
+                                                                                                    ? ''
+                                                                                                    : goal_level == 5
+                                                                                                        ? ''
+                                                                                                        : goal_level == 6
+                                                                                                            ? ''
+                                                                                                            : '')
+                                                                              ])),
+                                                                            ),
+                                                                            Container(
+                                                                              width: AppDimensions.height10(context) * 24.3,
+                                                                              height: AppDimensions.height10(context) * 4.0,
+                                                                              margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.8),
+                                                                              child: Row(
+                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                children: [
+                                                                                  GestureDetector(
+                                                                                    onTap: (() {
+                                                                                      setState(() {
+                                                                                        _showOverlay = false;
+                                                                                      });
+                                                                                    }),
+                                                                                    child: Container(
+                                                                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 5.0), border: Border.all(width: AppDimensions.height10(context) * 0.1, color: const Color(0xFFFBFBFB))),
+                                                                                      width: AppDimensions.height10(context) * 9.60,
+                                                                                      height: AppDimensions.height10(context) * 3.2,
+                                                                                      child: Center(
+                                                                                        child: Text(
+                                                                                          'Skip tour',
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(fontFamily: 'Laila', decoration: TextDecoration.none, fontSize: AppDimensions.height10(context) * 1.6, color: const Color(0xFF8C648A), fontWeight: FontWeight.w700),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  GestureDetector(
+                                                                                    onTap: () {
+                                                                                      _incrementValue();
+                                                                                      if (goal_level > 7) {
+                                                                                        setState(() {
+                                                                                          _showOverlay = false;
+                                                                                        });
+                                                                                      }
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: AppDimensions.height10(context) * 11.7,
+                                                                                      height: AppDimensions.height10(context) * 4.0,
+                                                                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 5.0), color: const Color(0xFF5A4D73)),
+                                                                                      child: Center(
+                                                                                        child: Text(
+                                                                                          goal_level == 2
+                                                                                              ? '(2/7) Next'
+                                                                                              : goal_level == 3
+                                                                                                  ? '(3/7) Next'
+                                                                                                  : goal_level == 4
+                                                                                                      ? '(4/7) Next'
+                                                                                                      : goal_level == 5
+                                                                                                          ? '(5/7) Next'
+                                                                                                          : goal_level == 6
+                                                                                                              ? '(6/7) Next'
+                                                                                                              : goal_level == 7
+                                                                                                                  ? '(7/7) Next'
+                                                                                                                  : goal_level == 1
+                                                                                                                      ? '(1/7) Next'
+                                                                                                                      : '(7/7) Next',
+                                                                                          style: TextStyle(decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: AppDimensions.height10(context) * 1.6, color: const Color(0xFFFFFFFF), fontWeight: FontWeight.w600),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  )
+                                                                                ],
+                                                                              ),
+                                                                            )
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        )
+                                                      : Container()),
+
+                                    // widget.missed
+                                    //     ? Positioned(
+                                    //         top: AppDimensions.height10(context) *
+                                    //             56.8,
+                                    //         left: AppDimensions.height10(context) *
+                                    //             2.5,
+                                    //         child: Container(
+                                    //           width:
+                                    //               AppDimensions.height10(context) *
+                                    //                   38.259,
+                                    //           height:
+                                    //               AppDimensions.height10(context) *
+                                    //                   9.707,
+                                    //           margin: EdgeInsets.only(
+                                    //               top: AppDimensions.height10(
+                                    //                       context) *
+                                    //                   12.0),
+                                    //           decoration: BoxDecoration(
+                                    //               borderRadius:
+                                    //                   BorderRadius.circular(
+                                    //                       AppDimensions.height10(
+                                    //                               context) *
+                                    //                           2.0),
+                                    //               gradient: const LinearGradient(
+                                    //                   begin: Alignment.topCenter,
+                                    //                   end: Alignment.bottomCenter,
+                                    //                   colors: [
+                                    //                     Color(0xFFD4B7B9),
+                                    //                     Color(0xFF91698C)
+                                    //                   ])),
+                                    //           child: Row(
+                                    //             crossAxisAlignment:
+                                    //                 CrossAxisAlignment.center,
+                                    //             children: [
+                                    //               Container(
+                                    //                 margin: EdgeInsets.only(
+                                    //                     left:
+                                    //                         AppDimensions.height10(
+                                    //                                 context) *
+                                    //                             1.261),
+                                    //                 width: AppDimensions.height10(
+                                    //                         context) *
+                                    //                     4.437,
+                                    //                 height: AppDimensions.height10(
+                                    //                         context) *
+                                    //                     4.437,
+                                    //                 decoration: const BoxDecoration(
+                                    //                     image: DecorationImage(
+                                    //                         image: AssetImage(
+                                    //                             'assets/images/circle_tick.webp'))),
+                                    //               ),
+                                    //               Container(
+                                    //                 width: AppDimensions.height10(
+                                    //                         context) *
+                                    //                     16.3,
+                                    //                 height: AppDimensions.height10(
+                                    //                         context) *
+                                    //                     3.6,
+                                    //                 margin: EdgeInsets.only(
+                                    //                     left:
+                                    //                         AppDimensions.height10(
+                                    //                                 context) *
+                                    //                             1.232),
+                                    //                 child: Column(
+                                    //                   crossAxisAlignment:
+                                    //                       CrossAxisAlignment.start,
+                                    //                   children: [
+                                    //                     SizedBox(
+                                    //                       //  / width: AppDimensions.height10(context) * 4.6,
+                                    //                       height: AppDimensions
+                                    //                               .height10(
+                                    //                                   context) *
+                                    //                           1.4,
+                                    //                       //   color: Colors.amber,
+                                    //                       child: Text(
+                                    //                         'Session missed',
+                                    //                         style: TextStyle(
+                                    //                             fontSize: AppDimensions
+                                    //                                     .height10(
+                                    //                                         context) *
+                                    //                                 1.3,
+                                    //                             fontWeight:
+                                    //                                 FontWeight.w500,
+                                    //                             color: const Color(
+                                    //                                 0xFFFFFFFF)),
+                                    //                       ),
+                                    //                     ),
+                                    //                     SizedBox(
+                                    //                       //width: AppDimensions.height10(context) * 6.9,
+                                    //                       height: AppDimensions
+                                    //                               .height10(
+                                    //                                   context) *
+                                    //                           2.2,
+                                    //                       child: Text(
+                                    //                         'Count temper ep...',
+                                    //                         style: TextStyle(
+                                    //                             fontSize: AppDimensions
+                                    //                                     .height10(
+                                    //                                         context) *
+                                    //                                 1.8,
+                                    //                             fontWeight:
+                                    //                                 FontWeight.w500,
+                                    //                             color: const Color(
+                                    //                                 0xFFFFFFFF)),
+                                    //                       ),
+                                    //                     ),
+                                    //                   ],
+                                    //                 ),
+                                    //               ),
+                                    //               Container(
+                                    //                 width: AppDimensions.height10(
+                                    //                         context) *
+                                    //                     8.1,
+                                    //                 height: AppDimensions.height10(
+                                    //                         context) *
+                                    //                     6.0,
+                                    //                 margin: EdgeInsets.only(
+                                    //                     left:
+                                    //                         AppDimensions.height10(
+                                    //                                 context) *
+                                    //                             5.1),
+                                    //                 decoration: BoxDecoration(
+                                    //                   border: Border.all(
+                                    //                       color: const Color(
+                                    //                           0xFFFFFFFF),
+                                    //                       width: 1),
+                                    //                   borderRadius:
+                                    //                       BorderRadius.circular(
+                                    //                           AppDimensions
+                                    //                                   .height10(
+                                    //                                       context) *
+                                    //                               2.0),
+                                    //                 ),
+                                    //                 child: Center(
+                                    //                   child: Text(
+                                    //                     'Veiw',
+                                    //                     style: TextStyle(
+                                    //                         fontSize: AppDimensions
+                                    //                                 .height10(
+                                    //                                     context) *
+                                    //                             1.8,
+                                    //                         fontWeight:
+                                    //                             FontWeight.w500,
+                                    //                         color: const Color(
+                                    //                             0xFFFFFFFF)),
+                                    //                   ),
+                                    //                 ),
+                                    //               )
+                                    //             ],
+                                    //           ),
+                                    //         ),
+                                    //       )
+                                    //     : Container(),
+                                  ])),
+                            )
                           : noPlanned == true
                               ? SizedBox(
                                   width: double.infinity,

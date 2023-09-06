@@ -131,6 +131,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                           missed: false,
                           name: '',
                           update: false,
+                          helpfulTips: false,
                         ),
                       ),
                     );
@@ -501,6 +502,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                                         goalName,
                                                                     update:
                                                                         false,
+                                                                        helpfulTips: false,
                                                                   )));
                                                             }
                                                           });

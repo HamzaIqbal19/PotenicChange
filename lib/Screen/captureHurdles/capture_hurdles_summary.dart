@@ -298,7 +298,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                         ),
                       ),
                       Container(
-                        height: AppDimensions.height10(context) * 14.7,
+                        height: AppDimensions.height10(context) * 15.7,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 3.9),
                         child: ListView.builder(
@@ -471,6 +471,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             top: AppDimensions.height10(context) * 3.9),
                         height: AppDimensions.height10(context) * 13.1,
                         width: AppDimensions.height10(context) * 13.1,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: AppDimensions.height10(context)),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
@@ -490,15 +492,19 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                               child: Text(
                                 hurdlesList[hurdleCat!]['hurdleName'],
                                 textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize:
                                         AppDimensions.height10(context) * 1.8,
+                                    height:
+                                        AppDimensions.height10(context) * 0.14,
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
                             Align(
-                              alignment: const Alignment(0, 0.8),
+                              alignment: const Alignment(0, 0.83),
                               child: AnimatedScaleButton(
                                 onTap: () {
                                   Navigator.push(

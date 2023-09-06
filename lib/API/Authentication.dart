@@ -219,4 +219,32 @@ class Authentication {
       return false;
     }
   }
+
+  Future deleteUserAccount() async {
+    final SharedPreferences prefs = await _prefs;
+
+    var userId = prefs.getInt('userid');
+    print('$userId');
+
+    var Accestoken = prefs.getString("userId");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+
+    var request = await client.delete(
+        Uri.parse('${URL.BASE_URL}api/auth/delete-user/$userId'),
+        headers: headers);
+
+    var responses = jsonDecode(request.body);
+    print("Account to be deleted");
+    if (request.statusCode == 200) {
+      print('Account deleted');
+      return true;
+    } else {
+      return responses["message"];
+      // client.close();
+      // return responses["message"];
+    }
+  }
 }

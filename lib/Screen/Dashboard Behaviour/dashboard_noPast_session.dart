@@ -36,8 +36,8 @@ class _no_past_sessionState extends State<no_past_session> {
 
   bool Loader = true;
 
-  String previousDayName =
-      DateFormat('EEEE').format(DateTime.now().subtract(const Duration(days: 1)));
+  String previousDayName = DateFormat('EEEE')
+      .format(DateTime.now().subtract(const Duration(days: 1)));
   String nextDayName = DateFormat('EEEE')
       .format(DateTime.now().subtract(const Duration(days: 2)));
   String currentDay = DateFormat('EEEE').format(DateTime.now());
@@ -116,11 +116,14 @@ class _no_past_sessionState extends State<no_past_session> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          FadePageRoute(page:  const view_goals(
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: const view_goals(
                             missed: false,
                             name: '',
                             update: false,
+                            helpfulTips: false,
                           )));
                     },
                     child: Container(
@@ -262,7 +265,8 @@ class _no_past_sessionState extends State<no_past_session> {
                                                               context) *
                                                           1.4,
                                                   fontWeight: FontWeight.w400,
-                                                  color: const Color(0xff5B74A6)),
+                                                  color:
+                                                      const Color(0xff5B74A6)),
                                             ),
                                             Container(
                                               height: AppDimensions.height10(
@@ -320,11 +324,12 @@ class _no_past_sessionState extends State<no_past_session> {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: const  view_goals(
-                            missed: false,
-                            name: '',
-                            update: false,
-                          )));
+                                                    page: const view_goals(
+                                                  missed: false,
+                                                  name: '',
+                                                  update: false,
+                                                  helpfulTips: false,
+                                                )));
                                           },
                                           child: Container(
                                             height: AppDimensions.height10(
@@ -445,11 +450,12 @@ class _no_past_sessionState extends State<no_past_session> {
                                           Navigator.push(
                                               context,
                                               FadePageRoute(
-                                                  page: const  view_goals(
-                            missed: false,
-                            name: '',
-                            update: false,
-                          )));
+                                                  page: const view_goals(
+                                                missed: false,
+                                                name: '',
+                                                update: false,
+                                                helpfulTips: false,
+                                              )));
                                         },
                                         child: Container(
                                             height: AppDimensions.height10(
@@ -506,7 +512,8 @@ class _no_past_sessionState extends State<no_past_session> {
                                                           1.4,
                                                       fontWeight:
                                                           FontWeight.w400,
-                                                      color: const Color(0xff5B74A6)),
+                                                      color: const Color(
+                                                          0xff5B74A6)),
                                                 ),
                                                 Container(
                                                   height:
@@ -955,7 +962,8 @@ class _no_past_sessionState extends State<no_past_session> {
                                                                 context) *
                                                             1.4,
                                                     fontWeight: FontWeight.w400,
-                                                    color: const Color(0xff5B74A6)),
+                                                    color: const Color(
+                                                        0xff5B74A6)),
                                               ),
                                               Container(
                                                 height: AppDimensions.height10(
@@ -969,7 +977,8 @@ class _no_past_sessionState extends State<no_past_session> {
                                                   shape: BoxShape.circle,
                                                   border: Border.all(
                                                       width: 1,
-                                                      color: const Color(0xFFFBFBFB)),
+                                                      color: const Color(
+                                                          0xFFFBFBFB)),
                                                 ),
                                                 child: SizedBox(
                                                     width:

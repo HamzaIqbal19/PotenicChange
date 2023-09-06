@@ -113,7 +113,8 @@ class _photo_EditState extends State<photo_Edit> {
             for (int i = 0;
                 i < inspirationDetails['inspiration']['hashTags'].length;
                 i++) {
-              tagList.add(inspirationDetails['inspiration']['hashTags'][i]);
+              tagList
+                  .add('"${inspirationDetails['inspiration']['hashTags'][i]}"');
             }
           }
         }

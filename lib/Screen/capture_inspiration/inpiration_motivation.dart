@@ -66,6 +66,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                             missed: false,
                             name: '',
                             update: false,
+                            helpfulTips: false,
                           )));
                       final SharedPreferences prefs = await _prefs;
                       prefs.remove('inspiration_saved_route');

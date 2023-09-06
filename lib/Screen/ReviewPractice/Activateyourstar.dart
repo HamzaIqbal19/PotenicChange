@@ -350,9 +350,26 @@ class _ActivateStarState extends State<ActivateStar> {
                                             missed: false,
                                             name: '',
                                             update: false,
+                                            helpfulTips: false,
                                           ),
                                         ),
                                       );
+                                    } else if (response == false) {
+                                      Navigator.push(
+                                        context,
+                                        FadePageRoute2(
+                                          true,
+                                          exitPage: const ActivateStar(),
+                                          enterPage: const view_goals(
+                                            missed: false,
+                                            name: '',
+                                            update: false,
+                                            helpfulTips: true,
+                                          ),
+                                        ),
+                                      );
+
+                                      dashboard_sheet(context);
                                     } else if (response == 400) {
                                       print('max goals');
                                       Navigator.push(
@@ -364,6 +381,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                             missed: false,
                                             name: '',
                                             update: false,
+                                            helpfulTips: false,
                                           ),
                                         ),
                                       );
@@ -749,19 +767,7 @@ void dashboard_sheet(context) {
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      FadePageRoute(
-                        page: const dashBoard(
-                          helpful_tips: true,
-                          membership: true,
-                          dashboard_ctrl: false,
-                          cancel: false,
-                          trial: false,
-                          saved: false,
-                        ),
-                      ),
-                    );
+                    Navigator.pop(context);
                   },
                   child: Container(
                     width: AppDimensions.height10(context) * 2.6,

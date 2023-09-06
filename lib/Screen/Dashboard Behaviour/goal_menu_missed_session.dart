@@ -132,6 +132,7 @@ class _missed_MenuState extends State<missed_Menu> {
                           missed: false,
                           name: '',
                           update: false,
+                          helpfulTips: false,
                         ),
                       ),
                     );

@@ -321,7 +321,7 @@ class _progress_reportState extends State<progress_report> {
                         //we will give duration of 20 days
                         noData == true
                             ? 'No data found'
-                            : 'from ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)} to ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)}',
+                            : 'from ${report["practice"]["lastReportSentDate"].toString().substring(0, 10)} to ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
@@ -351,16 +351,42 @@ class _progress_reportState extends State<progress_report> {
                       child: Row(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 10.4,
-                            height: AppDimensions.height10(context) * 11.2,
+                            width: AppDimensions.height10(context) * 7.9,
+                            height: AppDimensions.height10(context) * 7.94,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 0.7),
-                            decoration: const BoxDecoration(
+                                right: AppDimensions.height10(context) * 0.7,
+                                left: AppDimensions.height10(context) * 0.5),
+                            decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/orange_flair.webp'))),
+                                    image: AssetImage(report['practice']
+                                                ['userGoal']['color'] ==
+                                            "1"
+                                        ? "assets/images/red_gradient.webp"
+                                        : report['practice']['userGoal']
+                                                    ['color'] ==
+                                                "2"
+                                            ? 'assets/images/orange_moon.webp'
+                                            : report['practice']['userGoal']
+                                                        ['color'] ==
+                                                    "3"
+                                                ? "assets/images/lightGrey_gradient.webp"
+                                                : report['practice']['userGoal']
+                                                            ['color'] ==
+                                                        "4"
+                                                    ? "assets/images/lightBlue_gradient.webp"
+                                                    : report['practice']
+                                                                    ['userGoal']
+                                                                ['color'] ==
+                                                            "5"
+                                                        ? "assets/images/medBlue_gradient.webp"
+                                                        : report['practice']
+                                                                        ['userGoal']
+                                                                    ['color'] ==
+                                                                6
+                                                            ? "assets/images/Blue_gradient.webp"
+                                                            : 'assets/images/orange_moon.webp'))),
                             child: Align(
-                              alignment: const Alignment(0.7, 0.4),
+                              alignment: const Alignment(1, 1.1),
                               child: Container(
                                 width: AppDimensions.height10(context) * 4.9,
                                 height: AppDimensions.height10(context) * 4.9,
@@ -371,15 +397,33 @@ class _progress_reportState extends State<progress_report> {
                                           AppDimensions.height10(context) * 0.2,
                                       color: const Color(0xFFFFFFFF),
                                     ),
-                                    image: const DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/Ellipse 158.webp'))),
+                                    image: DecorationImage(
+                                        image: AssetImage(report['practice']
+                                                    ['color'] ==
+                                                "1"
+                                            ? "assets/images/Ellipse orange_wb.webp"
+                                            : report['practice']['color'] == "2"
+                                                ? 'assets/images/Ellipse 158_wb.webp'
+                                                : report['practice']['color'] ==
+                                                        "3"
+                                                    ? "assets/images/Ellipse 157_wb.webp"
+                                                    : report['practice']
+                                                                ['color'] ==
+                                                            "4"
+                                                        ? "assets/images/Ellipse light-blue_wb.webp"
+                                                        : report['practice']
+                                                                    ['color'] ==
+                                                                "5"
+                                                            ? "assets/images/Ellipse blue_wb.webp"
+                                                            : 'assets/images/Ellipse 158_wb.webp'))),
                               ),
                             ),
                           ),
-                          SizedBox(
+                          Container(
                             width: AppDimensions.height10(context) * 17.9,
                             height: AppDimensions.height10(context) * 5.9,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 0.4),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -387,8 +431,9 @@ class _progress_reportState extends State<progress_report> {
                                   // width: AppDimensions.height10(context) * 17.9,
                                   height: AppDimensions.height10(context) * 3.0,
                                   margin: EdgeInsets.only(
-                                      bottom: AppDimensions.height10(context) *
-                                          0.1),
+                                    bottom:
+                                        AppDimensions.height10(context) * 0.1,
+                                  ),
                                   child: Text(
                                     noData == true
                                         ? 'No data found'

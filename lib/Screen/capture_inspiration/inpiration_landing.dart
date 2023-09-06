@@ -211,6 +211,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             missed: false,
                             name: '',
                             update: false,
+                            helpfulTips: false,
                           )));
                       final SharedPreferences prefs = await _prefs;
                       prefs.remove('inspiration_saved_route');

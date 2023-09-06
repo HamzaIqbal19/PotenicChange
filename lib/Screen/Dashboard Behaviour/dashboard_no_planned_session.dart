@@ -37,7 +37,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
   bool Loader = true;
 
   String previousDayName =
-      DateFormat('EEEE').format(DateTime.now().add(Duration(days: 2)));
+      DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 2)));
   String nextDayName =
       DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 1)));
   String currentDay = DateFormat('EEEE').format(DateTime.now());
@@ -117,8 +117,15 @@ class _no_planned_sessionState extends State<no_planned_session> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          FadePageRoute(page: view_goals(missed: false, name: '', update: false,)));
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: const view_goals(
+                            missed: false,
+                            name: '',
+                            update: false,
+                            helpfulTips: false,
+                          )));
                     },
                     child: Container(
                       margin: EdgeInsets.only(
@@ -251,7 +258,8 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                           1.2,
                                                       fontWeight:
                                                           FontWeight.w600,
-                                                      color: Color(0xFFFBFBFB)),
+                                                      color: const Color(
+                                                          0xFFFBFBFB)),
                                                 ),
                                                 Text(
                                                   formattdDate,
@@ -284,8 +292,8 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                                 .height10(
                                                                     context) *
                                                             0.1,
-                                                        color:
-                                                            Color(0xFFFBFBFB)),
+                                                        color: const Color(
+                                                            0xFFFBFBFB)),
                                                   ),
                                                   child: Container(
                                                       width: AppDimensions
@@ -330,11 +338,12 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: const  view_goals(
-                            missed: false,
-                            name: '',
-                            update: false,
-                          )));
+                                                    page: const view_goals(
+                                                  missed: false,
+                                                  name: '',
+                                                  update: false,
+                                                  helpfulTips: false,
+                                                )));
                                           },
                                           child: Container(
                                             width: AppDimensions.height10(
@@ -917,7 +926,8 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                                 context) *
                                                             1.4,
                                                     fontWeight: FontWeight.w400,
-                                                    color: Color(0xff5B74A6)),
+                                                    color: const Color(
+                                                        0xff5B74A6)),
                                               ),
                                               Container(
                                                 height: AppDimensions.height10(
@@ -931,7 +941,8 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                   shape: BoxShape.circle,
                                                   border: Border.all(
                                                       width: 1,
-                                                      color: Color(0xFFFBFBFB)),
+                                                      color: const Color(
+                                                          0xFFFBFBFB)),
                                                 ),
                                                 child: SizedBox(
                                                     width:
@@ -1405,6 +1416,6 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                 )
                               : Container(),
                         ]))
-                : DashBoardBehaviour_shimmer()));
+                : const DashBoardBehaviour_shimmer()));
   }
 }

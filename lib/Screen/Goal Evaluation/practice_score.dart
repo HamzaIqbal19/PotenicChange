@@ -83,6 +83,7 @@ class _prac_scoreState extends State<prac_score> {
 
   void getPracticeDetail() {
     PracticeGoalApi.getUserPracticeById().then((response) {
+      print(response);
       if (response.length != 0) {
         print("---------------------------------");
         setState(() {
@@ -125,10 +126,10 @@ class _prac_scoreState extends State<prac_score> {
 
       if (response.length != 0) {
         setState(() {
-          selectedItemIndex = response['practiceEvaluation']['question1'];
-          selectedItemIndex2 = response['practiceEvaluation']['question2'];
-          selectedItemIndex3 = response['practiceEvaluation']['question3'];
-          selectedItemIndex4 = response['practiceEvaluation']['question4'];
+          selectedItemIndex = response['practiceEvaluation']['question1'] - 1;
+          selectedItemIndex2 = response['practiceEvaluation']['question2'] - 1;
+          selectedItemIndex3 = response['practiceEvaluation']['question3'] - 1;
+          selectedItemIndex4 = response['practiceEvaluation']['question4'] - 1;
           level = response['practiceEvaluation']['totalPoint'].toString();
         });
       }
@@ -165,6 +166,7 @@ class _prac_scoreState extends State<prac_score> {
                           missed: false,
                           name: '',
                           update: false,
+                          helpfulTips: false,
                         )));
                   } else {
                     Navigator.pop(context);
@@ -269,7 +271,7 @@ class _prac_scoreState extends State<prac_score> {
                                       top: AppDimensions.height10(context) *
                                           1.3),
                                   child: Text(
-                                    'from [dd/mmm/yy] to [dd/mmm/yy]',
+                                    'from [${pracDetails["lastReportSentDate"].toString().substring(0, 10)}] to [${pracDetails["lastReportSentDate"].toString().substring(0, 10)}]',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:

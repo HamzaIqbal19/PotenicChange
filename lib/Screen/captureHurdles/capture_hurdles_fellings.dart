@@ -569,20 +569,20 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                   );
                                                 }
                                               } else {
+                                                print(i);
                                                 setState(() {
                                                   statements[i - 1] = newText;
                                                   scroll = true;
                                                 });
                                                 if (!newText
                                                     .startsWith("I feel ")) {
-                                                  control[i - 1].text =
-                                                      "I feel ";
+                                                  control[i].text = "I feel ";
 
-                                                  control[i - 1].selection =
+                                                  control[i].selection =
                                                       TextSelection
                                                           .fromPosition(
                                                     TextPosition(
-                                                        offset: control[i - 1]
+                                                        offset: control[i]
                                                             .text
                                                             .length),
                                                   );
@@ -607,13 +607,12 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                               } else {
                                                 if (submittedText.isEmpty) {
                                                   // Replace it with "I feel " and move the cursor to the end
-                                                  control[i - 1].text =
-                                                      "I feel ";
-                                                  control[i - 1].selection =
+                                                  control[i].text = "I feel ";
+                                                  control[i].selection =
                                                       TextSelection
                                                           .fromPosition(
                                                     TextPosition(
-                                                        offset: control[i - 1]
+                                                        offset: control[i]
                                                             .text
                                                             .length),
                                                   );

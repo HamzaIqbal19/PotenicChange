@@ -210,6 +210,7 @@ class _endofSessionState extends State<endofSession> {
                                                 missed: false,
                                                 name: '',
                                                 update: false,
+                                                helpfulTips: false,
                                               )));
                                           feedback3.clear();
                                         },

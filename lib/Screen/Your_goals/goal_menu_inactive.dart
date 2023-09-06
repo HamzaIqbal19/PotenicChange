@@ -110,6 +110,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                 missed: false,
                 name: '',
                 update: false,
+                helpfulTips: false,
               )));
         } else {
           Navigator.push(
