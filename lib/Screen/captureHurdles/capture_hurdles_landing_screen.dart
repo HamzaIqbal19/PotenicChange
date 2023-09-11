@@ -1147,6 +1147,9 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                               hurdlesList[index]
                                                                   [
                                                                   'hurdleName']),
+                                                          maxLines: 1,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: TextStyle(
@@ -2156,7 +2159,7 @@ void hurdle_sheet(context) {
                   top: AppDimensions.height10(context) * 1.2,
                 ),
                 child: Text(
-                  'This is your private space to capture any\nobstacles that may divert you of course.\n\nAt Potenic, our aim is to empower you to own\nand enjoy your personal development journey.\n\nWe want you to stay focused and this is\nwhy we also want you to be prepared for\n challenges ahead, so you can build a self-\nreliance and awareness.\n\nWith time, you will start seeing patterns (with\nthe help of Potenic’s frameworks) and will be\nmore aware of situations that get you\ntriggered.',
+                  'This is your private space to capture any\nobstacles that may divert you of course.\n\nAt Potenic, our aim is to empower you to own\nand enjoy your personal development journey.\n\nWe want to help you stay focused and this is\nwhy we also want you to be prepared for\n challenges ahead, so you can build a self-\nreliance and grow awareness.\n\nWith time, you will start seeing patterns (with\nthe help of Potenic’s frameworks) and will be\nmore aware of situations that get you\ntriggered.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: AppDimensions.height10(context) * 1.6,

@@ -106,9 +106,10 @@ class goalEvaluationApi {
 }
 
 class PracticeEvaluation {
-  Future addPracticeEvaluation(q1, q2, q3, q4, pracId) async {
+  Future updatePracticeEvaluation(q1, q2, q3, q4) async {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
+    var prac_eval = prefs.getInt('prac_eval_id');
     var UserId = prefs.getInt('userid');
 
     var headers = {
@@ -120,13 +121,10 @@ class PracticeEvaluation {
       "question2": q2,
       "question3": q3,
       "question4": q4,
-      "userPracticeId": pracId,
-      "userId": UserId
     });
     print(Body);
-    var request = await client.post(
-        Uri.parse(
-            '${URL.BASE_URL}api/practiceEvaluation/add-practiceEvaluation'),
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/practiceEvaluation/$prac_eval'),
         headers: headers,
         body: Body);
 
@@ -135,15 +133,14 @@ class PracticeEvaluation {
 
     if (request.statusCode == 200) {
       print("Practice evaluationId =================");
-      print(responses["result"]["id"]);
-      var prac_eval = prefs.setInt('prac_eval_id', responses["result"]["id"]);
-      return responses;
+
+      return true;
     } else {
       //client.close();
 
       // print("response:${}");
       print("request==========>$request");
-      return responses;
+      return false;
     }
   }
 
@@ -178,6 +175,75 @@ class PracticeEvaluation {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var prac_num = prefs.getInt("prac_num");
+    var reportDate = prefs.getString('lastReportDate');
+    // var prac_num = prefs.getInt("prac_score_id");
+    print(prefs.getString('lastReportDate'));
+
+    // print('$prac_num');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+
+    var response = await http.get(
+      Uri.parse(
+          '${URL.BASE_URL}api/userPractice/user-practice-report-by-id/$prac_num?reportDate=$reportDate'),
+      headers: headers,
+    );
+    print(response.statusCode);
+    print(prac_num);
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return jsonData;
+    } else if (response.statusCode == 404) {
+      print('nOT fOUND');
+      return false;
+    } else {
+      throw Exception('Failed to fetch practice report');
+    }
+  }
+
+  static Future getUserPracticeReportIdBydays(days) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var prac_num = prefs.getInt("prac_num");
+
+    // var prac_num = prefs.getInt("prac_score_id");
+    print(days);
+    // print('$prac_num');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+
+    var response = await http.get(
+      Uri.parse(
+          '${URL.BASE_URL}api/userPractice/user-practice-report-by-id/$prac_num?howManyDays=$days'),
+      headers: headers,
+    );
+
+    print('response===================<${response.body}>');
+    print(response.statusCode);
+    print(prac_num);
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return jsonData;
+    } else if (response.statusCode == 404) {
+      print('nOT fOUND');
+      return false;
+    } else {
+      throw Exception('Failed to fetch practice report');
+    }
+  }
+
+  static Future getPracriceAssesment() async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var prac_num = prefs.getInt("prac_num");
     // var prac_num = prefs.getInt("prac_score_id");
 
     // print('$prac_num');
@@ -188,7 +254,7 @@ class PracticeEvaluation {
 
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/userPractice/user-practice-report-by-id/$prac_num?howManyDays=$days'),
+          '${URL.BASE_URL}api/userPractice/getAllPracticeAssesmentsById/$prac_num'),
       headers: headers,
     );
     print(response.statusCode);

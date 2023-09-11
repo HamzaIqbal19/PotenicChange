@@ -593,6 +593,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       ['title'],
                                                   overflow:
                                                       TextOverflow.ellipsis,
+                                                  textAlign: TextAlign.center,
                                                   maxLines: 2,
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
@@ -808,6 +809,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                         index * 2 + 1]['title'],
                                                     overflow:
                                                         TextOverflow.ellipsis,
+                                                    textAlign: TextAlign.center,
                                                     maxLines: 2,
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
@@ -3097,7 +3099,7 @@ class _updateBoxState extends State<updateBox> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: AppDimensions.height10(context) * 4.6,
+                        //width: AppDimensions.height10(context) * 4.6,
                         height: AppDimensions.height10(context) * 1.4,
                         //   color: Colors.amber,
                         child: Text(

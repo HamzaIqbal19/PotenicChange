@@ -565,244 +565,209 @@ class _link_infoState extends State<link_info> {
                 //height: AppDimensions.height10(context) * 84.8,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 5.37),
-                child: SingleChildScrollView(
-                  reverse: MediaQuery.of(context).viewInsets.bottom == 0
-                      ? false
-                      : true,
-                  child: Column(children: [
-                    Container(
-                      // width: AppDimensions.height10(context) * 41.1,
-                      height: AppDimensions.height10(context) * 5.1,
-                      //margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
-                      decoration: BoxDecoration(
-                          color: const Color(0xffF5F5F5).withOpacity(0.8),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(
-                                  AppDimensions.height10(context) * 1.0),
-                              topRight: Radius.circular(
-                                  AppDimensions.height10(context) * 1.0))),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: AppDimensions.height10(context) * 2.2,
-                              width: AppDimensions.height10(context) * 5.1,
-                              // margin: EdgeInsets.only(
-                              //     right: AppDimensions.height10(context) * 4.0),
-                              child: GestureDetector(
-                                onTap: () async {
-                                  link.clear();
-                                  statement.clear();
-                                  hastags.clear();
-                                  author.clear();
-                                  title.clear();
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const inspiration_type()));
-                                  final SharedPreferences prefs = await _prefs;
-                                  var remove = prefs.remove('ImageLink');
-                                },
-                                child: Center(
-                                  child: Text(
-                                    'Back',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.5,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xff007AFF)),
-                                  ),
-                                ),
-                              ),
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppDimensions.height10(context) * 1.5),
+                height: AppDimensions.height10(context) * 5.1,
+                decoration: BoxDecoration(
+                    color: const Color(0xffF5F5F5).withOpacity(0.8),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(
+                            AppDimensions.height10(context) * 1.0),
+                        topRight: Radius.circular(
+                            AppDimensions.height10(context) * 1.0))),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      AnimatedScaleButton(
+                        onTap: () async {
+                          link.clear();
+                          statement.clear();
+                          hastags.clear();
+                          author.clear();
+                          title.clear();
+                          Navigator.push(context,
+                              FadePageRoute(page: const inspiration_type()));
+                          final SharedPreferences prefs = await _prefs;
+                          var remove = prefs.remove('ImageLink');
+                        },
+                        child: Center(
+                          child: Text(
+                            'Back',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff007AFF)),
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: SizedBox(
+                          //height: AppDimensions.height10(context) * 2.2,
+                          width: AppDimensions.height10(context) * 28.5,
+                          child: Center(
+                            child: Text(
+                              'Create inspiration content link',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color(0xff282828)),
                             ),
-                            Center(
-                              child: Container(
-                                //height: AppDimensions.height10(context) * 2.2,
-                                width: AppDimensions.height10(context) * 28.5,
-                                child: Center(
-                                  child: Text(
-                                    'Create inspiration content link',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color(0xff282828)),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            ValueListenableBuilder<TextEditingValue>(
-                                valueListenable: title,
+                          ),
+                        ),
+                      ),
+                      ValueListenableBuilder<TextEditingValue>(
+                          valueListenable: title,
+                          builder: (context, value, child) {
+                            return ValueListenableBuilder<TextEditingValue>(
+                                valueListenable: statement,
                                 builder: (context, value, child) {
                                   return ValueListenableBuilder<
                                           TextEditingValue>(
-                                      valueListenable: statement,
+                                      valueListenable: link,
                                       builder: (context, value, child) {
-                                        return ValueListenableBuilder<
-                                                TextEditingValue>(
-                                            valueListenable: link,
-                                            builder: (context, value, child) {
-                                              return AnimatedScaleButton(
-                                                onTap: () async {
-                                                  if (link.text.isNotEmpty &&
-                                                      statement
-                                                          .text.isNotEmpty &&
-                                                      title.text.isNotEmpty) {
-                                                    if (bt_enable == true) {
-                                                      setState(() {
-                                                        bt_enable = false;
-                                                      });
-                                                    }
-                                                    print(
-                                                        'LINK----------------');
-                                                    print(link.text.toString());
-                                                    InspirationApi()
-                                                        .addInspiration(
-                                                            4,
-                                                            null,
-                                                            title.text
-                                                                    .toString()
-                                                                    .isEmpty
-                                                                ? " "
-                                                                : title.text
-                                                                    .toString(),
-                                                            tagList.isEmpty
-                                                                ? []
-                                                                : tagList,
-                                                            author.text
-                                                                    .toString()
-                                                                    .isEmpty
-                                                                ? " "
-                                                                : author.text
-                                                                    .toString(),
-                                                            link.text
-                                                                    .toString()
-                                                                    .isEmpty
-                                                                ? " "
-                                                                : link.text
-                                                                    .toString(),
-                                                            true,
-                                                            statement.text
-                                                                    .toString()
-                                                                    .isEmpty
-                                                                ? " "
-                                                                : statement.text
-                                                                    .toString(),
-                                                            selectedGoals)
-                                                        .then((response) async {
-                                                      if (response.length !=
-                                                          0) {
-                                                        print(
-                                                            '----------------');
-                                                        statement.clear();
-                                                        author.clear();
-                                                        hastags.clear();
-                                                        link.clear();
-                                                        title.clear();
-                                                        Navigator.push(
-                                                            context,
-                                                            FadePageRoute(
-                                                                page: const updatedLandingPage(
-                                                                    delete:
-                                                                        false,
-                                                                    is_Updated:
-                                                                        false)));
-
-                                                        final SharedPreferences
-                                                            prefs =
-                                                            await _prefs;
-                                                        var remove =
-                                                            prefs.remove(
-                                                                'ImageLink');
-                                                        prefs.remove(
-                                                            'inspiration_saved_route');
-
-                                                        print(response);
-                                                      }
-
-                                                      // return null;
-                                                    });
-                                                  }
+                                        return AnimatedScaleButton(
+                                          onTap: () async {
+                                            if (link.text.isNotEmpty &&
+                                                statement.text.isNotEmpty &&
+                                                title.text.isNotEmpty) {
+                                              if (bt_enable == true) {
+                                                setState(() {
+                                                  bt_enable = false;
+                                                });
+                                              }
+                                              print('LINK----------------');
+                                              print(link.text.toString());
+                                              InspirationApi()
+                                                  .addInspiration(
+                                                      4,
+                                                      null,
+                                                      title.text
+                                                              .toString()
+                                                              .isEmpty
+                                                          ? " "
+                                                          : title.text
+                                                              .toString(),
+                                                      tagList.isEmpty
+                                                          ? []
+                                                          : tagList,
+                                                      author.text
+                                                              .toString()
+                                                              .isEmpty
+                                                          ? " "
+                                                          : author.text
+                                                              .toString(),
+                                                      link.text
+                                                              .toString()
+                                                              .isEmpty
+                                                          ? " "
+                                                          : link.text
+                                                              .toString(),
+                                                      true,
+                                                      statement.text
+                                                              .toString()
+                                                              .isEmpty
+                                                          ? " "
+                                                          : statement.text
+                                                              .toString(),
+                                                      selectedGoals)
+                                                  .then((response) async {
+                                                if (response.length != 0) {
+                                                  print('----------------');
+                                                  statement.clear();
+                                                  author.clear();
+                                                  hastags.clear();
+                                                  link.clear();
+                                                  title.clear();
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const updatedLandingPage(
+                                                                  delete: false,
+                                                                  is_Updated:
+                                                                      false)));
 
                                                   final SharedPreferences
                                                       prefs = await _prefs;
+                                                  var remove =
+                                                      prefs.remove('ImageLink');
                                                   prefs.remove(
                                                       'inspiration_saved_route');
-                                                },
-                                                child: Container(
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.2,
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      6.1,
-                                                  // margin: EdgeInsets.only(
-                                                  //     left: AppDimensions
-                                                  //             .height10(
-                                                  //                 context) *
-                                                  //         4.0),
-                                                  child: bt_enable == false
-                                                      ? Center(
-                                                          child:
-                                                              SpinKitThreeBounce(
-                                                            color: const Color(
-                                                                0xff007AFF),
-                                                            // delay: Duration(milliseconds: 0),
-                                                            size: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.5,
-                                                          ),
-                                                        )
-                                                      : Center(
-                                                          child: Text(
-                                                            'Create',
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    1.5,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: link
-                                                                            .text
-                                                                            .toString()
-                                                                            .isNotEmpty &&
-                                                                        statement
-                                                                            .text
-                                                                            .toString()
-                                                                            .isNotEmpty &&
-                                                                        title
-                                                                            .text
-                                                                            .isNotEmpty
-                                                                    ? const Color(
-                                                                        0xff007AFF)
-                                                                    : const Color(
-                                                                            0xff007AFF)
-                                                                        .withOpacity(
-                                                                            0.5)),
-                                                          ),
-                                                        ),
-                                                ),
-                                              );
-                                            });
-                                      });
-                                })
-                          ]),
-                    ),
 
-                    // SizedBox(
-                    //   height: MediaQuery.of(context).viewInsets.bottom == 0
-                    //       ? AppDimensions.height10(context) * 0
-                    //       : AppDimensions.height10(context) * 23.0,
-                    // )
-                  ]),
-                ),
+                                                  print(response);
+                                                }
+
+                                                // return null;
+                                              });
+                                            }
+
+                                            final SharedPreferences prefs =
+                                                await _prefs;
+                                            prefs.remove(
+                                                'inspiration_saved_route');
+                                          },
+                                          child: Container(
+                                            // height:
+                                            //     AppDimensions.height10(
+                                            //             context) *
+                                            //         2.2,
+                                            // width: AppDimensions.height10(
+                                            //         context) *
+                                            //     6.1,
+                                            // margin: EdgeInsets.only(
+                                            //     left: AppDimensions
+                                            //             .height10(
+                                            //                 context) *
+                                            //         4.0),
+                                            child: bt_enable == false
+                                                ? Center(
+                                                    child: SpinKitThreeBounce(
+                                                      color: const Color(
+                                                          0xff007AFF),
+                                                      // delay: Duration(milliseconds: 0),
+                                                      size: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.5,
+                                                    ),
+                                                  )
+                                                : Center(
+                                                    child: Text(
+                                                      'Create',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: link.text
+                                                                      .toString()
+                                                                      .isNotEmpty &&
+                                                                  statement.text
+                                                                      .toString()
+                                                                      .isNotEmpty &&
+                                                                  title.text
+                                                                      .isNotEmpty
+                                                              ? const Color(
+                                                                  0xff007AFF)
+                                                              : const Color(
+                                                                      0xff007AFF)
+                                                                  .withOpacity(
+                                                                      0.5)),
+                                                    ),
+                                                  ),
+                                          ),
+                                        );
+                                      });
+                                });
+                          })
+                    ]),
               )),
         ));
   }

@@ -90,13 +90,14 @@ class _note_infoState extends State<note_info> {
                       Radius.circular(AppDimensions.height10(context) * 1.0),
                   topRight:
                       Radius.circular(AppDimensions.height10(context) * 1.0))),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             Container(
-              height: AppDimensions.height10(context) * 2.2,
-              width: AppDimensions.height10(context) * 3.3,
+              // height: AppDimensions.height10(context) * 2.2,
+              // width: AppDimensions.height10(context) * 3.3,
               margin:
-                  EdgeInsets.only(right: AppDimensions.height10(context) * 4.9),
-              child: GestureDetector(
+                  EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+              child: AnimatedScaleButton(
                 onTap: () async {
                   Navigator.push(
                       context, FadePageRoute(page: const inspiration_type()));
@@ -105,8 +106,9 @@ class _note_infoState extends State<note_info> {
                 },
                 child: Text(
                   'Back',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.5,
+                      fontSize: AppDimensions.height10(context) * 1.6,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xff007AFF)),
                 ),
@@ -789,6 +791,8 @@ class _noteSavedState extends State<noteSaved> {
             height: AppDimensions.height10(context) * 5.1,
             margin:
                 EdgeInsets.only(top: AppDimensions.height10(context) * 5.37),
+            padding: EdgeInsets.symmetric(
+                horizontal: AppDimensions.height10(context) * 1.5),
             decoration: BoxDecoration(
                 color: const Color(0xffF5F5F5).withOpacity(0.8),
                 borderRadius: BorderRadius.only(
@@ -796,146 +800,147 @@ class _noteSavedState extends State<noteSaved> {
                         Radius.circular(AppDimensions.height10(context) * 1.0),
                     topRight: Radius.circular(
                         AppDimensions.height10(context) * 1.0))),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
-                height: AppDimensions.height10(context) * 2.2,
-                width: AppDimensions.height10(context) * 5.1,
-                child: GestureDetector(
-                  onTap: () async {
-                    Navigator.push(
-                        context, FadePageRoute(page: const inspiration_type()));
-                    title.clear();
-                    tagList.clear();
-                    hastags.clear();
-                    statement.clear();
-                    Navigator.push(
-                        context, FadePageRoute(page: const inspiration_type()));
-                    final SharedPreferences prefs = await _prefs;
-                    var remove = prefs.remove('ImageLink');
-                  },
-                  child: Center(
-                    child: Text(
-                      'Back',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.5,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff007AFF)),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AnimatedScaleButton(
+                    onTap: () async {
+                      Navigator.push(context,
+                          FadePageRoute(page: const inspiration_type()));
+                      title.clear();
+                      tagList.clear();
+                      hastags.clear();
+                      statement.clear();
+                      Navigator.push(context,
+                          FadePageRoute(page: const inspiration_type()));
+                      final SharedPreferences prefs = await _prefs;
+                      var remove = prefs.remove('ImageLink');
+                    },
+                    child: Center(
+                      child: Text(
+                        'Back',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xff007AFF)),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Center(
-                child: SizedBox(
-                  height: AppDimensions.height10(context) * 2.2,
-                  width: AppDimensions.height10(context) * 28.5,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
+                  Center(
+                    child: SizedBox(
+                      // height: AppDimensions.height10(context) * 2.2,
+                      width: AppDimensions.height10(context) * 28.5,
+                      child: Center(
+                        child: Text(
                           'Create note inspiration',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontSize: AppDimensions.height10(context) * 1.8,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xff282828)),
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ),
-              ValueListenableBuilder<TextEditingValue>(
-                  valueListenable: statement,
-                  builder: (context, value, child) {
-                    return ValueListenableBuilder<TextEditingValue>(
-                        valueListenable: title,
-                        builder: (context, value, child) {
-                          return AnimatedScaleButton(
-                            onTap: () async {
-                              if (title.text.isNotEmpty &&
-                                  statement.text.isNotEmpty) {
-                                print("Api");
-                                if (bt_enable == true) {
-                                  setState(() {
-                                    bt_enable = false;
-                                  });
-                                }
-                                InspirationApi()
-                                    .addInspiration(
-                                        2,
-                                        null,
-                                        title.text.toString(),
-                                        tagList,
-                                        ' ',
-                                        " ",
-                                        true,
-                                        statement.text.toString(),
-                                        selectedGoals)
-                                    .then((response) async {
-                                  print("Api 2");
-                                  print(response);
-                                  if (response.length != 0) {
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const updatedLandingPage(
-                                                delete: false,
-                                                is_Updated: false)));
-                                    print('----------------');
-                                    title.clear();
-                                    tagList.clear();
-                                    hastags.clear();
-                                    statement.clear();
-                                    final SharedPreferences prefs =
-                                        await _prefs;
-                                    var remove = prefs.remove('ImageLink');
-                                    prefs.remove('inspiration_saved_route');
+                  ValueListenableBuilder<TextEditingValue>(
+                      valueListenable: statement,
+                      builder: (context, value, child) {
+                        return ValueListenableBuilder<TextEditingValue>(
+                            valueListenable: title,
+                            builder: (context, value, child) {
+                              return AnimatedScaleButton(
+                                onTap: () async {
+                                  if (title.text.isNotEmpty &&
+                                      statement.text.isNotEmpty) {
+                                    print("Api");
+                                    if (bt_enable == true) {
+                                      setState(() {
+                                        bt_enable = false;
+                                      });
+                                    }
+                                    InspirationApi()
+                                        .addInspiration(
+                                            2,
+                                            null,
+                                            title.text.toString(),
+                                            tagList,
+                                            ' ',
+                                            " ",
+                                            true,
+                                            statement.text.toString(),
+                                            selectedGoals)
+                                        .then((response) async {
+                                      print("Api 2");
+                                      print(response);
+                                      if (response.length != 0) {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const updatedLandingPage(
+                                                    delete: false,
+                                                    is_Updated: false)));
+                                        print('----------------');
+                                        title.clear();
+                                        tagList.clear();
+                                        hastags.clear();
+                                        statement.clear();
+                                        final SharedPreferences prefs =
+                                            await _prefs;
+                                        var remove = prefs.remove('ImageLink');
+                                        prefs.remove('inspiration_saved_route');
 
-                                    print(response);
+                                        print(response);
+                                      }
+
+                                      // return null;
+                                    });
                                   }
-
-                                  // return null;
-                                });
-                              }
-                              final SharedPreferences prefs = await _prefs;
-                              prefs.remove('inspiration_saved_route');
-                            },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 2.2,
-                              width: AppDimensions.height10(context) * 6.1,
-                              child: bt_enable == false
-                                  ? Center(
-                                      child: SpinKitThreeBounce(
-                                        color: const Color(0xff007AFF),
-                                        // delay: Duration(milliseconds: 0),
-                                        size: AppDimensions.height10(context) *
-                                            1.5,
-                                      ),
-                                    )
-                                  : Center(
-                                      child: Text(
-                                        'Create',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
+                                  final SharedPreferences prefs = await _prefs;
+                                  prefs.remove('inspiration_saved_route');
+                                },
+                                child: Container(
+                                  // height: AppDimensions.height10(context) * 2.2,
+                                  // width: AppDimensions.height10(context) * 6.1,
+                                  // margin: EdgeInsets.only(
+                                  //     right: AppDimensions.height10(context) *
+                                  //         1.5),
+                                  child: bt_enable == false
+                                      ? Center(
+                                          child: SpinKitThreeBounce(
+                                            color: const Color(0xff007AFF),
+                                            // delay: Duration(milliseconds: 0),
+                                            size: AppDimensions.height10(
                                                     context) *
-                                                1.5,
-                                            fontWeight: FontWeight.w400,
-                                            color: title.text
-                                                        .toString()
-                                                        .isNotEmpty &&
-                                                    statement.text
-                                                        .toString()
-                                                        .isNotEmpty
-                                                ? const Color(0xff007AFF)
-                                                : const Color(0xff007AFF)
-                                                    .withOpacity(0.5)),
-                                      ),
-                                    ),
-                            ),
-                          );
-                        });
-                  })
-            ]),
+                                                1.6,
+                                          ),
+                                        )
+                                      : Center(
+                                          child: Text(
+                                            'Create',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.6,
+                                                fontWeight: FontWeight.w400,
+                                                color: title.text
+                                                            .toString()
+                                                            .isNotEmpty &&
+                                                        statement.text
+                                                            .toString()
+                                                            .isNotEmpty
+                                                    ? const Color(0xff007AFF)
+                                                    : const Color(0xff007AFF)
+                                                        .withOpacity(0.5)),
+                                          ),
+                                        ),
+                                ),
+                              );
+                            });
+                      })
+                ]),
           ),
         ),
         body: Container(

@@ -25,30 +25,35 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class practiceMenu extends StatefulWidget {
   final bool goal_eval;
-  final String goalName;
-  final String pracName;
-  final String pracColor;
-  final String color;
-  const practiceMenu(
-      {super.key,
-      required this.goal_eval,
-      required this.goalName,
-      required this.pracName,
-      required this.pracColor,
-      required this.color});
+
+  const practiceMenu({
+    super.key,
+    required this.goal_eval,
+  });
 
   @override
   State<practiceMenu> createState() => _practiceMenuState();
 }
 
 class _practiceMenuState extends State<practiceMenu> {
-  String goalName = "";
-  String identity = "";
-  String pracName = "";
+  String goalName = '';
+  String pracName = '';
+  String identity = '';
+
   var pracDetails;
   bool Loader = true;
   var pracColor;
   var color;
+  void getRecorDetails() async {
+    final SharedPreferences prefs = await _prefs;
+
+    setState(() {
+      goalName = prefs.getString('dash_goalName')!;
+      pracColor = prefs.getString('dash_pracColor')!;
+      pracName = prefs.getString('dash_pracName')!;
+      color = prefs.getString('dash_goalName')!;
+    });
+  }
 
   // Future<Timer> loadData() async {
   //   return Timer(const Duration(seconds: 5), onDoneLoading);
@@ -91,14 +96,12 @@ class _practiceMenuState extends State<practiceMenu> {
             "---------------------------------PRACTICE RESPONSE===>$response");
         setState(() {
           pracDetails = response;
-          pracName =
-              response["name"] == null ? widget.pracName : response["name"];
+          pracName = response["name"] ?? pracName;
 
-          pracColor =
-              response["color"] == null ? widget.pracColor : response["color"];
+          pracColor = response["color"] ?? pracColor;
         });
         loadData();
-        print(pracName + pracColor);
+
         AdminGoal.getUserGoalById(response['userGoalId']).then(
           (value) {
             if (value.length != 0) {
@@ -235,7 +238,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                 width: AppDimensions.height10(context) * 30,
                                 child: Center(
                                   child: Text(
-                                    widget.goalName,
+                                    goalName,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
@@ -271,20 +274,17 @@ class _practiceMenuState extends State<practiceMenu> {
                                           shape: BoxShape.circle,
                                           // color: Colors.amber,
                                           image: DecorationImage(
-                                              image: AssetImage(widget.color ==
-                                                      '1'
+                                              image: AssetImage(color == '1'
                                                   ? "assets/images/red_gradient.webp"
-                                                  : widget.color == '2'
+                                                  : color == '2'
                                                       ? 'assets/images/orange_moon.webp'
-                                                      : widget.color == '3'
+                                                      : color == '3'
                                                           ? "assets/images/lightGrey_gradient.webp"
-                                                          : widget.color == '4'
+                                                          : color == '4'
                                                               ? "assets/images/lightBlue_gradient.webp"
-                                                              : widget.color ==
-                                                                      '5'
+                                                              : color == '5'
                                                                   ? "assets/images/medBlue_gradient.webp"
-                                                                  : widget.color ==
-                                                                          '6'
+                                                                  : color == '6'
                                                                       ? "assets/images/Blue_gradient.webp"
                                                                       : 'assets/images/orange_moon.webp'),
                                               fit: BoxFit.contain),
@@ -302,19 +302,16 @@ class _practiceMenuState extends State<practiceMenu> {
                                         decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
-                                                image: AssetImage(widget
-                                                            .pracColor ==
+                                                image: AssetImage(pracColor ==
                                                         '1'
                                                     ? "assets/images/Ellipse orange_wb.webp"
-                                                    : widget.pracColor == '2'
+                                                    : pracColor == '2'
                                                         ? 'assets/images/Ellipse 158_wb.webp'
-                                                        : widget.pracColor ==
-                                                                '3'
+                                                        : pracColor == '3'
                                                             ? "assets/images/Ellipse 157_wb.webp"
-                                                            : widget.pracColor ==
-                                                                    '4'
+                                                            : pracColor == '4'
                                                                 ? "assets/images/Ellipse light-blue_wb.webp"
-                                                                : widget.pracColor ==
+                                                                : pracColor ==
                                                                         '5'
                                                                     ? "assets/images/Ellipse blue_wb.webp"
                                                                     : 'assets/images/Ellipse 158_wb.webp'),
@@ -329,9 +326,9 @@ class _practiceMenuState extends State<practiceMenu> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.4,
-                                        child: widget.pracName.length > 20
+                                        child: pracName.length > 20
                                             ? Text(
-                                                widget.pracName,
+                                                pracName,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
                                                     color:
@@ -344,7 +341,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                         FontWeight.w600),
                                               )
                                             : Text(
-                                                widget.pracName,
+                                                pracName,
                                                 style: TextStyle(
                                                     color:
                                                         const Color(0xff156F6D),
@@ -377,14 +374,11 @@ class _practiceMenuState extends State<practiceMenu> {
                                       context,
                                       FadePageRoute2(true,
                                           exitPage: practiceMenu(
-                                              goal_eval: false,
-                                              goalName: widget.goalName,
-                                              pracName: widget.pracName,
-                                              pracColor: widget.pracColor,
-                                              color: widget.color),
+                                            goal_eval: false,
+                                          ),
                                           enterPage: emotions(
                                             summary: false,
-                                            pracName: widget.pracName,
+                                            pracName: pracName,
                                             record: false,
                                             selected: 0,
                                           )));
@@ -618,9 +612,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                               Navigator.push(
                                                   context,
                                                   FadePageRoute(
-                                                      page: const prac_score(
-                                                    saved: false,
-                                                  )));
+                                                      page: prac_score()));
                                             } else {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(const SnackBar(
@@ -675,7 +667,10 @@ class _practiceMenuState extends State<practiceMenu> {
                                     Navigator.push(
                                         context,
                                         FadePageRoute(
-                                            page: const practice_progress()));
+                                            page: const practice_progress(
+                                          days: 30,
+                                          route: 'pracice_menu',
+                                        )));
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         const SnackBar(

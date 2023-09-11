@@ -71,7 +71,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
         print(
             "===================EVALUATION Length${response['goalEvaluations'].length}");
         print("ACTIVE DAY");
-        print(response["goalEvaluations"][0]['activedate']);
+        print(response["goalEvaluations"]
+            [response["goalEvaluations"].length - 1]['activedate']);
         // for (int i = 0; i <= response['goalEvaluations'].length; i++) {
         //   print(response["goalEvaluations"][i]['activedate'].toString());
         //   _dates.add(" ${response["goalEvaluations"][i]['activedate']}");
@@ -133,7 +134,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
                 page: const goal_menu_inactive(
               goal_evaluation: false,
               isActive: false,
-              premium: true,
             )));
         return Future.value(true);
       },
@@ -151,9 +151,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                         context,
                         FadePageRoute(
                             page: const goal_menu_inactive(
-                                isActive: true,
-                                goal_evaluation: true,
-                                premium: true)));
+                          isActive: true,
+                          goal_evaluation: true,
+                        )));
                   },
                   icon: Image.asset(
                     'assets/images/Back.webp',
@@ -215,6 +215,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                         child: Center(
                           child: Text(
                             'For ‘${goalDetails['name']}’',
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 2.0,
                                 fontWeight: FontWeight.w600,
@@ -293,13 +294,31 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                 ),
                                                 GestureDetector(
                                                   onTap: () {
+                                                    int select = 0;
                                                     setState(() {
                                                       activity_duration =
                                                           _dates[_selectedIndex]
                                                               .substring(0, 22);
-                                                      selectedEval =
-                                                          _selectedIndex;
+                                                      select = _selectedIndex;
                                                     });
+                                                    if (select < 0 ||
+                                                        select >=
+                                                            _dates.length) {
+                                                      setState(() {
+                                                        selectedEval =
+                                                            _selectedIndex;
+                                                      });
+                                                    } else {
+                                                      int mirrorIndex =
+                                                          _dates.length -
+                                                              1 -
+                                                              _selectedIndex;
+                                                      setState(() {
+                                                        selectedEval =
+                                                            mirrorIndex;
+                                                      });
+                                                      print(mirrorIndex);
+                                                    }
                                                     Navigator.of(context).pop(
                                                         _dates[_selectedIndex]);
                                                   },
@@ -395,11 +414,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         // width: AppDimensions.height10(context) * 30.3,
                                         height: goalDetails['goalEvaluations']
                                                             [selectedEval]
-                                                        ['goalLevel'] ==
+                                                        ['totalPoint'] ==
                                                     null ||
                                                 goalDetails['goalEvaluations']
                                                             [selectedEval]
-                                                        ['goalLevel'] ==
+                                                        ['totalPoint'] ==
                                                     0
                                             ? AppDimensions.height10(context) *
                                                 4.4
@@ -420,12 +439,14 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                               child: Text(
                                                 goalDetails['goalEvaluations'][
                                                                     selectedEval]
-                                                                ['goalLevel'] ==
+                                                                [
+                                                                'totalPoint'] ==
                                                             null ||
                                                         goalDetails['goalEvaluations']
                                                                     [
                                                                     selectedEval]
-                                                                ['goalLevel'] ==
+                                                                [
+                                                                'totalPoint'] ==
                                                             0
                                                     ? 'From $activity_duration\nMissing'
                                                     : 'From $activity_duration',
@@ -441,11 +462,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                         0.12,
                                                     color: goalDetails['goalEvaluations']
                                                                         [selectedEval][
-                                                                    'goalLevel'] ==
+                                                                    'totalPoint'] ==
                                                                 null ||
                                                             goalDetails['goalEvaluations']
                                                                         [selectedEval]
-                                                                    ['goalLevel'] ==
+                                                                    ['totalPoint'] ==
                                                                 0
                                                         ? Colors.red
                                                         : const Color(0xFFFFFFFF)),
@@ -475,11 +496,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                   23.7,
                                           height: goalDetails['goalEvaluations']
                                                               [selectedEval]
-                                                          ['goalLevel'] ==
+                                                          ['totalPoint'] ==
                                                       null ||
                                                   goalDetails['goalEvaluations']
                                                               [selectedEval]
-                                                          ['goalLevel'] ==
+                                                          ['totalPoint'] ==
                                                       0
                                               ? AppDimensions.height10(context) *
                                                   5.4
@@ -492,11 +513,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                           child: Text(
                                             goalDetails['goalEvaluations']
                                                                 [selectedEval]
-                                                            ['goalLevel'] ==
+                                                            ['totalPoint'] ==
                                                         null ||
                                                     goalDetails['goalEvaluations']
                                                                 [selectedEval]
-                                                            ['goalLevel'] ==
+                                                            ['totalPoint'] ==
                                                         0
                                                 ? 'Evaluate how close you\nwere to living your goal'
                                                 : 'This is how close you were\nto living your goal and\ndesired identity.',
@@ -551,12 +572,30 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                           image: AssetImage(widget.premium ==
                                                   false
                                               ? "assets/images/Nebula Pie.webp"
-                                              : goalDetails['goalLevel'] == 2
-                                                  ? 'assets/images/Nebula pie 2.webp'
-                                                  : goalDetails['goalLevel'] ==
-                                                          3
-                                                      ? 'assets/images/Nebula pie 3.webp'
-                                                      : "assets/images/Nebula Pie.webp"),
+                                              : goalDetails['goalEvaluations']
+                                                              [selectedEval]
+                                                          ['totalPoint'] ==
+                                                      1
+                                                  ? 'assets/images/Nebula pie 1.webp'
+                                                  : goalDetails['goalEvaluations']
+                                                                  [selectedEval]
+                                                              ['totalPoint'] ==
+                                                          2
+                                                      ? 'assets/images/Nebula pie 2.webp'
+                                                      : goalDetails['goalEvaluations']
+                                                                      [selectedEval]
+                                                                  [
+                                                                  'totalPoint'] ==
+                                                              3
+                                                          ? 'assets/images/Nebula pie 3.webp'
+                                                          : goalDetails['goalEvaluations']
+                                                                          [selectedEval]
+                                                                      ['totalPoint'] ==
+                                                                  4
+                                                              ? 'assets/images/Nebula pie 4.webp'
+                                                              : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 5
+                                                                  ? 'assets/images/Nebula pie 5.webp'
+                                                                  : "assets/images/Nebula Pie.webp"),
                                         ),
                                         // color: Colors.amber,
                                       ),
@@ -610,13 +649,13 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                                         [
                                                                         selectedEval]
                                                                     [
-                                                                    'goalLevel'] ==
+                                                                    'totalPoint'] ==
                                                                 0 ||
                                                             goalDetails['goalEvaluations']
                                                                         [
                                                                         selectedEval]
                                                                     [
-                                                                    'goalLevel'] ==
+                                                                    'totalPoint'] ==
                                                                 null ||
                                                             widget.premium ==
                                                                 false
@@ -624,7 +663,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                         : goalDetails['goalEvaluations']
                                                                     [
                                                                     selectedEval]
-                                                                ['goalLevel']
+                                                                ['totalPoint']
                                                             .toString(),
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
@@ -681,11 +720,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         children: [
                                           goalDetails['goalEvaluations']
                                                               [selectedEval]
-                                                          ['goalLevel'] ==
+                                                          ['totalPoint'] ==
                                                       null ||
                                                   goalDetails['goalEvaluations']
                                                               [selectedEval]
-                                                          ['goalLevel'] ==
+                                                          ['totalPoint'] ==
                                                       0
                                               ? Container()
                                               : Align(
@@ -723,34 +762,34 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                                       [
                                                                       selectedEval]
                                                                   [
-                                                                  'goalLevel'] ==
+                                                                  'totalPoint'] ==
                                                               null ||
                                                           goalDetails['goalEvaluations']
                                                                       [
                                                                       selectedEval]
                                                                   [
-                                                                  'goalLevel'] ==
+                                                                  'totalPoint'] ==
                                                               0 ||
                                                           widget.premium ==
                                                               false
                                                       ? 'Score needed!'
                                                       : goalDetails[
-                                                                  'goalLevel'] ==
+                                                                  'totalPoint'] ==
                                                               2
                                                           ? "I'm making small steps\nforward"
                                                           : goalDetails[
-                                                                      'goalLevel'] ==
+                                                                      'totalPoint'] ==
                                                                   1
                                                               ? 'I’m not making any progress'
                                                               : goalDetails[
-                                                                          'goalLevel'] ==
+                                                                          'totalPoint'] ==
                                                                       3
                                                                   ? 'I’m making considerable steps forward'
                                                                   : goalDetails[
-                                                                              'goalLevel'] ==
+                                                                              'totalPoint'] ==
                                                                           4
                                                                       ? "I’m almost there"
-                                                                      : goalDetails['goalLevel'] ==
+                                                                      : goalDetails['totalPoint'] ==
                                                                               5
                                                                           ? "I’m definitely living my why"
                                                                           : "Score needed",
@@ -826,8 +865,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const your_why(
+                                          page: your_why(
                                         destination: 'reason',
+                                        index: selectedEval,
                                       )));
                                 }
                               },
@@ -899,8 +939,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const your_why(
+                                          page: your_why(
                                         destination: 'identityStatement',
+                                        index: selectedEval,
                                       )));
                                 }
                               },
@@ -961,8 +1002,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const your_why(
+                                          page: your_why(
                                         destination: 'visualizingYourSelf',
+                                        index: selectedEval,
                                       )));
                                 }
                               },
@@ -1022,8 +1064,12 @@ class _new_progress_scoreState extends State<new_progress_score> {
                             AnimatedScaleButton(
                               onTap: () {
                                 if (widget.premium == true) {
-                                  Navigator.push(context,
-                                      FadePageRoute(page: const your_impact()));
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: your_impact(
+                                        index: selectedEval,
+                                      )));
                                 }
                               },
                               child: goal_criteria(

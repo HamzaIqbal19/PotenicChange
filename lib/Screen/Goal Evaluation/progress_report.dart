@@ -78,13 +78,28 @@ class _progress_reportState extends State<progress_report> {
         });
         loadData();
       } else if (response.length != 0 && response != false) {
-        print('===============================');
         setState(() {
           report = response['report'];
         });
 
         loadData();
+        print(response['report']['practiceProgress']);
+        print('==================EVALUATION=============');
 
+        print(report['practice']['practiceEvaluations']);
+        int count = 0;
+        // for (int i = 0;
+        //     i < response['report']['practiceProgress'].length;
+        //     i++) {
+        //   if (response['report']['practiceProgress'][i].toString()
+        //       .contains('complete')) {
+        //     count = count + 1;
+        //   }
+        //   print(count);
+        // }
+
+        // print(
+        //     "Report days ${20 - response['report']['practiceProgress'].containsValue('completed').toString().length}");
         response['report']["howPracticeGoing"].forEach((date, value) {
           if (value is int) {
             if (value == 1) {
@@ -120,6 +135,9 @@ class _progress_reportState extends State<progress_report> {
         practiceProgress = json.decode(response['report']['practiceProgress']);
 
         print('Report===============================');
+        print(practiceProgress);
+        print(
+            "Report days ${20 - response['report']['practiceProgress'].containsValue('completed').toString().length}");
 
         // colorsAdd(response['report']['howPracticeGoing']);
 
@@ -127,16 +145,9 @@ class _progress_reportState extends State<progress_report> {
 
         print('Report==============================$outerColor');
         print(report);
-
-        // convertToFormattedProgress();
-
         print('Done===============================');
       }
-      //print(response);
     }).catchError((error) {
-      // setState(() {
-      //   noData = true;
-      // });
       loadData();
     }).whenComplete(() => null);
   }
@@ -321,7 +332,7 @@ class _progress_reportState extends State<progress_report> {
                         //we will give duration of 20 days
                         noData == true
                             ? 'No data found'
-                            : 'from ${report["practice"]["lastReportSentDate"].toString().substring(0, 10)} to ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)}',
+                            : 'from ${report["startDate"]} to ${report["endDate"]}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
@@ -345,133 +356,141 @@ class _progress_reportState extends State<progress_report> {
                             color: const Color(0xFF437296)),
                       ),
                     ),
-                    SizedBox(
-                      width: AppDimensions.height10(context) * 29.0,
+                    Container(
+                      width: AppDimensions.height10(context) * 34.0,
                       height: AppDimensions.height10(context) * 11.2,
-                      child: Row(
-                        children: [
-                          Container(
-                            width: AppDimensions.height10(context) * 7.9,
-                            height: AppDimensions.height10(context) * 7.94,
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 0.7,
-                                left: AppDimensions.height10(context) * 0.5),
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(report['practice']
-                                                ['userGoal']['color'] ==
-                                            "1"
-                                        ? "assets/images/red_gradient.webp"
-                                        : report['practice']['userGoal']
-                                                    ['color'] ==
-                                                "2"
-                                            ? 'assets/images/orange_moon.webp'
-                                            : report['practice']['userGoal']
-                                                        ['color'] ==
-                                                    "3"
-                                                ? "assets/images/lightGrey_gradient.webp"
-                                                : report['practice']['userGoal']
-                                                            ['color'] ==
-                                                        "4"
-                                                    ? "assets/images/lightBlue_gradient.webp"
-                                                    : report['practice']
-                                                                    ['userGoal']
-                                                                ['color'] ==
-                                                            "5"
-                                                        ? "assets/images/medBlue_gradient.webp"
-                                                        : report['practice']
-                                                                        ['userGoal']
-                                                                    ['color'] ==
-                                                                6
-                                                            ? "assets/images/Blue_gradient.webp"
-                                                            : 'assets/images/orange_moon.webp'))),
-                            child: Align(
-                              alignment: const Alignment(1, 1.1),
-                              child: Container(
-                                width: AppDimensions.height10(context) * 4.9,
-                                height: AppDimensions.height10(context) * 4.9,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      width:
-                                          AppDimensions.height10(context) * 0.2,
-                                      color: const Color(0xFFFFFFFF),
-                                    ),
-                                    image: DecorationImage(
-                                        image: AssetImage(report['practice']
-                                                    ['color'] ==
-                                                "1"
-                                            ? "assets/images/Ellipse orange_wb.webp"
-                                            : report['practice']['color'] == "2"
-                                                ? 'assets/images/Ellipse 158_wb.webp'
-                                                : report['practice']['color'] ==
-                                                        "3"
-                                                    ? "assets/images/Ellipse 157_wb.webp"
-                                                    : report['practice']
-                                                                ['color'] ==
-                                                            "4"
-                                                        ? "assets/images/Ellipse light-blue_wb.webp"
-                                                        : report['practice']
-                                                                    ['color'] ==
-                                                                "5"
-                                                            ? "assets/images/Ellipse blue_wb.webp"
-                                                            : 'assets/images/Ellipse 158_wb.webp'))),
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 1.5),
+                      child: Center(
+                        child: Row(
+                          children: [
+                            Container(
+                              width: AppDimensions.height10(context) * 7.9,
+                              height: AppDimensions.height10(context) * 7.94,
+                              margin: EdgeInsets.only(
+                                  right: AppDimensions.height10(context) * 0.7,
+                                  left: AppDimensions.height10(context) * 0.5),
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(report['practice']
+                                                  ['userGoal']['color'] ==
+                                              "1"
+                                          ? "assets/images/red_gradient.webp"
+                                          : report['practice']['userGoal']
+                                                      ['color'] ==
+                                                  "2"
+                                              ? 'assets/images/orange_moon.webp'
+                                              : report['practice']['userGoal']
+                                                          ['color'] ==
+                                                      "3"
+                                                  ? "assets/images/lightGrey_gradient.webp"
+                                                  : report['practice']['userGoal']
+                                                              ['color'] ==
+                                                          "4"
+                                                      ? "assets/images/lightBlue_gradient.webp"
+                                                      : report['practice']['userGoal']
+                                                                  ['color'] ==
+                                                              "5"
+                                                          ? "assets/images/medBlue_gradient.webp"
+                                                          : report['practice']
+                                                                          ['userGoal']
+                                                                      ['color'] ==
+                                                                  6
+                                                              ? "assets/images/Blue_gradient.webp"
+                                                              : 'assets/images/orange_moon.webp'))),
+                              child: Align(
+                                alignment: const Alignment(1, 1.1),
+                                child: Container(
+                                  width: AppDimensions.height10(context) * 4.9,
+                                  height: AppDimensions.height10(context) * 4.9,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        width: AppDimensions.height10(context) *
+                                            0.2,
+                                        color: const Color(0xFFFFFFFF),
+                                      ),
+                                      image: DecorationImage(
+                                          image: AssetImage(report['practice']
+                                                      ['color'] ==
+                                                  "1"
+                                              ? "assets/images/Ellipse orange_wb.webp"
+                                              : report['practice']['color'] ==
+                                                      "2"
+                                                  ? 'assets/images/Ellipse 158_wb.webp'
+                                                  : report['practice']
+                                                              ['color'] ==
+                                                          "3"
+                                                      ? "assets/images/Ellipse 157_wb.webp"
+                                                      : report['practice']
+                                                                  ['color'] ==
+                                                              "4"
+                                                          ? "assets/images/Ellipse light-blue_wb.webp"
+                                                          : report['practice'][
+                                                                      'color'] ==
+                                                                  "5"
+                                                              ? "assets/images/Ellipse blue_wb.webp"
+                                                              : 'assets/images/Ellipse 158_wb.webp'))),
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            width: AppDimensions.height10(context) * 17.9,
-                            height: AppDimensions.height10(context) * 5.9,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 0.4),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  // width: AppDimensions.height10(context) * 17.9,
-                                  height: AppDimensions.height10(context) * 3.0,
-                                  margin: EdgeInsets.only(
-                                    bottom:
-                                        AppDimensions.height10(context) * 0.1,
+                            Container(
+                              width: AppDimensions.height10(context) * 23.9,
+                              height: AppDimensions.height10(context) * 5.9,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 0.4,
+                                  top: AppDimensions.height10(context) * 0.8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height:
+                                        AppDimensions.height10(context) * 3.0,
+                                    margin: EdgeInsets.only(
+                                      bottom:
+                                          AppDimensions.height10(context) * 0.1,
+                                    ),
+                                    child: Text(
+                                      noData == true
+                                          ? 'No data found'
+                                          : report['practice']["userGoal"]
+                                              ["name"],
+                                      textAlign: TextAlign.start,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  2.0,
+                                          height: 1.2,
+                                          fontWeight: FontWeight.w600,
+                                          color: const Color(0xFF437296)),
+                                    ),
                                   ),
-                                  child: Text(
-                                    noData == true
-                                        ? 'No data found'
-                                        : report['practice']["userGoal"]
-                                            ["name"],
-                                    textAlign: TextAlign.start,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                        height: 1.2,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xFF437296)),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: AppDimensions.height10(context) * 27.9,
-                                  height: AppDimensions.height10(context) * 2.7,
-                                  child: Text(
-                                    noData == true
-                                        ? 'No data found'
-                                        : report['practice']["name"],
-                                    textAlign: TextAlign.start,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
-                                        height: 1.2,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xFF156F6D)),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 27.9,
+                                    height:
+                                        AppDimensions.height10(context) * 2.7,
+                                    child: Text(
+                                      noData == true
+                                          ? 'No data found'
+                                          : report['practice']["name"],
+                                      textAlign: TextAlign.start,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          height: 1.2,
+                                          fontWeight: FontWeight.w600,
+                                          color: const Color(0xFF156F6D)),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     Container(
@@ -634,7 +653,7 @@ class _progress_reportState extends State<progress_report> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 38.5,
+                      width: AppDimensions.height10(context) * 40.5,
                       height: AppDimensions.height10(context) * 84.569,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 3.7),
@@ -651,108 +670,88 @@ class _progress_reportState extends State<progress_report> {
                             size: AppDimensions.height10(context) * 24.0,
                             outerCircleContainers: noData == true
                                 ? []
-                                : generateCircleEmptyContainers(
-                                        context,
-                                        20 -
-                                            practiceProgress
-                                                .containsValue('completed')
-                                                .toString()
-                                                .length) +
-                                    generateCircleContainers(
-                                        context,
-                                        practiceProgress
-                                            .containsValue('missed')
-                                            .toString()
-                                            .length),
+                                : generateCircleEmptyContainers(context, 0) +
+                                    generateCircleContainers(context, 20),
                             centerContainer: Container(
-                              height: AppDimensions.height10(context) * 18.6,
-                              width: AppDimensions.height10(context) * 9.3,
+                              height: AppDimensions.height10(context) * 20.6,
+                              width: AppDimensions.height10(context) * 14.9,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 3.0),
+                                  left: AppDimensions.height10(context) * 2.0),
 
                               // color: Colors.amber,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 9.3,
-                                    height:
-                                        AppDimensions.height10(context) * 7.7,
-                                    child: Row(
-                                      children: [
-                                        SizedBox(
-                                          // margin: EdgeInsets.only(left: AppDimensions.height10(context)*1.0),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  7.7,
-                                          child: Text(
-                                            noData == true
-                                                ? '-'
-                                                : '${practiceProgress.containsValue('completed').toString().length}',
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        7.4,
-                                                color: const Color(0xFF156F6D),
-                                                fontWeight: FontWeight.w300),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10(context) *
+                                          13.3,
+                                      height:
+                                          AppDimensions.height10(context) * 7.7,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            // margin: EdgeInsets.only(left: AppDimensions.height10(context)*1.0),
+                                            // height:
+                                            //     AppDimensions.height10(context) *
+                                            //         7.7,
+                                            child: Text(
+                                              noData == true ? '-' : '20',
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          7.4,
+                                                  color:
+                                                      const Color(0xFF156F6D),
+                                                  fontWeight: FontWeight.w300),
+                                            ),
                                           ),
-                                        ),
-                                        Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  7.7,
-                                          alignment: Alignment.bottomCenter,
-                                          child: Text(
-                                            '/20',
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.4,
-                                                color: const Color(0xFF646464),
-                                                fontWeight: FontWeight.w300),
-                                          ),
-                                        )
-                                      ],
+                                          Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                7.7,
+                                            alignment: Alignment.bottomCenter,
+                                            child: Text(
+                                              '/20',
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.4,
+                                                  color:
+                                                      const Color(0xFF646464),
+                                                  fontWeight: FontWeight.w300),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 9.3,
-                                    height:
-                                        AppDimensions.height10(context) * 2.3,
-                                    child: Text(
-                                      'Active days',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.8,
-                                          color: const Color(0xFF156F6D),
-                                          fontWeight: FontWeight.w500),
+                                    Container(
+                                      height:
+                                          AppDimensions.height10(context) * 4.6,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              0.5),
+                                      child: Text(
+                                        'Active days\ncompleted!',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                            color: const Color(0xFF156F6D),
+                                            fontWeight: FontWeight.w500),
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 9.3,
-                                    height:
-                                        AppDimensions.height10(context) * 2.3,
-                                    child: Text(
-                                      'completed!',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.8,
-                                          color: const Color(0xFF156F6D),
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  )
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             height: AppDimensions.height10(context) * 8.0,
                             width: AppDimensions.height10(context) * 23,
                             child: Center(
@@ -1453,12 +1452,8 @@ class _progress_reportState extends State<progress_report> {
                             AnimatedScaleButton(
                               onTap: () {
                                 if (noData != true) {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const prac_score(
-                                        saved: false,
-                                      )));
+                                  Navigator.push(context,
+                                      FadePageRoute(page: prac_score()));
                                 }
                               },
                               child: button_feilds(
@@ -1469,8 +1464,20 @@ class _progress_reportState extends State<progress_report> {
                                 text_color_2: 0xff8EA1B1,
                                 feild_text_3: noData == true
                                     ? '-'
-                                    : report['practice']["practiceLevel"]
-                                        .toString(),
+                                    : report['practice']['practiceEvaluations'][
+                                                report['practice'][
+                                                            'practiceEvaluations']
+                                                        .length -
+                                                    1]['totalPoint'] !=
+                                            null
+                                        ? report['practice']
+                                                    ['practiceEvaluations'][
+                                                report['practice']
+                                                            ['practiceEvaluations']
+                                                        .length -
+                                                    1]['totalPoint']
+                                            .toString()
+                                        : '-',
                                 feild_text_4: '/5)',
                               ),
                             ),

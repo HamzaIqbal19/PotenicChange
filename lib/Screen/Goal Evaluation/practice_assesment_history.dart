@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_score.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -48,6 +49,18 @@ class _practice_assesmentState extends State<practice_assesment> {
     }).whenComplete(() {});
   }
 
+  void fetchPracticeAssesment() async {
+    PracticeEvaluation.getPracriceAssesment().then((response) {
+      print('Practice assesment response $response');
+      if (response.length != 0) {
+        setState(() {
+          pracDetails = response['practiceEvaluations'];
+        });
+        loadData();
+      }
+    });
+  }
+
   Future<Timer> loadData() async {
     return Timer(const Duration(milliseconds: 1), onDoneLoading);
   }
@@ -61,7 +74,8 @@ class _practice_assesmentState extends State<practice_assesment> {
   @override
   void initState() {
     super.initState();
-    fetchGoalDetails();
+
+    fetchPracticeAssesment();
   }
 
   @override
@@ -237,7 +251,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                       children: [
                                                     const TextSpan(
                                                         text:
-                                                            'Next assessment is in'),
+                                                            'Next assessment is in '),
                                                     TextSpan(
                                                         text: pracDetails[index]
                                                                         [
@@ -260,21 +274,18 @@ class _practice_assesmentState extends State<practice_assesment> {
                                         Column(
                                           children: [
                                             AnimatedScaleButton(
-                                              onTap: () {
-                                                if (pracDetails[index]
-                                                        ['report'] ==
-                                                    true) {
-                                                  Navigator.push(
-                                                      context,
-                                                      FadePageRoute(
-                                                          page:
-                                                              const progress_report()));
-                                                } else {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(const SnackBar(
-                                                          content: Text(
-                                                              "Practice report is not active")));
-                                                }
+                                              onTap: () async {
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const progress_report()));
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                await prefs.setString(
+                                                    'lastReportDate',
+                                                    pracDetails[index]
+                                                        ['activeDate']);
                                               },
                                               child: Container(
                                                 margin: EdgeInsets.only(
@@ -282,11 +293,12 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                         AppDimensions.height10(
                                                                 context) *
                                                             1.2),
-                                                child: const button_feilds(
+                                                child: button_feilds(
                                                   feild_text: 'Progress report',
                                                   icon_viible: true,
                                                   text_color: 0xff646464,
-                                                  feild_text_2: ' DD/MMM/YY',
+                                                  feild_text_2:
+                                                      " ${pracDetails[index]['activeDate']}",
                                                   text_color_2: 0xff8EA1B1,
                                                   feild_text_3: '',
                                                   feild_text_4: '',
@@ -294,31 +306,26 @@ class _practice_assesmentState extends State<practice_assesment> {
                                               ),
                                             ),
                                             AnimatedScaleButton(
-                                              onTap: () {
-                                                if (pracDetails[index]
-                                                        ['report'] ==
-                                                    true) {
-                                                  Navigator.push(
-                                                      context,
-                                                      FadePageRoute(
-                                                          page:
-                                                              const prac_score(
-                                                        saved: false,
-                                                      )));
-                                                } else {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(const SnackBar(
-                                                          content: Text(
-                                                              "Practice score is not active")));
-                                                }
+                                              onTap: () async {
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page: prac_score()));
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                await prefs.setString(
+                                                    'lastReportDate',
+                                                    pracDetails[index]
+                                                        ['activeDate']);
                                               },
-                                              child: const button_feilds(
+                                              child: button_feilds(
                                                 feild_text: 'Evaluation level ',
                                                 icon_viible: true,
                                                 text_color: 0xff646464,
                                                 feild_text_2: '(',
                                                 text_color_2: 0xff8EA1B1,
-                                                feild_text_3: '2',
+                                                feild_text_3:
+                                                    "${pracDetails[index]['totalPoint']}",
                                                 feild_text_4: '/5)',
                                               ),
                                             )

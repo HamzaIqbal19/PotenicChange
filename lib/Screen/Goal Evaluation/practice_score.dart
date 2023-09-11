@@ -9,18 +9,13 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
 
 class prac_score extends StatefulWidget {
-  final bool saved;
-  const prac_score({
-    super.key,
-    required this.saved,
-  });
-
   @override
   State<prac_score> createState() => _prac_scoreState();
 }
@@ -32,7 +27,7 @@ class _prac_scoreState extends State<prac_score> {
   bool Loader = true;
   var pracDetails;
   var goalDetails;
-
+  bool saved = false;
   int selectedItemIndex = -1;
   int selectedItemIndex2 = -1;
   int selectedItemIndex3 = -1;
@@ -90,11 +85,13 @@ class _prac_scoreState extends State<prac_score> {
           pracDetails = response;
           pracId = response['id'];
         });
+
         getGoalDetails(pracDetails["userGoalId"]);
 
-        if (widget.saved == true) {
+        if (saved == true) {
           getPracticeEval();
         } else {
+          getPracticeEval();
           print("Unsaved");
         }
 
@@ -126,11 +123,26 @@ class _prac_scoreState extends State<prac_score> {
 
       if (response.length != 0) {
         setState(() {
-          selectedItemIndex = response['practiceEvaluation']['question1'] - 1;
-          selectedItemIndex2 = response['practiceEvaluation']['question2'] - 1;
-          selectedItemIndex3 = response['practiceEvaluation']['question3'] - 1;
-          selectedItemIndex4 = response['practiceEvaluation']['question4'] - 1;
-          level = response['practiceEvaluation']['totalPoint'].toString();
+          selectedItemIndex =
+              response['practiceEvaluation']['question1'] != null
+                  ? response['practiceEvaluation']['question1'] - 1
+                  : -1;
+          selectedItemIndex2 =
+              response['practiceEvaluation']['question2'] != null
+                  ? response['practiceEvaluation']['question2'] - 1
+                  : -1;
+          selectedItemIndex3 =
+              response['practiceEvaluation']['question3'] != null
+                  ? response['practiceEvaluation']['question3'] - 1
+                  : -1;
+          selectedItemIndex4 =
+              response['practiceEvaluation']['question4'] != null
+                  ? response['practiceEvaluation']['question4'] - 1
+                  : -1;
+          level =
+              response['practiceEvaluation']['totalPoint'].toString() == 'null'
+                  ? '-'
+                  : response['practiceEvaluation']['totalPoint'].toString();
         });
       }
       print(
@@ -158,19 +170,7 @@ class _prac_scoreState extends State<prac_score> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
-                  if (widget.saved == true) {
-                    Navigator.push(
-                        context,
-                        FadePageRoute(
-                            page: const view_goals(
-                          missed: false,
-                          name: '',
-                          update: false,
-                          helpfulTips: false,
-                        )));
-                  } else {
-                    Navigator.pop(context);
-                  }
+                  Navigator.pop(context);
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
@@ -326,15 +326,7 @@ class _prac_scoreState extends State<prac_score> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              widget.saved == true
-                                                  ? level
-                                                  : pracDetails[
-                                                              "practiceLevel"] !=
-                                                          null
-                                                      ? pracDetails[
-                                                              "practiceLevel"]
-                                                          .toString()
-                                                      : '-',
+                                              level,
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   fontSize:
@@ -458,10 +450,12 @@ class _prac_scoreState extends State<prac_score> {
                                         AnimatedScaleButton(
                                           onTap: () {
                                             setState(() {
-                                              selectedItemIndex =
-                                                  selectedItemIndex == index1
-                                                      ? -1
-                                                      : index1;
+                                              if (saved != true) {
+                                                selectedItemIndex =
+                                                    selectedItemIndex == index1
+                                                        ? -1
+                                                        : index1;
+                                              }
                                             });
                                           },
                                           child: Container(
@@ -700,12 +694,14 @@ class _prac_scoreState extends State<prac_score> {
                                       children: [
                                         AnimatedScaleButton(
                                           onTap: () {
-                                            setState(() {
-                                              selectedItemIndex2 =
-                                                  selectedItemIndex2 == index1
-                                                      ? -1
-                                                      : index1;
-                                            });
+                                            if (saved != true) {
+                                              setState(() {
+                                                selectedItemIndex2 =
+                                                    selectedItemIndex2 == index1
+                                                        ? -1
+                                                        : index1;
+                                              });
+                                            }
                                           },
                                           child: Container(
                                             width: AppDimensions.height10(
@@ -924,12 +920,14 @@ class _prac_scoreState extends State<prac_score> {
                                       children: [
                                         AnimatedScaleButton(
                                           onTap: () {
-                                            setState(() {
-                                              selectedItemIndex3 =
-                                                  selectedItemIndex3 == index1
-                                                      ? -1
-                                                      : index1;
-                                            });
+                                            if (saved != true) {
+                                              setState(() {
+                                                selectedItemIndex3 =
+                                                    selectedItemIndex3 == index1
+                                                        ? -1
+                                                        : index1;
+                                              });
+                                            }
                                           },
                                           child: Container(
                                             width: AppDimensions.height10(
@@ -1148,12 +1146,14 @@ class _prac_scoreState extends State<prac_score> {
                                       children: [
                                         AnimatedScaleButton(
                                           onTap: () {
-                                            setState(() {
-                                              selectedItemIndex4 =
-                                                  selectedItemIndex4 == index1
-                                                      ? -1
-                                                      : index1;
-                                            });
+                                            if (saved != true) {
+                                              setState(() {
+                                                selectedItemIndex4 =
+                                                    selectedItemIndex4 == index1
+                                                        ? -1
+                                                        : index1;
+                                              });
+                                            }
                                           },
                                           child: Container(
                                             width: AppDimensions.height10(
@@ -1303,139 +1303,22 @@ class _prac_scoreState extends State<prac_score> {
                                       ],
                                     );
                                   })),
-                          widget.saved
+                          saved
                               ? Container(
-                                  width:
-                                      AppDimensions.height10(context) * 38.259,
-                                  height:
-                                      AppDimensions.height10(context) * 9.707,
                                   margin: EdgeInsets.only(
-                                      top:
-                                          AppDimensions.height10(context) * 9.9,
                                       bottom: AppDimensions.height10(context) *
-                                          2.193),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) *
-                                              2.0),
-                                      gradient: const LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Color(0xFFD4B7B9),
-                                            Color(0xFF91698C)
-                                          ])),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                1.261),
-                                        width: AppDimensions.height10(context) *
-                                            4.437,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                4.437,
-                                        decoration: const BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/images/circle_tick.webp'))),
-                                      ),
-                                      Container(
-                                        width: AppDimensions.height10(context) *
-                                            10.8,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                3.673,
-                                        margin: EdgeInsets.only(
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                1.232),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              //  width: AppDimensions.height10(context) * 4.6,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  1.4,
-                                              //   color: Colors.amber,
-                                              child: Text(
-                                                'Changes saved',
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.3,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xFFFFFFFF)),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              // width: AppDimensions.height10(context) * 6.9,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.2,
-                                              child: Text(
-                                                'Goal Criteria',
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.8,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xFFFFFFFF)),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      AnimatedScaleButton(
-                                        onTap: () {
-                                          Navigator.pop(context);
+                                          3.6),
+                                  child: Center(
+                                    child: updateBox(
+                                        headText: "Changes saved",
+                                        bodyText: 'Goal Criteria',
+                                        onTap1: () {
+                                          setState(() {
+                                            saved = false;
+                                          });
                                         },
-                                        child: Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  8.1,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  6.0,
-                                          margin: EdgeInsets.only(
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  11.2),
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: const Color(0xFFFFFFFF),
-                                                width: 1),
-                                            borderRadius: BorderRadius.circular(
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    2.0),
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              'Undo',
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.8,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      const Color(0xFFFFFFFF)),
-                                            ),
-                                          ),
-                                        ),
-                                      )
-                                    ],
+                                        functionText: 'Undo',
+                                        edit: false),
                                   ),
                                 )
                               : Container(
@@ -1696,11 +1579,16 @@ class _prac_scoreState extends State<prac_score> {
                                                                         onPressed:
                                                                             () {
                                                                           PracticeEvaluation()
-                                                                              .addPracticeEvaluation(selectedItemIndex + 1, selectedItemIndex2 + 1, selectedItemIndex3 + 1, selectedItemIndex4 + 1, pracId)
+                                                                              .updatePracticeEvaluation(selectedItemIndex + 1, selectedItemIndex2 + 1, selectedItemIndex3 + 1, selectedItemIndex4 + 1)
                                                                               .then((response) {
-                                                                            if (response.length !=
-                                                                                0) {
-                                                                              Navigator.push(context, FadePageRoute(page: const prac_score(saved: true)));
+                                                                            if (response ==
+                                                                                true) {
+                                                                              Navigator.pop(context);
+                                                                              setState(() {
+                                                                                saved = true;
+                                                                                level = "${((selectedItemIndex + selectedItemIndex2 + selectedItemIndex3 + selectedItemIndex4 + 4) / 4).round()}";
+                                                                              });
+
                                                                               print("Practice evaluation added");
                                                                             }
                                                                           });

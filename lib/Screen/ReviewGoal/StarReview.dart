@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReviewWhy.dart';
@@ -60,6 +61,7 @@ class _StarReviewState extends State<StarReview> {
     _focusNode = FocusNode()..addListener(_onFocus);
     super.initState();
     _fetchGoalNames();
+    print('======>Route<${widget.route}');
   }
 
   void _onFocus() {
@@ -125,7 +127,6 @@ class _StarReviewState extends State<StarReview> {
                   page: const goal_menu_inactive(
                 goal_evaluation: true,
                 isActive: true,
-                premium: true,
               )));
         } else if (widget.route == '') {
           Navigator.push(
@@ -185,7 +186,6 @@ class _StarReviewState extends State<StarReview> {
                                 page: const goal_menu_inactive(
                               goal_evaluation: true,
                               isActive: true,
-                              premium: true,
                             )));
                       } else if (widget.route == 'add_your_practice') {
                         Navigator.push(
@@ -1718,7 +1718,9 @@ class _StarReviewState extends State<StarReview> {
                                                     if (route ==
                                                             'view_all_goals' ||
                                                         widget.route ==
-                                                            'menu') {
+                                                            'menu' ||
+                                                        widget.route ==
+                                                            'add_your_practice') {
                                                       Navigator.pushReplacement(
                                                           context,
                                                           FadePageRoute(
@@ -1728,9 +1730,10 @@ class _StarReviewState extends State<StarReview> {
                                                       Navigator.pushReplacement(
                                                           context,
                                                           FadePageRoute(
-                                                              page: const HomeScreen(
-                                                                  login:
-                                                                      true)));
+                                                              page:
+                                                                  const HomeScreen(
+                                                            login: true,
+                                                          )));
                                                     }
                                                   } else {
                                                     print(

@@ -516,9 +516,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                           Navigator.push(
                                               context,
                                               FadePageRoute(
-                                                  page: const prac_score(
-                                                saved: false,
-                                              )));
+                                                  page: prac_score()));
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(const SnackBar(
@@ -571,7 +569,10 @@ class _missed_MenuState extends State<missed_Menu> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: const practice_progress()));
+                                        page: const practice_progress(
+                                      days: 30,
+                                      route: 'pracice_menu_missed',
+                                    )));
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(

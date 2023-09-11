@@ -22,12 +22,10 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 class goal_menu_inactive extends StatefulWidget {
   final bool isActive;
   final bool goal_evaluation;
-  final bool premium;
   const goal_menu_inactive({
     super.key,
     required this.isActive,
     required this.goal_evaluation,
-    required this.premium,
   });
 
   @override
@@ -43,6 +41,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   int pracColor = 0;
   String route = '';
   String subscriptions = '';
+  String inputDate = '';
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -62,7 +61,18 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
         setState(() {
           goalDetails = response;
           subscriptions = response['subscriptionsStatus'];
+          inputDate = response['goalEvaluations'].length == 0
+              ? "2023-02-10"
+              : response['goalEvaluations']
+                                  [response['goalEvaluations'].length - 1]
+                              ['activedate']
+                          .toString() !=
+                      'null'
+                  ? response['goalEvaluations']
+                      [response['goalEvaluations'].length - 1]['activedate']
+                  : "2023-02-10";
         });
+        print('Date=============>$inputDate');
         // var evalId =
         //     prefs.setInt('goal_eval_id', response['goalEvaluations'][0]['id']);
 
@@ -87,6 +97,44 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
       route = menuRoute!;
     });
     print(prefs.getString('goal_menu_route'));
+  }
+
+  String formatDate(String inputDate) {
+    DateTime date = DateTime.parse(inputDate);
+    String formattedDate =
+        "${date.day} ${_getMonthName(date.month)} ${date.year}";
+    return formattedDate;
+  }
+
+  String _getMonthName(int month) {
+    switch (month) {
+      case 1:
+        return "Jan";
+      case 2:
+        return "Feb";
+      case 3:
+        return "Mar";
+      case 4:
+        return "Apr";
+      case 5:
+        return "May";
+      case 6:
+        return "Jun";
+      case 7:
+        return "Jul";
+      case 8:
+        return "Aug";
+      case 9:
+        return "Sep";
+      case 10:
+        return "Oct";
+      case 11:
+        return "Nov";
+      case 12:
+        return "Dec";
+      default:
+        return "";
+    }
   }
 
   @override
@@ -192,25 +240,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {
-                          widget.premium
-                              ? Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: (const goal_menu_inactive(
-                                    premium: false,
-                                    isActive: true,
-                                    goal_evaluation: true,
-                                  ))))
-                              : Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: (const goal_menu_inactive(
-                                    premium: true,
-                                    isActive: true,
-                                    goal_evaluation: true,
-                                  ))));
-                        },
+                        onTap: () {},
                         child: Container(
                           width: AppDimensions.height10(context) * 6.56,
                           height: AppDimensions.height10(context) * 6.56,
@@ -241,12 +271,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       ),
                       AnimatedScaleButton(
                         onTap: () {
-                          if (goalDetails['goalStatus'] == "active") {
+                          if (goalDetails['goalStatus'] == "active" &&
+                              goalDetails['goalEvaluations'].length != 0) {
                             Navigator.push(
                                 context,
                                 FadePageRoute(
                                     page: new_progress_score(
-                                  premium: widget.premium,
+                                  premium:
+                                      subscriptions == 'active' ? true : false,
                                 )));
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -269,7 +301,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               Container(
                                 width: AppDimensions.height10(context) * 37.4,
                                 height: AppDimensions.height10(context) * 12.0,
-                                decoration: widget.premium
+                                decoration: subscriptions == 'active'
                                     ? BoxDecoration(
                                         borderRadius: BorderRadius.circular(
                                             AppDimensions.height10(context) *
@@ -311,14 +343,22 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         image: DecorationImage(
                                           image: AssetImage(goalDetails[
                                                       'goalLevel'] ==
-                                                  "2"
-                                              ? 'assets/images/Nebula pie 2.webp'
-                                              : goalDetails['goalLevel'] == "3"
-                                                  ? 'assets/images/Nebula Pie 3.webp'
+                                                  1
+                                              ? 'assets/images/Nebula pie 1.webp'
+                                              : goalDetails['goalLevel'] == 2
+                                                  ? 'assets/images/Nebula pie 2.webp'
                                                   : goalDetails['goalLevel'] ==
-                                                          "4"
-                                                      ? "assets/images/goal_level_4.webp"
-                                                      : "assets/images/Nebula Pie.webp"),
+                                                          3
+                                                      ? 'assets/images/Nebula pie 3.webp'
+                                                      : goalDetails[
+                                                                  'goalLevel'] ==
+                                                              4
+                                                          ? 'assets/images/Nebula pie 4.webp'
+                                                          : goalDetails[
+                                                                      'goalLevel'] ==
+                                                                  5
+                                                              ? 'assets/images/Nebula pie 5.webp'
+                                                              : "assets/images/Nebula Pie.webp"),
                                         ),
                                         // color: Colors.amber,
                                       ),
@@ -332,7 +372,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                               : goalDetails['goalLevel']
                                                   .toString(),
                                           style: TextStyle(
-                                              fontSize: widget.premium
+                                              fontSize: subscriptions ==
+                                                      'active'
                                                   ? goal_level == 0
                                                       ? AppDimensions.height10(
                                                               context) *
@@ -371,7 +412,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                                 context) *
                                                             1.7,
                                                     fontWeight: FontWeight.w700,
-                                                    color: widget.premium
+                                                    color: subscriptions ==
+                                                            'active'
                                                         ? const Color(
                                                             0xFFFFFFFF)
                                                         : const Color(
@@ -388,14 +430,15 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                   2.2,
 
                                               child: Text(
-                                                'for 01 FEB 23!',
+                                                'for ${formatDate(inputDate)}!',
                                                 style: TextStyle(
                                                     fontSize:
                                                         AppDimensions.height10(
                                                                 context) *
                                                             1.5,
                                                     fontWeight: FontWeight.w500,
-                                                    color: widget.premium
+                                                    color: subscriptions ==
+                                                            'active'
                                                         ? const Color(
                                                             0xFFFFFFFF)
                                                         : const Color(
@@ -412,7 +455,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 5,
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              widget.premium
+                                              subscriptions == 'active'
                                                   ? goalDetails['goalLevel'] ==
                                                           2
                                                       ? "I'm making small steps\nforward"
@@ -440,7 +483,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                               context) *
                                                           1.5,
                                                   fontWeight: FontWeight.w400,
-                                                  color: widget.premium
+                                                  color: subscriptions ==
+                                                          'active'
                                                       ? const Color(0xFFFFFFFF)
                                                       : const Color(
                                                           0xFF464646)),
@@ -680,22 +724,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     Navigator.push(
                                         context,
                                         FadePageRoute(
-                                            page: practiceMenu(
-                                          color: goalDetails['color'] == null
-                                              ? "0"
-                                              : goalDetails['color'].toString(),
-                                          goalName: goalDetails['name'],
+                                            page: const practiceMenu(
                                           goal_eval: false,
-                                          pracColor:
-                                              goalDetails['userPractices']
-                                                          [index]['color'] ==
-                                                      null
-                                                  ? '0'
-                                                  : goalDetails['userPractices']
-                                                          [index]['color']
-                                                      .toString(),
-                                          pracName: goalDetails['userPractices']
-                                              [index]['name'],
                                         )));
                                     final SharedPreferences prefs =
                                         await _prefs;
@@ -845,7 +875,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
                                       AppDimensions.height10(context) * 2.0),
-                                  color: widget.premium
+                                  color: subscriptions == 'active'
                                       ? const Color(0xFFFFFFFF)
                                       : const Color(0xFFFFFFFF)
                                           .withOpacity(0.5),

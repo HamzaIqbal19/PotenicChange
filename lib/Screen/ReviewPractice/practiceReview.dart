@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
@@ -166,11 +167,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                     context,
                     FadePageRoute(
                       page: practiceMenu(
-                        color: color == null ? '0' : color.toString(),
-                        goalName: goalName,
                         goal_eval: false,
-                        pracColor: pracColor ?? '0',
-                        pracName: pracName,
                       ),
                     ),
                   );
@@ -1626,11 +1623,28 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                         "==================>Successfully deleted");
                                                   }
                                                 });
-                                                Navigator.pushReplacement(
-                                                    context,
-                                                    FadePageRoute(
-                                                        page:
-                                                            const CreatePractice()));
+                                                if (route == 'practice_menu' ||
+                                                    route ==
+                                                        'practice_missed' ||
+                                                    route ==
+                                                        'practice_completed') {
+                                                  Navigator.pushReplacement(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const view_goals(
+                                                        helpfulTips: false,
+                                                        missed: false,
+                                                        name: '',
+                                                        update: false,
+                                                      )));
+                                                } else {
+                                                  Navigator.pushReplacement(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const CreatePractice()));
+                                                }
                                               },
                                               child: Text(
                                                 'Yes',

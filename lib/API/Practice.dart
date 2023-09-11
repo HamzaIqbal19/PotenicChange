@@ -166,7 +166,6 @@ class PracticeGoalApi {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var prac_num = prefs.getInt("prac_num");
-    print("======================IDID${prefs.getInt("prac_num")}");
 
     print('$prac_num');
     var headers = {
@@ -181,6 +180,16 @@ class PracticeGoalApi {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
+      final SharedPreferences prefs = await _prefs;
+      if (jsonData['lastReportSentDate'] != null) {
+        await prefs.setString('lastReportDate', jsonData['lastReportSentDate']);
+        print('LAST REPORT DATE: ${jsonData["practiceEvaluations"]['id']}');
+      }
+      if (jsonData["practiceEvaluations"] != null) {
+        await prefs.setInt(
+            'prac_eval_id', jsonData["practiceEvaluations"]["id"]);
+      }
+
       print("Result:$jsonData");
 
       return (jsonData);

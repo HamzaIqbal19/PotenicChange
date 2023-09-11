@@ -18,6 +18,7 @@ class RecordingPractice {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var userId = prefs.getInt('userid');
+    var userGoalId = prefs.getInt('goal_num');
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
@@ -31,6 +32,7 @@ class RecordingPractice {
       "recordingDate": recordingDate,
       "userId": userId,
       "userPracticeId": practiceId,
+      "userGoalId": userGoalId
     });
 
     print("request:$Body");
@@ -45,14 +47,21 @@ class RecordingPractice {
 
     var responses = jsonDecode(request.body);
 
-    print("status:${request.statusCode}");
-    print("request:${responses}");
-    print("request:${responses["status"]}");
     if (request.statusCode == 200) {
       print("response:${responses["result"]["id"]}");
       final SharedPreferences prefs = await _prefs;
+      print('statusCode');
+      print(request.statusCode);
       var recording_id =
           prefs.setInt('recording_id', responses["result"]["id"]);
+      if (responses['report'] == true) {
+        print('Status false');
+        await prefs.setBool('isReportActive', true);
+        await prefs.setString(
+            'lastReportDate', responses['reportDetail']['reportDate']);
+      } else if (responses['report'] == false) {
+        await prefs.setBool('isReportActive', false);
+      }
       print('Recording added');
       print(responses);
 

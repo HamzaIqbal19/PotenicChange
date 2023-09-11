@@ -741,11 +741,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 context,
                                                 FadePageRoute(
                                                     page: practiceMenu(
-                                                        goal_eval: false,
-                                                        goalName: goalName,
-                                                        pracName: pracName,
-                                                        pracColor: pracColor,
-                                                        color: color)));
+                                                  goal_eval: false,
+                                                )));
                                           },
                                           child: Container(
                                             height: AppDimensions.height10(
@@ -815,7 +812,6 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 FadePageRoute(
                                                     page:
                                                         const goal_menu_inactive(
-                                                  premium: true,
                                                   isActive: true,
                                                   goal_evaluation: true,
                                                 )));
@@ -1301,16 +1297,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                               cancel: false,
                                                               trial: false,
                                                             ),
-                                                            enterPage: practiceMenu(
-                                                                goal_eval:
-                                                                    false,
-                                                                goalName:
-                                                                    goalName,
-                                                                pracName:
-                                                                    pracName,
-                                                                pracColor:
-                                                                    pracColor,
-                                                                color: color)));
+                                                            enterPage:
+                                                                practiceMenu(
+                                                              goal_eval: false,
+                                                            )));
                                               },
                                               child: Container(
                                                 height: widget.saved

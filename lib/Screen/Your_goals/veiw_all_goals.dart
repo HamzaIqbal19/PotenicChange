@@ -338,7 +338,6 @@ class _veiw_all_goals_menuState extends State<veiw_all_goals_menu> {
                                                   FadePageRoute(
                                                       page:
                                                           (const goal_menu_inactive(
-                                                    premium: true,
                                                     isActive: false,
                                                     goal_evaluation: false,
                                                   ))));

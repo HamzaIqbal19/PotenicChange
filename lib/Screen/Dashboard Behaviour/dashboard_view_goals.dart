@@ -1005,7 +1005,6 @@ class _view_goalsState extends State<view_goals> {
                                                                               context,
                                                                               FadePageRoute(
                                                                                   page: (const goal_menu_inactive(
-                                                                                premium: true,
                                                                                 isActive: false,
                                                                                 goal_evaluation: false,
                                                                               ))));
@@ -1067,7 +1066,7 @@ class _view_goalsState extends State<view_goals> {
                                                                               "Not Started") {
                                                                             print("CON 2");
                                                                             Navigator.push(context,
-                                                                                FadePageRoute(page: practiceMenu(goal_eval: false, goalName: allGoals[index]['userGoal']['name'], pracName: allGoals[index]['name'], pracColor: allGoals[index]['color'] == null ? "0" : allGoals[index]['color'].toString(), color: allGoals[index]['userGoal']['color'] != null ? allGoals[index]['userGoal']['color'].toString() : "0")));
+                                                                                FadePageRoute(page: const practiceMenu(goal_eval: false)));
                                                                           } else if (allGoals[index]['recordingStatusTime${i + 1}'] ==
                                                                               "missed") {
                                                                             print("CON 3");
@@ -2004,7 +2003,7 @@ class _view_goalsState extends State<view_goals> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFFFBFBFB)),
                                                           ),
                                                           Text(
@@ -2043,7 +2042,7 @@ class _view_goalsState extends State<view_goals> {
                                                                           .height10(
                                                                               context) *
                                                                       0.1,
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFFFBFBFB)),
                                                             ),
                                                             child: Container(

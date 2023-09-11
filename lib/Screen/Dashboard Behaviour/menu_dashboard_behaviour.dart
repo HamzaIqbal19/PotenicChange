@@ -502,7 +502,8 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                                         goalName,
                                                                     update:
                                                                         false,
-                                                                        helpfulTips: false,
+                                                                    helpfulTips:
+                                                                        false,
                                                                   )));
                                                             }
                                                           });
@@ -793,9 +794,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                           Navigator.push(
                                               context,
                                               FadePageRoute(
-                                                  page: const prac_score(
-                                                saved: false,
-                                              )));
+                                                  page: prac_score()));
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(const SnackBar(
@@ -848,7 +847,10 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: const practice_progress()));
+                                        page: const practice_progress(
+                                      days: 30,
+                                      route: 'pracice_menu_completed',
+                                    )));
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
