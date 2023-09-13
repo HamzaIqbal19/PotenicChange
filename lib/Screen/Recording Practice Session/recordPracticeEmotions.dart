@@ -202,6 +202,7 @@ class _emotionsState extends State<emotions> {
                                                     name: '',
                                                     update: false,
                                                     helpfulTips: false,
+                                                    record: 0,
                                                   )));
                                             }
                                           },

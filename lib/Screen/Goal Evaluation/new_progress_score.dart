@@ -42,11 +42,13 @@ class _new_progress_scoreState extends State<new_progress_score> {
   String _selected_activity = '';
   int goal_level = 2;
   int selectedEval = 0;
+  int mirror = 0;
   bool color_fill_1 = false;
   bool color_fill_2 = false;
-
   bool Loader = true;
   var goalDetails;
+
+  late FixedExtentScrollController _scrollController;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(milliseconds: 1), onDoneLoading);
@@ -65,7 +67,13 @@ class _new_progress_scoreState extends State<new_progress_score> {
       if (response.length != 0) {
         setState(() {
           goalDetails = response;
+          selectedEval = response["goalEvaluations"].length - 1;
+          _selectedIndex = response["goalEvaluations"].length - 1;
         });
+
+        _scrollController = FixedExtentScrollController(
+            initialItem: response["goalEvaluations"].length - 1);
+
         // var evalId =
         //     prefs.setInt('goal_eval_id', response['goalEvaluations'][0]['id']);
         print(
@@ -80,8 +88,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
         print(
             "======================${response["goalEvaluations"]}===============");
 
-        var evaluationId =
-            prefs.setInt('goal_eval_id', response["goalEvaluations"][0]["id"]);
         loadData();
         GetDates();
         print("========Dates=====================$_dates");
@@ -101,7 +107,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
     for (int i = 0; i < goalDetails["goalEvaluations"].length; i++) {
       final DateTime originalDate = DateFormat("yyyy-MM-dd")
           .parse(goalDetails["goalEvaluations"][i]['activedate']);
-      final DateTime futureDate = originalDate.add(Duration(days: 30));
+      final DateTime futureDate = originalDate.add(const Duration(days: 30));
       final String formattedDate = DateFormat("dd MMM yy").format(originalDate);
       final String formattedFutureDate =
           DateFormat("dd MMM yy").format(futureDate);
@@ -110,11 +116,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
         _dates.add('$formattedDate to $formattedFutureDate (-/5)');
       } else {
         _dates.add(
-            '$formattedDate to $formattedFutureDate (${goalDetails["goalEvaluations"][i]['goalLevel']}/5)');
+            '$formattedDate to $formattedFutureDate (${goalDetails["goalEvaluations"][i]['totalPoint']}/5)');
       }
     }
     setState(() {
-      activity_duration = _dates[0].substring(0, 22);
+      activity_duration = _dates[selectedEval].substring(0, 22);
     });
   }
 
@@ -122,6 +128,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
   void initState() {
     super.initState();
     _fetchGoalDetails();
+    _scrollController =
+        FixedExtentScrollController(initialItem: _selectedIndex);
   }
 
   @override
@@ -307,6 +315,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                       setState(() {
                                                         selectedEval =
                                                             _selectedIndex;
+                                                        mirror = _selectedIndex;
                                                       });
                                                     } else {
                                                       int mirrorIndex =
@@ -315,9 +324,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                               _selectedIndex;
                                                       setState(() {
                                                         selectedEval =
-                                                            mirrorIndex;
+                                                            _selectedIndex;
+                                                        mirror = mirrorIndex;
                                                       });
                                                       print(mirrorIndex);
+                                                      print(_selectedIndex);
                                                     }
                                                     Navigator.of(context).pop(
                                                         _dates[_selectedIndex]);
@@ -357,6 +368,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                           ),
                                           Expanded(
                                             child: ListWheelScrollView(
+                                              controller: _scrollController,
                                               itemExtent: 40,
                                               magnification: 1.2,
                                               useMagnifier:
@@ -381,6 +393,10 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                       _statements[
                                                           _selectedIndex];
                                                 });
+                                                _scrollController =
+                                                    FixedExtentScrollController(
+                                                        initialItem:
+                                                            _selectedIndex);
                                               },
                                             ),
                                           ),

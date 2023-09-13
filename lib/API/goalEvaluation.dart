@@ -171,11 +171,12 @@ class PracticeEvaluation {
     }
   }
 
-  static Future getUserPracticeReportId(days) async {
+  static Future getUserPracticeReportId() async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var prac_num = prefs.getInt("prac_num");
     var reportDate = prefs.getString('lastReportDate');
+    var endDate = prefs.getString('lastReportEnd');
     // var prac_num = prefs.getInt("prac_score_id");
     print(prefs.getString('lastReportDate'));
 
@@ -187,7 +188,7 @@ class PracticeEvaluation {
 
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/userPractice/user-practice-report-by-id/$prac_num?reportDate=$reportDate'),
+          '${URL.BASE_URL}api/userPractice/user-practice-report-by-id/$prac_num?activeDate=$reportDate&endDate=$endDate'),
       headers: headers,
     );
     print(response.statusCode);

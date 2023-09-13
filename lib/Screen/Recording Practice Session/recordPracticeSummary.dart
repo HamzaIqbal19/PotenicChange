@@ -39,6 +39,8 @@ class _practice_summaryState extends State<practice_summary> {
   String pracName = "";
   var pracColor = '0';
   var color = '0';
+  String recordedDate = '';
+  int differenceInDays1 = 0;
   bool Loading = true;
   var report;
   int Before = 0;
@@ -129,7 +131,16 @@ class _practice_summaryState extends State<practice_summary> {
           EmotionFeedback = response['recording']['notes'][0]['beforeNote'];
           SessionFeedBack = response['recording']['notes'][0]['endNote'];
           Session = response['recording']['practiceSummary'];
+          recordedDate = response['recording']['recordingDate'];
         });
+        DateTime currentDate =
+            DateTime.parse(DateTime.now().toString().substring(0, 10));
+        DateTime date1 = DateTime.parse(recordedDate);
+        setState(() {
+          differenceInDays1 = currentDate.difference(date1).inDays;
+        });
+
+        print('Difference in days $differenceInDays1');
         print("DEtails ======================================$details");
         print(Before);
         print(After);
@@ -176,6 +187,7 @@ class _practice_summaryState extends State<practice_summary> {
                         name: '',
                         update: false,
                         helpfulTips: false,
+                        record: 0,
                       )));
                 },
                 icon: Image.asset(
@@ -254,6 +266,7 @@ class _practice_summaryState extends State<practice_summary> {
                                               name: '',
                                               update: false,
                                               helpfulTips: false,
+                                              record: 0,
                                             )));
                                       } else {
                                         Navigator.push(
@@ -264,6 +277,7 @@ class _practice_summaryState extends State<practice_summary> {
                                               name: '',
                                               update: false,
                                               helpfulTips: false,
+                                              record: 0,
                                             )));
                                       }
                                     },
@@ -1179,7 +1193,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                                   context,
                                                                   FadePageRoute(
                                                                       page:
-                                                                          const view_goals(
+                                                                          view_goals(
                                                                     missed:
                                                                         false,
                                                                     name: '',
@@ -1187,6 +1201,8 @@ class _practice_summaryState extends State<practice_summary> {
                                                                         false,
                                                                     helpfulTips:
                                                                         false,
+                                                                    record:
+                                                                        differenceInDays1,
                                                                   )));
 
                                                               print(
@@ -1297,6 +1313,7 @@ class _practice_summaryState extends State<practice_summary> {
                                             name: goalName,
                                             update: true,
                                             helpfulTips: false,
+                                            record: differenceInDays1,
                                           )));
                                   if (report == true) {
                                     activeReport(context, goalName, pracName,

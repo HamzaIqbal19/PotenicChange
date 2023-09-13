@@ -183,6 +183,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
               name: '',
               update: false,
               helpfulTips: false,
+              record: 0,
             )));
         final SharedPreferences prefs = await _prefs;
         var hurdleRoute = prefs.remove('HurdleRoute');
@@ -212,6 +213,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                           name: '',
                           update: false,
                           helpfulTips: false,
+                          record: 0,
                         )));
                     final SharedPreferences prefs = await _prefs;
                     var hurdleRoute = prefs.remove('HurdleRoute');

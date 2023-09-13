@@ -43,6 +43,16 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
+  Future<Timer> startTimer() async {
+    return Timer(const Duration(seconds: 4), onFinish);
+  }
+
+  void onFinish() {
+    setState(() {
+      update = false;
+    });
+  }
+
   void onDoneLoading() {
     setState(() {
       Loader = false;
@@ -51,158 +61,156 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
 
   void onToggleSwitch(int index1, bool val) {
     setState(() {
+      print('========${goalDetails['userPractices'][index1]['isActive']}');
       print('================Val========$val');
       // if (totalItemsOn < 5) {
       if (goalDetails['userPractices'][index1]['isActive'] == true &&
           val == false) {
         // Check if the totalItemsOn is less than 5 before incrementing
-        if (totalItemsOn < 5) {
-          print("==========================");
-          // print(goalDetails['userPractices'][index1]['id']);
+        // if (totalItemsOn < 5) {
+        //   print("==========================");
+        // print(goalDetails['userPractices'][index1]['id']);
 
-          showAnimatedDialog(
-              animationType: DialogTransitionType.fadeScale,
-              curve: Curves.easeInOut,
-              duration: const Duration(seconds: 1),
-              context: context,
-              builder: (BuildContext context) => Container(
-                    width: AppDimensions.height10(context) * 27.0,
-                    height: AppDimensions.height10(context) * 18.2,
-                    decoration: BoxDecoration(
+        showAnimatedDialog(
+            animationType: DialogTransitionType.fadeScale,
+            curve: Curves.easeInOut,
+            duration: const Duration(seconds: 1),
+            context: context,
+            builder: (BuildContext context) => Container(
+                  width: AppDimensions.height10(context) * 27.0,
+                  height: AppDimensions.height10(context) * 18.2,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                          AppDimensions.height10(context) * 1.4)),
+                  child: AlertDialog(
+                    shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 1.4)),
-                    child: AlertDialog(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 1.4)),
-                      contentPadding: EdgeInsets.zero,
-                      actionsPadding: EdgeInsets.zero,
-                      titlePadding: EdgeInsets.zero,
-                      title: Container(
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 1.9,
-                            right: AppDimensions.height10(context) * 1.6,
-                            left: AppDimensions.height10(context) * 1.6,
-                            bottom: AppDimensions.height10(context) * 0.2),
-                        height: AppDimensions.height10(context) * 2.2,
-                        width: AppDimensions.height10(context) * 23.8,
-                        child: Text(
-                          "Turn off practice?",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.7,
-                            fontWeight: FontWeight.w400,
-                          ),
+                    contentPadding: EdgeInsets.zero,
+                    actionsPadding: EdgeInsets.zero,
+                    titlePadding: EdgeInsets.zero,
+                    title: Container(
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.9,
+                          right: AppDimensions.height10(context) * 1.6,
+                          left: AppDimensions.height10(context) * 1.6,
+                          bottom: AppDimensions.height10(context) * 0.2),
+                      height: AppDimensions.height10(context) * 2.2,
+                      width: AppDimensions.height10(context) * 23.8,
+                      child: Text(
+                        "Turn off practice?",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: AppDimensions.height10(context) * 1.7,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
-                      content: Container(
-                        margin: EdgeInsets.only(
-                            bottom: AppDimensions.height10(context) * 1.5,
-                            left: AppDimensions.height10(context) * 1.6,
-                            right: AppDimensions.height10(context) * 1.6),
-                        height: AppDimensions.height10(context) * 3.4,
-                        width: AppDimensions.height10(context) * 23.8,
-                        child: Text(
-                          "Are you sure you want to turn off the\npractice? If you do, it will become inactive.",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.3,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      actions: <Widget>[
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: AppDimensions.height10(context) * 0.1,
-                              child: Divider(
-                                color:
-                                    const Color(0XFF3C3C43).withOpacity(0.29),
-                              ),
-                            ),
-                            Container(
-                              height: AppDimensions.height10(context) * 4.2,
-                              width: double.infinity,
-                              color: const Color(0xFF007AFF),
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text(
-                                  'No',
-                                  style: TextStyle(
-                                      color: const Color(0xFFFFFFFF),
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.7,
-                                      fontFamily: "Laila",
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: AppDimensions.height10(context) * 0.1,
-                              child: Divider(
-                                color:
-                                    const Color(0XFF3C3C43).withOpacity(0.29),
-                              ),
-                            ),
-                            SizedBox(
-                              height: AppDimensions.height10(context) * 4.4,
-                              width: double.infinity,
-                              child: TextButton(
-                                onPressed: () {
-                                  // setState(() {
-                                  //   Loader = true;
-                                  // });
-                                  PracticeGoalApi()
-                                      .updateUserPracticeStatus(
-                                          'inactive',
-                                          goalDetails['userPractices'][index1]
-                                              ['id'])
-                                      .then((response) {
-                                    print(goalDetails['userPractices'][index1]
-                                        ['name']);
-                                    if (response == true) {
-                                      Navigator.pop(context);
-                                      _fetchGoalDetails();
-                                      print("Status Updated");
-                                    }
-                                  });
-                                  totalItemsOn++;
-                                },
-                                child: Text(
-                                  'Yes',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.7,
-                                      fontFamily: "Laila",
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xFF007AFF)),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: AppDimensions.height10(context) * 0.1,
-                              child: Divider(
-                                color:
-                                    const Color(0XFF3C3C43).withOpacity(0.29),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
                     ),
-                  ));
+                    content: Container(
+                      margin: EdgeInsets.only(
+                          bottom: AppDimensions.height10(context) * 1.5,
+                          left: AppDimensions.height10(context) * 1.6,
+                          right: AppDimensions.height10(context) * 1.6),
+                      height: AppDimensions.height10(context) * 3.4,
+                      width: AppDimensions.height10(context) * 23.8,
+                      child: Text(
+                        "Are you sure you want to turn off the\npractice? If you do, it will become inactive.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: AppDimensions.height10(context) * 1.3,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    actions: <Widget>[
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 0.1,
+                            child: Divider(
+                              color: const Color(0XFF3C3C43).withOpacity(0.29),
+                            ),
+                          ),
+                          Container(
+                            height: AppDimensions.height10(context) * 4.2,
+                            width: double.infinity,
+                            color: const Color(0xFF007AFF),
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                'No',
+                                style: TextStyle(
+                                    color: const Color(0xFFFFFFFF),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.7,
+                                    fontFamily: "Laila",
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 0.1,
+                            child: Divider(
+                              color: const Color(0XFF3C3C43).withOpacity(0.29),
+                            ),
+                          ),
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 4.4,
+                            width: double.infinity,
+                            child: TextButton(
+                              onPressed: () {
+                                // setState(() {
+                                //   Loader = true;
+                                // });
+                                PracticeGoalApi()
+                                    .updateUserPracticeStatus(
+                                        'inactive',
+                                        goalDetails['userPractices'][index1]
+                                            ['id'])
+                                    .then((response) {
+                                  print(goalDetails['userPractices'][index1]
+                                      ['name']);
+                                  if (response == true) {
+                                    Navigator.pop(context);
+                                    _fetchGoalDetails();
+                                    print("Status Updated");
+                                  }
+                                });
+                                totalItemsOn++;
+                              },
+                              child: Text(
+                                'Yes',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.7,
+                                    fontFamily: "Laila",
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xFF007AFF)),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 0.1,
+                            child: Divider(
+                              color: const Color(0XFF3C3C43).withOpacity(0.29),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ));
 
-          print(
-              totalItemsOn); // Increment the counter as the item is being switched on
-        } else {
-          print(totalItemsOn);
+        print(
+            totalItemsOn); // Increment the counter as the item is being switched on
+        // } else {
+        //   print(totalItemsOn);
 
-          // If totalItemsOn is already 5, prevent switching on the toggle
-          return;
-        }
+        //   // If totalItemsOn is already 5, prevent switching on the toggle
+        //   return;
+        // }
       }
       // If the item is currently on and is being switched off
       else if (goalDetails['userPractices'][index1]['isActive'] == false &&
@@ -346,6 +354,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
         // print(
         //     "==========================${goalDetails['userPractices'][0]['practiceStatus']}");
         loadData();
+        startTimer();
         print(response);
       } else {
         loadData();
@@ -697,7 +706,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 height: AppDimensions.height10(context) * 10.0,
 
                                 decoration: BoxDecoration(
-                                    color: color
+                                    color: goalDetails['userPractices'][index]
+                                            ['isActive']
                                         ? Colors.transparent
                                         : const Color(0xFF828282),
                                     border: const Border(
@@ -789,7 +799,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 2.7,
                                             child: Row(
                                               children: [
-                                                Text('21',
+                                                Text(
+                                                    '${goalDetails['userPractices'][index]['activeDays']}',
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
                                                                 .height10(
@@ -996,662 +1007,551 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
           elevation: 0,
           color: Colors.transparent,
           child: Loader == false
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    update
-                        ? updateBox(
-                            headText: 'Goal Actice',
-                            bodyText: '${goalDetails['name']}',
-                            onTap1: () {
-                              showAnimatedDialog(
-                                  animationType: DialogTransitionType.fadeScale,
-                                  curve: Curves.easeInOut,
-                                  duration: const Duration(seconds: 1),
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return goalActive(context);
-                                  });
-                            },
-                            functionText: 'Undo',
-                            edit: false)
-                        //  Container(
-                        //     width: AppDimensions.height10(context) * 38.259,
-                        //     height: AppDimensions.height10(context) * 9.707,
-                        //     margin: EdgeInsets.symmetric(
-                        //         horizontal:
-                        //             AppDimensions.height10(context) * 1.6,
-                        //         vertical:
-                        //             AppDimensions.height10(context) * 2.0),
-                        //     decoration: BoxDecoration(
-                        //         borderRadius: BorderRadius.circular(
-                        //             AppDimensions.height10(context) * 2.0),
-                        //         gradient: const LinearGradient(
-                        //             begin: Alignment.topCenter,
-                        //             end: Alignment.bottomCenter,
-                        //             colors: [
-                        //               Color(0xFFD4B7B9),
-                        //               Color(0xFF91698C)
-                        //             ])),
-                        //     child: Row(
-                        //       crossAxisAlignment: CrossAxisAlignment.center,
-                        //       children: [
-                        //         Container(
-                        //           margin: EdgeInsets.only(
-                        //               left: AppDimensions.height10(context) *
-                        //                   1.261),
-                        //           width:
-                        //               AppDimensions.height10(context) * 4.437,
-                        //           height:
-                        //               AppDimensions.height10(context) * 4.437,
-                        //           decoration: const BoxDecoration(
-                        //               image: DecorationImage(
-                        //                   image: AssetImage(
-                        //                       'assets/images/circle_tick.webp'))),
-                        //         ),
-                        //         Container(
-                        //           //width: AppDimensions.height10(context) * 6.9,
-                        //           height: AppDimensions.height10(context) * 3.6,
-                        //           margin: EdgeInsets.only(
-                        //               left: AppDimensions.height10(context) *
-                        //                   1.232),
-                        //           child: Column(
-                        //             crossAxisAlignment:
-                        //                 CrossAxisAlignment.start,
-                        //             children: [
-                        //               SizedBox(
-                        //                 //width: AppDimensions.height10(context) * 4.2,
-                        //                 height:
-                        //                     AppDimensions.height10(context) *
-                        //                         1.4,
-                        //                 child: Text(
-                        //                   'Goal Active',
-                        //                   style: TextStyle(
-                        //                       fontSize: AppDimensions.height10(
-                        //                               context) *
-                        //                           1.3,
-                        //                       fontWeight: FontWeight.w500,
-                        //                       color: const Color(0xFFFFFFFF)),
-                        //                 ),
-                        //               ),
-                        //               SizedBox(
-                        //                 width: AppDimensions.height10(context) *
-                        //                     18.0,
-                        //                 height:
-                        //                     AppDimensions.height10(context) *
-                        //                         2.2,
-                        //                 child: Text(
-                        //                   goalDetails['name'],
-                        //                   overflow: TextOverflow.ellipsis,
-                        //                   style: TextStyle(
-                        //                       fontSize: AppDimensions.height10(
-                        //                               context) *
-                        //                           1.8,
-                        //                       fontWeight: FontWeight.w500,
-                        //                       color: const Color(0xFFFFFFFF)),
-                        //                 ),
-                        //               ),
-                        //             ],
-                        //           ),
-                        //         ),
-                        //         AnimatedScaleButton(
-                        //           onTap: () {
-                        //             showAnimatedDialog(
-                        //                 animationType:
-                        //                     DialogTransitionType.fadeScale,
-                        //                 curve: Curves.easeInOut,
-                        //                 duration: const Duration(seconds: 1),
-                        //                 context: context,
-                        //                 builder: (BuildContext context) {
-                        //                   return goalActive(context);
-                        //                 });
-                        //           },
-                        //           child: Container(
-                        //             width:
-                        //                 AppDimensions.height10(context) * 8.1,
-                        //             height:
-                        //                 AppDimensions.height10(context) * 6.0,
-                        //             margin: EdgeInsets.only(
-                        //                 left: AppDimensions.height10(context) *
-                        //                     4.5),
-                        //             decoration: BoxDecoration(
-                        //               border: Border.all(
-                        //                   color: const Color(0xFFFFFFFF),
-                        //                   width: 1),
-                        //               borderRadius: BorderRadius.circular(
-                        //                   AppDimensions.height10(context) *
-                        //                       2.0),
-                        //             ),
-                        //             child: Center(
-                        //               child: Text(
-                        //                 'Undo',
-                        //                 style: TextStyle(
-                        //                     fontSize: AppDimensions.height10(
-                        //                             context) *
-                        //                         1.8,
-                        //                     fontWeight: FontWeight.w500,
-                        //                     color: const Color(0xFFFFFFFF)),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         )
-                        //       ],
-                        //     ),
-                        //   )
-
-                        : Container(),
-                    Container(
-                      color: const Color(0xFFFBFBFB),
-                      height: AppDimensions.height10(context) * 12.0,
-                      width: AppDimensions.height10(context) * 41.6,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: AppDimensions.height10(context) * 17.4,
-                            height: AppDimensions.height10(context) * 4.3,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 2.6),
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    subscriptions == 'inactive'
-                                        ? '$totalItemsOn/3 items'
-                                        : '$totalItemsOn/5 items',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
+              ? update
+                  ? Container(
+                      margin: EdgeInsets.all(AppDimensions.height10(context)),
+                      child: updateBox(
+                          headText: 'Goal Actice',
+                          bodyText: '${goalDetails['name']}',
+                          onTap1: () {
+                            showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: const Duration(seconds: 1),
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return goalActive(context);
+                                });
+                          },
+                          FadeFunction: () {
+                            setState(() {
+                              update = false;
+                            });
+                          },
+                          functionText: 'Undo',
+                          edit: false),
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          color: const Color(0xFFFBFBFB),
+                          height: AppDimensions.height10(context) * 12.0,
+                          width: AppDimensions.height10(context) * 41.6,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: AppDimensions.height10(context) * 17.4,
+                                height: AppDimensions.height10(context) * 4.3,
+                                margin: EdgeInsets.only(
+                                    left:
+                                        AppDimensions.height10(context) * 2.6),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        subscriptions == 'inactive'
+                                            ? '$totalItemsOn/3 items'
+                                            : '$totalItemsOn/5 items',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
                                                 1.6,
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color(0xFF5B74A6)),
-                                  ),
-                                  Text(
-                                    'have been selected',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color(0xFF5B74A6)),
+                                      ),
+                                      Text(
+                                        'have been selected',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
                                                 1.6,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFF5B74A6)),
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xFF5B74A6)),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
-                          goalDetails['isActive']
-                              ? AnimatedScaleButton(
-                                  onTap: () => showAnimatedDialog(
-                                      animationType:
-                                          DialogTransitionType.fadeScale,
-                                      curve: Curves.easeInOut,
-                                      duration: const Duration(seconds: 1),
-                                      context: context,
-                                      builder: (BuildContext context) =>
-                                          Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                27.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                18.2,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        AppDimensions.height10(
-                                                                context) *
+                              goalDetails['isActive']
+                                  ? AnimatedScaleButton(
+                                      onTap: () => showAnimatedDialog(
+                                          animationType:
+                                              DialogTransitionType.fadeScale,
+                                          curve: Curves.easeInOut,
+                                          duration: const Duration(seconds: 1),
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    27.0,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    18.2,
+                                                decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius
+                                                        .circular(AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             1.4)),
-                                            child: AlertDialog(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          AppDimensions
+                                                child: AlertDialog(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius
+                                                          .circular(AppDimensions
                                                                   .height10(
                                                                       context) *
                                                               1.4)),
-                                              contentPadding: EdgeInsets.zero,
-                                              actionsPadding: EdgeInsets.zero,
-                                              titlePadding: EdgeInsets.zero,
-                                              title: Container(
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        1.9,
-                                                    right:
-                                                        AppDimensions.height10(
-                                                                context) *
+                                                  contentPadding:
+                                                      EdgeInsets.zero,
+                                                  actionsPadding:
+                                                      EdgeInsets.zero,
+                                                  titlePadding: EdgeInsets.zero,
+                                                  title: Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.9,
+                                                        right: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             1.6,
-                                                    left:
-                                                        AppDimensions.height10(
-                                                                context) *
+                                                        left: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             1.6,
-                                                    bottom:
-                                                        AppDimensions.height10(
-                                                                context) *
+                                                        bottom: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             0.2),
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    2.2,
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    23.8,
-                                                child: Text(
-                                                  "Turn off goal?",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    fontSize:
+                                                    height:
                                                         AppDimensions.height10(
                                                                 context) *
+                                                            2.2,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            23.8,
+                                                    child: Text(
+                                                      "Turn off goal?",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             1.7,
-                                                    fontWeight: FontWeight.w400,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ),
-                                              content: Container(
-                                                margin: EdgeInsets.only(
-                                                    bottom:
-                                                        AppDimensions.height10(
-                                                                context) *
+                                                  content: Container(
+                                                    margin: EdgeInsets.only(
+                                                        bottom: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             1.5,
-                                                    left:
-                                                        AppDimensions.height10(
-                                                                context) *
+                                                        left: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             1.6,
-                                                    right:
-                                                        AppDimensions.height10(
-                                                                context) *
+                                                        right: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             1.6),
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    3.4,
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    23.8,
-                                                child: Text(
-                                                  "Are you sure you want to turn off the\ngoal? If you do, it will become inactive.",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    fontSize:
+                                                    height:
                                                         AppDimensions.height10(
                                                                 context) *
+                                                            3.4,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            23.8,
+                                                    child: Text(
+                                                      "Are you sure you want to turn off the\ngoal? If you do, it will become inactive.",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             1.3,
-                                                    fontWeight: FontWeight.w400,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ),
-                                              actions: <Widget>[
-                                                Column(
-                                                  children: [
-                                                    SizedBox(
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          0.1,
-                                                      child: Divider(
-                                                        color: const Color(
-                                                                0XFF3C3C43)
-                                                            .withOpacity(0.29),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          4.2,
-                                                      width: double.infinity,
-                                                      color: const Color(
-                                                          0xFF007AFF),
-                                                      child: TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Text(
-                                                          'No',
-                                                          style: TextStyle(
-                                                              color: const Color(
-                                                                  0xFFFFFFFF),
-                                                              fontSize: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.7,
-                                                              fontFamily:
-                                                                  "Laila",
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400),
+                                                  actions: <Widget>[
+                                                    Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.1,
+                                                          child: Divider(
+                                                            color: const Color(
+                                                                    0XFF3C3C43)
+                                                                .withOpacity(
+                                                                    0.29),
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          0.1,
-                                                      child: Divider(
-                                                        color: const Color(
-                                                                0XFF3C3C43)
-                                                            .withOpacity(0.29),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          4.4,
-                                                      width: double.infinity,
-                                                      child: TextButton(
-                                                        onPressed: () {
-                                                          AdminGoal()
-                                                              .updateUserGoalStatus(
-                                                                  'inactive')
-                                                              .then((response) {
-                                                            if (response ==
-                                                                true) {
-                                                              print(
-                                                                  "Goal Inactive");
-                                                              setState(() {
-                                                                Loader = true;
-                                                              });
+                                                        Container(
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              4.2,
+                                                          width:
+                                                              double.infinity,
+                                                          color: const Color(
+                                                              0xFF007AFF),
+                                                          child: TextButton(
+                                                            onPressed: () {
                                                               Navigator.pop(
                                                                   context);
-                                                              _fetchGoalDetails();
-                                                            } else if (response ==
-                                                                400) {
-                                                              Navigator.pop(
-                                                                  context);
-                                                              showAnimatedDialog(
-                                                                  animationType:
-                                                                      DialogTransitionType
-                                                                          .fadeScale,
-                                                                  curve: Curves
-                                                                      .easeInOut,
-                                                                  duration:
-                                                                      const Duration(
+                                                            },
+                                                            child: Text(
+                                                              'No',
+                                                              style: TextStyle(
+                                                                  color: const Color(
+                                                                      0xFFFFFFFF),
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.7,
+                                                                  fontFamily:
+                                                                      "Laila",
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.1,
+                                                          child: Divider(
+                                                            color: const Color(
+                                                                    0XFF3C3C43)
+                                                                .withOpacity(
+                                                                    0.29),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              4.4,
+                                                          width:
+                                                              double.infinity,
+                                                          child: TextButton(
+                                                            onPressed: () {
+                                                              AdminGoal()
+                                                                  .updateUserGoalStatus(
+                                                                      'inactive')
+                                                                  .then(
+                                                                      (response) {
+                                                                if (response ==
+                                                                    true) {
+                                                                  print(
+                                                                      "Goal Inactive");
+                                                                  setState(() {
+                                                                    Loader =
+                                                                        true;
+                                                                  });
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                  _fetchGoalDetails();
+                                                                } else if (response ==
+                                                                    400) {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                  showAnimatedDialog(
+                                                                      animationType:
+                                                                          DialogTransitionType
+                                                                              .fadeScale,
+                                                                      curve: Curves
+                                                                          .easeInOut,
+                                                                      duration: const Duration(
                                                                           seconds:
                                                                               1),
-                                                                  context:
-                                                                      context,
-                                                                  builder: (BuildContext
-                                                                          context) =>
-                                                                      Container(
-                                                                        width: AppDimensions.height10(context) *
-                                                                            27.0,
-                                                                        height: AppDimensions.height10(context) *
-                                                                            18.2,
-                                                                        decoration:
-                                                                            BoxDecoration(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
-                                                                        child:
-                                                                            AlertDialog(
-                                                                          shape:
-                                                                              RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
-                                                                          contentPadding:
-                                                                              EdgeInsets.zero,
-                                                                          actionsPadding:
-                                                                              EdgeInsets.zero,
-                                                                          titlePadding:
-                                                                              EdgeInsets.zero,
-                                                                          title:
-                                                                              Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top: AppDimensions.height10(context) * 1.9,
-                                                                                right: AppDimensions.height10(context) * 1.6,
-                                                                                left: AppDimensions.height10(context) * 1.6,
-                                                                                bottom: AppDimensions.height10(context) * 0.2),
-                                                                            height:
-                                                                                AppDimensions.height10(context) * 2.2,
+                                                                      context:
+                                                                          context,
+                                                                      builder: (BuildContext
+                                                                              context) =>
+                                                                          Container(
                                                                             width:
-                                                                                AppDimensions.height10(context) * 23.8,
-                                                                            child:
-                                                                                Text(
-                                                                              "Turn off goal?",
-                                                                              textAlign: TextAlign.center,
-                                                                              style: TextStyle(
-                                                                                fontSize: AppDimensions.height10(context) * 1.7,
-                                                                                fontWeight: FontWeight.w400,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          content:
-                                                                              Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                bottom: AppDimensions.height10(context) * 1.5,
-                                                                                left: AppDimensions.height10(context) * 1.6,
-                                                                                right: AppDimensions.height10(context) * 1.6),
+                                                                                AppDimensions.height10(context) * 27.0,
                                                                             height:
-                                                                                AppDimensions.height10(context) * 3.4,
-                                                                            width:
-                                                                                AppDimensions.height10(context) * 23.8,
+                                                                                AppDimensions.height10(context) * 18.2,
+                                                                            decoration:
+                                                                                BoxDecoration(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
                                                                             child:
-                                                                                Text(
-                                                                              "Goal status can only be changed after 60 days",
-                                                                              textAlign: TextAlign.center,
-                                                                              style: TextStyle(
-                                                                                fontSize: AppDimensions.height10(context) * 1.3,
-                                                                                fontWeight: FontWeight.w400,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          actions: <
-                                                                              Widget>[
-                                                                            Column(
-                                                                              children: [
-                                                                                SizedBox(
-                                                                                  height: AppDimensions.height10(context) * 0.1,
-                                                                                  child: Divider(
-                                                                                    color: const Color(0XFF3C3C43).withOpacity(0.29),
+                                                                                AlertDialog(
+                                                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
+                                                                              contentPadding: EdgeInsets.zero,
+                                                                              actionsPadding: EdgeInsets.zero,
+                                                                              titlePadding: EdgeInsets.zero,
+                                                                              title: Container(
+                                                                                margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.9, right: AppDimensions.height10(context) * 1.6, left: AppDimensions.height10(context) * 1.6, bottom: AppDimensions.height10(context) * 0.2),
+                                                                                height: AppDimensions.height10(context) * 2.2,
+                                                                                width: AppDimensions.height10(context) * 23.8,
+                                                                                child: Text(
+                                                                                  "Turn off goal?",
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: TextStyle(
+                                                                                    fontSize: AppDimensions.height10(context) * 1.7,
+                                                                                    fontWeight: FontWeight.w400,
                                                                                   ),
                                                                                 ),
-                                                                                Container(
-                                                                                  height: AppDimensions.height10(context) * 4.2,
-                                                                                  width: double.infinity,
-                                                                                  color: const Color(0xFF007AFF),
-                                                                                  child: TextButton(
-                                                                                    onPressed: () {
-                                                                                      Navigator.pop(context);
-                                                                                    },
-                                                                                    child: Text(
-                                                                                      'OK',
-                                                                                      style: TextStyle(color: const Color(0xFFFFFFFF), fontSize: AppDimensions.height10(context) * 1.7, fontFamily: "Laila", fontWeight: FontWeight.w400),
+                                                                              ),
+                                                                              content: Container(
+                                                                                margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.5, left: AppDimensions.height10(context) * 1.6, right: AppDimensions.height10(context) * 1.6),
+                                                                                height: AppDimensions.height10(context) * 3.4,
+                                                                                width: AppDimensions.height10(context) * 23.8,
+                                                                                child: Text(
+                                                                                  "Goal status can only be changed after 60 days",
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: TextStyle(
+                                                                                    fontSize: AppDimensions.height10(context) * 1.3,
+                                                                                    fontWeight: FontWeight.w400,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              actions: <Widget>[
+                                                                                Column(
+                                                                                  children: [
+                                                                                    SizedBox(
+                                                                                      height: AppDimensions.height10(context) * 0.1,
+                                                                                      child: Divider(
+                                                                                        color: const Color(0XFF3C3C43).withOpacity(0.29),
+                                                                                      ),
                                                                                     ),
-                                                                                  ),
-                                                                                ),
-                                                                                SizedBox(
-                                                                                  height: AppDimensions.height10(context) * 0.1,
-                                                                                  child: Divider(
-                                                                                    color: const Color(0XFF3C3C43).withOpacity(0.29),
-                                                                                  ),
-                                                                                ),
-                                                                                SizedBox(
-                                                                                  height: AppDimensions.height10(context) * 4.4,
-                                                                                  width: double.infinity,
+                                                                                    Container(
+                                                                                      height: AppDimensions.height10(context) * 4.2,
+                                                                                      width: double.infinity,
+                                                                                      color: const Color(0xFF007AFF),
+                                                                                      child: TextButton(
+                                                                                        onPressed: () {
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(
+                                                                                          'OK',
+                                                                                          style: TextStyle(color: const Color(0xFFFFFFFF), fontSize: AppDimensions.height10(context) * 1.7, fontFamily: "Laila", fontWeight: FontWeight.w400),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    SizedBox(
+                                                                                      height: AppDimensions.height10(context) * 0.1,
+                                                                                      child: Divider(
+                                                                                        color: const Color(0XFF3C3C43).withOpacity(0.29),
+                                                                                      ),
+                                                                                    ),
+                                                                                    SizedBox(
+                                                                                      height: AppDimensions.height10(context) * 4.4,
+                                                                                      width: double.infinity,
+                                                                                    ),
+                                                                                  ],
                                                                                 ),
                                                                               ],
                                                                             ),
-                                                                          ],
-                                                                        ),
-                                                                      ));
-                                                            }
-                                                          });
-                                                        },
-                                                        child: Text(
-                                                          'Yes',
-                                                          style: TextStyle(
-                                                              fontSize: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.7,
-                                                              fontFamily:
-                                                                  "Laila",
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: const Color(
-                                                                  0xFF007AFF)),
+                                                                          ));
+                                                                }
+                                                              });
+                                                            },
+                                                            child: Text(
+                                                              'Yes',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.7,
+                                                                  fontFamily:
+                                                                      "Laila",
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: const Color(
+                                                                      0xFF007AFF)),
+                                                            ),
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          0.1,
-                                                      child: Divider(
-                                                        color: const Color(
-                                                                0XFF3C3C43)
-                                                            .withOpacity(0.29),
-                                                      ),
+                                                        SizedBox(
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.1,
+                                                          child: Divider(
+                                                            color: const Color(
+                                                                    0XFF3C3C43)
+                                                                .withOpacity(
+                                                                    0.29),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ],
                                                 ),
+                                              )),
+                                      child: Container(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  9.1,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  9.1,
+                                          margin: EdgeInsets.only(
+                                              right: AppDimensions.height10(
+                                                      context) *
+                                                  3.3),
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                                width: 3, color: Colors.white),
+                                            boxShadow: List.filled(
+                                                4,
+                                                const BoxShadow(
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 0.25))),
+                                            gradient: const LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Color(0xffFEBD0F),
+                                                Color(0xffFFA511),
                                               ],
                                             ),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    2.0,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    2.0,
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        2.7),
+                                                color: const Color(0xFFFFFFFF),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        0.4),
+                                                child: Text(
+                                                  'Stop',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.4,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: const Color(
+                                                          0xFFFFFFFF)),
+                                                ),
+                                              )
+                                            ],
                                           )),
-                                  child: Container(
-                                      width:
-                                          AppDimensions.height10(context) * 9.1,
-                                      height:
-                                          AppDimensions.height10(context) * 9.1,
-                                      margin: EdgeInsets.only(
-                                          right:
-                                              AppDimensions.height10(context) *
-                                                  3.3),
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            width: 3, color: Colors.white),
-                                        boxShadow: List.filled(
-                                            4,
-                                            const BoxShadow(
-                                                color: Color.fromRGBO(
-                                                    0, 0, 0, 0.25))),
-                                        gradient: const LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Color(0xffFEBD0F),
-                                            Color(0xffFFA511),
-                                          ],
-                                        ),
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    2.7),
-                                            color: const Color(0xFFFFFFFF),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    0.4),
-                                            child: Text(
-                                              'Stop',
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.4,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      const Color(0xFFFFFFFF)),
-                                            ),
-                                          )
-                                        ],
-                                      )),
-                                )
-                              : AnimatedScaleButton(
-                                  onTap: () {
-                                    AdminGoal()
-                                        .updateUserGoalStatus('active')
-                                        .then((response) {
-                                      if (response == true) {
-                                        setState(() {
-                                          Loader = true;
-                                          update = true;
-                                        });
-                                        _fetchGoalDetails();
-                                      } else if (response == 400) {
-                                        showAnimatedDialog(
-                                            animationType:
-                                                DialogTransitionType.fadeScale,
-                                            curve: Curves.easeInOut,
-                                            duration:
-                                                const Duration(seconds: 1),
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return goalActive(context);
+                                    )
+                                  : AnimatedScaleButton(
+                                      onTap: () {
+                                        AdminGoal()
+                                            .updateUserGoalStatus('active')
+                                            .then((response) {
+                                          if (response == true) {
+                                            setState(() {
+                                              Loader = true;
+                                              update = true;
                                             });
-                                      }
-                                    });
-                                  },
-                                  child: Container(
-                                      width:
-                                          AppDimensions.height10(context) * 9.1,
-                                      height:
-                                          AppDimensions.height10(context) * 9.1,
-                                      margin: EdgeInsets.only(
-                                          right:
+                                            _fetchGoalDetails();
+                                          } else if (response == 400) {
+                                            showAnimatedDialog(
+                                                animationType:
+                                                    DialogTransitionType
+                                                        .fadeScale,
+                                                curve: Curves.easeInOut,
+                                                duration:
+                                                    const Duration(seconds: 1),
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return goalActive(context);
+                                                });
+                                          }
+                                        });
+                                      },
+                                      child: Container(
+                                          width:
                                               AppDimensions.height10(context) *
+                                                  9.1,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  9.1,
+                                          margin: EdgeInsets.only(
+                                              right: AppDimensions.height10(
+                                                      context) *
                                                   3.3),
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            width: 3,
-                                            color: const Color(0xFFFFA511)),
-                                      ),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/start_icon.webp'))),
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                                width: 3,
+                                                color: const Color(0xFFFFA511)),
                                           ),
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                width: AppDimensions.height10(
                                                         context) *
-                                                    0.4),
-                                            child: Text(
-                                              'Start',
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
+                                                    2.0,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    2.0,
+                                                decoration: const BoxDecoration(
+                                                    image: DecorationImage(
+                                                        image: AssetImage(
+                                                            'assets/images/start_icon.webp'))),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        0.4),
+                                                child: Text(
+                                                  'Start',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
                                                           1.4,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      const Color(0xFFFFA511)),
-                                            ),
-                                          )
-                                        ],
-                                      )),
-                                )
-                        ],
-                      ),
-                    ),
-                  ],
-                )
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: const Color(
+                                                          0xFFFFA511)),
+                                                ),
+                                              )
+                                            ],
+                                          )),
+                                    )
+                            ],
+                          ),
+                        ),
+                      ],
+                    )
               : Container(),
         ),
       ),

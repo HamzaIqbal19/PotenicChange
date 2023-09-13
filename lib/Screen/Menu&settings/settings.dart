@@ -634,6 +634,7 @@ class Settings extends StatelessWidget {
                                         name: '',
                                         update: false,
                                         helpfulTips: true,
+                                        record: 0,
                                       ),
                                     ));
                                 dashboard_sheet(context);
@@ -1048,10 +1049,7 @@ class Settings extends StatelessWidget {
                                         onPressed: () async {
                                           final SharedPreferences prefs =
                                               await _prefs;
-                                          await prefs.remove('usertoken');
-                                          await prefs.remove('userId');
-                                          await prefs.remove('refreshtoken');
-                                          await prefs.remove('route');
+                                          await prefs.clear();
                                           Navigator.push(
                                               context,
                                               FadePageRoute(

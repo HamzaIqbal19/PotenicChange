@@ -169,7 +169,7 @@ class _congratulationsState extends State<congratulations> {
                                         ),
                                         children: [
                                           TextSpan(
-                                              text: goal_level! < 5
+                                              text: goal_level < 5
                                                   ? '$goal_level'
                                                   : '5',
                                               style: TextStyle(
@@ -515,7 +515,7 @@ void goal_achieved_sheet(context) {
                                                 ),
                                                 children: [
                                                   TextSpan(
-                                                      text: goal_level! < 5
+                                                      text: goal_level < 5
                                                           ? '$goal_level'
                                                           : '5',
                                                       style: TextStyle(

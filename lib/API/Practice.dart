@@ -58,7 +58,7 @@ class PracticeGoalApi {
       return true;
     } else {
       print(request.statusCode);
-      client.close();
+      //client.close();
       // print("response:${}");
       print('Practice error');
       print(responses.reasonPhrase);
@@ -181,8 +181,11 @@ class PracticeGoalApi {
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       final SharedPreferences prefs = await _prefs;
-      if (jsonData['lastReportSentDate'] != null) {
-        await prefs.setString('lastReportDate', jsonData['lastReportSentDate']);
+      if (jsonData['practiceEvaluations'] != null) {
+        await prefs.setString(
+            'lastReportDate', jsonData['practiceEvaluations']['activeDate']);
+        await prefs.setString(
+            'lastReportEnd', jsonData['practiceEvaluations']['endDate']);
         print('LAST REPORT DATE: ${jsonData["practiceEvaluations"]['id']}');
       }
       if (jsonData["practiceEvaluations"] != null) {

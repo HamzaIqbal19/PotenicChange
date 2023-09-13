@@ -14,8 +14,10 @@ import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class your_why extends StatefulWidget {
   final int index;
@@ -40,11 +42,14 @@ class _your_whyState extends State<your_why> {
   ];
   bool saved = false;
   bool visible = false;
-  double swipeOffset = 0.0;
+  bool disable = false;
+
   void startTimer() {
     Timer(const Duration(seconds: 4), () {
       setState(() {
         visible = false;
+        saved = false;
+        disable = true;
       });
     });
   }
@@ -81,13 +86,16 @@ class _your_whyState extends State<your_why> {
   }
 
   void _fetchGoalDetails() {
-    AdminGoal.getUserGoal().then((response) {
+    AdminGoal.getUserGoal().then((response) async {
       if (response.length != 0) {
         setState(() {
           goalDetails = response;
         });
 
         print(response['goalEvaluations'][0]["YourWay"]);
+        final SharedPreferences prefs = await _prefs;
+        await prefs.setInt(
+            'goal_eval_id', response["goalEvaluations"][widget.index]["id"]);
         print(selectedItemIndexesOuter);
         loadData();
         if (widget.destination == 'reason') {
@@ -205,6 +213,7 @@ class _your_whyState extends State<your_why> {
   @override
   void initState() {
     super.initState();
+    print(widget.index);
     _fetchGoalDetails();
   }
 
@@ -212,7 +221,7 @@ class _your_whyState extends State<your_why> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        if (saved == false) {
+        if (disable == false) {
           showAnimatedDialog(
               animationType: DialogTransitionType.fadeScale,
               curve: Curves.easeInOut,
@@ -351,7 +360,7 @@ class _your_whyState extends State<your_why> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
-                  if (saved == false) {
+                  if (disable == false) {
                     showAnimatedDialog(
                         animationType: DialogTransitionType.fadeScale,
                         curve: Curves.easeInOut,
@@ -834,7 +843,7 @@ class _your_whyState extends State<your_why> {
                                             (BuildContext context, int index1) {
                                           return AnimatedScaleButton(
                                             onTap: () {
-                                              if (saved != true) {
+                                              if (disable != true) {
                                                 setState(() {
                                                   selectedItemIndexesOuter![
                                                       index] = index1;
@@ -1031,8 +1040,10 @@ class _your_whyState extends State<your_why> {
                                         setState(() {
                                           saved = false;
                                         });
+                                        startTimer();
                                       },
                                       functionText: 'Undo',
+                                      FadeFunction: () {},
                                       edit: false),
                                 )
                               //  GestureDetector(
@@ -1217,14 +1228,271 @@ class _your_whyState extends State<your_why> {
                               child: Row(
                                 children: [
                                   AnimatedScaleButton(
-                                    onTap: () => showAnimatedDialog(
-                                        animationType:
-                                            DialogTransitionType.fadeScale,
-                                        curve: Curves.easeInOut,
-                                        duration: const Duration(seconds: 1),
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            SizedBox(
+                                    onTap: () {
+                                      if (disable == false) {
+                                        showAnimatedDialog(
+                                            animationType:
+                                                DialogTransitionType.fadeScale,
+                                            curve: Curves.easeInOut,
+                                            duration:
+                                                const Duration(seconds: 1),
+                                            context: context,
+                                            builder: (BuildContext context) =>
+                                                SizedBox(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      27.0,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          18.2,
+                                                  child: AlertDialog(
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius
+                                                            .circular(AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.4)),
+                                                    contentPadding:
+                                                        EdgeInsets.zero,
+                                                    actionsPadding:
+                                                        EdgeInsets.zero,
+                                                    titlePadding:
+                                                        EdgeInsets.zero,
+                                                    title: Container(
+                                                      decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius
+                                                              .circular(AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.4)),
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.9,
+                                                          right: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6,
+                                                          left: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6,
+                                                          bottom: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.2),
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.2,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          23.8,
+                                                      child: Text(
+                                                        "Clear answers?",
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.7,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    content: Container(
+                                                      margin: EdgeInsets.only(
+                                                          bottom: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.5,
+                                                          left: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6,
+                                                          right: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6),
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          3.2,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          23.8,
+                                                      child: Text(
+                                                        "Are you sure you want to clear all your\nanswers for this Goal criterion?",
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.3,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    actions: <Widget>[
+                                                      Column(
+                                                        children: [
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.1,
+                                                            child: Divider(
+                                                              color: const Color(
+                                                                      0XFF3C3C43)
+                                                                  .withOpacity(
+                                                                      0.29),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                4.2,
+                                                            width:
+                                                                double.infinity,
+                                                            color: const Color(
+                                                                0xFF007AFF),
+                                                            child: TextButton(
+                                                              onPressed: () {
+                                                                selectedItemIndexesOuter =
+                                                                    List.filled(
+                                                                        goalDetails[widget.destination]
+                                                                            .length,
+                                                                        -1);
+                                                                setState(() {});
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Text(
+                                                                'Yes',
+                                                                style: TextStyle(
+                                                                    color: const Color(
+                                                                        0xFFFFFFFF),
+                                                                    fontSize:
+                                                                        AppDimensions.height10(context) *
+                                                                            1.7,
+                                                                    fontFamily:
+                                                                        "Laila",
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.1,
+                                                            child: Divider(
+                                                              color: const Color(
+                                                                      0XFF3C3C43)
+                                                                  .withOpacity(
+                                                                      0.29),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                4.4,
+                                                            width:
+                                                                double.infinity,
+                                                            child: TextButton(
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Text(
+                                                                'Cancel',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        AppDimensions.height10(context) *
+                                                                            1.7,
+                                                                    fontFamily:
+                                                                        "Laila",
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: const Color(
+                                                                        0xFF007AFF)),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.1,
+                                                            child: Divider(
+                                                              color: const Color(
+                                                                      0XFF3C3C43)
+                                                                  .withOpacity(
+                                                                      0.29),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ));
+                                      }
+                                    },
+                                    child: Container(
+                                      width:
+                                          AppDimensions.height10(context) * 8.0,
+                                      height:
+                                          AppDimensions.height10(context) * 5.0,
+                                      decoration: BoxDecoration(
+                                        color: disable
+                                            ? const Color(0xFFFFFFFF)
+                                                .withOpacity(0.4)
+                                            : const Color(0xFFFFFFFF),
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10(context) *
+                                                5.0),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'Clear',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              fontWeight: FontWeight.w600,
+                                              color:
+                                                  // selectedItemIndexesOuter! !=
+                                                  //         null
+                                                  //     ?
+                                                  const Color(0xFFFA9934)
+                                              // : const Color(0xFFFA9934)
+                                              //     .withOpacity(0.5)
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  AnimatedScaleButton(
+                                    onTap: () {
+                                      if (disable == false) {
+                                        showAnimatedDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return SizedBox(
                                               width: AppDimensions.height10(
                                                       context) *
                                                   27.0,
@@ -1273,7 +1541,7 @@ class _your_whyState extends State<your_why> {
                                                           context) *
                                                       23.8,
                                                   child: Text(
-                                                    "Clear answers?",
+                                                    "Reset answers?",
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontSize: AppDimensions
@@ -1299,15 +1567,12 @@ class _your_whyState extends State<your_why> {
                                                               .height10(
                                                                   context) *
                                                           1.6),
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          3.2,
+                                                  // height: AppDimensions.height10(context) * 3.2,
                                                   width: AppDimensions.height10(
                                                           context) *
                                                       23.8,
                                                   child: Text(
-                                                    "Are you sure you want to clear all your\nanswers for this Goal criterion?",
+                                                    "Are you sure you want to reset, all your\nchanges for this criterion?",
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontSize: AppDimensions
@@ -1342,32 +1607,43 @@ class _your_whyState extends State<your_why> {
                                                         width: double.infinity,
                                                         color: const Color(
                                                             0xFF007AFF),
-                                                        child: TextButton(
-                                                          onPressed: () {
-                                                            selectedItemIndexesOuter =
-                                                                List.filled(
-                                                                    goalDetails[
-                                                                            widget.destination]
-                                                                        .length,
-                                                                    -1);
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            for (int i = 0;
+                                                                i <
+                                                                    resetList!
+                                                                        .length;
+                                                                i++) {
+                                                              selectedItemIndexesOuter![
+                                                                      i] =
+                                                                  resetList![i];
+                                                            }
+                                                            // selectedItemIndexesOuter =
+                                                            //     resetList;
                                                             setState(() {});
                                                             Navigator.pop(
                                                                 context);
+                                                            print(
+                                                                selectedItemIndexesOuter);
+
+                                                            // selectedItemIndexesOuter!.clear();
                                                           },
-                                                          child: Text(
-                                                            'Yes',
-                                                            style: TextStyle(
-                                                                color: const Color(
-                                                                    0xFFFFFFFF),
-                                                                fontSize: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    1.7,
-                                                                fontFamily:
-                                                                    "Laila",
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
+                                                          child: Center(
+                                                            child: Text(
+                                                              'Yes',
+                                                              style: TextStyle(
+                                                                  color: const Color(
+                                                                      0xFFFFFFFF),
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.7,
+                                                                  fontFamily:
+                                                                      "Laila",
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -1427,246 +1703,15 @@ class _your_whyState extends State<your_why> {
                                                   ),
                                                 ],
                                               ),
-                                            )),
-                                    child: Container(
-                                      width:
-                                          AppDimensions.height10(context) * 8.0,
-                                      height:
-                                          AppDimensions.height10(context) * 5.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFFFFFFF),
-                                        borderRadius: BorderRadius.circular(
-                                            AppDimensions.height10(context) *
-                                                5.0),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'Clear',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              fontWeight: FontWeight.w600,
-                                              color:
-                                                  // selectedItemIndexesOuter! !=
-                                                  //         null
-                                                  //     ?
-                                                  const Color(0xFFFA9934)
-                                              // : const Color(0xFFFA9934)
-                                              //     .withOpacity(0.5)
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  AnimatedScaleButton(
-                                    onTap: () => showAnimatedDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return SizedBox(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  27.0,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  18.2,
-                                          child: AlertDialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.4)),
-                                            contentPadding: EdgeInsets.zero,
-                                            actionsPadding: EdgeInsets.zero,
-                                            titlePadding: EdgeInsets.zero,
-                                            title: Container(
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.4)),
-                                              margin: EdgeInsets.only(
-                                                  top: AppDimensions
-                                                          .height10(context) *
-                                                      1.9,
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      1.6,
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      1.6,
-                                                  bottom:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          0.2),
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.2,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  23.8,
-                                              child: Text(
-                                                "Reset answers?",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.7,
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                              ),
-                                            ),
-                                            content: Container(
-                                              margin: EdgeInsets.only(
-                                                  bottom: AppDimensions
-                                                          .height10(context) *
-                                                      1.5,
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      1.6,
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      1.6),
-                                              // height: AppDimensions.height10(context) * 3.2,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  23.8,
-                                              child: Text(
-                                                "Are you sure you want to reset, all your\nchanges for this criterion?",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.3,
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                              ),
-                                            ),
-                                            actions: <Widget>[
-                                              Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.1,
-                                                    child: Divider(
-                                                      color: const Color(
-                                                              0XFF3C3C43)
-                                                          .withOpacity(0.29),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            4.2,
-                                                    width: double.infinity,
-                                                    color:
-                                                        const Color(0xFF007AFF),
-                                                    child: GestureDetector(
-                                                      onTap: () {
-                                                        for (int i = 0;
-                                                            i <
-                                                                resetList!
-                                                                    .length;
-                                                            i++) {
-                                                          selectedItemIndexesOuter![
-                                                                  i] =
-                                                              resetList![i];
-                                                        }
-                                                        // selectedItemIndexesOuter =
-                                                        //     resetList;
-                                                        setState(() {});
-                                                        Navigator.pop(context);
-                                                        print(
-                                                            selectedItemIndexesOuter);
-
-                                                        // selectedItemIndexesOuter!.clear();
-                                                      },
-                                                      child: Center(
-                                                        child: Text(
-                                                          'Yes',
-                                                          style: TextStyle(
-                                                              color: const Color(
-                                                                  0xFFFFFFFF),
-                                                              fontSize: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.7,
-                                                              fontFamily:
-                                                                  "Laila",
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.1,
-                                                    child: Divider(
-                                                      color: const Color(
-                                                              0XFF3C3C43)
-                                                          .withOpacity(0.29),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            4.4,
-                                                    width: double.infinity,
-                                                    child: TextButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Text(
-                                                        'Cancel',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.7,
-                                                            fontFamily: "Laila",
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: const Color(
-                                                                0xFF007AFF)),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.1,
-                                                    child: Divider(
-                                                      color: const Color(
-                                                              0XFF3C3C43)
-                                                          .withOpacity(0.29),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
+                                            );
+                                          },
+                                          animationType:
+                                              DialogTransitionType.fadeScale,
+                                          curve: Curves.easeInOut,
+                                          duration: const Duration(seconds: 1),
                                         );
-                                      },
-                                      animationType:
-                                          DialogTransitionType.fadeScale,
-                                      curve: Curves.easeInOut,
-                                      duration: const Duration(seconds: 1),
-                                    ),
+                                      }
+                                    },
                                     child: Container(
                                       width:
                                           AppDimensions.height10(context) * 8.0,
@@ -1677,7 +1722,10 @@ class _your_whyState extends State<your_why> {
                                               AppDimensions.height10(context) *
                                                   1.0),
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFFFFFFF),
+                                        color: disable
+                                            ? const Color(0xFFFFFFFF)
+                                                .withOpacity(0.4)
+                                            : const Color(0xFFFFFFFF),
                                         borderRadius: BorderRadius.circular(
                                             AppDimensions.height10(context) *
                                                 5.0),
@@ -1706,301 +1754,298 @@ class _your_whyState extends State<your_why> {
                                   ),
                                   AnimatedScaleButton(
                                     onTap: () {
-                                      if (selectedItemIndexesOuter!
-                                              .contains(-1) ==
-                                          false) {
-                                        showAnimatedDialog(
-                                            context: context,
-                                            animationType:
-                                                DialogTransitionType.fadeScale,
-                                            curve: Curves.easeInOut,
-                                            duration:
-                                                const Duration(seconds: 1),
-                                            builder: (BuildContext context) =>
-                                                Container(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            27.0,
-                                                    height: AppDimensions
-                                                            .height10(context) *
-                                                        18.2,
-                                                    decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius
-                                                            .circular(AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4)),
-                                                    child: AlertDialog(
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius: BorderRadius
-                                                              .circular(AppDimensions
+                                      if (disable == false) {
+                                        if (selectedItemIndexesOuter!
+                                                .contains(-1) ==
+                                            false) {
+                                          showAnimatedDialog(
+                                              context: context,
+                                              animationType:
+                                                  DialogTransitionType
+                                                      .fadeScale,
+                                              curve: Curves.easeInOut,
+                                              duration:
+                                                  const Duration(seconds: 1),
+                                              builder:
+                                                  (BuildContext context) =>
+                                                      Container(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              27.0,
+                                                          height:
+                                                              AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  1.4)),
-                                                      contentPadding:
-                                                          EdgeInsets.zero,
-                                                      actionsPadding:
-                                                          EdgeInsets.zero,
-                                                      titlePadding:
-                                                          EdgeInsets.zero,
-                                                      title: Container(
-                                                        decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius
-                                                                .circular(AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    1.4)),
-                                                        margin: EdgeInsets.only(
-                                                            top: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.9,
-                                                            right: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.6,
-                                                            left: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.6,
-                                                            bottom: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                0.2),
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.2,
-                                                        width: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            23.8,
-                                                        child: Text(
-                                                          "Save changes?",
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.7,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      content: Container(
-                                                        margin: EdgeInsets.only(
-                                                            bottom: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.5,
-                                                            left: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.6,
-                                                            right: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.6),
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            3.2,
-                                                        width: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            23.8,
-                                                        child: Text(
-                                                          "Are you sure you want to save your new\nupdates?",
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.3,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      actions: <Widget>[
-                                                        Column(
-                                                          children: [
-                                                            SizedBox(
+                                                                  18.2,
+                                                          decoration: BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.4)),
+                                                          child: AlertDialog(
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius.circular(
+                                                                        AppDimensions.height10(context) *
+                                                                            1.4)),
+                                                            contentPadding:
+                                                                EdgeInsets.zero,
+                                                            actionsPadding:
+                                                                EdgeInsets.zero,
+                                                            titlePadding:
+                                                                EdgeInsets.zero,
+                                                            title: Container(
+                                                              decoration: BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius.circular(
+                                                                          AppDimensions.height10(context) *
+                                                                              1.4)),
+                                                              margin: EdgeInsets.only(
+                                                                  top: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.9,
+                                                                  right:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.6,
+                                                                  left: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.6,
+                                                                  bottom: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.2),
                                                               height: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  0.1,
-                                                              child: Divider(
-                                                                color: const Color(
-                                                                        0XFF3C3C43)
-                                                                    .withOpacity(
-                                                                        0.29),
+                                                                  2.2,
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  23.8,
+                                                              child: Text(
+                                                                "Save changes?",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.7,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                ),
                                                               ),
                                                             ),
-                                                            Container(
+                                                            content: Container(
+                                                              margin: EdgeInsets.only(
+                                                                  bottom: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.5,
+                                                                  left: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.6,
+                                                                  right: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.6),
                                                               height: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  4.2,
-                                                              width: double
-                                                                  .infinity,
-                                                              color: const Color(
-                                                                  0xFF007AFF),
-                                                              child: TextButton(
-                                                                onPressed: () {
-                                                                  var sum = selectedItemIndexesOuter!
-                                                                      .reduce((a,
-                                                                              b) =>
-                                                                          a +
-                                                                          b);
-                                                                  print(sum +
-                                                                      goalDetails[
-                                                                              widget.destination]
-                                                                          .length);
-
-                                                                  level[
-                                                                      'level'] = ((sum +
-                                                                              goalDetails[widget.destination].length) /
-                                                                          goalDetails[widget.destination].length)
-                                                                      .round();
-
-                                                                  for (int i =
-                                                                          0;
-                                                                      i <
-                                                                          selectedItemIndexesOuter!
-                                                                              .length;
-                                                                      i++) {
-                                                                    reasons['reason ${i + 1}'] =
-                                                                        selectedItemIndexesOuter![i] +
-                                                                            1;
-                                                                  }
-                                                                  print(level);
-                                                                  goalEvaluationApi()
-                                                                      .updateEvaluation(
-                                                                    widget.destination ==
-                                                                            'reason'
-                                                                        ? "YourWay"
-                                                                        : widget.destination ==
-                                                                                'identityStatement'
-                                                                            ? "newIdentity"
-                                                                            : "visualisingYourSelf",
-                                                                    {
-                                                                      ...level,
-                                                                      ...reasons
-                                                                    },
-                                                                  ).then((response) {
-                                                                    if (response ==
-                                                                        true) {
-                                                                      setState(
+                                                                  3.2,
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  23.8,
+                                                              child: Text(
+                                                                "Are you sure you want to save your new\nupdates?",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.3,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            actions: <Widget>[
+                                                              Column(
+                                                                children: [
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            0.1,
+                                                                    child:
+                                                                        Divider(
+                                                                      color: const Color(
+                                                                              0XFF3C3C43)
+                                                                          .withOpacity(
+                                                                              0.29),
+                                                                    ),
+                                                                  ),
+                                                                  Container(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            4.2,
+                                                                    width: double
+                                                                        .infinity,
+                                                                    color: const Color(
+                                                                        0xFF007AFF),
+                                                                    child:
+                                                                        TextButton(
+                                                                      onPressed:
                                                                           () {
-                                                                        saved =
-                                                                            true;
-                                                                        visible =
-                                                                            true;
-                                                                        totalPoint =
-                                                                            '${((sum + goalDetails[widget.destination].length) / goalDetails[widget.destination].length).round()}';
-                                                                      });
-                                                                      startTimer();
+                                                                        var sum = selectedItemIndexesOuter!.reduce((a,
+                                                                                b) =>
+                                                                            a +
+                                                                            b);
+                                                                        print(sum +
+                                                                            goalDetails[widget.destination].length);
 
-                                                                      // Navigator.push(
-                                                                      //     context,
-                                                                      //     FadePageRoute(
-                                                                      //         page: your_why(
-                                                                      //       saved:
-                                                                      //           true,
-                                                                      //       destination:
-                                                                      //           widget.destination,
-                                                                      //     )));
-                                                                    }
-                                                                  });
-                                                                  Navigator.pop(
-                                                                      context);
-                                                                },
-                                                                child: Text(
-                                                                  'Yes',
-                                                                  style: TextStyle(
+                                                                        level[
+                                                                            'level'] = ((sum + goalDetails[widget.destination].length) /
+                                                                                goalDetails[widget.destination].length)
+                                                                            .round();
+
+                                                                        for (int i =
+                                                                                0;
+                                                                            i < selectedItemIndexesOuter!.length;
+                                                                            i++) {
+                                                                          reasons['reason ${i + 1}'] =
+                                                                              selectedItemIndexesOuter![i] + 1;
+                                                                        }
+                                                                        print(
+                                                                            level);
+                                                                        goalEvaluationApi()
+                                                                            .updateEvaluation(
+                                                                          widget.destination == 'reason'
+                                                                              ? "YourWay"
+                                                                              : widget.destination == 'identityStatement'
+                                                                                  ? "newIdentity"
+                                                                                  : "visualisingYourSelf",
+                                                                          {
+                                                                            ...level,
+                                                                            ...reasons
+                                                                          },
+                                                                        ).then((response) {
+                                                                          if (response ==
+                                                                              true) {
+                                                                            setState(() {
+                                                                              saved = true;
+                                                                              visible = true;
+                                                                              totalPoint = '${((sum + goalDetails[widget.destination].length) / goalDetails[widget.destination].length).round()}';
+                                                                            });
+                                                                            startTimer();
+
+                                                                            // Navigator.push(
+                                                                            //     context,
+                                                                            //     FadePageRoute(
+                                                                            //         page: your_why(
+                                                                            //       saved:
+                                                                            //           true,
+                                                                            //       destination:
+                                                                            //           widget.destination,
+                                                                            //     )));
+                                                                          }
+                                                                        });
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      child:
+                                                                          Text(
+                                                                        'Yes',
+                                                                        style: TextStyle(
+                                                                            color: const Color(
+                                                                                0xFFFFFFFF),
+                                                                            fontSize: AppDimensions.height10(context) *
+                                                                                1.7,
+                                                                            fontFamily:
+                                                                                "Laila",
+                                                                            fontWeight:
+                                                                                FontWeight.w400),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            0.1,
+                                                                    child:
+                                                                        Divider(
                                                                       color: const Color(
-                                                                          0xFFFFFFFF),
-                                                                      fontSize:
-                                                                          AppDimensions.height10(context) *
-                                                                              1.7,
-                                                                      fontFamily:
-                                                                          "Laila",
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            SizedBox(
-                                                              height: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  0.1,
-                                                              child: Divider(
-                                                                color: const Color(
-                                                                        0XFF3C3C43)
-                                                                    .withOpacity(
-                                                                        0.29),
-                                                              ),
-                                                            ),
-                                                            SizedBox(
-                                                              height: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  4.4,
-                                                              width: double
-                                                                  .infinity,
-                                                              child: TextButton(
-                                                                onPressed: () {
-                                                                  Navigator.pop(
-                                                                      context);
-                                                                },
-                                                                child: Text(
-                                                                  'Cancel',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          AppDimensions.height10(context) *
-                                                                              1.7,
-                                                                      fontFamily:
-                                                                          "Laila",
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
+                                                                              0XFF3C3C43)
+                                                                          .withOpacity(
+                                                                              0.29),
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            4.4,
+                                                                    width: double
+                                                                        .infinity,
+                                                                    child:
+                                                                        TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      child:
+                                                                          Text(
+                                                                        'Cancel',
+                                                                        style: TextStyle(
+                                                                            fontSize: AppDimensions.height10(context) *
+                                                                                1.7,
+                                                                            fontFamily:
+                                                                                "Laila",
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                            color: const Color(0xFF007AFF)),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            0.1,
+                                                                    child:
+                                                                        Divider(
                                                                       color: const Color(
-                                                                          0xFF007AFF)),
-                                                                ),
+                                                                              0XFF3C3C43)
+                                                                          .withOpacity(
+                                                                              0.29),
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            ),
-                                                            SizedBox(
-                                                              height: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  0.1,
-                                                              child: Divider(
-                                                                color: const Color(
-                                                                        0XFF3C3C43)
-                                                                    .withOpacity(
-                                                                        0.29),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    )));
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                                content: Text(
-                                          'Must select answer from each row',
-                                          style: TextStyle(
-                                              color:
-                                                  Colors.red.withOpacity(0.8)),
-                                        )));
+                                                            ],
+                                                          )));
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  content: Text(
+                                            'Must select answer from each row',
+                                            style: TextStyle(
+                                                color: Colors.red
+                                                    .withOpacity(0.8)),
+                                          )));
+                                        }
                                       }
                                     },
                                     child: Container(
@@ -2016,12 +2061,18 @@ class _your_whyState extends State<your_why> {
                                         gradient:
                                             // selectedItemIndexesOuter! != null
                                             //     ?
-                                            const LinearGradient(
+                                            LinearGradient(
                                           begin: Alignment.topCenter,
                                           end: Alignment.bottomCenter,
                                           colors: [
-                                            Color(0xffFCC10D),
-                                            Color(0xffFDA210),
+                                            disable
+                                                ? const Color(0xffFCC10D)
+                                                    .withOpacity(0.4)
+                                                : const Color(0xffFCC10D),
+                                            disable
+                                                ? const Color(0xffFDA210)
+                                                    .withOpacity(0.4)
+                                                : const Color(0xffFDA210),
                                           ],
                                         ),
                                         // :

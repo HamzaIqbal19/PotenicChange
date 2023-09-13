@@ -67,6 +67,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                             name: '',
                             update: false,
                             helpfulTips: false,
+                            record: 0,
                           )));
                       final SharedPreferences prefs = await _prefs;
                       prefs.remove('inspiration_saved_route');
@@ -231,6 +232,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                       headText: 'Deleted',
                       edit: false,
                       onTap1: () {},
+                      FadeFunction: () {},
                     ))
                 : Container(),
             Align(

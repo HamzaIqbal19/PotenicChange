@@ -58,7 +58,10 @@ class RecordingPractice {
         print('Status false');
         await prefs.setBool('isReportActive', true);
         await prefs.setString(
-            'lastReportDate', responses['reportDetail']['reportDate']);
+            'lastReportDate', responses['reportDetail']['activeDate']);
+        await prefs.setString(
+            'lastReportEnd', responses['reportDetail']['endDate']);
+        print('Recording added 20');
       } else if (responses['report'] == false) {
         await prefs.setBool('isReportActive', false);
       }

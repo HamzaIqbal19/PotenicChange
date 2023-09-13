@@ -125,6 +125,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                             name: '',
                             update: false,
                             helpfulTips: false,
+                            record: 0,
                           )));
                     },
                     child: Container(
@@ -143,10 +144,9 @@ class _no_planned_sessionState extends State<no_planned_session> {
                       Navigator.push(
                           context,
                           FadePageRoute(
-                              page: record_session(
-                                  past_session: true,
-                                  day: nextDayName,
-                                  id: allGoals[0]['userGoalId'])));
+                              page: const record_session(
+                            past_session: true,
+                          )));
                     },
                     child: Container(
                       margin: EdgeInsets.only(
@@ -343,6 +343,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                   name: '',
                                                   update: false,
                                                   helpfulTips: false,
+                                                  record: 0,
                                                 )));
                                           },
                                           child: Container(
@@ -600,10 +601,9 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: record_session(
-                                              past_session: false,
-                                              day: nextDayName,
-                                              id: allGoals[0]['userGoalId'])));
+                                          page: const record_session(
+                                        past_session: false,
+                                      )));
                                 },
                                 child: Container(
                                   width: AppDimensions.height10(context) * 10.1,

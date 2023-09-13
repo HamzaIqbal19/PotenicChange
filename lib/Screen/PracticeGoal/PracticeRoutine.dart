@@ -97,7 +97,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
       color = goalColor;
       mygoal.text = my_goal!;
       practice.text = practice_Name!;
-      practiceName.text = practice_Name!;
+      practiceName.text = practice_Name;
     });
     print('=======================>$color');
   }

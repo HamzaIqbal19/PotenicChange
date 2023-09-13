@@ -1282,6 +1282,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                           name: '',
                                                           update: false,
                                                           helpfulTips: false,
+                                                          record: 0,
                                                         )))
                                                     : Navigator.push(
                                                         context,

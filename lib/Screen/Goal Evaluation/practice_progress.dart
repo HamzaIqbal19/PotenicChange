@@ -7,6 +7,7 @@ import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
@@ -144,6 +145,11 @@ class _practice_progressState extends State<practice_progress> {
   void initState() {
     super.initState();
     getReport();
+    if (widget.days == 30) {
+      setState(() {
+        activity_duration == 'Past month';
+      });
+    }
   }
 
   @override
@@ -1230,7 +1236,7 @@ class _practice_progressState extends State<practice_progress> {
                             child: Text(
                               noData == true
                                   ? 'DD/MMM/YY to DD/MMM/YY.'
-                                  : '${report["startDate"].toString().substring(0, 10)} to ${report["endDate"].toString().substring(0, 10)}',
+                                  : '${formatDate(report["startDate"].toString().substring(0, 10))} to ${formatDate(report["endDate"].toString().substring(0, 10))}',
                               style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 2.0,
                                 height: AppDimensions.height10(context) * 0.12,
@@ -2462,7 +2468,6 @@ class _practice_progressState extends State<practice_progress> {
           //  getReport();
         } else if (value == 3) {
           setState(() {
-            Loader = true;
             days = 60;
           });
           Navigator.push(
@@ -2475,7 +2480,6 @@ class _practice_progressState extends State<practice_progress> {
           //getReport();
         } else if (value == 4) {
           setState(() {
-            Loader = true;
             days = 90;
           });
           Navigator.push(

@@ -236,7 +236,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: AppDimensions.height10(context) * 2.2,
-                     fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w600,
                   ),
                   colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),

@@ -214,14 +214,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                         final SharedPreferences
                                                             prefs =
                                                             await _prefs;
-                                                        await prefs.remove(
-                                                            'usertoken');
-                                                        await prefs
-                                                            .remove('userId');
-                                                        await prefs.remove(
-                                                            'refreshtoken');
-                                                        await prefs
-                                                            .remove('route');
+                                                        await prefs.clear();
 
                                                         Navigator.push(
                                                           context,

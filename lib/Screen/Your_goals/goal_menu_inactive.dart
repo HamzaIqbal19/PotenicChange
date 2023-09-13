@@ -42,6 +42,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   String route = '';
   String subscriptions = '';
   String inputDate = '';
+  String level = '';
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -62,7 +63,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
           goalDetails = response;
           subscriptions = response['subscriptionsStatus'];
           inputDate = response['goalEvaluations'].length == 0
-              ? "2023-02-10"
+              ? ""
               : response['goalEvaluations']
                                   [response['goalEvaluations'].length - 1]
                               ['activedate']
@@ -70,7 +71,17 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       'null'
                   ? response['goalEvaluations']
                       [response['goalEvaluations'].length - 1]['activedate']
-                  : "2023-02-10";
+                  : "";
+          level = response['goalEvaluations'].length == 0
+              ? ''
+              : response['goalEvaluations']
+                              [response['goalEvaluations'].length - 1]
+                          ['totalPoint'] ==
+                      null
+                  ? ''
+                  : response['goalEvaluations']
+                          [response['goalEvaluations'].length - 1]['totalPoint']
+                      .toString();
         });
         print('Date=============>$inputDate');
         // var evalId =
@@ -159,6 +170,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                 name: '',
                 update: false,
                 helpfulTips: false,
+                record: 0,
               )));
         } else {
           Navigator.push(
@@ -341,22 +353,15 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         image: DecorationImage(
-                                          image: AssetImage(goalDetails[
-                                                      'goalLevel'] ==
-                                                  1
+                                          image: AssetImage(level == '1'
                                               ? 'assets/images/Nebula pie 1.webp'
-                                              : goalDetails['goalLevel'] == 2
+                                              : level == '2'
                                                   ? 'assets/images/Nebula pie 2.webp'
-                                                  : goalDetails['goalLevel'] ==
-                                                          3
+                                                  : level == '3'
                                                       ? 'assets/images/Nebula pie 3.webp'
-                                                      : goalDetails[
-                                                                  'goalLevel'] ==
-                                                              4
+                                                      : level == '4'
                                                           ? 'assets/images/Nebula pie 4.webp'
-                                                          : goalDetails[
-                                                                      'goalLevel'] ==
-                                                                  5
+                                                          : level == '5'
                                                               ? 'assets/images/Nebula pie 5.webp'
                                                               : "assets/images/Nebula Pie.webp"),
                                         ),
@@ -367,10 +372,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             ? const Alignment(0, -0.1)
                                             : const Alignment(0, -0.07),
                                         child: Text(
-                                          goalDetails['goalLevel'] == 0
+                                          level == '0' || level == ''
                                               ? '-'
-                                              : goalDetails['goalLevel']
-                                                  .toString(),
+                                              : level,
                                           style: TextStyle(
                                               fontSize: subscriptions ==
                                                       'active'
@@ -430,7 +434,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                   2.2,
 
                                               child: Text(
-                                                'for ${formatDate(inputDate)}!',
+                                                inputDate == ''
+                                                    ? ''
+                                                    : 'for ${formatDate(inputDate)}!',
                                                 style: TextStyle(
                                                     fontSize:
                                                         AppDimensions.height10(

@@ -275,7 +275,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                                           children: [
                                             AnimatedScaleButton(
                                               onTap: () async {
-                                                Navigator.push(
+                                                Navigator.pushReplacement(
                                                     context,
                                                     FadePageRoute(
                                                         page:
@@ -298,7 +298,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                   icon_viible: true,
                                                   text_color: 0xff646464,
                                                   feild_text_2:
-                                                      " ${pracDetails[index]['activeDate']}",
+                                                      " ${formatDate(pracDetails[index]['activeDate'])}",
                                                   text_color_2: 0xff8EA1B1,
                                                   feild_text_3: '',
                                                   feild_text_4: '',
@@ -307,16 +307,24 @@ class _practice_assesmentState extends State<practice_assesment> {
                                             ),
                                             AnimatedScaleButton(
                                               onTap: () async {
-                                                Navigator.push(
+                                                Navigator.pushReplacement(
                                                     context,
                                                     FadePageRoute(
-                                                        page: prac_score()));
+                                                        page: prac_score(
+                                                      route: 'assesment',
+                                                      index: index,
+                                                    )));
                                                 final SharedPreferences prefs =
                                                     await _prefs;
                                                 await prefs.setString(
                                                     'lastReportDate',
                                                     pracDetails[index]
                                                         ['activeDate']);
+                                                await prefs.setInt(
+                                                    'goal_eval_id',
+                                                    pracDetails[
+                                                            "goalEvaluations"]
+                                                        [index]["id"]);
                                               },
                                               child: button_feilds(
                                                 feild_text: 'Evaluation level ',

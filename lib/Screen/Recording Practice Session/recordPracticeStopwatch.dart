@@ -145,6 +145,7 @@ class _clocksState extends State<clocks> {
                                             name: '',
                                             update: false,
                                             helpfulTips: false,
+                                            record: 0,
                                           )));
                                     }
                                   },

@@ -9,6 +9,11 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -16,6 +21,10 @@ import 'package:potenic_app/Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class prac_score extends StatefulWidget {
+  final int index;
+  final String route;
+
+  const prac_score({super.key, required this.route, required this.index});
   @override
   State<prac_score> createState() => _prac_scoreState();
 }
@@ -24,6 +33,7 @@ class _prac_scoreState extends State<prac_score> {
   bool select_item = true;
   int? pracId;
   bool bt_visible = false;
+  bool disable = false;
   bool Loader = true;
   var pracDetails;
   var goalDetails;
@@ -33,6 +43,8 @@ class _prac_scoreState extends State<prac_score> {
   int selectedItemIndex3 = -1;
   int selectedItemIndex4 = -1;
   String level = '';
+  String activeDate = '';
+  String reportDate = '';
 
   Future<Timer> loadData() async {
     return Timer(const Duration(milliseconds: 1), onDoneLoading);
@@ -88,12 +100,7 @@ class _prac_scoreState extends State<prac_score> {
 
         getGoalDetails(pracDetails["userGoalId"]);
 
-        if (saved == true) {
-          getPracticeEval();
-        } else {
-          getPracticeEval();
-          print("Unsaved");
-        }
+        fetchPracticeAssesment();
 
         print(pracDetails);
         loadData();
@@ -113,6 +120,20 @@ class _prac_scoreState extends State<prac_score> {
           goalDetails = response["name"];
         });
       }
+    });
+  }
+
+  void stateChange() {
+    setState(() {
+      saved = false;
+      disable = true;
+    });
+  }
+
+  void startTimer() {
+    Timer(const Duration(seconds: 4), () {
+      print('Fade Fuction called');
+      stateChange();
     });
   }
 
@@ -143,10 +164,111 @@ class _prac_scoreState extends State<prac_score> {
               response['practiceEvaluation']['totalPoint'].toString() == 'null'
                   ? '-'
                   : response['practiceEvaluation']['totalPoint'].toString();
+          activeDate =
+              response['practiceEvaluation']['activeDate'].toString() == 'null'
+                  ? '-'
+                  : response['practiceEvaluation']['createdAt']
+                      .toString()
+                      .substring(0, 10);
         });
       }
       print(
           "$selectedItemIndex $selectedItemIndex2 $selectedItemIndex3 $selectedItemIndex4");
+    });
+  }
+
+  void fetchPracticeAssesment() async {
+    PracticeEvaluation.getPracriceAssesment().then((response) {
+      print('Practice assesment response $response');
+      if (response.length != 0) {
+        if (widget.index < 0) {
+          int i = response['practiceEvaluations'].length - 1;
+          ;
+          print('INDEX: $i');
+          print("AFTER INDEX");
+          setState(() {
+            selectedItemIndex =
+                response['practiceEvaluations'][i]['question1'] != null
+                    ? response['practiceEvaluations'][i]['question1'] - 1
+                    : -1;
+            selectedItemIndex2 =
+                response['practiceEvaluations'][i]['question2'] != null
+                    ? response['practiceEvaluations'][i]['question2'] - 1
+                    : -1;
+            selectedItemIndex3 =
+                response['practiceEvaluations'][i]['question3'] != null
+                    ? response['practiceEvaluations'][i]['question3'] - 1
+                    : -1;
+            selectedItemIndex4 =
+                response['practiceEvaluations'][i]['question4'] != null
+                    ? response['practiceEvaluations'][i]['question4'] - 1
+                    : -1;
+            level = response['practiceEvaluations'][i]['totalPoint']
+                        .toString() ==
+                    'null'
+                ? '-'
+                : response['practiceEvaluations'][i]['totalPoint'].toString();
+            activeDate = response['practiceEvaluations'][i]['activeDate']
+                        .toString() ==
+                    'null'
+                ? '-'
+                : response['practiceEvaluations'][i]['activeDate'].toString();
+            reportDate =
+                response['practiceEvaluations'][i]['createdAt'].toString() ==
+                        'null'
+                    ? '-'
+                    : response['practiceEvaluations'][i]['createdAt']
+                        .toString()
+                        .substring(0, 10);
+          });
+          print("AFTER INDEX $reportDate && $activeDate");
+        } else if (widget.index >= 0) {
+          print(response['practiceEvaluations'][widget.index]);
+          setState(() {
+            selectedItemIndex = response['practiceEvaluations'][widget.index]
+                        ['question1'] !=
+                    null
+                ? response['practiceEvaluations'][widget.index]['question1'] - 1
+                : -1;
+            selectedItemIndex2 = response['practiceEvaluations'][widget.index]
+                        ['question2'] !=
+                    null
+                ? response['practiceEvaluations'][widget.index]['question2'] - 1
+                : -1;
+            selectedItemIndex3 = response['practiceEvaluations'][widget.index]
+                        ['question3'] !=
+                    null
+                ? response['practiceEvaluations'][widget.index]['question3'] - 1
+                : -1;
+            selectedItemIndex4 = response['practiceEvaluations'][widget.index]
+                        ['question4'] !=
+                    null
+                ? response['practiceEvaluations'][widget.index]['question4'] - 1
+                : -1;
+            level = response['practiceEvaluations'][widget.index]['totalPoint']
+                        .toString() ==
+                    'null'
+                ? '-'
+                : response['practiceEvaluations'][widget.index]['totalPoint']
+                    .toString();
+            activeDate = response['practiceEvaluations'][widget.index]
+                            ['activeDate']
+                        .toString() ==
+                    'null'
+                ? '-'
+                : response['practiceEvaluations'][widget.index]['activeDate']
+                    .toString();
+            reportDate = response['practiceEvaluations'][widget.index]
+                            ['createdAt']
+                        .toString() ==
+                    'null'
+                ? '-'
+                : response['practiceEvaluations'][widget.index]['createdAt']
+                    .toString()
+                    .substring(0, 10);
+          });
+        }
+      }
     });
   }
 
@@ -159,7 +281,33 @@ class _prac_scoreState extends State<prac_score> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async => false,
+      onWillPop: () async {
+        if (widget.route == 'pracice_menu_completed') {
+          Navigator.pushReplacement(
+              context, FadePageRoute(page: const menu_behaviour()));
+        } else if (widget.route == 'pracice_menu') {
+          Navigator.pushReplacement(
+              context,
+              FadePageRoute(
+                  page: const practiceMenu(
+                goal_eval: false,
+              )));
+        } else if (widget.route == 'pracice_menu_missed') {
+          Navigator.pushReplacement(
+              context,
+              FadePageRoute(
+                  page: const missed_Menu(
+                pracName: '',
+              )));
+        } else if (widget.route == 'assesment') {
+          Navigator.pushReplacement(
+              context, FadePageRoute(page: const practice_assesment()));
+        } else if (widget.route == 'report') {
+          Navigator.pushReplacement(
+              context, FadePageRoute(page: const progress_report()));
+        }
+        return Future.value(false);
+      },
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -170,7 +318,30 @@ class _prac_scoreState extends State<prac_score> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  if (widget.route == 'pracice_menu_completed') {
+                    Navigator.pushReplacement(
+                        context, FadePageRoute(page: const menu_behaviour()));
+                  } else if (widget.route == 'pracice_menu') {
+                    Navigator.pushReplacement(
+                        context,
+                        FadePageRoute(
+                            page: const practiceMenu(
+                          goal_eval: false,
+                        )));
+                  } else if (widget.route == 'pracice_menu_missed') {
+                    Navigator.pushReplacement(
+                        context,
+                        FadePageRoute(
+                            page: const missed_Menu(
+                          pracName: '',
+                        )));
+                  } else if (widget.route == 'assesment') {
+                    Navigator.pushReplacement(context,
+                        FadePageRoute(page: const practice_assesment()));
+                  } else if (widget.route == 'report') {
+                    Navigator.pushReplacement(
+                        context, FadePageRoute(page: const progress_report()));
+                  }
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
@@ -271,7 +442,7 @@ class _prac_scoreState extends State<prac_score> {
                                       top: AppDimensions.height10(context) *
                                           1.3),
                                   child: Text(
-                                    'from [${pracDetails["lastReportSentDate"].toString().substring(0, 10)}] to [${pracDetails["lastReportSentDate"].toString().substring(0, 10)}]',
+                                    'from [${activeDate != '' ? formatDate(activeDate) : activeDate}] to [${reportDate != '' ? formatDate(reportDate) : reportDate}]',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
@@ -1310,15 +1481,19 @@ class _prac_scoreState extends State<prac_score> {
                                           3.6),
                                   child: Center(
                                     child: updateBox(
-                                        headText: "Changes saved",
-                                        bodyText: 'Goal Criteria',
-                                        onTap1: () {
-                                          setState(() {
-                                            saved = false;
-                                          });
-                                        },
-                                        functionText: 'Undo',
-                                        edit: false),
+                                      headText: "Changes saved",
+                                      bodyText: 'Practice Score',
+                                      onTap1: () {
+                                        setState(() {
+                                          saved = false;
+                                        });
+                                      },
+                                      functionText: 'Undo',
+                                      edit: false,
+                                      FadeFunction: () {
+                                        stateChange();
+                                      },
+                                    ),
                                   ),
                                 )
                               : Container(
@@ -1333,7 +1508,9 @@ class _prac_scoreState extends State<prac_score> {
                                     children: [
                                       AnimatedScaleButton(
                                         onTap: () {
-                                          Navigator.pop(context);
+                                          if (disable == false) {
+                                            Navigator.pop(context);
+                                          }
                                         },
                                         child: Container(
                                           width:
@@ -1343,7 +1520,10 @@ class _prac_scoreState extends State<prac_score> {
                                               AppDimensions.height10(context) *
                                                   5.0,
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFFFFFFFF),
+                                            color: disable
+                                                ? const Color(0xFFFFFFFF)
+                                                    .withOpacity(0.4)
+                                                : const Color(0xFFFFFFFF),
                                             borderRadius: BorderRadius.circular(
                                                 AppDimensions.height10(
                                                         context) *
@@ -1373,12 +1553,14 @@ class _prac_scoreState extends State<prac_score> {
                                       ),
                                       AnimatedScaleButton(
                                         onTap: () {
-                                          setState(() {
-                                            selectedItemIndex = -1;
-                                            selectedItemIndex2 = -1;
-                                            selectedItemIndex3 = -1;
-                                            selectedItemIndex4 = -1;
-                                          });
+                                          if (disable == false) {
+                                            setState(() {
+                                              selectedItemIndex = -1;
+                                              selectedItemIndex2 = -1;
+                                              selectedItemIndex3 = -1;
+                                              selectedItemIndex4 = -1;
+                                            });
+                                          }
                                         },
                                         child: Container(
                                           width:
@@ -1392,7 +1574,10 @@ class _prac_scoreState extends State<prac_score> {
                                                       context) *
                                                   1.0),
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFFFFFFFF),
+                                            color: disable
+                                                ? const Color(0xFFFFFFFF)
+                                                    .withOpacity(0.4)
+                                                : const Color(0xFFFFFFFF),
                                             borderRadius: BorderRadius.circular(
                                                 AppDimensions.height10(
                                                         context) *
@@ -1422,247 +1607,271 @@ class _prac_scoreState extends State<prac_score> {
                                       ),
                                       AnimatedScaleButton(
                                         onTap: () {
-                                          if (selectedItemIndex < 0 ||
-                                              selectedItemIndex2 < 0 ||
-                                              selectedItemIndex3 < 0 ||
-                                              selectedItemIndex4 < 0) {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(SnackBar(
-                                                    content: Text(
-                                              'Must select answer from each row',
-                                              style: TextStyle(
-                                                  color: Colors.red
-                                                      .withOpacity(0.8)),
-                                            )));
-                                          } else {
-                                            showAnimatedDialog(
-                                                context: context,
-                                                animationType:
-                                                    DialogTransitionType
-                                                        .fadeScale,
-                                                curve: Curves.easeInOut,
-                                                duration:
-                                                    const Duration(seconds: 1),
-                                                builder:
-                                                    (BuildContext context) =>
-                                                        Container(
-                                                            width: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                27.0,
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                18.2,
-                                                            decoration: BoxDecoration(
+                                          if (disable == false) {
+                                            if (selectedItemIndex < 0 ||
+                                                selectedItemIndex2 < 0 ||
+                                                selectedItemIndex3 < 0 ||
+                                                selectedItemIndex4 < 0) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                      content: Text(
+                                                'Must select answer from each row',
+                                                style: TextStyle(
+                                                    color: Colors.red
+                                                        .withOpacity(0.8)),
+                                              )));
+                                            } else {
+                                              showAnimatedDialog(
+                                                  context: context,
+                                                  animationType: DialogTransitionType
+                                                      .fadeScale,
+                                                  curve: Curves.easeInOut,
+                                                  duration: const Duration(
+                                                      seconds: 1),
+                                                  builder: (BuildContext
+                                                          context) =>
+                                                      Container(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              27.0,
+                                                          height:
+                                                              AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  18.2,
+                                                          decoration: BoxDecoration(
+                                                              borderRadius: BorderRadius
+                                                                  .circular(
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.4)),
+                                                          child: AlertDialog(
+                                                            shape: RoundedRectangleBorder(
                                                                 borderRadius:
                                                                     BorderRadius.circular(
                                                                         AppDimensions.height10(context) *
                                                                             1.4)),
-                                                            child: AlertDialog(
-                                                              shape: RoundedRectangleBorder(
+                                                            contentPadding:
+                                                                EdgeInsets.zero,
+                                                            actionsPadding:
+                                                                EdgeInsets.zero,
+                                                            titlePadding:
+                                                                EdgeInsets.zero,
+                                                            title: Container(
+                                                              decoration: BoxDecoration(
                                                                   borderRadius:
                                                                       BorderRadius.circular(
                                                                           AppDimensions.height10(context) *
                                                                               1.4)),
-                                                              contentPadding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              actionsPadding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              titlePadding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              title: Container(
-                                                                decoration: BoxDecoration(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(AppDimensions.height10(context) *
-                                                                            1.4)),
-                                                                margin: EdgeInsets.only(
-                                                                    top: AppDimensions.height10(
-                                                                            context) *
-                                                                        1.9,
-                                                                    right: AppDimensions
-                                                                            .height10(
-                                                                                context) *
-                                                                        1.6,
-                                                                    left: AppDimensions.height10(
-                                                                            context) *
-                                                                        1.6,
-                                                                    bottom: AppDimensions.height10(
-                                                                            context) *
-                                                                        0.2),
-                                                                height: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    2.2,
-                                                                width: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    23.8,
-                                                                child: Text(
-                                                                  "Save changes?",
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.height10(context) *
-                                                                            1.7,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                  ),
+                                                              margin: EdgeInsets.only(
+                                                                  top: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.9,
+                                                                  right:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.6,
+                                                                  left: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.6,
+                                                                  bottom: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.2),
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.2,
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  23.8,
+                                                              child: Text(
+                                                                "Save changes?",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.7,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
                                                                 ),
                                                               ),
-                                                              content:
-                                                                  Container(
-                                                                margin: EdgeInsets.only(
-                                                                    bottom:
-                                                                        AppDimensions.height10(context) *
-                                                                            1.5,
-                                                                    left: AppDimensions.height10(
-                                                                            context) *
-                                                                        1.6,
-                                                                    right: AppDimensions.height10(
-                                                                            context) *
-                                                                        1.6),
-                                                                height: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    3.2,
-                                                                width: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    23.8,
-                                                                child: Text(
-                                                                  "Are you sure you want to save your new\nupdates?",
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.height10(context) *
-                                                                            1.3,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                  ),
+                                                            ),
+                                                            content: Container(
+                                                              margin: EdgeInsets.only(
+                                                                  bottom: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.5,
+                                                                  left: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.6,
+                                                                  right: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.6),
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  3.2,
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  23.8,
+                                                              child: Text(
+                                                                "Are you sure you want to save your new\nupdates?",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.3,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
                                                                 ),
                                                               ),
-                                                              actions: <Widget>[
-                                                                Column(
-                                                                  children: [
-                                                                    SizedBox(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              0.1,
-                                                                      child:
-                                                                          Divider(
-                                                                        color: const Color(0XFF3C3C43)
-                                                                            .withOpacity(0.29),
-                                                                      ),
-                                                                    ),
-                                                                    Container(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              4.2,
-                                                                      width: double
-                                                                          .infinity,
+                                                            ),
+                                                            actions: <Widget>[
+                                                              Column(
+                                                                children: [
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            0.1,
+                                                                    child:
+                                                                        Divider(
                                                                       color: const Color(
-                                                                          0xFF007AFF),
-                                                                      child:
-                                                                          TextButton(
-                                                                        onPressed:
-                                                                            () {
-                                                                          PracticeEvaluation()
-                                                                              .updatePracticeEvaluation(selectedItemIndex + 1, selectedItemIndex2 + 1, selectedItemIndex3 + 1, selectedItemIndex4 + 1)
-                                                                              .then((response) {
-                                                                            if (response ==
-                                                                                true) {
-                                                                              Navigator.pop(context);
-                                                                              setState(() {
-                                                                                saved = true;
-                                                                                level = "${((selectedItemIndex + selectedItemIndex2 + selectedItemIndex3 + selectedItemIndex4 + 4) / 4).round()}";
-                                                                              });
+                                                                              0XFF3C3C43)
+                                                                          .withOpacity(
+                                                                              0.29),
+                                                                    ),
+                                                                  ),
+                                                                  Container(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            4.2,
+                                                                    width: double
+                                                                        .infinity,
+                                                                    color: const Color(
+                                                                        0xFF007AFF),
+                                                                    child:
+                                                                        TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        PracticeEvaluation()
+                                                                            .updatePracticeEvaluation(
+                                                                                selectedItemIndex + 1,
+                                                                                selectedItemIndex2 + 1,
+                                                                                selectedItemIndex3 + 1,
+                                                                                selectedItemIndex4 + 1)
+                                                                            .then((response) {
+                                                                          if (response ==
+                                                                              true) {
+                                                                            Navigator.pop(context);
+                                                                            setState(() {
+                                                                              saved = true;
+                                                                              level = "${((selectedItemIndex + selectedItemIndex2 + selectedItemIndex3 + selectedItemIndex4 + 4) / 4).round()}";
+                                                                            });
+                                                                            startTimer();
+                                                                          }
+                                                                        });
 
-                                                                              print("Practice evaluation added");
-                                                                            }
-                                                                          });
-
-                                                                          // Navigator.push(
-                                                                          //     context,
-                                                                          //     FadePageRoute(
-                                                                          //         page:
-                                                                          //             your_why(
-                                                                          //       saved: true,
-                                                                          //       destination:
-                                                                          //           widget
-                                                                          //               .destination,
-                                                                          //     )));
-                                                                        },
-                                                                        child:
-                                                                            Text(
-                                                                          'Yes',
-                                                                          style: TextStyle(
-                                                                              color: const Color(0xFFFFFFFF),
-                                                                              fontSize: AppDimensions.height10(context) * 1.7,
-                                                                              fontFamily: "Laila",
-                                                                              fontWeight: FontWeight.w400),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              0.1,
+                                                                        // Navigator.push(
+                                                                        //     context,
+                                                                        //     FadePageRoute(
+                                                                        //         page:
+                                                                        //             your_why(
+                                                                        //       saved: true,
+                                                                        //       destination:
+                                                                        //           widget
+                                                                        //               .destination,
+                                                                        //     )));
+                                                                      },
                                                                       child:
-                                                                          Divider(
-                                                                        color: const Color(0XFF3C3C43)
-                                                                            .withOpacity(0.29),
+                                                                          Text(
+                                                                        'Yes',
+                                                                        style: TextStyle(
+                                                                            color: const Color(
+                                                                                0xFFFFFFFF),
+                                                                            fontSize: AppDimensions.height10(context) *
+                                                                                1.7,
+                                                                            fontFamily:
+                                                                                "Laila",
+                                                                            fontWeight:
+                                                                                FontWeight.w400),
                                                                       ),
                                                                     ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              4.4,
-                                                                      width: double
-                                                                          .infinity,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            0.1,
+                                                                    child:
+                                                                        Divider(
+                                                                      color: const Color(
+                                                                              0XFF3C3C43)
+                                                                          .withOpacity(
+                                                                              0.29),
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            4.4,
+                                                                    width: double
+                                                                        .infinity,
+                                                                    child:
+                                                                        TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
                                                                       child:
-                                                                          TextButton(
-                                                                        onPressed:
-                                                                            () {
-                                                                          Navigator.pop(
-                                                                              context);
-                                                                        },
-                                                                        child:
-                                                                            Text(
-                                                                          'Cancel',
-                                                                          style: TextStyle(
-                                                                              fontSize: AppDimensions.height10(context) * 1.7,
-                                                                              fontFamily: "Laila",
-                                                                              fontWeight: FontWeight.w400,
-                                                                              color: const Color(0xFF007AFF)),
-                                                                        ),
+                                                                          Text(
+                                                                        'Cancel',
+                                                                        style: TextStyle(
+                                                                            fontSize: AppDimensions.height10(context) *
+                                                                                1.7,
+                                                                            fontFamily:
+                                                                                "Laila",
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                            color: const Color(0xFF007AFF)),
                                                                       ),
                                                                     ),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              0.1,
-                                                                      child:
-                                                                          Divider(
-                                                                        color: const Color(0XFF3C3C43)
-                                                                            .withOpacity(0.29),
-                                                                      ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            0.1,
+                                                                    child:
+                                                                        Divider(
+                                                                      color: const Color(
+                                                                              0XFF3C3C43)
+                                                                          .withOpacity(
+                                                                              0.29),
                                                                     ),
-                                                                  ],
-                                                                ),
-                                                              ],
-                                                            )));
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          )));
+                                            }
                                           }
                                         },
                                         child: Container(
@@ -1677,28 +1886,47 @@ class _prac_scoreState extends State<prac_score> {
                                                       context) *
                                                   1.0),
                                           decoration: BoxDecoration(
-                                            gradient: selectedItemIndex >= 0 &&
-                                                    selectedItemIndex2 >= 0 &&
-                                                    selectedItemIndex3 >= 0 &&
-                                                    selectedItemIndex4 >= 0
-                                                ? const LinearGradient(
-                                                    begin: Alignment.topCenter,
-                                                    end: Alignment.bottomCenter,
-                                                    colors: [
-                                                      Color(0xffFCC10D),
-                                                      Color(0xffFDA210),
-                                                    ],
-                                                  )
-                                                : LinearGradient(
+                                            gradient: disable == true
+                                                ? LinearGradient(
                                                     begin: Alignment.topCenter,
                                                     end: Alignment.bottomCenter,
                                                     colors: [
                                                       const Color(0xffFCC10D)
-                                                          .withOpacity(0.5),
+                                                          .withOpacity(0.4),
                                                       const Color(0xffFDA210)
-                                                          .withOpacity(0.5),
+                                                          .withOpacity(0.4),
                                                     ],
-                                                  ),
+                                                  )
+                                                : selectedItemIndex >= 0 &&
+                                                        selectedItemIndex2 >=
+                                                            0 &&
+                                                        selectedItemIndex3 >=
+                                                            0 &&
+                                                        selectedItemIndex4 >= 0
+                                                    ? const LinearGradient(
+                                                        begin:
+                                                            Alignment.topCenter,
+                                                        end: Alignment
+                                                            .bottomCenter,
+                                                        colors: [
+                                                          Color(0xffFCC10D),
+                                                          Color(0xffFDA210),
+                                                        ],
+                                                      )
+                                                    : LinearGradient(
+                                                        begin:
+                                                            Alignment.topCenter,
+                                                        end: Alignment
+                                                            .bottomCenter,
+                                                        colors: [
+                                                          const Color(
+                                                                  0xffFCC10D)
+                                                              .withOpacity(0.5),
+                                                          const Color(
+                                                                  0xffFDA210)
+                                                              .withOpacity(0.5),
+                                                        ],
+                                                      ),
                                             borderRadius: BorderRadius.circular(
                                                 AppDimensions.height10(
                                                         context) *
@@ -1709,17 +1937,18 @@ class _prac_scoreState extends State<prac_score> {
                                             'Save updates',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.6,
+                                                fontSize: AppDimensions
+                                                        .height10(context) *
+                                                    1.6,
                                                 fontWeight: FontWeight.w600,
                                                 color: selectedItemIndex >= 0 &&
-                                                        selectedItemIndex2 >=
-                                                            0 &&
-                                                        selectedItemIndex3 >=
-                                                            0 &&
-                                                        selectedItemIndex4 >= 0
+                                                            selectedItemIndex2 >=
+                                                                0 &&
+                                                            selectedItemIndex3 >=
+                                                                0 &&
+                                                            selectedItemIndex4 >=
+                                                                0 ||
+                                                        disable == false
                                                     ? Colors.white
                                                     : Colors.white
                                                         .withOpacity(0.5)),
@@ -1862,6 +2091,9 @@ void enjoyment(context) {
                             text:
                                 "means few things:\n\n1. Feeling empowered\n2. Being in control\n3. Making progress\n4. Having choice\n5. Having freedom\n\nWhen you evaluate your practice for this question, just bear this in mind to help you :)")
                       ]))),
+              SizedBox(
+                height: AppDimensions.height10(context) * 2,
+              )
             ],
           )),
     ),

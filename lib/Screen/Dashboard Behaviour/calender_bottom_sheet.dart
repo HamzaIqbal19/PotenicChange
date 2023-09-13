@@ -87,12 +87,17 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
             child: CupertinoDatePicker(
               mode: CupertinoDatePickerMode.date,
               onDateTimeChanged: (DateTime value) {
-                print("Printing the Number of Days $numberOfDays");
                 setState(() {
-                  final currentTime = DateTime.now();
-                  final difference = value.difference(currentTime);
+                  final currentTime = DateTime.parse(
+                      DateTime.now().toString().substring(0, 10));
+                  final selectedDate =
+                      DateTime.parse(value.toString().substring(0, 10));
+                  final difference = selectedDate.difference(
+                      DateTime.parse(currentTime.toString().substring(0, 10)));
                   numberOfDays = difference.inDays;
                 });
+                print("Printing the Number of Days $numberOfDays");
+                print(selectedDate);
               },
             ),
           ),

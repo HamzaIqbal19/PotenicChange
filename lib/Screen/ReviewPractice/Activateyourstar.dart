@@ -351,6 +351,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                             name: '',
                                             update: false,
                                             helpfulTips: false,
+                                            record: 0,
                                           ),
                                         ),
                                       );
@@ -365,6 +366,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                             name: '',
                                             update: false,
                                             helpfulTips: true,
+                                            record: 0,
                                           ),
                                         ),
                                       );
@@ -382,6 +384,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                             name: '',
                                             update: false,
                                             helpfulTips: false,
+                                            record: 0,
                                           ),
                                         ),
                                       );

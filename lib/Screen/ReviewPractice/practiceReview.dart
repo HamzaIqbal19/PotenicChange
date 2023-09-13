@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
@@ -185,6 +186,15 @@ class _PracticeReviewState extends State<PracticeReview> {
                     context,
                     FadePageRoute(
                       page: const menu_behaviour(),
+                    ),
+                  );
+                } else if (route == 'record_session') {
+                  Navigator.pushReplacement(
+                    context,
+                    FadePageRoute(
+                      page: const record_session(
+                        past_session: false,
+                      ),
                     ),
                   );
                 } else {
@@ -1627,7 +1637,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                     route ==
                                                         'practice_missed' ||
                                                     route ==
-                                                        'practice_completed') {
+                                                        'practice_completed' ||
+                                                    route == 'record_session') {
                                                   Navigator.pushReplacement(
                                                       context,
                                                       FadePageRoute(
@@ -1637,6 +1648,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                         missed: false,
                                                         name: '',
                                                         update: false,
+                                                        record: 0,
                                                       )));
                                                 } else {
                                                   Navigator.pushReplacement(

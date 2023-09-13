@@ -81,6 +81,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                 name: '',
                 update: false,
                 helpfulTips: false,
+                record: 0,
               ),
               // exitPage:SplashPage(),
             ));

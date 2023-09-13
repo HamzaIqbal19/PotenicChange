@@ -239,6 +239,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                                     name: '',
                                                     update: false,
                                                     helpfulTips: false,
+                                                    record: 0,
                                                   )));
                                             }
                                           },

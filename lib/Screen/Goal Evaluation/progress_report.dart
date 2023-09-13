@@ -70,7 +70,7 @@ class _progress_reportState extends State<progress_report> {
   // }
 
   void getReport() {
-    PracticeEvaluation.getUserPracticeReportId(days).then((response) {
+    PracticeEvaluation.getUserPracticeReportId().then((response) {
       if (response == false) {
         print(response);
         setState(() {
@@ -332,7 +332,7 @@ class _progress_reportState extends State<progress_report> {
                         //we will give duration of 20 days
                         noData == true
                             ? 'No data found'
-                            : 'from ${report["startDate"]} to ${report["endDate"]}',
+                            : 'from ${formatDate(report["startDate"])} to ${formatDate(report["endDate"])}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
@@ -1452,8 +1452,11 @@ class _progress_reportState extends State<progress_report> {
                             AnimatedScaleButton(
                               onTap: () {
                                 if (noData != true) {
-                                  Navigator.push(context,
-                                      FadePageRoute(page: prac_score()));
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const prac_score(
+                                              route: 'report', index: -1,)));
                                 }
                               },
                               child: button_feilds(
@@ -1652,4 +1655,42 @@ void report(context) {
           ),
         )),
   );
+}
+
+String formatDate(String inputDate) {
+  DateTime date = DateTime.parse(inputDate);
+  String formattedDate =
+      "${date.day}/${_getMonthName(date.month)}/${date.year}";
+  return formattedDate;
+}
+
+String _getMonthName(int month) {
+  switch (month) {
+    case 1:
+      return "Jan";
+    case 2:
+      return "Feb";
+    case 3:
+      return "Mar";
+    case 4:
+      return "Apr";
+    case 5:
+      return "May";
+    case 6:
+      return "Jun";
+    case 7:
+      return "Jul";
+    case 8:
+      return "Aug";
+    case 9:
+      return "Sep";
+    case 10:
+      return "Oct";
+    case 11:
+      return "Nov";
+    case 12:
+      return "Dec";
+    default:
+      return "";
+  }
 }

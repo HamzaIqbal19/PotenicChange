@@ -212,6 +212,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             name: '',
                             update: false,
                             helpfulTips: false,
+                            record: 0,
                           )));
                       final SharedPreferences prefs = await _prefs;
                       prefs.remove('inspiration_saved_route');
@@ -2802,6 +2803,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                 );
                                 stopTimer();
                               },
+                              FadeFunction: () {},
                               functionText: 'View')
                           : Container(),
 
@@ -2996,6 +2998,7 @@ class updateBox extends StatefulWidget {
   final String bodyText;
   final String functionText;
   final Function onTap1;
+  final Function FadeFunction;
   final bool edit;
   const updateBox(
       {super.key,
@@ -3003,7 +3006,8 @@ class updateBox extends StatefulWidget {
       required this.bodyText,
       required this.onTap1,
       required this.functionText,
-      required this.edit});
+      required this.edit,
+      required this.FadeFunction});
 
   @override
   State<updateBox> createState() => _updateBoxState();
@@ -3016,11 +3020,10 @@ class _updateBoxState extends State<updateBox> {
 
   void startTimer() {
     _timer = Timer(const Duration(seconds: 3), () {
+      print('Fade Fuction called');
+      widget.FadeFunction;
       setState(() {
         showContainer = false;
-      });
-      Timer(const Duration(seconds: 1), () {
-        widget.onTap1;
       });
     });
   }
@@ -3034,10 +3037,10 @@ class _updateBoxState extends State<updateBox> {
   @override
   void initState() {
     super.initState();
+    startTimer();
     setState(() {
       showContainer = true;
     });
-    startTimer();
   }
 
   @override

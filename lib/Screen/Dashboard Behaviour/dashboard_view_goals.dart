@@ -36,13 +36,15 @@ class view_goals extends StatefulWidget {
   final bool update;
   final String name;
   final bool helpfulTips;
+  final int record;
 
   const view_goals(
       {super.key,
       required this.missed,
       required this.update,
       required this.name,
-      required this.helpfulTips});
+      required this.helpfulTips,
+      required this.record});
 
   @override
   State<view_goals> createState() => _view_goalsState();
@@ -89,10 +91,18 @@ class _view_goalsState extends State<view_goals> {
     });
   }
 
-  DateTime currentDate = DateTime.now();
+  DateTime currentDate =
+      DateTime.parse(DateTime.now().toString().substring(0, 10));
 
   @override
   void initState() {
+    if (widget.record != 0) {
+      setState(() {
+        current = widget.record;
+        past = widget.record + 1;
+        next = widget.record - 1;
+      });
+    }
     super.initState();
     // _fetchUserGoal();
     fetchPracticeByDay();
@@ -155,21 +165,30 @@ class _view_goalsState extends State<view_goals> {
             setState(() {
               noActive = true;
             });
-            DateTime parsedDate =
-                DateFormat('yyyy-MM-dd').parse(getFormattedDate(current));
-            Duration difference = parsedDate.difference(currentDate);
-            setState(() {
-              RecordDate = parsedDate.toString().substring(0, 10);
-            });
-            print('=======Record==============>$RecordDate');
+            String date = DateFormat('yyyy-MM-dd')
+                .parse(getFormattedDate(current))
+                .toString()
+                .substring(0, 10);
+            DateTime parsedDate = DateTime.parse(date);
 
-            if (difference.isNegative && difference.inDays != 0) {
-              print(difference.inDays);
+            int difference = parsedDate
+                .difference(
+                    DateTime.parse(currentDate.toString().substring(0, 10)))
+                .inDays;
+            setState(() {
+              RecordDate = parsedDate.toString();
+            });
+            print(
+                '=======Record==============>$date======>>current>>$currentDate=========Difference>>$difference');
+            print('=======Record==============>$currentDate');
+
+            if (difference.isNegative && difference != 0) {
+              print(difference);
               setState(() {
                 noPlanned = false;
               });
               print('The formatted date is in the past.');
-            } else if (difference.inDays == 0) {
+            } else if (difference == 0) {
               setState(() {
                 noPlanned = false;
               });
@@ -272,10 +291,8 @@ class _view_goalsState extends State<view_goals> {
                         Navigator.push(
                             context,
                             FadePageRoute(
-                                page: record_session(
+                                page: const record_session(
                               past_session: true,
-                              day: getFormattedDay(current),
-                              id: allGoals[0]['userGoalId'],
                             )));
                       },
                       child: Container(
@@ -297,9 +314,9 @@ class _view_goalsState extends State<view_goals> {
                               onChangedStart: (int value) {
                                 print("Printing selected time $current");
                                 setState(() {
-                                  current = -value - 1;
-                                  next = -value - 2;
-                                  past = -value;
+                                  current = -value;
+                                  next = -value - 1;
+                                  past = -value + 1;
                                   Loader = true;
                                 });
                                 fetchPracticeByDay();
@@ -425,11 +442,12 @@ class _view_goalsState extends State<view_goals> {
               ? Container(
                   margin: EdgeInsets.all(AppDimensions.height10(context) * 1.8),
                   child: updateBox(
-                      headText: 'SAVED',
+                      headText: widget.missed ? 'Missed' : 'SAVED',
                       bodyText: widget.name,
-                      edit: true,
+                      edit: widget.missed ? false : true,
                       onTap1: () {},
-                      functionText: 'Edit'),
+                      FadeFunction: () {},
+                      functionText: widget.missed ? 'Undo' : 'Edit'),
                 )
               : const Navigation_Bar(
                   bg_colored: true,
@@ -2379,15 +2397,13 @@ class _view_goalsState extends State<view_goals> {
                                                 fontWeight: FontWeight.w600),
                                           ),
                                         ),
-                                        GestureDetector(
+                                        AnimatedScaleButton(
                                           onTap: () {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: record_session(
+                                                    page: const record_session(
                                                   past_session: false,
-                                                  day: getFormattedDay(current),
-                                                  id: allGoals[0]['userGoalId'],
                                                 )));
                                           },
                                           child: Container(
@@ -2890,22 +2906,19 @@ class _view_goalsState extends State<view_goals> {
                                                   1.4,
                                         ),
                                         AnimatedScaleButton(
-                                          onTap: () {
+                                          onTap: () async {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: record_session(
+                                                    page: const record_session(
                                                   past_session: true,
-                                                  day: getFormattedDay(current),
-                                                  id: allGoals[0]['userGoalId'],
                                                 )));
-                                            // Navigator.push(
-                                            //     context,
-                                            //     FadePageRoute(
-                                            //         page: record_session(
-                                            //             past_session: true,
-                                            //             day: ,
-                                            //             id: allGoals[0]['userGoalId'])));
+                                            final SharedPreferences prefs =
+                                                await _prefs;
+                                            prefs.setString(
+                                                'record_date',
+                                                getFormattedDate(current)
+                                                    .toString());
                                           },
                                           child: Container(
                                             width: AppDimensions.height10(

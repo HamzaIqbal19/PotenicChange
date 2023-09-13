@@ -298,13 +298,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                                         "======================>");
                                                     final SharedPreferences
                                                         prefs = await _prefs;
-                                                    await prefs.remove('route');
-                                                    await prefs
-                                                        .remove('usertoken');
-                                                    await prefs
-                                                        .remove('userId');
-                                                    await prefs
-                                                        .remove('refreshtoken');
+                                                    await prefs.clear();
                                                     Navigator.pushReplacement(
                                                       context,
                                                       FadePageRoute(

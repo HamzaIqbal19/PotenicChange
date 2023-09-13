@@ -57,6 +57,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                 name: '',
                 update: false,
                 helpfulTips: false,
+                record: 0,
               ),
             ));
         return Future.value(false);
@@ -77,6 +78,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             name: '',
                             update: false,
                             helpfulTips: false,
+                            record: 0,
                           ),
                         ));
                   },
@@ -455,7 +457,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                   ),
                   Container(
                     width: AppDimensions.height10(context) * 37.4,
-                    height: AppDimensions.height10(context) * 86.4,
+                    // height: AppDimensions.height10(context) * 86.4,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.0,
                         bottom: AppDimensions.height10(context) * 3.0),
@@ -478,7 +480,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                         ),
                         Container(
                           width: AppDimensions.height10(context) * 37.4,
-                          height: AppDimensions.height10(context) * 83.0,
+                          // height: AppDimensions.height10(context) * 83.0,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.0),
                           decoration: BoxDecoration(
@@ -488,6 +490,9 @@ class _your_goals_menuState extends State<your_goals_menu> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              SizedBox(
+                                height: AppDimensions.height10(context),
+                              ),
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(context,
@@ -1189,6 +1194,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         name: '',
                                         update: false,
                                         helpfulTips: false,
+                                        record: 0,
                                       )));
                                 },
                                 child: Container(
@@ -1249,6 +1255,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                           name: '',
                                           update: false,
                                           helpfulTips: true,
+                                          record: 0,
                                         ),
                                       ));
                                   dashboard_sheet(context);
@@ -1358,19 +1365,30 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                   ],
                                 ),
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  activeReport(context, 'Control my anger',
-                                      'practice name', 3, 4);
-                                },
-                                child: SizedBox(
-                                  width: AppDimensions.height10(context) * 33.4,
-                                  height: AppDimensions.height10(context) * 5.0,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SizedBox(
+                              Container(
+                                width: AppDimensions.height10(context) * 33.4,
+                                height: AppDimensions.height10(context) * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        activeReport(
+                                            context,
+                                            'Control my anger',
+                                            'practice name',
+                                            3,
+                                            4);
+                                      },
+                                      child: SizedBox(
                                         width: AppDimensions.height10(context) *
                                             20.6,
                                         height:
@@ -1386,24 +1404,81 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                               color: colorC),
                                         ),
                                       ),
-                                      SizedBox(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  2.4,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.39,
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            2.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
                                           child: Image.asset(
                                             'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
                                             fit: BoxFit.cover,
-                                          ))
-                                    ],
-                                  ),
+                                          ),
+                                        ))
+                                  ],
                                 ),
                               ),
+                              Container(
+                                width: AppDimensions.height10(context) * 33.4,
+                                height: AppDimensions.height10(context) * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            20.6,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.9,
+                                        child: Text(
+                                          'Reset account to it’s default state',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              fontWeight: FontWeight.w500,
+                                              color: colorC),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            2.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.webp',
+                                            //width: AppDimensions.height10(context) * 2.6,
+                                            //height: AppDimensions.height10(context) * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: AppDimensions.height10(context) * 3,
+                              )
                             ],
                           ),
                         ),

@@ -124,6 +124,7 @@ class _no_past_sessionState extends State<no_past_session> {
                             name: '',
                             update: false,
                             helpfulTips: false,
+                            record: 0,
                           )));
                     },
                     child: Container(
@@ -137,15 +138,14 @@ class _no_past_sessionState extends State<no_past_session> {
                       ),
                     ),
                   ),
-                  GestureDetector(
+                  AnimatedScaleButton(
                     onTap: () {
                       Navigator.push(
                           context,
                           FadePageRoute(
-                              page: record_session(
-                                  past_session: true,
-                                  day: previousDayName,
-                                  id: allGoals[0]['userGoalId'])));
+                              page: const record_session(
+                            past_session: true,
+                          )));
                     },
                     child: Container(
                       margin: EdgeInsets.only(
@@ -329,6 +329,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                   name: '',
                                                   update: false,
                                                   helpfulTips: false,
+                                                  record: 0,
                                                 )));
                                           },
                                           child: Container(
@@ -455,6 +456,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                 name: '',
                                                 update: false,
                                                 helpfulTips: false,
+                                                record: 0,
                                               )));
                                         },
                                         child: Container(
@@ -610,10 +612,9 @@ class _no_past_sessionState extends State<no_past_session> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: record_session(
-                                              past_session: true,
-                                              day: previousDayName,
-                                              id: allGoals[0]['userGoalId'])));
+                                          page: const record_session(
+                                        past_session: true,
+                                      )));
                                 },
                                 child: Container(
                                   width: AppDimensions.height10(context) * 10.1,
