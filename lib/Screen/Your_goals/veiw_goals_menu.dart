@@ -961,8 +961,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Navigator.push(context,
-                                  //     FadePageRoute(page: const timeline()));
+                                  Navigator.push(context,
+                                      FadePageRoute(page: const timeline()));
                                 },
                                 child: Container(
                                   width: AppDimensions.height10(context) * 33.4,
@@ -1017,10 +1017,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     FadePageRoute(
-                                  //         page: const congratulations()));
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const congratulations()));
                                 },
                                 child: Container(
                                   width: AppDimensions.height10(context) * 33.4,
@@ -1059,15 +1059,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                           height:
                                               AppDimensions.height10(context) *
                                                   1.39,
-                                          child: GestureDetector(
-                                            onTap: () {},
-                                            child: Image.asset(
-                                              'assets/images/BTN Back.webp',
-                                              //width: AppDimensions.height10(context) * 2.6,
-                                              //height: AppDimensions.height10(context) * 2.6,
-                                              color: colorC,
-                                              fit: BoxFit.cover,
-                                            ),
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.webp',
+                                            //width: AppDimensions.height10(context) * 2.6,
+                                            //height: AppDimensions.height10(context) * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
                                           ))
                                     ],
                                   ),
@@ -1380,14 +1377,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     GestureDetector(
-                                      onTap: () {
-                                        activeReport(
-                                            context,
-                                            'Control my anger',
-                                            'practice name',
-                                            3,
-                                            4);
-                                      },
+                                      onTap: () {},
                                       child: SizedBox(
                                         width: AppDimensions.height10(context) *
                                             20.6,

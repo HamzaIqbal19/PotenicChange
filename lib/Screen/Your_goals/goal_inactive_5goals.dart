@@ -64,275 +64,286 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
       print('========${goalDetails['userPractices'][index1]['isActive']}');
       print('================Val========$val');
       // if (totalItemsOn < 5) {
-      if (goalDetails['userPractices'][index1]['isActive'] == true &&
-          val == false) {
-        // Check if the totalItemsOn is less than 5 before incrementing
-        // if (totalItemsOn < 5) {
-        //   print("==========================");
-        // print(goalDetails['userPractices'][index1]['id']);
+      if (goalDetails['goalStatus'] == 'active') {
+        if (goalDetails['userPractices'][index1]['isActive'] == true &&
+            val == false) {
+          // Check if the totalItemsOn is less than 5 before incrementing
+          // if (totalItemsOn < 5) {
+          //   print("==========================");
+          // print(goalDetails['userPractices'][index1]['id']);
 
-        showAnimatedDialog(
-            animationType: DialogTransitionType.fadeScale,
-            curve: Curves.easeInOut,
-            duration: const Duration(seconds: 1),
-            context: context,
-            builder: (BuildContext context) => Container(
-                  width: AppDimensions.height10(context) * 27.0,
-                  height: AppDimensions.height10(context) * 18.2,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 1.4)),
-                  child: AlertDialog(
-                    shape: RoundedRectangleBorder(
+          showAnimatedDialog(
+              animationType: DialogTransitionType.fadeScale,
+              curve: Curves.easeInOut,
+              duration: const Duration(seconds: 1),
+              context: context,
+              builder: (BuildContext context) => Container(
+                    width: AppDimensions.height10(context) * 27.0,
+                    height: AppDimensions.height10(context) * 18.2,
+                    decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 1.4)),
-                    contentPadding: EdgeInsets.zero,
-                    actionsPadding: EdgeInsets.zero,
-                    titlePadding: EdgeInsets.zero,
-                    title: Container(
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 1.9,
-                          right: AppDimensions.height10(context) * 1.6,
-                          left: AppDimensions.height10(context) * 1.6,
-                          bottom: AppDimensions.height10(context) * 0.2),
-                      height: AppDimensions.height10(context) * 2.2,
-                      width: AppDimensions.height10(context) * 23.8,
-                      child: Text(
-                        "Turn off practice?",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.7,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                    content: Container(
-                      margin: EdgeInsets.only(
-                          bottom: AppDimensions.height10(context) * 1.5,
-                          left: AppDimensions.height10(context) * 1.6,
-                          right: AppDimensions.height10(context) * 1.6),
-                      height: AppDimensions.height10(context) * 3.4,
-                      width: AppDimensions.height10(context) * 23.8,
-                      child: Text(
-                        "Are you sure you want to turn off the\npractice? If you do, it will become inactive.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.3,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                    actions: <Widget>[
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 0.1,
-                            child: Divider(
-                              color: const Color(0XFF3C3C43).withOpacity(0.29),
-                            ),
+                    child: AlertDialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 1.4)),
+                      contentPadding: EdgeInsets.zero,
+                      actionsPadding: EdgeInsets.zero,
+                      titlePadding: EdgeInsets.zero,
+                      title: Container(
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 1.9,
+                            right: AppDimensions.height10(context) * 1.6,
+                            left: AppDimensions.height10(context) * 1.6,
+                            bottom: AppDimensions.height10(context) * 0.2),
+                        height: AppDimensions.height10(context) * 2.2,
+                        width: AppDimensions.height10(context) * 23.8,
+                        child: Text(
+                          "Turn off practice?",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.7,
+                            fontWeight: FontWeight.w400,
                           ),
-                          Container(
-                            height: AppDimensions.height10(context) * 4.2,
-                            width: double.infinity,
-                            color: const Color(0xFF007AFF),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(
-                                'No',
-                                style: TextStyle(
-                                    color: const Color(0xFFFFFFFF),
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.7,
-                                    fontFamily: "Laila",
-                                    fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                      content: Container(
+                        margin: EdgeInsets.only(
+                            bottom: AppDimensions.height10(context) * 1.5,
+                            left: AppDimensions.height10(context) * 1.6,
+                            right: AppDimensions.height10(context) * 1.6),
+                        height: AppDimensions.height10(context) * 3.4,
+                        width: AppDimensions.height10(context) * 23.8,
+                        child: Text(
+                          "Are you sure you want to turn off the\npractice? If you do, it will become inactive.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.3,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                      actions: <Widget>[
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 0.1,
+                              child: Divider(
+                                color:
+                                    const Color(0XFF3C3C43).withOpacity(0.29),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 0.1,
-                            child: Divider(
-                              color: const Color(0XFF3C3C43).withOpacity(0.29),
+                            Container(
+                              height: AppDimensions.height10(context) * 4.2,
+                              width: double.infinity,
+                              color: const Color(0xFF007AFF),
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  'No',
+                                  style: TextStyle(
+                                      color: const Color(0xFFFFFFFF),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontFamily: "Laila",
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 4.4,
-                            width: double.infinity,
-                            child: TextButton(
-                              onPressed: () {
-                                // setState(() {
-                                //   Loader = true;
-                                // });
-                                PracticeGoalApi()
-                                    .updateUserPracticeStatus(
-                                        'inactive',
-                                        goalDetails['userPractices'][index1]
-                                            ['id'])
-                                    .then((response) {
-                                  print(goalDetails['userPractices'][index1]
-                                      ['name']);
-                                  if (response == true) {
-                                    Navigator.pop(context);
-                                    _fetchGoalDetails();
-                                    print("Status Updated");
-                                  }
-                                });
-                                totalItemsOn++;
-                              },
-                              child: Text(
-                                'Yes',
-                                style: TextStyle(
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 0.1,
+                              child: Divider(
+                                color:
+                                    const Color(0XFF3C3C43).withOpacity(0.29),
+                              ),
+                            ),
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 4.4,
+                              width: double.infinity,
+                              child: TextButton(
+                                onPressed: () {
+                                  // setState(() {
+                                  //   Loader = true;
+                                  // });
+                                  PracticeGoalApi()
+                                      .updateUserPracticeStatus(
+                                          'inactive',
+                                          goalDetails['userPractices'][index1]
+                                              ['id'])
+                                      .then((response) {
+                                    print(goalDetails['userPractices'][index1]
+                                        ['name']);
+                                    if (response == true) {
+                                      Navigator.pop(context);
+                                      _fetchGoalDetails();
+                                      print("Status Updated");
+                                    }
+                                  });
+                                  totalItemsOn++;
+                                },
+                                child: Text(
+                                  'Yes',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontFamily: "Laila",
+                                      fontWeight: FontWeight.w400,
+                                      color: const Color(0xFF007AFF)),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 0.1,
+                              child: Divider(
+                                color:
+                                    const Color(0XFF3C3C43).withOpacity(0.29),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ));
+
+          print(
+              totalItemsOn); // Increment the counter as the item is being switched on
+          // } else {
+          //   print(totalItemsOn);
+
+          //   // If totalItemsOn is already 5, prevent switching on the toggle
+          //   return;
+          // }
+        }
+        // If the item is currently on and is being switched off
+        else if (goalDetails['userPractices'][index1]['isActive'] == false &&
+            val == true) {
+          print("==========================");
+          // print(goalDetails['userPractices'][index1]['id']);
+
+          // setState(() {
+          //   Loader = true;
+          // });
+          PracticeGoalApi()
+              .updateUserPracticeStatus(
+                  'active', goalDetails['userPractices'][index1]['id'])
+              .then((response) {
+            print(goalDetails['userPractices'][index1]['name']);
+            if (response == true) {
+              totalItemsOn--;
+              _fetchGoalDetails();
+              print("Status Updated");
+            } else if (response == 400) {
+              showAnimatedDialog(
+                  animationType: DialogTransitionType.fadeScale,
+                  curve: Curves.easeInOut,
+                  duration: const Duration(seconds: 1),
+                  context: context,
+                  builder: (BuildContext context) => Container(
+                        width: AppDimensions.height10(context) * 27.0,
+                        height: AppDimensions.height10(context) * 23.6,
+                        child: AlertDialog(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) * 1.4)),
+                          contentPadding: EdgeInsets.zero,
+                          actionsPadding: EdgeInsets.zero,
+                          titlePadding: EdgeInsets.zero,
+                          title: Container(
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 1.9,
+                                  bottom:
+                                      AppDimensions.height10(context) * 0.2),
+                              height: AppDimensions.height10(context) * 4.4,
+                              width: AppDimensions.height10(context) * 23.8,
+                              child: Center(
+                                child: Text(
+                                  'Maximum active practice limit\nreached',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
                                     fontSize:
                                         AppDimensions.height10(context) * 1.7,
-                                    fontFamily: "Laila",
                                     fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF007AFF)),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 0.1,
-                            child: Divider(
-                              color: const Color(0XFF3C3C43).withOpacity(0.29),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ));
-
-        print(
-            totalItemsOn); // Increment the counter as the item is being switched on
-        // } else {
-        //   print(totalItemsOn);
-
-        //   // If totalItemsOn is already 5, prevent switching on the toggle
-        //   return;
-        // }
-      }
-      // If the item is currently on and is being switched off
-      else if (goalDetails['userPractices'][index1]['isActive'] == false &&
-          val == true) {
-        print("==========================");
-        // print(goalDetails['userPractices'][index1]['id']);
-
-        // setState(() {
-        //   Loader = true;
-        // });
-        PracticeGoalApi()
-            .updateUserPracticeStatus(
-                'active', goalDetails['userPractices'][index1]['id'])
-            .then((response) {
-          print(goalDetails['userPractices'][index1]['name']);
-          if (response == true) {
-            totalItemsOn--;
-            _fetchGoalDetails();
-            print("Status Updated");
-          } else if (response == 400) {
-            showAnimatedDialog(
-                animationType: DialogTransitionType.fadeScale,
-                curve: Curves.easeInOut,
-                duration: const Duration(seconds: 1),
-                context: context,
-                builder: (BuildContext context) => Container(
-                      width: AppDimensions.height10(context) * 27.0,
-                      height: AppDimensions.height10(context) * 23.6,
-                      child: AlertDialog(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 1.4)),
-                        contentPadding: EdgeInsets.zero,
-                        actionsPadding: EdgeInsets.zero,
-                        titlePadding: EdgeInsets.zero,
-                        title: Container(
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.9,
-                                bottom: AppDimensions.height10(context) * 0.2),
-                            height: AppDimensions.height10(context) * 4.4,
-                            width: AppDimensions.height10(context) * 23.8,
-                            child: Center(
-                              child: Text(
-                                'Maximum active practice limit\nreached',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            )),
-                        content: Container(
-                          margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10(context) * 1.5,
-                              left: AppDimensions.height10(context) * 1.6,
-                              right: AppDimensions.height10(context) * 1.6),
-                          width: AppDimensions.height10(context) * 23.8,
-                          child: Text(
-                            subscriptions == 'inactive'
-                                ? "You can't activate a new practice for\nthis goal because you already have\nreached the maximum number of 3\nactive practices. You must stop one of\nyour active practices to start a new one."
-                                : "You can't activate a new practice for\nthis goal because you already have\nreached the maximum number of 5\nactive practices. You must stop one of\nyour active practices to start a new one.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.3,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        actions: <Widget>[
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: AppDimensions.height10(context) * 0.1,
-                                child: Divider(
-                                  color:
-                                      const Color(0XFF3C3C43).withOpacity(0.29),
-                                ),
-                              ),
-                              Container(
-                                height: AppDimensions.height10(context) * 4.4,
-                                width: double.infinity,
-                                color: const Color(0xFF007AFF),
-                                child: TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                    'OK',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
-                                        fontFamily: "Laila",
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFBFBFB)),
                                   ),
                                 ),
+                              )),
+                          content: Container(
+                            margin: EdgeInsets.only(
+                                bottom: AppDimensions.height10(context) * 1.5,
+                                left: AppDimensions.height10(context) * 1.6,
+                                right: AppDimensions.height10(context) * 1.6),
+                            width: AppDimensions.height10(context) * 23.8,
+                            child: Text(
+                              subscriptions == 'inactive'
+                                  ? "You can't activate a new practice for\nthis goal because you already have\nreached the maximum number of 3\nactive practices. You must stop one of\nyour active practices to start a new one."
+                                  : "You can't activate a new practice for\nthis goal because you already have\nreached the maximum number of 5\nactive practices. You must stop one of\nyour active practices to start a new one.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.3,
+                                fontWeight: FontWeight.w400,
                               ),
-                              SizedBox(
-                                height: AppDimensions.height10(context) * 0.1,
-                                child: Divider(
-                                  color:
-                                      const Color(0XFF3C3C43).withOpacity(0.29),
-                                ),
-                              ),
-                              SizedBox(
-                                height: AppDimensions.height10(context) * 4.4,
-                                width: double.infinity,
-                              ),
-                            ],
+                            ),
                           ),
-                        ],
-                      ),
-                    ));
-          }
-        });
-        // goalDetails['userPractices'][index1]['status'] = val;
-        print(
-            totalItemsOn); // Decrement the counter as the item is being switched off
+                          actions: <Widget>[
+                            Column(
+                              children: [
+                                SizedBox(
+                                  height: AppDimensions.height10(context) * 0.1,
+                                  child: Divider(
+                                    color: const Color(0XFF3C3C43)
+                                        .withOpacity(0.29),
+                                  ),
+                                ),
+                                Container(
+                                  height: AppDimensions.height10(context) * 4.4,
+                                  width: double.infinity,
+                                  color: const Color(0xFF007AFF),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'OK',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.7,
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xFFFBFBFB)),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: AppDimensions.height10(context) * 0.1,
+                                  child: Divider(
+                                    color: const Color(0XFF3C3C43)
+                                        .withOpacity(0.29),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: AppDimensions.height10(context) * 4.4,
+                                  width: double.infinity,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ));
+            }
+          });
+          // goalDetails['userPractices'][index1]['status'] = val;
+          print(
+              totalItemsOn); // Decrement the counter as the item is being switched off
+        }
+        goalDetails['userPractices'][index1]['practiceStatus'] = val;
+      } else {
+        print('"Practice status can only be changed for Active goals."');
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content:
+                Text("Practice status can only be changed for Active goals.")));
       }
-      goalDetails['userPractices'][index1]['practiceStatus'] = val;
     });
   }
 
@@ -1037,7 +1048,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         Container(
                           color: const Color(0xFFFBFBFB),
                           height: AppDimensions.height10(context) * 12.0,
-                          width: AppDimensions.height10(context) * 41.6,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

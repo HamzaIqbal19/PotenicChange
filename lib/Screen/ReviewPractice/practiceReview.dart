@@ -164,16 +164,16 @@ class _PracticeReviewState extends State<PracticeReview> {
               ),
               onPressed: () {
                 if (route == 'practice_menu') {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     FadePageRoute(
-                      page: practiceMenu(
+                      page: const practiceMenu(
                         goal_eval: false,
                       ),
                     ),
                   );
                 } else if (route == 'practice_missed') {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     FadePageRoute(
                       page: missed_Menu(
@@ -182,7 +182,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                     ),
                   );
                 } else if (route == 'practice_completed') {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     FadePageRoute(
                       page: const menu_behaviour(),

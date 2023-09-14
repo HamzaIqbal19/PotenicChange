@@ -79,191 +79,194 @@ class _video_infoState extends State<video_info> {
       onWillPop: () {
         return Future.value(false);
       },
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        appBar: AppBar(
-          backgroundColor: const Color(0xffC4C4C4),
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          flexibleSpace: Container(
-            // width: AppDimensions.height10(context) * 41.1,
-            height: AppDimensions.height10(context) * 5.1,
-            margin:
-                EdgeInsets.only(top: AppDimensions.height10(context) * 5.37),
-            padding: EdgeInsets.symmetric(
-                horizontal: AppDimensions.height10(context) * 1.5),
-            decoration: BoxDecoration(
-                color: const Color(0xffF5F5F5).withOpacity(0.8),
-                borderRadius: BorderRadius.only(
-                    topLeft:
-                        Radius.circular(AppDimensions.height10(context) * 1.0),
-                    topRight: Radius.circular(
-                        AppDimensions.height10(context) * 1.0))),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AnimatedScaleButton(
-                    onTap: () async {
-                      final SharedPreferences prefs = await _prefs;
-                      var remove = prefs.remove('ImageLink');
-                      link.clear();
-                      statement.clear();
-                      hastags.clear();
-                      title.clear();
-                      Navigator.push(context,
-                          FadePageRoute(page: const inspiration_type()));
-                    },
-                    child: Center(
-                      child: Text(
-                        'Back',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff007AFF)),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: SizedBox(
-                      width: AppDimensions.height10(context) * 28.5,
-                      child: Center(
-                        child: Text(
-                          'Create inspiration video link',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.8,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xff282828)),
+      child: Container(
+        color: Colors.white,
+        child: SafeArea(
+          child: Scaffold(
+            resizeToAvoidBottomInset: true,
+            appBar: AppBar(
+              backgroundColor: const Color(0xffC4C4C4),
+              elevation: 0,
+              automaticallyImplyLeading: false,
+              toolbarHeight: AppDimensions.height10(context) * 5.1,
+              flexibleSpace: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppDimensions.height10(context) * 1.5),
+                decoration: BoxDecoration(
+                    color: const Color(0xffF5F5F5).withOpacity(0.8),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(
+                            AppDimensions.height10(context) * 1.0),
+                        topRight: Radius.circular(
+                            AppDimensions.height10(context) * 1.0))),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      AnimatedScaleButton(
+                        onTap: () async {
+                          final SharedPreferences prefs = await _prefs;
+                          var remove = prefs.remove('ImageLink');
+                          link.clear();
+                          statement.clear();
+                          hastags.clear();
+                          title.clear();
+                          Navigator.push(context,
+                              FadePageRoute(page: const inspiration_type()));
+                        },
+                        child: Center(
+                          child: Text(
+                            'Back',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff007AFF)),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  ValueListenableBuilder<TextEditingValue>(
-                      valueListenable: title,
-                      builder: (context, value, child) {
-                        return ValueListenableBuilder<TextEditingValue>(
-                            valueListenable: link,
-                            builder: (context, value, child) {
-                              return ValueListenableBuilder<TextEditingValue>(
-                                  valueListenable: statement,
-                                  builder: (context, value, child) {
-                                    return GestureDetector(
-                                      onTap: () async {
-                                        if (link.text.toString().isNotEmpty &&
-                                            statement.text
-                                                .toString()
-                                                .isNotEmpty &&
-                                            title.text.isNotEmpty) {
-                                          if (bt_enable == true) {
-                                            setState(() {
-                                              bt_enable = false;
-                                            });
-                                          }
-                                          InspirationApi()
-                                              .addInspiration(
-                                                  3,
-                                                  null,
-                                                  title.text.toString(),
-                                                  tagList,
-                                                  '',
-                                                  link.text.toString(),
-                                                  true,
-                                                  statement.text.toString(),
-                                                  selectedGoals)
-                                              .then((response) async {
-                                            if (response.length != 0) {
-                                              print('----------------');
-                                              setState(() {
-                                                bt_enable = true;
+                      Center(
+                        child: SizedBox(
+                          width: AppDimensions.height10(context) * 28.5,
+                          child: Center(
+                            child: Text(
+                              'Create inspiration video link',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color(0xff282828)),
+                            ),
+                          ),
+                        ),
+                      ),
+                      ValueListenableBuilder<TextEditingValue>(
+                          valueListenable: title,
+                          builder: (context, value, child) {
+                            return ValueListenableBuilder<TextEditingValue>(
+                                valueListenable: link,
+                                builder: (context, value, child) {
+                                  return ValueListenableBuilder<
+                                          TextEditingValue>(
+                                      valueListenable: statement,
+                                      builder: (context, value, child) {
+                                        return GestureDetector(
+                                          onTap: () async {
+                                            if (link.text
+                                                    .toString()
+                                                    .isNotEmpty &&
+                                                statement.text
+                                                    .toString()
+                                                    .isNotEmpty &&
+                                                title.text.isNotEmpty) {
+                                              if (bt_enable == true) {
+                                                setState(() {
+                                                  bt_enable = false;
+                                                });
+                                              }
+                                              InspirationApi()
+                                                  .addInspiration(
+                                                      3,
+                                                      null,
+                                                      title.text.toString(),
+                                                      tagList,
+                                                      '',
+                                                      link.text.toString(),
+                                                      true,
+                                                      statement.text.toString(),
+                                                      selectedGoals)
+                                                  .then((response) async {
+                                                if (response.length != 0) {
+                                                  print('----------------');
+                                                  setState(() {
+                                                    bt_enable = true;
+                                                  });
+                                                  link.clear();
+                                                  statement.clear();
+                                                  selectedGoals.clear();
+                                                  tagList.clear();
+                                                  title.clear();
+                                                  final SharedPreferences
+                                                      prefs = await _prefs;
+                                                  var remove =
+                                                      prefs.remove('ImageLink');
+                                                  prefs.remove(
+                                                      'inspiration_saved_route');
+                                                  statement.clear();
+                                                  hastags.clear();
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const updatedLandingPage(
+                                                                  delete: false,
+                                                                  is_Updated:
+                                                                      false)));
+                                                  print(response);
+                                                }
                                               });
-                                              link.clear();
-                                              statement.clear();
-                                              selectedGoals.clear();
-                                              tagList.clear();
-                                              title.clear();
-                                              final SharedPreferences prefs =
-                                                  await _prefs;
-                                              var remove =
-                                                  prefs.remove('ImageLink');
-                                              prefs.remove(
-                                                  'inspiration_saved_route');
-                                              statement.clear();
-                                              hastags.clear();
-                                              Navigator.push(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page:
-                                                          const updatedLandingPage(
-                                                              delete: false,
-                                                              is_Updated:
-                                                                  false)));
-                                              print(response);
                                             }
-                                          });
-                                        }
 
-                                        final SharedPreferences prefs =
-                                            await _prefs;
-                                        prefs.remove('inspiration_saved_route');
-                                      },
-                                      child: Container(
-                                        // height:
-                                        //     AppDimensions.height10(context) * 2.2,
-                                        // width:
-                                        //     AppDimensions.height10(context) * 6.1,
-                                        child: bt_enable == false
-                                            ? Center(
-                                                child: SpinKitThreeBounce(
-                                                  color:
-                                                      const Color(0xff007AFF),
-                                                  // delay: Duration(milliseconds: 0),
-                                                  size: AppDimensions.height10(
-                                                          context) *
-                                                      1.6,
-                                                ),
-                                              )
-                                            : Center(
-                                                child: Text(
-                                                  'Create',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontSize: AppDimensions
+                                            final SharedPreferences prefs =
+                                                await _prefs;
+                                            prefs.remove(
+                                                'inspiration_saved_route');
+                                          },
+                                          child: Container(
+                                            // height:
+                                            //     AppDimensions.height10(context) * 2.2,
+                                            // width:
+                                            //     AppDimensions.height10(context) * 6.1,
+                                            child: bt_enable == false
+                                                ? Center(
+                                                    child: SpinKitThreeBounce(
+                                                      color: const Color(
+                                                          0xff007AFF),
+                                                      // delay: Duration(milliseconds: 0),
+                                                      size: AppDimensions
                                                               .height10(
                                                                   context) *
                                                           1.6,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: link.text
-                                                                  .toString()
-                                                                  .isNotEmpty &&
-                                                              title.text
-                                                                  .isNotEmpty &&
-                                                              statement.text
-                                                                  .toString()
-                                                                  .isNotEmpty
-                                                          ? const Color(
-                                                              0xff007AFF)
-                                                          : const Color(
+                                                    ),
+                                                  )
+                                                : Center(
+                                                    child: Text(
+                                                      'Create',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: link.text
+                                                                      .toString()
+                                                                      .isNotEmpty &&
+                                                                  title.text
+                                                                      .isNotEmpty &&
+                                                                  statement.text
+                                                                      .toString()
+                                                                      .isNotEmpty
+                                                              ? const Color(
                                                                   0xff007AFF)
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                ),
-                                              ),
-                                      ),
-                                    );
-                                  });
-                            });
-                      })
-                ]),
-          ),
-        ),
-        body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            color: const Color(0xffC4C4C4),
-            child: Container(
-              height: AppDimensions.height10(context) * 79.7,
+                                                              : const Color(
+                                                                      0xff007AFF)
+                                                                  .withOpacity(
+                                                                      0.5)),
+                                                    ),
+                                                  ),
+                                          ),
+                                        );
+                                      });
+                                });
+                          })
+                    ]),
+              ),
+            ),
+            body: Container(
+              height: double.infinity,
               width: double.infinity,
               color: Colors.white,
               child: SingleChildScrollView(
@@ -683,7 +686,9 @@ class _video_infoState extends State<video_info> {
                   ],
                 ),
               ),
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }

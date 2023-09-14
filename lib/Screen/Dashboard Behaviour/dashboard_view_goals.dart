@@ -200,7 +200,9 @@ class _view_goalsState extends State<view_goals> {
               print('The formatted date is in the future.');
             }
           }
-          print('______________________________-----------------------');
+
+          print(
+              '___________________________"<TIME>"___-----------------------${allGoals[0]['schedule']['time1'].toString()}');
           //print(allGoals.length);
         });
       } else if (response == 404) {
@@ -999,7 +1001,7 @@ class _view_goalsState extends State<view_goals> {
                                                                               Alignment.centerLeft,
                                                                           child:
                                                                               Text(
-                                                                            allGoals[index]['schedule']['time${i + 1}'].toString().substring(5, 7).toUpperCase(),
+                                                                            allGoals[index]['schedule']['time${i + 1}'].toString().trim().substring(5).toUpperCase(),
                                                                             style:
                                                                                 TextStyle(
                                                                               fontSize: AppDimensions.height10(context) * 1.0,

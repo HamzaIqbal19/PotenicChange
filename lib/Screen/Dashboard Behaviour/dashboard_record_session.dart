@@ -240,9 +240,15 @@ class _record_sessionState extends State<record_session> {
                                               ? Navigator.push(
                                                   context,
                                                   FadePageRoute(
-                                                      page:
-                                                          const record_summary()))
-                                              : Navigator.push(
+                                                      page: emotions(
+                                                    summary: false,
+                                                    pracName: allGoals[index]
+                                                            ['userPractices']
+                                                        [index1]['name'],
+                                                    record: true,
+                                                    selected: 0,
+                                                  )))
+                                              : Navigator.pushReplacement(
                                                   context,
                                                   FadePageRoute(
                                                       page:

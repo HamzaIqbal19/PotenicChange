@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
@@ -103,30 +104,30 @@ class _record_summaryState extends State<record_summary> {
                         fit: BoxFit.cover)),
                 child: Stack(children: [
                   Align(
-                      alignment: Alignment(0, -0.5),
+                      alignment: const Alignment(0, -0.5),
                       child: Text(
                         'Control my anger',
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 2.0,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff5B74A6)),
+                            color: const Color(0xff5B74A6)),
                       )),
                   Align(
-                    alignment: Alignment(0, -0.2),
+                    alignment: const Alignment(0, -0.2),
                     child: Text(
                         '“I am someone who is in\n control of my anger”',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff5B74A6))),
+                            color: const Color(0xff5B74A6))),
                   ),
                   Align(
                     alignment: const Alignment(0, 1),
                     child: Container(
                       height: AppDimensions.height10(context) * 13.8,
                       width: AppDimensions.height10(context) * 13.8,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image: AssetImage(
@@ -248,7 +249,7 @@ class _record_summaryState extends State<record_summary> {
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
-                        children: [
+                        children: const [
                           TextSpan(
                             text: 'How did you feel',
                           ),
@@ -274,14 +275,17 @@ class _record_summaryState extends State<record_summary> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      GestureDetector(
+                      AnimatedScaleButton(
                         onTap: () {
-                          // Navigator.push(
-                          //     context,
-                          //     FadePageRoute(
-                          //         page: const emotions(
-                          //       summary: true,
-                          //     )));
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const emotions(
+                                summary: true,
+                                pracName: '',
+                                record: false,
+                                selected: -1,
+                              )));
                         },
                         child: Container(
                             height: AppDimensions.height10(context) * 2.8,
@@ -293,7 +297,7 @@ class _record_summaryState extends State<record_summary> {
                                 color: Colors.transparent,
                                 border:
                                     Border.all(width: 1, color: Colors.white)),
-                            child: ImageIcon(
+                            child: const ImageIcon(
                               AssetImage('assets/images/edit_icon.webp'),
                               color: Colors.white,
                             )),
@@ -322,7 +326,7 @@ class _record_summaryState extends State<record_summary> {
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
-                        children: [
+                        children: const [
                           TextSpan(
                             text: 'How do you feel',
                           ),
@@ -348,7 +352,7 @@ class _record_summaryState extends State<record_summary> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      GestureDetector(
+                      AnimatedScaleButton(
                         onTap: () {
                           Navigator.push(
                               context,
@@ -368,7 +372,7 @@ class _record_summaryState extends State<record_summary> {
                                 color: Colors.transparent,
                                 border:
                                     Border.all(width: 1, color: Colors.white)),
-                            child: ImageIcon(
+                            child: const ImageIcon(
                               AssetImage('assets/images/edit_icon.webp'),
                               color: Colors.white,
                             )),
@@ -414,12 +418,12 @@ class _record_summaryState extends State<record_summary> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      GestureDetector(
+                      AnimatedScaleButton(
                         onTap: () {
                           Navigator.push(
                               context,
                               FadePageRoute(
-                                  page: endofSession(
+                                  page: const endofSession(
                                 summary: true,
                                 selected: 0,
                               )));
@@ -434,7 +438,7 @@ class _record_summaryState extends State<record_summary> {
                                 color: Colors.transparent,
                                 border:
                                     Border.all(width: 1, color: Colors.white)),
-                            child: ImageIcon(
+                            child: const ImageIcon(
                               AssetImage('assets/images/edit_icon.webp'),
                               color: Colors.white,
                             )),
@@ -468,13 +472,13 @@ class _record_summaryState extends State<record_summary> {
                               AppDimensions.height10(context) * 5.0),
                           border: Border.all(
                               width: AppDimensions.height10(context) * 0.2,
-                              color: Color(0xffFA9934))),
+                              color: const Color(0xffFA9934))),
                       child: TextButton(
                           onPressed: () {},
                           child: Text(
                             'Reset',
                             style: TextStyle(
-                                color: Color(0xffFA9934),
+                                color: const Color(0xffFA9934),
                                 fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w600),
                           ))),
