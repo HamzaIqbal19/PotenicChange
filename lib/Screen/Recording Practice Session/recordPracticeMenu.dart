@@ -40,7 +40,7 @@ class _practiceMenuState extends State<practiceMenu> {
   String pracName = '';
   String identity = '';
   String reportDate = '';
-
+  String subscripption = '';
   var pracDetails;
   bool Loader = true;
   var pracColor;
@@ -70,6 +70,14 @@ class _practiceMenuState extends State<practiceMenu> {
       pracName = prefs.getString('dash_pracName')!;
       color = prefs.getString('dash_goalName')!;
     });
+  }
+
+  void getSubscription() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      subscripption = prefs.getString('subscriptionStatus')!;
+    });
+    print("SubscriptionStatus ${prefs.getString('subscriptionStatus')}");
   }
 
   // Future<Timer> loadData() async {
@@ -137,13 +145,11 @@ class _practiceMenuState extends State<practiceMenu> {
             }
           },
         );
-
-        print("---------------------------------");
-        print("response123:${response["color"]}");
       } else {
         // loadData();
         print("response:$response");
       }
+      getSubscription();
     }).catchError((error) {
       // loadData();
       print("hell");
@@ -635,12 +641,19 @@ class _practiceMenuState extends State<practiceMenu> {
                                             child: AnimatedScaleButton(
                                               onTap: () {
                                                 if (pracDetails['report'] ==
-                                                    true) {
+                                                        true &&
+                                                    subscripption == 'active') {
                                                   Navigator.push(
                                                       context,
                                                       FadePageRoute(
                                                           page:
                                                               const progress_report()));
+                                                } else if (subscripption !=
+                                                    'active') {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(const SnackBar(
+                                                          content: Text(
+                                                              "Practice report is only available for premium members.")));
                                                 } else {
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(const SnackBar(
@@ -727,20 +740,20 @@ class _practiceMenuState extends State<practiceMenu> {
                               children: [
                                 AnimatedScaleButton(
                                   onTap: () {
-                                    if (pracDetails['report'] == true) {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const practice_progress(
-                                            days: 30,
-                                            route: 'pracice_menu',
-                                          )));
-                                    } else {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(const SnackBar(
-                                              content: Text(
-                                                  "Practice progress is not active")));
-                                    }
+                                    //if (pracDetails['report'] == true) {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const practice_progress(
+                                          days: 30,
+                                          route: 'pracice_menu',
+                                        )));
+                                    // } else {
+                                    //   ScaffoldMessenger.of(context)
+                                    //       .showSnackBar(const SnackBar(
+                                    //           content: Text(
+                                    //               "Practice progress is not active")));
+                                    // }
                                   },
                                   child: const button_feilds(
                                     feild_text: 'View practice progress',

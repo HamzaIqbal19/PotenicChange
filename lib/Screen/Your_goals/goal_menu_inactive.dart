@@ -293,6 +293,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       subscriptions == 'active' ? true : false,
                                 )));
                           } else {
+                            if (goalDetails['goalEvaluations'].length != 0) {
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          "Goal evaluation for this month is not active!!")));
+                            }
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(

@@ -36,11 +36,11 @@ class your_why extends StatefulWidget {
 
 class _your_whyState extends State<your_why> {
   List options = [
-    'I’m not\nmaking any\nprogress',
+    'I’m not\nmaking any\nprogress\n',
     'I’m making\nsmall steps\nforward',
     'I’m making\nconsiderable\nsteps forward',
-    "I’m almost\nthere",
-    "I’m definitely\nliving my why"
+    "I’m almost\nthere\n",
+    "I’m definitely\nliving my why\n"
   ];
   bool saved = false;
   bool visible = false;
@@ -1963,6 +1963,7 @@ class _your_whyState extends State<your_why> {
                                                                             setState(() {
                                                                               saved = true;
                                                                               visible = true;
+                                                                              disable = true;
                                                                               totalPoint = '${((sum + goalDetails[widget.destination].length) / goalDetails[widget.destination].length).round()}';
                                                                             });
                                                                             startTimer();

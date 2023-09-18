@@ -32,11 +32,18 @@ class your_impact extends StatefulWidget {
 
 class _your_impactState extends State<your_impact> {
   List options = [
-    'I’m not\nmaking any\nprogress',
-    'I’m making\nsmall steps\nforward',
-    'I’m making\nconsiderable\nsteps forward',
-    "I’m almost\nthere",
-    "I’m definitely\nliving my why"
+    'It makes my\nlife worse\n',
+    'It causes me a\nlot of distress\n',
+    "I've noticed\nsome positive\nchanges",
+    "I feel good\nabout it\n",
+    "It's changing\nmy life\npositively :)"
+  ];
+  List options2 = [
+    'It properly\nupsets me\n',
+    'Slightly\nfrustrated and\nuneasy',
+    "It doesn't\nbother me\n",
+    "Positive that\nI'm taking the\nright actions",
+    "Empowered\nand good\nabout myself"
   ];
   int select_item_2 = -1;
   int select_item = -1;
@@ -911,7 +918,7 @@ class _your_impactState extends State<your_impact> {
                             shrinkWrap: true,
                             padding: EdgeInsets.zero,
                             scrollDirection: Axis.horizontal,
-                            itemCount: options.length,
+                            itemCount: options2.length,
                             itemBuilder: (BuildContext context, int index1) {
                               return AnimatedScaleButton(
                                 onTap: () {
@@ -980,7 +987,7 @@ class _your_impactState extends State<your_impact> {
                                             ),
                                           ),
                                           Text(
-                                            options[index1],
+                                            options2[index1],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 fontSize:
@@ -1779,6 +1786,7 @@ class _your_impactState extends State<your_impact> {
                                                                             setState(() {
                                                                               saved = true;
                                                                               visible = true;
+                                                                              disable = true;
                                                                             });
                                                                             startTimer();
                                                                           }

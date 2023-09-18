@@ -40,6 +40,7 @@ class _missed_MenuState extends State<missed_Menu> {
   String pracColor = '';
   String reportDate = '';
   int differenceInDays = 0;
+  String subscripption = '';
 
   Future<void> getRecordedDate() async {
     final SharedPreferences prefs = await _prefs;
@@ -64,6 +65,14 @@ class _missed_MenuState extends State<missed_Menu> {
       goalColor = prefs.getString('dash_goalColor')!;
     });
     print(prefs.getString('dash_pracName'));
+  }
+
+  void getSubscription() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      subscripption = prefs.getString('subscriptionStatus')!;
+    });
+    print("SubscriptionStatus ${prefs.getString('subscriptionStatus')}");
   }
 
   var pracDetails;
@@ -123,6 +132,7 @@ class _missed_MenuState extends State<missed_Menu> {
     super.initState();
     getRecordedDate();
     getRecorDetails();
+    getSubscription();
     _fetchPracticeDetails();
   }
 
@@ -537,12 +547,19 @@ class _missed_MenuState extends State<missed_Menu> {
                                     children: [
                                       AnimatedScaleButton(
                                         onTap: () {
-                                          if (pracDetails['report'] == true) {
+                                          if (pracDetails['report'] == true &&
+                                              subscripption == 'active') {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
                                                     page:
                                                         const progress_report()));
+                                          } else if (subscripption !=
+                                              'active') {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(const SnackBar(
+                                                    content: Text(
+                                                        "Practice report is only available for premium members.")));
                                           } else {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(const SnackBar(
@@ -629,20 +646,20 @@ class _missed_MenuState extends State<missed_Menu> {
                           children: [
                             AnimatedScaleButton(
                               onTap: () {
-                                if (pracDetails['report'] == true) {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const practice_progress(
-                                        days: 30,
-                                        route: 'pracice_menu_missed',
-                                      )));
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text(
-                                              "Practice progress is not active")));
-                                }
+                                //   if (pracDetails['report'] == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const practice_progress(
+                                      days: 30,
+                                      route: 'pracice_menu_missed',
+                                    )));
+                                // } else {
+                                //   ScaffoldMessenger.of(context).showSnackBar(
+                                //       const SnackBar(
+                                //           content: Text(
+                                //               "Practice progress is not active")));
+                                // }
                               },
                               child: const button_feilds(
                                 feild_text: 'View practice progress',

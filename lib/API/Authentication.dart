@@ -97,6 +97,9 @@ class Authentication {
       var UserId = prefs.setInt('userid', response['id']);
       var RefreshToken =
           prefs.setString("refreshtoken", response["sessionToken"]);
+      var subscription =
+          prefs.setString('subscriptionStatus', response["subscriptionStatus"]);
+      print(response["subscriptionStatus"]);
 
       print("Session Token ===============${response["sessionToken"]}");
       var responses = {

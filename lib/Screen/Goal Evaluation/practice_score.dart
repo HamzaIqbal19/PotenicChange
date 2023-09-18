@@ -75,7 +75,7 @@ class _prac_scoreState extends State<prac_score> {
   List question3 = [
     "I don't feel\nconfident at\nthis point",
     'I feel it is\npossible',
-    'I feel it is\npossible',
+    'I believe in it',
     "It's helping me\nalready",
     'Very confident'
   ];

@@ -1,11 +1,10 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_practice_summary.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/practice_session_recorded.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -335,11 +334,38 @@ class _record_sessionState extends State<record_session> {
                         );
                       }),
                     ),
-                    Container(
-                      height: AppDimensions.height10(context) * 6,
-                      color: Colors.red,
-                      margin: EdgeInsets.symmetric(
-                          vertical: AppDimensions.height10(context) * 3.4),
+                    AnimatedScaleButton(
+                      onTap: () {
+                        Navigator.pushReplacement(context,
+                            FadePageRoute(page: const view_all_goals_menu()));
+                      },
+                      child: Container(
+                        height: AppDimensions.height10(context) * 5,
+                        margin: EdgeInsets.symmetric(
+                            vertical: AppDimensions.height10(context) * 3.4),
+                        child: Container(
+                          height: AppDimensions.height10(context) * 5,
+                          width: AppDimensions.height10(context) * 24.3,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  AppDimensions.height10(context) * 5.0)),
+                              gradient: const LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xFFFCC10D),
+                                    Color(0xFFFDA210)
+                                  ])),
+                          child: Center(
+                              child: Text(
+                            'View all your goals',
+                            style: TextStyle(
+                                color: const Color(0xFFFBFBFB),
+                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontWeight: FontWeight.w600),
+                          )),
+                        ),
+                      ),
                     )
                   ],
                 )
