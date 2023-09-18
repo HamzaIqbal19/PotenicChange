@@ -136,7 +136,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             Navigator.push(
                                 context,
                                 FadePageRoute(
-                                    page: const veiw_all_goals_menu()));
+                                    page: const view_all_goals_menu()));
                           },
                           child: Container(
                             width: AppDimensions.height10(context) * 33.4,
@@ -614,7 +614,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const veiw_all_goals_menu()));
+                                          page: const view_all_goals_menu()));
                                 },
                                 child: Container(
                                   width: AppDimensions.height10(context) * 33.4,

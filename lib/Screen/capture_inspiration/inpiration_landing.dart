@@ -1094,7 +1094,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         //               ),
                         //               child: Center(
                         //                 child: Text(
-                        //                   'Veiw',
+                        //                   'view',
                         //                   style: TextStyle(
                         //                       fontSize: AppDimensions.height10(
                         //                               context) *
@@ -2454,7 +2454,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
       Timer(const Duration(seconds: 1), () {
         // Navigator.push(
         //   context,
-        //   FadePageRoute(page: const veiw_details()),
+        //   FadePageRoute(page: const view_details()),
         // );
       });
     });
@@ -2799,7 +2799,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                               onTap1: () {
                                 Navigator.push(
                                   context,
-                                  FadePageRoute(page: const veiw_details()),
+                                  FadePageRoute(page: const view_details()),
                                 );
                                 stopTimer();
                               },
@@ -2922,7 +2922,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                       //                 Navigator.push(
                       //                   context,
                       //                   FadePageRoute(
-                      //                       page: const veiw_details()),
+                      //                       page: const view_details()),
                       //                 );
                       //               },
                       //               child: Container(

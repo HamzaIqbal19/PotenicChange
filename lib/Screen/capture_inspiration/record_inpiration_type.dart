@@ -8,10 +8,6 @@ import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_veiw_detail.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_access.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/video_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiratoinEdit/photoEdit.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiratoinEdit/videoEdit.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -309,7 +305,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                FadePageRoute(page: const veiw_details()),
+                                FadePageRoute(page: const view_details()),
                               );
                             },
                             child: Container(

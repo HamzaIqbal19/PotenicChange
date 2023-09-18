@@ -491,7 +491,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                   context,
                                                   FadePageRoute(
                                                       page:
-                                                          const veiw_all_goals_menu()));
+                                                          const view_all_goals_menu()));
                                             } else {
                                               Navigator.push(
                                                 context,

@@ -11,7 +11,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
-import '../Your_goals/veiw_all_goals.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -136,7 +135,7 @@ class _record_sessionState extends State<record_session> {
                       )),
                     ),
                     ListView.builder(
-                      // physics: const NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: allGoals.length,
                       shrinkWrap: true,
                       padding: EdgeInsets.zero,
@@ -335,6 +334,12 @@ class _record_sessionState extends State<record_session> {
                           ]),
                         );
                       }),
+                    ),
+                    Container(
+                      height: AppDimensions.height10(context) * 6,
+                      color: Colors.red,
+                      margin: EdgeInsets.symmetric(
+                          vertical: AppDimensions.height10(context) * 3.4),
                     )
                   ],
                 )

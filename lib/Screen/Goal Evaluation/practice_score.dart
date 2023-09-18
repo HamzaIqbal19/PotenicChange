@@ -214,10 +214,10 @@ class _prac_scoreState extends State<prac_score> {
                 ? '-'
                 : response['practiceEvaluations'][i]['activeDate'].toString();
             reportDate =
-                response['practiceEvaluations'][i]['createdAt'].toString() ==
+                response['practiceEvaluations'][i]['endDate'].toString() ==
                         'null'
                     ? '-'
-                    : response['practiceEvaluations'][i]['createdAt']
+                    : response['practiceEvaluations'][i]['endDate']
                         .toString()
                         .substring(0, 10);
           });
@@ -259,11 +259,11 @@ class _prac_scoreState extends State<prac_score> {
                 : response['practiceEvaluations'][widget.index]['activeDate']
                     .toString();
             reportDate = response['practiceEvaluations'][widget.index]
-                            ['createdAt']
+                            ['endDate']
                         .toString() ==
                     'null'
                 ? '-'
-                : response['practiceEvaluations'][widget.index]['createdAt']
+                : response['practiceEvaluations'][widget.index]['endDate']
                     .toString()
                     .substring(0, 10);
           });
@@ -442,7 +442,7 @@ class _prac_scoreState extends State<prac_score> {
                                       top: AppDimensions.height10(context) *
                                           1.3),
                                   child: Text(
-                                    'from [${activeDate != '' ? formatDate(activeDate) : activeDate}] to [${reportDate != '' ? formatDate(reportDate) : reportDate}]',
+                                    'from ${activeDate != '' ? formatDate(activeDate) : activeDate} to ${reportDate != '' ? formatDate(reportDate) : reportDate}',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
@@ -1989,7 +1989,9 @@ void enjoyment(context) {
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
           width: AppDimensions.height10(context) * 39.4,
-          height: AppDimensions.height10(context) * 62.4,
+          height: AppDimensions.height10(context) * 64.4,
+          padding:
+              EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.5),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft:

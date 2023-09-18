@@ -987,7 +987,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                               child: AnimatedScaleButton(
                                 onTap: () {},
                                 child: const button_feilds(
-                                  feild_text: 'Veiw upcoming schedules',
+                                  feild_text: 'view upcoming schedules',
                                   icon_viible: true,
                                   text_color: 0xff646464,
                                   feild_text_2: '',

@@ -77,6 +77,26 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
     prefs.setBool('bool', value);
   }
 
+  void policies(String url) {
+    FlutterWebBrowser.openWebPage(
+      url: url,
+      customTabsOptions: const CustomTabsOptions(
+        colorScheme: CustomTabsColorScheme.dark,
+        shareState: CustomTabsShareState.on,
+        instantAppsEnabled: true,
+        showTitle: true,
+        urlBarHidingEnabled: true,
+      ),
+      safariVCOptions: const SafariViewControllerOptions(
+        barCollapsingEnabled: true,
+        preferredBarTintColor: Colors.green,
+        preferredControlTintColor: Colors.amber,
+        dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
+        modalPresentationCapturesStatusBarAppearance: true,
+      ),
+    );
+  }
+
   String fcm = 'adsfsf3423424';
 
   @override
@@ -535,8 +555,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     });
                                   },
                                 ),
-                                Container(
-                                    child: Text.rich(
+                                Text.rich(
                                   TextSpan(
                                     text:
                                         'By signing up, you agree to Potenic’s \n ',
@@ -551,36 +570,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                           text: 'User Agreement',
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () async {
-                                              FlutterWebBrowser.openWebPage(
-                                                url:
-                                                    "https://app.getterms.io/view/XWpOJ/tos/en-au",
-                                                customTabsOptions:
-                                                    const CustomTabsOptions(
-                                                  colorScheme:
-                                                      CustomTabsColorScheme
-                                                          .dark,
-                                                  shareState:
-                                                      CustomTabsShareState.on,
-                                                  instantAppsEnabled: true,
-                                                  showTitle: true,
-                                                  urlBarHidingEnabled: true,
-                                                ),
-                                                safariVCOptions:
-                                                    const SafariViewControllerOptions(
-                                                  barCollapsingEnabled: true,
-                                                  preferredBarTintColor:
-                                                      Colors.green,
-                                                  preferredControlTintColor:
-                                                      Colors.amber,
-                                                  dismissButtonStyle:
-                                                      SafariViewControllerDismissButtonStyle
-                                                          .close,
-                                                  modalPresentationCapturesStatusBarAppearance:
-                                                      true,
-                                                ),
-                                              );
-
-                                              //FlutterWebBrowser()
+                                              policies(
+                                                  "https://app.getterms.io/view/XWpOJ/tos/en-au");
                                             },
                                           style: TextStyle(
                                             decoration:
@@ -591,8 +582,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                                 1.4,
                                             fontWeight: FontWeight.w600,
                                           )),
-                                      // can add more TextSpans here...
-
                                       TextSpan(
                                           text: ' and ',
                                           style: TextStyle(
@@ -602,40 +591,12 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                                 1.4,
                                             fontWeight: FontWeight.w600,
                                           )),
-                                      // can add more TextSpans here...
-
                                       TextSpan(
                                           text: 'Privacy Policy',
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () async {
-                                              FlutterWebBrowser.openWebPage(
-                                                url:
-                                                    "https://app.getterms.io/view/XWpOJ/privacy/en-au",
-                                                customTabsOptions:
-                                                    const CustomTabsOptions(
-                                                  colorScheme:
-                                                      CustomTabsColorScheme
-                                                          .dark,
-                                                  shareState:
-                                                      CustomTabsShareState.on,
-                                                  instantAppsEnabled: true,
-                                                  showTitle: true,
-                                                  urlBarHidingEnabled: true,
-                                                ),
-                                                safariVCOptions:
-                                                    const SafariViewControllerOptions(
-                                                  barCollapsingEnabled: true,
-                                                  preferredBarTintColor:
-                                                      Colors.green,
-                                                  preferredControlTintColor:
-                                                      Colors.amber,
-                                                  dismissButtonStyle:
-                                                      SafariViewControllerDismissButtonStyle
-                                                          .close,
-                                                  modalPresentationCapturesStatusBarAppearance:
-                                                      true,
-                                                ),
-                                              );
+                                              policies(
+                                                  "https://app.getterms.io/view/XWpOJ/privacy/en-au");
                                             },
                                           style: TextStyle(
                                             decoration:
@@ -646,10 +607,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                                 1.4,
                                             fontWeight: FontWeight.w600,
                                           )),
-                                      // can add more TextSpans here...
                                     ],
                                   ),
-                                )),
+                                ),
                               ],
                             )),
                         userExist != ""

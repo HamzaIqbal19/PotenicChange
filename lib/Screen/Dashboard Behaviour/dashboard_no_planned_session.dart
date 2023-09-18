@@ -1398,7 +1398,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                           ),
                                           child: Center(
                                             child: Text(
-                                              'Veiw',
+                                              'view',
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10(

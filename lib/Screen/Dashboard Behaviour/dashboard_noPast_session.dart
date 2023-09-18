@@ -1435,7 +1435,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                           ),
                                           child: Center(
                                             child: Text(
-                                              'Veiw',
+                                              'view',
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10(

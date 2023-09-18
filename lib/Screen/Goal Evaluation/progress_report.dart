@@ -37,6 +37,7 @@ class _progress_reportState extends State<progress_report> {
   int opt3 = 0;
   int opt4 = 0;
   int opt5 = 0;
+  List<Map<String, int>>? options;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(milliseconds: 1), onDoneLoading);
@@ -132,20 +133,15 @@ class _progress_reportState extends State<progress_report> {
             }
           }
         });
+        options = [
+          {'option1': opt1},
+          {'option2': opt2},
+          {'option3': opt3},
+          {'option4': opt4},
+          {'option5': opt5},
+        ];
+        options!.sort((a, b) => b.values.first.compareTo(a.values.first));
         practiceProgress = json.decode(response['report']['practiceProgress']);
-
-        print('Report===============================');
-        print(practiceProgress);
-        print(
-            "Report days ${20 - response['report']['practiceProgress'].containsValue('completed').toString().length}");
-
-        // colorsAdd(response['report']['howPracticeGoing']);
-
-        print(outerColor);
-
-        print('Report==============================$outerColor');
-        print(report);
-        print('Done===============================');
       }
     }).catchError((error) {
       loadData();
@@ -293,19 +289,24 @@ class _progress_reportState extends State<progress_report> {
                         ),
                       ),
                     ),
-                    Container(
-                      width: AppDimensions.height10(context) * 31.7,
-                      height: AppDimensions.height10(context) * 3.6,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 5.0),
-                      child: Text(
-                        'Congratulations!',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 3.0,
-                            height: 1.2,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF437296)),
+                    GestureDetector(
+                      onTap: () {
+                        print(options);
+                      },
+                      child: Container(
+                        width: AppDimensions.height10(context) * 31.7,
+                        height: AppDimensions.height10(context) * 3.6,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 5.0),
+                        child: Text(
+                          'Congratulations!',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 3.0,
+                              height: 1.2,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFF437296)),
+                        ),
                       ),
                     ),
                     Container(
@@ -1010,7 +1011,7 @@ class _progress_reportState extends State<progress_report> {
                                           ),
                                         ),
                                       )
-                                    : Container()
+                                    : Container(),
                               ],
                             ),
                           ),
@@ -1456,7 +1457,9 @@ class _progress_reportState extends State<progress_report> {
                                       context,
                                       FadePageRoute(
                                           page: const prac_score(
-                                              route: 'report', index: -1,)));
+                                        route: 'report',
+                                        index: -1,
+                                      )));
                                 }
                               },
                               child: button_feilds(

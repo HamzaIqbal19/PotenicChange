@@ -10,17 +10,16 @@ import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 import '../ReviewGoal/StarReview.dart';
-import '../Your_goals/veiw_all_goals.dart';
 
 class GoalName extends StatefulWidget {
   final int catId;
@@ -397,7 +396,7 @@ class _GoalNameState extends State<GoalName> {
                                                   context,
                                                   FadePageRoute(
                                                       page:
-                                                          const veiw_all_goals_menu()));
+                                                          const view_all_goals_menu()));
                                             } else {
                                               Navigator.push(
                                                 context,

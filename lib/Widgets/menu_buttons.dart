@@ -55,7 +55,7 @@ class button_feilds extends StatelessWidget {
                       text: feild_text_2,
                       style: TextStyle(
                         color: Color(text_color_2),
-                        fontFamily: '',
+                        fontFamily: 'laila',
                         fontSize: AppDimensions.height10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                       ),
@@ -65,7 +65,7 @@ class button_feilds extends StatelessWidget {
                       text: feild_text_4,
                       style: TextStyle(
                         color: Color(text_color_2),
-                        fontFamily: '',
+                        fontFamily: 'laila',
                         fontSize: AppDimensions.height10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                       ),

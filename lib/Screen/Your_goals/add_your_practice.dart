@@ -49,7 +49,7 @@ class _add_your_practiceState extends State<add_your_practice> {
               child: IconButton(
                   onPressed: () {
                     Navigator.push(context,
-                        FadePageRoute(page: const veiw_all_goals_menu()));
+                        FadePageRoute(page: const view_all_goals_menu()));
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',

@@ -23,14 +23,14 @@ import '../../utils/app_dimensions.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-class veiw_all_goals_menu extends StatefulWidget {
-  const veiw_all_goals_menu({super.key});
+class view_all_goals_menu extends StatefulWidget {
+  const view_all_goals_menu({super.key});
 
   @override
-  State<veiw_all_goals_menu> createState() => _veiw_all_goals_menuState();
+  State<view_all_goals_menu> createState() => _view_all_goals_menuState();
 }
 
-class _veiw_all_goals_menuState extends State<veiw_all_goals_menu> {
+class _view_all_goals_menuState extends State<view_all_goals_menu> {
   var goalsDetails;
   bool Loader = true;
 
@@ -347,9 +347,8 @@ class _veiw_all_goals_menuState extends State<veiw_all_goals_menu> {
                                                 await _prefs;
                                             var setId = prefs.setInt('goal_num',
                                                 goalsDetails[index]['id']);
-                                                 await prefs.setString(
-                                                                    'goal_menu_route',
-                                                                    'your_goal');
+                                            await prefs.setString(
+                                                'goal_menu_route', 'your_goal');
                                           },
                                           child: Container(
                                             // width:
@@ -444,7 +443,7 @@ class _veiw_all_goals_menuState extends State<veiw_all_goals_menu> {
                                                                     context) *
                                                             20.2,
                                                         child: Text(
-                                                            '“${goalsDetails[index]['reason'][0]['text']}”',
+                                                            '“${goalsDetails[index]['identityStatement'][0]['text']}”',
                                                             textAlign: TextAlign
                                                                 .center,
                                                             overflow:
@@ -600,7 +599,6 @@ class _veiw_all_goals_menuState extends State<veiw_all_goals_menu> {
                                                                           goalsDetails[index]
                                                                               [
                                                                               'name'],
-                                                                      
                                                                     )));
                                                                 final SharedPreferences
                                                                     prefs =

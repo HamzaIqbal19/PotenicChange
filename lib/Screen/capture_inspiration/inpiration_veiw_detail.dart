@@ -11,16 +11,16 @@ import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 import '../../utils/app_dimensions.dart';
 
-class veiw_details extends StatefulWidget {
-  const veiw_details({
+class view_details extends StatefulWidget {
+  const view_details({
     super.key,
   });
 
   @override
-  State<veiw_details> createState() => _veiw_detailsState();
+  State<view_details> createState() => _view_detailsState();
 }
 
-class _veiw_detailsState extends State<veiw_details> {
+class _view_detailsState extends State<view_details> {
   var inspirationDetails;
   List tags = [];
   bool Loading = true;

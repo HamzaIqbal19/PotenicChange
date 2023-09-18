@@ -520,7 +520,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                               ),
                               child: Center(
                                 child: Text(
-                                  'Veiw',
+                                  'view',
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.height10(context) * 1.8,

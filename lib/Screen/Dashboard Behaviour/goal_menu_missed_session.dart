@@ -691,7 +691,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                           page: const practice_assesment()));
                                 },
                                 child: const button_feilds(
-                                  feild_text: 'Veiw upcoming schedules',
+                                  feild_text: 'view upcoming schedules',
                                   icon_viible: true,
                                   text_color: 0xff646464,
                                   feild_text_2: '',

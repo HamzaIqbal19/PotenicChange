@@ -174,7 +174,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
               )));
         } else {
           Navigator.push(
-              context, FadePageRoute(page: const veiw_all_goals_menu()));
+              context, FadePageRoute(page: const view_all_goals_menu()));
         }
 
         return Future.value(true);
@@ -191,7 +191,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                 child: IconButton(
                     onPressed: () {
                       Navigator.push(context,
-                          FadePageRoute(page: const veiw_all_goals_menu()));
+                          FadePageRoute(page: const view_all_goals_menu()));
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',

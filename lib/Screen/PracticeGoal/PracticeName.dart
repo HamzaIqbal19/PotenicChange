@@ -263,7 +263,7 @@ class _PracticeNameState extends State<PracticeName> {
                                                     context,
                                                     FadePageRoute(
                                                         page:
-                                                            const veiw_all_goals_menu()));
+                                                            const view_all_goals_menu()));
                                               } else if (route ==
                                                   'view_all_goals_2') {
                                                 Navigator.pushReplacement(

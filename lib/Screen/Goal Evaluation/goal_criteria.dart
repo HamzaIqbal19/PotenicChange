@@ -22,10 +22,12 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 class your_why extends StatefulWidget {
   final int index;
   final String destination;
+  final bool premium;
   const your_why({
     super.key,
     required this.destination,
     required this.index,
+    required this.premium,
   });
 
   @override
@@ -293,8 +295,8 @@ class _your_whyState extends State<your_why> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: const new_progress_score(
-                                      premium: true,
+                                        page: new_progress_score(
+                                      premium: widget.premium,
                                     )));
                               },
                               child: Text(
@@ -343,8 +345,12 @@ class _your_whyState extends State<your_why> {
                     ],
                   )));
         } else {
-          Navigator.push(context,
-              FadePageRoute(page: const new_progress_score(premium: true)));
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: new_progress_score(
+                premium: widget.premium,
+              )));
           selectedItemIndexesOuter!.clear();
         }
 
@@ -441,9 +447,8 @@ class _your_whyState extends State<your_why> {
                                           Navigator.push(
                                               context,
                                               FadePageRoute(
-                                                  page:
-                                                      const new_progress_score(
-                                                premium: true,
+                                                  page: new_progress_score(
+                                                premium: widget.premium,
                                               )));
                                         },
                                         child: Text(
@@ -502,7 +507,9 @@ class _your_whyState extends State<your_why> {
                     Navigator.push(
                         context,
                         FadePageRoute(
-                            page: const new_progress_score(premium: true)));
+                            page: new_progress_score(
+                          premium: widget.premium,
+                        )));
                   }
                 },
                 icon: Image.asset(
@@ -516,6 +523,10 @@ class _your_whyState extends State<your_why> {
         body: Container(
           width: double.infinity,
           height: double.infinity,
+          foregroundDecoration: BoxDecoration(
+              color: widget.premium
+                  ? Colors.transparent
+                  : Colors.black.withOpacity(0.4)),
           decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('assets/images/Mask Group.webp'),
@@ -843,7 +854,8 @@ class _your_whyState extends State<your_why> {
                                             (BuildContext context, int index1) {
                                           return AnimatedScaleButton(
                                             onTap: () {
-                                              if (disable != true) {
+                                              if (disable != true &&
+                                                  widget.premium == true) {
                                                 setState(() {
                                                   selectedItemIndexesOuter![
                                                       index] = index1;
@@ -1229,7 +1241,8 @@ class _your_whyState extends State<your_why> {
                                 children: [
                                   AnimatedScaleButton(
                                     onTap: () {
-                                      if (disable == false) {
+                                      if (disable == false &&
+                                          widget.premium == true) {
                                         showAnimatedDialog(
                                             animationType:
                                                 DialogTransitionType.fadeScale,
@@ -1488,7 +1501,8 @@ class _your_whyState extends State<your_why> {
                                   ),
                                   AnimatedScaleButton(
                                     onTap: () {
-                                      if (disable == false) {
+                                      if (disable == false &&
+                                          widget.premium == true) {
                                         showAnimatedDialog(
                                           context: context,
                                           builder: (BuildContext context) {
@@ -1754,7 +1768,8 @@ class _your_whyState extends State<your_why> {
                                   ),
                                   AnimatedScaleButton(
                                     onTap: () {
-                                      if (disable == false) {
+                                      if (disable == false &&
+                                          widget.premium == true) {
                                         if (selectedItemIndexesOuter!
                                                 .contains(-1) ==
                                             false) {
@@ -2125,6 +2140,66 @@ class _your_whyState extends State<your_why> {
                   ),
                 ),
         ),
+        extendBody: true,
+        bottomNavigationBar: widget.premium == true
+            ? Container()
+            : GestureDetector(
+                onTap: () {
+                  Upgrade_sheet(context);
+                },
+                child: BottomAppBar(
+                  elevation: 0,
+                  color: Colors.transparent,
+                  child: Container(
+                    height: AppDimensions.height10(context) * 7.7,
+                    width: AppDimensions.height10(context) * 41.4,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                            topRight: Radius.circular(
+                                AppDimensions.height10(context) * 2.0)),
+                        color: const Color(0xFFF5F5F5)),
+                    child: SizedBox(
+                      // width: AppDimensions.height10(context) * 27.8,
+                      height: AppDimensions.height10(context) * 3.4,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10(context) * 1.0),
+                            // width: AppDimensions.height10(context) * 23.6,
+                            child: Text(
+                              'Upgrade to score ',
+                              style: TextStyle(
+                                  color: const Color(0xFF437296),
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.8,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 3.2,
+                            height: AppDimensions.height10(context) * 3.2,
+                            padding: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.1,
+                                left: AppDimensions.height10(context) * 0.6,
+                                right: AppDimensions.height10(context) * 0.6,
+                                bottom: AppDimensions.height10(context) * 0.9),
+                            decoration: const BoxDecoration(
+                                color: Color(0xFF437296),
+                                shape: BoxShape.circle),
+                            child: Image.asset(
+                              'assets/images/Arrow.webp',
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
       ),
     );
   }

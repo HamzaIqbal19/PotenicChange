@@ -136,7 +136,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
           //     onPressed: () async {
           //       if (route == 'view_all_goals') {
           //         Navigator.pushReplacement(context,
-          //             FadePageRoute(page: const veiw_all_goals_menu()));
+          //             FadePageRoute(page: const view_all_goals_menu()));
           //       } else {
           //         Navigator.push(
           //           context,
@@ -174,7 +174,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 onPressed: () {
                   if (route == 'view_all_goals') {
                     Navigator.pushReplacement(context,
-                        FadePageRoute(page: const veiw_all_goals_menu()));
+                        FadePageRoute(page: const view_all_goals_menu()));
                   } else {
                     Navigator.pushReplacement(
                       context,

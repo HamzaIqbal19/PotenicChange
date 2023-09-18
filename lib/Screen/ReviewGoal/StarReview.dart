@@ -117,7 +117,7 @@ class _StarReviewState extends State<StarReview> {
 
         if (route == 'view_all_goals') {
           Navigator.pushReplacement(
-              context, FadePageRoute(page: const veiw_all_goals_menu()));
+              context, FadePageRoute(page: const view_all_goals_menu()));
         } else if (widget.route == 'goal') {
           Navigator.push(context, FadePageRoute(page: const GoalFinished()));
         } else if (widget.route == 'menu') {
@@ -1725,7 +1725,7 @@ class _StarReviewState extends State<StarReview> {
                                                           context,
                                                           FadePageRoute(
                                                               page:
-                                                                  const veiw_all_goals_menu()));
+                                                                  const view_all_goals_menu()));
                                                     } else {
                                                       Navigator.pushReplacement(
                                                           context,

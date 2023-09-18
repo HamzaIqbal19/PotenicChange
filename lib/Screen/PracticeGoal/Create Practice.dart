@@ -148,7 +148,7 @@ class _CreatePracticeState extends State<CreatePractice> {
       onWillPop: () async {
         if (route == 'view_all_goals') {
           Navigator.pushReplacement(
-              context, FadePageRoute(page: const veiw_all_goals_menu()));
+              context, FadePageRoute(page: const view_all_goals_menu()));
         } else if (route == 'view_all_goals_2') {
           Navigator.pushReplacement(
               context, FadePageRoute(page: const multiple_goal_inactive()));
@@ -191,7 +191,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                   onPressed: () async {
                     if (route == 'view_all_goals') {
                       Navigator.pushReplacement(context,
-                          FadePageRoute(page: const veiw_all_goals_menu()));
+                          FadePageRoute(page: const view_all_goals_menu()));
                     } else if (route == 'view_all_goals_2') {
                       Navigator.pushReplacement(context,
                           FadePageRoute(page: const multiple_goal_inactive()));
@@ -223,7 +223,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                     onPressed: () async {
                       if (route == 'view_all_goals') {
                         Navigator.pushReplacement(context,
-                            FadePageRoute(page: const veiw_all_goals_menu()));
+                            FadePageRoute(page: const view_all_goals_menu()));
                       } else {
                         Navigator.pushReplacement(
                           context,

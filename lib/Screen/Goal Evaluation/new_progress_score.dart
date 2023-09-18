@@ -877,15 +877,16 @@ class _new_progress_scoreState extends State<new_progress_score> {
                           children: [
                             AnimatedScaleButton(
                               onTap: () {
-                                if (widget.premium == true) {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: your_why(
-                                        destination: 'reason',
-                                        index: selectedEval,
-                                      )));
-                                }
+                                // if (widget.premium == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: your_why(
+                                      destination: 'reason',
+                                      index: selectedEval,
+                                      premium: widget.premium,
+                                    )));
+                                // }
                               },
                               child: goal_criteria(
                                 criteria: 'Goal Criteria 1',
@@ -951,15 +952,16 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               onTap: () {
                                 print(goalDetails['goalEvaluations']
                                     [selectedEval]['newIdentity']);
-                                if (widget.premium == true) {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: your_why(
-                                        destination: 'identityStatement',
-                                        index: selectedEval,
-                                      )));
-                                }
+                                // if (widget.premium == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: your_why(
+                                      destination: 'identityStatement',
+                                      index: selectedEval,
+                                      premium: widget.premium,
+                                    )));
+                                // }
                               },
                               child: goal_criteria(
                                 criteria: 'Goal Criteria 2',
@@ -1014,15 +1016,16 @@ class _new_progress_scoreState extends State<new_progress_score> {
                             ),
                             AnimatedScaleButton(
                               onTap: () {
-                                if (widget.premium == true) {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: your_why(
-                                        destination: 'visualizingYourSelf',
-                                        index: selectedEval,
-                                      )));
-                                }
+                                //if (widget.premium == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: your_why(
+                                      destination: 'visualizingYourSelf',
+                                      index: selectedEval,
+                                      premium: widget.premium,
+                                    )));
+                                //  }
                               },
                               child: goal_criteria(
                                   criteria: 'Goal Criteria 3',
@@ -1079,14 +1082,15 @@ class _new_progress_scoreState extends State<new_progress_score> {
                             ),
                             AnimatedScaleButton(
                               onTap: () {
-                                if (widget.premium == true) {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: your_impact(
-                                        index: selectedEval,
-                                      )));
-                                }
+                                // if (widget.premium == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: your_impact(
+                                      premium: widget.premium,
+                                      index: selectedEval,
+                                    )));
+                                // }
                               },
                               child: goal_criteria(
                                   criteria: 'Goal Criteria 4',

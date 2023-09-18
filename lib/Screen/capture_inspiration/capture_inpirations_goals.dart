@@ -1371,7 +1371,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                                     context,
                                                                     FadePageRoute(
                                                                         page:
-                                                                            const veiw_details()),
+                                                                            const view_details()),
                                                                   )
                                                                 : Navigator
                                                                     .push(
@@ -1398,7 +1398,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                         ? Navigator.push(
                                             context,
                                             FadePageRoute(
-                                                page: const veiw_details()),
+                                                page: const view_details()),
                                           )
                                         : widget.route == 'video_create'
                                             ? Navigator.push(

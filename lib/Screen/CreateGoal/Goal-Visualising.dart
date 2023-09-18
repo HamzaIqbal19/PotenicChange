@@ -483,7 +483,7 @@ class _VisualisingState extends State<Visualising> {
                                                   context,
                                                   FadePageRoute(
                                                       page:
-                                                          const veiw_all_goals_menu()));
+                                                          const view_all_goals_menu()));
                                             } else {
                                               Navigator.push(
                                                 context,

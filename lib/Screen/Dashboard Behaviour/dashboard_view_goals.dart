@@ -59,6 +59,8 @@ class _view_goalsState extends State<view_goals> {
   bool noPlanned = false;
   bool noData = false;
   bool Loader = true;
+  List<Map<String, dynamic>> timesList = [];
+
   bool contain = false;
   bool single = false;
   int removeDay = 0;
@@ -148,7 +150,50 @@ class _view_goalsState extends State<view_goals> {
             print('====================');
             print(noActive);
             print(allGoals.length);
+            timesList.clear();
+            print('FILTERED BY TIME: >>>>>>>> $timesList ');
+            for (int i = 0; i < allGoals.length; i++) {
+              for (int y = 0; y < allGoals[i]['schedule'].length - 1; y++) {
+                timesList.add({
+                  'time': '${allGoals[i]['schedule']['time${y + 1}']}',
+                  'data': allGoals[i],
+                  'status': '${allGoals[i]['recordingStatusTime${y + 1}']}'
+                });
+              }
+            }
+            print('FILTERED BY TIME:  $timesList >>>>>>>>');
+
+            // Function to convert time to minutes from midnight
+            int convertToMinutes(String time) {
+              int hours = int.parse(time.split(':')[0]);
+              int minutes = int.parse(time.split(':')[1].split(' ')[0]);
+              if (time.toLowerCase().contains('pm') && hours != 12) {
+                hours += 12;
+              }
+              int totalMinutes = (hours * 60 + minutes) % (24 * 60);
+              return totalMinutes < 360
+                  ? totalMinutes + (24 * 60 - 360)
+                  : totalMinutes - 360;
+            }
+
+            // Sort the list based on converted times
+            timesList.sort((a, b) {
+              int timeA = convertToMinutes(a['time']);
+              int timeB = convertToMinutes(b['time']);
+              return timeA - timeB;
+            });
+
+            // Print the sorted list
+
+            print(
+                'Filter Length ${timesList.length}>>>>>Status >>>>>> ${timesList[0]['status']} FILTERED BY TIME:  $timesList >>>>>>>>');
+
             loadData();
+
+            for (int i = 0; i < timesList.length; i++) {
+              print('<<Status for recording times>> ${timesList[i]['status']}');
+            }
+
             if (allGoals.length == 1 && allGoals[0]["schedule"].length == 2) {
               setState(() {
                 single = true;
@@ -158,8 +203,6 @@ class _view_goalsState extends State<view_goals> {
                 single = false;
               });
             }
-            print(allGoals[0]['userGoal']['color']);
-            print('====================');
           } else if (response == false) {
             loadData();
             setState(() {
@@ -931,397 +974,448 @@ class _view_goalsState extends State<view_goals> {
                                                 ListView.builder(
                                                     physics:
                                                         const NeverScrollableScrollPhysics(),
-                                                    itemCount: allGoals.length,
+                                                    itemCount: timesList.length,
                                                     shrinkWrap: true,
                                                     padding: EdgeInsets.zero,
                                                     itemBuilder:
                                                         ((context, index) {
-                                                      // setState(() {
-                                                      //   allPractice =
-                                                      //       allGoals[index]['userPractices'];
-                                                      // });
-                                                      // print('---------------------------');
-                                                      // print(allPractice);
                                                       return Column(
                                                         children: [
-                                                          for (int i = 0;
-                                                              i <
-                                                                  allGoals[index]
+                                                          Container(
+                                                            width: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                35.6,
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                4.2,
+                                                            margin: EdgeInsets.only(
+                                                                left: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    2.4,
+                                                                right: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    3.4,
+                                                                top: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.1),
+                                                            child: Column(
+                                                                children: [
+                                                                  Container(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .centerLeft,
+                                                                    child: Text(
+                                                                      timesList[index]
                                                                               [
-                                                                              'schedule']
-                                                                          .length -
-                                                                      1;
-                                                              i++) ...[
-                                                            Column(
+                                                                              'time']
+                                                                          .toString()
+                                                                          .substring(
+                                                                              0,
+                                                                              5),
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            AppDimensions.height10(context) *
+                                                                                1.8,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        color: Colors
+                                                                            .white,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Divider(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            0.2,
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                  Container(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .centerLeft,
+                                                                    child: Text(
+                                                                      timesList[index]
+                                                                              [
+                                                                              'time']
+                                                                          .toString()
+                                                                          .trim()
+                                                                          .substring(
+                                                                              5)
+                                                                          .toUpperCase(),
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            AppDimensions.height10(context) *
+                                                                                1.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        color: Colors
+                                                                            .white,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ]),
+                                                          ),
+                                                          Column(
+                                                            children: [
+                                                              Center(
+                                                                child: align_circles(
+                                                                    asset_1: timesList[index]['data']['userGoal']['color'] == "1"
+                                                                        ? "assets/images/red_gradient.webp"
+                                                                        : timesList[index]['data']['userGoal']['color'] == "2"
+                                                                            ? 'assets/images/orange_moon.webp'
+                                                                            : timesList[index]['data']['userGoal']['color'] == "3"
+                                                                                ? "assets/images/lightGrey_gradient.webp"
+                                                                                : timesList[index]['data']['userGoal']['color'] == "4"
+                                                                                    ? "assets/images/lightBlue_gradient.webp"
+                                                                                    : timesList[index]['data']['userGoal']['color'] == "5"
+                                                                                        ? "assets/images/medBlue_gradient.webp"
+                                                                                        : timesList[index]['data']['userGoal']['color'] == "6"
+                                                                                            ? "assets/images/Blue_gradient.webp"
+                                                                                            : 'assets/images/orange_moon.webp',
+                                                                    s_circle_text: timesList[index]['data']['name'],
+                                                                    asset_2: timesList[index]['status'] == 'missed'
+                                                                        ? timesList[index]['data']['color'] == "1"
+                                                                            ? 'assets/images/Missed_3.webp'
+                                                                            : timesList[index]['data']['color'] == "2"
+                                                                                ? 'assets/images/Missed_1.webp'
+                                                                                : timesList[index]['data']['color'] == "3"
+                                                                                    ? "assets/images/Missed_2.webp"
+                                                                                    : timesList[index]['data']['color'] == "4"
+                                                                                        ? "assets/images/Missed_4.webp"
+                                                                                        : timesList[index]['data']['color'] == "5"
+                                                                                            ? "assets/images/Missed_4.webp"
+                                                                                            : "assets/images/Missed_2.webp"
+                                                                        : timesList[index]['status'] == 'completed'
+                                                                            ? timesList[index]['data']['color'] == "1"
+                                                                                ? "assets/images/Practice_Completed_1.webp"
+                                                                                : timesList[index]['data']['color'] == "2"
+                                                                                    ? 'assets/images/Practice_Completed_2.webp'
+                                                                                    : timesList[index]['data']['color'] == "3"
+                                                                                        ? "assets/images/Practice_Completed_3.webp"
+                                                                                        : timesList[index]['data']['color'] == "4"
+                                                                                            ? "assets/images/Practice_Completed_4.webp"
+                                                                                            : timesList[index]['data']['color'] == "5"
+                                                                                                ? "assets/images/Practice_Completed_4.webp"
+                                                                                                : 'assets/images/Practice_Completed_2.webp'
+                                                                            : timesList[index]['data']['color'] == "1"
+                                                                                ? "assets/images/Ellipse orange_wb.webp"
+                                                                                : timesList[index]['data']['color'] == "2"
+                                                                                    ? 'assets/images/Ellipse 158_wb.webp'
+                                                                                    : timesList[index]['data']['color'] == "3"
+                                                                                        ? "assets/images/Ellipse 157_wb.webp"
+                                                                                        : timesList[index]['data']['color'] == "4"
+                                                                                            ? "assets/images/Ellipse light-blue_wb.webp"
+                                                                                            : timesList[index]['data']['color'] == "5"
+                                                                                                ? "assets/images/Ellipse blue_wb.webp"
+                                                                                                : 'assets/images/Ellipse 158_wb.webp',
+                                                                    head_text: timesList[index]['data']['userGoal']['name'],
+                                                                    body_text: timesList[index]['data']['userGoal']['identityStatement'][0]['text'],
+                                                                    body_text_color: 0xff5B74A6,
+                                                                    head_text_color: 0xff5B74A6,
+                                                                    body_text_size: AppDimensions.height10(context) * 1.6,
+                                                                    head_text_size: AppDimensions.height10(context) * 2.0,
+                                                                    enable_icon: widget.missed ? false : true,
+                                                                    is_right: true,
+                                                                    s_circle_text_col: timesList[index]['status'] == "Not Started"
+                                                                        ? 0xFFFBFBFB
+                                                                        : timesList[index]['data']['color'] == "1"
+                                                                            ? 0XFFFC7133
+                                                                            : timesList[index]['data']['color'] == "2"
+                                                                                ? 0xFF1A481C
+                                                                                : timesList[index]['data']['color'] == "3"
+                                                                                    ? 0xFF6D4B77
+                                                                                    : timesList[index]['data']['color'] == "4"
+                                                                                        ? 0xFF5C75A6
+                                                                                        : timesList[index]['data']['color'] == "5"
+                                                                                            ? 0xFF315291
+                                                                                            : 0xFF1A481C,
+                                                                    onTap1: () async {
+                                                                      if (_showOverlay ==
+                                                                          false) {
+                                                                        Navigator.push(
+                                                                            context,
+                                                                            FadePageRoute(
+                                                                                page: (const goal_menu_inactive(
+                                                                              isActive: false,
+                                                                              goal_evaluation: false,
+                                                                            ))));
+                                                                        final SharedPreferences
+                                                                            prefs =
+                                                                            await _prefs;
+                                                                        var setId = prefs.setInt(
+                                                                            'goal_num',
+                                                                            timesList[index]['data']['userGoal']['id']);
+
+                                                                        await prefs.setString(
+                                                                            'goal_menu_route',
+                                                                            'dashboard');
+                                                                      } else {
+                                                                        if (goal_level ==
+                                                                            0) {
+                                                                          _incrementValue();
+                                                                        }
+                                                                      }
+                                                                    },
+                                                                    onTap2: () async {
+                                                                      if (_showOverlay ==
+                                                                          false) {
+                                                                        final SharedPreferences
+                                                                            prefs =
+                                                                            await _prefs;
+                                                                        var pracId = prefs.setInt(
+                                                                            'prac_num',
+                                                                            timesList[index]['data']['id']);
+                                                                        var setId = prefs.setInt(
+                                                                            'goal_num',
+                                                                            timesList[index]['data']['userGoal']['id']);
+
+                                                                        var pracName = prefs.setString(
+                                                                            'dash_pracName',
+                                                                            timesList[index]['data']['name']);
+                                                                        var goalName = prefs.setString(
+                                                                            'dash_goalName',
+                                                                            timesList[index]['data']['userGoal']['name']);
+                                                                        prefs.setString(
+                                                                            'record_date',
+                                                                            getFormattedDate(current).toString());
+
+                                                                        var pracColor = timesList[index]['data']['color'] !=
+                                                                                null
+                                                                            ? prefs.setString('dash_pracColor',
+                                                                                timesList[index]['data']['color'])
+                                                                            : prefs.setString('dash_pracColor', '0');
+                                                                        var time = prefs.setString(
+                                                                            'recording_Time1',
+                                                                            timesList[index]['time']);
+                                                                        var dash_boardRoute = prefs.setBool(
+                                                                            'behaviour_route',
+                                                                            true);
+                                                                        var goalColor = timesList[index]['data']['userGoal']['color'] !=
+                                                                                null
+                                                                            ? prefs.setString('dash_goalColor',
+                                                                                timesList[index]['data']['userGoal']['color'])
+                                                                            : '0';
+                                                                        if (timesList[index]['status'] ==
+                                                                            "Not Started") {
+                                                                          print(
+                                                                              "CON 2");
+                                                                          Navigator.push(
+                                                                              context,
+                                                                              FadePageRoute(page: const practiceMenu(goal_eval: false)));
+                                                                        } else if (timesList[index]['status'] ==
+                                                                            "missed") {
+                                                                          print(
+                                                                              "CON 3");
+                                                                          Navigator.push(
+                                                                              context,
+                                                                              FadePageRoute(
+                                                                                  page: missed_Menu(
+                                                                                pracName: timesList[index]['data']['name'],
+                                                                              )));
+                                                                        } else {
+                                                                          print(
+                                                                              "CON 1");
+
+                                                                          Navigator.push(
+                                                                              context,
+                                                                              FadePageRoute(page: const menu_behaviour()));
+                                                                        }
+                                                                      } else {
+                                                                        if (goal_level ==
+                                                                            0) {
+                                                                          _incrementValue();
+                                                                        }
+                                                                      }
+                                                                    }),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                3.0,
+                                                          ),
+                                                        ],
+                                                      );
+                                                    })),
+                                                single == true
+                                                    ? Container(
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            14.432,
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            35.335,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                                image:
+                                                                    DecorationImage(
+                                                          image: AssetImage(
+                                                            'assets/images/Component 1.webp',
+                                                          ),
+                                                          fit: BoxFit.cover,
+                                                        )),
+
+                                                        //color: Colors.blue,
+                                                        child: Stack(children: [
+                                                          Align(
+                                                            alignment:
+                                                                const Alignment(
+                                                                    -0.930,
+                                                                    -1.42),
+                                                            child:
+                                                                AnimatedScaleButton(
+                                                              onTap: () {
+                                                                // Navigator.push(
+                                                                //     context,
+                                                                //     FadePageRoute(
+                                                                //         page: const message_center()));
+                                                              },
+                                                              child:
+                                                                  Image.asset(
+                                                                "assets/images/Group.webp",
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    5.0,
+                                                                width: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    5.0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Align(
+                                                            alignment:
+                                                                const Alignment(
+                                                                    0.93, 0),
+                                                            child: Image.asset(
+                                                              "assets/images/Vector Smart Object.webp",
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  9.296,
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  4.16,
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                              top: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.1,
+                                                            ),
+                                                            child: Column(
                                                               children: [
                                                                 Container(
                                                                   width: AppDimensions
                                                                           .height10(
                                                                               context) *
-                                                                      35.6,
+                                                                      28.0,
                                                                   height: AppDimensions
                                                                           .height10(
                                                                               context) *
-                                                                      4.2,
-                                                                  margin: EdgeInsets.only(
-                                                                      left: AppDimensions.height10(
-                                                                              context) *
-                                                                          2.4,
-                                                                      right: AppDimensions.height10(
-                                                                              context) *
-                                                                          3.4,
-                                                                      top: AppDimensions.height10(
-                                                                              context) *
-                                                                          1.1),
-                                                                  child: Column(
-                                                                      children: [
-                                                                        Container(
-                                                                          alignment:
-                                                                              Alignment.centerLeft,
-                                                                          child:
-                                                                              Text(
-                                                                            allGoals[index]['schedule']['time${i + 1}'].toString().substring(0,
-                                                                                5),
-                                                                            style:
-                                                                                TextStyle(
-                                                                              fontSize: AppDimensions.height10(context) * 1.8,
-                                                                              fontWeight: FontWeight.w600,
-                                                                              color: Colors.white,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        Divider(
-                                                                          height:
-                                                                              AppDimensions.height10(context) * 0.2,
-                                                                          color:
-                                                                              Colors.white,
-                                                                        ),
-                                                                        Container(
-                                                                          alignment:
-                                                                              Alignment.centerLeft,
-                                                                          child:
-                                                                              Text(
-                                                                            allGoals[index]['schedule']['time${i + 1}'].toString().trim().substring(5).toUpperCase(),
-                                                                            style:
-                                                                                TextStyle(
-                                                                              fontSize: AppDimensions.height10(context) * 1.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.white,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ]),
-                                                                ),
-                                                                Column(
-                                                                  children: [
-                                                                    Center(
-                                                                        child:
-                                                                            align_circles(
-                                                                      onTap1:
-                                                                          () async {
-                                                                        if (_showOverlay ==
-                                                                            false) {
-                                                                          Navigator.push(
-                                                                              context,
-                                                                              FadePageRoute(
-                                                                                  page: (const goal_menu_inactive(
-                                                                                isActive: false,
-                                                                                goal_evaluation: false,
-                                                                              ))));
-                                                                          final SharedPreferences
-                                                                              prefs =
-                                                                              await _prefs;
-                                                                          var setId = prefs.setInt(
-                                                                              'goal_num',
-                                                                              allGoals[index]['userGoal']['id']);
-
-                                                                          await prefs.setString(
-                                                                              'goal_menu_route',
-                                                                              'dashboard');
-                                                                        } else {
-                                                                          if (goal_level ==
-                                                                              0) {
-                                                                            _incrementValue();
-                                                                          }
-                                                                        }
-                                                                      },
-                                                                      onTap2:
-                                                                          () async {
-                                                                        if (_showOverlay ==
-                                                                            false) {
-                                                                          final SharedPreferences
-                                                                              prefs =
-                                                                              await _prefs;
-                                                                          var pracId = prefs.setInt(
-                                                                              'prac_num',
-                                                                              allGoals[index]['id']);
-                                                                          var setId = prefs.setInt(
-                                                                              'goal_num',
-                                                                              allGoals[index]['userGoal']['id']);
-
-                                                                          var pracName = prefs.setString(
-                                                                              'dash_pracName',
-                                                                              allGoals[index]['name']);
-                                                                          var goalName = prefs.setString(
-                                                                              'dash_goalName',
-                                                                              allGoals[index]['userGoal']['name']);
-                                                                          prefs.setString(
-                                                                              'record_date',
-                                                                              getFormattedDate(current).toString());
-                                                                          print(
-                                                                              "====================>PractiecId${allGoals[index]['id']}");
-                                                                          var pracColor = allGoals[index]['color'] != null
-                                                                              ? prefs.setString('dash_pracColor', allGoals[index]['color'])
-                                                                              : prefs.setString('dash_pracColor', '0');
-                                                                          var time = prefs.setString(
-                                                                              'recording_Time1',
-                                                                              allGoals[index]['schedule']['time${i + 1}']);
-                                                                          var dash_boardRoute = prefs.setBool(
-                                                                              'behaviour_route',
-                                                                              true);
-                                                                          var goalColor = allGoals[index]['userGoal']['color'] != null
-                                                                              ? prefs.setString('dash_goalColor', allGoals[index]['userGoal']['color'])
-                                                                              : '0';
-                                                                          if (allGoals[index]['recordingStatusTime${i + 1}'] ==
-                                                                              "Not Started") {
-                                                                            print("CON 2");
-                                                                            Navigator.push(context,
-                                                                                FadePageRoute(page: const practiceMenu(goal_eval: false)));
-                                                                          } else if (allGoals[index]['recordingStatusTime${i + 1}'] ==
-                                                                              "missed") {
-                                                                            print("CON 3");
-                                                                            Navigator.push(
-                                                                                context,
-                                                                                FadePageRoute(
-                                                                                    page: missed_Menu(
-                                                                                  pracName: allGoals[index]['name'],
-                                                                                )));
-                                                                          } else {
-                                                                            print("CON 1");
-                                                                            print("${allGoals[index]['color']}");
-                                                                            Navigator.push(context,
-                                                                                FadePageRoute(page: const menu_behaviour()));
-                                                                          }
-                                                                        } else {
-                                                                          if (goal_level ==
-                                                                              0) {
-                                                                            _incrementValue();
-                                                                          }
-                                                                        }
-                                                                      },
-                                                                      asset_1: allGoals[index]['userGoal']['color'] ==
-                                                                              "1"
-                                                                          ? "assets/images/red_gradient.webp"
-                                                                          : allGoals[index]['userGoal']['color'] == "2"
-                                                                              ? 'assets/images/orange_moon.webp'
-                                                                              : allGoals[index]['userGoal']['color'] == "3"
-                                                                                  ? "assets/images/lightGrey_gradient.webp"
-                                                                                  : allGoals[index]['userGoal']['color'] == "4"
-                                                                                      ? "assets/images/lightBlue_gradient.webp"
-                                                                                      : allGoals[index]['userGoal']['color'] == "5"
-                                                                                          ? "assets/images/medBlue_gradient.webp"
-                                                                                          : allGoals[index]['userGoal']['color'] == 6
-                                                                                              ? "assets/images/Blue_gradient.webp"
-                                                                                              : 'assets/images/orange_moon.webp',
-                                                                      s_circle_text:
-                                                                          allGoals[index]
-                                                                              [
-                                                                              'name'],
-                                                                      asset_2: allGoals[index]['recordingStatusTime${i + 1}'] ==
-                                                                              "missed"
-                                                                          ? allGoals[index]['color'] == "1"
-                                                                              ? 'assets/images/Missed_3.webp'
-                                                                              : allGoals[index]['color'] == "2"
-                                                                                  ? 'assets/images/Missed_1.webp'
-                                                                                  : allGoals[index]['color'] == "3"
-                                                                                      ? "assets/images/Missed_2.webp"
-                                                                                      : allGoals[index]['color'] == "4"
-                                                                                          ? "assets/images/Missed_4.webp"
-                                                                                          : allGoals[index]['color'] == "5"
-                                                                                              ? "assets/images/Missed_4.webp"
-                                                                                              : 'assets/images/Missed_1.webp'
-                                                                          : allGoals[index]['recordingStatusTime${i + 1}'] == "completed"
-                                                                              ? allGoals[index]['color'] == "1"
-                                                                                  ? "assets/images/Practice_Completed_1.webp"
-                                                                                  : allGoals[index]['color'] == "2"
-                                                                                      ? 'assets/images/Practice_Completed_2.webp'
-                                                                                      : allGoals[index]['color'] == "3"
-                                                                                          ? "assets/images/Practice_Completed_3.webp"
-                                                                                          : allGoals[index]['color'] == "4"
-                                                                                              ? "assets/images/Practice_Completed_4.webp"
-                                                                                              : allGoals[index]['color'] == "5"
-                                                                                                  ? "assets/images/Practice_Completed_4.webp"
-                                                                                                  : 'assets/images/Practice_Completed_2.webp'
-                                                                              : allGoals[index]['color'] == "1"
-                                                                                  ? "assets/images/Ellipse orange_wb.webp"
-                                                                                  : allGoals[index]['color'] == "2"
-                                                                                      ? 'assets/images/Ellipse 158_wb.webp'
-                                                                                      : allGoals[index]['color'] == "3"
-                                                                                          ? "assets/images/Ellipse 157_wb.webp"
-                                                                                          : allGoals[index]['color'] == "4"
-                                                                                              ? "assets/images/Ellipse light-blue_wb.webp"
-                                                                                              : allGoals[index]['color'] == "5"
-                                                                                                  ? "assets/images/Ellipse blue_wb.webp"
-                                                                                                  : 'assets/images/Ellipse 158_wb.webp',
-                                                                      head_text:
-                                                                          allGoals[index]['userGoal']
-                                                                              [
-                                                                              'name'],
-                                                                      body_text:
-                                                                          allGoals[index]['userGoal']['identityStatement'][0]
-                                                                              [
-                                                                              'text'],
-                                                                      body_text_color:
-                                                                          0xff5B74A6,
-                                                                      head_text_color:
-                                                                          0xff5B74A6,
-                                                                      body_text_size:
+                                                                      2.3,
+                                                                  alignment:
+                                                                      const Alignment(
+                                                                          -0.65,
+                                                                          0),
+                                                                  child: Text(
+                                                                    "Hi, it's Reda here",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
                                                                           AppDimensions.height10(context) *
                                                                               1.6,
-                                                                      head_text_size:
-                                                                          AppDimensions.height10(context) *
-                                                                              2.0,
-                                                                      enable_icon: widget
-                                                                              .missed
-                                                                          ? false
-                                                                          : true,
-                                                                      is_right:
-                                                                          true,
-                                                                      s_circle_text_col: allGoals[index]['recordingStatusTime${i + 1}'] ==
-                                                                              "Not Started"
-                                                                          ? 0xFFFBFBFB
-                                                                          : allGoals[index]['color'] == "1"
-                                                                              ? 0XFFFC7133
-                                                                              : allGoals[index]['color'] == "2"
-                                                                                  ? 0xFF1A481C
-                                                                                  : allGoals[index]['color'] == "3"
-                                                                                      ? 0xFF6D4B77
-                                                                                      : allGoals[index]['color'] == "4"
-                                                                                          ? 0xFF5C75A6
-                                                                                          : allGoals[index]['color'] == "5"
-                                                                                              ? 0xFF315291
-                                                                                              : 0xFF1A481C,
-                                                                    )),
-                                                                    SizedBox(
-                                                                      height:
-                                                                          AppDimensions.height10(context) *
-                                                                              3.0,
-                                                                    )
-                                                                  ],
-                                                                )
-                                                              ],
-                                                            ),
-                                                          ],
-                                                          single == true
-                                                              ? Container(
-                                                                  height: AppDimensions
-                                                                          .height10(
-                                                                              context) *
-                                                                      14.432,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      color: const Color
+                                                                              .fromRGBO(
+                                                                          91,
+                                                                          116,
+                                                                          166,
+                                                                          1),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Container(
                                                                   width: AppDimensions
                                                                           .height10(
                                                                               context) *
-                                                                      35.335,
-                                                                  decoration:
-                                                                      const BoxDecoration(
-                                                                          image:
-                                                                              DecorationImage(
-                                                                    image:
-                                                                        AssetImage(
-                                                                      'assets/images/Component 1.webp',
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  )),
+                                                                      5.245,
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.3,
+                                                                  margin: EdgeInsets.only(
+                                                                      right: AppDimensions.height10(
+                                                                              context) *
+                                                                          17.5),
+                                                                  child:
+                                                                      const Divider(
+                                                                    thickness:
+                                                                        1,
+                                                                    color: Color
+                                                                        .fromRGBO(
+                                                                            91,
+                                                                            116,
+                                                                            166,
+                                                                            1),
+                                                                  ),
+                                                                ),
+                                                                Container(
+                                                                  width: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      26.7,
+                                                                  // height: AppDimensions.height10(context) * 5.3,
+                                                                  margin: EdgeInsets.only(
+                                                                      left: AppDimensions.height10(
+                                                                              context) *
+                                                                          3.4,
+                                                                      bottom: AppDimensions.height10(
+                                                                              context) *
+                                                                          1.2),
+                                                                  child: Text(
+                                                                    "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
+                                                                    // textAlign: TextAlign.left,
 
-                                                                  //color: Colors.blue,
-                                                                  child: Stack(
-                                                                      children: [
-                                                                        Align(
-                                                                          alignment: const Alignment(
-                                                                              -0.930,
-                                                                              -1.42),
-                                                                          child:
-                                                                              AnimatedScaleButton(
-                                                                            onTap:
-                                                                                () {
-                                                                              // Navigator.push(
-                                                                              //     context,
-                                                                              //     FadePageRoute(
-                                                                              //         page: const message_center()));
-                                                                            },
-                                                                            child:
-                                                                                Image.asset(
-                                                                              "assets/images/Group.webp",
-                                                                              height: AppDimensions.height10(context) * 5.0,
-                                                                              width: AppDimensions.height10(context) * 5.0,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        Align(
-                                                                          alignment: const Alignment(
-                                                                              0.93,
-                                                                              0),
-                                                                          child:
-                                                                              Image.asset(
-                                                                            "assets/images/Vector Smart Object.webp",
-                                                                            height:
-                                                                                AppDimensions.height10(context) * 9.296,
-                                                                            width:
-                                                                                AppDimensions.height10(context) * 4.16,
-                                                                          ),
-                                                                        ),
-                                                                        Container(
-                                                                          margin:
-                                                                              EdgeInsets.only(
-                                                                            top:
-                                                                                AppDimensions.height10(context) * 2.1,
-                                                                          ),
-                                                                          child:
-                                                                              Column(
-                                                                            children: [
-                                                                              Container(
-                                                                                width: AppDimensions.height10(context) * 28.0,
-                                                                                height: AppDimensions.height10(context) * 2.3,
-                                                                                alignment: const Alignment(-0.65, 0),
-                                                                                child: Text(
-                                                                                  "Hi, it's Reda here",
-                                                                                  style: TextStyle(
-                                                                                    fontSize: AppDimensions.height10(context) * 1.6,
-                                                                                    fontWeight: FontWeight.w700,
-                                                                                    color: const Color.fromRGBO(91, 116, 166, 1),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              Container(
-                                                                                width: AppDimensions.height10(context) * 5.245,
-                                                                                height: AppDimensions.height10(context) * 1.3,
-                                                                                margin: EdgeInsets.only(right: AppDimensions.height10(context) * 17.5),
-                                                                                child: const Divider(
-                                                                                  thickness: 1,
-                                                                                  color: Color.fromRGBO(91, 116, 166, 1),
-                                                                                ),
-                                                                              ),
-                                                                              Container(
-                                                                                width: AppDimensions.height10(context) * 26.7,
-                                                                                // height: AppDimensions.height10(context) * 5.3,
-                                                                                margin: EdgeInsets.only(left: AppDimensions.height10(context) * 3.4, bottom: AppDimensions.height10(context) * 1.2),
-                                                                                child: Text(
-                                                                                  "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
-                                                                                  // textAlign: TextAlign.left,
-
-                                                                                  style: TextStyle(fontSize: AppDimensions.height10(context) * 1.4, fontWeight: FontWeight.w400, color: const Color.fromRGBO(91, 116, 166, 1)),
-                                                                                ),
-                                                                              )
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                      ]),
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            AppDimensions.height10(context) *
+                                                                                1.4,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: const Color.fromRGBO(
+                                                                            91,
+                                                                            116,
+                                                                            166,
+                                                                            1)),
+                                                                  ),
                                                                 )
-                                                              : Container()
-                                                        ],
-                                                      );
-                                                    })),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ]),
+                                                      )
+                                                    : Container(),
                                                 Container(
                                                   height:
                                                       AppDimensions.height10(
@@ -1929,7 +2023,7 @@ class _view_goalsState extends State<view_goals> {
                                     //                 ),
                                     //                 child: Center(
                                     //                   child: Text(
-                                    //                     'Veiw',
+                                    //                     'view',
                                     //                     style: TextStyle(
                                     //                         fontSize: AppDimensions
                                     //                                 .height10(
@@ -3381,7 +3475,7 @@ class _view_goalsState extends State<view_goals> {
                                     Navigator.push(
                                         context,
                                         FadePageRoute(
-                                            page: const veiw_all_goals_menu()));
+                                            page: const view_all_goals_menu()));
                                   },
                                   child: Container(
                                       height:

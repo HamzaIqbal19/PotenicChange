@@ -6,9 +6,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/review_habits_dashboard/dashboard.dart';
-import 'package:potenic_app/Screen/ReviewPractice/loader/activateStar_shimmer.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -510,7 +507,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                                                   context,
                                                                   FadePageRoute(
                                                                       page:
-                                                                          const veiw_all_goals_menu()));
+                                                                          const view_all_goals_menu()));
                                                             },
                                                             child: Text(
                                                               'View goal',

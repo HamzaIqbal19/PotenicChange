@@ -19,9 +19,11 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class your_impact extends StatefulWidget {
   final int index;
+  final bool premium;
   const your_impact({
     super.key,
     required this.index,
+    required this.premium,
   });
 
   @override
@@ -43,7 +45,6 @@ class _your_impactState extends State<your_impact> {
   bool bt_visible = false;
   bool saved = false;
   bool disable = false;
-
   int level = 0;
   bool Loader = true;
   var goalDetails;
@@ -191,8 +192,8 @@ class _your_impactState extends State<your_impact> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: const new_progress_score(
-                                      premium: true,
+                                        page: new_progress_score(
+                                      premium: widget.premium,
                                     )));
                                 setState(() {
                                   select_item = -1;
@@ -250,8 +251,8 @@ class _your_impactState extends State<your_impact> {
           Navigator.push(
               context,
               FadePageRoute(
-                  page: const new_progress_score(
-                premium: true,
+                  page: new_progress_score(
+                premium: widget.premium,
               )));
           setState(() {
             select_item = -1;
@@ -352,9 +353,8 @@ class _your_impactState extends State<your_impact> {
                                           Navigator.push(
                                               context,
                                               FadePageRoute(
-                                                  page:
-                                                      const new_progress_score(
-                                                premium: true,
+                                                  page: new_progress_score(
+                                                premium: widget.premium,
                                               )));
                                           setState(() {
                                             select_item = -1;
@@ -417,8 +417,8 @@ class _your_impactState extends State<your_impact> {
                     Navigator.push(
                         context,
                         FadePageRoute(
-                            page: const new_progress_score(
-                          premium: true,
+                            page: new_progress_score(
+                          premium: widget.premium,
                         )));
                     setState(() {
                       select_item = -1;
@@ -437,6 +437,10 @@ class _your_impactState extends State<your_impact> {
         body: Container(
           width: double.infinity,
           height: double.infinity,
+          foregroundDecoration: BoxDecoration(
+              color: widget.premium
+                  ? Colors.transparent
+                  : Colors.black.withOpacity(0.4)),
           decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('assets/images/Mask Group.webp'),
@@ -717,7 +721,8 @@ class _your_impactState extends State<your_impact> {
                             itemBuilder: (BuildContext context, int index1) {
                               return AnimatedScaleButton(
                                 onTap: () {
-                                  if (disable != true) {
+                                  if (disable != true &&
+                                      widget.premium == true) {
                                     setState(() {
                                       select_item = index1;
                                     });
@@ -910,7 +915,8 @@ class _your_impactState extends State<your_impact> {
                             itemBuilder: (BuildContext context, int index1) {
                               return AnimatedScaleButton(
                                 onTap: () {
-                                  if (disable != true) {
+                                  if (disable != true &&
+                                      widget.premium == true) {
                                     setState(() {
                                       select_item_2 = index1;
                                     });
@@ -1072,7 +1078,8 @@ class _your_impactState extends State<your_impact> {
                                 children: [
                                   AnimatedScaleButton(
                                     onTap: () {
-                                      if (disable == false) {
+                                      if (disable == false &&
+                                          widget.premium == true) {
                                         showAnimatedDialog(
                                             animationType:
                                                 DialogTransitionType.fadeScale,
@@ -1331,7 +1338,8 @@ class _your_impactState extends State<your_impact> {
                                   ),
                                   AnimatedScaleButton(
                                     onTap: () {
-                                      if (disable == false) {
+                                      if (disable == false &&
+                                          widget.premium == true) {
                                         showAnimatedDialog(
                                           context: context,
                                           builder: (BuildContext context) {
@@ -1589,7 +1597,8 @@ class _your_impactState extends State<your_impact> {
                                   ),
                                   AnimatedScaleButton(
                                     onTap: () {
-                                      if (disable == false) {
+                                      if (disable == false &&
+                                          widget.premium == true) {
                                         if (select_item != -1 &&
                                             select_item_2 != -1) {
                                           showAnimatedDialog(
@@ -1935,6 +1944,66 @@ class _your_impactState extends State<your_impact> {
                   ),
                 ),
         ),
+        extendBody: true,
+        bottomNavigationBar: widget.premium == true
+            ? Container()
+            : GestureDetector(
+                onTap: () {
+                  Upgrade_sheet(context);
+                },
+                child: BottomAppBar(
+                  elevation: 0,
+                  color: Colors.transparent,
+                  child: Container(
+                    height: AppDimensions.height10(context) * 7.7,
+                    width: AppDimensions.height10(context) * 41.4,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                            topRight: Radius.circular(
+                                AppDimensions.height10(context) * 2.0)),
+                        color: const Color(0xFFF5F5F5)),
+                    child: SizedBox(
+                      // width: AppDimensions.height10(context) * 27.8,
+                      height: AppDimensions.height10(context) * 3.4,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10(context) * 1.0),
+                            // width: AppDimensions.height10(context) * 23.6,
+                            child: Text(
+                              'Upgrade to score ',
+                              style: TextStyle(
+                                  color: const Color(0xFF437296),
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.8,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 3.2,
+                            height: AppDimensions.height10(context) * 3.2,
+                            padding: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.1,
+                                left: AppDimensions.height10(context) * 0.6,
+                                right: AppDimensions.height10(context) * 0.6,
+                                bottom: AppDimensions.height10(context) * 0.9),
+                            decoration: const BoxDecoration(
+                                color: Color(0xFF437296),
+                                shape: BoxShape.circle),
+                            child: Image.asset(
+                              'assets/images/Arrow.webp',
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
       ),
     );
   }
