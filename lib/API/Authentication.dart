@@ -99,6 +99,8 @@ class Authentication {
           prefs.setString("refreshtoken", response["sessionToken"]);
       var subscription =
           prefs.setString('subscriptionStatus', response["subscriptionStatus"]);
+      await prefs.setString('accountCreatedAt',
+          response["createdAt"].toString().substring(0, 10));
       print(response["subscriptionStatus"]);
 
       print("Session Token ===============${response["sessionToken"]}");

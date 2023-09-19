@@ -54,13 +54,16 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class _view_goalsState extends State<view_goals> {
   var allGoals;
+  var responseData;
   var allPractice;
   bool noActive = false;
   bool noPlanned = false;
   bool noData = false;
   bool Loader = true;
   List<Map<String, dynamic>> timesList = [];
-
+  int pastPracCompleted = -1;
+  int presentPracCompleted = -1;
+  int nextPracCompleted = -1;
   bool contain = false;
   bool single = false;
   int removeDay = 0;
@@ -144,6 +147,13 @@ class _view_goalsState extends State<view_goals> {
           if (response != false) {
             setState(() {
               allGoals = response['filteredUserPractices'];
+              responseData = response;
+              pastPracCompleted = response['previousCompletePractice'] -
+                  response['previousTotalPractice'];
+              presentPracCompleted =
+                  response['completePractice'] - response['totalPractice'];
+              nextPracCompleted = response['nextCompletePractice'] -
+                  response['nextTotalPratice'];
               noActive = false;
               noData = false;
             });
@@ -654,28 +664,32 @@ class _view_goalsState extends State<view_goals> {
                                                                   height: AppDimensions
                                                                           .height10(
                                                                               context) *
-                                                                      2.7,
+                                                                      3,
                                                                   width: AppDimensions
                                                                           .height10(
                                                                               context) *
-                                                                      2.7,
+                                                                      3,
                                                                   //  margin: const EdgeInsets.only(top: 3.32),
-                                                                  decoration: const BoxDecoration(
+                                                                  decoration: BoxDecoration(
                                                                       shape: BoxShape
                                                                           .circle,
-                                                                      color: Color(
-                                                                          0xff156F6D)),
-                                                                  child:
-                                                                      const Center(
+                                                                      color: pastPracCompleted ==
+                                                                              0
+                                                                          ? const Color(
+                                                                              0xff156F6D)
+                                                                          : Colors
+                                                                              .white),
+                                                                  child: Center(
                                                                     child: Text(
-                                                                      '0/0',
+                                                                      '${responseData['previousCompletePractice']}/${responseData['previousTotalPractice']}',
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               10,
                                                                           fontWeight: FontWeight
                                                                               .w400,
-                                                                          color:
-                                                                              Colors.white),
+                                                                          color: pastPracCompleted == 0
+                                                                              ? Colors.white
+                                                                              : const Color(0xff5B74A6)),
                                                                     ),
                                                                   ))
                                                             ],
@@ -778,28 +792,32 @@ class _view_goalsState extends State<view_goals> {
                                                                   height: AppDimensions
                                                                           .height10(
                                                                               context) *
-                                                                      2.5,
+                                                                      2.8,
                                                                   width: AppDimensions
                                                                           .height10(
                                                                               context) *
-                                                                      2.5,
+                                                                      2.8,
                                                                   // margin: const EdgeInsets.only(top: 2),
-                                                                  decoration: const BoxDecoration(
+                                                                  decoration: BoxDecoration(
                                                                       shape: BoxShape
                                                                           .circle,
-                                                                      color: Colors
-                                                                          .white),
-                                                                  child:
-                                                                      const Center(
+                                                                      color: presentPracCompleted ==
+                                                                              0
+                                                                          ? const Color(
+                                                                              0xff156F6D)
+                                                                          : Colors
+                                                                              .white),
+                                                                  child: Center(
                                                                     child: Text(
-                                                                      '0/2',
+                                                                      '${responseData['completePractice']}/${responseData['totalPractice']}',
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               10,
                                                                           fontWeight: FontWeight
                                                                               .w400,
-                                                                          color:
-                                                                              Color(0xff5B74A6)),
+                                                                          color: presentPracCompleted == 0
+                                                                              ? Colors.white
+                                                                              : const Color(0xff5B74A6)),
                                                                     ),
                                                                   )),
                                                             ],
@@ -909,20 +927,25 @@ class _view_goalsState extends State<view_goals> {
                                                               height: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  2.7,
+                                                                  3,
                                                               width: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  2.7,
-                                                              //margin: const EdgeInsets.only(top: 3.32),
+                                                                  3,
                                                               decoration:
                                                                   BoxDecoration(
                                                                 shape: BoxShape
                                                                     .circle,
+                                                                color: nextPracCompleted ==
+                                                                        0
+                                                                    ? const Color(
+                                                                        0xff156F6D)
+                                                                    : Colors
+                                                                        .transparent,
                                                                 border: Border.all(
                                                                     width: 1,
-                                                                    color: const Color(
-                                                                        0xFFFBFBFB)),
+                                                                    color: Colors
+                                                                        .white),
                                                               ),
                                                               child: SizedBox(
                                                                   width: AppDimensions
@@ -936,17 +959,17 @@ class _view_goalsState extends State<view_goals> {
                                                                   // margin:
                                                                   //     const EdgeInsets.only(top: 3.32),
                                                                   // margin: const EdgeInsets.only(left: 1),
-                                                                  child:
-                                                                      const Center(
+                                                                  child: Center(
                                                                     child: Text(
-                                                                      '0/2',
+                                                                      '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               10,
                                                                           fontWeight: FontWeight
                                                                               .w400,
-                                                                          color:
-                                                                              Color(0xff5B74A6)),
+                                                                          color: nextPracCompleted == 0
+                                                                              ? Colors.white
+                                                                              : const Color(0xff5B74A6)),
                                                                     ),
                                                                   )),
                                                             )

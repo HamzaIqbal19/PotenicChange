@@ -427,18 +427,27 @@ class _practiceMenuState extends State<practiceMenu> {
                               children: [
                                 AnimatedScaleButton(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute2(true,
-                                            exitPage: const practiceMenu(
-                                              goal_eval: false,
-                                            ),
-                                            enterPage: emotions(
-                                              summary: false,
-                                              pracName: pracName,
-                                              record: false,
-                                              selected: 0,
-                                            )));
+                                    if (differenceInDays.isNegative) {
+                                      print(
+                                          'Session are not availble for future dates');
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  "Recording is not availble for future dates")));
+                                    } else {
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute2(true,
+                                              exitPage: const practiceMenu(
+                                                goal_eval: false,
+                                              ),
+                                              enterPage: emotions(
+                                                summary: false,
+                                                pracName: pracName,
+                                                record: false,
+                                                selected: 0,
+                                              )));
+                                    }
                                   },
                                   child: Container(
                                     width:

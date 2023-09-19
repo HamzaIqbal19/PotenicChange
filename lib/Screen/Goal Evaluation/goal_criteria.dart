@@ -42,6 +42,8 @@ class _your_whyState extends State<your_why> {
     "I’m almost\nthere\n",
     "I’m definitely\nliving my why\n"
   ];
+  List messages = [];
+  String text = 'vision';
   bool saved = false;
   bool visible = false;
   bool disable = false;
@@ -94,7 +96,6 @@ class _your_whyState extends State<your_why> {
           goalDetails = response;
         });
 
-        print(response['goalEvaluations'][0]["YourWay"]);
         final SharedPreferences prefs = await _prefs;
         await prefs.setInt(
             'goal_eval_id', response["goalEvaluations"][widget.index]["id"]);
@@ -117,11 +118,11 @@ class _your_whyState extends State<your_why> {
                         .keys
                         .length;
                 i++) {
-              selectedItemIndexesOuter![i] = response['goalEvaluations'][0]
-                      ["YourWay"]['reason ${i + 1}'] -
+              selectedItemIndexesOuter![i] = response['goalEvaluations']
+                      [widget.index]["YourWay"]['reason ${i + 1}'] -
                   1;
-              resetList![i] = response['goalEvaluations'][0]["YourWay"]
-                      ['reason ${i + 1}'] -
+              resetList![i] = response['goalEvaluations'][widget.index]
+                      ["YourWay"]['reason ${i + 1}'] -
                   1;
             }
           } else {
@@ -150,8 +151,8 @@ class _your_whyState extends State<your_why> {
                         .keys
                         .length;
                 i++) {
-              selectedItemIndexesOuter![i] = response['goalEvaluations'][0]
-                      ["newIdentity"]['reason ${i + 1}'] -
+              selectedItemIndexesOuter![i] = response['goalEvaluations']
+                      [widget.index]["newIdentity"]['reason ${i + 1}'] -
                   1;
               resetList![i] = response['goalEvaluations'][widget.index]
                       ["newIdentity"]['reason ${i + 1}'] -
@@ -166,7 +167,9 @@ class _your_whyState extends State<your_why> {
             });
           }
         } else {
-          if (response['goalEvaluations'][0]["visualisingYourSelf"] != null) {
+          if (response['goalEvaluations'][widget.index]
+                  ["visualisingYourSelf"] !=
+              null) {
             setState(() {
               totalPoint = response['goalEvaluations'][widget.index]
                       ["visualisingYourSelf"]['level']
@@ -183,8 +186,8 @@ class _your_whyState extends State<your_why> {
                         .keys
                         .length;
                 i++) {
-              selectedItemIndexesOuter![i] = response['goalEvaluations'][0]
-                      ["visualisingYourSelf"]['reason ${i + 1}'] -
+              selectedItemIndexesOuter![i] = response['goalEvaluations']
+                      [widget.index]["visualisingYourSelf"]['reason ${i + 1}'] -
                   1;
               resetList![i] = response['goalEvaluations'][widget.index]
                       ["visualisingYourSelf"]['reason ${i + 1}'] -
@@ -215,8 +218,28 @@ class _your_whyState extends State<your_why> {
   @override
   void initState() {
     super.initState();
+    print('>>>>>>>>>>>>>>>>>Index>>>>>>>>>>>>:');
     print(widget.index);
     _fetchGoalDetails();
+    if (widget.destination == 'identityStatement') {
+      setState(() {
+        text = 'new identity';
+      });
+    } else if (widget.destination == 'reason') {
+      setState(() {
+        text = 'why';
+      });
+    }
+
+    setState(() {
+      messages = [
+        "No progress towards my $text yet",
+        "I'm making small steps towards my $text",
+        "I'm making gradual steps towards my $text",
+        "I'm making significant and consistent steps towards my $text",
+        "I'm living my $text"
+      ];
+    });
   }
 
   @override
@@ -693,7 +716,7 @@ class _your_whyState extends State<your_why> {
                             ),
                             SizedBox(
                               width: AppDimensions.height10(context) * 23.4,
-                              height: AppDimensions.height10(context) * 7.3,
+                              height: AppDimensions.height10(context) * 8.3,
                               child: Stack(
                                 children: [
                                   Align(
@@ -713,21 +736,29 @@ class _your_whyState extends State<your_why> {
                                   ),
                                   Align(
                                     alignment: const Alignment(1, 0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: AppDimensions.height10(context) *
                                           21.4,
                                       height:
                                           AppDimensions.height10(context) * 7.3,
-
-                                      ///color: Colors.amber,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              1),
                                       child: Center(
                                         child: Text(
-                                          widget.destination == 'reason'
-                                              ? "I'm making small steps\ntowards my  why"
-                                              : widget.destination ==
-                                                      'identityStatement'
-                                                  ? "I'm making small steps\ntowards my identity"
-                                                  : "I'm making small steps\ntowards my vision",
+                                          totalPoint == ''
+                                              ? 'Score needed'
+                                              : widget.destination == 'reason'
+                                                  ? messages[
+                                                      int.parse(totalPoint) - 1]
+                                                  : widget.destination ==
+                                                          'identityStatement'
+                                                      ? messages[int.parse(
+                                                              totalPoint) -
+                                                          1]
+                                                      : messages[int.parse(
+                                                              totalPoint) -
+                                                          1],
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: AppDimensions.height10(

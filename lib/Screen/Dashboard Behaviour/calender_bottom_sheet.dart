@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class CalendarBottomSheet extends StatefulWidget {
   final ValueChanged<int> onChangedStart;
@@ -14,6 +15,23 @@ class CalendarBottomSheet extends StatefulWidget {
 class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
   DateTime selectedDate = DateTime.now();
   int numberOfDays = 0;
+  String minDate = '2023-05-01';
+
+  Future<void> getAccountDate() async {
+    final SharedPreferences prefs = await _prefs;
+    var date = prefs.getString('accountCreatedAt');
+    setState(() {
+      minDate = date.toString();
+    });
+
+    print('Account create at $minDate');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getAccountDate();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +104,7 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
             height: AppDimensions.height10(context) * 26.0,
             child: CupertinoDatePicker(
               mode: CupertinoDatePickerMode.date,
+              minimumDate: DateTime.parse(minDate),
               onDateTimeChanged: (DateTime value) {
                 setState(() {
                   final currentTime = DateTime.parse(

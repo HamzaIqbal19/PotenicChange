@@ -45,6 +45,14 @@ class _your_impactState extends State<your_impact> {
     "Positive that\nI'm taking the\nright actions",
     "Empowered\nand good\nabout myself"
   ];
+
+  List messages = [
+    "It hasn't started to impact my life yet",
+    "It has little impact on my life",
+    "It has positive impact on my life",
+    "It has a significant impact on my life",
+    "It's impacting my life positively and consistently"
+  ];
   int select_item_2 = -1;
   int select_item = -1;
   int reset_item_1 = -1;
@@ -627,7 +635,9 @@ class _your_impactState extends State<your_impact> {
                                       ///color: Colors.amber,
                                       child: Center(
                                         child: Text(
-                                          'It has little impact on\nmy life',
+                                          goalDetails['goalLevel'] == 0
+                                              ? "Score needed"
+                                              : '${messages[level - 1]}',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: AppDimensions.height10(

@@ -48,6 +48,22 @@ class _new_progress_scoreState extends State<new_progress_score> {
   bool Loader = true;
   var goalDetails;
 
+  List messages = [
+    "No progress towards my ",
+    "I'm making small steps towards my ",
+    "I'm making gradual steps towards my ",
+    "I'm making significant and consistent steps towards my ",
+    "I'm living my "
+  ];
+
+  List messagesImpact = [
+    "It hasn't started to ",
+    "It has little ",
+    "It has positive ",
+    "It has a significant ",
+    "It's "
+  ];
+
   late FixedExtentScrollController _scrollController;
 
   Future<Timer> loadData() async {
@@ -775,38 +791,30 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                               child: Center(
                                                 child: Text(
                                                   goalDetails['goalEvaluations']
-                                                                      [
-                                                                      selectedEval]
-                                                                  [
+                                                                      [selectedEval][
                                                                   'totalPoint'] ==
                                                               null ||
                                                           goalDetails['goalEvaluations']
-                                                                      [
-                                                                      selectedEval]
-                                                                  [
+                                                                      [selectedEval][
                                                                   'totalPoint'] ==
                                                               0 ||
                                                           widget.premium ==
                                                               false
                                                       ? 'Score needed!'
-                                                      : goalDetails[
+                                                      : goalDetails['goalEvaluations']
+                                                                      [selectedEval][
                                                                   'totalPoint'] ==
                                                               2
                                                           ? "I'm making small steps\nforward"
-                                                          : goalDetails[
-                                                                      'totalPoint'] ==
+                                                          : goalDetails['goalEvaluations'][selectedEval]
+                                                                      ['totalPoint'] ==
                                                                   1
                                                               ? 'I’m not making any progress'
-                                                              : goalDetails[
-                                                                          'totalPoint'] ==
-                                                                      3
+                                                              : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 3
                                                                   ? 'I’m making considerable steps forward'
-                                                                  : goalDetails[
-                                                                              'totalPoint'] ==
-                                                                          4
+                                                                  : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 4
                                                                       ? "I’m almost there"
-                                                                      : goalDetails['totalPoint'] ==
-                                                                              5
+                                                                      : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 5
                                                                           ? "I’m definitely living my why"
                                                                           : "Score needed",
                                                   textAlign: TextAlign.center,
@@ -891,12 +899,27 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               child: goal_criteria(
                                 criteria: 'Goal Criteria 1',
                                 identity: 'Your Why’s',
-                                text_span_1:
-                                    'I’m making small steps\ntowards my ',
+                                text_span_1: goalDetails['goalEvaluations']
+                                            [selectedEval]['YourWay'] ==
+                                        null
+                                    ? 'Score needed'
+                                    : messages[goalDetails['goalEvaluations']
+                                            [selectedEval]['YourWay']['level'] -
+                                        1],
                                 text_span_2: 'why',
-                                text_span_3: '',
+                                text_span_3: goalDetails['goalEvaluations']
+                                            [selectedEval]['YourWay'] ==
+                                        null
+                                    ? ''
+                                    : goalDetails['goalEvaluations']
+                                                    [selectedEval]['YourWay']
+                                                ['level'] ==
+                                            1
+                                        ? ' yet'
+                                        : '',
                                 margin_top: 0,
                                 border: goalDetails['goalLevel'] == 0 ||
+                                        goalDetails['goalLevel'] == null ||
                                         widget.premium == false
                                     ? true
                                     : goalDetails['goalEvaluations']
@@ -907,6 +930,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         ? true
                                         : false,
                                 colors: goalDetails['goalLevel'] == 0 ||
+                                        goalDetails['goalLevel'] == null ||
                                         widget.premium == false
                                     ? 0xFF
                                     : goalDetails['goalEvaluations']
@@ -921,6 +945,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                             ? 0xFF
                                             : 0xFFFBFBFB,
                                 text_color: goalDetails['goalLevel'] == 0 ||
+                                        goalDetails['goalLevel'] == null ||
                                         widget.premium == false
                                     ? 0xFFFBFBFB
                                     : goalDetails['goalEvaluations']
@@ -931,6 +956,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         ? 0xFFFBFBFB
                                         : 0xFF646464,
                                 goal_: goalDetails['goalLevel'] == 0 ||
+                                        goalDetails['goalLevel'] == null ||
                                         widget.premium == false
                                     ? "0"
                                     : goalDetails['goalEvaluations']
@@ -966,12 +992,34 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               child: goal_criteria(
                                 criteria: 'Goal Criteria 2',
                                 identity: 'Your new identity',
-                                text_span_1:
-                                    'I’m making small steps\ntowards my ',
+                                text_span_1: goalDetails['goalEvaluations']
+                                            [selectedEval]['YourWay'] ==
+                                        null
+                                    ? ''
+                                    : goalDetails['goalEvaluations']
+                                                    [selectedEval]
+                                                ['newIdentity']['level'] ==
+                                            0
+                                        ? 'Score needed'
+                                        : messages[
+                                            goalDetails['goalEvaluations']
+                                                        [selectedEval]
+                                                    ['newIdentity']['level'] -
+                                                1],
                                 text_span_2: 'new identity',
-                                text_span_3: '',
+                                text_span_3: goalDetails['goalEvaluations']
+                                            [selectedEval]['YourWay'] ==
+                                        null
+                                    ? ''
+                                    : goalDetails['goalEvaluations']
+                                                    [selectedEval]
+                                                ['newIdentity']['level'] ==
+                                            1
+                                        ? ' yet'
+                                        : '',
                                 margin_top: 1.0,
                                 border: goalDetails['goalLevel'] == 0 ||
+                                        goalDetails['goalLevel'] == null ||
                                         widget.premium == false
                                     ? true
                                     : goalDetails['goalEvaluations']
@@ -982,6 +1030,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         ? true
                                         : false,
                                 colors: goalDetails['goalLevel'] == 0 ||
+                                        goalDetails['goalLevel'] == null ||
                                         widget.premium == false
                                     ? 0xFF
                                     : goalDetails['goalEvaluations']
@@ -990,6 +1039,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         ? 0xFF
                                         : 0xFFFBFBFB,
                                 text_color: goalDetails['goalLevel'] == 0 ||
+                                        goalDetails['goalLevel'] == null ||
                                         widget.premium == false
                                     ? 0xFFFBFBFB
                                     : goalDetails['goalEvaluations']
@@ -1000,6 +1050,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         ? 0xFFFBFBFB
                                         : 0xFF646464,
                                 goal_: goalDetails['goalLevel'] == 0 ||
+                                        goalDetails['goalLevel'] == null ||
                                         widget.premium == false
                                     ? "0"
                                     : goalDetails['goalEvaluations']
@@ -1016,7 +1067,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
                             ),
                             AnimatedScaleButton(
                               onTap: () {
-                                //if (widget.premium == true) {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
@@ -1030,47 +1080,55 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               child: goal_criteria(
                                   criteria: 'Goal Criteria 3',
                                   identity: 'Your vision for\nnew self',
-                                  text_span_1:
-                                      'I’m making small steps\ntowards my ',
+                                  text_span_1: goalDetails['goalEvaluations']
+                                              [selectedEval]['YourWay'] ==
+                                          null
+                                      ? ''
+                                      : goalDetails['goalEvaluations']
+                                                          [selectedEval]
+                                                      ['visualisingYourSelf']
+                                                  ['level'] ==
+                                              0
+                                          ? 'Score needed'
+                                          : messages[
+                                              goalDetails['goalEvaluations']
+                                                              [selectedEval]
+                                                          ['visualisingYourSelf']
+                                                      ['level'] -
+                                                  1],
                                   text_span_2: 'vision',
-                                  text_span_3: '',
-                                  goal_: goalDetails['goalLevel'] == 0 ||
-                                          widget.premium == false
+                                  text_span_3: goalDetails['goalEvaluations']
+                                              [selectedEval]['YourWay'] ==
+                                          null
+                                      ? ''
+                                      : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']['level'] == 1
+                                          ? ' yet'
+                                          : '',
+                                  goal_: goalDetails['goalLevel'] == 0 || goalDetails['goalLevel'] == null || widget.premium == false
                                       ? "0"
-                                      : goalDetails['goalEvaluations'][selectedEval]
-                                                  ['visualisingYourSelf']
+                                      : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']
                                               //['level']
                                               ==
                                               null
                                           ? "0"
-                                          : goalDetails['goalEvaluations']
-                                                          [selectedEval]
-                                                      ['visualisingYourSelf']
-                                                  ['level']
-                                              .toString(),
-                                  border: goalDetails['goalLevel'] == 0 ||
-                                          widget.premium == false
+                                          : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']['level'].toString(),
+                                  border: goalDetails['goalLevel'] == 0 || widget.premium == false
                                       ? true
-                                      : goalDetails['goalEvaluations'][selectedEval]
-                                                  ['visualisingYourSelf']
+                                      : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']
                                               //['level']
                                               ==
                                               null
                                           ? true
                                           : false,
-                                  colors: goalDetails['goalLevel'] == 0 ||
-                                          widget.premium == false
+                                  colors: goalDetails['goalLevel'] == 0 || goalDetails['goalLevel'] == null || widget.premium == false
                                       ? 0xFF
-                                      : goalDetails['goalEvaluations']
-                                                      [selectedEval]
-                                                  ['visualisingYourSelf']
+                                      : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']
                                               //['level']
                                               ==
                                               null
                                           ? 0xFF
                                           : 0xFFFBFBFB,
-                                  text_color: goalDetails['goalLevel'] == 0 ||
-                                          widget.premium == false
+                                  text_color: goalDetails['goalLevel'] == 0 || goalDetails['goalLevel'] == null || widget.premium == false
                                       ? 0xFFFBFBFB
                                       : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']
                                               //['level']
@@ -1095,56 +1153,68 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               child: goal_criteria(
                                   criteria: 'Goal Criteria 4',
                                   identity: 'Impact on your\nlife',
-                                  text_span_1: 'It has ',
-                                  text_span_2: 'little impact ',
-                                  text_span_3: 'on\nmy life',
-                                  border: goalDetails['goalLevel'] == 0 ||
-                                          widget.premium == false
-                                      ? true
+                                  text_span_1: goalDetails['goalEvaluations']
+                                              [selectedEval]['YourWay'] ==
+                                          null
+                                      ? ''
                                       : goalDetails['goalEvaluations']
-                                                      [selectedEval]
-                                                  ['impactOnYourSelf']
+                                                          [selectedEval]
+                                                      ['impactOnYourSelf']
+                                                  ['level'] ==
+                                              0
+                                          ? 'Score needed'
+                                          : messagesImpact[
+                                              goalDetails['goalEvaluations']
+                                                              [selectedEval]
+                                                          ['impactOnYourSelf']
+                                                      ['level'] -
+                                                  1],
+                                  text_span_2: goalDetails['goalEvaluations']
+                                              [selectedEval]['YourWay'] ==
+                                          null
+                                      ? ''
+                                      : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 5
+                                          ? 'impacting'
+                                          : 'impact',
+                                  text_span_3: goalDetails['goalEvaluations'][selectedEval]['YourWay'] == null
+                                      ? ''
+                                      : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 0
+                                          ? ' my life yet'
+                                          : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 5
+                                              ? ' my life positively and consistently'
+                                              : ' on my life',
+                                  border: goalDetails['goalLevel'] == 0 || goalDetails['goalLevel'] == null || widget.premium == false
+                                      ? true
+                                      : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']
                                               //['level']
                                               ==
                                               null
                                           ? true
                                           : false,
-                                  colors: goalDetails['goalLevel'] == 0 ||
-                                          widget.premium == false
+                                  colors: goalDetails['goalLevel'] == 0 || goalDetails['goalLevel'] == null || widget.premium == false
                                       ? 0xFF
-                                      : goalDetails['goalEvaluations']
-                                                      [selectedEval]
-                                                  ['impactOnYourSelf']
+                                      : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']
                                               //['level']
                                               ==
                                               null
                                           ? 0xFF
                                           : 0xFFFBFBFB,
-                                  text_color: goalDetails['goalLevel'] == 0 ||
-                                          widget.premium == false
+                                  text_color: goalDetails['goalLevel'] == 0 || goalDetails['goalLevel'] == null || widget.premium == false
                                       ? 0xFFFBFBFB
-                                      : goalDetails['goalEvaluations']
-                                                      [selectedEval]
-                                                  ['impactOnYourSelf']
+                                      : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']
                                               //['level']
                                               ==
                                               null
                                           ? 0xFFFBFBFB
                                           : 0xFF646464,
-                                  goal_: goalDetails['goalLevel'] == 0 ||
-                                          widget.premium == false
+                                  goal_: goalDetails['goalLevel'] == 0 || goalDetails['goalLevel'] == null || widget.premium == false
                                       ? "0"
-                                      : goalDetails['goalEvaluations']
-                                                      [selectedEval]
-                                                  ['impactOnYourSelf']
+                                      : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']
                                               // ['level']
                                               ==
                                               null
                                           ? "0"
-                                          : goalDetails['goalEvaluations']
-                                                      [selectedEval]
-                                                  ['impactOnYourSelf']['level']
-                                              .toString(),
+                                          : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'].toString(),
                                   margin_top: 1.0),
                             ),
                           ],
@@ -1276,8 +1346,9 @@ class goal_criteria extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: AppDimensions.height10(context) * 21.6,
+            width: AppDimensions.height10(context) * 23.6,
             //  height: AppDimensions.height10(context) * 9.9,
+
             margin: EdgeInsets.only(
                 left: AppDimensions.height10(context) * 3.0,
                 top: AppDimensions.height10(context) * 2.4),
@@ -1309,13 +1380,14 @@ class goal_criteria extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                    width: AppDimensions.height10(context) * 19.2,
-                    // height: AppDimensions.height10(context) * 4.0,
+                    width: AppDimensions.height10(context) * 23.2,
                     child: RichText(
                         text: TextSpan(
                             style: TextStyle(
                                 fontFamily: 'laila',
                                 fontWeight: FontWeight.w400,
+                                overflow: TextOverflow.ellipsis,
+                                height: AppDimensions.height10(context) * 0.16,
                                 fontSize: AppDimensions.height10(context) * 1.6,
                                 color: const Color(0xFFFFFFFF)),
                             children: [
@@ -1346,7 +1418,7 @@ class goal_criteria extends StatelessWidget {
               children: [
                 SizedBox(
                   width: AppDimensions.height10(context) * 3.4,
-                  height: AppDimensions.height10(context) * 1.3,
+                  height: AppDimensions.height10(context) * 1.4,
                   child: Text(
                     'Level',
                     textAlign: TextAlign.center,
@@ -1355,6 +1427,9 @@ class goal_criteria extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         color: Color(text_color)),
                   ),
+                ),
+                SizedBox(
+                  height: AppDimensions.height10(context) * 0.2,
                 ),
                 Container(
                   width: AppDimensions.height10(context) * 3.2,

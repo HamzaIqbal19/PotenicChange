@@ -9,6 +9,7 @@ import 'package:potenic_app/Screen/Goal%20Evaluation/practice_score.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Menu&settings/settings.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/Subscription/Subscription.dart';
@@ -1362,23 +1363,26 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                   ],
                                 ),
                               ),
-                              Container(
-                                width: AppDimensions.height10(context) * 33.4,
-                                height: AppDimensions.height10(context) * 5.0,
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.1,
-                                            color: colorC))),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: SizedBox(
+                              GestureDetector(
+                                onTap: () {
+                                  // activeReport(
+                                  //     context, "newGoal", "pracName", 1, 2);
+                                },
+                                child: Container(
+                                  width: AppDimensions.height10(context) * 33.4,
+                                  height: AppDimensions.height10(context) * 5.0,
+                                  decoration: BoxDecoration(
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  0.1,
+                                              color: colorC))),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      SizedBox(
                                         width: AppDimensions.height10(context) *
                                             20.6,
                                         height:
@@ -1394,24 +1398,22 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                               color: colorC),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                        width: AppDimensions.height10(context) *
-                                            2.4,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.39,
-                                        child: GestureDetector(
-                                          onTap: () {},
+                                      SizedBox(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  2.4,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.39,
                                           child: Image.asset(
                                             'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
                                             fit: BoxFit.cover,
-                                          ),
-                                        ))
-                                  ],
+                                          ))
+                                    ],
+                                  ),
                                 ),
                               ),
                               Container(
@@ -1672,33 +1674,22 @@ void activeReport(
       shape: RoundedRectangleBorder(
           borderRadius:
               BorderRadius.circular(AppDimensions.height10(context) * 2.0)),
-      builder: (context) => Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: Container(
-            width: AppDimensions.height10(context) * 39.4,
-            height: AppDimensions.height10(context) * 53.3,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    const Color(0XffD9B4B4).withOpacity(0.7),
-                  ]),
-            ),
-            padding: EdgeInsets.all(AppDimensions.height10(context)),
+      builder: (context) => Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.transparent, Color(0xFFFBFBFB)],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter)),
             child: Container(
               width: AppDimensions.height10(context) * 39.4,
-              height: AppDimensions.height10(context) * 51.3,
+              height: AppDimensions.height10(context) * 69.2,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 1.5),
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                    colors: [Color(0xFFE1B3B7), Color(0XffC9B9CB)]),
+                color: const Color(0xFFF5F5F5),
                 image: const DecorationImage(
-                    opacity: 0.7,
-                    image: AssetImage('assets/images/timeline_2.webp')),
+                    image: AssetImage('assets/images/journey_0.webp'),
+                    fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(
                     AppDimensions.height10(context) * 2.0),
               ),
@@ -1727,10 +1718,20 @@ void activeReport(
                     ),
                   ),
                   Container(
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 1.5,
+                        bottom: AppDimensions.height10(context) * 1.9),
+                    child: Image.asset(
+                      'assets/images/potenic__icon.webp',
+                      width: AppDimensions.height10(context) * 8.202,
+                      height: AppDimensions.height10(context) * 11.2,
+                    ),
+                  ),
+                  Container(
                     width: AppDimensions.height10(context) * 23.8,
                     height: AppDimensions.height10(context) * 3.4,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 0),
+                        top: AppDimensions.height10(context) * 1.0),
                     child: Text(
                       'Congratulations!',
                       textAlign: TextAlign.center,
@@ -1744,7 +1745,7 @@ void activeReport(
                     width: AppDimensions.height10(context) * 32.7,
                     //height: AppDimensions.height10(context) * 5.0,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 0.3),
+                        top: AppDimensions.height10(context) * 1.0),
                     child: Text(
                       'Your 20 active day report is ready',
                       textAlign: TextAlign.center,
@@ -1759,13 +1760,13 @@ void activeReport(
                     width: AppDimensions.height10(context) * 33.8,
                     //height: AppDimensions.height10(context) * 6.8,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.5),
+                        top: AppDimensions.height10(context) * 2.0),
                     child: Text(
                       'You have been consistently working on your\npractice for 20 active days now. We’ve put together\na progress report for you to review and evaluate\nyour journey.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          fontSize: AppDimensions.height10(context) * 1.4,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           color: const Color(0xff437296)),
                     ),
                   ),
@@ -1827,7 +1828,7 @@ void activeReport(
                                         AppDimensions.height10(context) * 2),
                                 alignment: const Alignment(-0.2, -0.1),
                                 child: Text(
-                                  goalName,
+                                  capitalizeFirstLetter(goalName),
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 2,
@@ -1869,7 +1870,7 @@ void activeReport(
                                 height: AppDimensions.height10(context) * 5.0,
                                 child: Center(
                                   child: Text(
-                                    pracName,
+                                    capitalizeFirstLetter(pracName),
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -1884,7 +1885,7 @@ void activeReport(
                             ),
                           ),
                           Align(
-                            alignment: const Alignment(-1, 0.9),
+                            alignment: const Alignment(-1, 0.85),
                             child: Container(
                               width: AppDimensions.height10(context) * 17.1,
                               height: AppDimensions.height10(context) * 6.4,
@@ -1892,12 +1893,13 @@ void activeReport(
                                   left: AppDimensions.height10(context) * 0.84,
                                   top: AppDimensions.height10(context) * 1.04),
                               decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
+                                  gradient: LinearGradient(
                                       // begin: Alignment.topCenter,
                                       // end: Alignment.bottomCenter,
                                       colors: [
-                                        Color(0XFF91698C),
-                                        Color(0xFFC19CA7)
+                                        const Color(0XFF91698C)
+                                            .withOpacity(0.7),
+                                        const Color(0xFFC19CA7).withOpacity(0.7)
                                       ]),
                                   borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(
@@ -1952,5 +1954,5 @@ void activeReport(
                 ],
               ),
             ),
-          )));
+          ));
 }

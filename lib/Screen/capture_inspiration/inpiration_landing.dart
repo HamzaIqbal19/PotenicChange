@@ -3095,15 +3095,16 @@ class _updateBoxState extends State<updateBox> {
                 ),
                 Container(
                   //width: AppDimensions.height10(context) * 6.9,
-                  height: AppDimensions.height10(context) * 3.6,
+                  //height: AppDimensions.height10(context) * 4.0,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 1.232),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
                         //width: AppDimensions.height10(context) * 4.6,
-                        height: AppDimensions.height10(context) * 1.4,
+                        //height: AppDimensions.height10(context) * 1.6,
                         //   color: Colors.amber,
                         child: Text(
                           widget.headText,
@@ -3115,7 +3116,7 @@ class _updateBoxState extends State<updateBox> {
                       ),
                       SizedBox(
                         width: AppDimensions.height10(context) * 16.9,
-                        height: AppDimensions.height10(context) * 2.2,
+                        //height: AppDimensions.height10(context) * 2.2,
                         child: Text(
                           widget.bodyText,
                           overflow: TextOverflow.ellipsis,
