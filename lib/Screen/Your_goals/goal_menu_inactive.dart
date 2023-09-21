@@ -36,6 +36,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   bool Loader = true;
   var goalDetails;
   String goalName = '';
+  List<dynamic> activePractices = [];
+
   int color = 0;
   String pracName = '';
   int pracColor = 0;
@@ -66,11 +68,11 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
               ? ""
               : response['goalEvaluations']
                                   [response['goalEvaluations'].length - 1]
-                              ['activedate']
+                              ['endDate']
                           .toString() !=
                       'null'
                   ? response['goalEvaluations']
-                      [response['goalEvaluations'].length - 1]['activedate']
+                      [response['goalEvaluations'].length - 1]['endDate']
                   : "";
           level = response['goalEvaluations'].length == 0
               ? ''
@@ -83,9 +85,16 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           [response['goalEvaluations'].length - 1]['totalPoint']
                       .toString();
         });
-        print('Date=============>$inputDate');
-        // var evalId =
-        //     prefs.setInt('goal_eval_id', response['goalEvaluations'][0]['id']);
+        List<dynamic> Practices = [];
+        for (int j = 0; j < goalDetails['userPractices'].length; j++) {
+          if (goalDetails['userPractices'][j]['isActive'] == true) {
+            activePractices.add(goalDetails['userPractices'][j]);
+          }
+
+          //activePractices.add(Practices);
+        }
+        print('Length=============>${activePractices.length}');
+        print('Date=============>$activePractices');
 
         loadData();
         print(response);
@@ -734,12 +743,20 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               itemBuilder: ((context, index) {
                                 return AnimatedScaleButton(
                                   onTap: () async {
-                                    Navigator.push(
+                                    if(goalDetails['userPractices'][index]['isActive'] == true){
+Navigator.push(
                                         context,
                                         FadePageRoute(
                                             page: const practiceMenu(
                                           goal_eval: false,
                                         )));
+                                    }else{
+                                      Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const StarReview(route: 'goal_menu')));
+                                    }
+                                    
                                     final SharedPreferences prefs =
                                         await _prefs;
                                     var prac_id = prefs.setInt(

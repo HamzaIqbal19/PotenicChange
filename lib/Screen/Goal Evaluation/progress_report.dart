@@ -5,7 +5,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_score.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -841,7 +840,7 @@ class _progress_reportState extends State<progress_report> {
                     ),
                     Container(
                       width: AppDimensions.height10(context) * 38.2,
-                      height: AppDimensions.height10(context) * 147.8,
+                      //height: AppDimensions.height10(context) * 147.8,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
                       decoration: BoxDecoration(
@@ -852,21 +851,46 @@ class _progress_reportState extends State<progress_report> {
                         children: [
                           Container(
                             width: AppDimensions.height10(context) * 38.2,
-                            height: AppDimensions.height10(context) * 55.7,
+                            //height: AppDimensions.height10(context) * 55.7,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.vertical(
                                   top: Radius.circular(
                                       AppDimensions.height10(context) * 2.0),
                                 ),
-                                gradient: const LinearGradient(
+                                gradient: LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xFFEDF1FA),
-                                      Color(0xFFFCD9C3),
-                                      Color(0xFFFAB2A3),
-                                      Color(0xFFEB9FA3)
-                                    ])),
+                                    colors: options![0].containsKey('option5')
+                                        ? [
+                                            const Color(0xFFFFFBF9),
+                                            const Color(0xFFFF6C2C)
+                                                .withOpacity(0.30)
+                                          ]
+                                        : options![0].containsKey('option4')
+                                            ? [
+                                                const Color(0xFFFFFFFF),
+                                                const Color(0xFFFA9458)
+                                                    .withOpacity(0.31)
+                                              ]
+                                            : options![0].containsKey('option3')
+                                                ? [
+                                                    const Color(0xFFFFFFFF),
+                                                    const Color(0xFFE1C44F)
+                                                        .withOpacity(0.10)
+                                                  ]
+                                                : options![0]
+                                                        .containsKey('option2')
+                                                    ? [
+                                                        const Color(0xFFF4FCFF),
+                                                        const Color(0xFF7291A0)
+                                                            .withOpacity(0.20)
+                                                      ]
+                                                    : [
+                                                        const Color(0xFF546096)
+                                                            .withOpacity(0.01),
+                                                        const Color(0xFF546096)
+                                                            .withOpacity(0.20)
+                                                      ])),
                             child: Column(
                               children: [
                                 Container(
@@ -911,495 +935,302 @@ class _progress_reportState extends State<progress_report> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: AppDimensions.height10(context) * 30.9,
-                                  height: AppDimensions.height10(context) * 6.8,
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          1.0),
-                                  child: Center(
-                                    child: Text(
-                                      '“I feel excited and\ngood in myself”',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  0.15,
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  2.8,
-                                          fontWeight: FontWeight.w700,
-                                          color: const Color(0xFFFF6C2C)),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          1.2),
-                                  child: RichText(
-                                      text: TextSpan(
+                                Column(
+                                  children: [
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          30.9,
+                                      height:
+                                          AppDimensions.height10(context) * 6.8,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              1.0),
+                                      child: Center(
+                                        child: Text(
+                                          options![0].containsKey('option5')
+                                              ? '“I feel excited and\ngood in myself”'
+                                              : options![0]
+                                                      .containsKey('option4')
+                                                  ? '“I feel focused and\nmotivated”'
+                                                  : options![0].containsKey(
+                                                          'option3')
+                                                      ? '“I feel ok”'
+                                                      : options![0].containsKey(
+                                                              'option2')
+                                                          ? '“I feel alright, but\nslightly down”'
+                                                          : '“I feel very low\n& irritated”',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  4.5,
-                                              fontFamily: 'laila',
-                                              height: 1.2,
-                                              fontWeight: FontWeight.w400,
-                                              color: const Color(0xFFFF6C2C)),
-                                          children: [
-                                        TextSpan(text: '$opt5'),
-                                        TextSpan(
-                                            text: 'x',
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0))
-                                      ])),
-                                ),
-                                SizedBox(
-                                  //width: AppDimensions.height10(context) * 10.5,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: List.generate(
-                                      opt5 > 5
-                                          ? 5
-                                          : opt5, // Replace 5 with the number of containers you want to create
-                                      (index) => Container(
-                                        width: AppDimensions.height10(context) *
-                                            1.5,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.5,
-                                        margin: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
-                                                0.3),
-                                        decoration: const BoxDecoration(
-                                            color: Color(0xFFFF6C2C),
-                                            shape: BoxShape.circle),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                opt5 > 5
-                                    ? SizedBox(
-                                        width: AppDimensions.height10(context) *
-                                            10.5,
-                                        //height: AppDimensions.height10(context) * 1.5,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: List.generate(
-                                            opt5 -
-                                                5, // Replace 5 with the number of containers you want to create
-                                            (index) => Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  1.5,
                                               height: AppDimensions.height10(
                                                       context) *
-                                                  1.5,
-                                              margin: EdgeInsets.all(
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      0.3),
-                                              decoration: const BoxDecoration(
-                                                  color: Color(0xFFFF6C2C),
-                                                  shape: BoxShape.circle),
-                                            ),
-                                          ),
+                                                  0.15,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.8,
+                                              fontWeight: FontWeight.w700,
+                                              color: options![0]
+                                                      .containsKey('option5')
+                                                  ? const Color(0xFFFF6C2C)
+                                                  : options![0].containsKey(
+                                                          'option4')
+                                                      ? const Color(0xFFFA9458)
+                                                      : options![0].containsKey(
+                                                              'option3')
+                                                          ? const Color(
+                                                              0xFFE1C44F)
+                                                          : options![0]
+                                                                  .containsKey(
+                                                                      'option2')
+                                                              ? const Color(
+                                                                  0xFF7291A0)
+                                                              : const Color(
+                                                                  0xFF546096)),
                                         ),
-                                      )
-                                    : Container(),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              1.2),
+                                      child: RichText(
+                                          text: TextSpan(
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.5,
+                                                  fontFamily: 'laila',
+                                                  height: 1.2,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: options![0]
+                                                          .containsKey(
+                                                              'option5')
+                                                      ? const Color(0xFFFF6C2C)
+                                                      : options![0].containsKey(
+                                                              'option4')
+                                                          ? const Color(
+                                                              0xFFFA9458)
+                                                          : options![0]
+                                                                  .containsKey(
+                                                                      'option3')
+                                                              ? const Color(
+                                                                  0xFFE1C44F)
+                                                              : options![0]
+                                                                      .containsKey(
+                                                                          'option2')
+                                                                  ? const Color(
+                                                                      0xFF7291A0)
+                                                                  : const Color(
+                                                                      0xFF546096)),
+                                              children: [
+                                            TextSpan(
+                                                text: options!
+                                                    .elementAt(0)
+                                                    .values
+                                                    .toString()
+                                                    .replaceAll('(', '')
+                                                    .replaceAll(')', '')),
+                                            TextSpan(
+                                                text: 'x',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0))
+                                          ])),
+                                    ),
+                                    circlesInRowColored(
+                                        context,
+                                        int.parse(options!
+                                            .elementAt(0)
+                                            .values
+                                            .toString()
+                                            .replaceAll('(', '')
+                                            .replaceAll(')', '')),
+                                        options![0].containsKey('option5')
+                                            ? const Color(0xFFFF6C2C)
+                                            : options![0].containsKey('option4')
+                                                ? const Color(0xFFFA9458)
+                                                : options![0]
+                                                        .containsKey('option3')
+                                                    ? const Color(0xFFE1C44F)
+                                                    : options![0].containsKey(
+                                                            'option2')
+                                                        ? const Color(
+                                                            0xFF7291A0)
+                                                        : const Color(
+                                                            0xFF546096)),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 2,
+                                    )
+                                  ],
+                                ),
                               ],
                             ),
                           ),
-                          Container(
-                            width: AppDimensions.height10(context) * 30.9,
-                            height: AppDimensions.height10(context) * 6.8,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 4.0),
-                            child: Center(
-                              child: Text(
-                                '“I feel focused and\nmotivated”',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    height:
-                                        AppDimensions.height10(context) * 0.15,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 2.8,
-                                    fontWeight: FontWeight.w700,
-                                    color: const Color(0xFFFA9458)),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.2),
-                            child: RichText(
-                                text: TextSpan(
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                4.5,
-                                        fontFamily: 'laila',
-                                        height: 1.2,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFA9458)),
-                                    children: [
-                                  TextSpan(text: "$opt4"),
-                                  TextSpan(
-                                      text: 'x',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  2.0))
-                                ])),
-                          ),
+                          ListView.builder(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: options!.length - 1,
+                              itemBuilder: (((context, index) {
+                                return Column(
+                                  children: [
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          30.9,
+                                      height:
+                                          AppDimensions.height10(context) * 6.8,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              4.0),
+                                      child: Center(
+                                        child: Text(
+                                          options![index + 1]
+                                                  .containsKey('option5')
+                                              ? '“I feel excited and\ngood in myself”'
+                                              : options![index + 1]
+                                                      .containsKey('option4')
+                                                  ? '“I feel focused and\nmotivated”'
+                                                  : options![index + 1]
+                                                          .containsKey(
+                                                              'option3')
+                                                      ? '“I feel ok”'
+                                                      : options![index + 1]
+                                                              .containsKey(
+                                                                  'option2')
+                                                          ? '“I feel alright, but\nslightly down”'
+                                                          : '“I feel very low\n& irritated”',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.15,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.8,
+                                              fontWeight: FontWeight.w700,
+                                              color: options![index + 1]
+                                                      .containsKey('option5')
+                                                  ? const Color(0xFFFF6C2C)
+                                                  : options![index + 1]
+                                                          .containsKey(
+                                                              'option4')
+                                                      ? const Color(0xFFFA9458)
+                                                      : options![index + 1]
+                                                              .containsKey(
+                                                                  'option3')
+                                                          ? const Color(
+                                                              0xFFE1C44F)
+                                                          : options![index + 1]
+                                                                  .containsKey(
+                                                                      'option2')
+                                                              ? const Color(
+                                                                  0xFF7291A0)
+                                                              : const Color(
+                                                                  0xFF546096)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              1.2),
+                                      child: RichText(
+                                          text: TextSpan(
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.5,
+                                                  fontFamily: 'laila',
+                                                  height: 1.2,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: options![index + 1]
+                                                          .containsKey(
+                                                              'option5')
+                                                      ? const Color(0xFFFF6C2C)
+                                                      : options![index + 1]
+                                                              .containsKey(
+                                                                  'option4')
+                                                          ? const Color(
+                                                              0xFFFA9458)
+                                                          : options![index + 1]
+                                                                  .containsKey(
+                                                                      'option3')
+                                                              ? const Color(
+                                                                  0xFFE1C44F)
+                                                              : options![index +
+                                                                          1]
+                                                                      .containsKey(
+                                                                          'option2')
+                                                                  ? const Color(
+                                                                      0xFF7291A0)
+                                                                  : const Color(
+                                                                      0xFF546096)),
+                                              children: [
+                                            TextSpan(
+                                                text: options!
+                                                    .elementAt(index + 1)
+                                                    .values
+                                                    .toString()
+                                                    .replaceAll('(', '')
+                                                    .replaceAll(')', '')),
+                                            TextSpan(
+                                                text: 'x',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0))
+                                          ])),
+                                    ),
+                                    circlesInRowColored(
+                                        context,
+                                        int.parse(options!
+                                            .elementAt(index + 1)
+                                            .values
+                                            .toString()
+                                            .replaceAll('(', '')
+                                            .replaceAll(')', '')),
+                                        options![index + 1]
+                                                .containsKey('option5')
+                                            ? const Color(0xFFFF6C2C)
+                                            : options![index + 1]
+                                                    .containsKey('option4')
+                                                ? const Color(0xFFFA9458)
+                                                : options![index + 1]
+                                                        .containsKey('option3')
+                                                    ? const Color(0xFFE1C44F)
+                                                    : options![index + 1]
+                                                            .containsKey(
+                                                                'option2')
+                                                        ? const Color(
+                                                            0xFF7291A0)
+                                                        : const Color(
+                                                            0xFF546096)),
+                                    index != 3
+                                        ? Container(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                8.4,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.2,
+                                            margin: EdgeInsets.only(
+                                                top: AppDimensions.height10(
+                                                        context) *
+                                                    4.0),
+                                            color: const Color(0xFFBDBDBD),
+                                          )
+                                        : Container(),
+                                  ],
+                                );
+                              }))),
                           SizedBox(
-                            //width: AppDimensions.height10(context) * 10.5,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(
-                                opt4 > 5
-                                    ? 5
-                                    : opt4, // Replace 5 with the number of containers you want to create
-                                (index) => Container(
-                                  width: AppDimensions.height10(context) * 1.5,
-                                  height: AppDimensions.height10(context) * 1.5,
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal:
-                                          AppDimensions.height10(context) *
-                                              0.3),
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xFFFA9458),
-                                      shape: BoxShape.circle),
-                                ),
-                              ),
-                            ),
-                          ),
-                          opt4 > 5
-                              ? SizedBox(
-                                  width: AppDimensions.height10(context) * 10.5,
-                                  //height: AppDimensions.height10(context) * 1.5,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: List.generate(
-                                      opt4 -
-                                          5, // Replace 5 with the number of containers you want to create
-                                      (index) => Container(
-                                        width: AppDimensions.height10(context) *
-                                            1.5,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.5,
-                                        margin: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
-                                                0.3),
-                                        decoration: const BoxDecoration(
-                                            color: Color(0xFFFA9458),
-                                            shape: BoxShape.circle),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              : Container(),
-                          Container(
-                            width: AppDimensions.height10(context) * 8.4,
-                            height: AppDimensions.height10(context) * 0.2,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 4.0),
-                            color: const Color(0xFFBDBDBD),
-                          ),
-                          Container(
-                            width: AppDimensions.height10(context) * 17.7,
-                            height: AppDimensions.height10(context) * 3.4,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 4.0),
-                            child: Center(
-                              child: Text(
-                                '“I feel ok”',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 2.8,
-                                    fontWeight: FontWeight.w700,
-                                    color: const Color(0xFFE1C44F)),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.5),
-                            child: RichText(
-                                text: TextSpan(
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                4.5,
-                                        fontFamily: 'laila',
-                                        height: 1.2,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFE1C44F)),
-                                    children: [
-                                  TextSpan(text: '$opt3'),
-                                  TextSpan(
-                                      text: 'x',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  2.0))
-                                ])),
-                          ),
-                          Container(
-                            // width: AppDimensions.height10(context) * 10.5,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.2),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(
-                                opt3 > 5
-                                    ? 5
-                                    : opt3, // Replace 5 with the number of containers you want to create
-                                (index) => Container(
-                                  width: AppDimensions.height10(context) * 1.5,
-                                  height: AppDimensions.height10(context) * 1.5,
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal:
-                                          AppDimensions.height10(context) *
-                                              0.3),
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xFFE1C44F),
-                                      shape: BoxShape.circle),
-                                ),
-                              ),
-                            ),
-                          ),
-                          opt3 > 5
-                              ? SizedBox(
-                                  width: AppDimensions.height10(context) * 10.5,
-                                  //height: AppDimensions.height10(context) * 1.5,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: List.generate(
-                                      opt3 -
-                                          5, // Replace 5 with the number of containers you want to create
-                                      (index) => Container(
-                                        width: AppDimensions.height10(context) *
-                                            1.5,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.5,
-                                        margin: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
-                                                0.3),
-                                        decoration: const BoxDecoration(
-                                            color: Color(0xFFE1C44F),
-                                            shape: BoxShape.circle),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              : Container(),
-                          Container(
-                            width: AppDimensions.height10(context) * 8.4,
-                            height: AppDimensions.height10(context) * 0.2,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 4.0),
-                            color: const Color(0xFFBDBDBD),
-                          ),
-                          Container(
-                            // width: AppDimensions.height10(context) * 17.7,
-                            height: AppDimensions.height10(context) * 6.8,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 4.0),
-                            child: Center(
-                              child: Text(
-                                '“I feel alright, but\nslightly down”',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    height:
-                                        AppDimensions.height10(context) * 0.15,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 2.8,
-                                    fontWeight: FontWeight.w700,
-                                    color: const Color(0xFF7291A0)),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.2),
-                            child: RichText(
-                                text: TextSpan(
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                4.5,
-                                        fontFamily: 'laila',
-                                        height: 1.2,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFF7291A0)),
-                                    children: [
-                                  TextSpan(text: '$opt2'),
-                                  TextSpan(
-                                      text: 'x',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  2.0))
-                                ])),
-                          ),
-                          Container(
-                            //width: AppDimensions.height10(context) * 10.5,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.2),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(
-                                opt2 > 5
-                                    ? 5
-                                    : opt2, // Replace 5 with the number of containers you want to create
-                                (index) => Container(
-                                  width: AppDimensions.height10(context) * 1.5,
-                                  height: AppDimensions.height10(context) * 1.5,
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal:
-                                          AppDimensions.height10(context) *
-                                              0.3),
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xFF7291A0),
-                                      shape: BoxShape.circle),
-                                ),
-                              ),
-                            ),
-                          ),
-                          opt2 > 5
-                              ? SizedBox(
-                                  width: AppDimensions.height10(context) * 10.5,
-                                  //height: AppDimensions.height10(context) * 1.5,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: List.generate(
-                                      opt2 -
-                                          5, // Replace 5 with the number of containers you want to create
-                                      (index) => Container(
-                                        width: AppDimensions.height10(context) *
-                                            1.5,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.5,
-                                        margin: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
-                                                0.3),
-                                        decoration: const BoxDecoration(
-                                            color: Color(0xFF7291A0),
-                                            shape: BoxShape.circle),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              : Container(),
-                          Container(
-                            width: AppDimensions.height10(context) * 8.4,
-                            height: AppDimensions.height10(context) * 0.2,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 4.0),
-                            color: const Color(0xFFBDBDBD),
-                          ),
-                          Container(
-                            width: AppDimensions.height10(context) * 34.1,
-                            //height: AppDimensions.height10(context) * 3.4,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 4.0),
-                            child: Center(
-                              child: Text(
-                                '“I feel very low\n& irritated”',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    height:
-                                        AppDimensions.height10(context) * 0.15,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 2.8,
-                                    fontWeight: FontWeight.w700,
-                                    color: const Color(0xFF546096)),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.8),
-                            child: RichText(
-                                text: TextSpan(
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                4.5,
-                                        fontFamily: 'laila',
-                                        height: 1.2,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFF546096)),
-                                    children: [
-                                  TextSpan(text: '$opt1'),
-                                  TextSpan(
-                                      text: 'x',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  2.0))
-                                ])),
-                          ),
-                          Container(
-                            width: AppDimensions.height10(context) * 10.5,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.2),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(
-                                opt1 > 5
-                                    ? 5
-                                    : opt1, // Replace 5 with the number of containers you want to create
-                                (index) => Container(
-                                  width: AppDimensions.height10(context) * 1.5,
-                                  height: AppDimensions.height10(context) * 1.5,
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal:
-                                          AppDimensions.height10(context) *
-                                              0.3),
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xFF546096),
-                                      shape: BoxShape.circle),
-                                ),
-                              ),
-                            ),
-                          ),
-                          opt1 > 5
-                              ? SizedBox(
-                                  width: AppDimensions.height10(context) * 10.5,
-                                  //height: AppDimensions.height10(context) * 1.5,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: List.generate(
-                                      opt1 -
-                                          5, // Replace 5 with the number of containers you want to create
-                                      (index) => Container(
-                                        width: AppDimensions.height10(context) *
-                                            1.5,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.5,
-                                        margin: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
-                                                0.3),
-                                        decoration: const BoxDecoration(
-                                            color: Color(0xFF546096),
-                                            shape: BoxShape.circle),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              : Container()
+                            height: AppDimensions.height10(context) * 4,
+                          )
                         ],
                       ),
                     ),
@@ -1458,7 +1289,7 @@ class _progress_reportState extends State<progress_report> {
                                       FadePageRoute(
                                           page: const prac_score(
                                         route: 'report',
-                                        index: -1,
+                                        index: 0,
                                       )));
                                 }
                               },
@@ -1470,18 +1301,12 @@ class _progress_reportState extends State<progress_report> {
                                 text_color_2: 0xff8EA1B1,
                                 feild_text_3: noData == true
                                     ? '-'
-                                    : report['practice']['practiceEvaluations'][
-                                                report['practice'][
-                                                            'practiceEvaluations']
-                                                        .length -
-                                                    1]['totalPoint'] !=
+                                    : report['practice']['practiceEvaluations']
+                                                [0]['totalPoint'] !=
                                             null
                                         ? report['practice']
-                                                    ['practiceEvaluations'][
-                                                report['practice']
-                                                            ['practiceEvaluations']
-                                                        .length -
-                                                    1]['totalPoint']
+                                                    ['practiceEvaluations'][0]
+                                                ['totalPoint']
                                             .toString()
                                         : '-',
                                 feild_text_4: '/5)',
@@ -1696,4 +1521,37 @@ String _getMonthName(int month) {
     default:
       return "";
   }
+}
+
+circlesInRowColored(BuildContext context, int itteration, Color circleColor) {
+  return Container(
+    //width: AppDimensions.height10(context) * 16.0,
+    // height: AppDimensions.height10(context) * 1.0,
+    margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.8),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        (itteration / 5).ceil(),
+        (rowIndex) => Container(
+          margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.2),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              (rowIndex == (itteration / 5).floor()
+                  ? (itteration % 5)
+                  : 5), // Replace 5 with the number of containers you want to create
+              (index) => Container(
+                width: AppDimensions.height10(context) * 1.5,
+                height: AppDimensions.height10(context) * 1.5,
+                margin: EdgeInsets.symmetric(
+                    horizontal: AppDimensions.height10(context) * 0.25),
+                decoration:
+                    BoxDecoration(color: circleColor, shape: BoxShape.circle),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 }

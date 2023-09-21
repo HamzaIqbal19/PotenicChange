@@ -6,10 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:intl/intl.dart';
-import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria_impact.dart';
-import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -491,7 +489,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                     fontWeight: FontWeight.w600,
                                                     height: AppDimensions.height10(
                                                             context) *
-                                                        0.12,
+                                                        0.15,
                                                     color: goalDetails['goalEvaluations']
                                                                         [selectedEval][
                                                                     'totalPoint'] ==
@@ -906,7 +904,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                     : messages[goalDetails['goalEvaluations']
                                             [selectedEval]['YourWay']['level'] -
                                         1],
-                                text_span_2: 'why',
+                                text_span_2: goalDetails['goalEvaluations']
+                                            [selectedEval]['YourWay'] ==
+                                        null
+                                    ? ''
+                                    : 'why',
                                 text_span_3: goalDetails['goalEvaluations']
                                             [selectedEval]['YourWay'] ==
                                         null
@@ -995,20 +997,31 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                 text_span_1: goalDetails['goalEvaluations']
                                             [selectedEval]['YourWay'] ==
                                         null
-                                    ? ''
-                                    : goalDetails['goalEvaluations']
+                                    ? 'Score needed'
+                                    : goalDetails['goalEvaluations'][selectedEval]
+                                                    ['newIdentity'] ==
+                                                null ||
+                                            goalDetails['goalEvaluations'][selectedEval]
+                                                    ['newIdentity']['level'] ==
+                                                0 ||
+                                            goalDetails['goalEvaluations'][selectedEval]
+                                                    ['newIdentity']['level'] ==
+                                                null
+                                        ? 'Score needed'
+                                        : messages[goalDetails['goalEvaluations']
+                                                [selectedEval]['newIdentity']['level'] -
+                                            1],
+                                text_span_2: goalDetails['goalEvaluations']
+                                                [selectedEval]['newIdentity'] ==
+                                            null ||
+                                        goalDetails['goalEvaluations']
                                                     [selectedEval]
                                                 ['newIdentity']['level'] ==
                                             0
-                                        ? 'Score needed'
-                                        : messages[
-                                            goalDetails['goalEvaluations']
-                                                        [selectedEval]
-                                                    ['newIdentity']['level'] -
-                                                1],
-                                text_span_2: 'new identity',
+                                    ? ''
+                                    : 'new identity',
                                 text_span_3: goalDetails['goalEvaluations']
-                                            [selectedEval]['YourWay'] ==
+                                            [selectedEval]['newIdentity'] ==
                                         null
                                     ? ''
                                     : goalDetails['goalEvaluations']
@@ -1081,25 +1094,25 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   criteria: 'Goal Criteria 3',
                                   identity: 'Your vision for\nnew self',
                                   text_span_1: goalDetails['goalEvaluations']
-                                              [selectedEval]['YourWay'] ==
+                                                  [selectedEval]
+                                              ['visualisingYourSelf'] ==
                                           null
-                                      ? ''
-                                      : goalDetails['goalEvaluations']
-                                                          [selectedEval]
+                                      ? 'Score needed'
+                                      : goalDetails['goalEvaluations'][selectedEval]
                                                       ['visualisingYourSelf']
                                                   ['level'] ==
                                               0
                                           ? 'Score needed'
-                                          : messages[
-                                              goalDetails['goalEvaluations']
-                                                              [selectedEval]
-                                                          ['visualisingYourSelf']
-                                                      ['level'] -
-                                                  1],
-                                  text_span_2: 'vision',
-                                  text_span_3: goalDetails['goalEvaluations']
-                                              [selectedEval]['YourWay'] ==
-                                          null
+                                          : messages[goalDetails['goalEvaluations']
+                                                          [selectedEval]
+                                                      ['visualisingYourSelf']
+                                                  ['level'] -
+                                              1],
+                                  text_span_2: goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf'] == null ||
+                                          goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']['level'] == 0
+                                      ? ''
+                                      : 'vision',
+                                  text_span_3: goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf'] == null
                                       ? ''
                                       : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']['level'] == 1
                                           ? ' yet'
@@ -1154,11 +1167,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   criteria: 'Goal Criteria 4',
                                   identity: 'Impact on your\nlife',
                                   text_span_1: goalDetails['goalEvaluations']
-                                              [selectedEval]['YourWay'] ==
+                                                  [selectedEval]
+                                              ['impactOnYourSelf'] ==
                                           null
-                                      ? ''
-                                      : goalDetails['goalEvaluations']
-                                                          [selectedEval]
+                                      ? 'Score needed'
+                                      : goalDetails['goalEvaluations'][selectedEval]
                                                       ['impactOnYourSelf']
                                                   ['level'] ==
                                               0
@@ -1170,13 +1183,13 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                       ['level'] -
                                                   1],
                                   text_span_2: goalDetails['goalEvaluations']
-                                              [selectedEval]['YourWay'] ==
+                                              [selectedEval]['impactOnYourSelf'] ==
                                           null
                                       ? ''
                                       : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 5
                                           ? 'impacting'
                                           : 'impact',
-                                  text_span_3: goalDetails['goalEvaluations'][selectedEval]['YourWay'] == null
+                                  text_span_3: goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf'] == null
                                       ? ''
                                       : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 0
                                           ? ' my life yet'

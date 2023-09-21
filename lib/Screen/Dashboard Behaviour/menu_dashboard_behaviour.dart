@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
@@ -15,13 +14,11 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/recordPracticeMenu.dart';
 import 'dashboard_view_goals.dart';
-import 'goal_menu_missed_session.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -947,20 +944,20 @@ class _menu_behaviourState extends State<menu_behaviour> {
                           children: [
                             AnimatedScaleButton(
                               onTap: () {
-                                //if (pracDetails['report'] == true) {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const practice_progress(
-                                      days: 30,
-                                      route: 'pracice_menu_completed',
-                                    )));
-                                // } else {
-                                //   ScaffoldMessenger.of(context).showSnackBar(
-                                //       const SnackBar(
-                                //           content: Text(
-                                //               "Practice progress is not active")));
-                                // }
+                                if (pracDetails['report'] == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const practice_progress(
+                                        days: 30,
+                                        route: 'pracice_menu_completed',
+                                      )));
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              "Practice progress is not active")));
+                                }
                               },
                               child: const button_feilds(
                                 feild_text: 'View practice progress',
@@ -1016,10 +1013,17 @@ class _menu_behaviourState extends State<menu_behaviour> {
                             ),
                             AnimatedScaleButton(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const practice_assesment()));
+                                if (pracDetails['report'] == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const practice_assesment()));
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              "Practice assessment is activated after first practice evaluation.")));
+                                }
                               },
                               child: const button_feilds(
                                 feild_text: 'Practice assesment history',

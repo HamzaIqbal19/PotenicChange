@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
@@ -68,14 +69,12 @@ void signupSheet(context, String ButtonName, String Route) {
                             Navigator.push(
                               context,
                               FadePageRoute(
-                                page: const dashBoard(
-                                  saved: false,
-                                  helpful_tips: false,
-                                  dashboard_ctrl: false,
-                                  membership: true,
-                                  cancel: false,
-                                  trial: false,
-                                ),
+                                page: const view_goals(
+                                    missed: false,
+                                    update: false,
+                                    name: '',
+                                    helpfulTips: false,
+                                    record: 0),
                               ),
                             );
                           } else if (response == 404) {

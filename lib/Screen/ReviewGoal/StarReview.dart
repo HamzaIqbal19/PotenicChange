@@ -1,27 +1,19 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
-import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
-import 'package:potenic_app/Screen/ReviewGoal/StarReviewWhy.dart';
 import 'package:potenic_app/Screen/Your_goals/add_your_practice.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
-import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 import '../../Widgets/animatedButton.dart';
-import '../../Widgets/fading2.dart';
 import '../CreateGoal/Goal-Visualising.dart';
 import '../CreateGoal/Goal-Why.dart';
 import '../CreateGoal/GoalName.dart';
@@ -128,6 +120,17 @@ class _StarReviewState extends State<StarReview> {
                 goal_evaluation: true,
                 isActive: true,
               )));
+        } else if (widget.route == 'goal_menu') {
+          Navigator.push(
+              context,
+              FadePageRoute3(
+                  exitPage: StarReview(
+                    route: widget.route,
+                  ),
+                  enterPage: const goal_menu_inactive(
+                    goal_evaluation: false,
+                    isActive: false,
+                  )));
         } else if (widget.route == '') {
           Navigator.push(
               context,
@@ -187,6 +190,17 @@ class _StarReviewState extends State<StarReview> {
                               goal_evaluation: true,
                               isActive: true,
                             )));
+                      } else if (widget.route == 'goal_menu') {
+                        Navigator.push(
+                            context,
+                            FadePageRoute3(
+                                exitPage: StarReview(
+                                  route: widget.route,
+                                ),
+                                enterPage: const goal_menu_inactive(
+                                  goal_evaluation: false,
+                                  isActive: false,
+                                )));
                       } else if (widget.route == 'add_your_practice') {
                         Navigator.push(
                             context,
@@ -1735,9 +1749,15 @@ class _StarReviewState extends State<StarReview> {
                                                             login: true,
                                                           )));
                                                     }
-                                                  } else {
-                                                    print(
-                                                        'Goal is not deleted');
+                                                  } else if (response ==
+                                                      false) {
+                                                    Navigator.pushReplacement(
+                                                        context,
+                                                        FadePageRoute(
+                                                            page:
+                                                                const HomeScreen(
+                                                          login: true,
+                                                        )));
                                                   }
                                                 }).catchError((error) {
                                                   print("error");

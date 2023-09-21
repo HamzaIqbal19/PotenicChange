@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
-// import 'package:flutter_offline/flutter_offline.dart';
-import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
@@ -749,20 +747,20 @@ class _practiceMenuState extends State<practiceMenu> {
                               children: [
                                 AnimatedScaleButton(
                                   onTap: () {
-                                    //if (pracDetails['report'] == true) {
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const practice_progress(
-                                          days: 30,
-                                          route: 'pracice_menu',
-                                        )));
-                                    // } else {
-                                    //   ScaffoldMessenger.of(context)
-                                    //       .showSnackBar(const SnackBar(
-                                    //           content: Text(
-                                    //               "Practice progress is not active")));
-                                    // }
+                                    if (pracDetails['report'] == true) {
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const practice_progress(
+                                            days: 30,
+                                            route: 'pracice_menu',
+                                          )));
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  "Practice progress is not active")));
+                                    }
                                   },
                                   child: const button_feilds(
                                     feild_text: 'View practice progress',
@@ -821,10 +819,18 @@ class _practiceMenuState extends State<practiceMenu> {
                                 ),
                                 AnimatedScaleButton(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const practice_assesment()));
+                                    if (pracDetails['report'] == true) {
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page:
+                                                  const practice_assesment()));
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  "Practice assessment is activated after first practice evaluation.")));
+                                    }
                                   },
                                   child: const button_feilds(
                                     feild_text: 'Practice assesment history',

@@ -5,7 +5,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
-import 'package:potenic_app/Screen/captureHurdles/captureHurdles_whatHurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -646,20 +645,20 @@ class _missed_MenuState extends State<missed_Menu> {
                           children: [
                             AnimatedScaleButton(
                               onTap: () {
-                                //   if (pracDetails['report'] == true) {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const practice_progress(
-                                      days: 30,
-                                      route: 'pracice_menu_missed',
-                                    )));
-                                // } else {
-                                //   ScaffoldMessenger.of(context).showSnackBar(
-                                //       const SnackBar(
-                                //           content: Text(
-                                //               "Practice progress is not active")));
-                                // }
+                                if (pracDetails['report'] == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const practice_progress(
+                                        days: 30,
+                                        route: 'pracice_menu_missed',
+                                      )));
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              "Practice progress is not active")));
+                                }
                               },
                               child: const button_feilds(
                                 feild_text: 'View practice progress',
@@ -702,10 +701,17 @@ class _missed_MenuState extends State<missed_Menu> {
                                       AppDimensions.height10(context) * 1.0),
                               child: AnimatedScaleButton(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const practice_assesment()));
+                                  if (pracDetails['report'] == true) {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const practice_assesment()));
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                "Practice assessment is activated after first practice evaluation.")));
+                                  }
                                 },
                                 child: const button_feilds(
                                   feild_text: 'view upcoming schedules',

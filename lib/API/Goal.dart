@@ -533,12 +533,21 @@ class AdminGoal {
     var request = await client.delete(
         Uri.parse('${URL.BASE_URL}api/userGoal/$goal_num'),
         headers: headers);
+
     print(request.statusCode);
     var responses = jsonDecode(request.body);
+    print('Response ${responses['checkGoals']}');
     print("Goal to be deleted");
     if (request.statusCode == 200) {
-      print('object deleted');
-      return true;
+      if (responses['checkGoals'].toString() == 'true') {
+        print('Response true ${responses['checkGoals']}');
+
+        return true;
+      } else {
+        print('Response false ${responses['checkGoals']}');
+
+        return false;
+      }
     } else {
       return responses["message"];
       // client.close();

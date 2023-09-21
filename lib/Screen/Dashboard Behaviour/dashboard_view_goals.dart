@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -143,17 +144,18 @@ class _view_goalsState extends State<view_goals> {
             .then((response) {
           print(response);
           print("Api Called");
+          var jsonData = jsonDecode(response.body);
 
-          if (response != false) {
+          if (response.statusCode == 200) {
             setState(() {
-              allGoals = response['filteredUserPractices'];
-              responseData = response;
-              pastPracCompleted = response['previousCompletePractice'] -
-                  response['previousTotalPractice'];
+              allGoals = jsonData['filteredUserPractices'];
+              responseData = jsonData;
+              pastPracCompleted = jsonData['previousCompletePractice'] -
+                  jsonData['previousTotalPractice'];
               presentPracCompleted =
-                  response['completePractice'] - response['totalPractice'];
-              nextPracCompleted = response['nextCompletePractice'] -
-                  response['nextTotalPratice'];
+                  jsonData['completePractice'] - jsonData['totalPractice'];
+              nextPracCompleted = jsonData['nextCompletePractice'] -
+                  jsonData['nextTotalPratice'];
               noActive = false;
               noData = false;
             });
@@ -213,9 +215,16 @@ class _view_goalsState extends State<view_goals> {
                 single = false;
               });
             }
-          } else if (response == false) {
+          } else if (response.statusCode == 404) {
             loadData();
             setState(() {
+              responseData = jsonData;
+              pastPracCompleted = jsonData['previousCompletePractice'] -
+                  jsonData['previousTotalPractice'];
+              presentPracCompleted =
+                  jsonData['completePractice'] - jsonData['totalPractice'];
+              nextPracCompleted = jsonData['nextCompletePractice'] -
+                  jsonData['nextTotalPratice'];
               noActive = true;
             });
             String date = DateFormat('yyyy-MM-dd')
@@ -343,12 +352,14 @@ class _view_goalsState extends State<view_goals> {
                         : const SizedBox(),
                     AnimatedScaleButton(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            FadePageRoute(
-                                page: const record_session(
-                              past_session: true,
-                            )));
+                        if (noData != true) {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const record_session(
+                                past_session: true,
+                              )));
+                        }
                       },
                       child: Container(
                         margin: EdgeInsets.only(
@@ -2198,7 +2209,7 @@ class _view_goalsState extends State<view_goals> {
                                                                 // margin: const EdgeInsets.only(left: 1),
                                                                 child: Center(
                                                                   child: Text(
-                                                                    '0/2',
+                                                                    '${responseData['previousCompletePractice']}/${responseData['previousTotalPractice']}',
                                                                     style: TextStyle(
                                                                         fontSize:
                                                                             AppDimensions.height10(context) *
@@ -2443,7 +2454,7 @@ class _view_goalsState extends State<view_goals> {
                                                                   // margin: const EdgeInsets.only(left: 1),
                                                                   child: Center(
                                                                     child: Text(
-                                                                      '0/2',
+                                                                      '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
                                                                       style: TextStyle(
                                                                           fontSize: AppDimensions.height10(context) *
                                                                               1.0,
@@ -2684,7 +2695,7 @@ class _view_goalsState extends State<view_goals> {
                                                               // margin: const EdgeInsets.only(left: 1),
                                                               child: Center(
                                                                 child: Text(
-                                                                  '3/3',
+                                                                  '${responseData['previousCompletePractice']}/${responseData['previousTotalPractice']}',
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           AppDimensions.height10(context) *
@@ -2948,7 +2959,7 @@ class _view_goalsState extends State<view_goals> {
                                                                 // margin: const EdgeInsets.only(left: 1),
                                                                 child: Center(
                                                                   child: Text(
-                                                                    '0/2',
+                                                                    '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
                                                                     style: TextStyle(
                                                                         fontSize:
                                                                             AppDimensions.height10(context) *

@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
@@ -10,7 +8,6 @@ import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.
 import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/calender.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 
@@ -1651,7 +1648,7 @@ class _practice_progressState extends State<practice_progress> {
                             child: Text(
                               noData == true
                                   ? 'DD/MMM/YY to DD/MMM/YY.'
-                                  : '${formatDate(report["startDate"].toString().substring(0, 10))} to ${formatDate(report["endDate"].toString().substring(0, 10))}',
+                                  : '${formatDate(evaluation[0]["activeDate"].toString().substring(0, 10))} to ${formatDate(evaluation[0]["endDate"].toString().substring(0, 10))}',
                               style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 2.0,
                                 height: AppDimensions.height10(context) * 0.12,
@@ -1725,7 +1722,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     ? "0"
                                                     : evaluation.length == 0
                                                         ? '-'
-                                                        : '${evaluation[evaluation.length - 1]['question1']}',
+                                                        : '${evaluation[0]['question1']}',
                                                 style: TextStyle(
                                                     color:
                                                         const Color(0xFFB695B7),
@@ -1782,10 +1779,8 @@ class _practice_progressState extends State<practice_progress> {
                                                   ? 0
                                                   : evaluation.length == 0
                                                       ? 0
-                                                      : int.parse(evaluation[
-                                                              evaluation
-                                                                      .length -
-                                                                  1]['question1']
+                                                      : int.parse(evaluation[0]
+                                                              ['question1']
                                                           .toString()),
                                               (index) => Container(
                                                 width: AppDimensions.height10(
@@ -1820,8 +1815,7 @@ class _practice_progressState extends State<practice_progress> {
                                                       children: List.generate(
                                                         5 -
                                                             int.parse(evaluation[
-                                                                        evaluation.length -
-                                                                            1][
+                                                                        0][
                                                                     'question1']
                                                                 .toString()),
                                                         (index) => Container(
@@ -1915,7 +1909,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     ? '0'
                                                     : evaluation.length == 0
                                                         ? '-'
-                                                        : '${evaluation[evaluation.length - 1]['question2']}',
+                                                        : '${evaluation[0]['question2']}',
                                                 style: TextStyle(
                                                     color:
                                                         const Color(0xFFB695B7),
@@ -1974,10 +1968,8 @@ class _practice_progressState extends State<practice_progress> {
                                                   ? 0
                                                   : evaluation.length == 0
                                                       ? 0
-                                                      : int.parse(evaluation[
-                                                              evaluation
-                                                                      .length -
-                                                                  1]['question2']
+                                                      : int.parse(evaluation[0]
+                                                              ['question2']
                                                           .toString()),
                                               (index) => Container(
                                                 width: AppDimensions.height10(
@@ -2012,8 +2004,7 @@ class _practice_progressState extends State<practice_progress> {
                                                       children: List.generate(
                                                         5 -
                                                             int.parse(evaluation[
-                                                                        evaluation.length -
-                                                                            1][
+                                                                        0][
                                                                     'question2']
                                                                 .toString()),
                                                         (index) => Container(
@@ -2107,7 +2098,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     ? '0'
                                                     : evaluation.length == 0
                                                         ? '-'
-                                                        : '${evaluation[evaluation.length - 1]['question3']}',
+                                                        : '${evaluation[0]['question3']}',
                                                 style: TextStyle(
                                                     color:
                                                         const Color(0xFFB695B7),
@@ -2166,10 +2157,8 @@ class _practice_progressState extends State<practice_progress> {
                                                   ? 0
                                                   : evaluation.length == 0
                                                       ? 0
-                                                      : int.parse(evaluation[
-                                                              evaluation
-                                                                      .length -
-                                                                  1]['question3']
+                                                      : int.parse(evaluation[0]
+                                                              ['question3']
                                                           .toString()),
                                               (index) => Container(
                                                 width: AppDimensions.height10(
@@ -2204,8 +2193,7 @@ class _practice_progressState extends State<practice_progress> {
                                                       children: List.generate(
                                                         5 -
                                                             int.parse(evaluation[
-                                                                        evaluation.length -
-                                                                            1][
+                                                                        0][
                                                                     'question3']
                                                                 .toString()),
                                                         (index) => Container(
@@ -2299,7 +2287,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     ? '0'
                                                     : evaluation.length == 0
                                                         ? '-'
-                                                        : '${evaluation[evaluation.length - 1]['question4']}',
+                                                        : '${evaluation[0]['question4']}',
                                                 style: TextStyle(
                                                     color:
                                                         const Color(0xFFB695B7),
@@ -2357,10 +2345,8 @@ class _practice_progressState extends State<practice_progress> {
                                                   ? 0
                                                   : evaluation.length == 0
                                                       ? 0
-                                                      : int.parse(evaluation[
-                                                              evaluation
-                                                                      .length -
-                                                                  1]['question4']
+                                                      : int.parse(evaluation[0]
+                                                              ['question4']
                                                           .toString()),
                                               (index) => Container(
                                                 width: AppDimensions.height10(
@@ -2395,8 +2381,7 @@ class _practice_progressState extends State<practice_progress> {
                                                       children: List.generate(
                                                         5 -
                                                             int.parse(evaluation[
-                                                                        evaluation.length -
-                                                                            1][
+                                                                        0][
                                                                     'question4']
                                                                 .toString()),
                                                         (index) => Container(
@@ -2560,10 +2545,12 @@ class _practice_progressState extends State<practice_progress> {
                                 size: AppDimensions.height10(context) * 24.0,
                                 outerCircleContainers: noData == true
                                     ? []
-                                    : generateCircleEmptyContainers(
-                                            context, 20 - completedCount) +
-                                        generateCircleContainers(
-                                            context, completedCount),
+                                    : completedCount > 19
+                                        ? generateCircleContainers(context, 20)
+                                        : generateCircleEmptyContainers(
+                                                context, 20 - completedCount) +
+                                            generateCircleContainers(
+                                                context, completedCount),
                                 centerContainer: Container(
                                   height:
                                       AppDimensions.height10(context) * 20.6,
@@ -2597,8 +2584,10 @@ class _practice_progressState extends State<practice_progress> {
                                                 child: Text(
                                                   noData == true
                                                       ? '-'
-                                                      : completedCount
-                                                          .toString(),
+                                                      : completedCount > 19
+                                                          ? "20"
+                                                          : completedCount
+                                                              .toString(),
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10(

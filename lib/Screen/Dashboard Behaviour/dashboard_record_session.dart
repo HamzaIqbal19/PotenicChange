@@ -2,13 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_practice_summary.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/practice_session_recorded.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import '../Your_goals/veiw_all_goals.dart';
@@ -74,7 +72,7 @@ class _record_sessionState extends State<record_session> {
         for (int i = 0; i < allGoals.length; i++) {
           List<dynamic> Practices = [];
           for (int j = 0; j < allGoals[i]['userPractices'].length; j++) {
-            if (allGoals[i]['userPractices'][j]['practiceStatus'] == 'active') {
+            if (allGoals[i]['userPractices'][j]['isActive'] == true) {
               Practices.add(allGoals[i]['userPractices'][j]);
             }
           }

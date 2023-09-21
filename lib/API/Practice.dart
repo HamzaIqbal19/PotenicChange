@@ -351,10 +351,12 @@ class PracticeGoalApi {
       var jsonData = jsonDecode(response.body);
       print("Result:$jsonData");
 
-      return jsonData;
+      return response;
     } else if (response.statusCode == 404) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
       // throw Exception('Failed to fetch goal names');
-      return false;
+      return response;
     }
   }
 

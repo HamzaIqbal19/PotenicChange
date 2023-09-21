@@ -335,7 +335,7 @@ class _your_impactState extends State<your_impact> {
                                     left: AppDimensions.height10(context) * 1.6,
                                     right:
                                         AppDimensions.height10(context) * 1.6),
-                                height: AppDimensions.height10(context) * 3.2,
+                                height: AppDimensions.height10(context) * 3.4,
                                 width: AppDimensions.height10(context) * 23.8,
                                 child: Text(
                                   "Are you sure you want to exit, all your\nchanges will be lost?",
@@ -635,7 +635,8 @@ class _your_impactState extends State<your_impact> {
                                       ///color: Colors.amber,
                                       child: Center(
                                         child: Text(
-                                          goalDetails['goalLevel'] == 0
+                                          goalDetails['goalLevel'] == null ||
+                                                  goalDetails['goalLevel'] == 0
                                               ? "Score needed"
                                               : '${messages[level - 1]}',
                                           textAlign: TextAlign.center,
