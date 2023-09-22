@@ -141,18 +141,21 @@ class _practice_progressState extends State<practice_progress> {
   @override
   void initState() {
     super.initState();
-    getReport();
     if (widget.days == 30) {
       setState(() {
-        activity_duration == 'Past month';
+        activity_duration = 'Past month';
       });
     }
+    getReport();
   }
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
+        setState(() {
+          activity_duration = 'Past month';
+        });
         if (widget.route == 'pracice_menu_completed') {
           Navigator.push(context, FadePageRoute(page: const menu_behaviour()));
         } else if (widget.route == 'pracice_menu') {
@@ -170,6 +173,7 @@ class _practice_progressState extends State<practice_progress> {
                 pracName: '',
               )));
         }
+
         return Future.value(false);
       },
       child: Scaffold(
@@ -180,6 +184,9 @@ class _practice_progressState extends State<practice_progress> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
+                  setState(() {
+                    activity_duration = 'Past month';
+                  });
                   if (widget.route == 'pracice_menu_completed') {
                     Navigator.push(
                         context, FadePageRoute(page: const menu_behaviour()));
@@ -503,12 +510,427 @@ class _practice_progressState extends State<practice_progress> {
                                     ),
                                   ),
                                 ),
-                                int.parse(report['afterRecording'][4]
-                                            ['AfterTotal']) !=
-                                        0
-                                    ? Column(
-                                        children: [
-                                          Container(
+                                noData
+                                    ? Container()
+                                    : int.parse(report['afterRecording'][4]
+                                                ['AfterTotal']) !=
+                                            0
+                                        ? Column(
+                                            children: [
+                                              Container(
+                                                // width: AppDimensions.height10(context) * 22.0,
+
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        1.0),
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          22.0,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          4.0,
+                                                      // color: Colors.amber,
+                                                      child: Center(
+                                                        child: Text(
+                                                          '“I felt excited & good in myself”',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              color: const Color(
+                                                                  0xFFB695B7),
+                                                              height: 1.2,
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      // width: AppDimensions.height10(context) *
+                                                      //     3.9,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          3.4,
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.0),
+                                                      child: Center(
+                                                        child: Text(
+                                                          noData == true
+                                                              ? '0'
+                                                              : '${int.parse(report['afterRecording'][4]['AfterTotal'])}x',
+                                                          style: TextStyle(
+                                                              color: const Color(
+                                                                  0xFFB695B7),
+                                                              height: 1.2,
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.8,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    circlesInRow(
+                                                        context,
+                                                        int.parse(report[
+                                                                'afterRecording']
+                                                            [4]['AfterTotal']))
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    8.4,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.2,
+                                                color: const Color(0xFF437296),
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        2.7,
+                                                    bottom:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.7),
+                                              ),
+                                            ],
+                                          )
+                                        : Container(),
+                                noData
+                                    ? Container()
+                                    : int.parse(report['afterRecording'][3]
+                                                ['AfterTotal']) !=
+                                            0
+                                        ? Column(
+                                            children: [
+                                              Container(
+                                                // width: AppDimensions.height10(context) * 22.0,
+
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        1.0),
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          22.0,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.4,
+                                                      // color: Colors.amber,
+                                                      child: Center(
+                                                        child: Text(
+                                                          '“I felt focused & good”',
+                                                          style: TextStyle(
+                                                              color: const Color(
+                                                                  0xFFB695B7),
+                                                              height: 1.2,
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      // width: AppDimensions.height10(context) *
+                                                      //     3.9,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          3.4,
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.0),
+                                                      child: Center(
+                                                        child: Text(
+                                                          noData == true
+                                                              ? '0'
+                                                              : '${int.parse(report['afterRecording'][3]['AfterTotal'])}x',
+                                                          style: TextStyle(
+                                                              color: const Color(
+                                                                  0xFFB695B7),
+                                                              height: 1.2,
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.8,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    circlesInRow(
+                                                        context,
+                                                        int.parse(report[
+                                                                'afterRecording']
+                                                            [3]['AfterTotal']))
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    8.4,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.2,
+                                                color: const Color(0xFF437296),
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        2.7,
+                                                    bottom:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.7),
+                                              ),
+                                            ],
+                                          )
+                                        : Container(),
+                                noData
+                                    ? Container()
+                                    : int.parse(report['afterRecording'][2]
+                                                ['AfterTotal']) !=
+                                            0
+                                        ? Column(
+                                            children: [
+                                              Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    22.0,
+                                                //height: AppDimensions.height10(context) * 8.8,
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        1.0),
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          22.0,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.4,
+                                                      // color: Colors.amber,
+                                                      child: Center(
+                                                        child: Text(
+                                                          '“I felt ok”',
+                                                          style: TextStyle(
+                                                              color: const Color(
+                                                                  0xFFB695B7),
+                                                              height: 1.2,
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      // width: AppDimensions.height10(context) *
+                                                      //     3.9,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          3.4,
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.0),
+                                                      child: Center(
+                                                        child: Text(
+                                                          noData == true
+                                                              ? '0'
+                                                              : '${report['afterRecording'][2]['AfterTotal']}x',
+                                                          style: TextStyle(
+                                                              color: const Color(
+                                                                  0xFFB695B7),
+                                                              height: 1.2,
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.8,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    circlesInRow(
+                                                        context,
+                                                        int.parse(report[
+                                                                'afterRecording']
+                                                            [2]['AfterTotal']))
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    8.4,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.2,
+                                                color: const Color(0xFF437296),
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        2.7,
+                                                    bottom:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.7),
+                                              ),
+                                            ],
+                                          )
+                                        : Container(),
+                                noData
+                                    ? Container()
+                                    : int.parse(report['afterRecording'][1]
+                                                ['AfterTotal']) !=
+                                            0
+                                        ? Column(
+                                            children: [
+                                              Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    22.0,
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        1.0),
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          22.0,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          3.4,
+                                                      // color: Colors.amber,
+                                                      child: Center(
+                                                        child: Text(
+                                                          '“I felt slightly down”',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              color: const Color(
+                                                                  0xFFB695B7),
+                                                              height: 1.2,
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      // width: AppDimensions.height10(context) *
+                                                      //     3.9,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          3.4,
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.0),
+                                                      child: Center(
+                                                        child: Text(
+                                                          noData == true
+                                                              ? '0'
+                                                              : '${int.parse(report['afterRecording'][1]['AfterTotal'])}x',
+                                                          style: TextStyle(
+                                                              color: const Color(
+                                                                  0xFFB695B7),
+                                                              height: 1.2,
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.8,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    circlesInRow(
+                                                        context,
+                                                        int.parse(report[
+                                                                'afterRecording']
+                                                            [1]['AfterTotal']))
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    8.4,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.2,
+                                                color: const Color(0xFF437296),
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        2.7,
+                                                    bottom:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.7),
+                                              ),
+                                            ],
+                                          )
+                                        : Container(),
+                                noData
+                                    ? Container()
+                                    : int.parse(report['afterRecording'][0]
+                                                ['AfterTotal']) !=
+                                            0
+                                        ? Container(
                                             // width: AppDimensions.height10(context) * 22.0,
 
                                             margin: EdgeInsets.only(
@@ -528,7 +950,7 @@ class _practice_progressState extends State<practice_progress> {
                                                   // color: Colors.amber,
                                                   child: Center(
                                                     child: Text(
-                                                      '“I felt excited & good in myself”',
+                                                      '“I felt low & irritated”',
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: TextStyle(
@@ -560,7 +982,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     child: Text(
                                                       noData == true
                                                           ? '0'
-                                                          : '${int.parse(report['afterRecording'][4]['AfterTotal'])}x',
+                                                          : '${int.parse(report['afterRecording'][0]['AfterTotal'])}x',
                                                       style: TextStyle(
                                                           color: const Color(
                                                               0xFFB695B7),
@@ -578,396 +1000,11 @@ class _practice_progressState extends State<practice_progress> {
                                                     context,
                                                     int.parse(
                                                         report['afterRecording']
-                                                            [4]['AfterTotal']))
+                                                            [0]['AfterTotal']))
                                               ],
                                             ),
-                                          ),
-                                          Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                8.4,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.2,
-                                            color: const Color(0xFF437296),
-                                            margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    2.7,
-                                                bottom: AppDimensions.height10(
-                                                        context) *
-                                                    2.7),
-                                          ),
-                                        ],
-                                      )
-                                    : Container(),
-                                int.parse(report['afterRecording'][3]
-                                            ['AfterTotal']) !=
-                                        0
-                                    ? Column(
-                                        children: [
-                                          Container(
-                                            // width: AppDimensions.height10(context) * 22.0,
-
-                                            margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    1.0),
-                                            child: Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      22.0,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.4,
-                                                  // color: Colors.amber,
-                                                  child: Center(
-                                                    child: Text(
-                                                      '“I felt focused & good”',
-                                                      style: TextStyle(
-                                                          color: const Color(
-                                                              0xFFB695B7),
-                                                          height: 1.2,
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.0,
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  // width: AppDimensions.height10(context) *
-                                                  //     3.9,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          3.4,
-                                                  margin: EdgeInsets.only(
-                                                      top: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.0),
-                                                  child: Center(
-                                                    child: Text(
-                                                      noData == true
-                                                          ? '0'
-                                                          : '${int.parse(report['afterRecording'][3]['AfterTotal'])}x',
-                                                      style: TextStyle(
-                                                          color: const Color(
-                                                              0xFFB695B7),
-                                                          height: 1.2,
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.8,
-                                                          fontWeight:
-                                                              FontWeight.w700),
-                                                    ),
-                                                  ),
-                                                ),
-                                                circlesInRow(
-                                                    context,
-                                                    int.parse(
-                                                        report['afterRecording']
-                                                            [3]['AfterTotal']))
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                8.4,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.2,
-                                            color: const Color(0xFF437296),
-                                            margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    2.7,
-                                                bottom: AppDimensions.height10(
-                                                        context) *
-                                                    2.7),
-                                          ),
-                                        ],
-                                      )
-                                    : Container(),
-                                int.parse(report['afterRecording'][2]
-                                            ['AfterTotal']) !=
-                                        0
-                                    ? Column(
-                                        children: [
-                                          Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                22.0,
-                                            //height: AppDimensions.height10(context) * 8.8,
-                                            margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    1.0),
-                                            child: Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      22.0,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.4,
-                                                  // color: Colors.amber,
-                                                  child: Center(
-                                                    child: Text(
-                                                      '“I felt ok”',
-                                                      style: TextStyle(
-                                                          color: const Color(
-                                                              0xFFB695B7),
-                                                          height: 1.2,
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.0,
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  // width: AppDimensions.height10(context) *
-                                                  //     3.9,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          3.4,
-                                                  margin: EdgeInsets.only(
-                                                      top: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.0),
-                                                  child: Center(
-                                                    child: Text(
-                                                      noData == true
-                                                          ? '0'
-                                                          : '${report['afterRecording'][2]['AfterTotal']}x',
-                                                      style: TextStyle(
-                                                          color: const Color(
-                                                              0xFFB695B7),
-                                                          height: 1.2,
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.8,
-                                                          fontWeight:
-                                                              FontWeight.w700),
-                                                    ),
-                                                  ),
-                                                ),
-                                                circlesInRow(
-                                                    context,
-                                                    int.parse(
-                                                        report['afterRecording']
-                                                            [2]['AfterTotal']))
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                8.4,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.2,
-                                            color: const Color(0xFF437296),
-                                            margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    2.7,
-                                                bottom: AppDimensions.height10(
-                                                        context) *
-                                                    2.7),
-                                          ),
-                                        ],
-                                      )
-                                    : Container(),
-                                int.parse(report['afterRecording'][1]
-                                            ['AfterTotal']) !=
-                                        0
-                                    ? Column(
-                                        children: [
-                                          Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                22.0,
-                                            margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    1.0),
-                                            child: Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      22.0,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          3.4,
-                                                  // color: Colors.amber,
-                                                  child: Center(
-                                                    child: Text(
-                                                      '“I felt slightly down”',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: const Color(
-                                                              0xFFB695B7),
-                                                          height: 1.2,
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.0,
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  // width: AppDimensions.height10(context) *
-                                                  //     3.9,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          3.4,
-                                                  margin: EdgeInsets.only(
-                                                      top: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.0),
-                                                  child: Center(
-                                                    child: Text(
-                                                      noData == true
-                                                          ? '0'
-                                                          : '${int.parse(report['afterRecording'][1]['AfterTotal'])}x',
-                                                      style: TextStyle(
-                                                          color: const Color(
-                                                              0xFFB695B7),
-                                                          height: 1.2,
-                                                          fontSize: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.8,
-                                                          fontWeight:
-                                                              FontWeight.w700),
-                                                    ),
-                                                  ),
-                                                ),
-                                                circlesInRow(
-                                                    context,
-                                                    int.parse(
-                                                        report['afterRecording']
-                                                            [1]['AfterTotal']))
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                8.4,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.2,
-                                            color: const Color(0xFF437296),
-                                            margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    2.7,
-                                                bottom: AppDimensions.height10(
-                                                        context) *
-                                                    2.7),
-                                          ),
-                                        ],
-                                      )
-                                    : Container(),
-                                int.parse(report['afterRecording'][0]
-                                            ['AfterTotal']) !=
-                                        0
-                                    ? Container(
-                                        // width: AppDimensions.height10(context) * 22.0,
-
-                                        margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
-                                                    context) *
-                                                1.0),
-                                        child: Column(
-                                          children: [
-                                            SizedBox(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  22.0,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              // color: Colors.amber,
-                                              child: Center(
-                                                child: Text(
-                                                  '“I felt low & irritated”',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      color: const Color(
-                                                          0xFFB695B7),
-                                                      height: 1.2,
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          2.0,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              // width: AppDimensions.height10(context) *
-                                              //     3.9,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  3.4,
-                                              margin: EdgeInsets.only(
-                                                  top: AppDimensions.height10(
-                                                          context) *
-                                                      1.0),
-                                              child: Center(
-                                                child: Text(
-                                                  noData == true
-                                                      ? '0'
-                                                      : '${int.parse(report['afterRecording'][0]['AfterTotal'])}x',
-                                                  style: TextStyle(
-                                                      color: const Color(
-                                                          0xFFB695B7),
-                                                      height: 1.2,
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          2.8,
-                                                      fontWeight:
-                                                          FontWeight.w700),
-                                                ),
-                                              ),
-                                            ),
-                                            circlesInRow(
-                                                context,
-                                                int.parse(
-                                                    report['afterRecording'][0]
-                                                        ['AfterTotal']))
-                                          ],
-                                        ),
-                                      )
-                                    : Container(),
+                                          )
+                                        : Container(),
                                 Container(
                                     height:
                                         AppDimensions.height10(context) * 6.0,
@@ -1075,535 +1112,605 @@ class _practice_progressState extends State<practice_progress> {
                                   ),
                                 ),
                               ),
-                              report['endRecording'][4]['AfterTotal'] != '0'
-                                  ? Column(
-                                      children: [
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  22.0,
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                              noData
+                                  ? Container()
+                                  : report['endRecording'][4]['AfterTotal'] !=
+                                          '0'
+                                      ? Column(
+                                          children: [
+                                            Container(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  1.0),
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    22.0,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    2.4,
-                                                // color: Colors.amber,
-                                                child: Center(
-                                                  child: Text(
-                                                    '“Good, I liked it”',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
+                                                  22.0,
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      1.0),
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            22.0,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.4,
+                                                    // color: Colors.amber,
+                                                    child: Center(
+                                                      child: Text(
+                                                        '“Good, I liked it”',
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            3.9,
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            2.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
+                                                            1.0),
+                                                    child: Center(
+                                                      child: Text(
+                                                        noData == true
+                                                            ? '0'
+                                                            : '${report['endRecording'][4]['AfterTotal']}x',
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.8,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
+                                                  circlesInRow(
+                                                      context,
+                                                      int.parse(
+                                                          report['endRecording']
+                                                                  [4]
+                                                              ['AfterTotal']))
+                                                ],
                                               ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    3.9,
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        1.0),
-                                                child: Center(
-                                                  child: Text(
-                                                    noData == true
-                                                        ? '0'
-                                                        : '${report['endRecording'][4]['AfterTotal']}x',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.8,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
-                                                ),
-                                              ),
-                                              circlesInRow(
-                                                  context,
-                                                  int.parse(
-                                                      report['endRecording'][4]
-                                                          ['AfterTotal']))
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
+                                            ),
+                                            Container(
+                                              width: AppDimensions.height10(
+                                                      context) *
                                                   8.4,
-                                          height:
-                                              AppDimensions.height10(context) *
+                                              height: AppDimensions.height10(
+                                                      context) *
                                                   0.2,
-                                          color: const Color(0xFF437296),
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              color: const Color(0xFF437296),
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      2.7,
+                                                  bottom:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.7),
+                                            ),
+                                          ],
+                                        )
+                                      : Container(),
+                              noData
+                                  ? Container()
+                                  : report['endRecording'][5]['AfterTotal'] !=
+                                          '0'
+                                      ? Column(
+                                          children: [
+                                            Container(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  2.7,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  2.7),
-                                        ),
-                                      ],
-                                    )
-                                  : Container(),
-                              report['endRecording'][5]['AfterTotal'] != '0'
-                                  ? Column(
-                                      children: [
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
                                                   22.0,
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      1.0),
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            22.0,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.8,
+                                                    // color: Colors.amber,
+                                                    child: Center(
+                                                      child: Text(
+                                                        '“Great, in the\nzone”',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            3.4,
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0),
+                                                    child: Center(
+                                                      child: Text(
+                                                        noData == true
+                                                            ? '0'
+                                                            : '${report['endRecording'][5]['AfterTotal']}x',
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.8,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  circlesInRow(
+                                                      context,
+                                                      int.parse(
+                                                          report['endRecording']
+                                                                  [5]
+                                                              ['AfterTotal']))
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  1.0),
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    22.0,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.8,
-                                                // color: Colors.amber,
-                                                child: Center(
-                                                  child: Text(
-                                                    '“Great, in the\nzone”',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    3.4,
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        1.0),
-                                                child: Center(
-                                                  child: Text(
-                                                    noData == true
-                                                        ? '0'
-                                                        : '${report['endRecording'][5]['AfterTotal']}x',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.8,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
-                                                ),
-                                              ),
-                                              circlesInRow(
-                                                  context,
-                                                  int.parse(
-                                                      report['endRecording'][5]
-                                                          ['AfterTotal']))
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
                                                   8.4,
-                                          height:
-                                              AppDimensions.height10(context) *
+                                              height: AppDimensions.height10(
+                                                      context) *
                                                   0.2,
-                                          color: const Color(0xFF437296),
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              color: const Color(0xFF437296),
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      2.7,
+                                                  bottom:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.7),
+                                            ),
+                                          ],
+                                        )
+                                      : Container(),
+                              noData
+                                  ? Container()
+                                  : report['endRecording'][3]['AfterTotal'] !=
+                                          '0'
+                                      ? Column(
+                                          children: [
+                                            Container(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  2.7,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  2.7),
-                                        ),
-                                      ],
-                                    )
-                                  : Container(),
-                              report['endRecording'][3]['AfterTotal'] != '0'
-                                  ? Column(
-                                      children: [
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
                                                   22.0,
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      1.0),
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            22.0,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.8,
+                                                    // color: Colors.amber,
+                                                    child: Center(
+                                                      child: Text(
+                                                        '“It was ok”',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            3.4,
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0),
+                                                    child: Center(
+                                                      child: Text(
+                                                        noData == true
+                                                            ? '0'
+                                                            : '${report['endRecording'][3]['AfterTotal']}x',
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.8,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  circlesInRow(
+                                                      context,
+                                                      int.parse(
+                                                          report['endRecording']
+                                                                  [3]
+                                                              ['AfterTotal']))
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  1.0),
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    22.0,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.8,
-                                                // color: Colors.amber,
-                                                child: Center(
-                                                  child: Text(
-                                                    '“It was ok”',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    3.4,
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        1.0),
-                                                child: Center(
-                                                  child: Text(
-                                                    noData == true
-                                                        ? '0'
-                                                        : '${report['endRecording'][3]['AfterTotal']}x',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.8,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
-                                                ),
-                                              ),
-                                              circlesInRow(
-                                                  context,
-                                                  int.parse(
-                                                      report['endRecording'][3]
-                                                          ['AfterTotal']))
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
                                                   8.4,
-                                          height:
-                                              AppDimensions.height10(context) *
+                                              height: AppDimensions.height10(
+                                                      context) *
                                                   0.2,
-                                          color: const Color(0xFF437296),
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              color: const Color(0xFF437296),
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      2.7,
+                                                  bottom:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.7),
+                                            ),
+                                          ],
+                                        )
+                                      : Container(),
+                              noData
+                                  ? Container()
+                                  : report['endRecording'][2]['AfterTotal'] !=
+                                          '0'
+                                      ? Column(
+                                          children: [
+                                            Container(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  2.7,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  2.7),
-                                        ),
-                                      ],
-                                    )
-                                  : Container(),
-                              report['endRecording'][2]['AfterTotal'] != '0'
-                                  ? Column(
-                                      children: [
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
                                                   22.0,
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      1.0),
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            22.0,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.8,
+                                                    // color: Colors.amber,
+                                                    child: Center(
+                                                      child: Text(
+                                                        '“Had distractions, it\nwas hard to focus”',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            3.4,
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0),
+                                                    child: Center(
+                                                      child: Text(
+                                                        noData == true
+                                                            ? '0'
+                                                            : '${report['endRecording'][2]['AfterTotal']}x',
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.8,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  circlesInRow(
+                                                      context,
+                                                      int.parse(
+                                                          report['endRecording']
+                                                                  [2]
+                                                              ['AfterTotal']))
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  1.0),
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    22.0,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.8,
-                                                // color: Colors.amber,
-                                                child: Center(
-                                                  child: Text(
-                                                    '“Had distractions, it\nwas hard to focus”',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    3.4,
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        1.0),
-                                                child: Center(
-                                                  child: Text(
-                                                    noData == true
-                                                        ? '0'
-                                                        : '${report['endRecording'][2]['AfterTotal']}x',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.8,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
-                                                ),
-                                              ),
-                                              circlesInRow(
-                                                  context,
-                                                  int.parse(
-                                                      report['endRecording'][2]
-                                                          ['AfterTotal']))
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
                                                   8.4,
-                                          height:
-                                              AppDimensions.height10(context) *
+                                              height: AppDimensions.height10(
+                                                      context) *
                                                   0.2,
-                                          color: const Color(0xFF437296),
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              color: const Color(0xFF437296),
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      2.7,
+                                                  bottom:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.7),
+                                            ),
+                                          ],
+                                        )
+                                      : Container(),
+                              noData
+                                  ? Container()
+                                  : report['endRecording'][1]['AfterTotal'] !=
+                                          '0'
+                                      ? Column(
+                                          children: [
+                                            Container(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  2.7,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  2.7),
-                                        ),
-                                      ],
-                                    )
-                                  : Container(),
-                              report['endRecording'][1]['AfterTotal'] != '0'
-                                  ? Column(
-                                      children: [
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
                                                   22.0,
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      1.0),
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            22.0,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.8,
+                                                    // color: Colors.amber,
+                                                    child: Center(
+                                                      child: Text(
+                                                        '“Found it difficult”',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            3.4,
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0),
+                                                    child: Center(
+                                                      child: Text(
+                                                        noData == true
+                                                            ? '0'
+                                                            : '${report['endRecording'][1]['AfterTotal']}x',
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.8,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  circlesInRow(
+                                                      context,
+                                                      int.parse(
+                                                          report['endRecording']
+                                                                  [1]
+                                                              ['AfterTotal']))
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  1.0),
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    22.0,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.8,
-                                                // color: Colors.amber,
-                                                child: Center(
-                                                  child: Text(
-                                                    '“Found it difficult”',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    3.4,
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        1.0),
-                                                child: Center(
-                                                  child: Text(
-                                                    noData == true
-                                                        ? '0'
-                                                        : '${report['endRecording'][1]['AfterTotal']}x',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.8,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
-                                                ),
-                                              ),
-                                              circlesInRow(
-                                                  context,
-                                                  int.parse(
-                                                      report['endRecording'][1]
-                                                          ['AfterTotal']))
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
                                                   8.4,
-                                          height:
-                                              AppDimensions.height10(context) *
+                                              height: AppDimensions.height10(
+                                                      context) *
                                                   0.2,
-                                          color: const Color(0xFF437296),
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              color: const Color(0xFF437296),
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      2.7,
+                                                  bottom:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.7),
+                                            ),
+                                          ],
+                                        )
+                                      : Container(),
+                              noData
+                                  ? Container()
+                                  : report['endRecording'][0]['AfterTotal'] !=
+                                          '0'
+                                      ? Column(
+                                          children: [
+                                            Container(
+                                              width: AppDimensions.height10(
                                                       context) *
-                                                  2.7,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  2.7),
-                                        ),
-                                      ],
-                                    )
-                                  : Container(),
-                              report['endRecording'][0]['AfterTotal'] != '0'
-                                  ? Column(
-                                      children: [
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
                                                   22.0,
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  1.0),
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    22.0,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.8,
-                                                // color: Colors.amber,
-                                                child: Center(
-                                                  child: Text(
-                                                    '“Hated it”',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      1.0),
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            22.0,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.8,
+                                                    // color: Colors.amber,
+                                                    child: Center(
+                                                      child: Text(
+                                                        '“Hated it”',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            3.4,
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            2.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
+                                                            1.0),
+                                                    child: Center(
+                                                      child: Text(
+                                                        noData == true
+                                                            ? '0'
+                                                            : '${report['endRecording'][0]['AfterTotal']}x',
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFB695B7),
+                                                            height: 1.2,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.8,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
+                                                  circlesInRow(
+                                                      context,
+                                                      int.parse(
+                                                          report['endRecording']
+                                                                  [0]
+                                                              ['AfterTotal']))
+                                                ],
                                               ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    3.4,
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        1.0),
-                                                child: Center(
-                                                  child: Text(
-                                                    noData == true
-                                                        ? '0'
-                                                        : '${report['endRecording'][0]['AfterTotal']}x',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFB695B7),
-                                                        height: 1.2,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.8,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
-                                                ),
-                                              ),
-                                              circlesInRow(
-                                                  context,
-                                                  int.parse(
-                                                      report['endRecording'][0]
-                                                          ['AfterTotal']))
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  : Container(),
+                                            ),
+                                          ],
+                                        )
+                                      : Container(),
                               SizedBox(
                                 height: AppDimensions.height10(context) * 4,
                               )

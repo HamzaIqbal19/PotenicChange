@@ -907,6 +907,18 @@ class _progress_reportState extends State<progress_report> {
                                     child: CircularFormation(
                                         size: 150,
                                         circleColor: Colors.transparent,
+                                        selection: options![0]
+                                                .containsKey('option5')
+                                            ? 5
+                                            : options![0].containsKey('option4')
+                                                ? 4
+                                                : options![0]
+                                                        .containsKey('option3')
+                                                    ? 3
+                                                    : options![0].containsKey(
+                                                            'option2')
+                                                        ? 2
+                                                        : 1,
                                         outerCircleColors: outerColor)),
                                 Container(
                                   width: AppDimensions.height10(context) * 8.4,
@@ -931,7 +943,21 @@ class _progress_reportState extends State<progress_report> {
                                               AppDimensions.height10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w600,
-                                          color: const Color(0xFFFE6624)),
+                                          color: options![0]
+                                                  .containsKey('option5')
+                                              ? const Color(0xFFFF6C2C)
+                                              : options![0]
+                                                      .containsKey('option4')
+                                                  ? const Color(0xFFFA9458)
+                                                  : options![0].containsKey(
+                                                          'option3')
+                                                      ? const Color(0xFFE1C44F)
+                                                      : options![0].containsKey(
+                                                              'option2')
+                                                          ? const Color(
+                                                              0xFF7291A0)
+                                                          : const Color(
+                                                              0xFF546096)),
                                     ),
                                   ),
                                 ),

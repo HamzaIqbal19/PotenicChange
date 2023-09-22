@@ -13,6 +13,7 @@ import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Routine%20Edit/routine_edit.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -34,16 +35,14 @@ class PracticeReview extends StatefulWidget {
   State<PracticeReview> createState() => _PracticeReviewState();
 }
 
-bool color1 = false;
-bool color2 = false;
-bool color3 = false;
-bool color4 = false;
-bool color5 = false;
-bool color6 = false;
-
 class _PracticeReviewState extends State<PracticeReview> {
   bool Loading = true;
-
+  bool color1 = false;
+  bool color2 = false;
+  bool color3 = false;
+  bool color4 = false;
+  bool color5 = false;
+  bool color6 = false;
   Future<List<String>>? _goalNamesFuture;
   var pracName;
   String goalName = '';
@@ -100,6 +99,7 @@ class _PracticeReviewState extends State<PracticeReview> {
           goalName = response["name"];
           color = response["color"];
         });
+
         _fetchPracticeDetails();
       } else {
         loadData();
@@ -120,6 +120,27 @@ class _PracticeReviewState extends State<PracticeReview> {
           pracColor = response["color"];
           starttime = response["schedule"][0]['time1'];
         });
+        if (pracColor == "1") {
+          setState(() {
+            color1 = true;
+          });
+        } else if (pracColor == "3") {
+          setState(() {
+            color3 = true;
+          });
+        } else if (pracColor == "4") {
+          setState(() {
+            color4 = true;
+          });
+        } else if (pracColor == "5") {
+          setState(() {
+            color5 = true;
+          });
+        } else {
+          setState(() {
+            color2 = true;
+          });
+        }
         loadData();
         print("---------------------------------");
         print("response123:$pracName");
@@ -178,6 +199,16 @@ class _PracticeReviewState extends State<PracticeReview> {
                     FadePageRoute(
                       page: missed_Menu(
                         pracName: pracName,
+                      ),
+                    ),
+                  );
+                } else if (route == 'goal_menu') {
+                  Navigator.pushReplacement(
+                    context,
+                    FadePageRoute(
+                      page: const goal_menu_inactive(
+                        goal_evaluation: false,
+                        isActive: false,
                       ),
                     ),
                   );

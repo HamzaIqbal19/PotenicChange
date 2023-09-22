@@ -700,19 +700,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                   bottom:
                                       AppDimensions.height10(context) * 1.0),
                               child: AnimatedScaleButton(
-                                onTap: () {
-                                  if (pracDetails['report'] == true) {
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const practice_assesment()));
-                                  } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                            content: Text(
-                                                "Practice assessment is activated after first practice evaluation.")));
-                                  }
-                                },
+                                onTap: () {},
                                 child: const button_feilds(
                                   feild_text: 'view upcoming schedules',
                                   icon_viible: true,
@@ -725,7 +713,19 @@ class _missed_MenuState extends State<missed_Menu> {
                               ),
                             ),
                             AnimatedScaleButton(
-                              onTap: () {},
+                              onTap: () {
+                                if (pracDetails['report'] == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const practice_assesment()));
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              "Practice assessment is activated after first practice evaluation.")));
+                                }
+                              },
                               child: const button_feilds(
                                 feild_text: 'Practice assesment history',
                                 icon_viible: true,

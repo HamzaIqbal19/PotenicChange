@@ -306,7 +306,9 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                             Navigator.push(
                                 context,
                                 FadePageRoute3(
-                                    enterPage: const practice_summary(),
+                                    enterPage: const practice_summary(
+                                      view: false,
+                                    ),
                                     exitPage: const dashBoard(
                                       helpful_tips: false,
                                       dashboard_ctrl: false,

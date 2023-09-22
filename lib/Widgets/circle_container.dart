@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import '../utils/app_dimensions.dart';
 
 class CircularFormation extends StatelessWidget {
+  final int selection;
   final double size;
   final Color circleColor;
   final List<Color> outerCircleColors;
@@ -13,6 +14,7 @@ class CircularFormation extends StatelessWidget {
     required this.size,
     required this.circleColor,
     required this.outerCircleColors,
+    required this.selection,
   });
 
   @override
@@ -29,10 +31,18 @@ class CircularFormation extends StatelessWidget {
           width: AppDimensions.height10(context) * 13.1,
           height: AppDimensions.height10(context) * 13.1,
           //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.1),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                  image: AssetImage('assets/images/Day Count.webp'))),
+                  image: AssetImage(selection == 5
+                      ? 'assets/images/Day Count.webp'
+                      : selection == 4
+                          ? 'assets/images/Countdown circle.webp'
+                          : selection == 3
+                              ? 'assets/images/Countdown circle_3.webp'
+                              : selection == 2
+                                  ? 'assets/images/Countdown circle_1.webp'
+                                  : 'assets/images/Countdown circle_2.webp'))),
         ),
       ),
     );

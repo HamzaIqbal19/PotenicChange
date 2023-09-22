@@ -367,7 +367,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: const practice_summary()));
+                                              page: const practice_summary(view: true)));
                                     },
                                     child: Container(
                                       width:

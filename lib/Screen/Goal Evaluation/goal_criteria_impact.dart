@@ -105,8 +105,7 @@ class _your_impactState extends State<your_impact> {
                   ["impactOnYourSelf"]['currentEmotions'] -
               1;
         });
-        print(goalDetails['goalEvaluations'][0]["impactOnYourSelf"]
-            ['currentEmotions']);
+        print('Level ===> $level');
 
         loadData();
         final SharedPreferences prefs = await _prefs;
@@ -577,7 +576,8 @@ class _your_impactState extends State<your_impact> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          goalDetails['goalLevel'] == 0
+                                          goalDetails['goalLevel'] == 0 &&
+                                                  level == 0
                                               ? '-'
                                               : level.toString(),
                                           textAlign: TextAlign.center,
@@ -636,7 +636,9 @@ class _your_impactState extends State<your_impact> {
                                       child: Center(
                                         child: Text(
                                           goalDetails['goalLevel'] == null ||
-                                                  goalDetails['goalLevel'] == 0
+                                                  goalDetails['goalLevel'] ==
+                                                      0 ||
+                                                  level == 0
                                               ? "Score needed"
                                               : '${messages[level - 1]}',
                                           textAlign: TextAlign.center,
@@ -1771,9 +1773,12 @@ class _your_impactState extends State<your_impact> {
                                                                         TextButton(
                                                                       onPressed:
                                                                           () {
-                                                                        level = ((select_item + select_item_2 + 2) /
-                                                                                2)
-                                                                            .round();
+                                                                        setState(
+                                                                            () {
+                                                                          level =
+                                                                              ((select_item + select_item_2 + 2) / 2).round();
+                                                                        });
+
                                                                         print(
                                                                             level);
                                                                         print(

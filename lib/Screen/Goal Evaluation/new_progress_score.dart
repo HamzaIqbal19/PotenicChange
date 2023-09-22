@@ -1220,7 +1220,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                               null
                                           ? 0xFFFBFBFB
                                           : 0xFF646464,
-                                  goal_: goalDetails['goalLevel'] == 0 || goalDetails['goalLevel'] == null || widget.premium == false
+                                  goal_: goalDetails['goalLevel'] == null || widget.premium == false
                                       ? "0"
                                       : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']
                                               // ['level']

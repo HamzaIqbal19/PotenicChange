@@ -792,7 +792,9 @@ class _endofSessionState extends State<endofSession> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: const practice_summary()));
+                                        page: const practice_summary(
+                                      view: false,
+                                    )));
                               } else {
                                 print('Update Failed');
                               }
@@ -829,7 +831,9 @@ class _endofSessionState extends State<endofSession> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: const practice_summary()));
+                                        page: const practice_summary(
+                                      view: false,
+                                    )));
                               } else if (response == false) {
                                 print('Api call failed');
                               }

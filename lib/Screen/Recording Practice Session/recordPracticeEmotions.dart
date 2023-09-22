@@ -705,7 +705,9 @@ class _emotionsState extends State<emotions> {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: const practice_summary()));
+                                              page: const practice_summary(
+                                            view: false,
+                                          )));
                                     } else {
                                       print("Api Failed");
                                     }

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -22,7 +21,8 @@ import '../../utils/app_dimensions.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class practice_summary extends StatefulWidget {
-  const practice_summary({super.key});
+  final bool view;
+  const practice_summary({super.key, required this.view});
 
   @override
   State<practice_summary> createState() => _practice_summaryState();
@@ -198,130 +198,137 @@ class _practice_summaryState extends State<practice_summary> {
                 )),
           ),
           actions: [
-            Center(
-              child: IconButton(
-                  onPressed: () {
-                    showAnimatedDialog(
-                      animationType: DialogTransitionType.fadeScale,
-                      curve: Curves.easeInOut,
-                      duration: const Duration(seconds: 1),
-                      context: context,
-                      builder: (BuildContext context) => Container(
-                        width: AppDimensions.height10(context) * 27.0,
-                        height: AppDimensions.height10(context) * 18.2,
-                        child: AlertDialog(
-                          contentPadding: EdgeInsets.zero,
-                          actionsPadding: EdgeInsets.zero,
-                          titlePadding: EdgeInsets.zero,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10(context) * 1.4)),
-                          title: Container(
-                            margin: const EdgeInsets.only(
-                                top: 19, right: 16, left: 16, bottom: 2),
-                            height: AppDimensions.height10(context) * 2.2,
-                            width: AppDimensions.height10(context) * 23.8,
-                            child: Text(
-                              "Are you sure?",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: const Color(0xFF000000),
-                                fontSize: AppDimensions.height10(context) * 1.7,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          content: Container(
-                            margin: EdgeInsets.only(
-                                bottom: AppDimensions.height10(context) * 1.9,
-                                left: AppDimensions.height10(context) * 1.6,
-                                right: AppDimensions.height10(context) * 1.6),
-                            height: AppDimensions.height10(context) * 3.2,
-                            width: AppDimensions.height10(context) * 23.8,
-                            child: Text(
-                              "If you close it now, you will lose all your progress.",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                height: AppDimensions.height10(context) * 0.15,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          actions: <Widget>[
-                            Column(
-                              children: [
-                                Container(
-                                  height: 42,
-                                  width: double.infinity,
-                                  color: const Color(0xFF007AFF),
-                                  child: TextButton(
-                                    onPressed: () {
-                                      if (behaviour_route == false) {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            FadePageRoute(
-                                                page: const view_goals(
-                                              missed: false,
-                                              name: '',
-                                              update: false,
-                                              helpfulTips: false,
-                                              record: 0,
-                                            )));
-                                      } else {
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const view_goals(
-                                              missed: false,
-                                              name: '',
-                                              update: false,
-                                              helpfulTips: false,
-                                              record: 0,
-                                            )));
-                                      }
-                                    },
-                                    child: const Text(
-                                      'Close',
-                                      style: TextStyle(
-                                          color: Color(0xFFFFFFFF),
-                                          fontSize: 17,
-                                          fontFamily: "Laila",
-                                          fontWeight: FontWeight.w400),
+            widget.view
+                ? Container()
+                : Center(
+                    child: IconButton(
+                        onPressed: () {
+                          showAnimatedDialog(
+                            animationType: DialogTransitionType.fadeScale,
+                            curve: Curves.easeInOut,
+                            duration: const Duration(seconds: 1),
+                            context: context,
+                            builder: (BuildContext context) => SizedBox(
+                              width: AppDimensions.height10(context) * 27.0,
+                              height: AppDimensions.height10(context) * 18.2,
+                              child: AlertDialog(
+                                contentPadding: EdgeInsets.zero,
+                                actionsPadding: EdgeInsets.zero,
+                                titlePadding: EdgeInsets.zero,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        AppDimensions.height10(context) * 1.4)),
+                                title: Container(
+                                  margin: const EdgeInsets.only(
+                                      top: 19, right: 16, left: 16, bottom: 2),
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  width: AppDimensions.height10(context) * 23.8,
+                                  child: Text(
+                                    "Are you sure?",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: const Color(0xFF000000),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  height: 44,
-                                  width: double.infinity,
-                                  child: TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: const Text(
-                                      'Cancel',
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          fontFamily: "Laila",
-                                          fontWeight: FontWeight.w400,
-                                          color: Color(0xFF007AFF)),
+                                content: Container(
+                                  margin: EdgeInsets.only(
+                                      bottom:
+                                          AppDimensions.height10(context) * 1.9,
+                                      left:
+                                          AppDimensions.height10(context) * 1.6,
+                                      right: AppDimensions.height10(context) *
+                                          1.6),
+                                  height: AppDimensions.height10(context) * 3.2,
+                                  width: AppDimensions.height10(context) * 23.8,
+                                  child: Text(
+                                    "If you close it now, you will lose all your progress.",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      height: AppDimensions.height10(context) *
+                                          0.15,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                 ),
-                              ],
+                                actions: <Widget>[
+                                  Column(
+                                    children: [
+                                      Container(
+                                        height: 42,
+                                        width: double.infinity,
+                                        color: const Color(0xFF007AFF),
+                                        child: TextButton(
+                                          onPressed: () {
+                                            if (behaviour_route == false) {
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const view_goals(
+                                                    missed: false,
+                                                    name: '',
+                                                    update: false,
+                                                    helpfulTips: false,
+                                                    record: 0,
+                                                  )));
+                                            } else {
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const view_goals(
+                                                    missed: false,
+                                                    name: '',
+                                                    update: false,
+                                                    helpfulTips: false,
+                                                    record: 0,
+                                                  )));
+                                            }
+                                          },
+                                          child: const Text(
+                                            'Close',
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF),
+                                                fontSize: 17,
+                                                fontFamily: "Laila",
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 44,
+                                        width: double.infinity,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text(
+                                            'Cancel',
+                                            style: TextStyle(
+                                                fontSize: 17,
+                                                fontFamily: "Laila",
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xFF007AFF)),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
-                  )),
-            )
+                          );
+                        },
+                        icon: Image.asset(
+                          'assets/images/Close.webp',
+                          width: AppDimensions.height10(context) * 2.6,
+                          height: AppDimensions.height10(context) * 2.6,
+                          fit: BoxFit.cover,
+                        )),
+                  )
           ],
         ),
         extendBodyBehindAppBar: true,
@@ -1307,7 +1314,9 @@ class _practice_summaryState extends State<practice_summary> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute2(true,
-                                          exitPage: const practice_summary(),
+                                          exitPage: practice_summary(
+                                            view: widget.view,
+                                          ),
                                           enterPage: view_goals(
                                             missed: false,
                                             name: goalName,

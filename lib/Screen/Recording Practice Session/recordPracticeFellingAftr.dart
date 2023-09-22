@@ -675,7 +675,9 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: const practice_summary()));
+                                        page: const practice_summary(
+                                      view: false,
+                                    )));
                               }
                             });
                           } else {
@@ -978,7 +980,11 @@ class _next_bottonState extends State<next_botton> {
                 ]).then((value) {
                   if (value == true) {
                     Navigator.push(
-                        context, FadePageRoute(page: const practice_summary()));
+                        context,
+                        FadePageRoute(
+                            page: const practice_summary(
+                          view: false,
+                        )));
                   }
                 });
               } else {
