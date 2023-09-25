@@ -1,4 +1,4 @@
-package com.example.potenicmobileapp
+package com.potenic_app
 
 import io.flutter.embedding.android.FlutterActivity
 

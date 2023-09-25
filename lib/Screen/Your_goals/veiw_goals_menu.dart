@@ -169,15 +169,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         AppDimensions.height10(context) * 2.4,
                                     height:
                                         AppDimensions.height10(context) * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        //width: AppDimensions.height10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        color: colorC,
-                                        fit: BoxFit.cover,
-                                      ),
+                                    child: Image.asset(
+                                      'assets/images/BTN Back.webp',
+                                      //width: AppDimensions.height10(context) * 2.6,
+                                      //height: AppDimensions.height10(context) * 2.6,
+                                      color: colorC,
+                                      fit: BoxFit.cover,
                                     ))
                               ],
                             ),
@@ -211,15 +208,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                   width: AppDimensions.height10(context) * 2.4,
                                   height:
                                       AppDimensions.height10(context) * 1.39,
-                                  child: GestureDetector(
-                                    onTap: () {},
-                                    child: Image.asset(
-                                      'assets/images/BTN Back.webp',
-                                      //width: AppDimensions.height10(context) * 2.6,
-                                      //height: AppDimensions.height10(context) * 2.6,
-                                      color: colorC,
-                                      fit: BoxFit.cover,
-                                    ),
+                                  child: Image.asset(
+                                    'assets/images/BTN Back.webp',
+                                    //width: AppDimensions.height10(context) * 2.6,
+                                    //height: AppDimensions.height10(context) * 2.6,
+                                    color: colorC,
+                                    fit: BoxFit.cover,
                                   ))
                             ],
                           ),
@@ -327,15 +321,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                           AppDimensions.height10(context) * 2.4,
                                       height: AppDimensions.height10(context) *
                                           1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
-                                          //height: AppDimensions.height10(context) * 2.6,
-                                          color: colorC,
-                                          fit: BoxFit.cover,
-                                        ),
+                                      child: Image.asset(
+                                        'assets/images/BTN Back.webp',
+                                        //width: AppDimensions.height10(context) * 2.6,
+                                        //height: AppDimensions.height10(context) * 2.6,
+                                        color: colorC,
+                                        fit: BoxFit.cover,
                                       ))
                                 ],
                               ),
@@ -397,15 +388,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                   width: AppDimensions.height10(context) * 2.4,
                                   height:
                                       AppDimensions.height10(context) * 1.39,
-                                  child: GestureDetector(
-                                    onTap: () {},
-                                    child: Image.asset(
-                                      'assets/images/BTN Back.webp',
-                                      //width: AppDimensions.height10(context) * 2.6,
-                                      //height: AppDimensions.height10(context) * 2.6,
-                                      color: colorC,
-                                      fit: BoxFit.cover,
-                                    ),
+                                  child: Image.asset(
+                                    'assets/images/BTN Back.webp',
+                                    //width: AppDimensions.height10(context) * 2.6,
+                                    //height: AppDimensions.height10(context) * 2.6,
+                                    color: colorC,
+                                    fit: BoxFit.cover,
                                   ))
                             ],
                           ),
@@ -415,9 +403,15 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             Navigator.push(
                                 context, FadePageRoute(page: const Settings()));
                           },
-                          child: SizedBox(
+                          child: Container(
                             width: AppDimensions.height10(context) * 33.4,
                             height: AppDimensions.height10(context) * 5.0,
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
+                                        color: colorC))),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -439,15 +433,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         AppDimensions.height10(context) * 2.4,
                                     height:
                                         AppDimensions.height10(context) * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        //width: AppDimensions.height10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        color: colorC,
-                                        fit: BoxFit.cover,
-                                      ),
+                                    child: Image.asset(
+                                      'assets/images/BTN Back.webp',
+                                      color: colorC,
+                                      fit: BoxFit.cover,
                                     ))
                               ],
                             ),
