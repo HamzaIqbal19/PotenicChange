@@ -244,7 +244,7 @@ class _your_whyState extends State<your_why> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        if (disable == false) {
+        if (disable == false && widget.premium) {
           showAnimatedDialog(
               animationType: DialogTransitionType.fadeScale,
               curve: Curves.easeInOut,
@@ -318,6 +318,7 @@ class _your_whyState extends State<your_why> {
                                     FadePageRoute(
                                         page: new_progress_score(
                                       premium: widget.premium,
+                                      evaluationIndex: widget.index,
                                     )));
                               },
                               child: Text(
@@ -370,7 +371,7 @@ class _your_whyState extends State<your_why> {
               context,
               FadePageRoute(
                   page: new_progress_score(
-                premium: widget.premium,
+                premium: widget.premium, evaluationIndex: widget.index,
               )));
           selectedItemIndexesOuter!.clear();
         }
@@ -387,7 +388,7 @@ class _your_whyState extends State<your_why> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
-                  if (disable == false) {
+                  if (disable == false && widget.premium) {
                     showAnimatedDialog(
                         animationType: DialogTransitionType.fadeScale,
                         curve: Curves.easeInOut,
@@ -469,6 +470,7 @@ class _your_whyState extends State<your_why> {
                                               context,
                                               FadePageRoute(
                                                   page: new_progress_score(
+                                                    evaluationIndex: widget.index,
                                                 premium: widget.premium,
                                               )));
                                         },
@@ -529,6 +531,7 @@ class _your_whyState extends State<your_why> {
                         context,
                         FadePageRoute(
                             page: new_progress_score(
+                              evaluationIndex: widget.index,
                           premium: widget.premium,
                         )));
                   }
@@ -913,10 +916,11 @@ class _your_whyState extends State<your_why> {
                                                           12.95,
                                                   decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
-                                                      gradient: selectedItemIndexesOuter![index] !=
-                                                              index1
+                                                      gradient: widget.premium ==
+                                                              false
                                                           ? const LinearGradient(
-                                                              begin: Alignment.topCenter,
+                                                              begin: Alignment
+                                                                  .topCenter,
                                                               end: Alignment.bottomCenter,
                                                               colors: [
                                                                   Color(
@@ -924,23 +928,37 @@ class _your_whyState extends State<your_why> {
                                                                   Color(
                                                                       0xFFFFFFFF)
                                                                 ])
-                                                          : const LinearGradient(
-                                                              begin: Alignment
-                                                                  .topCenter,
-                                                              end: Alignment.bottomCenter,
-                                                              colors: [
-                                                                  Color(
-                                                                      0XFFFA9934),
-                                                                  Color(
-                                                                      0xFFFA9934)
-                                                                ]),
-                                                      border: Border.all(
-                                                          width: AppDimensions.height10(context) *
-                                                              0.3,
-                                                          color: selectedItemIndexesOuter![index] !=
+                                                          : selectedItemIndexesOuter![index] !=
                                                                   index1
+                                                              ? const LinearGradient(
+                                                                  begin: Alignment.topCenter,
+                                                                  end: Alignment.bottomCenter,
+                                                                  colors: [
+                                                                      Color(
+                                                                          0XFFFFFFFF),
+                                                                      Color(
+                                                                          0xFFFFFFFF)
+                                                                    ])
+                                                              : const LinearGradient(
+                                                                  begin: Alignment
+                                                                      .topCenter,
+                                                                  end: Alignment.bottomCenter,
+                                                                  colors: [
+                                                                      Color(
+                                                                          0XFFFA9934),
+                                                                      Color(
+                                                                          0xFFFA9934)
+                                                                    ]),
+                                                      border: Border.all(
+                                                          width:
+                                                              AppDimensions.height10(
+                                                                      context) *
+                                                                  0.3,
+                                                          color: widget.premium == false
                                                               ? const Color(0xFFEE8F70)
-                                                              : const Color(0xFFFFFFFF))),
+                                                              : selectedItemIndexesOuter![index] != index1
+                                                                  ? const Color(0xFFEE8F70)
+                                                                  : const Color(0xFFFFFFFF))),
                                                   child: Column(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -957,13 +975,18 @@ class _your_whyState extends State<your_why> {
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w500,
-                                                              color: selectedItemIndexesOuter![
-                                                                          index] !=
-                                                                      index1
+                                                              color: widget
+                                                                          .premium ==
+                                                                      false
                                                                   ? const Color(
                                                                       0xFFFA9934)
-                                                                  : const Color(
-                                                                      0xFFFFFFFF)),
+                                                                  : selectedItemIndexesOuter![
+                                                                              index] !=
+                                                                          index1
+                                                                      ? const Color(
+                                                                          0xFFFA9934)
+                                                                      : const Color(
+                                                                          0xFFFFFFFF)),
                                                         ),
                                                       ),
                                                       Text(
@@ -975,75 +998,80 @@ class _your_whyState extends State<your_why> {
                                                                     .height10(
                                                                         context) *
                                                                 1.4,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: selectedItemIndexesOuter![
-                                                                        index] !=
-                                                                    index1
+                                                            fontWeight: FontWeight
+                                                                .w400,
+                                                            color: widget
+                                                                        .premium ==
+                                                                    false
                                                                 ? const Color(
                                                                     0xFFFA9934)
-                                                                : const Color(
-                                                                    0xFFFFFFFF)),
+                                                                : selectedItemIndexesOuter![
+                                                                            index] !=
+                                                                        index1
+                                                                    ? const Color(
+                                                                        0xFFFA9934)
+                                                                    : const Color(
+                                                                        0xFFFFFFFF)),
                                                       )
                                                     ],
                                                   ),
                                                 ),
-                                                selectedItemIndexesOuter![
-                                                            index] !=
-                                                        index1
+                                                widget.premium == false
                                                     ? Container()
-                                                    : Align(
-                                                        alignment:
-                                                            const Alignment(
-                                                                0, 0.8),
-                                                        child: Container(
-                                                          width: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              4.0,
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              4.0,
-                                                          padding: EdgeInsets
-                                                              .all(AppDimensions
+                                                    : selectedItemIndexesOuter![
+                                                                index] !=
+                                                            index1
+                                                        ? Container()
+                                                        : Align(
+                                                            alignment:
+                                                                const Alignment(
+                                                                    0, 0.8),
+                                                            child: Container(
+                                                              width: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  0.2),
-                                                          decoration: BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              border: Border.all(
-                                                                  width: AppDimensions
+                                                                  4.0,
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  4.0,
+                                                              padding: EdgeInsets
+                                                                  .all(AppDimensions
                                                                           .height10(
                                                                               context) *
-                                                                      0.1,
-                                                                  color: const Color(
-                                                                      0xFFFFFFFF))),
-                                                          child: Container(
-                                                            width: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                2.4,
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                2.4,
-                                                            decoration: BoxDecoration(
-                                                                border: Border.all(
-                                                                    width: AppDimensions.height10(
+                                                                      0.2),
+                                                              decoration: BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  border: Border.all(
+                                                                      width: AppDimensions.height10(
+                                                                              context) *
+                                                                          0.1,
+                                                                      color: const Color(
+                                                                          0xFFFFFFFF))),
+                                                              child: Container(
+                                                                width: AppDimensions
+                                                                        .height10(
                                                                             context) *
-                                                                        0.1,
-                                                                    color: const Color(
-                                                                        0xFFFFFFFF)),
-                                                                shape: BoxShape
-                                                                    .circle,
-                                                                image: const DecorationImage(
-                                                                    image: AssetImage(
-                                                                        'assets/images/circle_tick.webp'))),
-                                                          ),
-                                                        ),
-                                                      )
+                                                                    2.4,
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    2.4,
+                                                                decoration: BoxDecoration(
+                                                                    border: Border.all(
+                                                                        width: AppDimensions.height10(context) *
+                                                                            0.1,
+                                                                        color: const Color(
+                                                                            0xFFFFFFFF)),
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                    image: const DecorationImage(
+                                                                        image: AssetImage(
+                                                                            'assets/images/circle_tick.webp'))),
+                                                              ),
+                                                            ),
+                                                          )
                                               ]),
                                             ),
                                           );

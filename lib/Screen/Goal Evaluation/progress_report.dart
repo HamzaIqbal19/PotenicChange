@@ -17,7 +17,8 @@ import '../../Widgets/calender.dart';
 import '../../utils/app_dimensions.dart';
 
 class progress_report extends StatefulWidget {
-  const progress_report({super.key});
+  final int index;
+  const progress_report({super.key, required this.index});
 
   @override
   State<progress_report> createState() => _progress_reportState();
@@ -1313,9 +1314,9 @@ class _progress_reportState extends State<progress_report> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const prac_score(
+                                          page: prac_score(
                                         route: 'report',
-                                        index: 0,
+                                        index: widget.index,
                                       )));
                                 }
                               },

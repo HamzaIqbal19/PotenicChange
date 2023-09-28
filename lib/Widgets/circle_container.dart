@@ -42,7 +42,8 @@ class CircularFormation extends StatelessWidget {
                               ? 'assets/images/Countdown circle_3.webp'
                               : selection == 2
                                   ? 'assets/images/Countdown circle_1.webp'
-                                  : 'assets/images/Countdown circle_2.webp'))),
+                                  : 'assets/images/Countdown circle_2.webp'),
+                  fit: BoxFit.scaleDown)),
         ),
       ),
     );

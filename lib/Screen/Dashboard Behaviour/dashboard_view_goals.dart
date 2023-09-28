@@ -1126,7 +1126,7 @@ class _view_goalsState extends State<view_goals> {
                                                                                         ? "assets/images/Missed_4.webp"
                                                                                         : timesList[index]['data']['color'] == "5"
                                                                                             ? "assets/images/Missed_4.webp"
-                                                                                            : "assets/images/Missed_2.webp"
+                                                                                            : "assets/images/Missed_1.webp"
                                                                         : timesList[index]['status'] == 'completed'
                                                                             ? timesList[index]['data']['color'] == "1"
                                                                                 ? "assets/images/Practice_Completed_1.webp"
@@ -1380,7 +1380,7 @@ class _view_goalsState extends State<view_goals> {
                                                                           FontWeight
                                                                               .w700,
                                                                       color: const Color
-                                                                              .fromRGBO(
+                                                                          .fromRGBO(
                                                                           91,
                                                                           116,
                                                                           166,
@@ -1437,7 +1437,8 @@ class _view_goalsState extends State<view_goals> {
                                                                         fontWeight:
                                                                             FontWeight
                                                                                 .w400,
-                                                                        color: const Color.fromRGBO(
+                                                                        color: const Color
+                                                                            .fromRGBO(
                                                                             91,
                                                                             116,
                                                                             166,
@@ -3438,7 +3439,7 @@ class _view_goalsState extends State<view_goals> {
                                                               1.5,
                                                           margin:
                                                               const EdgeInsets
-                                                                      .only(
+                                                                  .only(
                                                                   top: 3.32),
                                                           // margin: const EdgeInsets.only(left: 1),
                                                           child: Center(

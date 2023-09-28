@@ -18,8 +18,10 @@ import '../../utils/app_dimensions.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class new_progress_score extends StatefulWidget {
+  final int evaluationIndex;
   final bool premium;
-  const new_progress_score({super.key, required this.premium});
+  const new_progress_score(
+      {super.key, required this.premium, required this.evaluationIndex});
 
   @override
   State<new_progress_score> createState() => _new_progress_scoreState();
@@ -84,27 +86,20 @@ class _new_progress_scoreState extends State<new_progress_score> {
           selectedEval = response["goalEvaluations"].length - 1;
           _selectedIndex = response["goalEvaluations"].length - 1;
         });
+        if (widget.evaluationIndex != response["goalEvaluations"].length - 1) {
+          setState(() {
+            _selectedIndex = widget.evaluationIndex;
+            selectedEval = widget.evaluationIndex;
+          });
+        }
 
-        _scrollController = FixedExtentScrollController(
-            initialItem: response["goalEvaluations"].length - 1);
+        print("Selected Evaluation $selectedEval");
 
-        // var evalId =
-        //     prefs.setInt('goal_eval_id', response['goalEvaluations'][0]['id']);
-        print(
-            "===================EVALUATION Length${response['goalEvaluations'].length}");
-        print("ACTIVE DAY");
-        print(response["goalEvaluations"]
-            [response["goalEvaluations"].length - 1]['activedate']);
-        // for (int i = 0; i <= response['goalEvaluations'].length; i++) {
-        //   print(response["goalEvaluations"][i]['activedate'].toString());
-        //   _dates.add(" ${response["goalEvaluations"][i]['activedate']}");
-        // }
-        print(
-            "======================${response["goalEvaluations"]}===============");
+        _scrollController =
+            FixedExtentScrollController(initialItem: _selectedIndex);
 
         loadData();
         GetDates();
-        print("========Dates=====================$_dates");
         print(response);
       } else {
         loadData();
@@ -121,7 +116,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
     for (int i = 0; i < goalDetails["goalEvaluations"].length; i++) {
       final DateTime originalDate = DateFormat("yyyy-MM-dd")
           .parse(goalDetails["goalEvaluations"][i]['activedate']);
-      final DateTime futureDate = originalDate.add(const Duration(days: 30));
+      final DateTime futureDate = DateFormat("yyyy-MM-dd")
+          .parse(goalDetails["goalEvaluations"][i]['endDate']);
       final String formattedDate = DateFormat("dd MMM yy").format(originalDate);
       final String formattedFutureDate =
           DateFormat("dd MMM yy").format(futureDate);
@@ -442,18 +438,23 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                     children: [
                                       Container(
                                         // width: AppDimensions.height10(context) * 30.3,
-                                        height: goalDetails['goalEvaluations']
-                                                            [selectedEval]
-                                                        ['totalPoint'] ==
-                                                    null ||
-                                                goalDetails['goalEvaluations']
-                                                            [selectedEval]
-                                                        ['totalPoint'] ==
-                                                    0
+                                        height: widget.premium != true
                                             ? AppDimensions.height10(context) *
-                                                4.4
-                                            : AppDimensions.height10(context) *
-                                                2.2,
+                                                2.2
+                                            : goalDetails['goalEvaluations']
+                                                                [selectedEval]
+                                                            ['totalPoint'] ==
+                                                        null ||
+                                                    goalDetails['goalEvaluations']
+                                                                [selectedEval]
+                                                            ['totalPoint'] ==
+                                                        0
+                                                ? AppDimensions.height10(
+                                                        context) *
+                                                    4.4
+                                                : AppDimensions.height10(
+                                                        context) *
+                                                    2.2,
                                         // color: Colors.grey,
                                         margin: EdgeInsets.only(
                                             top: AppDimensions.height10(
@@ -467,19 +468,22 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                             SizedBox(
                                               //  width: AppDimensions.height10(context) * 25.2,
                                               child: Text(
-                                                goalDetails['goalEvaluations'][
-                                                                    selectedEval]
-                                                                [
-                                                                'totalPoint'] ==
-                                                            null ||
-                                                        goalDetails['goalEvaluations']
+                                                widget.premium == false
+                                                    ? 'From 01 Jan 23 to 01 Feb 23'
+                                                    : goalDetails['goalEvaluations']
+                                                                        [
+                                                                        selectedEval]
                                                                     [
-                                                                    selectedEval]
-                                                                [
-                                                                'totalPoint'] ==
-                                                            0
-                                                    ? 'From $activity_duration\nMissing'
-                                                    : 'From $activity_duration',
+                                                                    'totalPoint'] ==
+                                                                null ||
+                                                            goalDetails['goalEvaluations']
+                                                                        [
+                                                                        selectedEval]
+                                                                    [
+                                                                    'totalPoint'] ==
+                                                                0
+                                                        ? 'From $activity_duration\nMissing'
+                                                        : 'From $activity_duration',
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontSize:
@@ -487,19 +491,24 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                                 context) *
                                                             1.75,
                                                     fontWeight: FontWeight.w600,
-                                                    height: AppDimensions.height10(
-                                                            context) *
-                                                        0.15,
-                                                    color: goalDetails['goalEvaluations']
-                                                                        [selectedEval][
-                                                                    'totalPoint'] ==
-                                                                null ||
-                                                            goalDetails['goalEvaluations']
-                                                                        [selectedEval]
-                                                                    ['totalPoint'] ==
-                                                                0
-                                                        ? Colors.red
-                                                        : const Color(0xFFFFFFFF)),
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.15,
+                                                    color: widget.premium ==
+                                                            false
+                                                        ? Colors.white
+                                                        : goalDetails['goalEvaluations']
+                                                                            [selectedEval]
+                                                                        [
+                                                                        'totalPoint'] ==
+                                                                    null ||
+                                                                goalDetails['goalEvaluations']
+                                                                            [selectedEval]
+                                                                        ['totalPoint'] ==
+                                                                    0
+                                                            ? Colors.red
+                                                            : const Color(0xFFFFFFFF)),
                                               ),
                                             ),
                                             SizedBox(
@@ -521,36 +530,44 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         ),
                                       ),
                                       Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.7,
-                                          height: goalDetails['goalEvaluations']
-                                                              [selectedEval]
-                                                          ['totalPoint'] ==
-                                                      null ||
-                                                  goalDetails['goalEvaluations']
-                                                              [selectedEval]
-                                                          ['totalPoint'] ==
-                                                      0
+                                          width: AppDimensions.height10(context) *
+                                              23.7,
+                                          height: widget.premium == false
                                               ? AppDimensions.height10(context) *
                                                   5.4
-                                              : AppDimensions.height10(context) *
-                                                  7.1,
+                                              : goalDetails['goalEvaluations']
+                                                                  [selectedEval]
+                                                              ['totalPoint'] ==
+                                                          null ||
+                                                      goalDetails['goalEvaluations']
+                                                                  [selectedEval]
+                                                              ['totalPoint'] ==
+                                                          0
+                                                  ? AppDimensions.height10(context) *
+                                                      5.4
+                                                  : AppDimensions.height10(
+                                                          context) *
+                                                      7.1,
                                           margin: EdgeInsets.only(
-                                              top:
-                                                  AppDimensions.height10(context) *
-                                                      0.7),
+                                              top: AppDimensions.height10(context) *
+                                                  0.7),
                                           child: Text(
-                                            goalDetails['goalEvaluations']
-                                                                [selectedEval]
-                                                            ['totalPoint'] ==
-                                                        null ||
-                                                    goalDetails['goalEvaluations']
-                                                                [selectedEval]
-                                                            ['totalPoint'] ==
-                                                        0
+                                            widget.premium == false
                                                 ? 'Evaluate how close you\nwere to living your goal'
-                                                : 'This is how close you were\nto living your goal and\ndesired identity.',
+                                                : goalDetails['goalEvaluations']
+                                                                    [
+                                                                    selectedEval]
+                                                                [
+                                                                'totalPoint'] ==
+                                                            null ||
+                                                        goalDetails['goalEvaluations']
+                                                                    [
+                                                                    selectedEval]
+                                                                [
+                                                                'totalPoint'] ==
+                                                            0
+                                                    ? 'Evaluate how close you\nwere to living your goal'
+                                                    : 'This is how close you were\nto living your goal and\ndesired identity.',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 height: AppDimensions.height10(
@@ -675,26 +692,29 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                               children: [
                                                 SizedBox(
                                                   child: Text(
-                                                    goalDetails['goalEvaluations']
-                                                                        [
-                                                                        selectedEval]
-                                                                    [
-                                                                    'totalPoint'] ==
-                                                                0 ||
-                                                            goalDetails['goalEvaluations']
-                                                                        [
-                                                                        selectedEval]
-                                                                    [
-                                                                    'totalPoint'] ==
-                                                                null ||
-                                                            widget.premium ==
-                                                                false
-                                                        ? '-'
+                                                    widget.premium == false
+                                                        ? ''
                                                         : goalDetails['goalEvaluations']
+                                                                            [
+                                                                            selectedEval]
+                                                                        [
+                                                                        'totalPoint'] ==
+                                                                    0 ||
+                                                                goalDetails['goalEvaluations']
+                                                                            [
+                                                                            selectedEval]
+                                                                        [
+                                                                        'totalPoint'] ==
+                                                                    null ||
+                                                                widget.premium ==
+                                                                    false
+                                                            ? '-'
+                                                            : goalDetails['goalEvaluations']
+                                                                        [
+                                                                        selectedEval]
                                                                     [
-                                                                    selectedEval]
-                                                                ['totalPoint']
-                                                            .toString(),
+                                                                    'totalPoint']
+                                                                .toString(),
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
@@ -748,35 +768,39 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                               1.1),
                                       child: Stack(
                                         children: [
-                                          goalDetails['goalEvaluations']
-                                                              [selectedEval]
-                                                          ['totalPoint'] ==
-                                                      null ||
-                                                  goalDetails['goalEvaluations']
-                                                              [selectedEval]
-                                                          ['totalPoint'] ==
-                                                      0
+                                          widget.premium == false
                                               ? Container()
-                                              : Align(
-                                                  alignment: Alignment.topLeft,
-                                                  child: Container(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
+                                              : goalDetails['goalEvaluations']
+                                                                  [selectedEval]
+                                                              ['totalPoint'] ==
+                                                          null ||
+                                                      goalDetails['goalEvaluations']
+                                                                  [selectedEval]
+                                                              ['totalPoint'] ==
+                                                          0
+                                                  ? Container()
+                                                  : Align(
+                                                      alignment:
+                                                          Alignment.topLeft,
+                                                      child: Container(
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             2.5,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             1.6,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                      image: DecorationImage(
-                                                          image: AssetImage(
-                                                              'assets/images/colon.webp'),
-                                                          fit: BoxFit.contain),
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          image: DecorationImage(
+                                                              image: AssetImage(
+                                                                  'assets/images/colon.webp'),
+                                                              fit: BoxFit
+                                                                  .contain),
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
                                           Align(
                                             alignment: const Alignment(0.5, 0),
                                             child: SizedBox(
@@ -788,33 +812,35 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                               //color: Colors.amber,
                                               child: Center(
                                                 child: Text(
-                                                  goalDetails['goalEvaluations']
-                                                                      [selectedEval][
-                                                                  'totalPoint'] ==
-                                                              null ||
-                                                          goalDetails['goalEvaluations']
-                                                                      [selectedEval][
-                                                                  'totalPoint'] ==
-                                                              0 ||
-                                                          widget.premium ==
-                                                              false
+                                                  widget.premium == false
                                                       ? 'Score needed!'
                                                       : goalDetails['goalEvaluations']
-                                                                      [selectedEval][
-                                                                  'totalPoint'] ==
-                                                              2
-                                                          ? "I'm making small steps\nforward"
-                                                          : goalDetails['goalEvaluations'][selectedEval]
-                                                                      ['totalPoint'] ==
-                                                                  1
-                                                              ? 'I’m not making any progress'
-                                                              : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 3
-                                                                  ? 'I’m making considerable steps forward'
-                                                                  : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 4
-                                                                      ? "I’m almost there"
-                                                                      : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 5
-                                                                          ? "I’m definitely living my why"
-                                                                          : "Score needed",
+                                                                          [selectedEval][
+                                                                      'totalPoint'] ==
+                                                                  null ||
+                                                              goalDetails['goalEvaluations']
+                                                                          [selectedEval][
+                                                                      'totalPoint'] ==
+                                                                  0 ||
+                                                              widget.premium ==
+                                                                  false
+                                                          ? 'Score needed!'
+                                                          : goalDetails['goalEvaluations']
+                                                                          [selectedEval][
+                                                                      'totalPoint'] ==
+                                                                  2
+                                                              ? "I'm making small steps\nforward"
+                                                              : goalDetails['goalEvaluations'][selectedEval]
+                                                                          ['totalPoint'] ==
+                                                                      1
+                                                                  ? 'I’m not making any progress'
+                                                                  : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 3
+                                                                      ? 'I’m making considerable steps forward'
+                                                                      : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 4
+                                                                          ? "I’m almost there"
+                                                                          : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 5
+                                                                              ? "I’m definitely living my why"
+                                                                              : "Score needed",
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
@@ -897,28 +923,36 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               child: goal_criteria(
                                 criteria: 'Goal Criteria 1',
                                 identity: 'Your Why’s',
-                                text_span_1: goalDetails['goalEvaluations']
-                                            [selectedEval]['YourWay'] ==
-                                        null
+                                text_span_1: widget.premium == false
                                     ? 'Score needed'
-                                    : messages[goalDetails['goalEvaluations']
-                                            [selectedEval]['YourWay']['level'] -
-                                        1],
-                                text_span_2: goalDetails['goalEvaluations']
-                                            [selectedEval]['YourWay'] ==
-                                        null
-                                    ? ''
-                                    : 'why',
-                                text_span_3: goalDetails['goalEvaluations']
-                                            [selectedEval]['YourWay'] ==
-                                        null
+                                    : goalDetails['goalEvaluations']
+                                                [selectedEval]['YourWay'] ==
+                                            null
+                                        ? 'Score needed'
+                                        : messages[
+                                            goalDetails['goalEvaluations']
+                                                        [selectedEval]
+                                                    ['YourWay']['level'] -
+                                                1],
+                                text_span_2: widget.premium == false
                                     ? ''
                                     : goalDetails['goalEvaluations']
-                                                    [selectedEval]['YourWay']
-                                                ['level'] ==
-                                            1
-                                        ? ' yet'
-                                        : '',
+                                                [selectedEval]['YourWay'] ==
+                                            null
+                                        ? ''
+                                        : 'why',
+                                text_span_3: widget.premium == false
+                                    ? ''
+                                    : goalDetails['goalEvaluations']
+                                                [selectedEval]['YourWay'] ==
+                                            null
+                                        ? ''
+                                        : goalDetails['goalEvaluations']
+                                                        [selectedEval]
+                                                    ['YourWay']['level'] ==
+                                                1
+                                            ? ' yet'
+                                            : '',
                                 margin_top: 0,
                                 border: goalDetails['goalLevel'] == 0 ||
                                         goalDetails['goalLevel'] == null ||
@@ -994,42 +1028,51 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               child: goal_criteria(
                                 criteria: 'Goal Criteria 2',
                                 identity: 'Your new identity',
-                                text_span_1: goalDetails['goalEvaluations']
-                                            [selectedEval]['YourWay'] ==
-                                        null
+                                text_span_1: widget.premium == false
                                     ? 'Score needed'
-                                    : goalDetails['goalEvaluations'][selectedEval]
-                                                    ['newIdentity'] ==
-                                                null ||
-                                            goalDetails['goalEvaluations'][selectedEval]
-                                                    ['newIdentity']['level'] ==
-                                                0 ||
-                                            goalDetails['goalEvaluations'][selectedEval]
-                                                    ['newIdentity']['level'] ==
-                                                null
+                                    : goalDetails['goalEvaluations']
+                                                [selectedEval]['YourWay'] ==
+                                            null
                                         ? 'Score needed'
-                                        : messages[goalDetails['goalEvaluations']
-                                                [selectedEval]['newIdentity']['level'] -
-                                            1],
-                                text_span_2: goalDetails['goalEvaluations']
-                                                [selectedEval]['newIdentity'] ==
-                                            null ||
-                                        goalDetails['goalEvaluations']
-                                                    [selectedEval]
-                                                ['newIdentity']['level'] ==
-                                            0
-                                    ? ''
-                                    : 'new identity',
-                                text_span_3: goalDetails['goalEvaluations']
-                                            [selectedEval]['newIdentity'] ==
-                                        null
+                                        : goalDetails['goalEvaluations'][selectedEval]['newIdentity'] == null ||
+                                                goalDetails['goalEvaluations']
+                                                            [selectedEval]['newIdentity']
+                                                        ['level'] ==
+                                                    0 ||
+                                                goalDetails['goalEvaluations']
+                                                                [selectedEval]
+                                                            ['newIdentity']
+                                                        ['level'] ==
+                                                    null
+                                            ? 'Score needed'
+                                            : messages[goalDetails['goalEvaluations']
+                                                        [selectedEval]
+                                                    ['newIdentity']['level'] -
+                                                1],
+                                text_span_2: widget.premium == false
                                     ? ''
                                     : goalDetails['goalEvaluations']
-                                                    [selectedEval]
-                                                ['newIdentity']['level'] ==
-                                            1
-                                        ? ' yet'
-                                        : '',
+                                                        [selectedEval]
+                                                    ['newIdentity'] ==
+                                                null ||
+                                            goalDetails['goalEvaluations']
+                                                        [selectedEval]
+                                                    ['newIdentity']['level'] ==
+                                                0
+                                        ? ''
+                                        : 'new identity',
+                                text_span_3: widget.premium == false
+                                    ? ''
+                                    : goalDetails['goalEvaluations']
+                                                [selectedEval]['newIdentity'] ==
+                                            null
+                                        ? ''
+                                        : goalDetails['goalEvaluations']
+                                                        [selectedEval]
+                                                    ['newIdentity']['level'] ==
+                                                1
+                                            ? ' yet'
+                                            : '',
                                 margin_top: 1.0,
                                 border: goalDetails['goalLevel'] == 0 ||
                                         goalDetails['goalLevel'] == null ||
@@ -1093,30 +1136,38 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               child: goal_criteria(
                                   criteria: 'Goal Criteria 3',
                                   identity: 'Your vision for\nnew self',
-                                  text_span_1: goalDetails['goalEvaluations']
-                                                  [selectedEval]
-                                              ['visualisingYourSelf'] ==
-                                          null
+                                  text_span_1: widget.premium == false
                                       ? 'Score needed'
                                       : goalDetails['goalEvaluations'][selectedEval]
-                                                      ['visualisingYourSelf']
-                                                  ['level'] ==
-                                              0
+                                                  ['visualisingYourSelf'] ==
+                                              null
                                           ? 'Score needed'
-                                          : messages[goalDetails['goalEvaluations']
-                                                          [selectedEval]
-                                                      ['visualisingYourSelf']
-                                                  ['level'] -
-                                              1],
-                                  text_span_2: goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf'] == null ||
-                                          goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']['level'] == 0
+                                          : goalDetails['goalEvaluations'][selectedEval]
+                                                          ['visualisingYourSelf']
+                                                      ['level'] ==
+                                                  0
+                                              ? 'Score needed'
+                                              : messages[goalDetails['goalEvaluations'][selectedEval]
+                                                          ['visualisingYourSelf']
+                                                      ['level'] -
+                                                  1],
+                                  text_span_2: widget.premium == false
                                       ? ''
-                                      : 'vision',
-                                  text_span_3: goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf'] == null
+                                      : goalDetails['goalEvaluations'][selectedEval]
+                                                      ['visualisingYourSelf'] ==
+                                                  null ||
+                                              goalDetails['goalEvaluations'][selectedEval]
+                                                      ['visualisingYourSelf']['level'] ==
+                                                  0
+                                          ? ''
+                                          : 'vision',
+                                  text_span_3: widget.premium == false
                                       ? ''
-                                      : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']['level'] == 1
-                                          ? ' yet'
-                                          : '',
+                                      : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf'] == null
+                                          ? ''
+                                          : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']['level'] == 1
+                                              ? ' yet'
+                                              : '',
                                   goal_: goalDetails['goalLevel'] == 0 || goalDetails['goalLevel'] == null || widget.premium == false
                                       ? "0"
                                       : goalDetails['goalEvaluations'][selectedEval]['visualisingYourSelf']
@@ -1166,36 +1217,42 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               child: goal_criteria(
                                   criteria: 'Goal Criteria 4',
                                   identity: 'Impact on your\nlife',
-                                  text_span_1: goalDetails['goalEvaluations']
-                                                  [selectedEval]
-                                              ['impactOnYourSelf'] ==
-                                          null
+                                  text_span_1: widget.premium == false
                                       ? 'Score needed'
                                       : goalDetails['goalEvaluations'][selectedEval]
-                                                      ['impactOnYourSelf']
-                                                  ['level'] ==
-                                              0
+                                                  ['impactOnYourSelf'] ==
+                                              null
                                           ? 'Score needed'
-                                          : messagesImpact[
-                                              goalDetails['goalEvaluations']
+                                          : goalDetails['goalEvaluations'][selectedEval]
+                                                          ['impactOnYourSelf']
+                                                      ['level'] ==
+                                                  0
+                                              ? 'Score needed'
+                                              : messagesImpact[goalDetails['goalEvaluations']
                                                               [selectedEval]
                                                           ['impactOnYourSelf']
                                                       ['level'] -
                                                   1],
-                                  text_span_2: goalDetails['goalEvaluations']
-                                              [selectedEval]['impactOnYourSelf'] ==
-                                          null
+                                  text_span_2: widget.premium == false
                                       ? ''
-                                      : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 5
-                                          ? 'impacting'
-                                          : 'impact',
-                                  text_span_3: goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf'] == null
+                                      : goalDetails['goalEvaluations'][selectedEval]
+                                                  ['impactOnYourSelf'] ==
+                                              null
+                                          ? ''
+                                          : goalDetails['goalEvaluations'][selectedEval]
+                                                      ['impactOnYourSelf']['level'] ==
+                                                  5
+                                              ? 'impacting'
+                                              : 'impact',
+                                  text_span_3: widget.premium == false
                                       ? ''
-                                      : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 0
-                                          ? ' my life yet'
-                                          : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 5
-                                              ? ' my life positively and consistently'
-                                              : ' on my life',
+                                      : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf'] == null
+                                          ? ''
+                                          : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 0
+                                              ? ' my life yet'
+                                              : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 5
+                                                  ? ' my life positively and consistently'
+                                                  : ' on my life',
                                   border: goalDetails['goalLevel'] == 0 || goalDetails['goalLevel'] == null || widget.premium == false
                                       ? true
                                       : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']
@@ -1348,7 +1405,7 @@ class goal_criteria extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: AppDimensions.height10(context) * 44.1,
-      height: AppDimensions.height10(context) * 14.8,
+      //height: AppDimensions.height10(context) * 14.8,
       margin:
           EdgeInsets.only(top: AppDimensions.height10(context) * margin_top),
       decoration: BoxDecoration(
@@ -1363,8 +1420,10 @@ class goal_criteria extends StatelessWidget {
             //  height: AppDimensions.height10(context) * 9.9,
 
             margin: EdgeInsets.only(
-                left: AppDimensions.height10(context) * 3.0,
-                top: AppDimensions.height10(context) * 2.4),
+              left: AppDimensions.height10(context) * 3.0,
+              top: AppDimensions.height10(context) * 2.4,
+              bottom: AppDimensions.height10(context) * 2.4,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1393,7 +1452,7 @@ class goal_criteria extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                    width: AppDimensions.height10(context) * 23.2,
+                    width: AppDimensions.height10(context) * 21.2,
                     child: RichText(
                         text: TextSpan(
                             style: TextStyle(

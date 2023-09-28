@@ -133,7 +133,7 @@ class _your_impactState extends State<your_impact> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        if (disable == false) {
+        if (disable == false && widget.premium) {
           showAnimatedDialog(
               animationType: DialogTransitionType.fadeScale,
               curve: Curves.easeInOut,
@@ -208,6 +208,7 @@ class _your_impactState extends State<your_impact> {
                                     FadePageRoute(
                                         page: new_progress_score(
                                       premium: widget.premium,
+                                      evaluationIndex: widget.index,
                                     )));
                                 setState(() {
                                   select_item = -1;
@@ -267,6 +268,7 @@ class _your_impactState extends State<your_impact> {
               FadePageRoute(
                   page: new_progress_score(
                 premium: widget.premium,
+                evaluationIndex: widget.index,
               )));
           setState(() {
             select_item = -1;
@@ -285,7 +287,7 @@ class _your_impactState extends State<your_impact> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
-                  if (disable == false) {
+                  if (disable == false && widget.premium) {
                     showAnimatedDialog(
                         animationType: DialogTransitionType.fadeScale,
                         curve: Curves.easeInOut,
@@ -369,6 +371,7 @@ class _your_impactState extends State<your_impact> {
                                               FadePageRoute(
                                                   page: new_progress_score(
                                                 premium: widget.premium,
+                                                evaluationIndex: widget.index,
                                               )));
                                           setState(() {
                                             select_item = -1;
@@ -433,6 +436,7 @@ class _your_impactState extends State<your_impact> {
                         FadePageRoute(
                             page: new_progress_score(
                           premium: widget.premium,
+                          evaluationIndex: widget.index,
                         )));
                     setState(() {
                       select_item = -1;

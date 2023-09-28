@@ -304,7 +304,11 @@ class _prac_scoreState extends State<prac_score> {
               context, FadePageRoute(page: const practice_assesment()));
         } else if (widget.route == 'report') {
           Navigator.pushReplacement(
-              context, FadePageRoute(page: const progress_report()));
+              context,
+              FadePageRoute(
+                  page: progress_report(
+                index: widget.index,
+              )));
         }
         return Future.value(false);
       },
@@ -340,7 +344,11 @@ class _prac_scoreState extends State<prac_score> {
                         FadePageRoute(page: const practice_assesment()));
                   } else if (widget.route == 'report') {
                     Navigator.pushReplacement(
-                        context, FadePageRoute(page: const progress_report()));
+                        context,
+                        FadePageRoute(
+                            page: progress_report(
+                          index: widget.index,
+                        )));
                   }
                 },
                 icon: Image.asset(

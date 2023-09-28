@@ -110,6 +110,7 @@ class RecordingPractice {
     //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
     var recording_id = prefs.getInt('recording_id');
+    print(prefs.getInt('recording_id'));
 
     //int UserGoalId = 12;
     print("request: Update");

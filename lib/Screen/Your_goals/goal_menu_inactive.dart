@@ -46,6 +46,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   String subscriptions = '';
   String inputDate = '';
   String level = '';
+  List messages = [
+    "I’m not making any progress",
+    "I'm making small steps\nforward",
+    "I’m making considerable steps forward",
+    "I’m almost there",
+    "I’m definitely living my why"
+  ];
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -293,27 +300,41 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       ),
                       AnimatedScaleButton(
                         onTap: () {
-                          if (goalDetails['goalStatus'] == "active" &&
-                              goalDetails['goalEvaluations'].length != 0) {
+                          if (subscriptions != 'active') {
                             Navigator.push(
                                 context,
                                 FadePageRoute(
-                                    page: new_progress_score(
-                                  premium:
-                                      subscriptions == 'active' ? true : false,
+                                    page: const new_progress_score(
+                                  premium: false,
+                                  evaluationIndex: 0,
                                 )));
                           } else {
-                            if (goalDetails['goalEvaluations'].length != 0) {
+                            if (goalDetails['goalStatus'] == "active" &&
+                                goalDetails['goalEvaluations'].length != 0) {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: new_progress_score(
+                                    premium: subscriptions == 'active'
+                                        ? true
+                                        : false,
+                                    evaluationIndex:
+                                        goalDetails['goalEvaluations'].length -
+                                            1,
+                                  )));
                             } else {
+                              if (goalDetails['goalEvaluations'].length != 0) {
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(
+                                            "Goal evaluation for this month is not active!!")));
+                              }
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       content: Text(
-                                          "Goal evaluation for this month is not active!!")));
+                                          "Evaluation is only availabe for active goals!!")));
                             }
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text(
-                                        "Evaluation is only availabe for active goals!!")));
                           }
                         },
                         child: Container(
@@ -479,26 +500,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             alignment: Alignment.centerLeft,
                                             child: Text(
                                               subscriptions == 'active'
-                                                  ? goalDetails['goalLevel'] ==
-                                                          2
-                                                      ? "I'm making small steps\nforward"
-                                                      : goalDetails[
-                                                                  'goalLevel'] ==
-                                                              1
-                                                          ? 'I’m not making any progress'
-                                                          : goalDetails[
-                                                                      'goalLevel'] ==
-                                                                  3
-                                                              ? 'I’m making considerable steps forward'
-                                                              : goalDetails[
-                                                                          'goalLevel'] ==
-                                                                      4
-                                                                  ? "I’m almost there"
-                                                                  : goalDetails[
-                                                                              'goalLevel'] ==
-                                                                          5
-                                                                      ? "I’m definitely living my why"
-                                                                      : 'Score needed'
+                                                  ? level == "0" || level == ''
+                                                      ? 'Score needed'
+                                                      : messages[
+                                                          int.parse(level) - 1]
                                                   : 'Only available to Premium\nCustomers',
                                               style: TextStyle(
                                                   fontSize:
@@ -539,39 +544,70 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               Align(
                                 alignment: const Alignment(-0.8, 0.875),
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 18.5,
+                                  width: AppDimensions.height10(context) * 19.5,
                                   height: AppDimensions.height10(context) * 1.6,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Next score needed in ',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.3,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xff464646)),
-                                      ),
-                                      Text(
-                                        '-${goalDetails['nextEvaluationInDays']}',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.3,
-                                            fontWeight: FontWeight.w700,
-                                            color: const Color(0xff464646)),
-                                      ),
-                                      Text(
-                                        ' days',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.3,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xff464646)),
-                                      ),
-                                    ],
-                                  ),
+                                  child: subscriptions != 'active'
+                                      ? Text(
+                                          'Next score needed in 30 days',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.3,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xff464646)),
+                                        )
+                                      : goalDetails['nextEvaluationInDays'] == 0
+                                          ? Text(
+                                              'You can now evaluate your progress',
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.3,
+                                                  fontWeight: FontWeight.w400,
+                                                  color:
+                                                      const Color(0xff464646)),
+                                            )
+                                          : Row(
+                                              children: [
+                                                Text(
+                                                  'Next score needed in ',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.3,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xff464646)),
+                                                ),
+                                                Text(
+                                                  '-${goalDetails['nextEvaluationInDays']}',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.3,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: const Color(
+                                                          0xff464646)),
+                                                ),
+                                                Text(
+                                                  ' days',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.3,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xff464646)),
+                                                ),
+                                              ],
+                                            ),
                                 ),
                               ),
                               widget.goal_evaluation

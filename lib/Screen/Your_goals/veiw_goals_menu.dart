@@ -1761,8 +1761,12 @@ void activeReport(
                   ),
                   AnimatedScaleButton(
                     onTap: () {
-                      Navigator.push(context,
-                          FadePageRoute(page: const progress_report()));
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: const progress_report(
+                            index: 0,
+                          )));
                     },
                     child: Container(
                       width: AppDimensions.height10(context) * 23.7,
