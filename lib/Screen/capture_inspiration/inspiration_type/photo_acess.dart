@@ -10,7 +10,6 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
-import 'package:potenic_app/Screen/capture_inspiration/imagepicker.dart/imagePicker.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_access.dart';
@@ -23,7 +22,6 @@ import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_web_browser/flutter_web_browser.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -339,11 +337,15 @@ class _photo_infoState extends State<photo_info> {
                           hastags.clear();
 
                           if (widget.image_detals == true) {
-                            Navigator.push(context,
-                                FadePageRoute(page: const inspiration_type()));
+                            Navigator.push(
+                                context,
+                                FadePageRouteReverse(
+                                    page: const inspiration_type()));
                           } else {
-                            Navigator.push(context,
-                                FadePageRoute(page: const inspiration_type()));
+                            Navigator.push(
+                                context,
+                                FadePageRouteReverse(
+                                    page: const inspiration_type()));
                           }
                         },
                         child: Center(

@@ -3,16 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
-import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
-import 'package:potenic_app/utils/app_colors.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'dart:convert';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:http/http.dart' as http;
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/animatedButton.dart';
@@ -157,11 +152,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        FadePageRoute3(
-                          enterPage: const HomeScreen(
+                        FadePageRouteReverse(
+                          page: const HomeScreen(
                             login: false,
                           ),
-                          exitPage: SignUpWithEmail(),
                         ),
                       );
                       // Add code for performing close action

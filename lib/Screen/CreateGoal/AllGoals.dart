@@ -2,16 +2,13 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shimmer/shimmer.dart';
 
 import '../../API/Goal.dart';
 import '../../Widgets/fading.dart';
@@ -216,7 +213,7 @@ class _AllGoalsState extends State<AllGoals> {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      FadePageRoute(
+                      FadePageRouteReverse(
                         page: const HomeScreen(
                           login: true,
                         ),

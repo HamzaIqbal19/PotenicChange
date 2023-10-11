@@ -1,14 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:advance_expansion_tile/advance_expansion_tile.dart';
-import 'package:potenic_app/API/PracticeModal.dart';
 import 'package:potenic_app/Widgets/DateTimeBottomSheet.dart';
 import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 int count = 0;
 
 class TwoValues<T1, T2> {

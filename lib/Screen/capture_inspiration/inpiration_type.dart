@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
-import 'package:potenic_app/Screen/captureHurdles/hurdle_positive_alternates/select_image.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
@@ -34,7 +33,7 @@ class _inspiration_typeState extends State<inspiration_type> {
       onWillPop: () {
         Navigator.push(
             context,
-            FadePageRoute(
+            FadePageRouteReverse(
                 page: const inspiraton_goals(
                     update: false,
                     data_saved: false,
@@ -53,7 +52,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                   onPressed: () {
                     Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page: const inspiraton_goals(
                                 update: false,
                                 data_saved: false,
@@ -167,7 +166,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                                   if (response == true) {
                                                     Navigator.push(
                                                         context,
-                                                        FadePageRoute(
+                                                        FadePageRouteReverse(
                                                             page:
                                                                 const inspiration_landing(
                                                                     is_Updated:
@@ -176,7 +175,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                                       false) {
                                                     Navigator.push(
                                                         context,
-                                                        FadePageRoute(
+                                                        FadePageRouteReverse(
                                                             page:
                                                                 const inspiration_motivation(
                                                           goal_delete: false,
@@ -224,7 +223,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                                   if (response == true) {
                                                     Navigator.push(
                                                         context,
-                                                        FadePageRoute(
+                                                        FadePageRouteReverse(
                                                             page:
                                                                 const inspiration_landing(
                                                                     is_Updated:
@@ -233,7 +232,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                                       false) {
                                                     Navigator.push(
                                                         context,
-                                                        FadePageRoute(
+                                                        FadePageRouteReverse(
                                                             page:
                                                                 const inspiration_motivation(
                                                           goal_delete: false,

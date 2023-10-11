@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/fading2.dart';
-import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
@@ -106,7 +103,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
         if (widget.summary == false) {
           Navigator.push(
             context,
-            FadePageRoute(
+            FadePageRouteReverse(
               page: emotions(
                 summary: false,
                 pracName: pracName,
@@ -132,7 +129,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                   if (widget.summary == false) {
                     Navigator.push(
                       context,
-                      FadePageRoute(
+                      FadePageRouteReverse(
                         page: emotions(
                           summary: false,
                           pracName: pracName,
@@ -221,7 +218,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                             if (behaviour_route == false) {
                                               Navigator.pushReplacement(
                                                   context,
-                                                  FadePageRoute(
+                                                  FadePageRouteReverse(
                                                       page: const dashBoard(
                                                     saved: false,
                                                     helpful_tips: false,
@@ -233,7 +230,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                             } else {
                                               Navigator.push(
                                                   context,
-                                                  FadePageRoute(
+                                                  FadePageRouteReverse(
                                                       page: const view_goals(
                                                     missed: false,
                                                     name: '',

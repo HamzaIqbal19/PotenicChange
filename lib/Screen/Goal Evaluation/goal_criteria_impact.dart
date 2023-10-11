@@ -205,7 +205,7 @@ class _your_impactState extends State<your_impact> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    FadePageRoute(
+                                    FadePageRouteReverse(
                                         page: new_progress_score(
                                       premium: widget.premium,
                                       evaluationIndex: widget.index,
@@ -265,7 +265,7 @@ class _your_impactState extends State<your_impact> {
         } else {
           Navigator.push(
               context,
-              FadePageRoute(
+              FadePageRouteReverse(
                   page: new_progress_score(
                 premium: widget.premium,
                 evaluationIndex: widget.index,
@@ -368,7 +368,7 @@ class _your_impactState extends State<your_impact> {
                                         onPressed: () {
                                           Navigator.push(
                                               context,
-                                              FadePageRoute(
+                                              FadePageRouteReverse(
                                                   page: new_progress_score(
                                                 premium: widget.premium,
                                                 evaluationIndex: widget.index,
@@ -433,7 +433,7 @@ class _your_impactState extends State<your_impact> {
                   } else {
                     Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page: new_progress_score(
                           premium: widget.premium,
                           evaluationIndex: widget.index,
@@ -547,9 +547,10 @@ class _your_impactState extends State<your_impact> {
                                         AppDimensions.height10(context) * 0.1,
                                     color: const Color(0xFFFFFFFF)),
                                 shape: BoxShape.circle,
-                                color: goalDetails['goalLevel'] == 0
-                                    ? Colors.transparent
-                                    : const Color(0xFFFFFFFF),
+                                color:
+                                    goalDetails['goalLevel'] == 0 && level == 0
+                                        ? Colors.transparent
+                                        : const Color(0xFFFFFFFF),
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -1348,14 +1349,7 @@ class _your_impactState extends State<your_impact> {
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
-                                              color:
-                                                  //  bt_visible
-                                                  //     ?
-                                                  const Color(0xFFFA9934)
-
-                                              // : const Color(0xFFFA9934)
-                                              //     .withOpacity(0.5)
-                                              ),
+                                              color: const Color(0xFFFA9934)),
                                         ),
                                       ),
                                     ),
@@ -1442,7 +1436,6 @@ class _your_impactState extends State<your_impact> {
                                                               .height10(
                                                                   context) *
                                                           1.6),
-                                                  // height: AppDimensions.height10(context) * 3.2,
                                                   width: AppDimensions.height10(
                                                           context) *
                                                       23.8,
@@ -1474,27 +1467,25 @@ class _your_impactState extends State<your_impact> {
                                                                   0.29),
                                                         ),
                                                       ),
-                                                      Container(
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            4.2,
-                                                        width: double.infinity,
-                                                        color: const Color(
-                                                            0xFF007AFF),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              select_item =
-                                                                  reset_item_1;
-                                                              select_item_2 =
-                                                                  reset_item_2;
-                                                            });
-                                                            Navigator.pop(
-                                                                context);
-
-                                                            // selectedItemIndexesOuter!.clear();
-                                                          },
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          select_item =
+                                                              reset_item_1;
+                                                          select_item_2 =
+                                                              reset_item_2;
+                                                          setState(() {});
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Container(
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              4.2,
+                                                          width:
+                                                              double.infinity,
+                                                          color: const Color(
+                                                              0xFF007AFF),
                                                           child: Center(
                                                             child: Text(
                                                               'Yes',
@@ -1606,15 +1597,7 @@ class _your_impactState extends State<your_impact> {
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
-                                              color:
-                                                  // selectedItemIndexesOuter! !=
-                                                  //         null
-                                                  //     ?
-                                                  const Color(0xFFFA9934)
-
-                                              // : const Color(0xFFFA9934)
-                                              //     .withOpacity(0.5)
-                                              ),
+                                              color: const Color(0xFFFA9934)),
                                         ),
                                       ),
                                     ),
@@ -1923,17 +1906,6 @@ class _your_impactState extends State<your_impact> {
                                                 : const Color(0xffFDA210),
                                           ],
                                         ),
-                                        // :
-                                        // LinearGradient(
-                                        //     begin: Alignment.topCenter,
-                                        //     end: Alignment.bottomCenter,
-                                        //     colors: [
-                                        //       const Color(0xffFCC10D)
-                                        //           .withOpacity(0.5),
-                                        //       const Color(0xffFDA210)
-                                        //           .withOpacity(0.5),
-                                        //     ],
-                                        //   ),
                                         borderRadius: BorderRadius.circular(
                                             AppDimensions.height10(context) *
                                                 5.0),
@@ -1947,14 +1919,7 @@ class _your_impactState extends State<your_impact> {
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
-                                              color:
-                                                  //  bt_visible
-                                                  //     ?
-                                                  Colors.white
-
-                                              // : Colors.white
-                                              //     .withOpacity(0.5)
-                                              ),
+                                              color: Colors.white),
                                         ),
                                       ),
                                     ),
@@ -1993,7 +1958,6 @@ class _your_impactState extends State<your_impact> {
                                 AppDimensions.height10(context) * 2.0)),
                         color: const Color(0xFFF5F5F5)),
                     child: SizedBox(
-                      // width: AppDimensions.height10(context) * 27.8,
                       height: AppDimensions.height10(context) * 3.4,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -2001,7 +1965,6 @@ class _your_impactState extends State<your_impact> {
                           Container(
                             margin: EdgeInsets.only(
                                 right: AppDimensions.height10(context) * 1.0),
-                            // width: AppDimensions.height10(context) * 23.6,
                             child: Text(
                               'Upgrade to score ',
                               style: TextStyle(

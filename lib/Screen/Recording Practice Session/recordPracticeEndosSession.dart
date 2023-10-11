@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:intl/intl.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
-import 'dashboardViewgoals.dart';
 
 class endofSession extends StatefulWidget {
   final bool summary;
@@ -205,7 +201,7 @@ class _endofSessionState extends State<endofSession> {
                                         onPressed: () {
                                           Navigator.push(
                                               context,
-                                              FadePageRoute(
+                                              FadePageRouteReverse(
                                                   page: const view_goals(
                                                 missed: false,
                                                 name: '',
@@ -363,11 +359,9 @@ class _endofSessionState extends State<endofSession> {
                                   ),
                                   children: const [
                                     TextSpan(
-                                      text: 'Hated',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                      text: 'Not great,\nhaven’t\nenjoyed it',
                                     ),
-                                    TextSpan(text: ' it')
+                                    // TextSpan(text: ' it')
                                   ])),
                         ),
                       ),
@@ -422,13 +416,14 @@ class _endofSessionState extends State<endofSession> {
                                   ),
                                   children: const [
                                     TextSpan(
-                                      text: 'Found it\n',
+                                      text:
+                                          'I got\ndistracted, it\nwas hard to\nfocus',
                                     ),
-                                    TextSpan(
-                                      text: 'difficult',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )
+                                    // TextSpan(
+                                    //   text: 'difficult',
+                                    //   style: TextStyle(
+                                    //       fontWeight: FontWeight.bold),
+                                    // )
                                   ])),
                         ),
                       ),
@@ -482,13 +477,13 @@ class _endofSessionState extends State<endofSession> {
                                     color: Colors.white,
                                   ),
                                   children: const [
-                                    TextSpan(text: 'Had\n'),
-                                    TextSpan(
-                                      text: ' distractions',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    TextSpan(text: ',\nit was hard to\nfocus')
+                                    TextSpan(text: 'It was ok'),
+                                    // TextSpan(
+                                    //   text: ' distractions',
+                                    //   style: TextStyle(
+                                    //       fontWeight: FontWeight.bold),
+                                    // ),
+                                    // TextSpan(text: ',\nit was hard to\nfocus')
                                   ])),
                         ),
                       ),
@@ -543,12 +538,12 @@ class _endofSessionState extends State<endofSession> {
                                   ),
                                   children: const [
                                     TextSpan(
-                                      text: 'It was ',
+                                      text: 'Good, I quite\nliked it',
                                     ),
-                                    TextSpan(
-                                        text: 'ok',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold))
+                                    // TextSpan(
+                                    //     text: 'ok',
+                                    //     style: TextStyle(
+                                    //         fontWeight: FontWeight.bold))
                                   ])),
                         ),
                       ),
@@ -602,75 +597,77 @@ class _endofSessionState extends State<endofSession> {
                                     color: Colors.white,
                                   ),
                                   children: const [
+                                    // TextSpan(
+                                    //   text: 'Good',
+                                    //   style: TextStyle(
+                                    //       fontWeight: FontWeight.bold),
+                                    // ),
                                     TextSpan(
-                                      text: 'Good',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    TextSpan(text: ', I liked\nit')
+                                        text:
+                                            'Great, I\nenjoyed the\nexperience')
                                   ])),
                         ),
                       ),
                     ),
-                    AnimatedScaleButton(
-                      onTap: () {
-                        setState(() {
-                          sessionEnd = 6;
-                        });
-                        print(sessionEnd);
-                      },
-                      child: Container(
-                        height: AppDimensions.height10(context) * 15.4,
-                        width: AppDimensions.height10(context) * 15.4,
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.5),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              width: AppDimensions.height10(context) * 0.2,
-                              color: sessionEnd == 6
-                                  ? Colors.white
-                                  : Colors.transparent),
-                        ),
-                        child: Container(
-                          height: AppDimensions.height10(context) * 13.4,
-                          width: AppDimensions.height10(context) * 13.4,
-                          margin: EdgeInsets.all(
-                              AppDimensions.height10(context) * 0.9),
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 1, color: Colors.white),
-                              gradient: RadialGradient(
-                                //radius: 0.5,
+                    // AnimatedScaleButton(
+                    //   onTap: () {
+                    //     setState(() {
+                    //       sessionEnd = 6;
+                    //     });
+                    //     print(sessionEnd);
+                    //   },
+                    //   child: Container(
+                    //     height: AppDimensions.height10(context) * 15.4,
+                    //     width: AppDimensions.height10(context) * 15.4,
+                    //     margin: EdgeInsets.only(
+                    //         right: AppDimensions.height10(context) * 1.5),
+                    //     decoration: BoxDecoration(
+                    //       shape: BoxShape.circle,
+                    //       border: Border.all(
+                    //           width: AppDimensions.height10(context) * 0.2,
+                    //           color: sessionEnd == 6
+                    //               ? Colors.white
+                    //               : Colors.transparent),
+                    //     ),
+                    //     child: Container(
+                    //       height: AppDimensions.height10(context) * 13.4,
+                    //       width: AppDimensions.height10(context) * 13.4,
+                    //       margin: EdgeInsets.all(
+                    //           AppDimensions.height10(context) * 0.9),
+                    //       alignment: Alignment.center,
+                    //       decoration: BoxDecoration(
+                    //           shape: BoxShape.circle,
+                    //           border: Border.all(width: 1, color: Colors.white),
+                    //           gradient: RadialGradient(
+                    //             //radius: 0.5,
 
-                                colors: [
-                                  const Color(0xFFBDA7C2)
-                                      .withOpacity(0.19), // yellow sun
-                                  const Color(0xFFB38FB4)
-                                      .withOpacity(.81), // blue sky
-                                ],
-                              )),
-                          child: RichText(
-                              textAlign: TextAlign.center,
-                              text: TextSpan(
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                  ),
-                                  children: const [
-                                    TextSpan(
-                                      text: 'Great',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    TextSpan(text: ', in the \nzone')
-                                  ])),
-                        ),
-                      ),
-                    ),
+                    //             colors: [
+                    //               const Color(0xFFBDA7C2)
+                    //                   .withOpacity(0.19), // yellow sun
+                    //               const Color(0xFFB38FB4)
+                    //                   .withOpacity(.81), // blue sky
+                    //             ],
+                    //           )),
+                    //       child: RichText(
+                    //           textAlign: TextAlign.center,
+                    //           text: TextSpan(
+                    //               style: TextStyle(
+                    //                 fontSize:
+                    //                     AppDimensions.height10(context) * 1.6,
+                    //                 fontWeight: FontWeight.w500,
+                    //                 color: Colors.white,
+                    //               ),
+                    //               children: const [
+                    //                 TextSpan(
+                    //                   text: 'Great',
+                    //                   style: TextStyle(
+                    //                       fontWeight: FontWeight.bold),
+                    //                 ),
+                    //                 TextSpan(text: ', in the \nzone')
+                    //               ])),
+                    //     ),
+                    //   ),
+                    // ),
                   ]),
                 ),
               ),

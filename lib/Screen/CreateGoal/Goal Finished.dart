@@ -125,12 +125,14 @@ class _GoalFinishedState extends State<GoalFinished> {
                   ),
                   onPressed: () {
                     if (route == 'view_all_goals') {
-                      Navigator.pushReplacement(context,
-                          FadePageRoute(page: const view_all_goals_menu()));
+                      Navigator.pushReplacement(
+                          context,
+                          FadePageRouteReverse(
+                              page: const view_all_goals_menu()));
                     } else {
                       Navigator.pushReplacement(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                           page: const HomeScreen(
                             login: true,
                           ),

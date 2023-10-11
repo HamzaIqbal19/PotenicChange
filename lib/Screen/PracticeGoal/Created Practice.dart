@@ -5,21 +5,16 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
-import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
-import 'package:potenic_app/Screen/PracticeGoal/Loaders/created_practice_shimmer.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/animatedButton.dart';
-import '../../Widgets/fading2.dart';
-import '../Recording Practice Session/dashboardViewgoals.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -173,12 +168,14 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 ),
                 onPressed: () {
                   if (route == 'view_all_goals') {
-                    Navigator.pushReplacement(context,
-                        FadePageRoute(page: const view_all_goals_menu()));
+                    Navigator.pushReplacement(
+                        context,
+                        FadePageRouteReverse(
+                            page: const view_all_goals_menu()));
                   } else {
                     Navigator.pushReplacement(
                       context,
-                      FadePageRoute(
+                      FadePageRouteReverse(
                         page: const HomeScreen(
                           login: true,
                         ),

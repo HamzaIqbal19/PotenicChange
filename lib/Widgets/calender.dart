@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWithRadioButtons extends StatefulWidget {
   final bool status;
   var dateStatus;
+  final bool limitCalender;
 
   CalendarWithRadioButtons(
-      {super.key, required this.status, required this.dateStatus});
+      {super.key,
+      required this.status,
+      required this.dateStatus,
+      required this.limitCalender});
 
   @override
   State<CalendarWithRadioButtons> createState() =>
@@ -84,6 +87,26 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
       default:
         return null;
     }
+  }
+
+  String getDateAtLastIndex(jsonData) {
+    // Parse the JSON-like data into a Dart map
+    // Map<String, dynamic> data = jsonDecode(jsonData);
+
+    // Retrieve the date at the last index
+    String lastDate = jsonData.keys.last;
+
+    return lastDate;
+  }
+
+  String getDateAtFirstIndex(jsonData) {
+    // Parse the JSON-like data into a Dart map
+    // Map<String, dynamic> data = jsonDecode(jsonData);
+
+    // Retrieve the date at the last index
+    String lastDate = jsonData.keys.first;
+
+    return lastDate;
   }
 
   Widget _buildDayCell(context, DateTime date) {
@@ -171,9 +194,13 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
         child: TableCalendar(
           availableGestures: AvailableGestures.none,
           rowHeight: AppDimensions.height10(context) * 6.2,
-          firstDay: DateTime.utc(2021, 1, 1),
-          lastDay: DateTime.utc(2030, 12, 31),
-          focusedDay: DateTime.now(),
+          firstDay: widget.limitCalender
+              ? DateTime.parse(getDateAtFirstIndex(widget.dateStatus))
+              : DateTime.utc(2023, 1, 1),
+          lastDay: widget.limitCalender
+              ? DateTime.parse(getDateAtLastIndex(widget.dateStatus))
+              : DateTime.utc(2030, 12, 31),
+          focusedDay: DateTime.parse(getDateAtLastIndex(widget.dateStatus)),
           headerStyle: HeaderStyle(
             titleCentered: true,
             leftChevronIcon: const Icon(

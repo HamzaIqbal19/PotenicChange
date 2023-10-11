@@ -126,12 +126,13 @@ class _select_hurdleState extends State<select_hurdle> {
       if (response == true) {
         Navigator.push(
           context,
-          FadePageRoute(page: const landing_hurdles()),
+          FadePageRouteReverse(page: const landing_hurdles()),
         );
 
         return response;
       } else if (response == false) {
-        Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
+        Navigator.push(
+            context, FadePageRouteReverse(page: const hurdles_splash()));
       }
     }).catchError((error) {
       print("Hello world error");
@@ -146,7 +147,7 @@ class _select_hurdleState extends State<select_hurdle> {
             ? Navigator.pop(context)
             : Navigator.pushReplacement(
                 context,
-                FadePageRoute(
+                FadePageRouteReverse(
                     page: const hurdles_goal_impact(
                   summary: false,
                 )));
@@ -165,7 +166,7 @@ class _select_hurdleState extends State<select_hurdle> {
                         onPressed: () {
                           Navigator.pushReplacement(
                               context,
-                              FadePageRoute(
+                              FadePageRouteReverse(
                                   page: const hurdles_goal_impact(
                                 summary: false,
                               )));

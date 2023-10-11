@@ -13,8 +13,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
-import '../community/community.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();

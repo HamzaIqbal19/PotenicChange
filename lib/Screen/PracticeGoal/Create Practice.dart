@@ -2,11 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
-import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
@@ -15,7 +13,6 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shimmer/shimmer.dart';
 
 import '../../API/Practice.dart';
 import '../../Widgets/animatedButton.dart';
@@ -148,16 +145,15 @@ class _CreatePracticeState extends State<CreatePractice> {
       onWillPop: () async {
         if (route == 'view_all_goals') {
           Navigator.pushReplacement(
-              context, FadePageRoute(page: const view_all_goals_menu()));
+              context, FadePageRouteReverse(page: const view_all_goals_menu()));
         } else if (route == 'view_all_goals_2') {
-          Navigator.pushReplacement(
-              context, FadePageRoute(page: const multiple_goal_inactive()));
+          Navigator.pushReplacement(context,
+              FadePageRouteReverse(page: const multiple_goal_inactive()));
         } else {
           Navigator.push(
             context,
-            FadePageRoute3(
-              exitPage: const CreatePractice(),
-              enterPage: const GoalFinished(),
+            FadePageRouteReverse(
+              page: const GoalFinished(),
             ),
           );
         }
@@ -222,12 +218,14 @@ class _CreatePracticeState extends State<CreatePractice> {
                     ),
                     onPressed: () async {
                       if (route == 'view_all_goals') {
-                        Navigator.pushReplacement(context,
-                            FadePageRoute(page: const view_all_goals_menu()));
+                        Navigator.pushReplacement(
+                            context,
+                            FadePageRouteReverse(
+                                page: const view_all_goals_menu()));
                       } else {
                         Navigator.pushReplacement(
                           context,
-                          FadePageRoute(
+                          FadePageRouteReverse(
                             page: const HomeScreen(
                               login: true,
                             ),

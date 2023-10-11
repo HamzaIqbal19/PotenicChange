@@ -9,7 +9,6 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.da
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -127,7 +126,7 @@ class _clocksState extends State<clocks> {
                                     if (behaviour_route == false) {
                                       Navigator.pushReplacement(
                                           context,
-                                          FadePageRoute(
+                                          FadePageRouteReverse(
                                               page: const dashBoard(
                                             saved: false,
                                             helpful_tips: false,
@@ -139,7 +138,7 @@ class _clocksState extends State<clocks> {
                                     } else {
                                       Navigator.push(
                                           context,
-                                          FadePageRoute(
+                                          FadePageRouteReverse(
                                               page: const view_goals(
                                             missed: false,
                                             name: '',

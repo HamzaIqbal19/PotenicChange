@@ -1,10 +1,6 @@
 import 'dart:convert';
-import 'dart:math';
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:potenic_app/API/Apispecs.dart';
-import 'package:potenic_app/Screen/Alerts/message_center.dart';
 
 import 'package:sentry/sentry.dart';
 import 'package:shared_preferences/shared_preferences.dart';

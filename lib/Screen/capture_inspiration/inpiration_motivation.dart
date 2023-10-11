@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../utils/app_dimensions.dart';
-import '../Recording Practice Session/dashboardViewgoals.dart';
 import 'inpiration_landing.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -61,7 +60,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                     onPressed: () async {
                       Navigator.push(
                           context,
-                          FadePageRoute(
+                          FadePageRouteReverse(
                               page: const view_goals(
                             missed: false,
                             name: '',

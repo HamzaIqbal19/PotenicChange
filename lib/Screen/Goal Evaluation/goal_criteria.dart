@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:async';
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
@@ -315,7 +314,7 @@ class _your_whyState extends State<your_why> {
                               onPressed: () {
                                 Navigator.push(
                                     context,
-                                    FadePageRoute(
+                                    FadePageRouteReverse(
                                         page: new_progress_score(
                                       premium: widget.premium,
                                       evaluationIndex: widget.index,
@@ -369,9 +368,10 @@ class _your_whyState extends State<your_why> {
         } else {
           Navigator.push(
               context,
-              FadePageRoute(
+              FadePageRouteReverse(
                   page: new_progress_score(
-                premium: widget.premium, evaluationIndex: widget.index,
+                premium: widget.premium,
+                evaluationIndex: widget.index,
               )));
           selectedItemIndexesOuter!.clear();
         }
@@ -468,9 +468,9 @@ class _your_whyState extends State<your_why> {
                                         onPressed: () {
                                           Navigator.push(
                                               context,
-                                              FadePageRoute(
+                                              FadePageRouteReverse(
                                                   page: new_progress_score(
-                                                    evaluationIndex: widget.index,
+                                                evaluationIndex: widget.index,
                                                 premium: widget.premium,
                                               )));
                                         },
@@ -529,9 +529,9 @@ class _your_whyState extends State<your_why> {
                   } else {
                     Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page: new_progress_score(
-                              evaluationIndex: widget.index,
+                          evaluationIndex: widget.index,
                           premium: widget.premium,
                         )));
                   }
@@ -648,8 +648,7 @@ class _your_whyState extends State<your_why> {
                                         AppDimensions.height10(context) * 0.1,
                                     color: const Color(0xFFFFFFFF)),
                                 shape: BoxShape.circle,
-                                color: goalDetails['goalLevel'] == 0 ||
-                                        goalDetails['goalLevel'] == null
+                                color: totalPoint == '' 
                                     ? Colors.transparent
                                     : const Color(0xFFFFFFFF),
                               ),
@@ -1670,35 +1669,34 @@ class _your_whyState extends State<your_why> {
                                                                   0.29),
                                                         ),
                                                       ),
-                                                      Container(
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            4.2,
-                                                        width: double.infinity,
-                                                        color: const Color(
-                                                            0xFF007AFF),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            for (int i = 0;
-                                                                i <
-                                                                    resetList!
-                                                                        .length;
-                                                                i++) {
-                                                              selectedItemIndexesOuter![
-                                                                      i] =
-                                                                  resetList![i];
-                                                            }
-                                                            // selectedItemIndexesOuter =
-                                                            //     resetList;
-                                                            setState(() {});
-                                                            Navigator.pop(
-                                                                context);
-                                                            print(
-                                                                selectedItemIndexesOuter);
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          for (int i = 0;
+                                                              i <
+                                                                  resetList!
+                                                                      .length;
+                                                              i++) {
+                                                            selectedItemIndexesOuter![
+                                                                    i] =
+                                                                resetList![i];
+                                                          }
+                                                          // selectedItemIndexesOuter =
+                                                          //     resetList;
+                                                          setState(() {});
+                                                          Navigator.pop(
+                                                              context);
 
-                                                            // selectedItemIndexesOuter!.clear();
-                                                          },
+                                                          // selectedItemIndexesOuter!.clear();
+                                                        },
+                                                        child: Container(
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              4.2,
+                                                          width:
+                                                              double.infinity,
+                                                          color: const Color(
+                                                              0xFF007AFF),
                                                           child: Center(
                                                             child: Text(
                                                               'Yes',
@@ -1810,15 +1808,7 @@ class _your_whyState extends State<your_why> {
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
-                                              color:
-                                                  // selectedItemIndexesOuter! !=
-                                                  //         null
-                                                  //     ?
-                                                  const Color(0xFFFA9934)
-
-                                              // : const Color(0xFFFA9934)
-                                              //     .withOpacity(0.5)
-                                              ),
+                                              color: const Color(0xFFFA9934)),
                                         ),
                                       ),
                                     ),
@@ -2024,16 +2014,6 @@ class _your_whyState extends State<your_why> {
                                                                               totalPoint = '${((sum + goalDetails[widget.destination].length) / goalDetails[widget.destination].length).round()}';
                                                                             });
                                                                             startTimer();
-
-                                                                            // Navigator.push(
-                                                                            //     context,
-                                                                            //     FadePageRoute(
-                                                                            //         page: your_why(
-                                                                            //       saved:
-                                                                            //           true,
-                                                                            //       destination:
-                                                                            //           widget.destination,
-                                                                            //     )));
                                                                           }
                                                                         });
                                                                         Navigator.pop(
@@ -2131,10 +2111,7 @@ class _your_whyState extends State<your_why> {
                                               AppDimensions.height10(context) *
                                                   1.0),
                                       decoration: BoxDecoration(
-                                        gradient:
-                                            // selectedItemIndexesOuter! != null
-                                            //     ?
-                                            LinearGradient(
+                                        gradient: LinearGradient(
                                           begin: Alignment.topCenter,
                                           end: Alignment.bottomCenter,
                                           colors: [
@@ -2148,17 +2125,6 @@ class _your_whyState extends State<your_why> {
                                                 : const Color(0xffFDA210),
                                           ],
                                         ),
-                                        // :
-                                        //  LinearGradient(
-                                        //     begin: Alignment.topCenter,
-                                        //     end: Alignment.bottomCenter,
-                                        //     colors: [
-                                        //       const Color(0xffFCC10D)
-                                        //           .withOpacity(0.5),
-                                        //       const Color(0xffFDA210)
-                                        //           .withOpacity(0.5),
-                                        //     ],
-                                        //   ),
                                         borderRadius: BorderRadius.circular(
                                             AppDimensions.height10(context) *
                                                 5.0),
@@ -2172,15 +2138,7 @@ class _your_whyState extends State<your_why> {
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
-                                              color:
-                                                  //  selectedItemIndexesOuter! !=
-                                                  //         null
-                                                  //     ?
-                                                  Colors.white
-
-                                              // : Colors.white
-                                              //     .withOpacity(0.5)
-                                              ),
+                                              color: Colors.white),
                                         ),
                                       ),
                                     ),
@@ -2219,7 +2177,6 @@ class _your_whyState extends State<your_why> {
                                 AppDimensions.height10(context) * 2.0)),
                         color: const Color(0xFFF5F5F5)),
                     child: SizedBox(
-                      // width: AppDimensions.height10(context) * 27.8,
                       height: AppDimensions.height10(context) * 3.4,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -2227,7 +2184,6 @@ class _your_whyState extends State<your_why> {
                           Container(
                             margin: EdgeInsets.only(
                                 right: AppDimensions.height10(context) * 1.0),
-                            // width: AppDimensions.height10(context) * 23.6,
                             child: Text(
                               'Upgrade to score ',
                               style: TextStyle(

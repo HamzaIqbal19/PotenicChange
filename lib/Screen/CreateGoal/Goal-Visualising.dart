@@ -13,14 +13,12 @@ import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
-import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
-import '../../Widgets/fading2.dart';
 import '../ReviewGoal/StarReview.dart';
 
 class Visualising extends StatefulWidget {
@@ -301,15 +299,15 @@ class _VisualisingState extends State<Visualising> {
                     builder: (BuildContext context) => const pop_up_goals())
                 : Navigator.push(
                     context,
-                    FadePageRoute(
+                    FadePageRouteReverse(
                         page: const StarReview(
                       route: 'goal',
                     )))
             : widget.saved
                 ? Navigator.push(
                     context,
-                    FadePageRoute(
-                        page: Goal_Identity(
+                    FadePageRouteReverse(
+                        page: const Goal_Identity(
                       comingFromEditScreen: false,
                       route: '',
                       saved: true,
@@ -350,15 +348,15 @@ class _VisualisingState extends State<Visualising> {
                                     const pop_up_goals())
                             : Navigator.push(
                                 context,
-                                FadePageRoute(
+                                FadePageRouteReverse(
                                     page: const StarReview(
                                   route: 'goal',
                                 )))
                         : widget.saved
                             ? Navigator.push(
                                 context,
-                                FadePageRoute(
-                                    page: Goal_Identity(
+                                FadePageRouteReverse(
+                                    page: const Goal_Identity(
                                   comingFromEditScreen: false,
                                   route: '',
                                   saved: true,
@@ -441,7 +439,7 @@ class _VisualisingState extends State<Visualising> {
 
                                             Navigator.push(
                                               context,
-                                              FadePageRoute(
+                                              FadePageRouteReverse(
                                                 page:
                                                     const HomeScreenProgressSaved(
                                                   login: true,
@@ -481,13 +479,13 @@ class _VisualisingState extends State<Visualising> {
                                             if (route == 'view_all_goals') {
                                               Navigator.pushReplacement(
                                                   context,
-                                                  FadePageRoute(
+                                                  FadePageRouteReverse(
                                                       page:
                                                           const view_all_goals_menu()));
                                             } else {
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute(
+                                                FadePageRouteReverse(
                                                   page: const HomeScreen(
                                                       login: true),
                                                 ),

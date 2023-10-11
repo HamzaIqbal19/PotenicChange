@@ -487,11 +487,22 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        Navigator.push(
-            context,
-            FadePageRoute(
-                page: const goal_menu_inactive(
-                    isActive: false, goal_evaluation: false)));
+        if (totalItemsOn > 0 && !goalDetails['isActive']) {
+          showAnimatedDialog(
+              animationType: DialogTransitionType.fadeScale,
+              curve: Curves.easeInOut,
+              duration: const Duration(seconds: 1),
+              context: context,
+              builder: (BuildContext context) =>
+                  showConfirmationAlert(context));
+        } else {
+          Navigator.push(
+              context,
+              FadePageRouteReverse(
+                  page: const goal_menu_inactive(
+                      isActive: false, goal_evaluation: false)));
+        }
+
         return Future.value(false);
       },
       child: Scaffold(
@@ -502,13 +513,21 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      FadePageRoute(
-                          page: const goal_menu_inactive(
-                        isActive: false,
-                        goal_evaluation: false,
-                      )));
+                  if (totalItemsOn > 0 && goalDetails['isActive'] == false) {
+                    showAnimatedDialog(
+                        animationType: DialogTransitionType.fadeScale,
+                        curve: Curves.easeInOut,
+                        duration: const Duration(seconds: 1),
+                        context: context,
+                        builder: (BuildContext context) =>
+                            showConfirmationAlert(context));
+                  } else {
+                    Navigator.push(
+                        context,
+                        FadePageRouteReverse(
+                            page: const goal_menu_inactive(
+                                isActive: false, goal_evaluation: false)));
+                  }
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
@@ -1117,7 +1136,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 duration: const Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return goalActive(context);
+                                  return goalActive(context,
+                                      subscriptions == 'inactive' ? "3" : "5");
                                 });
                           },
                           FadeFunction: () {
@@ -1754,7 +1774,12 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                   context: context,
                                                   builder:
                                                       (BuildContext context) {
-                                                    return goalActive(context);
+                                                    return goalActive(
+                                                        context,
+                                                        subscriptions ==
+                                                                'inactive'
+                                                            ? "3"
+                                                            : "5");
                                                   });
                                               Timer(const Duration(seconds: 3),
                                                   () {
@@ -1878,7 +1903,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
 //   }
 // }
 
-Widget goalActive(BuildContext context) {
+Widget goalActive(BuildContext context, String goals) {
   return Container(
     width: AppDimensions.height10(context) * 27.0,
     height: AppDimensions.height10(context) * 23.6,
@@ -1912,7 +1937,7 @@ Widget goalActive(BuildContext context) {
             right: AppDimensions.height10(context) * 1.6),
         width: AppDimensions.height10(context) * 23.8,
         child: Text(
-          "You can't start this goal because you\nalready have the maximum  active\ngoals. You must stop one of your active\goals to start a new one.",
+          "You can't start this goal because you already have the maximum of $goals active goals. You must stop one of your active goals to start a new one.",
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: AppDimensions.height10(context) * 1.3,
@@ -2061,6 +2086,127 @@ Widget showDeleteAlert(BuildContext context, id) {
                 },
                 child: Text(
                   'Yes',
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontFamily: "Laila",
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xFF007AFF)),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: AppDimensions.height10(context) * 0.1,
+              child: Divider(
+                color: const Color(0XFF3C3C43).withOpacity(0.29),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+Widget showConfirmationAlert(BuildContext context) {
+  return SizedBox(
+    width: AppDimensions.height10(context) * 27.0,
+    height: AppDimensions.height10(context) * 18.2,
+    child: AlertDialog(
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
+      contentPadding: EdgeInsets.zero,
+      actionsPadding: EdgeInsets.zero,
+      titlePadding: EdgeInsets.zero,
+      title: Container(
+        decoration: BoxDecoration(
+            borderRadius:
+                BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
+        margin: EdgeInsets.only(
+            top: AppDimensions.height10(context) * 1.9,
+            right: AppDimensions.height10(context) * 1.6,
+            left: AppDimensions.height10(context) * 1.6,
+            bottom: AppDimensions.height10(context) * 0.2),
+        height: AppDimensions.height10(context) * 2.2,
+        width: AppDimensions.height10(context) * 23.8,
+        child: Text(
+          "Your goal hasn’t been activated",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: AppDimensions.height10(context) * 1.7,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
+      content: Container(
+        margin: EdgeInsets.only(
+            bottom: AppDimensions.height10(context) * 1.0,
+            left: AppDimensions.height10(context) * 1.6,
+            right: AppDimensions.height10(context) * 1.6),
+        height: AppDimensions.height10(context) * 4.8,
+        width: AppDimensions.height10(context) * 23.8,
+        child: Text(
+          "Please press 'start' button to\nactivate your goal",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: AppDimensions.height10(context) * 1.3,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
+      actions: <Widget>[
+        Column(
+          children: [
+            SizedBox(
+              height: AppDimensions.height10(context) * 0.1,
+              child: Divider(
+                color: const Color(0XFF3C3C43).withOpacity(0.29),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                height: AppDimensions.height10(context) * 4.2,
+                width: double.infinity,
+                color: const Color(0xFF007AFF),
+                child: Center(
+                  child: Text(
+                    'Go back',
+                    style: TextStyle(
+                        color: const Color(0xFFFFFFFF),
+                        fontSize: AppDimensions.height10(context) * 1.7,
+                        fontFamily: "Laila",
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: AppDimensions.height10(context) * 0.1,
+              child: Divider(
+                color: const Color(0XFF3C3C43).withOpacity(0.29),
+              ),
+            ),
+            SizedBox(
+              height: AppDimensions.height10(context) * 4.4,
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      FadePageRouteReverse(
+                          page: const goal_menu_inactive(
+                              isActive: false, goal_evaluation: false)));
+                  AdminGoal().updateUserGoalStatus('inactive').then((response) {
+                    if (response == true) {
+                      print("Goal Inactive");
+                    }
+                  });
+                },
+                child: Text(
+                  'Yes, cancel and exit',
                   style: TextStyle(
                       fontSize: AppDimensions.height10(context) * 1.7,
                       fontFamily: "Laila",

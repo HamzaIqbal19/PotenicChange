@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
-import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -74,11 +74,10 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             ),
             onPressed: () => Navigator.pushReplacement(
               context,
-              FadePageRoute3(
-                enterPage: const HomeScreen(
+              FadePageRouteReverse(
+                page: const HomeScreen(
                   login: false,
                 ),
-                exitPage: LoginPage(),
               ),
             ),
           ),

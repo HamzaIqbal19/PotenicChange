@@ -10,12 +10,14 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/calender.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/circle_dates.dart';
 import '../../utils/app_dimensions.dart';
 
 String activity_duration = 'Past month';
 String _selected_activity = '';
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class practice_progress extends StatefulWidget {
   final int days;
@@ -155,18 +157,19 @@ class _practice_progressState extends State<practice_progress> {
           activity_duration = 'Select Duration';
         });
         if (widget.route == 'pracice_menu_completed') {
-          Navigator.push(context, FadePageRoute(page: const menu_behaviour()));
+          Navigator.push(
+              context, FadePageRouteReverse(page: const menu_behaviour()));
         } else if (widget.route == 'pracice_menu') {
           Navigator.push(
               context,
-              FadePageRoute(
+              FadePageRouteReverse(
                   page: const practiceMenu(
                 goal_eval: false,
               )));
         } else {
           Navigator.push(
               context,
-              FadePageRoute(
+              FadePageRouteReverse(
                   page: const missed_Menu(
                 pracName: '',
               )));
@@ -186,19 +189,19 @@ class _practice_progressState extends State<practice_progress> {
                     activity_duration = 'Select Duration';
                   });
                   if (widget.route == 'pracice_menu_completed') {
-                    Navigator.push(
-                        context, FadePageRoute(page: const menu_behaviour()));
+                    Navigator.push(context,
+                        FadePageRouteReverse(page: const menu_behaviour()));
                   } else if (widget.route == 'pracice_menu') {
                     Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page: const practiceMenu(
                           goal_eval: false,
                         )));
                   } else {
                     Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page: const missed_Menu(
                           pracName: '',
                         )));
@@ -1601,7 +1604,7 @@ class _practice_progressState extends State<practice_progress> {
                                                           // color: Colors.amber,
                                                           child: Center(
                                                             child: Text(
-                                                              '“Good, I liked it”',
+                                                              '“Great, I enjoyed the experience”',
                                                               style: TextStyle(
                                                                   color: const Color(
                                                                       0xFFB695B7),
@@ -1680,117 +1683,6 @@ class _practice_progressState extends State<practice_progress> {
                                             : Container(),
                                     noData
                                         ? Container()
-                                        : report['endRecording'][5]
-                                                    ['AfterTotal'] !=
-                                                '0'
-                                            ? Column(
-                                                children: [
-                                                  Container(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            22.0,
-                                                    margin: EdgeInsets.only(
-                                                        top: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.0),
-                                                    child: Column(
-                                                      children: [
-                                                        SizedBox(
-                                                          width: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              22.0,
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              4.8,
-                                                          // color: Colors.amber,
-                                                          child: Center(
-                                                            child: Text(
-                                                              '“Great, in the\nzone”',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: TextStyle(
-                                                                  color: const Color(
-                                                                      0xFFB695B7),
-                                                                  height: 1.2,
-                                                                  fontSize:
-                                                                      AppDimensions.height10(
-                                                                              context) *
-                                                                          2.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              3.4,
-                                                          margin: EdgeInsets.only(
-                                                              top: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.0),
-                                                          child: Center(
-                                                            child: Text(
-                                                              noData == true
-                                                                  ? '0'
-                                                                  : '${report['endRecording'][5]['AfterTotal']}x',
-                                                              style: TextStyle(
-                                                                  color: const Color(
-                                                                      0xFFB695B7),
-                                                                  height: 1.2,
-                                                                  fontSize:
-                                                                      AppDimensions.height10(
-                                                                              context) *
-                                                                          2.8,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        circlesInRow(
-                                                            context,
-                                                            int.parse(report[
-                                                                    'endRecording']
-                                                                [
-                                                                5]['AfterTotal']))
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            8.4,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.2,
-                                                    color:
-                                                        const Color(0xFF437296),
-                                                    margin: EdgeInsets.only(
-                                                        top: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.7,
-                                                        bottom: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.7),
-                                                  ),
-                                                ],
-                                              )
-                                            : Container(),
-                                    noData
-                                        ? Container()
                                         : report['endRecording'][3]
                                                     ['AfterTotal'] !=
                                                 '0'
@@ -1820,7 +1712,7 @@ class _practice_progressState extends State<practice_progress> {
                                                           // color: Colors.amber,
                                                           child: Center(
                                                             child: Text(
-                                                              '“It was ok”',
+                                                              '“Good, I quite liked it”',
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
@@ -1931,7 +1823,7 @@ class _practice_progressState extends State<practice_progress> {
                                                           // color: Colors.amber,
                                                           child: Center(
                                                             child: Text(
-                                                              '“Had distractions, it\nwas hard to focus”',
+                                                              '“It was ok”',
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
@@ -2042,7 +1934,7 @@ class _practice_progressState extends State<practice_progress> {
                                                           // color: Colors.amber,
                                                           child: Center(
                                                             child: Text(
-                                                              '“Found it difficult”',
+                                                              '“I got distracted, it\nwas hard to focus”',
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
@@ -2119,6 +2011,117 @@ class _practice_progressState extends State<practice_progress> {
                                                                     context) *
                                                             2.7),
                                                   ),
+                                                ],
+                                              )
+                                            : Container(),
+                                    noData
+                                        ? Container()
+                                        : report['endRecording'][0]
+                                                    ['AfterTotal'] !=
+                                                '0'
+                                            ? Column(
+                                                children: [
+                                                  Container(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            22.0,
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0),
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              22.0,
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              4.8,
+                                                          // color: Colors.amber,
+                                                          child: Center(
+                                                            child: Text(
+                                                              '“Not great, haven’t enjoyed it”',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: TextStyle(
+                                                                  color: const Color(
+                                                                      0xFFB695B7),
+                                                                  height: 1.2,
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          2.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              3.4,
+                                                          margin: EdgeInsets.only(
+                                                              top: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.0),
+                                                          child: Center(
+                                                            child: Text(
+                                                              noData == true
+                                                                  ? '0'
+                                                                  : '${report['endRecording'][0]['AfterTotal']}x',
+                                                              style: TextStyle(
+                                                                  color: const Color(
+                                                                      0xFFB695B7),
+                                                                  height: 1.2,
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          2.8,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        circlesInRow(
+                                                            context,
+                                                            int.parse(report[
+                                                                    'endRecording']
+                                                                [
+                                                                0]['AfterTotal']))
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  // Container(
+                                                  //   width:
+                                                  //       AppDimensions.height10(
+                                                  //               context) *
+                                                  //           8.4,
+                                                  //   height:
+                                                  //       AppDimensions.height10(
+                                                  //               context) *
+                                                  //           0.2,
+                                                  //   color:
+                                                  //       const Color(0xFF437296),
+                                                  //   margin: EdgeInsets.only(
+                                                  //       top: AppDimensions
+                                                  //               .height10(
+                                                  //                   context) *
+                                                  //           2.7,
+                                                  //       bottom: AppDimensions
+                                                  //               .height10(
+                                                  //                   context) *
+                                                  //           2.7),
+                                                  // ),
                                                 ],
                                               )
                                             : Container(),
@@ -3079,12 +3082,19 @@ class _practice_progressState extends State<practice_progress> {
                                         AppDimensions.height10(context) * 2.7),
                               ),
                               AnimatedScaleButton(
-                                onTap: () {
+                                onTap: () async {
                                   if (evaluation.length != 0) {
                                     Navigator.push(
                                         context,
                                         FadePageRoute(
-                                            page: const practice_assesment()));
+                                            page: practice_assesment(
+                                          days: widget.days,
+                                          route: widget.route,
+                                        )));
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    await prefs.setString(
+                                        'assesmentRoute', 'practice_progress');
                                   }
                                 },
                                 child: Container(
@@ -3373,7 +3383,7 @@ class _practice_progressState extends State<practice_progress> {
                                             "2023-08-05": "completed",
                                             "2023-08-06": "missed"
                                           }
-                                        : report['practiceProgress']),
+                                        : report['practiceProgress'], limitCalender: false,),
                               )
                             ],
                           ),
@@ -3480,6 +3490,93 @@ class _practice_progressState extends State<practice_progress> {
                 route: widget.route,
               )));
           //getReport();
+        } else if (value == 6) {
+          setState(() {
+            //  Loader = true;
+            days = 180;
+          });
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: practice_progress(
+                days: 180,
+                route: widget.route,
+              )));
+          // getReport();
+        } else if (value == 7) {
+          setState(() {
+            //  Loader = true;
+            days = 274;
+          });
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: practice_progress(
+                days: 274,
+                route: widget.route,
+              )));
+          //  getReport();
+        } else if (value == 8) {
+          setState(() {
+            // Loader = true;
+            days = 365;
+          });
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: practice_progress(
+                days: 365,
+                route: widget.route,
+              )));
+          //  getReport();
+        } else if (value == 9) {
+          setState(() {
+            days = 730;
+          });
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: practice_progress(
+                days: 730,
+                route: widget.route,
+              )));
+          //getReport();
+        } else if (value == 10) {
+          setState(() {
+            days = 1095;
+          });
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: practice_progress(
+                days: 1095,
+                route: widget.route,
+              )));
+          //getReport();
+        } else if (value == 11) {
+          setState(() {
+            days = 1460;
+          });
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: practice_progress(
+                days: 1460,
+                route: widget.route,
+              )));
+          //getReport();
+        } else if (value == 12) {
+          setState(() {
+            days = 1825;
+          });
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: practice_progress(
+                days: 1825,
+                route: widget.route,
+              )));
+          //getReport();
         }
       } else if (value == null) {
         //   setState(() {
@@ -3505,8 +3602,15 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
     'Past week',
     'Past 2 weeks ',
     'Past month ',
-    'Past 2 month ',
-    'Past 3 month ',
+    'Past 2 months',
+    'Past 3 months',
+    'Past 6 months',
+    'Past 9 months',
+    'Past year',
+    'Past 2 years',
+    'Past 3 years',
+    'Past 4 years',
+    'Past 5 years'
   ];
 
   @override

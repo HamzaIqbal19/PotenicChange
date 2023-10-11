@@ -1,16 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
-import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/utils/app_constants.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../API/Goal.dart';
-// import 'package:flutter_ui/pages/goalsetting/bottom_sheet.dart';
-// import 'package:potenic_app/utils/backDecor.dart';
-// import 'package:potenic_app/utils/icons.dart';
 
 class reviewbox extends StatefulWidget {
   const reviewbox({super.key});
@@ -21,8 +13,6 @@ class reviewbox extends StatefulWidget {
 
 class _reviewboxState extends State<reviewbox> {
   bool Loading = true;
-
-  Future<List<String>>? _goalNamesFuture;
 
   var reason;
 

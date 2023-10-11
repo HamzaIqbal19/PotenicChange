@@ -210,19 +210,19 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                       if (route == 'view_all_goals') {
                                         Navigator.pushReplacement(
                                             context,
-                                            FadePageRoute(
+                                            FadePageRouteReverse(
                                                 page:
                                                     const view_all_goals_menu()));
                                       } else if (route == 'view_all_goals_2') {
                                         Navigator.pushReplacement(
                                             context,
-                                            FadePageRoute(
+                                            FadePageRouteReverse(
                                                 page:
                                                     const multiple_goal_inactive()));
                                       } else {
                                         Navigator.pushReplacement(
                                           context,
-                                          FadePageRoute(
+                                          FadePageRouteReverse(
                                             page: const HomeScreen(
                                               login: true,
                                             ),

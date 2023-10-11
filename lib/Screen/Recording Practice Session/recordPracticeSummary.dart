@@ -181,7 +181,7 @@ class _practice_summaryState extends State<practice_summary> {
                 onPressed: () {
                   Navigator.push(
                       context,
-                      FadePageRoute(
+                      FadePageRouteReverse(
                           page: const view_goals(
                         missed: false,
                         name: '',
@@ -267,7 +267,7 @@ class _practice_summaryState extends State<practice_summary> {
                                             if (behaviour_route == false) {
                                               Navigator.pushReplacement(
                                                   context,
-                                                  FadePageRoute(
+                                                  FadePageRouteReverse(
                                                       page: const view_goals(
                                                     missed: false,
                                                     name: '',
@@ -278,7 +278,7 @@ class _practice_summaryState extends State<practice_summary> {
                                             } else {
                                               Navigator.push(
                                                   context,
-                                                  FadePageRoute(
+                                                  FadePageRouteReverse(
                                                       page: const view_goals(
                                                     missed: false,
                                                     name: '',
@@ -1319,7 +1319,7 @@ class _practice_summaryState extends State<practice_summary> {
                                           ),
                                           enterPage: view_goals(
                                             missed: false,
-                                            name: goalName,
+                                            name: pracName,
                                             update: true,
                                             helpfulTips: false,
                                             record: differenceInDays1,

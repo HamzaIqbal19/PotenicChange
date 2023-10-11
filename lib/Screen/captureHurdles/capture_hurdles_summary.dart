@@ -4,12 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Hurdles.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_goal_impact.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_new_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
@@ -129,8 +126,10 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                   ? Center(
                       child: IconButton(
                           onPressed: () {
-                            Navigator.push(context,
-                                FadePageRoute(page: const landing_hurdles()));
+                            Navigator.push(
+                                context,
+                                FadePageRouteReverse(
+                                    page: const landing_hurdles()));
                           },
                           icon: Image.asset(
                             'assets/images/Close.webp',

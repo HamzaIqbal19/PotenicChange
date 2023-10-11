@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/ResetPassword/Verification.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';

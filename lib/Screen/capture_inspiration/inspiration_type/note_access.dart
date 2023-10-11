@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
@@ -101,8 +100,10 @@ class _note_infoState extends State<note_info> {
                           left: AppDimensions.height10(context) * 1.5),
                       child: AnimatedScaleButton(
                         onTap: () async {
-                          Navigator.push(context,
-                              FadePageRoute(page: const inspiration_type()));
+                          Navigator.push(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const inspiration_type()));
                           final SharedPreferences prefs = await _prefs;
                           var remove = prefs.remove('ImageLink');
                         },
@@ -816,8 +817,10 @@ class _noteSavedState extends State<noteSaved> {
                     children: [
                       AnimatedScaleButton(
                         onTap: () async {
-                          Navigator.push(context,
-                              FadePageRoute(page: const inspiration_type()));
+                          Navigator.push(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const inspiration_type()));
                           title.clear();
                           tagList.clear();
                           hastags.clear();

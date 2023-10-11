@@ -707,7 +707,7 @@ class progress_report_unsub extends StatelessWidget {
                               "2023-08-04": "completed",
                               "2023-08-05": "completed",
                               "2023-08-06": "missed"
-                            })),
+                            }, limitCalender: true,)),
                   ],
                 ),
               ),
@@ -1215,6 +1215,7 @@ class progress_report_unsub extends StatelessWidget {
                         feild_text_2: '(',
                         text_color_2: 0xff8EA1B1,
                         feild_text_3: '-',
+                        premium: true,
                         feild_text_4: '/5)',
                       ),
                       GestureDetector(

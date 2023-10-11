@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/Widgets/TermsAndConditionBottomSheet.dart';
-import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';

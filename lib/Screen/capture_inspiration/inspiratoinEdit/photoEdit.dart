@@ -1,12 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
@@ -211,7 +209,7 @@ class _photo_EditState extends State<photo_Edit> {
                       AnimatedScaleButton(
                         onTap: () {
                           Navigator.push(context,
-                              FadePageRoute(page: const record_inspiration()));
+                              FadePageRouteReverse(page: const record_inspiration()));
                           removePrefs();
                           clear();
                         },

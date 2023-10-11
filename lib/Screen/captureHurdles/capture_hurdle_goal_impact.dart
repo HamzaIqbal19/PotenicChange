@@ -1,21 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:math';
 
-import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
 import 'package:potenic_app/API/Goal.dart';
-import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -132,12 +127,13 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
       if (response == true) {
         Navigator.push(
           context,
-          FadePageRoute(page: const landing_hurdles()),
+          FadePageRouteReverse(page: const landing_hurdles()),
         );
 
         return response;
       } else if (response == false) {
-        Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
+        Navigator.push(
+            context, FadePageRouteReverse(page: const hurdles_splash()));
       }
     }).catchError((error) {
       print("Hello world error");

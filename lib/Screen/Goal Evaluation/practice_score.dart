@@ -8,7 +8,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
@@ -23,8 +22,13 @@ import '../../utils/app_dimensions.dart';
 class prac_score extends StatefulWidget {
   final int index;
   final String route;
+  final String secondaryRoute;
 
-  const prac_score({super.key, required this.route, required this.index});
+  const prac_score(
+      {super.key,
+      required this.route,
+      required this.index,
+      required this.secondaryRoute});
   @override
   State<prac_score> createState() => _prac_scoreState();
 }
@@ -284,28 +288,33 @@ class _prac_scoreState extends State<prac_score> {
       onWillPop: () async {
         if (widget.route == 'pracice_menu_completed') {
           Navigator.pushReplacement(
-              context, FadePageRoute(page: const menu_behaviour()));
+              context, FadePageRouteReverse(page: const menu_behaviour()));
         } else if (widget.route == 'pracice_menu') {
           Navigator.pushReplacement(
               context,
-              FadePageRoute(
+              FadePageRouteReverse(
                   page: const practiceMenu(
                 goal_eval: false,
               )));
         } else if (widget.route == 'pracice_menu_missed') {
           Navigator.pushReplacement(
               context,
-              FadePageRoute(
+              FadePageRouteReverse(
                   page: const missed_Menu(
                 pracName: '',
               )));
         } else if (widget.route == 'assesment') {
           Navigator.pushReplacement(
-              context, FadePageRoute(page: const practice_assesment()));
+              context,
+              FadePageRouteReverse(
+                  page: practice_assesment(
+                days: 0,
+                route: widget.secondaryRoute,
+              )));
         } else if (widget.route == 'report') {
           Navigator.pushReplacement(
               context,
-              FadePageRoute(
+              FadePageRouteReverse(
                   page: progress_report(
                 index: widget.index,
               )));
@@ -323,29 +332,34 @@ class _prac_scoreState extends State<prac_score> {
             child: IconButton(
                 onPressed: () {
                   if (widget.route == 'pracice_menu_completed') {
-                    Navigator.pushReplacement(
-                        context, FadePageRoute(page: const menu_behaviour()));
+                    Navigator.pushReplacement(context,
+                        FadePageRouteReverse(page: const menu_behaviour()));
                   } else if (widget.route == 'pracice_menu') {
                     Navigator.pushReplacement(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page: const practiceMenu(
                           goal_eval: false,
                         )));
                   } else if (widget.route == 'pracice_menu_missed') {
                     Navigator.pushReplacement(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page: const missed_Menu(
                           pracName: '',
                         )));
                   } else if (widget.route == 'assesment') {
-                    Navigator.pushReplacement(context,
-                        FadePageRoute(page: const practice_assesment()));
+                    Navigator.pushReplacement(
+                        context,
+                        FadePageRouteReverse(
+                            page: practice_assesment(
+                          days: 0,
+                          route: widget.secondaryRoute,
+                        )));
                   } else if (widget.route == 'report') {
                     Navigator.pushReplacement(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page: progress_report(
                           index: widget.index,
                         )));

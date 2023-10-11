@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Authentication.dart';
-import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/ResetPassword/reset.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -52,6 +51,7 @@ class _VerificationState extends State<Verification> {
     });
   }
 
+  
   void resetControllers(List<TextEditingController> controllers) {
     for (var controller in controllers) {
       controller.text =
@@ -290,6 +290,7 @@ class _VerificationState extends State<Verification> {
                           )
                         ],
                       ),
+                     
                       const SizedBox(
                         height: 24,
                       ),

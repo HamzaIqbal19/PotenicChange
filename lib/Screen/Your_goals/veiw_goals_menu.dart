@@ -1,18 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:potenic_app/API/Goal.dart';
-import 'package:potenic_app/Screen/Alerts/message_center.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 
-import 'package:potenic_app/Screen/Goal%20Evaluation/practice_score.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Menu&settings/settings.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
-import 'package:potenic_app/Screen/Subscription/Subscription.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
@@ -22,7 +17,6 @@ import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
 
-import '../Recording Practice Session/recordPracticeMenu.dart';
 import '../captureHurdles/splash_hurdles.dart';
 import '../capture_inspiration/inpiration_motivation.dart';
 import '../community/community.dart';
@@ -52,7 +46,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
       onWillPop: () {
         Navigator.pushReplacement(
             context,
-            FadePageRoute(
+            FadePageRouteReverse(
               page: const view_goals(
                 missed: false,
                 name: '',
@@ -73,7 +67,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                   onPressed: () {
                     Navigator.pushReplacement(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                           page: const view_goals(
                             missed: false,
                             name: '',

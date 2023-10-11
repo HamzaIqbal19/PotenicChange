@@ -4,8 +4,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:potenic_app/API/Goal.dart';
-import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
@@ -61,7 +59,6 @@ class _PracticeNameState extends State<PracticeName> {
         practiceName.text = response["name"];
 
         // mapItems(schedule, updates);
-
       } else {
         print("response:$response");
       }
@@ -108,7 +105,8 @@ class _PracticeNameState extends State<PracticeName> {
         showContainer = false;
       });
       Timer(const Duration(seconds: 1), () {
-        Navigator.push(context, FadePageRoute(page: const PracticeReview()));
+        Navigator.push(
+            context, FadePageRouteReverse(page: const PracticeReview()));
       });
     });
   }
@@ -157,8 +155,10 @@ class _PracticeNameState extends State<PracticeName> {
                               context: context,
                               builder: (BuildContext context) =>
                                   const pop_up_practices())
-                          : Navigator.push(context,
-                              FadePageRoute(page: const PracticeReview()))
+                          : Navigator.push(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const PracticeReview()))
                       : Navigator.pop(context);
                   // Navigator.pushReplacement(
                   //   context,
@@ -261,20 +261,20 @@ class _PracticeNameState extends State<PracticeName> {
                                               if (route == 'view_all_goals') {
                                                 Navigator.pushReplacement(
                                                     context,
-                                                    FadePageRoute(
+                                                    FadePageRouteReverse(
                                                         page:
                                                             const view_all_goals_menu()));
                                               } else if (route ==
                                                   'view_all_goals_2') {
                                                 Navigator.pushReplacement(
                                                     context,
-                                                    FadePageRoute(
+                                                    FadePageRouteReverse(
                                                         page:
                                                             const multiple_goal_inactive()));
                                               } else {
                                                 Navigator.pushReplacement(
                                                   context,
-                                                  FadePageRoute(
+                                                  FadePageRouteReverse(
                                                     page: const HomeScreen(
                                                       login: true,
                                                     ),
@@ -1009,8 +1009,8 @@ class pop_up_practices extends StatelessWidget {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () async {
-                    Navigator.push(
-                        context, FadePageRoute(page: const PracticeReview()));
+                    Navigator.push(context,
+                        FadePageRouteReverse(page: const PracticeReview()));
                     final SharedPreferences prefs = await _prefs;
                     var review_route =
                         prefs.setString('practice_review', 'practice_edit');

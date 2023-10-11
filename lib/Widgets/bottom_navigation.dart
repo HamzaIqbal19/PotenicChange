@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Hurdles.dart';
@@ -8,11 +7,8 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
-import 'package:potenic_app/Screen/timeline/timeline.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 
-import '../Screen/captureHurdles/captureHurdles_whatHurdles.dart';
-import '../Screen/timeline/coming_soon.dart';
 import '../utils/app_dimensions.dart';
 import 'fading.dart';
 

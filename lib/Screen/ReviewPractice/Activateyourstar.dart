@@ -138,8 +138,8 @@ class _ActivateStarState extends State<ActivateStar> {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomeScreen(
+                  FadePageRouteReverse(
+                    page: const HomeScreen(
                       login: true,
                     ),
                   ),

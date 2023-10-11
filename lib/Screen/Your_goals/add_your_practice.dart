@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
@@ -48,8 +47,10 @@ class _add_your_practiceState extends State<add_your_practice> {
             Center(
               child: IconButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        FadePageRoute(page: const view_all_goals_menu()));
+                    Navigator.push(
+                        context,
+                        FadePageRouteReverse(
+                            page: const view_all_goals_menu()));
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',

@@ -4,7 +4,6 @@ import 'package:potenic_app/Screen/CreateGoal/Goal-Visualising.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
-import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';

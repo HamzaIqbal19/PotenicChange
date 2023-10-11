@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -40,6 +41,8 @@ class _practiceMenuState extends State<practiceMenu> {
   String identity = '';
   String reportDate = '';
   String subscripption = '';
+  String route = '';
+
   var pracDetails;
   bool Loader = true;
   var pracColor;
@@ -167,10 +170,21 @@ class _practiceMenuState extends State<practiceMenu> {
     });
   }
 
+  getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+
+    var menuRoute = prefs.getString('prac_menu_route');
+    setState(() {
+      route = menuRoute!;
+    });
+    print(prefs.getString('prac_menu_route'));
+  }
+
   @override
   initState() {
     super.initState();
     // _fetchGoalNames();
+    getRoute();
     getRecordedDate();
     _fetchPracticeDetails();
     // Initialize AnimationController
@@ -180,18 +194,27 @@ class _practiceMenuState extends State<practiceMenu> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        Navigator.push(
-          context,
-          FadePageRoute(
-            page: view_goals(
-              missed: false,
-              name: '',
-              update: false,
-              helpfulTips: false,
-              record: differenceInDays,
+        if (route != 'goal_menu') {
+          Navigator.push(
+            context,
+            FadePageRouteReverse(
+              page: view_goals(
+                missed: false,
+                name: '',
+                update: false,
+                helpfulTips: false,
+                record: differenceInDays,
+              ),
             ),
-          ),
-        );
+          );
+        } else {
+          Navigator.push(
+              context,
+              FadePageRouteReverse(
+                  page: const goal_menu_inactive(
+                      isActive: false, goal_evaluation: false)));
+        }
+
         return Future.value(false);
       },
       child: Scaffold(
@@ -202,18 +225,26 @@ class _practiceMenuState extends State<practiceMenu> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    FadePageRoute(
-                      page: view_goals(
-                        missed: false,
-                        name: '',
-                        update: false,
-                        helpfulTips: false,
-                        record: differenceInDays,
+                  if (route != 'goal_menu') {
+                    Navigator.push(
+                      context,
+                      FadePageRouteReverse(
+                        page: view_goals(
+                          missed: false,
+                          name: '',
+                          update: false,
+                          helpfulTips: false,
+                          record: differenceInDays,
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  } else {
+                    Navigator.push(
+                        context,
+                        FadePageRouteReverse(
+                            page: const goal_menu_inactive(
+                                isActive: false, goal_evaluation: false)));
+                  }
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
@@ -226,17 +257,26 @@ class _practiceMenuState extends State<practiceMenu> {
             Center(
               child: IconButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      FadePageRoute(
+                    if (route == 'dashboard') {
+                      Navigator.push(
+                        context,
+                        FadePageRouteReverse(
                           page: view_goals(
-                        missed: false,
-                        name: '',
-                        update: false,
-                        helpfulTips: false,
-                        record: differenceInDays,
-                      )),
-                    );
+                            missed: false,
+                            name: '',
+                            update: false,
+                            helpfulTips: false,
+                            record: differenceInDays,
+                          ),
+                        ),
+                      );
+                    } else {
+                      Navigator.push(
+                          context,
+                          FadePageRouteReverse(
+                              page: const goal_menu_inactive(
+                                  isActive: false, goal_evaluation: false)));
+                    }
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
@@ -610,8 +650,10 @@ class _practiceMenuState extends State<practiceMenu> {
                                                     : AppDimensions.height10(
                                                             context) *
                                                         0.8),
-                                            child: RichText(
-                                                text: TextSpan(
+                                            child: pracDetails['activeDays'] ==
+                                                    20
+                                                ? Text(
+                                                    'You can now evaluate your progress',
                                                     style: TextStyle(
                                                         fontFamily: 'laila',
                                                         height: AppDimensions
@@ -626,18 +668,37 @@ class _practiceMenuState extends State<practiceMenu> {
                                                             FontWeight.w400,
                                                         color: const Color(
                                                             0xfff5f5f5)),
-                                                    children: [
-                                                  TextSpan(
-                                                      text: widget.goal_eval
-                                                          ? 'Next assessment is in '
-                                                          : 'You can evaluate your progress in '),
-                                                  TextSpan(
-                                                      text:
-                                                          '${pracDetails['activeDays'] - 20} active days.',
-                                                      style: const TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w700))
-                                                ])),
+                                                  )
+                                                : RichText(
+                                                    text: TextSpan(
+                                                        style: TextStyle(
+                                                            fontFamily: 'laila',
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.15,
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.4,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: const Color(
+                                                                0xfff5f5f5)),
+                                                        children: [
+                                                        TextSpan(
+                                                            text: widget
+                                                                    .goal_eval
+                                                                ? 'Next assessment is in '
+                                                                : 'You can evaluate your progress in '),
+                                                        TextSpan(
+                                                            text:
+                                                                '${pracDetails['activeDays'] - 20} active days.',
+                                                            style: const TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700))
+                                                      ])),
                                           )
                                         ]),
                                       ),
@@ -692,6 +753,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                     ? true
                                                     : false,
                                                 text_color: 0xff646464,
+                                                premium: true,
                                                 feild_text_2: reportDate != ''
                                                     ? '   ${formatDate(reportDate)}'
                                                     : '',
@@ -710,6 +772,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                     FadePageRoute(
                                                         page: const prac_score(
                                                       route: 'pracice_menu',
+                                                      secondaryRoute: '',
                                                       index: 0,
                                                     )));
                                               } else {
@@ -727,6 +790,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                               text_color: 0xff646464,
                                               feild_text_2: '(',
                                               text_color_2: 0xff8EA1B1,
+                                              premium: true,
                                               feild_text_3: pracDetails[
                                                               'practiceLevel'] ==
                                                           null ||
@@ -791,6 +855,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                     text_color_2: 0xff8EA1B1,
                                     feild_text_4: '',
                                     feild_text_3: '',
+                                    premium: true,
                                   ),
                                 ),
                                 Container(
@@ -818,6 +883,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                       text_color_2: 0xffEA1B1,
                                       feild_text_3: '',
                                       feild_text_4: '',
+                                      premium: true,
                                     ),
                                   ),
                                 ),
@@ -827,25 +893,34 @@ class _practiceMenuState extends State<practiceMenu> {
                                           1.0),
                                   child: AnimatedScaleButton(
                                     onTap: () {},
-                                    child: const button_feilds(
+                                    child: button_feilds(
                                       feild_text: 'View upcoming schedules',
                                       icon_viible: true,
                                       text_color: 0xff646464,
+                                      premium: subscripption == 'active',
                                       feild_text_2: '',
                                       text_color_2: 0xffEA1B1,
-                                      feild_text_3: '',
+                                      feild_text_3: subscripption == 'active'
+                                          ? ''
+                                          : ' (Premium)',
                                       feild_text_4: '',
                                     ),
                                   ),
                                 ),
                                 AnimatedScaleButton(
-                                  onTap: () {
+                                  onTap: () async {
                                     if (pracDetails['report'] == true) {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page:
-                                                  const practice_assesment()));
+                                              page: const practice_assesment(
+                                            days: 0,
+                                            route: '',
+                                          )));
+                                      final SharedPreferences prefs =
+                                          await _prefs;
+                                      await prefs.setString(
+                                          'assesmentRoute', 'practice_menu');
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
@@ -861,6 +936,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                     text_color_2: 0xffEA1B1,
                                     feild_text_3: '',
                                     feild_text_4: '',
+                                    premium: true,
                                   ),
                                 )
                               ],

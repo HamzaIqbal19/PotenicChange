@@ -21,7 +21,6 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import '../Dashboard Behaviour/dashboard_view_goals.dart';
-import '../Recording Practice Session/dashboardViewgoals.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -177,7 +176,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
       onWillPop: () async {
         Navigator.push(
             context,
-            FadePageRoute(
+            FadePageRouteReverse(
                 page: const view_goals(
               missed: false,
               name: '',
@@ -207,7 +206,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                   onPressed: () async {
                     Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page: const view_goals(
                           missed: false,
                           name: '',
@@ -1248,12 +1247,13 @@ class _hurdle_menuState extends State<hurdle_menu> {
       if (response == true) {
         Navigator.push(
           context,
-          FadePageRoute(page: const landing_hurdles()),
+          FadePageRouteReverse(page: const landing_hurdles()),
         );
 
         return response;
       } else if (response == false) {
-        Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
+        Navigator.push(
+            context, FadePageRouteReverse(page: const hurdles_splash()));
       }
     }).catchError((error) {
       print("Hello world error");

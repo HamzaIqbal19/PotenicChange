@@ -6,16 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/AllGoals.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalCategory.dart';
-import 'package:potenic_app/Screen/CreateGoal/random_circle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:shimmer/shimmer.dart';
 
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import 'Loaders/categories_shimmer.dart';
 

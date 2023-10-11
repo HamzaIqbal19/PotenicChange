@@ -5,7 +5,6 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
-import 'package:potenic_app/utils/app_constants.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -30,7 +29,7 @@ class _StartProcessState extends State<StartProcess> {
         onWillPop: () async {
           Navigator.push(
             context,
-            FadePageRoute(
+            FadePageRouteReverse(
               page: const HomeScreen(
                 login: true,
               ),
@@ -62,11 +61,10 @@ class _StartProcessState extends State<StartProcess> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      FadePageRoute3(
-                        enterPage: const HomeScreen(
+                      FadePageRouteReverse(
+                        page: const HomeScreen(
                           login: true,
                         ),
-                        exitPage: const StartProcess(),
                       ),
                     );
                     // Add code for performing close action

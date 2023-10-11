@@ -9,6 +9,7 @@ class button_feilds extends StatelessWidget {
   final bool icon_viible;
   final int text_color;
   final int text_color_2;
+  final bool premium;
   const button_feilds(
       {super.key,
       required this.feild_text,
@@ -17,7 +18,8 @@ class button_feilds extends StatelessWidget {
       required this.feild_text_2,
       required this.text_color_2,
       required this.feild_text_3,
-      required this.feild_text_4});
+      required this.feild_text_4,
+      required this.premium});
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +32,15 @@ class button_feilds extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius:
               BorderRadius.circular(AppDimensions.height10(context) * 2.0),
-          color: Colors.white),
+          color: premium ? Colors.white : Colors.white.withOpacity(0.5)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: AppDimensions.height10(context) * 23.9,
+            width: AppDimensions.height10(context) * 29.9,
             height: AppDimensions.height10(context) * 2.2,
             margin:
-                EdgeInsets.only(left: AppDimensions.height10(context) * 1.99),
+                EdgeInsets.only(left: AppDimensions.height10(context) * 0.99),
             child: Align(
               alignment: Alignment.centerLeft,
               child: RichText(

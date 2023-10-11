@@ -2,13 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_goal_impact.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_statement.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -47,7 +45,7 @@ class hurdles_splashState extends State<hurdles_splash> {
       onWillPop: () async {
         Navigator.push(
             context,
-            FadePageRoute(
+            FadePageRouteReverse(
                 page: const view_goals(
               missed: false,
               name: '',
@@ -78,7 +76,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                     onPressed: () async {
                       Navigator.push(
                           context,
-                          FadePageRoute(
+                          FadePageRouteReverse(
                               page: const view_goals(
                             missed: false,
                             name: '',

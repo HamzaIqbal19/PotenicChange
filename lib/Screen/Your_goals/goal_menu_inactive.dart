@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
@@ -51,7 +50,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
     "I'm making small steps\nforward",
     "I’m making considerable steps forward",
     "I’m almost there",
-    "I’m definitely living my why"
+    "I’m continuously living my why"
   ];
 
   Future<Timer> loadData() async {
@@ -181,7 +180,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
         if (route != 'your_goal') {
           Navigator.push(
               context,
-              FadePageRoute(
+              FadePageRouteReverse(
                   page: const view_goals(
                 missed: false,
                 name: '',
@@ -191,7 +190,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
               )));
         } else {
           Navigator.push(
-              context, FadePageRoute(page: const view_all_goals_menu()));
+              context, FadePageRouteReverse(page: const view_all_goals_menu()));
         }
 
         return Future.value(true);
@@ -207,8 +206,23 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
               Center(
                 child: IconButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          FadePageRoute(page: const view_all_goals_menu()));
+                      if (route != 'your_goal') {
+                        Navigator.push(
+                            context,
+                            FadePageRouteReverse(
+                                page: const view_goals(
+                              missed: false,
+                              name: '',
+                              update: false,
+                              helpfulTips: false,
+                              record: 0,
+                            )));
+                      } else {
+                        Navigator.push(
+                            context,
+                            FadePageRouteReverse(
+                                page: const view_all_goals_menu()));
+                      }
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
@@ -883,6 +897,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             await _prefs;
                                         var prac_id = prefs.setInt('prac_num',
                                             activePractices[index]['id']);
+                                             await prefs.setString('prac_menu_route', 'goal_menu');
                                       },
                                       child: Container(
                                         width: AppDimensions.height10(context) *

@@ -109,13 +109,14 @@ class _StarReviewState extends State<StarReview> {
 
         if (route == 'view_all_goals') {
           Navigator.pushReplacement(
-              context, FadePageRoute(page: const view_all_goals_menu()));
+              context, FadePageRouteReverse(page: const view_all_goals_menu()));
         } else if (widget.route == 'goal') {
-          Navigator.push(context, FadePageRoute(page: const GoalFinished()));
+          Navigator.push(
+              context, FadePageRouteReverse(page: const GoalFinished()));
         } else if (widget.route == 'menu') {
           Navigator.push(
               context,
-              FadePageRoute(
+              FadePageRouteReverse(
                   page: const goal_menu_inactive(
                 goal_evaluation: true,
                 isActive: true,
@@ -123,37 +124,24 @@ class _StarReviewState extends State<StarReview> {
         } else if (widget.route == 'goal_menu') {
           Navigator.push(
               context,
-              FadePageRoute3(
-                  exitPage: StarReview(
-                    route: widget.route,
-                  ),
-                  enterPage: const goal_menu_inactive(
-                    goal_evaluation: false,
-                    isActive: false,
-                  )));
+              FadePageRouteReverse(
+                  page: const goal_menu_inactive(
+                goal_evaluation: false,
+                isActive: false,
+              )));
         } else if (widget.route == '') {
           Navigator.push(
-              context,
-              FadePageRoute3(
-                  exitPage: StarReview(
-                    route: widget.route,
-                  ),
-                  enterPage: const GoalFinished()));
+              context, FadePageRouteReverse(page: const GoalFinished()));
         } else if (widget.route == 'add_your_practice') {
           Navigator.push(
               context,
-              FadePageRoute(
+              FadePageRouteReverse(
                   page: add_your_practice(
                 goalName: goalName,
               )));
         } else {
           Navigator.push(
-              context,
-              FadePageRoute3(
-                  exitPage: StarReview(
-                    route: widget.route,
-                  ),
-                  enterPage: const PracticeFinished()));
+              context, FadePageRouteReverse(page: const PracticeFinished()));
         }
         final SharedPreferences prefs = await _prefs;
 
@@ -180,12 +168,12 @@ class _StarReviewState extends State<StarReview> {
                     ),
                     onPressed: () {
                       if (widget.route == 'goal') {
-                        Navigator.push(
-                            context, FadePageRoute(page: const GoalFinished()));
+                        Navigator.push(context,
+                            FadePageRouteReverse(page: const GoalFinished()));
                       } else if (widget.route == 'menu') {
                         Navigator.push(
                             context,
-                            FadePageRoute(
+                            FadePageRouteReverse(
                                 page: const goal_menu_inactive(
                               goal_evaluation: true,
                               isActive: true,
@@ -193,37 +181,26 @@ class _StarReviewState extends State<StarReview> {
                       } else if (widget.route == 'goal_menu') {
                         Navigator.push(
                             context,
-                            FadePageRoute3(
-                                exitPage: StarReview(
-                                  route: widget.route,
-                                ),
-                                enterPage: const goal_menu_inactive(
-                                  goal_evaluation: false,
-                                  isActive: false,
-                                )));
+                            FadePageRouteReverse(
+                                page: const goal_menu_inactive(
+                              goal_evaluation: false,
+                              isActive: false,
+                            )));
                       } else if (widget.route == 'add_your_practice') {
                         Navigator.push(
                             context,
-                            FadePageRoute(
+                            FadePageRouteReverse(
                                 page: add_your_practice(
                               goalName: goalName,
                             )));
                       } else if (widget.route == '') {
-                        Navigator.push(
-                            context,
-                            FadePageRoute3(
-                                exitPage: StarReview(
-                                  route: widget.route,
-                                ),
-                                enterPage: const GoalFinished()));
+                        Navigator.push(context,
+                            FadePageRouteReverse(page: const GoalFinished()));
                       } else {
                         Navigator.push(
                             context,
-                            FadePageRoute3(
-                                exitPage: StarReview(
-                                  route: widget.route,
-                                ),
-                                enterPage: const PracticeFinished()));
+                            FadePageRouteReverse(
+                                page: const PracticeFinished()));
                       }
 
                       //Navigator.pop(context);

@@ -1,10 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';

@@ -7,13 +7,10 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 // import 'package:go_eventio/pages/authentication/sign_in_page.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding_model.dart';
-import 'package:potenic_app/Screen/splash/splash_page.dart';
-import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Widgets/fading3.dart';
 
 class OnboardingPage extends StatefulWidget {
   final List<OnboardingModel> pages;

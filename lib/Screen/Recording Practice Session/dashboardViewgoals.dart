@@ -15,7 +15,6 @@ import 'package:potenic_app/Widgets/fading.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
 import 'package:intl/intl.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:potenic_app/Screen/Alerts/message_center.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
@@ -26,7 +25,6 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Practice.dart';
-import '../../Widgets/custom_tool_tip.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 

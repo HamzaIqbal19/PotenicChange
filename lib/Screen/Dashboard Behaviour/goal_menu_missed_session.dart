@@ -144,7 +144,7 @@ class _missed_MenuState extends State<missed_Menu> {
       onWillPop: () {
         Navigator.push(
           context,
-          FadePageRoute(
+          FadePageRouteReverse(
             page: view_goals(
               missed: false,
               name: '',
@@ -177,7 +177,7 @@ class _missed_MenuState extends State<missed_Menu> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                           page: view_goals(
                             missed: false,
                             name: '',
@@ -516,32 +516,51 @@ class _missed_MenuState extends State<missed_Menu> {
                                             top: AppDimensions.height10(
                                                     context) *
                                                 0.3),
-                                        child: RichText(
-                                            text: TextSpan(
+                                        child: pracDetails['activeDays'] == 20
+                                            ? Text(
+                                                'You can now evaluate your progress',
                                                 style: TextStyle(
                                                     fontFamily: 'laila',
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.15,
                                                     fontSize:
                                                         AppDimensions.height10(
                                                                 context) *
                                                             1.4,
                                                     fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.15,
                                                     color: const Color(
                                                         0xfff5f5f5)),
-                                                children: [
-                                              const TextSpan(
-                                                  text:
-                                                      'Next assessment is in '),
-                                              TextSpan(
-                                                  text:
-                                                      '${pracDetails['activeDays'] - 20} active days.',
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w700))
-                                            ])),
+                                              )
+                                            : RichText(
+                                                text: TextSpan(
+                                                    style: TextStyle(
+                                                        fontFamily: 'laila',
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.4,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            0.15,
+                                                        color: const Color(
+                                                            0xfff5f5f5)),
+                                                    children: [
+                                                    const TextSpan(
+                                                        text:
+                                                            'Next assessment is in '),
+                                                    TextSpan(
+                                                        text:
+                                                            '${pracDetails['activeDays'] - 20} active days.',
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700))
+                                                  ])),
                                       )
                                     ]),
                                   ),
@@ -596,6 +615,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                                 ? '   ${formatDate(reportDate)}'
                                                 : '',
                                             text_color_2: 0xff8EA1B1,
+                                            premium: true,
                                             feild_text_3: '',
                                             feild_text_4: '',
                                           ),
@@ -609,6 +629,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                                 FadePageRoute(
                                                     page: const prac_score(
                                                   route: 'pracice_menu_missed',
+                                                  secondaryRoute: '',
                                                   index: 0,
                                                 )));
                                           } else {
@@ -624,6 +645,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                           text_color: 0xff646464,
                                           feild_text_2: '(',
                                           text_color_2: 0xff8EA1B1,
+                                          premium: true,
                                           feild_text_3: pracDetails[
                                                           'practiceLevel'] ==
                                                       null ||
@@ -686,6 +708,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                 text_color: 0xff646464,
                                 feild_text_2: '',
                                 text_color_2: 0xff8EA1B1,
+                                premium: true,
                                 feild_text_3: '',
                                 feild_text_4: '',
                               ),
@@ -710,6 +733,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                   text_color: 0xff646464,
                                   feild_text_2: '',
                                   text_color_2: 0xffEA1B1,
+                                  premium: true,
                                   feild_text_3: '',
                                   feild_text_4: '',
                                 ),
@@ -721,10 +745,11 @@ class _missed_MenuState extends State<missed_Menu> {
                                       AppDimensions.height10(context) * 1.0),
                               child: AnimatedScaleButton(
                                 onTap: () {},
-                                child: const button_feilds(
+                                child: button_feilds(
                                   feild_text: 'View upcoming schedules',
                                   icon_viible: true,
                                   text_color: 0xff646464,
+                                  premium: subscripption == 'active',
                                   feild_text_2: '',
                                   text_color_2: 0xffEA1B1,
                                   feild_text_3: '',
@@ -733,12 +758,18 @@ class _missed_MenuState extends State<missed_Menu> {
                               ),
                             ),
                             AnimatedScaleButton(
-                              onTap: () {
+                              onTap: () async {
                                 if (pracDetails['report'] == true) {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const practice_assesment()));
+                                          page: const practice_assesment(
+                                        days: 0,
+                                        route: '',
+                                      )));
+                                  final SharedPreferences prefs = await _prefs;
+                                  await prefs.setString(
+                                      'assesmentRoute', 'practice_menu_missed');
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
@@ -752,6 +783,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                 text_color: 0xff646464,
                                 feild_text_2: '',
                                 text_color_2: 0xffEA1B1,
+                                premium: true,
                                 feild_text_3: '',
                                 feild_text_4: '',
                               ),

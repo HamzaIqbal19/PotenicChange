@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
@@ -14,10 +12,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
-import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 
@@ -146,7 +141,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
         showContainer = false;
       });
       Timer(const Duration(seconds: 1), () {
-        Navigator.push(context, FadePageRoute(page: const PracticeReview()));
+        Navigator.push(
+            context, FadePageRouteReverse(page: const PracticeReview()));
       });
     });
   }
@@ -298,20 +294,20 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                               if (route == 'view_all_goals') {
                                                 Navigator.pushReplacement(
                                                     context,
-                                                    FadePageRoute(
+                                                    FadePageRouteReverse(
                                                         page:
                                                             const view_all_goals_menu()));
                                               } else if (route ==
                                                   'view_all_goals_2') {
                                                 Navigator.pushReplacement(
                                                     context,
-                                                    FadePageRoute(
+                                                    FadePageRouteReverse(
                                                         page:
                                                             const multiple_goal_inactive()));
                                               } else {
                                                 Navigator.pushReplacement(
                                                   context,
-                                                  FadePageRoute(
+                                                  FadePageRouteReverse(
                                                     page: const HomeScreen(
                                                       login: true,
                                                     ),

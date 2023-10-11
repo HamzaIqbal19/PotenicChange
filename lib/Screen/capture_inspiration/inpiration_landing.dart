@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -7,17 +6,13 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Screen/capture_inspiration/record_inpiration_type.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../../utils/app_dimensions.dart';
-import '../Recording Practice Session/dashboardViewgoals.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'inpiration_veiw_detail.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -206,7 +201,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     onPressed: () async {
                       Navigator.push(
                           context,
-                          FadePageRoute(
+                          FadePageRouteReverse(
                               page: const view_goals(
                             missed: false,
                             name: '',

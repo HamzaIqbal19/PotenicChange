@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
-import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 
@@ -16,7 +15,7 @@ class Acc_deleted extends StatelessWidget {
       onWillPop: () {
         Navigator.push(
             context,
-            FadePageRoute(
+            FadePageRouteReverse(
                 page: const HomeScreen(
               login: false,
             )));
@@ -35,7 +34,7 @@ class Acc_deleted extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                           context,
-                          FadePageRoute(
+                          FadePageRouteReverse(
                               page: const HomeScreen(
                             login: false,
                           )));

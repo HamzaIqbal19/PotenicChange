@@ -8,7 +8,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Screen/capture_inspiration/record_inpiration_type.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -221,8 +220,10 @@ class video_EditState extends State<videoEdit> {
                     children: [
                       AnimatedScaleButton(
                         onTap: () {
-                          Navigator.push(context,
-                              FadePageRoute(page: const record_inspiration()));
+                          Navigator.push(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const record_inspiration()));
                           removePrefs();
                           clear();
                         },

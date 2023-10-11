@@ -4,14 +4,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
 import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_statement.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -189,12 +187,13 @@ class _felling_hurdlesState extends State<felling_hurdles> {
       if (response == true) {
         Navigator.push(
           context,
-          FadePageRoute(page: const landing_hurdles()),
+          FadePageRouteReverse(page: const landing_hurdles()),
         );
 
         return response;
       } else if (response == false) {
-        Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
+        Navigator.push(
+            context, FadePageRouteReverse(page: const hurdles_splash()));
       }
     }).catchError((error) {});
   }
@@ -208,7 +207,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
             ? Navigator.pop(context)
             : Navigator.pushReplacement(
                 context,
-                FadePageRoute(
+                FadePageRouteReverse(
                     page: const hurdle_statement(
                   update: false,
                 )));
@@ -227,7 +226,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                         onPressed: () {
                           Navigator.pushReplacement(
                               context,
-                              FadePageRoute(
+                              FadePageRouteReverse(
                                   page: const hurdle_statement(
                                 update: false,
                               )));

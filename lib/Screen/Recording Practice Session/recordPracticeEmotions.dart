@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeStopwatch.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -182,7 +178,7 @@ class _emotionsState extends State<emotions> {
                                               if (widget.summary == false) {
                                                 Navigator.pushReplacement(
                                                     context,
-                                                    FadePageRoute(
+                                                    FadePageRouteReverse(
                                                       page: const dashBoard(
                                                         saved: false,
                                                         helpful_tips: false,
@@ -196,7 +192,7 @@ class _emotionsState extends State<emotions> {
                                             } else {
                                               Navigator.push(
                                                   context,
-                                                  FadePageRoute(
+                                                  FadePageRouteReverse(
                                                       page: const view_goals(
                                                     missed: false,
                                                     name: '',

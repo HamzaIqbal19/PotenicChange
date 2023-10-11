@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Hurdles.dart';
-import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
@@ -57,12 +55,13 @@ class _hurdle_statementState extends State<hurdle_statement> {
       if (response == true) {
         Navigator.push(
           context,
-          FadePageRoute(page: const landing_hurdles()),
+          FadePageRouteReverse(page: const landing_hurdles()),
         );
 
         return response;
       } else if (response == false) {
-        Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
+        Navigator.push(
+            context, FadePageRouteReverse(page: const hurdles_splash()));
       }
     }).catchError((error) {
       print("Hello world error");
@@ -122,7 +121,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
             ? Navigator.pop(context)
             : Navigator.pushReplacement(
                 context,
-                FadePageRoute(
+                FadePageRouteReverse(
                     page: const hurdle_name(
                   update: false,
                 )));
@@ -141,7 +140,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                         onPressed: () {
                           Navigator.pushReplacement(
                               context,
-                              FadePageRoute(
+                              FadePageRouteReverse(
                                   page: const hurdle_name(
                                 update: false,
                               )));

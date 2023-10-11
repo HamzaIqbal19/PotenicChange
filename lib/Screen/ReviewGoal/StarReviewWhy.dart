@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/back_cont.dart';
-import 'package:potenic_app/Widgets/review_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 

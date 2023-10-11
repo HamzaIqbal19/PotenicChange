@@ -1,15 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
-import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
-import 'package:potenic_app/utils/app_colors.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
@@ -39,7 +35,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
         onWillPop: () async {
           Navigator.push(
             context,
-            FadePageRoute(
+            FadePageRouteReverse(
               page: Loginemailandpassword(),
             ),
           );
@@ -68,7 +64,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                           page: LoginPage(),
                         ),
                       );

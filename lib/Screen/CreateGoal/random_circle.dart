@@ -5,9 +5,7 @@ import 'package:potenic_app/Screen/CreateGoal/GoalCategory.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 
 import '../../Widgets/fading.dart';
-import '../../Widgets/fading2.dart';
 import '../../utils/app_dimensions.dart';
-import 'Categories.dart';
 //import 'package:r_dart_library/asset_svg.dart';
 
 class RandomCircles extends StatefulWidget {

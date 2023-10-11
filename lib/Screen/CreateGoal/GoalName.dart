@@ -2,23 +2,17 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:get/get.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/GoalModel.dart';
-import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
-import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
-import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/animatedButton.dart';
-import '../../Widgets/fading2.dart';
 import '../ReviewGoal/StarReview.dart';
 
 class GoalName extends StatefulWidget {
@@ -216,17 +210,17 @@ class _GoalNameState extends State<GoalName> {
                     builder: (BuildContext context) => const pop_up_goals())
                 : Navigator.push(
                     context,
-                    FadePageRoute(
+                    FadePageRouteReverse(
                         page: StarReview(
                       route: widget.route,
                     )))
             : widget.route == 'saved_why'
-                ? Navigator.pushReplacement(
-                    context, FadePageRoute(page: const HomeScreen(login: true)))
+                ? Navigator.pushReplacement(context,
+                    FadePageRouteReverse(page: const HomeScreen(login: true)))
                 : widget.saved
                     ? Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page: StarReview(
                           route: widget.route,
                         )))
@@ -266,14 +260,14 @@ class _GoalNameState extends State<GoalName> {
                                     const pop_up_goals())
                             : Navigator.push(
                                 context,
-                                FadePageRoute(
+                                FadePageRouteReverse(
                                     page: StarReview(
                                   route: widget.route,
                                 )))
                         : widget.route == 'saved_why'
                             ? Navigator.pushReplacement(
                                 context,
-                                FadePageRoute(
+                                FadePageRouteReverse(
                                     page: const HomeScreen(login: true)))
                             : Navigator.pop(context);
                     // Add code for performing close action
@@ -354,7 +348,7 @@ class _GoalNameState extends State<GoalName> {
                                             );
                                             Navigator.push(
                                               context,
-                                              FadePageRoute(
+                                              FadePageRouteReverse(
                                                 page:
                                                     const HomeScreenProgressSaved(
                                                   login: true,
@@ -394,13 +388,13 @@ class _GoalNameState extends State<GoalName> {
                                             if (route == 'view_all_goals') {
                                               Navigator.pushReplacement(
                                                   context,
-                                                  FadePageRoute(
+                                                  FadePageRouteReverse(
                                                       page:
                                                           const view_all_goals_menu()));
                                             } else {
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute(
+                                                FadePageRouteReverse(
                                                   page: const HomeScreen(
                                                       login: true),
                                                 ),

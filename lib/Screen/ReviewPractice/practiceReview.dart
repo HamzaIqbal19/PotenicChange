@@ -12,13 +12,10 @@ import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Routine%20Edit/routine_edit.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
-import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
-import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/Widgets/fading3.dart';
 
 import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -187,7 +184,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                 if (route == 'practice_menu') {
                   Navigator.pushReplacement(
                     context,
-                    FadePageRoute(
+                    FadePageRouteReverse(
                       page: const practiceMenu(
                         goal_eval: false,
                       ),
@@ -196,7 +193,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                 } else if (route == 'practice_missed') {
                   Navigator.pushReplacement(
                     context,
-                    FadePageRoute(
+                    FadePageRouteReverse(
                       page: missed_Menu(
                         pracName: pracName,
                       ),
@@ -205,7 +202,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                 } else if (route == 'goal_menu') {
                   Navigator.pushReplacement(
                     context,
-                    FadePageRoute(
+                    FadePageRouteReverse(
                       page: const goal_menu_inactive(
                         goal_evaluation: false,
                         isActive: false,
@@ -215,14 +212,14 @@ class _PracticeReviewState extends State<PracticeReview> {
                 } else if (route == 'practice_completed') {
                   Navigator.pushReplacement(
                     context,
-                    FadePageRoute(
+                    FadePageRouteReverse(
                       page: const menu_behaviour(),
                     ),
                   );
                 } else if (route == 'record_session') {
                   Navigator.pushReplacement(
                     context,
-                    FadePageRoute(
+                    FadePageRouteReverse(
                       page: const record_session(
                         past_session: false,
                       ),
@@ -231,7 +228,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                 } else {
                   Navigator.push(
                     context,
-                    FadePageRoute(
+                    FadePageRouteReverse(
                       page: const PracticeFinished(),
                     ),
                   );

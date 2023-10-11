@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -69,7 +68,7 @@ class _record_inspirationState extends State<record_inspiration> {
       onWillPop: () {
         Navigator.push(
             context,
-            FadePageRoute(
+            FadePageRouteReverse(
                 page: const inspiration_landing(
               is_Updated: false,
             )));
@@ -86,7 +85,7 @@ class _record_inspirationState extends State<record_inspiration> {
                   onPressed: () {
                     Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                             page:
                                 const inspiration_landing(is_Updated: false)));
                   },

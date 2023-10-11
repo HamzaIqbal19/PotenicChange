@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';

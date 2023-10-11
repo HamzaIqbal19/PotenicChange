@@ -145,7 +145,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
         print('Difference $differenceInDays');
         Navigator.push(
           context,
-          FadePageRoute(
+          FadePageRouteReverse(
             page: view_goals(
               missed: false,
               name: '',
@@ -178,7 +178,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                           page: const view_goals(
                             missed: false,
                             name: '',
@@ -571,7 +571,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                                           missed:
                                                                               true,
                                                                           name:
-                                                                              goalName,
+                                                                              pracName,
                                                                           update:
                                                                               true,
                                                                           helpfulTips:
@@ -815,8 +815,9 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                             top: AppDimensions.height10(
                                                     context) *
                                                 0.3),
-                                        child: RichText(
-                                            text: TextSpan(
+                                        child: pracDetails['activeDays'] == 20
+                                            ? Text(
+                                                'You can now evaluate your progress',
                                                 style: TextStyle(
                                                     fontFamily: 'laila',
                                                     height:
@@ -830,17 +831,35 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                     fontWeight: FontWeight.w400,
                                                     color: const Color(
                                                         0xfff5f5f5)),
-                                                children: [
-                                              const TextSpan(
-                                                  text:
-                                                      'Next assessment is in '),
-                                              TextSpan(
-                                                  text:
-                                                      '${pracDetails['activeDays'] - 20} active days.',
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w700))
-                                            ])),
+                                              )
+                                            : RichText(
+                                                text: TextSpan(
+                                                    style: TextStyle(
+                                                        fontFamily: 'laila',
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            0.15,
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.4,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: const Color(
+                                                            0xfff5f5f5)),
+                                                    children: [
+                                                    const TextSpan(
+                                                        text:
+                                                            'Next assessment is in '),
+                                                    TextSpan(
+                                                        text:
+                                                            '${pracDetails['activeDays'] - 20} active days.',
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700))
+                                                  ])),
                                       )
                                     ]),
                                   ),
@@ -892,6 +911,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                             feild_text: 'Progress report',
                                             icon_viible: true,
                                             text_color: 0xff646464,
+                                            premium: true,
                                             feild_text_2: reportDate != ''
                                                 ? '   ${formatDate(reportDate)}'
                                                 : '',
@@ -910,6 +930,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                     page: const prac_score(
                                                   route:
                                                       'pracice_menu_completed',
+                                                  secondaryRoute: '',
                                                   index: 0,
                                                 )));
                                           } else {
@@ -923,6 +944,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                           feild_text: 'Evaluation level ',
                                           icon_viible: true,
                                           text_color: 0xff646464,
+                                          premium: true,
                                           feild_text_2: '(',
                                           text_color_2: 0xff8EA1B1,
                                           feild_text_3: pracDetails[
@@ -989,6 +1011,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                 text_color_2: 0xffEA1B1,
                                 feild_text_3: '',
                                 feild_text_4: '',
+                                premium: true,
                               ),
                             ),
                             Container(
@@ -1013,6 +1036,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                   text_color_2: 0xffEA1B1,
                                   feild_text_3: '',
                                   feild_text_4: '',
+                                  premium: true,
                                 ),
                               ),
                             ),
@@ -1022,7 +1046,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                       AppDimensions.height10(context) * 1.0),
                               child: AnimatedScaleButton(
                                 onTap: () {},
-                                child: const button_feilds(
+                                child: button_feilds(
                                   feild_text: 'View upcoming schedules',
                                   icon_viible: true,
                                   text_color: 0xff646464,
@@ -1030,16 +1054,23 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                   text_color_2: 0xffEA1B1,
                                   feild_text_3: '',
                                   feild_text_4: '',
+                                  premium: subscripption == 'active',
                                 ),
                               ),
                             ),
                             AnimatedScaleButton(
-                              onTap: () {
+                              onTap: () async {
                                 if (pracDetails['report'] == true) {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const practice_assesment()));
+                                          page: const practice_assesment(
+                                        days: 0,
+                                        route: '',
+                                      )));
+                                  final SharedPreferences prefs = await _prefs;
+                                  await prefs.setString(
+                                      'assesmentRoute', 'practice_completed');
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
@@ -1055,6 +1086,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                 text_color_2: 0xffEA1B1,
                                 feild_text_3: '',
                                 feild_text_4: '',
+                                premium: true,
                               ),
                             )
                           ],

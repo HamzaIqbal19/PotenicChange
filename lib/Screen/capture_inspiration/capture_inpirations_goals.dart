@@ -6,7 +6,6 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_goal_impact.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 
@@ -253,7 +252,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
         widget.route == 'landing'
             ? Navigator.push(
                 context,
-                FadePageRoute(
+                FadePageRouteReverse(
                     page: const inspiration_landing(is_Updated: false)),
               )
             : Navigator.pop(context);
@@ -273,7 +272,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           widget.route == 'landing'
                               ? Navigator.push(
                                   context,
-                                  FadePageRoute(
+                                  FadePageRouteReverse(
                                       page: const inspiration_landing(
                                           is_Updated: false)),
                                 )
@@ -416,7 +415,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                               true) {
                                                             Navigator.push(
                                                                 context,
-                                                                FadePageRoute(
+                                                                FadePageRouteReverse(
                                                                     page: const inspiration_landing(
                                                                         is_Updated:
                                                                             false)));
@@ -424,7 +423,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                               false) {
                                                             Navigator.push(
                                                                 context,
-                                                                FadePageRoute(
+                                                                FadePageRouteReverse(
                                                                     page:
                                                                         const inspiration_motivation(
                                                                   goal_delete:
@@ -471,7 +470,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                               true) {
                                                             Navigator.push(
                                                                 context,
-                                                                FadePageRoute(
+                                                                FadePageRouteReverse(
                                                                     page: const inspiration_landing(
                                                                         is_Updated:
                                                                             false)));
@@ -497,7 +496,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                               false) {
                                                             Navigator.push(
                                                                 context,
-                                                                FadePageRoute(
+                                                                FadePageRouteReverse(
                                                                     page:
                                                                         const inspiration_motivation(
                                                                   goal_delete:

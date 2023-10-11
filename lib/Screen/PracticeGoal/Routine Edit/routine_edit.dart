@@ -1,14 +1,11 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
-import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Widgets/DateTimeBottomSheet.dart';
 
@@ -16,7 +13,6 @@ import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class PracticeRoutineEdit extends StatefulWidget {
   final String goalName;
@@ -143,7 +139,8 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
         showContainer = false;
       });
       Timer(const Duration(seconds: 1), () {
-        Navigator.push(context, FadePageRoute(page: const PracticeReview()));
+        Navigator.push(
+            context, FadePageRouteReverse(page: const PracticeReview()));
       });
     });
   }
@@ -524,7 +521,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                             38.2,
                                                         padding:
                                                             const EdgeInsets
-                                                                    .only(
+                                                                .only(
                                                                 bottom: 10),
                                                         child: Row(
                                                           children: [
@@ -568,7 +565,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                             Padding(
                                                               padding:
                                                                   const EdgeInsets
-                                                                          .only(
+                                                                      .only(
                                                                       left:
                                                                           8.0),
                                                               child: Container(

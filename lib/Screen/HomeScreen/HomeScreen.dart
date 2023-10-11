@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:get/get.dart';
-import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/animation.dart';
-import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Widgets/fading3.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool login;
@@ -57,10 +51,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     prefs.setBool('bool', value);
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

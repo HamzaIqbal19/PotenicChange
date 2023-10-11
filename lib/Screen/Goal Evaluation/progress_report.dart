@@ -809,7 +809,7 @@ class _progress_reportState extends State<progress_report> {
                                           "2023-08-05": "completed",
                                           "2023-08-06": "missed"
                                         }
-                                      : report['practiceProgress'])),
+                                      : report['practiceProgress'], limitCalender: true,)),
                         ],
                       ),
                     ),
@@ -1316,6 +1316,7 @@ class _progress_reportState extends State<progress_report> {
                                       FadePageRoute(
                                           page: prac_score(
                                         route: 'report',
+                                        secondaryRoute: '',
                                         index: widget.index,
                                       )));
                                 }
@@ -1324,6 +1325,7 @@ class _progress_reportState extends State<progress_report> {
                                 feild_text: 'Practice score ',
                                 icon_viible: true,
                                 text_color: 0xff646464,
+                                premium: true,
                                 feild_text_2: '(',
                                 text_color_2: 0xff8EA1B1,
                                 feild_text_3: noData == true

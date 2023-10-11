@@ -6,18 +6,14 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:get/get.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
-import 'package:potenic_app/API/PracticeModal.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_noPast_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_no_planned_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/dashboard_behaviour_shimmer.dart';
-import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
-import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -61,6 +57,7 @@ class _view_goalsState extends State<view_goals> {
   bool noPlanned = false;
   bool noData = false;
   bool Loader = true;
+  bool maxViewDate = false;
   List<Map<String, dynamic>> timesList = [];
   int pastPracCompleted = -1;
   int presentPracCompleted = -1;
@@ -109,7 +106,9 @@ class _view_goalsState extends State<view_goals> {
         next = widget.record - 1;
       });
     }
+
     super.initState();
+
     // _fetchUserGoal();
     fetchPracticeByDay();
     if (widget.update == true) {
@@ -124,6 +123,7 @@ class _view_goalsState extends State<view_goals> {
         _showOverlay = true;
       });
     }
+
     //fetchGoalsByDay();
   }
 
@@ -142,6 +142,7 @@ class _view_goalsState extends State<view_goals> {
       if (response == 200) {
         PracticeGoalApi.getUserPracticeByDay(getFormattedDate(current))
             .then((response) {
+          getSixthday();
           print(response);
           print("Api Called");
           var jsonData = jsonDecode(response.body);
@@ -295,6 +296,30 @@ class _view_goalsState extends State<view_goals> {
     setState(() {
       Loader = false;
     });
+  }
+
+  getSixthday() {
+    var currentDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+    var providedDate = getFormattedDate(current);
+
+    // Check if the provided date is in the future
+    if (DateTime.parse(providedDate).isBefore(DateTime.parse(currentDate))) {
+      print('Provided date is in the past.');
+    } else {
+      var difference = DateTime.parse(providedDate)
+          .difference(DateTime.parse(currentDate))
+          .inDays;
+      if (difference >= 6) {
+        maxViewDate = true;
+      } else {
+        maxViewDate = false;
+      }
+      print('Provided date is in the future. $difference && $maxViewDate');
+    }
+
+    // Calculate the difference in days
+
+    // Check if the difference is exactly six days
   }
 
   Future<Timer> startTimer() async {
@@ -846,17 +871,19 @@ class _view_goalsState extends State<view_goals> {
                                                     onTap: () {
                                                       if (_showOverlay ==
                                                           false) {
-                                                        setState(() {
-                                                          Loader = true;
-                                                        });
-                                                        future();
-                                                        fetchPracticeByDay();
-                                                        setState(() {
-                                                          contain = false;
-
-                                                          // past = past - 1;
-                                                          // next = next - 1;
-                                                        });
+                                                        if (!maxViewDate) {
+                                                          setState(() {
+                                                            Loader = true;
+                                                          });
+                                                          future();
+                                                          fetchPracticeByDay();
+                                                          setState(() {
+                                                            contain = false;
+                                                          });
+                                                        } else {
+                                                          print(
+                                                              "Max view date reached");
+                                                        }
                                                       } else {
                                                         if (goal_level == 0) {
                                                           _incrementValue();
@@ -1204,6 +1231,9 @@ class _view_goalsState extends State<view_goals> {
                                                                         final SharedPreferences
                                                                             prefs =
                                                                             await _prefs;
+                                                                        await prefs.setString(
+                                                                            'prac_menu_route',
+                                                                            'dashboard');
                                                                         var pracId = prefs.setInt(
                                                                             'prac_num',
                                                                             timesList[index]['data']['id']);
@@ -2355,11 +2385,13 @@ class _view_goalsState extends State<view_goals> {
                                                       const Alignment(1, 1),
                                                   child: AnimatedScaleButton(
                                                     onTap: () {
-                                                      setState(() {
-                                                        Loader = true;
-                                                      });
-                                                      future();
-                                                      fetchPracticeByDay();
+                                                      if (!maxViewDate) {
+                                                        setState(() {
+                                                          Loader = true;
+                                                        });
+                                                        future();
+                                                        fetchPracticeByDay();
+                                                      }
                                                     },
                                                     child: Container(
                                                         height: AppDimensions
@@ -2853,16 +2885,13 @@ class _view_goalsState extends State<view_goals> {
                                                 ),
                                                 AnimatedScaleButton(
                                                   onTap: () {
-                                                    // Navigator.push(
-                                                    //     context,
-                                                    //     FadePageRoute(
-                                                    //         page: const view_goals(
-                                                    //             missed: false)));
-                                                    setState(() {
-                                                      Loader = true;
-                                                    });
-                                                    future();
-                                                    fetchPracticeByDay();
+                                                    if (!maxViewDate) {
+                                                      setState(() {
+                                                        Loader = true;
+                                                      });
+                                                      future();
+                                                      fetchPracticeByDay();
+                                                    }
                                                   },
                                                   child: Container(
                                                       height: AppDimensions

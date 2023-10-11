@@ -32,7 +32,8 @@ class goal_prac_info extends StatelessWidget {
           Center(
             child: IconButton(
                 onPressed: () async {
-                  Navigator.push(context, FadePageRoute(page: Categories()));
+                  Navigator.push(
+                      context, FadePageRouteReverse(page: Categories()));
                   final SharedPreferences prefs = await _prefs;
                   var route = prefs.setString('goal_route', 'view_all_goals');
                 },

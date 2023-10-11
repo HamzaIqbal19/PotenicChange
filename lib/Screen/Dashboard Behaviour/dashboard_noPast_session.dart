@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_no_planned_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
@@ -17,7 +16,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
-import 'calender_bottom_sheet.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 

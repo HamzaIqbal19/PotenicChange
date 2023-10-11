@@ -2,12 +2,10 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/API/Goal.dart';
-import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
-import 'package:potenic_app/Screen/Menu&settings/edit_credentials.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -16,8 +14,6 @@ import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 import '../../Widgets/fading.dart';
 
@@ -123,7 +119,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
       onWillPop: () {
         Navigator.pushReplacement(
           context,
-          FadePageRoute(
+          FadePageRouteReverse(
             page: LoginPage(),
           ),
         );
@@ -152,7 +148,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        FadePageRoute(
+                        FadePageRouteReverse(
                           page: LoginPage(),
                         ),
                       );
@@ -173,11 +169,10 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          FadePageRoute3(
-                            enterPage: const HomeScreen(
+                          FadePageRouteReverse(
+                            page: const HomeScreen(
                               login: false,
                             ),
-                            exitPage: Loginemailandpassword(),
                           ),
                         );
                         // Add code for performing close action

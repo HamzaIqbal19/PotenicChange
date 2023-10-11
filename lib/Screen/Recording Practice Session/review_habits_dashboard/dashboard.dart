@@ -2,11 +2,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:dotted_border/dotted_border.dart';
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Widgets/bottom_navigation.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
-import '../../../Widgets/fading.dart';
 
 class reviw_habit_dashBoard extends StatelessWidget {
   @override

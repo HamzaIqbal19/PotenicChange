@@ -1,12 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:potenic_app/API/Apispecs.dart';
-import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:sentry/sentry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http_parser/http_parser.dart';

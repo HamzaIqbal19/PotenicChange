@@ -15,7 +15,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 import '../capture_inpirations_goals.dart';
-import 'note_access.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 TextEditingController link = TextEditingController();
@@ -110,8 +109,10 @@ class _video_infoState extends State<video_info> {
                           statement.clear();
                           hastags.clear();
                           title.clear();
-                          Navigator.push(context,
-                              FadePageRoute(page: const inspiration_type()));
+                          Navigator.push(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const inspiration_type()));
                         },
                         child: Center(
                           child: Text(

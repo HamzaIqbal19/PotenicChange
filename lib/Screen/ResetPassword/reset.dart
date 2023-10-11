@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
-import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

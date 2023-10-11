@@ -3,15 +3,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
-import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/Your_goals/add_your_practice.dart';
 import 'package:potenic_app/Screen/Your_goals/goal&practice_info.dart';
-import 'package:potenic_app/Screen/Your_goals/goal_inactive.dart';
-import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -71,7 +66,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
       onWillPop: () {
         Navigator.push(
             context,
-            FadePageRoute(
+            FadePageRouteReverse(
                 page: const your_goals_menu(
               cancel: false,
               membership: false,
@@ -88,7 +83,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                 onPressed: () {
                   Navigator.push(
                       context,
-                      FadePageRoute(
+                      FadePageRouteReverse(
                           page: const your_goals_menu(
                         cancel: false,
                         membership: false,
@@ -106,7 +101,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
             Center(
               child: IconButton(
                   onPressed: () async {
-                    Navigator.push(context, FadePageRoute(page: Categories()));
+                    Navigator.push(context, FadePageRouteReverse(page: Categories()));
                     final SharedPreferences prefs = await _prefs;
                     var route = prefs.setString('goal_route', 'view_all_goals');
                   },

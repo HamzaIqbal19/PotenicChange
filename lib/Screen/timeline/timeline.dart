@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../utils/app_dimensions.dart';
