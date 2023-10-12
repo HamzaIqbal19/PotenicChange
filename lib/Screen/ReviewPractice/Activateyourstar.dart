@@ -326,8 +326,6 @@ class _ActivateStarState extends State<ActivateStar> {
                                       .updateUserPractice_GoalStatus('active')
                                       .then((response) {
                                     if (response == true) {
-                                      print("Success");
-
                                       Navigator.push(
                                         context,
                                         FadePageRoute2(
@@ -576,8 +574,6 @@ class _ActivateStarState extends State<ActivateStar> {
                                                 ),
                                               ));
                                     } else {
-                                      print("Failure");
-
                                       // const ScaffoldMessenger(
                                       //     child: Text('Goal status not changed'));
                                     }

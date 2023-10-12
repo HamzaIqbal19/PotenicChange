@@ -605,10 +605,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });
@@ -689,10 +686,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });
@@ -773,10 +767,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });
@@ -860,10 +851,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });
@@ -944,10 +932,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });

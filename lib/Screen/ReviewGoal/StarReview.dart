@@ -557,10 +557,7 @@ class _StarReviewState extends State<StarReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });
@@ -642,10 +639,7 @@ class _StarReviewState extends State<StarReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });
@@ -727,10 +721,7 @@ class _StarReviewState extends State<StarReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });
@@ -815,10 +806,7 @@ class _StarReviewState extends State<StarReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });
@@ -900,10 +888,7 @@ class _StarReviewState extends State<StarReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });
@@ -985,10 +970,7 @@ class _StarReviewState extends State<StarReview> {
                                                             .then((response) {
                                                           if (response ==
                                                               true) {
-                                                            print("Success");
-                                                          } else {
-                                                            print("Failure");
-                                                          }
+                                                          } else {}
                                                         }).catchError((error) {
                                                           print("error");
                                                         });

@@ -407,10 +407,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                                       .updateUserGoal('reason', 'new reasons')
                                       .then((response) {
                                     if (response == true) {
-                                      print("Success");
-                                    } else {
-                                      print("Failure");
-                                    }
+                                    } else {}
                                   }).catchError((error) {
                                     print("error");
                                   });
