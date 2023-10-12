@@ -69,28 +69,18 @@ class _ActivateStarState extends State<ActivateStar> {
   void _fetchPracticeNames() async {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
-        print("---------------------------------");
         setState(() {
           pracName = response["name"];
           pracColor = response["color"];
         });
         loadData();
-        print("---------------------------------");
-        print("response123:$pracName");
-        print("response123:$pracColor");
       } else {
         loadData();
-        print("response:$response");
       }
     }).catchError((error) {
       loadData();
       print("hell");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   @override

@@ -39,13 +39,11 @@ class _routinecommitmentState extends State<routinecommitment> {
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
-        print("---------------------------------");
         setState(() {
           pracDetails = response;
           schedule = response['schedule'];
         });
         mapItems(schedule, updates);
-        print(updates);
         updates.sort((a, b) {
           final daysOrder = [
             "Monday",
@@ -60,13 +58,8 @@ class _routinecommitmentState extends State<routinecommitment> {
               .indexOf(a['day'])
               .compareTo(daysOrder.indexOf(b['day']));
         });
-        print(updates);
         loadData();
-
-        print('$pracDetails');
-      } else {
-        print("response:$response");
-      }
+      } else {}
     }).catchError((error) {
       print("hell");
     });

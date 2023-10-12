@@ -44,7 +44,6 @@ class _link_infoState extends State<link_info> {
       setState(() {
         selectedGoals = decodedGoals;
       });
-      print('SelectedGoals==============================$selectedGoals');
     }
   }
 
@@ -56,8 +55,6 @@ class _link_infoState extends State<link_info> {
     setState(() {
       imageLink = imageLinked;
     });
-    print(
-        '---------------==============================${prefs.getString('ImageLink')}');
 
     if (prefs.getString('ImageLink').toString().isNotEmpty) {
       link.text = imageLink!;
@@ -423,7 +420,6 @@ class _link_infoState extends State<link_info> {
                                   .toList();
                               tagList.clear();
                               tagList.addAll(finalResult.toSet());
-                              print(tagList);
                             },
                             onTap: () {
                               if (hastags.text.isEmpty) {
@@ -645,8 +641,6 @@ class _link_infoState extends State<link_info> {
                                                       bt_enable = false;
                                                     });
                                                   }
-                                                  print('LINK----------------');
-                                                  print(link.text.toString());
                                                   InspirationApi()
                                                       .addInspiration(
                                                           4,
@@ -682,7 +676,6 @@ class _link_infoState extends State<link_info> {
                                                           selectedGoals)
                                                       .then((response) async {
                                                     if (response.length != 0) {
-                                                      print('----------------');
                                                       statement.clear();
                                                       author.clear();
                                                       hastags.clear();
@@ -702,8 +695,6 @@ class _link_infoState extends State<link_info> {
                                                           .remove('ImageLink');
                                                       prefs.remove(
                                                           'inspiration_saved_route');
-
-                                                      print(response);
                                                     }
 
                                                     // return null;

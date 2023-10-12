@@ -61,17 +61,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
 
   void onToggleSwitch(int index1, bool val) {
     setState(() {
-      print('========${goalDetails['userPractices'][index1]['isActive']}');
-      print('================Val========$val');
-      // if (totalItemsOn < 5) {
-      // if (goalDetails['goalStatus'] == 'active') {
       if (goalDetails['userPractices'][index1]['isActive'] == true &&
           val == false) {
-        // Check if the totalItemsOn is less than 5 before incrementing
-        // if (totalItemsOn < 5) {
-        //   print("==========================");
-        // print(goalDetails['userPractices'][index1]['id']);
-
         showAnimatedDialog(
             animationType: DialogTransitionType.fadeScale,
             curve: Curves.easeInOut,
@@ -162,21 +153,15 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             width: double.infinity,
                             child: TextButton(
                               onPressed: () {
-                                // setState(() {
-                                //   Loader = true;
-                                // });
                                 PracticeGoalApi()
                                     .updateUserPracticeStatus(
                                         'inactive',
                                         goalDetails['userPractices'][index1]
                                             ['id'])
                                     .then((response) {
-                                  print(goalDetails['userPractices'][index1]
-                                      ['name']);
                                   if (response == true) {
                                     Navigator.pop(context);
                                     _fetchGoalDetails();
-                                    print("Status Updated");
                                   }
                                 });
                                 totalItemsOn++;
@@ -203,30 +188,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ],
                   ),
                 ));
-
-        print(
-            totalItemsOn); // Increment the counter as the item is being switched on
-        // } else {
-        //   print(totalItemsOn);
-
-        //   // If totalItemsOn is already 5, prevent switching on the toggle
-        //   return;
-        // }
       }
       // If the item is currently on and is being switched off
       else if (goalDetails['userPractices'][index1]['isActive'] == false &&
           val == true) {
-        print("==========================");
-        // print(goalDetails['userPractices'][index1]['id']);
-
-        // setState(() {
-        //   Loader = true;
-        // });
         PracticeGoalApi()
             .updateUserPracticeStatus(
                 'active', goalDetails['userPractices'][index1]['id'])
             .then((response) {
-          print(goalDetails['userPractices'][index1]['name']);
           if (response == true) {
             totalItemsOn--;
             _fetchGoalDetails();
@@ -329,107 +298,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ));
           }
         });
-        // goalDetails['userPractices'][index1]['status'] = val;
-        print(
-            totalItemsOn); // Decrement the counter as the item is being switched off
       }
       goalDetails['userPractices'][index1]['practiceStatus'] = val;
-      // } else {
-      //   print('"Practice status can only be changed for Active goals."');
-      // showAnimatedDialog(
-      //     animationType: DialogTransitionType.fadeScale,
-      //     curve: Curves.easeInOut,
-      //     duration: const Duration(seconds: 1),
-      //     context: context,
-      //     builder: (BuildContext context) => Container(
-      //           width: AppDimensions.height10(context) * 27.0,
-      //           height: AppDimensions.height10(context) * 23.6,
-      //           child: AlertDialog(
-      //             shape: RoundedRectangleBorder(
-      //                 borderRadius: BorderRadius.circular(
-      //                     AppDimensions.height10(context) * 1.4)),
-      //             contentPadding: EdgeInsets.zero,
-      //             actionsPadding: EdgeInsets.zero,
-      //             titlePadding: EdgeInsets.zero,
-      //             title: Container(
-      //                 margin: EdgeInsets.only(
-      //                     top: AppDimensions.height10(context) * 1.9,
-      //                     bottom: AppDimensions.height10(context) * 0.2),
-      //                 height: AppDimensions.height10(context) * 4.4,
-      //                 width: AppDimensions.height10(context) * 23.8,
-      //                 child: Center(
-      //                   child: Text(
-      //                     'Active practices are only available\nfor active goals.',
-      //                     textAlign: TextAlign.center,
-      //                     style: TextStyle(
-      //                       fontSize: AppDimensions.height10(context) * 1.7,
-      //                       fontWeight: FontWeight.w400,
-      //                     ),
-      //                   ),
-      //                 )),
-      //             content: Container(
-      //               margin: EdgeInsets.only(
-      //                   bottom: AppDimensions.height10(context) * 1.5,
-      //                   left: AppDimensions.height10(context) * 1.6,
-      //                   right: AppDimensions.height10(context) * 1.6),
-      //               width: AppDimensions.height10(context) * 23.8,
-      //               child: Text(
-      //                 "Ensure you activate the goal before attempting to activate practices; you can't activate practices for an inactive goal.",
-      //                 textAlign: TextAlign.center,
-      //                 style: TextStyle(
-      //                   fontSize: AppDimensions.height10(context) * 1.3,
-      //                   fontWeight: FontWeight.w400,
-      //                 ),
-      //               ),
-      //             ),
-      //             actions: <Widget>[
-      //               Column(
-      //                 children: [
-      //                   SizedBox(
-      //                     height: AppDimensions.height10(context) * 0.1,
-      //                     child: Divider(
-      //                       color: const Color(0XFF3C3C43).withOpacity(0.29),
-      //                     ),
-      //                   ),
-      //                   Container(
-      //                     height: AppDimensions.height10(context) * 4.4,
-      //                     width: double.infinity,
-      //                     color: const Color(0xFF007AFF),
-      //                     child: TextButton(
-      //                       onPressed: () {
-      //                         Navigator.pop(context);
-      //                       },
-      //                       child: Text(
-      //                         'OK',
-      //                         style: TextStyle(
-      //                             fontSize:
-      //                                 AppDimensions.height10(context) * 1.7,
-      //                             fontFamily: "Laila",
-      //                             fontWeight: FontWeight.w400,
-      //                             color: const Color(0xFFFBFBFB)),
-      //                       ),
-      //                     ),
-      //                   ),
-      //                   SizedBox(
-      //                     height: AppDimensions.height10(context) * 0.1,
-      //                     child: Divider(
-      //                       color: const Color(0XFF3C3C43).withOpacity(0.29),
-      //                     ),
-      //                   ),
-      //                   SizedBox(
-      //                     height: AppDimensions.height10(context) * 4.4,
-      //                     width: double.infinity,
-      //                   ),
-      //                 ],
-      //               ),
-      //             ],
-      //           ),
-      //         ));
-
-      //   // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      //   //     content:
-      //   //         Text("Practice status can only be changed for Active goals.")));
-      // }
     });
   }
 
@@ -437,27 +307,19 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
     final SharedPreferences prefs = await _prefs;
 
     AdminGoal.getUserGoalById(prefs.get('goal_num')).then((response) {
-      print(response);
       if (response.length != 0) {
         setState(() {
           goalDetails = response;
           totalItemsOn = response["activePracticesCount"];
           subscriptions = response['subscriptionsStatus'];
         });
-        print(response['subscriptionsStatus']);
-        // print("FunctionCalled");
-        // totalActivePractices();
-        // print(goalDetails = response[1]);
-        // print(
-        //     "==========================${goalDetails['userPractices'][0]['practiceStatus']}");
+
         loadData();
         startTimer();
-        print(response);
       } else {
         loadData();
       }
     }).catchError((error) {
-      // loadData();
       print("error");
     }).whenComplete(() {
       loadData();
@@ -473,7 +335,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
       } else if (goalDetails['userPractices'][i]['isActive'] == false) {
         print(totalItemsOn);
       }
-      print(totalItemsOn);
     }
   }
 
@@ -1014,8 +875,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                         ? true
                                                         : false,
                                                     onToggle: (val) {
-                                                      print(
-                                                          "Toggle value $val");
                                                       onToggleSwitch(
                                                           index, val);
                                                     }, // Call the onToggleSwitch function
@@ -1869,39 +1728,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
     );
   }
 }
-
-// class SwitchScreen extends StatefulWidget {
-//   @override
-//   SwitchClass createState() => new SwitchClass();
-// }
-
-// class SwitchClass extends State {
-//   bool isSwitched = false;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: <Widget>[
-//           CustomSwitch(
-//             value: isSwitched,
-//             activeColor: Colors.blue,
-//             onChanged: (value) {
-//               print("VALUE : $value");
-//               setState(() {
-//                 isSwitched = value;
-//               });
-//             },
-//           ),
-//           SizedBox(
-//             height: 15.0,
-//           ),
-//           Text(
-//             'Value : $isSwitched',
-//             style: TextStyle(color: Colors.red, fontSize: 25.0),
-//           )
-//         ]);
-//   }
-// }
 
 Widget goalActive(BuildContext context, String goals) {
   return Container(

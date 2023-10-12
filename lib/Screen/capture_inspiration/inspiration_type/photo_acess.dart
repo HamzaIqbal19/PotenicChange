@@ -256,7 +256,6 @@ class _photo_infoState extends State<photo_info> {
       setState(() {
         selectedGoals = decodedGoals;
       });
-      print('SelectedGoals==============================$selectedGoals');
     }
   }
 
@@ -269,8 +268,6 @@ class _photo_infoState extends State<photo_info> {
       image = imagePick;
       imageLink = imageLinked;
     });
-    print(
-        '---------------==============================${prefs.getString('imagePicked')}');
   }
 
   void getImageLink() async {
@@ -280,13 +277,10 @@ class _photo_infoState extends State<photo_info> {
     setState(() {
       imageLink = imageLinked;
     });
-    print(
-        '---------------==============Image======${link.text}==========${prefs.getString('ImageLink')}');
+
     if (prefs.getString('ImageLink').toString().isNotEmpty) {
       link.text = imageLink!;
     }
-
-    print(link.text);
   }
 
   @override
@@ -400,8 +394,7 @@ class _photo_infoState extends State<photo_info> {
                                               await _prefs;
                                           var remove =
                                               prefs.remove('ImageLink');
-                                          print(
-                                              "===================================>$imageLink");
+
                                           if (widget.image_create == true) {
                                             if (title.text
                                                     .toString()
@@ -418,8 +411,7 @@ class _photo_infoState extends State<photo_info> {
                                                   await _prefs;
                                               var imagePicked = prefs
                                                   .getString('imagePicked');
-                                              print(
-                                                  '==================================>${link.text}');
+
                                               InspirationApi()
                                                   .addInspiration(
                                                       1,
@@ -441,8 +433,7 @@ class _photo_infoState extends State<photo_info> {
                                                   setState(() {
                                                     bt_enable = true;
                                                   });
-                                                  print(
-                                                      'Success======================');
+
                                                   title.clear();
                                                   link.clear();
                                                   statement.clear();
@@ -460,12 +451,9 @@ class _photo_infoState extends State<photo_info> {
                                                       prefs = await _prefs;
                                                   prefs.remove(
                                                       'inspiration_saved_route');
-                                                } else {
-                                                  print("Failed");
-                                                }
+                                                } else {}
                                               });
                                             } else {
-                                              print('empty');
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(const SnackBar(
                                                       content: Text(
@@ -620,8 +608,6 @@ class _photo_infoState extends State<photo_info> {
                                                                         TextButton(
                                                                       onPressed:
                                                                           () async {
-                                                                        print(
-                                                                            "===================================>$imageLink");
                                                                         InspirationApi()
                                                                             .addInspiration(
                                                                                 1,
@@ -753,8 +739,6 @@ class _photo_infoState extends State<photo_info> {
                                       )
                                     : AnimatedScaleButton(
                                         onTap: () {
-                                          print(
-                                              "============================22=======>$imageLink");
                                           InspirationApi()
                                               .addInspiration(
                                                   1,
@@ -768,8 +752,6 @@ class _photo_infoState extends State<photo_info> {
                                                   selectedGoals)
                                               .then((response) {
                                             if (response.length != 0) {
-                                              print(
-                                                  'Success======================');
                                               title.clear();
                                               link.clear();
                                               statement.clear();
@@ -808,8 +790,6 @@ class _photo_infoState extends State<photo_info> {
                                       builder: (context, value, child) {
                                         return AnimatedScaleButton(
                                           onTap: () async {
-                                            print('pressed');
-
                                             if (title.text
                                                     .toString()
                                                     .isNotEmpty &&
@@ -825,8 +805,7 @@ class _photo_infoState extends State<photo_info> {
                                                   await _prefs;
                                               var imagePicked = prefs
                                                   .getString('imagePicked');
-                                              print(
-                                                  '==================================>${tagList.toString}');
+
                                               InspirationApi()
                                                   .addInspiration(
                                                       1,
@@ -848,8 +827,7 @@ class _photo_infoState extends State<photo_info> {
                                                   setState(() {
                                                     bt_enable = true;
                                                   });
-                                                  print(
-                                                      'Success======================');
+
                                                   title.clear();
                                                   link.clear();
                                                   statement.clear();
@@ -863,12 +841,9 @@ class _photo_infoState extends State<photo_info> {
                                                                   delete: false,
                                                                   is_Updated:
                                                                       false)));
-                                                } else {
-                                                  print("Failed");
-                                                }
+                                                } else {}
                                               });
                                             } else {
-                                              print('empty');
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(const SnackBar(
                                                       content: Text(
@@ -1264,10 +1239,6 @@ class _photo_infoState extends State<photo_info> {
                                     tagList.clear();
 
                                     tagList.addAll(finalResult.toSet());
-
-                                    print(tagList);
-
-                                    print(tagList);
                                   },
                                   textAlignVertical: TextAlignVertical.top,
                                   style: TextStyle(
@@ -1668,7 +1639,6 @@ class _link_setState extends State<link_set> {
                       final SharedPreferences prefs = await _prefs;
                       var link = prefs.setString(
                           'ImageLink', linkController.text.toString());
-                      print(linkController.text.toString());
                       if (widget.route == 'image') {
                         Navigator.push(
                             context,

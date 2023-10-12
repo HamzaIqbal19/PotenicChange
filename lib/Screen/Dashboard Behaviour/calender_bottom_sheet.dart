@@ -23,8 +23,6 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
     setState(() {
       minDate = date.toString();
     });
-
-    print('Account create at $minDate');
   }
 
   @override
@@ -115,8 +113,6 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                       DateTime.parse(currentTime.toString().substring(0, 10)));
                   numberOfDays = difference.inDays;
                 });
-                print("Printing the Number of Days $numberOfDays");
-                print(selectedDate);
               },
             ),
           ),

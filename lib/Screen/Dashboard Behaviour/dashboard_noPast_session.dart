@@ -51,25 +51,8 @@ class _no_past_sessionState extends State<no_past_session> {
     fetchPracticeByDay();
   }
 
-  // void fetchGoalsByDay() {
-  //   AdminGoal.getUserGoalByDay(previousDayName).then((response) {
-  //     if (response != "") {
-  //       print(response);
-  //       setState(() {
-  //         goals_empty = true;
-  //         allGoals = response;
-  //       });
-  //       loadData();
-  //     }
-  //     print('______________________________-----------------------');
-  //     print(allGoals.length);
-  //   });
-  // }
-
   void fetchPracticeByDay() {
     PracticeGoalApi.getUserPracticeByDay(previousDayName).then((response) {
-      print("Api Called");
-      print(response);
       if (response == false) {
         loadData();
         setState(() {
@@ -80,14 +63,9 @@ class _no_past_sessionState extends State<no_past_session> {
           allGoals = response['filteredUserPractices'];
           goals_empty = true;
         });
-        print('====================');
-        print(goals_empty);
-        print(allGoals.length);
+
         loadData();
-        print('====================');
       }
-      print('______________________________-----------------------');
-      //print(allGoals.length);
     });
   }
 
@@ -96,7 +74,6 @@ class _no_past_sessionState extends State<no_past_session> {
   }
 
   void onDoneLoading() {
-    print('Loading -----------------------------');
     setState(() {
       Loader = false;
     });
@@ -1134,7 +1111,6 @@ class _no_past_sessionState extends State<no_past_session> {
                                                                 ['color'])
                                                         : '0';
                                                     if (widget.missed == true) {
-                                                      print("CON 2");
                                                       Navigator.push(
                                                           context,
                                                           FadePageRoute(
@@ -1144,9 +1120,6 @@ class _no_past_sessionState extends State<no_past_session> {
                                                                     ['name'],
                                                           )));
                                                     } else {
-                                                      print("CON 1");
-                                                      print(
-                                                          "${allGoals[index]['color']}");
                                                       Navigator.push(
                                                           context,
                                                           FadePageRoute(

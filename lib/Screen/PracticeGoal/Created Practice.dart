@@ -65,35 +65,27 @@ class _PracticeFinishedState extends State<PracticeFinished> {
       }
     }).catchError((error) {
       loadData();
-      print("error");
     });
   }
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   void _fetchPracticeNames() async {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
-        print("---------------------------------");
         setState(() {
           pracName = response["name"];
           pracColor = response["color"];
         });
         loadData();
-        print("---------------------------------");
-        print("response123:$pracName");
-        print("response123:$pracColor");
       } else {
         loadData();
-        print("response:$response");
       }
     }).catchError((error) {
       loadData();

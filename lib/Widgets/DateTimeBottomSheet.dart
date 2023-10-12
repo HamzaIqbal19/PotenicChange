@@ -212,8 +212,6 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
               period = items[index];
             }
           });
-
-          print('$key Selected: ${items[index]}');
         },
         childDelegate: ListWheelChildBuilderDelegate(
           builder: (BuildContext context, int index) {

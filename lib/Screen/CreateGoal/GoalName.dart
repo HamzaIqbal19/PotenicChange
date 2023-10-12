@@ -65,17 +65,14 @@ class _GoalNameState extends State<GoalName> {
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   getData() async {
     final prefs = await SharedPreferences.getInstance();
     var jsonString = prefs.getString('goal');
-    print(jsonString);
     Map<String, dynamic> jsonMap = json.decode(jsonString!);
 
     setState(() {
@@ -85,7 +82,6 @@ class _GoalNameState extends State<GoalName> {
 
   //
   getGoalName() async {
-    print("hello world1224");
     final SharedPreferences prefs = await _prefs;
     var catId = prefs.setInt('goalCategoryId', widget.catId);
     setState(() {
@@ -95,9 +91,6 @@ class _GoalNameState extends State<GoalName> {
 
       id = prefs.getInt("goalId");
     });
-
-    print("mygoal.text:${capitalizeFirstLetter(prefs.getString("goalName")!)}");
-    print("goalName:$goalName");
   }
 
   Future getUserId(String goalname) async {
@@ -139,28 +132,16 @@ class _GoalNameState extends State<GoalName> {
 
   Future<Goal> getGoal() async {
     final prefs = await SharedPreferences.getInstance();
-    print("GoalId:${prefs.getInt("goalId")}");
     String? jsonString = prefs.getString('goal');
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
-      print("Goal===============>$jsonString");
-      // Navigator.push(
-      //   context,
-      //   FadePageRoute(
-      //     page: GoalName(),
-      //   ),
-      // );
+
       return Goal.fromJson(jsonMap);
     }
 
     throw Exception('No goal found in local storage');
   }
-
-  // @override
-  // void dispose() {
-  //   mygoal;
-  // }
 
   bool showContainer = false;
   double swipeOffset = 0.0;
@@ -887,14 +868,10 @@ class _GoalNameState extends State<GoalName> {
                                         getUserId(
                                           mygoal.text.toString(),
                                         );
-                                        print('=====================>');
-                                        print(mygoal.text.toString());
+
                                         final SharedPreferences prefs =
                                             await _prefs;
 
-                                        // getUserId(
-                                        //   mygoal.text.toString(),
-                                        // );
                                         Navigator.push(
                                           context,
                                           FadePageRoute(
@@ -949,94 +926,6 @@ class _GoalNameState extends State<GoalName> {
                                 );
                               },
                             ),
-                            /*
-                      AnimatedScaleButton(
-                        onTap: () async {
-                          if (widget.comingFromEditScreen) {
-                            final SharedPreferences prefs = await _prefs;
-                            prefs.setString('goalName', mygoal.text);
-                            AdminGoal()
-                                .updateUserGoal('name', mygoal.text)
-                                .then((value) {
-                              if (value == true) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => StarReview(
-                                        route: 'goal',
-                                      ),
-                                    ));
-                              }
-                            });
-                            // Navigator.pop(context, mygoal.text);
-                          } else {
-                            if (mygoal.text != "") {
-                            } else {
-                              getUserId(
-                                mygoal.text.toString(),
-                              );
-                            }
-    
-                            print('=====================>');
-                            print(mygoal.text.toString());
-                            final SharedPreferences prefs = await _prefs;
-    
-                            // getUserId(
-                            //   mygoal.text.toString(),
-                            // );
-                            Navigator.push(
-                              context,
-                              FadePageRoute2(
-                                true,
-                                exitPage: GoalName(
-                                  widget.catId,
-                                  comingFromEditScreen: false,
-                                ),
-                                enterPage: GoalWhy(
-                                  comingFromEditScreen: false,
-                                ),
-                              ),
-                            );
-                          }
-                        },
-                       
-                        child: Container(
-                          height: AppDimensions.height10(context) * 5,
-                          width: AppDimensions.height10(context) * 31.3,
-                          decoration: mygoal.text != ""
-                              ? BoxDecoration(
-                                  // color: Color(0xFFFF7D50),
-                                  border: Border.all(color: Colors.transparent),
-                                  gradient: const LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Color(0xFFFCC10D),
-                                        Color(0xFFFDA210)
-                                      ]),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(50.0)),
-                                )
-                              : BoxDecoration(
-                                  // color: Color(0xFFFF7D50),
-                                  border: Border.all(color: Colors.transparent),
-                                  color: const Color(0xFF282828).withOpacity(0.5),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(50.0)),
-                                ),
-                          child: Center(
-                            child: Text(
-                              widget.comingFromEditScreen ? "Update" : "Next",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.6,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                  */
                           ],
                         ),
                   SizedBox(

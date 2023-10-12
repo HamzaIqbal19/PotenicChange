@@ -36,32 +36,15 @@ class _RandomCirclesState extends State<RandomCircles> {
     AdminGoal.getAllCategoriesNames().then((response) {
       if (response.length != 0) {
         setState(() {
-          // Loading = false;
-
           goalCategories = response;
           WidgetsBinding.instance.addPostFrameCallback((_) {
             for (var i = 0; i < response.length; i++) {
-              print(response[i]);
               _addCircle(response[i]);
-              // setState(() {
-              //   goal_name = response[i]["name"];
-              //   goal_detail = response[i]["id"];
-              // });
             }
           });
-          // count = response.length ~/ 2;
         });
-        print("response123:$goalCategories");
-      } else {
-        // setState(() {
-        //   Loading = false;
-        // });
-        print("response:$response");
-      }
+      } else {}
     }).catchError((error) {
-      // setState(() {
-      //   Loading = false;
-      // });
       print("error");
     });
   }

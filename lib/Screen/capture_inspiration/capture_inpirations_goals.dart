@@ -58,7 +58,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
     final SharedPreferences prefs = await _prefs;
     final encodedGoals = json.encode(goals);
     prefs.setString('selected_goals_inspiration', encodedGoals);
-    print(allgoalsSelected);
   }
 
   Future<Timer> loadData() async {
@@ -85,8 +84,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
       });
 
       if (widget.update == true) {
-        print('INSPIRATION CALLED');
-
         _fetchInspiration();
       } else {
         getInspirationRoute();
@@ -109,7 +106,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
   // }
 
   _newFunction() {
-    print('FunctionCalled');
     for (int i = 0; i <= goals.length; i++) {
       if (goals[i]['isActive'] == true) {
         Active.add(goals[i]);
@@ -119,27 +115,21 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
         allgoalsSelected.add(goals[i]['id']);
       }
     }
-    print('FunctionEnd');
-    print("Selected Goals =======================>$allgoalsSelected");
   }
 
   _sort() {
-    print('2nd Function Called');
     if (inspirationDetails.length >= goals.length) {
       setState(() {
         selectAll = true;
       });
-      print(selectAll);
     }
     for (int i = 0; i <= goals.length; i++) {
       if (goals[i]['isActive'] == true) {
-        print('====Active===');
         if (inspirationDetails.contains(goals[i]['id'])) {
           multiGoals.add(goals[i]['id']);
           selectedIndices.add(Active.indexOf(goals[i]));
         }
       } else {
-        print('====Inactive===');
         if (inspirationDetails.contains(goals[i]['id'])) {
           multiGoals.add(goals[i]['id']);
           selectedInActiveIndices.add(inActive.indexOf(goals[i]));
@@ -150,22 +140,16 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
 
   void _fetchInspiration() {
     InspirationApi().getInspirationById().then((response) {
-      print('Res=====================');
       if (response.length != 0) {
         setState(() {
           inspirationDetails = response['inspiration']['userGoalId'];
         });
 
-        print('Goal================================>$inspirationDetails');
         _sort();
         loadData();
-        print(selectedInActiveIndices);
-        print(selectedIndices);
 
         return response;
       }
-
-      // return null;
     });
   }
 
@@ -173,53 +157,39 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
 
   void getInspirationRoute() async {
     final SharedPreferences prefs = await _prefs;
-    print(prefs.getString('inspiration_saved_route'));
     setState(() {
       Route = prefs.getString('inspiration_saved_route').toString().isEmpty
           ? ''
           : prefs.getString('inspiration_saved_route');
     });
     if (prefs.getString('inspiration_saved_route') != null) {
-      print('Goal to be fetched');
       getInspirationGoals();
     }
-
-    print(
-        "ROUTE:==================>${prefs.getString('inspiration_saved_route')}");
   }
 
   void getInspirationGoals() async {
     final SharedPreferences prefs = await _prefs;
-    print('Goals ==============>');
-    print(prefs.getString('selected_goals_inspiration'));
     final encodedGoals = prefs.getString('selected_goals_inspiration');
-    print('Encoded==========>$encodedGoals');
     if (encodedGoals != null) {
       List decodedGoals = List.from(json.decode(encodedGoals));
       if (decodedGoals.length >= goals.length) {
         setState(() {
           selectAll = true;
         });
-        print(selectAll);
       }
-      print("DecodedGoal========$decodedGoals");
       for (int i = 0; i <= goals.length; i++) {
         if (goals[i]['isActive'] == true) {
-          print('====Active===');
           if (decodedGoals.contains(goals[i]['id'])) {
             multiGoals.add(goals[i]['id']);
             selectedIndices.add(Active.indexOf(goals[i]));
           }
         } else {
-          print('====Inactive===');
           if (decodedGoals.contains(goals[i]['id'])) {
             multiGoals.add(goals[i]['id']);
             selectedInActiveIndices.add(inActive.indexOf(goals[i]));
           }
         }
       }
-
-      print('SelectedGoals==============================$decodedGoals');
     }
   }
 
@@ -228,21 +198,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
     super.initState();
 
     if (widget.update == true) {
-      // clear();
     } else {}
 
     _fetchUserGoal();
-
-    // if (widget.data_saved == false) {
-    //   selectedInActiveIndices.clear();
-    //   selectedIndices.clear();
-    //   selectedGoals.clear();
-    //   multiGoals.clear();
-    //   allgoalsSelected.clear();
-    //   setState(() {
-    //     selectAll = false;
-    //   });
-    // }
   }
 
   @override
@@ -397,8 +355,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                     if (selectAll == true) {
                                                       saveGoalsToSharedPreferences(
                                                           allgoalsSelected);
-                                                      print(allgoalsSelected);
-                                                      print('saved');
                                                     } else {
                                                       saveGoalsToSharedPreferences(
                                                           multiGoals);
@@ -431,7 +387,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                                   inspirationName:
                                                                       '',
                                                                 )));
-                                                            // print(response.statusCode);
                                                           }
                                                         })
                                                         .catchError((error) {})
@@ -522,7 +477,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                             setState(() {
                                                               selectAll = false;
                                                             });
-                                                            // print(response.statusCode);
                                                           }
                                                         })
                                                         .catchError((error) {})
@@ -652,21 +606,14 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       selectedInActiveIndices.clear();
                                       multiGoals.clear();
                                     });
-                                    print('=========================');
                                     for (int i = 0; i < Active.length; i++) {
                                       selectedIndices.add(i);
                                       multiGoals.add(Active[i]['id']);
                                     }
-                                    print('=========================');
                                     for (int i = 0; i < inActive.length; i++) {
                                       selectedInActiveIndices.add(i);
                                       multiGoals.add(inActive[i]['id']);
                                     }
-                                    print(selectedInActiveIndices);
-                                    // multiGoals.addAll(allgoalsSelected);
-                                    // print(multiGoals)
-
-                                    print(allgoalsSelected);
                                   } else if (selectAll == true) {
                                     setState(() {
                                       selectAll = false;
@@ -785,9 +732,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   .add(Active[index]['id']);
                                             }
                                           });
-                                          print(multiGoals);
-                                          print(selectedIndices);
-                                          print(selectedInActiveIndices);
+
                                           setState(() {
                                             selectAll = false;
                                           });

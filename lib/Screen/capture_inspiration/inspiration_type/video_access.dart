@@ -45,8 +45,6 @@ class _video_infoState extends State<video_info> {
     setState(() {
       imageLink = imageLinked;
     });
-    print(
-        '---------------==============================${prefs.getString('ImageLink')}');
 
     if (prefs.getString('ImageLink').toString().isNotEmpty) {
       link.text = imageLink!;
@@ -61,7 +59,6 @@ class _video_infoState extends State<video_info> {
       setState(() {
         selectedGoals = decodedGoals;
       });
-      print('SelectedGoals==============================$selectedGoals');
     }
   }
 
@@ -178,7 +175,6 @@ class _video_infoState extends State<video_info> {
                                                       selectedGoals)
                                                   .then((response) async {
                                                 if (response.length != 0) {
-                                                  print('----------------');
                                                   setState(() {
                                                     bt_enable = true;
                                                   });
@@ -203,7 +199,6 @@ class _video_infoState extends State<video_info> {
                                                                   delete: false,
                                                                   is_Updated:
                                                                       false)));
-                                                  print(response);
                                                 }
                                               });
                                             }
@@ -558,8 +553,6 @@ class _video_infoState extends State<video_info> {
                             tagList.clear();
 
                             tagList.addAll(finalResult.toSet());
-
-                            print(tagList);
                           },
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.7,

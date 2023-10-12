@@ -31,13 +31,11 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
           themeColor: const Color(0xFFf74269),
           pages: pages,
           skipClicked: (value) {
-            print(value);
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text("Skip clicked"),
             ));
           },
           getStartedClicked: (value) {
-            print(value);
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text("Get Started clicked"),
             ));

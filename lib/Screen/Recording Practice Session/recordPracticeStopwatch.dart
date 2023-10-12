@@ -569,7 +569,6 @@ class _watch_timeState extends State<watch_time> {
                         });
                       }
                     } else {
-                      print(enabled);
                       if (enabled == true) {
                         if (_isRunning) {
                           _pauseTimer();

@@ -53,7 +53,6 @@ class _StarReviewState extends State<StarReview> {
     _focusNode = FocusNode()..addListener(_onFocus);
     super.initState();
     _fetchGoalNames();
-    print('======>Route<${widget.route}');
   }
 
   void _onFocus() {
@@ -63,11 +62,9 @@ class _StarReviewState extends State<StarReview> {
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   void _fetchGoalNames() async {
@@ -92,21 +89,12 @@ class _StarReviewState extends State<StarReview> {
       });
       print("error");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   @override
   Widget build(BuildContext context) {
-    // GoalReviewBg.webp
     return WillPopScope(
       onWillPop: () async {
-        print('==============================');
-        print(widget.route);
-
         if (route == 'view_all_goals') {
           Navigator.pushReplacement(
               context, FadePageRouteReverse(page: const view_all_goals_menu()));
@@ -1111,11 +1099,7 @@ class _StarReviewState extends State<StarReview> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           AnimatedScaleButton(
-                                            onTap: () {
-                                              print('hello world');
-                                              // AdminGoal().getUserGoal();
-                                              print("Admin");
-                                            },
+                                            onTap: () {},
                                             child: Container(
                                               height: AppDimensions.height10(
                                                       context) *
@@ -1429,8 +1413,6 @@ class _StarReviewState extends State<StarReview> {
                                           // SizedBox(width: ),
                                           AnimatedScaleButton(
                                             onTap: () {
-                                              print("New Self ");
-
                                               Navigator.push(
                                                 context,
                                                 FadePageRoute(
@@ -1704,8 +1686,6 @@ class _StarReviewState extends State<StarReview> {
                                                     .deleteUserGoal()
                                                     .then((response) async {
                                                   if (response == true) {
-                                                    print(
-                                                        "==================>Successfully deleted");
                                                     if (route ==
                                                             'view_all_goals' ||
                                                         widget.route ==

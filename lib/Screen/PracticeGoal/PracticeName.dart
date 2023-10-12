@@ -54,14 +54,10 @@ class _PracticeNameState extends State<PracticeName> {
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
-        print("---------------------------------");
-
         practiceName.text = response["name"];
 
         // mapItems(schedule, updates);
-      } else {
-        print("response:$response");
-      }
+      } else {}
     }).catchError((error) {
       print("hell");
     });
@@ -70,17 +66,14 @@ class _PracticeNameState extends State<PracticeName> {
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   getGoalName() async {
-    print("hello world1224");
     final SharedPreferences prefs = await _prefs;
     var my_goal = prefs.getString("goalName");
     var practice_Name = prefs.getString('pracName');
@@ -91,7 +84,6 @@ class _PracticeNameState extends State<PracticeName> {
       practice.text = practice_Name!;
       practiceName.text = capitalizeFirstLetter(practice_Name);
     });
-    print('=======================>$color');
   }
 
   bool showContainer = false;
@@ -826,8 +818,6 @@ class _PracticeNameState extends State<PracticeName> {
                               builder: (context, value, child) {
                                 return AnimatedScaleButton(
                                   onTap: () async {
-                                    print(
-                                        "updating the practice $practiceName");
                                     if (practiceName.text.isNotEmpty) {
                                       if (widget.comingFromEditScreen) {
                                         final SharedPreferences prefs =

@@ -105,13 +105,11 @@ class _your_impactState extends State<your_impact> {
                   ["impactOnYourSelf"]['currentEmotions'] -
               1;
         });
-        print('Level ===> $level');
 
         loadData();
         final SharedPreferences prefs = await _prefs;
         await prefs.setInt(
             'goal_eval_id', response["goalEvaluations"][widget.index]["id"]);
-        print(response);
       } else {
         loadData();
       }
@@ -1766,12 +1764,6 @@ class _your_impactState extends State<your_impact> {
                                                                               ((select_item + select_item_2 + 2) / 2).round();
                                                                         });
 
-                                                                        print(
-                                                                            level);
-                                                                        print(
-                                                                            select_item);
-                                                                        print(
-                                                                            select_item_2);
                                                                         goalEvaluationApi()
                                                                             .updateEvaluation(
                                                                           "impactOnYourSelf",

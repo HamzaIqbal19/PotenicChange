@@ -143,8 +143,7 @@ class _view_goalsState extends State<view_goals> {
         PracticeGoalApi.getUserPracticeByDay(getFormattedDate(current))
             .then((response) {
           getSixthday();
-          print(response);
-          print("Api Called");
+
           var jsonData = jsonDecode(response.body);
 
           if (response.statusCode == 200) {
@@ -160,11 +159,9 @@ class _view_goalsState extends State<view_goals> {
               noActive = false;
               noData = false;
             });
-            print('====================');
-            print(noActive);
-            print(allGoals.length);
+
             timesList.clear();
-            print('FILTERED BY TIME: >>>>>>>> $timesList ');
+
             for (int i = 0; i < allGoals.length; i++) {
               for (int y = 0; y < allGoals[i]['schedule'].length - 1; y++) {
                 timesList.add({
@@ -174,9 +171,7 @@ class _view_goalsState extends State<view_goals> {
                 });
               }
             }
-            print('FILTERED BY TIME:  $timesList >>>>>>>>');
 
-            // Function to convert time to minutes from midnight
             int convertToMinutes(String time) {
               int hours = int.parse(time.split(':')[0]);
               int minutes = int.parse(time.split(':')[1].split(' ')[0]);
@@ -196,16 +191,7 @@ class _view_goalsState extends State<view_goals> {
               return timeA - timeB;
             });
 
-            // Print the sorted list
-
-            print(
-                'Filter Length ${timesList.length}>>>>>Status >>>>>> ${timesList[0]['status']} FILTERED BY TIME:  $timesList >>>>>>>>');
-
             loadData();
-
-            for (int i = 0; i < timesList.length; i++) {
-              print('<<Status for recording times>> ${timesList[i]['status']}');
-            }
 
             if (allGoals.length == 1 && allGoals[0]["schedule"].length == 2) {
               setState(() {
@@ -241,12 +227,8 @@ class _view_goalsState extends State<view_goals> {
             setState(() {
               RecordDate = parsedDate.toString();
             });
-            print(
-                '=======Record==============>$date======>>current>>$currentDate=========Difference>>$difference');
-            print('=======Record==============>$currentDate');
 
             if (difference.isNegative && difference != 0) {
-              print(difference);
               setState(() {
                 noPlanned = false;
               });
@@ -263,10 +245,6 @@ class _view_goalsState extends State<view_goals> {
               print('The formatted date is in the future.');
             }
           }
-
-          print(
-              '___________________________"<TIME>"___-----------------------${allGoals[0]['schedule']['time1'].toString()}');
-          //print(allGoals.length);
         });
       } else if (response == 404) {
         setState(() {
@@ -292,7 +270,6 @@ class _view_goalsState extends State<view_goals> {
   }
 
   void onDoneLoading() {
-    print("LoadingCompleted");
     setState(() {
       Loader = false;
     });
@@ -356,7 +333,6 @@ class _view_goalsState extends State<view_goals> {
                                 // next = next - 1;
                               });
 
-                              print('$current');
                               fetchPracticeByDay();
 
                               // Navigator.push(context,
@@ -403,7 +379,6 @@ class _view_goalsState extends State<view_goals> {
                           builder: (BuildContext context) {
                             return CalendarBottomSheet(
                               onChangedStart: (int value) {
-                                print("Printing selected time $current");
                                 setState(() {
                                   current = -value;
                                   next = -value - 1;
@@ -411,9 +386,6 @@ class _view_goalsState extends State<view_goals> {
                                   Loader = true;
                                 });
                                 fetchPracticeByDay();
-                                print(current);
-                                print(next);
-                                print(past);
                               },
                             );
                           },
@@ -598,7 +570,6 @@ class _view_goalsState extends State<view_goals> {
                                                           // next = next - 1;
                                                         });
                                                         previous();
-                                                        print('$current');
                                                         fetchPracticeByDay();
                                                         setState(() {
                                                           contain = false;
@@ -880,10 +851,7 @@ class _view_goalsState extends State<view_goals> {
                                                           setState(() {
                                                             contain = false;
                                                           });
-                                                        } else {
-                                                          print(
-                                                              "Max view date reached");
-                                                        }
+                                                        } else {}
                                                       } else {
                                                         if (goal_level == 0) {
                                                           _incrementValue();
@@ -1269,15 +1237,11 @@ class _view_goalsState extends State<view_goals> {
                                                                             : '0';
                                                                         if (timesList[index]['status'] ==
                                                                             "Not Started") {
-                                                                          print(
-                                                                              "CON 2");
                                                                           Navigator.push(
                                                                               context,
                                                                               FadePageRoute(page: const practiceMenu(goal_eval: false)));
                                                                         } else if (timesList[index]['status'] ==
                                                                             "missed") {
-                                                                          print(
-                                                                              "CON 3");
                                                                           Navigator.push(
                                                                               context,
                                                                               FadePageRoute(
@@ -1285,9 +1249,6 @@ class _view_goalsState extends State<view_goals> {
                                                                                 pracName: timesList[index]['data']['name'],
                                                                               )));
                                                                         } else {
-                                                                          print(
-                                                                              "CON 1");
-
                                                                           Navigator.push(
                                                                               context,
                                                                               FadePageRoute(page: const menu_behaviour()));

@@ -21,24 +21,17 @@ class Authentication {
 
     var responses = jsonDecode(request.body);
 
-    print("responses:$responses");
-    print("statusCode:${request.statusCode}");
-
     if (request.statusCode == 200) {
-      print("response:${responses["message"]}");
-
       var response = {
         "message": responses["message"],
         "statusCode": request.statusCode,
       };
-      print("return this value:$response");
       return response;
     } else {
       var response = {
         "message": responses["message"],
         "statusCode": request.statusCode,
       };
-      // print("response:${}");
       return response;
     }
   }
@@ -56,18 +49,12 @@ class Authentication {
 
     var responses = jsonDecode(request.body);
 
-    print("request:${responses}");
-
     if (request.statusCode == 200) {
-      //  String token = responses;
-
       final SharedPreferences prefs = await _prefs;
       var accesstoken = prefs.setString('usertoken', responses);
 
       return true;
     } else {
-      // client.close();
-      // print("response:${}");
       return false;
     }
   }
@@ -86,8 +73,6 @@ class Authentication {
 
     var response = jsonDecode(request.body);
 
-    print("statusCode:${request.statusCode}");
-
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
       var accesstoken = prefs.setString('usertoken', response["accessToken"]);
@@ -98,9 +83,7 @@ class Authentication {
           prefs.setString('subscriptionStatus', response["subscriptionStatus"]);
       await prefs.setString('accountCreatedAt',
           response["createdAt"].toString().substring(0, 10));
-      print(response["subscriptionStatus"]);
 
-      print("Session Token ===============${response["sessionToken"]}");
       var responses = {
         "message": response["message"],
         "statusCode": request.statusCode,
@@ -109,13 +92,10 @@ class Authentication {
     } else if (request.statusCode == 404 ||
         request.statusCode == 401 ||
         request.statusCode == 400) {
-      print("request12234344:$response");
-      // print("response:${}");
       var responses = {
         "message": response["message"],
         "statusCode": request.statusCode,
       };
-      print("responseMessage:${responses["message"]}");
       return responses;
     }
   }
@@ -127,30 +107,23 @@ class Authentication {
       "email": "$email",
     });
 
-    print("request:$Body");
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/auth/forgot-password'),
         headers: headers,
         body: Body);
-    print("request:");
 
     var responses = jsonDecode(request.body);
 
-    print(request.statusCode);
-    print("request:${responses["userId"]}");
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
       var resetEmail = prefs.setString('resetEmail', email);
       var resetId = prefs.setInt('ResetId', responses["userId"]);
       var reset = prefs.getString('resetEmail');
-      print('=====>$reset');
 
       return true;
     } else if (request.statusCode == 404) {
       return request.statusCode;
     } else {
-      // client.close();
-      // print("response:${}");
       return false;
     }
   }
@@ -169,22 +142,14 @@ class Authentication {
         Uri.parse('${URL.BASE_URL}api/auth/reset-password?token=$token'),
         headers: headers,
         body: Body);
-    print("request:");
 
     var responses = jsonDecode(request.body);
-    print("status:${request.statusCode}");
-    print("request:$Body");
-    print("request:${responses}");
 
     if (request.statusCode == 200) {
-      print('============================object');
-
       return true;
     } else if (request.statusCode == 400) {
       return request.statusCode;
     } else {
-      // client.close();
-      // print("response:${}");
       return false;
     }
   }
@@ -202,20 +167,12 @@ class Authentication {
         Uri.parse('${URL.BASE_URL}api/auth/verify-otp'),
         headers: headers,
         body: Body);
-    print("request:");
 
     var responses = jsonDecode(request.body);
-    print("status:${request.statusCode}");
-    print("request:$Body");
-    print("request:$responses");
 
     if (request.statusCode == 200) {
-      print('============================object');
-
       return true;
     } else if (request.statusCode == 400) {
-      // client.close();
-      // print("response:${}");
       return request.statusCode;
     } else {
       return false;
@@ -226,7 +183,6 @@ class Authentication {
     final SharedPreferences prefs = await _prefs;
 
     var userId = prefs.getInt('userid');
-    print('$userId');
 
     var Accestoken = prefs.getString("userId");
     var headers = {
@@ -239,14 +195,11 @@ class Authentication {
         headers: headers);
 
     var responses = jsonDecode(request.body);
-    print("Account to be deleted");
     if (request.statusCode == 200) {
       print('Account deleted');
       return true;
     } else {
       return responses["message"];
-      // client.close();
-      // return responses["message"];
     }
   }
 }

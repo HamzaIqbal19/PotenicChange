@@ -97,10 +97,7 @@ class _AllGoalsState extends State<AllGoals> {
     String jsonString =
         jsonEncode(goal.toJson()); // converting object to json string
     prefs.setString('goal', jsonString);
-    print('====================');
     var userGoalId = prefs.setInt('goalId', goalId);
-    print('====================');
-    print('====================$userGoalId');
 
     getGoal();
   }
@@ -114,12 +111,10 @@ class _AllGoalsState extends State<AllGoals> {
 
   Future<Goal> getGoal() async {
     final prefs = await SharedPreferences.getInstance();
-    print("GoalId:${prefs.getInt("goalId")}");
     String? jsonString = prefs.getString('goal');
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
-      print("Goal===============>$jsonString");
       Navigator.push(
         context,
         FadePageRoute(
@@ -146,7 +141,6 @@ class _AllGoalsState extends State<AllGoals> {
     setState(() {
       //if (searchTerm) {
       AdminGoal().searchAllGoal(searchTerm).then((value) => {
-            print("value:$value"),
             if (value.isEmpty)
               {
                 setState(() {
@@ -161,7 +155,6 @@ class _AllGoalsState extends State<AllGoals> {
                   goalNamesAndCategories = value;
                   Loading = false;
                   noData = false;
-                  print("responses:${value[1]["goals"]}");
                 }),
               }
           });
@@ -543,8 +536,6 @@ class _AllGoalsState extends State<AllGoals> {
                               child: TextFormField(
                                   controller: _searchController,
                                   onChanged: (value) {
-                                    print("value:$value");
-
                                     setState(() {
                                       searchText = value;
                                       _searchGoals(value);

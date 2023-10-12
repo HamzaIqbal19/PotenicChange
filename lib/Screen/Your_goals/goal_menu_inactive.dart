@@ -97,19 +97,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
           if (goalDetails['userPractices'][j]['isActive'] == true) {
             activePractices.add(goalDetails['userPractices'][j]);
           }
-
-          //activePractices.add(Practices);
         }
-        print('Length=============>${activePractices.length}');
-        print('Date=============>$activePractices');
 
         loadData();
-        print(response);
       } else {
         loadData();
       }
     }).catchError((error) {
-      // loadData();
       print("error");
     }).whenComplete(() {
       //loadData();
@@ -123,7 +117,6 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
     setState(() {
       route = menuRoute!;
     });
-    print(prefs.getString('goal_menu_route'));
   }
 
   String formatDate(String inputDate) {
@@ -897,7 +890,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             await _prefs;
                                         var prac_id = prefs.setInt('prac_num',
                                             activePractices[index]['id']);
-                                             await prefs.setString('prac_menu_route', 'goal_menu');
+                                        await prefs.setString(
+                                            'prac_menu_route', 'goal_menu');
                                       },
                                       child: Container(
                                         width: AppDimensions.height10(context) *

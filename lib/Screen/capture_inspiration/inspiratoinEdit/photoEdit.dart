@@ -63,72 +63,66 @@ class _photo_EditState extends State<photo_Edit> {
   }
 
   void _fetchInspiration() {
-    InspirationApi().getInspirationById().then((response) {
-      print('Res=====================');
-      if (response.length != 0) {
-        setState(() {
-          inspirationDetails = response;
-        });
-        print(inspirationDetails);
-        print('1');
-        setState(() {
-          image = inspirationDetails['inspiration']['file']!;
-        });
+    InspirationApi()
+        .getInspirationById()
+        .then((response) {
+          if (response.length != 0) {
+            setState(() {
+              inspirationDetails = response;
+            });
 
-        print('2');
-        if (widget.updateData == true) {
-          setState(() {
-            Loading = false;
-          });
-        } else {
-          link.text =
-              inspirationDetails['inspiration']['destinationLink'] ?? '';
-          title.text = inspirationDetails['inspiration']['title'].toString();
-          statement.text =
-              inspirationDetails['inspiration']['description'].toString();
-          if (inspirationDetails['inspiration']['hashTags'].length != 0) {
-            for (int i = 0;
-                i < inspirationDetails['inspiration']['hashTags'].length;
-                i++) {
-              hashList
-                  .add('#${inspirationDetails['inspiration']['hashTags'][i]}');
+            setState(() {
+              image = inspirationDetails['inspiration']['file']!;
+            });
+
+            if (widget.updateData == true) {
+              setState(() {
+                Loading = false;
+              });
+            } else {
+              link.text =
+                  inspirationDetails['inspiration']['destinationLink'] ?? '';
+              title.text =
+                  inspirationDetails['inspiration']['title'].toString();
+              statement.text =
+                  inspirationDetails['inspiration']['description'].toString();
+              if (inspirationDetails['inspiration']['hashTags'].length != 0) {
+                for (int i = 0;
+                    i < inspirationDetails['inspiration']['hashTags'].length;
+                    i++) {
+                  hashList.add(
+                      '#${inspirationDetails['inspiration']['hashTags'][i]}');
+                }
+              }
+              hastags.text =
+                  inspirationDetails['inspiration']['hashTags'].length != 0
+                      ? hashList
+                          .toString()
+                          .replaceAll('[', '')
+                          .replaceAll(']', '')
+                          .replaceAll('"', '')
+                      : '';
+
+              loadData();
+
+              if (inspirationDetails['inspiration']['hashTags'].length != 0) {
+                for (int i = 0;
+                    i < inspirationDetails['inspiration']['hashTags'].length;
+                    i++) {
+                  tagList.add(
+                      '"${inspirationDetails['inspiration']['hashTags'][i]}"');
+                }
+              }
             }
+            getImageLink();
+            getInspiration();
+            loadData();
           }
-          hastags.text =
-              inspirationDetails['inspiration']['hashTags'].length != 0
-                  ? hashList
-                      .toString()
-                      .replaceAll('[', '')
-                      .replaceAll(']', '')
-                      .replaceAll('"', '')
-                  : '';
-          print('============${link.text}');
 
-          loadData();
-
-          print(inspirationDetails['inspiration']['hashTags'][0]);
-          if (inspirationDetails['inspiration']['hashTags'].length != 0) {
-            for (int i = 0;
-                i < inspirationDetails['inspiration']['hashTags'].length;
-                i++) {
-              tagList
-                  .add('"${inspirationDetails['inspiration']['hashTags'][i]}"');
-            }
-          }
-        }
-        getImageLink();
-        getInspiration();
-        loadData();
-        print(tagList);
-
-        print(inspirationDetails['inspiration']['title']);
-        print("1212312312321321");
-      }
-
-      // return null;
-    }).catchError((error) {
-      print('An errro ha occured $error');
-    }).whenComplete(() => null);
+          // return null;
+        })
+        .catchError((error) {})
+        .whenComplete(() => null);
   }
 
   List selectedGoals = [];
@@ -141,7 +135,6 @@ class _photo_EditState extends State<photo_Edit> {
       setState(() {
         selectedGoals = decodedGoals;
       });
-      print('SelectedGoals==============================$selectedGoals');
     }
   }
 
@@ -153,8 +146,6 @@ class _photo_EditState extends State<photo_Edit> {
     setState(() {
       imageLink = imageLinked;
     });
-    print(
-        '---------------==============================${prefs.getString('ImageLink')}');
 
     if (prefs.getString('ImageLink').toString().isNotEmpty) {
       link.text = imageLink!;
@@ -171,7 +162,6 @@ class _photo_EditState extends State<photo_Edit> {
   void initState() {
     super.initState();
     _fetchInspiration();
-    print(selectedGoals);
   }
 
   @override
@@ -208,8 +198,10 @@ class _photo_EditState extends State<photo_Edit> {
                     children: [
                       AnimatedScaleButton(
                         onTap: () {
-                          Navigator.push(context,
-                              FadePageRouteReverse(page: const record_inspiration()));
+                          Navigator.push(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const record_inspiration()));
                           removePrefs();
                           clear();
                         },
@@ -914,8 +906,6 @@ class _photo_EditState extends State<photo_Edit> {
                                           tagList.clear();
 
                                           tagList.addAll(finalResult.toSet());
-
-                                          print(tagList);
                                         },
                                         textAlignVertical:
                                             TextAlignVertical.center,

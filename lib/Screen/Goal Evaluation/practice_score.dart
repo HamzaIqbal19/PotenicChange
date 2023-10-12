@@ -94,9 +94,7 @@ class _prac_scoreState extends State<prac_score> {
 
   void getPracticeDetail() {
     PracticeGoalApi.getUserPracticeById().then((response) {
-      print(response);
       if (response.length != 0) {
-        print("---------------------------------");
         setState(() {
           pracDetails = response;
           pracId = response['id'];
@@ -106,12 +104,8 @@ class _prac_scoreState extends State<prac_score> {
 
         fetchPracticeAssesment();
 
-        print(pracDetails);
         loadData();
-        print("---------------------------------");
-      } else {
-        print("response:$response");
-      }
+      } else {}
     }).catchError((error) {
       print("hell");
     }).whenComplete(() {});
@@ -136,16 +130,12 @@ class _prac_scoreState extends State<prac_score> {
 
   void startTimer() {
     Timer(const Duration(seconds: 4), () {
-      print('Fade Fuction called');
       stateChange();
     });
   }
 
   void getPracticeEval() {
     PracticeEvaluation.getPracticeEvaluation().then((response) {
-      print("Evaluation called");
-      print(response['practiceEvaluation']['question1']);
-
       if (response.length != 0) {
         setState(() {
           selectedItemIndex =
@@ -176,20 +166,15 @@ class _prac_scoreState extends State<prac_score> {
                       .substring(0, 10);
         });
       }
-      print(
-          "$selectedItemIndex $selectedItemIndex2 $selectedItemIndex3 $selectedItemIndex4");
     });
   }
 
   void fetchPracticeAssesment() async {
     PracticeEvaluation.getPracriceAssesment().then((response) {
-      print('Practice assesment response $response');
       if (response.length != 0) {
         if (widget.index < 0) {
           int i = response['practiceEvaluations'].length - 1;
-          ;
-          print('INDEX: $i');
-          print("AFTER INDEX");
+
           setState(() {
             selectedItemIndex =
                 response['practiceEvaluations'][i]['question1'] != null
@@ -225,9 +210,7 @@ class _prac_scoreState extends State<prac_score> {
                         .toString()
                         .substring(0, 10);
           });
-          print("AFTER INDEX $reportDate && $activeDate");
         } else if (widget.index >= 0) {
-          print(response['practiceEvaluations'][widget.index]);
           setState(() {
             selectedItemIndex = response['practiceEvaluations'][widget.index]
                         ['question1'] !=

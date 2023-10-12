@@ -230,41 +230,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   GestureDetector(
-                                    onTap: () {
-                                      // if (widget.membership == true) {
-                                      //   Navigator.push(
-                                      //       context,
-                                      //       FadePageRoute(
-                                      //           page: const Subscription()));
-                                      // } else if (widget.trial == true) {
-                                      //   print(widget.cancel);
-                                      //   Navigator.push(
-                                      //       context,
-                                      //       FadePageRoute(
-                                      //           page: widget.cancel
-                                      //               ? const dashBoard(
-                                      //                   saved: false,
-                                      //                   helpful_tips: false,
-                                      //                   dashboard_ctrl: true,
-                                      //                   membership: true,
-                                      //                   trial: false,
-                                      //                   cancel: false)
-                                      //               : const dashBoard(
-                                      //                   saved: false,
-                                      //                   helpful_tips: false,
-                                      //                   dashboard_ctrl: true,
-                                      //                   membership: false,
-                                      //                   trial: true,
-                                      //                   cancel: true)));
-
-                                      //   _canceled_plan(context);
-                                      // } else {
-                                      //   Navigator.push(
-                                      //       context,
-                                      //       FadePageRoute(
-                                      //           page: const Subscription()));
-                                      // }
-                                    },
+                                    onTap: () {},
                                     child: SizedBox(
                                         width: AppDimensions.height10(context) *
                                             27.6,

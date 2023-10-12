@@ -42,14 +42,12 @@ class _note_infoState extends State<note_info> {
 
   void _fetchInspiration() {
     InspirationApi().getInspirationById().then((response) {
-      print('Res=====================');
       if (response.length != 0) {
         setState(() {
           inspirationDetails = response;
         });
         loadData();
-        print(inspirationDetails['inspiration']['title']);
-        print("1212312312321321");
+
         return response;
       }
 
@@ -775,7 +773,6 @@ class _noteSavedState extends State<noteSaved> {
       setState(() {
         selectedGoals = decodedGoals;
       });
-      print('SelectedGoals==============================$selectedGoals');
     }
   }
 
@@ -868,7 +865,6 @@ class _noteSavedState extends State<noteSaved> {
                                     onTap: () async {
                                       if (title.text.isNotEmpty &&
                                           statement.text.isNotEmpty) {
-                                        print("Api");
                                         if (bt_enable == true) {
                                           setState(() {
                                             bt_enable = false;
@@ -886,8 +882,6 @@ class _noteSavedState extends State<noteSaved> {
                                                 statement.text.toString(),
                                                 selectedGoals)
                                             .then((response) async {
-                                          print("Api 2");
-                                          print(response);
                                           if (response.length != 0) {
                                             Navigator.push(
                                                 context,
@@ -897,7 +891,7 @@ class _noteSavedState extends State<noteSaved> {
                                                             delete: false,
                                                             is_Updated:
                                                                 false)));
-                                            print('----------------');
+
                                             title.clear();
                                             tagList.clear();
                                             hastags.clear();
@@ -908,8 +902,6 @@ class _noteSavedState extends State<noteSaved> {
                                                 prefs.remove('ImageLink');
                                             prefs.remove(
                                                 'inspiration_saved_route');
-
-                                            print(response);
                                           }
 
                                           // return null;
@@ -1125,7 +1117,6 @@ class _noteSavedState extends State<noteSaved> {
                             tagList.clear();
 
                             tagList.addAll(finalResult.toSet());
-                            print(tagList);
                           },
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.7,

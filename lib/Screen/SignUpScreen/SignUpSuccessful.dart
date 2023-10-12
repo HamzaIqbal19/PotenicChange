@@ -143,7 +143,6 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                     SizedBox(height: AppDimensions.height10(context) * 12.4),
                     AnimatedScaleButton(
                       onTap: () {
-                        print('===============>asdas');
                         Navigator.push(
                             context,
                             FadePageRoute2(false,

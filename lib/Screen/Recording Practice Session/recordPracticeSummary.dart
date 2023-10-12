@@ -73,18 +73,13 @@ class _practice_summaryState extends State<practice_summary> {
   void _fetchPracticeNames() async {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
-        print("---------------------------------");
         setState(() {
           pracName = response["name"];
           pracColor = response["color"];
         });
         loadData();
-        print("---------------------------------");
-        print("response123:$pracName");
-        print("response123:$pracColor");
       } else {
         loadData();
-        print("response:$response");
       }
     }).catchError((error) {
       loadData();
@@ -110,19 +105,11 @@ class _practice_summaryState extends State<practice_summary> {
       //  loadData();
       print("error");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   void recording() {
     RecordingPractice.getUserPracticeRecord().then((response) {
       if (response.length != 0) {
-        print('======================================================');
-        print(response['recording']['notes'][0]['afterNote']);
-        print(response);
         setState(() {
           details = response;
           Before = response['recording']['feelingsBeforeSession'];
@@ -139,31 +126,19 @@ class _practice_summaryState extends State<practice_summary> {
         setState(() {
           differenceInDays1 = currentDate.difference(date1).inDays;
         });
-
-        print('Difference in days $differenceInDays1');
-        print("DEtails ======================================$details");
-        print(Before);
-        print(After);
-        print(Feedback);
-        print(Session);
-        //print(response);
       }
     });
   }
 
   late AnimationController controller;
-  //late Animation<double> opacityAnimation;
 
   @override
   initState() {
     super.initState();
     recording();
     _fetchRoute();
-    print("Details++++++++++++++++++++$details");
     _fetchGoalNames();
     _fetchPracticeNames();
-
-    // Initialize AnimationController
   }
 
   @override
@@ -547,14 +522,11 @@ class _practice_summaryState extends State<practice_summary> {
                                         } else {
                                           setState(() {
                                             time = 'Am';
-                                            //print(time);
                                           });
                                         }
                                       });
                                       setState(() => date_time =
                                           " ${day}:${newDateTime.hour}:${newDateTime.minute}:$time");
-                                      print(
-                                          "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:$time");
                                     }
                                   }));
                             },
@@ -1211,9 +1183,6 @@ class _practice_summaryState extends State<practice_summary> {
                                                                     record:
                                                                         differenceInDays1,
                                                                   )));
-
-                                                              print(
-                                                                  'Api call success');
                                                             } else {
                                                               print(
                                                                   'Api failed');
@@ -1254,17 +1223,6 @@ class _practice_summaryState extends State<practice_summary> {
                                             ),
                                           ));
                                 },
-
-                                //   RecordingPractice()
-                                //       .deleteUserRecording()
-                                //       .then((value) {
-                                //     if (value == true) {
-                                //       print('Api call success');
-                                //     } else {
-                                //       print('Api failed');
-                                //     }
-                                //   });
-                                // },
 
                                 child: Container(
                                     height:

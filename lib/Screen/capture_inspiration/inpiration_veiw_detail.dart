@@ -36,13 +36,11 @@ class _view_detailsState extends State<view_details> {
 
   void _fetchInspiration() {
     InspirationApi().getInspirationById().then((response) {
-      print('Res=====================');
       if (response.length != 0) {
         setState(() {
           inspirationDetails = response;
         });
 
-        print(inspirationDetails['inspiration']['title']);
         if (inspirationDetails['inspiration']['hashTags'].length != 0) {
           for (int i = 0;
               i < inspirationDetails['inspiration']['hashTags'].length;

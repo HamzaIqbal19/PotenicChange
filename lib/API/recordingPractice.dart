@@ -31,38 +31,26 @@ class RecordingPractice {
       "userGoalId": userGoalId
     });
 
-    print("request:$Body");
-    print('-----------------------!');
-
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/recording/add-recording'),
         headers: headers,
         body: Body);
-    print('=====================!');
-    print("request:");
 
     var responses = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
-      print("response:${responses["result"]["id"]}");
       final SharedPreferences prefs = await _prefs;
-      print('statusCode');
-      print(request.statusCode);
       var recording_id =
           prefs.setInt('recording_id', responses["result"]["id"]);
       if (responses['report'] == true) {
-        print('Status false');
         await prefs.setBool('isReportActive', true);
         await prefs.setString(
             'lastReportDate', responses['reportDetail']['activeDate']);
         await prefs.setString(
             'lastReportEnd', responses['reportDetail']['endDate']);
-        print('Recording added 20');
       } else if (responses['report'] == false) {
         await prefs.setBool('isReportActive', false);
       }
-      print('Recording added');
-      print(responses);
 
       return true;
     } else {
@@ -70,14 +58,11 @@ class RecordingPractice {
         "message": responses["message"],
         "statusCode": request.statusCode,
       };
-      // print("response:${}");
       return response;
     }
   }
 
   static Future getUserPracticeRecord() async {
-    // var goalName;
-
     final SharedPreferences prefs = await _prefs;
     var prac_num = prefs.getInt("prac_num");
     var Accestoken = prefs.getString("usertoken");
@@ -90,10 +75,8 @@ class RecordingPractice {
       Uri.parse('${URL.BASE_URL}api/recording/$recording_id'),
       headers: headers,
     );
-    // print('===========$userGoalId');
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
 
       return (jsonData);
     } else {
@@ -103,13 +86,9 @@ class RecordingPractice {
 
   Future updateRecording(destination, message, notes) async {
     final SharedPreferences prefs = await _prefs;
-    //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
     var recording_id = prefs.getInt('recording_id');
-    print(prefs.getInt('recording_id'));
 
-    //int UserGoalId = 12;
-    print("request: Update");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
@@ -118,26 +97,16 @@ class RecordingPractice {
       "$destination": "$message",
       "notes": notes,
     });
-    print(body);
-    // var userGoalId = prefs.getInt('goalId');
-    // print('$userGoalId');
 
     var request = await client.put(
         Uri.parse('${URL.BASE_URL}api/recording/$recording_id'),
         headers: headers,
         body: body);
-    print("request: Update");
-    print('=====>$request.statusCode');
-    print(request.body);
+
     if (request.statusCode == 200) {
-      // print("$request.statusCode");
-      print("request: Update successful");
       var jsonData = jsonDecode(request.body);
-      print("Result: $jsonData");
       return true;
     } else {
-      print("Update failed");
-      // client.close();
       return false;
     }
   }
@@ -157,28 +126,20 @@ class RecordingPractice {
         headers: headers);
 
     var responses = jsonDecode(request.body);
-    print("Recording to be deleted");
     if (request.statusCode == 200) {
-      print('Recording deleted');
       return true;
     } else {
       return responses["message"];
-      // client.close();
-      // return responses["message"];
     }
   }
 
   Future updateRecordingStatus(status) async {
     final SharedPreferences prefs = await _prefs;
-    //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
     var recording_Time = prefs.getString('recording_Time1');
     var Date = prefs.getString('record_date');
     var Id = prefs.getInt('prac_num');
-    print(prefs.getString('record_date'));
 
-    //int UserGoalId = 12;
-    print("request: Update");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
@@ -189,26 +150,16 @@ class RecordingPractice {
       "recordingStatus": status,
       "userPracticeId": Id
     });
-    print(body);
-    // var userGoalId = prefs.getInt('goalId');
-    // print('$userGoalId');
 
     var request = await client.put(
         Uri.parse('${URL.BASE_URL}api/recording/update-recording-status'),
         headers: headers,
         body: body);
-    print("request: Update");
-    print('=====>$request.statusCode');
-    print(request.body);
+
     if (request.statusCode == 200) {
-      // print("$request.statusCode");
-      print("request: Update successful");
       var jsonData = jsonDecode(request.body);
-      print("Result: $jsonData");
       return true;
     } else {
-      print("Update failed");
-      // client.close();
       return false;
     }
   }

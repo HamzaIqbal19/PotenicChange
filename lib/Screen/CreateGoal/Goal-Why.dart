@@ -53,7 +53,6 @@ class _goalwhyState extends State<GoalWhy> {
   getData() async {
     final prefs = await SharedPreferences.getInstance();
     var jsonString = prefs.getString('goal');
-    print(jsonString);
     Map<String, dynamic> jsonMap = json.decode(jsonString!);
 
     if (jsonMap.isNotEmpty) {
@@ -64,17 +63,14 @@ class _goalwhyState extends State<GoalWhy> {
         });
       }
     }
-    print(myTextFields);
   }
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       Route = goal_route!;
     });
-    print("================Route=$Route");
   }
 
   @override
@@ -119,13 +115,7 @@ class _goalwhyState extends State<GoalWhy> {
       setState(() {
         Loading = false;
       });
-      print("error");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   getGoalName() async {
@@ -134,7 +124,6 @@ class _goalwhyState extends State<GoalWhy> {
     setState(() {
       goalName = prefs.getString("goalName")!;
     });
-    print("goalName:$goalName");
   }
 
   int item = 1;
@@ -143,7 +132,6 @@ class _goalwhyState extends State<GoalWhy> {
     setState(() {
       myTextFields[index]['text'] = newValue;
     });
-    print(myTextFields);
   }
 
   void decrement() {
@@ -151,8 +139,6 @@ class _goalwhyState extends State<GoalWhy> {
   }
 
   void handleDelete(int index) {
-    print('=========>dELETED');
-
     widget.comingFromEditScreen
         ? setState(() {
             // myTextFields[index]['text'].remove(index);
@@ -181,9 +167,6 @@ class _goalwhyState extends State<GoalWhy> {
     decrement();
     //closing the focus
     blankNode.requestFocus();
-    //closing the focus
-    print(myTextFields);
-    print('dELETED');
   }
 
   void increment() {
@@ -202,19 +185,13 @@ class _goalwhyState extends State<GoalWhy> {
       // Get stored Goal object from shared preferences
       String? jsonString = prefs.getString('goal');
       Map<String, dynamic> userMap = jsonDecode(jsonString!);
-      // print("UserMap:$userMap");
-      // print("newReason:$newReason");
-      // Create Goal object from map
+
       Goal goal = Goal.fromJson(userMap);
-      // print("UserMap:$goal");
-      // print("newReason:$newReason");
-      // Update reason field
+
       goal.reason = newReason;
 
-      // Convert updated Goal object back to JSON string
       jsonString = jsonEncode(goal.toJson());
 
-      // Save updated Goal object back to shared preferences
       await prefs.setString('goal', jsonString);
       getGoal();
     } else {
@@ -223,15 +200,12 @@ class _goalwhyState extends State<GoalWhy> {
   }
 
   Future<Goal> getGoal() async {
-    print("hello world");
     final prefs = await SharedPreferences.getInstance();
     goalName = prefs.getString("goalName")!;
     String? jsonString = prefs.getString('goal');
-    print(jsonString);
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
-      print("GoalWhy:$jsonString");
       if (saved == false) {
         myTextFields[0]['text'] != ""
             ? Navigator.push(
@@ -986,7 +960,6 @@ class _goalwhyState extends State<GoalWhy> {
                                                       'text': '',
                                                     });
                                                   });
-                                            print("=============>Pressed");
                                           },
                                           child: Container(
                                             height: AppDimensions.height10(
@@ -1093,7 +1066,6 @@ class _goalwhyState extends State<GoalWhy> {
                                                       'text': '',
                                                     });
                                                   });
-                                            print("=============>Pressed");
                                           },
                                           child: Container(
                                             height: AppDimensions.height10(
@@ -1398,7 +1370,6 @@ class _goalwhyState extends State<GoalWhy> {
                                 AnimatedScaleButton(
                                   onTap: () async {
                                     if (widget.comingFromEditScreen) {
-                                      print("Printing Reason $Reason");
                                       if (Reason[0]['text'] != "") {
                                         AdminGoal()
                                             .updateUserGoal('reason', Reason)
@@ -1418,8 +1389,6 @@ class _goalwhyState extends State<GoalWhy> {
                                                     "Feld can't be empty")));
                                       }
                                     } else {
-                                      print(
-                                          '===================>${myTextFields[0]['text']}');
                                       updateGoalReason(myTextFields);
                                     }
                                   },

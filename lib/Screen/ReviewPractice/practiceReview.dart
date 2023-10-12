@@ -61,11 +61,10 @@ class _PracticeReviewState extends State<PracticeReview> {
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var review_route = prefs.getString('practice_review');
-    print("================Route=${prefs.getString('practice_review')}");
+
     setState(() {
       route = review_route!;
     });
-    print("================Route=$route");
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -110,7 +109,6 @@ class _PracticeReviewState extends State<PracticeReview> {
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
-        print("--------------------------------$response");
         setState(() {
           pracName = response["name"];
           reminder = response["reminder"];
@@ -139,22 +137,13 @@ class _PracticeReviewState extends State<PracticeReview> {
           });
         }
         loadData();
-        print("---------------------------------");
-        print("response123:$pracName");
-        print('====================>$reminder');
       } else {
         loadData();
-        print("response:$response");
       }
     }).catchError((error) {
       loadData();
       print("hell");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   @override
@@ -1656,10 +1645,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                 PracticeGoalApi()
                                                     .deleteUserPractice()
                                                     .then((response) {
-                                                  if (response == true) {
-                                                    print(
-                                                        "==================>Successfully deleted");
-                                                  }
+                                                  if (response == true) {}
                                                 });
                                                 if (route == 'practice_menu' ||
                                                     route ==

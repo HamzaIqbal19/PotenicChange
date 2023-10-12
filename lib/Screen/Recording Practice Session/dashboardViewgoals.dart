@@ -72,7 +72,6 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
   void _fetchGoalNames() async {
     final SharedPreferences prefs = await _prefs;
     AdminGoal.getUserActiveGoal().then((response) {
-      print("Response: ==================== $response");
       if (response.length != 0) {
         setState(() {
           goalDetails = response[0];
@@ -82,7 +81,6 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
           color = response[0]["color"] ?? 0;
           no_activegoals = false;
         });
-        print(response);
 
         var goalId = prefs.setInt('goal_num', response[0]["id"]);
         loadData();
@@ -98,20 +96,12 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
     }).whenComplete(() {
       loadData();
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   void _fetchPracticeNames() async {
     final SharedPreferences prefs = await _prefs;
     PracticeGoalApi.getUserPractice().then((response) {
-      print(response["id"]);
-      print("---------------------------------");
       var pracId = prefs.setInt('prac_score_id', response["id"]);
-      print("---------------------------------");
       if (response.length != 0) {
         setState(() {
           pracName = response["name"];
@@ -120,33 +110,21 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
         });
         var time = prefs.setString(
             'recording_Time1', pracDetails["schedule"][0]['time1'].toString());
-        print("---------------------------------");
-
-        print(response["id"]);
-        print(pracName);
-        print(pracColor);
       } else {
         print("response:$response");
       }
     }).catchError((error) {
       print("hell");
     }).whenComplete(() {});
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   late AnimationController controller;
-  //late Animation<double> opacityAnimation;
 
   @override
   initState() {
     super.initState();
     _fetchPracticeNames();
     _fetchGoalNames();
-    // Initialize AnimationController
     initController();
   }
 

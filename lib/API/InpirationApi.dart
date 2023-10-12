@@ -23,15 +23,10 @@ class InspirationApi {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
-    print(prefs.getString("usertoken"));
-    var headers = {
-      //'Content-Type': 'application/json',
-      'x-access-token': '$accessToken'
-    };
+    var headers = {'x-access-token': '$accessToken'};
 
     var request = http.MultipartRequest('POST',
         Uri.parse('${URL.BASE_URL}api/userInspiration/add-userInspiration'));
-    print("Fields: ${request.fields}");
 
     request.fields.addAll({
       "inspirationId": "$inspirationId",
@@ -45,7 +40,6 @@ class InspirationApi {
       "userId": "$UserId"
     });
 
-    print("Fields: ${request.fields}");
     request.headers.addAll(headers);
 
     if (file != null) {
@@ -55,38 +49,28 @@ class InspirationApi {
 
       request.files.add(multipartFile);
     }
-    print("Request==${request.files}");
 
     http.StreamedResponse response = await request.send();
-    print(response.statusCode);
-    print(response);
 
     if (response.statusCode == 200) {
       var responses = await response.stream.bytesToString();
       var responseBody = jsonDecode(responses);
-      print(responseBody['result']['id']);
       var inspirationId =
           prefs.setInt('userInspirationId', responseBody['result']['id']);
       prefs.remove('inspiration_saved_route');
 
-      print("response==========>$responses['result']"); // Printing the response
       return responseBody;
-      // You can parse the response here and return appropriate data
     } else {
       print("request==========>$response.statusCode");
-      // Handle error here
     }
   }
 
   Future updateInspiration(String title, hashTags, String destinationLink,
       String description, userGoalId, String author) async {
     final SharedPreferences prefs = await _prefs;
-    //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
     var userInspirationId = prefs.getInt('userInspirationId');
 
-    //int UserGoalId = 12;
-    print("request: Update");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
@@ -99,31 +83,22 @@ class InspirationApi {
       "description": description,
       "userGoalId": userGoalId
     });
-    // var userGoalId = prefs.getInt('goalId');
-    // print('$userGoalId');
 
     var request = await client.put(
         Uri.parse('${URL.BASE_URL}api/userInspiration/$userInspirationId'),
         headers: headers,
         body: body);
-    print("request: Update");
-    print('=====>$request.statusCode');
-    print(request.body);
+
     if (request.statusCode == 200) {
-      // print("$request.statusCode");
-      print("request: Update successful");
       var jsonData = jsonDecode(request.body);
-      print("Result: $jsonData");
       return true;
     } else {
       print("Update failed");
-      // client.close();
       return false;
     }
   }
 
   Future deleteUserInspiraton() async {
-    print('Delete Called');
     final SharedPreferences prefs = await _prefs;
     var userInspirationId = prefs.getInt('userInspirationId');
     var Accestoken = prefs.getString("usertoken");
@@ -131,22 +106,18 @@ class InspirationApi {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
-    print(userInspirationId);
 
     var request = await client.delete(
         Uri.parse('${URL.BASE_URL}api/userInspiration/$userInspirationId'),
         headers: headers);
 
     var responses = jsonDecode(request.body);
-    print(responses);
-    print("Inspiration to be deleted");
+
     if (request.statusCode == 200) {
       print('object deleted');
       return true;
     } else {
       return responses["message"];
-      // client.close();
-      // return responses["message"];
     }
   }
 
@@ -158,17 +129,14 @@ class InspirationApi {
     var headers = {
       'x-access-token': '$Accestoken',
     };
-    print('-=--=----===-==');
     var response = await http.get(
       Uri.parse('${URL.BASE_URL}api/userInspiration/$userInspirationId'),
       headers: headers,
     );
 
     if (response.statusCode == 200) {
-      print('------------------------------------------------');
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
-      print(jsonData['inspiration']['title']);
+
       return jsonData;
     } else {
       print(
@@ -194,13 +162,10 @@ class InspirationApi {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
 
       return jsonData;
     } else {
       return false;
-      // print(
-      //     'Failed to fetch inspiration names Request failed with status: ${response.statusCode}');
     }
   }
 
@@ -222,13 +187,10 @@ class InspirationApi {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
 
       return true;
     } else {
       return false;
-      // print(
-      //     'Failed to fetch inspiration names Request failed with status: ${response.statusCode}');
     }
   }
 
@@ -236,15 +198,6 @@ class InspirationApi {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
-    print("type================>$type");
-    if (tag != '') {
-      print(
-          'tag=====================>${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag');
-    } else {
-      print('tag=====================>Empty&$tag');
-    }
-
-    print(Accestoken);
 
     var headers = {
       'Content-Type': 'application/json',
@@ -269,12 +222,9 @@ class InspirationApi {
                                   : '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId'),
       headers: headers,
     );
-    print(response.request);
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-
-      print("Result:$jsonData");
 
       return jsonData;
     } else if (response.statusCode == 404) {

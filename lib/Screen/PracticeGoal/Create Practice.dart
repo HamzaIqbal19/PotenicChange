@@ -49,7 +49,6 @@ class _CreatePracticeState extends State<CreatePractice> {
   TextEditingController _searchController = TextEditingController();
 
   getGoalName() async {
-    print("hello world1224");
     final SharedPreferences prefs = await _prefs;
     var goalName = prefs.getString("goalName");
 
@@ -61,11 +60,9 @@ class _CreatePracticeState extends State<CreatePractice> {
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   Future<Timer> loadData() async {
@@ -101,10 +98,8 @@ class _CreatePracticeState extends State<CreatePractice> {
           practiceName = response;
         });
         loadData();
-        print("responseName:$practiceName");
       } else {
         loadData();
-        print("response:$response");
       }
     }).catchError((error) {
       loadData();
@@ -116,20 +111,17 @@ class _CreatePracticeState extends State<CreatePractice> {
     setState(() {
       //if (searchTerm) {
       PracticeGoalApi.SearchPractice(searchTerm).then((value) {
-        print("value:$value");
         if (value.isEmpty) {
           setState(() {
             noDate = true;
             practiceName = value;
             Loading = false;
-            print("responses:${value[1]["goals"]}");
           });
         } else {
           setState(() {
             practiceName = value;
             noDate = false;
             Loading = false;
-            print("responses:${value[1]["goals"]}");
           });
         }
       });
@@ -425,7 +417,6 @@ class _CreatePracticeState extends State<CreatePractice> {
                                                 'pracId',
                                                 practiceName?[index]["id"],
                                               );
-                                              print(2);
                                               Navigator.push(
                                                 context,
                                                 FadePageRoute2(
@@ -437,10 +428,6 @@ class _CreatePracticeState extends State<CreatePractice> {
                                                   ),
                                                 ),
                                               );
-
-                                              print(index);
-                                              // bottom_sheet(context,Allgoal![0]["goals"][index1]
-                                              // ["id"]);
                                             },
                                             child: circles(
                                                 circle_text:
@@ -512,8 +499,6 @@ class _CreatePracticeState extends State<CreatePractice> {
                                 child: TextFormField(
                                     controller: _searchController,
                                     onChanged: (value) {
-                                      print("value:$value");
-
                                       setState(() {
                                         searchText = value;
                                         _searchPractice(value);

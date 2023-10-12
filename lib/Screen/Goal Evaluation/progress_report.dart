@@ -49,31 +49,9 @@ class _progress_reportState extends State<progress_report> {
     });
   }
 
-  // void _fetchGoalDetails() {
-  //   AdminGoal.getUserGoal().then((response) {
-  //     if (response.length != 0) {
-  //       setState(() {
-  //         goalDetails = response;
-  //       });
-  //       getReport();
-
-  //       loadData();
-  //       print(response);
-  //     } else {
-  //       loadData();
-  //     }
-  //   }).catchError((error) {
-  //     // loadData();
-  //     print("error");
-  //   }).whenComplete(() {
-  //     loadData();
-  //   });
-  // }
-
   void getReport() {
     PracticeEvaluation.getUserPracticeReportId().then((response) {
       if (response == false) {
-        print(response);
         setState(() {
           noData = true;
         });
@@ -84,23 +62,9 @@ class _progress_reportState extends State<progress_report> {
         });
 
         loadData();
-        print(response['report']['practiceProgress']);
-        print('==================EVALUATION=============');
 
-        print(report['practice']['practiceEvaluations']);
         int count = 0;
-        // for (int i = 0;
-        //     i < response['report']['practiceProgress'].length;
-        //     i++) {
-        //   if (response['report']['practiceProgress'][i].toString()
-        //       .contains('complete')) {
-        //     count = count + 1;
-        //   }
-        //   print(count);
-        // }
 
-        // print(
-        //     "Report days ${20 - response['report']['practiceProgress'].containsValue('completed').toString().length}");
         response['report']["howPracticeGoing"].forEach((date, value) {
           if (value is int) {
             if (value == 1) {
@@ -290,9 +254,7 @@ class _progress_reportState extends State<progress_report> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print(options);
-                      },
+                      onTap: () {},
                       child: Container(
                         width: AppDimensions.height10(context) * 31.7,
                         height: AppDimensions.height10(context) * 3.6,
@@ -785,31 +747,33 @@ class _progress_reportState extends State<progress_report> {
                                   borderRadius: BorderRadius.circular(
                                       AppDimensions.height10(context) * 2.0)),
                               child: CalendarWithRadioButtons(
-                                  status: true,
-                                  dateStatus: noData == true
-                                      ? {
-                                          "2023-07-18": "completed",
-                                          "2023-07-19": "completed",
-                                          "2023-07-20": "completed",
-                                          "2023-07-21": "completed",
-                                          "2023-07-22": "completed",
-                                          "2023-07-23": "completed",
-                                          "2023-07-24": "completed",
-                                          "2023-07-25": "completed",
-                                          "2023-07-26": "completed",
-                                          "2023-07-27": "completed",
-                                          "2023-07-28": "completed",
-                                          "2023-07-29": "completed",
-                                          "2023-07-30": "completed",
-                                          "2023-07-31": "missed",
-                                          "2023-08-01": "completed",
-                                          "2023-08-02": "completed",
-                                          "2023-08-03": "completed",
-                                          "2023-08-04": "completed",
-                                          "2023-08-05": "completed",
-                                          "2023-08-06": "missed"
-                                        }
-                                      : report['practiceProgress'], limitCalender: true,)),
+                                status: true,
+                                dateStatus: noData == true
+                                    ? {
+                                        "2023-07-18": "completed",
+                                        "2023-07-19": "completed",
+                                        "2023-07-20": "completed",
+                                        "2023-07-21": "completed",
+                                        "2023-07-22": "completed",
+                                        "2023-07-23": "completed",
+                                        "2023-07-24": "completed",
+                                        "2023-07-25": "completed",
+                                        "2023-07-26": "completed",
+                                        "2023-07-27": "completed",
+                                        "2023-07-28": "completed",
+                                        "2023-07-29": "completed",
+                                        "2023-07-30": "completed",
+                                        "2023-07-31": "missed",
+                                        "2023-08-01": "completed",
+                                        "2023-08-02": "completed",
+                                        "2023-08-03": "completed",
+                                        "2023-08-04": "completed",
+                                        "2023-08-05": "completed",
+                                        "2023-08-06": "missed"
+                                      }
+                                    : report['practiceProgress'],
+                                limitCalender: true,
+                              )),
                         ],
                       ),
                     ),

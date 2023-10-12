@@ -30,8 +30,6 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
     setState(() {
       Route = prefs.getString('inspiration_saved_route');
     });
-
-    print(prefs.getString('inspiration_saved_route'));
   }
 
   @override

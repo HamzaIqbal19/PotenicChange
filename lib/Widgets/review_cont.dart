@@ -31,9 +31,7 @@ class _reviewboxState extends State<reviewbox> {
           // reason2 = response["reason"][1]['text'];
           // reason3 = response["reason"][2]['text'];
         });
-      } else {
-        print("response:$response");
-      }
+      } else {}
     }).catchError((error) {
       print("error");
     });

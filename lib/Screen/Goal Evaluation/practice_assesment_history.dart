@@ -53,9 +53,7 @@ class _practice_assesmentState extends State<practice_assesment> {
           goalDetails = response;
           pracDetails = response['userPractices'];
         });
-        print('Practices<==================>$pracDetails');
         loadData();
-        print(response);
       } else {
         loadData();
       }
@@ -66,7 +64,6 @@ class _practice_assesmentState extends State<practice_assesment> {
 
   void fetchPracticeAssesment() async {
     PracticeEvaluation.getPracriceAssesment().then((response) {
-      print('Practice assesment response $response');
       if (response.length != 0) {
         setState(() {
           pracDetails = response['practiceEvaluations'];
@@ -92,7 +89,6 @@ class _practice_assesmentState extends State<practice_assesment> {
 
     _getRoute();
     fetchPracticeAssesment();
-    print("Assesment route $route}");
   }
 
   @override

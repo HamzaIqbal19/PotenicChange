@@ -51,7 +51,6 @@ class _VerificationState extends State<Verification> {
     });
   }
 
-  
   void resetControllers(List<TextEditingController> controllers) {
     for (var controller in controllers) {
       controller.text =
@@ -290,7 +289,6 @@ class _VerificationState extends State<Verification> {
                           )
                         ],
                       ),
-                     
                       const SizedBox(
                         height: 24,
                       ),
@@ -302,14 +300,12 @@ class _VerificationState extends State<Verification> {
                   onTap: () {
                     combinedValue =
                         controllers.map((controller) => controller.text).join();
-                    print(combinedValue);
 
                     if (_timerActive == false) {
                       setState(() {
                         Loading = true;
                       });
 
-                      print(combinedValue);
                       if (combinedValue != '') {
                         Authentication()
                             .verifyOtp(int.parse(combinedValue))

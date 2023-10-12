@@ -30,7 +30,6 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
     setEmail(email) async {
       SharedPreferences pref = await SharedPreferences.getInstance();
       pref.setString('email', email);
-      print("SetEmail: $email");
     }
   }
 

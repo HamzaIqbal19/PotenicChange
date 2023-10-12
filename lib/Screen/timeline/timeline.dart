@@ -2490,7 +2490,7 @@ class _timelineState extends State<timeline> {
                                                                   _statements[
                                                                       _selectedTag];
                                                             });
-                                                            print('asf');
+
                                                             Navigator.pop(
                                                                 context);
                                                           },
@@ -2987,7 +2987,6 @@ _showBottomSheet(BuildContext context) {
   ).then((value) {
     if (value != null) {
       // Do something with the selected statement
-      print(value);
     }
   });
 }
@@ -3129,7 +3128,6 @@ _BottomSheet(BuildContext context) {
   ).then((value) {
     if (value != null) {
       // Do something with the selected statement
-      print(value);
     }
   });
 }

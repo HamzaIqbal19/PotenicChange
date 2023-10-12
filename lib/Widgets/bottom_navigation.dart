@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
@@ -54,7 +53,6 @@ class Navigation_BarState extends State<Navigation_Bar> {
                   goal_delete: false,
                   inspirationName: '',
                 )));
-            // print(response.statusCode);
           }
         })
         .catchError((error) {})

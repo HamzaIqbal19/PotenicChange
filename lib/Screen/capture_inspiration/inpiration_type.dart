@@ -181,7 +181,6 @@ class _inspiration_typeState extends State<inspiration_type> {
                                                           goal_delete: false,
                                                           inspirationName: '',
                                                         )));
-                                                    // print(response.statusCode);
                                                   }
                                                 })
                                                 .catchError((error) {})
@@ -238,7 +237,6 @@ class _inspiration_typeState extends State<inspiration_type> {
                                                           goal_delete: false,
                                                           inspirationName: '',
                                                         )));
-                                                    // print(response.statusCode);
                                                   }
                                                 })
                                                 .catchError((error) {})

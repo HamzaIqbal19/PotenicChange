@@ -107,7 +107,6 @@ class _VisualisingState extends State<Visualising> {
   getData() async {
     final prefs = await SharedPreferences.getInstance();
     var jsonString = prefs.getString('goal');
-    print(jsonString);
     Map<String, dynamic> jsonMap = json.decode(jsonString!);
 
     if (jsonMap.isNotEmpty) {
@@ -118,7 +117,6 @@ class _VisualisingState extends State<Visualising> {
         });
       }
     }
-    print(goalVisualising);
   }
 
   void _fetchGoalNames() async {
@@ -134,13 +132,7 @@ class _VisualisingState extends State<Visualising> {
       setState(() {
         Loading = false;
       });
-      print("error");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   getGoalName() async {
@@ -150,7 +142,6 @@ class _VisualisingState extends State<Visualising> {
       goalName = prefs.getString("goalName")!;
       Loading = false;
     });
-    print("====================>goalName:$goalName");
   }
 
   int item = 1;
@@ -159,7 +150,6 @@ class _VisualisingState extends State<Visualising> {
     setState(() {
       goalVisualising[index]['text'] = newValue;
     });
-    print(goalVisualising);
   }
 
   void decrement() {
@@ -169,31 +159,21 @@ class _VisualisingState extends State<Visualising> {
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   void handleDelete(int index) {
-    print('=========>dELETED');
     widget.comingFromEditScreen
         ? setState(() {
-            // myTextFields[index]['text'].remove(index);
-
             visualize.removeAt(index);
 
             for (int i = index + 1; i < visualize.length; i++) {
               visualize[i]['key'] = i.toString();
-
-              // Assuming 'key' is the identifier you want to update.
             }
-            //index--;
           })
         : setState(() {
-            // myTextFields[index]['text'].remove(index);
-
             goalVisualising.removeAt(index);
 
             for (int i = index + 1; i < goalVisualising.length; i++) {
@@ -206,9 +186,6 @@ class _VisualisingState extends State<Visualising> {
     decrement();
     //closing the focus
     blankNode.requestFocus();
-    //closing the focus
-    print(goalVisualising);
-    print('dELETED');
   }
 
   void increment() {
@@ -244,10 +221,8 @@ class _VisualisingState extends State<Visualising> {
   }
 
   Future<Goal> getGoal() async {
-    print("hello world");
     final prefs = await SharedPreferences.getInstance();
     String? jsonString = prefs.getString('goal');
-    print(jsonString);
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
@@ -256,10 +231,6 @@ class _VisualisingState extends State<Visualising> {
           Loading = false;
         });
         if (response == true) {
-          print("visualizeResponse: $response");
-          // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          //     content: Text("User Login Successfully!!")));
-
           Navigator.push(
             context,
             FadePageRoute(
@@ -960,7 +931,6 @@ class _VisualisingState extends State<Visualising> {
                                                         'text': '',
                                                       });
                                                     });
-                                              print("=============>Pressed");
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
@@ -1071,7 +1041,6 @@ class _VisualisingState extends State<Visualising> {
                                                         'text': '',
                                                       });
                                                     });
-                                              print("=============>Pressed");
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
@@ -1386,7 +1355,6 @@ class _VisualisingState extends State<Visualising> {
                                   AnimatedScaleButton(
                                     onTap: () async {
                                       if (widget.comingFromEditScreen) {
-                                        print("Visualising Reason $visualize");
                                         if (visualize[0]['text'] != "") {
                                           AdminGoal()
                                               .updateUserGoal(

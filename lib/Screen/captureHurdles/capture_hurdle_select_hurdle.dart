@@ -69,7 +69,6 @@ class _select_hurdleState extends State<select_hurdle> {
       selectBox = integer == '-1' ? -1 : int.parse(integer);
     });
 
-    print("Route ${prefs.getString('HurdleRoute')}");
     if (Route == '' || Route == null) {
       setState(() {
         selectBox = -1;
@@ -113,8 +112,7 @@ class _select_hurdleState extends State<select_hurdle> {
   void initState() {
     super.initState();
     getHurdleRoute();
-    print(
-        "---------------------------------------------------------------------");
+
     _fetchHurdle();
     if (widget.update == true) {
       _fetchHurdleSummary();
@@ -488,7 +486,6 @@ class _select_hurdleState extends State<select_hurdle> {
                                             index == 0
                                                 ? hurdlesList[0]['id']
                                                 : hurdlesList[index - 1]['id']);
-                                        print(index);
                                         setState(() {
                                           selectBox = index;
                                         });

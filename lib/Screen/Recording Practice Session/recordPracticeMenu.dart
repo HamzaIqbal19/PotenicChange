@@ -52,7 +52,6 @@ class _practiceMenuState extends State<practiceMenu> {
 
   Future<void> getRecordedDate() async {
     final SharedPreferences prefs = await _prefs;
-    print('Difference ${prefs.getString('record_date')!}');
 
     DateTime currentDate =
         DateTime.parse(DateTime.now().toString().substring(0, 10));
@@ -60,7 +59,6 @@ class _practiceMenuState extends State<practiceMenu> {
     setState(() {
       differenceInDays = currentDate.difference(date1).inDays;
     });
-    print('Difference $differenceInDays');
   }
 
   void getRecorDetails() async {
@@ -79,48 +77,11 @@ class _practiceMenuState extends State<practiceMenu> {
     setState(() {
       subscripption = prefs.getString('subscriptionStatus')!;
     });
-    print("SubscriptionStatus ${prefs.getString('subscriptionStatus')}");
   }
-
-  // Future<Timer> loadData() async {
-  //   return Timer(const Duration(seconds: 5), onDoneLoading);
-  // }
-
-  // void onDoneLoading() {
-  //   setState(() {
-  //     Loader = false;
-  //   });
-  // }
-
-  // void _fetchGoalNames() async {
-  //   AdminGoal.getUserGoal().then((response) {
-  //     if (response.length != 0) {
-  //       setState(() {
-  //         goalName = response["name"];
-  //         identity = response["identityStatement"][0]["text"];
-  //         color = response["color"];
-  //         pracName = response["userPractices"][0]["name"];
-  //         pracColor = response["userPractices"][0]["color"];
-  //       });
-  //       // loadData();
-  //     } else {
-  //       setState(() {
-  //         //Loading = false;
-  //       });
-  //     }
-  //   }).catchError((error) {
-  //     setState(() {
-  //       // Loading = false;
-  //     });
-  //     print("error");
-  //   });
-  // }
 
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) async {
       if (response.length != 0) {
-        print(
-            "---------------------------------PRACTICE RESPONSE===>$response");
         setState(() {
           pracDetails = response;
           pracName = response["name"] ?? pracName;
@@ -129,13 +90,11 @@ class _practiceMenuState extends State<practiceMenu> {
               ? response['practiceEvaluations']['endDate'] ?? ''
               : '';
         });
-        print("---------------------------------PRACTICE RESPONSE===>Success");
         loadData();
 
         AdminGoal.getUserGoalById(response['userGoalId']).then(
           (value) async {
             if (value.length != 0) {
-              print("---------------------------------Goal RESPONSE===>$value");
               setState(() {
                 goalName = value["name"];
                 identity = value["identityStatement"][0]["text"];
@@ -149,10 +108,7 @@ class _practiceMenuState extends State<practiceMenu> {
             }
           },
         );
-      } else {
-        // loadData();
-        print("response:$response");
-      }
+      } else {}
       getSubscription();
     }).catchError((error) {
       // loadData();
@@ -177,7 +133,6 @@ class _practiceMenuState extends State<practiceMenu> {
     setState(() {
       route = menuRoute!;
     });
-    print(prefs.getString('prac_menu_route'));
   }
 
   @override
@@ -469,8 +424,6 @@ class _practiceMenuState extends State<practiceMenu> {
                                 AnimatedScaleButton(
                                   onTap: () {
                                     if (differenceInDays.isNegative) {
-                                      print(
-                                          'Session are not availble for future dates');
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
                                               content: Text(

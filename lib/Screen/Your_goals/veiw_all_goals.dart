@@ -41,21 +41,17 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
 
   void _fetchAllUserGoals() {
     AdminGoal.getUserGoalByUserId().then((response) {
-      print(response);
       if (response.length != 0) {
         setState(() {
           goalsDetails = response;
         });
         loadData();
-        print("================$goalsDetails");
-        print(goalsDetails[0]['color']);
       }
     });
   }
 
   @override
   void initState() {
-    print("========");
     super.initState();
     _fetchAllUserGoals();
   }
@@ -101,7 +97,8 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
             Center(
               child: IconButton(
                   onPressed: () async {
-                    Navigator.push(context, FadePageRouteReverse(page: Categories()));
+                    Navigator.push(
+                        context, FadePageRouteReverse(page: Categories()));
                     final SharedPreferences prefs = await _prefs;
                     var route = prefs.setString('goal_route', 'view_all_goals');
                   },

@@ -48,11 +48,6 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
       });
       print("error");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   @override

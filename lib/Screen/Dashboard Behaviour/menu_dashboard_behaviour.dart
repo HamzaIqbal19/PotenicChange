@@ -46,7 +46,6 @@ class _menu_behaviourState extends State<menu_behaviour> {
 
   Future<void> getRecordedDate() async {
     final SharedPreferences prefs = await _prefs;
-    print('Difference ${prefs.getString('record_date')!}');
 
     DateTime currentDate =
         DateTime.parse(DateTime.now().toString().substring(0, 10));
@@ -54,7 +53,6 @@ class _menu_behaviourState extends State<menu_behaviour> {
     setState(() {
       differenceInDays = currentDate.difference(date1).inDays;
     });
-    print('Difference $differenceInDays');
   }
 
   void getRecorDetails() async {
@@ -73,14 +71,11 @@ class _menu_behaviourState extends State<menu_behaviour> {
     setState(() {
       subscripption = prefs.getString('subscriptionStatus')!;
     });
-    print("SubscriptionStatus ${prefs.getString('subscriptionStatus')}");
   }
 
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) async {
       if (response.length != 0) {
-        print(
-            "---------------------------------PRACTICE RESPONSE===>$response");
         setState(() {
           pracDetails = response;
           reportDate = response['practiceEvaluations'] != null
@@ -89,11 +84,9 @@ class _menu_behaviourState extends State<menu_behaviour> {
         });
 
         loadData();
-        print(pracName + pracColor);
         AdminGoal.getUserGoalById(response['userGoalId']).then(
           (value) {
             if (value.length != 0) {
-              print("---------------------------------Goal RESPONSE===>$value");
               setState(() {
                 goalName = value["name"];
               });
@@ -105,12 +98,8 @@ class _menu_behaviourState extends State<menu_behaviour> {
 
           await prefs.setInt('goal_eval_id', response["goalEvaluations"]["id"]);
         }
-
-        print("---------------------------------");
-        print("response123:${response["color"]}");
       } else {
         // loadData();
-        print("response:$response");
       }
     }).catchError((error) {
       // loadData();
@@ -142,7 +131,6 @@ class _menu_behaviourState extends State<menu_behaviour> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        print('Difference $differenceInDays');
         Navigator.push(
           context,
           FadePageRouteReverse(

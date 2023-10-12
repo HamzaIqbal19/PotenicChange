@@ -44,7 +44,6 @@ class _missed_MenuState extends State<missed_Menu> {
 
   Future<void> getRecordedDate() async {
     final SharedPreferences prefs = await _prefs;
-    print('Difference ${prefs.getString('record_date')!}');
 
     DateTime currentDate =
         DateTime.parse(DateTime.now().toString().substring(0, 10));
@@ -52,7 +51,6 @@ class _missed_MenuState extends State<missed_Menu> {
     setState(() {
       differenceInDays = currentDate.difference(date1).inDays;
     });
-    print('Difference $differenceInDays');
   }
 
   void getRecorDetails() async {
@@ -64,7 +62,6 @@ class _missed_MenuState extends State<missed_Menu> {
       pracName = prefs.getString('dash_pracName')!;
       goalColor = prefs.getString('dash_goalColor')!;
     });
-    print(prefs.getString('dash_pracName'));
   }
 
   void getSubscription() async {
@@ -72,7 +69,6 @@ class _missed_MenuState extends State<missed_Menu> {
     setState(() {
       subscripption = prefs.getString('subscriptionStatus')!;
     });
-    print("SubscriptionStatus ${prefs.getString('subscriptionStatus')}");
   }
 
   var pracDetails;
@@ -80,8 +76,6 @@ class _missed_MenuState extends State<missed_Menu> {
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) async {
       if (response.length != 0) {
-        print(
-            "---------------------------------PRACTICE RESPONSE===>$response");
         setState(() {
           pracDetails = response;
           reportDate = response['practiceEvaluations'] != null
@@ -90,11 +84,9 @@ class _missed_MenuState extends State<missed_Menu> {
         });
 
         loadData();
-        print(pracName + pracColor);
         AdminGoal.getUserGoalById(response['userGoalId']).then(
           (value) {
             if (value.length != 0) {
-              print("---------------------------------Goal RESPONSE===>$value");
               setState(() {
                 goalName = value["name"];
               });
@@ -106,15 +98,12 @@ class _missed_MenuState extends State<missed_Menu> {
 
           await prefs.setInt('goal_eval_id', response["goalEvaluations"]["id"]);
         }
-        print("---------------------------------");
-        print("response123:${response["color"]}");
       } else {
         // loadData();
-        print("response:$response");
       }
     }).catchError((error) {
       // loadData();
-      print("hell");
+      print("Error");
     });
   }
 

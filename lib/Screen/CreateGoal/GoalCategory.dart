@@ -85,10 +85,7 @@ class _GoalCategoryState extends State<GoalCategory> {
     String jsonString =
         jsonEncode(goal.toJson()); // converting object to json string
     prefs.setString('goal', jsonString);
-    print('====================');
     var userGoalId = prefs.setInt('goalId', goalId);
-    print('====================');
-    print('====================$userGoalId');
 
     getGoal();
   }
@@ -106,12 +103,10 @@ class _GoalCategoryState extends State<GoalCategory> {
 
   Future<Goal> getGoal() async {
     final prefs = await SharedPreferences.getInstance();
-    print("GoalId:${prefs.getInt("goalId")}");
     String? jsonString = prefs.getString('goal');
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
-      print("Goal===============>$jsonString");
       Navigator.push(
         context,
         FadePageRoute(
@@ -142,11 +137,9 @@ class _GoalCategoryState extends State<GoalCategory> {
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   void _fetchgetAllGoal() {
@@ -174,14 +167,12 @@ class _GoalCategoryState extends State<GoalCategory> {
     setState(() {
       //if (searchTerm) {
       AdminGoal().searchAllGoalById(searchTerm, widget.id).then((response) => {
-            print("======>:$response"),
             if (response.isEmpty)
               {
                 setState(() {
                   Loading = false;
                   Allgoal = goalNamesAndCategories;
                   noData = true;
-                  print("responses:${response[1]["goals"]}");
                 }),
               }
             else
@@ -190,7 +181,6 @@ class _GoalCategoryState extends State<GoalCategory> {
                   Allgoal = response;
                   Loading = false;
                   noData = false;
-                  print("responses:${response[1]["goals"]}");
                 }),
               }
           });
@@ -478,8 +468,6 @@ class _GoalCategoryState extends State<GoalCategory> {
                                 child: TextFormField(
                                     controller: _searchController,
                                     onChanged: (value) {
-                                      //  print("value:$value");
-
                                       setState(() {
                                         searchText = value;
                                         _searchGoals(value, widget.id);

@@ -57,9 +57,7 @@ class _hurdle_nameState extends State<hurdle_name> {
         Navigator.push(
             context, FadePageRouteReverse(page: const hurdles_splash()));
       }
-    }).catchError((error) {
-      print("Hello world error");
-    });
+    }).catchError((error) {});
   }
 
   void _fetchHurdleSummary() async {
@@ -102,8 +100,6 @@ class _hurdle_nameState extends State<hurdle_name> {
           ? ""
           : prefs.getString('hurdleName');
     });
-
-    print(hurdleName);
   }
 
   void _getName() async {
@@ -117,7 +113,6 @@ class _hurdle_nameState extends State<hurdle_name> {
     if (Name != '' && Name != null) {
       controller.text = Name;
     }
-    print(Name);
   }
 
   @override

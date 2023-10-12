@@ -46,29 +46,13 @@ class _record_sessionState extends State<record_session> {
     });
   }
 
-  // void fetchGoalsByDay() {
-  //   AdminGoal.getUserGoalByDay(widget.day).then((response) {
-  //     if (response != "") {
-  //       print(response);
-  //       setState(() {
-  //         allGoals = response;
-  //       });
-  //       loadData();
-  //     }
-  //     print('______________________________-----------------------');
-  //     print(allGoals.length);
-  //   });
-  // }
-
   void _fetchGoalNames() async {
     AdminGoal.getUserActiveGoal().then((response) {
       if (response.length != 0) {
-        print('==========================');
         setState(() {
           allGoals = response;
         });
 
-        print(response);
         for (int i = 0; i < allGoals.length; i++) {
           List<dynamic> Practices = [];
           for (int j = 0; j < allGoals[i]['userPractices'].length; j++) {
@@ -76,17 +60,10 @@ class _record_sessionState extends State<record_session> {
               Practices.add(allGoals[i]['userPractices'][j]);
             }
           }
-          print('objectPractice $Practices');
-          print('objectPractice2 ${Practices.length}');
 
           activePractices.add({"practices": Practices});
-          print('objectPractice3 ${activePractices[i]["practices"].length}');
         }
         loadData();
-
-        print(activePractices);
-        print('--------------------');
-        print(activePractices[2]['practices'].length);
       } else {
         loadData();
       }

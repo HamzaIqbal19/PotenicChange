@@ -51,24 +51,16 @@ class _inspiration_landingState extends State<inspiration_landing> {
 
   void filterInspiratonByTag(search, id, tag) {
     InspirationApi().filterUserInspiration(search, id, tag).then((response) {
-      print(response);
       if (response != 404) {
         setState(() {
           InspirationList = response;
           noData = false;
         });
-        print('============API HIT======================>');
       } else if (response == 404) {
-        print('Response == $response');
         setState(() {
           noData = true;
         });
-      } else {
-        //   setState(() {
-        //   noData = true;
-        // });
-        print(response);
-      }
+      } else {}
     });
   }
 
@@ -82,14 +74,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
         });
 
         loadData();
-        //  _getTagNames();
         _fetchUserGoal();
-      } else {
-        print(response.statusCode);
-      }
+      } else {}
     }).catchError((error) {
       loadData();
-      print("Error");
       setState(() {
         noData = true;
       });
@@ -97,7 +85,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
       loadData();
       setState(() {
         _getTagNames();
-        //  noData = true;
       });
     });
   }
@@ -113,17 +100,13 @@ class _inspiration_landingState extends State<inspiration_landing> {
   }
 
   _newFunction() {
-    print('FunctionCalled');
     for (int i = 0; i <= goals.length; i++) {
       goalName.add(goals[i]['name']);
     }
   }
 
   _getTagNames() {
-    print('Tag function called');
-
     for (int i = 0; i <= InspirationList.length; i++) {
-      print(InspirationList[i]['hashTags']);
       if (InspirationList[i]['hashTags']?.length != 0) {
         if (InspirationList[i]['hashTags'] != null) {
           List<String> tags = InspirationList[i]['hashTags']
@@ -135,14 +118,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
 
           tagNames.addAll(tags);
         }
-      } else {
-        print("No tags");
-      }
+      } else {}
 
       //tagNames.add(InspirationList[i]['hashTags'].toString());
     }
-    print('TAGNAMES=====================');
-    // print(tagNames);
   }
 
   void getInspirationRoute() async {
@@ -152,8 +131,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
           ? ''
           : prefs.getString('inspiration_saved_route');
     });
-
-    print(prefs.getString('inspiration_saved_route'));
   }
 
   @override
@@ -1544,8 +1521,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                       .toString()
                                                                       .trim();
                                                             });
-                                                            print(tagNames[
-                                                                TagIndex]);
+
                                                             filterInspiratonByTag(
                                                                 type_index,
                                                                 goalId,
@@ -1553,9 +1529,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                         TagIndex]
                                                                     .toString()
                                                                     .trim());
-                                                            print('asf');
-                                                            print(
-                                                                "Selected Tag ==================>${tagNames[TagIndex].toString().trim()}");
+
                                                             Navigator.pop(
                                                                 context);
                                                           },
@@ -1833,13 +1807,11 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                   type[
                                                                       type_index];
                                                             });
-                                                            print(type[
-                                                                type_index]);
+
                                                             filterInspiratonByTag(
                                                                 type_index,
                                                                 goalId,
                                                                 selectionTag);
-                                                            print('asf');
                                                             Navigator.pop(
                                                                 context);
                                                           },
@@ -2421,17 +2393,13 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
 
   void _fetchInspiration() {
     InspirationApi().getInspirationById().then((response) {
-      print('Res=====================');
       if (response.length != 0) {
         setState(() {
           inspirationDetails = response;
         });
 
         loadData();
-        print(inspirationDetails['inspiration']['title']);
-      } else {
-        print(response);
-      }
+      } else {}
 
       // return null;
     });
@@ -3015,7 +2983,6 @@ class _updateBoxState extends State<updateBox> {
 
   void startTimer() {
     _timer = Timer(const Duration(seconds: 3), () {
-      print('Fade Fuction called');
       widget.FadeFunction;
       setState(() {
         showContainer = false;

@@ -67,7 +67,6 @@ class video_EditState extends State<videoEdit> {
 
   void _fetchInspiration() {
     InspirationApi().getInspirationById().then((response) {
-      print('Res=====================');
       if (response.length != 0) {
         setState(() {
           inspirationDetails = response;
@@ -116,7 +115,6 @@ class video_EditState extends State<videoEdit> {
 
           // }
 
-          print("============Tags==========$tagList");
           loadData();
           if (inspirationDetails['inspiration']['hashTags'].length != 0) {
             for (int i = 0;
@@ -130,9 +128,6 @@ class video_EditState extends State<videoEdit> {
         getImageLink();
         getInspiration();
 
-        print(tagList);
-
-        print("1212312312321321");
         return response;
       }
 
@@ -150,7 +145,6 @@ class video_EditState extends State<videoEdit> {
       setState(() {
         selectedGoals = decodedGoals;
       });
-      print('SelectedGoals==============================$selectedGoals');
     }
   }
 
@@ -162,8 +156,6 @@ class video_EditState extends State<videoEdit> {
     setState(() {
       imageLink = imageLinked;
     });
-    print(
-        '---------------==============================${prefs.getString('ImageLink')}');
 
     if (prefs.getString('ImageLink').toString().isNotEmpty) {
       link.text = imageLink!;
@@ -961,8 +953,6 @@ class video_EditState extends State<videoEdit> {
                                   tagList.clear();
 
                                   tagList.addAll(finalResult.toSet());
-
-                                  print(tagList);
                                 },
                                 textAlignVertical: TextAlignVertical.center,
                                 style: TextStyle(

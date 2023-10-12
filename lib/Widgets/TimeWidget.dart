@@ -99,7 +99,6 @@ class _schedule_cardState extends State<schedule_card> {
       //start_time = value;
       // timesPerDay.firstWhere((day) => day['day'] == days_name)['start'] = value;
     });
-    print(value);
   }
 
   void onChangedEnd(String value) {
@@ -107,7 +106,6 @@ class _schedule_cardState extends State<schedule_card> {
       //end_time = value;
       // timesPerDay.firstWhere((day) => day['day'] == days_name)['end'] = value;
     });
-    print(value);
   }
 
   _schedule_cardState(
@@ -188,7 +186,6 @@ class _schedule_cardState extends State<schedule_card> {
                                       setState(() async {
                                         if (Done) {
                                           selectedDays.add(days_name);
-                                          // _globalKey.currentState?.expand();
 
                                           setState(() {
                                             num = num + 1;
@@ -196,15 +193,7 @@ class _schedule_cardState extends State<schedule_card> {
                                                 "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
                                           });
 
-                                          // final SharedPreferences prefs =
-                                          //     await _prefs;
-                                          // var Start_Time = prefs.setString(
-                                          //     'startTime', '$start_time');
-                                          // var End_Time = prefs.setString(
-                                          //     'endTime', '$end_time');
-
                                           Done = Done;
-                                          print("Done:$Done");
                                           if (Done == true) {
                                             _globalKey.currentState?.expand();
                                             setState(() {
@@ -212,7 +201,6 @@ class _schedule_cardState extends State<schedule_card> {
                                                   "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                                             });
                                             times.add(start_time);
-                                            print(times);
                                             TwoValues<String, int> values =
                                                 TwoValues<String, int>(
                                                     start_time, num);
@@ -291,7 +279,6 @@ class _schedule_cardState extends State<schedule_card> {
                                   elevation: 0,
                                   backgroundColor: Colors.transparent,
                                   onPressed: () {
-                                    print(count);
                                     if (num == 0) {
                                       _globalKey.currentState?.collapse();
                                     } else {

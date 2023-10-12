@@ -46,7 +46,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
   setEmail(email) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString('email', email);
-    print("SetEmail: $email");
   }
 
   @override
@@ -686,7 +685,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           // errorName = false;
                           // userExist = "";
                         });
-                        print("Hello WOrld 12345");
+
                         Authentication()
                             .registerApi(
                           '${nameController.text.toString()}',
@@ -694,7 +693,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           '${passwordController.text.toString()}',
                         )
                             .then((response) {
-                          print(response["staussCode"]);
                           setState(() {
                             Loading = false;
                           });
@@ -713,14 +711,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                               ),
                             );
                           } else if (response["statusCode"] == 409) {
-                            print(userExist.length);
-
-                            print('===========>>>>>>>>>');
                             setState(() {
                               Loading = false;
                               userExist = response["message"];
                             });
-                            print(userExist.length);
 
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(
@@ -729,7 +723,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                   TextStyle(color: Colors.red.withOpacity(0.8)),
                             )));
                           } else {
-                            print('===========');
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(
                               response["message"],

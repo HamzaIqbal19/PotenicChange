@@ -73,9 +73,6 @@ class _feelingsAfterState extends State<feelingsAfter> {
   void recording() {
     RecordingPractice.getUserPracticeRecord().then((response) {
       if (response.length != 0) {
-        print(
-            '===================================================$response===');
-        print(response['recording']['notes'][0]['endNote']);
         String SessionFeedBack = '';
 
         setState(() {
@@ -90,8 +87,6 @@ class _feelingsAfterState extends State<feelingsAfter> {
         if (SessionFeedBack != '') {
           feedback.text = SessionFeedBack;
         }
-
-        //print(response);
       }
     });
   }
@@ -376,7 +371,6 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           setState(() {
                             EmotionsAfter = 1;
                           });
-                          print(EmotionsAfter);
                         },
                         child: Container(
                           width: AppDimensions.height10(context) * 13.7,
@@ -421,7 +415,6 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           setState(() {
                             EmotionsAfter = 2;
                           });
-                          print(EmotionsAfter);
                         },
                         child: Container(
                           width: AppDimensions.height10(context) * 13.7,
@@ -468,7 +461,6 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           setState(() {
                             EmotionsAfter = 3;
                           });
-                          print(EmotionsAfter);
                         },
                         child: Container(
                           width: AppDimensions.height10(context) * 13.7,
@@ -514,7 +506,6 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           setState(() {
                             EmotionsAfter = 4;
                           });
-                          print(EmotionsAfter);
                         },
                         child: Container(
                           width: AppDimensions.height10(context) * 13.7,
@@ -560,7 +551,6 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           setState(() {
                             EmotionsAfter = 5;
                           });
-                          print(EmotionsAfter);
                         },
                         child: Container(
                           width: AppDimensions.height10(context) * 13.7,
@@ -652,12 +642,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                               feedback.text.toString().isNotEmpty
                                   ? feedback.text.toString()
                                   : " ");
-                          print("======================>$EmotionsAfter");
-                          print("================>${feedback.text.toString()}");
 
                           if (widget.summary == true) {
-                            print(emotionsNotes);
-                            print(endSession);
                             RecordingPractice().updateRecording(
                                 "feelingsAfterSession", EmotionsAfter, [
                               {
@@ -959,12 +945,8 @@ class _next_bottonState extends State<next_botton> {
                   feedback.text.toString().isNotEmpty
                       ? feedback.text.toString()
                       : " ");
-              print("======================>$EmotionsAfter");
-              print("================>${feedback.text.toString()}");
 
               if (widget.state == true) {
-                print(emotionsNotes);
-                print(endSession);
                 RecordingPractice()
                     .updateRecording("feelingsAfterSession", EmotionsAfter, [
                   {

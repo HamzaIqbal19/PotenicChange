@@ -78,17 +78,14 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   getGoalName() async {
-    print("hello world1224");
     final SharedPreferences prefs = await _prefs;
     var my_goal = prefs.getString("goalName");
     var practice_Name = prefs.getString('pracName');
@@ -99,7 +96,6 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
       practice.text = practice_Name!;
       practiceName.text = practice_Name;
     });
-    print('=======================>$color');
   }
 
   @override
@@ -485,10 +481,6 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                   startTime: "${timesPerDay[index]['time1']}",
                                   endTime: "${timesPerDay[index]['time2']}",
                                   onChangedStart: (value) {
-                                    print(value);
-                                    //  print(timesPerDay[index]['day']);
-                                    print(
-                                        "Start index printing${timesPerDay[index]}");
                                     if (value.value2 == 1) {
                                       setState(() {
                                         timesPerDay[index]['time1'] =
@@ -503,41 +495,20 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                       );
                                       DayMap['time${value.value2}'] =
                                           value.value1;
-                                      // timesPerDay.where((element) =>
-                                      //     timesPerDay[index]['day'] ==
-                                      //     selectedDay[index]);
                                     } else {
-                                      print('Max per day limit reached');
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
                                               content: Text(
                                                   "Practice routine in limited to 10 sessions par day.")));
                                     }
                                   },
-                                  // onChangedEnd: (value) {
-                                  //   print(value);
-                                  //   print(
-                                  //       "End index printing${timesPerDay[index]}");
 
-                                  //   setState(() {
-                                  //     timesPerDay[index]['time2'] = value;
-
-                                  //     index1 = index;
-                                  //   });
-                                  // },
                                   onCountChanged: (value) {
                                     // Clear the existing selectedDays list
-                                    // selectedDays.clear();
                                     bool isAlreadySelected = selectedDays
                                         .contains(timesPerDay[index]);
 
-                                    // Add the selected day to selectedDays list based on the index
                                     if (isAlreadySelected) {
-                                      print(
-                                          "The list is alredy exist in object");
-
-                                      // If it's already selected, remove it from the list
-                                      // selectedDays.remove(timesPerDay[index]);
                                     } else {
                                       // If it's not already selected, add it to the list
                                       selectedDays.add(timesPerDay[index]);
@@ -545,16 +516,10 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                         Count = count;
                                         index1 = index;
                                       });
-
-                                      print("counter incress: $Count");
                                     }
-
-                                    print('Selected Days:');
-                                    print(selectedDays);
                                   },
                                   expansion: false,
                                   onDelete: (value) {
-                                    print(selectedDays);
                                     if (value.value3 >= 1) {
                                       int ind = selectedDays.indexWhere(
                                           (element) =>
@@ -584,12 +549,9 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                       });
                                     }
 
-                                    print(selectedDays);
                                     setState(() {
-                                      //Count = value.value1;
                                       index1 = index;
                                     });
-                                    print(Count);
                                   },
                                 ),
                                 SizedBox(
@@ -609,13 +571,9 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   children: [
                     AnimatedScaleButton(
                       onTap: () async {
-                        print(timesPerDay);
                         if (Count >= 3) {
                           saveTimesPerDay(selectedDays);
 
-                          print(timesPerDay[6]['start']);
-                          print(timesPerDay[6]['end']);
-                          print(timesPerDay[6]['day']);
                           Navigator.push(
                             context,
                             FadePageRoute(
@@ -627,9 +585,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           // setState(() {
                           //   count = 0;
                           // });
-                        } else {
-                          print(timesPerDay[index1]);
-                        }
+                        } else {}
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,

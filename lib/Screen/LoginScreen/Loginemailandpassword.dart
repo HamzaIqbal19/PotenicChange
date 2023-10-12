@@ -47,7 +47,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
   setEmail(email) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString('email', email);
-    print("SetEmail: $email");
   }
 
   final _formkey = GlobalKey<FormState>();
@@ -67,7 +66,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
 
   onLoggedIn() {
     AdminGoal.checkUserGoalByUserId().then((response) {
-      print(response);
       if (response == true) {
         Navigator.push(
             context,
@@ -660,11 +658,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                           )
                               .then((response) {
                             if (response["statusCode"] == 200) {
-                              print('Success');
-                              // setState(() {
-                              //   credentials = false;
-                              // });
-                              print("SignrResponse: $response");
                               onLoggedIn();
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
@@ -680,7 +673,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(content: Text(response["message"])));
                             } else if (response["statusCode"] == 404) {
-                              print("hello world");
                               setState(() {
                                 Loading = false;
                                 credentials = false;

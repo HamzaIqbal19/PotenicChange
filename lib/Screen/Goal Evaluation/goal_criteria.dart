@@ -81,9 +81,7 @@ class _your_whyState extends State<your_why> {
   }
 
   void _fetchGoalEvauation() {
-    goalEvaluationApi.getGoalEvaluation().then((response) {
-      print(response);
-    });
+    goalEvaluationApi.getGoalEvaluation().then((response) {});
   }
 
   void _fetchGoalDetails() {
@@ -96,7 +94,6 @@ class _your_whyState extends State<your_why> {
         final SharedPreferences prefs = await _prefs;
         await prefs.setInt(
             'goal_eval_id', response["goalEvaluations"][widget.index]["id"]);
-        print(selectedItemIndexesOuter);
         loadData();
         if (widget.destination == 'reason') {
           if (response['goalEvaluations'][widget.index]["YourWay"] != null) {
@@ -215,8 +212,6 @@ class _your_whyState extends State<your_why> {
   @override
   void initState() {
     super.initState();
-    print('>>>>>>>>>>>>>>>>>Index>>>>>>>>>>>>:');
-    print(widget.index);
     _fetchGoalDetails();
     if (widget.destination == 'identityStatement') {
       setState(() {
@@ -648,7 +643,7 @@ class _your_whyState extends State<your_why> {
                                         AppDimensions.height10(context) * 0.1,
                                     color: const Color(0xFFFFFFFF)),
                                 shape: BoxShape.circle,
-                                color: totalPoint == '' 
+                                color: totalPoint == ''
                                     ? Colors.transparent
                                     : const Color(0xFFFFFFFF),
                               ),
@@ -1976,8 +1971,6 @@ class _your_whyState extends State<your_why> {
                                                                                 b) =>
                                                                             a +
                                                                             b);
-                                                                        print(sum +
-                                                                            goalDetails[widget.destination].length);
 
                                                                         level[
                                                                             'level'] = ((sum + goalDetails[widget.destination].length) /
@@ -1991,8 +1984,7 @@ class _your_whyState extends State<your_why> {
                                                                           reasons['reason ${i + 1}'] =
                                                                               selectedItemIndexesOuter![i] + 1;
                                                                         }
-                                                                        print(
-                                                                            level);
+
                                                                         goalEvaluationApi()
                                                                             .updateEvaluation(
                                                                           widget.destination == 'reason'

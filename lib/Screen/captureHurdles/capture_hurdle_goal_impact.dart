@@ -47,8 +47,6 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
     final SharedPreferences prefs = await _prefs;
     final encodedGoals = json.encode(goals);
     prefs.setString('selected_goals', encodedGoals);
-    print('Sved to prefs ');
-    print(allgoalsSelected);
   }
 
   Future<Timer> loadData() async {
@@ -98,22 +96,18 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
   }
 
   _sort() {
-    print('2nd Function Called');
     if (hurdlesSummary.length >= goals.length) {
       setState(() {
         selectAll = true;
       });
-      print(selectAll);
     }
     for (int i = 0; i <= goals.length; i++) {
       if (goals[i]['isActive'] == true) {
-        print('====Active===');
         if (hurdlesSummary.contains(goals[i]['id'])) {
           multiGoals.add(goals[i]['id']);
           selectedIndices.add(Active.indexOf(goals[i]));
         }
       } else {
-        print('====Inactive===');
         if (hurdlesSummary.contains(goals[i]['id'])) {
           multiGoals.add(goals[i]['id']);
           selectedInActiveIndices.add(inActive.indexOf(goals[i]));
@@ -141,7 +135,6 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
   }
 
   _newFunction() {
-    print('FunctionCalled');
     for (int i = 0; i <= goals.length; i++) {
       if (goals[i]['isActive'] == true) {
         Active.add(goals[i]);
@@ -168,39 +161,31 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
     if (prefs.getString('HurdleRoute') != null) {
       getHurdleGoals();
     }
-    print("Route ${prefs.getString('HurdleRoute')}");
   }
 
   void getHurdleGoals() async {
     final SharedPreferences prefs = await _prefs;
-    print(prefs.getString('selected_goals'));
     final encodedGoals = prefs.getString('selected_goals');
-    print('Encoded==========>$encodedGoals');
     if (encodedGoals != null) {
       List decodedGoals = List.from(json.decode(encodedGoals));
       if (decodedGoals.length >= goals.length) {
         setState(() {
           selectAll = true;
         });
-        print(selectAll);
       }
-      print("DecodedGoal========$decodedGoals");
       for (int i = 0; i <= goals.length; i++) {
         if (goals[i]['isActive'] == true) {
-          print('====Active===');
           if (decodedGoals.contains(goals[i]['id'])) {
             multiGoals.add(goals[i]['id']);
             selectedIndices.add(Active.indexOf(goals[i]));
           }
         } else {
-          print('====Inactive===');
           if (decodedGoals.contains(goals[i]['id'])) {
             multiGoals.add(goals[i]['id']);
             selectedInActiveIndices.add(inActive.indexOf(goals[i]));
           }
         }
       }
-      print('SelectedGoals==============================$decodedGoals');
     }
   }
 
@@ -497,7 +482,6 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           ),
                           AnimatedScaleButton(
                             onTap: () {
-                              print("Called");
                               if (selectAll == false) {
                                 setState(() {
                                   selectAll = true;
@@ -507,19 +491,14 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                   selectedInActiveIndices.clear();
                                   multiGoals.clear();
                                 });
-                                print('=========================');
                                 for (int i = 0; i < Active.length; i++) {
                                   selectedIndices.add(i);
                                   multiGoals.add(Active[i]['id']);
                                 }
-                                print('=========================');
                                 for (int i = 0; i < inActive.length; i++) {
                                   selectedInActiveIndices.add(i);
                                   multiGoals.add(inActive[i]['id']);
                                 }
-                                print(selectedInActiveIndices);
-
-                                print(allgoalsSelected);
                               } else if (selectAll == true) {
                                 setState(() {
                                   selectAll = false;
@@ -530,7 +509,6 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                   selectedGoals.clear();
                                   multiGoals.clear();
                                 });
-                                print(selectedGoals);
                               }
                             },
                             child: Container(
@@ -899,7 +877,6 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           );
                         } else {
                           saveGoalsToSharedPreferences(multiGoals);
-                          print(multiGoals);
                           Navigator.push(
                             context,
                             FadePageRoute(

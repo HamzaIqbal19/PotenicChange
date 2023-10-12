@@ -214,14 +214,11 @@ class _record_summaryState extends State<record_summary> {
                                           } else {
                                             setState(() {
                                               time = 'Am';
-                                              //print(time);
                                             });
                                           }
                                         });
                                         setState(() => date_time =
                                             " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
-                                        print(
-                                            "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
                                       }
                                     }),
                               );

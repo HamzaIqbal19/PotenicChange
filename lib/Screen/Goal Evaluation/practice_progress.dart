@@ -54,21 +54,18 @@ class _practice_progressState extends State<practice_progress> {
   void getReport() {
     PracticeEvaluation.getUserPracticeReportIdBydays(widget.days)
         .then((response) {
-      print(days);
       if (response == false) {
         loadData();
         setState(() {
           noData = true;
         });
       } else if (response.length != 0 && response != false) {
-        print('===============================');
         setState(() {
           report = response['report'];
           evaluation = response['report']['practice']['practiceEvaluations'];
           noData = false;
         });
 
-        print(response['report']['practice']['practiceEvaluations']);
         report['practiceProgress'].forEach((date, status) {
           if (status == "completed") {
             setState(() {
@@ -85,16 +82,7 @@ class _practice_progressState extends State<practice_progress> {
           }
         });
         loadData();
-        print(completedCount);
-        print(missed);
-
-        print('Report===============================');
-
-        // convertToFormattedProgress();
-
-        print('Done===============================');
       }
-      //print(response);
     }).catchError((error) {
       print('Faliure');
       setState(() {
@@ -3359,31 +3347,33 @@ class _practice_progressState extends State<practice_progress> {
                               SizedBox(
                                 height: AppDimensions.height10(context) * 46.8,
                                 child: CalendarWithRadioButtons(
-                                    status: true,
-                                    dateStatus: noData == true
-                                        ? {
-                                            "2023-07-18": "completed",
-                                            "2023-07-19": "completed",
-                                            "2023-07-20": "completed",
-                                            "2023-07-21": "completed",
-                                            "2023-07-22": "completed",
-                                            "2023-07-23": "completed",
-                                            "2023-07-24": "completed",
-                                            "2023-07-25": "completed",
-                                            "2023-07-26": "completed",
-                                            "2023-07-27": "completed",
-                                            "2023-07-28": "completed",
-                                            "2023-07-29": "completed",
-                                            "2023-07-30": "completed",
-                                            "2023-07-31": "missed",
-                                            "2023-08-01": "completed",
-                                            "2023-08-02": "completed",
-                                            "2023-08-03": "completed",
-                                            "2023-08-04": "completed",
-                                            "2023-08-05": "completed",
-                                            "2023-08-06": "missed"
-                                          }
-                                        : report['practiceProgress'], limitCalender: false,),
+                                  status: true,
+                                  dateStatus: noData == true
+                                      ? {
+                                          "2023-07-18": "completed",
+                                          "2023-07-19": "completed",
+                                          "2023-07-20": "completed",
+                                          "2023-07-21": "completed",
+                                          "2023-07-22": "completed",
+                                          "2023-07-23": "completed",
+                                          "2023-07-24": "completed",
+                                          "2023-07-25": "completed",
+                                          "2023-07-26": "completed",
+                                          "2023-07-27": "completed",
+                                          "2023-07-28": "completed",
+                                          "2023-07-29": "completed",
+                                          "2023-07-30": "completed",
+                                          "2023-07-31": "missed",
+                                          "2023-08-01": "completed",
+                                          "2023-08-02": "completed",
+                                          "2023-08-03": "completed",
+                                          "2023-08-04": "completed",
+                                          "2023-08-05": "completed",
+                                          "2023-08-06": "missed"
+                                        }
+                                      : report['practiceProgress'],
+                                  limitCalender: false,
+                                ),
                               )
                             ],
                           ),
@@ -3412,9 +3402,6 @@ class _practice_progressState extends State<practice_progress> {
       },
     ).then((value) {
       if (value != null) {
-        // Do something with the selected statement
-
-        print(value);
         if (value == 0) {
           setState(() {
             //  Loader = true;

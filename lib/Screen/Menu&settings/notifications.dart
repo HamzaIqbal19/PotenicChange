@@ -454,10 +454,7 @@ void _showBottomSheet(BuildContext context) {
       return MyBottomSheet();
     },
   ).then((value) {
-    if (value != null) {
-      // Do something with the selected statement
-      print(value);
-    }
+    if (value != null) {}
   });
 }
 

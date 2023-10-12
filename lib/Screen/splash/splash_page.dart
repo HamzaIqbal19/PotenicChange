@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
@@ -21,72 +20,44 @@ class SplashPage extends StatefulWidget {
 }
 
 class SplashPageState extends State<SplashPage> {
-  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  // var token = FirebaseMessaging.instance.getToken().then((newToken) {});
   bool data = false;
   int myAmount = 0;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  // late SharedPreferences _prefss;
-  // setToken(token) async {
-  //   SharedPreferences pref = await SharedPreferences.getInstance();
-  //   pref.setString('token', token);
-  //   print("SetToken: $token");
-  // }
 
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 2), loadData);
+    Future.delayed(const Duration(seconds: 2), loadData);
 
     super.initState();
   }
 
   Future loadData() async {
-    // Navigator.push(
-    //   context,
-    //   FadePageRoute(
-    //     page: dashBoard(
-    //       saved: false,
-    //       helpful_tips: false,
-    //       membership: true,
-    //       dashboard_ctrl: false,
-    //       cancel: false,
-    //       trial: false,
-    //     ),
-    //   ),
-    //);
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var SessionToken = prefs.getString("refreshtoken");
     var Routes = prefs.getString("route");
 //
-    print("======================>${prefs.getString("refreshtoken")}");
     if (Accestoken != null && Routes == null) {
-      print("====================>");
-
       Authentication().refreshTokenApi(SessionToken!).then((response) {
-        print("???????????:$response");
         if (response == true) {
           AdminGoal.checkUserGoalByUserId().then((response) {
-            print(response);
             if (response == true) {
               Navigator.push(
                   context,
                   FadePageRoute(
-                    page: view_goals(
+                    page: const view_goals(
                       missed: false,
                       name: '',
                       update: false,
                       helpfulTips: false,
                       record: 0,
                     ),
-                    // exitPage:SplashPage(),
                   ));
             } else if (response == false) {
               Navigator.push(
                   context,
                   FadePageRoute(
-                    page: HomeScreen(login: true),
-                    // exitPage:SplashPage(),
+                    page: const HomeScreen(login: true),
                   ));
             }
           });
@@ -94,8 +65,7 @@ class SplashPageState extends State<SplashPage> {
           Navigator.push(
               context,
               FadePageRoute(
-                page: HomeScreen(login: false),
-                // enterPage: const HomeScreen(login: true),
+                page: const HomeScreen(login: false),
               ));
         } else {
           ScaffoldMessenger.of(context)
@@ -105,22 +75,18 @@ class SplashPageState extends State<SplashPage> {
         print("error");
       });
     } else if (Accestoken != null && Routes != null) {
-      print("====================>");
       Authentication().refreshTokenApi(SessionToken!).then((response) {
-        print("???????????:$response");
         if (response == true) {
           Navigator.push(
               context,
               FadePageRoute(
-                page: HomeScreen(login: true),
-                // exitPage:SplashPage(),
+                page: const HomeScreen(login: true),
               ));
         } else {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(response["message"])));
         }
       }).catchError((error) {
-        //onDoneLoading();
         print("error");
       }).whenComplete(() {
         onDoneLoading();
@@ -134,24 +100,20 @@ class SplashPageState extends State<SplashPage> {
     Navigator.push(
       context,
       FadePageRoute(
-        page: OnBoarding(),
+        page: const OnBoarding(),
       ),
     );
-    // print('==================================');
   }
 
   @override
   Widget build(BuildContext context) {
-    print("app dimension:${AppDimensions.height10}");
-    print("app dimension:${AppDimensions.screenHeight}");
     return Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
           width: double.infinity,
           height: double.infinity,
-          margin: EdgeInsets.only(right: 0, top: 0, bottom: 0),
-          decoration: BoxDecoration(
-            // color: Colors.transparent,
+          margin: const EdgeInsets.only(right: 0, top: 0, bottom: 0),
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/splashpage.webp'),
               fit: BoxFit.cover,

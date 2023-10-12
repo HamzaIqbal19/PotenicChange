@@ -35,7 +35,6 @@ class _hurdle_statementState extends State<hurdle_statement> {
     setState(() {
       hurdleName = prefs.getString('NameHurdle');
     });
-    print(hurdleName);
   }
 
   bool Loading = true;
@@ -79,7 +78,6 @@ class _hurdle_statementState extends State<hurdle_statement> {
     if (Name != '' && Name != null) {
       controller.text = Name;
     }
-    print(Name);
   }
 
   void _fetchHurdleSummary() async {

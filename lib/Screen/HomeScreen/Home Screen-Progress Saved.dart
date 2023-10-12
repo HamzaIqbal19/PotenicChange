@@ -293,8 +293,6 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                               children: [
                                                 GestureDetector(
                                                   onTap: () async {
-                                                    print(
-                                                        "======================>");
                                                     final SharedPreferences
                                                         prefs = await _prefs;
                                                     await prefs.clear();

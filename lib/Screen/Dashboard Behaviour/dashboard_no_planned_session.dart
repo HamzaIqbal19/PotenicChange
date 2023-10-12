@@ -16,7 +16,6 @@ import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import 'package:intl/intl.dart';
 
-
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class no_planned_session extends StatefulWidget {
@@ -47,30 +46,12 @@ class _no_planned_sessionState extends State<no_planned_session> {
       DateFormat('dd-MM').format(DateTime.now().add(const Duration(days: 2)));
   @override
   void initState() {
-    print(nextDayName);
     super.initState();
     fetchPracticeByDay();
   }
 
-  // void fetchGoalsByDay() {
-  //   AdminGoal.getUserGoalByDay(previousDayName).then((response) {
-  //     if (response != "") {
-  //       print(response);
-  //       setState(() {
-  //         goals_empty = true;
-  //         allGoals = response;
-  //       });
-  //       loadData();
-  //     }
-  //     print('______________________________-----------------------');
-  //     print(allGoals.length);
-  //   });
-  // }
   void fetchPracticeByDay() {
     PracticeGoalApi.getUserPracticeByDay(nextDayName).then((response) {
-      print("Api Called");
-
-      print(response);
       if (response == false) {
         loadData();
         setState(() {
@@ -81,15 +62,9 @@ class _no_planned_sessionState extends State<no_planned_session> {
           allGoals = response['filteredUserPractices'];
           goals_empty = true;
         });
-        print('====================');
-        print(goals_empty);
-        print(allGoals[0]['userGoalId']);
-        print(allGoals.length);
+
         loadData();
-        print('====================');
       }
-      print('______________________________-----------------------');
-      //print(allGoals.length);
     });
   }
 
@@ -1097,7 +1072,6 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                                 ['color'])
                                                         : '0';
                                                     if (widget.missed == true) {
-                                                      print("CON 2");
                                                       Navigator.push(
                                                           context,
                                                           FadePageRoute(
@@ -1107,9 +1081,6 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                                     ['name'],
                                                           )));
                                                     } else {
-                                                      print("CON 1");
-                                                      print(
-                                                          "${allGoals[index]['color']}");
                                                       Navigator.push(
                                                           context,
                                                           FadePageRoute(

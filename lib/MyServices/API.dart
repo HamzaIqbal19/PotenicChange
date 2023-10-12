@@ -26,7 +26,6 @@ class myapi {
       var res = await response.stream.bytesToString();
       return res;
     } else {
-      print(response.reasonPhrase);
       return 0;
     }
   }
@@ -52,10 +51,8 @@ class myapi {
       login.setString('usertoken', token);
       login.setInt('userid', userid);
 
-      print(map['accessToken']);
       return res;
     } else {
-      print(response.reasonPhrase);
       return 0;
     }
   }
@@ -74,7 +71,6 @@ class myapi {
       var res = await response.stream.bytesToString();
       return res;
     } else {
-      print(response.reasonPhrase);
       return 0;
     }
   }
@@ -94,7 +90,6 @@ class myapi {
       var res = await response.stream.bytesToString();
       return res;
     } else {
-      print(response.reasonPhrase);
       return 0;
     }
   }
@@ -119,7 +114,6 @@ class myapi {
       var res = await response.stream.bytesToString();
       return res;
     } else {
-      print(response.reasonPhrase);
       return 0;
     }
   }
@@ -142,10 +136,8 @@ class myapi {
       login.setString('usertoken', token);
       login.setInt('goalid', goalid);
 
-      print(map['accessToken']);
       return res;
     } else {
-      print(response.reasonPhrase);
       return 0;
     }
   }

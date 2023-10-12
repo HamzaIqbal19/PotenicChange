@@ -77,7 +77,6 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
-        print("---------------------------------");
         setState(() {
           pracName = response["name"];
           schedule = response["schedule"];
@@ -86,13 +85,8 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
         replaceItems(schedule, timesPerDay);
         // mapItems(schedule, updates);
         loadData();
-        print("---------------------------------");
-        print("response123:$pracName");
-        print('Times====================>$schedule');
-        print('Times====================>$updates');
       } else {
         loadData();
-        print("response:$response");
       }
     }).catchError((error) {
       loadData();
@@ -443,12 +437,10 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
 
                                                                             Done =
                                                                                 Done;
-                                                                            print("Done:$Done");
                                                                             if (Done ==
                                                                                 true) {
                                                                               // _globalKey.currentState?.expand();
                                                                               String start_time = '';
-                                                                              print("$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}");
                                                                               setState(() {
                                                                                 start_time = "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                                                                               });
@@ -458,25 +450,9 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                                                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Practice routine in limited to 10 sessions par day.")));
                                                                               }
 
-                                                                              print(timesPerDay);
-
-                                                                              // times.add(start_time);
-                                                                              //// print(times);
-                                                                              // TwoValues<String, int> values = TwoValues<String, int>(start_time, num);
-                                                                              // widget.onChangedStart(values);
-                                                                              // onCountChanged(count);
-                                                                              // _globalKey.currentState?.expand();
                                                                               Navigator.pop(context);
                                                                             }
                                                                           }
-                                                                          // day = selectedDay;
-                                                                          // hour = selectedHour;
-                                                                          // minute = selectedMinute;
-                                                                          // endday = selectedDay;
-                                                                          // endhour = selectedHour;
-
-                                                                          // period = selectedPeriod;
-                                                                          // endperiod = selectedPeriod;
                                                                         });
                                                                       },
                                                                     );
@@ -591,8 +567,6 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                                             .transparent,
                                                                     onPressed:
                                                                         () {
-                                                                      print(i);
-
                                                                       timesPerDay[
                                                                               index]
                                                                           .remove(
@@ -620,14 +594,6 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                                       }
                                                                       setState(
                                                                           () {});
-
-                                                                      print(
-                                                                          'removes last');
-
-                                                                      print(
-                                                                          timesPerDay);
-                                                                      print(
-                                                                          'removes key');
                                                                     },
                                                                     child:
                                                                         const Icon(
@@ -842,7 +808,6 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                         updates.add(timesPerDay[i]);
                                       }
                                     }
-                                    print(updates);
 
                                     PracticeGoalApi()
                                         .updateUserPractice('schedule', updates)
@@ -853,9 +818,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                           showContainer = true;
                                         });
                                         startTimer();
-                                      } else if (response == false) {
-                                        print('Api call failed');
-                                      }
+                                      } else if (response == false) {}
                                     }).catchError((error) {
                                       print('===>Error');
                                     }).whenComplete(() {
@@ -863,9 +826,6 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                         // Hide loader when the API call completes
                                       });
                                     });
-
-                                    print(
-                                        "===================SelectedDays$updates");
                                   },
                                   child: Container(
                                     height: AppDimensions.height10(context) * 5,

@@ -457,7 +457,6 @@ class _resetState extends State<reset> {
                                 page: const Confirmation(),
                               ),
                             );
-                            print('======DATA PASSED');
                           } else if (value == 400) {
                             setState(() {
                               Loading = false;
@@ -478,7 +477,7 @@ class _resetState extends State<reset> {
                           setState(() {
                             Loading = false;
                           });
-                          print('object');
+
                           print("error");
                         });
                       } else {

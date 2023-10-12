@@ -11,7 +11,6 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 
-
 import 'Loaders/categories_shimmer.dart';
 
 class Categories extends StatefulWidget {
@@ -57,10 +56,8 @@ class _CategoriesState extends State<Categories> {
           count = response.length ~/ 2;
         });
         loadData();
-        print("response123:$goalCategories");
       } else {
         loadData();
-        print("response:$response");
       }
     }).catchError((error) {
       loadData();
@@ -166,45 +163,8 @@ class _CategoriesState extends State<Categories> {
                     SizedBox(
                       height: AppDimensions.height10(context) * 6.7,
                     ),
-
-                    // Stack(
-                    //   children: [
-                    //     RandomCircles(),
-                    //   ],
-                    // ),
-
                     SizedBox(
                       height: AppDimensions.height10(context) * 14.0,
-
-                      // child: Listener(
-
-                      // This callback is triggered whenever the user drags their finger
-                      // onPointerMove: (details) {
-                      //   // This is the global position of the finger on the screen
-                      //   double globalPositionX = details.position.dx;
-                      //
-                      //   // This is the width of the screen
-                      //   double screenWidth = MediaQuery.of(context).size.width;
-                      //
-                      //   // This is the threshold distance from the edge of the ListView. If the user's finger is
-                      //   // within this distance, the ListView should start scrolling
-                      //   double threshold = 100;
-                      //
-                      //   // Calculate the distance from the user's finger to the left and right edges of the ListView
-                      //   double distanceToLeft = globalPositionX;
-                      //   double distanceToRight = screenWidth - globalPositionX;
-                      //   // print("object:${distanceToLeft > threshold}");
-                      //   if (distanceToLeft <100) {
-                      //     print("IF distanceToLeft:$distanceToLeft,threshold:$threshold");
-                      //     // If the user's finger is near the left edge of the ListView, scroll to the left
-                      //     scrollController.jumpTo(scrollController.offset + 5);
-                      //   } else if (distanceToRight > 150) {
-                      //     print("ELSE IF distanceToLeft:$distanceToLeft,threshold:$threshold");
-                      //     // If the user's finger is near the right edge of the ListView, scroll to the right
-                      //     scrollController.jumpTo(scrollController.offset - 5);
-                      //   }
-                      // },
-                      // onPointerDown: ,
                       child: ListView.builder(
                         controller: scrollController,
                         scrollDirection: Axis.horizontal,
@@ -310,7 +270,6 @@ class _CategoriesState extends State<Categories> {
                       ),
                       // )listner
                     ),
-
                     Padding(
                       padding: const EdgeInsets.only(left: 0, top: 20.0),
                       child: SizedBox(
@@ -424,7 +383,6 @@ class _CategoriesState extends State<Categories> {
                         ),
                       ),
                     ),
-
                     SizedBox(
                       height: AppDimensions.height10(context) * 11.6,
                     ),

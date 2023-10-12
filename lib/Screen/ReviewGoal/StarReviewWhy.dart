@@ -61,11 +61,6 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
       });
       print("error");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   @override
@@ -419,24 +414,6 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                                   }).catchError((error) {
                                     print("error");
                                   });
-
-                                  // AdminGoal()
-                                  //     .updateUserGoal('reason', 1, 'new reason 1')
-                                  //     .then((response) {
-                                  //   if (response == true) {
-                                  //     print("Success");
-                                  //   } else {
-                                  //     print("Failure");
-                                  //   }
-                                  // }).catchError((error) {
-                                  //   print("error");
-                                  // });
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) => ActivateStar(),
-                                  //   ),
-                                  // );
                                 },
                                 child: Container(
                                   height: AppDimensions.height10(context) * 5,

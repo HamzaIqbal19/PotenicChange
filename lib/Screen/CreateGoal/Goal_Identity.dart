@@ -78,7 +78,6 @@ class _Goal_IdentityState extends State<Goal_Identity> {
   getData() async {
     final prefs = await SharedPreferences.getInstance();
     var jsonString = prefs.getString('goal');
-    print(jsonString);
     Map<String, dynamic> jsonMap = json.decode(jsonString!);
 
     if (jsonMap.isNotEmpty) {
@@ -89,7 +88,6 @@ class _Goal_IdentityState extends State<Goal_Identity> {
         });
       }
     }
-    print(myIdentity);
   }
 
   void _fetchGoalNames() async {
@@ -106,7 +104,6 @@ class _Goal_IdentityState extends State<Goal_Identity> {
       setState(() {
         Loading = false;
       });
-      print("error");
     });
   }
 
@@ -116,17 +113,14 @@ class _Goal_IdentityState extends State<Goal_Identity> {
     setState(() {
       goalName = prefs.getString("goalName")!;
     });
-    print("goalName:$goalName");
   }
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   int item = 1;
@@ -135,7 +129,6 @@ class _Goal_IdentityState extends State<Goal_Identity> {
     setState(() {
       myIdentity[index]['text'] = newValue;
     });
-    print(myIdentity);
   }
 
   void decrement() {
@@ -143,7 +136,6 @@ class _Goal_IdentityState extends State<Goal_Identity> {
   }
 
   void handleDelete(int index) {
-    print('=========>dELETED');
     widget.comingFromEditScreen
         ? setState(() {
             // myTextFields[index]['text'].remove(index);
@@ -170,11 +162,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
             //index--;
           });
     decrement();
-    //closing the focus
     blankNode.requestFocus();
-    //closing the focus
-    print(myIdentity);
-    print('dELETED');
   }
 
   void increment() {
@@ -189,24 +177,16 @@ class _Goal_IdentityState extends State<Goal_Identity> {
       List<Map<String, String>> newidentityStatement) async {
     final prefs = await SharedPreferences.getInstance();
 
-    // Check if 'goal' is in shared preferences
     if (prefs.containsKey('goal')) {
-      // Get stored Goal object from shared preferences
       String? jsonString = prefs.getString('goal');
       Map<String, dynamic> userMap = jsonDecode(jsonString!);
-      // print("UserMap:$userMap");
-      // print("newReason:$newReason");
-      // Create Goal object from map
+
       Goal goal = Goal.fromJson(userMap);
-      // print("UserMap:$goal");
-      // print("newReason:$newReason");
-      // Update reason field
+
       goal.identityStatement = newidentityStatement;
 
-      // Convert updated Goal object back to JSON string
       jsonString = jsonEncode(goal.toJson());
 
-      // Save updated Goal object back to shared preferences
       await prefs.setString('goal', jsonString);
       getGoal();
     } else {
@@ -215,15 +195,12 @@ class _Goal_IdentityState extends State<Goal_Identity> {
   }
 
   Future<Goal> getGoal() async {
-    print("hello world");
     final prefs = await SharedPreferences.getInstance();
     String? jsonString = prefs.getString('goal');
-    print(jsonString);
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
-      print('identity====>');
-      print(jsonString);
+
       if (saved == false) {
         myIdentity[0]['text'] != ""
             ? Navigator.push(
@@ -290,7 +267,6 @@ class _Goal_IdentityState extends State<Goal_Identity> {
 
   @override
   Widget build(BuildContext context) {
-    print("identity : $identity");
     return WillPopScope(
       onWillPop: () {
         widget.comingFromEditScreen
@@ -974,7 +950,6 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                         'text': '',
                                                       });
                                                     });
-                                              print("=============>Pressed");
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
@@ -1082,7 +1057,6 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                         'text': '',
                                                       });
                                                     });
-                                              print("=============>Pressed");
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
@@ -1393,7 +1367,6 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                   AnimatedScaleButton(
                                     onTap: () {
                                       if (widget.comingFromEditScreen) {
-                                        print("Printing Reason $identity");
                                         if (identity[0]['text'] != "") {
                                           AdminGoal()
                                               .updateUserGoal(

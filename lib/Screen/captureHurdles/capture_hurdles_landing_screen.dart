@@ -50,8 +50,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
     setState(() {
       Route = prefs.getString('HurdleRoute');
     });
-
-    print(prefs.getString('HurdleRoute'));
   }
 
   Future<Timer> loadData() async {
@@ -93,21 +91,16 @@ class _landing_hurdlesState extends State<landing_hurdles> {
 
   void filterTerm(searchTerm, goalId) {
     Hurdles().filterUserHurdles(searchTerm, goalId).then((response) {
-      print(searchTerm);
       if (response != 404) {
         setState(() {
           hurdlesList = response;
           noData = false;
         });
-        print(hurdlesList);
       } else if (response == 404) {
-        print('Response == $response');
         setState(() {
           noData = true;
         });
-      } else {
-        print(response);
-      }
+      } else {}
     });
   }
 
@@ -141,26 +134,21 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   }
 
   _newFunction() {
-    print('FunctionCalled');
     for (int i = 0; i <= goals.length; i++) {
       goalName.add(goals[i]['name']);
     }
   }
 
   _newFunctionForHurdle() {
-    print('Second FunctionCalled');
     for (int i = 0; i <= hurdlesListName.length; i++) {
       hurdleName.add(hurdlesListName[i]['hurdleName']);
-      print('HURDLE LIST NAME');
-      print(hurdlesListName[i]['id']);
     }
   }
 
   @override
   void initState() {
     super.initState();
-    print(
-        "---------------------------------------------------------------------");
+
     _fetchHurdle();
     getHurdleRoute();
   }
@@ -613,10 +601,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                       ),
                                                       GestureDetector(
                                                         onTap: () {
-                                                          print(
-                                                              '=============HrurdleID===========Id=');
-                                                          print(_selectedTag);
-
                                                           setState(() {
                                                             _selected_activity =
                                                                 hurdleName[
@@ -683,7 +667,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                         .toList(),
                                                     onSelectedItemChanged:
                                                         (int index) {
-                                                      print(hurdleName[index]);
                                                       setState(() {
                                                         _selectedTag = index;
                                                       });
@@ -1266,7 +1249,6 @@ class _hurdle_menuState extends State<hurdle_menu> {
         setState(() {
           hurdlesSummary = response['hurdle'];
         });
-        print(hurdlesSummary["id"]);
         loadData();
         return response;
       } else {

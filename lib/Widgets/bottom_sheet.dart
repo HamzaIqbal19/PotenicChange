@@ -69,13 +69,7 @@ Future<Goal> getGoal() async {
 
   if (jsonString != null) {
     Map<String, dynamic> jsonMap = json.decode(jsonString);
-    print("Goal===============>$jsonString");
-    // Navigator.push(
-    //   context,
-    //   FadePageRoute(
-    //     page: GoalName(),
-    //   ),
-    // );
+
     return Goal.fromJson(jsonMap);
   }
 
@@ -194,8 +188,7 @@ void bottom_sheet(context) {
 
                                 onChanged: (String? value) {
                                   // This is called when the user selects an item.
-                                  print('-------------------------');
-                                  print(index);
+
                                   setState(() {
                                     dropdownValue = value!;
                                     index = categories.indexOf(value);
@@ -348,16 +341,10 @@ void bottom_sheet(context) {
                           setState(() {
                             catId = index + 1;
                           });
-                          print('Category');
-                          print(catId);
+
                           if (_formkey.currentState!.validate()) {
-                            // final SharedPreferences prefs = await _prefs;
-                            // var goal_Name = prefs.setString(
-                            //     'goalName', '${goalName.text.toString()}');
-                            // print('${goalName.text.toString()}');
                             getUserId(catId, goalName.text.toString());
-                            print(goalName.text.toString());
-                            print(index);
+
                             goalName.clear();
 
                             final SharedPreferences prefs = await _prefs;

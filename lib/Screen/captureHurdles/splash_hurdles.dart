@@ -30,7 +30,6 @@ class hurdles_splashState extends State<hurdles_splash> {
   void getHurdleRoute() async {
     final SharedPreferences prefs = await _prefs;
     Route = prefs.getString('HurdleRoute');
-    print(prefs.getString('HurdleRoute'));
   }
 
   @override

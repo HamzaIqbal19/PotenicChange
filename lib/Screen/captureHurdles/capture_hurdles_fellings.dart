@@ -79,7 +79,6 @@ class _felling_hurdlesState extends State<felling_hurdles> {
           hurdleDetails = response;
           trigger = response['hurdle']['thoughtsAndFeelings'];
         });
-        // print("=================================>Response$response");
 
         for (int i = 0;
             i <= response['hurdle']['thoughtsAndFeelings'].length;
@@ -111,14 +110,12 @@ class _felling_hurdlesState extends State<felling_hurdles> {
 
   void saveListToSharedPreferences(List<String> myList) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    print(myList);
     await prefs.setStringList('feelingsList', myList);
   }
 
   getListFromSharedPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> myList = prefs.getStringList('feelingsList') ?? [];
-    print(myList);
 
     if (myList.isNotEmpty) {
       for (int i = 0; i <= myList.length; i++) {
@@ -129,15 +126,12 @@ class _felling_hurdlesState extends State<felling_hurdles> {
             ? control.insert(i, TextEditingController(text: myList[i]))
             : control.add(TextEditingController(text: 'I feel'));
       }
-      print(myList.length);
       setState(() {
         scroll = false;
         // statements = response['hurdle']['thoughtsAndFeelings'];
 
         circle_state = myList.length - 1;
       });
-      print(circle_state);
-      print(statements);
     } else if (myList.isEmpty) {
       statements.add('i feel');
       control.add(TextEditingController(text: 'I feel'));
@@ -568,7 +562,6 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                   );
                                                 }
                                               } else {
-                                                print(i);
                                                 setState(() {
                                                   statements[i - 1] = newText;
                                                   scroll = true;

@@ -40,13 +40,11 @@ class _record_inspirationState extends State<record_inspiration> {
 
   void _fetchInspiration() {
     InspirationApi().getInspirationById().then((response) {
-      print('Res=====================');
       if (response.length != 0) {
         setState(() {
           inspirationDetails = response;
         });
         loadData();
-        print(inspirationDetails['inspiration']['title']);
 
         return response;
       }

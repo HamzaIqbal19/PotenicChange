@@ -42,25 +42,15 @@ class _PracticeReminderState extends State<PracticeReminder> {
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
-        print("---------------------------------");
         setState(() {
           reminder = response["reminder"];
           radio1 = reminder;
           radio2 = !reminder;
         });
-
-        print('====================>$reminder');
-      } else {
-        print("response:$response");
-      }
+      } else {}
     }).catchError((error) {
       print("hell");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   String currentDay = DateFormat('EEEE').format(DateTime.now());
@@ -85,17 +75,14 @@ class _PracticeReminderState extends State<PracticeReminder> {
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   getGoalName() async {
-    print("hello world1224");
     final SharedPreferences prefs = await _prefs;
     var my_goal = prefs.getString("goalName");
     var practice_Name = prefs.getString('pracName');
@@ -106,7 +93,6 @@ class _PracticeReminderState extends State<PracticeReminder> {
       practice.text = practice_Name!;
       practiceName.text = practice_Name;
     });
-    print('=======================>$color');
   }
 
   Future<List<Map<String, dynamic>>> loadTimesPerDay() async {
@@ -1224,13 +1210,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       radio1,
                                     )
                                         .then((response) {
-                                      print('$response');
                                       if (response == true) {
-                                        // ScaffoldMessenger.of(context)
-                                        //     .showSnackBar(const SnackBar(
-                                        //         content: Text(
-                                        //             "Practice updated Successfully!!")));
-                                        // print('========Done');
                                         setState(() {
                                           updated = true;
                                           showContainer = true;
@@ -1271,13 +1251,11 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       loadedTimesPerDay,
                                     )
                                         .then((response) async {
-                                      print('$response');
                                       if (response == true) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(const SnackBar(
                                                 content: Text(
                                                     "Practice Added Successfully")));
-                                        print('========Done');
                                         if (route == 'view_all_goals') {
                                           Navigator.pushReplacement(
                                               context,

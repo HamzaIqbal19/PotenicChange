@@ -67,11 +67,7 @@ class _emotionsState extends State<emotions> {
   void recording() {
     RecordingPractice.getUserPracticeRecord().then((response) {
       if (response.length != 0) {
-        print('======================================================');
-        print(response['recording']['notes'][0]['endNote']);
         String SessionFeedBack = '';
-
-        print(response);
         setState(() {
           afterSessionNotes =
               response['recording']['notes'][0]['afterNote'].toString();
@@ -85,8 +81,6 @@ class _emotionsState extends State<emotions> {
         if (SessionFeedBack != '') {
           feedback.text = SessionFeedBack;
         }
-
-        //print(response);
       }
     });
   }
@@ -323,7 +317,6 @@ class _emotionsState extends State<emotions> {
                             setState(() {
                               pracEmotions = 1;
                             });
-                            print(pracEmotions);
                           },
                           child: Container(
                             width: AppDimensions.height10(context) * 13.7,
@@ -375,7 +368,6 @@ class _emotionsState extends State<emotions> {
                             setState(() {
                               pracEmotions = 2;
                             });
-                            print(pracEmotions);
                           },
                           child: Container(
                             width: AppDimensions.height10(context) * 13.7,
@@ -425,7 +417,6 @@ class _emotionsState extends State<emotions> {
                             setState(() {
                               pracEmotions = 3;
                             });
-                            print(pracEmotions);
                           },
                           child: Container(
                             width: AppDimensions.height10(context) * 13.7,
@@ -475,7 +466,6 @@ class _emotionsState extends State<emotions> {
                             setState(() {
                               pracEmotions = 4;
                             });
-                            print(pracEmotions);
                           },
                           child: Container(
                             width: AppDimensions.height10(context) * 13.7,
@@ -525,7 +515,6 @@ class _emotionsState extends State<emotions> {
                             setState(() {
                               pracEmotions = 5;
                             });
-                            print(pracEmotions);
                           },
                           child: Container(
                             width: AppDimensions.height10(context) * 13.7,
@@ -673,7 +662,6 @@ class _emotionsState extends State<emotions> {
                                     prefs.setInt('emotions', pracEmotions);
                                 var newPrac = prefs.setString(
                                     'pracName', widget.pracName);
-                                print("======================>$pracEmotions");
                                 var afterSessionFeedback = feedback.text
                                         .toString()
                                         .isNotEmpty
@@ -696,8 +684,6 @@ class _emotionsState extends State<emotions> {
                                     }
                                   ]).then((reaponse) {
                                     if (reaponse == true) {
-                                      print("Emotions Updated");
-
                                       Navigator.push(
                                           context,
                                           FadePageRoute(

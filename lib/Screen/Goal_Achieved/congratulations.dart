@@ -44,11 +44,6 @@ class _congratulationsState extends State<congratulations> {
       });
       print("error");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   void _incrementValue() {
@@ -507,12 +502,8 @@ void goal_achieved_sheet(
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      print('$goal_level');
-                    },
+                    onTap: () {},
                     child: Container(
-                      // width: AppDimensions.height10(context) * 35.5,
-                      //  height: AppDimensions.height10(context) * 3.4,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 0.5),
                       child: Text(

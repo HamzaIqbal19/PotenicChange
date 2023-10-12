@@ -333,8 +333,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                             _selectedIndex;
                                                         mirror = mirrorIndex;
                                                       });
-                                                      print(mirrorIndex);
-                                                      print(_selectedIndex);
                                                     }
                                                     Navigator.of(context).pop(
                                                         _dates[_selectedIndex]);

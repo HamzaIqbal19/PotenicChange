@@ -200,7 +200,6 @@ class _inner_textState extends State<inner_text> {
                                       child: TextButton(
                                         onPressed: () {
                                           widget.onDelete();
-                                          print("item deleted");
                                           Navigator.pop(context);
                                         },
                                         child: Text(

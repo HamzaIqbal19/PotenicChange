@@ -24,7 +24,6 @@ class Hurdles {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
 
       return jsonData;
     } else {
@@ -51,21 +50,16 @@ class Hurdles {
       "hurdleId": "$hurdleId",
       "userId": UserId
     });
-    print(Body);
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/userHurdle/add-hurdle'),
         headers: headers,
         body: Body);
 
     var responses = jsonDecode(request.body);
-    print(responses);
 
     if (request.statusCode == 200) {
       return responses;
     } else {
-      //client.close();
-
-      // print("response:${}");
       print("request==========>$request");
       return responses;
     }
@@ -79,22 +73,18 @@ class Hurdles {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
-    print(userHurdleId);
 
     var request = await client.delete(
         Uri.parse('${URL.BASE_URL}api/userHurdle/$userHurdleId'),
         headers: headers);
 
     var responses = jsonDecode(request.body);
-    print(responses);
-    print("Hurdle to be deleted");
+
     if (request.statusCode == 200) {
       print('object deleted');
       return true;
     } else {
       return responses["message"];
-      // client.close();
-      // return responses["message"];
     }
   }
 
@@ -102,7 +92,6 @@ class Hurdles {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var hurldeId = prefs.getInt('userHurdleId');
-    print(hurldeId);
 
     var headers = {
       'Content-Type': 'application/json',
@@ -116,7 +105,6 @@ class Hurdles {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
 
       return jsonData;
     } else {
@@ -129,7 +117,6 @@ class Hurdles {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
-    print('$UserId');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -143,7 +130,6 @@ class Hurdles {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
 
       return jsonData;
     } else if (response.statusCode == 404) {
@@ -157,7 +143,6 @@ class Hurdles {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
-    print('$UserId');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -171,13 +156,10 @@ class Hurdles {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
 
       return true;
     } else {
       return false;
-      print(
-          'Failed to fetch hurdle names by user id Request failed with status: ${response.statusCode}');
     }
   }
 
@@ -185,7 +167,6 @@ class Hurdles {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
-    print('$UserId');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -205,7 +186,6 @@ class Hurdles {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
 
       return jsonData;
     } else if (response.statusCode == 404) {
@@ -218,65 +198,27 @@ class Hurdles {
 
   Future updateHurdle(destination, update) async {
     final SharedPreferences prefs = await _prefs;
-    //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
     var hurldeId = prefs.getInt('userHurdleId');
 
-    //int UserGoalId = 12;
-    print("request: Update");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
     var body = jsonEncode({"$destination": update});
-    // var userGoalId = prefs.getInt('goalId');
-    // print('$userGoalId');
 
     var request = await client.put(
         Uri.parse('${URL.BASE_URL}api/userHurdle/$hurldeId'),
         headers: headers,
         body: body);
-    print("request: Update");
-    print('=====>$request.statusCode');
-    print(request.body);
+
     if (request.statusCode == 200) {
-      // print("$request.statusCode");
       print("request: Update successful");
       var jsonData = jsonDecode(request.body);
-      print("Result: $jsonData");
       return true;
     } else {
       print("Update failed");
-      // client.close();
       return false;
     }
   }
-
-  // Future getHurdleByGoalId() async {
-  //   final SharedPreferences prefs = await _prefs;
-  //   var Accestoken = prefs.getString("usertoken");
-
-  //  // print(hurldeId);
-
-  //   var headers = {
-  //     'Content-Type': 'application/json',
-  //     'x-access-token': '$Accestoken',
-  //   };
-
-  //   var response = await http.get(
-  //     Uri.parse('${URL.BASE_URL}api/userHurdle/$hurldeId'),
-  //     headers: headers,
-  //   );
-
-  //   if (response.statusCode == 200) {
-  //     var jsonData = jsonDecode(response.body);
-  //     print("Result:$jsonData");
-
-  //     return jsonData;
-  //   } else {
-  //     print(
-  //         'Failed to  hurdle names Request failed with status: ${response.statusCode}');
-  //   }
-  // }
-
 }

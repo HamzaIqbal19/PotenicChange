@@ -11,7 +11,6 @@ import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class OnboardingPage extends StatefulWidget {
   final List<OnboardingModel> pages;
   final Color bgColor;
@@ -67,7 +66,6 @@ class OnboardingPageState extends State<OnboardingPage>
 
   Future loadData() async {
     final SharedPreferences prefs = await _prefs;
-    print(prefs.getString("usertoken"));
     setState(() {
       Accestoken = prefs.getString("usertoken");
       Routes = prefs.getString("route").toString().isEmpty
@@ -104,8 +102,6 @@ class OnboardingPageState extends State<OnboardingPage>
   Widget build(
     BuildContext context,
   ) {
-    print("AccessToken:$Accestoken");
-    print('Route: $Routes');
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -160,8 +156,6 @@ class OnboardingPageState extends State<OnboardingPage>
                 ),
                 onPressed: () async {
                   if (Accestoken != null && Routes != null) {
-                    print(Routes);
-                    print('Condition 1');
                     Navigator.pushReplacement(
                       context,
                       FadePageRoute2(
@@ -174,7 +168,6 @@ class OnboardingPageState extends State<OnboardingPage>
                       ),
                     );
                   } else if (Accestoken != null && Routes == null) {
-                    print('Condition 2');
                     Navigator.pushReplacement(
                       context,
                       FadePageRoute2(
@@ -184,7 +177,6 @@ class OnboardingPageState extends State<OnboardingPage>
                       ),
                     );
                   } else if (Accestoken == null && Routes == null) {
-                    print('Condition 3');
                     Navigator.pushReplacement(
                       context,
                       FadePageRoute2(
@@ -194,7 +186,6 @@ class OnboardingPageState extends State<OnboardingPage>
                       ),
                     );
                   } else if (Accestoken == null && Routes != null) {
-                    print('Condition 3');
                     Navigator.pushReplacement(
                       context,
                       FadePageRoute2(
@@ -249,8 +240,6 @@ class OnboardingPageState extends State<OnboardingPage>
   }
 
   Widget _showPageData(OnboardingModel page, int i) {
-    print(AppDimensions.screenHeight);
-    print(widget.pages[i]);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -437,7 +426,6 @@ class OnboardingPageState extends State<OnboardingPage>
   setToken(token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('token', token);
-    print("On boarding screen: $token");
   }
 
   setWalletAddress(balance, account) async {
@@ -464,8 +452,6 @@ class OnboardingPageState extends State<OnboardingPage>
           } else {
             // ignore: use_build_context_synchronously
             if (Accestoken != null && Routes != null) {
-              print(Routes);
-              print('Condition 1');
               Navigator.pushReplacement(
                 context,
                 FadePageRoute2(
@@ -478,7 +464,6 @@ class OnboardingPageState extends State<OnboardingPage>
                 ),
               );
             } else if (Accestoken != null && Routes == null) {
-              print('Condition 2');
               Navigator.pushReplacement(
                 context,
                 FadePageRoute2(
@@ -488,7 +473,6 @@ class OnboardingPageState extends State<OnboardingPage>
                 ),
               );
             } else if (Accestoken == null && Routes == null) {
-              print('Condition 3');
               Navigator.pushReplacement(
                 context,
                 FadePageRoute2(
@@ -498,7 +482,6 @@ class OnboardingPageState extends State<OnboardingPage>
                 ),
               );
             } else if (Accestoken == null && Routes != null) {
-              print('Condition 3');
               Navigator.pushReplacement(
                 context,
                 FadePageRoute2(
@@ -583,6 +566,5 @@ class OnboardingPageState extends State<OnboardingPage>
   @override
   void dispose() {
     super.dispose();
-    print("Disposed");
   }
 }

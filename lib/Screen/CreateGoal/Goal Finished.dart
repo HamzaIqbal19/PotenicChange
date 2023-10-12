@@ -56,7 +56,6 @@ class _GoalFinishedState extends State<GoalFinished> {
           color = response["color"];
           identity = response["identityStatement"][0]["text"];
         });
-        print(goalName);
         loadData();
       } else {
         setState(() {
@@ -74,11 +73,9 @@ class _GoalFinishedState extends State<GoalFinished> {
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
     var goal_route = prefs.getString('goal_route');
-    print("================Route=${prefs.getString('goal_route')}");
     setState(() {
       route = goal_route!;
     });
-    print("================Route=$route");
   }
 
   @override
