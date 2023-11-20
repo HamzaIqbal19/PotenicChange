@@ -664,11 +664,8 @@ class _timelineState extends State<timeline> {
                     height: AppDimensions.height10(context) * 4.4,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
-<<<<<<< Updated upstream
-                        left: AppDimensions.height10(context) * 4.8,
-=======
+
                         left: AppDimensions.width10(context) * 4.8,
->>>>>>> Stashed changes
                         right: AppDimensions.width10(context) * 4.7),
                     child: Text(
                       'All your recorded events & schedule\nin one place',
@@ -1244,11 +1241,7 @@ class _timelineState extends State<timeline> {
                     height: AppDimensions.height10(context) * 39.4,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0,
-<<<<<<< Updated upstream
-                        left: AppDimensions.height10(context) * 1.4,
-=======
                         left: AppDimensions.width10(context) * 1.4,
->>>>>>> Stashed changes
                         right: AppDimensions.width10(context) * 1.4),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFBFBFB),
@@ -1393,11 +1386,7 @@ class _timelineState extends State<timeline> {
                     height: AppDimensions.height10(context) * 42.4,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0,
-<<<<<<< Updated upstream
-                        left: AppDimensions.height10(context) * 1.4,
-=======
                         left: AppDimensions.width10(context) * 1.4,
->>>>>>> Stashed changes
                         right: AppDimensions.width10(context) * 1.4),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFBFBFB),
@@ -1524,11 +1513,7 @@ class _timelineState extends State<timeline> {
                     height: AppDimensions.height10(context) * 51.5,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0,
-<<<<<<< Updated upstream
-                        left: AppDimensions.height10(context) * 1.4,
-=======
                         left: AppDimensions.width10(context) * 1.4,
->>>>>>> Stashed changes
                         right: AppDimensions.width10(context) * 1.4),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFBFBFB),
@@ -2346,13 +2331,8 @@ class _timelineState extends State<timeline> {
                                   margin: EdgeInsets.only(
                                       left:
                                           AppDimensions.height10(context) * 1.3,
-<<<<<<< Updated upstream
-                                      right:
-                                          AppDimensions.width10(context) * 1.0),
-=======
                                       right: AppDimensions.width10(context) *
                                           1.0),
->>>>>>> Stashed changes
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -2774,13 +2754,8 @@ class _timelineState extends State<timeline> {
                                   margin: EdgeInsets.only(
                                       left:
                                           AppDimensions.height10(context) * 1.3,
-<<<<<<< Updated upstream
-                                      right:
-                                          AppDimensions.width10(context) * 1.0),
-=======
                                       right: AppDimensions.width10(context) *
                                           1.0),
->>>>>>> Stashed changes
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -2865,13 +2840,8 @@ class _timelineState extends State<timeline> {
                                   margin: EdgeInsets.only(
                                       left:
                                           AppDimensions.height10(context) * 1.3,
-<<<<<<< Updated upstream
-                                      right:
-                                          AppDimensions.width10(context) * 1.0),
-=======
                                       right: AppDimensions.width10(context) *
                                           1.0),
->>>>>>> Stashed changes
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,

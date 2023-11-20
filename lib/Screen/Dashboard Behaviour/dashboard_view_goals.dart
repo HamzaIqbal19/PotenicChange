@@ -1669,11 +1669,8 @@ class _view_goalsState extends State<view_goals> {
                                                                             Container(
                                                                               width: AppDimensions.width10(context) * 21.6,
                                                                               //height: AppDimensions.height10(context) * 2.2,
-<<<<<<< Updated upstream
-                                                                              margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.7, left: AppDimensions.height10(context) * 1.6, right: AppDimensions.width10(context) * 7.4),
-=======
+
                                                                               margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.7, left: AppDimensions.width10(context) * 1.6, right: AppDimensions.width10(context) * 7.4),
->>>>>>> Stashed changes
                                                                               child: Text(
                                                                                 goal_level == 2
                                                                                     ? 'Your Practice'
