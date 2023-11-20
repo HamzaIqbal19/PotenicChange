@@ -20,7 +20,7 @@ class _upload_image_popupState extends State<upload_image_popup> {
         color: const Color(0xff8E8E93),
         child: Center(
           child: Container(
-            width: AppDimensions.height10(context) * 27.0,
+            width: AppDimensions.width10(context) * 27.0,
             height: AppDimensions.height10(context) * 24.8,
             decoration: BoxDecoration(
                 color: const Color(0xff1E1E1E).withOpacity(0.75),
@@ -41,7 +41,7 @@ class _upload_image_popupState extends State<upload_image_popup> {
                           'Potenic would like to access\nyour photos',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 1.7,
                               fontWeight: FontWeight.w400,
                               color: Colors.white),
                         ),
@@ -53,7 +53,7 @@ class _upload_image_popupState extends State<upload_image_popup> {
                           'To upload from your device, allow\naccess to your photos.',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.3,
+                              fontSize: AppDimensions.font10(context) * 1.3,
                               fontWeight: FontWeight.w400,
                               color: Colors.white),
                         ),
@@ -81,7 +81,7 @@ class _upload_image_popupState extends State<upload_image_popup> {
                         'Select Photos',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.7,
+                            fontSize: AppDimensions.font10(context) * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff0A84FF)),
                       ),
@@ -103,7 +103,7 @@ class _upload_image_popupState extends State<upload_image_popup> {
                       'Allow Access to All Photos',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.7,
+                          fontSize: AppDimensions.font10(context) * 1.7,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xff0A84FF)),
                     ),
@@ -124,7 +124,7 @@ class _upload_image_popupState extends State<upload_image_popup> {
                       'Don’t Allow',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.7,
+                          fontSize: AppDimensions.font10(context) * 1.7,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xff0A84FF)),
                     ),
@@ -174,7 +174,7 @@ class _image_infoState extends State<image_info> {
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               SizedBox(
                 height: AppDimensions.height10(context) * 2.2,
-                width: AppDimensions.height10(context) * 3.3,
+                width: AppDimensions.width10(context) * 3.3,
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
@@ -182,7 +182,7 @@ class _image_infoState extends State<image_info> {
                   child: Text(
                     'Back',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.5,
+                        fontSize: AppDimensions.font10(context) * 1.5,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff007AFF)),
                   ),
@@ -190,25 +190,25 @@ class _image_infoState extends State<image_info> {
               ),
               Container(
                 height: AppDimensions.height10(context) * 2.2,
-                width: AppDimensions.height10(context) * 14.7,
+                width: AppDimensions.width10(context) * 14.7,
                 margin: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 9.1,
                     right: AppDimensions.height10(context) * 6.4),
                 child: Text(
                   'Create inspiration',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.7,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xff282828)),
                 ),
               ),
               SizedBox(
                 height: AppDimensions.height10(context) * 2.2,
-                width: AppDimensions.height10(context) * 4.3,
+                width: AppDimensions.width10(context) * 4.3,
                 child: Text(
                   'Create',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.5,
+                      fontSize: AppDimensions.font10(context) * 1.5,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xff007AFF)),
                 ),
@@ -226,7 +226,7 @@ class _image_infoState extends State<image_info> {
                       top: AppDimensions.height10(context) * 2.9,
                       left: AppDimensions.height10(context) * 1.8,
                       right: AppDimensions.height10(context) * 15.2),
-                  width: AppDimensions.height10(context) * 24.4,
+                  width: AppDimensions.width10(context) * 24.4,
                   height: AppDimensions.height10(context) * 24.4,
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle,
@@ -236,7 +236,7 @@ class _image_infoState extends State<image_info> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.1,
-                  width: AppDimensions.height10(context) * 30.5,
+                  width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.0,
                       right: AppDimensions.height10(context) * 8.9,
@@ -244,14 +244,14 @@ class _image_infoState extends State<image_info> {
                   child: Text(
                     'Title',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff828282)),
                   ),
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.4,
-                  width: AppDimensions.height10(context) * 30.5,
+                  width: AppDimensions.width10(context) * 30.5,
                   // color: Colors.amber,
                   margin: EdgeInsets.only(
                       //left:   AppDimensions.height10(context)(context)* 2.0,
@@ -259,13 +259,13 @@ class _image_infoState extends State<image_info> {
                       top: AppDimensions.height10(context) * 1.0),
                   child: TextField(
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff282828)),
                     decoration: InputDecoration(
                         hintText: 'Give your inspiration a title',
                         hintStyle: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
@@ -276,7 +276,7 @@ class _image_infoState extends State<image_info> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.1,
-                  width: AppDimensions.height10(context) * 30.5,
+                  width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.0,
                       right: AppDimensions.height10(context) * 8.9,
@@ -284,27 +284,27 @@ class _image_infoState extends State<image_info> {
                   child: Text(
                     'Description',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff828282)),
                   ),
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.4,
-                  width: AppDimensions.height10(context) * 30.5,
+                  width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       //left:   AppDimensions.height10(context)(context)* 2.0,
                       right: AppDimensions.height10(context) * 9.0,
                       top: AppDimensions.height10(context) * 1.0),
                   child: TextField(
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff282828)),
                     decoration: InputDecoration(
                         hintText: 'Say more about this inspiration ',
                         hintStyle: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
@@ -315,7 +315,7 @@ class _image_infoState extends State<image_info> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.1,
-                  width: AppDimensions.height10(context) * 30.5,
+                  width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.0,
                       right: AppDimensions.height10(context) * 8.9,
@@ -323,7 +323,7 @@ class _image_infoState extends State<image_info> {
                   child: Text(
                     'Destination website',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff828282)),
                   ),
@@ -332,7 +332,7 @@ class _image_infoState extends State<image_info> {
                   children: [
                     Container(
                       height: AppDimensions.height10(context) * 2.4,
-                      width: AppDimensions.height10(context) * 30.5,
+                      width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 1.5,
                           //right:   AppDimensions.height10(context)(context)* 9.0,
@@ -344,13 +344,13 @@ class _image_infoState extends State<image_info> {
                           });
                         },
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
                             hintText: 'Add a link',
                             hintStyle: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -370,7 +370,7 @@ class _image_infoState extends State<image_info> {
                                       FadePageRoute(page: const link_editer()));
                                 },
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 3.0,
+                                  width: AppDimensions.width10(context) * 3.0,
                                   height: AppDimensions.height10(context) * 3.0,
                                   margin: EdgeInsets.only(
                                       right: AppDimensions.height10(context) *
@@ -387,7 +387,7 @@ class _image_infoState extends State<image_info> {
                                 ),
                               ),
                               Container(
-                                width: AppDimensions.height10(context) * 3.0,
+                                width: AppDimensions.width10(context) * 3.0,
                                 height: AppDimensions.height10(context) * 3.0,
                                 margin: EdgeInsets.only(
                                     right:
@@ -410,7 +410,7 @@ class _image_infoState extends State<image_info> {
                                   FadePageRoute(page: const link_editer()));
                             },
                             child: Container(
-                              width: AppDimensions.height10(context) * 3.0,
+                              width: AppDimensions.width10(context) * 3.0,
                               height: AppDimensions.height10(context) * 3.0,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.height10(context) * 0.8),
@@ -429,7 +429,7 @@ class _image_infoState extends State<image_info> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.1,
-                  width: AppDimensions.height10(context) * 30.5,
+                  width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.0,
                       right: AppDimensions.height10(context) * 8.9,
@@ -437,27 +437,27 @@ class _image_infoState extends State<image_info> {
                   child: Text(
                     'Destination website',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff828282)),
                   ),
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.4,
-                  width: AppDimensions.height10(context) * 30.5,
+                  width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       // left:   AppDimensions.height10(context)(context)* 2.0,
                       right: AppDimensions.height10(context) * 9.0,
                       top: AppDimensions.height10(context) * 1.0),
                   child: TextField(
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff282828)),
                     decoration: InputDecoration(
                         hintText: 'Add #hashtag',
                         hintStyle: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
@@ -468,7 +468,7 @@ class _image_infoState extends State<image_info> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.1,
-                  width: AppDimensions.height10(context) * 30.5,
+                  width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.0,
                       right: AppDimensions.height10(context) * 8.9,
@@ -476,14 +476,14 @@ class _image_infoState extends State<image_info> {
                   child: Text(
                     'Visibility',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff828282)),
                   ),
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.4,
-                  width: AppDimensions.height10(context) * 30.5,
+                  width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 2.0,
                     right: AppDimensions.height10(context) * 8.9,
@@ -491,7 +491,7 @@ class _image_infoState extends State<image_info> {
                   child: Text(
                     'Private',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff282828)),
                   ),
@@ -537,7 +537,7 @@ class _link_editerState extends State<link_editer> {
               child:
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Container(
-                  width: AppDimensions.height10(context) * 33.7,
+                  width: AppDimensions.width10(context) * 33.7,
                   height: AppDimensions.height10(context) * 3.4,
                   // color: Colors.amber,
                   decoration: BoxDecoration(
@@ -548,7 +548,7 @@ class _link_editerState extends State<link_editer> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: AppDimensions.height10(context) * 1.4,
+                        width: AppDimensions.width10(context) * 1.4,
                         height: AppDimensions.height10(context) * 1.413,
                         decoration: const BoxDecoration(
                             //shape: BoxShape.circle,
@@ -557,7 +557,7 @@ class _link_editerState extends State<link_editer> {
                                 fit: BoxFit.fill)),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 29.3,
+                        width: AppDimensions.width10(context) * 29.3,
                         height: AppDimensions.height10(context) * 2.2,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.5),
@@ -565,8 +565,7 @@ class _link_editerState extends State<link_editer> {
                           decoration: InputDecoration(
                               hintText: 'Give your inspiration a title',
                               hintStyle: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color:
                                       const Color(0xff3C3C43).withOpacity(0.6)),
@@ -579,7 +578,7 @@ class _link_editerState extends State<link_editer> {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 2.3,
+                        width: AppDimensions.width10(context) * 2.3,
                         height: AppDimensions.height10(context) * 2.3,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
@@ -587,7 +586,7 @@ class _link_editerState extends State<link_editer> {
                         ),
                         child: Image.asset(
                           'assets/images/ic_clear.webp',
-                          width: AppDimensions.height10(context) * 0.941,
+                          width: AppDimensions.width10(context) * 0.941,
                           height: AppDimensions.height10(context) * 1.4,
                           color: const Color(0xff8E8E93),
                         ),
@@ -601,12 +600,12 @@ class _link_editerState extends State<link_editer> {
                   },
                   child: SizedBox(
                     height: AppDimensions.height10(context) * 4.2,
-                    width: AppDimensions.height10(context) * 6.2,
+                    width: AppDimensions.width10(context) * 6.2,
                     child: Center(
                       child: Text(
                         'Cancel',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.5,
+                            fontSize: AppDimensions.font10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff007AFF)),
                       ),

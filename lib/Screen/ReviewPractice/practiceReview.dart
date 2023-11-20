@@ -157,7 +157,7 @@ class _PracticeReviewState extends State<PracticeReview> {
         appBar: AppBar(
           elevation: 0,
           centerTitle: true,
-          // title: Text("Review",style: TextStyle(color: Color(0xFF5B74A6),fontWeight: FontWeight.w600,fontSize: AppDimensions.height10(context) *2.0),),
+          // title: Text("Review",style: TextStyle(color: Color(0xFF5B74A6),fontWeight: FontWeight.w600,fontSize: AppDimensions.font10(context) *2.0),),
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: true,
           leading: Center(
@@ -165,7 +165,7 @@ class _PracticeReviewState extends State<PracticeReview> {
             child: IconButton(
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 3,
+                width: AppDimensions.width10(context) * 3,
                 height: AppDimensions.height10(context) * 3,
                 fit: BoxFit.contain,
               ),
@@ -259,7 +259,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFF5B74A6),
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                               ),
                             ),
                           ),
@@ -268,7 +268,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                           height: AppDimensions.height10(context) * 0.0,
                         ),
                         SizedBox(
-                          width: AppDimensions.height10(context) * 30,
+                          width: AppDimensions.width10(context) * 30,
                           child: Center(
                             child: Text(
                               goalName.length >= 30
@@ -278,7 +278,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFF5B74A6),
-                                fontSize: AppDimensions.height10(context) * 2.2,
+                                fontSize: AppDimensions.font10(context) * 2.2,
                               ),
                             ),
                           ),
@@ -287,7 +287,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                           height: AppDimensions.height10(context),
                         ),
                         Container(
-                          //width: AppDimensions.height10(context) * 2.0,
+                          //width: AppDimensions.width10(context) * 2.0,
                           height: AppDimensions.height10(context) * 9.3,
                           // color: Colors.amber,
                           margin: EdgeInsets.only(
@@ -298,7 +298,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                               Align(
                                 alignment: const Alignment(-0.48, -0.3),
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 6.56,
+                                  width: AppDimensions.width10(context) * 6.56,
                                   height:
                                       AppDimensions.height10(context) * 6.56,
                                   decoration: BoxDecoration(
@@ -326,7 +326,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                 alignment: const Alignment(-0.355, -0.2),
                                 child: Container(
                                   height: AppDimensions.height10(context) * 4.1,
-                                  width: AppDimensions.height10(context) * 4.1,
+                                  width: AppDimensions.width10(context) * 4.1,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
@@ -354,7 +354,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                               Align(
                                 alignment: const Alignment(0.55, -0.28),
                                 child: SizedBox(
-                                  width: AppDimensions.height10(context) * 20.6,
+                                  width: AppDimensions.width10(context) * 20.6,
                                   height: AppDimensions.height10(context) * 2.4,
                                   child: Text(
                                     pracName.toString().length >= 20
@@ -365,8 +365,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         overflow: TextOverflow.ellipsis,
                                         color: const Color(0xff156F6D),
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
+                                            AppDimensions.font10(context) * 2.0,
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ),
@@ -384,7 +383,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFF437296),
-                                fontSize: AppDimensions.height10(context) * 3.0,
+                                fontSize: AppDimensions.font10(context) * 3.0,
                               ),
                             ),
                           ),
@@ -394,14 +393,13 @@ class _PracticeReviewState extends State<PracticeReview> {
                         ),
                         SizedBox(
                           height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.height10(context) * 23.9,
+                          width: AppDimensions.width10(context) * 23.9,
                           child: Center(
                             child: Text(
                               "Review your summary here.",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF5B74A6)),
                             ),
@@ -411,14 +409,14 @@ class _PracticeReviewState extends State<PracticeReview> {
                           height: AppDimensions.height10(context) * 3.4,
                         ),
                         Container(
-                            width: AppDimensions.height10(context) * 38.2,
+                            width: AppDimensions.width10(context) * 38.2,
                             height: AppDimensions.height10(context) * 40.6,
                             decoration: BoxDecoration(
                                 color: const Color(0xFFFBFBFB),
                                 border: Border.all(
                                     color: const Color(0xFFFBFBFB),
                                     width:
-                                        AppDimensions.height10(context) * 0.2),
+                                        AppDimensions.width10(context) * 0.2),
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10(context) * 1.8))),
                             child: Column(
@@ -447,9 +445,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 3.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                28.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    28.0,
                                             margin: EdgeInsets.only(
                                                 left: AppDimensions.height10(
                                                         context) *
@@ -520,17 +518,16 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             23.9,
                                         child: Center(
                                           child: Text(
                                             "Your Practice Name",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFF5B74A6)),
                                           ),
@@ -551,17 +548,16 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             23.9,
                                         child: Center(
                                           child: Text(
                                             "Select colour",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFF5B74A6)),
                                           ),
@@ -576,7 +572,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 12.6,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             22.1,
                                         child: Column(
                                           mainAxisAlignment:
@@ -616,10 +612,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -634,7 +630,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -644,7 +640,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -664,7 +660,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.0,
                                                   ),
@@ -697,10 +693,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -715,7 +711,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -725,7 +721,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -745,7 +741,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.0,
                                                   ),
@@ -778,10 +774,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -796,7 +792,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -806,7 +802,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -862,10 +858,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -880,7 +876,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -890,7 +886,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -910,7 +906,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.0,
                                                   ),
@@ -943,10 +939,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -961,7 +957,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -971,7 +967,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -1004,14 +1000,14 @@ class _PracticeReviewState extends State<PracticeReview> {
                           height: AppDimensions.height10(context) * 2.5,
                         ),
                         Container(
-                            width: AppDimensions.height10(context) * 38.2,
+                            width: AppDimensions.width10(context) * 38.2,
                             // height: AppDimensions.height10(context) * 91.3,
                             decoration: BoxDecoration(
                                 color: const Color(0xFFFBFBFB),
                                 border: Border.all(
                                     color: const Color(0xFFFBFBFB),
                                     width:
-                                        AppDimensions.height10(context) * 0.2),
+                                        AppDimensions.width10(context) * 0.2),
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10(context) * 1.8))),
                             child: Column(
@@ -1040,9 +1036,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 3.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                28.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    28.0,
                                             margin: EdgeInsets.only(
                                                 left: AppDimensions.height10(
                                                         context) *
@@ -1107,17 +1103,16 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             23.9,
                                         child: Center(
                                           child: Text(
                                             "Your routine commitment",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFF5B74A6)),
                                           ),
@@ -1132,7 +1127,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 0.5,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             6.1,
                                         decoration: BoxDecoration(
                                             color: const Color(0xFF437296),
@@ -1167,14 +1162,14 @@ class _PracticeReviewState extends State<PracticeReview> {
                           height: AppDimensions.height10(context) * 3.1,
                         ),
                         Container(
-                            width: AppDimensions.height10(context) * 38.2,
+                            width: AppDimensions.width10(context) * 38.2,
                             height: AppDimensions.height10(context) * 29.9,
                             decoration: BoxDecoration(
                                 color: const Color(0xFFFBFBFB),
                                 border: Border.all(
                                     color: const Color(0xFFFBFBFB),
                                     width:
-                                        AppDimensions.height10(context) * 0.2),
+                                        AppDimensions.width10(context) * 0.2),
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10(context) * 1.8))),
                             child: Column(
@@ -1202,9 +1197,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 3.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                28.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    28.0,
                                             margin: EdgeInsets.only(
                                                 left: AppDimensions.height10(
                                                         context) *
@@ -1266,17 +1261,16 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.4,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             38.4,
                                         child: Center(
                                           child: Text(
                                             "Your Reminders",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFF5B74A6)),
                                           ),
@@ -1291,7 +1285,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 17.0,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             36.4,
                                         // padding:  EdgeInsets.only(top: AppDimensions.height10(context)*2, bottom: AppDimensions.height10(context)*4.8, left: AppDimensions.height10(context)*2.0,right: AppDimensions.height10(context)*3.5),
                                         decoration: BoxDecoration(
@@ -1359,7 +1353,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           )),
                                                       SizedBox(
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             20.4,
                                                         height: AppDimensions
@@ -1390,10 +1384,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                   onTap: () {},
                                                   child: SizedBox(
                                                       // color: Colors.red,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          3.3,
+                                                              3.3,
                                                       height: AppDimensions
                                                               .height10(
                                                                   context) *
@@ -1445,10 +1439,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           "Laila-Regular",
                                                       color: const Color(
                                                           0xFFFFFFFF),
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.4,
+                                                              1.4,
                                                     ),
                                                   ),
                                                 )
@@ -1474,7 +1468,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                           children: [
                             SizedBox(
                                 // color: Colors.blue,
-                                width: AppDimensions.height10(context) * 5.0,
+                                width: AppDimensions.width10(context) * 5.0,
                                 height: AppDimensions.height10(context) * 5.0,
                                 child: Image.asset(
                                   "assets/images/Moreactions.webp",
@@ -1487,7 +1481,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                 duration: const Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) => SizedBox(
-                                  width: AppDimensions.height10(context) * 27.0,
+                                  width: AppDimensions.width10(context) * 27.0,
                                   height:
                                       AppDimensions.height10(context) * 24.6,
                                   child: AlertDialog(
@@ -1511,8 +1505,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                           bottom:
                                               AppDimensions.height10(context) *
                                                   0),
-                                      width: AppDimensions.height10(context) *
-                                          23.8,
+                                      width:
+                                          AppDimensions.width10(context) * 23.8,
                                       child: Text.rich(
                                         style: TextStyle(
                                             height: AppDimensions.height10(
@@ -1523,9 +1517,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                                           text: 'Are you sure you want\n to ',
                                           style: TextStyle(
                                             color: const Color(0xFF000000),
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.9,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.9,
                                             fontWeight: FontWeight.w400,
                                           ),
                                           children: <TextSpan>[
@@ -1535,7 +1529,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                   color:
                                                       const Color(0xFF000000),
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.9,
                                                   fontWeight: FontWeight.w700,
@@ -1547,7 +1541,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                   color:
                                                       const Color(0xFF000000),
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.9,
                                                   fontWeight: FontWeight.w400,
@@ -1576,14 +1570,14 @@ class _PracticeReviewState extends State<PracticeReview> {
                                           top: AppDimensions.height10(context) *
                                               0.5),
 
-                                      width: AppDimensions.height10(context) *
-                                          23.8,
+                                      width:
+                                          AppDimensions.width10(context) * 23.8,
                                       child: Text(
                                         "By clicking 'Yes' you confirm that this\ngoal will be deleted and all your data\nthat relates to this practice won't be\nrecoverable. ",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.5,
                                           fontFamily: "Laila",
                                           fontWeight: FontWeight.w400,
@@ -1609,7 +1603,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.7,
                                                     fontFamily: "Laila",
@@ -1622,9 +1616,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 4.4,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                27.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    27.0,
                                             child: TextButton(
                                               onPressed: () {
                                                 PracticeGoalApi()
@@ -1661,7 +1655,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                 'Yes',
                                                 style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.7,
                                                   fontFamily: "Laila",
@@ -1680,7 +1674,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                               ),
                               child: Container(
                                 height: AppDimensions.height10(context) * 5,
-                                width: AppDimensions.height10(context) * 31.3,
+                                width: AppDimensions.width10(context) * 31.3,
                                 decoration: BoxDecoration(
                                   // color: Color(0xFFFF7D50),
                                   border: Border.all(color: Colors.transparent),
@@ -1716,7 +1710,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -1780,7 +1774,7 @@ class _inner_text1State extends State<inner_text1> {
   Widget build(BuildContext context) {
     return Container(
       //height: AppDimensions.height10(context) * 8.9,
-      width: AppDimensions.height10(context) * 36.0,
+      width: AppDimensions.width10(context) * 36.0,
       padding: EdgeInsets.only(
           top: AppDimensions.height10(context) * 1.3,
           bottom: 1,
@@ -1807,7 +1801,7 @@ class _inner_text1State extends State<inner_text1> {
         children: [
           SizedBox(
               //height: AppDimensions.height10(context) * 3.6,
-              width: AppDimensions.height10(context) * 26.9,
+              width: AppDimensions.width10(context) * 26.9,
               child: Text(
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -1817,7 +1811,7 @@ class _inner_text1State extends State<inner_text1> {
                     color: _focusNode.hasFocus
                         ? const Color(0xFFFFFFFF)
                         : const Color(0xFFFFFFFF),
-                    fontSize: AppDimensions.height10(context) * 2.2,
+                    fontSize: AppDimensions.font10(context) * 2.2,
                   ))),
           SizedBox(
             height: AppDimensions.height10(context),

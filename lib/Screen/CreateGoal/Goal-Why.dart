@@ -322,7 +322,7 @@ class _goalwhyState extends State<GoalWhy> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.height10(context) * 3,
+                    width: AppDimensions.width10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
@@ -367,14 +367,14 @@ class _goalwhyState extends State<GoalWhy> {
                       : IconButton(
                           icon: Image.asset(
                             'assets/images/Close.webp',
-                            width: AppDimensions.height10(context) * 3.0,
+                            width: AppDimensions.width10(context) * 3.0,
                             height: AppDimensions.height10(context) * 3.0,
                             fit: BoxFit.contain,
                           ),
                           onPressed: () => showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => Container(
-                              width: AppDimensions.height10(context) * 27.0,
+                              width: AppDimensions.width10(context) * 27.0,
                               height: AppDimensions.height10(context) * 22.0,
                               child: AlertDialog(
                                 shape: RoundedRectangleBorder(
@@ -387,7 +387,7 @@ class _goalwhyState extends State<GoalWhy> {
                                   margin: const EdgeInsets.only(
                                       top: 19, right: 16, left: 16, bottom: 2),
                                   //height: AppDimensions.height10(context) * 2.5,
-                                  width: AppDimensions.height10(context) * 23.8,
+                                  width: AppDimensions.width10(context) * 23.8,
                                   child: const Text(
                                     "Exit onboarding?",
                                     textAlign: TextAlign.center,
@@ -513,7 +513,7 @@ class _goalwhyState extends State<GoalWhy> {
                                       ),
                                       Container(
                                         height: 42,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             27.0,
                                         color: Colors.white,
                                         child: TextButton(
@@ -572,7 +572,7 @@ class _goalwhyState extends State<GoalWhy> {
                               color: widget.comingFromEditScreen
                                   ? const Color(0xFF437296)
                                   : Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.8,
+                              fontSize: AppDimensions.font10(context) * 1.8,
                             ),
                           ),
                         ),
@@ -581,7 +581,7 @@ class _goalwhyState extends State<GoalWhy> {
                         height: AppDimensions.height10(context) * 0.5,
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 30,
+                        width: AppDimensions.width10(context) * 30,
                         child: Center(
                           child: Text(
                             goalName,
@@ -591,7 +591,7 @@ class _goalwhyState extends State<GoalWhy> {
                               color: widget.comingFromEditScreen
                                   ? const Color(0xFF437296)
                                   : Colors.white,
-                              fontSize: AppDimensions.height10(context) * 2.2,
+                              fontSize: AppDimensions.font10(context) * 2.2,
                             ),
                           ),
                         ),
@@ -604,7 +604,7 @@ class _goalwhyState extends State<GoalWhy> {
                               height: AppDimensions.height10(context) * 3.5,
                             )
                           : Container(
-                              width: AppDimensions.height10(context) * 10.4,
+                              width: AppDimensions.width10(context) * 10.4,
                               height: AppDimensions.height10(context) * 7.6,
                               padding: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 1.5,
@@ -625,7 +625,7 @@ class _goalwhyState extends State<GoalWhy> {
                               color: widget.comingFromEditScreen
                                   ? const Color(0xFF437296)
                                   : Colors.white,
-                              fontSize: AppDimensions.height10(context) * 2.8,
+                              fontSize: AppDimensions.font10(context) * 2.8,
                             ),
                           ),
                         ),
@@ -635,13 +635,13 @@ class _goalwhyState extends State<GoalWhy> {
                       ),
                       Container(
                         // height: AppDimensions.height10(context) * 4.9,
-                        width: AppDimensions.height10(context) * 37.2,
+                        width: AppDimensions.width10(context) * 37.2,
                         child: Center(
                           child: Text(
                             "Why pursuing this goal is important\nto you?",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w600,
                                 color: widget.comingFromEditScreen
                                     ? const Color(0xFF437296)
@@ -653,7 +653,7 @@ class _goalwhyState extends State<GoalWhy> {
                         height: AppDimensions.height10(context) * 3.4,
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 38.2,
+                        width: AppDimensions.width10(context) * 38.2,
                         height: widget.comingFromEditScreen
                             ? Reason.length == 1
                                 ? AppDimensions.height10(context) * 22.0
@@ -666,7 +666,7 @@ class _goalwhyState extends State<GoalWhy> {
                           ClipPath(
                             //clipper: OvalBottomBorderClipper(57),
                             child: Container(
-                              // width: AppDimensions.height10(context) * 38.2,
+                              // width: AppDimensions.width10(context) * 38.2,
                               //height: AppDimensions.height10(context) * 33.0,
                               margin: EdgeInsets.only(
                                   bottom:
@@ -678,8 +678,8 @@ class _goalwhyState extends State<GoalWhy> {
                                   color: Colors.white,
                                   border: Border.all(
                                       color: Colors.white,
-                                      width: AppDimensions.height10(context) *
-                                          0.2),
+                                      width:
+                                          AppDimensions.width10(context) * 0.2),
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(
                                           AppDimensions.height10(context) *
@@ -735,7 +735,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                   color:
                                                       const Color(0xFF464646),
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.3,
                                                 ),
@@ -753,7 +753,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                     color:
                                                         const Color(0xFF464646),
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.3,
                                                   ),
@@ -829,7 +829,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                   color:
                                                       const Color(0xFF464646),
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.3,
                                                 ),
@@ -847,7 +847,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                     color:
                                                         const Color(0xFF464646),
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.3,
                                                   ),
@@ -911,9 +911,9 @@ class _goalwhyState extends State<GoalWhy> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 4.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                4.7,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    4.7,
                                             decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               color: Color.fromARGB(
@@ -965,9 +965,9 @@ class _goalwhyState extends State<GoalWhy> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 4.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                4.7,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    4.7,
                                             decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               // color: Colors.orange,
@@ -1017,9 +1017,9 @@ class _goalwhyState extends State<GoalWhy> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 4.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                4.7,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    4.7,
                                             decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               color: Color.fromARGB(
@@ -1071,9 +1071,9 @@ class _goalwhyState extends State<GoalWhy> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 4.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                4.7,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    4.7,
                                             decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               // color: Colors.orange,
@@ -1145,8 +1145,8 @@ class _goalwhyState extends State<GoalWhy> {
                                 child: Transform.translate(
                                   offset: Offset(swipeOffset, 0.0),
                                   child: Container(
-                                    width: AppDimensions.height10(context) *
-                                        38.259,
+                                    width:
+                                        AppDimensions.width10(context) * 38.259,
                                     height:
                                         AppDimensions.height10(context) * 9.707,
                                     decoration: BoxDecoration(
@@ -1171,7 +1171,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                       context) *
                                                   1.261),
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   4.437,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1182,7 +1182,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                       'assets/images/circle_tick.webp'))),
                                         ),
                                         Container(
-                                          //width: AppDimensions.height10(context) * 6.9,
+                                          //width: AppDimensions.width10(context) * 6.9,
                                           height:
                                               AppDimensions.height10(context) *
                                                   3.6,
@@ -1205,10 +1205,10 @@ class _goalwhyState extends State<GoalWhy> {
                                                 child: Text(
                                                   'Updates saved',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.3,
+                                                              1.3,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: const Color(
@@ -1227,10 +1227,10 @@ class _goalwhyState extends State<GoalWhy> {
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.8,
+                                                              1.8,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: const Color(
@@ -1248,9 +1248,9 @@ class _goalwhyState extends State<GoalWhy> {
                                             stopTimer();
                                           },
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                8.1,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    8.1,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 6.0,
@@ -1277,7 +1277,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                 'Undo',
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.8,
                                                     fontWeight: FontWeight.w500,
@@ -1298,7 +1298,7 @@ class _goalwhyState extends State<GoalWhy> {
                               children: [
                                 widget.comingFromEditScreen
                                     ? Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             10.0,
                                         height:
                                             AppDimensions.height10(context) *
@@ -1342,15 +1342,14 @@ class _goalwhyState extends State<GoalWhy> {
                                                         ""
                                                     ? const Color(0xffFA9934)
                                                     : const Color(0xff282828),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8),
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8),
                                           )),
                                         ))
                                     : Container(
                                         // color: Colors.blue,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             5.0,
                                         height:
                                             AppDimensions.height10(context) *
@@ -1365,7 +1364,7 @@ class _goalwhyState extends State<GoalWhy> {
                                           ),
                                         )),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 2.0,
+                                  width: AppDimensions.width10(context) * 2.0,
                                 ),
                                 AnimatedScaleButton(
                                   onTap: () async {
@@ -1473,7 +1472,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                   : Colors.white
                                                       .withOpacity(0.5),
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -1607,7 +1606,7 @@ class pop_up_goals extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 27.0,
+      width: AppDimensions.width10(context) * 27.0,
       height: AppDimensions.height10(context) * 18.2,
       child: AlertDialog(
         contentPadding: EdgeInsets.zero,
@@ -1620,13 +1619,13 @@ class pop_up_goals extends StatelessWidget {
           margin:
               const EdgeInsets.only(top: 19, right: 16, left: 16, bottom: 2),
           height: AppDimensions.height10(context) * 2.2,
-          width: AppDimensions.height10(context) * 23.8,
+          width: AppDimensions.width10(context) * 23.8,
           child: Text(
             "Exit?",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF000000),
-              fontSize: AppDimensions.height10(context) * 1.7,
+              fontSize: AppDimensions.font10(context) * 1.7,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -1637,7 +1636,7 @@ class pop_up_goals extends StatelessWidget {
               left: AppDimensions.height10(context) * 1.6,
               right: AppDimensions.height10(context) * 1.6),
           //height: AppDimensions.height10(context) * 3.2,
-          width: AppDimensions.height10(context) * 23.8,
+          width: AppDimensions.width10(context) * 23.8,
           child: Text(
             "Your new updates have not been saved.\nIf you exit now, your new updates will\nbe cancelled.",
             textAlign: TextAlign.center,

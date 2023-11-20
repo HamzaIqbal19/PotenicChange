@@ -79,7 +79,7 @@ class _congratulationsState extends State<congratulations> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 2.6,
+                      width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
                     )),
@@ -103,7 +103,7 @@ class _congratulationsState extends State<congratulations> {
                         _incrementValue();
                       },
                       child: Container(
-                        width: AppDimensions.height10(context) * 35.5,
+                        width: AppDimensions.width10(context) * 35.5,
                         //height: AppDimensions.height10(context) * 13.2,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 10.0),
@@ -116,8 +116,7 @@ class _congratulationsState extends State<congratulations> {
                                   height:
                                       AppDimensions.height10(context) * 0.14,
                                   //have reduced size so it does,nt overflow
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                   color: const Color(0xFFFFFFFF),
                                 ),
                                 children: [
@@ -127,7 +126,7 @@ class _congratulationsState extends State<congratulations> {
                                       fontWeight: FontWeight.w700,
                                       // fontFamily: 'laila',
                                       fontSize:
-                                          AppDimensions.height10(context) * 3.0,
+                                          AppDimensions.font10(context) * 3.0,
                                       color: const Color(0xFFFFFFFF),
                                     ),
                                   ),
@@ -142,7 +141,7 @@ class _congratulationsState extends State<congratulations> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 26.8,
+                      width: AppDimensions.width10(context) * 26.8,
                       height: AppDimensions.height10(context) * 26.8,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 12.7),
@@ -151,7 +150,7 @@ class _congratulationsState extends State<congratulations> {
                           AnimatedScaleButton(
                             onTap: () {},
                             child: Container(
-                              width: AppDimensions.height10(context) * 26.8,
+                              width: AppDimensions.width10(context) * 26.8,
                               height: AppDimensions.height10(context) * 26.8,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -178,7 +177,7 @@ class _congratulationsState extends State<congratulations> {
                                     height:
                                         AppDimensions.height10(context) * 9.0,
                                     width:
-                                        AppDimensions.height10(context) * 24.0,
+                                        AppDimensions.width10(context) * 24.0,
                                     padding: EdgeInsets.symmetric(
                                         horizontal:
                                             AppDimensions.height10(context) *
@@ -193,7 +192,7 @@ class _congratulationsState extends State<congratulations> {
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 1,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               height: AppDimensions.height10(
@@ -213,7 +212,7 @@ class _congratulationsState extends State<congratulations> {
                                               AppDimensions.height10(context) *
                                                   4.0,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   22.0,
                                           child: Text('"$identity"',
                                               maxLines: 2,
@@ -222,7 +221,7 @@ class _congratulationsState extends State<congratulations> {
                                               style: TextStyle(
                                                   fontStyle: FontStyle.italic,
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w400,
@@ -243,7 +242,7 @@ class _congratulationsState extends State<congratulations> {
                           Align(
                             alignment: const Alignment(0, 6),
                             child: Container(
-                              width: AppDimensions.height10(context) * 23.2,
+                              width: AppDimensions.width10(context) * 23.2,
                               height: AppDimensions.height10(context) * 23.2,
                               //same dimensions as design
                               decoration: BoxDecoration(
@@ -269,7 +268,7 @@ class _congratulationsState extends State<congratulations> {
                                     // mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             3.9,
                                         height:
                                             AppDimensions.height10(context) *
@@ -291,7 +290,7 @@ class _congratulationsState extends State<congratulations> {
                                                               context) *
                                                           0.12,
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           0.8,
                                                   color:
@@ -307,7 +306,7 @@ class _congratulationsState extends State<congratulations> {
                                                       style: TextStyle(
                                                         fontFamily: 'Poppins',
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             2.8,
                                                       )),
@@ -322,7 +321,7 @@ class _congratulationsState extends State<congratulations> {
                                                 ])),
                                       ),
                                       SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             13.1,
                                         height:
                                             AppDimensions.height10(context) *
@@ -345,7 +344,7 @@ class _congratulationsState extends State<congratulations> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   0.12,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4,
                                               color: const Color(0xFF000000),
@@ -373,7 +372,7 @@ class _congratulationsState extends State<congratulations> {
                         }
                       },
                       child: Container(
-                        width: AppDimensions.height10(context) * 29.0,
+                        width: AppDimensions.width10(context) * 29.0,
                         height: AppDimensions.height10(context) * 5.0,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 10.3),
@@ -383,14 +382,14 @@ class _congratulationsState extends State<congratulations> {
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 5.0)),
                         child: SizedBox(
-                          width: AppDimensions.height10(context) * 6.9,
+                          width: AppDimensions.width10(context) * 6.9,
                           height: AppDimensions.height10(context) * 2.4,
                           child: Center(
                             child: Text(
                               goal_level > 3 ? 'Yes I am' : 'Exit',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 color: const Color(0xFFFFFFFF),
                               ),
                             ),
@@ -399,7 +398,7 @@ class _congratulationsState extends State<congratulations> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 29.0,
+                      width: AppDimensions.width10(context) * 29.0,
                       height: AppDimensions.height10(context) * 5.0,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.8),
@@ -408,7 +407,7 @@ class _congratulationsState extends State<congratulations> {
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 5.0)),
                       child: SizedBox(
-                        width: AppDimensions.height10(context) * 23.4,
+                        width: AppDimensions.width10(context) * 23.4,
                         height: AppDimensions.height10(context) * 2.4,
                         child: Center(
                           child: Text(
@@ -419,7 +418,7 @@ class _congratulationsState extends State<congratulations> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               height: AppDimensions.height10(context) * 0.15,
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               color: const Color(0xFFFA9934),
                             ),
                           ),
@@ -427,7 +426,7 @@ class _congratulationsState extends State<congratulations> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 17.0,
+                      width: AppDimensions.width10(context) * 17.0,
                       height: AppDimensions.height10(context) * 0.5,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
@@ -467,7 +466,7 @@ void goal_achieved_sheet(
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Container(
-              width: AppDimensions.height10(context) * 41.4,
+              width: AppDimensions.width10(context) * 41.4,
               //  height: AppDimensions.height10(context) * 87.6,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.vertical(
@@ -488,7 +487,7 @@ void goal_achieved_sheet(
                         Navigator.pop(context);
                       },
                       child: Container(
-                        width: AppDimensions.height10(context) * 2.6,
+                        width: AppDimensions.width10(context) * 2.6,
                         height: AppDimensions.height10(context) * 2.6,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.5,
@@ -510,7 +509,7 @@ void goal_achieved_sheet(
                         'Goal level has gone down',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 3.0,
+                            fontSize: AppDimensions.font10(context) * 3.0,
                             // letterSpacing: AppDimensions.height10(context) * 0.2,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF437296)),
@@ -518,7 +517,7 @@ void goal_achieved_sheet(
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10(context) * 32.7,
+                    width: AppDimensions.width10(context) * 32.7,
                     height: AppDimensions.height10(context) * 16.1,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.6),
@@ -526,20 +525,20 @@ void goal_achieved_sheet(
                       'Based on your latest evaluation, your total goal\nscore level has gone down. Don’t despair yet.\nLife is a journey of ups and downs, and working\non yourself is part of the transformation\nprocess. Please review your latest assessment\nand adjust your original ‘why’ reasons if needed.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.6,
+                          fontSize: AppDimensions.font10(context) * 1.6,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF437296)),
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10(context) * 26.8,
+                    width: AppDimensions.width10(context) * 26.8,
                     height: AppDimensions.height10(context) * 26.8,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 5.7),
                     child: Stack(
                       children: [
                         Container(
-                          width: AppDimensions.height10(context) * 26.8,
+                          width: AppDimensions.width10(context) * 26.8,
                           height: AppDimensions.height10(context) * 26.8,
                           decoration: BoxDecoration(
                             image: DecorationImage(
@@ -564,7 +563,7 @@ void goal_achieved_sheet(
                               Container(
                                 // color: Colors.red,
                                 height: AppDimensions.height10(context) * 9.0,
-                                width: AppDimensions.height10(context) * 24.0,
+                                width: AppDimensions.width10(context) * 24.0,
                                 padding: EdgeInsets.symmetric(
                                     horizontal:
                                         AppDimensions.height10(context) * 2.0),
@@ -579,7 +578,7 @@ void goal_achieved_sheet(
                                       maxLines: 1,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -595,15 +594,15 @@ void goal_achieved_sheet(
                                       // color: Colors.green,
                                       height:
                                           AppDimensions.height10(context) * 4.0,
-                                      width: AppDimensions.height10(context) *
-                                          22.0,
+                                      width:
+                                          AppDimensions.width10(context) * 22.0,
                                       child: Text('"$identity"',
                                           maxLines: 2,
                                           textAlign: TextAlign.center,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                               fontStyle: FontStyle.italic,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w400,
@@ -621,7 +620,7 @@ void goal_achieved_sheet(
                         Align(
                           alignment: const Alignment(0, 10.5),
                           child: Container(
-                            width: AppDimensions.height10(context) * 24.2,
+                            width: AppDimensions.width10(context) * 24.2,
                             height: AppDimensions.height10(context) * 24.2,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
@@ -638,7 +637,7 @@ void goal_achieved_sheet(
                                     fit: BoxFit.cover)),
                             child: Center(
                               child: SizedBox(
-                                width: AppDimensions.height10(context) * 14.655,
+                                width: AppDimensions.width10(context) * 14.655,
                                 height:
                                     AppDimensions.height10(context) * 14.655,
                                 child: Column(
@@ -663,10 +662,9 @@ void goal_achieved_sheet(
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     0.12,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        0.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    0.8,
                                                 color: const Color(0xFF424242),
                                               ),
                                               children: [
@@ -676,10 +674,10 @@ void goal_achieved_sheet(
                                                         : '5',
                                                     style: TextStyle(
                                                       fontFamily: 'Poppins',
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          2.8,
+                                                              2.8,
                                                     )),
                                                 const TextSpan(
                                                     text: '/5\n',
@@ -692,8 +690,8 @@ void goal_achieved_sheet(
                                               ])),
                                     ),
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          13.1,
+                                      width:
+                                          AppDimensions.width10(context) * 13.1,
                                       height:
                                           AppDimensions.height10(context) * 5.1,
                                       child: Center(
@@ -708,9 +706,9 @@ void goal_achieved_sheet(
                                             height: AppDimensions.height10(
                                                     context) *
                                                 0.12,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.4,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.4,
                                             color: const Color(0xFF000000),
                                           ),
                                         ),
@@ -736,7 +734,7 @@ void goal_achieved_sheet(
                       // }
                     },
                     child: Container(
-                      width: AppDimensions.height10(context) * 29.0,
+                      width: AppDimensions.width10(context) * 29.0,
                       height: AppDimensions.height10(context) * 5.0,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 13.1),
@@ -746,14 +744,14 @@ void goal_achieved_sheet(
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 5.0)),
                       child: SizedBox(
-                        width: AppDimensions.height10(context) * 6.9,
+                        width: AppDimensions.width10(context) * 6.9,
                         height: AppDimensions.height10(context) * 2.4,
                         child: Center(
                           child: Text(
                             'Exit',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               color: const Color(0xFFFFFFFF),
                             ),
                           ),
@@ -762,7 +760,7 @@ void goal_achieved_sheet(
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10(context) * 29.0,
+                    width: AppDimensions.width10(context) * 29.0,
                     height: AppDimensions.height10(context) * 5.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.8,
@@ -772,7 +770,7 @@ void goal_achieved_sheet(
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 5.0)),
                     child: SizedBox(
-                      width: AppDimensions.height10(context) * 23.4,
+                      width: AppDimensions.width10(context) * 23.4,
                       height: AppDimensions.height10(context) * 2.4,
                       child: Center(
                         child: Text(
@@ -780,7 +778,7 @@ void goal_achieved_sheet(
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             color: const Color(0xFFFA9934),
                           ),
                         ),

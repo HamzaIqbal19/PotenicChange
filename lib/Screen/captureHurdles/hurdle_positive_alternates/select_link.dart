@@ -27,20 +27,20 @@ class _select_linkState extends State<select_link> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
           centerTitle: true,
           title: SizedBox(
-            width: AppDimensions.height10(context) * 17.0,
+            width: AppDimensions.width10(context) * 17.0,
             height: AppDimensions.height10(context) * 4.8,
             child: GradientText(
               'Hurdle‘s positive\nalternatives',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: AppDimensions.height10(context) * 2.0,
+                fontSize: AppDimensions.font10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
               colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -52,7 +52,7 @@ class _select_linkState extends State<select_link> {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -70,7 +70,7 @@ class _select_linkState extends State<select_link> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: AppDimensions.height10(context) * 13.339,
+              width: AppDimensions.width10(context) * 13.339,
               height: AppDimensions.height10(context) * 16.674,
               margin:
                   EdgeInsets.only(right: AppDimensions.height10(context) * 1.4),
@@ -97,7 +97,7 @@ class _select_linkState extends State<select_link> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 3.032,
+                            width: AppDimensions.width10(context) * 3.032,
                             height: AppDimensions.height10(context) * 3.032,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 0.68),
@@ -113,8 +113,7 @@ class _select_linkState extends State<select_link> {
                               'Enter your\nlink',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white),
                             ),
@@ -125,7 +124,7 @@ class _select_linkState extends State<select_link> {
               ),
             ),
             Container(
-              width: AppDimensions.height10(context) * 36.0,
+              width: AppDimensions.width10(context) * 36.0,
               height: AppDimensions.height10(context) * 6.0,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 8.026),
@@ -138,13 +137,13 @@ class _select_linkState extends State<select_link> {
                     left: AppDimensions.height10(context) * 2.0,
                     right: AppDimensions.height10(context) * 2.0),
                 height: AppDimensions.height10(context) * 2.2,
-                width: AppDimensions.height10(context) * 30.5,
+                width: AppDimensions.width10(context) * 30.5,
                 child: Center(
                   child: TextField(
                     decoration: InputDecoration(
                         hintText: 'Content URL',
                         hintStyle: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 1.8,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
@@ -157,7 +156,7 @@ class _select_linkState extends State<select_link> {
             ),
             Container(
                 height: AppDimensions.height10(context) * 5.0,
-                width: AppDimensions.height10(context) * 25.4,
+                width: AppDimensions.width10(context) * 25.4,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
                 decoration: BoxDecoration(
@@ -181,7 +180,7 @@ class _select_linkState extends State<select_link> {
                       'Confirm',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 1.6,
+                          fontSize: AppDimensions.font10(context) * 1.6,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins'),
                     ))),

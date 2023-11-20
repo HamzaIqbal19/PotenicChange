@@ -122,7 +122,7 @@ class _endofSessionState extends State<endofSession> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 2.6,
+                width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
               )),
@@ -138,7 +138,7 @@ class _endofSessionState extends State<endofSession> {
                           duration: const Duration(seconds: 1),
                           context: context,
                           builder: (BuildContext context) => SizedBox(
-                            width: AppDimensions.height10(context) * 27.0,
+                            width: AppDimensions.width10(context) * 27.0,
                             height: AppDimensions.height10(context) * 18.2,
                             child: AlertDialog(
                               contentPadding: EdgeInsets.zero,
@@ -151,14 +151,14 @@ class _endofSessionState extends State<endofSession> {
                                 margin: const EdgeInsets.only(
                                     top: 19, right: 16, left: 16, bottom: 2),
                                 height: AppDimensions.height10(context) * 2.2,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Are you sure?",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: const Color(0xFF000000),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -171,7 +171,7 @@ class _endofSessionState extends State<endofSession> {
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 3.2,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "If you close it now, you will lose all your progress.",
                                   textAlign: TextAlign.center,
@@ -241,7 +241,7 @@ class _endofSessionState extends State<endofSession> {
                 },
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
@@ -264,7 +264,7 @@ class _endofSessionState extends State<endofSession> {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: AppDimensions.height10(context) * 30.0,
+                width: AppDimensions.width10(context) * 30.0,
                 height: AppDimensions.height10(context) * 2.4,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 10.5,
@@ -274,13 +274,13 @@ class _endofSessionState extends State<endofSession> {
                   pracName,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.0,
+                      fontSize: AppDimensions.font10(context) * 2.0,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 35.9,
+                width: AppDimensions.width10(context) * 35.9,
                 height: AppDimensions.height10(context) * 14.8,
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(
@@ -289,7 +289,7 @@ class _endofSessionState extends State<endofSession> {
                     text: TextSpan(
                   text: 'How did the practice go?',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                 )),
@@ -310,20 +310,20 @@ class _endofSessionState extends State<endofSession> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 15.4,
-                        width: AppDimensions.height10(context) * 15.4,
+                        width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
                             right: AppDimensions.height10(context) * 1.5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10(context) * 0.2,
+                              width: AppDimensions.width10(context) * 0.2,
                               color: sessionEnd == 1
                                   ? Colors.white
                                   : Colors.transparent),
                         ),
                         child: Container(
                           height: AppDimensions.height10(context) * 13.4,
-                          width: AppDimensions.height10(context) * 13.4,
+                          width: AppDimensions.width10(context) * 13.4,
                           margin: EdgeInsets.all(
                               AppDimensions.height10(context) * 0.9),
                           alignment: Alignment.center,
@@ -345,7 +345,7 @@ class _endofSessionState extends State<endofSession> {
                                   style: TextStyle(
                                     fontFamily: 'laila',
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white,
                                   ),
@@ -366,20 +366,20 @@ class _endofSessionState extends State<endofSession> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 15.4,
-                        width: AppDimensions.height10(context) * 15.4,
+                        width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
                             right: AppDimensions.height10(context) * 1.5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10(context) * 0.2,
+                              width: AppDimensions.width10(context) * 0.2,
                               color: sessionEnd == 2
                                   ? Colors.white
                                   : Colors.transparent),
                         ),
                         child: Container(
                           height: AppDimensions.height10(context) * 13.4,
-                          width: AppDimensions.height10(context) * 13.4,
+                          width: AppDimensions.width10(context) * 13.4,
                           alignment: Alignment.center,
                           margin: EdgeInsets.all(
                               AppDimensions.height10(context) * 0.9),
@@ -401,7 +401,7 @@ class _endofSessionState extends State<endofSession> {
                                   style: TextStyle(
                                     fontFamily: 'laila',
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white,
                                   ),
@@ -427,20 +427,20 @@ class _endofSessionState extends State<endofSession> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 15.4,
-                        width: AppDimensions.height10(context) * 15.4,
+                        width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
                             right: AppDimensions.height10(context) * 1.5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10(context) * 0.2,
+                              width: AppDimensions.width10(context) * 0.2,
                               color: sessionEnd == 3
                                   ? Colors.white
                                   : Colors.transparent),
                         ),
                         child: Container(
                           height: AppDimensions.height10(context) * 13.4,
-                          width: AppDimensions.height10(context) * 13.4,
+                          width: AppDimensions.width10(context) * 13.4,
                           alignment: Alignment.center,
                           margin: EdgeInsets.all(
                               AppDimensions.height10(context) * 0.9),
@@ -462,7 +462,7 @@ class _endofSessionState extends State<endofSession> {
                                   style: TextStyle(
                                     fontFamily: 'laila',
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white,
                                   ),
@@ -486,20 +486,20 @@ class _endofSessionState extends State<endofSession> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 15.4,
-                        width: AppDimensions.height10(context) * 15.4,
+                        width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
                             right: AppDimensions.height10(context) * 1.5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10(context) * 0.2,
+                              width: AppDimensions.width10(context) * 0.2,
                               color: sessionEnd == 4
                                   ? Colors.white
                                   : Colors.transparent),
                         ),
                         child: Container(
                           height: AppDimensions.height10(context) * 13.4,
-                          width: AppDimensions.height10(context) * 13.4,
+                          width: AppDimensions.width10(context) * 13.4,
                           alignment: Alignment.center,
                           margin: EdgeInsets.all(
                               AppDimensions.height10(context) * 0.9),
@@ -521,7 +521,7 @@ class _endofSessionState extends State<endofSession> {
                                   style: TextStyle(
                                     fontFamily: 'laila',
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white,
                                   ),
@@ -545,20 +545,20 @@ class _endofSessionState extends State<endofSession> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 15.4,
-                        width: AppDimensions.height10(context) * 15.4,
+                        width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
                             right: AppDimensions.height10(context) * 1.5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10(context) * 0.2,
+                              width: AppDimensions.width10(context) * 0.2,
                               color: sessionEnd == 5
                                   ? Colors.white
                                   : Colors.transparent),
                         ),
                         child: Container(
                           height: AppDimensions.height10(context) * 13.4,
-                          width: AppDimensions.height10(context) * 13.4,
+                          width: AppDimensions.width10(context) * 13.4,
                           alignment: Alignment.center,
                           margin: EdgeInsets.all(
                               AppDimensions.height10(context) * 0.9),
@@ -580,7 +580,7 @@ class _endofSessionState extends State<endofSession> {
                                   style: TextStyle(
                                     fontFamily: 'laila',
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white,
                                   ),
@@ -614,7 +614,7 @@ class _endofSessionState extends State<endofSession> {
                             },
                             child: Container(
                                 height: AppDimensions.height10(context) * 5.0,
-                                width: AppDimensions.height10(context) * 14.3,
+                                width: AppDimensions.width10(context) * 14.3,
                                 margin: EdgeInsets.only(
                                     right:
                                         AppDimensions.height10(context) * 1.2),
@@ -623,7 +623,7 @@ class _endofSessionState extends State<endofSession> {
                                     borderRadius: BorderRadius.circular(
                                         AppDimensions.height10(context) * 5.0),
                                     border: Border.all(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.2,
                                         color: const Color(0xffFA9934))),
                                 child: Center(
@@ -632,7 +632,7 @@ class _endofSessionState extends State<endofSession> {
                                   style: TextStyle(
                                       color: const Color(0xffFA9934),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w600),
                                 ))),
                           )
@@ -743,8 +743,7 @@ class _endofSessionState extends State<endofSession> {
                               widget.summary ? 'Update Summary' : 'Summary',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
                                   fontWeight: FontWeight.w600),
                             ),
                           )),
@@ -783,7 +782,7 @@ class _addNotesState extends State<addNotes> {
     return Column(
       children: [
         SizedBox(
-          width: AppDimensions.height10(context) * 7.6,
+          width: AppDimensions.width10(context) * 7.6,
           height: AppDimensions.height10(context) * 7.6,
           //margin: EdgeInsets.only(bottom: 113),
           child: Column(
@@ -805,17 +804,17 @@ class _addNotesState extends State<addNotes> {
                         });
                 },
                 child: Container(
-                  width: AppDimensions.height10(context) * 5.0,
+                  width: AppDimensions.width10(context) * 5.0,
                   height: AppDimensions.height10(context) * 5.0,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: Color(back_color),
                       border: Border.all(
-                          width: AppDimensions.height10(context) * 0.2,
+                          width: AppDimensions.width10(context) * 0.2,
                           color: Color(icon_color))),
                   child: Container(
                     height: AppDimensions.height10(context) * 2.7,
-                    width: AppDimensions.height10(context) * 2.7,
+                    width: AppDimensions.width10(context) * 2.7,
                     margin: const EdgeInsets.only(left: 3),
                     child: Center(
                         child: Icon(
@@ -827,14 +826,14 @@ class _addNotesState extends State<addNotes> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 7.6,
+                width: AppDimensions.width10(context) * 7.6,
                 height: AppDimensions.height10(context) * 1.9,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.6),
                 child: Text(
                   'Add Notes',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.6,
+                      fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
@@ -868,7 +867,7 @@ class notes extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: AppDimensions.height10(context) * 36.0,
+          width: AppDimensions.width10(context) * 36.0,
           // height: AppDimensions.height10(context) * 11.0,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
@@ -885,7 +884,7 @@ class notes extends StatelessWidget {
                   decoration: InputDecoration(
                       hintText: 'Add notes here',
                       hintStyle: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xff646464),
                       ),

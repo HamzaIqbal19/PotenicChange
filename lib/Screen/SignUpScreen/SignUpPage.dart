@@ -62,7 +62,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
           //   child: IconButton(
           //     icon: Image.asset(
           //       'assets/images/Back.webp',
-          //       width: AppDimensions.height10(context) * 3,
+          //       width: AppDimensions.width10(context) * 3,
           //       height: AppDimensions.height10(context) * 3,
           //       fit: BoxFit.contain,
           //     ),
@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                  width: AppDimensions.height10(context) * 2.8,
+                  width: AppDimensions.width10(context) * 2.8,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.cover,
                 ),
@@ -135,20 +135,20 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 3),
+                        fontSize: AppDimensions.font10(context) * 3),
                   ),
                 ),
                 SizedBox(height: AppDimensions.height10(context) + 1),
                 Container(
                     height: AppDimensions.height10(context) * 4.4,
-                    width: AppDimensions.height10(context) * 35.3,
+                    width: AppDimensions.width10(context) * 35.3,
                     child: Text(
                       'Your Personalised Journey To Better \n  Self Starts Here',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontSize: AppDimensions.font10(context) * 1.8,
                       ),
                     )),
                 SizedBox(height: AppDimensions.height10(context) * 4.8),
@@ -168,13 +168,13 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                         },
                         child: Container(
                           height: AppDimensions.height10(context) * 5.5,
-                          width: AppDimensions.height10(context) * 34.1,
+                          width: AppDimensions.width10(context) * 34.1,
                           decoration: BoxDecoration(
                               color: const Color(0xFF5A4D73),
                               borderRadius: BorderRadius.circular(
                                   AppDimensions.height10(context) * 4.0),
                               border: Border.all(
-                                  width: AppDimensions.height10(context) * 0.1,
+                                  width: AppDimensions.width10(context) * 0.1,
                                   color: const Color(0xFFFFFFFF))),
                           child: Row(
                             children: [
@@ -197,7 +197,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                                   style: TextStyle(
                                     color: const Color(0xFFFFFFFF),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.8,
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -211,7 +211,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                       ),
                       Container(
                         height: AppDimensions.height10(context) * 5.5,
-                        width: AppDimensions.height10(context) * 34.1,
+                        width: AppDimensions.width10(context) * 34.1,
                         child: OutlinedButton.icon(
                           // <-- OutlinedButton
                           style: OutlinedButton.styleFrom(
@@ -226,7 +226,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                           },
                           icon: Image.asset(
                             "assets/images/Google.webp",
-                            width: AppDimensions.height10(context) * 2.4,
+                            width: AppDimensions.width10(context) * 2.4,
                             height: AppDimensions.height10(context) * 2.4,
                           ),
                           label: Row(
@@ -236,8 +236,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                                 '  Sign up with Google',
                                 style: TextStyle(
                                   color: Colors.black45,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w600,
                                 ),
                               )),
@@ -250,7 +249,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                       ),
                       Container(
                         height: AppDimensions.height10(context) * 5.5,
-                        width: AppDimensions.height10(context) * 34.1,
+                        width: AppDimensions.width10(context) * 34.1,
                         child: OutlinedButton.icon(
                           // <-- OutlinedButton
                           style: OutlinedButton.styleFrom(
@@ -264,7 +263,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                           onPressed: () {},
                           icon: Image.asset(
                             "assets/images/fb.webp",
-                            width: AppDimensions.height10(context) * 2.4,
+                            width: AppDimensions.width10(context) * 2.4,
                             height: AppDimensions.height10(context) * 2.4,
                           ),
                           label: Row(
@@ -274,8 +273,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                                 '  Sign up with Facebook',
                                 style: TextStyle(
                                   color: const Color(0xFFFFFFFF),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
@@ -312,7 +310,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                     scale: 1 - _controller.value,
                     child: Container(
                       height: AppDimensions.height10(context) * 5.0,
-                      width: AppDimensions.height10(context) * 29.3,
+                      width: AppDimensions.width10(context) * 29.3,
                       decoration: BoxDecoration(
                         color: const Color(0xFFF5F5F5),
                         border: Border.all(color: Colors.white),
@@ -324,7 +322,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                           "I already have an account",
                           style: TextStyle(
                             color: const Color(0xFF8C648A),
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                           ),
                         ),

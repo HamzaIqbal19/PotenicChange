@@ -225,7 +225,7 @@ class _GoalNameState extends State<GoalName> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.height10(context) * 3,
+                    width: AppDimensions.width10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
@@ -263,14 +263,14 @@ class _GoalNameState extends State<GoalName> {
                       : IconButton(
                           icon: Image.asset(
                             'assets/images/Close.webp',
-                            width: AppDimensions.height10(context) * 3.0,
+                            width: AppDimensions.width10(context) * 3.0,
                             height: AppDimensions.height10(context) * 3.0,
                             fit: BoxFit.contain,
                           ),
                           onPressed: () => showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => Container(
-                              width: AppDimensions.height10(context) * 27.0,
+                              width: AppDimensions.width10(context) * 27.0,
                               height: AppDimensions.height10(context) * 21.0,
                               child: AlertDialog(
                                 contentPadding: EdgeInsets.zero,
@@ -283,7 +283,7 @@ class _GoalNameState extends State<GoalName> {
                                   margin: const EdgeInsets.only(
                                       top: 19, right: 16, left: 16, bottom: 2),
                                   // height: AppDimensions.height10(context) * 2.2,
-                                  width: AppDimensions.height10(context) * 23.8,
+                                  width: AppDimensions.width10(context) * 23.8,
                                   child: const Text(
                                     "Exit onboarding?",
                                     textAlign: TextAlign.center,
@@ -407,7 +407,7 @@ class _GoalNameState extends State<GoalName> {
                                       ),
                                       Container(
                                         height: 42,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             27.0,
                                         child: TextButton(
                                           onPressed: () {
@@ -464,7 +464,7 @@ class _GoalNameState extends State<GoalName> {
                           color: widget.comingFromEditScreen
                               ? const Color(0xff437296)
                               : Colors.white,
-                          fontSize: AppDimensions.height10(context) * 1.8,
+                          fontSize: AppDimensions.font10(context) * 1.8,
                         ),
                       ),
                     ),
@@ -473,7 +473,7 @@ class _GoalNameState extends State<GoalName> {
                     height: AppDimensions.height10(context) * 0.5,
                   ),
                   Container(
-                    width: AppDimensions.height10(context) * 30,
+                    width: AppDimensions.width10(context) * 30,
                     child: Center(
                       child: Text(
                         capitalizeFirstLetter(goalName),
@@ -483,7 +483,7 @@ class _GoalNameState extends State<GoalName> {
                           color: widget.comingFromEditScreen
                               ? const Color(0xff437296)
                               : Colors.white,
-                          fontSize: AppDimensions.height10(context) * 2.2,
+                          fontSize: AppDimensions.font10(context) * 2.2,
                         ),
                       ),
                     ),
@@ -493,7 +493,7 @@ class _GoalNameState extends State<GoalName> {
                   ),
                   Container(
                       // color: Colors.blue,
-                      width: AppDimensions.height10(context) * 10.4,
+                      width: AppDimensions.width10(context) * 10.4,
                       height: AppDimensions.height10(context) * 7.6,
                       padding: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 1.5,
@@ -514,7 +514,7 @@ class _GoalNameState extends State<GoalName> {
                           color: widget.comingFromEditScreen
                               ? const Color(0xff437296)
                               : Colors.white,
-                          fontSize: AppDimensions.height10(context) * 2.8,
+                          fontSize: AppDimensions.font10(context) * 2.8,
                         ),
                       ),
                     ),
@@ -524,12 +524,12 @@ class _GoalNameState extends State<GoalName> {
                   ),
                   Container(
                     height: AppDimensions.height10(context) * 2.8,
-                    width: AppDimensions.height10(context) * 24.4,
+                    width: AppDimensions.width10(context) * 24.4,
                     child: Center(
                       child: Text(
                         "Enter the name of your goal ",
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 1.8,
                             fontWeight: FontWeight.w600,
                             color: widget.comingFromEditScreen
                                 ? const Color(0xff437296)
@@ -542,7 +542,7 @@ class _GoalNameState extends State<GoalName> {
                   ),
                   Container(
                     height: AppDimensions.height10(context) * 10.5,
-                    width: AppDimensions.height10(context) * 36.0,
+                    width: AppDimensions.width10(context) * 36.0,
                     padding: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0,
                         right: AppDimensions.height10(context) * 0.6,
@@ -562,7 +562,7 @@ class _GoalNameState extends State<GoalName> {
                       textAlignVertical: TextAlignVertical.top,
                       //  key: _formkey1,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 2.4,
+                          fontSize: AppDimensions.font10(context) * 2.4,
                           fontWeight: FontWeight.w500,
                           height: AppDimensions.height10(context) * 0.14,
                           color: const Color(0xFFFA9934)),
@@ -571,7 +571,7 @@ class _GoalNameState extends State<GoalName> {
                           contentPadding: EdgeInsets.zero,
                           hintText: "",
                           hintStyle: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.4,
+                              fontSize: AppDimensions.font10(context) * 2.4,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xFFFA9934)),
                           focusedBorder: const OutlineInputBorder(
@@ -598,8 +598,8 @@ class _GoalNameState extends State<GoalName> {
                     height: AppDimensions.height10(context) * 0.5,
                   ),
                   Container(
-                    // width: AppDimensions.height10(context) *12.3,
-                    width: AppDimensions.height10(context) * 34.7,
+                    // width: AppDimensions.width10(context) *12.3,
+                    width: AppDimensions.width10(context) * 34.7,
                     margin: EdgeInsets.only(
                         right: AppDimensions.height10(context) * 1.3),
 
@@ -618,7 +618,7 @@ class _GoalNameState extends State<GoalName> {
                               color: widget.comingFromEditScreen
                                   ? const Color(0xff437296)
                                   : Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.4,
+                              fontSize: AppDimensions.font10(context) * 1.4,
                             ),
                           ),
                         ),
@@ -630,7 +630,7 @@ class _GoalNameState extends State<GoalName> {
                               color: widget.comingFromEditScreen
                                   ? const Color(0xff437296)
                                   : Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.4,
+                              fontSize: AppDimensions.font10(context) * 1.4,
                             ),
                           ),
                         ),
@@ -642,7 +642,7 @@ class _GoalNameState extends State<GoalName> {
                   ),
                   Container(
                     height: AppDimensions.height10(context) * 4.2,
-                    width: AppDimensions.height10(context) * 34.7,
+                    width: AppDimensions.width10(context) * 34.7,
                     margin: EdgeInsets.only(
                         right: AppDimensions.height10(context) * 1.3),
                     child: Center(
@@ -653,7 +653,7 @@ class _GoalNameState extends State<GoalName> {
                           color: widget.comingFromEditScreen
                               ? const Color(0xff437296)
                               : Colors.white,
-                          fontSize: AppDimensions.height10(context) * 1.6,
+                          fontSize: AppDimensions.font10(context) * 1.6,
                         ),
                       ),
                     ),
@@ -689,7 +689,7 @@ class _GoalNameState extends State<GoalName> {
                             child: Transform.translate(
                               offset: Offset(swipeOffset, 0.0),
                               child: Container(
-                                width: AppDimensions.height10(context) * 38.259,
+                                width: AppDimensions.width10(context) * 38.259,
                                 height: AppDimensions.height10(context) * 9.707,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(
@@ -710,7 +710,7 @@ class _GoalNameState extends State<GoalName> {
                                           left:
                                               AppDimensions.height10(context) *
                                                   1.261),
-                                      width: AppDimensions.height10(context) *
+                                      width: AppDimensions.width10(context) *
                                           4.437,
                                       height: AppDimensions.height10(context) *
                                           4.437,
@@ -720,7 +720,7 @@ class _GoalNameState extends State<GoalName> {
                                                   'assets/images/circle_tick.webp'))),
                                     ),
                                     Container(
-                                      //width: AppDimensions.height10(context) * 6.9,
+                                      //width: AppDimensions.width10(context) * 6.9,
                                       height:
                                           AppDimensions.height10(context) * 3.6,
                                       margin: EdgeInsets.only(
@@ -732,9 +732,9 @@ class _GoalNameState extends State<GoalName> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                4.6,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    4.6,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 1.4,
@@ -743,7 +743,7 @@ class _GoalNameState extends State<GoalName> {
                                               'Updates saved',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.3,
                                                   fontWeight: FontWeight.w500,
@@ -752,9 +752,9 @@ class _GoalNameState extends State<GoalName> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                16.9,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    16.9,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 2.2,
@@ -763,7 +763,7 @@ class _GoalNameState extends State<GoalName> {
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w500,
@@ -782,7 +782,7 @@ class _GoalNameState extends State<GoalName> {
                                         stopTimer();
                                       },
                                       child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             8.1,
                                         height:
                                             AppDimensions.height10(context) *
@@ -806,10 +806,9 @@ class _GoalNameState extends State<GoalName> {
                                           child: Text(
                                             'Undo',
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFFFFFFFF)),
                                           ),
@@ -827,7 +826,7 @@ class _GoalNameState extends State<GoalName> {
                           children: [
                             Container(
                                 // color: Colors.blue,
-                                width: AppDimensions.height10(context) * 5.0,
+                                width: AppDimensions.width10(context) * 5.0,
                                 height: AppDimensions.height10(context) * 5.0,
                                 child: AnimatedScaleButton(
                                   onTap: () {
@@ -839,7 +838,7 @@ class _GoalNameState extends State<GoalName> {
                                   ),
                                 )),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 2.0,
+                              width: AppDimensions.width10(context) * 2.0,
                             ),
                             ValueListenableBuilder<TextEditingValue>(
                               valueListenable: mygoal,
@@ -888,7 +887,7 @@ class _GoalNameState extends State<GoalName> {
                                   child: Container(
                                     height: AppDimensions.height10(context) * 5,
                                     width:
-                                        AppDimensions.height10(context) * 31.3,
+                                        AppDimensions.width10(context) * 31.3,
                                     decoration: value.text.isNotEmpty
                                         ? const BoxDecoration(
                                             gradient: LinearGradient(
@@ -916,7 +915,7 @@ class _GoalNameState extends State<GoalName> {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -957,7 +956,7 @@ class _updateBoxState extends State<updateBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 38.259,
+      width: AppDimensions.width10(context) * 38.259,
       height: AppDimensions.height10(context) * 9.707,
       decoration: BoxDecoration(
           borderRadius:
@@ -973,14 +972,14 @@ class _updateBoxState extends State<updateBox> {
           Container(
             margin:
                 EdgeInsets.only(left: AppDimensions.height10(context) * 1.261),
-            width: AppDimensions.height10(context) * 4.437,
+            width: AppDimensions.width10(context) * 4.437,
             height: AppDimensions.height10(context) * 4.437,
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/circle_tick.webp'))),
           ),
           Container(
-            //width: AppDimensions.height10(context) * 6.9,
+            //width: AppDimensions.width10(context) * 6.9,
             height: AppDimensions.height10(context) * 3.6,
             margin:
                 EdgeInsets.only(left: AppDimensions.height10(context) * 1.232),
@@ -988,25 +987,25 @@ class _updateBoxState extends State<updateBox> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: AppDimensions.height10(context) * 4.6,
+                  width: AppDimensions.width10(context) * 4.6,
                   height: AppDimensions.height10(context) * 1.4,
                   //   color: Colors.amber,
                   child: Text(
                     'Updates saved',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.3,
+                        fontSize: AppDimensions.font10(context) * 1.3,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFFFFFFFF)),
                   ),
                 ),
                 SizedBox(
-                  width: AppDimensions.height10(context) * 16.9,
+                  width: AppDimensions.width10(context) * 16.9,
                   height: AppDimensions.height10(context) * 2.2,
                   child: Text(
                     widget.text,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontSize: AppDimensions.font10(context) * 1.8,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFFFFFFFF)),
                   ),
@@ -1021,7 +1020,7 @@ class _updateBoxState extends State<updateBox> {
               }
             },
             child: Container(
-              width: AppDimensions.height10(context) * 8.1,
+              width: AppDimensions.width10(context) * 8.1,
               height: AppDimensions.height10(context) * 6.0,
               margin: EdgeInsets.only(
                   left: AppDimensions.height10(context) * 5,
@@ -1035,7 +1034,7 @@ class _updateBoxState extends State<updateBox> {
                 child: Text(
                   'View',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.8,
+                      fontSize: AppDimensions.font10(context) * 1.8,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFFFFFFFF)),
                 ),

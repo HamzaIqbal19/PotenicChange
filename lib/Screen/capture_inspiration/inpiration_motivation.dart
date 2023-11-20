@@ -71,7 +71,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 2.6,
+                      width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
                     )),
@@ -89,7 +89,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
             Align(
               alignment: const Alignment(0, 0.995),
               child: Container(
-                width: AppDimensions.height10(context) * 11.1,
+                width: AppDimensions.width10(context) * 11.1,
                 height: AppDimensions.height10(context) * 27.6,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
@@ -109,7 +109,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                 child: Center(
                   child: Container(
                     height: AppDimensions.height10(context) * 35.9,
-                    width: AppDimensions.height10(context) * 35.9,
+                    width: AppDimensions.width10(context) * 35.9,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
@@ -155,7 +155,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           }
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 16.7,
+                          width: AppDimensions.width10(context) * 16.7,
                           height: AppDimensions.height10(context) * 16.8,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
@@ -164,7 +164,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                               'Record your\ninspiration',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.0,
+                                fontSize: AppDimensions.font10(context) * 2.0,
                                 fontWeight: FontWeight.w600,
                               ),
                               colors: const [
@@ -185,7 +185,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
               child: Column(
                 children: [
                   Container(
-                    width: AppDimensions.height10(context) * 34.3,
+                    width: AppDimensions.width10(context) * 34.3,
                     height: AppDimensions.height10(context) * 7.9,
                     margin: EdgeInsets.only(
                         //increased 10 px
@@ -195,14 +195,14 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                       'My current\ninspirations',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 3.0,
+                          fontSize: AppDimensions.font10(context) * 3.0,
                           fontWeight: FontWeight.w700,
                           height: 1.3),
                       colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                     ),
                   ),
                   SizedBox(
-                    width: AppDimensions.height10(context) * 34.9,
+                    width: AppDimensions.width10(context) * 34.9,
                     height: AppDimensions.height10(context) * 12.1,
                     //margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 2.0),
                     child: Text(
@@ -212,7 +212,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                             leadingDistribution: TextLeadingDistribution.even),
                         style: TextStyle(
                             height: 1.3,
-                            fontSize: AppDimensions.height10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 1.8,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFFFFFFFF).withOpacity(0.9),
                             fontFamily: 'laila')),
@@ -235,7 +235,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
             Align(
               alignment: const Alignment(0, 1),
               child: Container(
-                width: AppDimensions.height10(context) * 17.0,
+                width: AppDimensions.width10(context) * 17.0,
                 height: AppDimensions.height10(context) * 0.5,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 1.0),

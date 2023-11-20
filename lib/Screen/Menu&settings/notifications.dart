@@ -30,21 +30,21 @@ class _notificationsState extends State<notifications> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 2.6,
+                width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
               )),
         ),
         centerTitle: true,
         title: SizedBox(
-          width: AppDimensions.height10(context) * 17.0,
+          width: AppDimensions.width10(context) * 17.0,
           height: AppDimensions.height10(context) * 4.8,
           child: Center(
             child: Text(
               'Notifications',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: AppDimensions.height10(context) * 1.8,
+                  fontSize: AppDimensions.font10(context) * 1.8,
                   fontWeight: FontWeight.w600,
                   color: Colors.white),
             ),
@@ -62,7 +62,7 @@ class _notificationsState extends State<notifications> {
         child: Column(
           children: [
             Container(
-              width: AppDimensions.height10(context) * 36.7,
+              width: AppDimensions.width10(context) * 36.7,
               height: AppDimensions.height10(context) * 6.9,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 15.0),
@@ -73,7 +73,7 @@ class _notificationsState extends State<notifications> {
               child: GestureDetector(
                 onTap: () {},
                 child: Container(
-                  width: AppDimensions.height10(context) * 33.4,
+                  width: AppDimensions.width10(context) * 33.4,
                   height: AppDimensions.height10(context) * 6.0,
                   padding: EdgeInsets.symmetric(
                       vertical: 0,
@@ -82,18 +82,18 @@ class _notificationsState extends State<notifications> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        //width: AppDimensions.height10(context) * 20.6,
+                        //width: AppDimensions.width10(context) * 20.6,
                         height: AppDimensions.height10(context) * 1.9,
                         child: Text(
                           'Receive notifications',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w500,
                               color: const Color(0XFF5B74A6)),
                         ),
                       ),
                       FlutterSwitch(
-                        width: AppDimensions.height10(context) * 5.1,
+                        width: AppDimensions.width10(context) * 5.1,
                         height: AppDimensions.height10(context) * 3.1,
                         valueFontSize: 12.0,
                         toggleSize: 18.0,
@@ -117,7 +117,7 @@ class _notificationsState extends State<notifications> {
               ),
             ),
             Container(
-              width: AppDimensions.height10(context) * 37.4,
+              width: AppDimensions.width10(context) * 37.4,
               height: AppDimensions.height10(context) * 30.7,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
@@ -126,19 +126,19 @@ class _notificationsState extends State<notifications> {
                   Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
-                      width: AppDimensions.height10(context) * 11.4,
+                      width: AppDimensions.width10(context) * 11.4,
                       height: AppDimensions.height10(context) * 2.4,
                       child: Text(
                         'Preferences',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.0,
+                            fontSize: AppDimensions.font10(context) * 2.0,
                             fontWeight: FontWeight.w600,
                             color: const Color(0XFFFBFBFB)),
                       ),
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10(context) * 37.4,
+                    width: AppDimensions.width10(context) * 37.4,
                     height: AppDimensions.height10(context) * 27.3,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.0),
@@ -152,33 +152,33 @@ class _notificationsState extends State<notifications> {
                         GestureDetector(
                           onTap: () {},
                           child: Container(
-                            width: AppDimensions.height10(context) * 33.4,
+                            width: AppDimensions.width10(context) * 33.4,
                             height: AppDimensions.height10(context) * 6.0,
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: const Color(0xFF000000)))),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 24.7,
+                                  width: AppDimensions.width10(context) * 24.7,
                                   height: AppDimensions.height10(context) * 4.7,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        //width: AppDimensions.height10(context) * 20.6,
+                                        //width: AppDimensions.width10(context) * 20.6,
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.9,
                                         child: Text(
                                           'Reminders before practice starts ',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w500,
@@ -191,7 +191,7 @@ class _notificationsState extends State<notifications> {
                                         },
                                         child: Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   20.6,
                                           height:
                                               AppDimensions.height10(context) *
@@ -203,10 +203,9 @@ class _notificationsState extends State<notifications> {
                                           child: Text(
                                             '10 minutes before',
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.6,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.6,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0XFF8C648A)),
                                           ),
@@ -216,7 +215,7 @@ class _notificationsState extends State<notifications> {
                                   ),
                                 ),
                                 FlutterSwitch(
-                                  width: AppDimensions.height10(context) * 5.1,
+                                  width: AppDimensions.width10(context) * 5.1,
                                   height: AppDimensions.height10(context) * 3.1,
                                   valueFontSize: 12.0,
                                   toggleSize: 18.0,
@@ -237,33 +236,33 @@ class _notificationsState extends State<notifications> {
                         GestureDetector(
                           onTap: () {},
                           child: Container(
-                            width: AppDimensions.height10(context) * 33.4,
+                            width: AppDimensions.width10(context) * 33.4,
                             height: AppDimensions.height10(context) * 6.0,
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: const Color(0xFF000000)))),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 24.7,
+                                  width: AppDimensions.width10(context) * 24.7,
                                   height: AppDimensions.height10(context) * 4.7,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        //width: AppDimensions.height10(context) * 20.6,
+                                        //width: AppDimensions.width10(context) * 20.6,
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.9,
                                         child: Text(
                                           'For missed practices remind me',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w500,
@@ -271,7 +270,7 @@ class _notificationsState extends State<notifications> {
                                         ),
                                       ),
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
@@ -283,7 +282,7 @@ class _notificationsState extends State<notifications> {
                                         child: Text(
                                           '1 hour after',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w500,
@@ -294,7 +293,7 @@ class _notificationsState extends State<notifications> {
                                   ),
                                 ),
                                 FlutterSwitch(
-                                  width: AppDimensions.height10(context) * 5.1,
+                                  width: AppDimensions.width10(context) * 5.1,
                                   height: AppDimensions.height10(context) * 3.1,
                                   valueFontSize: 12.0,
                                   toggleSize: 18.0,
@@ -315,19 +314,19 @@ class _notificationsState extends State<notifications> {
                         GestureDetector(
                           onTap: () {},
                           child: Container(
-                            width: AppDimensions.height10(context) * 33.4,
+                            width: AppDimensions.width10(context) * 33.4,
                             height: AppDimensions.height10(context) * 7.3,
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: const Color(0xFF000000)))),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 24.7,
+                                  width: AppDimensions.width10(context) * 24.7,
                                   height: AppDimensions.height10(context) * 4.7,
                                   child: Column(
                                     crossAxisAlignment:
@@ -335,14 +334,14 @@ class _notificationsState extends State<notifications> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
-                                        //width: AppDimensions.height10(context) * 20.6,
+                                        //width: AppDimensions.width10(context) * 20.6,
                                         height:
                                             AppDimensions.height10(context) *
                                                 3.8,
                                         child: Text(
                                           'Check-ins and missed practice\nsessions',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w500,
@@ -353,7 +352,7 @@ class _notificationsState extends State<notifications> {
                                   ),
                                 ),
                                 FlutterSwitch(
-                                  width: AppDimensions.height10(context) * 5.1,
+                                  width: AppDimensions.width10(context) * 5.1,
                                   height: AppDimensions.height10(context) * 3.1,
                                   valueFontSize: 12.0,
                                   toggleSize: 18.0,
@@ -374,13 +373,13 @@ class _notificationsState extends State<notifications> {
                         GestureDetector(
                           onTap: () {},
                           child: SizedBox(
-                            width: AppDimensions.height10(context) * 33.4,
+                            width: AppDimensions.width10(context) * 33.4,
                             height: AppDimensions.height10(context) * 5.0,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 24.7,
+                                  width: AppDimensions.width10(context) * 24.7,
                                   height: AppDimensions.height10(context) * 4.7,
                                   child: Column(
                                     crossAxisAlignment:
@@ -388,14 +387,14 @@ class _notificationsState extends State<notifications> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
-                                        //width: AppDimensions.height10(context) * 20.6,
+                                        //width: AppDimensions.width10(context) * 20.6,
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.9,
                                         child: Text(
                                           'Progress Reports  ',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w500,
@@ -406,7 +405,7 @@ class _notificationsState extends State<notifications> {
                                   ),
                                 ),
                                 FlutterSwitch(
-                                  width: AppDimensions.height10(context) * 5.1,
+                                  width: AppDimensions.width10(context) * 5.1,
                                   height: AppDimensions.height10(context) * 3.1,
                                   valueFontSize: 12.0,
                                   toggleSize: 18.0,
@@ -431,7 +430,7 @@ class _notificationsState extends State<notifications> {
               ),
             ),
             Container(
-              width: AppDimensions.height10(context) * 17.0,
+              width: AppDimensions.width10(context) * 17.0,
               height: AppDimensions.height10(context) * 0.5,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 32.5),
@@ -491,7 +490,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                   .map((statement) => Text(statement,
                       style: TextStyle(
                         color: const Color(0xFFFBFBFB),
-                        fontSize: AppDimensions.height10(context) * 2.2,
+                        fontSize: AppDimensions.font10(context) * 2.2,
                         fontWeight: FontWeight.w400,
                       )))
                   .toList(),

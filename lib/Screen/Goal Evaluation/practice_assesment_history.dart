@@ -161,7 +161,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
@@ -199,7 +199,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -220,7 +220,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                   child: Column(
                   children: [
                     Container(
-                      // width: AppDimensions.height10(context) * 27.9,
+                      // width: AppDimensions.width10(context) * 27.9,
                       // alignment: Alignment.center,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 5.2),
@@ -245,7 +245,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                           return Column(
                             children: [
                               Container(
-                                width: AppDimensions.height10(context) * 41.3,
+                                width: AppDimensions.width10(context) * 41.3,
                                 height: AppDimensions.height10(context) * 22.9,
                                 margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 2.0,
@@ -263,23 +263,23 @@ class _practice_assesmentState extends State<practice_assesment> {
                                               AppDimensions.height10(context) *
                                                   3.0,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   3.0,
                                         )),
                                   ),
                                   Align(
                                     alignment: const Alignment(0, -1),
                                     child: SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          36.0,
+                                      width:
+                                          AppDimensions.width10(context) * 36.0,
                                       height: AppDimensions.height10(context) *
                                           24.7,
                                       child: Column(
                                         children: [
                                           Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                36.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    36.0,
                                             margin: EdgeInsets.only(
                                                 bottom: AppDimensions.height10(
                                                         context) *
@@ -292,10 +292,10 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                 child: Text(
                                                   'Practice Assessment',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.8,
+                                                              1.8,
                                                       fontWeight:
                                                           FontWeight.w700,
                                                       color: const Color(
@@ -316,7 +316,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                                       'laila',
                                                                   height: AppDimensions.height10(context) *
                                                                       0.15,
-                                                                  fontSize: AppDimensions.height10(context) *
+                                                                  fontSize: AppDimensions.font10(context) *
                                                                       1.4,
                                                                   fontWeight:
                                                                       FontWeight
@@ -348,7 +348,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                               style: TextStyle(
                                                                   fontFamily: 'laila',
                                                                   height: AppDimensions.height10(context) * 0.15,
-                                                                  fontSize: AppDimensions.height10(context) * 1.4,
+                                                                  fontSize: AppDimensions.font10(context) * 1.4,
                                                                   fontWeight: FontWeight.w400,
                                                                   color: const Color(0xfff5f5f5)),
                                                               children: [

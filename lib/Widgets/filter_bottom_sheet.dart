@@ -22,7 +22,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
             left: AppDimensions.height10(context) * 2.2,
             right: AppDimensions.height10(context) * 2.2),
         height: AppDimensions.height10(context) * 7.0,
-        width: AppDimensions.height10(context) * 41.4,
+        width: AppDimensions.width10(context) * 41.4,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +30,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
             Row(
               children: [
                 Container(
-                  width: AppDimensions.height10(context) * 2.4,
+                  width: AppDimensions.width10(context) * 2.4,
                   height: AppDimensions.height10(context) * 2.4,
                   // padding: EdgeInsets.only(
                   //     top: AppDimensions.height10(context) * 0.5,
@@ -39,27 +39,27 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                     onTap: () {},
                     child: Image.asset(
                       'assets/images/ic_filter_list.webp',
-                      width: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.width10(context) * 2.4,
                       height: AppDimensions.height10(context) * 2.4,
                       fit: BoxFit.contain,
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: AppDimensions.height10(context) * 0.5,
+                  width: AppDimensions.width10(context) * 0.5,
                 ),
                 GestureDetector(
                   onTap: () {
                     _showBottomSheet(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 11.5,
+                    width: AppDimensions.width10(context) * 11.5,
                     height: AppDimensions.height10(context) * 3.4,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 1.0),
                         border: Border.all(
-                            width: AppDimensions.height10(context) * 0.1,
+                            width: AppDimensions.width10(context) * 0.1,
                             color: Color(0xFFE0E0E0))),
                     margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 1.3,
@@ -73,13 +73,13 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                           child: Text(
                             'Goal:',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xffFA9934)),
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 1.9,
+                          width: AppDimensions.width10(context) * 1.9,
                           height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 0.8),
@@ -87,15 +87,14 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                             child: Text(
                               'All',
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xffFA9934)),
                             ),
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 2.4,
+                          width: AppDimensions.width10(context) * 2.4,
                           height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 0.8,
@@ -112,13 +111,13 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                 GestureDetector(
                   onTap: () {},
                   child: Container(
-                    width: AppDimensions.height10(context) * 11.6,
+                    width: AppDimensions.width10(context) * 11.6,
                     height: AppDimensions.height10(context) * 3.4,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 1.0),
                         border: Border.all(
-                            width: AppDimensions.height10(context) * 0.1,
+                            width: AppDimensions.width10(context) * 0.1,
                             color: Color(0xFFE0E0E0))),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -129,13 +128,13 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                           child: Text(
                             'Type:',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xffFA9934)),
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 1.9,
+                          width: AppDimensions.width10(context) * 1.9,
                           height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 0.8),
@@ -143,15 +142,14 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                             child: Text(
                               'All',
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xffFA9934)),
                             ),
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 2.4,
+                          width: AppDimensions.width10(context) * 2.4,
                           height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 0.8,
@@ -167,7 +165,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                 ),
                 GestureDetector(
                   child: Container(
-                    width: AppDimensions.height10(context) * 3.9,
+                    width: AppDimensions.width10(context) * 3.9,
                     height: AppDimensions.height10(context) * 3.4,
                     margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 1.0),
@@ -175,7 +173,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                     child: Text(
                       'Clec',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.4,
+                          fontSize: AppDimensions.font10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           decoration: TextDecoration.underline,
                           color: Color(0xFFFA9934).withOpacity(0.30)),
@@ -186,13 +184,13 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
             ),
 
             Container(
-              width: AppDimensions.height10(context) * 4.9,
+              width: AppDimensions.width10(context) * 4.9,
               height: AppDimensions.height10(context) * 5.0,
               child: GestureDetector(
                 onTap: () {},
                 child: Image.asset(
                   'assets/images/Search.webp',
-                  width: AppDimensions.height10(context) * 5,
+                  width: AppDimensions.width10(context) * 5,
                   height: AppDimensions.height10(context) * 5,
                   fit: BoxFit.contain,
                 ),
@@ -229,11 +227,11 @@ void _showBottomSheet(BuildContext context) {
                 children: [
                   Container(
                     height: AppDimensions.height10(context) * 4.0,
-                    width: AppDimensions.height10(context) * 41.4,
+                    width: AppDimensions.width10(context) * 41.4,
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
-                                width: AppDimensions.height10(context) * 0.1,
+                                width: AppDimensions.width10(context) * 0.1,
                                 color: Color(0xFF828282)))),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -243,25 +241,24 @@ void _showBottomSheet(BuildContext context) {
                             Navigator.pop(context);
                           },
                           child: Container(
-                            width: AppDimensions.height10(context) * 5.0,
+                            width: AppDimensions.width10(context) * 5.0,
                             margin: EdgeInsets.only(
                                 right: AppDimensions.height10(context) * 2.0),
                             child: Text(
                               'Cancel',
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: Color(0xFF2F80ED)),
                             ),
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 3.7,
+                          width: AppDimensions.width10(context) * 3.7,
                           child: Text(
                             'Done',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xFF2F80ED)),
                           ),
@@ -270,7 +267,7 @@ void _showBottomSheet(BuildContext context) {
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10(context) * 37.5,
+                    width: AppDimensions.width10(context) * 37.5,
                     height: AppDimensions.height10(context) * 24.8,
                     // color: Colors.amber,
                     child: ListWheelScrollView(
@@ -284,7 +281,7 @@ void _showBottomSheet(BuildContext context) {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: Color(0xFF828282)))),
                             child: Center(
@@ -292,7 +289,7 @@ void _showBottomSheet(BuildContext context) {
                                 'All',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.2,
+                                        AppDimensions.font10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -301,7 +298,7 @@ void _showBottomSheet(BuildContext context) {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: Color(0xFF828282)))),
                             child: Center(
@@ -309,7 +306,7 @@ void _showBottomSheet(BuildContext context) {
                                 '$goal 1',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.2,
+                                        AppDimensions.font10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -318,7 +315,7 @@ void _showBottomSheet(BuildContext context) {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: Color(0xFF828282)))),
                             child: Center(
@@ -326,7 +323,7 @@ void _showBottomSheet(BuildContext context) {
                                 '$goal 2',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.2,
+                                        AppDimensions.font10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -335,7 +332,7 @@ void _showBottomSheet(BuildContext context) {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: Color(0xFF828282)))),
                             child: Center(
@@ -343,7 +340,7 @@ void _showBottomSheet(BuildContext context) {
                                 '$goal 3',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.2,
+                                        AppDimensions.font10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),

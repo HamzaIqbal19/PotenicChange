@@ -28,20 +28,20 @@ class new_hurdles extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
           centerTitle: true,
           title: SizedBox(
-            width: AppDimensions.height10(context) * 17.0,
+            width: AppDimensions.width10(context) * 17.0,
             height: AppDimensions.height10(context) * 4.8,
             child: GradientText(
               'Hurdle‘s positive\nalternatives',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: AppDimensions.height10(context) * 2.0,
+                fontSize: AppDimensions.font10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
               colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -53,7 +53,7 @@ class new_hurdles extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -69,7 +69,7 @@ class new_hurdles extends StatelessWidget {
                   fit: BoxFit.cover)),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(
-              width: AppDimensions.height10(context) * 34.3,
+              width: AppDimensions.width10(context) * 34.3,
               height: AppDimensions.height10(context) * 3.9,
               margin: EdgeInsets.only(
                   bottom: AppDimensions.height10(context) * 1.1,
@@ -79,7 +79,7 @@ class new_hurdles extends StatelessWidget {
                   'Motivational Material',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 2.8,
+                    fontSize: AppDimensions.font10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
                   colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -87,7 +87,7 @@ class new_hurdles extends StatelessWidget {
               ),
             ),
             Container(
-              width: AppDimensions.height10(context) * 34.3,
+              width: AppDimensions.width10(context) * 34.3,
               height: AppDimensions.height10(context) * 7.5,
               margin: EdgeInsets.only(
                   bottom: AppDimensions.height10(context) * 13.0),
@@ -96,7 +96,7 @@ class new_hurdles extends StatelessWidget {
                   'Are there any supporting materials you\ncan use to help you get over\nthis hurdle?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 1.8,
+                    fontSize: AppDimensions.font10(context) * 1.8,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -112,7 +112,7 @@ class new_hurdles extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 13.339,
+                      width: AppDimensions.width10(context) * 13.339,
                       height: AppDimensions.height10(context) * 16.674,
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 1.4,
@@ -141,7 +141,7 @@ class new_hurdles extends StatelessWidget {
                                 children: [
                                   Container(
                                     width:
-                                        AppDimensions.height10(context) * 3.032,
+                                        AppDimensions.width10(context) * 3.032,
                                     height:
                                         AppDimensions.height10(context) * 3.032,
                                     margin: EdgeInsets.only(
@@ -163,7 +163,7 @@ class new_hurdles extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
@@ -178,7 +178,7 @@ class new_hurdles extends StatelessWidget {
                                                   const upload_image_popup()));
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10(context) *
+                                      width: AppDimensions.width10(context) *
                                           2.122,
                                       height: AppDimensions.height10(context) *
                                           2.122,
@@ -199,7 +199,7 @@ class new_hurdles extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.2,
                                           fontWeight: FontWeight.w400,
                                           color: Colors.white),
@@ -211,7 +211,7 @@ class new_hurdles extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 13.339,
+                      width: AppDimensions.width10(context) * 13.339,
                       height: AppDimensions.height10(context) * 16.674,
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 1.4),
@@ -239,7 +239,7 @@ class new_hurdles extends StatelessWidget {
                                 children: [
                                   Container(
                                     width:
-                                        AppDimensions.height10(context) * 3.032,
+                                        AppDimensions.width10(context) * 3.032,
                                     height:
                                         AppDimensions.height10(context) * 3.032,
                                     margin: EdgeInsets.only(
@@ -261,7 +261,7 @@ class new_hurdles extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
@@ -275,7 +275,7 @@ class new_hurdles extends StatelessWidget {
                                               page: const select_video()));
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10(context) *
+                                      width: AppDimensions.width10(context) *
                                           2.122,
                                       height: AppDimensions.height10(context) *
                                           2.122,
@@ -296,7 +296,7 @@ class new_hurdles extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.2,
                                           fontWeight: FontWeight.w400,
                                           color: Colors.white),
@@ -308,7 +308,7 @@ class new_hurdles extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 13.339,
+                      width: AppDimensions.width10(context) * 13.339,
                       height: AppDimensions.height10(context) * 16.674,
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 1.4),
@@ -336,7 +336,7 @@ class new_hurdles extends StatelessWidget {
                                 children: [
                                   Container(
                                     width:
-                                        AppDimensions.height10(context) * 3.032,
+                                        AppDimensions.width10(context) * 3.032,
                                     height:
                                         AppDimensions.height10(context) * 3.032,
                                     margin: EdgeInsets.only(
@@ -358,7 +358,7 @@ class new_hurdles extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
@@ -372,7 +372,7 @@ class new_hurdles extends StatelessWidget {
                                               page: const select_note()));
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10(context) *
+                                      width: AppDimensions.width10(context) *
                                           2.122,
                                       height: AppDimensions.height10(context) *
                                           2.122,
@@ -393,7 +393,7 @@ class new_hurdles extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.2,
                                           fontWeight: FontWeight.w400,
                                           color: Colors.white),
@@ -405,7 +405,7 @@ class new_hurdles extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 13.339,
+                      width: AppDimensions.width10(context) * 13.339,
                       height: AppDimensions.height10(context) * 16.674,
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 1.4),
@@ -436,7 +436,7 @@ class new_hurdles extends StatelessWidget {
                                 children: [
                                   Container(
                                     width:
-                                        AppDimensions.height10(context) * 3.032,
+                                        AppDimensions.width10(context) * 3.032,
                                     height:
                                         AppDimensions.height10(context) * 3.032,
                                     margin: EdgeInsets.only(
@@ -458,7 +458,7 @@ class new_hurdles extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
@@ -472,7 +472,7 @@ class new_hurdles extends StatelessWidget {
                                               page: const select_link()));
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10(context) *
+                                      width: AppDimensions.width10(context) *
                                           2.122,
                                       height: AppDimensions.height10(context) *
                                           2.122,
@@ -493,7 +493,7 @@ class new_hurdles extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.2,
                                           fontWeight: FontWeight.w400,
                                           color: Colors.white),
@@ -516,7 +516,7 @@ class new_hurdles extends StatelessWidget {
                 children: [
                   Container(
                       height: AppDimensions.height10(context) * 5.0,
-                      width: AppDimensions.height10(context) * 10.6,
+                      width: AppDimensions.width10(context) * 10.6,
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 1.0),
                       decoration: BoxDecoration(
@@ -535,15 +535,14 @@ class new_hurdles extends StatelessWidget {
                               'Skip',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
                                   fontWeight: FontWeight.w700,
                                   fontFamily: 'Arial'),
                             ),
                           ))),
                   Container(
                       height: AppDimensions.height10(context) * 5.0,
-                      width: AppDimensions.height10(context) * 16.7,
+                      width: AppDimensions.width10(context) * 16.7,
                       decoration: BoxDecoration(
                         color: const Color(0xff282828),
                         borderRadius: BorderRadius.circular(
@@ -560,7 +559,7 @@ class new_hurdles extends StatelessWidget {
                             'Next',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Poppins'),
                           ))),

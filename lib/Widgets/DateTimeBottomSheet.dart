@@ -48,7 +48,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                 left: AppDimensions.height10(context) * 1.0,
                 right: AppDimensions.height10(context) * 1.9,
                 top: AppDimensions.height10(context) * 1.2),
-            width: AppDimensions.height10(context) * 41.5,
+            width: AppDimensions.width10(context) * 41.5,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -57,13 +57,13 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 5.0,
+                    width: AppDimensions.width10(context) * 5.0,
                     height: AppDimensions.height10(context) * 3.1,
                     child: Center(
                       child: Text(
                         "Cancel",
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 1.8,
                             height: AppDimensions.height10(context) * 0.1,
                             color: const Color(0xFF2F80ED)),
                       ),
@@ -83,13 +83,13 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                         // Navigator.pop(context);
                       },
                       child: Container(
-                        width: AppDimensions.height10(context) * 2.9,
+                        width: AppDimensions.width10(context) * 2.9,
                         height: AppDimensions.height10(context) * 3.1,
                         child: Center(
                           child: Text(
                             "Add",
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 height: AppDimensions.height10(context) * 0.1,
                                 color: const Color(0xFF2F80ED)),
                           ),
@@ -97,7 +97,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                       ),
                     ),
                     SizedBox(
-                      width: AppDimensions.height10(context) * 3.1,
+                      width: AppDimensions.width10(context) * 3.1,
                     ),
                     AnimatedScaleButton(
                       onTap: () {
@@ -110,13 +110,13 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                         //Navigator.pop(context);
                       },
                       child: Container(
-                        // width: AppDimensions.height10(context) * 3.7,
+                        // width: AppDimensions.width10(context) * 3.7,
                         height: AppDimensions.height10(context) * 3.1,
                         child: Center(
                           child: Text(
                             "Done",
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 height: AppDimensions.height10(context) * 0.1,
                                 color: const Color(0xFF2F80ED)),
                           ),
@@ -138,22 +138,22 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Container(
-                    //   width: AppDimensions.height10(context) * 13.5,
+                    //   width: AppDimensions.width10(context) * 13.5,
                     //   child: listWheelScrollViewBuilder(_days, "Day"),
                     // ),
-                    SizedBox(width: AppDimensions.height10(context) * 6.0),
+                    SizedBox(width: AppDimensions.width10(context) * 6.0),
                     Container(
-                      width: AppDimensions.height10(context) * 3.0,
+                      width: AppDimensions.width10(context) * 3.0,
                       child: listWheelScrollViewBuilder(_hours, "Hour"),
                     ),
-                    SizedBox(width: AppDimensions.height10(context) * 4.6),
+                    SizedBox(width: AppDimensions.width10(context) * 4.6),
                     Container(
-                      width: AppDimensions.height10(context) * 3.0,
+                      width: AppDimensions.width10(context) * 3.0,
                       child: listWheelScrollViewBuilder(_minutes, "Minute"),
                     ),
-                    SizedBox(width: AppDimensions.height10(context) * 4.6),
+                    SizedBox(width: AppDimensions.width10(context) * 4.6),
                     Container(
-                      width: AppDimensions.height10(context) * 3.8,
+                      width: AppDimensions.width10(context) * 3.8,
                       child: listWheelScrollViewBuilder(_periods, "Period"),
                     ),
                   ],
@@ -222,7 +222,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                 child: Text(
               items[index],
               style: TextStyle(
-                  fontSize: AppDimensions.height10(context) * 2.2,
+                  fontSize: AppDimensions.font10(context) * 2.2,
                   fontWeight: FontWeight.w400),
             ));
           },

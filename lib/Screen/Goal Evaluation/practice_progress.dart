@@ -96,7 +96,7 @@ class _practice_progressState extends State<practice_progress> {
       {bool hasImage = false}) {
     return List.generate(count, (index) {
       return Container(
-        width: AppDimensions.height10(context) * 2.3,
+        width: AppDimensions.width10(context) * 2.3,
         height: AppDimensions.height10(context) * 2.3,
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
@@ -115,7 +115,7 @@ class _practice_progressState extends State<practice_progress> {
   ) {
     return List.generate(count, (index) {
       return Container(
-        width: AppDimensions.height10(context) * 2.3,
+        width: AppDimensions.width10(context) * 2.3,
         height: AppDimensions.height10(context) * 2.3,
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
@@ -197,7 +197,7 @@ class _practice_progressState extends State<practice_progress> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
@@ -219,7 +219,7 @@ class _practice_progressState extends State<practice_progress> {
                       // mainAxisAlignment: ,
                       children: [
                         Container(
-                          // width: AppDimensions.height10(context) * 12.5,
+                          // width: AppDimensions.width10(context) * 12.5,
                           height: AppDimensions.height10(context) * 2.3,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 5.2),
@@ -229,12 +229,12 @@ class _practice_progressState extends State<practice_progress> {
                             style: TextStyle(
                                 height: 1.2,
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
                         Container(
-                          //width: AppDimensions.height10(context) * 17.1,
+                          //width: AppDimensions.width10(context) * 17.1,
                           height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.5),
@@ -245,14 +245,14 @@ class _practice_progressState extends State<practice_progress> {
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontSize: AppDimensions.font10(context) * 2.0,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF),
                             ),
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 30.0,
+                          width: AppDimensions.width10(context) * 30.0,
                           height: AppDimensions.height10(context) * 11.2,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.6,
@@ -261,14 +261,14 @@ class _practice_progressState extends State<practice_progress> {
                           child: Row(
                             children: [
                               SizedBox(
-                                width: AppDimensions.height10(context) * 7.5,
+                                width: AppDimensions.width10(context) * 7.5,
                                 height: AppDimensions.height10(context) * 7.5,
                                 child: Stack(
                                   children: [
                                     Align(
                                       alignment: const Alignment(-1, -0.3),
                                       child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             6.5,
                                         height:
                                             AppDimensions.height10(context) *
@@ -315,7 +315,7 @@ class _practice_progressState extends State<practice_progress> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 4.1,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             4.061,
                                         decoration: BoxDecoration(
                                             shape: BoxShape.circle,
@@ -356,7 +356,7 @@ class _practice_progressState extends State<practice_progress> {
                                 ),
                               ),
                               SizedBox(
-                                width: AppDimensions.height10(context) * 21.6,
+                                width: AppDimensions.width10(context) * 21.6,
                                 height: AppDimensions.height10(context) * 2.4,
                                 child: Text(
                                   noData == true
@@ -367,7 +367,7 @@ class _practice_progressState extends State<practice_progress> {
                                       height: 1.2,
                                       overflow: TextOverflow.ellipsis,
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.0,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
@@ -375,7 +375,7 @@ class _practice_progressState extends State<practice_progress> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 37.6,
+                          width: AppDimensions.width10(context) * 37.6,
                           height: AppDimensions.height10(context) * 7.2,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.9),
@@ -386,8 +386,7 @@ class _practice_progressState extends State<practice_progress> {
                               style: TextStyle(
                                   height: 1.2,
                                   color: const Color(0xFFFBFBFB),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 3.0,
+                                  fontSize: AppDimensions.font10(context) * 3.0,
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
@@ -397,7 +396,7 @@ class _practice_progressState extends State<practice_progress> {
                             _showBottomSheet(context);
                           },
                           child: Container(
-                            width: AppDimensions.height10(context) * 30.3,
+                            width: AppDimensions.width10(context) * 30.3,
                             height: AppDimensions.height10(context) * 5.1,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.0),
@@ -409,7 +408,7 @@ class _practice_progressState extends State<practice_progress> {
                             ),
                             child: Center(
                               child: Container(
-                                //width: AppDimensions.height10(context) * 21.0,
+                                //width: AppDimensions.width10(context) * 21.0,
                                 height: AppDimensions.height10(context) * 2.6,
                                 margin: EdgeInsets.only(
                                     bottom:
@@ -419,7 +418,7 @@ class _practice_progressState extends State<practice_progress> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
-                                      //width: AppDimensions.height10(context) * 16.7,
+                                      //width: AppDimensions.width10(context) * 16.7,
                                       height:
                                           AppDimensions.height10(context) * 2.6,
                                       child: RichText(
@@ -429,7 +428,7 @@ class _practice_progressState extends State<practice_progress> {
                                                       const Color(0xFFFBFBFB),
                                                   fontFamily: 'laila',
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           2.2,
                                                   fontWeight: FontWeight.w400),
@@ -450,13 +449,13 @@ class _practice_progressState extends State<practice_progress> {
                                             left: AppDimensions.height10(
                                                     context) *
                                                 1.2),
-                                        // width: AppDimensions.height10(context) * 2.4,
+                                        // width: AppDimensions.width10(context) * 2.4,
                                         // height: AppDimensions.height10(context) * 2.4,
                                         // color: Colors.green,
                                         child: Image.asset(
                                           'assets/images/Polygon 9.webp',
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   1.7,
                                           height:
                                               AppDimensions.height10(context) *
@@ -469,7 +468,7 @@ class _practice_progressState extends State<practice_progress> {
                           ),
                         ),
                         Container(
-                            width: AppDimensions.height10(context) * 38.2,
+                            width: AppDimensions.width10(context) * 38.2,
                             //height: AppDimensions.height10(context) * 66.4,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 3.0),
@@ -480,8 +479,8 @@ class _practice_progressState extends State<practice_progress> {
                             child: noData
                                 ? Column(children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          33.4,
+                                      width:
+                                          AppDimensions.width10(context) * 33.4,
                                       height:
                                           AppDimensions.height10(context) * 9.1,
                                       margin: EdgeInsets.only(
@@ -494,7 +493,7 @@ class _practice_progressState extends State<practice_progress> {
                                           style: TextStyle(
                                               color: const Color(0xFF437296),
                                               height: 1.2,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               fontWeight: FontWeight.w600),
@@ -507,9 +506,9 @@ class _practice_progressState extends State<practice_progress> {
                                         style: TextStyle(
                                             color: const Color(0xFFB695B7),
                                             height: 1.2,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    2.0,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
@@ -522,7 +521,7 @@ class _practice_progressState extends State<practice_progress> {
                                           color: const Color(0xFFB695B7),
                                           height: 1.2,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.8,
                                           fontWeight: FontWeight.w700),
                                     ),
@@ -545,9 +544,9 @@ class _practice_progressState extends State<practice_progress> {
                                         style: TextStyle(
                                             color: const Color(0xFFB695B7),
                                             height: 1.2,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    2.0,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
@@ -560,7 +559,7 @@ class _practice_progressState extends State<practice_progress> {
                                           color: const Color(0xFFB695B7),
                                           height: 1.2,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.8,
                                           fontWeight: FontWeight.w700),
                                     ),
@@ -583,9 +582,9 @@ class _practice_progressState extends State<practice_progress> {
                                         style: TextStyle(
                                             color: const Color(0xFFB695B7),
                                             height: 1.2,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    2.0,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
@@ -598,7 +597,7 @@ class _practice_progressState extends State<practice_progress> {
                                           color: const Color(0xFFB695B7),
                                           height: 1.2,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.8,
                                           fontWeight: FontWeight.w700),
                                     ),
@@ -619,7 +618,7 @@ class _practice_progressState extends State<practice_progress> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 6.0,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             34.2,
                                         margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
@@ -660,7 +659,7 @@ class _practice_progressState extends State<practice_progress> {
                                                         color: const Color(
                                                             0xFF828282),
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.8,
                                                         fontWeight:
@@ -686,7 +685,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     onTap: () {},
                                                     child: Image.asset(
                                                       'assets/images/BTN Back.webp',
-                                                      //width: AppDimensions.height10(context) * 2.6,
+                                                      //width: AppDimensions.width10(context) * 2.6,
                                                       //height: AppDimensions.height10(context) * 2.6,
                                                       color: const Color(
                                                           0xFF828282),
@@ -702,7 +701,7 @@ class _practice_progressState extends State<practice_progress> {
                                 : Column(
                                     children: [
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             33.4,
                                         height:
                                             AppDimensions.height10(context) *
@@ -718,10 +717,9 @@ class _practice_progressState extends State<practice_progress> {
                                             style: TextStyle(
                                                 color: const Color(0xFF437296),
                                                 height: 1.2,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600),
                                           ),
                                         ),
@@ -734,7 +732,7 @@ class _practice_progressState extends State<practice_progress> {
                                               ? Column(
                                                   children: [
                                                     Container(
-                                                      // width: AppDimensions.height10(context) * 22.0,
+                                                      // width: AppDimensions.width10(context) * 22.0,
 
                                                       margin: EdgeInsets.only(
                                                           top: AppDimensions
@@ -745,7 +743,7 @@ class _practice_progressState extends State<practice_progress> {
                                                         children: [
                                                           SizedBox(
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 22.0,
                                                             height: AppDimensions
@@ -773,7 +771,7 @@ class _practice_progressState extends State<practice_progress> {
                                                             ),
                                                           ),
                                                           Container(
-                                                            // width: AppDimensions.height10(context) *
+                                                            // width: AppDimensions.width10(context) *
                                                             //     3.9,
                                                             height: AppDimensions
                                                                     .height10(
@@ -822,7 +820,7 @@ class _practice_progressState extends State<practice_progress> {
                                               ? Column(
                                                   children: [
                                                     Container(
-                                                      // width: AppDimensions.height10(context) * 22.0,
+                                                      // width: AppDimensions.width10(context) * 22.0,
 
                                                       margin: EdgeInsets.only(
                                                           top: AppDimensions
@@ -833,7 +831,7 @@ class _practice_progressState extends State<practice_progress> {
                                                         children: [
                                                           SizedBox(
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 22.0,
                                                             height: AppDimensions
@@ -858,7 +856,7 @@ class _practice_progressState extends State<practice_progress> {
                                                             ),
                                                           ),
                                                           Container(
-                                                            // width: AppDimensions.height10(context) *
+                                                            // width: AppDimensions.width10(context) *
                                                             //     3.9,
                                                             height: AppDimensions
                                                                     .height10(
@@ -897,10 +895,10 @@ class _practice_progressState extends State<practice_progress> {
                                                       ),
                                                     ),
                                                     Container(
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          8.4,
+                                                              8.4,
                                                       height: AppDimensions
                                                               .height10(
                                                                   context) *
@@ -928,10 +926,10 @@ class _practice_progressState extends State<practice_progress> {
                                               ? Column(
                                                   children: [
                                                     Container(
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          22.0,
+                                                              22.0,
                                                       //height: AppDimensions.height10(context) * 8.8,
                                                       margin: EdgeInsets.only(
                                                           top: AppDimensions
@@ -942,7 +940,7 @@ class _practice_progressState extends State<practice_progress> {
                                                         children: [
                                                           SizedBox(
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 22.0,
                                                             height: AppDimensions
@@ -967,7 +965,7 @@ class _practice_progressState extends State<practice_progress> {
                                                             ),
                                                           ),
                                                           Container(
-                                                            // width: AppDimensions.height10(context) *
+                                                            // width: AppDimensions.width10(context) *
                                                             //     3.9,
                                                             height: AppDimensions
                                                                     .height10(
@@ -1006,10 +1004,10 @@ class _practice_progressState extends State<practice_progress> {
                                                       ),
                                                     ),
                                                     Container(
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          8.4,
+                                                              8.4,
                                                       height: AppDimensions
                                                               .height10(
                                                                   context) *
@@ -1037,10 +1035,10 @@ class _practice_progressState extends State<practice_progress> {
                                               ? Column(
                                                   children: [
                                                     Container(
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          22.0,
+                                                              22.0,
                                                       margin: EdgeInsets.only(
                                                           top: AppDimensions
                                                                   .height10(
@@ -1050,7 +1048,7 @@ class _practice_progressState extends State<practice_progress> {
                                                         children: [
                                                           SizedBox(
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 22.0,
                                                             height: AppDimensions
@@ -1078,7 +1076,7 @@ class _practice_progressState extends State<practice_progress> {
                                                             ),
                                                           ),
                                                           Container(
-                                                            // width: AppDimensions.height10(context) *
+                                                            // width: AppDimensions.width10(context) *
                                                             //     3.9,
                                                             height: AppDimensions
                                                                     .height10(
@@ -1117,10 +1115,10 @@ class _practice_progressState extends State<practice_progress> {
                                                       ),
                                                     ),
                                                     Container(
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          8.4,
+                                                              8.4,
                                                       height: AppDimensions
                                                               .height10(
                                                                   context) *
@@ -1146,7 +1144,7 @@ class _practice_progressState extends State<practice_progress> {
                                                       [0]['AfterTotal']) !=
                                                   0
                                               ? Container(
-                                                  // width: AppDimensions.height10(context) * 22.0,
+                                                  // width: AppDimensions.width10(context) * 22.0,
 
                                                   margin: EdgeInsets.only(
                                                       top: AppDimensions
@@ -1157,7 +1155,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     children: [
                                                       SizedBox(
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             22.0,
                                                         height: AppDimensions
@@ -1175,7 +1173,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                     0xFFB695B7),
                                                                 height: 1.2,
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     2.0,
                                                                 fontWeight:
@@ -1185,7 +1183,7 @@ class _practice_progressState extends State<practice_progress> {
                                                         ),
                                                       ),
                                                       Container(
-                                                        // width: AppDimensions.height10(context) *
+                                                        // width: AppDimensions.width10(context) *
                                                         //     3.9,
                                                         height: AppDimensions
                                                                 .height10(
@@ -1206,7 +1204,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                     0xFFB695B7),
                                                                 height: 1.2,
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     2.8,
                                                                 fontWeight:
@@ -1230,7 +1228,7 @@ class _practice_progressState extends State<practice_progress> {
                                               AppDimensions.height10(context) *
                                                   6.0,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   34.2,
                                           margin: EdgeInsets.only(
                                             top: AppDimensions.height10(
@@ -1275,7 +1273,7 @@ class _practice_progressState extends State<practice_progress> {
                                                           color: const Color(
                                                               0xFF828282),
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.8,
                                                           fontWeight:
@@ -1285,7 +1283,7 @@ class _practice_progressState extends State<practice_progress> {
                                                 ),
                                                 Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.4,
                                                     height:
@@ -1301,7 +1299,7 @@ class _practice_progressState extends State<practice_progress> {
                                                       onTap: () {},
                                                       child: Image.asset(
                                                         'assets/images/BTN Back.webp',
-                                                        //width: AppDimensions.height10(context) * 2.6,
+                                                        //width: AppDimensions.width10(context) * 2.6,
                                                         //height: AppDimensions.height10(context) * 2.6,
                                                         color: const Color(
                                                             0xFF828282),
@@ -1316,7 +1314,7 @@ class _practice_progressState extends State<practice_progress> {
                                     ],
                                   )),
                         Container(
-                          width: AppDimensions.height10(context) * 38.2,
+                          width: AppDimensions.width10(context) * 38.2,
                           //height: AppDimensions.height10(context) * 59.6,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 2.0),
@@ -1328,7 +1326,7 @@ class _practice_progressState extends State<practice_progress> {
                               ? Column(children: [
                                   Container(
                                     width:
-                                        AppDimensions.height10(context) * 33.4,
+                                        AppDimensions.width10(context) * 33.4,
                                     height:
                                         AppDimensions.height10(context) * 9.1,
                                     margin: EdgeInsets.only(
@@ -1341,9 +1339,9 @@ class _practice_progressState extends State<practice_progress> {
                                         style: TextStyle(
                                             color: const Color(0xFF437296),
                                             height: 1.2,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    2.0,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
@@ -1355,7 +1353,7 @@ class _practice_progressState extends State<practice_progress> {
                                           color: const Color(0xFFB695B7),
                                           height: 1.2,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.0,
                                           fontWeight: FontWeight.w600),
                                     ),
@@ -1368,13 +1366,11 @@ class _practice_progressState extends State<practice_progress> {
                                         color: const Color(0xFFB695B7),
                                         height: 1.2,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.8,
+                                            AppDimensions.font10(context) * 2.8,
                                         fontWeight: FontWeight.w700),
                                   ),
                                   Container(
-                                    width:
-                                        AppDimensions.height10(context) * 8.4,
+                                    width: AppDimensions.width10(context) * 8.4,
                                     height:
                                         AppDimensions.height10(context) * 0.2,
                                     color: const Color(0xFF437296),
@@ -1392,7 +1388,7 @@ class _practice_progressState extends State<practice_progress> {
                                           color: const Color(0xFFB695B7),
                                           height: 1.2,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.0,
                                           fontWeight: FontWeight.w600),
                                     ),
@@ -1405,13 +1401,11 @@ class _practice_progressState extends State<practice_progress> {
                                         color: const Color(0xFFB695B7),
                                         height: 1.2,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.8,
+                                            AppDimensions.font10(context) * 2.8,
                                         fontWeight: FontWeight.w700),
                                   ),
                                   Container(
-                                    width:
-                                        AppDimensions.height10(context) * 8.4,
+                                    width: AppDimensions.width10(context) * 8.4,
                                     height:
                                         AppDimensions.height10(context) * 0.2,
                                     color: const Color(0xFF437296),
@@ -1429,7 +1423,7 @@ class _practice_progressState extends State<practice_progress> {
                                           color: const Color(0xFFB695B7),
                                           height: 1.2,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.0,
                                           fontWeight: FontWeight.w600),
                                     ),
@@ -1442,13 +1436,11 @@ class _practice_progressState extends State<practice_progress> {
                                         color: const Color(0xFFB695B7),
                                         height: 1.2,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.8,
+                                            AppDimensions.font10(context) * 2.8,
                                         fontWeight: FontWeight.w700),
                                   ),
                                   Container(
-                                    width:
-                                        AppDimensions.height10(context) * 8.4,
+                                    width: AppDimensions.width10(context) * 8.4,
                                     height:
                                         AppDimensions.height10(context) * 0.2,
                                     color: const Color(0xFF437296),
@@ -1462,8 +1454,8 @@ class _practice_progressState extends State<practice_progress> {
                                   Container(
                                       height:
                                           AppDimensions.height10(context) * 6.0,
-                                      width: AppDimensions.height10(context) *
-                                          34.2,
+                                      width:
+                                          AppDimensions.width10(context) * 34.2,
                                       margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
                                             2.7,
@@ -1500,10 +1492,10 @@ class _practice_progressState extends State<practice_progress> {
                                                     style: TextStyle(
                                                       color: const Color(
                                                           0xFF828282),
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.8,
+                                                              1.8,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
@@ -1525,7 +1517,7 @@ class _practice_progressState extends State<practice_progress> {
                                                   onTap: () {},
                                                   child: Image.asset(
                                                     'assets/images/BTN Back.webp',
-                                                    //width: AppDimensions.height10(context) * 2.6,
+                                                    //width: AppDimensions.width10(context) * 2.6,
                                                     //height: AppDimensions.height10(context) * 2.6,
                                                     color:
                                                         const Color(0xFF828282),
@@ -1540,8 +1532,8 @@ class _practice_progressState extends State<practice_progress> {
                               : Column(
                                   children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          33.4,
+                                      width:
+                                          AppDimensions.width10(context) * 33.4,
                                       height:
                                           AppDimensions.height10(context) * 9.1,
                                       margin: EdgeInsets.only(
@@ -1554,7 +1546,7 @@ class _practice_progressState extends State<practice_progress> {
                                           style: TextStyle(
                                               color: const Color(0xFF437296),
                                               height: 1.2,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               fontWeight: FontWeight.w600),
@@ -1570,7 +1562,7 @@ class _practice_progressState extends State<practice_progress> {
                                                 children: [
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             22.0,
                                                     margin: EdgeInsets.only(
@@ -1598,7 +1590,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.0,
                                                                   fontWeight:
@@ -1627,7 +1619,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.8,
                                                                   fontWeight:
@@ -1647,7 +1639,7 @@ class _practice_progressState extends State<practice_progress> {
                                                   ),
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             8.4,
                                                     height:
@@ -1678,7 +1670,7 @@ class _practice_progressState extends State<practice_progress> {
                                                 children: [
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             22.0,
                                                     margin: EdgeInsets.only(
@@ -1709,7 +1701,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.0,
                                                                   fontWeight:
@@ -1738,7 +1730,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.8,
                                                                   fontWeight:
@@ -1758,7 +1750,7 @@ class _practice_progressState extends State<practice_progress> {
                                                   ),
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             8.4,
                                                     height:
@@ -1789,7 +1781,7 @@ class _practice_progressState extends State<practice_progress> {
                                                 children: [
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             22.0,
                                                     margin: EdgeInsets.only(
@@ -1820,7 +1812,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.0,
                                                                   fontWeight:
@@ -1849,7 +1841,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.8,
                                                                   fontWeight:
@@ -1869,7 +1861,7 @@ class _practice_progressState extends State<practice_progress> {
                                                   ),
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             8.4,
                                                     height:
@@ -1900,7 +1892,7 @@ class _practice_progressState extends State<practice_progress> {
                                                 children: [
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             22.0,
                                                     margin: EdgeInsets.only(
@@ -1931,7 +1923,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.0,
                                                                   fontWeight:
@@ -1960,7 +1952,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.8,
                                                                   fontWeight:
@@ -1980,7 +1972,7 @@ class _practice_progressState extends State<practice_progress> {
                                                   ),
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             8.4,
                                                     height:
@@ -2011,7 +2003,7 @@ class _practice_progressState extends State<practice_progress> {
                                                 children: [
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             22.0,
                                                     margin: EdgeInsets.only(
@@ -2042,7 +2034,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.0,
                                                                   fontWeight:
@@ -2071,7 +2063,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.8,
                                                                   fontWeight:
@@ -2122,7 +2114,7 @@ class _practice_progressState extends State<practice_progress> {
                                                 children: [
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             22.0,
                                                     margin: EdgeInsets.only(
@@ -2153,7 +2145,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.0,
                                                                   fontWeight:
@@ -2182,7 +2174,7 @@ class _practice_progressState extends State<practice_progress> {
                                                                       0xFFB695B7),
                                                                   height: 1.2,
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           2.8,
                                                                   fontWeight:
@@ -2211,18 +2203,18 @@ class _practice_progressState extends State<practice_progress> {
                                 ),
                         ),
                         Container(
-                          // width: AppDimensions.height10(context) * 2.1,
+                          // width: AppDimensions.width10(context) * 2.1,
                           //height: AppDimensions.height10(context) * 4.3,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 4.0),
                           child: Image.asset(
                             'assets/images/Arrow.webp',
-                            width: AppDimensions.height10(context) * 4.1,
+                            width: AppDimensions.width10(context) * 4.1,
                             height: AppDimensions.height10(context) * 4.3,
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 37.1,
+                          width: AppDimensions.width10(context) * 37.1,
                           height: AppDimensions.height10(context) * 5.4,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 4.0),
@@ -2232,7 +2224,7 @@ class _practice_progressState extends State<practice_progress> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 height: AppDimensions.height10(context) * 0.12,
-                                fontSize: AppDimensions.height10(context) * 2.4,
+                                fontSize: AppDimensions.font10(context) * 2.4,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFFFBFBFB),
                               ),
@@ -2240,7 +2232,7 @@ class _practice_progressState extends State<practice_progress> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 37.1,
+                          width: AppDimensions.width10(context) * 37.1,
                           height: AppDimensions.height10(context) * 3.4,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.6),
@@ -2252,7 +2244,7 @@ class _practice_progressState extends State<practice_progress> {
                                       ? 'DD/MMM/YY to DD/MMM/YY.'
                                       : '${formatDate(evaluation[0]["activeDate"].toString().substring(0, 10))} to ${formatDate(evaluation[0]["endDate"].toString().substring(0, 10))}',
                               style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.0,
+                                fontSize: AppDimensions.font10(context) * 2.0,
                                 height: AppDimensions.height10(context) * 0.12,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFFFBFBFB),
@@ -2261,7 +2253,7 @@ class _practice_progressState extends State<practice_progress> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 38.2,
+                          width: AppDimensions.width10(context) * 38.2,
                           //height: AppDimensions.height10(context) * 111.2,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 2.0),
@@ -2272,7 +2264,7 @@ class _practice_progressState extends State<practice_progress> {
                           child: Column(
                             children: [
                               Container(
-                                width: AppDimensions.height10(context) * 34.2,
+                                width: AppDimensions.width10(context) * 34.2,
                                 height: AppDimensions.height10(context) * 7.2,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 5.0),
@@ -2286,14 +2278,13 @@ class _practice_progressState extends State<practice_progress> {
                                             AppDimensions.height10(context) *
                                                 0.12,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.2,
+                                            AppDimensions.font10(context) * 2.2,
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ),
                               ),
                               Container(
-                                width: AppDimensions.height10(context) * 28.6,
+                                width: AppDimensions.width10(context) * 28.6,
                                 height: AppDimensions.height10(context) * 10.7,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 2.0),
@@ -2313,7 +2304,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     fontFamily: 'laila',
                                                     height: 1.2,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             2.4,
                                                     fontWeight:
@@ -2334,7 +2325,7 @@ class _practice_progressState extends State<practice_progress> {
                                                         const Color(0xFFB695B7),
                                                     height: 1.2,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             4.5,
                                                     fontWeight:
@@ -2345,8 +2336,8 @@ class _practice_progressState extends State<practice_progress> {
                                       ),
                                     ),
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          28.6,
+                                      width:
+                                          AppDimensions.width10(context) * 28.6,
                                       height:
                                           AppDimensions.height10(context) * 2.4,
                                       margin: EdgeInsets.only(
@@ -2358,7 +2349,7 @@ class _practice_progressState extends State<practice_progress> {
                                           style: TextStyle(
                                               color: const Color(0xFFB695B7),
                                               height: 1.2,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               fontWeight: FontWeight.w600),
@@ -2462,7 +2453,7 @@ class _practice_progressState extends State<practice_progress> {
                                 ),
                               ),
                               Container(
-                                width: AppDimensions.height10(context) * 8.4,
+                                width: AppDimensions.width10(context) * 8.4,
                                 height: AppDimensions.height10(context) * 0.2,
                                 color: const Color(0xFF437296),
                                 margin: EdgeInsets.only(
@@ -2471,13 +2462,13 @@ class _practice_progressState extends State<practice_progress> {
                                         AppDimensions.height10(context) * 2.7),
                               ),
                               SizedBox(
-                                width: AppDimensions.height10(context) * 30.0,
+                                width: AppDimensions.width10(context) * 30.0,
                                 height: AppDimensions.height10(context) * 17.5,
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          30.0,
+                                      width:
+                                          AppDimensions.width10(context) * 30.0,
                                       height:
                                           AppDimensions.height10(context) * 4.8,
                                       child: Center(
@@ -2487,7 +2478,7 @@ class _practice_progressState extends State<practice_progress> {
                                           style: TextStyle(
                                               color: const Color(0xFF437296),
                                               height: 1.2,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               fontWeight: FontWeight.w600),
@@ -2511,7 +2502,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     fontFamily: 'laila',
                                                     height: 1.2,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             2.4,
                                                     fontWeight:
@@ -2532,7 +2523,7 @@ class _practice_progressState extends State<practice_progress> {
                                                         const Color(0xFFB695B7),
                                                     height: 1.2,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             4.5,
                                                     fontWeight:
@@ -2543,8 +2534,8 @@ class _practice_progressState extends State<practice_progress> {
                                       ),
                                     ),
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          28.6,
+                                      width:
+                                          AppDimensions.width10(context) * 28.6,
                                       height:
                                           AppDimensions.height10(context) * 2.4,
                                       margin: EdgeInsets.only(
@@ -2556,7 +2547,7 @@ class _practice_progressState extends State<practice_progress> {
                                           style: TextStyle(
                                               color: const Color(0xFFB695B7),
                                               height: 1.2,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               fontWeight: FontWeight.w600),
@@ -2662,7 +2653,7 @@ class _practice_progressState extends State<practice_progress> {
                                 ),
                               ),
                               Container(
-                                width: AppDimensions.height10(context) * 8.4,
+                                width: AppDimensions.width10(context) * 8.4,
                                 height: AppDimensions.height10(context) * 0.2,
                                 color: const Color(0xFF437296),
                                 margin: EdgeInsets.only(
@@ -2671,13 +2662,13 @@ class _practice_progressState extends State<practice_progress> {
                                         AppDimensions.height10(context) * 2.7),
                               ),
                               SizedBox(
-                                width: AppDimensions.height10(context) * 34.8,
+                                width: AppDimensions.width10(context) * 34.8,
                                 height: AppDimensions.height10(context) * 19.9,
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          34.8,
+                                      width:
+                                          AppDimensions.width10(context) * 34.8,
                                       height:
                                           AppDimensions.height10(context) * 7.2,
                                       child: Center(
@@ -2687,7 +2678,7 @@ class _practice_progressState extends State<practice_progress> {
                                           style: TextStyle(
                                               color: const Color(0xFF437296),
                                               height: 1.2,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               fontWeight: FontWeight.w600),
@@ -2711,7 +2702,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     fontFamily: 'laila',
                                                     height: 1.2,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             2.4,
                                                     fontWeight:
@@ -2732,7 +2723,7 @@ class _practice_progressState extends State<practice_progress> {
                                                         const Color(0xFFB695B7),
                                                     height: 1.2,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             4.5,
                                                     fontWeight:
@@ -2743,8 +2734,8 @@ class _practice_progressState extends State<practice_progress> {
                                       ),
                                     ),
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          28.6,
+                                      width:
+                                          AppDimensions.width10(context) * 28.6,
                                       height:
                                           AppDimensions.height10(context) * 2.4,
                                       margin: EdgeInsets.only(
@@ -2756,7 +2747,7 @@ class _practice_progressState extends State<practice_progress> {
                                           style: TextStyle(
                                               color: const Color(0xFFB695B7),
                                               height: 1.2,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               fontWeight: FontWeight.w600),
@@ -2862,7 +2853,7 @@ class _practice_progressState extends State<practice_progress> {
                                 ),
                               ),
                               Container(
-                                width: AppDimensions.height10(context) * 8.4,
+                                width: AppDimensions.width10(context) * 8.4,
                                 height: AppDimensions.height10(context) * 0.2,
                                 color: const Color(0xFF437296),
                                 margin: EdgeInsets.only(
@@ -2871,13 +2862,13 @@ class _practice_progressState extends State<practice_progress> {
                                         AppDimensions.height10(context) * 2.7),
                               ),
                               SizedBox(
-                                width: AppDimensions.height10(context) * 34.8,
+                                width: AppDimensions.width10(context) * 34.8,
                                 height: AppDimensions.height10(context) * 19.9,
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          34.8,
+                                      width:
+                                          AppDimensions.width10(context) * 34.8,
                                       height:
                                           AppDimensions.height10(context) * 7.2,
                                       child: Center(
@@ -2887,7 +2878,7 @@ class _practice_progressState extends State<practice_progress> {
                                           style: TextStyle(
                                               color: const Color(0xFF437296),
                                               height: 1.2,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               fontWeight: FontWeight.w600),
@@ -2911,7 +2902,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     fontFamily: 'laila',
                                                     height: 1.2,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             2.4,
                                                     fontWeight:
@@ -2932,7 +2923,7 @@ class _practice_progressState extends State<practice_progress> {
                                                         const Color(0xFFB695B7),
                                                     height: 1.2,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             4.5,
                                                     fontWeight:
@@ -2943,7 +2934,7 @@ class _practice_progressState extends State<practice_progress> {
                                       ),
                                     ),
                                     Container(
-                                      /// width: AppDimensions.height10(context) * 28.6,
+                                      /// width: AppDimensions.width10(context) * 28.6,
                                       height:
                                           AppDimensions.height10(context) * 2.4,
                                       margin: EdgeInsets.only(
@@ -2955,7 +2946,7 @@ class _practice_progressState extends State<practice_progress> {
                                           style: TextStyle(
                                               color: const Color(0xFFB695B7),
                                               height: 1.2,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               fontWeight: FontWeight.w600),
@@ -3061,7 +3052,7 @@ class _practice_progressState extends State<practice_progress> {
                                 ),
                               ),
                               Container(
-                                width: AppDimensions.height10(context) * 8.4,
+                                width: AppDimensions.width10(context) * 8.4,
                                 height: AppDimensions.height10(context) * 0.2,
                                 color: const Color(0xFF437296),
                                 margin: EdgeInsets.only(
@@ -3089,7 +3080,7 @@ class _practice_progressState extends State<practice_progress> {
                                     height:
                                         AppDimensions.height10(context) * 6.0,
                                     width:
-                                        AppDimensions.height10(context) * 34.2,
+                                        AppDimensions.width10(context) * 34.2,
                                     decoration: BoxDecoration(
                                         border: Border.all(
                                           width: 1,
@@ -3103,9 +3094,9 @@ class _practice_progressState extends State<practice_progress> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                23.9,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    23.9,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 2.2,
@@ -3117,10 +3108,9 @@ class _practice_progressState extends State<practice_progress> {
                                               'Practice assessment history',
                                               style: TextStyle(
                                                 color: const Color(0xFF828282),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
@@ -3138,7 +3128,7 @@ class _practice_progressState extends State<practice_progress> {
                                                       2.391),
                                               child: Image.asset(
                                                 'assets/images/BTN Back.webp',
-                                                //width: AppDimensions.height10(context) * 2.6,
+                                                //width: AppDimensions.width10(context) * 2.6,
                                                 //height: AppDimensions.height10(context) * 2.6,
                                                 color: const Color(0xFF828282),
                                                 fit: BoxFit.cover,
@@ -3152,18 +3142,18 @@ class _practice_progressState extends State<practice_progress> {
                           ),
                         ),
                         Container(
-                          // width: AppDimensions.height10(context) * 2.1,
+                          // width: AppDimensions.width10(context) * 2.1,
                           //height: AppDimensions.height10(context) * 4.3,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 4.0),
                           child: Image.asset(
                             'assets/images/Arrow.webp',
-                            width: AppDimensions.height10(context) * 4.1,
+                            width: AppDimensions.width10(context) * 4.1,
                             height: AppDimensions.height10(context) * 4.3,
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 35.8,
+                          width: AppDimensions.width10(context) * 35.8,
                           height: AppDimensions.height10(context) * 5.2,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 4.0),
@@ -3175,7 +3165,7 @@ class _practice_progressState extends State<practice_progress> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 height: AppDimensions.height10(context) * 0.12,
-                                fontSize: AppDimensions.height10(context) * 2.4,
+                                fontSize: AppDimensions.font10(context) * 2.4,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFFFBFBFB),
                               ),
@@ -3183,7 +3173,7 @@ class _practice_progressState extends State<practice_progress> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 38.5,
+                          width: AppDimensions.width10(context) * 38.5,
                           //height: AppDimensions.height10(context) * 84.669,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 2.0),
@@ -3209,7 +3199,7 @@ class _practice_progressState extends State<practice_progress> {
                                 centerContainer: Container(
                                   height:
                                       AppDimensions.height10(context) * 20.6,
-                                  width: AppDimensions.height10(context) * 14.9,
+                                  width: AppDimensions.width10(context) * 14.9,
                                   margin: EdgeInsets.only(
                                       left: AppDimensions.height10(context) *
                                           2.0),
@@ -3222,7 +3212,7 @@ class _practice_progressState extends State<practice_progress> {
                                       children: [
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   13.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -3244,10 +3234,10 @@ class _practice_progressState extends State<practice_progress> {
                                                           : completedCount
                                                               .toString(),
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          7.4,
+                                                              7.4,
                                                       color: const Color(
                                                           0xFF156F6D),
                                                       fontWeight:
@@ -3263,10 +3253,10 @@ class _practice_progressState extends State<practice_progress> {
                                                 child: Text(
                                                   '/20',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          2.4,
+                                                              2.4,
                                                       color: const Color(
                                                           0xFF646464),
                                                       fontWeight:
@@ -3278,7 +3268,7 @@ class _practice_progressState extends State<practice_progress> {
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   9.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -3286,17 +3276,16 @@ class _practice_progressState extends State<practice_progress> {
                                           child: Text(
                                             'Active days',
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 color: const Color(0xFF156F6D),
                                                 fontWeight: FontWeight.w500),
                                           ),
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   9.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -3304,10 +3293,9 @@ class _practice_progressState extends State<practice_progress> {
                                           child: Text(
                                             'completed!',
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 color: const Color(0xFF156F6D),
                                                 fontWeight: FontWeight.w500),
                                           ),
@@ -3319,16 +3307,16 @@ class _practice_progressState extends State<practice_progress> {
                               ),
                               SizedBox(
                                 height: AppDimensions.height10(context) * 8.0,
-                                width: AppDimensions.height10(context) * 23,
+                                width: AppDimensions.width10(context) * 23,
                                 child: Center(
                                   child: RichText(
                                       textAlign: TextAlign.center,
                                       text: TextSpan(
                                           style: TextStyle(
                                             height: 1.2,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.4,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.4,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xFF5B74A6),
                                           ),
@@ -3613,7 +3601,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                 border: Border(
                     bottom: BorderSide(
                         color: const Color(0xFF828282),
-                        width: AppDimensions.height10(context) * 0.1))),
+                        width: AppDimensions.width10(context) * 0.1))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -3622,7 +3610,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 5.0,
+                    width: AppDimensions.width10(context) * 5.0,
                     height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
                         right: AppDimensions.height10(context) * 2.0),
@@ -3630,7 +3618,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                       'Cancel',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.4,
+                          fontSize: AppDimensions.font10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF2F80ED)),
                     ),
@@ -3646,7 +3634,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                     Navigator.of(context).pop(_selectedIndex);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 3.7,
+                    width: AppDimensions.width10(context) * 3.7,
                     height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
                         right: AppDimensions.height10(context) * 1.9),
@@ -3654,7 +3642,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                       'Done',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.4,
+                          fontSize: AppDimensions.font10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF2F80ED)),
                     ),
@@ -3671,7 +3659,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
               children: _statements
                   .map((statement) => Text(statement,
                       style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 2.0,
+                        fontSize: AppDimensions.font10(context) * 2.0,
                         fontWeight: FontWeight.w400,
                       )))
                   .toList(),
@@ -3694,7 +3682,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
 
 circlesInRow(BuildContext context, int itteration) {
   return Container(
-    //width: AppDimensions.height10(context) * 16.0,
+    //width: AppDimensions.width10(context) * 16.0,
     // height: AppDimensions.height10(context) * 1.0,
     margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.8),
     child: Column(
@@ -3709,7 +3697,7 @@ circlesInRow(BuildContext context, int itteration) {
                   ? (itteration % 10)
                   : 10), // Replace 5 with the number of containers you want to create
               (index) => Container(
-                width: AppDimensions.height10(context) * 1.0,
+                width: AppDimensions.width10(context) * 1.0,
                 height: AppDimensions.height10(context) * 1.0,
                 margin: EdgeInsets.symmetric(
                     horizontal: AppDimensions.height10(context) * 0.25),

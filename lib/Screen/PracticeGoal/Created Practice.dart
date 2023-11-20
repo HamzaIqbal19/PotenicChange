@@ -116,7 +116,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
           //   child: IconButton(
           //     icon: Image.asset(
           //       'assets/images/Back.webp',
-          //       width: AppDimensions.height10(context) * 3,
+          //       width: AppDimensions.width10(context) * 3,
           //       height: AppDimensions.height10(context) * 3,
           //       fit: BoxFit.contain,
           //     ),
@@ -154,7 +154,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                  width: AppDimensions.height10(context) * 3.0,
+                  width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.contain,
                 ),
@@ -199,7 +199,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         height: AppDimensions.height10(context) * 8.9,
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 20.7,
+                        width: AppDimensions.width10(context) * 20.7,
                         height: AppDimensions.height10(context) * 7.2,
                         // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
                         child: Center(
@@ -209,7 +209,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               // color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 3,
+                              fontSize: AppDimensions.font10(context) * 3,
                             ),
                             colors: [
                               const Color(0xFFFA9934),
@@ -224,7 +224,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                       Container(
                           // color: Colors.black,
                           height: AppDimensions.height10(context) * 5.1,
-                          width: AppDimensions.height10(context) * 34.0,
+                          width: AppDimensions.width10(context) * 34.0,
                           child: Column(
                             children: [
                               Container(
@@ -236,7 +236,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white,
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.2,
+                                          AppDimensions.font10(context) * 2.2,
                                     ),
                                   ),
                                 ),
@@ -261,7 +261,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 38.1,
-                              width: AppDimensions.height10(context) * 38.1,
+                              width: AppDimensions.width10(context) * 38.1,
                               padding: EdgeInsets.all(
                                   AppDimensions.height10(context) * 3.5),
                               // decoration: const BoxDecoration(
@@ -300,7 +300,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                     children: [
                                       Container(
                                         // color: Colors.red,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             24.0,
                                         padding: EdgeInsets.symmetric(
                                             horizontal: AppDimensions.height10(
@@ -316,7 +316,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                               maxLines: 1,
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           2.0,
                                                   height:
@@ -349,10 +349,10 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                   style: TextStyle(
                                                       fontStyle:
                                                           FontStyle.italic,
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.6,
+                                                              1.6,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: const Color(
@@ -371,7 +371,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                           style: TextStyle(
                                               decoration:
                                                   TextDecoration.underline,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               height: AppDimensions.height10(
@@ -418,8 +418,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                   child: Container(
                                       height: AppDimensions.height10(context) *
                                           14.7,
-                                      width: AppDimensions.height10(context) *
-                                          14.7,
+                                      width:
+                                          AppDimensions.width10(context) * 14.7,
                                       decoration: BoxDecoration(
                                           image: DecorationImage(
                                         image: AssetImage('$pracColor' == '1'
@@ -440,9 +440,9 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                         children: [
                                           Container(
                                             //color: Colors.red,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                11.8,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    11.8,
                                             child: Column(
                                               children: [
                                                 Text(
@@ -455,10 +455,10 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                   style: TextStyle(
                                                       color: const Color(
                                                           0xFFFBFBFB),
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.8,
+                                                              1.8,
                                                       fontWeight:
                                                           FontWeight.w500),
                                                 ),
@@ -475,7 +475,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                             TextDecoration
                                                                 .underline,
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             2.0,
                                                         height: AppDimensions
@@ -516,7 +516,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         children: [
                           Container(
                               // color: Colors.blue,
-                              width: AppDimensions.height10(context) * 5.0,
+                              width: AppDimensions.width10(context) * 5.0,
                               height: AppDimensions.height10(context) * 5.0,
                               child: Image.asset(
                                 "assets/images/Moreactions.webp",
@@ -532,7 +532,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.height10(context) * 31.3,
+                              width: AppDimensions.width10(context) * 31.3,
                               decoration: BoxDecoration(
                                 // color: Color(0xFFFF7D50),
                                 border: Border.all(color: Colors.transparent),
@@ -552,7 +552,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),

@@ -219,7 +219,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 2.6,
+                      width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
                     )),
@@ -240,7 +240,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     children: [
                       Container(
                         // color: Colors.amber,
-                        //width: AppDimensions.height10(context) * 17.1,
+                        //width: AppDimensions.width10(context) * 17.1,
                         height: AppDimensions.height10(context) * 2.2,
                         margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 5.2,
@@ -252,14 +252,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             'Goal Menu',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xffffffff)),
                           ),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 30.1,
+                        width: AppDimensions.width10(context) * 30.1,
                         height: AppDimensions.height10(context) * 2.4,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.5,
@@ -270,7 +270,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontSize: AppDimensions.font10(context) * 2.0,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xffffffff)),
                         ),
@@ -278,7 +278,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       GestureDetector(
                         onTap: () {},
                         child: Container(
-                          width: AppDimensions.height10(context) * 6.56,
+                          width: AppDimensions.width10(context) * 6.56,
                           height: AppDimensions.height10(context) * 6.56,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 2.03),
@@ -345,7 +345,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           }
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 37.4,
+                          width: AppDimensions.width10(context) * 37.4,
                           height: AppDimensions.height10(context) * 14.7,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 4.81),
@@ -356,7 +356,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           child: Stack(
                             children: [
                               Container(
-                                width: AppDimensions.height10(context) * 37.4,
+                                width: AppDimensions.width10(context) * 37.4,
                                 height: AppDimensions.height10(context) * 12.0,
                                 decoration: subscriptions == 'active'
                                     ? BoxDecoration(
@@ -439,8 +439,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       ),
                                     ),
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          20.9,
+                                      width:
+                                          AppDimensions.width10(context) * 20.9,
                                       height:
                                           AppDimensions.height10(context) * 9.1,
                                       child: Column(
@@ -448,7 +448,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           Align(
                                             alignment: Alignment.centerLeft,
                                             child: Container(
-                                              // width: AppDimensions.height10(context) * 16.5,
+                                              // width: AppDimensions.width10(context) * 16.5,
                                               height: AppDimensions.height10(
                                                       context) *
                                                   1.9,
@@ -457,7 +457,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 'Goal level evaluation',
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.7,
                                                     fontWeight: FontWeight.w700,
@@ -473,7 +473,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           Align(
                                             alignment: Alignment.centerLeft,
                                             child: Container(
-                                              // width: AppDimensions.height10(context) * 9.5,
+                                              // width: AppDimensions.width10(context) * 9.5,
                                               height: AppDimensions.height10(
                                                       context) *
                                                   2.2,
@@ -484,7 +484,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                     : 'for ${formatDate(inputDate)}!',
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.5,
                                                     fontWeight: FontWeight.w500,
@@ -498,9 +498,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             ),
                                           ),
                                           Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                20.9,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    20.9,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 5,
@@ -514,7 +514,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                   : 'Only available to Premium\nCustomers',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.5,
                                                   fontWeight: FontWeight.w400,
@@ -529,7 +529,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       ),
                                     ),
                                     Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.4,
                                         height:
                                             AppDimensions.height10(context) *
@@ -541,7 +541,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
                                           color: const Color(0xFFFFFFFF),
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           fit: BoxFit.cover,
                                         )),
@@ -551,13 +551,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               Align(
                                 alignment: const Alignment(-0.8, 0.875),
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 19.5,
+                                  width: AppDimensions.width10(context) * 19.5,
                                   height: AppDimensions.height10(context) * 1.6,
                                   child: subscriptions != 'active'
                                       ? Text(
                                           'Next score needed in 30 days',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.3,
                                               fontWeight: FontWeight.w400,
@@ -568,7 +568,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                               'You can now evaluate your progress',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.3,
                                                   fontWeight: FontWeight.w400,
@@ -580,10 +580,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 Text(
                                                   'Next score needed in ',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.3,
+                                                              1.3,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: const Color(
@@ -592,10 +592,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 Text(
                                                   '-${goalDetails['nextEvaluationInDays']}',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.3,
+                                                              1.3,
                                                       fontWeight:
                                                           FontWeight.w700,
                                                       color: const Color(
@@ -604,10 +604,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 Text(
                                                   ' days',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.3,
+                                                              1.3,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: const Color(
@@ -626,9 +626,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           alignment:
                                               const Alignment(-0.975, -1.275),
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                11.9,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    11.9,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 2.9,
@@ -655,7 +655,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 'Score needed!',
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.6,
                                                     fontWeight: FontWeight.w600,
@@ -677,7 +677,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   page: const multiple_goal_inactive()));
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 37.4,
+                          width: AppDimensions.width10(context) * 37.4,
                           height: AppDimensions.height10(context) * 6.0,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.0),
@@ -690,7 +690,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             color: const Color(0xFFF5F5F5),
                             border: Border.all(
                                 color: const Color(0xFFFFFFFF),
-                                width: AppDimensions.height10(context) * 0.1),
+                                width: AppDimensions.width10(context) * 0.1),
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -702,7 +702,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       'This goal is ',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w500,
                                           color: goalDetails['goalStatus'] ==
@@ -715,10 +715,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             capitalizeFirstLetter(
                                                 goalDetails['goalStatus']),
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 fontWeight: FontWeight.w700,
                                                 color: goalDetails[
                                                             'goalStatus'] ==
@@ -730,10 +729,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             capitalizeFirstLetter(
                                                 goalDetails['goalStatus']),
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 fontWeight: FontWeight.w700,
                                                 color: goalDetails[
                                                             'goalStatus'] ==
@@ -745,15 +743,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 ),
                               ),
                               Container(
-                                width: AppDimensions.height10(context) * 3.6,
+                                width: AppDimensions.width10(context) * 3.6,
                                 height: AppDimensions.height10(context) * 2.2,
                                 child: Center(
                                   child: Text(
                                     'View',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
+                                            AppDimensions.font10(context) * 1.4,
                                         fontWeight: FontWeight.w700,
                                         color: const Color(0xFF437296),
                                         decoration: TextDecoration.underline),
@@ -774,7 +771,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       SizedBox(
                         child: Container(
                           height: AppDimensions.height10(context) * 18,
-                          // width: AppDimensions.height10(context) * 45.4,
+                          // width: AppDimensions.width10(context) * 45.4,
 
                           // color: Colors.amber,
                           child: goalDetails['goalStatus'] != "active"
@@ -805,7 +802,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 ['id']);
                                       },
                                       child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             13.8,
                                         height:
                                             AppDimensions.height10(context) *
@@ -855,10 +852,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                               overflow: TextOverflow.ellipsis,
                                               maxLines: 2,
                                               style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFFFFFFFF),
                                               ),
@@ -894,7 +890,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             'prac_menu_route', 'goal_menu');
                                       },
                                       child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             13.8,
                                         height:
                                             AppDimensions.height10(context) *
@@ -942,10 +938,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                               overflow: TextOverflow.ellipsis,
                                               maxLines: 2,
                                               style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFFFFFFFF),
                                               ),
@@ -965,7 +960,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         //     top: AppDimensions.height10(context) * 2.2),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 36.0,
+                        width: AppDimensions.width10(context) * 36.0,
                         height: AppDimensions.height10(context) * 20.0,
                         margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 2.0,
@@ -976,7 +971,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             AnimatedScaleButton(
                               onTap: () {},
                               child: Container(
-                                width: AppDimensions.height10(context) * 36.0,
+                                width: AppDimensions.width10(context) * 36.0,
                                 height: AppDimensions.height10(context) * 6.0,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
@@ -988,8 +983,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          18.5,
+                                      width:
+                                          AppDimensions.width10(context) * 18.5,
                                       height:
                                           AppDimensions.height10(context) * 2.2,
                                       margin: EdgeInsets.only(
@@ -1001,14 +996,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         style: TextStyle(
                                           color: const Color(0xff646464),
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                     ),
                                     Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.4,
                                         height:
                                             AppDimensions.height10(context) *
@@ -1019,7 +1014,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 2.391),
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           fit: BoxFit.cover,
                                         ))
@@ -1030,7 +1025,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             AnimatedScaleButton(
                               onTap: () {},
                               child: Container(
-                                width: AppDimensions.height10(context) * 36.0,
+                                width: AppDimensions.width10(context) * 36.0,
                                 height: AppDimensions.height10(context) * 6.0,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 1.0),
@@ -1047,8 +1042,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          19.2,
+                                      width:
+                                          AppDimensions.width10(context) * 19.2,
                                       height:
                                           AppDimensions.height10(context) * 2.2,
                                       margin: EdgeInsets.only(
@@ -1062,14 +1057,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         style: TextStyle(
                                           color: const Color(0xff646464),
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                     ),
                                     Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.4,
                                         height:
                                             AppDimensions.height10(context) *
@@ -1080,7 +1075,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 2.391),
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           fit: BoxFit.cover,
                                         ))
@@ -1098,7 +1093,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     )));
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 36.0,
+                                width: AppDimensions.width10(context) * 36.0,
                                 height: AppDimensions.height10(context) * 6.0,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 1.0),
@@ -1112,8 +1107,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          18.5,
+                                      width:
+                                          AppDimensions.width10(context) * 18.5,
                                       height:
                                           AppDimensions.height10(context) * 2.2,
                                       margin: EdgeInsets.only(
@@ -1125,14 +1120,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         style: TextStyle(
                                           color: const Color(0xff646464),
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                     ),
                                     Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.4,
                                         height:
                                             AppDimensions.height10(context) *
@@ -1143,7 +1138,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 2.391),
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           fit: BoxFit.cover,
                                         ))
@@ -1156,7 +1151,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       ),
                       widget.goal_evaluation
                           ? Container(
-                              width: AppDimensions.height10(context) * 17.0,
+                              width: AppDimensions.width10(context) * 17.0,
                               height: AppDimensions.height10(context) * 0.5,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 14.1,

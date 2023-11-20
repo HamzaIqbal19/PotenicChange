@@ -57,7 +57,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 2.8,
+                      width: AppDimensions.width10(context) * 2.8,
                       height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.cover,
                     ),
@@ -96,7 +96,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                         // color: Colors.orange,
                         image: const AssetImage("assets/images/logo.webp"),
                         height: AppDimensions.height10(context) * 7.75,
-                        width: AppDimensions.height10(context) * 7.75,
+                        width: AppDimensions.width10(context) * 7.75,
                       ),
                     ),
 
@@ -109,7 +109,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 3.0,
+                          fontSize: AppDimensions.font10(context) * 3.0,
                         ),
                       ),
                     ),
@@ -117,27 +117,27 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                     // SizedBox(height: AppDimensions.height2),
                     Container(
                         height: AppDimensions.height10(context) * 2.4,
-                        // width: AppDimensions.height10(context) * 24.1,
+                        // width: AppDimensions.width10(context) * 24.1,
                         child: Text(
                           'Welcome aboard ' + widget.name,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 2,
+                            fontSize: AppDimensions.font10(context) * 2,
                           ),
                         )),
                     SizedBox(height: AppDimensions.height10(context) * 0.92),
                     Container(
                         height: AppDimensions.height10(context) * 7 + 4,
-                        width: AppDimensions.height10(context) * 37.8,
+                        width: AppDimensions.width10(context) * 37.8,
                         child: Text(
                           'You’re almost ready to get started. Please check \n your registration email now to continue your \n journey. ',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                           ),
                         )),
                     SizedBox(height: AppDimensions.height10(context) * 12.4),
@@ -151,7 +151,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 4.4,
-                        width: AppDimensions.height10(context) * 26.7,
+                        width: AppDimensions.width10(context) * 26.7,
                         decoration: BoxDecoration(
                           color: const Color(0xFFF5F5F5),
                           border: Border.all(color: Colors.white),
@@ -163,7 +163,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                             "Log in",
                             style: TextStyle(
                               color: const Color(0xFF8C648A),
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

@@ -88,7 +88,7 @@ class _record_sessionState extends State<record_session> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -115,7 +115,7 @@ class _record_sessionState extends State<record_session> {
                       children: [
                         Container(
                           height: AppDimensions.height10(context) * 6.8,
-                          width: AppDimensions.height10(context) * 21.7,
+                          width: AppDimensions.width10(context) * 21.7,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 10.0,
                               bottom: AppDimensions.height10(context) * 4.2),
@@ -127,7 +127,7 @@ class _record_sessionState extends State<record_session> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 2.8,
+                                fontSize: AppDimensions.font10(context) * 2.8,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'laila'),
                           )),
@@ -140,7 +140,7 @@ class _record_sessionState extends State<record_session> {
                           itemBuilder: ((context, index) {
                             return Container(
                               height: AppDimensions.height10(context) * 31.3,
-                              width: AppDimensions.height10(context) * 46.4,
+                              width: AppDimensions.width10(context) * 46.4,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.3,
                                   bottom:
@@ -149,7 +149,7 @@ class _record_sessionState extends State<record_session> {
                                 Align(
                                     alignment: Alignment.topLeft,
                                     child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             26.8,
                                         height: AppDimensions.height10(context) *
                                             26.8,
@@ -195,10 +195,9 @@ class _record_sessionState extends State<record_session> {
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     0.14,
@@ -218,7 +217,7 @@ class _record_sessionState extends State<record_session> {
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w400,
@@ -360,10 +359,10 @@ class _record_sessionState extends State<record_session> {
                                                       TextOverflow.ellipsis,
                                                   style: TextStyle(
                                                       fontFamily: 'laila',
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.8,
+                                                              1.8,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: Colors.white),
@@ -397,7 +396,7 @@ class _record_sessionState extends State<record_session> {
                               vertical: AppDimensions.height10(context) * 3.4),
                           child: Container(
                             height: AppDimensions.height10(context) * 5,
-                            width: AppDimensions.height10(context) * 24.3,
+                            width: AppDimensions.width10(context) * 24.3,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10(context) * 5.0)),
@@ -413,8 +412,7 @@ class _record_sessionState extends State<record_session> {
                               'View all your goals',
                               style: TextStyle(
                                   color: const Color(0xFFFBFBFB),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
                                   fontWeight: FontWeight.w600),
                             )),
                           ),

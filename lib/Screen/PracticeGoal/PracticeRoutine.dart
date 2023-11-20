@@ -116,7 +116,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 3,
+                  width: AppDimensions.width10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
@@ -142,7 +142,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 3.0,
+                    width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
@@ -153,7 +153,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       duration: const Duration(seconds: 1),
                       context: context,
                       builder: (BuildContext context) => SizedBox(
-                        width: AppDimensions.height10(context) * 27.0,
+                        width: AppDimensions.width10(context) * 27.0,
                         height: AppDimensions.height10(context) * 18.2,
                         child: AlertDialog(
                           contentPadding: EdgeInsets.zero,
@@ -166,13 +166,13 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             margin: const EdgeInsets.only(
                                 top: 19, right: 16, left: 16, bottom: 2),
                             height: AppDimensions.height10(context) * 2.2,
-                            width: AppDimensions.height10(context) * 23.8,
+                            width: AppDimensions.width10(context) * 23.8,
                             child: Text(
                               "Are you sure?",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: const Color(0xFF000000),
-                                fontSize: AppDimensions.height10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.7,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -183,7 +183,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                 left: AppDimensions.height10(context) * 1.6,
                                 right: AppDimensions.height10(context) * 1.6),
                             height: AppDimensions.height10(context) * 3.2,
-                            width: AppDimensions.height10(context) * 23.8,
+                            width: AppDimensions.width10(context) * 23.8,
                             child: Text(
                               "If you close it now, you will lose all your progress.",
                               textAlign: TextAlign.center,
@@ -292,7 +292,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontSize: AppDimensions.font10(context) * 1.8,
                       ),
                     ),
                   ),
@@ -301,7 +301,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 SizedBox(
-                  width: AppDimensions.height10(context) * 30,
+                  width: AppDimensions.width10(context) * 30,
                   child: Center(
                     child: Text(
                       mygoal.text.toString(),
@@ -309,7 +309,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 2.2,
+                        fontSize: AppDimensions.font10(context) * 2.2,
                       ),
                     ),
                   ),
@@ -322,7 +322,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: AppDimensions.height10(context) * 7.9,
+                      width: AppDimensions.width10(context) * 7.9,
                       height: AppDimensions.height10(context) * 7.9,
                       // color: Colors.amber,
 
@@ -332,7 +332,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           Align(
                             alignment: const Alignment(-3, 0),
                             child: Container(
-                              width: AppDimensions.height10(context) * 7.9,
+                              width: AppDimensions.width10(context) * 7.9,
                               height: AppDimensions.height10(context) * 7.9,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
@@ -359,7 +359,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             alignment: const Alignment(1.5, 0),
                             child: Container(
                               height: AppDimensions.height10(context) * 4.9,
-                              width: AppDimensions.height10(context) * 4.9,
+                              width: AppDimensions.width10(context) * 4.9,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
@@ -372,7 +372,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       ),
                     ),
                     Container(
-                        //width: AppDimensions.height10(context) * 22,
+                        //width: AppDimensions.width10(context) * 22,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 1.5),
                         child: practice.text.toString().length > 20
@@ -385,8 +385,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF156F6D),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                 ),
                               )
                             : Text(
@@ -396,8 +395,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF156F6D),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                 ),
                               )),
                   ],
@@ -407,7 +405,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 ),
                 SizedBox(
                   height: AppDimensions.height10(context) * 3.4,
-                  width: AppDimensions.height10(context) * 36.4,
+                  width: AppDimensions.width10(context) * 36.4,
                   child: Center(
                     child: Text(
                       "Your routine commitment",
@@ -415,7 +413,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 2.8,
+                        fontSize: AppDimensions.font10(context) * 2.8,
                       ),
                     ),
                   ),
@@ -428,7 +426,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   children: [
                     SizedBox(
                       height: AppDimensions.height10(context) * 8.6,
-                      width: AppDimensions.height10(context) * 37.2,
+                      width: AppDimensions.width10(context) * 37.2,
                       child: Center(
                         child: Text.rich(
                           textAlign: TextAlign.center,
@@ -437,7 +435,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                 'It’s important to set a consistent routine that works for you. Please select time slots\n ',
                             style: TextStyle(
                               color: const Color(0xFFFFFFFF),
-                              fontSize: AppDimensions.height10(context) * 1.8,
+                              fontSize: AppDimensions.font10(context) * 1.8,
                               fontWeight: FontWeight.w500,
                             ),
                             children: <TextSpan>[
@@ -446,7 +444,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                   style: TextStyle(
                                     color: const Color(0xFFFFFFFF),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.8,
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
                                   )),
                             ],
@@ -589,7 +587,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
-                        width: AppDimensions.height10(context) * 31.3,
+                        width: AppDimensions.width10(context) * 31.3,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
@@ -617,7 +615,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             "More than 2 days selected - Next",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

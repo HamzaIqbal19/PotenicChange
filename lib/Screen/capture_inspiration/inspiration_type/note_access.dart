@@ -93,7 +93,7 @@ class _note_infoState extends State<note_info> {
                   children: [
                     Container(
                       // height: AppDimensions.height10(context) * 2.2,
-                      // width: AppDimensions.height10(context) * 3.3,
+                      // width: AppDimensions.width10(context) * 3.3,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 1.5),
                       child: AnimatedScaleButton(
@@ -109,7 +109,7 @@ class _note_infoState extends State<note_info> {
                           'Back',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff007AFF)),
                         ),
@@ -118,7 +118,7 @@ class _note_infoState extends State<note_info> {
                     Center(
                       child: SizedBox(
                         height: AppDimensions.height10(context) * 2.2,
-                        width: AppDimensions.height10(context) * 23.1,
+                        width: AppDimensions.width10(context) * 23.1,
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -127,7 +127,7 @@ class _note_infoState extends State<note_info> {
                                 'Create',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xff282828)),
                               ),
@@ -136,7 +136,7 @@ class _note_infoState extends State<note_info> {
                                   ' note inspiration',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.7,
                                       fontWeight: FontWeight.w700,
                                       color: const Color(0xff282828)),
                                 ),
@@ -145,7 +145,7 @@ class _note_infoState extends State<note_info> {
                                   ' inspiration content link',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.7,
                                       fontWeight: FontWeight.w700,
                                       color: const Color(0xff282828)),
                                 )
@@ -154,7 +154,7 @@ class _note_infoState extends State<note_info> {
                                   ' inspiration video link',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.7,
                                       fontWeight: FontWeight.w700,
                                       color: const Color(0xff282828)),
                                 )
@@ -178,13 +178,13 @@ class _note_infoState extends State<note_info> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 2.2,
-                        width: AppDimensions.height10(context) * 4.3,
+                        width: AppDimensions.width10(context) * 4.3,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 4.9),
                         child: Text(
                           'Create',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.5,
+                              fontSize: AppDimensions.font10(context) * 1.5,
                               fontWeight: FontWeight.w400,
                               color: widget.note_saved
                                   ? const Color(0xff007AFF)
@@ -207,7 +207,7 @@ class _note_infoState extends State<note_info> {
                       children: [
                         Container(
                           height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
+                          width: AppDimensions.width10(context) * 30.5,
                           alignment: Alignment.centerLeft,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
@@ -219,7 +219,7 @@ class _note_infoState extends State<note_info> {
                                 'Video Destination Link',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.5,
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -228,7 +228,7 @@ class _note_infoState extends State<note_info> {
                                 'Content Destination Link',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.5,
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -237,7 +237,7 @@ class _note_infoState extends State<note_info> {
                                 'Title',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.5,
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -274,9 +274,9 @@ class _note_infoState extends State<note_info> {
                                             ['title'],
                                         style: TextStyle(
                                             height: 1.5,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xFF464646)),
                                       ),
@@ -292,10 +292,9 @@ class _note_infoState extends State<note_info> {
                                                 height: 1.5,
                                                 decoration:
                                                     TextDecoration.underline,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.7,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.7,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFF464646)),
                                           ),
@@ -342,10 +341,9 @@ class _note_infoState extends State<note_info> {
                                                 height: 1.5,
                                                 decoration:
                                                     TextDecoration.underline,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.7,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.7,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFF464646)),
                                           ),
@@ -387,7 +385,7 @@ class _note_infoState extends State<note_info> {
                                   textAlignVertical: TextAlignVertical.center,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.7,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xff282828)),
                                   decoration: InputDecoration(
@@ -399,7 +397,7 @@ class _note_infoState extends State<note_info> {
                                       hintText: 'Give your inspiration a title',
                                       hintStyle: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.7,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff828282)),
@@ -413,7 +411,7 @@ class _note_infoState extends State<note_info> {
                         ),
                         Container(
                           height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
+                          width: AppDimensions.width10(context) * 30.5,
                           alignment: Alignment.centerLeft,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
@@ -426,7 +424,7 @@ class _note_infoState extends State<note_info> {
                                 'Why is it inspirational to you',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.5,
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -438,7 +436,7 @@ class _note_infoState extends State<note_info> {
                           //     ? AppDimensions.height10(context) * 39.0
                           //     : AppDimensions.height10(context) * 2.4,
 
-                          width: AppDimensions.height10(context) * 30.5,
+                          width: AppDimensions.width10(context) * 30.5,
                           // color: Colors.amber,
                           margin: EdgeInsets.only(
                             left: widget.note_saved
@@ -462,9 +460,9 @@ class _note_infoState extends State<note_info> {
                                         // textAlign: TextAlign.left,
                                         style: TextStyle(
                                             height: 1.5,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xFF464646)),
                                       ),
@@ -474,9 +472,9 @@ class _note_infoState extends State<note_info> {
                                             ['description'],
                                         style: TextStyle(
                                             height: 1.5,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xFF464646)),
                                       ),
@@ -486,9 +484,9 @@ class _note_infoState extends State<note_info> {
                                             ['description'],
                                         style: TextStyle(
                                             height: 1.5,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xFF464646)),
                                       ),
@@ -499,13 +497,12 @@ class _note_infoState extends State<note_info> {
                                   height: widget.note_saved
                                       ? AppDimensions.height10(context) * 39.0
                                       : AppDimensions.height10(context) * 2.4,
-                                  width: AppDimensions.height10(context) * 37.5,
+                                  width: AppDimensions.width10(context) * 37.5,
                                   child: TextField(
                                     textAlignVertical: TextAlignVertical.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xff282828)),
                                     decoration: InputDecoration(
@@ -519,9 +516,9 @@ class _note_infoState extends State<note_info> {
                                         hintText:
                                             'Say more about this inspiration ',
                                         hintStyle: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xff828282)),
                                         focusedBorder: const OutlineInputBorder(
@@ -536,7 +533,7 @@ class _note_infoState extends State<note_info> {
                         if (widget.type_switch == 2) ...[
                           Container(
                             height: AppDimensions.height10(context) * 2.1,
-                            width: AppDimensions.height10(context) * 30.5,
+                            width: AppDimensions.width10(context) * 30.5,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 2.0,
                                 right: AppDimensions.height10(context) * 8.9,
@@ -544,8 +541,7 @@ class _note_infoState extends State<note_info> {
                             child: Text(
                               'Content Author',
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.5,
+                                  fontSize: AppDimensions.font10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -556,7 +552,7 @@ class _note_infoState extends State<note_info> {
                         if (widget.type_switch == 2) ...[
                           Container(
                             height: AppDimensions.height10(context) * 2.4,
-                            width: AppDimensions.height10(context) * 30.5,
+                            width: AppDimensions.width10(context) * 30.5,
                             //  color: Colors.grey,
                             margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
@@ -566,15 +562,14 @@ class _note_infoState extends State<note_info> {
                               inspirationDetails['inspiration']['file'],
                               style: TextStyle(
                                   color: const Color(0xFF282828),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontWeight: FontWeight.w500),
                             ),
                           )
                         ],
                         Container(
                           height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
+                          width: AppDimensions.width10(context) * 30.5,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
                               right: AppDimensions.height10(context) * 8.9,
@@ -582,14 +577,14 @@ class _note_infoState extends State<note_info> {
                           child: Text(
                             'Tags',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.5,
+                                fontSize: AppDimensions.font10(context) * 1.5,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff828282)),
                           ),
                         ),
                         Container(
                           height: AppDimensions.height10(context) * 2.4,
-                          width: AppDimensions.height10(context) * 30.5,
+                          width: AppDimensions.width10(context) * 30.5,
                           margin: EdgeInsets.only(
                               left: widget.note_saved
                                   ? AppDimensions.height10(context) * 2.0
@@ -609,14 +604,14 @@ class _note_infoState extends State<note_info> {
                                   style: TextStyle(
                                       color: const Color(0xFF282828),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.7,
                                       fontWeight: FontWeight.w500),
                                 )
                               : TextField(
                                   textAlignVertical: TextAlignVertical.center,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xff282828)),
                                   decoration: InputDecoration(
@@ -628,7 +623,7 @@ class _note_infoState extends State<note_info> {
                                       hintText: 'Add #hashtag',
                                       hintStyle: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.7,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff828282)),
@@ -642,7 +637,7 @@ class _note_infoState extends State<note_info> {
                         ),
                         Container(
                           height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
+                          width: AppDimensions.width10(context) * 30.5,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
                               right: AppDimensions.height10(context) * 8.9,
@@ -650,7 +645,7 @@ class _note_infoState extends State<note_info> {
                           child: Text(
                             'Attached goals',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.5,
+                                fontSize: AppDimensions.font10(context) * 1.5,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff828282)),
                           ),
@@ -677,7 +672,7 @@ class _note_infoState extends State<note_info> {
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 6.0,
-                            width: AppDimensions.height10(context) * 37.5,
+                            width: AppDimensions.width10(context) * 37.5,
                             margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
                               right: AppDimensions.height10(context) * 1.9,
@@ -692,7 +687,7 @@ class _note_infoState extends State<note_info> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  width: AppDimensions.height10(context) * 23.9,
+                                  width: AppDimensions.width10(context) * 23.9,
                                   height: AppDimensions.height10(context) * 2.2,
                                   margin: EdgeInsets.only(
                                       left: AppDimensions.height10(context) *
@@ -702,14 +697,13 @@ class _note_infoState extends State<note_info> {
                                     style: TextStyle(
                                       color: const Color(0xFF646464),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.8,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ),
                                 Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
+                                    width: AppDimensions.width10(context) * 2.4,
                                     height:
                                         AppDimensions.height10(context) * 1.39,
                                     margin: EdgeInsets.only(
@@ -717,7 +711,7 @@ class _note_infoState extends State<note_info> {
                                             2.391),
                                     child: Image.asset(
                                       'assets/images/BTN Back.webp',
-                                      //width: AppDimensions.height10(context) * 2.6,
+                                      //width: AppDimensions.width10(context) * 2.6,
                                       //height: AppDimensions.height10(context) * 2.6,
                                       color: const Color(0xFF646464),
                                       fit: BoxFit.cover,
@@ -832,7 +826,7 @@ class _noteSavedState extends State<noteSaved> {
                             'Back',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff007AFF)),
                           ),
@@ -841,14 +835,13 @@ class _noteSavedState extends State<noteSaved> {
                       Center(
                         child: SizedBox(
                           // height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.height10(context) * 28.5,
+                          width: AppDimensions.width10(context) * 28.5,
                           child: Center(
                             child: Text(
                               'Create note inspiration',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w700,
                                   color: const Color(0xff282828)),
                             ),
@@ -913,7 +906,7 @@ class _noteSavedState extends State<noteSaved> {
                                     },
                                     child: Container(
                                       // height: AppDimensions.height10(context) * 2.2,
-                                      // width: AppDimensions.height10(context) * 6.1,
+                                      // width: AppDimensions.width10(context) * 6.1,
                                       // margin: EdgeInsets.only(
                                       //     right: AppDimensions.height10(context) *
                                       //         1.5),
@@ -933,7 +926,7 @@ class _noteSavedState extends State<noteSaved> {
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.6,
                                                     fontWeight: FontWeight.w400,
@@ -968,7 +961,7 @@ class _noteSavedState extends State<noteSaved> {
                   children: [
                     Container(
                       height: AppDimensions.height10(context) * 2.1,
-                      width: AppDimensions.height10(context) * 30.5,
+                      width: AppDimensions.width10(context) * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
@@ -980,8 +973,7 @@ class _noteSavedState extends State<noteSaved> {
                             Text(
                               'Title',
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.5,
+                                  fontSize: AppDimensions.font10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -990,7 +982,7 @@ class _noteSavedState extends State<noteSaved> {
                     Container(
                       alignment: Alignment.centerLeft,
                       // height: AppDimensions.height10(context) * 2.4,
-                      //width: AppDimensions.height10(context) * 30.5,
+                      //width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 0.6,
                       ),
@@ -999,7 +991,7 @@ class _noteSavedState extends State<noteSaved> {
                         textAlignVertical: TextAlignVertical.center,
                         maxLines: null,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.7,
+                            fontSize: AppDimensions.font10(context) * 1.7,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
@@ -1011,7 +1003,7 @@ class _noteSavedState extends State<noteSaved> {
                                 0),
                             hintText: 'Give your inspiration a title',
                             hintStyle: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -1024,7 +1016,7 @@ class _noteSavedState extends State<noteSaved> {
                     ),
                     Container(
                       height: AppDimensions.height10(context) * 2.1,
-                      width: AppDimensions.height10(context) * 30.5,
+                      width: AppDimensions.width10(context) * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
@@ -1032,13 +1024,13 @@ class _noteSavedState extends State<noteSaved> {
                       child: Text(
                         'Why is it inspirational to you',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.5,
+                            fontSize: AppDimensions.font10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
                     ),
                     Container(
-                      //width: AppDimensions.height10(context) * 30.5,
+                      //width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 2.0,
                       ),
@@ -1048,7 +1040,7 @@ class _noteSavedState extends State<noteSaved> {
                         maxLines: null,
                         minLines: null,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.7,
+                            fontSize: AppDimensions.font10(context) * 1.7,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
@@ -1057,7 +1049,7 @@ class _noteSavedState extends State<noteSaved> {
                             isCollapsed: true,
                             hintText: 'Say more about this inspiration ',
                             hintStyle: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -1070,7 +1062,7 @@ class _noteSavedState extends State<noteSaved> {
                     ),
                     Container(
                       height: AppDimensions.height10(context) * 2.1,
-                      width: AppDimensions.height10(context) * 30.5,
+                      width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
                           right: AppDimensions.height10(context) * 8.9,
@@ -1078,14 +1070,14 @@ class _noteSavedState extends State<noteSaved> {
                       child: Text(
                         'Tags (optional)',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.5,
+                            fontSize: AppDimensions.font10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
                     ),
                     Container(
                       // height: AppDimensions.height10(context) * 2.4,
-                      // width: AppDimensions.height10(context) * 30.5,
+                      // width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 0.6,
 
@@ -1119,7 +1111,7 @@ class _noteSavedState extends State<noteSaved> {
                             tagList.addAll(finalResult.toSet());
                           },
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 1.7,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xff282828)),
                           decoration: InputDecoration(
@@ -1131,8 +1123,7 @@ class _noteSavedState extends State<noteSaved> {
                                   0),
                               hintText: 'Add #hashtag',
                               hintStyle: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xff828282)),
                               focusedBorder: const OutlineInputBorder(
@@ -1158,7 +1149,7 @@ class _noteSavedState extends State<noteSaved> {
                     ),
                     Container(
                       height: AppDimensions.height10(context) * 2.1,
-                      width: AppDimensions.height10(context) * 30.5,
+                      width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
                           bottom: AppDimensions.height10(context) * 0.5,
@@ -1167,7 +1158,7 @@ class _noteSavedState extends State<noteSaved> {
                       child: Text(
                         'Attached goals',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.5,
+                            fontSize: AppDimensions.font10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -1187,7 +1178,7 @@ class _noteSavedState extends State<noteSaved> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 6.0,
-                        width: AppDimensions.height10(context) * 37.5,
+                        width: AppDimensions.width10(context) * 37.5,
                         margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
                           right: AppDimensions.height10(context) * 1.9,
@@ -1201,7 +1192,7 @@ class _noteSavedState extends State<noteSaved> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 23.9,
+                              width: AppDimensions.width10(context) * 23.9,
                               height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 1.99),
@@ -1209,8 +1200,7 @@ class _noteSavedState extends State<noteSaved> {
                                 '${selectedGoals.length} impacted goals',
                                 style: TextStyle(
                                   color: const Color(0xFF646464),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -1228,8 +1218,7 @@ class _noteSavedState extends State<noteSaved> {
                                       decorationThickness:
                                           AppDimensions.height10(context) * 0.2,
                                       fontSize:
-                                          AppDimensions.height10(context) *
-                                              1.4),
+                                          AppDimensions.font10(context) * 1.4),
                                 ))
                           ],
                         ),

@@ -139,7 +139,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Back.webp',
-                      width: AppDimensions.height10(context) * 3,
+                      width: AppDimensions.width10(context) * 3,
                       height: AppDimensions.height10(context) * 3,
                       fit: BoxFit.contain,
                     ),
@@ -160,7 +160,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                     child: IconButton(
                       icon: Image.asset(
                         'assets/images/Close.webp',
-                        width: AppDimensions.height10(context) * 3.0,
+                        width: AppDimensions.width10(context) * 3.0,
                         height: AppDimensions.height10(context) * 3.0,
                         fit: BoxFit.contain,
                       ),
@@ -219,7 +219,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 3.0,
+                          fontSize: AppDimensions.font10(context) * 3.0,
                         ),
                       ),
                     ),
@@ -228,14 +228,14 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                     // SizedBox(height: AppDimensions.height0),
                     Container(
                       height: AppDimensions.height10(context) * 26 + 6,
-                      width: AppDimensions.height10(context) * 36,
+                      width: AppDimensions.width10(context) * 36,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                               height: AppDimensions.height10(context) * 6,
-                              width: AppDimensions.height10(context) * 36.0,
+                              width: AppDimensions.width10(context) * 36.0,
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   border:
@@ -255,8 +255,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 0.5),
-                                    width:
-                                        AppDimensions.height10(context) * 3.7,
+                                    width: AppDimensions.width10(context) * 3.7,
                                     height:
                                         AppDimensions.height10(context) * 1.7,
                                     child: Text(
@@ -265,7 +264,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xFF282828),
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4),
                                     ),
                                   ),
@@ -275,7 +274,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                           AppDimensions.height10(context) * 2.0,
                                     ),
                                     width:
-                                        AppDimensions.height10(context) * 36.0,
+                                        AppDimensions.width10(context) * 36.0,
                                     height:
                                         AppDimensions.height10(context) * 2.2,
                                     child: TextFormField(
@@ -285,9 +284,9 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                             color: const Color(0xFF8C648A),
                                             fontWeight: FontWeight.w600,
                                             decoration: TextDecoration.none,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.8),
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.8),
                                         decoration: InputDecoration(
                                             errorBorder: InputBorder.none,
                                             contentPadding: EdgeInsets.zero,
@@ -295,7 +294,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                             hintStyle: TextStyle(
                                               color: const Color(0xFF8C648A),
                                               fontWeight: FontWeight.w600,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.8,
                                             ),
@@ -351,7 +350,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                           errorEmail
                               ? Container(
                                   height: AppDimensions.height10(context) * 1.7,
-                                  width: AppDimensions.height10(context) * 23.3,
+                                  width: AppDimensions.width10(context) * 23.3,
                                   padding: EdgeInsets.only(
                                       left: AppDimensions.height10(context) *
                                           1.2),
@@ -360,7 +359,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                     style: TextStyle(
                                       color: const Color(0xFFFE6624),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.4,
+                                          AppDimensions.font10(context) * 1.4,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -372,7 +371,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                   : AppDimensions.height10(context) * 3),
                           Container(
                             height: AppDimensions.height10(context) * 6,
-                            width: AppDimensions.height10(context) * 36.0,
+                            width: AppDimensions.width10(context) * 36.0,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 border:
@@ -382,7 +381,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                             child: Row(
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 32.0,
+                                  width: AppDimensions.width10(context) * 32.0,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -396,7 +395,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                             bottom: AppDimensions.height10(
                                                     context) *
                                                 0.5),
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             6.3,
                                         height:
                                             AppDimensions.height10(context) *
@@ -406,7 +405,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                           style: TextStyle(
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFF282828),
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4),
                                         ),
@@ -417,7 +416,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                               AppDimensions.height10(context) *
                                                   2.0,
                                         ),
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             36.0,
                                         height:
                                             AppDimensions.height10(context) *
@@ -428,7 +427,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                               color: const Color(0xFF8C648A),
                                               fontWeight: FontWeight.w600,
                                               decoration: TextDecoration.none,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.8),
                                           decoration: InputDecoration(
@@ -437,10 +436,9 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                               hintStyle: TextStyle(
                                                 color: const Color(0xFF8C648A),
                                                 fontWeight: FontWeight.w600,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                               ),
                                               focusedBorder:
                                                   const OutlineInputBorder(
@@ -500,8 +498,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                   child: SizedBox(
                                     height:
                                         AppDimensions.height10(context) * 2.4,
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
+                                    width: AppDimensions.width10(context) * 2.4,
                                     child: Image.asset(
                                       pass_obscure
                                           ? 'assets/images/visible-icon-9.webp'
@@ -529,7 +526,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                     style: TextStyle(
                                       color: const Color(0xFFFE6624),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.4,
+                                          AppDimensions.font10(context) * 1.4,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -541,7 +538,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                   : AppDimensions.height10(context) * 3),
                           Container(
                               height: AppDimensions.height10(context) * 2.2,
-                              width: AppDimensions.height10(context) * 26.1,
+                              width: AppDimensions.width10(context) * 26.1,
                               padding: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 1.2),
                               child: Row(
@@ -564,7 +561,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                           decoration: TextDecoration.underline,
                                           color: const Color(0xFFFFFFFF),
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -599,7 +596,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                                               context) *
                                                           0.16,
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.5,
                                                   fontWeight: FontWeight.w600,
@@ -701,7 +698,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                         scale: 1 - _controller.value,
                         child: Container(
                           height: AppDimensions.height10(context) * 4.4,
-                          width: AppDimensions.height10(context) * 26.7,
+                          width: AppDimensions.width10(context) * 26.7,
                           decoration: BoxDecoration(
                             color: const Color(0xFFF5F5F5),
                             border: Border.all(color: Colors.white),
@@ -720,7 +717,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                     style: TextStyle(
                                       color: const Color(0xFF8C648A),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),

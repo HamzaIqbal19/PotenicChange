@@ -179,7 +179,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 2.6,
+                      width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
                     )),
@@ -200,7 +200,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                   child: Column(
                     children: [
                       Container(
-                        width: AppDimensions.height10(context) * 30.4,
+                        width: AppDimensions.width10(context) * 30.4,
                         height: AppDimensions.height10(context) * 18.6,
                         // color: Colors.grey.withOpacity(0.5),
                         margin: EdgeInsets.only(
@@ -212,12 +212,11 @@ class _menu_behaviourState extends State<menu_behaviour> {
                               'Practice Menu',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                   fontWeight: FontWeight.w600),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 30,
+                              width: AppDimensions.width10(context) * 30,
                               child: Center(
                                 child: Text(
                                   goalName,
@@ -225,13 +224,13 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.0,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 40.0,
+                              width: AppDimensions.width10(context) * 40.0,
                               height: AppDimensions.height10(context) * 11.2,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.6),
@@ -308,10 +307,9 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                                 color: const Color(0xffffffff),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600),
                                           ),
                                           SizedBox(
@@ -322,7 +320,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                               'Session completed',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w500,
@@ -342,13 +340,13 @@ class _menu_behaviourState extends State<menu_behaviour> {
                       ),
 
                       SizedBox(
-                        width: AppDimensions.height10(context) * 21.1,
+                        width: AppDimensions.width10(context) * 21.1,
                         height: AppDimensions.height10(context) * 11.8,
                         // color: Colors.amber,
                         child: Row(
                           children: [
                             SizedBox(
-                              width: AppDimensions.height10(context) * 9.6,
+                              width: AppDimensions.width10(context) * 9.6,
                               height: AppDimensions.height10(context) * 11.8,
                               //margin: EdgeInsets.only(bottom: 19),
                               child: Column(
@@ -386,7 +384,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.9,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             21.9,
                                       )),
                                     ),
@@ -397,8 +395,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500),
                                   ),
                                   Text(
@@ -410,15 +407,14 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                 0.12,
                                         color: Colors.white,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500),
                                   )
                                 ],
                               ),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 9.3,
+                              width: AppDimensions.width10(context) * 9.3,
                               height: AppDimensions.height10(context) * 11.8,
                               //margin: EdgeInsets.only(bottom: 19),
                               child: Column(
@@ -501,17 +497,17 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                               .height10(
                                                                   context) *
                                                           3.4,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          23.8,
+                                                              23.8,
                                                       child: Text(
                                                         "Are you sure you want to change this\nscheduled session to missed?",
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.3,
                                                           fontWeight:
@@ -665,7 +661,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                       child: Center(
                                         child: Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   2.9,
                                           height:
                                               AppDimensions.height10(context) *
@@ -687,8 +683,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500),
                                   ),
                                   Text(
@@ -700,8 +695,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                 0.12,
                                         color: Colors.white,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500),
                                   )
                                 ],
@@ -725,7 +719,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                         // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 41.3,
+                        width: AppDimensions.width10(context) * 41.3,
                         height: AppDimensions.height10(context) * 22.9,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 2.2),
@@ -739,13 +733,13 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                 icon: Image.asset(
                                   'assets/images/ic_info_outline.webp',
                                   height: AppDimensions.height10(context) * 3.0,
-                                  width: AppDimensions.height10(context) * 3.0,
+                                  width: AppDimensions.width10(context) * 3.0,
                                 )),
                           ),
                           Align(
                             alignment: const Alignment(0, -1),
                             child: SizedBox(
-                              width: AppDimensions.height10(context) * 36.0,
+                              width: AppDimensions.width10(context) * 36.0,
                               height: AppDimensions.height10(context) * 24.7,
                               child: Column(
                                 children: [
@@ -753,7 +747,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                     height:
                                         AppDimensions.height10(context) * 5.9,
                                     width:
-                                        AppDimensions.height10(context) * 36.0,
+                                        AppDimensions.width10(context) * 36.0,
                                     margin: EdgeInsets.only(
                                         bottom:
                                             AppDimensions.height10(context) *
@@ -767,7 +761,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                           'Practice Assessment',
                                           style: TextStyle(
                                               //increase font size by 2 px
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.8,
                                               fontWeight: FontWeight.w700,
@@ -788,7 +782,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   0.15,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4,
                                               fontWeight: FontWeight.w400,
@@ -813,7 +807,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                                 context) *
                                                             0.15,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.4,
                                                     fontWeight: FontWeight.w400,
@@ -829,7 +823,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                                     context) *
                                                             0.15,
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.4,
                                                         fontWeight:

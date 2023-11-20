@@ -22,7 +22,7 @@ class progress_report_unsub extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 3.0,
+                width: AppDimensions.width10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.cover,
               )),
@@ -44,7 +44,7 @@ class progress_report_unsub extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                width: AppDimensions.height10(context) * 40.872,
+                width: AppDimensions.width10(context) * 40.872,
                 height: AppDimensions.height10(context) * 11.0,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 11.1,
@@ -58,7 +58,7 @@ class progress_report_unsub extends StatelessWidget {
                     gradient: const LinearGradient(
                         colors: [Color(0xFF91698C), Color(0xFFC19CA7)])),
                 child: Container(
-                  width: AppDimensions.height10(context) * 24.3,
+                  width: AppDimensions.width10(context) * 24.3,
                   height: AppDimensions.height10(context) * 7.0,
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(
@@ -67,19 +67,19 @@ class progress_report_unsub extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: AppDimensions.height10(context) * 24.3,
+                        width: AppDimensions.width10(context) * 24.3,
                         height: AppDimensions.height10(context) * 2.6,
                         child: Text(
                           'Practice progress report',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontSize: AppDimensions.font10(context) * 2.0,
                               height: AppDimensions.height10(context) * 0.12,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFFFFFFFF)),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 3.3,
+                        width: AppDimensions.width10(context) * 3.3,
                         height: AppDimensions.height10(context) * 0.2,
                         margin: EdgeInsets.only(
                             bottom: AppDimensions.height10(context) * 1.7,
@@ -88,12 +88,12 @@ class progress_report_unsub extends StatelessWidget {
                             const BoxDecoration(color: Color(0xFFFFFFFF)),
                       ),
                       SizedBox(
-                        width: AppDimensions.height10(context) * 10.1,
+                        width: AppDimensions.width10(context) * 10.1,
                         height: AppDimensions.height10(context) * 2.4,
                         child: Text(
                           'Meditation',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontSize: AppDimensions.font10(context) * 2.0,
                               height: AppDimensions.height10(context) * 0.12,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFFFFFFFF)),
@@ -104,7 +104,7 @@ class progress_report_unsub extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 31.7,
+                width: AppDimensions.width10(context) * 31.7,
                 height: AppDimensions.height10(context) * 3.6,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 5.0),
@@ -112,14 +112,14 @@ class progress_report_unsub extends StatelessWidget {
                   'Congratulations!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 3.0,
+                      fontSize: AppDimensions.font10(context) * 3.0,
                       height: 1.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 35.0,
+                width: AppDimensions.width10(context) * 35.0,
                 height: AppDimensions.height10(context) * 5.0,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.7),
@@ -127,14 +127,14 @@ class progress_report_unsub extends StatelessWidget {
                   'You have been consistently doing\nyour practice for 20 active days ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.0,
+                      fontSize: AppDimensions.font10(context) * 2.0,
                       height: 1.2,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 35.0,
+                width: AppDimensions.width10(context) * 35.0,
                 height: AppDimensions.height10(context) * 3.3,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.5),
@@ -143,14 +143,14 @@ class progress_report_unsub extends StatelessWidget {
                   'from [dd/mmm/yy] to [dd/mmm/yy]',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.6,
+                      fontSize: AppDimensions.font10(context) * 1.6,
                       height: 1.2,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 25.5,
+                width: AppDimensions.width10(context) * 25.5,
                 height: AppDimensions.height10(context) * 3.9,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 1.9),
@@ -158,19 +158,19 @@ class progress_report_unsub extends StatelessWidget {
                   'You are a rockstar! :)',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.2,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       height: 1.2,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF437296)),
                 ),
               ),
               SizedBox(
-                width: AppDimensions.height10(context) * 29.0,
+                width: AppDimensions.width10(context) * 29.0,
                 height: AppDimensions.height10(context) * 11.2,
                 child: Row(
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 10.4,
+                      width: AppDimensions.width10(context) * 10.4,
                       height: AppDimensions.height10(context) * 11.2,
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 0.7),
@@ -181,12 +181,12 @@ class progress_report_unsub extends StatelessWidget {
                       child: Align(
                         alignment: const Alignment(0.7, 0.4),
                         child: Container(
-                          width: AppDimensions.height10(context) * 4.9,
+                          width: AppDimensions.width10(context) * 4.9,
                           height: AppDimensions.height10(context) * 4.9,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                width: AppDimensions.height10(context) * 0.2,
+                                width: AppDimensions.width10(context) * 0.2,
                                 color: const Color(0xFFFFFFFF),
                               ),
                               image: const DecorationImage(
@@ -196,13 +196,13 @@ class progress_report_unsub extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: AppDimensions.height10(context) * 17.9,
+                      width: AppDimensions.width10(context) * 17.9,
                       height: AppDimensions.height10(context) * 5.9,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 17.9,
+                            width: AppDimensions.width10(context) * 17.9,
                             height: AppDimensions.height10(context) * 3.0,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 0.1),
@@ -210,22 +210,20 @@ class progress_report_unsub extends StatelessWidget {
                               'Control my anger',
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                   height: 1.2,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF437296)),
                             ),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10(context) * 17.9,
+                            width: AppDimensions.width10(context) * 17.9,
                             height: AppDimensions.height10(context) * 2.7,
                             child: Text(
                               'Meditation ',
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   height: 1.2,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF156F6D)),
@@ -238,13 +236,13 @@ class progress_report_unsub extends StatelessWidget {
                 ),
               ),
               Container(
-                // width: AppDimensions.height10(context) * 2.1,
+                // width: AppDimensions.width10(context) * 2.1,
                 //height: AppDimensions.height10(context) * 4.3,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
                 child: Image.asset(
                   'assets/images/Arrow.webp',
-                  width: AppDimensions.height10(context) * 4.1,
+                  width: AppDimensions.width10(context) * 4.1,
                   height: AppDimensions.height10(context) * 4.3,
                 ),
               ),
@@ -261,7 +259,7 @@ class progress_report_unsub extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 27.4,
+                      width: AppDimensions.width10(context) * 27.4,
                       height: AppDimensions.height10(context) * 2.9,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 7.0),
@@ -269,21 +267,21 @@ class progress_report_unsub extends StatelessWidget {
                         'New identity statement',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.4,
+                            fontSize: AppDimensions.font10(context) * 2.4,
                             height: 1.2,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFFFFFFFF)),
                       ),
                     ),
                     SizedBox(
-                      width: AppDimensions.height10(context) * 35.6,
+                      width: AppDimensions.width10(context) * 35.6,
                       height: AppDimensions.height10(context) * 10.9,
                       child: Stack(
                         children: [
                           Align(
                             alignment: const Alignment(-0.875, -0.5),
                             child: Container(
-                              width: AppDimensions.height10(context) * 2.5,
+                              width: AppDimensions.width10(context) * 2.5,
                               height: AppDimensions.height10(context) * 1.6,
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
@@ -296,7 +294,7 @@ class progress_report_unsub extends StatelessWidget {
                           Align(
                             alignment: const Alignment(1, 0),
                             child: Container(
-                              width: AppDimensions.height10(context) * 34.7,
+                              width: AppDimensions.width10(context) * 34.7,
                               height: AppDimensions.height10(context) * 10.9,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.9),
@@ -310,7 +308,7 @@ class progress_report_unsub extends StatelessWidget {
                                       fontStyle: FontStyle.italic,
                                       // height: AppDimensions.height10(context) * 0.15,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.7,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFFFFFFFF)),
                                 ),
@@ -331,7 +329,7 @@ class progress_report_unsub extends StatelessWidget {
                         child: Row(
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 33.153,
+                              width: AppDimensions.width10(context) * 33.153,
                               height: AppDimensions.height10(context) * 30.517,
                               margin: EdgeInsets.only(
                                   left:
@@ -344,7 +342,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Rectangle 148.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 33.153,
+                              width: AppDimensions.width10(context) * 33.153,
                               height: AppDimensions.height10(context) * 30.517,
                               margin: EdgeInsets.only(
                                   right:
@@ -362,7 +360,7 @@ class progress_report_unsub extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 27.2,
+                width: AppDimensions.width10(context) * 27.2,
                 height: AppDimensions.height10(context) * 5.369,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 7.0),
@@ -370,14 +368,14 @@ class progress_report_unsub extends StatelessWidget {
                   'You have completed 20 active days of practice!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.4,
+                      fontSize: AppDimensions.font10(context) * 2.4,
                       height: 1.2,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 38.5,
+                width: AppDimensions.width10(context) * 38.5,
                 height: AppDimensions.height10(context) * 84.569,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.7),
@@ -396,7 +394,7 @@ class progress_report_unsub extends StatelessWidget {
                           size: AppDimensions.height10(context) * 24.0,
                           outerCircleContainers: [
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -405,7 +403,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -414,7 +412,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -423,7 +421,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -432,7 +430,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -441,7 +439,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -450,7 +448,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -459,7 +457,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -468,7 +466,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -477,7 +475,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -486,7 +484,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -495,7 +493,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -504,7 +502,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -513,7 +511,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -522,7 +520,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -531,7 +529,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -540,7 +538,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -549,7 +547,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -558,7 +556,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -567,7 +565,7 @@ class progress_report_unsub extends StatelessWidget {
                                           'assets/images/Tick_dates.webp'))),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 2.3,
+                              width: AppDimensions.width10(context) * 2.3,
                               height: AppDimensions.height10(context) * 2.3,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -578,7 +576,7 @@ class progress_report_unsub extends StatelessWidget {
                           ],
                           centerContainer: Container(
                             height: AppDimensions.height10(context) * 18.6,
-                            width: AppDimensions.height10(context) * 13.3,
+                            width: AppDimensions.width10(context) * 13.3,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 3.0),
 
@@ -587,7 +585,7 @@ class progress_report_unsub extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 13.3,
+                                  width: AppDimensions.width10(context) * 13.3,
                                   height: AppDimensions.height10(context) * 7.7,
                                   child: Row(
                                     children: [
@@ -599,7 +597,7 @@ class progress_report_unsub extends StatelessWidget {
                                         child: Text(
                                           '20',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   7.4,
                                               color: const Color(0xFF156F6D),
@@ -614,7 +612,7 @@ class progress_report_unsub extends StatelessWidget {
                                         child: Text(
                                           '/20',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.4,
                                               color: const Color(0xFF646464),
@@ -625,27 +623,25 @@ class progress_report_unsub extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 9.3,
+                                  width: AppDimensions.width10(context) * 9.3,
                                   height: AppDimensions.height10(context) * 2.3,
                                   child: Text(
                                     'Active days',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                            AppDimensions.font10(context) * 1.8,
                                         color: const Color(0xFF156F6D),
                                         fontWeight: FontWeight.w500),
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 9.3,
+                                  width: AppDimensions.width10(context) * 9.3,
                                   height: AppDimensions.height10(context) * 2.3,
                                   child: Text(
                                     'completed!',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                            AppDimensions.font10(context) * 1.8,
                                         color: const Color(0xFF156F6D),
                                         fontWeight: FontWeight.w500),
                                   ),
@@ -656,7 +652,7 @@ class progress_report_unsub extends StatelessWidget {
                         )),
                     SizedBox(
                       height: AppDimensions.height10(context) * 8.0,
-                      width: AppDimensions.height10(context) * 23,
+                      width: AppDimensions.width10(context) * 23,
                       child: Center(
                         child: RichText(
                             textAlign: TextAlign.center,
@@ -664,8 +660,7 @@ class progress_report_unsub extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'laila',
                                   height: 1.2,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xFF5B74A6),
                                 ),
@@ -685,45 +680,47 @@ class progress_report_unsub extends StatelessWidget {
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0)),
                         child: CalendarWithRadioButtons(
-                            status: true,
-                            dateStatus: const {
-                              "2023-07-18": "completed",
-                              "2023-07-19": "completed",
-                              "2023-07-20": "completed",
-                              "2023-07-21": "completed",
-                              "2023-07-22": "completed",
-                              "2023-07-23": "completed",
-                              "2023-07-24": "completed",
-                              "2023-07-25": "completed",
-                              "2023-07-26": "completed",
-                              "2023-07-27": "completed",
-                              "2023-07-28": "completed",
-                              "2023-07-29": "completed",
-                              "2023-07-30": "completed",
-                              "2023-07-31": "missed",
-                              "2023-08-01": "completed",
-                              "2023-08-02": "completed",
-                              "2023-08-03": "completed",
-                              "2023-08-04": "completed",
-                              "2023-08-05": "completed",
-                              "2023-08-06": "missed"
-                            }, limitCalender: true,)),
+                          status: true,
+                          dateStatus: const {
+                            "2023-07-18": "completed",
+                            "2023-07-19": "completed",
+                            "2023-07-20": "completed",
+                            "2023-07-21": "completed",
+                            "2023-07-22": "completed",
+                            "2023-07-23": "completed",
+                            "2023-07-24": "completed",
+                            "2023-07-25": "completed",
+                            "2023-07-26": "completed",
+                            "2023-07-27": "completed",
+                            "2023-07-28": "completed",
+                            "2023-07-29": "completed",
+                            "2023-07-30": "completed",
+                            "2023-07-31": "missed",
+                            "2023-08-01": "completed",
+                            "2023-08-02": "completed",
+                            "2023-08-03": "completed",
+                            "2023-08-04": "completed",
+                            "2023-08-05": "completed",
+                            "2023-08-06": "missed"
+                          },
+                          limitCalender: true,
+                        )),
                   ],
                 ),
               ),
               Container(
-                // width: AppDimensions.height10(context) * 2.1,
+                // width: AppDimensions.width10(context) * 2.1,
                 //height: AppDimensions.height10(context) * 4.3,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.7),
                 child: Image.asset(
                   'assets/images/Arrow.webp',
-                  width: AppDimensions.height10(context) * 4.1,
+                  width: AppDimensions.width10(context) * 4.1,
                   height: AppDimensions.height10(context) * 4.3,
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 27.2,
+                width: AppDimensions.width10(context) * 27.2,
                 height: AppDimensions.height10(context) * 8.5,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
@@ -731,14 +728,14 @@ class progress_report_unsub extends StatelessWidget {
                   'This is how you felt\nimplementing your new\npractice',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.4,
+                      fontSize: AppDimensions.font10(context) * 2.4,
                       height: 1.2,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 38.2,
+                width: AppDimensions.width10(context) * 38.2,
                 height: AppDimensions.height10(context) * 147.8,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
@@ -749,7 +746,7 @@ class progress_report_unsub extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 38.2,
+                      width: AppDimensions.width10(context) * 38.2,
                       height: AppDimensions.height10(context) * 55.7,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.vertical(
@@ -768,7 +765,7 @@ class progress_report_unsub extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                              width: AppDimensions.height10(context) * 20.0,
+                              width: AppDimensions.width10(context) * 20.0,
                               height: AppDimensions.height10(context) * 20.0,
                               margin: EdgeInsets.only(
                                   bottom: AppDimensions.height10(context) * 3.0,
@@ -802,14 +799,14 @@ class progress_report_unsub extends StatelessWidget {
                                 ],
                               )),
                           Container(
-                            width: AppDimensions.height10(context) * 8.4,
+                            width: AppDimensions.width10(context) * 8.4,
                             height: AppDimensions.height10(context) * 0.2,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 0.9),
                             color: const Color(0xFFF5F5F5),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 30.9,
+                            width: AppDimensions.width10(context) * 30.9,
                             height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 3.0),
@@ -819,14 +816,14 @@ class progress_report_unsub extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.8,
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFFFE6624)),
                               ),
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 30.9,
+                            width: AppDimensions.width10(context) * 30.9,
                             height: AppDimensions.height10(context) * 6.8,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.0),
@@ -838,7 +835,7 @@ class progress_report_unsub extends StatelessWidget {
                                     height:
                                         AppDimensions.height10(context) * 0.15,
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.8,
+                                        AppDimensions.font10(context) * 2.8,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xFFFF6C2C)),
                               ),
@@ -851,8 +848,7 @@ class progress_report_unsub extends StatelessWidget {
                                 text: TextSpan(
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                4.5,
+                                            AppDimensions.font10(context) * 4.5,
                                         fontFamily: 'laila',
                                         height: 1.2,
                                         fontWeight: FontWeight.w400,
@@ -863,18 +859,18 @@ class progress_report_unsub extends StatelessWidget {
                                       text: '',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.0))
                                 ])),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10(context) * 10.5,
+                            width: AppDimensions.width10(context) * 10.5,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: List.generate(
                                 0, // Replace 5 with the number of containers you want to create
                                 (index) => Container(
-                                  width: AppDimensions.height10(context) * 1.5,
+                                  width: AppDimensions.width10(context) * 1.5,
                                   height: AppDimensions.height10(context) * 1.5,
                                   margin: EdgeInsets.all(
                                       AppDimensions.height10(context) * 0.3),
@@ -886,14 +882,14 @@ class progress_report_unsub extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10(context) * 10.5,
+                            width: AppDimensions.width10(context) * 10.5,
                             //height: AppDimensions.height10(context) * 1.5,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: List.generate(
                                 0, // Replace 5 with the number of containers you want to create
                                 (index) => Container(
-                                  width: AppDimensions.height10(context) * 1.5,
+                                  width: AppDimensions.width10(context) * 1.5,
                                   height: AppDimensions.height10(context) * 1.5,
                                   margin: EdgeInsets.all(
                                       AppDimensions.height10(context) * 0.3),
@@ -908,7 +904,7 @@ class progress_report_unsub extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 30.9,
+                      width: AppDimensions.width10(context) * 30.9,
                       height: AppDimensions.height10(context) * 6.8,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
@@ -918,7 +914,7 @@ class progress_report_unsub extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               height: AppDimensions.height10(context) * 0.15,
-                              fontSize: AppDimensions.height10(context) * 2.8,
+                              fontSize: AppDimensions.font10(context) * 2.8,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFFFA9458)),
                         ),
@@ -930,8 +926,7 @@ class progress_report_unsub extends StatelessWidget {
                       child: RichText(
                           text: TextSpan(
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 4.5,
+                                  fontSize: AppDimensions.font10(context) * 4.5,
                                   fontFamily: 'laila',
                                   height: 1.2,
                                   fontWeight: FontWeight.w400,
@@ -942,17 +937,17 @@ class progress_report_unsub extends StatelessWidget {
                                 text: '',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.0))
+                                        AppDimensions.font10(context) * 2.0))
                           ])),
                     ),
                     SizedBox(
-                      width: AppDimensions.height10(context) * 10.5,
+                      width: AppDimensions.width10(context) * 10.5,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: List.generate(
                           5, // Replace 5 with the number of containers you want to create
                           (index) => Container(
-                            width: AppDimensions.height10(context) * 1.5,
+                            width: AppDimensions.width10(context) * 1.5,
                             height: AppDimensions.height10(context) * 1.5,
                             margin: EdgeInsets.symmetric(
                                 horizontal:
@@ -965,14 +960,14 @@ class progress_report_unsub extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 8.4,
+                      width: AppDimensions.width10(context) * 8.4,
                       height: AppDimensions.height10(context) * 0.2,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
                       color: const Color(0xFFBDBDBD),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 17.7,
+                      width: AppDimensions.width10(context) * 17.7,
                       height: AppDimensions.height10(context) * 3.4,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
@@ -981,7 +976,7 @@ class progress_report_unsub extends StatelessWidget {
                           '“I feel ok”',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.8,
+                              fontSize: AppDimensions.font10(context) * 2.8,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFFE1C44F)),
                         ),
@@ -993,8 +988,7 @@ class progress_report_unsub extends StatelessWidget {
                       child: RichText(
                           text: TextSpan(
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 4.5,
+                                  fontSize: AppDimensions.font10(context) * 4.5,
                                   fontFamily: 'laila',
                                   height: 1.2,
                                   fontWeight: FontWeight.w400,
@@ -1005,11 +999,11 @@ class progress_report_unsub extends StatelessWidget {
                                 text: 'x',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.0))
+                                        AppDimensions.font10(context) * 2.0))
                           ])),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 10.5,
+                      width: AppDimensions.width10(context) * 10.5,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.2),
                       child: Row(
@@ -1017,7 +1011,7 @@ class progress_report_unsub extends StatelessWidget {
                         children: List.generate(
                           0, // Replace 5 with the number of containers you want to create
                           (index) => Container(
-                            width: AppDimensions.height10(context) * 1.5,
+                            width: AppDimensions.width10(context) * 1.5,
                             height: AppDimensions.height10(context) * 1.5,
                             margin: EdgeInsets.symmetric(
                                 horizontal:
@@ -1030,14 +1024,14 @@ class progress_report_unsub extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 8.4,
+                      width: AppDimensions.width10(context) * 8.4,
                       height: AppDimensions.height10(context) * 0.2,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
                       color: const Color(0xFFBDBDBD),
                     ),
                     Container(
-                      // width: AppDimensions.height10(context) * 17.7,
+                      // width: AppDimensions.width10(context) * 17.7,
                       height: AppDimensions.height10(context) * 6.8,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
@@ -1047,7 +1041,7 @@ class progress_report_unsub extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               height: AppDimensions.height10(context) * 0.15,
-                              fontSize: AppDimensions.height10(context) * 2.8,
+                              fontSize: AppDimensions.font10(context) * 2.8,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFF7291A0)),
                         ),
@@ -1059,8 +1053,7 @@ class progress_report_unsub extends StatelessWidget {
                       child: RichText(
                           text: TextSpan(
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 4.5,
+                                  fontSize: AppDimensions.font10(context) * 4.5,
                                   fontFamily: 'laila',
                                   height: 1.2,
                                   fontWeight: FontWeight.w400,
@@ -1071,11 +1064,11 @@ class progress_report_unsub extends StatelessWidget {
                                 text: '',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.0))
+                                        AppDimensions.font10(context) * 2.0))
                           ])),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 10.5,
+                      width: AppDimensions.width10(context) * 10.5,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.2),
                       child: Row(
@@ -1083,7 +1076,7 @@ class progress_report_unsub extends StatelessWidget {
                         children: List.generate(
                           0, // Replace 5 with the number of containers you want to create
                           (index) => Container(
-                            width: AppDimensions.height10(context) * 1.5,
+                            width: AppDimensions.width10(context) * 1.5,
                             height: AppDimensions.height10(context) * 1.5,
                             margin: EdgeInsets.symmetric(
                                 horizontal:
@@ -1096,14 +1089,14 @@ class progress_report_unsub extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 8.4,
+                      width: AppDimensions.width10(context) * 8.4,
                       height: AppDimensions.height10(context) * 0.2,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
                       color: const Color(0xFFBDBDBD),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 34.1,
+                      width: AppDimensions.width10(context) * 34.1,
                       //height: AppDimensions.height10(context) * 3.4,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
@@ -1113,7 +1106,7 @@ class progress_report_unsub extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               height: AppDimensions.height10(context) * 0.15,
-                              fontSize: AppDimensions.height10(context) * 2.8,
+                              fontSize: AppDimensions.font10(context) * 2.8,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFF546096)),
                         ),
@@ -1125,8 +1118,7 @@ class progress_report_unsub extends StatelessWidget {
                       child: RichText(
                           text: TextSpan(
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 4.5,
+                                  fontSize: AppDimensions.font10(context) * 4.5,
                                   fontFamily: 'laila',
                                   height: 1.2,
                                   fontWeight: FontWeight.w400,
@@ -1137,11 +1129,11 @@ class progress_report_unsub extends StatelessWidget {
                                 text: '',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.0))
+                                        AppDimensions.font10(context) * 2.0))
                           ])),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 10.5,
+                      width: AppDimensions.width10(context) * 10.5,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.2),
                       child: Row(
@@ -1149,7 +1141,7 @@ class progress_report_unsub extends StatelessWidget {
                         children: List.generate(
                           0, // Replace 5 with the number of containers you want to create
                           (index) => Container(
-                            width: AppDimensions.height10(context) * 1.5,
+                            width: AppDimensions.width10(context) * 1.5,
                             height: AppDimensions.height10(context) * 1.5,
                             margin: EdgeInsets.symmetric(
                                 horizontal:
@@ -1173,27 +1165,27 @@ class progress_report_unsub extends StatelessWidget {
                     gradient: LinearGradient(
                         colors: [Color(0xFF91698C), Color(0xFFC19CA7)])),
                 child: Container(
-                  width: AppDimensions.height10(context) * 36.0,
+                  width: AppDimensions.width10(context) * 36.0,
                   height: AppDimensions.height10(context) * 16.9,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 2.0),
                   child: Column(
                     children: [
                       SizedBox(
-                        width: AppDimensions.height10(context) * 36.0,
+                        width: AppDimensions.width10(context) * 36.0,
                         height: AppDimensions.height10(context) * 1.9,
                         child: Text(
                           'Practice Assessment',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               height: 1.2,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFFF5F5F5)),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 35.0,
+                        width: AppDimensions.width10(context) * 35.0,
                         height: AppDimensions.height10(context) * 1.8,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.8,
@@ -1202,7 +1194,7 @@ class progress_report_unsub extends StatelessWidget {
                           'Your latest 20 active day evaluation.',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.4,
+                              fontSize: AppDimensions.font10(context) * 1.4,
                               height: 1.2,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFFF5F5F5)),
@@ -1223,20 +1215,20 @@ class progress_report_unsub extends StatelessWidget {
                           //report(context);
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 36.0,
+                          width: AppDimensions.width10(context) * 36.0,
                           height: AppDimensions.height10(context) * 6.0,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.2),
                           decoration: BoxDecoration(
                             border: Border.all(
-                                width: AppDimensions.height10(context) * 0.1,
+                                width: AppDimensions.width10(context) * 0.1,
                                 color: const Color(0xFFFFFFFF)),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0),
                           ),
                           child: Center(
                             child: Container(
-                              //  width: AppDimensions.height10(context) * 7.2,
+                              //  width: AppDimensions.width10(context) * 7.2,
                               height: AppDimensions.height10(context) * 2.1,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.2),
@@ -1246,7 +1238,7 @@ class progress_report_unsub extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.8,
+                                          AppDimensions.font10(context) * 1.8,
                                       height: 1.2,
                                       fontWeight: FontWeight.w600,
                                       color: const Color(0xFFFFFFFF)),
@@ -1281,7 +1273,7 @@ void report(context) {
         padding:
             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: Container(
-          width: AppDimensions.height10(context) * 39.4,
+          width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 51.3,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
@@ -1308,7 +1300,7 @@ void report(context) {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
@@ -1321,7 +1313,7 @@ void report(context) {
                 ),
               ),
               SizedBox(
-                width: AppDimensions.height10(context) * 23.8,
+                width: AppDimensions.width10(context) * 23.8,
                 height: AppDimensions.height10(context) * 3.4,
                 // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 3.2),
                 child: Text(
@@ -1329,12 +1321,12 @@ void report(context) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       color: const Color(0xff437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 32.8,
+                width: AppDimensions.width10(context) * 32.8,
                 height: AppDimensions.height10(context) * 2.4,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.5),
@@ -1344,12 +1336,12 @@ void report(context) {
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.12,
                       fontWeight: FontWeight.w600,
-                      fontSize: AppDimensions.height10(context) * 2.0,
+                      fontSize: AppDimensions.font10(context) * 2.0,
                       color: const Color(0xff437296)),
                 ),
               ),
               Container(
-                //  width: AppDimensions.height10(context) * 33.8,
+                //  width: AppDimensions.width10(context) * 33.8,
                 // height: AppDimensions.height10(context) * 6.8,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 1.5),
@@ -1358,12 +1350,12 @@ void report(context) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: AppDimensions.height10(context) * 1.4,
+                      fontSize: AppDimensions.font10(context) * 1.4,
                       color: const Color(0xff437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 23.7,
+                width: AppDimensions.width10(context) * 23.7,
                 height: AppDimensions.height10(context) * 25.5,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.2),

@@ -171,14 +171,14 @@ class _select_hurdleState extends State<select_hurdle> {
                         },
                         icon: Image.asset(
                           'assets/images/Back.webp',
-                          width: AppDimensions.height10(context) * 3.0,
+                          width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
                           fit: BoxFit.cover,
                         )),
                   ),
             centerTitle: true,
             title: SizedBox(
-              width: AppDimensions.height10(context) * 19.0,
+              width: AppDimensions.width10(context) * 19.0,
               height: AppDimensions.height10(context) * 2.4,
               child: Row(
                 children: [
@@ -186,7 +186,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     'Capture Hurdle ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.2,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w600,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -195,7 +195,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     ' 2',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.2,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w600,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -204,7 +204,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     '/5',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.2,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w400,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -225,7 +225,7 @@ class _select_hurdleState extends State<select_hurdle> {
                               context: context,
                               builder: (BuildContext context) => SizedBox(
                                     width:
-                                        AppDimensions.height10(context) * 27.0,
+                                        AppDimensions.width10(context) * 27.0,
                                     height:
                                         AppDimensions.height10(context) * 24.0,
                                     child: AlertDialog(
@@ -245,7 +245,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             23.8,
                                         child: const Text(
                                           "Exit hurdle?",
@@ -403,7 +403,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 2.6,
+                      width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
                     )),
@@ -424,7 +424,7 @@ class _select_hurdleState extends State<select_hurdle> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 33.7,
+                            width: AppDimensions.width10(context) * 33.7,
                             height: AppDimensions.height10(context) * 7.3,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 18.0),
@@ -434,8 +434,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                 'What or who has\ntriggered your hurdle?',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.8,
+                                  fontSize: AppDimensions.font10(context) * 2.8,
                                   fontWeight: FontWeight.w700,
                                 ),
                                 colors: const [
@@ -447,7 +446,7 @@ class _select_hurdleState extends State<select_hurdle> {
                           ),
                           Container(
                             // height: AppDimensions.height10(context) * 45.6,
-                            //width: AppDimensions.height10(context) * 30.6,
+                            //width: AppDimensions.width10(context) * 30.6,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 3.9),
                             padding: EdgeInsets.symmetric(
@@ -528,7 +527,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                               AppDimensions.height10(context) *
                                                   13.1,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   13.1,
                                           decoration: BoxDecoration(
                                               shape: BoxShape.circle,
@@ -558,7 +557,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.6,
                                                     fontWeight:
@@ -598,7 +597,7 @@ class _select_hurdleState extends State<select_hurdle> {
                               }
                             },
                             child: Container(
-                              width: AppDimensions.height10(context) * 25.4,
+                              width: AppDimensions.width10(context) * 25.4,
                               height: AppDimensions.height10(context) * 5.0,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 3.2,
@@ -629,7 +628,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w600,
                                       color: selectBox != -1
                                           ? Colors.white
@@ -639,7 +638,7 @@ class _select_hurdleState extends State<select_hurdle> {
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 17.0,
+                            width: AppDimensions.width10(context) * 17.0,
                             height: AppDimensions.height10(context) * 0.5,
                             // margin:
                             //     EdgeInsets.only(bottom: AppDimensions.height10(context) * 0.8),

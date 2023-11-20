@@ -45,7 +45,7 @@ void bottom_sheet(context, String goal) {
           child: Container(
             // color:Colors.lightGreen,
             height: AppDimensions.height10(context) * 45.0,
-            width: AppDimensions.height10(context) * 41.4,
+            width: AppDimensions.width10(context) * 41.4,
 
             child: Center(
               child: Padding(
@@ -57,13 +57,13 @@ void bottom_sheet(context, String goal) {
                   children: <Widget>[
                     Container(
                       //height: AppDimensions.height10(context) * 6.3,
-                      width: AppDimensions.height10(context) * 35.5,
+                      width: AppDimensions.width10(context) * 35.5,
                       child: Text(
                         'Create a new practice \n for ‘$name’ goal ',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: const Color(0xFF464646),
-                          fontSize: AppDimensions.height10(context) * 2.4,
+                          fontSize: AppDimensions.font10(context) * 2.4,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -72,7 +72,7 @@ void bottom_sheet(context, String goal) {
                       height: AppDimensions.height10(context) * 3.9,
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 36.0,
+                      width: AppDimensions.width10(context) * 36.0,
                       child: TextField(
                         controller: goalName,
                         // maxLength: 80,
@@ -142,7 +142,7 @@ void bottom_sheet(context, String goal) {
                     ),
                     Container(
                       height: AppDimensions.height10(context) * 5,
-                      width: AppDimensions.height10(context) * 25.4,
+                      width: AppDimensions.width10(context) * 25.4,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 5.0),
@@ -231,7 +231,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 36,
+      width: AppDimensions.width10(context) * 36,
       decoration: BoxDecoration(
           color: const Color.fromRGBO(0, 0, 0, 0.1),
           borderRadius:

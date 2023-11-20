@@ -42,7 +42,7 @@ class align_circles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 26.8,
+      width: AppDimensions.width10(context) * 26.8,
       height: AppDimensions.height10(context) * 30.2,
       // color: Colors.blue,
       // margin: const EdgeInsets.only(top: 29, bottom: 12, right: 45),
@@ -52,11 +52,11 @@ class align_circles extends StatelessWidget {
           child: AnimatedScaleButton(
             onTap: onTap1,
             child: Container(
-              width: AppDimensions.height10(context) * 26.8,
+              width: AppDimensions.width10(context) * 26.8,
               height: AppDimensions.height10(context) * 26.8,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage(asset_1), fit: BoxFit.cover)),
+                      image: AssetImage(asset_1), fit: BoxFit.contain)),
               child: Stack(
                 children: [
                   Align(
@@ -68,7 +68,7 @@ class align_circles extends StatelessWidget {
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.0,
                                 bottom: AppDimensions.height10(context) * 0),
-                            width: AppDimensions.height10(context) * 19.9,
+                            width: AppDimensions.width10(context) * 19.9,
                             child: Text(
                               head_text,
                               textAlign: TextAlign.center,
@@ -88,7 +88,7 @@ class align_circles extends StatelessWidget {
                     alignment: const Alignment(0, -0.10),
                     child: Container(
                       height: AppDimensions.height10(context) * 4.0,
-                      width: AppDimensions.height10(context) * 22.0,
+                      width: AppDimensions.width10(context) * 22.0,
                       child: Text(body_text,
                           maxLines: 2,
                           textAlign: TextAlign.center,
@@ -113,7 +113,7 @@ class align_circles extends StatelessWidget {
             onTap: onTap2,
             child: Container(
               height: AppDimensions.height10(context) * 13.8,
-              width: AppDimensions.height10(context) * 13.8,
+              width: AppDimensions.width10(context) * 13.8,
               padding: EdgeInsets.symmetric(
                   horizontal: AppDimensions.height10(context)),
               decoration: BoxDecoration(
@@ -128,7 +128,7 @@ class align_circles extends StatelessWidget {
                   child: Center(
                       child: SizedBox(
                     //height: AppDimensions.height10(context) * 6.064,
-                    width: AppDimensions.height10(context) * 11.225,
+                    width: AppDimensions.width10(context) * 11.225,
                     child: Text(
                       s_circle_text,
                       maxLines: 2,
@@ -137,7 +137,7 @@ class align_circles extends StatelessWidget {
                       style: TextStyle(
                           color: Color(s_circle_text_col),
                           height: AppDimensions.height10(context) * 0.14,
-                          fontSize: AppDimensions.height10(context) * 1.8,
+                          fontSize: AppDimensions.font10(context) * 1.8,
                           fontWeight: FontWeight.w500),
                     ),
                   )),

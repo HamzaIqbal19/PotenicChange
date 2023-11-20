@@ -150,7 +150,7 @@ class _StarReviewState extends State<StarReview> {
                 ? IconButton(
                     icon: Image.asset(
                       'assets/images/Back.webp',
-                      width: AppDimensions.height10(context) * 3,
+                      width: AppDimensions.width10(context) * 3,
                       height: AppDimensions.height10(context) * 3,
                       fit: BoxFit.contain,
                     ),
@@ -223,13 +223,13 @@ class _StarReviewState extends State<StarReview> {
                           style: TextStyle(
                               color: const Color(0xFF5B74A6),
                               fontWeight: FontWeight.w600,
-                              fontSize: AppDimensions.height10(context) * 2.0),
+                              fontSize: AppDimensions.font10(context) * 2.0),
                         ),
                         SizedBox(
                           height: AppDimensions.height10(context) * 2.0,
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 10.2,
+                          width: AppDimensions.width10(context) * 10.2,
                           height: AppDimensions.height10(context) * 11.2,
                           padding: EdgeInsets.only(
                               bottom: AppDimensions.height10(context) * 1.0),
@@ -273,7 +273,7 @@ class _StarReviewState extends State<StarReview> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFF437296),
-                                fontSize: AppDimensions.height10(context) * 3.0,
+                                fontSize: AppDimensions.font10(context) * 3.0,
                               ),
                             ),
                           ),
@@ -283,14 +283,13 @@ class _StarReviewState extends State<StarReview> {
                         ),
                         SizedBox(
                           height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.height10(context) * 23.9,
+                          width: AppDimensions.width10(context) * 23.9,
                           child: Center(
                             child: Text(
                               "Review your summary here.",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF5B74A6)),
                             ),
@@ -300,14 +299,14 @@ class _StarReviewState extends State<StarReview> {
                           height: AppDimensions.height10(context) * 3.4,
                         ),
                         Container(
-                            width: AppDimensions.height10(context) * 38.2,
+                            width: AppDimensions.width10(context) * 38.2,
                             //height: AppDimensions.height10(context) * 40.6,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 border: Border.all(
                                     color: Colors.white,
                                     width:
-                                        AppDimensions.height10(context) * 0.2),
+                                        AppDimensions.width10(context) * 0.2),
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10(context) * 1.8))),
                             child: Column(
@@ -336,9 +335,9 @@ class _StarReviewState extends State<StarReview> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 3.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                30.5,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    30.5,
 
                                             // color: Colors.blue,
                                             decoration: const BoxDecoration(
@@ -402,17 +401,16 @@ class _StarReviewState extends State<StarReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.3,
-                                        // width: AppDimensions.height10(context) *
+                                        // width: AppDimensions.width10(context) *
                                         //     23.9,
                                         child: Center(
                                           child: Text(
                                             "Your Goal Name",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     0.15,
@@ -427,7 +425,7 @@ class _StarReviewState extends State<StarReview> {
                                                 2.3,
                                       ),
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             36.0,
                                         padding: EdgeInsets.only(
                                             top: AppDimensions.height10(
@@ -482,7 +480,7 @@ class _StarReviewState extends State<StarReview> {
                                                       ? const Color(0xFFFFFFFF)
                                                       : const Color(0xFFFFFFFF),
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           2.2,
                                                 )),
@@ -503,17 +501,16 @@ class _StarReviewState extends State<StarReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             23.9,
                                         child: Center(
                                           child: Text(
                                             "Select colour",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFF5B74A6)),
                                           ),
@@ -528,7 +525,7 @@ class _StarReviewState extends State<StarReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 12.6,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             22.1,
                                         child: Column(
                                           mainAxisAlignment:
@@ -568,10 +565,10 @@ class _StarReviewState extends State<StarReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -586,7 +583,7 @@ class _StarReviewState extends State<StarReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -596,7 +593,7 @@ class _StarReviewState extends State<StarReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -617,7 +614,7 @@ class _StarReviewState extends State<StarReview> {
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.0,
                                                   ),
@@ -650,10 +647,10 @@ class _StarReviewState extends State<StarReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -668,7 +665,7 @@ class _StarReviewState extends State<StarReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -678,7 +675,7 @@ class _StarReviewState extends State<StarReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -699,7 +696,7 @@ class _StarReviewState extends State<StarReview> {
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.0,
                                                   ),
@@ -732,10 +729,10 @@ class _StarReviewState extends State<StarReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -750,7 +747,7 @@ class _StarReviewState extends State<StarReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -760,7 +757,7 @@ class _StarReviewState extends State<StarReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -817,10 +814,10 @@ class _StarReviewState extends State<StarReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -835,7 +832,7 @@ class _StarReviewState extends State<StarReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -845,7 +842,7 @@ class _StarReviewState extends State<StarReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -866,7 +863,7 @@ class _StarReviewState extends State<StarReview> {
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.0,
                                                   ),
@@ -899,10 +896,10 @@ class _StarReviewState extends State<StarReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -917,7 +914,7 @@ class _StarReviewState extends State<StarReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -927,7 +924,7 @@ class _StarReviewState extends State<StarReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -948,7 +945,7 @@ class _StarReviewState extends State<StarReview> {
                                                   ),
                                                   SizedBox(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.0,
                                                   ),
@@ -981,10 +978,10 @@ class _StarReviewState extends State<StarReview> {
                                                               .height10(
                                                                   context) *
                                                           6.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          6.0,
+                                                              6.0,
                                                       padding: EdgeInsets.all(
                                                           AppDimensions
                                                                   .height10(
@@ -999,7 +996,7 @@ class _StarReviewState extends State<StarReview> {
                                                                 : Colors
                                                                     .transparent,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 0.3),
                                                       ),
@@ -1009,7 +1006,7 @@ class _StarReviewState extends State<StarReview> {
                                                                     context) *
                                                             5.0,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             5.0,
                                                         //   color: Colors.blue,
@@ -1048,14 +1045,14 @@ class _StarReviewState extends State<StarReview> {
                           height: AppDimensions.height10(context) * 2.5,
                         ),
                         Container(
-                            width: AppDimensions.height10(context) * 38.2,
+                            width: AppDimensions.width10(context) * 38.2,
                             // height: AppDimensions.height10(context) * 49.9,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 border: Border.all(
                                     color: Colors.white,
                                     width:
-                                        AppDimensions.height10(context) * 0.2),
+                                        AppDimensions.width10(context) * 0.2),
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10(context) * 1.8))),
                             child: Column(
@@ -1149,8 +1146,8 @@ class _StarReviewState extends State<StarReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
-                                        width: AppDimensions.height10(context) *
-                                            24,
+                                        width:
+                                            AppDimensions.width10(context) * 24,
                                         child: Center(
                                           child: Text(
                                             "Your reasons ‘Why’",
@@ -1159,10 +1156,9 @@ class _StarReviewState extends State<StarReview> {
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     0.12,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFF5B74A6)),
                                           ),
@@ -1198,14 +1194,14 @@ class _StarReviewState extends State<StarReview> {
                           height: AppDimensions.height10(context) * 3.1,
                         ),
                         Container(
-                            width: AppDimensions.height10(context) * 38.2,
+                            width: AppDimensions.width10(context) * 38.2,
                             // height: AppDimensions.height10(context) * 24.4,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 border: Border.all(
                                     color: Colors.white,
                                     width:
-                                        AppDimensions.height10(context) * 0.2),
+                                        AppDimensions.width10(context) * 0.2),
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10(context) * 1.8))),
                             child: Column(
@@ -1233,9 +1229,9 @@ class _StarReviewState extends State<StarReview> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 3.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                30.5,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    30.5,
 
                                             // color: Colors.blue,
                                             decoration: const BoxDecoration(
@@ -1294,7 +1290,7 @@ class _StarReviewState extends State<StarReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.4,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             30.9,
                                         child: Center(
                                           child: Text(
@@ -1304,10 +1300,9 @@ class _StarReviewState extends State<StarReview> {
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     0.12,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFF5B74A6)),
                                           ),
@@ -1344,14 +1339,14 @@ class _StarReviewState extends State<StarReview> {
                           height: AppDimensions.height10(context) * 3.1,
                         ),
                         Container(
-                            width: AppDimensions.height10(context) * 38.2,
+                            width: AppDimensions.width10(context) * 38.2,
                             //height: AppDimensions.height10(context) * 24.4,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 border: Border.all(
                                     color: Colors.white,
                                     width:
-                                        AppDimensions.height10(context) * 0.2),
+                                        AppDimensions.width10(context) * 0.2),
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10(context) * 1.8))),
                             child: Column(
@@ -1379,9 +1374,9 @@ class _StarReviewState extends State<StarReview> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 3.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                30.5,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    30.5,
 
                                             // color: Colors.blue,
                                             decoration: const BoxDecoration(
@@ -1441,7 +1436,7 @@ class _StarReviewState extends State<StarReview> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.4,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             30.9,
                                         child: Center(
                                           child: Text(
@@ -1451,10 +1446,9 @@ class _StarReviewState extends State<StarReview> {
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     0.12,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFF5B74A6)),
                                           ),
@@ -1499,7 +1493,7 @@ class _StarReviewState extends State<StarReview> {
                           children: [
                             SizedBox(
                                 // color: Colors.blue,
-                                width: AppDimensions.height10(context) * 5.0,
+                                width: AppDimensions.width10(context) * 5.0,
                                 height: AppDimensions.height10(context) * 5.0,
                                 child: AnimatedScaleButton(
                                   onTap: () {
@@ -1518,7 +1512,7 @@ class _StarReviewState extends State<StarReview> {
                                 duration: const Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) => SizedBox(
-                                  width: AppDimensions.height10(context) * 27.0,
+                                  width: AppDimensions.width10(context) * 27.0,
                                   height:
                                       AppDimensions.height10(context) * 24.6,
                                   child: AlertDialog(
@@ -1544,8 +1538,8 @@ class _StarReviewState extends State<StarReview> {
                                                   0),
                                       // height:
                                       //     AppDimensions.height10(context) * 4.4,
-                                      width: AppDimensions.height10(context) *
-                                          23.8,
+                                      width:
+                                          AppDimensions.width10(context) * 23.8,
                                       child: Text.rich(
                                         style: TextStyle(
                                             height: AppDimensions.height10(
@@ -1556,9 +1550,9 @@ class _StarReviewState extends State<StarReview> {
                                           text: 'Are you sure you want\n to ',
                                           style: TextStyle(
                                             color: const Color(0xFF000000),
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.9,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.9,
                                             fontWeight: FontWeight.w400,
                                           ),
                                           children: <TextSpan>[
@@ -1568,7 +1562,7 @@ class _StarReviewState extends State<StarReview> {
                                                   color:
                                                       const Color(0xFF000000),
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.9,
                                                   fontWeight: FontWeight.w700,
@@ -1580,7 +1574,7 @@ class _StarReviewState extends State<StarReview> {
                                                   color:
                                                       const Color(0xFF000000),
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.9,
                                                   fontWeight: FontWeight.w400,
@@ -1610,14 +1604,14 @@ class _StarReviewState extends State<StarReview> {
                                               0.5),
                                       // height:
                                       //     AppDimensions.height10(context) * 6.8,
-                                      width: AppDimensions.height10(context) *
-                                          23.8,
+                                      width:
+                                          AppDimensions.width10(context) * 23.8,
                                       child: Text(
                                         "By clicking 'Yes' you confirm that this\ngoal will be deleted and all your data\nthat relates to this goal won't be\nrecoverable. ",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.5,
                                           fontFamily: "Laila",
                                           height:
@@ -1646,7 +1640,7 @@ class _StarReviewState extends State<StarReview> {
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.7,
                                                     fontFamily: "Laila",
@@ -1659,9 +1653,9 @@ class _StarReviewState extends State<StarReview> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 4.4,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                27.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    27.0,
                                             child: TextButton(
                                               onPressed: () {
                                                 AdminGoal()
@@ -1706,7 +1700,7 @@ class _StarReviewState extends State<StarReview> {
                                                 'Yes',
                                                 style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.7,
                                                   fontFamily: "Laila",
@@ -1725,7 +1719,7 @@ class _StarReviewState extends State<StarReview> {
                               ),
                               child: Container(
                                 height: AppDimensions.height10(context) * 5,
-                                width: AppDimensions.height10(context) * 31.3,
+                                width: AppDimensions.width10(context) * 31.3,
                                 decoration: BoxDecoration(
                                   // color: Color(0xFFFF7D50),
                                   border: Border.all(color: Colors.transparent),
@@ -1769,7 +1763,7 @@ class _StarReviewState extends State<StarReview> {
                                           color: Colors.white,
                                           // height: AppDimensions.height10*0.1,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w700,
                                         ),
@@ -1833,7 +1827,7 @@ class _inner_text1State extends State<inner_text1> {
   Widget build(BuildContext context) {
     return Container(
       height: AppDimensions.height10(context) * 8.9,
-      width: AppDimensions.height10(context) * 36.0,
+      width: AppDimensions.width10(context) * 36.0,
       padding: EdgeInsets.only(
           top: AppDimensions.height10(context) * 2,
           bottom: 1,
@@ -1859,14 +1853,14 @@ class _inner_text1State extends State<inner_text1> {
         children: [
           SizedBox(
               height: AppDimensions.height10(context) * 3.6,
-              width: AppDimensions.height10(context) * 26.9,
+              width: AppDimensions.width10(context) * 26.9,
               child: Text("Control my anger",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: _focusNode.hasFocus
                         ? const Color(0xFFFFFFFF)
                         : const Color(0xFFFFFFFF),
-                    fontSize: AppDimensions.height10(context) * 2.2,
+                    fontSize: AppDimensions.font10(context) * 2.2,
                   ))),
         ],
       ),
@@ -1903,7 +1897,7 @@ class _inner_text2State extends State<inner_text2> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 36.0,
+      width: AppDimensions.width10(context) * 36.0,
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
               ? const LinearGradient(
@@ -1924,7 +1918,7 @@ class _inner_text2State extends State<inner_text2> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-              width: AppDimensions.height10(context) * 32.0,
+              width: AppDimensions.width10(context) * 32.0,
               padding: EdgeInsets.only(
                   top: AppDimensions.height10(context) * 1.3,
                   left: AppDimensions.height10(context) * 0.6),
@@ -1935,7 +1929,7 @@ class _inner_text2State extends State<inner_text2> {
                     color: _focusNode.hasFocus
                         ? const Color(0xFFFFFFFF)
                         : const Color(0xFFFFFFFF),
-                    fontSize: AppDimensions.height10(context) * 2.2,
+                    fontSize: AppDimensions.font10(context) * 2.2,
                   ))),
           SizedBox(
             height: AppDimensions.height10(context) * 0.9,
@@ -1943,12 +1937,12 @@ class _inner_text2State extends State<inner_text2> {
           Container(
               padding: EdgeInsets.only(
                   bottom: AppDimensions.height10(context) * 2.4),
-              width: AppDimensions.height10(context) * 32.0,
+              width: AppDimensions.width10(context) * 32.0,
               child: CupertinoTextField(
                 readOnly: true,
                 placeholder: widget.panel_Text,
                 placeholderStyle: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 1.6,
+                    fontSize: AppDimensions.font10(context) * 1.6,
                     fontWeight: FontWeight.w500,
                     fontFamily: "Laila",
                     height: AppDimensions.height10(context) * 0.12,

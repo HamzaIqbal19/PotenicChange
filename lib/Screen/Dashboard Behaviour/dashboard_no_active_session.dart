@@ -27,14 +27,14 @@ class no_active_session extends StatelessWidget {
                   icon: Image.asset(
                     'assets/images/Add goal.webp',
                     height: AppDimensions.height10(context) * 2.0,
-                    width: AppDimensions.height10(context) * 2.1,
+                    width: AppDimensions.width10(context) * 2.1,
                   )),
               IconButton(
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/calendar_month_black_24dp 1.webp',
                     height: AppDimensions.height10(context) * 2.4,
-                    width: AppDimensions.height10(context) * 2.4,
+                    width: AppDimensions.width10(context) * 2.4,
                   )),
             ],
           )
@@ -66,14 +66,14 @@ class no_active_session extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         child: SizedBox(
                           height: AppDimensions.height10(context) * 19.2,
-                          width: AppDimensions.height10(context) * 45.7,
+                          width: AppDimensions.width10(context) * 45.7,
                           child: Stack(
                             children: [
                               Align(
                                 alignment: Alignment(-1, 1),
                                 child: Container(
                                   height: AppDimensions.height10(context) * 7.9,
-                                  width: AppDimensions.height10(context) * 7.9,
+                                  width: AppDimensions.width10(context) * 7.9,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
                                           8.4),
@@ -283,7 +283,7 @@ class no_active_session extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 3.0,
+                                fontSize: AppDimensions.font10(context) * 3.0,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Laila'),
                           ),
@@ -301,14 +301,14 @@ class no_active_session extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Laila',
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
                       Container(
                           height: AppDimensions.height10(context) * 5.0,
-                          width: AppDimensions.height10(context) * 24.3,
+                          width: AppDimensions.width10(context) * 24.3,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 4.6),
                           decoration: BoxDecoration(
@@ -328,8 +328,7 @@ class no_active_session extends StatelessWidget {
                               'View all goals',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'poppins'),
                             ),

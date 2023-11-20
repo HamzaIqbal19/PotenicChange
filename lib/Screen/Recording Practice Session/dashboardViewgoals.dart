@@ -189,7 +189,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                     child: Image.asset(
                       'assets/images/Add goal.webp',
                       height: AppDimensions.height10(context) * 2.4,
-                      width: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.width10(context) * 2.4,
                     ),
                   ),
                   Container(
@@ -200,7 +200,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                     child: Image.asset(
                       'assets/images/calendar_month_black_24dp 1.webp',
                       height: AppDimensions.height10(context) * 2.4,
-                      width: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.width10(context) * 2.4,
                     ),
                   ),
                 ],
@@ -216,7 +216,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                   padding:
                       EdgeInsets.all(AppDimensions.height10(context) * 1.6),
                   child: Container(
-                    width: AppDimensions.height10(context) * 38.259,
+                    width: AppDimensions.width10(context) * 38.259,
                     height: AppDimensions.height10(context) * 9.707,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 12.0),
@@ -233,7 +233,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                         Container(
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 1.261),
-                          width: AppDimensions.height10(context) * 4.437,
+                          width: AppDimensions.width10(context) * 4.437,
                           height: AppDimensions.height10(context) * 4.437,
                           decoration: const BoxDecoration(
                               image: DecorationImage(
@@ -241,7 +241,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                       'assets/images/circle_tick.webp'))),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 16.3,
+                          width: AppDimensions.width10(context) * 16.3,
                           height: AppDimensions.height10(context) * 3.6,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 1.232),
@@ -249,27 +249,27 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                //  / width: AppDimensions.height10(context) * 4.6,
+                                //  / width: AppDimensions.width10(context) * 4.6,
                                 height: AppDimensions.height10(context) * 1.4,
                                 //   color: Colors.amber,
                                 child: Text(
                                   'SAVED',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.3,
+                                          AppDimensions.font10(context) * 1.3,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xFFFFFFFF)),
                                 ),
                               ),
                               SizedBox(
-                                //width: AppDimensions.height10(context) * 6.9,
+                                //width: AppDimensions.width10(context) * 6.9,
                                 height: AppDimensions.height10(context) * 2.2,
                                 child: Text(
                                   pracName,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.8,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xFFFFFFFF)),
                                 ),
@@ -296,7 +296,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 3.0,
-                            width: AppDimensions.height10(context) * 3.0,
+                            width: AppDimensions.width10(context) * 3.0,
                             padding: EdgeInsets.all(
                                 AppDimensions.height10(context) * 0.6),
                             margin: EdgeInsets.only(
@@ -305,8 +305,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                 shape: BoxShape.circle,
                                 color: Colors.transparent,
                                 border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.2,
+                                    width: AppDimensions.width10(context) * 0.2,
                                     color: Colors.white)),
                             child: const ImageIcon(
                               AssetImage('assets/images/edit_icon.webp'),
@@ -351,7 +350,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                               scrollDirection: Axis.horizontal,
                               child: SizedBox(
                                 height: AppDimensions.height10(context) * 19.2,
-                                width: AppDimensions.height10(context) * 45.7,
+                                width: AppDimensions.width10(context) * 45.7,
                                 child: Stack(
                                   children: [
                                     Align(
@@ -360,7 +359,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         height:
                                             AppDimensions.height10(context) *
                                                 7.9,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             7.9,
                                         //margin: const EdgeInsets.only(top: 84),
                                         decoration: BoxDecoration(
@@ -387,10 +386,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                   previousDayName.substring(
                                                       0, 3),
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.2,
+                                                              1.2,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       color: Colors.white),
@@ -401,10 +400,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                       color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.w400,
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.7),
+                                                              1.7),
                                                 ),
                                                 Container(
                                                     height:
@@ -412,7 +411,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                 context) *
                                                             2.5,
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.5,
                                                     //  margin: const EdgeInsets.only(top: 3.32),
@@ -429,7 +428,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                           '0/0',
                                                           style: TextStyle(
                                                               fontSize: AppDimensions
-                                                                      .height10(
+                                                                      .font10(
                                                                           context) *
                                                                   1.0,
                                                               fontWeight:
@@ -450,7 +449,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         height:
                                             AppDimensions.height10(context) *
                                                 19.2,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             18.8,
                                         // margin: EdgeInsets.only(left: 55.5, right: 55.5),
                                         child: Container(
@@ -458,7 +457,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                               AppDimensions.height10(context) *
                                                   13.81,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   13.265,
                                           decoration: const BoxDecoration(
                                               image: DecorationImage(
@@ -495,7 +494,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                     currentDay.substring(0, 3),
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.4,
                                                         fontWeight:
@@ -509,7 +508,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                         color: const Color(
                                                             0xff5B74A6),
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.3,
                                                         fontWeight:
@@ -537,7 +536,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                           '0/2',
                                                           style: TextStyle(
                                                               fontSize: AppDimensions
-                                                                      .height10(
+                                                                      .font10(
                                                                           context) *
                                                                   1.0,
                                                               fontWeight:
@@ -562,7 +561,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                               AppDimensions.height10(context) *
                                                   7.9,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   7.9,
                                           // margin: const EdgeInsets.only(
                                           //   top: 84,
@@ -589,7 +588,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 nextDayName.substring(0, 3),
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.2,
                                                     fontWeight: FontWeight.w600,
@@ -612,15 +611,15 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   border: Border.all(
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          0.1,
+                                                              0.1,
                                                       color: Colors.white),
                                                 ),
                                                 child: SizedBox(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             1.7,
                                                     height:
@@ -653,7 +652,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 35.6,
+                              width: AppDimensions.width10(context) * 35.6,
                               height: AppDimensions.height10(context) * 4.2,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 2.0),
@@ -668,7 +667,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                     '8.00',
                                     style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.8,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white,
                                     ),
@@ -726,9 +725,9 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 13.8,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                13.8,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    13.8,
                                             decoration: const BoxDecoration(
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
@@ -741,7 +740,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w500),
@@ -757,9 +756,9 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 13.8,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                13.8,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    13.8,
                                             decoration: const BoxDecoration(
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
@@ -772,7 +771,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w500),
@@ -795,9 +794,9 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 )));
                                           },
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                26.8,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    26.8,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 26.8,
@@ -815,7 +814,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                       'Control my anger',
                                                       style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               2.0,
                                                           fontWeight:
@@ -834,7 +833,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                           fontStyle:
                                                               FontStyle.italic,
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.6,
                                                           fontWeight:
@@ -858,10 +857,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                               .height10(
                                                                   context) *
                                                           13.8,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          13.8,
+                                                              13.8,
                                                       decoration:
                                                           const BoxDecoration(
                                                               //color: Colors.amber,
@@ -897,7 +896,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                   : no_activegoals == true
                                       ? Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   26.8,
                                           height:
                                               AppDimensions.height10(context) *
@@ -926,7 +925,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                     style: TextStyle(
                                                         color: Colors.white,
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             3.0,
                                                         fontWeight:
@@ -954,7 +953,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                     context) *
                                                             0.15,
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.8,
                                                         fontWeight:
@@ -1023,7 +1022,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                         context) *
                                                                 2.9,
                                                             width: AppDimensions
-                                                                    .height10(
+                                                                    .width10(
                                                                         context) *
                                                                 2.9,
                                                           )),
@@ -1039,7 +1038,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                 fontFamily:
                                                                     'laila',
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.4,
                                                                 fontWeight:
@@ -1099,7 +1098,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                 context) *
                                                             9.0,
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             24.0,
                                                     padding: EdgeInsets.symmetric(
@@ -1120,7 +1119,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                           maxLines: 1,
                                                           style: TextStyle(
                                                               fontSize: AppDimensions
-                                                                      .height10(
+                                                                      .font10(
                                                                           context) *
                                                                   2.0,
                                                               height: AppDimensions
@@ -1379,7 +1378,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                             : const Color(
                                                                 0xFFFBFBFB),
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.8,
                                                         fontWeight:
@@ -1413,7 +1412,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w500),
@@ -1438,7 +1437,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                 //           AppDimensions.height10(context) * 2.0),
                                 //     )),
                                 //     builder: ((context) => Container(
-                                //           width: AppDimensions.height10(context) * 41.4,
+                                //           width: AppDimensions.width10(context) * 41.4,
                                 //           height:
                                 //               AppDimensions.height10(context) * 57.6,
                                 //           decoration: BoxDecoration(
@@ -1498,7 +1497,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                 //                 ),
                                 //               ),
                                 //               Container(
-                                //                 width: AppDimensions.height10(context) *
+                                //                 width: AppDimensions.width10(context) *
                                 //                     22.7,
                                 //                 height:
                                 //                     AppDimensions.height10(context) *
@@ -1509,7 +1508,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                 //                 child: Text(
                                 //                   'Get Reminders',
                                 //                   style: TextStyle(
-                                //                       fontSize: AppDimensions.height10(
+                                //                       fontSize: AppDimensions.font10(
                                 //                               context) *
                                 //                           3.0,
                                 //                       letterSpacing:
@@ -1521,7 +1520,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                 //                 ),
                                 //               ),
                                 //               Container(
-                                //                 width: AppDimensions.height10(context) *
+                                //                 width: AppDimensions.width10(context) *
                                 //                     38.2,
                                 //                 height:
                                 //                     AppDimensions.height10(context) *
@@ -1549,7 +1548,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                 //                 ),
                                 //               ),
                                 //               Container(
-                                //                 width: AppDimensions.height10(context) *
+                                //                 width: AppDimensions.width10(context) *
                                 //                     38.2,
                                 //                 height:
                                 //                     AppDimensions.height10(context) *
@@ -1679,7 +1678,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                               child: Container(
                                 height:
                                     AppDimensions.height10(context) * 14.432,
-                                width: AppDimensions.height10(context) * 35.335,
+                                width: AppDimensions.width10(context) * 35.335,
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                   image: AssetImage(
@@ -1704,7 +1703,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         height:
                                             AppDimensions.height10(context) *
                                                 5.0,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             5.0,
                                       ),
                                     ),
@@ -1715,8 +1714,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                       "assets/images/Vector Smart Object.webp",
                                       height: AppDimensions.height10(context) *
                                           9.296,
-                                      width: AppDimensions.height10(context) *
-                                          4.16,
+                                      width:
+                                          AppDimensions.width10(context) * 4.16,
                                     ),
                                   ),
                                   Container(
@@ -1728,7 +1727,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                       children: [
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   28.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1737,7 +1736,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                           child: Text(
                                             "Hi, it's Reda here",
                                             style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w700,
@@ -1748,7 +1747,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   5.245,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1765,7 +1764,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   26.7,
                                           // height: AppDimensions.height10(context) * 5.3,
                                           margin: EdgeInsets.only(
@@ -1780,10 +1779,9 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                             // textAlign: TextAlign.left,
 
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.4,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.4,
                                                 fontWeight: FontWeight.w400,
                                                 color: const Color.fromRGBO(
                                                     91, 116, 166, 1)),
@@ -1910,9 +1908,9 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                       0.4,
                                                                       0.13),
                                           child: SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                30.6,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    30.6,
                                             height: goal_level == 1
                                                 ? AppDimensions.height10(
                                                         context) *
@@ -1984,10 +1982,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                               .height10(
                                                                   context) *
                                                           2.0,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          2.0,
+                                                              2.0,
                                                     ),
                                                   ),
                                                 ),
@@ -2036,7 +2034,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                     children: [
                                                       Container(
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             21.6,
                                                         //height: AppDimensions.height10(context) * 2.2,
@@ -2087,7 +2085,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                       ),
                                                       Container(
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             27.4,
                                                         height: goal_level == 1
@@ -2293,7 +2291,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                       ),
                                                       Container(
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             24.3,
                                                         height: AppDimensions
@@ -2323,12 +2321,12 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                         BorderRadius.circular(AppDimensions.height10(context) *
                                                                             5.0),
                                                                     border: Border.all(
-                                                                        width: AppDimensions.height10(context) *
+                                                                        width: AppDimensions.width10(context) *
                                                                             0.1,
                                                                         color: const Color(
                                                                             0xFFFBFBFB))),
                                                                 width: AppDimensions
-                                                                        .height10(
+                                                                        .width10(
                                                                             context) *
                                                                     9.60,
                                                                 height: AppDimensions
@@ -2348,7 +2346,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                             TextDecoration
                                                                                 .none,
                                                                         fontSize:
-                                                                            AppDimensions.height10(context) *
+                                                                            AppDimensions.font10(context) *
                                                                                 1.6,
                                                                         color: const Color(
                                                                             0xFF8C648A),
@@ -2371,7 +2369,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                               },
                                                               child: Container(
                                                                 width: AppDimensions
-                                                                        .height10(
+                                                                        .width10(
                                                                             context) *
                                                                     11.7,
                                                                 height: AppDimensions
@@ -2410,7 +2408,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                         fontFamily:
                                                                             'Laila',
                                                                         fontSize:
-                                                                            AppDimensions.height10(context) *
+                                                                            AppDimensions.font10(context) *
                                                                                 1.6,
                                                                         color: const Color(
                                                                             0xFFFFFFFF),
@@ -2454,7 +2452,7 @@ void __share_experience(context, String goalName, String identity, String color,
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10(context) * 39.4,
+          width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 62.3,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
@@ -2479,7 +2477,7 @@ void __share_experience(context, String goalName, String identity, String color,
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
@@ -2493,7 +2491,7 @@ void __share_experience(context, String goalName, String identity, String color,
                 ),
               ),
               Container(
-                  width: AppDimensions.height10(context) * 28.6,
+                  width: AppDimensions.width10(context) * 28.6,
                   height: AppDimensions.height10(context) * 5.8,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 0.7,
@@ -2503,13 +2501,13 @@ void __share_experience(context, String goalName, String identity, String color,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         height: AppDimensions.height10(context) * 0.12,
-                        fontSize: AppDimensions.height10(context) * 2.4,
+                        fontSize: AppDimensions.font10(context) * 2.4,
                         // letterSpacing: AppDimensions.height10(context) * 0.2,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFF437296)),
                   )),
               Container(
-                width: AppDimensions.height10(context) * 32.7,
+                width: AppDimensions.width10(context) * 32.7,
                 height: AppDimensions.height10(context) * 6.4,
                 // color: Colors.amber,
                 alignment: Alignment.center,
@@ -2519,14 +2517,14 @@ void __share_experience(context, String goalName, String identity, String color,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.12,
-                      fontSize: AppDimensions.height10(context) * 1.6,
+                      fontSize: AppDimensions.font10(context) * 1.6,
                       // letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 24.8,
+                width: AppDimensions.width10(context) * 24.8,
                 height: AppDimensions.height10(context) * 24.8,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.8),
@@ -2534,7 +2532,7 @@ void __share_experience(context, String goalName, String identity, String color,
                   Align(
                     alignment: Alignment.topRight,
                     child: Container(
-                      width: AppDimensions.height10(context) * 24.8,
+                      width: AppDimensions.width10(context) * 24.8,
                       height: AppDimensions.height10(context) * 24.8,
                       decoration: BoxDecoration(
                           image: DecorationImage(
@@ -2557,7 +2555,7 @@ void __share_experience(context, String goalName, String identity, String color,
                           Align(
                               alignment: const Alignment(0, -0.5),
                               child: Container(
-                                width: AppDimensions.height10(context) * 24.0,
+                                width: AppDimensions.width10(context) * 24.0,
                                 padding: EdgeInsets.symmetric(
                                     horizontal:
                                         AppDimensions.height10(context) * 2.0),
@@ -2568,7 +2566,7 @@ void __share_experience(context, String goalName, String identity, String color,
                                   maxLines: 1,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.0,
                                       height: AppDimensions.height10(context) *
                                           0.14,
                                       fontWeight: FontWeight.w600,
@@ -2588,7 +2586,7 @@ void __share_experience(context, String goalName, String identity, String color,
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xff5B74A6))),
                             ),
@@ -2603,7 +2601,7 @@ void __share_experience(context, String goalName, String identity, String color,
                       onTap: () {},
                       child: Container(
                         height: AppDimensions.height10(context) * 14.8,
-                        width: AppDimensions.height10(context) * 14.8,
+                        width: AppDimensions.width10(context) * 14.8,
                         decoration: BoxDecoration(
                             //color: Colors.amber,
                             image: DecorationImage(
@@ -2635,7 +2633,7 @@ void __share_experience(context, String goalName, String identity, String color,
                                                 : pracColor == "5"
                                                     ? const Color(0xFF315291)
                                                     : const Color(0XFFFC7133),
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w500),
                           ),
                         ),
@@ -2646,7 +2644,7 @@ void __share_experience(context, String goalName, String identity, String color,
               ),
               Container(
                   height: AppDimensions.height10(context) * 12.5,
-                  width: AppDimensions.height10(context) * 12.5,
+                  width: AppDimensions.width10(context) * 12.5,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 1.9),
                   decoration: const BoxDecoration(
@@ -2684,7 +2682,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                             child: Text(
 //                               connected ? 'Back Online' : 'You’re Offline',
 //                               style: TextStyle(
-//                                   fontSize: AppDimensions.height10(context) * 1.4,
+//                                   fontSize: AppDimensions.font10(context) * 1.4,
 //                                   fontWeight: FontWeight.w400,
 //                                   color: Color(0xFFFBFBFB)),
 //                             ),
@@ -2768,7 +2766,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //       // touchThroughAreaShape: ClipAreaShape.rectangle,
 //       content: Material(
 //         child: Container(
-//           width: AppDimensions.height10(context) * 29.6,
+//           width: AppDimensions.width10(context) * 29.6,
 //           height: goal_level == 1
 //               ? AppDimensions.height10(context) * 21.3
 //               : goal_level == 2
@@ -2789,7 +2787,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //           child: Column(
 //             children: [
 //               Container(
-//                 width: AppDimensions.height10(context) * 21.6,
+//                 width: AppDimensions.width10(context) * 21.6,
 //                 height: AppDimensions.height10(context) * 2.2,
 //                 margin: EdgeInsets.only(
 //                     top: AppDimensions.height10(context) * 1.7,
@@ -2815,13 +2813,13 @@ void __share_experience(context, String goalName, String identity, String color,
 //                     decoration: TextDecoration.none,
 //                     fontFamily: 'Laila',
 //                     color: const Color(0xFF000000),
-//                     fontSize: AppDimensions.height10(context) * 1.4,
+//                     fontSize: AppDimensions.font10(context) * 1.4,
 //                     fontWeight: FontWeight.w700,
 //                   ),
 //                 ),
 //               ),
 //               Container(
-//                 width: AppDimensions.height10(context) * 27.4,
+//                 width: AppDimensions.width10(context) * 27.4,
 //                 height: goal_level == 1
 //                     ? AppDimensions.height10(context) * 11.8
 //                     : goal_level == 2
@@ -2843,7 +2841,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                             color: const Color(0xFF464646),
 //                             decoration: TextDecoration.none,
 //                             fontFamily: 'Laila',
-//                             fontSize: AppDimensions.height10(context) * 1.4,
+//                             fontSize: AppDimensions.font10(context) * 1.4,
 //                             height: AppDimensions.height10(context) * 0.15),
 //                         children: [
 //                       TextSpan(
@@ -2978,7 +2976,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                     ])),
 //               ),
 //               Container(
-//                 width: AppDimensions.height10(context) * 24.3,
+//                 width: AppDimensions.width10(context) * 24.3,
 //                 height: AppDimensions.height10(context) * 4.0,
 //                 margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.8),
 //                 child: Row(
@@ -2990,9 +2988,9 @@ void __share_experience(context, String goalName, String identity, String color,
 //                             borderRadius: BorderRadius.circular(
 //                                 AppDimensions.height10(context) * 5.0),
 //                             border: Border.all(
-//                                 width: AppDimensions.height10(context) * 0.1,
+//                                 width: AppDimensions.width10(context) * 0.1,
 //                                 color: const Color(0xFFFBFBFB))),
-//                         width: AppDimensions.height10(context) * 9.60,
+//                         width: AppDimensions.width10(context) * 9.60,
 //                         height: AppDimensions.height10(context) * 3.2,
 //                         child: Center(
 //                           child: Text(
@@ -3001,7 +2999,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                             style: TextStyle(
 //                                 fontFamily: 'Laila',
 //                                 decoration: TextDecoration.none,
-//                                 fontSize: AppDimensions.height10(context) * 1.6,
+//                                 fontSize: AppDimensions.font10(context) * 1.6,
 //                                 color: const Color(0xFF8C648A),
 //                                 fontWeight: FontWeight.w700),
 //                           ),
@@ -3018,7 +3016,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                         }
 //                       },
 //                       child: Container(
-//                         width: AppDimensions.height10(context) * 11.7,
+//                         width: AppDimensions.width10(context) * 11.7,
 //                         height: AppDimensions.height10(context) * 4.0,
 //                         decoration: BoxDecoration(
 //                             borderRadius: BorderRadius.circular(
@@ -3044,7 +3042,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                             style: TextStyle(
 //                                 decoration: TextDecoration.none,
 //                                 fontFamily: 'Laila',
-//                                 fontSize: AppDimensions.height10(context) * 1.6,
+//                                 fontSize: AppDimensions.font10(context) * 1.6,
 //                                 color: const Color(0xFFFFFFFF),
 //                                 fontWeight: FontWeight.w600),
 //                           ),
@@ -3113,7 +3111,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                           //   }
 //                           // },
 //                           child: SizedBox(
-//                             width: AppDimensions.height10(context) * 5.0,
+//                             width: AppDimensions.width10(context) * 5.0,
 //                             height: AppDimensions.height10(context) * 5.00,
 //                             child: Container(
 //                               color: Colors.amber,
@@ -3121,7 +3119,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                           ),
 
 //                           content: Container(
-//                             width: AppDimensions.height10(context) * 29.6,
+//                             width: AppDimensions.width10(context) * 29.6,
 //                             height: goal_level == 1
 //                                 ? AppDimensions.height10(context) * 21.3
 //                                 : goal_level == 2
@@ -3145,7 +3143,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                             child: Column(
 //                               children: [
 //                                 Container(
-//                                   width: AppDimensions.height10(context) * 21.6,
+//                                   width: AppDimensions.width10(context) * 21.6,
 //                                   height: AppDimensions.height10(context) * 2.2,
 //                                   margin: EdgeInsets.only(
 //                                       top: AppDimensions.height10(context) * 1.7,
@@ -3171,13 +3169,13 @@ void __share_experience(context, String goalName, String identity, String color,
 //                                       decoration: TextDecoration.none,
 //                                       fontFamily: 'Laila',
 //                                       color: Color(0xFF000000),
-//                                       fontSize: AppDimensions.height10(context) * 1.4,
+//                                       fontSize: AppDimensions.font10(context) * 1.4,
 //                                       fontWeight: FontWeight.w700,
 //                                     ),
 //                                   ),
 //                                 ),
 //                                 Container(
-//                                   width: AppDimensions.height10(context) * 27.4,
+//                                   width: AppDimensions.width10(context) * 27.4,
 //                                   height: goal_level == 1
 //                                       ? AppDimensions.height10(context) * 11.8
 //                                       : goal_level == 2
@@ -3358,7 +3356,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                                       ])),
 //                                 ),
 //                                 Container(
-//                                   width: AppDimensions.height10(context) * 24.3,
+//                                   width: AppDimensions.width10(context) * 24.3,
 //                                   height: AppDimensions.height10(context) * 4.0,
 //                                   margin: EdgeInsets.only(
 //                                       top: AppDimensions.height10(context) * 0.8),
@@ -3491,9 +3489,9 @@ void __share_experience(context, String goalName, String identity, String color,
   //                           child: SimpleTooltip(
   //                             //customShadows: [],
   //                             //  maxHeight: AppDimensions.height10(context) * 23.9,
-  //                             maxWidth: AppDimensions.height10(context) * 30.6,
+  //                             maxwidth: AppDimensions.width10(context) * 30.6,
   //                             //  minHeight: AppDimensions.height10(context) * 21.9,
-  //                             //minWidth: AppDimensions.height10(context) * 29.6,
+  //                             //minwidth: AppDimensions.width10(context) * 29.6,
   //                             tooltipDirection: goal_level == 1 ||
   //                                     goal_level == 2 ||
   //                                     goal_level == 7
@@ -3508,7 +3506,7 @@ void __share_experience(context, String goalName, String identity, String color,
   //                             // content: null,
   //                             //have to initialize from different widgets
   //                             child: SizedBox(
-  //                               width: AppDimensions.height10(context) * 1,
+  //                               width: AppDimensions.width10(context) * 1,
   //                               height: AppDimensions.height10(context) * 1,
   //                               child: Container(),
   //                             ),
@@ -3520,7 +3518,7 @@ void __share_experience(context, String goalName, String identity, String color,
   //                             animationDuration:
   //                                 const Duration(milliseconds: 3),
   //                             content: Container(
-  //                               width: AppDimensions.height10(context) * 30.6,
+  //                               width: AppDimensions.width10(context) * 30.6,
   //                               height: goal_level == 1
   //                                   ? AppDimensions.height10(context) * 20.3
   //                                   : goal_level == 2
@@ -3545,7 +3543,7 @@ void __share_experience(context, String goalName, String identity, String color,
   //                               child: Column(
   //                                 children: [
   //                                   Container(
-  //                                     width: AppDimensions.height10(context) * 21.6,
+  //                                     width: AppDimensions.width10(context) * 21.6,
   //                                     //height: AppDimensions.height10(context) * 2.2,
   //                                     margin: EdgeInsets.only(
   //                                         top: AppDimensions.height10(context) * 0.5,
@@ -3576,7 +3574,7 @@ void __share_experience(context, String goalName, String identity, String color,
   //                                     ),
   //                                   ),
   //                                   Container(
-  //                                     width: AppDimensions.height10(context) * 27.4,
+  //                                     width: AppDimensions.width10(context) * 27.4,
   //                                     height: goal_level == 1
   //                                         ? AppDimensions.height10(context) * 11.8
   //                                         : goal_level == 2
@@ -3773,7 +3771,7 @@ void __share_experience(context, String goalName, String identity, String color,
   //                                         ])),
   //                                   ),
   //                                   Container(
-  //                                     width: AppDimensions.height10(context) * 24.3,
+  //                                     width: AppDimensions.width10(context) * 24.3,
   //                                     height: AppDimensions.height10(context) * 4.0,
   //                                     margin: EdgeInsets.only(
   //                                         top: AppDimensions.height10(context) * 0.8),

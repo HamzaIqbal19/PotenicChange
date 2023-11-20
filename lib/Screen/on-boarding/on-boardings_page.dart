@@ -119,7 +119,7 @@ class OnboardingPageState extends State<OnboardingPage>
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Back.webp',
-                      width: AppDimensions.height10(context) * 3,
+                      width: AppDimensions.width10(context) * 3,
                       height: AppDimensions.height10(context) * 3,
                       fit: BoxFit.contain,
                     ),
@@ -139,7 +139,7 @@ class OnboardingPageState extends State<OnboardingPage>
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
-                fontSize: AppDimensions.height10(context) * 2.0,
+                fontSize: AppDimensions.font10(context) * 2.0,
               ),
             ),
           ),
@@ -150,7 +150,7 @@ class OnboardingPageState extends State<OnboardingPage>
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                  width: AppDimensions.height10(context) * 2.8,
+                  width: AppDimensions.width10(context) * 2.8,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.cover,
                 ),
@@ -219,7 +219,7 @@ class OnboardingPageState extends State<OnboardingPage>
                 Container(
                   height: AppDimensions.height10(context) * 90.1,
 
-                  // width: AppDimensions.height10(context) * 90,
+                  // width: AppDimensions.width10(context) * 90,
                   // color: Colors.blue,
                   child: PageView(
                       physics: ClampingScrollPhysics(),
@@ -261,13 +261,13 @@ class OnboardingPageState extends State<OnboardingPage>
                     // color: Colors.orange,
                     image: AssetImage(page.logo),
                     height: AppDimensions.height10(context) * 11.15,
-                    width: AppDimensions.height10(context) * 10.0,
+                    width: AppDimensions.width10(context) * 10.0,
                   )
                 : Image(
                     // color: Colors.orange,
                     image: AssetImage(page.logo),
                     height: AppDimensions.height10(context) * 7.75,
-                    width: AppDimensions.height10(context) * 7.75,
+                    width: AppDimensions.width10(context) * 7.75,
                   ),
           ),
           page.description2 != ""
@@ -284,16 +284,16 @@ class OnboardingPageState extends State<OnboardingPage>
             height: page.description2 != ""
                 ? AppDimensions.height10(context) * 3.6
                 : (page.index == 3 || page.index == 1)
-                    ? AppDimensions.height10(context) * 7.9
+                    ? AppDimensions.height10(context) * 8.4
                     : AppDimensions.height10(context) * 3.9,
-            width: AppDimensions.height10(context) * 35.4,
+            width: AppDimensions.width10(context) * 35.4,
             child: Text(
               page.title,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 color: page.titleColor,
-                fontSize: AppDimensions.height10(context) * 3.0,
+                fontSize: AppDimensions.font10(context) * 3.0,
               ),
             ),
           ), //Title Container
@@ -302,7 +302,7 @@ class OnboardingPageState extends State<OnboardingPage>
             children: [
               Container(
                 // width: double.infinity,
-                width: AppDimensions.height10(context) * 35.4,
+                width: AppDimensions.width10(context) * 35.4,
                 height: page.description2 != ""
                     ? AppDimensions.height10(context) * 9.3
                     : page.subDescription != ""
@@ -314,10 +314,10 @@ class OnboardingPageState extends State<OnboardingPage>
                   page.description,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    letterSpacing: AppDimensions.height10(context) * 0.13,
+                    letterSpacing: AppDimensions.width10(context) * 0.13,
                     fontWeight: FontWeight.w500,
                     color: page.descripColor,
-                    fontSize: AppDimensions.height10(context) * 2.0,
+                    fontSize: AppDimensions.font10(context) * 2.0,
                   ),
                 ),
               ),
@@ -329,7 +329,7 @@ class OnboardingPageState extends State<OnboardingPage>
               Container(
                 // width: double.infinity,
 
-                width: AppDimensions.height10(context) * 28.5,
+                width: AppDimensions.width10(context) * 28.5,
                 height: page.description2 != ""
                     ? AppDimensions.height10(context) * 0
                     : page.subDescription != ""
@@ -339,10 +339,10 @@ class OnboardingPageState extends State<OnboardingPage>
                   page.subDescription,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    letterSpacing: AppDimensions.height10(context) * 0.15,
+                    letterSpacing: AppDimensions.width10(context) * 0.15,
                     fontWeight: FontWeight.w400,
                     color: page.descripColor,
-                    fontSize: AppDimensions.height10(context) * 2.0,
+                    fontSize: AppDimensions.font10(context) * 2.0,
                   ),
                 ),
               ),
@@ -367,15 +367,15 @@ class OnboardingPageState extends State<OnboardingPage>
               ? Container(
                   // color: Colors.blue,
                   height: AppDimensions.height10(context) * 9.3,
-                  width: AppDimensions.height10(context) * 35.4,
+                  width: AppDimensions.width10(context) * 35.4,
                   child: Text(
                     page.description2,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      letterSpacing: AppDimensions.height10(context) * 0.13,
+                      letterSpacing: AppDimensions.width10(context) * 0.13,
                       color: page.descripColor,
-                      fontSize: AppDimensions.height10(context) * 2.0,
+                      fontSize: AppDimensions.font10(context) * 2.0,
                     ),
                   ))
               : Container(),
@@ -495,7 +495,7 @@ class OnboardingPageState extends State<OnboardingPage>
         },
         child: Container(
           height: AppDimensions.height10(context) * 5,
-          width: AppDimensions.height10(context) * 25.4,
+          width: AppDimensions.width10(context) * 25.4,
           decoration: BoxDecoration(
             border: Border.all(color: Colors.white),
             gradient: LinearGradient(
@@ -509,7 +509,7 @@ class OnboardingPageState extends State<OnboardingPage>
               text,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: AppDimensions.height10(context) * 2.0,
+                fontSize: AppDimensions.font10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -531,7 +531,7 @@ class OnboardingPageState extends State<OnboardingPage>
       // },
       child: new Container(
         height: AppDimensions.height10(context) * 5,
-        width: AppDimensions.height10(context) * 15,
+        width: AppDimensions.width10(context) * 15,
         decoration: new BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Color(0xFFCCCCCC)),
@@ -544,7 +544,7 @@ class OnboardingPageState extends State<OnboardingPage>
             'Skip',
             style: new TextStyle(
               color: Color(0xFF000000),
-              fontSize: AppDimensions.height10(context) * 1.4,
+              fontSize: AppDimensions.font10(context) * 1.4,
               fontWeight: FontWeight.w600,
             ),
           ),

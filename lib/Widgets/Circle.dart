@@ -47,7 +47,7 @@ class circles extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: AppDimensions.height10(context) * 10.9,
+              width: AppDimensions.width10(context) * 10.9,
               child: Text(
                 circle_text,
                 textAlign: TextAlign.center,

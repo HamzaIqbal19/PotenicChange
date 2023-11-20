@@ -200,7 +200,7 @@ class _missed_MenuState extends State<missed_Menu> {
                   child: Column(
                     children: [
                       Container(
-                        width: AppDimensions.height10(context) * 30.4,
+                        width: AppDimensions.width10(context) * 30.4,
                         height: AppDimensions.height10(context) * 18.6,
                         // color: Colors.grey.withOpacity(0.5),
                         margin: EdgeInsets.only(
@@ -212,12 +212,11 @@ class _missed_MenuState extends State<missed_Menu> {
                               'Practice Menu',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                   fontWeight: FontWeight.w600),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 30,
+                              width: AppDimensions.width10(context) * 30,
                               child: Center(
                                 child: Text(
                                   goalName,
@@ -225,13 +224,13 @@ class _missed_MenuState extends State<missed_Menu> {
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.0,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 40.0,
+                              width: AppDimensions.width10(context) * 40.0,
                               height: AppDimensions.height10(context) * 11.2,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.6),
@@ -308,10 +307,9 @@ class _missed_MenuState extends State<missed_Menu> {
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                                 color: const Color(0xffffffff),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    2.0,
                                                 fontWeight: FontWeight.w600),
                                           ),
                                           SizedBox(
@@ -322,7 +320,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                               'Session missed',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w500,
@@ -354,14 +352,14 @@ class _missed_MenuState extends State<missed_Menu> {
                               )));
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 9.36,
+                          width: AppDimensions.width10(context) * 9.36,
                           height: AppDimensions.height10(context) * 12.0,
                           margin: EdgeInsets.only(
                               bottom: AppDimensions.height10(context) * 1.9),
                           child: Column(
                             children: [
                               Container(
-                                width: AppDimensions.height10(context) * 7.0,
+                                width: AppDimensions.width10(context) * 7.0,
                                 height: AppDimensions.height10(context) * 7.0,
                                 decoration: BoxDecoration(
                                     gradient: const LinearGradient(
@@ -377,7 +375,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                             AppDimensions.height10(context) *
                                                 13.9)),
                                     border: Border.all(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.3,
                                         color: Colors.white)),
                                 child: Center(
@@ -394,7 +392,7 @@ class _missed_MenuState extends State<missed_Menu> {
                               SizedBox(
                                 // color: Colors.red,
                                 height: AppDimensions.height10(context) * 4.921,
-                                width: AppDimensions.height10(context) * 9.36,
+                                width: AppDimensions.width10(context) * 9.36,
                                 child: Center(
                                   child: Text(
                                     'Record\npractice',
@@ -405,8 +403,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                                 0.12,
                                         color: Colors.white,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500),
                                   ),
                                 ),
@@ -416,7 +413,7 @@ class _missed_MenuState extends State<missed_Menu> {
                         ),
                       ),
                       // SizedBox(
-                      //   width: AppDimensions.height10(context) * 36.0,
+                      //   width: AppDimensions.width10(context) * 36.0,
                       //   child: Divider(
                       //     thickness: AppDimensions.height10(context) * 0.1,
                       //     height: AppDimensions.height10(context) * 0.1,
@@ -430,7 +427,7 @@ class _missed_MenuState extends State<missed_Menu> {
                         // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 41.3,
+                        width: AppDimensions.width10(context) * 41.3,
                         height: AppDimensions.height10(context) * 22.9,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 2.2),
@@ -444,13 +441,13 @@ class _missed_MenuState extends State<missed_Menu> {
                                 icon: Image.asset(
                                   'assets/images/ic_info_outline.webp',
                                   height: AppDimensions.height10(context) * 3.0,
-                                  width: AppDimensions.height10(context) * 3.0,
+                                  width: AppDimensions.width10(context) * 3.0,
                                 )),
                           ),
                           Align(
                             alignment: const Alignment(0, -1),
                             child: SizedBox(
-                              width: AppDimensions.height10(context) * 36.0,
+                              width: AppDimensions.width10(context) * 36.0,
                               height: AppDimensions.height10(context) * 24.7,
                               child: Column(
                                 children: [
@@ -458,7 +455,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                     height:
                                         AppDimensions.height10(context) * 5.9,
                                     width:
-                                        AppDimensions.height10(context) * 36.0,
+                                        AppDimensions.width10(context) * 36.0,
                                     margin: EdgeInsets.only(
                                         bottom:
                                             AppDimensions.height10(context) *
@@ -472,7 +469,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                           'Practice Assessment',
                                           style: TextStyle(
                                               //increase font size by 2 px
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.8,
                                               fontWeight: FontWeight.w700,
@@ -490,7 +487,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                         child: Text(
                                           'Here is your latest 20 active day evaluation.',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4,
                                               fontWeight: FontWeight.w400,
@@ -515,7 +512,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                                                 context) *
                                                             0.15,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.4,
                                                     fontWeight: FontWeight.w400,
@@ -527,7 +524,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                                     style: TextStyle(
                                                         fontFamily: 'laila',
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.4,
                                                         fontWeight:

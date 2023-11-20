@@ -128,7 +128,7 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
             children: [
               Container(
                 height: AppDimensions.height10(context) * 2.3,
-                width: AppDimensions.height10(context) * 2.3,
+                width: AppDimensions.width10(context) * 2.3,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100.0),
                   border: Border.all(
@@ -162,7 +162,7 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
               Text(
                 '${date.day}',
                 style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 1.4,
+                    fontSize: AppDimensions.font10(context) * 1.4,
                     color: status == 'completed'
                         ? const Color(0xFF156F6D)
                         : status == 'missed'
@@ -212,7 +212,7 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
               color: Color(0xFFFE6624),
             ),
             titleTextStyle: TextStyle(
-                fontSize: AppDimensions.height10(context) * 2.4,
+                fontSize: AppDimensions.font10(context) * 2.4,
                 color: const Color(0xFF5B74A6),
                 fontWeight: FontWeight.w600,
                 fontFamily: 'laila'),
@@ -238,7 +238,7 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
                   border: Border(
                       bottom: BorderSide(
                           color: const Color(0xFF828282),
-                          width: AppDimensions.height10(context) * 0.05)))),
+                          width: AppDimensions.width10(context) * 0.05)))),
         ),
       ),
     );

@@ -41,13 +41,13 @@ class _reviewboxState extends State<reviewbox> {
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-          width: AppDimensions.height10(context) * 38.2,
+          width: AppDimensions.width10(context) * 38.2,
           height: AppDimensions.height10(context) * 52.1,
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(
                   color: Colors.white,
-                  width: AppDimensions.height10(context) * 0.2),
+                  width: AppDimensions.width10(context) * 0.2),
               borderRadius: BorderRadius.all(
                   Radius.circular(AppDimensions.height10(context) * 1.8))),
           child: Column(
@@ -92,7 +92,7 @@ class _reviewboxState extends State<reviewbox> {
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xFF464646),
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.3,
                                         ),
                                       ),
@@ -104,7 +104,7 @@ class _reviewboxState extends State<reviewbox> {
                                           fontWeight: FontWeight.w700,
                                           color: const Color(0xFF464646),
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.3,
                                         ),
                                       ),
@@ -134,7 +134,7 @@ class _reviewboxState extends State<reviewbox> {
           //heightFactor: 0.5,
           child: Container(
             height: AppDimensions.height10(context) * 4.7,
-            width: AppDimensions.height10(context) * 4.7,
+            width: AppDimensions.width10(context) * 4.7,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               gradient: LinearGradient(
@@ -150,7 +150,7 @@ class _reviewboxState extends State<reviewbox> {
                 child: Image.asset(
                   'assets/images/Addgoal.webp',
                   height: AppDimensions.height10(context) * 4.7,
-                  width: AppDimensions.height10(context) * 4.7,
+                  width: AppDimensions.width10(context) * 4.7,
                 ),
               ),
             ),
@@ -194,7 +194,7 @@ class _inner_textState extends State<inner_text> {
   Widget build(BuildContext context) {
     return Container(
       height: AppDimensions.height10(context) * 11.0,
-      width: AppDimensions.height10(context) * 36.0,
+      width: AppDimensions.width10(context) * 36.0,
       padding: EdgeInsets.only(
           top: AppDimensions.height10(context) * 2,
           bottom: 1,
@@ -223,21 +223,21 @@ class _inner_textState extends State<inner_text> {
             children: [
               Container(
                   height: AppDimensions.height10(context) * 2.2,
-                  width: AppDimensions.height10(context) * 29,
+                  width: AppDimensions.width10(context) * 29,
                   child: Text("Reason1",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: _focusNode.hasFocus
                             ? const Color(0xFFFFFFFF)
                             : const Color(0xFFFFFFFF),
-                        fontSize: AppDimensions.height10(context) * 2.2,
+                        fontSize: AppDimensions.font10(context) * 2.2,
                       ))),
               widget.delete
                   ? GestureDetector(
                       onTap: () => showDialog<String>(
                         context: context,
                         builder: (BuildContext context) => Container(
-                          width: AppDimensions.height10(context) * 27.0,
+                          width: AppDimensions.width10(context) * 27.0,
                           height: AppDimensions.height10(context) * 18.2,
                           child: AlertDialog(
                             actionsPadding: const EdgeInsets.all(0.0),
@@ -250,14 +250,13 @@ class _inner_textState extends State<inner_text> {
                                   left: AppDimensions.height10(context) * 1.6,
                                   bottom: AppDimensions.height10(context) * 0),
                               height: AppDimensions.height10(context) * 2.2,
-                              width: AppDimensions.height10(context) * 23.8,
+                              width: AppDimensions.width10(context) * 23.8,
                               child: Text(
                                 "Delete",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontFamily: "Laila",
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -269,13 +268,12 @@ class _inner_textState extends State<inner_text> {
                                   left: AppDimensions.height10(context) * 1.6,
                                   right: AppDimensions.height10(context) * 1.6),
                               height: AppDimensions.height10(context) * 3.2,
-                              width: AppDimensions.height10(context) * 23.8,
+                              width: AppDimensions.width10(context) * 23.8,
                               child: Text(
                                 "Are you sure you want to delete this \n item?",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.3,
+                                  fontSize: AppDimensions.font10(context) * 1.3,
                                   fontFamily: "Laila",
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -297,9 +295,9 @@ class _inner_textState extends State<inner_text> {
                                         'No',
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontFamily: "Laila",
                                             fontWeight: FontWeight.w400),
                                       ),
@@ -309,14 +307,14 @@ class _inner_textState extends State<inner_text> {
                                     height:
                                         AppDimensions.height10(context) * 4.4,
                                     width:
-                                        AppDimensions.height10(context) * 27.0,
+                                        AppDimensions.width10(context) * 27.0,
                                     child: TextButton(
                                       onPressed: () {},
                                       child: Text(
                                         'Yes',
                                         style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.7,
                                           fontFamily: "Laila",
                                           fontWeight: FontWeight.w400,
@@ -334,7 +332,7 @@ class _inner_textState extends State<inner_text> {
                       ),
                       child: Container(
                         height: AppDimensions.height10(context) * 2.1,
-                        width: AppDimensions.height10(context) * 2.1,
+                        width: AppDimensions.width10(context) * 2.1,
 
                         // color: Colors.blue,
                         decoration: const BoxDecoration(
@@ -353,11 +351,11 @@ class _inner_textState extends State<inner_text> {
           ),
           Container(
               height: AppDimensions.height10(context) * 5.3,
-              width: AppDimensions.height10(context) * 32.0,
+              width: AppDimensions.width10(context) * 32.0,
               child: CupertinoTextField(
                 placeholder: widget.bodyText,
                 placeholderStyle: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 1.6,
+                    fontSize: AppDimensions.font10(context) * 1.6,
                     fontWeight: FontWeight.w500,
                     color: const Color(0xFFFFFFFF)),
                 controller: body_text,
@@ -381,7 +379,7 @@ add_reason(context) {
     backgroundColor: Colors.transparent,
     shape: RoundedRectangleBorder(
         side: BorderSide(
-            width: AppDimensions.height10(context) * 0.3, color: Colors.white),
+            width: AppDimensions.width10(context) * 0.3, color: Colors.white),
         borderRadius:
             BorderRadius.circular(AppDimensions.height10(context) * 10)),
     onPressed: () {

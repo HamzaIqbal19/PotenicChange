@@ -99,7 +99,7 @@ class _ActivateStarState extends State<ActivateStar> {
           child: IconButton(
             icon: Image.asset(
               'assets/images/Back.webp',
-              width: AppDimensions.height10(context) * 3,
+              width: AppDimensions.width10(context) * 3,
               height: AppDimensions.height10(context) * 3,
               fit: BoxFit.contain,
             ),
@@ -121,7 +121,7 @@ class _ActivateStarState extends State<ActivateStar> {
             child: IconButton(
               icon: Image.asset(
                 'assets/images/Close.webp',
-                width: AppDimensions.height10(context) * 3.0,
+                width: AppDimensions.width10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
               ),
@@ -159,7 +159,7 @@ class _ActivateStarState extends State<ActivateStar> {
                       height: AppDimensions.height10(context) * 8.9,
                     ),
                     SizedBox(
-                      width: AppDimensions.height10(context) * 28.3,
+                      width: AppDimensions.width10(context) * 28.3,
                       height: AppDimensions.height10(context) * 7.2,
                       // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
                       child: Center(
@@ -169,7 +169,7 @@ class _ActivateStarState extends State<ActivateStar> {
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             // color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 3,
+                            fontSize: AppDimensions.font10(context) * 3,
                           ),
                           colors: [
                             const Color(0xFFFFFFFF),
@@ -184,7 +184,7 @@ class _ActivateStarState extends State<ActivateStar> {
                     SizedBox(
                         // color: Colors.black,
                         height: AppDimensions.height10(context) * 13.2,
-                        width: AppDimensions.height10(context) * 35.7,
+                        width: AppDimensions.width10(context) * 35.7,
                         child: Column(
                           children: [
                             Container(
@@ -196,7 +196,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.8,
+                                        AppDimensions.font10(context) * 1.8,
                                   ),
                                 ),
                               ),
@@ -210,7 +210,7 @@ class _ActivateStarState extends State<ActivateStar> {
                       children: [
                         Container(
                           height: AppDimensions.height10(context) * 38.1,
-                          width: AppDimensions.height10(context) * 38.1,
+                          width: AppDimensions.width10(context) * 38.1,
                           padding: EdgeInsets.all(
                               AppDimensions.height10(context) * 3.5),
                           // decoration: const BoxDecoration(
@@ -240,7 +240,7 @@ class _ActivateStarState extends State<ActivateStar> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: AppDimensions.height10(context) * 24.0,
+                                  width: AppDimensions.width10(context) * 24.0,
                                   padding: EdgeInsets.symmetric(
                                       horizontal:
                                           AppDimensions.height10(context) *
@@ -252,8 +252,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                     maxLines: 1,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
+                                            AppDimensions.font10(context) * 2.0,
                                         height:
                                             AppDimensions.height10(context) *
                                                 0.14,
@@ -265,7 +264,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                   height: AppDimensions.height10(context) * 0.3,
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 22.0,
+                                  width: AppDimensions.width10(context) * 22.0,
                                   //height: AppDimensions.height10(context)*4.0,
                                   padding: EdgeInsets.symmetric(
                                       horizontal:
@@ -278,7 +277,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                       style: TextStyle(
                                           fontStyle: FontStyle.italic,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff5B74A6))),
@@ -292,7 +291,8 @@ class _ActivateStarState extends State<ActivateStar> {
                                     style: TextStyle(
                                         decoration: TextDecoration.underline,
                                         fontSize:
-                                            AppDimensions.height10(context) *
+                                                    AppDimensions.font10(
+                                                            context) *
                                                 2.0,
                                         height:
                                             AppDimensions.height10(context) *
@@ -414,10 +414,10 @@ class _ActivateStarState extends State<ActivateStar> {
                                                                   .height10(
                                                                       context) *
                                                               4.4,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          23.8,
+                                                              23.8,
                                                       child: Center(
                                                         child: Text(
                                                           'Maximum active goal limit\nreached',
@@ -448,7 +448,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                                                     context) *
                                                             1.6),
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             23.8,
                                                     child: Text(
@@ -459,7 +459,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                                           TextAlign.center,
                                                       style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.3,
                                                         fontWeight:
@@ -503,7 +503,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                                                 color: const Color(
                                                                     0xFF007AFF),
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.7,
                                                                 fontFamily:
@@ -543,7 +543,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                                               'Exit',
                                                               style: TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.7,
                                                                   fontFamily:
@@ -582,7 +582,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                   //  dashboard_sheet(context);
                                 },
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 16,
+                                  width: AppDimensions.width10(context) * 16,
                                   height: AppDimensions.height10(context) * 16,
                                   padding: EdgeInsets.all(
                                       AppDimensions.height10(context) * 0.5),
@@ -590,14 +590,14 @@ class _ActivateStarState extends State<ActivateStar> {
                                       shape: BoxShape.circle,
                                       border: Border.all(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   0.3,
                                           color: Colors.white)),
                                   child: Container(
                                     height:
                                         AppDimensions.height10(context) * 14.7,
                                     width:
-                                        AppDimensions.height10(context) * 14.7,
+                                        AppDimensions.width10(context) * 14.7,
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                       image: AssetImage('$pracColor' == '1'
@@ -637,10 +637,9 @@ class _ActivateStarState extends State<ActivateStar> {
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                                 color: const Color(0xFFFBFBFB),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 fontWeight: FontWeight.w500),
                                           ),
                                         ),
@@ -653,7 +652,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                           image: const AssetImage(
                                               'assets/images/ic_fingerprint.webp'),
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   6.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -679,7 +678,7 @@ class _ActivateStarState extends State<ActivateStar> {
                             // color: Colors.black,
 
                             height: AppDimensions.height10(context) * 5.4,
-                            width: AppDimensions.height10(context) * 27.4,
+                            width: AppDimensions.width10(context) * 27.4,
                             child: Column(
                               children: [
                                 Container(
@@ -691,8 +690,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                         fontWeight: FontWeight.w600,
                                         color: Colors.white,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                            AppDimensions.font10(context) * 1.8,
                                       ),
                                     ),
                                   ),
@@ -731,7 +729,7 @@ void dashboard_sheet(context) {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10(context) * 39.4,
+          width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 62.3,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
@@ -756,7 +754,7 @@ void dashboard_sheet(context) {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
@@ -775,12 +773,12 @@ void dashboard_sheet(context) {
                     bottom: AppDimensions.height10(context) * 2.0),
                 child: Image.asset(
                   'assets/images/potenic__icon.webp',
-                  width: AppDimensions.height10(context) * 8.202,
+                  width: AppDimensions.width10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 30.7,
+                width: AppDimensions.width10(context) * 30.7,
                 height: AppDimensions.height10(context) * 6.8,
                 // color: Colors.amber,
                 alignment: Alignment.center,
@@ -790,14 +788,14 @@ void dashboard_sheet(context) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.12,
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       //letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                  //  width: AppDimensions.height10(context) * 33.2,
+                  //  width: AppDimensions.width10(context) * 33.2,
                   //  height: AppDimensions.height10(context) * 10.8,
                   // color: Colors.grey,
                   margin: EdgeInsets.only(
@@ -806,7 +804,7 @@ void dashboard_sheet(context) {
                     child: Text(
                       'This is a one-stop place to manage your\npersonal development journey. From\nDashboard, you can quickly navigate to\nyour goals, view your practices, record\nhurdles and inspirations.\n\nHave a tour of what’s available to you\nand how you can access the tools that\nare important to your personal growth.\n\nWe look forward to supporting you.\nEnjoy your journey :)',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.8,
+                          fontSize: AppDimensions.font10(context) * 1.8,
                           // letterSpacing: AppDimensions.height10(context) * 0.2,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF437296)),
@@ -832,7 +830,7 @@ void login_sheet(context) {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10(context) * 39.4,
+          width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 54.4,
           // margin: EdgeInsets.only(
           //     left: AppDimensions.height10(context) * 1.0,
@@ -854,7 +852,7 @@ void login_sheet(context) {
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   child: Container(
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
@@ -873,12 +871,12 @@ void login_sheet(context) {
                     bottom: AppDimensions.height10(context) * 2.0),
                 child: Image.asset(
                   'assets/images/potenic__icon.webp',
-                  width: AppDimensions.height10(context) * 8.202,
+                  width: AppDimensions.width10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 30.7,
+                width: AppDimensions.width10(context) * 30.7,
                 height: AppDimensions.height10(context) * 3.4,
                 // color: Colors.amber,
                 alignment: Alignment.center,
@@ -888,14 +886,14 @@ void login_sheet(context) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.12,
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       //letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                  //  width: AppDimensions.height10(context) * 33.2,
+                  //  width: AppDimensions.width10(context) * 33.2,
                   height: AppDimensions.height10(context) * 20.1,
                   // color: Colors.grey,
                   margin: EdgeInsets.only(
@@ -904,7 +902,7 @@ void login_sheet(context) {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                           style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.font10(context) * 1.4,
                             height: AppDimensions.height10(context) * 0.13,
                             fontFamily: 'laila',
                             fontWeight: FontWeight.w400,
@@ -930,14 +928,14 @@ void login_sheet(context) {
                                     'now without losing any\nprogress you’ve made so far.  ')
                           ]))),
               Container(
-                width: AppDimensions.height10(context) * 28.0,
+                width: AppDimensions.width10(context) * 28.0,
                 margin: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 1.5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 13.0,
+                      width: AppDimensions.width10(context) * 13.0,
                       height: AppDimensions.height10(context) * 5.0,
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 2.0),
@@ -949,7 +947,7 @@ void login_sheet(context) {
                         child: Text(
                           'I’m new here',
                           style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF8C648A),
                           ),
@@ -957,7 +955,7 @@ void login_sheet(context) {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 13.0,
+                      width: AppDimensions.width10(context) * 13.0,
                       height: AppDimensions.height10(context) * 5.0,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
@@ -967,7 +965,7 @@ void login_sheet(context) {
                         child: Text(
                           'Log in',
                           style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFFFBFBFB),
                           ),
@@ -995,7 +993,7 @@ class maxActivation extends StatelessWidget {
           duration: const Duration(seconds: 1),
           context: context,
           builder: (BuildContext context) => SizedBox(
-                width: AppDimensions.height10(context) * 27.0,
+                width: AppDimensions.width10(context) * 27.0,
                 height: AppDimensions.height10(context) * 23.6,
                 child: AlertDialog(
                   contentPadding: EdgeInsets.zero,
@@ -1008,7 +1006,7 @@ class maxActivation extends StatelessWidget {
                           left: AppDimensions.height10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
-                      width: AppDimensions.height10(context) * 23.8,
+                      width: AppDimensions.width10(context) * 23.8,
                       child: RichText(
                           text: const TextSpan(
                               style: TextStyle(
@@ -1029,12 +1027,12 @@ class maxActivation extends StatelessWidget {
                         left: AppDimensions.height10(context) * 1.6,
                         right: AppDimensions.height10(context) * 1.6),
                     height: AppDimensions.height10(context) * 3.4,
-                    width: AppDimensions.height10(context) * 23.8,
+                    width: AppDimensions.width10(context) * 23.8,
                     child: Text(
                       "By clicking 'Yes' you confirm that this\ninspiration will be deleted permanently. ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.3,
+                        fontSize: AppDimensions.font10(context) * 1.3,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -1058,8 +1056,7 @@ class maxActivation extends StatelessWidget {
                               'No',
                               style: TextStyle(
                                   color: const Color(0xFFFFFFFF),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontFamily: "Laila",
                                   fontWeight: FontWeight.w400),
                             ),
@@ -1081,8 +1078,7 @@ class maxActivation extends StatelessWidget {
                             child: Text(
                               'Yes',
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontFamily: "Laila",
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFF007AFF)),

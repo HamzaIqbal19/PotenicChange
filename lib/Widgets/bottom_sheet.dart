@@ -102,7 +102,7 @@ void bottom_sheet(context) {
           child: Container(
             // color:Colors.lightGreen,
             height: AppDimensions.height10(context) * 45.0,
-            width: AppDimensions.height10(context) * 41.4,
+            width: AppDimensions.width10(context) * 41.4,
 
             child: Padding(
               padding: const EdgeInsets.only(top: 10),
@@ -113,7 +113,7 @@ void bottom_sheet(context) {
                 children: <Widget>[
                   Container(
                     height: AppDimensions.height10(context) * 3.4,
-                    width: AppDimensions.height10(context) * 35.5,
+                    width: AppDimensions.width10(context) * 35.5,
 
                     // padding: const EdgeInsets.only(top: 8.0, bottom: 8),
                     child: Text(
@@ -121,7 +121,7 @@ void bottom_sheet(context) {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: const Color(0xFF464646),
-                        fontSize: AppDimensions.height10(context) * 2.8,
+                        fontSize: AppDimensions.font10(context) * 2.8,
                         fontWeight: FontWeight.w700,
                         fontFamily: "Laila",
                       ),
@@ -132,7 +132,7 @@ void bottom_sheet(context) {
                   ),
                   SizedBox(
                       child: Container(
-                    width: AppDimensions.height10(context) * 36,
+                    width: AppDimensions.width10(context) * 36,
                     height: AppDimensions.height10(context) * 9.0,
                     decoration: BoxDecoration(
                         color: const Color.fromRGBO(0, 0, 0, 0.1),
@@ -156,7 +156,7 @@ void bottom_sheet(context) {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.font10(context) * 1.4,
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -171,7 +171,7 @@ void bottom_sheet(context) {
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.4,
+                                          AppDimensions.font10(context) * 2.4,
                                       fontFamily: "Laila",
                                       color: const Color.fromARGB(
                                           209, 250, 154, 52)),
@@ -214,7 +214,7 @@ void bottom_sheet(context) {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.4,
                                           fontFamily: "Laila",
                                           color: const Color.fromARGB(
@@ -233,7 +233,7 @@ void bottom_sheet(context) {
                     height: AppDimensions.height10(context),
                   ),
                   Container(
-                    width: AppDimensions.height10(context) * 36.0,
+                    width: AppDimensions.width10(context) * 36.0,
                     height: AppDimensions.height10(context) * 8.0,
                     child: Form(
                       key: _formkey,
@@ -241,7 +241,7 @@ void bottom_sheet(context) {
                         maxLength: 50,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: AppDimensions.height10(context) * 2.4,
+                          fontSize: AppDimensions.font10(context) * 2.4,
                           height: AppDimensions.height10(context) * 0.15,
                           color: const Color.fromARGB(209, 250, 154, 52),
                         ),
@@ -254,7 +254,7 @@ void bottom_sheet(context) {
                             hintText: "Enter your goal name ",
                             hintStyle: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: AppDimensions.height10(context) * 2.4,
+                              fontSize: AppDimensions.font10(context) * 2.4,
                               color: const Color(0xFF828282),
                             ),
                             border: OutlineInputBorder(
@@ -315,7 +315,7 @@ void bottom_sheet(context) {
                   ),
                   Container(
                     height: AppDimensions.height10(context) * 5,
-                    width: AppDimensions.height10(context) * 25.4,
+                    width: AppDimensions.width10(context) * 25.4,
                     decoration: enable
                         ? BoxDecoration(
                             borderRadius: BorderRadius.circular(
@@ -370,7 +370,7 @@ void bottom_sheet(context) {
                             fontFamily: "Laila",
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                           ),
                         )),
                   ),
@@ -393,7 +393,7 @@ void bottom_sheet(context) {
                               fontFamily: "Laila",
                               fontWeight: FontWeight.w600,
                               color: const Color.fromARGB(209, 250, 154, 52),
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                             ),
                           )))
                 ],
@@ -415,7 +415,7 @@ void bottom_sheet(context) {
 //   @override
 //   Widget build(BuildContext context) {
 //     return Container(
-//       width: AppDimensions.height10(context) * 36,
+//       width: AppDimensions.width10(context) * 36,
 //       height: AppDimensions.height10(context) * 9.0,
 //       decoration: BoxDecoration(
 //           color: const Color.fromRGBO(0, 0, 0, 0.1),
@@ -436,7 +436,7 @@ void bottom_sheet(context) {
 //                     //textAlign: TextAlign.left,
 //                     style: TextStyle(
 //                       color: Colors.black,
-//                       fontSize: AppDimensions.height10(context) * 1.4,
+//                       fontSize: AppDimensions.font10(context) * 1.4,
 //                       fontFamily: "Laila",
 //                       fontWeight: FontWeight.w400,
 //                     ),
@@ -449,7 +449,7 @@ void bottom_sheet(context) {
 //                   'Select Category',
 //                   style: TextStyle(
 //                       fontWeight: FontWeight.w400,
-//                       fontSize: AppDimensions.height10(context) * 2.4,
+//                       fontSize: AppDimensions.font10(context) * 2.4,
 //                       fontFamily: "Laila",
 //                       color: const Color.fromARGB(209, 250, 154, 52)),
 //                 ),
@@ -457,7 +457,7 @@ void bottom_sheet(context) {
 //                   "Select a category ",
 //                   style: TextStyle(
 //                       fontWeight: FontWeight.w400,
-//                       fontSize: AppDimensions.height10(context) * 2.4,
+//                       fontSize: AppDimensions.font10(context) * 2.4,
 //                       fontFamily: "Laila",
 //                       color: const Color.fromARGB(209, 250, 154, 52)),
 //                 ),
@@ -471,7 +471,7 @@ void bottom_sheet(context) {
 //                 // elevation: 16,
 //                 style: TextStyle(
 //                     fontWeight: FontWeight.w400,
-//                     fontSize: AppDimensions.height10(context) * 2.4,
+//                     fontSize: AppDimensions.font10(context) * 2.4,
 //                     fontFamily: "Laila",
 //                     color: const Color.fromARGB(209, 250, 154, 52)),
 //                 onChanged: (String? value) {

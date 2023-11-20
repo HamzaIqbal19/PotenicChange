@@ -89,7 +89,7 @@ class _record_inspirationState extends State<record_inspiration> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -98,13 +98,13 @@ class _record_inspirationState extends State<record_inspiration> {
           automaticallyImplyLeading: false,
           centerTitle: true,
           // title: Container(
-          //   width: AppDimensions.height10(context) * 5.5,
+          //   width: AppDimensions.width10(context) * 5.5,
           //   height: AppDimensions.height10(context) * 2.4,
           //   child: Center(
           //     child: Text(
           //       'Menu',
           //       style: TextStyle(
-          //           fontSize: AppDimensions.height10(context) * 2.00,
+          //           fontSize: AppDimensions.font10(context) * 2.00,
           //           fontWeight: FontWeight.w600,
           //           color: Color(0xFFFFFFFF)),
           //     ),
@@ -125,7 +125,7 @@ class _record_inspirationState extends State<record_inspiration> {
               ? Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 5.5,
+                      width: AppDimensions.width10(context) * 5.5,
                       height: AppDimensions.height10(context) * 2.5,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.8),
@@ -133,14 +133,14 @@ class _record_inspirationState extends State<record_inspiration> {
                         child: Text(
                           'Menu',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.00,
+                              fontSize: AppDimensions.font10(context) * 2.00,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         ),
                       ),
                     ),
                     Container(
-                      // width: AppDimensions.height10(context) * 16.7,
+                      // width: AppDimensions.width10(context) * 16.7,
                       //height: AppDimensions.height10(context) * 21.2,
                       margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 4.3,
@@ -149,7 +149,7 @@ class _record_inspirationState extends State<record_inspiration> {
                         children: [
                           Column(children: [
                             Container(
-                              width: AppDimensions.height10(context) * 16.7,
+                              width: AppDimensions.width10(context) * 16.7,
                               height: AppDimensions.height10(context) * 16.7,
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
@@ -194,9 +194,9 @@ class _record_inspirationState extends State<record_inspiration> {
                                         maxLines: 3,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.4,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xFFFFFFFF)),
                                       )),
@@ -222,7 +222,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                       : Container(),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 16.7,
+                              width: AppDimensions.width10(context) * 16.7,
                               height: AppDimensions.height10(context) * 1.9,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.5,
@@ -245,13 +245,13 @@ class _record_inspirationState extends State<record_inspiration> {
                                             : 'Content',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFFFFFFFF)),
                               )),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 12.7,
+                              width: AppDimensions.width10(context) * 12.7,
                               //height: AppDimensions.height10(context) * 3.0,
                               child: Align(
                                   alignment: Alignment.topCenter,
@@ -265,8 +265,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                             AppDimensions.height10(context) *
                                                 0.14,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.2,
+                                            AppDimensions.font10(context) * 1.2,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFFFFFFFF)),
                                   )),
@@ -276,7 +275,7 @@ class _record_inspirationState extends State<record_inspiration> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 32.0,
+                      width: AppDimensions.width10(context) * 32.0,
                       height: AppDimensions.height10(context) * 2.6,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 2.9),
@@ -284,13 +283,13 @@ class _record_inspirationState extends State<record_inspiration> {
                           child: Text(
                         'What do you want to do?',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.2,
+                            fontSize: AppDimensions.font10(context) * 2.2,
                             fontWeight: FontWeight.w600,
                             color: Colors.white),
                       )),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 36.0,
+                      width: AppDimensions.width10(context) * 36.0,
                       height: AppDimensions.height10(context) * 28.5,
                       margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.4,
@@ -306,7 +305,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               );
                             },
                             child: Container(
-                              width: AppDimensions.height10(context) * 36.0,
+                              width: AppDimensions.width10(context) * 36.0,
                               height: AppDimensions.height10(context) * 6.0,
                               margin: EdgeInsets.only(
                                   bottom:
@@ -321,7 +320,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                 children: [
                                   Container(
                                     width:
-                                        AppDimensions.height10(context) * 23.9,
+                                        AppDimensions.width10(context) * 23.9,
                                     height:
                                         AppDimensions.height10(context) * 2.2,
                                     margin: EdgeInsets.only(
@@ -332,8 +331,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                       style: TextStyle(
                                         color: const Color(0xFF646464),
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -352,7 +350,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
                                           color: const Color(0xFF646464),
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           fit: BoxFit.cover,
                                         ),
@@ -412,7 +410,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               }
                             },
                             child: Container(
-                              width: AppDimensions.height10(context) * 36.0,
+                              width: AppDimensions.width10(context) * 36.0,
                               height: AppDimensions.height10(context) * 6.0,
                               margin: EdgeInsets.only(
                                   bottom:
@@ -427,7 +425,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                 children: [
                                   Container(
                                     width:
-                                        AppDimensions.height10(context) * 23.9,
+                                        AppDimensions.width10(context) * 23.9,
                                     height:
                                         AppDimensions.height10(context) * 2.2,
                                     margin: EdgeInsets.only(
@@ -438,8 +436,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                       style: TextStyle(
                                         color: const Color(0xFF646464),
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -456,7 +453,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                       child: Image.asset(
                                         'assets/images/BTN Back.webp',
                                         color: const Color(0xFF646464),
-                                        //width: AppDimensions.height10(context) * 2.6,
+                                        //width: AppDimensions.width10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
                                         fit: BoxFit.cover,
                                       ))
@@ -465,7 +462,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 17.0,
+                            width: AppDimensions.width10(context) * 17.0,
                             height: AppDimensions.height10(context) * 0.5,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 1.0),
@@ -475,7 +472,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                 color: Colors.white),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 36.0,
+                            width: AppDimensions.width10(context) * 36.0,
                             height: AppDimensions.height10(context) * 6.0,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 1.0),
@@ -488,7 +485,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: AppDimensions.height10(context) * 2.4,
+                                  width: AppDimensions.width10(context) * 2.4,
                                   height: AppDimensions.height10(context) * 2.4,
                                   margin: EdgeInsets.only(
                                     right:
@@ -500,15 +497,14 @@ class _record_inspirationState extends State<record_inspiration> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 5.0,
+                                  width: AppDimensions.width10(context) * 5.0,
                                   height: AppDimensions.height10(context) * 2.2,
                                   child: Center(
                                       child: Text(
                                     'Share',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFF646464)),
                                   )),
@@ -524,7 +520,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                   duration: const Duration(seconds: 1),
                                   context: context,
                                   builder: (BuildContext context) => SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             27.0,
                                         height:
                                             AppDimensions.height10(context) *
@@ -594,18 +590,17 @@ class _record_inspirationState extends State<record_inspiration> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 3.4,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                23.8,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    23.8,
                                             child: Text(
                                               "By clicking 'Yes' you confirm that this\ninspiration will be deleted permanently. ",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 color: const Color(0xFF000000),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.3,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.3,
                                                 fontWeight: FontWeight.w400,
                                               ),
                                             ),
@@ -642,7 +637,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                                           color: const Color(
                                                               0xFFFFFFFF),
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.7,
                                                           fontFamily: "Laila",
@@ -694,7 +689,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                                       'Yes',
                                                       style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.7,
                                                           fontFamily: "Laila",
@@ -723,7 +718,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                       ));
                             },
                             child: Container(
-                              width: AppDimensions.height10(context) * 36.0,
+                              width: AppDimensions.width10(context) * 36.0,
                               height: AppDimensions.height10(context) * 6.0,
                               decoration: BoxDecoration(
                                   border: Border.all(
@@ -738,8 +733,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
+                                    width: AppDimensions.width10(context) * 2.4,
                                     height:
                                         AppDimensions.height10(context) * 2.4,
                                     margin: EdgeInsets.only(
@@ -752,8 +746,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 5.3,
+                                    width: AppDimensions.width10(context) * 5.3,
                                     height:
                                         AppDimensions.height10(context) * 2.2,
                                     child: Center(
@@ -761,7 +754,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                       'Delete',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xffffffff)),
@@ -775,7 +768,7 @@ class _record_inspirationState extends State<record_inspiration> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 17.0,
+                      width: AppDimensions.width10(context) * 17.0,
                       height: AppDimensions.height10(context) * 0.5,
                       //alignment: Alignment.bottomCenter,
                       margin: EdgeInsets.only(

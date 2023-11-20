@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
           child: IconButton(
             icon: Image.asset(
               'assets/images/Close.webp',
-              width: AppDimensions.height10(context) * 2.8,
+              width: AppDimensions.width10(context) * 2.8,
               height: AppDimensions.height10(context) * 2.8,
               fit: BoxFit.cover,
             ),
@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
           fontWeight: fontWeight,
           color: Colors.white,
           height: AppDimensions.height10(context) * 0.16,
-          fontSize: AppDimensions.height10(context) * fontSize,
+          fontSize: AppDimensions.font10(context) * fontSize,
         ),
       ),
     );
@@ -170,13 +170,13 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             },
             child: Container(
               height: AppDimensions.height10(context) * 5.5,
-              width: AppDimensions.height10(context) * 34.1,
+              width: AppDimensions.width10(context) * 34.1,
               decoration: BoxDecoration(
                   color: Color(0xFF5A4D73),
                   borderRadius: BorderRadius.circular(
                       AppDimensions.height10(context) * 4.0),
                   border: Border.all(
-                      width: AppDimensions.height10(context) * 0.1,
+                      width: AppDimensions.width10(context) * 0.1,
                       color: Color(0xFFFFFFFF))),
               child: Row(
                 children: [
@@ -197,7 +197,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       '  Email and Password',
                       style: TextStyle(
                         color: const Color(0xFFFFFFFF),
-                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontSize: AppDimensions.font10(context) * 1.8,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -225,7 +225,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       Function onPressed, Color backgroundColor, Color textColor) {
     return Container(
       height: AppDimensions.height10(context) * 5.5,
-      width: AppDimensions.height10(context) * 34.1,
+      width: AppDimensions.width10(context) * 34.1,
       child: OutlinedButton.icon(
         style: OutlinedButton.styleFrom(
           side: BorderSide(width: 1.0, color: Colors.white),
@@ -247,7 +247,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 '  $label',
                 style: TextStyle(
                   color: textColor,
-                  fontSize: AppDimensions.height10(context) * 1.8,
+                  fontSize: AppDimensions.font10(context) * 1.8,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -267,7 +267,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       Color textColor) {
     return Container(
       height: AppDimensions.height10(context) * 5.5,
-      width: AppDimensions.height10(context) * 34.1,
+      width: AppDimensions.width10(context) * 34.1,
       child: OutlinedButton.icon(
         style: OutlinedButton.styleFrom(
           backgroundColor: backgroundColor,
@@ -278,7 +278,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         onPressed: onPressed as void Function()?,
         icon: Image.asset(
           imageAsset,
-          width: AppDimensions.height10(context) * 2.4,
+          width: AppDimensions.width10(context) * 2.4,
           height: AppDimensions.height10(context) * 2.4,
         ),
         label: Row(
@@ -288,7 +288,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 '  $label',
                 style: TextStyle(
                   color: textColor,
-                  fontSize: AppDimensions.height10(context) * 1.8,
+                  fontSize: AppDimensions.font10(context) * 1.8,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -325,7 +325,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         scale: 1 - _controller.value,
         child: Container(
           height: AppDimensions.height10(context) * 5.0,
-          width: AppDimensions.height10(context) * 29.3,
+          width: AppDimensions.width10(context) * 29.3,
           decoration: BoxDecoration(
             color: const Color(0xFFF5F5F5),
             border: Border.all(color: Colors.white),
@@ -337,7 +337,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               "New account",
               style: TextStyle(
                 color: const Color(0xFF8C648A),
-                fontSize: AppDimensions.height10(context) * 1.6,
+                fontSize: AppDimensions.font10(context) * 1.6,
                 fontWeight: FontWeight.w600,
               ),
             ),

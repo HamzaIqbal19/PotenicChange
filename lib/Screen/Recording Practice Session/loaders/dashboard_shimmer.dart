@@ -175,7 +175,7 @@ class DashBoard_shimmer extends StatelessWidget {
               ),
               Center(
                   child: Container(
-                width: AppDimensions.height10(context) * 35.4,
+                width: AppDimensions.width10(context) * 35.4,
                 height: AppDimensions.height10(context) * 0.2,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(2),
@@ -189,7 +189,7 @@ class DashBoard_shimmer extends StatelessWidget {
               ),
               Container(
                 height: AppDimensions.height10(context) * 26.8,
-                width: AppDimensions.height10(context) * 26.8,
+                width: AppDimensions.width10(context) * 26.8,
                 child: Stack(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: const [
@@ -211,7 +211,7 @@ class DashBoard_shimmer extends StatelessWidget {
                 height: AppDimensions.height10(context) * 3.5,
               ),
               Container(
-                width: AppDimensions.height10(context) * 35.3,
+                width: AppDimensions.width10(context) * 35.3,
                 height: AppDimensions.height10(context) * 14.4,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -236,7 +236,7 @@ class continer_const extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: AppDimensions.height10(context) * width_of,
+        width: AppDimensions.width10(context) * width_of,
         height: AppDimensions.height10(context) * height_of,
         decoration: const BoxDecoration(
             shape: BoxShape.circle, color: Color.fromARGB(144, 224, 224, 224)),

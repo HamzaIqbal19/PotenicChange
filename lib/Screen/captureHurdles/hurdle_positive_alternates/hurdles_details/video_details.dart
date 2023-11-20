@@ -22,20 +22,20 @@ class video_details extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
           centerTitle: true,
           title: SizedBox(
-            width: AppDimensions.height10(context) * 17.0,
+            width: AppDimensions.width10(context) * 17.0,
             height: AppDimensions.height10(context) * 4.8,
             child: GradientText(
               'Hurdle‘s positive\nalternatives',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: AppDimensions.height10(context) * 2.0,
+                fontSize: AppDimensions.font10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
               colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -47,7 +47,7 @@ class video_details extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -67,7 +67,7 @@ class video_details extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: AppDimensions.height10(context) * 34.3,
+                width: AppDimensions.width10(context) * 34.3,
                 height: AppDimensions.height10(context) * 3.9,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 17.0),
@@ -75,14 +75,14 @@ class video_details extends StatelessWidget {
                   'Video details',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 2.8,
+                    fontSize: AppDimensions.font10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
                   colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 18.5,
+                width: AppDimensions.width10(context) * 18.5,
                 height: AppDimensions.height10(context) * 2.2,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.1),
@@ -90,14 +90,14 @@ class video_details extends StatelessWidget {
                   'Enter the description',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 1.8,
+                    fontSize: AppDimensions.font10(context) * 1.8,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 22.4,
+                width: AppDimensions.width10(context) * 22.4,
                 height: AppDimensions.height10(context) * 21.2,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.1),
@@ -105,7 +105,7 @@ class video_details extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 12.11,
+                      width: AppDimensions.width10(context) * 12.11,
                       height: AppDimensions.height10(context) * 15.1,
                       decoration: BoxDecoration(
                         shape: BoxShape.rectangle,
@@ -119,7 +119,7 @@ class video_details extends StatelessWidget {
                         radius: Radius.circular(
                             AppDimensions.height10(context) * 1.5),
                         child: Container(
-                          width: AppDimensions.height10(context) * 12.1,
+                          width: AppDimensions.width10(context) * 12.1,
                           height: AppDimensions.height10(context) * 15.0,
                           decoration: BoxDecoration(
                               shape: BoxShape.rectangle,
@@ -142,8 +142,7 @@ class video_details extends StatelessWidget {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w600,
                                         color: Colors.white),
                                   ),
@@ -170,7 +169,7 @@ class video_details extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 22.4,
+                      width: AppDimensions.width10(context) * 22.4,
                       height: AppDimensions.height10(context) * 2.4,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.7),
@@ -178,14 +177,14 @@ class video_details extends StatelessWidget {
                         child: Text(
                           'Music Eye Of The Tiger',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontSize: AppDimensions.font10(context) * 2.0,
                               fontWeight: FontWeight.w600,
                               color: Colors.white),
                         ),
                       ),
                     ),
                     Container(
-                        width: AppDimensions.height10(context) * 6.3,
+                        width: AppDimensions.width10(context) * 6.3,
                         height: AppDimensions.height10(context) * 1.7,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.1),
@@ -193,7 +192,7 @@ class video_details extends StatelessWidget {
                           child: Text(
                             'Survivor',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
                           ),
@@ -202,7 +201,7 @@ class video_details extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 36.0,
+                width: AppDimensions.width10(context) * 36.0,
                 height: AppDimensions.height10(context) * 9.0,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.3),
@@ -214,7 +213,7 @@ class video_details extends StatelessWidget {
                   decoration: InputDecoration(
                       hintText: 'Why is it important to you?',
                       hintStyle: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.8,
+                          fontSize: AppDimensions.font10(context) * 1.8,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xff828282)),
                       focusedBorder: const OutlineInputBorder(
@@ -224,7 +223,7 @@ class video_details extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 36.0,
+                width: AppDimensions.width10(context) * 36.0,
                 height: AppDimensions.height10(context) * 5.0,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
@@ -237,7 +236,7 @@ class video_details extends StatelessWidget {
                     decoration: InputDecoration(
                         hintText: '#Tags',
                         hintStyle: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.font10(context) * 1.4,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
@@ -248,7 +247,7 @@ class video_details extends StatelessWidget {
                 ),
               ),
               Container(
-                  width: AppDimensions.height10(context) * 25.4,
+                  width: AppDimensions.width10(context) * 25.4,
                   height: AppDimensions.height10(context) * 5.0,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 13.9),
@@ -273,7 +272,7 @@ class video_details extends StatelessWidget {
                         'Next',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             fontFamily: 'Poppins'),
                       ))),
@@ -302,20 +301,20 @@ class supporting_mat_video extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
           centerTitle: true,
           title: SizedBox(
-            width: AppDimensions.height10(context) * 17.0,
+            width: AppDimensions.width10(context) * 17.0,
             height: AppDimensions.height10(context) * 4.8,
             child: GradientText(
               'Hurdle‘s positive\nalternatives',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: AppDimensions.height10(context) * 2.0,
+                fontSize: AppDimensions.font10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
               colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -327,7 +326,7 @@ class supporting_mat_video extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -347,7 +346,7 @@ class supporting_mat_video extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: AppDimensions.height10(context) * 34.3,
+                width: AppDimensions.width10(context) * 34.3,
                 height: AppDimensions.height10(context) * 3.9,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 17.0),
@@ -355,14 +354,14 @@ class supporting_mat_video extends StatelessWidget {
                   'Video Saved',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 2.8,
+                    fontSize: AppDimensions.font10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
                   colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 22.4,
+                width: AppDimensions.width10(context) * 22.4,
                 height: AppDimensions.height10(context) * 21.0,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.1),
@@ -370,7 +369,7 @@ class supporting_mat_video extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 12.11,
+                      width: AppDimensions.width10(context) * 12.11,
                       height: AppDimensions.height10(context) * 15.1,
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
@@ -392,13 +391,13 @@ class supporting_mat_video extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 8.253,
+                              width: AppDimensions.width10(context) * 8.253,
                               height: AppDimensions.height10(context) * 8.250,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.73),
@@ -414,7 +413,7 @@ class supporting_mat_video extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 22.4,
+                      width: AppDimensions.width10(context) * 22.4,
                       height: AppDimensions.height10(context) * 2.4,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.7),
@@ -422,14 +421,14 @@ class supporting_mat_video extends StatelessWidget {
                         child: Text(
                           'Music Eye Of The Tiger',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontSize: AppDimensions.font10(context) * 2.0,
                               fontWeight: FontWeight.w600,
                               color: Colors.white),
                         ),
                       ),
                     ),
                     Container(
-                        width: AppDimensions.height10(context) * 6.3,
+                        width: AppDimensions.width10(context) * 6.3,
                         height: AppDimensions.height10(context) * 1.7,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.1),
@@ -437,7 +436,7 @@ class supporting_mat_video extends StatelessWidget {
                           child: Text(
                             'Survivor',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
                           ),
@@ -446,7 +445,7 @@ class supporting_mat_video extends StatelessWidget {
                 ),
               ),
               Container(
-                  width: AppDimensions.height10(context) * 36.0,
+                  width: AppDimensions.width10(context) * 36.0,
                   height: AppDimensions.height10(context) * 20.0,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 3.3),
@@ -454,7 +453,7 @@ class supporting_mat_video extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: AppDimensions.height10(context) * 36.0,
+                        width: AppDimensions.width10(context) * 36.0,
                         height: AppDimensions.height10(context) * 17.0,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
@@ -463,7 +462,7 @@ class supporting_mat_video extends StatelessWidget {
                         child: Column(
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 11.5,
+                              width: AppDimensions.width10(context) * 11.5,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.3),
@@ -473,13 +472,13 @@ class supporting_mat_video extends StatelessWidget {
                                   style: TextStyle(
                                       color: const Color(0xff646464),
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.0,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 31.5,
+                              width: AppDimensions.width10(context) * 31.5,
                               height: AppDimensions.height10(context) * 8.4,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.1),
@@ -488,14 +487,13 @@ class supporting_mat_video extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: const Color(0xffB353C9),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 30.5,
+                              width: AppDimensions.width10(context) * 30.5,
                               height: AppDimensions.height10(context) * 2.1,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.9),
@@ -504,7 +502,7 @@ class supporting_mat_video extends StatelessWidget {
                                 style: TextStyle(
                                     color: const Color(0xff828282),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.font10(context) * 1.4,
                                     fontWeight: FontWeight.w400),
                               ),
                             )
@@ -513,7 +511,7 @@ class supporting_mat_video extends StatelessWidget {
                       ),
                       Container(
                           height: AppDimensions.height10(context) * 2.0,
-                          width: AppDimensions.height10(context) * 2.0,
+                          width: AppDimensions.width10(context) * 2.0,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.0),
                           padding: EdgeInsets.all(
@@ -531,7 +529,7 @@ class supporting_mat_video extends StatelessWidget {
                     ],
                   )),
               Container(
-                width: AppDimensions.height10(context) * 4.7,
+                width: AppDimensions.width10(context) * 4.7,
                 height: AppDimensions.height10(context) * 4.7,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 1.1,
@@ -539,25 +537,25 @@ class supporting_mat_video extends StatelessWidget {
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     // border: Border.all(
-                    //     width: AppDimensions.height10(context) * 0.3,
+                    //     width: AppDimensions.width10(context) * 0.3,
                     //     color: Colors.white)
                     image: DecorationImage(
                         image: AssetImage('assets/images/Addgoal.webp'))),
               ),
               Container(
-                width: AppDimensions.height10(context) * 26.0,
+                width: AppDimensions.width10(context) * 26.0,
                 height: AppDimensions.height10(context) * 1.9,
                 child: Text(
                   'Add another motivational material',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.3,
+                      fontSize: AppDimensions.font10(context) * 1.3,
                       fontWeight: FontWeight.w400,
                       color: Colors.white),
                 ),
               ),
               Container(
-                  width: AppDimensions.height10(context) * 25.4,
+                  width: AppDimensions.width10(context) * 25.4,
                   height: AppDimensions.height10(context) * 5.0,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 3.3),
@@ -584,7 +582,7 @@ class supporting_mat_video extends StatelessWidget {
                         'Next',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             fontFamily: 'Poppins'),
                       ))),

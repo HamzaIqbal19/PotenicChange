@@ -107,7 +107,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                       child: Image.asset(
                         'assets/images/Asset 10 2.webp',
                         height: AppDimensions.height10(context) * 4.0,
-                        width: AppDimensions.height10(context) * 3.977,
+                        width: AppDimensions.width10(context) * 3.977,
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -127,7 +127,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                       child: Image.asset(
                         'assets/images/Add goal.webp',
                         height: AppDimensions.height10(context) * 2.0,
-                        width: AppDimensions.height10(context) * 2.1,
+                        width: AppDimensions.width10(context) * 2.1,
                       ),
                     ),
                   ),
@@ -147,7 +147,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                       child: Image.asset(
                         'assets/images/calendar_month_black_24dp 1.webp',
                         height: AppDimensions.height10(context) * 2.4,
-                        width: AppDimensions.height10(context) * 2.4,
+                        width: AppDimensions.width10(context) * 2.4,
                       ),
                     ),
                   ),
@@ -184,7 +184,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                 child: SizedBox(
                                   height:
                                       AppDimensions.height10(context) * 19.2,
-                                  width: AppDimensions.height10(context) * 45.7,
+                                  width: AppDimensions.width10(context) * 45.7,
                                   child: Stack(
                                     children: [
                                       Align(
@@ -202,9 +202,9 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 7.9,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                7.9,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    7.9,
                                             margin: EdgeInsets.only(
                                                 top: AppDimensions.height10(
                                                         context) *
@@ -213,7 +213,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 shape: BoxShape.circle,
                                                 border: Border.all(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             0.3,
                                                     color: Colors.white),
@@ -225,10 +225,10 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 Text(
                                                   currentDay.substring(0, 3),
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.2,
+                                                              1.2,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       color: const Color(
@@ -237,10 +237,10 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 Text(
                                                   formattdDate,
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.4,
+                                                              1.4,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: Colors.white),
@@ -262,17 +262,17 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             0.1,
                                                         color: const Color(
                                                             0xFFFBFBFB)),
                                                   ),
                                                   child: Container(
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          1.7,
+                                                              1.7,
                                                       height: AppDimensions
                                                               .height10(
                                                                   context) *
@@ -288,7 +288,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                           '0/2',
                                                           style: TextStyle(
                                                               fontSize: AppDimensions
-                                                                      .height10(
+                                                                      .font10(
                                                                           context) *
                                                                   1.0,
                                                               fontWeight:
@@ -320,9 +320,9 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 )));
                                           },
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                8.3,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    8.3,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 8.3,
@@ -364,7 +364,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                                     0, 3),
                                                             style: TextStyle(
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.2,
                                                                 fontWeight:
@@ -379,7 +379,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                                 color: Colors
                                                                     .white,
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.4,
                                                                 fontWeight:
@@ -392,7 +392,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                                           context) *
                                                                   2.5,
                                                               width: AppDimensions
-                                                                      .height10(
+                                                                      .width10(
                                                                           context) *
                                                                   2.5,
                                                               decoration:
@@ -412,7 +412,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                                     '0/0',
                                                                     style: TextStyle(
                                                                         fontSize:
-                                                                            AppDimensions.height10(context) *
+                                                                            AppDimensions.font10(context) *
                                                                                 1.0,
                                                                         fontWeight:
                                                                             FontWeight
@@ -436,9 +436,9 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 7.9,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                7.9,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    7.9,
                                             margin: EdgeInsets.only(
                                               top: AppDimensions.height10(
                                                       context) *
@@ -448,7 +448,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 shape: BoxShape.circle,
                                                 border: Border.all(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             0.3,
                                                     color: Colors.white),
@@ -462,10 +462,10 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                   previousDayName.substring(
                                                       0, 3),
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.2,
+                                                              1.2,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       color: Colors.white),
@@ -473,10 +473,10 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 Text(
                                                   previousDate,
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.4,
+                                                              1.4,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: Colors.white),
@@ -493,16 +493,16 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             0.1,
                                                         color: Colors.white),
                                                   ),
                                                   child: Container(
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          1.7,
+                                                              1.7,
                                                       height: AppDimensions
                                                               .height10(
                                                                   context) *
@@ -514,7 +514,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                           '0/2',
                                                           style: TextStyle(
                                                               fontSize: AppDimensions
-                                                                      .height10(
+                                                                      .font10(
                                                                           context) *
                                                                   1.0,
                                                               fontWeight:
@@ -533,7 +533,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                 ),
                               ),
                               Container(
-                                width: AppDimensions.height10(context) * 34.3,
+                                width: AppDimensions.width10(context) * 34.3,
                                 height: AppDimensions.height10(context) * 4.9,
                                 margin: EdgeInsets.only(
                                     top:
@@ -546,13 +546,13 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                           0.12,
                                       color: Colors.white,
                                       fontSize:
-                                          AppDimensions.height10(context) * 3.0,
+                                          AppDimensions.font10(context) * 3.0,
                                       fontWeight: FontWeight.w700,
                                       fontFamily: 'Laila'),
                                 ),
                               ),
                               Container(
-                                width: AppDimensions.height10(context) * 26.9,
+                                width: AppDimensions.width10(context) * 26.9,
                                 height: AppDimensions.height10(context) * 5.8,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 0.2),
@@ -565,7 +565,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                           0.12,
                                       fontFamily: 'Laila',
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.8,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
@@ -579,7 +579,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                       )));
                                 },
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 10.1,
+                                  width: AppDimensions.width10(context) * 10.1,
                                   height:
                                       AppDimensions.height10(context) * 10.1,
                                   margin: EdgeInsets.only(
@@ -590,7 +590,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                       color: Colors.transparent,
                                       border: Border.all(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   0.3,
                                           color: Colors.white)),
                                   child: Center(
@@ -604,7 +604,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                   0.12,
                                           fontFamily: 'laila',
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           //add 2 px font size from feedback
                                           fontWeight: FontWeight.w600),
@@ -621,7 +621,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                             scrollDirection: Axis.horizontal,
                             child: SizedBox(
                               height: AppDimensions.height10(context) * 19.2,
-                              width: AppDimensions.height10(context) * 45.7,
+                              width: AppDimensions.width10(context) * 45.7,
                               child: Stack(
                                 children: [
                                   Align(
@@ -639,7 +639,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 7.9,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             7.9,
                                         //margin: const EdgeInsets.only(top: 84),
                                         decoration: BoxDecoration(
@@ -673,7 +673,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                         .toUpperCase(),
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.2,
                                                         fontWeight:
@@ -683,7 +683,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  //width: AppDimensions.height10(context) * 4.0,
+                                                  //width: AppDimensions.width10(context) * 4.0,
                                                   height:
                                                       AppDimensions.height10(
                                                               context) *
@@ -697,7 +697,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.4),
                                                   ),
@@ -708,7 +708,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                                 context) *
                                                             2.7,
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.7,
                                                     //  margin: const EdgeInsets.only(top: 3.32),
@@ -739,14 +739,14 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                     child: SizedBox(
                                       height: AppDimensions.height10(context) *
                                           19.2,
-                                      width: AppDimensions.height10(context) *
-                                          18.8,
+                                      width:
+                                          AppDimensions.width10(context) * 18.8,
                                       // margin: EdgeInsets.only(left: 55.5, right: 55.5),
                                       child: Container(
                                         height:
                                             AppDimensions.height10(context) *
                                                 13.81,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             13.265,
                                         decoration: const BoxDecoration(
                                             image: DecorationImage(
@@ -784,10 +784,10 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                       .substring(0, 3)
                                                       .toUpperCase(),
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.2,
+                                                              1.2,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       color: const Color(
@@ -798,10 +798,10 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                   style: TextStyle(
                                                       color: const Color(
                                                           0xff5B74A6),
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.4,
+                                                              1.4,
                                                       fontWeight:
                                                           FontWeight.w400),
                                                 ),
@@ -854,7 +854,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                               AppDimensions.height10(context) *
                                                   7.9,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   7.9,
                                           // margin: const EdgeInsets.only(
                                           //   top: 84,
@@ -884,7 +884,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                     .toUpperCase(),
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.2,
                                                     fontWeight: FontWeight.w600,
@@ -895,7 +895,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 previousDate,
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.4,
                                                     fontWeight: FontWeight.w400,
@@ -919,7 +919,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 ),
                                                 child: SizedBox(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             1.7,
                                                     height:
@@ -993,10 +993,10 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                         .toString()
                                                         .substring(0, 5),
                                                     style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.8,
+                                                              1.8,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       color: Colors.white,
@@ -1020,10 +1020,10 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                         .substring(5, 7)
                                                         .toUpperCase(),
                                                     style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.0,
+                                                              1.0,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: Colors.white,
@@ -1204,7 +1204,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                               top: AppDimensions.height10(context) * 64.0,
                               left: AppDimensions.height10(context) * 1.3,
                               child: Container(
-                                width: AppDimensions.height10(context) * 4.5,
+                                width: AppDimensions.width10(context) * 4.5,
                                 height: AppDimensions.height10(context) * 4.5,
                                 padding: EdgeInsets.all(
                                     AppDimensions.height10(context) * 0.4),
@@ -1212,7 +1212,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                     shape: BoxShape.circle,
                                     color: Colors.white),
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 4.16,
+                                  width: AppDimensions.width10(context) * 4.16,
                                   height:
                                       AppDimensions.height10(context) * 4.16,
                                   decoration: const BoxDecoration(
@@ -1236,7 +1236,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                         child: Text(
                                           allGoals.length.toString(),
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.2,
                                               fontWeight: FontWeight.w500,
@@ -1252,8 +1252,8 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                   top: AppDimensions.height10(context) * 56.8,
                                   left: AppDimensions.height10(context) * 2.5,
                                   child: Container(
-                                    width: AppDimensions.height10(context) *
-                                        38.259,
+                                    width:
+                                        AppDimensions.width10(context) * 38.259,
                                     height:
                                         AppDimensions.height10(context) * 9.707,
                                     margin: EdgeInsets.only(
@@ -1280,7 +1280,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                       context) *
                                                   1.261),
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   4.437,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1292,7 +1292,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   16.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1306,7 +1306,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               SizedBox(
-                                                //  / width: AppDimensions.height10(context) * 4.6,
+                                                //  / width: AppDimensions.width10(context) * 4.6,
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     1.4,
@@ -1314,10 +1314,10 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 child: Text(
                                                   'Session missed',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.3,
+                                                              1.3,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: const Color(
@@ -1325,17 +1325,17 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                 ),
                                               ),
                                               SizedBox(
-                                                //width: AppDimensions.height10(context) * 6.9,
+                                                //width: AppDimensions.width10(context) * 6.9,
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     2.2,
                                                 child: Text(
                                                   'Count temper ep...',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.8,
+                                                              1.8,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: const Color(
@@ -1347,7 +1347,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   8.1,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1370,7 +1370,7 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                               'view',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w500,

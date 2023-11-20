@@ -54,7 +54,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -71,7 +71,7 @@ class _add_your_practiceState extends State<add_your_practice> {
         child: Column(children: [
           Container(
             // color: Colors.amber,
-            //width: AppDimensions.height10(context) * 17.1,
+            //width: AppDimensions.width10(context) * 17.1,
             height: AppDimensions.height10(context) * 2.2,
             margin: EdgeInsets.only(
               top: AppDimensions.height10(context) * 5.2,
@@ -83,7 +83,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                 'Goal Menu',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 1.8,
+                    fontSize: AppDimensions.font10(context) * 1.8,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xffffffff)),
               ),
@@ -91,7 +91,7 @@ class _add_your_practiceState extends State<add_your_practice> {
           ),
           Container(
             // color: Colors.amber,
-            width: AppDimensions.height10(context) * 17.1,
+            width: AppDimensions.width10(context) * 17.1,
             height: AppDimensions.height10(context) * 2.4,
             margin: EdgeInsets.only(
                 top: AppDimensions.height10(context) * 0.5,
@@ -102,13 +102,13 @@ class _add_your_practiceState extends State<add_your_practice> {
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                  fontSize: AppDimensions.height10(context) * 2.0,
+                  fontSize: AppDimensions.font10(context) * 2.0,
                   fontWeight: FontWeight.w600,
                   color: const Color(0xffffffff)),
             ),
           ),
           Container(
-            width: AppDimensions.height10(context) * 7.9,
+            width: AppDimensions.width10(context) * 7.9,
             height: AppDimensions.height10(context) * 7.9,
             margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.3),
             decoration: BoxDecoration(
@@ -145,7 +145,7 @@ class _add_your_practiceState extends State<add_your_practice> {
               await prefs.setString('goalName', widget.goalName);
             },
             child: Container(
-              width: AppDimensions.height10(context) * 17.5,
+              width: AppDimensions.width10(context) * 17.5,
               height: AppDimensions.height10(context) * 17.5,
               padding: EdgeInsets.all(AppDimensions.height10(context) * 0.5),
               margin:
@@ -154,7 +154,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                   shape: BoxShape.circle,
                   border: Border.all(color: const Color(0xFFFFFFFF), width: 3)),
               child: Container(
-                width: AppDimensions.height10(context) * 15.5,
+                width: AppDimensions.width10(context) * 15.5,
                 height: AppDimensions.height10(context) * 15.5,
                 padding: EdgeInsets.all(AppDimensions.height10(context) * 0.7),
                 decoration: BoxDecoration(
@@ -162,7 +162,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                     border:
                         Border.all(color: const Color(0xFFFFFFFF), width: 4)),
                 child: Container(
-                  width: AppDimensions.height10(context) * 13.4,
+                  width: AppDimensions.width10(context) * 13.4,
                   height: AppDimensions.height10(context) * 13.2,
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle,
@@ -173,7 +173,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                       'Add new\npractice',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.8,
+                          fontSize: AppDimensions.font10(context) * 1.8,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFFFFFFFF)),
                     ),
@@ -200,7 +200,7 @@ class _add_your_practiceState extends State<add_your_practice> {
               var route = prefs.setString('goal_route', 'view_all_goals');
             },
             child: Container(
-              width: AppDimensions.height10(context) * 36.4,
+              width: AppDimensions.width10(context) * 36.4,
               height: AppDimensions.height10(context) * 6.0,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
@@ -213,7 +213,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: AppDimensions.height10(context) * 18.5,
+                    width: AppDimensions.width10(context) * 18.5,
                     height: AppDimensions.height10(context) * 2.2,
                     margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 1.99),
@@ -221,19 +221,19 @@ class _add_your_practiceState extends State<add_your_practice> {
                       'Goal details',
                       style: TextStyle(
                         color: const Color(0xff646464),
-                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontSize: AppDimensions.font10(context) * 1.8,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
                   Container(
-                      width: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.width10(context) * 2.4,
                       height: AppDimensions.height10(context) * 1.39,
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 2.391),
                       child: Image.asset(
                         'assets/images/BTN Back.webp',
-                        //width: AppDimensions.height10(context) * 2.6,
+                        //width: AppDimensions.width10(context) * 2.6,
                         //height: AppDimensions.height10(context) * 2.6,
                         fit: BoxFit.cover,
                       ))

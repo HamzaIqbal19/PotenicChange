@@ -177,7 +177,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 3,
+                  width: AppDimensions.width10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
@@ -209,7 +209,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 3.0,
+                    width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
@@ -245,7 +245,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFF437296),
-                              fontSize: AppDimensions.height10(context) * 1.8,
+                              fontSize: AppDimensions.font10(context) * 1.8,
                             ),
                           ),
                         ),
@@ -254,7 +254,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                         height: AppDimensions.height10(context) * 0.5,
                       ),
                       SizedBox(
-                        width: AppDimensions.height10(context) * 30,
+                        width: AppDimensions.width10(context) * 30,
                         child: Center(
                           child: Text(
                             widget.goalName,
@@ -262,7 +262,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFF437296),
-                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontSize: AppDimensions.font10(context) * 2.0,
                             ),
                           ),
                         ),
@@ -272,7 +272,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                       ),
                       SizedBox(
                         height: AppDimensions.height10(context) * 3.4,
-                        width: AppDimensions.height10(context) * 36.4,
+                        width: AppDimensions.width10(context) * 36.4,
                         child: Center(
                           child: Text(
                             "Your routine commitment",
@@ -280,7 +280,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFF437296),
-                              fontSize: AppDimensions.height10(context) * 2.8,
+                              fontSize: AppDimensions.font10(context) * 2.8,
                             ),
                           ),
                         ),
@@ -293,7 +293,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                         children: [
                           SizedBox(
                             height: AppDimensions.height10(context) * 8.6,
-                            width: AppDimensions.height10(context) * 37.2,
+                            width: AppDimensions.width10(context) * 37.2,
                             child: Center(
                               child: Text.rich(
                                 textAlign: TextAlign.center,
@@ -303,7 +303,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                   style: TextStyle(
                                     color: const Color(0xFF437296),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.8,
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -492,7 +492,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                       Container(
                                                         // color:Colors.orange,
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             38.2,
                                                         padding:
@@ -648,8 +648,8 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                 child: Transform.translate(
                                   offset: Offset(swipeOffset, 0.0),
                                   child: Container(
-                                    width: AppDimensions.height10(context) *
-                                        38.259,
+                                    width:
+                                        AppDimensions.width10(context) * 38.259,
                                     height:
                                         AppDimensions.height10(context) * 9.707,
                                     decoration: BoxDecoration(
@@ -674,7 +674,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                       context) *
                                                   1.261),
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   4.437,
                                           height:
                                               AppDimensions.height10(context) *
@@ -685,7 +685,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                       'assets/images/circle_tick.webp'))),
                                         ),
                                         Container(
-                                          //width: AppDimensions.height10(context) * 6.9,
+                                          //width: AppDimensions.width10(context) * 6.9,
                                           height:
                                               AppDimensions.height10(context) *
                                                   3.6,
@@ -708,10 +708,10 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                 child: Text(
                                                   'Updates saved',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.3,
+                                                              1.3,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: const Color(
@@ -730,10 +730,10 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.8,
+                                                              1.8,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: const Color(
@@ -751,9 +751,9 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                             stopTimer();
                                           },
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                8.1,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    8.1,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 6.0,
@@ -780,7 +780,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                 'Undo',
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.8,
                                                     fontWeight: FontWeight.w500,
@@ -830,7 +830,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                   child: Container(
                                     height: AppDimensions.height10(context) * 5,
                                     width:
-                                        AppDimensions.height10(context) * 31.3,
+                                        AppDimensions.width10(context) * 31.3,
                                     decoration: BoxDecoration(
                                       // color: Color(0xFFFF7D50),
                                       border:
@@ -853,7 +853,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           fontWeight: FontWeight.w600,
                                         ),

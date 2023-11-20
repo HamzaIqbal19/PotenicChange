@@ -203,7 +203,7 @@ class _practiceMenuState extends State<practiceMenu> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
@@ -235,7 +235,7 @@ class _practiceMenuState extends State<practiceMenu> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -258,7 +258,7 @@ class _practiceMenuState extends State<practiceMenu> {
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 30.4,
+                            width: AppDimensions.width10(context) * 30.4,
                             height: AppDimensions.height10(context) * 18.2,
                             margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 5.2,
@@ -275,13 +275,12 @@ class _practiceMenuState extends State<practiceMenu> {
                                             AppDimensions.height10(context) *
                                                 0.12,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 30,
+                                  width: AppDimensions.width10(context) * 30,
                                   child: Center(
                                     child: Text(
                                       goalName,
@@ -293,14 +292,14 @@ class _practiceMenuState extends State<practiceMenu> {
                                               AppDimensions.height10(context) *
                                                   0.12,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.0,
                                           fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 ),
                                 Container(
-                                  //width: AppDimensions.height10(context) * 2.0,
+                                  //width: AppDimensions.width10(context) * 2.0,
                                   height: AppDimensions.height10(context) * 9.3,
                                   // color: Colors.amber,
                                   margin: EdgeInsets.only(
@@ -313,7 +312,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                         alignment: const Alignment(-0.55, -0.3),
                                         child: Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   6.56,
                                           height:
                                               AppDimensions.height10(context) *
@@ -348,7 +347,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                               AppDimensions.height10(context) *
                                                   4.1,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   4.06,
                                           decoration: BoxDecoration(
                                               shape: BoxShape.circle,
@@ -373,7 +372,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                         alignment: const Alignment(1.6, -0.3),
                                         child: SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   20.6,
                                           height:
                                               AppDimensions.height10(context) *
@@ -386,10 +385,10 @@ class _practiceMenuState extends State<practiceMenu> {
                                                   style: TextStyle(
                                                       color: const Color(
                                                           0xff156F6D),
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          2.0,
+                                                              2.0,
                                                       fontWeight:
                                                           FontWeight.w600),
                                                 )
@@ -398,10 +397,10 @@ class _practiceMenuState extends State<practiceMenu> {
                                                   style: TextStyle(
                                                       color: const Color(
                                                           0xff156F6D),
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          2.0,
+                                                              2.0,
                                                       fontWeight:
                                                           FontWeight.w600),
                                                 ),
@@ -414,7 +413,7 @@ class _practiceMenuState extends State<practiceMenu> {
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 9.36,
+                            width: AppDimensions.width10(context) * 9.36,
                             height: AppDimensions.height10(context) * 12.0,
                             //color: Colors.amber,
                             margin: EdgeInsets.only(
@@ -444,8 +443,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                     }
                                   },
                                   child: Container(
-                                    width:
-                                        AppDimensions.height10(context) * 7.0,
+                                    width: AppDimensions.width10(context) * 7.0,
                                     height:
                                         AppDimensions.height10(context) * 7.0,
                                     decoration: BoxDecoration(
@@ -462,9 +460,9 @@ class _practiceMenuState extends State<practiceMenu> {
                                                     .height10(context) *
                                                 13.9)),
                                         border: Border.all(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.3,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    0.3,
                                             color: Colors.white)),
                                     child: Center(
                                       child: Icon(
@@ -481,7 +479,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                   // color: Colors.red,
                                   height:
                                       AppDimensions.height10(context) * 4.921,
-                                  width: AppDimensions.height10(context) * 9.36,
+                                  width: AppDimensions.width10(context) * 9.36,
                                   child: Center(
                                     child: Text(
                                       'Record\npractice',
@@ -492,7 +490,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                   0.12,
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           fontWeight: FontWeight.w500),
                                     ),
@@ -508,7 +506,7 @@ class _practiceMenuState extends State<practiceMenu> {
                             // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 41.3,
+                            width: AppDimensions.width10(context) * 41.3,
                             height: AppDimensions.height10(context) * 22.9,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.2),
@@ -530,7 +528,7 @@ class _practiceMenuState extends State<practiceMenu> {
                               Align(
                                 alignment: const Alignment(0, -1),
                                 child: SizedBox(
-                                  width: AppDimensions.height10(context) * 36.0,
+                                  width: AppDimensions.width10(context) * 36.0,
                                   height: widget.goal_eval
                                       ? AppDimensions.height10(context) * 24.7
                                       : AppDimensions.height10(context) * 18.8,
@@ -542,7 +540,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                 5.9
                                             : AppDimensions.height10(context) *
                                                 4.4,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             36.0,
                                         margin: EdgeInsets.only(
                                             bottom: AppDimensions.height10(
@@ -558,7 +556,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                               style: TextStyle(
                                                   //increase font size by 2 px
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w700,
@@ -581,7 +579,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                     'Here is your latest 20 active day evaluation.',
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.4,
                                                         fontWeight:
@@ -614,7 +612,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                                     context) *
                                                             0.15,
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.4,
                                                         fontWeight:
@@ -777,7 +775,7 @@ class _practiceMenuState extends State<practiceMenu> {
                           ),
                           Container(
                             height: AppDimensions.height10(context) * 28.0,
-                            width: AppDimensions.height10(context) * 36.0,
+                            width: AppDimensions.width10(context) * 36.0,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 2.5,
                                 top: AppDimensions.height10(context) * 3.0),
@@ -958,7 +956,7 @@ void info_sheet(context) {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10(context) * 41.4,
+          width: AppDimensions.width10(context) * 41.4,
           height: AppDimensions.height10(context) * 57.7,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(
@@ -980,7 +978,7 @@ void info_sheet(context) {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
@@ -999,12 +997,12 @@ void info_sheet(context) {
                     bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
                   'assets/images/potenic__icon.webp',
-                  width: AppDimensions.height10(context) * 8.202,
+                  width: AppDimensions.width10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),
               ),
               Container(
-                // width: AppDimensions.height10(context) * 28.7,
+                // width: AppDimensions.width10(context) * 28.7,
                 height: AppDimensions.height10(context) * 3.4,
                 // color: Colors.amber,
                 alignment: Alignment.center,
@@ -1012,14 +1010,14 @@ void info_sheet(context) {
                 child: Text(
                   'Practice Assessment',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 36.7,
+                width: AppDimensions.width10(context) * 36.7,
                 //height: AppDimensions.height10(context) * 26.9,
                 //color: Colors.grey,
                 margin: EdgeInsets.only(
@@ -1029,7 +1027,7 @@ void info_sheet(context) {
                   text: TextSpan(
                       style: TextStyle(
                           fontFamily: 'laila',
-                          fontSize: AppDimensions.height10(context) * 1.47,
+                          fontSize: AppDimensions.font10(context) * 1.47,
                           height: AppDimensions.height10(context) * 0.15,
                           //  letterSpacing: AppDimensions.height10(context),
                           fontWeight: FontWeight.w400,

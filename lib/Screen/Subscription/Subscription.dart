@@ -57,7 +57,7 @@ class _SubscriptionState extends State<Subscription>
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -76,7 +76,7 @@ class _SubscriptionState extends State<Subscription>
           child: Column(
             children: [
               Container(
-                width: AppDimensions.height10(context) * 19.9,
+                width: AppDimensions.width10(context) * 19.9,
                 height: AppDimensions.height10(context) * 3.6,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 10.0),
@@ -85,14 +85,14 @@ class _SubscriptionState extends State<Subscription>
                     'Subscription',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 3.1,
+                        fontSize: AppDimensions.font10(context) * 3.1,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xFFFBFBFB)),
                   ),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 34.2,
+                width: AppDimensions.width10(context) * 34.2,
                 //  height: AppDimensions.height10(context) * 5.7,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.9),
@@ -100,14 +100,14 @@ class _SubscriptionState extends State<Subscription>
                   'Get more value from Potenic to help you\nachieve personal transformation towards\nself-fulfilment consistently.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.8,
+                      fontSize: AppDimensions.font10(context) * 1.8,
                       fontWeight: FontWeight.w500,
                       height: AppDimensions.height10(context) * 0.15,
                       color: const Color(0xFFFBFBFB)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 38.4,
+                width: AppDimensions.width10(context) * 38.4,
                 // height: AppDimensions.height10(context) * 148.3,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.8),
@@ -127,7 +127,7 @@ class _SubscriptionState extends State<Subscription>
                 child: Column(
                   children: [
                     Container(
-                        width: AppDimensions.height10(context) * 18.4,
+                        width: AppDimensions.width10(context) * 18.4,
                         height: AppDimensions.height10(context) * 3.356,
                         margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.129,
@@ -136,12 +136,12 @@ class _SubscriptionState extends State<Subscription>
                           'Ownership Plan',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.4,
+                              fontSize: AppDimensions.font10(context) * 2.4,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFF437296)),
                         )),
                     Container(
-                      width: AppDimensions.height10(context) * 32.4,
+                      width: AppDimensions.width10(context) * 32.4,
                       height: AppDimensions.height10(context) * 7.522,
                       margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 0.326,
@@ -150,8 +150,7 @@ class _SubscriptionState extends State<Subscription>
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.5,
+                                  fontSize: AppDimensions.font10(context) * 1.5,
                                   //height: AppDimensions.height10(context) * 0.15,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Laila',
@@ -172,7 +171,7 @@ class _SubscriptionState extends State<Subscription>
                               ])),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 7.4,
+                      width: AppDimensions.width10(context) * 7.4,
                       height: AppDimensions.height10(context) * 0.2,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 0.149),
@@ -182,14 +181,14 @@ class _SubscriptionState extends State<Subscription>
                               AppDimensions.height10(context) * 0.5)),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 32.3,
+                      width: AppDimensions.width10(context) * 32.3,
                       height: AppDimensions.height10(context) * 19.9,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 2.49),
                       child: Column(
                         children: [
                           SizedBox(
-                            width: AppDimensions.height10(context) * 32.3,
+                            width: AppDimensions.width10(context) * 32.3,
                             height: AppDimensions.height10(context) * 4.9,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -197,8 +196,7 @@ class _SubscriptionState extends State<Subscription>
                                 Align(
                                   alignment: Alignment.topLeft,
                                   child: Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.9,
+                                    width: AppDimensions.width10(context) * 2.9,
                                     height:
                                         AppDimensions.height10(context) * 2.9,
                                     decoration: const BoxDecoration(
@@ -208,14 +206,13 @@ class _SubscriptionState extends State<Subscription>
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 28.0,
+                                  width: AppDimensions.width10(context) * 28.0,
                                   height: AppDimensions.height10(context) * 4.9,
                                   child: Text(
                                     'Multiple active goals (up to 3 with\nunlimited goals that can be saved for later)',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.5,
+                                            AppDimensions.font10(context) * 1.5,
                                         fontWeight: FontWeight.w400,
                                         // height: AppDimensions.height10(context) * 0.15,
                                         fontFamily: 'Laila',
@@ -226,7 +223,7 @@ class _SubscriptionState extends State<Subscription>
                             ),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10(context) * 32.3,
+                            width: AppDimensions.width10(context) * 32.3,
                             height: AppDimensions.height10(context) * 4.9,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -234,8 +231,7 @@ class _SubscriptionState extends State<Subscription>
                                 Align(
                                   alignment: Alignment.topLeft,
                                   child: Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.9,
+                                    width: AppDimensions.width10(context) * 2.9,
                                     height:
                                         AppDimensions.height10(context) * 2.9,
                                     decoration: const BoxDecoration(
@@ -245,14 +241,13 @@ class _SubscriptionState extends State<Subscription>
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 28.0,
+                                  width: AppDimensions.width10(context) * 28.0,
                                   height: AppDimensions.height10(context) * 4.9,
                                   child: Text(
                                     'Multiple active practices (up to 5 per each\nactive goal)',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.5,
+                                            AppDimensions.font10(context) * 1.5,
                                         fontWeight: FontWeight.w400,
                                         // height: AppDimensions.height10(context) * 0.15,
                                         fontFamily: 'Laila',
@@ -263,7 +258,7 @@ class _SubscriptionState extends State<Subscription>
                             ),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10(context) * 32.3,
+                            width: AppDimensions.width10(context) * 32.3,
                             height: AppDimensions.height10(context) * 4.9,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -271,8 +266,7 @@ class _SubscriptionState extends State<Subscription>
                                 Align(
                                   alignment: Alignment.topLeft,
                                   child: Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.9,
+                                    width: AppDimensions.width10(context) * 2.9,
                                     height:
                                         AppDimensions.height10(context) * 2.9,
                                     decoration: const BoxDecoration(
@@ -282,14 +276,13 @@ class _SubscriptionState extends State<Subscription>
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 28.0,
+                                  width: AppDimensions.width10(context) * 28.0,
                                   height: AppDimensions.height10(context) * 4.9,
                                   child: Text(
                                     'Personalised infographic practice growth\nreports (every 20 active days)',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.5,
+                                            AppDimensions.font10(context) * 1.5,
                                         fontWeight: FontWeight.w400,
                                         // height: AppDimensions.height10(context) * 0.15,
                                         fontFamily: 'Laila',
@@ -300,7 +293,7 @@ class _SubscriptionState extends State<Subscription>
                             ),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10(context) * 32.3,
+                            width: AppDimensions.width10(context) * 32.3,
                             height: AppDimensions.height10(context) * 4.9,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -308,8 +301,7 @@ class _SubscriptionState extends State<Subscription>
                                 Align(
                                   alignment: Alignment.topLeft,
                                   child: Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.9,
+                                    width: AppDimensions.width10(context) * 2.9,
                                     height:
                                         AppDimensions.height10(context) * 2.9,
                                     decoration: const BoxDecoration(
@@ -319,14 +311,13 @@ class _SubscriptionState extends State<Subscription>
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 28.0,
+                                  width: AppDimensions.width10(context) * 28.0,
                                   height: AppDimensions.height10(context) * 4.9,
                                   child: Text(
                                     'Timeline of your recorded events all-in-one\nplace and more...',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.5,
+                                            AppDimensions.font10(context) * 1.5,
                                         fontWeight: FontWeight.w400,
                                         // height: AppDimensions.height10(context) * 0.15,
                                         fontFamily: 'Laila',
@@ -340,7 +331,7 @@ class _SubscriptionState extends State<Subscription>
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 32.1,
+                      width: AppDimensions.width10(context) * 32.1,
                       height: AppDimensions.height10(context) * 7.6,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.3),
@@ -351,7 +342,7 @@ class _SubscriptionState extends State<Subscription>
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 27.1,
+                            width: AppDimensions.width10(context) * 27.1,
                             height: AppDimensions.height10(context) * 1.9,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.7),
@@ -359,14 +350,13 @@ class _SubscriptionState extends State<Subscription>
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 18.4,
+                                  width: AppDimensions.width10(context) * 18.4,
                                   height: AppDimensions.height10(context) * 1.9,
                                   child: Text(
                                     'Unlock ‘Ownership’ Plan',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
+                                            AppDimensions.font10(context) * 1.7,
                                         fontWeight: FontWeight.w500,
                                         // height: AppDimensions.height10(context) * 0.15,
                                         fontFamily: 'Laila',
@@ -374,14 +364,13 @@ class _SubscriptionState extends State<Subscription>
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 4.3,
+                                  width: AppDimensions.width10(context) * 4.3,
                                   height: AppDimensions.height10(context) * 1.9,
                                   child: Text(
                                     '£7.49',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
+                                            AppDimensions.font10(context) * 1.7,
                                         fontWeight: FontWeight.w500,
                                         // height: AppDimensions.height10(context) * 0.15,
                                         fontFamily: 'Laila',
@@ -392,7 +381,7 @@ class _SubscriptionState extends State<Subscription>
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 27.1,
+                            width: AppDimensions.width10(context) * 27.1,
                             height: AppDimensions.height10(context) * 1.9,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 0.5),
@@ -400,14 +389,13 @@ class _SubscriptionState extends State<Subscription>
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 7.0,
+                                  width: AppDimensions.width10(context) * 7.0,
                                   height: AppDimensions.height10(context) * 1.7,
                                   child: Text(
                                     '5 days free',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.5,
+                                            AppDimensions.font10(context) * 1.5,
                                         fontWeight: FontWeight.w400,
                                         // height: AppDimensions.height10(context) * 0.15,
                                         fontFamily: 'Laila',
@@ -415,14 +403,14 @@ class _SubscriptionState extends State<Subscription>
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 6.9,
+                                  width: AppDimensions.width10(context) * 6.9,
                                   height: AppDimensions.height10(context) * 1.7,
                                   child: Center(
                                     child: Text(
                                       'Per Month',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.5,
                                           fontWeight: FontWeight.w400,
                                           // height: AppDimensions.height10(context) * 0.15,
@@ -466,7 +454,7 @@ class _SubscriptionState extends State<Subscription>
                                   bottom:
                                       MediaQuery.of(context).viewInsets.bottom),
                               child: Container(
-                                  width: AppDimensions.height10(context) * 39.4,
+                                  width: AppDimensions.width10(context) * 39.4,
                                   height:
                                       AppDimensions.height10(context) * 57.0,
                                   margin: EdgeInsets.only(
@@ -502,9 +490,9 @@ class _SubscriptionState extends State<Subscription>
                                             Navigator.pop(context);
                                           },
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                2.6,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    2.6,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 2.6,
@@ -534,7 +522,7 @@ class _SubscriptionState extends State<Subscription>
                                         child: Image.asset(
                                           'assets/images/potenic__icon.webp',
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   8.202,
                                           height:
                                               AppDimensions.height10(context) *
@@ -542,7 +530,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                       ),
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             30.7,
                                         height:
                                             AppDimensions.height10(context) *
@@ -557,7 +545,7 @@ class _SubscriptionState extends State<Subscription>
                                               height: AppDimensions.height10(
                                                       context) *
                                                   0.15,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.8,
                                               // letterSpacing: AppDimensions.height10(context) * 0.2,
@@ -566,7 +554,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                       ),
                                       Container(
-                                          width: AppDimensions.height10(context) *
+                                          width: AppDimensions.width10(context) *
                                               33.2,
                                           //  height: AppDimensions.height10(context) * 10.8,
                                           // color: Colors.grey,
@@ -611,7 +599,7 @@ class _SubscriptionState extends State<Subscription>
                         ).whenComplete(() => initController());
                       },
                       child: Container(
-                        width: AppDimensions.height10(context) * 32.1,
+                        width: AppDimensions.width10(context) * 32.1,
                         height: AppDimensions.height10(context) * 7.6,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.3),
@@ -622,7 +610,7 @@ class _SubscriptionState extends State<Subscription>
                         child: Column(
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 27.1,
+                              width: AppDimensions.width10(context) * 27.1,
                               height: AppDimensions.height10(context) * 1.9,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.7),
@@ -632,14 +620,14 @@ class _SubscriptionState extends State<Subscription>
                                 children: [
                                   SizedBox(
                                     width:
-                                        AppDimensions.height10(context) * 18.4,
+                                        AppDimensions.width10(context) * 18.4,
                                     height:
                                         AppDimensions.height10(context) * 1.9,
                                     child: Text(
                                       'Unlock ‘Ownership’ Plan',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.7,
                                           fontWeight: FontWeight.w500,
                                           // height: AppDimensions.height10(context) * 0.15,
@@ -648,15 +636,14 @@ class _SubscriptionState extends State<Subscription>
                                     ),
                                   ),
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 4.3,
+                                    width: AppDimensions.width10(context) * 4.3,
                                     height:
                                         AppDimensions.height10(context) * 1.9,
                                     child: Text(
                                       '£79.98',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.7,
                                           fontWeight: FontWeight.w500,
                                           // height: AppDimensions.height10(context) * 0.15,
@@ -668,7 +655,7 @@ class _SubscriptionState extends State<Subscription>
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 27.1,
+                              width: AppDimensions.width10(context) * 27.1,
                               height: AppDimensions.height10(context) * 1.9,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.5),
@@ -677,15 +664,14 @@ class _SubscriptionState extends State<Subscription>
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 7.0,
+                                    width: AppDimensions.width10(context) * 7.0,
                                     height:
                                         AppDimensions.height10(context) * 1.7,
                                     child: Text(
                                       '5 days free',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.5,
                                           fontWeight: FontWeight.w400,
                                           // height: AppDimensions.height10(context) * 0.15,
@@ -694,17 +680,16 @@ class _SubscriptionState extends State<Subscription>
                                     ),
                                   ),
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 5.4,
+                                    width: AppDimensions.width10(context) * 5.4,
                                     height:
                                         AppDimensions.height10(context) * 1.7,
                                     child: Center(
                                       child: Text(
                                         'Per Year',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.5,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.5,
                                             fontWeight: FontWeight.w400,
                                             // height: AppDimensions.height10(context) * 0.15,
 
@@ -738,11 +723,11 @@ class _SubscriptionState extends State<Subscription>
                                   border: Border.all(
                                       width: 0, color: Colors.transparent)),
                               title: Container(
-                                width: AppDimensions.height10(context) * 25.7,
+                                width: AppDimensions.width10(context) * 25.7,
                                 height: AppDimensions.height10(context) * 4.0,
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: const Color(0xFFFA9934)),
                                     color: const Color(0xFFFBFBFB),
@@ -752,15 +737,15 @@ class _SubscriptionState extends State<Subscription>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          14.9,
+                                      width:
+                                          AppDimensions.width10(context) * 14.9,
                                       height:
                                           AppDimensions.height10(context) * 1.9,
                                       child: Center(
                                         child: Text(
                                           'Check what you get',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontWeight: FontWeight.w500,
@@ -783,7 +768,7 @@ class _SubscriptionState extends State<Subscription>
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.2,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.1,
                                         color: const Color(0xFFFA9934),
                                       ),
@@ -793,7 +778,7 @@ class _SubscriptionState extends State<Subscription>
                               ),
                               children: <Widget>[
                                 Container(
-                                  width: AppDimensions.height10(context) * 32.4,
+                                  width: AppDimensions.width10(context) * 32.4,
                                   height:
                                       AppDimensions.height10(context) * 4.629,
                                   margin: EdgeInsets.only(
@@ -804,7 +789,7 @@ class _SubscriptionState extends State<Subscription>
                                       'More focused ME time awaits\nyou from a single mouse click...',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.1,
                                           fontWeight: FontWeight.w600,
                                           height:
@@ -815,7 +800,7 @@ class _SubscriptionState extends State<Subscription>
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 7.4,
+                                  width: AppDimensions.width10(context) * 7.4,
                                   height: AppDimensions.height10(context) * 0.2,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -827,7 +812,7 @@ class _SubscriptionState extends State<Subscription>
                                               0.5)),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 36.0,
+                                  width: AppDimensions.width10(context) * 36.0,
                                   height:
                                       AppDimensions.height10(context) * 58.8,
                                   margin: EdgeInsets.only(
@@ -839,9 +824,9 @@ class _SubscriptionState extends State<Subscription>
                                         Align(
                                           alignment: const Alignment(1, 0),
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                19.6,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    19.6,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 3.934,
@@ -874,7 +859,7 @@ class _SubscriptionState extends State<Subscription>
                                                           TextAlign.center,
                                                       style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.5,
                                                           fontWeight:
@@ -898,7 +883,7 @@ class _SubscriptionState extends State<Subscription>
                                                     'Ownership',
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.5,
                                                         fontWeight:
@@ -917,7 +902,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -942,7 +927,7 @@ class _SubscriptionState extends State<Subscription>
                                                                 fontFamily:
                                                                     'laila',
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.45,
                                                                 fontWeight:
@@ -980,10 +965,10 @@ class _SubscriptionState extends State<Subscription>
                                                     child: Text(
                                                   '1',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.9,
+                                                              1.9,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       // height:
@@ -1007,10 +992,10 @@ class _SubscriptionState extends State<Subscription>
                                                     child: Text(
                                                   '3',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.9,
+                                                              1.9,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       // height:
@@ -1025,7 +1010,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1041,7 +1026,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1062,7 +1047,7 @@ class _SubscriptionState extends State<Subscription>
                                                                 fontFamily:
                                                                     'laila',
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.45,
                                                                 fontWeight:
@@ -1103,10 +1088,10 @@ class _SubscriptionState extends State<Subscription>
                                                   'Up to 3 per\nactive goal',
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.5,
+                                                              1.5,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       height: AppDimensions
@@ -1132,10 +1117,10 @@ class _SubscriptionState extends State<Subscription>
                                                     child: Text(
                                                   'Up to 5 per\nactive goal',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.5,
+                                                              1.5,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       height: AppDimensions
@@ -1151,7 +1136,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1167,7 +1152,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1188,7 +1173,7 @@ class _SubscriptionState extends State<Subscription>
                                                                 fontFamily:
                                                                     'laila',
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.45,
                                                                 fontWeight:
@@ -1256,7 +1241,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1272,7 +1257,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1293,7 +1278,7 @@ class _SubscriptionState extends State<Subscription>
                                                                 fontFamily:
                                                                     'laila',
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.45,
                                                                 fontWeight:
@@ -1361,7 +1346,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1377,7 +1362,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1398,7 +1383,7 @@ class _SubscriptionState extends State<Subscription>
                                                                 fontFamily:
                                                                     'laila',
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.45,
                                                                 fontWeight:
@@ -1469,7 +1454,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1485,7 +1470,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1506,7 +1491,7 @@ class _SubscriptionState extends State<Subscription>
                                                                 fontFamily:
                                                                     'laila',
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.45,
                                                                 fontWeight:
@@ -1571,7 +1556,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1587,7 +1572,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1608,7 +1593,7 @@ class _SubscriptionState extends State<Subscription>
                                                                 fontFamily:
                                                                     'laila',
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.45,
                                                                 fontWeight:
@@ -1652,7 +1637,7 @@ class _SubscriptionState extends State<Subscription>
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.5,
                                                         fontWeight:
@@ -1690,7 +1675,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1706,7 +1691,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1727,7 +1712,7 @@ class _SubscriptionState extends State<Subscription>
                                                                 fontFamily:
                                                                     'laila',
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.45,
                                                                 fontWeight:
@@ -1792,7 +1777,7 @@ class _SubscriptionState extends State<Subscription>
                                         ),
                                         Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   35.3,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1809,7 +1794,7 @@ class _SubscriptionState extends State<Subscription>
                                     Align(
                                       alignment: const Alignment(0.98, 1),
                                       child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             9.0,
                                         height:
                                             AppDimensions.height10(context) *
@@ -1821,7 +1806,7 @@ class _SubscriptionState extends State<Subscription>
                                   ]),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 7.4,
+                                  width: AppDimensions.width10(context) * 7.4,
                                   height: AppDimensions.height10(context) * 0.2,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -1839,12 +1824,12 @@ class _SubscriptionState extends State<Subscription>
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 34.4,
+                      width: AppDimensions.width10(context) * 34.4,
                       height: AppDimensions.height10(context) * 8.827,
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 34.4,
+                            width: AppDimensions.width10(context) * 34.4,
                             height: AppDimensions.height10(context) * 2.893,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.8),
@@ -1853,7 +1838,7 @@ class _SubscriptionState extends State<Subscription>
                                   text: TextSpan(
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.5,
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'laila',
@@ -1936,14 +1921,13 @@ class _SubscriptionState extends State<Subscription>
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 34.4,
+                            width: AppDimensions.width10(context) * 34.4,
                             height: AppDimensions.height10(context) * 2.893,
                             alignment: Alignment.topCenter,
                             child: Text(
                               'Recurring billing. Cancel anytime. You’re in control.',
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   height:
                                       AppDimensions.height10(context) * 0.15,
@@ -1963,11 +1947,11 @@ class _SubscriptionState extends State<Subscription>
                 child: Image.asset(
                   'assets/images/Arrow.webp',
                   height: AppDimensions.height10(context) * 4.811,
-                  width: AppDimensions.height10(context) * 4.811,
+                  width: AppDimensions.width10(context) * 4.811,
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 38.4,
+                width: AppDimensions.width10(context) * 38.4,
                 height: AppDimensions.height10(context) * 90.4,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 9.4),
@@ -1987,7 +1971,7 @@ class _SubscriptionState extends State<Subscription>
                 child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 8.0,
+                      width: AppDimensions.width10(context) * 8.0,
                       height: AppDimensions.height10(context) * 4.834,
                       alignment: Alignment.topCenter,
                       margin: EdgeInsets.only(
@@ -1995,19 +1979,19 @@ class _SubscriptionState extends State<Subscription>
                       child: Text(
                         'FAQ',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.8,
+                            fontSize: AppDimensions.font10(context) * 2.8,
                             fontWeight: FontWeight.w700,
                             height: AppDimensions.height10(context) * 0.15,
                             color: const Color(0xFF437296)),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 34.4,
+                      width: AppDimensions.width10(context) * 34.4,
                       // height: AppDimensions.height10(context) * 72.2,
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 34.4,
+                            width: AppDimensions.width10(context) * 34.4,
                             height: AppDimensions.height10(context) * 9.4,
                             alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(
@@ -2015,12 +1999,12 @@ class _SubscriptionState extends State<Subscription>
                             child: Column(
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 34.4,
+                                  width: AppDimensions.width10(context) * 34.4,
                                   height: AppDimensions.height10(context) * 3.3,
                                   child: RichText(
                                       text: TextSpan(
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontFamily: 'laila',
@@ -2046,12 +2030,12 @@ class _SubscriptionState extends State<Subscription>
                                   height: AppDimensions.height10(context) * 1.0,
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 34.4,
+                                  width: AppDimensions.width10(context) * 34.4,
                                   height: AppDimensions.height10(context) * 5.1,
                                   child: RichText(
                                       text: TextSpan(
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4,
                                               fontFamily: 'laila',
@@ -2077,7 +2061,7 @@ class _SubscriptionState extends State<Subscription>
                             margin: EdgeInsets.symmetric(
                                 vertical:
                                     AppDimensions.height10(context) * 1.5),
-                            width: AppDimensions.height10(context) * 7.4,
+                            width: AppDimensions.width10(context) * 7.4,
                             height: AppDimensions.height10(context) * 0.2,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
@@ -2085,7 +2069,7 @@ class _SubscriptionState extends State<Subscription>
                                 color: const Color(0xFFFA9934)),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 34.4,
+                            width: AppDimensions.width10(context) * 34.4,
                             height: AppDimensions.height10(context) * 17.2,
                             alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(
@@ -2093,12 +2077,12 @@ class _SubscriptionState extends State<Subscription>
                             child: Column(
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 34.4,
+                                  width: AppDimensions.width10(context) * 34.4,
                                   height: AppDimensions.height10(context) * 5.9,
                                   child: RichText(
                                       text: TextSpan(
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontFamily: 'laila',
@@ -2124,13 +2108,13 @@ class _SubscriptionState extends State<Subscription>
                                   height: AppDimensions.height10(context) * 1.0,
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 34.4,
+                                  width: AppDimensions.width10(context) * 34.4,
                                   height:
                                       AppDimensions.height10(context) * 10.3,
                                   child: RichText(
                                       text: TextSpan(
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4,
                                               fontFamily: 'laila',
@@ -2156,7 +2140,7 @@ class _SubscriptionState extends State<Subscription>
                             margin: EdgeInsets.symmetric(
                                 vertical:
                                     AppDimensions.height10(context) * 1.5),
-                            width: AppDimensions.height10(context) * 7.4,
+                            width: AppDimensions.width10(context) * 7.4,
                             height: AppDimensions.height10(context) * 0.2,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
@@ -2164,7 +2148,7 @@ class _SubscriptionState extends State<Subscription>
                                 color: const Color(0xFFFA9934)),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 34.4,
+                            width: AppDimensions.width10(context) * 34.4,
                             height: AppDimensions.height10(context) * 14.1,
                             alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(
@@ -2172,12 +2156,12 @@ class _SubscriptionState extends State<Subscription>
                             child: Column(
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 34.4,
+                                  width: AppDimensions.width10(context) * 34.4,
                                   //   height: AppDimensions.height10(context) * 3.6,
                                   child: RichText(
                                       text: TextSpan(
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontFamily: 'laila',
@@ -2203,12 +2187,12 @@ class _SubscriptionState extends State<Subscription>
                                   height: AppDimensions.height10(context) * 1.0,
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 34.4,
+                                  width: AppDimensions.width10(context) * 34.4,
                                   //  height: AppDimensions.height10(context) * 8.5,
                                   child: RichText(
                                       text: TextSpan(
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4,
                                               fontFamily: 'laila',
@@ -2234,7 +2218,7 @@ class _SubscriptionState extends State<Subscription>
                             margin: EdgeInsets.symmetric(
                                 vertical:
                                     AppDimensions.height10(context) * 1.5),
-                            width: AppDimensions.height10(context) * 7.4,
+                            width: AppDimensions.width10(context) * 7.4,
                             height: AppDimensions.height10(context) * 0.2,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
@@ -2242,7 +2226,7 @@ class _SubscriptionState extends State<Subscription>
                                 color: const Color(0xFFFA9934)),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 34.4,
+                            width: AppDimensions.width10(context) * 34.4,
                             height: AppDimensions.height10(context) * 23.9,
                             alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(
@@ -2250,12 +2234,12 @@ class _SubscriptionState extends State<Subscription>
                             child: Column(
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 34.4,
+                                  width: AppDimensions.width10(context) * 34.4,
                                   height: AppDimensions.height10(context) * 7.6,
                                   child: RichText(
                                       text: TextSpan(
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontFamily: 'laila',
@@ -2281,12 +2265,12 @@ class _SubscriptionState extends State<Subscription>
                                   height: AppDimensions.height10(context) * 1.0,
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 34.4,
+                                  width: AppDimensions.width10(context) * 34.4,
                                   //  height: AppDimensions.height10(context) * 15.3,
                                   child: RichText(
                                       text: TextSpan(
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4,
                                               fontFamily: 'laila',
@@ -2336,7 +2320,7 @@ subscribed(context) {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10(context) * 39.4,
+          width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 57.0,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
@@ -2364,7 +2348,7 @@ subscribed(context) {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
@@ -2383,12 +2367,12 @@ subscribed(context) {
                     bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
                   'assets/images/potenic__icon.webp',
-                  width: AppDimensions.height10(context) * 8.202,
+                  width: AppDimensions.width10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 30.7,
+                width: AppDimensions.width10(context) * 30.7,
                 height: AppDimensions.height10(context) * 6.8,
                 // color: Colors.amber,
                 alignment: Alignment.center,
@@ -2398,14 +2382,14 @@ subscribed(context) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.15,
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       // letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                  width: AppDimensions.height10(context) * 33.2,
+                  width: AppDimensions.width10(context) * 33.2,
                   //  height: AppDimensions.height10(context) * 10.8,
                   // color: Colors.grey,
                   margin: EdgeInsets.only(
@@ -2414,7 +2398,7 @@ subscribed(context) {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.8,
+                              fontSize: AppDimensions.font10(context) * 1.8,
                               fontFamily: 'laila',
                               height: AppDimensions.height10(context) * 0.15,
                               fontWeight: FontWeight.w400,

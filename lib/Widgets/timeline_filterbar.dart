@@ -91,7 +91,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 36,
+      width: AppDimensions.width10(context) * 36,
       height: AppDimensions.height10(context) * 9.0,
       decoration: BoxDecoration(
           color: const Color.fromRGBO(0, 0, 0, 0.1),
@@ -112,7 +112,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
                     //textAlign: TextAlign.left,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: AppDimensions.height10(context) * 1.4,
+                      fontSize: AppDimensions.font10(context) * 1.4,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400,
                     ),
@@ -128,7 +128,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
               // elevation: 16,
               style: TextStyle(
                   fontWeight: FontWeight.w400,
-                  fontSize: AppDimensions.height10(context) * 2.4,
+                  fontSize: AppDimensions.font10(context) * 2.4,
                   fontFamily: "Laila",
                   color: const Color.fromARGB(209, 250, 154, 52)),
               onChanged: (String? value) {

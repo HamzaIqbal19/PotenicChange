@@ -58,7 +58,7 @@ void signupSheet(context, String ButtonName, String Route) {
                       border: Border(
                           top: BorderSide(
                               color: const Color(0xFF000000).withOpacity(0.4),
-                              width: AppDimensions.height10(context) * 0.1))),
+                              width: AppDimensions.width10(context) * 0.1))),
                   child: TextButton(
                       onPressed: () {
                         AdminGoal.checkUserActiveGoal().then((response) {

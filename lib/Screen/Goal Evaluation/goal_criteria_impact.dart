@@ -138,7 +138,7 @@ class _your_impactState extends State<your_impact> {
               duration: const Duration(seconds: 1),
               context: context,
               builder: (BuildContext context) => Container(
-                  width: AppDimensions.height10(context) * 27.0,
+                  width: AppDimensions.width10(context) * 27.0,
                   height: AppDimensions.height10(context) * 18.2,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
@@ -160,12 +160,12 @@ class _your_impactState extends State<your_impact> {
                           left: AppDimensions.height10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
-                      width: AppDimensions.height10(context) * 23.8,
+                      width: AppDimensions.width10(context) * 23.8,
                       child: Text(
                         "Exit without saving changes?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.7,
+                          fontSize: AppDimensions.font10(context) * 1.7,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -176,12 +176,12 @@ class _your_impactState extends State<your_impact> {
                           left: AppDimensions.height10(context) * 1.6,
                           right: AppDimensions.height10(context) * 1.6),
                       height: AppDimensions.height10(context) * 3.2,
-                      width: AppDimensions.height10(context) * 23.8,
+                      width: AppDimensions.width10(context) * 23.8,
                       child: Text(
                         "Are you sure you want to exit, all your\nchanges will be lost?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.3,
+                          fontSize: AppDimensions.font10(context) * 1.3,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -219,7 +219,7 @@ class _your_impactState extends State<your_impact> {
                                   style: TextStyle(
                                       color: const Color(0xFFFFFFFF),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.7,
                                       fontFamily: "Laila",
                                       fontWeight: FontWeight.w400),
                                 ),
@@ -243,7 +243,7 @@ class _your_impactState extends State<your_impact> {
                                 'Cancel',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xFF007AFF)),
@@ -292,7 +292,7 @@ class _your_impactState extends State<your_impact> {
                         duration: const Duration(seconds: 1),
                         context: context,
                         builder: (BuildContext context) => Container(
-                            width: AppDimensions.height10(context) * 27.0,
+                            width: AppDimensions.width10(context) * 27.0,
                             height: AppDimensions.height10(context) * 18.2,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
@@ -316,13 +316,13 @@ class _your_impactState extends State<your_impact> {
                                     bottom:
                                         AppDimensions.height10(context) * 0.2),
                                 height: AppDimensions.height10(context) * 2.2,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Exit without saving changes?",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -335,13 +335,13 @@ class _your_impactState extends State<your_impact> {
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 3.4,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Are you sure you want to exit, all your\nchanges will be lost?",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.3,
+                                        AppDimensions.font10(context) * 1.3,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -380,7 +380,7 @@ class _your_impactState extends State<your_impact> {
                                           'Yes',
                                           style: TextStyle(
                                               color: const Color(0xFFFFFFFF),
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontFamily: "Laila",
@@ -407,7 +407,7 @@ class _your_impactState extends State<your_impact> {
                                         child: Text(
                                           'Cancel',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontFamily: "Laila",
@@ -444,7 +444,7 @@ class _your_impactState extends State<your_impact> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 3.0,
+                  width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.cover,
                 )),
@@ -469,7 +469,7 @@ class _your_impactState extends State<your_impact> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        width: AppDimensions.height10(context) * 36.5,
+                        width: AppDimensions.width10(context) * 36.5,
                         height: AppDimensions.height10(context) * 52.9,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 2.4),
@@ -488,7 +488,7 @@ class _your_impactState extends State<your_impact> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 24.0,
+                              width: AppDimensions.width10(context) * 24.0,
                               height: AppDimensions.height10(context) * 3.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 7.1),
@@ -497,13 +497,13 @@ class _your_impactState extends State<your_impact> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 3.0,
+                                        AppDimensions.font10(context) * 3.0,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xFFFFFFFF)),
                               ),
                             ),
                             Container(
-                              //  width: AppDimensions.height10(context) * 24.0,
+                              //  width: AppDimensions.width10(context) * 24.0,
                               height: AppDimensions.height10(context) * 3.7,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0),
@@ -513,13 +513,13 @@ class _your_impactState extends State<your_impact> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 3.0,
+                                        AppDimensions.font10(context) * 3.0,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xFFFFFFFF)),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 32.4,
+                              width: AppDimensions.width10(context) * 32.4,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 2.5),
@@ -529,20 +529,19 @@ class _your_impactState extends State<your_impact> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.0,
+                                        AppDimensions.font10(context) * 2.0,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFFFFFFFF)),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 8.7,
+                              width: AppDimensions.width10(context) * 8.7,
                               height: AppDimensions.height10(context) * 8.7,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 3.2),
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
+                                    width: AppDimensions.width10(context) * 0.1,
                                     color: const Color(0xFFFFFFFF)),
                                 shape: BoxShape.circle,
                                 color:
@@ -554,8 +553,7 @@ class _your_impactState extends State<your_impact> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 3.4,
+                                    width: AppDimensions.width10(context) * 3.4,
                                     height:
                                         AppDimensions.height10(context) * 1.3,
                                     child: Text(
@@ -563,15 +561,14 @@ class _your_impactState extends State<your_impact> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xFF646464)),
                                     ),
                                   ),
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 3.2,
+                                    width: AppDimensions.width10(context) * 3.2,
                                     height:
                                         AppDimensions.height10(context) * 3.7,
                                     child: Row(
@@ -585,7 +582,7 @@ class _your_impactState extends State<your_impact> {
                                               : level.toString(),
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.4,
                                               fontWeight: FontWeight.w500,
@@ -595,7 +592,7 @@ class _your_impactState extends State<your_impact> {
                                           '/5',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w300,
@@ -608,7 +605,7 @@ class _your_impactState extends State<your_impact> {
                               ),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 23.4,
+                              width: AppDimensions.width10(context) * 23.4,
                               height: AppDimensions.height10(context) * 7.3,
                               child: Stack(
                                 children: [
@@ -630,8 +627,8 @@ class _your_impactState extends State<your_impact> {
                                   Align(
                                     alignment: const Alignment(1, 0),
                                     child: SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          21.4,
+                                      width:
+                                          AppDimensions.width10(context) * 21.4,
                                       height:
                                           AppDimensions.height10(context) * 7.3,
 
@@ -646,7 +643,7 @@ class _your_impactState extends State<your_impact> {
                                               : '${messages[level - 1]}',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.8,
                                               fontWeight: FontWeight.w600,
@@ -659,7 +656,7 @@ class _your_impactState extends State<your_impact> {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 28.8,
+                              width: AppDimensions.width10(context) * 28.8,
                               height: AppDimensions.height10(context) * 4.2,
                               alignment: Alignment.topCenter,
                               margin: EdgeInsets.only(
@@ -669,19 +666,19 @@ class _your_impactState extends State<your_impact> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xFFFFFFFF)),
                               ),
                             ),
                             Container(
-                              // width: AppDimensions.height10(context) * 2.1,
+                              // width: AppDimensions.width10(context) * 2.1,
                               //height: AppDimensions.height10(context) * 4.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.5),
                               child: Image.asset(
                                 'assets/images/Arrow.webp',
-                                width: AppDimensions.height10(context) * 4.1,
+                                width: AppDimensions.width10(context) * 4.1,
                                 height: AppDimensions.height10(context) * 4.1,
                               ),
                             ),
@@ -689,7 +686,7 @@ class _your_impactState extends State<your_impact> {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 37.0,
+                        width: AppDimensions.width10(context) * 37.0,
                         //   height: AppDimensions.height10(context) * 11.9,
                         margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0,
@@ -698,20 +695,20 @@ class _your_impactState extends State<your_impact> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
-                              // width: AppDimensions.height10(context) * 15.5,
+                              // width: AppDimensions.width10(context) * 15.5,
                               //height: AppDimensions.height10(context) * 2.9,
                               child: Text(
                                 'Current impact',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.4,
+                                        AppDimensions.font10(context) * 2.4,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFF437296)),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 37.0,
+                              width: AppDimensions.width10(context) * 37.0,
                               height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.3),
@@ -720,7 +717,7 @@ class _your_impactState extends State<your_impact> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.0,
+                                        AppDimensions.font10(context) * 2.0,
                                     fontWeight: FontWeight.w500,
                                     height:
                                         AppDimensions.height10(context) * 0.15,
@@ -761,7 +758,7 @@ class _your_impactState extends State<your_impact> {
                                           1.5),
                                   child: Stack(children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
+                                      width: AppDimensions.width10(context) *
                                           12.95,
                                       height: AppDimensions.height10(context) *
                                           12.95,
@@ -798,7 +795,7 @@ class _your_impactState extends State<your_impact> {
                                               '${index1 + 1}',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           3.2,
                                                   fontWeight: FontWeight.w500,
@@ -812,10 +809,9 @@ class _your_impactState extends State<your_impact> {
                                             options[index1],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.4,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.4,
                                                 fontWeight: FontWeight.w400,
                                                 color: select_item != index1
                                                     ? const Color(0xFFFA9934)
@@ -842,10 +838,10 @@ class _your_impactState extends State<your_impact> {
                                               decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   border: Border.all(
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          0.1,
+                                                              0.1,
                                                       color: const Color(
                                                           0xFFFFFFFF))),
                                               child: Container(
@@ -858,7 +854,7 @@ class _your_impactState extends State<your_impact> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             0.1,
                                                         color: const Color(
@@ -876,7 +872,7 @@ class _your_impactState extends State<your_impact> {
                             }),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 7.2,
+                        width: AppDimensions.width10(context) * 7.2,
                         height: AppDimensions.height10(context) * 0.1,
                         color: const Color(0xFF437296),
                         margin: EdgeInsets.only(
@@ -884,7 +880,7 @@ class _your_impactState extends State<your_impact> {
                             bottom: AppDimensions.height10(context) * 3.0),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 37.0,
+                        width: AppDimensions.width10(context) * 37.0,
                         //  height: AppDimensions.height10(context) * 11.9,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 2.2),
@@ -892,20 +888,20 @@ class _your_impactState extends State<your_impact> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
-                              //width: AppDimensions.height10(context) * 15.5,
+                              //width: AppDimensions.width10(context) * 15.5,
                               height: AppDimensions.height10(context) * 2.9,
                               child: Text(
                                 'Current emotions',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.4,
+                                        AppDimensions.font10(context) * 2.4,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFF437296)),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 37.0,
+                              width: AppDimensions.width10(context) * 37.0,
                               //height: AppDimensions.height10(context) * 6.8,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.3),
@@ -914,7 +910,7 @@ class _your_impactState extends State<your_impact> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.0,
+                                        AppDimensions.font10(context) * 2.0,
                                     fontWeight: FontWeight.w500,
                                     height:
                                         AppDimensions.height10(context) * 0.15,
@@ -955,7 +951,7 @@ class _your_impactState extends State<your_impact> {
                                           1.5),
                                   child: Stack(children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
+                                      width: AppDimensions.width10(context) *
                                           12.95,
                                       height: AppDimensions.height10(context) *
                                           12.95,
@@ -992,7 +988,7 @@ class _your_impactState extends State<your_impact> {
                                               '${index1 + 1}',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           3.2,
                                                   fontWeight: FontWeight.w500,
@@ -1006,10 +1002,9 @@ class _your_impactState extends State<your_impact> {
                                             options2[index1],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.4,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.4,
                                                 fontWeight: FontWeight.w400,
                                                 color: select_item_2 != index1
                                                     ? const Color(0xFFFA9934)
@@ -1036,10 +1031,10 @@ class _your_impactState extends State<your_impact> {
                                               decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   border: Border.all(
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          0.1,
+                                                              0.1,
                                                       color: const Color(
                                                           0xFFFFFFFF))),
                                               child: Container(
@@ -1052,7 +1047,7 @@ class _your_impactState extends State<your_impact> {
                                                 decoration: BoxDecoration(
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             0.1,
                                                         color: const Color(
@@ -1091,7 +1086,7 @@ class _your_impactState extends State<your_impact> {
                                 )
                               : Container()
                           : Container(
-                              width: AppDimensions.height10(context) * 35.4,
+                              width: AppDimensions.width10(context) * 35.4,
                               height: AppDimensions.height10(context) * 5.0,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 7.5,
@@ -1160,17 +1155,17 @@ class _your_impactState extends State<your_impact> {
                                                               .height10(
                                                                   context) *
                                                           2.2,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          23.8,
+                                                              23.8,
                                                       child: Text(
                                                         "Clear answers?",
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.7,
                                                           fontWeight:
@@ -1196,17 +1191,17 @@ class _your_impactState extends State<your_impact> {
                                                               .height10(
                                                                   context) *
                                                           3.2,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          23.8,
+                                                              23.8,
                                                       child: Text(
                                                         "Are you sure you want to clear all your\nanswers for this Goal criterion?",
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.3,
                                                           fontWeight:
@@ -1343,7 +1338,7 @@ class _your_impactState extends State<your_impact> {
                                           'Clear',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
@@ -1411,10 +1406,10 @@ class _your_impactState extends State<your_impact> {
                                                     "Reset answers?",
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.7,
+                                                              1.7,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                     ),
@@ -1441,10 +1436,10 @@ class _your_impactState extends State<your_impact> {
                                                     "Are you sure you want to reset, all your\nchanges for this criterion?",
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.3,
+                                                              1.3,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                     ),
@@ -1491,7 +1486,7 @@ class _your_impactState extends State<your_impact> {
                                                                   color: const Color(
                                                                       0xFFFFFFFF),
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.7,
                                                                   fontFamily:
@@ -1530,7 +1525,7 @@ class _your_impactState extends State<your_impact> {
                                                             'Cancel',
                                                             style: TextStyle(
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.7,
                                                                 fontFamily:
@@ -1591,7 +1586,7 @@ class _your_impactState extends State<your_impact> {
                                           'Reset',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
@@ -1672,7 +1667,7 @@ class _your_impactState extends State<your_impact> {
                                                                           context) *
                                                                   2.2,
                                                               width: AppDimensions
-                                                                      .height10(
+                                                                      .width10(
                                                                           context) *
                                                                   23.8,
                                                               child: Text(
@@ -1683,7 +1678,7 @@ class _your_impactState extends State<your_impact> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.7,
                                                                   fontWeight:
@@ -1711,7 +1706,7 @@ class _your_impactState extends State<your_impact> {
                                                                           context) *
                                                                   3.2,
                                                               width: AppDimensions
-                                                                      .height10(
+                                                                      .width10(
                                                                           context) *
                                                                   23.8,
                                                               child: Text(
@@ -1722,7 +1717,7 @@ class _your_impactState extends State<your_impact> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.3,
                                                                   fontWeight:
@@ -1795,7 +1790,7 @@ class _your_impactState extends State<your_impact> {
                                                                         style: TextStyle(
                                                                             color: const Color(
                                                                                 0xFFFFFFFF),
-                                                                            fontSize: AppDimensions.height10(context) *
+                                                                            fontSize: AppDimensions.font10(context) *
                                                                                 1.7,
                                                                             fontFamily:
                                                                                 "Laila",
@@ -1833,7 +1828,7 @@ class _your_impactState extends State<your_impact> {
                                                                           Text(
                                                                         'Cancel',
                                                                         style: TextStyle(
-                                                                            fontSize: AppDimensions.height10(context) *
+                                                                            fontSize: AppDimensions.font10(context) *
                                                                                 1.7,
                                                                             fontFamily:
                                                                                 "Laila",
@@ -1872,8 +1867,8 @@ class _your_impactState extends State<your_impact> {
                                       }
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10(context) *
-                                          17.4,
+                                      width:
+                                          AppDimensions.width10(context) * 17.4,
                                       height:
                                           AppDimensions.height10(context) * 5.0,
                                       margin: EdgeInsets.only(
@@ -1907,7 +1902,7 @@ class _your_impactState extends State<your_impact> {
                                           'Save updates',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
@@ -1941,7 +1936,7 @@ class _your_impactState extends State<your_impact> {
                   color: Colors.transparent,
                   child: Container(
                     height: AppDimensions.height10(context) * 7.7,
-                    width: AppDimensions.height10(context) * 41.4,
+                    width: AppDimensions.width10(context) * 41.4,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(
@@ -1961,13 +1956,12 @@ class _your_impactState extends State<your_impact> {
                               'Upgrade to score ',
                               style: TextStyle(
                                   color: const Color(0xFF437296),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.8,
+                                  fontSize: AppDimensions.font10(context) * 2.8,
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 3.2,
+                            width: AppDimensions.width10(context) * 3.2,
                             height: AppDimensions.height10(context) * 3.2,
                             padding: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.1,
@@ -1996,7 +1990,7 @@ Widget showSaveWithout(
   BuildContext context,
 ) {
   return SizedBox(
-    width: AppDimensions.height10(context) * 27.0,
+    width: AppDimensions.width10(context) * 27.0,
     height: AppDimensions.height10(context) * 18.2,
     child: AlertDialog(
       shape: RoundedRectangleBorder(
@@ -2015,12 +2009,12 @@ Widget showSaveWithout(
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Exit without saving changes?",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.7,
+            fontSize: AppDimensions.font10(context) * 1.7,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -2031,12 +2025,12 @@ Widget showSaveWithout(
             left: AppDimensions.height10(context) * 1.6,
             right: AppDimensions.height10(context) * 1.6),
         height: AppDimensions.height10(context) * 3.2,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Are you sure you want to exit, all your\nchanges will be lost?",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.3,
+            fontSize: AppDimensions.font10(context) * 1.3,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -2063,7 +2057,7 @@ Widget showSaveWithout(
                     'Yes',
                     style: TextStyle(
                         color: const Color(0xFFFFFFFF),
-                        fontSize: AppDimensions.height10(context) * 1.7,
+                        fontSize: AppDimensions.font10(context) * 1.7,
                         fontFamily: "Laila",
                         fontWeight: FontWeight.w400),
                   ),
@@ -2086,7 +2080,7 @@ Widget showSaveWithout(
                 child: Text(
                   'Cancel',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.7,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF007AFF)),
@@ -2108,7 +2102,7 @@ Widget showSaveWithout(
 
 Widget showAlertBox(BuildContext context, onTap) {
   return SizedBox(
-    width: AppDimensions.height10(context) * 27.0,
+    width: AppDimensions.width10(context) * 27.0,
     height: AppDimensions.height10(context) * 18.2,
     child: AlertDialog(
       shape: RoundedRectangleBorder(
@@ -2127,12 +2121,12 @@ Widget showAlertBox(BuildContext context, onTap) {
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Clear answers?",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.7,
+            fontSize: AppDimensions.font10(context) * 1.7,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -2143,12 +2137,12 @@ Widget showAlertBox(BuildContext context, onTap) {
             left: AppDimensions.height10(context) * 1.6,
             right: AppDimensions.height10(context) * 1.6),
         height: AppDimensions.height10(context) * 3.2,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Are you sure you want to clear all your\nanswers for this Goal criterion?",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.3,
+            fontSize: AppDimensions.font10(context) * 1.3,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -2175,7 +2169,7 @@ Widget showAlertBox(BuildContext context, onTap) {
                   'Yes',
                   style: TextStyle(
                       color: const Color(0xFFFFFFFF),
-                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.7,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400),
                 ),
@@ -2197,7 +2191,7 @@ Widget showAlertBox(BuildContext context, onTap) {
                 child: Text(
                   'Cancel',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.7,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF007AFF)),

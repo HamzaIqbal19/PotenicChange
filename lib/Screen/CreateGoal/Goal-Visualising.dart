@@ -303,7 +303,7 @@ class _VisualisingState extends State<Visualising> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.height10(context) * 3,
+                    width: AppDimensions.width10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
@@ -345,14 +345,14 @@ class _VisualisingState extends State<Visualising> {
                       : IconButton(
                           icon: Image.asset(
                             'assets/images/Close.webp',
-                            width: AppDimensions.height10(context) * 3.0,
+                            width: AppDimensions.width10(context) * 3.0,
                             height: AppDimensions.height10(context) * 3.0,
                             fit: BoxFit.contain,
                           ),
                           onPressed: () => showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => Container(
-                              width: AppDimensions.height10(context) * 27.0,
+                              width: AppDimensions.width10(context) * 27.0,
                               height: AppDimensions.height10(context) * 21.0,
                               child: AlertDialog(
                                 contentPadding: EdgeInsets.zero,
@@ -365,7 +365,7 @@ class _VisualisingState extends State<Visualising> {
                                   margin: const EdgeInsets.only(
                                       top: 19, right: 16, left: 16, bottom: 2),
                                   // height: AppDimensions.height10(context) * 2.2,
-                                  width: AppDimensions.height10(context) * 23.8,
+                                  width: AppDimensions.width10(context) * 23.8,
                                   child: const Text(
                                     "Exit onboarding?",
                                     textAlign: TextAlign.center,
@@ -488,7 +488,7 @@ class _VisualisingState extends State<Visualising> {
                                       ),
                                       Container(
                                         height: 42,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             27.0,
                                         color: Colors.white,
                                         child: TextButton(
@@ -547,7 +547,7 @@ class _VisualisingState extends State<Visualising> {
                                 color: widget.comingFromEditScreen
                                     ? const Color(0xFF437296)
                                     : Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                               ),
                             ),
                           ),
@@ -556,7 +556,7 @@ class _VisualisingState extends State<Visualising> {
                           height: AppDimensions.height10(context) * 0.5,
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 30,
+                          width: AppDimensions.width10(context) * 30,
                           child: Center(
                             child: Text(
                               goalName,
@@ -566,7 +566,7 @@ class _VisualisingState extends State<Visualising> {
                                 color: widget.comingFromEditScreen
                                     ? const Color(0xFF437296)
                                     : Colors.white,
-                                fontSize: AppDimensions.height10(context) * 2.2,
+                                fontSize: AppDimensions.font10(context) * 2.2,
                               ),
                             ),
                           ),
@@ -580,7 +580,7 @@ class _VisualisingState extends State<Visualising> {
                               )
                             : Container(
                                 // color: Colors.blue,
-                                width: AppDimensions.height10(context) * 10.4,
+                                width: AppDimensions.width10(context) * 10.4,
                                 height: AppDimensions.height10(context) * 7.6,
                                 // color: Colors.blue,
 
@@ -604,7 +604,7 @@ class _VisualisingState extends State<Visualising> {
                                 color: widget.comingFromEditScreen
                                     ? const Color(0xFF437296)
                                     : Colors.white,
-                                fontSize: AppDimensions.height10(context) * 2.8,
+                                fontSize: AppDimensions.font10(context) * 2.8,
                               ),
                             ),
                           ),
@@ -614,15 +614,14 @@ class _VisualisingState extends State<Visualising> {
                         ),
                         Container(
                           // height: AppDimensions.height10(context) * 4.9,
-                          width: AppDimensions.height10(context) * 37.2,
+                          width: AppDimensions.width10(context) * 37.2,
                           // height: AppDimensions.height10(context) * 4.9,
                           child: Center(
                             child: Text(
                               "What does it look like? What are you \n  doing? What emotions do you have and \n how does it feel?",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w600,
                                   color: widget.comingFromEditScreen
                                       ? const Color(0xFF437296)
@@ -634,7 +633,7 @@ class _VisualisingState extends State<Visualising> {
                           height: AppDimensions.height10(context) * 3.4,
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 38.2,
+                          width: AppDimensions.width10(context) * 38.2,
                           height: widget.comingFromEditScreen
                               ? visualize.length == 1
                                   ? AppDimensions.height10(context) * 22.0
@@ -644,7 +643,7 @@ class _VisualisingState extends State<Visualising> {
                                   : AppDimensions.height10(context) * 37.0,
                           child: Stack(children: [
                             Container(
-                              // width: AppDimensions.height10(context) * 38.2,
+                              // width: AppDimensions.width10(context) * 38.2,
                               //height: AppDimensions.height10(context) * 33.0,
                               margin: EdgeInsets.only(
                                   bottom:
@@ -656,8 +655,8 @@ class _VisualisingState extends State<Visualising> {
                                   color: Colors.white,
                                   border: Border.all(
                                       color: Colors.white,
-                                      width: AppDimensions.height10(context) *
-                                          0.2),
+                                      width:
+                                          AppDimensions.width10(context) * 0.2),
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(
                                           AppDimensions.height10(context) *
@@ -711,7 +710,7 @@ class _VisualisingState extends State<Visualising> {
                                                   color:
                                                       const Color(0xFF464646),
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.3,
                                                 ),
@@ -729,7 +728,7 @@ class _VisualisingState extends State<Visualising> {
                                                     color:
                                                         const Color(0xFF464646),
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.3,
                                                   ),
@@ -802,7 +801,7 @@ class _VisualisingState extends State<Visualising> {
                                                   color:
                                                       const Color(0xFF464646),
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.3,
                                                 ),
@@ -820,7 +819,7 @@ class _VisualisingState extends State<Visualising> {
                                                     color:
                                                         const Color(0xFF464646),
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.3,
                                                   ),
@@ -905,7 +904,7 @@ class _VisualisingState extends State<Visualising> {
                                                                 context) *
                                                             4.7,
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             4.7,
                                                   ),
@@ -1015,7 +1014,7 @@ class _VisualisingState extends State<Visualising> {
                                                                 context) *
                                                             4.7,
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             4.7,
                                                   ),
@@ -1124,7 +1123,7 @@ class _VisualisingState extends State<Visualising> {
                                   child: Transform.translate(
                                     offset: Offset(swipeOffset, 0.0),
                                     child: Container(
-                                      width: AppDimensions.height10(context) *
+                                      width: AppDimensions.width10(context) *
                                           38.259,
                                       height: AppDimensions.height10(context) *
                                           9.707,
@@ -1149,9 +1148,9 @@ class _VisualisingState extends State<Visualising> {
                                                 left: AppDimensions.height10(
                                                         context) *
                                                     1.261),
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                4.437,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    4.437,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 4.437,
@@ -1161,7 +1160,7 @@ class _VisualisingState extends State<Visualising> {
                                                         'assets/images/circle_tick.webp'))),
                                           ),
                                           Container(
-                                            //width: AppDimensions.height10(context) * 6.9,
+                                            //width: AppDimensions.width10(context) * 6.9,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 3.6,
@@ -1186,7 +1185,7 @@ class _VisualisingState extends State<Visualising> {
                                                     'Updates saved',
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.3,
                                                         fontWeight:
@@ -1209,7 +1208,7 @@ class _VisualisingState extends State<Visualising> {
                                                         TextOverflow.ellipsis,
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.8,
                                                         fontWeight:
@@ -1257,10 +1256,10 @@ class _VisualisingState extends State<Visualising> {
                                                 child: Text(
                                                   'Undo',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.8,
+                                                              1.8,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: const Color(
@@ -1281,7 +1280,7 @@ class _VisualisingState extends State<Visualising> {
                                   widget.comingFromEditScreen
                                       ? Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   10.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1326,16 +1325,16 @@ class _VisualisingState extends State<Visualising> {
                                                       ? const Color(0xffFA9934)
                                                       : const Color(0xff282828),
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8),
                                             )),
                                           ))
                                       : Container(
                                           // color: Colors.blue,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  5.0,
+                                          width: AppDimensions
+                                                  .width10(context) *
+                                              5.0,
                                           height:
                                               AppDimensions.height10(context) *
                                                   5.0,
@@ -1349,8 +1348,7 @@ class _VisualisingState extends State<Visualising> {
                                             ),
                                           )),
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 2.0,
+                                    width: AppDimensions.width10(context) * 2.0,
                                   ),
                                   AnimatedScaleButton(
                                     onTap: () async {
@@ -1459,9 +1457,9 @@ class _VisualisingState extends State<Visualising> {
                                                         true
                                                 ? Colors.white
                                                 : Colors.white.withOpacity(0.5),
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),

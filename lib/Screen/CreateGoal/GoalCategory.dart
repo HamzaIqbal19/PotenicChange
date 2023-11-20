@@ -210,7 +210,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.height10(context) * 3,
+                    width: AppDimensions.width10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
@@ -227,7 +227,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 3.0,
+                      width: AppDimensions.width10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
                     ),
@@ -289,7 +289,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                               ),
                             ),
                           ),
@@ -317,7 +317,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: AppDimensions.height10(context) * 1.5,
+                              width: AppDimensions.width10(context) * 1.5,
                             ),
                             Container(
                               height: AppDimensions.height10(context) * 8.9,
@@ -327,8 +327,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.8,
+                                  fontSize: AppDimensions.font10(context) * 2.8,
                                 ),
                               ),
                             ),
@@ -353,8 +352,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                     style: TextStyle(
                                         color: const Color(0xFFFFFFFF),
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.8,
+                                            AppDimensions.font10(context) * 2.8,
                                         fontWeight: FontWeight.w700),
                                   )),
                                 )
@@ -442,7 +440,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                 left: AppDimensions.height10(context) * 2.2,
                 right: AppDimensions.height10(context) * 2.2),
             height: AppDimensions.height10(context) * 7.0,
-            width: AppDimensions.height10(context) * 41.4,
+            width: AppDimensions.width10(context) * 41.4,
             child: SearchIcon == true
                 ? Container(
                     color: Colors.transparent,
@@ -454,7 +452,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                           children: [
                             Container(
                               height: AppDimensions.height10(context) * 3.6,
-                              width: AppDimensions.height10(context) * 31.3,
+                              width: AppDimensions.width10(context) * 31.3,
                               padding: const EdgeInsets.all(5.0),
                               decoration: BoxDecoration(
                                   color:
@@ -479,7 +477,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                         prefixIcon: Image.asset(
                                           'assets/images/Light.webp',
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   1.5,
                                           height:
                                               AppDimensions.height10(context) *
@@ -494,9 +492,9 @@ class _GoalCategoryState extends State<GoalCategory> {
                                           },
                                           child: Image.asset(
                                             'assets/images/cancel.webp',
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                2.3,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    2.3,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 2.3,
@@ -526,7 +524,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                             "Cancel",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 1.7,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFF007AFF),
                             ),
@@ -546,7 +544,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                         Row(
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 4.7,
+                              width: AppDimensions.width10(context) * 4.7,
                               height: AppDimensions.height10(context) * 4.7,
                               padding: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.5,
@@ -558,14 +556,14 @@ class _GoalCategoryState extends State<GoalCategory> {
                                 },
                                 child: Image.asset(
                                   'assets/images/Add.webp',
-                                  width: AppDimensions.height10(context) * 4.7,
+                                  width: AppDimensions.width10(context) * 4.7,
                                   height: AppDimensions.height10(context) * 4.7,
                                   fit: BoxFit.contain,
                                 ),
                               ),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 0.5,
+                              width: AppDimensions.width10(context) * 0.5,
                             ),
                             Text(
                               'Create a new goal! ',
@@ -573,7 +571,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                               style: TextStyle(
                                 color: const Color(0xFFFA9934),
                                 // fontFamily: ,
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -581,7 +579,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                         ),
 
                         Container(
-                          width: AppDimensions.height10(context) * 4.7,
+                          width: AppDimensions.width10(context) * 4.7,
                           height: AppDimensions.height10(context) * 4.7,
                           padding: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.5,
@@ -594,7 +592,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                             },
                             child: Image.asset(
                               'assets/images/Search.webp',
-                              width: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.width10(context) * 5,
                               height: AppDimensions.height10(context) * 5,
                               fit: BoxFit.contain,
                             ),

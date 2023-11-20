@@ -53,7 +53,7 @@ class _PasswordResetState extends State<PasswordReset> {
               //   child: IconButton(
               //     icon: Image.asset(
               //       'assets/images/Back.webp',
-              //       width: AppDimensions.height10(context) * 3,
+              //       width: AppDimensions.width10(context) * 3,
               //       height: AppDimensions.height10(context) * 3,
               //       fit: BoxFit.contain,
               //     ),
@@ -69,7 +69,7 @@ class _PasswordResetState extends State<PasswordReset> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 3.0,
+                      width: AppDimensions.width10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
                     ),
@@ -120,7 +120,7 @@ class _PasswordResetState extends State<PasswordReset> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 2.9,
+                        fontSize: AppDimensions.font10(context) * 2.9,
                       ),
                     ),
                   ),
@@ -141,7 +141,7 @@ class _PasswordResetState extends State<PasswordReset> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: const Color(0xFFFFFFFF),
-                              fontSize: AppDimensions.height10(context) * 1.4,
+                              fontSize: AppDimensions.font10(context) * 1.4,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -149,7 +149,7 @@ class _PasswordResetState extends State<PasswordReset> {
                         SizedBox(height: AppDimensions.height10(context) * 1.6),
                         Container(
                             height: AppDimensions.height10(context) * 6,
-                            width: AppDimensions.height10(context) * 36.0,
+                            width: AppDimensions.width10(context) * 36.0,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 border:
@@ -166,7 +166,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                           AppDimensions.height10(context) * 2.0,
                                       bottom: AppDimensions.height10(context) *
                                           0.5),
-                                  width: AppDimensions.height10(context) * 3.7,
+                                  width: AppDimensions.width10(context) * 3.7,
                                   height: AppDimensions.height10(context) * 1.7,
                                   child: Text(
                                     "Email",
@@ -174,7 +174,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFF282828),
                                         fontSize:
-                                            AppDimensions.height10(context) *
+                                            AppDimensions.font10(context) *
                                                 1.4),
                                   ),
                                 ),
@@ -182,7 +182,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                   margin: EdgeInsets.only(
                                     left: AppDimensions.height10(context) * 2.0,
                                   ),
-                                  width: AppDimensions.height10(context) * 32,
+                                  width: AppDimensions.width10(context) * 32,
                                   height: AppDimensions.height10(context) * 2.2,
                                   child: TextFormField(
                                     keyboardType: TextInputType.emailAddress,
@@ -191,7 +191,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                         fontWeight: FontWeight.w600,
                                         decoration: TextDecoration.none,
                                         fontSize:
-                                            AppDimensions.height10(context) *
+                                            AppDimensions.font10(context) *
                                                 1.8),
                                     decoration: InputDecoration(
                                         contentPadding: EdgeInsets.zero,
@@ -202,7 +202,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                           color: const Color(0xFF8C648A),
                                           fontWeight: FontWeight.w600,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                         ),
                                         focusedBorder: const OutlineInputBorder(
@@ -250,7 +250,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                   style: TextStyle(
                                     color: const Color(0xFFFE6624),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.font10(context) * 1.4,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -260,7 +260,7 @@ class _PasswordResetState extends State<PasswordReset> {
                             ? Container(
                                 // color: Colors.blue,
                                 height: AppDimensions.height10(context) * 1.7,
-                                width: AppDimensions.height10(context) * 23.3,
+                                width: AppDimensions.width10(context) * 23.3,
                                 margin: EdgeInsets.only(
                                     left: AppDimensions.height10(context) * 4.4,
                                     right:
@@ -270,7 +270,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                   style: TextStyle(
                                     color: const Color(0xFFFE6624),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.font10(context) * 1.4,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -279,7 +279,7 @@ class _PasswordResetState extends State<PasswordReset> {
                         SizedBox(height: AppDimensions.height10(context) * 1.1),
                         Container(
                             height: AppDimensions.height10(context) * 2.2,
-                            width: AppDimensions.height10(context) * 26.1,
+                            width: AppDimensions.width10(context) * 26.1,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 3.6,
                                 right: AppDimensions.height10(context) * 15.6),
@@ -298,7 +298,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                   },
                                   child: SizedBox(
                                     width:
-                                        AppDimensions.height10(context) * 12.6,
+                                        AppDimensions.width10(context) * 12.6,
                                     height:
                                         AppDimensions.height10(context) * 2.2,
                                     child: Text(
@@ -308,8 +308,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                         decoration: TextDecoration.underline,
                                         color: const Color(0xFFFFFFFF),
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
+                                            AppDimensions.font10(context) * 1.4,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -372,7 +371,7 @@ class _PasswordResetState extends State<PasswordReset> {
                     },
                     child: Container(
                       height: AppDimensions.height10(context) * 4.4,
-                      width: AppDimensions.height10(context) * 26.7,
+                      width: AppDimensions.width10(context) * 26.7,
                       decoration: BoxDecoration(
                         color: const Color(0xFFFFFFFF),
                         borderRadius: BorderRadius.circular(
@@ -387,7 +386,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                   style: TextStyle(
                                     color: const Color(0xFF8C648A),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 )

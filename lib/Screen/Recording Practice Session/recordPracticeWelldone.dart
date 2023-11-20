@@ -85,7 +85,7 @@ class welldone_splashState extends State<welldone_splash> {
               pracName,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                  fontSize: AppDimensions.height10(context) * 2.0,
+                  fontSize: AppDimensions.font10(context) * 2.0,
                   fontWeight: FontWeight.w600,
                   fontFamily: 'laila',
                   color: Colors.white),
@@ -106,7 +106,7 @@ class welldone_splashState extends State<welldone_splash> {
             children: [
               Center(
                 child: Container(
-                  width: AppDimensions.height10(context) * 35.9,
+                  width: AppDimensions.width10(context) * 35.9,
                   height: AppDimensions.height10(context) * 14.8,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.7,
@@ -117,7 +117,7 @@ class welldone_splashState extends State<welldone_splash> {
                     child: Text('Let\'s continue recording\n your practice.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.8,
+                            fontSize: AppDimensions.font10(context) * 2.8,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                             fontFamily: 'laila')),
@@ -140,7 +140,7 @@ class welldone_splashState extends State<welldone_splash> {
                   },
                   child: Container(
                       height: AppDimensions.height10(context) * 5.0,
-                      width: AppDimensions.height10(context) * 20.7,
+                      width: AppDimensions.width10(context) * 20.7,
                       decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             begin: Alignment.topCenter,
@@ -153,14 +153,14 @@ class welldone_splashState extends State<welldone_splash> {
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 5.0),
                           border: Border.all(
-                              width: AppDimensions.height10(context) * 0.2,
+                              width: AppDimensions.width10(context) * 0.2,
                               color: Colors.transparent)),
                       child: Center(
                         child: Text(
                           'Next',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w600),
                         ),
                       )),

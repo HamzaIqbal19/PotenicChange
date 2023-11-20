@@ -228,14 +228,14 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                         },
                         icon: Image.asset(
                           'assets/images/Back.webp',
-                          width: AppDimensions.height10(context) * 3.0,
+                          width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
                           fit: BoxFit.cover,
                         )),
                   ),
             centerTitle: true,
             title: SizedBox(
-              width: AppDimensions.height10(context) * 19.0,
+              width: AppDimensions.width10(context) * 19.0,
               height: AppDimensions.height10(context) * 2.4,
               child: Row(
                 children: [
@@ -243,7 +243,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     'Capture Hurdle ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.2,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w600,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -252,7 +252,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     ' 5',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.2,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w600,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -261,7 +261,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     '/5',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.2,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w400,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -282,7 +282,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                               context: context,
                               builder: (BuildContext context) => SizedBox(
                                     width:
-                                        AppDimensions.height10(context) * 27.0,
+                                        AppDimensions.width10(context) * 27.0,
                                     height:
                                         AppDimensions.height10(context) * 24.0,
                                     child: AlertDialog(
@@ -302,7 +302,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             23.8,
                                         child: const Text(
                                           "Exit hurdle?",
@@ -454,7 +454,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 2.6,
+                      width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
                     )),
@@ -475,7 +475,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     physics: const ClampingScrollPhysics(),
                     child: Column(children: [
                       Container(
-                        width: AppDimensions.height10(context) * 34.3,
+                        width: AppDimensions.width10(context) * 34.3,
                         height: AppDimensions.height10(context) * 7.3,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 18.0),
@@ -483,7 +483,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                           'How do you feel when\nthis hurdle happens?',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.8,
+                            fontSize: AppDimensions.font10(context) * 2.8,
                             fontWeight: FontWeight.w700,
                           ),
                           colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -510,8 +510,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                               Column(
                                 children: [
                                   Container(
-                                      width: AppDimensions.height10(context) *
-                                          18.1,
+                                      width:
+                                          AppDimensions.width10(context) * 18.1,
                                       height: AppDimensions.height10(context) *
                                           18.1,
                                       margin: EdgeInsets.only(
@@ -528,7 +528,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                 Color(0xff54A7BC)
                                               ])),
                                       child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             16.813,
                                         height:
                                             AppDimensions.height10(context) *
@@ -621,7 +621,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                 hintText: 'I feel...',
                                                 hintStyle: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.4,
                                                     fontWeight: FontWeight.w400,
@@ -640,17 +640,16 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                             style: TextStyle(
                                                 decoration: TextDecoration.none,
                                                 decorationThickness: 0,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.4,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.4,
                                                 fontWeight: FontWeight.w400,
                                                 color: Colors.white),
                                           ),
                                         ),
                                       )),
                                   SizedBox(
-                                    // width: AppDimensions.height10(context) * 12.2,
+                                    // width: AppDimensions.width10(context) * 12.2,
                                     height:
                                         AppDimensions.height10(context) * 2.0,
                                     child: Row(
@@ -661,7 +660,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                           'Character count: ',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.3,
                                               fontWeight: FontWeight.w400,
@@ -671,7 +670,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                           '${control[i].text.length}/100',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.3,
                                               fontWeight: FontWeight.w700,
@@ -704,7 +703,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                 });
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 4.7,
+                                width: AppDimensions.width10(context) * 4.7,
                                 height: AppDimensions.height10(context) * 4.7,
                                 margin: EdgeInsets.only(
                                     bottom:
@@ -720,14 +719,14 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                               ),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 21.7,
+                              width: AppDimensions.width10(context) * 21.7,
                               height: AppDimensions.height10(context) * 1.9,
                               child: Text(
                                 'Add another thought/feeling',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white),
                               ),
@@ -793,7 +792,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                         },
                         child: Container(
                             height: AppDimensions.height10(context) * 5.0,
-                            width: AppDimensions.height10(context) * 16.7,
+                            width: AppDimensions.width10(context) * 16.7,
                             margin: EdgeInsets.only(
                                 top: MediaQuery.of(context).viewInsets.bottom ==
                                         0
@@ -817,15 +816,14 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                               widget.update ? 'Update' : 'Next',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'Poppins'),
                             ))),
                       ),
                       MediaQuery.of(context).viewInsets.bottom == 0
                           ? Container(
-                              width: AppDimensions.height10(context) * 17.0,
+                              width: AppDimensions.width10(context) * 17.0,
                               height: AppDimensions.height10(context) * 0.5,
                               margin: EdgeInsets.only(
                                   bottom:

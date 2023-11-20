@@ -102,7 +102,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 3.0,
+                      fontSize: AppDimensions.font10(context) * 3.0,
                     ),
                   ),
                 ),
@@ -115,7 +115,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontSize: AppDimensions.font10(context) * 1.8,
                       ),
                     )),
                 SizedBox(height: AppDimensions.height10(context) * 4.4),
@@ -225,7 +225,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                   duration: const Duration(seconds: 1),
                                   context: context,
                                   builder: (BuildContext context) => SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             27.0,
                                         height:
                                             AppDimensions.height10(context) *
@@ -249,17 +249,16 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 2.2,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                23.8,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    23.8,
                                             child: Text(
                                               "Log out?",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.7,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.7,
                                                 fontWeight: FontWeight.w400,
                                               ),
                                             ),
@@ -280,10 +279,9 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     0.15,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.5,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.5,
                                                 fontWeight: FontWeight.w400,
                                               ),
                                             ),
@@ -375,7 +373,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.height10(context) * 13,
+                              width: AppDimensions.width10(context) * 13,
                               decoration: BoxDecoration(
                                 color: const Color(0xFFF5F5F5),
                                 border: Border.all(color: Colors.white),
@@ -388,7 +386,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                   style: TextStyle(
                                     color: const Color(0xFF8C648A),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.font10(context) * 1.4,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -396,7 +394,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                             ),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10(context) * 1.4,
+                            width: AppDimensions.width10(context) * 1.4,
                           ),
                           AnimatedScaleButton(
                             onTap: () {
@@ -405,7 +403,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.width10(context) * 5,
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 border: Border.all(color: Colors.transparent),
@@ -439,7 +437,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.height10(context) * 13,
+                              width: AppDimensions.width10(context) * 13,
                               decoration: BoxDecoration(
                                 color: const Color(0xFFF5F5F5),
                                 border: Border.all(color: Colors.white),
@@ -452,7 +450,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                   style: TextStyle(
                                     color: const Color(0xFF8C648A),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.font10(context) * 1.4,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -470,7 +468,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.height10(context) * 13,
+                              width: AppDimensions.width10(context) * 13,
                               decoration: BoxDecoration(
                                 color: const Color(0xFF5A4D73),
                                 border:
@@ -484,7 +482,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.font10(context) * 1.4,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -498,7 +496,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.width10(context) * 5,
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 border: Border.all(color: Colors.transparent),

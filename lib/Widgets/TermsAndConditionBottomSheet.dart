@@ -30,15 +30,15 @@ void termsSheet(context) {
     backgroundColor: Colors.blue,
     builder: (context) => Container(
       height: AppDimensions.height10(context) * 33.3,
-      width: AppDimensions.height10(context) * 39.4,
+      width: AppDimensions.width10(context) * 39.4,
       color: const Color(0xFF646464),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // SizedBox(width: AppDimensions.height10(context) *1.0,),
+          // SizedBox(width: AppDimensions.width10(context) *1.0,),
           Container(
-            width: AppDimensions.height10(context) * 2.4,
+            width: AppDimensions.width10(context) * 2.4,
             height: AppDimensions.height10(context) * 2.4,
             margin: EdgeInsets.only(
                 left: AppDimensions.height10(context) * 38.7,
@@ -54,7 +54,7 @@ void termsSheet(context) {
             ),
           ),
           Container(
-            width: AppDimensions.height10(context) * 23.4,
+            width: AppDimensions.width10(context) * 23.4,
             height: AppDimensions.height10(context) * 2.3,
             margin:
                 EdgeInsets.only(left: AppDimensions.height10(context) * 2.2),
@@ -63,7 +63,7 @@ void termsSheet(context) {
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
-                fontSize: AppDimensions.height10(context) * 1.6,
+                fontSize: AppDimensions.font10(context) * 1.6,
               ),
             ),
           ),
@@ -95,7 +95,7 @@ void termsSheet(context) {
                     left: AppDimensions.height10(context) * 1.8,
                     right: AppDimensions.height10(context) * 1.8),
                 height: AppDimensions.height10(context) * 6.0,
-                width: AppDimensions.height10(context) * 36.0,
+                width: AppDimensions.width10(context) * 36.0,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.white),
@@ -107,19 +107,19 @@ void termsSheet(context) {
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 1.99),
                       // color: Colors.amberAccent,
-                      width: AppDimensions.height10(context) * 12.8,
+                      width: AppDimensions.width10(context) * 12.8,
                       height: AppDimensions.height10(context) * 2.3,
                       child: Text(
                         'Terms of use',
                         style: TextStyle(
                           color: const Color(0xFF646464),
-                          fontSize: AppDimensions.height10(context) * 1.6,
+                          fontSize: AppDimensions.font10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.width10(context) * 2.4,
                       height: AppDimensions.height10(context) * 1.3,
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 2.3),
@@ -158,7 +158,7 @@ void termsSheet(context) {
                     left: AppDimensions.height10(context) * 1.8,
                     right: AppDimensions.height10(context) * 1.8),
                 height: AppDimensions.height10(context) * 6.0,
-                width: AppDimensions.height10(context) * 36.0,
+                width: AppDimensions.width10(context) * 36.0,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.white),
@@ -170,19 +170,19 @@ void termsSheet(context) {
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 1.99),
                       // color: Colors.amberAccent,
-                      width: AppDimensions.height10(context) * 12.8,
+                      width: AppDimensions.width10(context) * 12.8,
                       height: AppDimensions.height10(context) * 2.3,
                       child: Text(
                         'Privacy Policy',
                         style: TextStyle(
                           color: const Color(0xFF646464),
-                          fontSize: AppDimensions.height10(context) * 1.6,
+                          fontSize: AppDimensions.font10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.width10(context) * 2.4,
                       height: AppDimensions.height10(context) * 1.3,
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 2.3),
@@ -201,12 +201,12 @@ void termsSheet(context) {
           Center(
             child: Container(
               height: AppDimensions.height10(context) * 6.0,
-              width: AppDimensions.height10(context) * 28.0,
+              width: AppDimensions.width10(context) * 28.0,
               child: Row(
                 children: [
                   Container(
                     height: AppDimensions.height10(context) * 5.0,
-                    width: AppDimensions.height10(context) * 13.0,
+                    width: AppDimensions.width10(context) * 13.0,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: Colors.white),
@@ -221,11 +221,11 @@ void termsSheet(context) {
                         )),
                   ),
                   SizedBox(
-                    width: AppDimensions.height10(context) * 2.0,
+                    width: AppDimensions.width10(context) * 2.0,
                   ),
                   Container(
                       height: AppDimensions.height10(context) * 5.0,
-                      width: AppDimensions.height10(context) * 13.0,
+                      width: AppDimensions.width10(context) * 13.0,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           border: Border.all(color: Colors.white),
@@ -234,7 +234,7 @@ void termsSheet(context) {
                         onPressed: () => showDialog<String>(
                           context: context,
                           builder: (BuildContext context) => Container(
-                            width: AppDimensions.height10(context) * 27.0,
+                            width: AppDimensions.width10(context) * 27.0,
                             height: AppDimensions.height10(context) * 20.4,
                             child: AlertDialog(
                               actionsPadding: const EdgeInsets.all(0.0),
@@ -249,14 +249,14 @@ void termsSheet(context) {
                                     bottom:
                                         AppDimensions.height10(context) * 0),
                                 height: AppDimensions.height10(context) * 4.9,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Potenic wants to use your \n Google account to sign in",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: "Laila",
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -270,13 +270,13 @@ void termsSheet(context) {
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 3.2,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "This allows the app and website to \n share information about you.",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.3,
+                                        AppDimensions.font10(context) * 1.3,
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -297,7 +297,7 @@ void termsSheet(context) {
                                           'Continue',
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontFamily: "Laila",
@@ -308,8 +308,8 @@ void termsSheet(context) {
                                     Container(
                                       height:
                                           AppDimensions.height10(context) * 4.4,
-                                      width: AppDimensions.height10(context) *
-                                          27.0,
+                                      width:
+                                          AppDimensions.width10(context) * 27.0,
                                       child: TextButton(
                                         onPressed: () {
                                           Navigator.of(context).pop();
@@ -317,9 +317,9 @@ void termsSheet(context) {
                                         child: Text(
                                           'Cancel',
                                           style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontFamily: "Laila",
                                             fontWeight: FontWeight.w400,
                                             color: const Color.fromRGBO(

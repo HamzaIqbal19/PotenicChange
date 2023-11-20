@@ -167,7 +167,7 @@ class _practice_summaryState extends State<practice_summary> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
@@ -184,7 +184,7 @@ class _practice_summaryState extends State<practice_summary> {
                             duration: const Duration(seconds: 1),
                             context: context,
                             builder: (BuildContext context) => SizedBox(
-                              width: AppDimensions.height10(context) * 27.0,
+                              width: AppDimensions.width10(context) * 27.0,
                               height: AppDimensions.height10(context) * 18.2,
                               child: AlertDialog(
                                 contentPadding: EdgeInsets.zero,
@@ -197,14 +197,14 @@ class _practice_summaryState extends State<practice_summary> {
                                   margin: const EdgeInsets.only(
                                       top: 19, right: 16, left: 16, bottom: 2),
                                   height: AppDimensions.height10(context) * 2.2,
-                                  width: AppDimensions.height10(context) * 23.8,
+                                  width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
                                     "Are you sure?",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: const Color(0xFF000000),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.7,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -218,7 +218,7 @@ class _practice_summaryState extends State<practice_summary> {
                                       right: AppDimensions.height10(context) *
                                           1.6),
                                   height: AppDimensions.height10(context) * 3.2,
-                                  width: AppDimensions.height10(context) * 23.8,
+                                  width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
                                     "If you close it now, you will lose all your progress.",
                                     textAlign: TextAlign.center,
@@ -299,7 +299,7 @@ class _practice_summaryState extends State<practice_summary> {
                         },
                         icon: Image.asset(
                           'assets/images/Close.webp',
-                          width: AppDimensions.height10(context) * 2.6,
+                          width: AppDimensions.width10(context) * 2.6,
                           height: AppDimensions.height10(context) * 2.6,
                           fit: BoxFit.cover,
                         )),
@@ -321,7 +321,7 @@ class _practice_summaryState extends State<practice_summary> {
                   child: Column(
                     children: [
                       Container(
-                        width: AppDimensions.height10(context) * 33.4,
+                        width: AppDimensions.width10(context) * 33.4,
                         height: AppDimensions.height10(context) * 3.4,
                         // color: Colors.amber,
                         margin: EdgeInsets.only(
@@ -330,7 +330,7 @@ class _practice_summaryState extends State<practice_summary> {
                           child: Text(
                             'Your Practice Summary',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.8,
+                                fontSize: AppDimensions.font10(context) * 2.8,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
                                 fontFamily: 'Laila'),
@@ -338,7 +338,7 @@ class _practice_summaryState extends State<practice_summary> {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 23.2,
+                        width: AppDimensions.width10(context) * 23.2,
                         height: AppDimensions.height10(context) * 3.8,
                         //  color: Colors.red,
                         margin: EdgeInsets.only(
@@ -349,7 +349,7 @@ class _practice_summaryState extends State<practice_summary> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 height: AppDimensions.height10(context) * 0.12,
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                                 fontFamily: 'Laila'),
@@ -357,7 +357,7 @@ class _practice_summaryState extends State<practice_summary> {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 26.8,
+                        width: AppDimensions.width10(context) * 26.8,
                         height: AppDimensions.height10(context) * 26.8,
                         //color: Colors.amber,
                         margin: EdgeInsets.only(
@@ -387,7 +387,7 @@ class _practice_summaryState extends State<practice_summary> {
                           Align(
                               alignment: const Alignment(0, -0.30),
                               child: Container(
-                                width: AppDimensions.height10(context) * 24.0,
+                                width: AppDimensions.width10(context) * 24.0,
                                 padding: EdgeInsets.symmetric(
                                     horizontal:
                                         AppDimensions.height10(context) * 2.0),
@@ -398,7 +398,7 @@ class _practice_summaryState extends State<practice_summary> {
                                   maxLines: 1,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.0,
                                       fontWeight: FontWeight.w600,
                                       height: AppDimensions.height10(context) *
                                           0.14,
@@ -420,7 +420,7 @@ class _practice_summaryState extends State<practice_summary> {
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w400,
                                       height: AppDimensions.height10(context) *
                                           0.14,
@@ -431,7 +431,7 @@ class _practice_summaryState extends State<practice_summary> {
                             alignment: const Alignment(0, 0.975),
                             child: Container(
                               height: AppDimensions.height10(context) * 13.8,
-                              width: AppDimensions.height10(context) * 13.8,
+                              width: AppDimensions.width10(context) * 13.8,
                               padding: EdgeInsets.symmetric(
                                   horizontal: AppDimensions.height10(context)),
                               decoration: BoxDecoration(
@@ -464,7 +464,7 @@ class _practice_summaryState extends State<practice_summary> {
                                   style: TextStyle(
                                       color: const Color(0xff1A481C),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.8,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                       fontFamily: 'Laila'),
                                 ),
@@ -533,7 +533,7 @@ class _practice_summaryState extends State<practice_summary> {
                           );
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 26.8,
+                          width: AppDimensions.width10(context) * 26.8,
                           height: AppDimensions.height10(context) * 5.0,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 4.0),
@@ -549,13 +549,13 @@ class _practice_summaryState extends State<practice_summary> {
                               SizedBox(
                                   //margin: EdgeInsets.only(left: 92, right: 66),
                                   height: AppDimensions.height10(context) * 2.6,
-                                  width: AppDimensions.height10(context) * 21.0,
+                                  width: AppDimensions.width10(context) * 21.0,
                                   child: Text(
                                     date_time,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.0,
                                       fontFamily: 'Laila',
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white,
@@ -571,7 +571,7 @@ class _practice_summaryState extends State<practice_summary> {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 32.6,
+                        width: AppDimensions.width10(context) * 32.6,
                         height: AppDimensions.height10(context) * 4.8,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 4.0),
@@ -582,8 +582,7 @@ class _practice_summaryState extends State<practice_summary> {
                                   fontFamily: 'Laila',
                                   height:
                                       AppDimensions.height10(context) * 0.12,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
                                 ),
@@ -601,7 +600,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 ])),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 13.4,
+                        width: AppDimensions.width10(context) * 13.4,
                         height: AppDimensions.height10(context) * 13.4,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 3.0),
@@ -641,7 +640,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     height:
                                         AppDimensions.height10(context) * 0.16,
                                     fontWeight: FontWeight.w500,
@@ -666,7 +665,7 @@ class _practice_summaryState extends State<practice_summary> {
                               },
                               child: Container(
                                   height: AppDimensions.height10(context) * 2.4,
-                                  width: AppDimensions.height10(context) * 2.4,
+                                  width: AppDimensions.width10(context) * 2.4,
                                   padding: EdgeInsets.all(
                                       AppDimensions.height10(context) * 0.4),
                                   decoration: BoxDecoration(
@@ -684,7 +683,7 @@ class _practice_summaryState extends State<practice_summary> {
                       ),
                       EmotionFeedback != " "
                           ? Container(
-                              width: AppDimensions.height10(context) * 36.0,
+                              width: AppDimensions.width10(context) * 36.0,
                               // height: AppDimensions.height10(context) * 7.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 4.0),
@@ -702,13 +701,13 @@ class _practice_summaryState extends State<practice_summary> {
                                     left: AppDimensions.height10(context) * 2.0,
                                     right:
                                         AppDimensions.height10(context) * 2.0),
-                                width: AppDimensions.height10(context) * 32.0,
+                                width: AppDimensions.width10(context) * 32.0,
                                 child: Text(
                                   EmotionFeedback,
                                   style: TextStyle(
                                       color: const Color(0xff646464),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w500,
                                       height: AppDimensions.height10(context) *
                                           0.12,
@@ -718,7 +717,7 @@ class _practice_summaryState extends State<practice_summary> {
                             )
                           : Container(),
                       Container(
-                        width: AppDimensions.height10(context) * 32.6,
+                        width: AppDimensions.width10(context) * 32.6,
                         height: AppDimensions.height10(context) * 4.8,
                         //color: Colors.amber,
                         margin: EdgeInsets.only(
@@ -730,8 +729,7 @@ class _practice_summaryState extends State<practice_summary> {
                                   fontFamily: 'Laila',
                                   height:
                                       AppDimensions.height10(context) * 0.12,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
                                 ),
@@ -749,7 +747,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 ])),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 13.4,
+                        width: AppDimensions.width10(context) * 13.4,
                         height: AppDimensions.height10(context) * 13.4,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 3.0),
@@ -789,7 +787,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     height:
                                         AppDimensions.height10(context) * 0.16,
                                     fontWeight: FontWeight.w500,
@@ -812,7 +810,7 @@ class _practice_summaryState extends State<practice_summary> {
                               },
                               child: Container(
                                   height: AppDimensions.height10(context) * 2.4,
-                                  width: AppDimensions.height10(context) * 2.4,
+                                  width: AppDimensions.width10(context) * 2.4,
                                   padding: EdgeInsets.all(
                                       AppDimensions.height10(context) * 0.4),
                                   decoration: BoxDecoration(
@@ -830,7 +828,7 @@ class _practice_summaryState extends State<practice_summary> {
                       ),
                       Feedback != " "
                           ? Container(
-                              width: AppDimensions.height10(context) * 36.0,
+                              width: AppDimensions.width10(context) * 36.0,
                               // height: AppDimensions.height10(context) * 7.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 4.0),
@@ -848,13 +846,13 @@ class _practice_summaryState extends State<practice_summary> {
                                     left: AppDimensions.height10(context) * 2.0,
                                     right:
                                         AppDimensions.height10(context) * 2.0),
-                                width: AppDimensions.height10(context) * 32.0,
+                                width: AppDimensions.width10(context) * 32.0,
                                 child: Text(
                                   Feedback.toString(),
                                   style: TextStyle(
                                       color: const Color(0xff646464),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w500,
                                       fontFamily: 'Laila'),
                                 ),
@@ -862,7 +860,7 @@ class _practice_summaryState extends State<practice_summary> {
                             )
                           : Container(),
                       Container(
-                        //swidth: AppDimensions.height10(context) * 32.6,
+                        //swidth: AppDimensions.width10(context) * 32.6,
                         // height: AppDimensions.height10(context) * 2.4,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 4.0),
@@ -871,7 +869,7 @@ class _practice_summaryState extends State<practice_summary> {
                             'How did the practice go?',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.0,
+                                fontSize: AppDimensions.font10(context) * 2.0,
                                 fontWeight: FontWeight.w600,
                                 height: AppDimensions.height10(context) * 0.12,
                                 color: Colors.white,
@@ -880,7 +878,7 @@ class _practice_summaryState extends State<practice_summary> {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 13.4,
+                        width: AppDimensions.width10(context) * 13.4,
                         height: AppDimensions.height10(context) * 13.2,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 3.0),
@@ -916,7 +914,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w500,
                                     height:
                                         AppDimensions.height10(context) * 0.16,
@@ -939,7 +937,7 @@ class _practice_summaryState extends State<practice_summary> {
                               },
                               child: Container(
                                 height: AppDimensions.height10(context) * 2.4,
-                                width: AppDimensions.height10(context) * 2.4,
+                                width: AppDimensions.width10(context) * 2.4,
                                 padding: EdgeInsets.all(
                                     AppDimensions.height10(context) * 0.4),
                                 decoration: BoxDecoration(
@@ -958,7 +956,7 @@ class _practice_summaryState extends State<practice_summary> {
                       ),
                       SessionFeedBack != " "
                           ? Container(
-                              width: AppDimensions.height10(context) * 36.0,
+                              width: AppDimensions.width10(context) * 36.0,
                               // height: AppDimensions.height10(context) * 7.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 4.0),
@@ -976,13 +974,13 @@ class _practice_summaryState extends State<practice_summary> {
                                     left: AppDimensions.height10(context) * 2.0,
                                     right:
                                         AppDimensions.height10(context) * 2.0),
-                                width: AppDimensions.height10(context) * 32.0,
+                                width: AppDimensions.width10(context) * 32.0,
                                 child: Text(
                                   SessionFeedBack,
                                   style: TextStyle(
                                       color: const Color(0xff646464),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w500,
                                       fontFamily: 'Laila'),
                                 ),
@@ -990,7 +988,7 @@ class _practice_summaryState extends State<practice_summary> {
                             )
                           : Container(),
                       Container(
-                        width: AppDimensions.height10(context) * 38.3,
+                        width: AppDimensions.width10(context) * 38.3,
                         height: AppDimensions.height10(context) * 5.0,
                         //color: Colors.red,
                         margin: EdgeInsets.only(
@@ -1010,9 +1008,9 @@ class _practice_summaryState extends State<practice_summary> {
                                       context: context,
                                       builder: (BuildContext context) =>
                                           SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                27.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    27.0,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 21.4,
@@ -1039,7 +1037,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                           0.2),
                                                   height: AppDimensions.height10(context) *
                                                       4.4,
-                                                  width: AppDimensions.height10(context) *
+                                                  width: AppDimensions.width10(context) *
                                                       23.8,
                                                   child: RichText(
                                                       textAlign:
@@ -1094,7 +1092,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                     color:
                                                         const Color(0xFF000000),
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.3,
                                                     fontWeight: FontWeight.w400,
@@ -1134,7 +1132,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                               color: const Color(
                                                                   0xFFFFFFFF),
                                                               fontSize: AppDimensions
-                                                                      .height10(
+                                                                      .font10(
                                                                           context) *
                                                                   1.7,
                                                               fontFamily:
@@ -1193,7 +1191,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                           'Yes',
                                                           style: TextStyle(
                                                               fontSize: AppDimensions
-                                                                      .height10(
+                                                                      .font10(
                                                                           context) *
                                                                   1.7,
                                                               fontFamily:
@@ -1228,7 +1226,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     height:
                                         AppDimensions.height10(context) * 5.0,
                                     width:
-                                        AppDimensions.height10(context) * 15.7,
+                                        AppDimensions.width10(context) * 15.7,
                                     margin: EdgeInsets.only(
                                         right: AppDimensions.height10(context) *
                                             1.4),
@@ -1257,7 +1255,7 @@ class _practice_summaryState extends State<practice_summary> {
                                             'Delete',
                                             style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w700,
@@ -1291,7 +1289,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     height:
                                         AppDimensions.height10(context) * 5.0,
                                     width:
-                                        AppDimensions.height10(context) * 21.2,
+                                        AppDimensions.width10(context) * 21.2,
                                     decoration: BoxDecoration(
                                       gradient: const LinearGradient(
                                         begin: Alignment.topCenter,
@@ -1311,8 +1309,7 @@ class _practice_summaryState extends State<practice_summary> {
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ))),
@@ -1320,7 +1317,7 @@ class _practice_summaryState extends State<practice_summary> {
                             ]),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 17.0,
+                        width: AppDimensions.width10(context) * 17.0,
                         height: AppDimensions.height10(context) * 0.5,
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -1355,7 +1352,7 @@ Widget _buildBottomPicker(Widget picker) {
       child: DefaultTextStyle(
         style: TextStyle(
           color: CupertinoColors.black,
-          fontSize: AppDimensions.height10(context) * 2.20,
+          fontSize: AppDimensions.font10(context) * 2.20,
         ),
         child: GestureDetector(
           // Blocks taps from propagating to the modal sheet and popping.

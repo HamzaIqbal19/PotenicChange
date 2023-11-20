@@ -29,7 +29,7 @@ class _edit_credentialsState extends State<edit_credentials> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 2.6,
+                width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
               )),
@@ -48,7 +48,7 @@ class _edit_credentialsState extends State<edit_credentials> {
           child: Column(
             children: [
               Container(
-                width: AppDimensions.height10(context) * 28.5,
+                width: AppDimensions.width10(context) * 28.5,
                 height: AppDimensions.height10(context) * 3.6,
                 margin: EdgeInsets.only(
                   top: AppDimensions.height10(context) * 18.0,
@@ -61,7 +61,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                             ? 'Change password'
                             : 'Edit name',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 3.0,
+                        fontSize: AppDimensions.font10(context) * 3.0,
                         height: AppDimensions.height10(context) * 0.12,
                         wordSpacing: AppDimensions.height10(context) * 0.5,
                         fontWeight: FontWeight.w700,
@@ -71,7 +71,7 @@ class _edit_credentialsState extends State<edit_credentials> {
               ),
               widget.password_edit
                   ? Container(
-                      width: AppDimensions.height10(context) * 35.7,
+                      width: AppDimensions.width10(context) * 35.7,
                       height: AppDimensions.height10(context) * 1.9,
                       margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 2.4,
@@ -81,7 +81,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                       child: Text(
                         'We will email you a link to reset your password',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFFFBFBFB)),
                       ),
@@ -93,7 +93,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                     : widget.password_edit
                         ? AppDimensions.height10(context) * 6.0
                         : AppDimensions.height10(context) * 8.6,
-                width: AppDimensions.height10(context) * 36.0,
+                width: AppDimensions.width10(context) * 36.0,
                 margin: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 1.8,
                     right: AppDimensions.height10(context) * 3.6,
@@ -109,7 +109,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                             alignment: Alignment.centerLeft,
                             child: Container(
                               height: AppDimensions.height10(context) * 3.8,
-                              width: AppDimensions.height10(context) * 22.2,
+                              width: AppDimensions.width10(context) * 22.2,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   bottom: AppDimensions.height10(context) * 1.3,
@@ -121,15 +121,14 @@ class _edit_credentialsState extends State<edit_credentials> {
                                   height:
                                       AppDimensions.height10(context) * 0.15,
                                   fontWeight: FontWeight.w500,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
                                 ),
                               ),
                             ),
                           ),
                           Container(
                             height: AppDimensions.height10(context) * 6,
-                            width: AppDimensions.height10(context) * 36.0,
+                            width: AppDimensions.width10(context) * 36.0,
                             padding: EdgeInsetsDirectional.only(
                               top: AppDimensions.height10(context) + 2,
                             ),
@@ -155,14 +154,14 @@ class _edit_credentialsState extends State<edit_credentials> {
                                       color: const Color(0xFF8C648A),
                                       fontWeight: FontWeight.w600,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.8,
+                                          AppDimensions.font10(context) * 1.8,
                                     ),
                                     labelText: "New Email",
                                     labelStyle: TextStyle(
                                       color: const Color(0xFF282828),
                                       fontWeight: FontWeight.w500,
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.1,
+                                          AppDimensions.font10(context) * 2.1,
                                     ),
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -180,14 +179,14 @@ class _edit_credentialsState extends State<edit_credentials> {
                               "Ooops! Needs to be an email format",
                               style: TextStyle(
                                 color: const Color(0xFFFE6624),
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
                           ),
                           Container(
                             height: AppDimensions.height10(context) * 6,
-                            width: AppDimensions.height10(context) * 36.0,
+                            width: AppDimensions.width10(context) * 36.0,
                             padding: EdgeInsetsDirectional.only(
                               top: AppDimensions.height10(context) + 2,
                             ),
@@ -213,14 +212,14 @@ class _edit_credentialsState extends State<edit_credentials> {
                                       color: const Color(0xFF8C648A),
                                       fontWeight: FontWeight.w600,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.8,
+                                          AppDimensions.font10(context) * 1.8,
                                     ),
                                     labelText: "Confirm Email",
                                     labelStyle: TextStyle(
                                       color: const Color(0xFF282828),
                                       fontWeight: FontWeight.w500,
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.1,
+                                          AppDimensions.font10(context) * 2.1,
                                     ),
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -237,7 +236,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                               "Ooops! Does not match the top email",
                               style: TextStyle(
                                 color: const Color(0xFFFE6624),
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -248,7 +247,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                         children: [
                           Container(
                             height: AppDimensions.height10(context) * 6,
-                            width: AppDimensions.height10(context) * 36.0,
+                            width: AppDimensions.width10(context) * 36.0,
                             padding: EdgeInsetsDirectional.only(
                               top: AppDimensions.height10(context) + 2,
                             ),
@@ -276,7 +275,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                       color: const Color(0xFF8C648A),
                                       fontWeight: FontWeight.w600,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.8,
+                                          AppDimensions.font10(context) * 1.8,
                                     ),
                                     labelText: widget.password_edit
                                         ? "Confirm Email"
@@ -286,7 +285,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                       fontFamily: 'laila',
                                       fontWeight: FontWeight.w500,
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.1,
+                                          AppDimensions.font10(context) * 2.1,
                                     ),
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -316,7 +315,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                     style: TextStyle(
                                       color: const Color(0xFFFBFBFB),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.4,
+                                          AppDimensions.font10(context) * 1.4,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -335,7 +334,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                 },
                 child: Container(
                   height: AppDimensions.height10(context) * 5.0,
-                  width: AppDimensions.height10(context) * 36.0,
+                  width: AppDimensions.width10(context) * 36.0,
                   margin: EdgeInsets.only(
                       top: widget.email
                           ? AppDimensions.height10(context) * 4.4
@@ -351,7 +350,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                       widget.password_edit ? 'Send' : 'Save updates',
                       style: TextStyle(
                         color: const Color(0xFFFFFFFF).withOpacity(0.9),
-                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         height: AppDimensions.height10(context) * 0.12,
                         fontWeight: FontWeight.w600,
                       ),

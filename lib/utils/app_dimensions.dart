@@ -2,6 +2,7 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppDimensions {
   static screenHeight(BuildContext context) =>
@@ -18,9 +19,36 @@ class AppDimensions {
 
   // dynamic heights
 
-  static double height10(BuildContext context) =>
-      screenHeight(context) / 90.196080;
-  static double width10(BuildContext context) => screenHeight(context) / 86.63;
+  static check(context) {
+    if (MediaQuery.of(context).size.height < 690) {
+      return ((7.32.h));
+    } else {
+      return (screenHeight(context) / 90.196080);
+    }
+  }
+
+  static checkWidth(context) {
+    if (MediaQuery.of(context).size.height < 690) {
+      return ((9.w));
+    } else {
+      return (screenHeight(context) / 86.63);
+    }
+  }
+
+  static checkText(context) {
+    if (MediaQuery.of(context).size.height < 690) {
+      return ((8.sp));
+    } else {
+      return (screenHeight(context) / 90.196080);
+    }
+  }
+
+  static double height10(BuildContext context) => check(context);
+  static double font10(BuildContext context) => checkText(context);
+
+  // static double height10(BuildContext context) =>
+  //     screenHeight(context) / 90.196080;
+  static double width10(BuildContext context) => checkWidth(context);
 }
 
 class AppDimensions2 {

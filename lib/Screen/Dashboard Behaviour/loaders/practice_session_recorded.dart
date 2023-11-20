@@ -22,7 +22,7 @@ class practice_session_shimmer extends StatelessWidget {
                 ),
                 Center(
                     child: Container(
-                  width: AppDimensions.height10(context) * 21.7,
+                  width: AppDimensions.width10(context) * 21.7,
                   height: AppDimensions.height10(context) * 3.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
@@ -34,7 +34,7 @@ class practice_session_shimmer extends StatelessWidget {
                 ),
                 Center(
                     child: Container(
-                  width: AppDimensions.height10(context) * 18.7,
+                  width: AppDimensions.width10(context) * 18.7,
                   height: AppDimensions.height10(context) * 3.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
@@ -72,7 +72,7 @@ class practice_session_shimmer extends StatelessWidget {
                                 height_of: 13.8,
                                 width_of: 13.8,
                               ),
-                              SizedBox(width: AppDimensions.height10(context)),
+                              SizedBox(width: AppDimensions.width10(context)),
                               const continer_const(
                                 height_of: 13.8,
                                 width_of: 13.8,
@@ -115,7 +115,7 @@ class practice_session_shimmer extends StatelessWidget {
                                 height_of: 13.8,
                                 width_of: 13.8,
                               ),
-                              SizedBox(width: AppDimensions.height10(context)),
+                              SizedBox(width: AppDimensions.width10(context)),
                               const continer_const(
                                 height_of: 13.8,
                                 width_of: 13.8,
@@ -149,7 +149,7 @@ class continer_const extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * width_of,
+      width: AppDimensions.width10(context) * width_of,
       height: AppDimensions.height10(context) * height_of,
       decoration: const BoxDecoration(
           shape: BoxShape.circle, color: Color.fromARGB(144, 224, 224, 224)),

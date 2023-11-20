@@ -123,7 +123,7 @@ class _CategoriesState extends State<Categories> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 1.8,
                           ),
                         ),
                       ),
@@ -139,7 +139,7 @@ class _CategoriesState extends State<Categories> {
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 2.8,
+                            fontSize: AppDimensions.font10(context) * 2.8,
                           ),
                         ),
                       ),
@@ -155,7 +155,7 @@ class _CategoriesState extends State<Categories> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 1.8,
                           ),
                         ),
                       ),
@@ -179,8 +179,7 @@ class _CategoriesState extends State<Categories> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 2.0,
+                                    width: AppDimensions.width10(context) * 2.0,
                                   ),
                                   DragTarget<Map<String, dynamic>>(
                                     builder:
@@ -402,7 +401,7 @@ class _CategoriesState extends State<Categories> {
                           circle_border: 3.0,
                           circle_bordercolor: 0xFFFFFFFF,
                           circle_height: AppDimensions.height10(context) * 10.0,
-                          circle_width: AppDimensions.height10(context) * 10.0,
+                          circle_width: AppDimensions.width10(context) * 10.0,
                           textfont: AppDimensions.height10(context) * 1.6,
                           textcolor: 0xFFFFFFFF),
                     )

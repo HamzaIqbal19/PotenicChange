@@ -28,7 +28,7 @@ class _NewGoalState extends State<NewGoal> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 3,
+                  width: AppDimensions.width10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
@@ -49,7 +49,7 @@ class _NewGoalState extends State<NewGoal> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 3.0,
+                    width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
@@ -91,7 +91,7 @@ class _NewGoalState extends State<NewGoal> {
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 1.8,
+                      fontSize: AppDimensions.font10(context) * 1.8,
                     ),
                   ),
                 ),
@@ -104,7 +104,7 @@ class _NewGoalState extends State<NewGoal> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: AppDimensions.height10(context) * 3.6,
+                    width: AppDimensions.width10(context) * 3.6,
                   ),
                   Container(
                     child: Center(
@@ -114,7 +114,7 @@ class _NewGoalState extends State<NewGoal> {
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 2.8,
+                          fontSize: AppDimensions.font10(context) * 2.8,
                         ),
                       ),
                     ),
@@ -129,7 +129,7 @@ class _NewGoalState extends State<NewGoal> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: AppDimensions.height10(context) * 3.6,
+                    width: AppDimensions.width10(context) * 3.6,
                   ),
                   Container(
                     // height: AppDimensions.height10(context) *7.1,
@@ -139,7 +139,7 @@ class _NewGoalState extends State<NewGoal> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontSize: AppDimensions.font10(context) * 1.8,
                       ),
                     ),
                   ),
@@ -159,7 +159,7 @@ class _NewGoalState extends State<NewGoal> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: AppDimensions.height10(context) * 3.6,
+                              width: AppDimensions.width10(context) * 3.6,
                             ),
                             Container(
                               padding: EdgeInsets.only(
@@ -178,7 +178,7 @@ class _NewGoalState extends State<NewGoal> {
                                   textcolor: 0),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 1.24,
+                              width: AppDimensions.width10(context) * 1.24,
                             ),
                             Container(
                               // color: Colors.yellow,
@@ -189,8 +189,7 @@ class _NewGoalState extends State<NewGoal> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                 ),
                               ),
                             ),
@@ -324,7 +323,7 @@ class _NewGoalState extends State<NewGoal> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: AppDimensions.height10(context) * 3.6,
+                              width: AppDimensions.width10(context) * 3.6,
                             ),
                             Container(
                               padding: EdgeInsets.only(
@@ -343,7 +342,7 @@ class _NewGoalState extends State<NewGoal> {
                                   textcolor: 0),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 1.24,
+                              width: AppDimensions.width10(context) * 1.24,
                             ),
                             Container(
                               // color: Colors.yellow,
@@ -354,8 +353,7 @@ class _NewGoalState extends State<NewGoal> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                 ),
                               ),
                             ),

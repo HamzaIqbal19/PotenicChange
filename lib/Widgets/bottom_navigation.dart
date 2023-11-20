@@ -90,7 +90,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
       //       : const BoxDecoration(
       //           shape: BoxShape.rectangle, color: Colors.transparent),
       //   //height: 77,
-      //   // width: AppDimensions.height10(context) * 30.5,
+      //   // width: AppDimensions.width10(context) * 30.5,
       //   padding: EdgeInsets.only(
       //       bottom: AppDimensions.height10(context) * 2.5,
       //       left: AppDimensions.height10(context) * 5.4,
@@ -132,11 +132,11 @@ class Navigation_BarState extends State<Navigation_Bar> {
                   child: Container(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0),
-                    width: AppDimensions.height10(context) * 4.0,
+                    width: AppDimensions.width10(context) * 4.0,
                     height: AppDimensions.height10(context) * 4.0,
                     child: Container(
                         height: AppDimensions.height10(context) * 2.612,
-                        width: AppDimensions.height10(context) * 3.318,
+                        width: AppDimensions.width10(context) * 3.318,
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             gradient: LinearGradient(
@@ -162,7 +162,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                       checkInspiraion();
                     },
                     child: Container(
-                      width: AppDimensions.height10(context) * 6.0,
+                      width: AppDimensions.width10(context) * 6.0,
                       height: AppDimensions.height10(context) * 6.0,
                       //margin: EdgeInsets.only(right: 30),
                       decoration: const BoxDecoration(
@@ -173,7 +173,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                               colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
                       child: Container(
                           height: AppDimensions.height10(context) * 1.889,
-                          width: AppDimensions.height10(context) * 2.444,
+                          width: AppDimensions.width10(context) * 2.444,
                           padding: EdgeInsets.all(
                               AppDimensions.height10(context) * 1.2),
                           child: const ImageIcon(
@@ -189,7 +189,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                       checkHurdle();
                     },
                     child: Container(
-                      width: AppDimensions.height10(context) * 6.0,
+                      width: AppDimensions.width10(context) * 6.0,
                       height: AppDimensions.height10(context) * 6.0,
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
@@ -199,7 +199,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                               colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
                       child: Container(
                         height: AppDimensions.height10(context) * 2.612,
-                        width: AppDimensions.height10(context) * 3.318,
+                        width: AppDimensions.width10(context) * 3.318,
                         padding: EdgeInsets.all(
                             AppDimensions.height10(context) * 1.2),
                         child: const ImageIcon(
@@ -226,7 +226,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                   child: Container(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0, right: 0),
-                    width: AppDimensions.height10(context) * 4.0,
+                    width: AppDimensions.width10(context) * 4.0,
                     height: AppDimensions.height10(context) * 4.0,
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
@@ -236,7 +236,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                             colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
                     child: Container(
                         height: AppDimensions.height10(context) * 1.889,
-                        width: AppDimensions.height10(context) * 2.444,
+                        width: AppDimensions.width10(context) * 2.444,
                         padding: EdgeInsets.all(
                             AppDimensions.height10(context) * 1.2),
                         child: const ImageIcon(
@@ -249,11 +249,11 @@ class Navigation_BarState extends State<Navigation_Bar> {
               ),
             ],
             selectedLabelStyle: TextStyle(
-              fontSize: AppDimensions.height10(context) * 1.4,
+              fontSize: AppDimensions.font10(context) * 1.4,
               fontWeight: FontWeight.w400,
             ),
             unselectedLabelStyle: TextStyle(
-              fontSize: AppDimensions.height10(context) * 1.4,
+              fontSize: AppDimensions.font10(context) * 1.4,
               fontWeight: FontWeight.w400,
             ),
             currentIndex: index,

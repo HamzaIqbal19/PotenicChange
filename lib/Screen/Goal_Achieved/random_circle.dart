@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../utils/app_dimensions.dart';
 //import 'package:r_dart_library/asset_svg.dart';
 
-
 class RandomCircles extends StatefulWidget {
   @override
   _RandomCirclesState createState() => _RandomCirclesState();
@@ -36,7 +35,7 @@ class _RandomCirclesState extends State<RandomCircles> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
-        width: AppDimensions.height10(context) * 95.00,
+        width: AppDimensions.width10(context) * 95.00,
         height: AppDimensions.height10(context) * 31.40,
         child: Stack(
           children: _circles,
@@ -72,7 +71,7 @@ class _RandomCirclesState extends State<RandomCircles> {
         Circle(
           x: circleX,
           y: circleY,
-          width: AppDimensions.height10(context) * 6.50,
+          width: AppDimensions.width10(context) * 6.50,
           height: AppDimensions.height10(context) * 7.40,
         ),
       );
@@ -110,13 +109,13 @@ class Circle extends StatelessWidget {
         child: Stack(children: [
           Center(
               child: SizedBox(
-            width: AppDimensions.height10(context) * 2.7,
+            width: AppDimensions.width10(context) * 2.7,
             height: AppDimensions.height10(context) * 3.4,
             child: RichText(
                 text: TextSpan(
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.4,
                         fontWeight: FontWeight.w400),
                     children: [
                   TextSpan(
@@ -125,13 +124,13 @@ class Circle extends StatelessWidget {
                   TextSpan(
                       text: '01/07',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 0.9))
+                          fontSize: AppDimensions.font10(context) * 0.9))
                 ])),
           )),
           Align(
             alignment: Alignment(0, 1.15),
             child: Container(
-              width: AppDimensions.height10(context) * 2.0,
+              width: AppDimensions.width10(context) * 2.0,
               height: AppDimensions.height10(context) * 2.0,
               decoration: BoxDecoration(
                   image: DecorationImage(

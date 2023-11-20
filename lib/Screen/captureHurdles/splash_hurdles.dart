@@ -95,7 +95,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 2.6,
+                      width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
                     )),
@@ -119,7 +119,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                     // );
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 34.3,
+                    width: AppDimensions.width10(context) * 34.3,
                     height: AppDimensions.height10(context) * 7.3,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 12.0,
@@ -128,7 +128,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                       'My faced\nhurdles & obstacles',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 3.0,
+                        fontSize: AppDimensions.font10(context) * 3.0,
                         fontWeight: FontWeight.w700,
                       ),
                       colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -136,7 +136,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10(context) * 35.1,
+                  width: AppDimensions.width10(context) * 35.1,
                   height: AppDimensions.height10(context) * 8.3,
                   margin: EdgeInsets.only(
                       bottom: AppDimensions.height10(context) * 3.7),
@@ -144,7 +144,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                       'Use this space to capture obstacles that\nmay hold you back from achieving your\npersonal growth goals.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.8,
+                          fontSize: AppDimensions.font10(context) * 1.8,
                           height: AppDimensions.height10(context) * 0.15,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
@@ -197,7 +197,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                     }
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 16.8,
+                    width: AppDimensions.width10(context) * 16.8,
                     height: AppDimensions.height10(context) * 17.0,
                     // color: Colors.amber,
                     margin: EdgeInsets.only(
@@ -208,7 +208,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                         'Record your\nhurdles',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.0,
+                            fontSize: AppDimensions.font10(context) * 2.0,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFFFFFFFF)),
                       ),

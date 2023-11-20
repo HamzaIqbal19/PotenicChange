@@ -80,7 +80,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
           Align(
             alignment: const Alignment(0, 0),
             child: Container(
-              width: AppDimensions.height10(context) * 27.0,
+              width: AppDimensions.width10(context) * 27.0,
               height: AppDimensions.height10(context) * 24.8,
               decoration: BoxDecoration(
                   color: const Color(0xff1E1E1E).withOpacity(0.75),
@@ -95,13 +95,13 @@ class _photo_pop_upState extends State<photo_pop_up> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          // width: AppDimensions.height10(context) * 23.8,
+                          // width: AppDimensions.width10(context) * 23.8,
                           height: AppDimensions.height10(context) * 4.4,
                           child: Text(
                             'Potenic would like to access\nyour photos',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.7,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
                           ),
@@ -109,13 +109,13 @@ class _photo_pop_upState extends State<photo_pop_up> {
                         Container(
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.2),
-                          // width: AppDimensions.height10(context) * 23.8,
+                          // width: AppDimensions.width10(context) * 23.8,
                           height: AppDimensions.height10(context) * 3.4,
                           child: Text(
                             'To upload from your device, allow\naccess to your photos.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.3,
+                                fontSize: AppDimensions.font10(context) * 1.3,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
                           ),
@@ -142,7 +142,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
                           'Select Photos...',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 1.7,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff0A84FF)),
                         ),
@@ -168,7 +168,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
                           'Allow Access to All Photos',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 1.7,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff0A84FF)),
                         ),
@@ -194,7 +194,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
                           'Don’t Allow',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 1.7,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff0A84FF)),
                         ),
@@ -208,7 +208,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
           Align(
             alignment: const Alignment(0, 1),
             child: Container(
-              width: AppDimensions.height10(context) * 17.0,
+              width: AppDimensions.width10(context) * 17.0,
               height: AppDimensions.height10(context) * 0.5,
               margin: EdgeInsets.only(
                   bottom: AppDimensions.height10(context) * 1.0),
@@ -347,7 +347,7 @@ class _photo_infoState extends State<photo_info> {
                             'Back',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff007AFF)),
                           ),
@@ -356,7 +356,7 @@ class _photo_infoState extends State<photo_info> {
                       Center(
                         child: SizedBox(
                           // height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.height10(context) * 28.5,
+                          width: AppDimensions.width10(context) * 28.5,
                           child: Center(
                               child: widget.edit_details
                                   ? Text(
@@ -364,7 +364,7 @@ class _photo_infoState extends State<photo_info> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w700,
                                           color: const Color(0xff282828)),
@@ -373,7 +373,7 @@ class _photo_infoState extends State<photo_info> {
                                       'Create image inspiration',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w700,
                                           color: const Color(0xff282828)),
@@ -382,7 +382,7 @@ class _photo_infoState extends State<photo_info> {
                       ),
                       Container(
                         //height: AppDimensions.height10(context) * 2.2,
-                        //width: AppDimensions.height10(context) * 6.1,
+                        //width: AppDimensions.width10(context) * 6.1,
                         // margin: EdgeInsets.only(
                         //     right: AppDimensions.height10(context) * 1.5),
                         child: widget.image_detals
@@ -518,7 +518,7 @@ class _photo_infoState extends State<photo_info> {
                                                                           context) *
                                                                   2.2,
                                                               width: AppDimensions
-                                                                      .height10(
+                                                                      .width10(
                                                                           context) *
                                                                   23.8,
                                                               child: Text(
@@ -529,7 +529,7 @@ class _photo_infoState extends State<photo_info> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.7,
                                                                   fontFamily:
@@ -559,7 +559,7 @@ class _photo_infoState extends State<photo_info> {
                                                                           context) *
                                                                   3.4,
                                                               width: AppDimensions
-                                                                      .height10(
+                                                                      .width10(
                                                                           context) *
                                                                   23.8,
                                                               child: Text(
@@ -570,7 +570,7 @@ class _photo_infoState extends State<photo_info> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.3,
                                                                   fontFamily:
@@ -654,7 +654,7 @@ class _photo_infoState extends State<photo_info> {
                                                                         style: TextStyle(
                                                                             color: const Color(
                                                                                 0xFFFFFFFF),
-                                                                            fontSize: AppDimensions.height10(context) *
+                                                                            fontSize: AppDimensions.font10(context) *
                                                                                 1.7,
                                                                             fontFamily:
                                                                                 "Laila",
@@ -692,7 +692,7 @@ class _photo_infoState extends State<photo_info> {
                                                                           Text(
                                                                         'Cancel',
                                                                         style: TextStyle(
-                                                                            fontSize: AppDimensions.height10(context) *
+                                                                            fontSize: AppDimensions.font10(context) *
                                                                                 1.7,
                                                                             fontFamily:
                                                                                 "Laila",
@@ -728,10 +728,9 @@ class _photo_infoState extends State<photo_info> {
                                                 : 'Save',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.6,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.6,
                                                 fontWeight: FontWeight.w400,
                                                 color: const Color(0xff007AFF)),
                                           ),
@@ -771,10 +770,9 @@ class _photo_infoState extends State<photo_info> {
                                             'Create',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.6,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.6,
                                                 fontWeight: FontWeight.w400,
                                                 color: const Color(0xff007AFF)),
                                           ),
@@ -868,7 +866,7 @@ class _photo_infoState extends State<photo_info> {
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.6,
                                                         fontWeight:
@@ -909,7 +907,7 @@ class _photo_infoState extends State<photo_info> {
                         top: AppDimensions.height10(context) * 2.9,
                         left: AppDimensions.height10(context) * 1.8,
                       ),
-                      width: AppDimensions.height10(context) * 24.4,
+                      width: AppDimensions.width10(context) * 24.4,
                       height: AppDimensions.height10(context) * 24.4,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -924,7 +922,7 @@ class _photo_infoState extends State<photo_info> {
                           children: [
                             Container(
                               height: AppDimensions.height10(context) * 2.1,
-                              width: AppDimensions.height10(context) * 30.5,
+                              width: AppDimensions.width10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0,
@@ -934,7 +932,7 @@ class _photo_infoState extends State<photo_info> {
                                 'Title',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.5,
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -943,7 +941,7 @@ class _photo_infoState extends State<photo_info> {
                               alignment: Alignment.centerLeft,
                               // height: AppDimensions.height10(context) * 2.4,
 
-                              //width: AppDimensions.height10(context) * 30.5,
+                              //width: AppDimensions.width10(context) * 30.5,
                               margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 0.6,
                               ),
@@ -953,7 +951,7 @@ class _photo_infoState extends State<photo_info> {
                                 textAlignVertical: TextAlignVertical.top,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff282828)),
                                 decoration: InputDecoration(
@@ -966,8 +964,7 @@ class _photo_infoState extends State<photo_info> {
                                     hintText: 'Give your inspiration a title',
                                     hintStyle: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
+                                            AppDimensions.font10(context) * 1.7,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xff828282)),
                                     focusedBorder: const OutlineInputBorder(
@@ -980,7 +977,7 @@ class _photo_infoState extends State<photo_info> {
                             ),
                             Container(
                               height: AppDimensions.height10(context) * 2.1,
-                              width: AppDimensions.height10(context) * 30.5,
+                              width: AppDimensions.width10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0,
@@ -991,7 +988,7 @@ class _photo_infoState extends State<photo_info> {
                                       'Description',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.5,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff828282)),
@@ -1000,7 +997,7 @@ class _photo_infoState extends State<photo_info> {
                                       'Why is it inspirational to you',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.5,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff828282)),
@@ -1010,7 +1007,7 @@ class _photo_infoState extends State<photo_info> {
                               alignment: Alignment.centerLeft,
 
                               // height: AppDimensions.height10(context) * 2.4,
-                              // width: AppDimensions.height10(context) * 30.5,
+                              // width: AppDimensions.width10(context) * 30.5,
                               margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 0.6,
                               ),
@@ -1020,7 +1017,7 @@ class _photo_infoState extends State<photo_info> {
                                 maxLines: null,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff282828)),
                                 decoration: InputDecoration(
@@ -1033,8 +1030,7 @@ class _photo_infoState extends State<photo_info> {
                                     hintText: 'Say more about this inspiration',
                                     hintStyle: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
+                                            AppDimensions.font10(context) * 1.7,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xff828282)),
                                     focusedBorder: const OutlineInputBorder(
@@ -1047,7 +1043,7 @@ class _photo_infoState extends State<photo_info> {
                             ),
                             Container(
                               height: AppDimensions.height10(context) * 2.1,
-                              width: AppDimensions.height10(context) * 30.5,
+                              width: AppDimensions.width10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0,
@@ -1057,7 +1053,7 @@ class _photo_infoState extends State<photo_info> {
                                 'Destination website (optional)',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.5,
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -1068,7 +1064,7 @@ class _photo_infoState extends State<photo_info> {
                                   alignment: Alignment.centerLeft,
                                   // height:
                                   //     AppDimensions.height10(context) * 2.4,
-                                  width: AppDimensions.height10(context) * 30.5,
+                                  width: AppDimensions.width10(context) * 30.5,
                                   margin: EdgeInsets.only(
                                     left: AppDimensions.height10(context) * 0.6,
                                   ),
@@ -1082,8 +1078,7 @@ class _photo_infoState extends State<photo_info> {
                                     },
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
+                                            AppDimensions.font10(context) * 1.7,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xff282828)),
                                     decoration: InputDecoration(
@@ -1098,9 +1093,9 @@ class _photo_infoState extends State<photo_info> {
                                             0),
                                         hintText: 'Add link',
                                         hintStyle: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xff828282)),
                                         focusedBorder: const OutlineInputBorder(
@@ -1112,7 +1107,7 @@ class _photo_infoState extends State<photo_info> {
                                   ),
                                 ),
                                 SizedBox(
-                                    width: AppDimensions.height10(context) * 2),
+                                    width: AppDimensions.width10(context) * 2),
                                 Row(
                                   children: [
                                     AnimatedScaleButton(
@@ -1126,7 +1121,7 @@ class _photo_infoState extends State<photo_info> {
                                             )));
                                       },
                                       child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.5,
                                         height:
                                             AppDimensions.height10(context) *
@@ -1185,7 +1180,7 @@ class _photo_infoState extends State<photo_info> {
                             ),
                             Container(
                               height: AppDimensions.height10(context) * 2.1,
-                              width: AppDimensions.height10(context) * 30.5,
+                              width: AppDimensions.width10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0,
@@ -1195,7 +1190,7 @@ class _photo_infoState extends State<photo_info> {
                                 'Tags (optional)',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.5,
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -1204,7 +1199,7 @@ class _photo_infoState extends State<photo_info> {
                               //alignment: Alignment.centerLeft,
                               // height: AppDimensions.height10(context) * 2.4,
 
-                              //width: AppDimensions.height10(context) * 30.5,
+                              //width: AppDimensions.width10(context) * 30.5,
                               margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 0.6,
                               ),
@@ -1243,7 +1238,7 @@ class _photo_infoState extends State<photo_info> {
                                   textAlignVertical: TextAlignVertical.top,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.7,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xff282828)),
                                   decoration: InputDecoration(
@@ -1256,7 +1251,7 @@ class _photo_infoState extends State<photo_info> {
                                       hintText: 'Add #hashtags',
                                       hintStyle: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.7,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff828282)),
@@ -1283,7 +1278,7 @@ class _photo_infoState extends State<photo_info> {
                             ),
                             Container(
                               height: AppDimensions.height10(context) * 2.1,
-                              width: AppDimensions.height10(context) * 30.5,
+                              width: AppDimensions.width10(context) * 30.5,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0,
                                   bottom: AppDimensions.height10(context) * 0.5,
@@ -1295,7 +1290,7 @@ class _photo_infoState extends State<photo_info> {
                                 'Attached goals',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.5,
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -1325,7 +1320,7 @@ class _photo_infoState extends State<photo_info> {
                               },
                               child: Container(
                                 height: AppDimensions.height10(context) * 6.0,
-                                width: AppDimensions.height10(context) * 37.5,
+                                width: AppDimensions.width10(context) * 37.5,
                                 margin: EdgeInsets.only(
                                   // bottom: AppDimensions.height10(context) * 1.0,
                                   left: AppDimensions.height10(context) * 2.0,
@@ -1340,8 +1335,8 @@ class _photo_infoState extends State<photo_info> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          23.9,
+                                      width:
+                                          AppDimensions.width10(context) * 23.9,
                                       height:
                                           AppDimensions.height10(context) * 2.2,
                                       margin: EdgeInsets.only(
@@ -1354,7 +1349,7 @@ class _photo_infoState extends State<photo_info> {
                                           fontFamily: 'laila',
                                           color: const Color(0xFF646464),
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -1376,7 +1371,7 @@ class _photo_infoState extends State<photo_info> {
                                                   AppDimensions.height10(
                                                           context) *
                                                       0.2,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4),
                                         ))
@@ -1491,7 +1486,7 @@ class _link_setState extends State<link_set> {
                             linkController.clear();
                           },
                           child: Container(
-                            width: AppDimensions.height10(context) * 3.0,
+                            width: AppDimensions.width10(context) * 3.0,
                             height: AppDimensions.height10(context) * 3.0,
                             margin: EdgeInsets.only(
                                 right: AppDimensions.height10(context) * 0.8),
@@ -1519,7 +1514,7 @@ class _link_setState extends State<link_set> {
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          width: AppDimensions.height10(context) * 1.4,
+                          width: AppDimensions.width10(context) * 1.4,
                           height: AppDimensions.height10(context) * 1.413,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 0.8),
@@ -1554,7 +1549,7 @@ class _link_setState extends State<link_set> {
                             style: TextStyle(
                                 decoration: TextDecoration.none,
                                 decorationThickness: 0,
-                                fontSize: AppDimensions.height10(context) * 1.5,
+                                fontSize: AppDimensions.font10(context) * 1.5,
                                 fontWeight: FontWeight.w400,
                                 color:
                                     const Color(0xff3C3C43).withOpacity(0.6)),
@@ -1567,7 +1562,7 @@ class _link_setState extends State<link_set> {
                                 hintText: 'Enter website address',
                                 hintStyle: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.5,
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff3C3C43)
                                         .withOpacity(0.6)),
@@ -1600,7 +1595,7 @@ class _link_setState extends State<link_set> {
                                   _controller.clearCache();
                                 },
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 2.3,
+                                  width: AppDimensions.width10(context) * 2.3,
                                   height: AppDimensions.height10(context) * 2.3,
                                   decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
@@ -1611,7 +1606,7 @@ class _link_setState extends State<link_set> {
                                       ),
                                   // child: Image.asset(
                                   //   'assets/images/ic_refresh.webp',
-                                  //  // width: AppDimensions.height10(context) * 0.941,
+                                  //  // width: AppDimensions.width10(context) * 0.941,
                                   //   //height: AppDimensions.height10(context) * 1.4,
                                   //   color: Color(0xff282828),
                                   // ),
@@ -1623,7 +1618,7 @@ class _link_setState extends State<link_set> {
                                   linkController.clear();
                                 },
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 2.3,
+                                  width: AppDimensions.width10(context) * 2.3,
                                   height: AppDimensions.height10(context) * 2.3,
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
@@ -1694,14 +1689,14 @@ class _link_setState extends State<link_set> {
                     },
                     child: Container(
                       height: AppDimensions.height10(context) * 4.2,
-                      width: AppDimensions.height10(context) * 6.2,
+                      width: AppDimensions.width10(context) * 6.2,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 0.9),
                       child: Center(
                         child: Text(
                           'Add link',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff007AFF)),
                         ),

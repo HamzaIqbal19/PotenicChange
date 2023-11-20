@@ -32,7 +32,7 @@ class _EmailSentState extends State<EmailSent> {
               //   child: IconButton(
               //     icon: Image.asset(
               //       'assets/images/Back.webp',
-              //       width: AppDimensions.height10(context) * 3,
+              //       width: AppDimensions.width10(context) * 3,
               //       height: AppDimensions.height10(context) * 3,
               //       fit: BoxFit.contain,
               //     ),
@@ -48,7 +48,7 @@ class _EmailSentState extends State<EmailSent> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 3.0,
+                      width: AppDimensions.width10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
                     ),
@@ -89,7 +89,7 @@ class _EmailSentState extends State<EmailSent> {
                 SizedBox(height: AppDimensions.height10(context) * 2.32),
                 Container(
                   height: AppDimensions.height10(context) * 6.8,
-                  width: AppDimensions.height10(context) * 32.0,
+                  width: AppDimensions.width10(context) * 32.0,
                   child: Text(
                     "Password reset email\nsent",
                     textAlign: TextAlign.center,
@@ -97,7 +97,7 @@ class _EmailSentState extends State<EmailSent> {
                       fontWeight: FontWeight.w700,
                       height: AppDimensions.height10(context) * 0.15,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                     ),
                   ),
                 ),
@@ -112,20 +112,20 @@ class _EmailSentState extends State<EmailSent> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 2,
+                        fontSize: AppDimensions.font10(context) * 2,
                       ),
                     )),
                 SizedBox(height: AppDimensions.height10(context) * 0.92),
                 Container(
                     height: AppDimensions.height10(context) * 7 + 4,
-                    width: AppDimensions.height10(context) * 31.6,
+                    width: AppDimensions.width10(context) * 31.6,
                     child: Text(
                       'Please check your inbox including Promotions & Spam folders to reset your password.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.4,
                       ),
                     )),
                 SizedBox(height: AppDimensions.height10(context) * 4.2),
@@ -142,7 +142,7 @@ class _EmailSentState extends State<EmailSent> {
                   },
                   child: Container(
                     height: AppDimensions.height10(context) * 4.4,
-                    width: AppDimensions.height10(context) * 26.7,
+                    width: AppDimensions.width10(context) * 26.7,
                     // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.height10(context) *0.8),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFFFFFF),
@@ -154,7 +154,7 @@ class _EmailSentState extends State<EmailSent> {
                       'Go to Verification page',
                       style: TextStyle(
                         color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w600,
                       ),
                     )),

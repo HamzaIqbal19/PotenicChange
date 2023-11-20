@@ -20,7 +20,7 @@ class goalFinished_shimmer extends StatelessWidget {
                 height: AppDimensions.height10(context) * 10.0,
               ),
               Container(
-                width: AppDimensions.height10(context) * 24.3,
+                width: AppDimensions.width10(context) * 24.3,
                 height: AppDimensions.height10(context) * 3.7,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -31,7 +31,7 @@ class goalFinished_shimmer extends StatelessWidget {
                 height: AppDimensions.height10(context) * 4.0,
               ),
               Container(
-                width: AppDimensions.height10(context) * 25.4,
+                width: AppDimensions.width10(context) * 25.4,
                 height: AppDimensions.height10(context) * 1.2,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -42,7 +42,7 @@ class goalFinished_shimmer extends StatelessWidget {
                 height: AppDimensions.height10(context) * 1.0,
               ),
               Container(
-                width: AppDimensions.height10(context) * 30.4,
+                width: AppDimensions.width10(context) * 30.4,
                 height: AppDimensions.height10(context) * 1.2,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -53,7 +53,7 @@ class goalFinished_shimmer extends StatelessWidget {
                 height: AppDimensions.height10(context) * 1.0,
               ),
               Container(
-                width: AppDimensions.height10(context) * 25.4,
+                width: AppDimensions.width10(context) * 25.4,
                 height: AppDimensions.height10(context) * 1.2,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -64,7 +64,7 @@ class goalFinished_shimmer extends StatelessWidget {
                 height: AppDimensions.height10(context) * 2.0,
               ),
               Container(
-                width: AppDimensions.height10(context) * 25.4,
+                width: AppDimensions.width10(context) * 25.4,
                 height: AppDimensions.height10(context) * 1.2,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -75,7 +75,7 @@ class goalFinished_shimmer extends StatelessWidget {
                 height: AppDimensions.height10(context) * 1.0,
               ),
               Container(
-                width: AppDimensions.height10(context) * 28.4,
+                width: AppDimensions.width10(context) * 28.4,
                 height: AppDimensions.height10(context) * 1.2,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -86,7 +86,7 @@ class goalFinished_shimmer extends StatelessWidget {
                 height: AppDimensions.height10(context) * 1.0,
               ),
               Container(
-                width: AppDimensions.height10(context) * 30.4,
+                width: AppDimensions.width10(context) * 30.4,
                 height: AppDimensions.height10(context) * 1.2,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -97,7 +97,7 @@ class goalFinished_shimmer extends StatelessWidget {
                 height: AppDimensions.height10(context) * 1.0,
               ),
               Container(
-                width: AppDimensions.height10(context) * 25.4,
+                width: AppDimensions.width10(context) * 25.4,
                 height: AppDimensions.height10(context) * 1.2,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -108,7 +108,7 @@ class goalFinished_shimmer extends StatelessWidget {
                 height: AppDimensions.height10(context) * 1.0,
               ),
               Container(
-                width: AppDimensions.height10(context) * 15.4,
+                width: AppDimensions.width10(context) * 15.4,
                 height: AppDimensions.height10(context) * 1.2,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -123,7 +123,7 @@ class goalFinished_shimmer extends StatelessWidget {
               ),
               Container(
                 height: AppDimensions.height10(context) * 26.8,
-                width: AppDimensions.height10(context) * 26.8,
+                width: AppDimensions.width10(context) * 26.8,
                 child: Stack(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -134,28 +134,27 @@ class goalFinished_shimmer extends StatelessWidget {
                     Align(
                         alignment: const Alignment(0, 2.7),
                         child: Container(
-                          width: AppDimensions.height10(context) * 17.5,
+                          width: AppDimensions.width10(context) * 17.5,
                           height: AppDimensions.height10(context) * 17.5,
                           padding:
                               EdgeInsets.all(AppDimensions.height10(context)),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                  width: AppDimensions.height10(context) * 0.5,
+                                  width: AppDimensions.width10(context) * 0.5,
                                   color: Colors.grey)),
                           child: Container(
-                            width: AppDimensions.height10(context) * 15.5,
+                            width: AppDimensions.width10(context) * 15.5,
                             height: AppDimensions.height10(context) * 15.5,
                             padding: EdgeInsets.all(
                                 AppDimensions.height10(context) * 0.8),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.5,
+                                    width: AppDimensions.width10(context) * 0.5,
                                     color: Colors.grey)),
                             child: Container(
-                              width: AppDimensions.height10(context) * 13.8,
+                              width: AppDimensions.width10(context) * 13.8,
                               height: AppDimensions.height10(context) * 13.8,
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
@@ -171,7 +170,7 @@ class goalFinished_shimmer extends StatelessWidget {
               ),
               Container(
                   // color: Colors.blue,
-                  width: AppDimensions.height10(context) * 5.0,
+                  width: AppDimensions.width10(context) * 5.0,
                   height: AppDimensions.height10(context) * 5.0,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 1.6,
@@ -198,7 +197,7 @@ class continer_const extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * width_of,
+      width: AppDimensions.width10(context) * width_of,
       height: AppDimensions.height10(context) * height_of,
       decoration: const BoxDecoration(
           shape: BoxShape.circle, color: Color.fromARGB(144, 224, 224, 224)),

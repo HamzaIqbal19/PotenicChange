@@ -62,14 +62,14 @@ class _inspiration_typeState extends State<inspiration_type> {
                   },
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             ),
             //centerTitle: true,
             title: Container(
-              width: AppDimensions.height10(context) * 18.9,
+              width: AppDimensions.width10(context) * 18.9,
               height: AppDimensions.height10(context) * 2.4,
               margin:
                   EdgeInsets.only(left: AppDimensions.height10(context) * 6.6),
@@ -79,7 +79,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                     'Inspiration 2',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.0,
+                      fontSize: AppDimensions.font10(context) * 2.0,
                       fontWeight: FontWeight.w600,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -88,7 +88,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                     '/2',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.0,
+                      fontSize: AppDimensions.font10(context) * 2.0,
                       fontWeight: FontWeight.w400,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -105,7 +105,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                         duration: const Duration(seconds: 1),
                         context: context,
                         builder: (BuildContext context) => SizedBox(
-                              width: AppDimensions.height10(context) * 27.0,
+                              width: AppDimensions.width10(context) * 27.0,
                               height: AppDimensions.height10(context) * 21.0,
                               child: AlertDialog(
                                 shape: RoundedRectangleBorder(
@@ -118,7 +118,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                   margin: const EdgeInsets.only(
                                       top: 19, right: 16, left: 16, bottom: 2),
                                   //  height: AppDimensions.height10(context) * 2.2,
-                                  width: AppDimensions.height10(context) * 23.8,
+                                  width: AppDimensions.width10(context) * 23.8,
                                   child: const Text(
                                     "Exit Inspiration?",
                                     textAlign: TextAlign.center,
@@ -295,7 +295,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                             )),
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 2.6,
+                      width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
                     )),
@@ -312,7 +312,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                     fit: BoxFit.cover)),
             child: Column(children: [
               Container(
-                width: AppDimensions.height10(context) * 34.3,
+                width: AppDimensions.width10(context) * 34.3,
                 height: AppDimensions.height10(context) * 3.9,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 1.1,
@@ -322,7 +322,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                     'Your inspiration',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       fontWeight: FontWeight.w700,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -330,7 +330,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 34.3,
+                width: AppDimensions.width10(context) * 34.3,
                 // height: AppDimensions.height10(context) * 7.5,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 11.50),
@@ -340,7 +340,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                     'What type of inspiration do you want to\nrecord?',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 2.0,
+                        fontSize: AppDimensions.font10(context) * 2.0,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFFFFFFFF)),
                   ),
@@ -362,7 +362,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                               FadePageRoute(page: const photo_pop_up()));
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 13.3,
+                          width: AppDimensions.width10(context) * 13.3,
                           height: AppDimensions.height10(context) * 13.3,
                           margin: EdgeInsets.only(
                               right: AppDimensions.height10(context) * 1.4,
@@ -390,7 +390,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             3.032,
                                         height:
                                             AppDimensions.height10(context) *
@@ -413,7 +413,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                           'Image',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
@@ -421,7 +421,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                         ),
                                       ),
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.122,
                                         height:
                                             AppDimensions.height10(context) *
@@ -451,7 +451,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                               context, FadePageRoute(page: const noteSaved()));
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 13.3,
+                          width: AppDimensions.width10(context) * 13.3,
                           height: AppDimensions.height10(context) * 13.3,
                           margin: EdgeInsets.only(
                               right: AppDimensions.height10(context) * 1.4),
@@ -478,7 +478,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             3.032,
                                         height:
                                             AppDimensions.height10(context) *
@@ -501,7 +501,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                           'Notes',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
@@ -509,7 +509,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                         ),
                                       ),
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.122,
                                         height:
                                             AppDimensions.height10(context) *
@@ -543,7 +543,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                               )));
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 13.3,
+                          width: AppDimensions.width10(context) * 13.3,
                           height: AppDimensions.height10(context) * 13.3,
                           margin: EdgeInsets.only(
                               right: AppDimensions.height10(context) * 1.4),
@@ -571,7 +571,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             3.032,
                                         height:
                                             AppDimensions.height10(context) *
@@ -594,7 +594,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                           'Link to connect',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
@@ -602,7 +602,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                         ),
                                       ),
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.122,
                                         height:
                                             AppDimensions.height10(context) *
@@ -634,7 +634,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                   page: const video_info(link_state: false)));
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 13.3,
+                          width: AppDimensions.width10(context) * 13.3,
                           height: AppDimensions.height10(context) * 13.30,
                           margin: EdgeInsets.only(
                               right: AppDimensions.height10(context) * 0.7),
@@ -661,7 +661,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             3.032,
                                         height:
                                             AppDimensions.height10(context) *
@@ -684,7 +684,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                           'Video link',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
@@ -692,7 +692,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                         ),
                                       ),
                                       Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.122,
                                         height:
                                             AppDimensions.height10(context) *

@@ -23,7 +23,7 @@ class goal_prac_info extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 2.6,
+                width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
               )),
@@ -39,7 +39,7 @@ class goal_prac_info extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Addgoal.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
@@ -58,7 +58,7 @@ class goal_prac_info extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: AppDimensions.height10(context) * 6.5,
+              width: AppDimensions.width10(context) * 6.5,
               height: AppDimensions.height10(context) * 6.5,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 6.4),
@@ -68,7 +68,7 @@ class goal_prac_info extends StatelessWidget {
                       fit: BoxFit.cover)),
             ),
             Container(
-              width: AppDimensions.height10(context) * 15.4,
+              width: AppDimensions.width10(context) * 15.4,
               height: AppDimensions.height10(context) * 3.4,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 0.6),
@@ -76,14 +76,14 @@ class goal_prac_info extends StatelessWidget {
                 child: Text(
                   'Your Goals',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xffffffff)),
                 ),
               ),
             ),
             Container(
-              width: AppDimensions.height10(context) * 22.1,
+              width: AppDimensions.width10(context) * 22.1,
               height: AppDimensions.height10(context) * 2.2,
               margin: EdgeInsets.only(
                 top: AppDimensions.height10(context) * 0.4,
@@ -92,7 +92,7 @@ class goal_prac_info extends StatelessWidget {
                 child: Text(
                   'All your goals in one place',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.8,
+                      fontSize: AppDimensions.font10(context) * 1.8,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xffffffff)),
                 ),
@@ -106,7 +106,7 @@ class goal_prac_info extends StatelessWidget {
         color: Colors.transparent,
         elevation: 0,
         child: Container(
-            width: AppDimensions.height10(context) * 39.4,
+            width: AppDimensions.width10(context) * 39.4,
             height: AppDimensions.height10(context) * 53.2,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -133,7 +133,7 @@ class goal_prac_info extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     child: Container(
-                      width: AppDimensions.height10(context) * 2.6,
+                      width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.9,
@@ -152,26 +152,26 @@ class goal_prac_info extends StatelessWidget {
                       bottom: AppDimensions.height10(context) * 1.9),
                   child: Image.asset(
                     'assets/images/potenic__icon.webp',
-                    width: AppDimensions.height10(context) * 8.202,
+                    width: AppDimensions.width10(context) * 8.202,
                     height: AppDimensions.height10(context) * 11.2,
                   ),
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 3.6,
-                  width: AppDimensions.height10(context) * 28.6,
+                  width: AppDimensions.width10(context) * 28.6,
                   child: Center(
                     child: Text(
                       'Goal & Practice',
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
-                          fontSize: AppDimensions.height10(context) * 3.0,
+                          fontSize: AppDimensions.font10(context) * 3.0,
                           color: const Color(0xFF437296)),
                     ),
                   ),
                 ),
                 Container(
                   //  height: AppDimensions.height10(context) * 23.8,
-                  width: AppDimensions.height10(context) * 35.2,
+                  width: AppDimensions.width10(context) * 35.2,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 1.1,
                       bottom: AppDimensions.height10(context)),
@@ -180,7 +180,7 @@ class goal_prac_info extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'laila',
                           height: AppDimensions.height10(context) * 0.15,
-                          fontSize: AppDimensions.height10(context) * 1.4,
+                          fontSize: AppDimensions.font10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF437296),
                         ),
@@ -270,7 +270,7 @@ void prac_info_sheet(context) {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10(context) * 39.4,
+          width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 57.0,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
@@ -298,7 +298,7 @@ void prac_info_sheet(context) {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
@@ -317,13 +317,13 @@ void prac_info_sheet(context) {
                     bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
                   'assets/images/potenic__icon.webp',
-                  width: AppDimensions.height10(context) * 8.202,
+                  width: AppDimensions.width10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),
               ),
               Container(
                 height: AppDimensions.height10(context) * 3.6,
-                width: AppDimensions.height10(context) * 28.6,
+                width: AppDimensions.width10(context) * 28.6,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.4),
                 child: Center(
@@ -331,21 +331,21 @@ void prac_info_sheet(context) {
                     'Goal & Practice',
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        fontSize: AppDimensions.height10(context) * 3.0,
+                        fontSize: AppDimensions.font10(context) * 3.0,
                         color: const Color(0xFF437296)),
                   ),
                 ),
               ),
               Container(
                 height: AppDimensions.height10(context) * 29.9,
-                width: AppDimensions.height10(context) * 32.7,
+                width: AppDimensions.width10(context) * 32.7,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.2),
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
                       style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFF437296),
                       ),

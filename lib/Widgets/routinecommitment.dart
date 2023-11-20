@@ -167,7 +167,7 @@ class _schedule_cardState extends State<schedule_card> {
                       i++) ...[
                     Container(
                       // color:Colors.orange,
-                      width: AppDimensions.height10(context) * 36.2,
+                      width: AppDimensions.width10(context) * 36.2,
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Row(
                         children: [
@@ -188,7 +188,7 @@ class _schedule_cardState extends State<schedule_card> {
 
                   // Container(
                   //   // color:Colors.orange,
-                  //   width: AppDimensions.height10(context) * 36.2,
+                  //   width: AppDimensions.width10(context) * 36.2,
                   //   padding: const EdgeInsets.only(left: 0.0, bottom: 10),
                   //   child: Row(
                   //     children: [
@@ -232,7 +232,7 @@ class _startTimerStateState extends State<startTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 31.6,
+      width: AppDimensions.width10(context) * 31.6,
       height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
           color: const Color(0xFFF6F6F6),
@@ -292,7 +292,7 @@ class _endTimerStateState extends State<endTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 31.6,
+      width: AppDimensions.width10(context) * 31.6,
       height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
           color: const Color(0xFFF6F6F6),

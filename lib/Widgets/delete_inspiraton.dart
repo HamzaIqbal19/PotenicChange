@@ -15,7 +15,7 @@ class delete_insp extends StatelessWidget {
           duration: Duration(seconds: 1),
           context: context,
           builder: (BuildContext context) => Container(
-                width: AppDimensions.height10(context) * 27.0,
+                width: AppDimensions.width10(context) * 27.0,
                 height: AppDimensions.height10(context) * 18.2,
                 child: AlertDialog(
                   contentPadding: EdgeInsets.zero,
@@ -28,7 +28,7 @@ class delete_insp extends StatelessWidget {
                           left: AppDimensions.height10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
-                      width: AppDimensions.height10(context) * 23.8,
+                      width: AppDimensions.width10(context) * 23.8,
                       child: RichText(
                           text: TextSpan(
                               style: TextStyle(
@@ -49,12 +49,12 @@ class delete_insp extends StatelessWidget {
                         left: AppDimensions.height10(context) * 1.6,
                         right: AppDimensions.height10(context) * 1.6),
                     height: AppDimensions.height10(context) * 3.4,
-                    width: AppDimensions.height10(context) * 23.8,
+                    width: AppDimensions.width10(context) * 23.8,
                     child: Text(
                       "By clicking 'Yes' you confirm that this\ninspiration will be deleted permanently. ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.3,
+                        fontSize: AppDimensions.font10(context) * 1.3,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -78,8 +78,7 @@ class delete_insp extends StatelessWidget {
                               'No',
                               style: TextStyle(
                                   color: const Color(0xFFFFFFFF),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontFamily: "Laila",
                                   fontWeight: FontWeight.w400),
                             ),
@@ -101,8 +100,7 @@ class delete_insp extends StatelessWidget {
                             child: Text(
                               'Yes',
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontFamily: "Laila",
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFF007AFF)),

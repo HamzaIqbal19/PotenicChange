@@ -28,7 +28,7 @@ class button_feilds extends StatelessWidget {
       //     left: AppDimensions.height10(context) * 0.8,
       //     right: AppDimensions.height10(context) * 0.8),
       height: AppDimensions.height10(context) * 6.0,
-      width: AppDimensions.height10(context) * 36.0,
+      width: AppDimensions.width10(context) * 36.0,
       decoration: BoxDecoration(
           borderRadius:
               BorderRadius.circular(AppDimensions.height10(context) * 2.0),
@@ -37,7 +37,7 @@ class button_feilds extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: AppDimensions.height10(context) * 29.9,
+            width: AppDimensions.width10(context) * 29.9,
             height: AppDimensions.height10(context) * 2.2,
             margin:
                 EdgeInsets.only(left: AppDimensions.height10(context) * 0.99),
@@ -48,7 +48,7 @@ class button_feilds extends StatelessWidget {
                       style: TextStyle(
                         color: Color(text_color),
                         fontFamily: 'laila',
-                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w500,
                       ),
                       children: [
@@ -58,7 +58,7 @@ class button_feilds extends StatelessWidget {
                       style: TextStyle(
                         color: Color(text_color_2),
                         fontFamily: 'laila',
-                        fontSize: AppDimensions.height10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -68,7 +68,7 @@ class button_feilds extends StatelessWidget {
                       style: TextStyle(
                         color: Color(text_color_2),
                         fontFamily: 'laila',
-                        fontSize: AppDimensions.height10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -76,14 +76,14 @@ class button_feilds extends StatelessWidget {
             ),
           ),
           Container(
-              width: AppDimensions.height10(context) * 2.4,
+              width: AppDimensions.width10(context) * 2.4,
               height: AppDimensions.height10(context) * 1.39,
               margin: EdgeInsets.only(
                   right: AppDimensions.height10(context) * 2.391),
               child: icon_viible
                   ? Image.asset(
                       'assets/images/BTN Back.webp',
-                      //width: AppDimensions.height10(context) * 2.6,
+                      //width: AppDimensions.width10(context) * 2.6,
                       //height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
                     )

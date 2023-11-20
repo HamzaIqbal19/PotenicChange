@@ -163,7 +163,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 3,
+                  width: AppDimensions.width10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
@@ -197,7 +197,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                     : IconButton(
                         icon: Image.asset(
                           'assets/images/Close.webp',
-                          width: AppDimensions.height10(context) * 3.0,
+                          width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
                           fit: BoxFit.contain,
                         ),
@@ -211,7 +211,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               duration: const Duration(seconds: 1),
                               context: context,
                               builder: (BuildContext context) => SizedBox(
-                                width: AppDimensions.height10(context) * 27.0,
+                                width: AppDimensions.width10(context) * 27.0,
                                 height: AppDimensions.height10(context) * 18.2,
                                 child: AlertDialog(
                                   contentPadding: EdgeInsets.zero,
@@ -230,15 +230,14 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     height:
                                         AppDimensions.height10(context) * 2.2,
                                     width:
-                                        AppDimensions.height10(context) * 23.8,
+                                        AppDimensions.width10(context) * 23.8,
                                     child: Text(
                                       "Are you sure?",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: const Color(0xFF000000),
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
+                                            AppDimensions.font10(context) * 1.7,
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
@@ -255,7 +254,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     height:
                                         AppDimensions.height10(context) * 3.2,
                                     width:
-                                        AppDimensions.height10(context) * 23.8,
+                                        AppDimensions.width10(context) * 23.8,
                                     child: Text(
                                       "If you close it now, you will lose all your progress.",
                                       textAlign: TextAlign.center,
@@ -344,7 +343,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           // showDialog<String>(
                           //   context: context,
                           //   builder: (BuildContext context) => Container(
-                          //     width: AppDimensions.height10(context) * 27.0,
+                          //     width: AppDimensions.width10(context) * 27.0,
                           //     height: AppDimensions.height10(context) * 15.8,
                           //     child: AlertDialog(
                           //       shape: RoundedRectangleBorder(
@@ -357,12 +356,12 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           //         margin: const EdgeInsets.only(
                           //             top: 19, right: 16, left: 16, bottom: 0),
                           //         height: AppDimensions.height10(context) * 2.4,
-                          //         width: AppDimensions.height10(context) * 23.8,
+                          //         width: AppDimensions.width10(context) * 23.8,
                           //         child: Text(
                           //           "Exit Practice?",
                           //           textAlign: TextAlign.center,
                           //           style: TextStyle(
-                          //             fontSize: AppDimensions.height10(context) * 1.7,
+                          //             fontSize: AppDimensions.font10(context) * 1.7,
                           //             fontWeight: FontWeight.w600,
                           //           ),
                           //         ),
@@ -373,7 +372,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           //             left: AppDimensions.height10(context) * 1.6,
                           //             right: AppDimensions.height10(context) * 1.6),
                           //         height: AppDimensions.height10(context) * 1.8,
-                          //         width: AppDimensions.height10(context) * 23.8,
+                          //         width: AppDimensions.width10(context) * 23.8,
                           //         child: const Text(
                           //           "Are you sure you want to exit?",
                           //           textAlign: TextAlign.center,
@@ -469,7 +468,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         color: widget.comingFromEditScreen
                             ? const Color(0xff437296)
                             : Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontSize: AppDimensions.font10(context) * 1.8,
                       ),
                     ),
                   ),
@@ -478,7 +477,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 SizedBox(
-                  width: AppDimensions.height10(context) * 30,
+                  width: AppDimensions.width10(context) * 30,
                   child: Center(
                     child: Text(
                       mygoal.text.toString(),
@@ -488,7 +487,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         color: widget.comingFromEditScreen
                             ? const Color(0xff437296)
                             : Colors.white,
-                        fontSize: AppDimensions.height10(context) * 2.2,
+                        fontSize: AppDimensions.font10(context) * 2.2,
                       ),
                     ),
                   ),
@@ -501,7 +500,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: AppDimensions.height10(context) * 7.9,
+                      width: AppDimensions.width10(context) * 7.9,
                       height: AppDimensions.height10(context) * 7.9,
                       // color: Colors.amber,
 
@@ -511,7 +510,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           Align(
                             alignment: const Alignment(-3, 0),
                             child: Container(
-                              width: AppDimensions.height10(context) * 7.9,
+                              width: AppDimensions.width10(context) * 7.9,
                               height: AppDimensions.height10(context) * 7.9,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
@@ -538,7 +537,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             alignment: const Alignment(1.5, 0),
                             child: Container(
                               height: AppDimensions.height10(context) * 4.9,
-                              width: AppDimensions.height10(context) * 4.9,
+                              width: AppDimensions.width10(context) * 4.9,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
@@ -551,7 +550,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       ),
                     ),
                     Container(
-                        //width: AppDimensions.height10(context) * 22,
+                        //width: AppDimensions.width10(context) * 22,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 1.5),
                         child: practice.text.toString().length > 20
@@ -564,8 +563,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF156F6D),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                 ),
                               )
                             : Text(
@@ -575,8 +573,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF156F6D),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                 ),
                               )),
                   ],
@@ -586,7 +583,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 ),
                 SizedBox(
                   height: AppDimensions.height10(context) * 3.4,
-                  width: AppDimensions.height10(context) * 22.3,
+                  width: AppDimensions.width10(context) * 22.3,
                   child: Center(
                     child: Text(
                       "Your Reminders",
@@ -596,7 +593,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         color: widget.comingFromEditScreen
                             ? const Color(0xff437296)
                             : Colors.white,
-                        fontSize: AppDimensions.height10(context) * 2.8,
+                        fontSize: AppDimensions.font10(context) * 2.8,
                       ),
                     ),
                   ),
@@ -606,7 +603,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 8.6,
-                  width: AppDimensions.height10(context) * 37.2,
+                  width: AppDimensions.width10(context) * 37.2,
                   padding: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.1,
                       right: AppDimensions.height10(context) * 2.1),
@@ -620,7 +617,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             ? const Color(0xff437296)
                             : Colors.white,
                         fontFamily: 'Laila',
-                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontSize: AppDimensions.font10(context) * 1.8,
                       ),
                     ),
                   ),
@@ -630,7 +627,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 17.0,
-                  width: AppDimensions.height10(context) * 38.2,
+                  width: AppDimensions.width10(context) * 38.2,
                   // padding:  EdgeInsets.only(top: AppDimensions.height10(context) *2, bottom: AppDimensions.height10(context) *4.8, left: AppDimensions.height10(context) *2.0,right: AppDimensions.height10(context) *3.5),
                   decoration: BoxDecoration(
                       // color: Colors.white,
@@ -657,15 +654,14 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         children: [
                           SizedBox(
                             // color: Colors.blue,
-                            width: AppDimensions.height10(context) * 25.9,
+                            width: AppDimensions.width10(context) * 25.9,
                             height: AppDimensions.height10(context) * 3.6,
 
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 3.5,
+                                    width: AppDimensions.width10(context) * 3.5,
                                     height:
                                         AppDimensions.height10(context) * 3.5,
                                     child: Image.asset(
@@ -674,7 +670,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     )),
                                 SizedBox(
                                     width:
-                                        AppDimensions.height10(context) * 20.4,
+                                        AppDimensions.width10(context) * 20.4,
                                     height:
                                         AppDimensions.height10(context) * 2.4,
                                     child: Text(
@@ -684,8 +680,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                         fontFamily: "Laila",
                                         color: const Color(0xFFFFFFFF),
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
+                                            AppDimensions.font10(context) * 2.0,
                                       ),
                                     )),
                               ],
@@ -703,7 +698,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                   context: context,
                                   builder: (BuildContext context) => SizedBox(
                                     width:
-                                        AppDimensions.height10(context) * 27.0,
+                                        AppDimensions.width10(context) * 27.0,
                                     height:
                                         AppDimensions.height10(context) * 18.8,
                                     child: AlertDialog(
@@ -723,15 +718,15 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 4.4,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             23.8,
                                         child: Text(
                                           "Notification permission is \nneeded",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontWeight: FontWeight.w400,
                                           ),
                                         ),
@@ -750,7 +745,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.8,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             23.8,
                                         child: const Text(
                                           "Please enable it in Phone’s setting",
@@ -815,12 +810,12 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               }
                             },
                             child: SizedBox(
-                                width: AppDimensions.height10(context) * 3.3,
+                                width: AppDimensions.width10(context) * 3.3,
                                 height: AppDimensions.height10(context) * 3.3,
                                 child: radio1 == true
                                     ? Image.asset(
                                         "assets/images/uncheckradio.webp",
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             3.3,
                                         height:
                                             AppDimensions.height10(context) *
@@ -828,7 +823,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       )
                                     : Image.asset(
                                         "assets/images/circle.webp",
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             3.3,
                                         height:
                                             AppDimensions.height10(context) *
@@ -846,7 +841,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         children: [
                           Container(
                             // height: AppDimensions.height10(context) * 5.1,
-                            width: AppDimensions.height10(context) * 34.5,
+                            width: AppDimensions.width10(context) * 34.5,
                             padding: EdgeInsets.only(
                                 right: AppDimensions.height10(context) * 2.0,
                                 left: AppDimensions.height10(context) * 1.7),
@@ -858,7 +853,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 fontFamily: "Laila",
                                 height: AppDimensions.height10(context) * 0.14,
                                 color: const Color(0xFFFFFFFF),
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                               ),
                             ),
                           )
@@ -872,7 +867,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 17.0,
-                  width: AppDimensions.height10(context) * 38.2,
+                  width: AppDimensions.width10(context) * 38.2,
                   // padding:  EdgeInsets.only(top: AppDimensions.height10(context) *2, bottom: AppDimensions.height10(context) *4.8, left: AppDimensions.height10(context) *2.0,right: AppDimensions.height10(context) *3.5),
                   decoration: BoxDecoration(
                       // color: Colors.white,
@@ -900,14 +895,13 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         children: [
                           SizedBox(
                             // color: Colors.blue,
-                            width: AppDimensions.height10(context) * 25.9,
+                            width: AppDimensions.width10(context) * 25.9,
                             height: AppDimensions.height10(context) * 3.6,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 3.5,
+                                    width: AppDimensions.width10(context) * 3.5,
                                     height:
                                         AppDimensions.height10(context) * 3.5,
                                     child: Image.asset(
@@ -915,7 +909,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       fit: BoxFit.contain,
                                     )),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 20.4,
+                                  width: AppDimensions.width10(context) * 20.4,
                                   height: AppDimensions.height10(context) * 2.4,
                                   child: Text(
                                     "No, don’t remind me",
@@ -923,7 +917,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       fontWeight: FontWeight.w600,
                                       color: const Color(0xFFFFFFFF),
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.0,
                                     ),
                                   ),
                                 ),
@@ -947,7 +941,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               }
                             },
                             child: SizedBox(
-                                width: AppDimensions.height10(context) * 3.3,
+                                width: AppDimensions.width10(context) * 3.3,
                                 height: AppDimensions.height10(context) * 3.3,
                                 child: radio2 == true
                                     ? Image.asset(
@@ -965,7 +959,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         children: [
                           Container(
                             // height: AppDimensions.height10(context) * 6.8,
-                            width: AppDimensions.height10(context) * 34.5,
+                            width: AppDimensions.width10(context) * 34.5,
                             padding: EdgeInsets.only(
                                 right: AppDimensions.height10(context) * 2.0,
                                 left: AppDimensions.height10(context) * 1.7),
@@ -977,7 +971,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 fontFamily: "Laila",
                                 height: AppDimensions.height10(context) * 0.14,
                                 color: const Color(0xFFFFFFFF),
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                               ),
                             ),
                           )
@@ -1009,7 +1003,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           child: Transform.translate(
                             offset: Offset(swipeOffset, 0.0),
                             child: Container(
-                              width: AppDimensions.height10(context) * 38.259,
+                              width: AppDimensions.width10(context) * 38.259,
                               height: AppDimensions.height10(context) * 9.707,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
@@ -1030,7 +1024,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                         left: AppDimensions.height10(context) *
                                             1.261),
                                     width:
-                                        AppDimensions.height10(context) * 4.437,
+                                        AppDimensions.width10(context) * 4.437,
                                     height:
                                         AppDimensions.height10(context) * 4.437,
                                     decoration: const BoxDecoration(
@@ -1039,7 +1033,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                                 'assets/images/circle_tick.webp'))),
                                   ),
                                   Container(
-                                    //width: AppDimensions.height10(context) * 6.9,
+                                    //width: AppDimensions.width10(context) * 6.9,
                                     height:
                                         AppDimensions.height10(context) * 3.6,
                                     margin: EdgeInsets.only(
@@ -1051,7 +1045,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       children: [
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   4.6,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1060,17 +1054,16 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                           child: Text(
                                             'Updates saved',
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.3,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.3,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFFFFFFFF)),
                                           ),
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   16.9,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1079,10 +1072,9 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                             'Your Reminder',
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFFFFFFFF)),
                                           ),
@@ -1121,7 +1113,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                         child: Text(
                                           'Undo',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.8,
                                               fontWeight: FontWeight.w500,
@@ -1141,7 +1133,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         children: [
                           widget.comingFromEditScreen
                               ? Container(
-                                  width: AppDimensions.height10(context) * 10.0,
+                                  width: AppDimensions.width10(context) * 10.0,
                                   height: AppDimensions.height10(context) * 4.8,
                                   decoration: reminderSelected
                                       ? BoxDecoration(
@@ -1173,13 +1165,13 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                               ? const Color(0xffFA9934)
                                               : const Color(0xff282828),
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8),
                                     )),
                                   ))
                               : SizedBox(
                                   // color: Colors.blue,
-                                  width: AppDimensions.height10(context) * 5.0,
+                                  width: AppDimensions.width10(context) * 5.0,
                                   height: AppDimensions.height10(context) * 5.0,
                                   child: Image.asset(
                                     "assets/images/Moreactions.webp",
@@ -1343,9 +1335,9 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                             color: Colors.white,
                                             fontFamily: "Laila",
                                             // height: AppDimensions.height10(context) *0.1,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    2.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),

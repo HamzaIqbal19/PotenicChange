@@ -350,7 +350,7 @@ class _prac_scoreState extends State<prac_score> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 3.0,
+                  width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.cover,
                 )),
@@ -387,7 +387,7 @@ class _prac_scoreState extends State<prac_score> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 36.5,
+                            width: AppDimensions.width10(context) * 36.5,
                             height: AppDimensions.height10(context) * 48.2,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.4),
@@ -406,7 +406,7 @@ class _prac_scoreState extends State<prac_score> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Container(
-                                  width: AppDimensions.height10(context) * 30.1,
+                                  width: AppDimensions.width10(context) * 30.1,
                                   height: AppDimensions.height10(context) * 3.6,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -416,14 +416,13 @@ class _prac_scoreState extends State<prac_score> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                3.0,
+                                            AppDimensions.font10(context) * 3.0,
                                         fontWeight: FontWeight.w700,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 32.1,
+                                  width: AppDimensions.width10(context) * 32.1,
                                   // height: AppDimensions.height10(context) * 4.4,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -434,14 +433,13 @@ class _prac_scoreState extends State<prac_score> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 32.1,
+                                  width: AppDimensions.width10(context) * 32.1,
                                   height: AppDimensions.height10(context) * 1.9,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -451,21 +449,20 @@ class _prac_scoreState extends State<prac_score> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 8.7,
+                                  width: AppDimensions.width10(context) * 8.7,
                                   height: AppDimensions.height10(context) * 8.7,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
                                           3.2),
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: const Color(0xFFFFFFFF)),
                                     shape: BoxShape.circle,
@@ -475,7 +472,7 @@ class _prac_scoreState extends State<prac_score> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             3.4,
                                         height:
                                             AppDimensions.height10(context) *
@@ -484,7 +481,7 @@ class _prac_scoreState extends State<prac_score> {
                                           'Level',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4,
                                               fontWeight: FontWeight.w500,
@@ -492,7 +489,7 @@ class _prac_scoreState extends State<prac_score> {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             3.2,
                                         height:
                                             AppDimensions.height10(context) *
@@ -506,7 +503,7 @@ class _prac_scoreState extends State<prac_score> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           2.4,
                                                   fontWeight: FontWeight.w500,
@@ -518,7 +515,7 @@ class _prac_scoreState extends State<prac_score> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w300,
@@ -532,7 +529,7 @@ class _prac_scoreState extends State<prac_score> {
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 28.8,
+                                  width: AppDimensions.width10(context) * 28.8,
                                   height: AppDimensions.height10(context) * 4.2,
                                   alignment: Alignment.topCenter,
                                   margin: EdgeInsets.only(
@@ -543,20 +540,18 @@ class _prac_scoreState extends State<prac_score> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
                                 ),
                                 Container(
-                                  // width: AppDimensions.height10(context) * 2.1,
+                                  // width: AppDimensions.width10(context) * 2.1,
                                   //height: AppDimensions.height10(context) * 4.3,
 
                                   child: Image.asset(
                                     'assets/images/Arrow.webp',
-                                    width:
-                                        AppDimensions.height10(context) * 4.1,
+                                    width: AppDimensions.width10(context) * 4.1,
                                     height:
                                         AppDimensions.height10(context) * 4.1,
                                   ),
@@ -565,7 +560,7 @@ class _prac_scoreState extends State<prac_score> {
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 37.0,
+                            width: AppDimensions.width10(context) * 37.0,
                             height: AppDimensions.height10(context) * 11.9,
                             margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 4.0,
@@ -574,21 +569,20 @@ class _prac_scoreState extends State<prac_score> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 15.5,
+                                  width: AppDimensions.width10(context) * 15.5,
                                   height: AppDimensions.height10(context) * 2.9,
                                   child: Text(
                                     'Question 1',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.4,
+                                            AppDimensions.font10(context) * 2.4,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 37.0,
+                                  width: AppDimensions.width10(context) * 37.0,
                                   height: AppDimensions.height10(context) * 4.9,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -598,8 +592,7 @@ class _prac_scoreState extends State<prac_score> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.9,
+                                            AppDimensions.font10(context) * 1.9,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
@@ -635,9 +628,9 @@ class _prac_scoreState extends State<prac_score> {
                                             });
                                           },
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                12.95,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    12.95,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 12.95,
@@ -702,7 +695,7 @@ class _prac_scoreState extends State<prac_score> {
                                                               Color(0xFFFFFFFF)
                                                             ]),
                                                   // border: Border.all(
-                                                  //     width: AppDimensions.height10(context) * 0.3,
+                                                  //     width: AppDimensions.width10(context) * 0.3,
                                                   //     color: const Color(0xFF8C648A))
                                                 ),
                                                 child: Column(
@@ -733,7 +726,7 @@ class _prac_scoreState extends State<prac_score> {
                                                           TextAlign.center,
                                                       style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.4,
                                                           fontWeight:
@@ -783,7 +776,7 @@ class _prac_scoreState extends State<prac_score> {
                                     );
                                   })),
                           Container(
-                            width: AppDimensions.height10(context) * 7.2,
+                            width: AppDimensions.width10(context) * 7.2,
                             height: AppDimensions.height10(context) * 0.1,
                             color: const Color(0xFFFFFFFF),
                             margin: EdgeInsets.only(
@@ -791,7 +784,7 @@ class _prac_scoreState extends State<prac_score> {
                                 bottom: AppDimensions.height10(context) * 3.0),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 37.0,
+                            width: AppDimensions.width10(context) * 37.0,
                             height: AppDimensions.height10(context) * 10.0,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.2),
@@ -799,21 +792,20 @@ class _prac_scoreState extends State<prac_score> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 15.5,
+                                  width: AppDimensions.width10(context) * 15.5,
                                   height: AppDimensions.height10(context) * 2.9,
                                   child: Text(
                                     'Question 2',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.4,
+                                            AppDimensions.font10(context) * 2.4,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 37.0,
+                                  width: AppDimensions.width10(context) * 37.0,
                                   height: AppDimensions.height10(context) * 5.1,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -823,8 +815,7 @@ class _prac_scoreState extends State<prac_score> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.9,
+                                            AppDimensions.font10(context) * 1.9,
                                         //height: AppDimensions.height10(context) * 0.12,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFFFFFFFF)),
@@ -838,7 +829,7 @@ class _prac_scoreState extends State<prac_score> {
                               enjoyment(context);
                             },
                             child: Container(
-                              width: AppDimensions.height10(context) * 3.0,
+                              width: AppDimensions.width10(context) * 3.0,
                               height: AppDimensions.height10(context) * 3.0,
 
                               decoration: const BoxDecoration(
@@ -847,7 +838,7 @@ class _prac_scoreState extends State<prac_score> {
                                           'assets/images/ic_info_outline.webp'))),
                               // child: Image.asset(
                               //   "assets/images/ic_info_outline.webp",
-                              //   width: AppDimensions.height10(context) * 3.0,
+                              //   width: AppDimensions.width10(context) * 3.0,
                               //   height: AppDimensions.height10(context) * 3.0,
                               // ),
                             ),
@@ -880,9 +871,9 @@ class _prac_scoreState extends State<prac_score> {
                                             }
                                           },
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                12.95,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    12.95,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 12.95,
@@ -947,7 +938,7 @@ class _prac_scoreState extends State<prac_score> {
                                                               Color(0xFFFFFFFF)
                                                             ]),
                                                   // border: Border.all(
-                                                  //     width: AppDimensions.height10(context) * 0.3,
+                                                  //     width: AppDimensions.width10(context) * 0.3,
                                                   //     color: const Color(0xFF8C648A))
                                                 ),
                                                 child: Column(
@@ -978,7 +969,7 @@ class _prac_scoreState extends State<prac_score> {
                                                           TextAlign.center,
                                                       style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.4,
                                                           fontWeight:
@@ -1028,7 +1019,7 @@ class _prac_scoreState extends State<prac_score> {
                                     );
                                   })),
                           Container(
-                            width: AppDimensions.height10(context) * 7.2,
+                            width: AppDimensions.width10(context) * 7.2,
                             height: AppDimensions.height10(context) * 0.1,
                             color: const Color(0xFFFFFFFF),
                             margin: EdgeInsets.only(
@@ -1036,7 +1027,7 @@ class _prac_scoreState extends State<prac_score> {
                                 bottom: AppDimensions.height10(context) * 3.0),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 37.0,
+                            width: AppDimensions.width10(context) * 37.0,
                             height: AppDimensions.height10(context) * 11.9,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.2),
@@ -1044,21 +1035,20 @@ class _prac_scoreState extends State<prac_score> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 15.5,
+                                  width: AppDimensions.width10(context) * 15.5,
                                   height: AppDimensions.height10(context) * 2.9,
                                   child: Text(
                                     'Question 3',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.4,
+                                            AppDimensions.font10(context) * 2.4,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 37.0,
+                                  width: AppDimensions.width10(context) * 37.0,
                                   //  height: AppDimensions.height10(context) * 7.0,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -1068,8 +1058,7 @@ class _prac_scoreState extends State<prac_score> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.9,
+                                            AppDimensions.font10(context) * 1.9,
                                         // height: 1.2,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFFFFFFFF)),
@@ -1106,9 +1095,9 @@ class _prac_scoreState extends State<prac_score> {
                                             }
                                           },
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                12.95,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    12.95,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 12.95,
@@ -1173,7 +1162,7 @@ class _prac_scoreState extends State<prac_score> {
                                                               Color(0xFFFFFFFF)
                                                             ]),
                                                   // border: Border.all(
-                                                  //     width: AppDimensions.height10(context) * 0.3,
+                                                  //     width: AppDimensions.width10(context) * 0.3,
                                                   //     color: const Color(0xFF8C648A))
                                                 ),
                                                 child: Column(
@@ -1204,7 +1193,7 @@ class _prac_scoreState extends State<prac_score> {
                                                           TextAlign.center,
                                                       style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.4,
                                                           fontWeight:
@@ -1254,7 +1243,7 @@ class _prac_scoreState extends State<prac_score> {
                                     );
                                   })),
                           Container(
-                            width: AppDimensions.height10(context) * 7.2,
+                            width: AppDimensions.width10(context) * 7.2,
                             height: AppDimensions.height10(context) * 0.1,
                             color: const Color(0xFFFFFFFF),
                             margin: EdgeInsets.only(
@@ -1262,7 +1251,7 @@ class _prac_scoreState extends State<prac_score> {
                                 bottom: AppDimensions.height10(context) * 3.0),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 37.0,
+                            width: AppDimensions.width10(context) * 37.0,
                             height: AppDimensions.height10(context) * 11.9,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.2),
@@ -1270,21 +1259,20 @@ class _prac_scoreState extends State<prac_score> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 15.5,
+                                  width: AppDimensions.width10(context) * 15.5,
                                   height: AppDimensions.height10(context) * 2.9,
                                   child: Text(
                                     'Question 4',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.4,
+                                            AppDimensions.font10(context) * 2.4,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 37.0,
+                                  width: AppDimensions.width10(context) * 37.0,
                                   height: AppDimensions.height10(context) * 6.8,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -1294,8 +1282,7 @@ class _prac_scoreState extends State<prac_score> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.9,
+                                            AppDimensions.font10(context) * 1.9,
                                         //  height: 1.2,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFFFFFFFF)),
@@ -1332,9 +1319,9 @@ class _prac_scoreState extends State<prac_score> {
                                             }
                                           },
                                           child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                12.95,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    12.95,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 12.95,
@@ -1399,7 +1386,7 @@ class _prac_scoreState extends State<prac_score> {
                                                               Color(0xFFFFFFFF)
                                                             ]),
                                                   // border: Border.all(
-                                                  //     width: AppDimensions.height10(context) * 0.3,
+                                                  //     width: AppDimensions.width10(context) * 0.3,
                                                   //     color: const Color(0xFF8C648A))
                                                 ),
                                                 child: Column(
@@ -1430,7 +1417,7 @@ class _prac_scoreState extends State<prac_score> {
                                                           TextAlign.center,
                                                       style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.4,
                                                           fontWeight:
@@ -1502,7 +1489,7 @@ class _prac_scoreState extends State<prac_score> {
                                   ),
                                 )
                               : Container(
-                                  width: AppDimensions.height10(context) * 35.4,
+                                  width: AppDimensions.width10(context) * 35.4,
                                   height: AppDimensions.height10(context) * 5.0,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -1519,7 +1506,7 @@ class _prac_scoreState extends State<prac_score> {
                                         },
                                         child: Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   8.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1539,10 +1526,9 @@ class _prac_scoreState extends State<prac_score> {
                                             'Cancel',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.6,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.6,
                                                 fontWeight: FontWeight.w600,
                                                 color: selectedItemIndex >= 0 ||
                                                         selectedItemIndex2 >=
@@ -1569,7 +1555,7 @@ class _prac_scoreState extends State<prac_score> {
                                         },
                                         child: Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   8.0,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1593,10 +1579,9 @@ class _prac_scoreState extends State<prac_score> {
                                             'Clear',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.6,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.6,
                                                 fontWeight: FontWeight.w600,
                                                 color: selectedItemIndex >= 0 ||
                                                         selectedItemIndex2 >=
@@ -1691,7 +1676,7 @@ class _prac_scoreState extends State<prac_score> {
                                                                           context) *
                                                                   2.2,
                                                               width: AppDimensions
-                                                                      .height10(
+                                                                      .width10(
                                                                           context) *
                                                                   23.8,
                                                               child: Text(
@@ -1702,7 +1687,7 @@ class _prac_scoreState extends State<prac_score> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.7,
                                                                   fontWeight:
@@ -1730,7 +1715,7 @@ class _prac_scoreState extends State<prac_score> {
                                                                           context) *
                                                                   3.2,
                                                               width: AppDimensions
-                                                                      .height10(
+                                                                      .width10(
                                                                           context) *
                                                                   23.8,
                                                               child: Text(
@@ -1741,7 +1726,7 @@ class _prac_scoreState extends State<prac_score> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.3,
                                                                   fontWeight:
@@ -1812,7 +1797,7 @@ class _prac_scoreState extends State<prac_score> {
                                                                         style: TextStyle(
                                                                             color: const Color(
                                                                                 0xFFFFFFFF),
-                                                                            fontSize: AppDimensions.height10(context) *
+                                                                            fontSize: AppDimensions.font10(context) *
                                                                                 1.7,
                                                                             fontFamily:
                                                                                 "Laila",
@@ -1850,7 +1835,7 @@ class _prac_scoreState extends State<prac_score> {
                                                                           Text(
                                                                         'Cancel',
                                                                         style: TextStyle(
-                                                                            fontSize: AppDimensions.height10(context) *
+                                                                            fontSize: AppDimensions.font10(context) *
                                                                                 1.7,
                                                                             fontFamily:
                                                                                 "Laila",
@@ -1881,7 +1866,7 @@ class _prac_scoreState extends State<prac_score> {
                                         },
                                         child: Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   17.4,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1993,7 +1978,7 @@ void enjoyment(context) {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10(context) * 39.4,
+          width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 64.4,
           padding:
               EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.5),
@@ -2022,7 +2007,7 @@ void enjoyment(context) {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
@@ -2041,12 +2026,12 @@ void enjoyment(context) {
                     bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
                   'assets/images/potenic__icon.webp',
-                  width: AppDimensions.height10(context) * 8.202,
+                  width: AppDimensions.width10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 30.7,
+                width: AppDimensions.width10(context) * 30.7,
                 height: AppDimensions.height10(context) * 6.8,
                 // color: Colors.amber,
                 alignment: Alignment.center,
@@ -2056,14 +2041,14 @@ void enjoyment(context) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.15,
-                      fontSize: AppDimensions.height10(context) * 3.0,
+                      fontSize: AppDimensions.font10(context) * 3.0,
                       // letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                  width: AppDimensions.height10(context) * 35.2,
+                  width: AppDimensions.width10(context) * 35.2,
                   //  height: AppDimensions.height10(context) * 10.8,
                   // color: Colors.grey,
                   margin: EdgeInsets.only(
@@ -2072,7 +2057,7 @@ void enjoyment(context) {
                       //textAlign: TextAlign.center,
                       text: TextSpan(
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.4,
+                              fontSize: AppDimensions.font10(context) * 1.4,
                               fontFamily: 'laila',
                               height: AppDimensions.height10(context) * 0.15,
                               fontWeight: FontWeight.w400,

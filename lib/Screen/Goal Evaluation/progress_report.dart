@@ -116,7 +116,7 @@ class _progress_reportState extends State<progress_report> {
       {bool hasImage = false}) {
     return List.generate(count, (index) {
       return Container(
-        width: AppDimensions.height10(context) * 2.3,
+        width: AppDimensions.width10(context) * 2.3,
         height: AppDimensions.height10(context) * 2.3,
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
@@ -135,7 +135,7 @@ class _progress_reportState extends State<progress_report> {
   ) {
     return List.generate(count, (index) {
       return Container(
-        width: AppDimensions.height10(context) * 2.3,
+        width: AppDimensions.width10(context) * 2.3,
         height: AppDimensions.height10(context) * 2.3,
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
@@ -166,7 +166,7 @@ class _progress_reportState extends State<progress_report> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 3.0,
+                width: AppDimensions.width10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.cover,
               )),
@@ -187,7 +187,7 @@ class _progress_reportState extends State<progress_report> {
                 child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 40.872,
+                      width: AppDimensions.width10(context) * 40.872,
                       height: AppDimensions.height10(context) * 11.0,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 11.1,
@@ -201,7 +201,7 @@ class _progress_reportState extends State<progress_report> {
                           gradient: const LinearGradient(
                               colors: [Color(0xFF91698C), Color(0xFFC19CA7)])),
                       child: Container(
-                        width: AppDimensions.height10(context) * 24.3,
+                        width: AppDimensions.width10(context) * 24.3,
                         height: AppDimensions.height10(context) * 7.0,
                         alignment: Alignment.center,
                         margin: EdgeInsets.only(
@@ -210,13 +210,13 @@ class _progress_reportState extends State<progress_report> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: AppDimensions.height10(context) * 24.3,
+                              width: AppDimensions.width10(context) * 24.3,
                               height: AppDimensions.height10(context) * 2.6,
                               child: Text(
                                 'Practice progress report',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.0,
+                                        AppDimensions.font10(context) * 2.0,
                                     height:
                                         AppDimensions.height10(context) * 0.12,
                                     fontWeight: FontWeight.w700,
@@ -224,7 +224,7 @@ class _progress_reportState extends State<progress_report> {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 3.3,
+                              width: AppDimensions.width10(context) * 3.3,
                               height: AppDimensions.height10(context) * 0.2,
                               margin: EdgeInsets.only(
                                   bottom: AppDimensions.height10(context) * 1.7,
@@ -233,7 +233,7 @@ class _progress_reportState extends State<progress_report> {
                                   const BoxDecoration(color: Color(0xFFFFFFFF)),
                             ),
                             SizedBox(
-                              // width: AppDimensions.height10(context) * 10.1,
+                              // width: AppDimensions.width10(context) * 10.1,
                               height: AppDimensions.height10(context) * 2.4,
                               child: Text(
                                 noData == true
@@ -242,7 +242,7 @@ class _progress_reportState extends State<progress_report> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.0,
+                                        AppDimensions.font10(context) * 2.0,
                                     height:
                                         AppDimensions.height10(context) * 0.12,
                                     fontWeight: FontWeight.w400,
@@ -256,7 +256,7 @@ class _progress_reportState extends State<progress_report> {
                     GestureDetector(
                       onTap: () {},
                       child: Container(
-                        width: AppDimensions.height10(context) * 31.7,
+                        width: AppDimensions.width10(context) * 31.7,
                         height: AppDimensions.height10(context) * 3.6,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 5.0),
@@ -264,7 +264,7 @@ class _progress_reportState extends State<progress_report> {
                           'Congratulations!',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 3.0,
+                              fontSize: AppDimensions.font10(context) * 3.0,
                               height: 1.2,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFF437296)),
@@ -272,7 +272,7 @@ class _progress_reportState extends State<progress_report> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 35.0,
+                      width: AppDimensions.width10(context) * 35.0,
                       height: AppDimensions.height10(context) * 5.0,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 2.7),
@@ -280,14 +280,14 @@ class _progress_reportState extends State<progress_report> {
                         'You have been consistently doing\nyour practice for 20 active days ',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.0,
+                            fontSize: AppDimensions.font10(context) * 2.0,
                             height: 1.2,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF437296)),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 35.0,
+                      width: AppDimensions.width10(context) * 35.0,
                       height: AppDimensions.height10(context) * 3.3,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 0.5),
@@ -298,14 +298,14 @@ class _progress_reportState extends State<progress_report> {
                             : 'from ${formatDate(report["startDate"])} to ${formatDate(report["endDate"])}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             height: 1.2,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFF437296)),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 25.5,
+                      width: AppDimensions.width10(context) * 25.5,
                       height: AppDimensions.height10(context) * 3.9,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.9),
@@ -313,14 +313,14 @@ class _progress_reportState extends State<progress_report> {
                         'You are a rockstar! :)',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.2,
+                            fontSize: AppDimensions.font10(context) * 2.2,
                             height: 1.2,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF437296)),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 34.0,
+                      width: AppDimensions.width10(context) * 34.0,
                       height: AppDimensions.height10(context) * 11.2,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 1.5),
@@ -328,7 +328,7 @@ class _progress_reportState extends State<progress_report> {
                         child: Row(
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 7.9,
+                              width: AppDimensions.width10(context) * 7.9,
                               height: AppDimensions.height10(context) * 7.94,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.height10(context) * 0.7,
@@ -364,12 +364,12 @@ class _progress_reportState extends State<progress_report> {
                               child: Align(
                                 alignment: const Alignment(1, 1.1),
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 4.9,
+                                  width: AppDimensions.width10(context) * 4.9,
                                   height: AppDimensions.height10(context) * 4.9,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.2,
                                         color: const Color(0xFFFFFFFF),
                                       ),
@@ -398,7 +398,7 @@ class _progress_reportState extends State<progress_report> {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 23.9,
+                              width: AppDimensions.width10(context) * 23.9,
                               height: AppDimensions.height10(context) * 5.9,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 0.4,
@@ -422,7 +422,7 @@ class _progress_reportState extends State<progress_report> {
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.0,
                                           height: 1.2,
                                           fontWeight: FontWeight.w600,
@@ -431,7 +431,7 @@ class _progress_reportState extends State<progress_report> {
                                   ),
                                   SizedBox(
                                     width:
-                                        AppDimensions.height10(context) * 27.9,
+                                        AppDimensions.width10(context) * 27.9,
                                     height:
                                         AppDimensions.height10(context) * 2.7,
                                     child: Text(
@@ -442,7 +442,7 @@ class _progress_reportState extends State<progress_report> {
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           height: 1.2,
                                           fontWeight: FontWeight.w600,
@@ -457,13 +457,13 @@ class _progress_reportState extends State<progress_report> {
                       ),
                     ),
                     Container(
-                      // width: AppDimensions.height10(context) * 2.1,
+                      // width: AppDimensions.width10(context) * 2.1,
                       //height: AppDimensions.height10(context) * 4.3,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 2.0),
                       child: Image.asset(
                         'assets/images/Arrow.webp',
-                        width: AppDimensions.height10(context) * 4.1,
+                        width: AppDimensions.width10(context) * 4.1,
                         height: AppDimensions.height10(context) * 4.3,
                       ),
                     ),
@@ -481,7 +481,7 @@ class _progress_reportState extends State<progress_report> {
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 25.4,
+                            width: AppDimensions.width10(context) * 25.4,
                             height: AppDimensions.height10(context) * 2.9,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 7.0),
@@ -489,23 +489,21 @@ class _progress_reportState extends State<progress_report> {
                               'New identity statement',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.4,
+                                  fontSize: AppDimensions.font10(context) * 2.4,
                                   height: 1.2,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFFFFFFFF)),
                             ),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10(context) * 35.6,
+                            width: AppDimensions.width10(context) * 35.6,
                             height: AppDimensions.height10(context) * 10.9,
                             child: Stack(
                               children: [
                                 Align(
                                   alignment: const Alignment(-0.875, -0.5),
                                   child: Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.5,
+                                    width: AppDimensions.width10(context) * 2.5,
                                     height:
                                         AppDimensions.height10(context) * 1.6,
                                     decoration: const BoxDecoration(
@@ -520,7 +518,7 @@ class _progress_reportState extends State<progress_report> {
                                   alignment: const Alignment(1, 0),
                                   child: Container(
                                     width:
-                                        AppDimensions.height10(context) * 34.7,
+                                        AppDimensions.width10(context) * 34.7,
                                     height:
                                         AppDimensions.height10(context) * 10.9,
                                     padding: EdgeInsets.all(
@@ -543,9 +541,9 @@ class _progress_reportState extends State<progress_report> {
                                         style: TextStyle(
                                             fontStyle: FontStyle.italic,
                                             // height: AppDimensions.height10(context) * 0.15,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xFFFFFFFF)),
                                       ),
@@ -566,8 +564,8 @@ class _progress_reportState extends State<progress_report> {
                               child: Row(
                                 children: [
                                   Container(
-                                    width: AppDimensions.height10(context) *
-                                        33.153,
+                                    width:
+                                        AppDimensions.width10(context) * 33.153,
                                     height: AppDimensions.height10(context) *
                                         30.517,
                                     margin: EdgeInsets.only(
@@ -581,8 +579,8 @@ class _progress_reportState extends State<progress_report> {
                                                 'assets/images/Rectangle 148.webp'))),
                                   ),
                                   Container(
-                                    width: AppDimensions.height10(context) *
-                                        33.153,
+                                    width:
+                                        AppDimensions.width10(context) * 33.153,
                                     height: AppDimensions.height10(context) *
                                         30.517,
                                     margin: EdgeInsets.only(
@@ -601,7 +599,7 @@ class _progress_reportState extends State<progress_report> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 27.2,
+                      width: AppDimensions.width10(context) * 27.2,
                       height: AppDimensions.height10(context) * 5.369,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 7.0),
@@ -609,14 +607,14 @@ class _progress_reportState extends State<progress_report> {
                         'You have completed 20 active days of practice!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.4,
+                            fontSize: AppDimensions.font10(context) * 2.4,
                             height: 1.2,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF437296)),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 40.5,
+                      width: AppDimensions.width10(context) * 40.5,
                       height: AppDimensions.height10(context) * 84.569,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 3.7),
@@ -637,7 +635,7 @@ class _progress_reportState extends State<progress_report> {
                                     generateCircleContainers(context, 20),
                             centerContainer: Container(
                               height: AppDimensions.height10(context) * 20.6,
-                              width: AppDimensions.height10(context) * 14.9,
+                              width: AppDimensions.width10(context) * 14.9,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0),
 
@@ -648,8 +646,8 @@ class _progress_reportState extends State<progress_report> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          13.3,
+                                      width:
+                                          AppDimensions.width10(context) * 13.3,
                                       height:
                                           AppDimensions.height10(context) * 7.7,
                                       child: Row(
@@ -665,7 +663,7 @@ class _progress_reportState extends State<progress_report> {
                                               noData == true ? '-' : '20',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           7.4,
                                                   color:
@@ -682,7 +680,7 @@ class _progress_reportState extends State<progress_report> {
                                               '/20',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           2.4,
                                                   color:
@@ -702,9 +700,9 @@ class _progress_reportState extends State<progress_report> {
                                       child: Text(
                                         'Active days\ncompleted!',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.8,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.8,
                                             color: const Color(0xFF156F6D),
                                             fontWeight: FontWeight.w500),
                                       ),
@@ -716,7 +714,7 @@ class _progress_reportState extends State<progress_report> {
                           ),
                           SizedBox(
                             height: AppDimensions.height10(context) * 8.0,
-                            width: AppDimensions.height10(context) * 23,
+                            width: AppDimensions.width10(context) * 23,
                             child: Center(
                               child: RichText(
                                   textAlign: TextAlign.center,
@@ -725,8 +723,7 @@ class _progress_reportState extends State<progress_report> {
                                         fontFamily: 'laila',
                                         height: 1.2,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
+                                            AppDimensions.font10(context) * 1.4,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFF5B74A6),
                                       ),
@@ -778,18 +775,18 @@ class _progress_reportState extends State<progress_report> {
                       ),
                     ),
                     Container(
-                      // width: AppDimensions.height10(context) * 2.1,
+                      // width: AppDimensions.width10(context) * 2.1,
                       //height: AppDimensions.height10(context) * 4.3,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 3.7),
                       child: Image.asset(
                         'assets/images/Arrow.webp',
-                        width: AppDimensions.height10(context) * 4.1,
+                        width: AppDimensions.width10(context) * 4.1,
                         height: AppDimensions.height10(context) * 4.3,
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 27.2,
+                      width: AppDimensions.width10(context) * 27.2,
                       height: AppDimensions.height10(context) * 8.5,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
@@ -797,14 +794,14 @@ class _progress_reportState extends State<progress_report> {
                         'This is how you felt\nimplementing your new\npractice',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.4,
+                            fontSize: AppDimensions.font10(context) * 2.4,
                             height: 1.2,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF437296)),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 38.2,
+                      width: AppDimensions.width10(context) * 38.2,
                       //height: AppDimensions.height10(context) * 147.8,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
@@ -815,7 +812,7 @@ class _progress_reportState extends State<progress_report> {
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 38.2,
+                            width: AppDimensions.width10(context) * 38.2,
                             //height: AppDimensions.height10(context) * 55.7,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.vertical(
@@ -860,7 +857,7 @@ class _progress_reportState extends State<progress_report> {
                               children: [
                                 Container(
                                     width:
-                                        AppDimensions.height10(context) * 20.0,
+                                        AppDimensions.width10(context) * 20.0,
                                     height:
                                         AppDimensions.height10(context) * 20.0,
                                     margin: EdgeInsets.only(
@@ -886,7 +883,7 @@ class _progress_reportState extends State<progress_report> {
                                                         : 1,
                                         outerCircleColors: outerColor)),
                                 Container(
-                                  width: AppDimensions.height10(context) * 8.4,
+                                  width: AppDimensions.width10(context) * 8.4,
                                   height: AppDimensions.height10(context) * 0.2,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -894,7 +891,7 @@ class _progress_reportState extends State<progress_report> {
                                   color: const Color(0xFFF5F5F5),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 30.9,
+                                  width: AppDimensions.width10(context) * 30.9,
                                   height: AppDimensions.height10(context) * 2.2,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -905,7 +902,7 @@ class _progress_reportState extends State<progress_report> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.8,
                                           fontWeight: FontWeight.w600,
                                           color: options![0]
@@ -929,8 +926,8 @@ class _progress_reportState extends State<progress_report> {
                                 Column(
                                   children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          30.9,
+                                      width:
+                                          AppDimensions.width10(context) * 30.9,
                                       height:
                                           AppDimensions.height10(context) * 6.8,
                                       margin: EdgeInsets.only(
@@ -955,7 +952,7 @@ class _progress_reportState extends State<progress_report> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   0.15,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.8,
                                               fontWeight: FontWeight.w700,
@@ -986,10 +983,9 @@ class _progress_reportState extends State<progress_report> {
                                       child: RichText(
                                           text: TextSpan(
                                               style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          4.5,
+                                                  fontSize: AppDimensions
+                                                          .font10(context) *
+                                                      4.5,
                                                   fontFamily: 'laila',
                                                   height: 1.2,
                                                   fontWeight: FontWeight.w400,
@@ -1025,7 +1021,7 @@ class _progress_reportState extends State<progress_report> {
                                                 text: 'x',
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             2.0))
                                           ])),
@@ -1069,8 +1065,8 @@ class _progress_reportState extends State<progress_report> {
                                 return Column(
                                   children: [
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          30.9,
+                                      width:
+                                          AppDimensions.width10(context) * 30.9,
                                       height:
                                           AppDimensions.height10(context) * 6.8,
                                       margin: EdgeInsets.only(
@@ -1098,7 +1094,7 @@ class _progress_reportState extends State<progress_report> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   0.15,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.8,
                                               fontWeight: FontWeight.w700,
@@ -1132,7 +1128,7 @@ class _progress_reportState extends State<progress_report> {
                                           text: TextSpan(
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           4.5,
                                                   fontFamily: 'laila',
@@ -1172,7 +1168,7 @@ class _progress_reportState extends State<progress_report> {
                                                 text: 'x',
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             2.0))
                                           ])),
@@ -1203,9 +1199,9 @@ class _progress_reportState extends State<progress_report> {
                                                             0xFF546096)),
                                     index != 3
                                         ? Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                8.4,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    8.4,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 0.2,
@@ -1234,28 +1230,28 @@ class _progress_reportState extends State<progress_report> {
                           gradient: LinearGradient(
                               colors: [Color(0xFF91698C), Color(0xFFC19CA7)])),
                       child: Container(
-                        width: AppDimensions.height10(context) * 36.0,
+                        width: AppDimensions.width10(context) * 36.0,
                         height: AppDimensions.height10(context) * 16.9,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 2.0),
                         child: Column(
                           children: [
                             SizedBox(
-                              width: AppDimensions.height10(context) * 36.0,
+                              width: AppDimensions.width10(context) * 36.0,
                               height: AppDimensions.height10(context) * 1.9,
                               child: Text(
                                 'Practice Assessment',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     height: 1.2,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xFFF5F5F5)),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 35.0,
+                              width: AppDimensions.width10(context) * 35.0,
                               height: AppDimensions.height10(context) * 1.8,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.8,
@@ -1266,7 +1262,7 @@ class _progress_reportState extends State<progress_report> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.font10(context) * 1.4,
                                     height: 1.2,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xFFF5F5F5)),
@@ -1310,7 +1306,7 @@ class _progress_reportState extends State<progress_report> {
                                 Navigator.pop(context);
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 36.0,
+                                width: AppDimensions.width10(context) * 36.0,
                                 height: AppDimensions.height10(context) * 6.0,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 1.2),
@@ -1324,7 +1320,7 @@ class _progress_reportState extends State<progress_report> {
                                 ),
                                 child: Center(
                                   child: Container(
-                                    //  width: AppDimensions.height10(context) * 7.2,
+                                    //  width: AppDimensions.width10(context) * 7.2,
                                     height:
                                         AppDimensions.height10(context) * 2.1,
                                     margin: EdgeInsets.only(
@@ -1335,9 +1331,9 @@ class _progress_reportState extends State<progress_report> {
                                         'Exit report',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.8,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.8,
                                             height: 1.2,
                                             fontWeight: FontWeight.w600,
                                             color: const Color(0xFFFFFFFF)),
@@ -1378,7 +1374,7 @@ void report(context) {
         padding:
             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: Container(
-          width: AppDimensions.height10(context) * 39.4,
+          width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 51.3,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
@@ -1405,7 +1401,7 @@ void report(context) {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
@@ -1419,7 +1415,7 @@ void report(context) {
                 ),
               ),
               SizedBox(
-                width: AppDimensions.height10(context) * 23.8,
+                width: AppDimensions.width10(context) * 23.8,
                 height: AppDimensions.height10(context) * 3.4,
                 // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 3.2),
                 child: Text(
@@ -1427,12 +1423,12 @@ void report(context) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       color: const Color(0xff437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 32.8,
+                width: AppDimensions.width10(context) * 32.8,
                 height: AppDimensions.height10(context) * 2.4,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.5),
@@ -1442,12 +1438,12 @@ void report(context) {
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.12,
                       fontWeight: FontWeight.w600,
-                      fontSize: AppDimensions.height10(context) * 2.0,
+                      fontSize: AppDimensions.font10(context) * 2.0,
                       color: const Color(0xff437296)),
                 ),
               ),
               Container(
-                //  width: AppDimensions.height10(context) * 33.8,
+                //  width: AppDimensions.width10(context) * 33.8,
                 // height: AppDimensions.height10(context) * 6.8,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 1.5),
@@ -1456,12 +1452,12 @@ void report(context) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: AppDimensions.height10(context) * 1.4,
+                      fontSize: AppDimensions.font10(context) * 1.4,
                       color: const Color(0xff437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 23.7,
+                width: AppDimensions.width10(context) * 23.7,
                 height: AppDimensions.height10(context) * 25.5,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.2),
@@ -1518,7 +1514,7 @@ String _getMonthName(int month) {
 
 circlesInRowColored(BuildContext context, int itteration, Color circleColor) {
   return Container(
-    //width: AppDimensions.height10(context) * 16.0,
+    //width: AppDimensions.width10(context) * 16.0,
     // height: AppDimensions.height10(context) * 1.0,
     margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.8),
     child: Column(
@@ -1534,7 +1530,7 @@ circlesInRowColored(BuildContext context, int itteration, Color circleColor) {
                   ? (itteration % 5)
                   : 5), // Replace 5 with the number of containers you want to create
               (index) => Container(
-                width: AppDimensions.height10(context) * 1.5,
+                width: AppDimensions.width10(context) * 1.5,
                 height: AppDimensions.height10(context) * 1.5,
                 margin: EdgeInsets.symmetric(
                     horizontal: AppDimensions.height10(context) * 0.25),

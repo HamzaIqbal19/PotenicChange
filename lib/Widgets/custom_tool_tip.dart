@@ -39,7 +39,7 @@ class _TooltipExampleState extends State<TooltipExample> {
                                       ? const Alignment(0.1, -0.27)
                                       : const Alignment(0.12, 0.37),
               child: Container(
-                width: AppDimensions.height10(context) * 30.6,
+                width: AppDimensions.width10(context) * 30.6,
                 height: goal_level == 1
                     ? AppDimensions.height10(context) * 22.3
                     : goal_level == 2
@@ -79,12 +79,12 @@ class _TooltipExampleState extends State<TooltipExample> {
                               ? 'assets/images/arrow-192-up.webp'
                               : 'assets/images/arrow-192.webp',
                           height: AppDimensions.height10(context) * 2.0,
-                          width: AppDimensions.height10(context) * 2.0,
+                          width: AppDimensions.width10(context) * 2.0,
                         ),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 30.6,
+                      width: AppDimensions.width10(context) * 30.6,
                       height: goal_level == 1
                           ? AppDimensions.height10(context) * 22.3
                           : goal_level == 2
@@ -110,7 +110,7 @@ class _TooltipExampleState extends State<TooltipExample> {
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 21.6,
+                            width: AppDimensions.width10(context) * 21.6,
                             //height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.7,
@@ -134,13 +134,13 @@ class _TooltipExampleState extends State<TooltipExample> {
                                 decoration: TextDecoration.none,
                                 fontFamily: 'Laila',
                                 color: const Color(0xFF000000),
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 27.4,
+                            width: AppDimensions.width10(context) * 27.4,
                             height: goal_level == 1
                                 ? AppDimensions.height10(context) * 11.8
                                 : goal_level == 2
@@ -171,8 +171,7 @@ class _TooltipExampleState extends State<TooltipExample> {
                                         decoration: TextDecoration.none,
                                         fontFamily: 'Laila',
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
+                                            AppDimensions.font10(context) * 1.4,
                                         height:
                                             AppDimensions.height10(context) *
                                                 0.15),
@@ -314,7 +313,7 @@ class _TooltipExampleState extends State<TooltipExample> {
                                 ])),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 24.3,
+                            width: AppDimensions.width10(context) * 24.3,
                             height: AppDimensions.height10(context) * 4.0,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 0.8),
@@ -333,12 +332,12 @@ class _TooltipExampleState extends State<TooltipExample> {
                                             AppDimensions.height10(context) *
                                                 5.0),
                                         border: Border.all(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.1,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    0.1,
                                             color: const Color(0xFFFBFBFB))),
                                     width:
-                                        AppDimensions.height10(context) * 9.60,
+                                        AppDimensions.width10(context) * 9.60,
                                     height:
                                         AppDimensions.height10(context) * 3.2,
                                     child: Center(
@@ -348,9 +347,9 @@ class _TooltipExampleState extends State<TooltipExample> {
                                         style: TextStyle(
                                             fontFamily: 'Laila',
                                             decoration: TextDecoration.none,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             color: const Color(0xFF8C648A),
                                             fontWeight: FontWeight.w700),
                                       ),
@@ -368,7 +367,7 @@ class _TooltipExampleState extends State<TooltipExample> {
                                   },
                                   child: Container(
                                     width:
-                                        AppDimensions.height10(context) * 11.7,
+                                        AppDimensions.width10(context) * 11.7,
                                     height:
                                         AppDimensions.height10(context) * 4.0,
                                     decoration: BoxDecoration(
@@ -397,9 +396,9 @@ class _TooltipExampleState extends State<TooltipExample> {
                                         style: TextStyle(
                                             decoration: TextDecoration.none,
                                             fontFamily: 'Laila',
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             color: const Color(0xFFFFFFFF),
                                             fontWeight: FontWeight.w600),
                                       ),

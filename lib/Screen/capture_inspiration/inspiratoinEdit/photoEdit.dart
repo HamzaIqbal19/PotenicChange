@@ -210,7 +210,7 @@ class _photo_EditState extends State<photo_Edit> {
                             'Cancel',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff007AFF)),
                           ),
@@ -219,13 +219,13 @@ class _photo_EditState extends State<photo_Edit> {
                       Center(
                         child: SizedBox(
                           height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.height10(context) * 28.5,
+                          width: AppDimensions.width10(context) * 28.5,
                           child: Center(
                               child: Text(
                             'Edit image inspiration',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff282828)),
                           )),
@@ -292,17 +292,17 @@ class _photo_EditState extends State<photo_Edit> {
                                                               .height10(
                                                                   context) *
                                                           2.2,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          23.8,
+                                                              23.8,
                                                       child: Text(
                                                         "Save changes?",
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.7,
                                                           fontFamily: 'laila',
@@ -329,17 +329,17 @@ class _photo_EditState extends State<photo_Edit> {
                                                               .height10(
                                                                   context) *
                                                           3.4,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          23.8,
+                                                              23.8,
                                                       child: Text(
                                                         "Are you sure you want to save your\nupdates?",
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.3,
                                                           fontFamily: 'laila',
@@ -498,9 +498,9 @@ class _photo_EditState extends State<photo_Edit> {
                                         'Save',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w400,
                                             color: title.text
                                                         .toString()
@@ -535,7 +535,7 @@ class _photo_EditState extends State<photo_Edit> {
                               top: AppDimensions.height10(context) * 2.9,
                               left: AppDimensions.height10(context) * 1.8,
                             ),
-                            width: AppDimensions.height10(context) * 24.4,
+                            width: AppDimensions.width10(context) * 24.4,
                             height: AppDimensions.height10(context) * 24.4,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
@@ -552,7 +552,7 @@ class _photo_EditState extends State<photo_Edit> {
                                     height:
                                         AppDimensions.height10(context) * 2.1,
                                     width:
-                                        AppDimensions.height10(context) * 30.5,
+                                        AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
@@ -565,7 +565,7 @@ class _photo_EditState extends State<photo_Edit> {
                                       'Title',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.5,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff828282)),
@@ -573,7 +573,7 @@ class _photo_EditState extends State<photo_Edit> {
                                   ),
                                   Container(
                                     alignment: Alignment.centerLeft,
-                                    // width: AppDimensions.height10(context) *
+                                    // width: AppDimensions.width10(context) *
                                     //     30.5,
                                     margin: EdgeInsets.only(
                                       left:
@@ -587,7 +587,7 @@ class _photo_EditState extends State<photo_Edit> {
                                           TextAlignVertical.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.7,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff282828)),
@@ -603,7 +603,7 @@ class _photo_EditState extends State<photo_Edit> {
                                           hintText:
                                               'Give your inspiration a title',
                                           hintStyle: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontWeight: FontWeight.w500,
@@ -621,8 +621,8 @@ class _photo_EditState extends State<photo_Edit> {
                                   Container(
                                       height:
                                           AppDimensions.height10(context) * 2.1,
-                                      width: AppDimensions.height10(context) *
-                                          30.5,
+                                      width:
+                                          AppDimensions.width10(context) * 30.5,
                                       alignment: Alignment.centerLeft,
                                       margin: EdgeInsets.only(
                                           left:
@@ -636,15 +636,15 @@ class _photo_EditState extends State<photo_Edit> {
                                       child: Text(
                                         'Description',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.5,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.5,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff828282)),
                                       )),
                                   Container(
                                     alignment: Alignment.centerLeft,
-                                    // width: AppDimensions.height10(context) *
+                                    // width: AppDimensions.width10(context) *
                                     //     30.5,
                                     margin: EdgeInsets.only(
                                       left:
@@ -658,7 +658,7 @@ class _photo_EditState extends State<photo_Edit> {
                                       scrollPadding: EdgeInsets.zero,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.7,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff282828)),
@@ -674,7 +674,7 @@ class _photo_EditState extends State<photo_Edit> {
                                           hintText:
                                               'Say more about this inspiration',
                                           hintStyle: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontWeight: FontWeight.w500,
@@ -693,7 +693,7 @@ class _photo_EditState extends State<photo_Edit> {
                                     height:
                                         AppDimensions.height10(context) * 2.1,
                                     width:
-                                        AppDimensions.height10(context) * 30.5,
+                                        AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
@@ -706,7 +706,7 @@ class _photo_EditState extends State<photo_Edit> {
                                       'Destination website (optional)',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.5,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff828282)),
@@ -716,7 +716,7 @@ class _photo_EditState extends State<photo_Edit> {
                                     children: [
                                       Container(
                                         alignment: Alignment.centerLeft,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             30.5,
                                         margin: EdgeInsets.only(
                                           left:
@@ -730,7 +730,7 @@ class _photo_EditState extends State<photo_Edit> {
                                           maxLines: null,
                                           scrollPadding: EdgeInsets.zero,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontWeight: FontWeight.w500,
@@ -850,7 +850,7 @@ class _photo_EditState extends State<photo_Edit> {
                                     height:
                                         AppDimensions.height10(context) * 2.1,
                                     width:
-                                        AppDimensions.height10(context) * 30.5,
+                                        AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
@@ -863,7 +863,7 @@ class _photo_EditState extends State<photo_Edit> {
                                       'Tags (optional)',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.5,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff828282)),
@@ -871,7 +871,7 @@ class _photo_EditState extends State<photo_Edit> {
                                   ),
                                   Container(
                                     alignment: Alignment.centerLeft,
-                                    // width: AppDimensions.height10(context) *
+                                    // width: AppDimensions.width10(context) *
                                     //     30.5,
                                     margin: EdgeInsets.only(
                                       left:
@@ -971,8 +971,8 @@ class _photo_EditState extends State<photo_Edit> {
                                     child: Container(
                                       height:
                                           AppDimensions.height10(context) * 2.1,
-                                      width: AppDimensions.height10(context) *
-                                          30.5,
+                                      width:
+                                          AppDimensions.width10(context) * 30.5,
                                       margin: EdgeInsets.only(
                                           left:
                                               AppDimensions.height10(context) *
@@ -988,9 +988,9 @@ class _photo_EditState extends State<photo_Edit> {
                                       child: Text(
                                         'Attached goals',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.5,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.5,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff828282)),
                                       ),
@@ -1012,8 +1012,8 @@ class _photo_EditState extends State<photo_Edit> {
                                     child: Container(
                                       height:
                                           AppDimensions.height10(context) * 6.0,
-                                      width: AppDimensions.height10(context) *
-                                          37.5,
+                                      width:
+                                          AppDimensions.width10(context) * 37.5,
                                       margin: EdgeInsets.only(
                                         // bottom: AppDimensions.height10(context) * 1.0,
                                         left: AppDimensions.height10(context) *
@@ -1031,9 +1031,9 @@ class _photo_EditState extends State<photo_Edit> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                23.9,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    23.9,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 2.2,
@@ -1048,10 +1048,9 @@ class _photo_EditState extends State<photo_Edit> {
                                               style: TextStyle(
                                                 fontFamily: 'laila',
                                                 color: const Color(0xFF646464),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
@@ -1074,7 +1073,7 @@ class _photo_EditState extends State<photo_Edit> {
                                                                 context) *
                                                             0.2,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.4),
                                               ))

@@ -96,7 +96,7 @@ class _GoalFinishedState extends State<GoalFinished> {
             //   child: IconButton(
             //     icon: Image.asset(
             //       'assets/images/Back.webp',
-            //       width: AppDimensions.height10(context) * 3,
+            //       width: AppDimensions.width10(context) * 3,
             //       height: AppDimensions.height10(context) * 3,
             //       fit: BoxFit.contain,
             //     ),
@@ -116,7 +116,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 3.0,
+                    width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
@@ -170,7 +170,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 // color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 3,
+                                fontSize: AppDimensions.font10(context) * 3,
                               ),
                               colors: const [
                                 Color(0xFFFA9934),
@@ -185,7 +185,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                         Container(
                             // color: Colors.black,
                             // height: AppDimensions.height10(context) * 21.8,
-                            width: AppDimensions.height10(context) * 34.0,
+                            width: AppDimensions.width10(context) * 34.0,
                             child: Column(
                               children: [
                                 Container(
@@ -198,8 +198,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                         color: Colors.white,
                                         fontFamily: "LaiLa",
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                            AppDimensions.font10(context) * 1.8,
                                       ),
                                     ),
                                   ),
@@ -221,7 +220,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                               },
                               child: Container(
                                 height: AppDimensions.height10(context) * 38.1,
-                                width: AppDimensions.height10(context) * 38.1,
+                                width: AppDimensions.width10(context) * 38.1,
                                 padding: EdgeInsets.all(
                                     AppDimensions.height10(context) * 3.5),
                                 // decoration: const BoxDecoration(
@@ -264,7 +263,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                         // height:
                                         //     AppDimensions.height10(context) *
                                         //         9.0,
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             24.0,
                                         padding: EdgeInsets.symmetric(
                                             horizontal: AppDimensions.height10(
@@ -279,7 +278,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                               maxLines: 1,
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           2.0,
                                                   height:
@@ -311,10 +310,10 @@ class _GoalFinishedState extends State<GoalFinished> {
                                                   style: TextStyle(
                                                       fontStyle:
                                                           FontStyle.italic,
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.6,
+                                                              1.6,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: const Color(
@@ -333,7 +332,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                           style: TextStyle(
                                               decoration:
                                                   TextDecoration.underline,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               height: AppDimensions.height10(
@@ -366,7 +365,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                 child: Container(
                                   height:
                                       AppDimensions.height10(context) * 17.5,
-                                  width: AppDimensions.height10(context) * 17.5,
+                                  width: AppDimensions.width10(context) * 17.5,
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
@@ -386,8 +385,8 @@ class _GoalFinishedState extends State<GoalFinished> {
                                           'assets/images/practice.webp'),
                                       height: AppDimensions.height10(context) *
                                           17.5,
-                                      width: AppDimensions.height10(context) *
-                                          17.5,
+                                      width:
+                                          AppDimensions.width10(context) * 17.5,
                                     ),
                                   ),
                                 ),
@@ -402,11 +401,11 @@ class _GoalFinishedState extends State<GoalFinished> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: AppDimensions.height10(context) * 1.6,
+                              width: AppDimensions.width10(context) * 1.6,
                             ),
                             Container(
                                 // color: Colors.blue,
-                                width: AppDimensions.height10(context) * 5.0,
+                                width: AppDimensions.width10(context) * 5.0,
                                 height: AppDimensions.height10(context) * 5.0,
                                 child: AnimatedScaleButton(
                                   onTap: () {

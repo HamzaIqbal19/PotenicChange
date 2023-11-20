@@ -21,8 +21,8 @@ class categories_shimmer extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  padding:
-                      EdgeInsets.only(top: AppDimensions.height10(context) * 5.0),
+                  padding: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 5.0),
                   child: Center(
                       child: Container(
                     width: 120,
@@ -41,8 +41,7 @@ class categories_shimmer extends StatelessWidget {
                   height: 8,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.grey[200]
-                  ),
+                      color: Colors.grey[200]),
                 )),
                 SizedBox(
                   height: AppDimensions.height10(context) * 3.0,
@@ -69,7 +68,7 @@ class categories_shimmer extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: AppDimensions.height10(context) * 2.0,
+                            width: AppDimensions.width10(context) * 2.0,
                           ),
                           Container(
                               width: 110,
@@ -122,15 +121,15 @@ class categories_shimmer extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: AppDimensions.height10(context) * 2.0,
+                              width: AppDimensions.width10(context) * 2.0,
                             ),
                             Container(
                                 width: 110,
                                 height: 110,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(100),
-                                    color:
-                                        const Color.fromARGB(144, 224, 224, 224)),
+                                    color: const Color.fromARGB(
+                                        144, 224, 224, 224)),
                                 child: Center(
                                     child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -139,7 +138,8 @@ class categories_shimmer extends StatelessWidget {
                                       width: 70,
                                       height: 5,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                           color: Colors.grey[200]),
                                     ),
                                     const SizedBox(
@@ -149,7 +149,8 @@ class categories_shimmer extends StatelessWidget {
                                       width: 50,
                                       height: 5,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                           color: Colors.grey[300]),
                                     ),
                                   ],

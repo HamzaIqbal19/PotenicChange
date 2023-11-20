@@ -69,7 +69,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
             duration: const Duration(seconds: 1),
             context: context,
             builder: (BuildContext context) => Container(
-                  width: AppDimensions.height10(context) * 27.0,
+                  width: AppDimensions.width10(context) * 27.0,
                   height: AppDimensions.height10(context) * 18.2,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
@@ -88,12 +88,12 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           left: AppDimensions.height10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
-                      width: AppDimensions.height10(context) * 23.8,
+                      width: AppDimensions.width10(context) * 23.8,
                       child: Text(
                         "Turn off practice?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.7,
+                          fontSize: AppDimensions.font10(context) * 1.7,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -104,12 +104,12 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           left: AppDimensions.height10(context) * 1.6,
                           right: AppDimensions.height10(context) * 1.6),
                       height: AppDimensions.height10(context) * 3.4,
-                      width: AppDimensions.height10(context) * 23.8,
+                      width: AppDimensions.width10(context) * 23.8,
                       child: Text(
                         "Are you sure you want to turn off the\npractice? If you do, it will become inactive.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.3,
+                          fontSize: AppDimensions.font10(context) * 1.3,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -136,7 +136,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 style: TextStyle(
                                     color: const Color(0xFFFFFFFF),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w400),
                               ),
@@ -170,7 +170,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 'Yes',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xFF007AFF)),
@@ -207,7 +207,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 duration: const Duration(seconds: 1),
                 context: context,
                 builder: (BuildContext context) => Container(
-                      width: AppDimensions.height10(context) * 27.0,
+                      width: AppDimensions.width10(context) * 27.0,
                       height: AppDimensions.height10(context) * 23.6,
                       child: AlertDialog(
                         shape: RoundedRectangleBorder(
@@ -221,14 +221,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 top: AppDimensions.height10(context) * 1.9,
                                 bottom: AppDimensions.height10(context) * 0.2),
                             height: AppDimensions.height10(context) * 4.4,
-                            width: AppDimensions.height10(context) * 23.8,
+                            width: AppDimensions.width10(context) * 23.8,
                             child: Center(
                               child: Text(
                                 'Maximum active practice limit\nreached',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -238,14 +237,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               bottom: AppDimensions.height10(context) * 1.5,
                               left: AppDimensions.height10(context) * 1.6,
                               right: AppDimensions.height10(context) * 1.6),
-                          width: AppDimensions.height10(context) * 23.8,
+                          width: AppDimensions.width10(context) * 23.8,
                           child: Text(
                             subscriptions == 'inactive'
                                 ? "You can't activate a new practice for\nthis goal because you already have\nreached the maximum number of 3\nactive practices. You must stop one of\nyour active practices to start a new one."
                                 : "You can't activate a new practice for\nthis goal because you already have\nreached the maximum number of 5\nactive practices. You must stop one of\nyour active practices to start a new one.",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.3,
+                              fontSize: AppDimensions.font10(context) * 1.3,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -272,8 +271,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     'OK',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
+                                            AppDimensions.font10(context) * 1.7,
                                         fontFamily: "Laila",
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFFFBFBFB)),
@@ -392,7 +390,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
@@ -411,7 +409,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           child: Text(
                             'Reset',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color:
                                     const Color(0xFFFFFFFF).withOpacity(0.5)),
@@ -428,7 +426,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           child: Text(
                             'Done',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFFFFFFFF)),
                           ),
@@ -446,7 +444,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       child: Text(
                         'Edit',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 1.8,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFFFFFFFF)),
                       ),
@@ -468,7 +466,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                   child: Column(
                     children: [
                       Container(
-                        width: AppDimensions.height10(context) * 30.8,
+                        width: AppDimensions.width10(context) * 30.8,
                         // color: Colors.amber,
                         height: AppDimensions.height10(context) * 3.6,
                         margin: EdgeInsets.only(
@@ -479,14 +477,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 3.0,
+                                fontSize: AppDimensions.font10(context) * 3.0,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFFFFFFFF)),
                           ),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 18.0,
+                        width: AppDimensions.width10(context) * 18.0,
                         height: AppDimensions.height10(context) * 2.2,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.9),
@@ -496,16 +494,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             Text(
                               'Status: ',
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xFFFFFFFF)),
                             ),
                             Text(
                               capitalizeFirstLetter(goalDetails['goalStatus']),
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w700,
                                   color: goalDetails['goalStatus'] == "active"
                                       ? const Color(0xFF156F6D)
@@ -515,7 +511,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 26.8,
+                        width: AppDimensions.width10(context) * 26.8,
                         height: AppDimensions.height10(context) * 11.4,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 3.3),
@@ -523,7 +519,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 11.4,
+                              width: AppDimensions.width10(context) * 11.4,
                               height: AppDimensions.height10(context) * 11.4,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -532,8 +528,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 9.3,
+                                    width: AppDimensions.width10(context) * 9.3,
                                     height:
                                         AppDimensions.height10(context) * 3.4,
                                     child: Text(
@@ -541,7 +536,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4,
                                           height:
                                               AppDimensions.height10(context) *
@@ -551,8 +546,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     ),
                                   ),
                                   Container(
-                                    width:
-                                        AppDimensions.height10(context) * 6.3,
+                                    width: AppDimensions.width10(context) * 6.3,
                                     height:
                                         AppDimensions.height10(context) * 3.3,
                                     margin: EdgeInsets.only(
@@ -564,7 +558,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.8,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xFF464646)),
@@ -574,7 +568,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 11.4,
+                              width: AppDimensions.width10(context) * 11.4,
                               height: AppDimensions.height10(context) * 11.4,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -583,8 +577,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 9.3,
+                                    width: AppDimensions.width10(context) * 9.3,
                                     height:
                                         AppDimensions.height10(context) * 3.4,
                                     child: Text(
@@ -592,15 +585,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4,
                                           fontWeight: FontWeight.w600,
                                           color: const Color(0xFF437296)),
                                     ),
                                   ),
                                   Container(
-                                    width:
-                                        AppDimensions.height10(context) * 6.3,
+                                    width: AppDimensions.width10(context) * 6.3,
                                     height:
                                         AppDimensions.height10(context) * 3.3,
                                     margin: EdgeInsets.only(
@@ -617,7 +609,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                   .toString(),
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.0,
                                               fontWeight: FontWeight.w600,
@@ -627,7 +619,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                           '/5',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.0,
                                               fontWeight: FontWeight.w300,
@@ -643,7 +635,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         ),
                       ),
                       Container(
-                          width: AppDimensions.height10(context) * 37.2,
+                          width: AppDimensions.width10(context) * 37.2,
                           height: AppDimensions.height10(context) * 2.9,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 3.8),
@@ -653,8 +645,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   ? 'Assign up to 3 practices:'
                                   : 'Assign up to 5 practices:',
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.4,
+                                  fontSize: AppDimensions.font10(context) * 2.4,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFFFFFFFF)),
                             ),
@@ -679,7 +670,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   : false;
                               bool color = status;
                               return Container(
-                                //  width: AppDimensions.height10(context) * 41.8,
+                                //  width: AppDimensions.width10(context) * 41.8,
                                 height: AppDimensions.height10(context) * 10.0,
 
                                 decoration: BoxDecoration(
@@ -738,8 +729,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                           )),
                                     ),
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          18.6,
+                                      width:
+                                          AppDimensions.width10(context) * 18.6,
                                       height:
                                           AppDimensions.height10(context) * 4.9,
                                       margin: EdgeInsets.only(
@@ -751,7 +742,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           SizedBox(
-                                            // width: AppDimensions.height10(context) *
+                                            // width: AppDimensions.width10(context) *
                                             //     9.2,
                                             height: AppDimensions.height10(
                                                     context) *
@@ -762,7 +753,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w600,
@@ -780,7 +771,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                     '${goalDetails['userPractices'][index]['activeDays']}',
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             2.0,
                                                         fontWeight:
@@ -796,7 +787,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                   child: Text('/20 active days',
                                                       style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.3,
                                                           fontWeight:
@@ -856,7 +847,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                           2.0),
                                                   child: FlutterSwitch(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             6.2,
                                                     height:
@@ -882,7 +873,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 ),
                                                 Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.4,
                                                     height:
@@ -900,7 +891,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                         'assets/images/BTN Back.webp',
                                                         color: const Color(
                                                             0xFFFFFFFF),
-                                                        //width: AppDimensions.height10(context) * 2.6,
+                                                        //width: AppDimensions.width10(context) * 2.6,
                                                         //height: AppDimensions.height10(context) * 2.6,
                                                         fit: BoxFit.cover,
                                                       ),
@@ -926,7 +917,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               FadePageRoute(page: const CreatePractice()));
                         },
                         child: Container(
-                          width: AppDimensions.height10(context) * 13.4,
+                          width: AppDimensions.width10(context) * 13.4,
                           height: AppDimensions.height10(context) * 13.4,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 5.0,
@@ -934,13 +925,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                  width: AppDimensions.height10(context) * 0.3,
+                                  width: AppDimensions.width10(context) * 0.3,
                                   color: const Color(0xFFFFFFFF))),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                // width: AppDimensions.height10(context) * 5.8,
+                                // width: AppDimensions.width10(context) * 5.8,
                                 height: AppDimensions.height10(context) * 5.8,
                                 child: Center(
                                   child: Text(
@@ -951,8 +942,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                             AppDimensions.height10(context) *
                                                 0.15,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
@@ -960,7 +950,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               ),
                               Image.asset(
                                 'assets/images/Addgoal.webp',
-                                width: AppDimensions.height10(context) * 2.3,
+                                width: AppDimensions.width10(context) * 2.3,
                                 height: AppDimensions.height10(context) * 2.3,
                               )
                             ],
@@ -1017,7 +1007,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width: AppDimensions.height10(context) * 17.4,
+                                width: AppDimensions.width10(context) * 17.4,
                                 height: AppDimensions.height10(context) * 4.3,
                                 margin: EdgeInsets.only(
                                     left:
@@ -1033,18 +1023,18 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                             ? '$totalItemsOn/3 items'
                                             : '$totalItemsOn/5 items',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w700,
                                             color: const Color(0xFF5B74A6)),
                                       ),
                                       Text(
                                         'have been selected',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xFF5B74A6)),
                                       ),
@@ -1109,7 +1099,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                 context) *
                                                             2.2,
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             23.8,
                                                     child: Text(
@@ -1118,7 +1108,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                           TextAlign.center,
                                                       style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.7,
                                                         fontWeight:
@@ -1145,7 +1135,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                 context) *
                                                             3.4,
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             23.8,
                                                     child: Text(
@@ -1154,7 +1144,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                           TextAlign.center,
                                                       style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10(
+                                                                .font10(
                                                                     context) *
                                                             1.3,
                                                         fontWeight:
@@ -1197,7 +1187,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                   color: const Color(
                                                                       0xFFFFFFFF),
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.7,
                                                                   fontFamily:
@@ -1264,7 +1254,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                               context) =>
                                                                           Container(
                                                                             width:
-                                                                                AppDimensions.height10(context) * 27.0,
+                                                                                AppDimensions.width10(context) * 27.0,
                                                                             height:
                                                                                 AppDimensions.height10(context) * 18.2,
                                                                             decoration:
@@ -1278,12 +1268,12 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                               title: Container(
                                                                                 margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.9, right: AppDimensions.height10(context) * 1.6, left: AppDimensions.height10(context) * 1.6, bottom: AppDimensions.height10(context) * 0.2),
                                                                                 height: AppDimensions.height10(context) * 2.2,
-                                                                                width: AppDimensions.height10(context) * 23.8,
+                                                                                width: AppDimensions.width10(context) * 23.8,
                                                                                 child: Text(
                                                                                   "Turn off goal?",
                                                                                   textAlign: TextAlign.center,
                                                                                   style: TextStyle(
-                                                                                    fontSize: AppDimensions.height10(context) * 1.7,
+                                                                                    fontSize: AppDimensions.font10(context) * 1.7,
                                                                                     fontWeight: FontWeight.w400,
                                                                                   ),
                                                                                 ),
@@ -1291,12 +1281,12 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                               content: Container(
                                                                                 margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.5, left: AppDimensions.height10(context) * 1.6, right: AppDimensions.height10(context) * 1.6),
                                                                                 height: AppDimensions.height10(context) * 3.4,
-                                                                                width: AppDimensions.height10(context) * 23.8,
+                                                                                width: AppDimensions.width10(context) * 23.8,
                                                                                 child: Text(
                                                                                   "Goal status can only be changed after 60 days",
                                                                                   textAlign: TextAlign.center,
                                                                                   style: TextStyle(
-                                                                                    fontSize: AppDimensions.height10(context) * 1.3,
+                                                                                    fontSize: AppDimensions.font10(context) * 1.3,
                                                                                     fontWeight: FontWeight.w400,
                                                                                   ),
                                                                                 ),
@@ -1320,7 +1310,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                                         },
                                                                                         child: Text(
                                                                                           'OK',
-                                                                                          style: TextStyle(color: const Color(0xFFFFFFFF), fontSize: AppDimensions.height10(context) * 1.7, fontFamily: "Laila", fontWeight: FontWeight.w400),
+                                                                                          style: TextStyle(color: const Color(0xFFFFFFFF), fontSize: AppDimensions.font10(context) * 1.7, fontFamily: "Laila", fontWeight: FontWeight.w400),
                                                                                         ),
                                                                                       ),
                                                                                     ),
@@ -1346,7 +1336,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                               'Yes',
                                                               style: TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.7,
                                                                   fontFamily:
@@ -1378,7 +1368,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                               )),
                                       child: Container(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   9.1,
                                           height:
                                               AppDimensions.height10(context) *
@@ -1428,10 +1418,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 child: Text(
                                                   'Stop',
                                                   style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.4,
+                                                              1.4,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: const Color(
@@ -1455,7 +1445,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                               builder: (BuildContext context) =>
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             27.0,
                                                     height:
@@ -1501,7 +1491,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                       .center,
                                                               style: TextStyle(
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.7,
                                                                 fontWeight:
@@ -1525,7 +1515,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                         context) *
                                                                 1.6),
                                                         width: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             23.8,
                                                         child: Text(
@@ -1575,7 +1565,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                   'OK',
                                                                   style: TextStyle(
                                                                       fontSize:
-                                                                          AppDimensions.height10(context) *
+                                                                          AppDimensions.font10(context) *
                                                                               1.7,
                                                                       fontFamily:
                                                                           "Laila",
@@ -1681,7 +1671,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 children: [
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
                                                             2.0,
                                                     height:
@@ -1703,7 +1693,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                       'Start',
                                                       style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.4,
                                                           fontWeight:
@@ -1731,7 +1721,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
 
 Widget goalActive(BuildContext context, String goals) {
   return Container(
-    width: AppDimensions.height10(context) * 27.0,
+    width: AppDimensions.width10(context) * 27.0,
     height: AppDimensions.height10(context) * 23.6,
     child: AlertDialog(
       shape: RoundedRectangleBorder(
@@ -1745,13 +1735,13 @@ Widget goalActive(BuildContext context, String goals) {
               top: AppDimensions.height10(context) * 1.9,
               bottom: AppDimensions.height10(context) * 0.2),
           height: AppDimensions.height10(context) * 4.4,
-          width: AppDimensions.height10(context) * 23.8,
+          width: AppDimensions.width10(context) * 23.8,
           child: Center(
             child: Text(
               'Maximum active goal limit\nreached',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: AppDimensions.height10(context) * 1.7,
+                fontSize: AppDimensions.font10(context) * 1.7,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -1761,12 +1751,12 @@ Widget goalActive(BuildContext context, String goals) {
             bottom: AppDimensions.height10(context) * 1.5,
             left: AppDimensions.height10(context) * 1.6,
             right: AppDimensions.height10(context) * 1.6),
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "You can't start this goal because you already have the maximum of $goals active goals. You must stop one of your active goals to start a new one.",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.3,
+            fontSize: AppDimensions.font10(context) * 1.3,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -1791,7 +1781,7 @@ Widget goalActive(BuildContext context, String goals) {
                 child: Text(
                   'OK',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.7,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFFFBFBFB)),
@@ -1817,7 +1807,7 @@ Widget goalActive(BuildContext context, String goals) {
 
 Widget showDeleteAlert(BuildContext context, id) {
   return SizedBox(
-    width: AppDimensions.height10(context) * 27.0,
+    width: AppDimensions.width10(context) * 27.0,
     height: AppDimensions.height10(context) * 18.2,
     child: AlertDialog(
       shape: RoundedRectangleBorder(
@@ -1836,12 +1826,12 @@ Widget showDeleteAlert(BuildContext context, id) {
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Delete practice?",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.7,
+            fontSize: AppDimensions.font10(context) * 1.7,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -1852,12 +1842,12 @@ Widget showDeleteAlert(BuildContext context, id) {
             left: AppDimensions.height10(context) * 1.6,
             right: AppDimensions.height10(context) * 1.6),
         height: AppDimensions.height10(context) * 4.8,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Are you sure you want to delete your\nlast practice? If you do so, your data will\nbe lost.",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.3,
+            fontSize: AppDimensions.font10(context) * 1.3,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -1884,7 +1874,7 @@ Widget showDeleteAlert(BuildContext context, id) {
                     'No',
                     style: TextStyle(
                         color: const Color(0xFFFFFFFF),
-                        fontSize: AppDimensions.height10(context) * 1.7,
+                        fontSize: AppDimensions.font10(context) * 1.7,
                         fontFamily: "Laila",
                         fontWeight: FontWeight.w400),
                   ),
@@ -1913,7 +1903,7 @@ Widget showDeleteAlert(BuildContext context, id) {
                 child: Text(
                   'Yes',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.7,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF007AFF)),
@@ -1935,7 +1925,7 @@ Widget showDeleteAlert(BuildContext context, id) {
 
 Widget showConfirmationAlert(BuildContext context) {
   return SizedBox(
-    width: AppDimensions.height10(context) * 27.0,
+    width: AppDimensions.width10(context) * 27.0,
     height: AppDimensions.height10(context) * 18.2,
     child: AlertDialog(
       shape: RoundedRectangleBorder(
@@ -1954,12 +1944,12 @@ Widget showConfirmationAlert(BuildContext context) {
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Your goal hasn’t been activated",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.7,
+            fontSize: AppDimensions.font10(context) * 1.7,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -1970,12 +1960,12 @@ Widget showConfirmationAlert(BuildContext context) {
             left: AppDimensions.height10(context) * 1.6,
             right: AppDimensions.height10(context) * 1.6),
         height: AppDimensions.height10(context) * 4.8,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Please press 'start' button to\nactivate your goal",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.3,
+            fontSize: AppDimensions.font10(context) * 1.3,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -2002,7 +1992,7 @@ Widget showConfirmationAlert(BuildContext context) {
                     'Go back',
                     style: TextStyle(
                         color: const Color(0xFFFFFFFF),
-                        fontSize: AppDimensions.height10(context) * 1.7,
+                        fontSize: AppDimensions.font10(context) * 1.7,
                         fontFamily: "Laila",
                         fontWeight: FontWeight.w400),
                   ),
@@ -2034,7 +2024,7 @@ Widget showConfirmationAlert(BuildContext context) {
                 child: Text(
                   'Yes, cancel and exit',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.7,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF007AFF)),

@@ -68,7 +68,7 @@ class _inner_textState extends State<inner_text> {
   Widget build(BuildContext context) {
     return Container(
       //height: AppDimensions.height10(context) * 17.0,
-      width: AppDimensions.height10(context) * 36.0,
+      width: AppDimensions.width10(context) * 36.0,
       padding: EdgeInsets.only(
           top: AppDimensions.height10(context) * 1,
           bottom: AppDimensions.height10(context) * 0.5,
@@ -98,7 +98,7 @@ class _inner_textState extends State<inner_text> {
             children: [
               Container(
                   height: AppDimensions.height10(context) * 3.6,
-                  // width: AppDimensions.height10(context) * 26.9,
+                  // width: AppDimensions.width10(context) * 26.9,
                   child: Text(widget.head_text,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -108,7 +108,7 @@ class _inner_textState extends State<inner_text> {
                             : _focusNode.hasFocus
                                 ? const Color(0xFFFFFFFF)
                                 : const Color(0xFF828282),
-                        fontSize: AppDimensions.height10(context) * 2.2,
+                        fontSize: AppDimensions.font10(context) * 2.2,
                       ))),
               widget.delete && widget.index != 0
                   ? GestureDetector(
@@ -119,7 +119,7 @@ class _inner_textState extends State<inner_text> {
                           duration: const Duration(seconds: 1),
                           context: context,
                           builder: (BuildContext context) => Container(
-                            width: AppDimensions.height10(context) * 27.0,
+                            width: AppDimensions.width10(context) * 27.0,
                             height: AppDimensions.height10(context) * 18.2,
                             child: AlertDialog(
                               actionsPadding: const EdgeInsets.all(0.0),
@@ -134,14 +134,14 @@ class _inner_textState extends State<inner_text> {
                                     bottom:
                                         AppDimensions.height10(context) * 0),
                                 height: AppDimensions.height10(context) * 2.2,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Delete",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: "Laila",
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -155,13 +155,13 @@ class _inner_textState extends State<inner_text> {
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 3.2,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Are you sure you want to delete this \n item?",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.3,
+                                        AppDimensions.font10(context) * 1.3,
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -184,7 +184,7 @@ class _inner_textState extends State<inner_text> {
                                           'No',
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontFamily: "Laila",
@@ -195,8 +195,8 @@ class _inner_textState extends State<inner_text> {
                                     Container(
                                       height:
                                           AppDimensions.height10(context) * 4.4,
-                                      width: AppDimensions.height10(context) *
-                                          27.0,
+                                      width:
+                                          AppDimensions.width10(context) * 27.0,
                                       child: TextButton(
                                         onPressed: () {
                                           widget.onDelete();
@@ -205,9 +205,9 @@ class _inner_textState extends State<inner_text> {
                                         child: Text(
                                           'Yes',
                                           style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.7,
                                             fontFamily: "Laila",
                                             fontWeight: FontWeight.w400,
                                             color: const Color.fromRGBO(
@@ -225,7 +225,7 @@ class _inner_textState extends State<inner_text> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 2.1,
-                        width: AppDimensions.height10(context) * 2.1,
+                        width: AppDimensions.width10(context) * 2.1,
                         margin: EdgeInsets.only(
                             bottom: AppDimensions.height10(context) * 1.0,
                             right: AppDimensions.height10(context) * 1.0),
@@ -250,7 +250,7 @@ class _inner_textState extends State<inner_text> {
               margin: EdgeInsets.only(
                   top: AppDimensions.height10(context) * 0.5,
                   bottom: AppDimensions.height10(context)),
-              width: AppDimensions.height10(context) * 32.0,
+              width: AppDimensions.width10(context) * 32.0,
               child: TextFormField(
                 onChanged: widget.onChanged,
                 maxLength: widget.length,
@@ -266,7 +266,7 @@ class _inner_textState extends State<inner_text> {
                     counterStyle: const TextStyle(height: double.minPositive),
                     hintStyle: TextStyle(
                         height: AppDimensions.height10(context) * 0.15,
-                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w500,
                         color: widget.comingFromEditScreen
                             ? Colors.white

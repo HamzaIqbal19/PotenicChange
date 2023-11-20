@@ -36,21 +36,21 @@ class Settings extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 2.6,
+                width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
               )),
         ),
         centerTitle: true,
         title: SizedBox(
-          width: AppDimensions.height10(context) * 17.0,
+          width: AppDimensions.width10(context) * 17.0,
           height: AppDimensions.height10(context) * 4.8,
           child: Center(
             child: Text(
               'Settings',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: AppDimensions.height10(context) * 1.8,
+                  fontSize: AppDimensions.font10(context) * 1.8,
                   fontWeight: FontWeight.w600,
                   color: Colors.white),
             ),
@@ -71,7 +71,7 @@ class Settings extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  width: AppDimensions.height10(context) * 37.4,
+                  width: AppDimensions.width10(context) * 37.4,
                   height: AppDimensions.height10(context) * 23.4,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 15.0),
@@ -80,19 +80,19 @@ class Settings extends StatelessWidget {
                       Align(
                         alignment: Alignment.topLeft,
                         child: SizedBox(
-                          width: AppDimensions.height10(context) * 19.0,
+                          width: AppDimensions.width10(context) * 19.0,
                           height: AppDimensions.height10(context) * 2.4,
                           child: Text(
                             'My Account Details',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.0,
+                                fontSize: AppDimensions.font10(context) * 2.0,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0XFFFBFBFB)),
                           ),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 37.4,
+                        width: AppDimensions.width10(context) * 37.4,
                         height: AppDimensions.height10(context) * 20.0,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.0),
@@ -106,7 +106,7 @@ class Settings extends StatelessWidget {
                             GestureDetector(
                               onTap: () {},
                               child: Container(
-                                width: AppDimensions.height10(context) * 33.4,
+                                width: AppDimensions.width10(context) * 33.4,
                                 height: AppDimensions.height10(context) * 5.0,
                                 margin: EdgeInsets.only(
                                     bottom:
@@ -114,9 +114,9 @@ class Settings extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.1,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    0.1,
                                             color: colorC))),
                                 child: Row(
                                   mainAxisAlignment:
@@ -134,9 +134,9 @@ class Settings extends StatelessWidget {
                                       child: Column(
                                         children: [
                                           SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                19.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    19.0,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 1.9,
@@ -144,7 +144,7 @@ class Settings extends StatelessWidget {
                                               'Name',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w500,
@@ -152,9 +152,9 @@ class Settings extends StatelessWidget {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                4.5,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    4.5,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 2.1,
@@ -162,7 +162,7 @@ class Settings extends StatelessWidget {
                                               'Jane',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w400,
@@ -184,7 +184,7 @@ class Settings extends StatelessWidget {
                                         );
                                       },
                                       child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             4.8,
                                         height:
                                             AppDimensions.height10(context) *
@@ -193,7 +193,7 @@ class Settings extends StatelessWidget {
                                         child: Text(
                                           'EDIT',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w500,
@@ -208,7 +208,7 @@ class Settings extends StatelessWidget {
                             GestureDetector(
                               onTap: () {},
                               child: Container(
-                                width: AppDimensions.height10(context) * 33.4,
+                                width: AppDimensions.width10(context) * 33.4,
                                 height: AppDimensions.height10(context) * 5.0,
                                 alignment: Alignment.topLeft,
                                 margin: EdgeInsets.only(
@@ -217,25 +217,25 @@ class Settings extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.1,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    0.1,
                                             color: colorC))),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          19.0,
+                                      width:
+                                          AppDimensions.width10(context) * 19.0,
                                       height:
                                           AppDimensions.height10(context) * 4.0,
                                       child: Column(
                                         children: [
                                           Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                19.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    19.0,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 1.9,
@@ -244,7 +244,7 @@ class Settings extends StatelessWidget {
                                               'Email address',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w500,
@@ -252,9 +252,9 @@ class Settings extends StatelessWidget {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                19.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    19.0,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 2.1,
@@ -262,7 +262,7 @@ class Settings extends StatelessWidget {
                                               'jane.Smith@email.com',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w400,
@@ -283,7 +283,7 @@ class Settings extends StatelessWidget {
                                         );
                                       },
                                       child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             4.8,
                                         height:
                                             AppDimensions.height10(context) *
@@ -292,7 +292,7 @@ class Settings extends StatelessWidget {
                                         child: Text(
                                           'EDIT',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w500,
@@ -308,23 +308,23 @@ class Settings extends StatelessWidget {
                               onTap: () {},
                               child: Container(
                                 alignment: Alignment.topLeft,
-                                width: AppDimensions.height10(context) * 33.4,
+                                width: AppDimensions.width10(context) * 33.4,
                                 height: AppDimensions.height10(context) * 5.0,
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          19.0,
+                                      width:
+                                          AppDimensions.width10(context) * 19.0,
                                       height:
                                           AppDimensions.height10(context) * 4.0,
                                       child: Column(
                                         children: [
                                           SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                19.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    19.0,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 1.9,
@@ -332,7 +332,7 @@ class Settings extends StatelessWidget {
                                               'Password (8+ character)',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w500,
@@ -340,9 +340,9 @@ class Settings extends StatelessWidget {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                19.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    19.0,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 2.1,
@@ -350,7 +350,7 @@ class Settings extends StatelessWidget {
                                               '**********',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w400,
@@ -371,7 +371,7 @@ class Settings extends StatelessWidget {
                                         );
                                       },
                                       child: Container(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             4.8,
                                         height:
                                             AppDimensions.height10(context) *
@@ -380,7 +380,7 @@ class Settings extends StatelessWidget {
                                         child: Text(
                                           'EDIT',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w500,
@@ -399,7 +399,7 @@ class Settings extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10(context) * 37.4,
+                  width: AppDimensions.width10(context) * 37.4,
                   height: AppDimensions.height10(context) * 16.4,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 3.0),
@@ -408,19 +408,19 @@ class Settings extends StatelessWidget {
                       Align(
                         alignment: Alignment.topLeft,
                         child: SizedBox(
-                          width: AppDimensions.height10(context) * 11.4,
+                          width: AppDimensions.width10(context) * 11.4,
                           height: AppDimensions.height10(context) * 2.4,
                           child: Text(
                             'Preferences',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.0,
+                                fontSize: AppDimensions.font10(context) * 2.0,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0XFFFBFBFB)),
                           ),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 37.4,
+                        width: AppDimensions.width10(context) * 37.4,
                         height: AppDimensions.height10(context) * 13.0,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.0),
@@ -439,36 +439,36 @@ class Settings extends StatelessWidget {
                                 );
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 33.4,
+                                width: AppDimensions.width10(context) * 33.4,
                                 height: AppDimensions.height10(context) * 5.0,
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.1,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    0.1,
                                             color: colorC))),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          20.6,
+                                      width:
+                                          AppDimensions.width10(context) * 20.6,
                                       height:
                                           AppDimensions.height10(context) * 1.9,
                                       child: Text(
                                         'Notifications',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w500,
                                             color: colorC),
                                       ),
                                     ),
                                     SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.4,
                                         height:
                                             AppDimensions.height10(context) *
@@ -477,7 +477,7 @@ class Settings extends StatelessWidget {
                                           onTap: () {},
                                           child: Image.asset(
                                             'assets/images/BTN Back.webp',
-                                            //width: AppDimensions.height10(context) * 2.6,
+                                            //width: AppDimensions.width10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
                                             fit: BoxFit.cover,
@@ -488,7 +488,7 @@ class Settings extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 33.4,
+                              width: AppDimensions.width10(context) * 33.4,
                               height: AppDimensions.height10(context) * 5.0,
                               child: Row(
                                 mainAxisAlignment:
@@ -496,14 +496,14 @@ class Settings extends StatelessWidget {
                                 children: [
                                   SizedBox(
                                     width:
-                                        AppDimensions.height10(context) * 20.6,
+                                        AppDimensions.width10(context) * 20.6,
                                     height:
                                         AppDimensions.height10(context) * 1.9,
                                     child: Text(
                                       'Invite a friend',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           fontWeight: FontWeight.w500,
                                           color: colorC),
@@ -518,7 +518,7 @@ class Settings extends StatelessWidget {
                                         onTap: () {},
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
                                           fit: BoxFit.cover,
@@ -534,7 +534,7 @@ class Settings extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10(context) * 37.4,
+                  width: AppDimensions.width10(context) * 37.4,
                   height: AppDimensions.height10(context) * 41.4,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 3.0),
@@ -543,19 +543,19 @@ class Settings extends StatelessWidget {
                       Align(
                         alignment: Alignment.topLeft,
                         child: SizedBox(
-                          width: AppDimensions.height10(context) * 5.3,
+                          width: AppDimensions.width10(context) * 5.3,
                           height: AppDimensions.height10(context) * 2.4,
                           child: Text(
                             'About',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.0,
+                                fontSize: AppDimensions.font10(context) * 2.0,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFFFBFBFB)),
                           ),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 37.4,
+                        width: AppDimensions.width10(context) * 37.4,
                         height: AppDimensions.height10(context) * 38.0,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.0),
@@ -574,36 +574,36 @@ class Settings extends StatelessWidget {
                                 );
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 33.4,
+                                width: AppDimensions.width10(context) * 33.4,
                                 height: AppDimensions.height10(context) * 5.0,
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.1,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    0.1,
                                             color: colorC))),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          20.6,
+                                      width:
+                                          AppDimensions.width10(context) * 20.6,
                                       height:
                                           AppDimensions.height10(context) * 1.9,
                                       child: Text(
                                         'About us',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w500,
                                             color: colorC),
                                       ),
                                     ),
                                     SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.4,
                                         height:
                                             AppDimensions.height10(context) *
@@ -612,7 +612,7 @@ class Settings extends StatelessWidget {
                                           onTap: () {},
                                           child: Image.asset(
                                             'assets/images/BTN Back.webp',
-                                            //width: AppDimensions.height10(context) * 2.6,
+                                            //width: AppDimensions.width10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
                                             fit: BoxFit.cover,
@@ -638,43 +638,43 @@ class Settings extends StatelessWidget {
                                 dashboard_sheet(context);
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 33.4,
+                                width: AppDimensions.width10(context) * 33.4,
                                 height: AppDimensions.height10(context) * 5.0,
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.1,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    0.1,
                                             color: colorC))),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          20.6,
+                                      width:
+                                          AppDimensions.width10(context) * 20.6,
                                       height:
                                           AppDimensions.height10(context) * 1.9,
                                       child: Text(
                                         'Tutorial',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w500,
                                             color: colorC),
                                       ),
                                     ),
                                     SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.4,
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.39,
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
                                           fit: BoxFit.cover,
@@ -684,13 +684,13 @@ class Settings extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 33.4,
+                              width: AppDimensions.width10(context) * 33.4,
                               height: AppDimensions.height10(context) * 5.0,
                               decoration: BoxDecoration(
                                   border: Border(
                                       bottom: BorderSide(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   0.1,
                                           color: colorC))),
                               child: Row(
@@ -699,14 +699,14 @@ class Settings extends StatelessWidget {
                                 children: [
                                   SizedBox(
                                     width:
-                                        AppDimensions.height10(context) * 20.6,
+                                        AppDimensions.width10(context) * 20.6,
                                     height:
                                         AppDimensions.height10(context) * 1.9,
                                     child: Text(
                                       'FAQs',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           fontWeight: FontWeight.w500,
                                           color: colorC),
@@ -719,7 +719,7 @@ class Settings extends StatelessWidget {
                                           1.39,
                                       child: Image.asset(
                                         'assets/images/BTN Back.webp',
-                                        //width: AppDimensions.height10(context) * 2.6,
+                                        //width: AppDimensions.width10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
                                         color: colorC,
                                         fit: BoxFit.cover,
@@ -728,13 +728,13 @@ class Settings extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 33.4,
+                              width: AppDimensions.width10(context) * 33.4,
                               height: AppDimensions.height10(context) * 5.0,
                               decoration: BoxDecoration(
                                   border: Border(
                                       bottom: BorderSide(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   0.1,
                                           color: colorC))),
                               child: Row(
@@ -743,14 +743,14 @@ class Settings extends StatelessWidget {
                                 children: [
                                   SizedBox(
                                     width:
-                                        AppDimensions.height10(context) * 20.6,
+                                        AppDimensions.width10(context) * 20.6,
                                     height:
                                         AppDimensions.height10(context) * 1.9,
                                     child: Text(
                                       'Contact us',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           fontWeight: FontWeight.w500,
                                           color: colorC),
@@ -765,7 +765,7 @@ class Settings extends StatelessWidget {
                                         onTap: () {},
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
                                           fit: BoxFit.cover,
@@ -779,43 +779,43 @@ class Settings extends StatelessWidget {
                                 export_data_sheet(context);
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 33.4,
+                                width: AppDimensions.width10(context) * 33.4,
                                 height: AppDimensions.height10(context) * 5.0,
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.1,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    0.1,
                                             color: colorC))),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          20.6,
+                                      width:
+                                          AppDimensions.width10(context) * 20.6,
                                       height:
                                           AppDimensions.height10(context) * 1.9,
                                       child: Text(
                                         'Export data',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w500,
                                             color: colorC),
                                       ),
                                     ),
                                     SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.4,
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.39,
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
                                           fit: BoxFit.cover,
@@ -850,43 +850,43 @@ class Settings extends StatelessWidget {
                                 );
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 33.4,
+                                width: AppDimensions.width10(context) * 33.4,
                                 height: AppDimensions.height10(context) * 5.0,
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.1,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    0.1,
                                             color: colorC))),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          20.6,
+                                      width:
+                                          AppDimensions.width10(context) * 20.6,
                                       height:
                                           AppDimensions.height10(context) * 1.9,
                                       child: Text(
                                         'Terms of service',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w500,
                                             color: colorC),
                                       ),
                                     ),
                                     SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.4,
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.39,
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
                                           fit: BoxFit.cover,
@@ -921,36 +921,36 @@ class Settings extends StatelessWidget {
                                 );
                               },
                               child: SizedBox(
-                                width: AppDimensions.height10(context) * 33.4,
+                                width: AppDimensions.width10(context) * 33.4,
                                 height: AppDimensions.height10(context) * 5.0,
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          20.6,
+                                      width:
+                                          AppDimensions.width10(context) * 20.6,
                                       height:
                                           AppDimensions.height10(context) * 1.9,
                                       child: Text(
                                         'Privacy policy',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w500,
                                             color: colorC),
                                       ),
                                     ),
                                     SizedBox(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             2.4,
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.39,
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
                                           fit: BoxFit.cover,
@@ -972,7 +972,7 @@ class Settings extends StatelessWidget {
                       duration: const Duration(seconds: 1),
                       context: context,
                       builder: (BuildContext context) => SizedBox(
-                            width: AppDimensions.height10(context) * 27.0,
+                            width: AppDimensions.width10(context) * 27.0,
                             height: AppDimensions.height10(context) * 19.8,
                             child: AlertDialog(
                               contentPadding: EdgeInsets.zero,
@@ -992,15 +992,14 @@ class Settings extends StatelessWidget {
                                       bottom: AppDimensions.height10(context) *
                                           0.2),
                                   height: AppDimensions.height10(context) * 2.2,
-                                  width: AppDimensions.height10(context) * 23.8,
+                                  width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
                                     'Log out?',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontFamily: 'laila',
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
+                                            AppDimensions.font10(context) * 1.7,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFF000000)),
                                   )),
@@ -1013,7 +1012,7 @@ class Settings extends StatelessWidget {
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 4.8,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Are you sure you want to log out? If you\ndo, you will be prompted to login again\nby entering your email and password.",
                                   textAlign: TextAlign.center,
@@ -1022,7 +1021,7 @@ class Settings extends StatelessWidget {
                                       height: AppDimensions.height10(context) *
                                           0.15,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.3,
+                                          AppDimensions.font10(context) * 1.3,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF000000)),
                                 ),
@@ -1059,7 +1058,7 @@ class Settings extends StatelessWidget {
                                           'Yes',
                                           style: TextStyle(
                                               color: const Color(0xFFFFFFFF),
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontFamily: "Laila",
@@ -1086,7 +1085,7 @@ class Settings extends StatelessWidget {
                                         child: Text(
                                           'Cancel',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontFamily: "Laila",
@@ -1109,7 +1108,7 @@ class Settings extends StatelessWidget {
                             ),
                           )),
                   child: Container(
-                    width: AppDimensions.height10(context) * 13.0,
+                    width: AppDimensions.width10(context) * 13.0,
                     height: AppDimensions.height10(context) * 5.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.4),
@@ -1118,14 +1117,14 @@ class Settings extends StatelessWidget {
                           AppDimensions.height10(context) * 5.0),
                       border: Border.all(
                           color: const Color(0xFFFBFBFB),
-                          width: AppDimensions.height10(context) * 0.1),
+                          width: AppDimensions.width10(context) * 0.1),
                       color: const Color(0xFFF5F5F5),
                     ),
                     child: Center(
                       child: Text(
                         'Log out',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             color: const Color(0XFF8C648A)),
                       ),
@@ -1139,7 +1138,7 @@ class Settings extends StatelessWidget {
                       duration: const Duration(seconds: 1),
                       context: context,
                       builder: (BuildContext context) => SizedBox(
-                            width: AppDimensions.height10(context) * 27.0,
+                            width: AppDimensions.width10(context) * 27.0,
                             height: AppDimensions.height10(context) * 18.2,
                             child: AlertDialog(
                               contentPadding: EdgeInsets.zero,
@@ -1159,15 +1158,14 @@ class Settings extends StatelessWidget {
                                       bottom: AppDimensions.height10(context) *
                                           0.2),
                                   height: AppDimensions.height10(context) * 2.2,
-                                  width: AppDimensions.height10(context) * 23.8,
+                                  width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
                                     'Delete account?',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontFamily: 'laila',
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
+                                            AppDimensions.font10(context) * 1.7,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFF000000)),
                                   )),
@@ -1180,7 +1178,7 @@ class Settings extends StatelessWidget {
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 3.2,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Are you sure you want to delete your\naccount? You will lose all your data.",
                                   textAlign: TextAlign.center,
@@ -1189,7 +1187,7 @@ class Settings extends StatelessWidget {
                                       height: AppDimensions.height10(context) *
                                           0.15,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.3,
+                                          AppDimensions.font10(context) * 1.3,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF000000)),
                                 ),
@@ -1231,7 +1229,7 @@ class Settings extends StatelessWidget {
                                           'Yes, delete my account',
                                           style: TextStyle(
                                               color: const Color(0xFFFFFFFF),
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontFamily: "Laila",
@@ -1258,7 +1256,7 @@ class Settings extends StatelessWidget {
                                         child: Text(
                                           'Cancel',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontFamily: "Laila",
@@ -1281,7 +1279,7 @@ class Settings extends StatelessWidget {
                             ),
                           )),
                   child: Container(
-                    width: AppDimensions.height10(context) * 18.9,
+                    width: AppDimensions.width10(context) * 18.9,
                     height: AppDimensions.height10(context) * 5.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 4.0,
@@ -1292,7 +1290,7 @@ class Settings extends StatelessWidget {
                         style: TextStyle(
                             height: AppDimensions.height10(context) * 0.15,
                             decoration: TextDecoration.underline,
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             color: const Color(0XFF8C648A)),
                       ),
@@ -1326,7 +1324,7 @@ class Settings extends StatelessWidget {
           //                 child: Text(
           //                   connected ? 'Back Online' : 'You’re Offline',
           //                   style: TextStyle(
-          //                       fontSize: AppDimensions.height10(context) * 1.4,
+          //                       fontSize: AppDimensions.font10(context) * 1.4,
           //                       fontWeight: FontWeight.w400,
           //                       color: const Color(0xFFFBFBFB)),
           //                 ),
@@ -1362,20 +1360,20 @@ class About_us extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 2.6,
+                width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
               )),
         ),
         centerTitle: true,
         title: SizedBox(
-          width: AppDimensions.height10(context) * 17.0,
+          width: AppDimensions.width10(context) * 17.0,
           height: AppDimensions.height10(context) * 4.8,
           child: Text(
             'About',
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: AppDimensions.height10(context) * 1.8,
+                fontSize: AppDimensions.font10(context) * 1.8,
                 fontWeight: FontWeight.w600,
                 color: Colors.white),
           ),
@@ -1392,7 +1390,7 @@ class About_us extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: AppDimensions.height10(context) * 37.4,
+              width: AppDimensions.width10(context) * 37.4,
               height: AppDimensions.height10(context) * 21.4,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 15.0),
@@ -1401,19 +1399,19 @@ class About_us extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
-                      width: AppDimensions.height10(context) * 13.6,
+                      width: AppDimensions.width10(context) * 13.6,
                       height: AppDimensions.height10(context) * 2.4,
                       child: Text(
                         'About Potenic',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.0,
+                            fontSize: AppDimensions.font10(context) * 2.0,
                             fontWeight: FontWeight.w600,
                             color: const Color(0XFFFBFBFB)),
                       ),
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10(context) * 37.4,
+                    width: AppDimensions.width10(context) * 37.4,
                     height: AppDimensions.height10(context) * 18.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.0),
@@ -1427,40 +1425,38 @@ class About_us extends StatelessWidget {
                         GestureDetector(
                           onTap: () {},
                           child: Container(
-                            width: AppDimensions.height10(context) * 33.4,
+                            width: AppDimensions.width10(context) * 33.4,
                             height: AppDimensions.height10(context) * 5.0,
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: colorC))),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 20.6,
+                                  width: AppDimensions.width10(context) * 20.6,
                                   height: AppDimensions.height10(context) * 1.9,
                                   child: Text(
                                     'Our story',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500,
                                         color: colorC),
                                   ),
                                 ),
                                 SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
+                                    width: AppDimensions.width10(context) * 2.4,
                                     height:
                                         AppDimensions.height10(context) * 1.39,
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
                                         'assets/images/BTN Back.webp',
-                                        //width: AppDimensions.height10(context) * 2.6,
+                                        //width: AppDimensions.width10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
                                         color: colorC,
                                         fit: BoxFit.cover,
@@ -1473,40 +1469,38 @@ class About_us extends StatelessWidget {
                         GestureDetector(
                           onTap: () {},
                           child: Container(
-                            width: AppDimensions.height10(context) * 33.4,
+                            width: AppDimensions.width10(context) * 33.4,
                             height: AppDimensions.height10(context) * 5.0,
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10(context) *
+                                        width: AppDimensions.width10(context) *
                                             0.1,
                                         color: colorC))),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 20.6,
+                                  width: AppDimensions.width10(context) * 20.6,
                                   height: AppDimensions.height10(context) * 1.9,
                                   child: Text(
                                     'Like us? Rate us',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500,
                                         color: colorC),
                                   ),
                                 ),
                                 SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
+                                    width: AppDimensions.width10(context) * 2.4,
                                     height:
                                         AppDimensions.height10(context) * 1.39,
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
                                         'assets/images/BTN Back.webp',
-                                        //width: AppDimensions.height10(context) * 2.6,
+                                        //width: AppDimensions.width10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
                                         color: colorC,
                                         fit: BoxFit.cover,
@@ -1517,32 +1511,32 @@ class About_us extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: AppDimensions.height10(context) * 33.4,
+                          width: AppDimensions.width10(context) * 33.4,
                           height: AppDimensions.height10(context) * 5.0,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(
-                                width: AppDimensions.height10(context) * 20.6,
+                                width: AppDimensions.width10(context) * 20.6,
                                 height: AppDimensions.height10(context) * 1.9,
                                 child: Text(
                                   'Follow us',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w500,
                                       color: colorC),
                                 ),
                               ),
                               SizedBox(
-                                  width: AppDimensions.height10(context) * 2.4,
+                                  width: AppDimensions.width10(context) * 2.4,
                                   height:
                                       AppDimensions.height10(context) * 1.39,
                                   child: GestureDetector(
                                     onTap: () {},
                                     child: Image.asset(
                                       'assets/images/BTN Back.webp',
-                                      //width: AppDimensions.height10(context) * 2.6,
+                                      //width: AppDimensions.width10(context) * 2.6,
                                       //height: AppDimensions.height10(context) * 2.6,
                                       color: colorC,
                                       fit: BoxFit.cover,
@@ -1558,7 +1552,7 @@ class About_us extends StatelessWidget {
               ),
             ),
             Container(
-              width: AppDimensions.height10(context) * 17.0,
+              width: AppDimensions.width10(context) * 17.0,
               height: AppDimensions.height10(context) * 0.5,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 51.7),
@@ -1583,7 +1577,7 @@ void export_data_sheet(context) {
         top: Radius.circular(AppDimensions.height10(context) * 2.0),
       )),
       builder: (context) => Container(
-            width: AppDimensions.height10(context) * 41.4,
+            width: AppDimensions.width10(context) * 41.4,
             height: AppDimensions.height10(context) * 48.7,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
@@ -1601,7 +1595,7 @@ void export_data_sheet(context) {
                       Navigator.pop(context);
                     },
                     child: Container(
-                      width: AppDimensions.height10(context) * 2.6,
+                      width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.5,
@@ -1620,12 +1614,12 @@ void export_data_sheet(context) {
                       bottom: AppDimensions.height10(context) * 3.9),
                   child: Image.asset(
                     'assets/images/potenic__icon.webp',
-                    width: AppDimensions.height10(context) * 8.202,
+                    width: AppDimensions.width10(context) * 8.202,
                     height: AppDimensions.height10(context) * 11.2,
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10(context) * 18.3,
+                  width: AppDimensions.width10(context) * 18.3,
                   height: AppDimensions.height10(context) * 3.6,
                   // color: Colors.amber,
                   alignment: Alignment.center,
@@ -1633,7 +1627,7 @@ void export_data_sheet(context) {
                   child: Text(
                     'Export data',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 3.0,
+                        fontSize: AppDimensions.font10(context) * 3.0,
                         letterSpacing: AppDimensions.height10(context) * 0.2,
                         height: AppDimensions.height10(context) * 0.15,
                         fontWeight: FontWeight.w700,
@@ -1641,7 +1635,7 @@ void export_data_sheet(context) {
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10(context) * 35.2,
+                  width: AppDimensions.width10(context) * 35.2,
                   height: AppDimensions.height10(context) * 17.6,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 1.1),
@@ -1652,7 +1646,7 @@ void export_data_sheet(context) {
                             style: TextStyle(
                                 fontFamily: 'Laila',
                                 height: AppDimensions.height10(context) * 0.15,
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFF437296)),
                             children: const [

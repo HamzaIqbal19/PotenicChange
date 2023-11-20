@@ -241,7 +241,7 @@ class _schedule_cardState extends State<schedule_card> {
                   for (int i = 0; i < num && i <= 9; i++) ...[
                     Container(
                       // color:Colors.orange,
-                      width: AppDimensions.height10(context) * 38.2,
+                      width: AppDimensions.width10(context) * 38.2,
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Row(
                         children: [
@@ -307,7 +307,7 @@ class _schedule_cardState extends State<schedule_card> {
                   ]
 
                   // Container(
-                  //   width: AppDimensions.height10(context) * 38.2,
+                  //   width: AppDimensions.width10(context) * 38.2,
                   //   padding: const EdgeInsets.only(bottom: 10),
                   //   child: Row(
                   //     children: [
@@ -413,7 +413,7 @@ class _startTimerStateState extends State<startTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 31.6,
+      width: AppDimensions.width10(context) * 31.6,
       height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
           color: const Color.fromRGBO(0, 0, 0, 0.1),
@@ -429,18 +429,18 @@ class _startTimerStateState extends State<startTimerState> {
                 //textAlign: TextAlign.left,
                 style: TextStyle(
                   color: const Color.fromRGBO(100, 100, 100, 1),
-                  fontSize: AppDimensions.height10(context) * 1.6,
+                  fontSize: AppDimensions.font10(context) * 1.6,
                   fontFamily: "Laila",
                   fontWeight: FontWeight.w700,
                 ),
               ),
               SizedBox(
-                width: AppDimensions.height10(context) * 17.2,
+                width: AppDimensions.width10(context) * 17.2,
                 child: Text(
                   widget.start_Time,
                   style: TextStyle(
                     color: const Color.fromRGBO(250, 153, 52, 1),
-                    fontSize: AppDimensions.height10(context) * 1.6,
+                    fontSize: AppDimensions.font10(context) * 1.6,
                     fontFamily: "Laila",
                     fontWeight: FontWeight.w700,
                   ),
@@ -449,7 +449,7 @@ class _startTimerStateState extends State<startTimerState> {
             ],
           ),
           SizedBox(
-            width: AppDimensions.height10(context) * 2.4,
+            width: AppDimensions.width10(context) * 2.4,
             child: Center(
               child: GestureDetector(
                   onTap: () {
@@ -492,7 +492,7 @@ class _startTimerStateState extends State<startTimerState> {
                   child: SizedBox(
                       child: Image.asset(
                     'assets/images/Polygon_orange.webp',
-                    width: AppDimensions.height10(context) * 1.7,
+                    width: AppDimensions.width10(context) * 1.7,
                     height: AppDimensions.height10(context) * 1.7,
                   ))),
             ),
@@ -549,7 +549,7 @@ class _endTimerStateState extends State<endTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 31.6,
+      width: AppDimensions.width10(context) * 31.6,
       height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
           color: const Color.fromRGBO(0, 0, 0, 0.1),
@@ -565,18 +565,18 @@ class _endTimerStateState extends State<endTimerState> {
                 //textAlign: TextAlign.left,
                 style: TextStyle(
                   color: const Color.fromRGBO(100, 100, 100, 1),
-                  fontSize: AppDimensions.height10(context) * 1.6,
+                  fontSize: AppDimensions.font10(context) * 1.6,
                   fontFamily: "Laila",
                   fontWeight: FontWeight.w700,
                 ),
               ),
               SizedBox(
-                width: AppDimensions.height10(context) * 17.2,
+                width: AppDimensions.width10(context) * 17.2,
                 child: Text(
                   widget.endTime,
                   style: TextStyle(
                     color: const Color.fromRGBO(250, 153, 52, 1),
-                    fontSize: AppDimensions.height10(context) * 1.6,
+                    fontSize: AppDimensions.font10(context) * 1.6,
                     fontFamily: "Laila",
                     fontWeight: FontWeight.w700,
                   ),
@@ -585,7 +585,7 @@ class _endTimerStateState extends State<endTimerState> {
             ],
           ),
           SizedBox(
-            width: AppDimensions.height10(context) * 2.4,
+            width: AppDimensions.width10(context) * 2.4,
             // height: AppDimensions.height10*1.7,
             // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
             child: Center(
@@ -628,7 +628,7 @@ class _endTimerStateState extends State<endTimerState> {
                   child: SizedBox(
                       child: Image.asset(
                     'assets/images/Polygon_orange.webp',
-                    width: AppDimensions.height10(context) * 1.7,
+                    width: AppDimensions.width10(context) * 1.7,
                     height: AppDimensions.height10(context) * 1.7,
                   ))),
             ),

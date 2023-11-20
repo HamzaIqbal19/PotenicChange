@@ -29,7 +29,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: AppDimensions.height10(context) * 31.8,
+                  width: AppDimensions.width10(context) * 31.8,
                   height: AppDimensions.height10(context) * 3.4,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 5.0,
@@ -38,14 +38,14 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                     'Your Hurdle Summary',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       fontWeight: FontWeight.w700,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10(context) * 23.2,
+                  width: AppDimensions.width10(context) * 23.2,
                   height: AppDimensions.height10(context) * 3.8,
                   margin: EdgeInsets.only(
                       bottom: AppDimensions.height10(context) * 3.765),
@@ -53,14 +53,14 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                     'Below is an overview of your\nfaced hurdles',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.6,
+                      fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w500,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10(context) * 19.6,
+                  width: AppDimensions.width10(context) * 19.6,
                   height: AppDimensions.height10(context) * 19.6,
                   margin: EdgeInsets.only(
                       bottom: AppDimensions.height10(context) * 3.828),
@@ -72,24 +72,24 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: AppDimensions.height10(context) * 7.1,
+                        width: AppDimensions.width10(context) * 7.1,
                         height: AppDimensions.height10(context) * 1.9,
                         child: Text(
                           'Husband',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w700),
                         ),
                       ),
                       Container(
-                        // width: AppDimensions.height10(context) * 1571,
+                        // width: AppDimensions.width10(context) * 1571,
                         // height: AppDimensions.height10(context) * 1.7,
                         child: Text(
                           'Makes a mistake',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.4,
+                              fontSize: AppDimensions.font10(context) * 1.4,
                               fontWeight: FontWeight.w400),
                         ),
                       )
@@ -97,21 +97,21 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10(context) * 32.6,
+                  width: AppDimensions.width10(context) * 32.6,
                   height: AppDimensions.height10(context) * 2.4,
                   child: Center(
                     child: Text(
                       'Current feelings and thoughts',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 2.0,
+                          fontSize: AppDimensions.font10(context) * 2.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.white),
                     ),
                   ),
                 ),
                 Container(
-                  // width: AppDimensions.height10(context) * 41.4,
+                  // width: AppDimensions.width10(context) * 41.4,
                   height: AppDimensions.height10(context) * 14.7,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 2.6),
@@ -121,7 +121,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       children: [
                         Container(
                           height: AppDimensions.height10(context) * 14.5,
-                          width: AppDimensions.height10(context) * 14.5,
+                          width: AppDimensions.width10(context) * 14.5,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
@@ -137,15 +137,14 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w400),
                             ),
                           ),
                         ),
                         Container(
                           height: AppDimensions.height10(context) * 14.5,
-                          width: AppDimensions.height10(context) * 14.5,
+                          width: AppDimensions.width10(context) * 14.5,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
@@ -161,15 +160,14 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w400),
                             ),
                           ),
                         ),
                         Container(
                           height: AppDimensions.height10(context) * 14.5,
-                          width: AppDimensions.height10(context) * 14.5,
+                          width: AppDimensions.width10(context) * 14.5,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
@@ -185,15 +183,14 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w400),
                             ),
                           ),
                         ),
                         Container(
                           height: AppDimensions.height10(context) * 14.5,
-                          width: AppDimensions.height10(context) * 14.5,
+                          width: AppDimensions.width10(context) * 14.5,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
@@ -209,8 +206,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w400),
                             ),
                           ),
@@ -221,7 +217,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                 ),
                 Container(
                     height: AppDimensions.height10(context) * 2.0,
-                    width: AppDimensions.height10(context) * 2.0,
+                    width: AppDimensions.width10(context) * 2.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.3),
                     padding:
@@ -236,7 +232,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       //size: 10,
                     )),
                 Container(
-                  width: AppDimensions.height10(context) * 32.6,
+                  width: AppDimensions.width10(context) * 32.6,
                   height: AppDimensions.height10(context) * 2.4,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 3.0),
@@ -245,7 +241,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       'Positive actions',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 2.0,
+                          fontSize: AppDimensions.font10(context) * 2.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.white),
                     ),
@@ -253,13 +249,13 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 14.5,
-                  width: AppDimensions.height10(context) * 14.5,
+                  width: AppDimensions.width10(context) * 14.5,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 3.9),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                          width: AppDimensions.height10(context) * 0.1,
+                          width: AppDimensions.width10(context) * 0.1,
                           color: Colors.white),
                       image: const DecorationImage(
                           image: AssetImage('assets/images/Ellipse 161.webp'))),
@@ -269,14 +265,14 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 1.4,
+                          fontSize: AppDimensions.font10(context) * 1.4,
                           fontWeight: FontWeight.w400),
                     ),
                   ),
                 ),
                 Container(
                     height: AppDimensions.height10(context) * 2.0,
-                    width: AppDimensions.height10(context) * 2.0,
+                    width: AppDimensions.width10(context) * 2.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0),
                     padding:
@@ -291,7 +287,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       //size: 10,
                     )),
                 Container(
-                  width: AppDimensions.height10(context) * 32.6,
+                  width: AppDimensions.width10(context) * 32.6,
                   height: AppDimensions.height10(context) * 2.4,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 3.0),
@@ -300,7 +296,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       'Positive thoughts',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 2.0,
+                          fontSize: AppDimensions.font10(context) * 2.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.white),
                     ),
@@ -308,13 +304,13 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 14.5,
-                  width: AppDimensions.height10(context) * 14.5,
+                  width: AppDimensions.width10(context) * 14.5,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 3.9),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                          width: AppDimensions.height10(context) * 0.1,
+                          width: AppDimensions.width10(context) * 0.1,
                           color: Colors.white),
                       image: const DecorationImage(
                           image: AssetImage('assets/images/Ellipse 161.webp'))),
@@ -324,14 +320,14 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 1.4,
+                          fontSize: AppDimensions.font10(context) * 1.4,
                           fontWeight: FontWeight.w400),
                     ),
                   ),
                 ),
                 Container(
                     height: AppDimensions.height10(context) * 2.0,
-                    width: AppDimensions.height10(context) * 2.0,
+                    width: AppDimensions.width10(context) * 2.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0),
                     padding:
@@ -346,7 +342,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       //size: 10,
                     )),
                 Container(
-                    width: AppDimensions.height10(context) * 37.8,
+                    width: AppDimensions.width10(context) * 37.8,
                     height: AppDimensions.height10(context) * 5.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 4.2,
@@ -356,7 +352,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         children: [
                           Container(
                               height: AppDimensions.height10(context) * 5.0,
-                              width: AppDimensions.height10(context) * 15.7,
+                              width: AppDimensions.width10(context) * 15.7,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.height10(context) * 1.4),
                               decoration: BoxDecoration(
@@ -384,7 +380,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                                           'Delete',
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w700,
@@ -395,7 +391,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                                   ))),
                           Container(
                               height: AppDimensions.height10(context) * 5.0,
-                              width: AppDimensions.height10(context) * 19.7,
+                              width: AppDimensions.width10(context) * 19.7,
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(
                                   begin: Alignment.topCenter,
@@ -420,8 +416,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+                                            AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'Poppins'),
                                   ))),

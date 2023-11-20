@@ -86,7 +86,7 @@ class _VerificationState extends State<Verification> {
               //   child: IconButton(
               //     icon: Image.asset(
               //       'assets/images/Back.webp',
-              //       width: AppDimensions.height10(context) * 3,
+              //       width: AppDimensions.width10(context) * 3,
               //       height: AppDimensions.height10(context) * 3,
               //       fit: BoxFit.contain,
               //     ),
@@ -102,7 +102,7 @@ class _VerificationState extends State<Verification> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 3.0,
+                      width: AppDimensions.width10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
                     ),
@@ -143,14 +143,14 @@ class _VerificationState extends State<Verification> {
                 SizedBox(height: AppDimensions.height10(context) * 2.32),
                 Container(
                   height: AppDimensions.height10(context) * 6.8,
-                  width: AppDimensions.height10(context) * 32.0,
+                  width: AppDimensions.width10(context) * 32.0,
                   child: Text(
                     "Verification",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 2.8,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                     ),
                   ),
                 ),
@@ -165,20 +165,20 @@ class _VerificationState extends State<Verification> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 2,
+                        fontSize: AppDimensions.font10(context) * 2,
                       ),
                     )),
                 SizedBox(height: AppDimensions.height10(context) * 0.92),
                 Container(
                     height: AppDimensions.height10(context) * 7 + 4,
-                    width: AppDimensions.height10(context) * 31.6,
+                    width: AppDimensions.width10(context) * 31.6,
                     child: RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
                             style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.4,
                                 height: AppDimensions.height10(context) * 0.16,
                                 fontFamily: 'laila'),
                             children: [
@@ -213,7 +213,7 @@ class _VerificationState extends State<Verification> {
                                   child: TextFormField(
                                     style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.4,
+                                          AppDimensions.font10(context) * 2.4,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xFFFBFBFB),
                                     ),
@@ -380,7 +380,7 @@ class _VerificationState extends State<Verification> {
                   },
                   child: Container(
                     height: AppDimensions.height10(context) * 4.4,
-                    width: AppDimensions.height10(context) * 26.7,
+                    width: AppDimensions.width10(context) * 26.7,
                     decoration: BoxDecoration(
                       color: const Color(0xFFFFFFFF),
                       borderRadius: BorderRadius.circular(
@@ -394,8 +394,7 @@ class _VerificationState extends State<Verification> {
                                 _timerActive == true ? 'Resend OTP' : 'Verify',
                                 style: TextStyle(
                                   color: const Color(0xFF8C648A),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
                                   fontWeight: FontWeight.w600,
                                 ),
                               )

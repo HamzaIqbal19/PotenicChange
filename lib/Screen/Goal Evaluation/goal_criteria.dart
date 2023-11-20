@@ -245,7 +245,7 @@ class _your_whyState extends State<your_why> {
               duration: const Duration(seconds: 1),
               context: context,
               builder: (BuildContext context) => Container(
-                  width: AppDimensions.height10(context) * 27.0,
+                  width: AppDimensions.width10(context) * 27.0,
                   height: AppDimensions.height10(context) * 18.2,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
@@ -267,12 +267,12 @@ class _your_whyState extends State<your_why> {
                           left: AppDimensions.height10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
-                      width: AppDimensions.height10(context) * 23.8,
+                      width: AppDimensions.width10(context) * 23.8,
                       child: Text(
                         "Exit without saving changes?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.7,
+                          fontSize: AppDimensions.font10(context) * 1.7,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -282,12 +282,12 @@ class _your_whyState extends State<your_why> {
                           bottom: AppDimensions.height10(context) * 1.5,
                           left: AppDimensions.height10(context) * 1.6,
                           right: AppDimensions.height10(context) * 1.6),
-                      width: AppDimensions.height10(context) * 23.8,
+                      width: AppDimensions.width10(context) * 23.8,
                       child: Text(
                         "Are you sure you want to exit, all your\nchanges will be lost?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.3,
+                          fontSize: AppDimensions.font10(context) * 1.3,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -320,7 +320,7 @@ class _your_whyState extends State<your_why> {
                                 style: TextStyle(
                                     color: const Color(0xFFFFFFFF),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w400),
                               ),
@@ -343,7 +343,7 @@ class _your_whyState extends State<your_why> {
                                 'Cancel',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xFF007AFF)),
@@ -390,7 +390,7 @@ class _your_whyState extends State<your_why> {
                         duration: const Duration(seconds: 1),
                         context: context,
                         builder: (BuildContext context) => Container(
-                            width: AppDimensions.height10(context) * 27.0,
+                            width: AppDimensions.width10(context) * 27.0,
                             height: AppDimensions.height10(context) * 18.2,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
@@ -414,13 +414,13 @@ class _your_whyState extends State<your_why> {
                                     bottom:
                                         AppDimensions.height10(context) * 0.2),
                                 height: AppDimensions.height10(context) * 2.2,
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Exit without saving changes?",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.7,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -432,13 +432,13 @@ class _your_whyState extends State<your_why> {
                                     left: AppDimensions.height10(context) * 1.6,
                                     right:
                                         AppDimensions.height10(context) * 1.6),
-                                width: AppDimensions.height10(context) * 23.8,
+                                width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Are you sure you want to exit, all your\nchanges will be lost?",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.3,
+                                        AppDimensions.font10(context) * 1.3,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -473,7 +473,7 @@ class _your_whyState extends State<your_why> {
                                           'Yes',
                                           style: TextStyle(
                                               color: const Color(0xFFFFFFFF),
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontFamily: "Laila",
@@ -500,7 +500,7 @@ class _your_whyState extends State<your_why> {
                                         child: Text(
                                           'Cancel',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.7,
                                               fontFamily: "Laila",
@@ -533,7 +533,7 @@ class _your_whyState extends State<your_why> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 3.0,
+                  width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.cover,
                 )),
@@ -558,7 +558,7 @@ class _your_whyState extends State<your_why> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        width: AppDimensions.height10(context) * 36.5,
+                        width: AppDimensions.width10(context) * 36.5,
                         height: AppDimensions.height10(context) * 52.9,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 2.4),
@@ -577,7 +577,7 @@ class _your_whyState extends State<your_why> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 24.0,
+                              width: AppDimensions.width10(context) * 24.0,
                               height: AppDimensions.height10(context) * 3.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 7.1),
@@ -590,13 +590,13 @@ class _your_whyState extends State<your_why> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 3.0,
+                                        AppDimensions.font10(context) * 3.0,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xFFFFFFFF)),
                               ),
                             ),
                             Container(
-                              //  width: AppDimensions.height10(context) * 24.0,
+                              //  width: AppDimensions.width10(context) * 24.0,
                               height: AppDimensions.height10(context) * 3.7,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0),
@@ -611,13 +611,13 @@ class _your_whyState extends State<your_why> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 3.0,
+                                        AppDimensions.font10(context) * 3.0,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xFFFFFFFF)),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 32.4,
+                              width: AppDimensions.width10(context) * 32.4,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 2.5),
@@ -627,20 +627,19 @@ class _your_whyState extends State<your_why> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.0,
+                                        AppDimensions.font10(context) * 2.0,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFFFFFFFF)),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 8.7,
+                              width: AppDimensions.width10(context) * 8.7,
                               height: AppDimensions.height10(context) * 8.7,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 3.2),
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
+                                    width: AppDimensions.width10(context) * 0.1,
                                     color: const Color(0xFFFFFFFF)),
                                 shape: BoxShape.circle,
                                 color: totalPoint == ''
@@ -651,8 +650,7 @@ class _your_whyState extends State<your_why> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 3.4,
+                                    width: AppDimensions.width10(context) * 3.4,
                                     height:
                                         AppDimensions.height10(context) * 1.3,
                                     child: Text(
@@ -660,15 +658,14 @@ class _your_whyState extends State<your_why> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xFF646464)),
                                     ),
                                   ),
                                   SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 3.2,
+                                    width: AppDimensions.width10(context) * 3.2,
                                     height:
                                         AppDimensions.height10(context) * 3.7,
                                     child: Row(
@@ -687,7 +684,7 @@ class _your_whyState extends State<your_why> {
                                           //         .toString(),
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   2.4,
                                               fontWeight: FontWeight.w500,
@@ -697,7 +694,7 @@ class _your_whyState extends State<your_why> {
                                           '/5',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w300,
@@ -710,7 +707,7 @@ class _your_whyState extends State<your_why> {
                               ),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 23.4,
+                              width: AppDimensions.width10(context) * 23.4,
                               height: AppDimensions.height10(context) * 8.3,
                               child: Stack(
                                 children: [
@@ -732,8 +729,8 @@ class _your_whyState extends State<your_why> {
                                   Align(
                                     alignment: const Alignment(1, 0),
                                     child: Container(
-                                      width: AppDimensions.height10(context) *
-                                          21.4,
+                                      width:
+                                          AppDimensions.width10(context) * 21.4,
                                       height:
                                           AppDimensions.height10(context) * 7.3,
                                       margin: EdgeInsets.only(
@@ -756,7 +753,7 @@ class _your_whyState extends State<your_why> {
                                                           1],
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.8,
                                               fontWeight: FontWeight.w600,
@@ -769,7 +766,7 @@ class _your_whyState extends State<your_why> {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 28.8,
+                              width: AppDimensions.width10(context) * 28.8,
                               height: AppDimensions.height10(context) * 4.2,
                               alignment: Alignment.topCenter,
                               margin: EdgeInsets.only(
@@ -779,19 +776,19 @@ class _your_whyState extends State<your_why> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xFFFFFFFF)),
                               ),
                             ),
                             Container(
-                              // width: AppDimensions.height10(context) * 2.1,
+                              // width: AppDimensions.width10(context) * 2.1,
                               //height: AppDimensions.height10(context) * 4.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.5),
                               child: Image.asset(
                                 'assets/images/Arrow.webp',
-                                width: AppDimensions.height10(context) * 4.1,
+                                width: AppDimensions.width10(context) * 4.1,
                                 height: AppDimensions.height10(context) * 4.1,
                               ),
                             ),
@@ -811,7 +808,7 @@ class _your_whyState extends State<your_why> {
                               });
                             },
                             child: Container(
-                              // width: AppDimensions.height10(context) * 37.0,
+                              // width: AppDimensions.width10(context) * 37.0,
                               //   height: AppDimensions.height10(context) * 11.9,
                               margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 4.0,
@@ -820,7 +817,7 @@ class _your_whyState extends State<your_why> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    // width: AppDimensions.height10(context) * 15.5,
+                                    // width: AppDimensions.width10(context) * 15.5,
                                     //height: AppDimensions.height10(context) * 2.9,
                                     child: Text(
                                       widget.destination == 'reason'
@@ -832,7 +829,7 @@ class _your_whyState extends State<your_why> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.4,
                                           fontWeight: FontWeight.w600,
                                           color: const Color(0xFF437296)),
@@ -840,7 +837,7 @@ class _your_whyState extends State<your_why> {
                                   ),
                                   Container(
                                     width:
-                                        AppDimensions.height10(context) * 37.0,
+                                        AppDimensions.width10(context) * 37.0,
                                     //height: AppDimensions.height10(context) * 6.8,
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
@@ -853,7 +850,7 @@ class _your_whyState extends State<your_why> {
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   2.0,
                                           fontWeight: FontWeight.w500,
                                           height:
@@ -963,7 +960,7 @@ class _your_whyState extends State<your_why> {
                                                           '${index1 + 1}',
                                                           style: TextStyle(
                                                               fontSize: AppDimensions
-                                                                      .height10(
+                                                                      .font10(
                                                                           context) *
                                                                   3.2,
                                                               fontWeight:
@@ -1022,7 +1019,7 @@ class _your_whyState extends State<your_why> {
                                                                     0, 0.8),
                                                             child: Container(
                                                               width: AppDimensions
-                                                                      .height10(
+                                                                      .width10(
                                                                           context) *
                                                                   4.0,
                                                               height: AppDimensions
@@ -1045,7 +1042,7 @@ class _your_whyState extends State<your_why> {
                                                                           0xFFFFFFFF))),
                                                               child: Container(
                                                                 width: AppDimensions
-                                                                        .height10(
+                                                                        .width10(
                                                                             context) *
                                                                     2.4,
                                                                 height: AppDimensions
@@ -1054,7 +1051,7 @@ class _your_whyState extends State<your_why> {
                                                                     2.4,
                                                                 decoration: BoxDecoration(
                                                                     border: Border.all(
-                                                                        width: AppDimensions.height10(context) *
+                                                                        width: AppDimensions.width10(context) *
                                                                             0.1,
                                                                         color: const Color(
                                                                             0xFFFFFFFF)),
@@ -1072,8 +1069,7 @@ class _your_whyState extends State<your_why> {
                                         }),
                                   ),
                                   Container(
-                                    width:
-                                        AppDimensions.height10(context) * 7.2,
+                                    width: AppDimensions.width10(context) * 7.2,
                                     height:
                                         AppDimensions.height10(context) * 0.1,
                                     color: const Color(0xFF437296),
@@ -1129,7 +1125,7 @@ class _your_whyState extends State<your_why> {
                               //       child: Transform.translate(
                               //         offset: Offset(swipeOffset, 0.0),
                               //         child: Container(
-                              //           width: AppDimensions.height10(context) *
+                              //           width: AppDimensions.width10(context) *
                               //               38.259,
                               //           height:
                               //               AppDimensions.height10(context) *
@@ -1188,7 +1184,7 @@ class _your_whyState extends State<your_why> {
                               //                       MainAxisAlignment.center,
                               //                   children: [
                               //                     SizedBox(
-                              //                       //  width: AppDimensions.height10(context) * 4.6,
+                              //                       //  width: AppDimensions.width10(context) * 4.6,
 
                               //                       //   color: Colors.amber,
                               //                       child: Text(
@@ -1205,7 +1201,7 @@ class _your_whyState extends State<your_why> {
                               //                       ),
                               //                     ),
                               //                     SizedBox(
-                              //                       // width: AppDimensions.height10(context) * 6.9,
+                              //                       // width: AppDimensions.width10(context) * 6.9,
                               //                       height:
                               //                           AppDimensions.height10(
                               //                                   context) *
@@ -1282,7 +1278,7 @@ class _your_whyState extends State<your_why> {
 
                               : Container()
                           : Container(
-                              width: AppDimensions.height10(context) * 35.4,
+                              width: AppDimensions.width10(context) * 35.4,
                               height: AppDimensions.height10(context) * 5.0,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 10.9,
@@ -1351,17 +1347,17 @@ class _your_whyState extends State<your_why> {
                                                               .height10(
                                                                   context) *
                                                           2.2,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          23.8,
+                                                              23.8,
                                                       child: Text(
                                                         "Clear answers?",
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.7,
                                                           fontWeight:
@@ -1387,17 +1383,17 @@ class _your_whyState extends State<your_why> {
                                                               .height10(
                                                                   context) *
                                                           3.2,
-                                                      width: AppDimensions
-                                                              .height10(
+                                                      width:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          23.8,
+                                                              23.8,
                                                       child: Text(
                                                         "Are you sure you want to clear all your\nanswers for this Goal criterion?",
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10(
+                                                                  .font10(
                                                                       context) *
                                                               1.3,
                                                           fontWeight:
@@ -1534,7 +1530,7 @@ class _your_whyState extends State<your_why> {
                                           'Clear',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
@@ -1609,10 +1605,10 @@ class _your_whyState extends State<your_why> {
                                                     "Reset answers?",
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.7,
+                                                              1.7,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                     ),
@@ -1640,10 +1636,10 @@ class _your_whyState extends State<your_why> {
                                                     "Are you sure you want to reset, all your\nchanges for this criterion?",
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
+                                                      fontSize:
+                                                          AppDimensions.font10(
                                                                   context) *
-                                                          1.3,
+                                                              1.3,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                     ),
@@ -1699,7 +1695,7 @@ class _your_whyState extends State<your_why> {
                                                                   color: const Color(
                                                                       0xFFFFFFFF),
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.7,
                                                                   fontFamily:
@@ -1738,7 +1734,7 @@ class _your_whyState extends State<your_why> {
                                                             'Cancel',
                                                             style: TextStyle(
                                                                 fontSize: AppDimensions
-                                                                        .height10(
+                                                                        .font10(
                                                                             context) *
                                                                     1.7,
                                                                 fontFamily:
@@ -1799,7 +1795,7 @@ class _your_whyState extends State<your_why> {
                                           'Reset',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
@@ -1881,7 +1877,7 @@ class _your_whyState extends State<your_why> {
                                                                           context) *
                                                                   2.2,
                                                               width: AppDimensions
-                                                                      .height10(
+                                                                      .width10(
                                                                           context) *
                                                                   23.8,
                                                               child: Text(
@@ -1892,7 +1888,7 @@ class _your_whyState extends State<your_why> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.7,
                                                                   fontWeight:
@@ -1920,7 +1916,7 @@ class _your_whyState extends State<your_why> {
                                                                           context) *
                                                                   3.2,
                                                               width: AppDimensions
-                                                                      .height10(
+                                                                      .width10(
                                                                           context) *
                                                                   23.8,
                                                               child: Text(
@@ -1931,7 +1927,7 @@ class _your_whyState extends State<your_why> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.height10(
+                                                                      AppDimensions.font10(
                                                                               context) *
                                                                           1.3,
                                                                   fontWeight:
@@ -2017,7 +2013,7 @@ class _your_whyState extends State<your_why> {
                                                                         style: TextStyle(
                                                                             color: const Color(
                                                                                 0xFFFFFFFF),
-                                                                            fontSize: AppDimensions.height10(context) *
+                                                                            fontSize: AppDimensions.font10(context) *
                                                                                 1.7,
                                                                             fontFamily:
                                                                                 "Laila",
@@ -2055,7 +2051,7 @@ class _your_whyState extends State<your_why> {
                                                                           Text(
                                                                         'Cancel',
                                                                         style: TextStyle(
-                                                                            fontSize: AppDimensions.height10(context) *
+                                                                            fontSize: AppDimensions.font10(context) *
                                                                                 1.7,
                                                                             fontFamily:
                                                                                 "Laila",
@@ -2094,8 +2090,8 @@ class _your_whyState extends State<your_why> {
                                       }
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10(context) *
-                                          17.4,
+                                      width:
+                                          AppDimensions.width10(context) * 17.4,
                                       height:
                                           AppDimensions.height10(context) * 5.0,
                                       margin: EdgeInsets.only(
@@ -2126,7 +2122,7 @@ class _your_whyState extends State<your_why> {
                                           'Save updates',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
@@ -2160,7 +2156,7 @@ class _your_whyState extends State<your_why> {
                   color: Colors.transparent,
                   child: Container(
                     height: AppDimensions.height10(context) * 7.7,
-                    width: AppDimensions.height10(context) * 41.4,
+                    width: AppDimensions.width10(context) * 41.4,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(
@@ -2180,13 +2176,12 @@ class _your_whyState extends State<your_why> {
                               'Upgrade to score ',
                               style: TextStyle(
                                   color: const Color(0xFF437296),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.8,
+                                  fontSize: AppDimensions.font10(context) * 2.8,
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 3.2,
+                            width: AppDimensions.width10(context) * 3.2,
                             height: AppDimensions.height10(context) * 3.2,
                             padding: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.1,
@@ -2226,12 +2221,12 @@ class _your_whyState extends State<your_why> {
 //         left: AppDimensions.height10(context) * 1.6,
 //         bottom: AppDimensions.height10(context) * 0.2),
 //     height: AppDimensions.height10(context) * 2.2,
-//     width: AppDimensions.height10(context) * 23.8,
+//     width: AppDimensions.width10(context) * 23.8,
 //     child: Text(
 //       "Save changes?",
 //       textAlign: TextAlign.center,
 //       style: TextStyle(
-//         fontSize: AppDimensions.height10(context) * 1.7,
+//         fontSize: AppDimensions.font10(context) * 1.7,
 //         fontWeight: FontWeight.w400,
 //       ),
 //     ),
@@ -2242,12 +2237,12 @@ class _your_whyState extends State<your_why> {
 //         left: AppDimensions.height10(context) * 1.6,
 //         right: AppDimensions.height10(context) * 1.6),
 //     height: AppDimensions.height10(context) * 3.2,
-//     width: AppDimensions.height10(context) * 23.8,
+//     width: AppDimensions.width10(context) * 23.8,
 //     child: Text(
 //       "Are you sure you want to save your new\nupdates?",
 //       textAlign: TextAlign.center,
 //       style: TextStyle(
-//         fontSize: AppDimensions.height10(context) * 1.3,
+//         fontSize: AppDimensions.font10(context) * 1.3,
 //         fontWeight: FontWeight.w400,
 //       ),
 //     ),
@@ -2275,7 +2270,7 @@ class _your_whyState extends State<your_why> {
 //                 'Yes',
 //                 style: TextStyle(
 //                     color: const Color(0xFFFFFFFF),
-//                     fontSize: AppDimensions.height10(context) * 1.7,
+//                     fontSize: AppDimensions.font10(context) * 1.7,
 //                     fontFamily: "Laila",
 //                     fontWeight: FontWeight.w400),
 //               ),
@@ -2296,7 +2291,7 @@ class _your_whyState extends State<your_why> {
 //             child: Text(
 //               'Cancel',
 //               style: TextStyle(
-//                   fontSize: AppDimensions.height10(context) * 1.7,
+//                   fontSize: AppDimensions.font10(context) * 1.7,
 //                   fontFamily: "Laila",
 //                   fontWeight: FontWeight.w400,
 //                   color: const Color(0xFF007AFF)),
@@ -2316,7 +2311,7 @@ class _your_whyState extends State<your_why> {
 
 Widget showSaveWithout(BuildContext context) {
   return SizedBox(
-    width: AppDimensions.height10(context) * 27.0,
+    width: AppDimensions.width10(context) * 27.0,
     height: AppDimensions.height10(context) * 18.2,
     child: AlertDialog(
       shape: RoundedRectangleBorder(
@@ -2335,12 +2330,12 @@ Widget showSaveWithout(BuildContext context) {
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Exit without saving changes?",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.7,
+            fontSize: AppDimensions.font10(context) * 1.7,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -2351,12 +2346,12 @@ Widget showSaveWithout(BuildContext context) {
             left: AppDimensions.height10(context) * 1.6,
             right: AppDimensions.height10(context) * 1.6),
         // height: AppDimensions.height10(context) * 3.2,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Are you sure you want to exit, all your\nchanges will be lost?",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.3,
+            fontSize: AppDimensions.font10(context) * 1.3,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -2384,7 +2379,7 @@ Widget showSaveWithout(BuildContext context) {
                     'Yes',
                     style: TextStyle(
                         color: const Color(0xFFFFFFFF),
-                        fontSize: AppDimensions.height10(context) * 1.7,
+                        fontSize: AppDimensions.font10(context) * 1.7,
                         fontFamily: "Laila",
                         fontWeight: FontWeight.w400),
                   ),
@@ -2407,7 +2402,7 @@ Widget showSaveWithout(BuildContext context) {
                 child: Text(
                   'Cancel',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.7,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF007AFF)),
@@ -2429,7 +2424,7 @@ Widget showSaveWithout(BuildContext context) {
 
 Widget showAlertBox(BuildContext context) {
   return SizedBox(
-    width: AppDimensions.height10(context) * 27.0,
+    width: AppDimensions.width10(context) * 27.0,
     height: AppDimensions.height10(context) * 18.2,
     child: AlertDialog(
       shape: RoundedRectangleBorder(
@@ -2448,12 +2443,12 @@ Widget showAlertBox(BuildContext context) {
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Clear answers?",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.7,
+            fontSize: AppDimensions.font10(context) * 1.7,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -2464,12 +2459,12 @@ Widget showAlertBox(BuildContext context) {
             left: AppDimensions.height10(context) * 1.6,
             right: AppDimensions.height10(context) * 1.6),
         //height: AppDimensions.height10(context) * 3.2,
-        width: AppDimensions.height10(context) * 23.8,
+        width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "Are you sure you want to clear all your\nanswers for this Goal criterion?",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.height10(context) * 1.3,
+            fontSize: AppDimensions.font10(context) * 1.3,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -2495,7 +2490,7 @@ Widget showAlertBox(BuildContext context) {
                   'Yes',
                   style: TextStyle(
                       color: const Color(0xFFFFFFFF),
-                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.7,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400),
                 ),
@@ -2517,7 +2512,7 @@ Widget showAlertBox(BuildContext context) {
                 child: Text(
                   'Cancel',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.7,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF007AFF)),

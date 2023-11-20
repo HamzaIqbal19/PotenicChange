@@ -238,7 +238,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                         },
                         icon: Image.asset(
                           'assets/images/Back.webp',
-                          width: AppDimensions.height10(context) * 2.6,
+                          width: AppDimensions.width10(context) * 2.6,
                           height: AppDimensions.height10(context) * 2.6,
                           fit: BoxFit.cover,
                         )),
@@ -247,7 +247,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
             title: widget.data_saved || widget.update
                 ? Container()
                 : Container(
-                    width: AppDimensions.height10(context) * 18.9,
+                    width: AppDimensions.width10(context) * 18.9,
                     height: AppDimensions.height10(context) * 2.4,
                     margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 7.5),
@@ -257,7 +257,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           'Inspiration 1',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.0,
+                            fontSize: AppDimensions.font10(context) * 2.0,
                             fontWeight: FontWeight.w600,
                           ),
                           colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -266,7 +266,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           '/2',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.0,
+                            fontSize: AppDimensions.font10(context) * 2.0,
                             fontWeight: FontWeight.w400,
                           ),
                           colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -286,8 +286,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 duration: const Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) => SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          27.0,
+                                      width:
+                                          AppDimensions.width10(context) * 27.0,
                                       height: AppDimensions.height10(context) *
                                           24.0,
                                       child: AlertDialog(
@@ -308,7 +308,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                           // height:
                                           //     AppDimensions.height10(context) * 2.2,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   23.8,
                                           child: const Text(
                                             "Exit Inspiration?",
@@ -536,7 +536,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           },
                           icon: Image.asset(
                             'assets/images/Close.webp',
-                            width: AppDimensions.height10(context) * 2.6,
+                            width: AppDimensions.width10(context) * 2.6,
                             height: AppDimensions.height10(context) * 2.6,
                             fit: BoxFit.cover,
                           )),
@@ -556,7 +556,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
           child: Loading == false
               ? Column(children: [
                   Container(
-                    // width: AppDimensions.height10(context) * 36.0,
+                    // width: AppDimensions.width10(context) * 36.0,
                     height: widget.route == 'details'
                         ? AppDimensions.height10(context) * 77.9
                         : AppDimensions.height10(context) * 67.9,
@@ -571,7 +571,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 34.3,
+                              width: AppDimensions.width10(context) * 34.3,
                               height: AppDimensions.height10(context) * 7.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 8.7),
@@ -583,7 +583,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                   style: TextStyle(
                                     height: 1.2,
                                     fontSize:
-                                        AppDimensions.height10(context) * 2.8,
+                                        AppDimensions.font10(context) * 2.8,
                                     fontWeight: FontWeight.w700,
                                   ),
                                   colors: const [
@@ -628,7 +628,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 }
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 14.1,
+                                width: AppDimensions.width10(context) * 14.1,
                                 height: AppDimensions.height10(context) * 14.1,
                                 margin: EdgeInsets.only(
                                     left: AppDimensions.height10(context) * 2.1,
@@ -647,12 +647,12 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 child: Container(
                                   height:
                                       AppDimensions.height10(context) * 13.1,
-                                  width: AppDimensions.height10(context) * 13.1,
+                                  width: AppDimensions.width10(context) * 13.1,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   0.1,
                                           color: Colors.white),
                                       gradient: const LinearGradient(
@@ -669,7 +669,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           fontWeight: FontWeight.w500),
                                     ),
@@ -678,7 +678,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 12.4,
+                              width: AppDimensions.width10(context) * 12.4,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.height10(context) * 21.2,
@@ -689,7 +689,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                   'Active Goals',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.0,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white),
                                 ),
@@ -781,7 +781,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               AppDimensions.height10(context) *
                                                   13.1,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   13.1,
                                           padding: EdgeInsets.symmetric(
                                               horizontal:
@@ -815,7 +815,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w500),
@@ -827,7 +827,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                   })),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 13.7,
+                              width: AppDimensions.width10(context) * 13.7,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.height10(context) * 19.5,
@@ -837,7 +837,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                   'Inactive Goals',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.0,
                                       fontWeight: FontWeight.w600,
                                       height: 1.2,
                                       color: Colors.white),
@@ -903,9 +903,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                         width: selectedInActiveIndices
                                                     .contains(index) ||
                                                 selectAll == true
-                                            ? AppDimensions.height10(context) *
+                                            ? AppDimensions.width10(context) *
                                                 14.1
-                                            : AppDimensions.height10(context) *
+                                            : AppDimensions.width10(context) *
                                                 13.1,
                                         padding: EdgeInsets.all(
                                             AppDimensions.height10(context) *
@@ -916,7 +916,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               width: selectedInActiveIndices
                                                           .contains(index) ||
                                                       selectAll == true
-                                                  ? AppDimensions.height10(
+                                                  ? AppDimensions.width10(
                                                           context) *
                                                       0.2
                                                   : 0,
@@ -931,7 +931,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               AppDimensions.height10(context) *
                                                   13.1,
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   13.1,
                                           padding: EdgeInsets.symmetric(
                                               horizontal:
@@ -965,7 +965,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w500),
@@ -983,7 +983,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                       ? widget.route == 'details'
                           ? Container()
                           : Container(
-                              width: AppDimensions.height10(context) * 34.2,
+                              width: AppDimensions.width10(context) * 34.2,
                               height: AppDimensions.height10(context) * 5.0,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 3.3,
@@ -1004,8 +1004,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       });
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10(context) *
-                                          12.8,
+                                      width:
+                                          AppDimensions.width10(context) * 12.8,
                                       height:
                                           AppDimensions.height10(context) * 5.0,
                                       decoration: BoxDecoration(
@@ -1023,9 +1023,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                         'Reset',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w600,
                                             color: selectAll == true ||
                                                     multiGoals.isNotEmpty
@@ -1189,8 +1189,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       }
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10(context) *
-                                          20.4,
+                                      width:
+                                          AppDimensions.width10(context) * 20.4,
                                       height:
                                           AppDimensions.height10(context) * 5.0,
                                       decoration: BoxDecoration(
@@ -1219,9 +1219,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                         'Save',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w600,
                                             color: selectAll == true ||
                                                     multiGoals.isNotEmpty
@@ -1407,7 +1407,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             }
                           },
                           child: Container(
-                            width: AppDimensions.height10(context) * 25.4,
+                            width: AppDimensions.width10(context) * 25.4,
                             height: AppDimensions.height10(context) * 5.0,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 3.3,
@@ -1437,8 +1437,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                   : '(${multiGoals.length}/${goals.length} goals selected) Next',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white),
                             )),
@@ -1447,7 +1446,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                   widget.route == 'details'
                       ? Container()
                       : Container(
-                          width: AppDimensions.height10(context) * 17.0,
+                          width: AppDimensions.width10(context) * 17.0,
                           height: AppDimensions.height10(context) * 0.5,
                           // margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.0),
                           decoration: BoxDecoration(

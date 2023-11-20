@@ -10,7 +10,6 @@ import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class HomeScreen extends StatefulWidget {
   final bool login;
   const HomeScreen({
@@ -50,7 +49,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('bool', value);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -130,9 +128,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       context: context,
                                       builder: (BuildContext context) =>
                                           SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                27.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    27.0,
                                             height: AppDimensions.height10(
                                                     context) *
                                                 19.8,
@@ -164,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.7,
                                                     fontWeight: FontWeight.w400,
@@ -189,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                                 context) *
                                                             0.14,
                                                     fontSize:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.font10(
                                                                 context) *
                                                             1.5,
                                                     fontWeight: FontWeight.w400,
@@ -289,7 +287,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 },
                                 child: Container(
                                   height: AppDimensions.height10(context) * 5,
-                                  width: AppDimensions.height10(context) * 13,
+                                  width: AppDimensions.width10(context) * 13,
                                   decoration: BoxDecoration(
                                     color: const Color(0xFFF5F5F5),
                                     border: Border.all(color: Colors.white),
@@ -304,8 +302,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       style: TextStyle(
                                         color: const Color(0xFF8C648A),
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
+                                            AppDimensions.font10(context) * 1.4,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -313,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 ),
                               ),
                               SizedBox(
-                                width: AppDimensions.height10(context) * 1.4,
+                                width: AppDimensions.width10(context) * 1.4,
                               ),
                               AnimatedScaleButton(
                                 onTap: () {
@@ -322,7 +319,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 },
                                 child: Container(
                                   height: AppDimensions.height10(context) * 5,
-                                  width: AppDimensions.height10(context) * 5,
+                                  width: AppDimensions.width10(context) * 5,
                                   decoration: BoxDecoration(
                                     color: Colors.transparent,
                                     border:
@@ -362,7 +359,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 },
                                 child: Container(
                                   height: AppDimensions.height10(context) * 5,
-                                  width: AppDimensions.height10(context) * 13,
+                                  width: AppDimensions.width10(context) * 13,
                                   decoration: BoxDecoration(
                                     color: const Color(0xFFF5F5F5),
                                     border: Border.all(color: Colors.white),
@@ -377,8 +374,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       style: TextStyle(
                                         color: const Color(0xFF8C648A),
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
+                                            AppDimensions.font10(context) * 1.4,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -403,7 +399,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   },
                                   child: Container(
                                     height: AppDimensions.height10(context) * 5,
-                                    width: AppDimensions.height10(context) * 13,
+                                    width: AppDimensions.width10(context) * 13,
                                     decoration: BoxDecoration(
                                       color: const Color(0xFF5A4D73),
                                       border: Border.all(
@@ -419,7 +415,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.4,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -444,7 +440,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 },
                                 child: Container(
                                   height: AppDimensions.height10(context) * 5,
-                                  width: AppDimensions.height10(context) * 5,
+                                  width: AppDimensions.width10(context) * 5,
                                   decoration: BoxDecoration(
                                     color: Colors.transparent,
                                     border:
@@ -482,7 +478,7 @@ Widget buildText(
     style: TextStyle(
       fontWeight: weight,
       color: Colors.white,
-      fontSize: AppDimensions.height10(context) * heightFactor,
+      fontSize: AppDimensions.font10(context) * heightFactor,
     ),
   );
 }

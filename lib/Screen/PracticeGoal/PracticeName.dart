@@ -133,7 +133,7 @@ class _PracticeNameState extends State<PracticeName> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 3,
+                  width: AppDimensions.width10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
@@ -170,7 +170,7 @@ class _PracticeNameState extends State<PracticeName> {
                     : IconButton(
                         icon: Image.asset(
                           'assets/images/Close.webp',
-                          width: AppDimensions.height10(context) * 3.0,
+                          width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
                           fit: BoxFit.contain,
                         ),
@@ -184,7 +184,7 @@ class _PracticeNameState extends State<PracticeName> {
                               duration: const Duration(seconds: 1),
                               context: context,
                               builder: (BuildContext context) => Container(
-                                width: AppDimensions.height10(context) * 27.0,
+                                width: AppDimensions.width10(context) * 27.0,
                                 height: AppDimensions.height10(context) * 18.2,
                                 child: AlertDialog(
                                   contentPadding: EdgeInsets.zero,
@@ -203,15 +203,14 @@ class _PracticeNameState extends State<PracticeName> {
                                     height:
                                         AppDimensions.height10(context) * 2.2,
                                     width:
-                                        AppDimensions.height10(context) * 23.8,
+                                        AppDimensions.width10(context) * 23.8,
                                     child: Text(
                                       "Are you sure?",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: const Color(0xFF000000),
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.7,
+                                            AppDimensions.font10(context) * 1.7,
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
@@ -228,7 +227,7 @@ class _PracticeNameState extends State<PracticeName> {
                                     height:
                                         AppDimensions.height10(context) * 3.2,
                                     width:
-                                        AppDimensions.height10(context) * 23.8,
+                                        AppDimensions.width10(context) * 23.8,
                                     child: Text(
                                       "If you close it now, you will lose all your progress.",
                                       textAlign: TextAlign.center,
@@ -356,7 +355,7 @@ class _PracticeNameState extends State<PracticeName> {
                         color: widget.comingFromEditScreen
                             ? const Color(0xff437296)
                             : Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontSize: AppDimensions.font10(context) * 1.8,
                       ),
                     ),
                   ),
@@ -365,7 +364,7 @@ class _PracticeNameState extends State<PracticeName> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
-                  width: AppDimensions.height10(context) * 30,
+                  width: AppDimensions.width10(context) * 30,
                   child: Center(
                     child: Text(
                       mygoal.toString(),
@@ -375,7 +374,7 @@ class _PracticeNameState extends State<PracticeName> {
                         color: widget.comingFromEditScreen
                             ? const Color(0xff437296)
                             : Colors.white,
-                        fontSize: AppDimensions.height10(context) * 2.2,
+                        fontSize: AppDimensions.font10(context) * 2.2,
                       ),
                     ),
                   ),
@@ -388,7 +387,7 @@ class _PracticeNameState extends State<PracticeName> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 7.9,
+                      width: AppDimensions.width10(context) * 7.9,
                       height: AppDimensions.height10(context) * 7.9,
                       // color: Colors.amber,
 
@@ -398,7 +397,7 @@ class _PracticeNameState extends State<PracticeName> {
                           Align(
                             alignment: const Alignment(-3, 0),
                             child: Container(
-                              width: AppDimensions.height10(context) * 7.9,
+                              width: AppDimensions.width10(context) * 7.9,
                               height: AppDimensions.height10(context) * 7.9,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
@@ -425,7 +424,7 @@ class _PracticeNameState extends State<PracticeName> {
                             alignment: const Alignment(1.5, 0),
                             child: Container(
                               height: AppDimensions.height10(context) * 4.9,
-                              width: AppDimensions.height10(context) * 4.9,
+                              width: AppDimensions.width10(context) * 4.9,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
@@ -438,7 +437,7 @@ class _PracticeNameState extends State<PracticeName> {
                       ),
                     ),
                     Container(
-                        //width: AppDimensions.height10(context) * 22,
+                        //width: AppDimensions.width10(context) * 22,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 1.5),
                         child: practice.text.toString().length > 20
@@ -453,8 +452,7 @@ class _PracticeNameState extends State<PracticeName> {
                                   color: widget.comingFromEditScreen
                                       ? const Color(0xff437296)
                                       : const Color(0xFF156F6D),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                 ),
                               )
                             : Text(
@@ -464,8 +462,7 @@ class _PracticeNameState extends State<PracticeName> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF156F6D),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                 ),
                               )),
                   ],
@@ -483,7 +480,7 @@ class _PracticeNameState extends State<PracticeName> {
                         color: widget.comingFromEditScreen
                             ? const Color(0xff437296)
                             : Colors.white,
-                        fontSize: AppDimensions.height10(context) * 2.8,
+                        fontSize: AppDimensions.font10(context) * 2.8,
                       ),
                     ),
                   ),
@@ -493,13 +490,13 @@ class _PracticeNameState extends State<PracticeName> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.2,
-                  width: AppDimensions.height10(context) * 28.4,
+                  width: AppDimensions.width10(context) * 28.4,
                   child: Center(
                     child: Text(
                       "Enter the name of your practice",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.8,
+                          fontSize: AppDimensions.font10(context) * 1.8,
                           fontWeight: FontWeight.w600,
                           color: widget.comingFromEditScreen
                               ? const Color(0xff437296)
@@ -512,7 +509,7 @@ class _PracticeNameState extends State<PracticeName> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 10.5,
-                  width: AppDimensions.height10(context) * 36.0,
+                  width: AppDimensions.width10(context) * 36.0,
                   padding: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 2.0,
                     top: AppDimensions.height10(context) * 1.0,
@@ -530,7 +527,7 @@ class _PracticeNameState extends State<PracticeName> {
                       maxLength: 80,
                       controller: practiceName,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 2.4,
+                          fontSize: AppDimensions.font10(context) * 2.4,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFFFA9934)),
                       decoration: InputDecoration(
@@ -540,7 +537,7 @@ class _PracticeNameState extends State<PracticeName> {
                           contentPadding: EdgeInsets.zero,
                           // hintText: "${practice.text.toString()}",
                           hintStyle: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.4,
+                              fontSize: AppDimensions.font10(context) * 2.4,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xFFFA9934)),
                           focusedBorder: const OutlineInputBorder(
@@ -554,8 +551,8 @@ class _PracticeNameState extends State<PracticeName> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
-                  // width: AppDimensions.height10(context)*12.3,
-                  width: AppDimensions.height10(context) * 34.7,
+                  // width: AppDimensions.width10(context)*12.3,
+                  width: AppDimensions.width10(context) * 34.7,
 
                   margin: EdgeInsets.only(
                       right: AppDimensions.height10(context) * 1.3),
@@ -569,7 +566,7 @@ class _PracticeNameState extends State<PracticeName> {
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.font10(context) * 1.4,
                           ),
                         ),
                       ),
@@ -579,7 +576,7 @@ class _PracticeNameState extends State<PracticeName> {
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.font10(context) * 1.4,
                           ),
                         ),
                       ),
@@ -591,7 +588,7 @@ class _PracticeNameState extends State<PracticeName> {
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 4.2,
-                  width: AppDimensions.height10(context) * 34.7,
+                  width: AppDimensions.width10(context) * 34.7,
                   margin: EdgeInsets.only(
                       right: AppDimensions.height10(context) * 1.3),
                   child: Center(
@@ -600,7 +597,7 @@ class _PracticeNameState extends State<PracticeName> {
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                       ),
                     ),
                   ),
@@ -632,7 +629,7 @@ class _PracticeNameState extends State<PracticeName> {
                           child: Transform.translate(
                             offset: Offset(swipeOffset, 0.0),
                             child: Container(
-                              width: AppDimensions.height10(context) * 38.259,
+                              width: AppDimensions.width10(context) * 38.259,
                               height: AppDimensions.height10(context) * 9.707,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
@@ -653,7 +650,7 @@ class _PracticeNameState extends State<PracticeName> {
                                         left: AppDimensions.height10(context) *
                                             1.261),
                                     width:
-                                        AppDimensions.height10(context) * 4.437,
+                                        AppDimensions.width10(context) * 4.437,
                                     height:
                                         AppDimensions.height10(context) * 4.437,
                                     decoration: const BoxDecoration(
@@ -662,7 +659,7 @@ class _PracticeNameState extends State<PracticeName> {
                                                 'assets/images/circle_tick.webp'))),
                                   ),
                                   Container(
-                                    //width: AppDimensions.height10(context) * 6.9,
+                                    //width: AppDimensions.width10(context) * 6.9,
                                     height:
                                         AppDimensions.height10(context) * 3.6,
                                     margin: EdgeInsets.only(
@@ -674,7 +671,7 @@ class _PracticeNameState extends State<PracticeName> {
                                       children: [
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   4.6,
                                           height:
                                               AppDimensions.height10(context) *
@@ -683,17 +680,16 @@ class _PracticeNameState extends State<PracticeName> {
                                           child: Text(
                                             'Updates saved',
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.3,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.3,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFFFFFFFF)),
                                           ),
                                         ),
                                         SizedBox(
                                           width:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   16.9,
                                           height:
                                               AppDimensions.height10(context) *
@@ -702,10 +698,9 @@ class _PracticeNameState extends State<PracticeName> {
                                             'Practice Name',
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFFFFFFFF)),
                                           ),
@@ -744,7 +739,7 @@ class _PracticeNameState extends State<PracticeName> {
                                         child: Text(
                                           'Undo',
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
+                                              fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.8,
                                               fontWeight: FontWeight.w500,
@@ -764,7 +759,7 @@ class _PracticeNameState extends State<PracticeName> {
                         children: [
                           // widget.comingFromEditScreen
                           //       ? Container(
-                          //           width: AppDimensions.height10(context) * 10.0,
+                          //           width: AppDimensions.width10(context) * 10.0,
                           //           height: AppDimensions.height10(context) * 5.0,
                           //           decoration: myTextFields[0]['text'] != ""
                           //               ? BoxDecoration(
@@ -803,14 +798,14 @@ class _PracticeNameState extends State<PracticeName> {
 
                           Container(
                               // color: Colors.blue,
-                              width: AppDimensions.height10(context) * 5.0,
+                              width: AppDimensions.width10(context) * 5.0,
                               height: AppDimensions.height10(context) * 5.0,
                               child: Image.asset(
                                 "assets/images/Moreactions.webp",
                                 fit: BoxFit.contain,
                               )),
                           SizedBox(
-                            width: AppDimensions.height10(context) * 2.0,
+                            width: AppDimensions.width10(context) * 2.0,
                           ),
 
                           ValueListenableBuilder<TextEditingValue>(
@@ -862,7 +857,7 @@ class _PracticeNameState extends State<PracticeName> {
                                   child: Container(
                                     height: AppDimensions.height10(context) * 5,
                                     width:
-                                        AppDimensions.height10(context) * 31.3,
+                                        AppDimensions.width10(context) * 31.3,
                                     decoration: BoxDecoration(
                                       // color: Color(0xFFFF7D50),
                                       border:
@@ -895,7 +890,7 @@ class _PracticeNameState extends State<PracticeName> {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.font10(context) *
                                                   1.6,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -929,7 +924,7 @@ class pop_up_practices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10(context) * 27.0,
+      width: AppDimensions.width10(context) * 27.0,
       height: AppDimensions.height10(context) * 18.2,
       child: AlertDialog(
         contentPadding: EdgeInsets.zero,
@@ -945,13 +940,13 @@ class pop_up_practices extends StatelessWidget {
               left: AppDimensions.height10(context) * 1.6,
               bottom: AppDimensions.height10(context) * 0.2),
           height: AppDimensions.height10(context) * 2.2,
-          width: AppDimensions.height10(context) * 23.8,
+          width: AppDimensions.width10(context) * 23.8,
           child: Text(
             "Exit?",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF000000),
-              fontSize: AppDimensions.height10(context) * 1.7,
+              fontSize: AppDimensions.font10(context) * 1.7,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -962,7 +957,7 @@ class pop_up_practices extends StatelessWidget {
               left: AppDimensions.height10(context) * 1.6,
               right: AppDimensions.height10(context) * 1.6),
           // height: AppDimensions.height10(context) * 3.2,
-          width: AppDimensions.height10(context) * 23.8,
+          width: AppDimensions.width10(context) * 23.8,
           child: Text(
             "Your new updates have not been saved.\nIf you exit now, your new updates will\nbe cancelled.",
             textAlign: TextAlign.center,

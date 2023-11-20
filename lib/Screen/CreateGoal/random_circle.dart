@@ -54,7 +54,7 @@ class _RandomCirclesState extends State<RandomCircles> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
-        width: AppDimensions.height10(context) * 95.00,
+        width: AppDimensions.width10(context) * 95.00,
         height: AppDimensions.height10(context) * 35.40,
         child: Stack(
           children: _circles,
@@ -89,7 +89,7 @@ class _RandomCirclesState extends State<RandomCircles> {
           circle_border: 3.0,
           circle_bordercolor: 0xFFFFFFFF,
           circle_height: AppDimensions.height10(context) * 13.4,
-          circle_width: AppDimensions.height10(context) * 13.4,
+          circle_width: AppDimensions.width10(context) * 13.4,
           textfont: AppDimensions.height10(context) * 1.6,
           textcolor: 0xFFFFFFFF,
           // id: 1,

@@ -22,20 +22,20 @@ class link_details extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
           centerTitle: true,
           title: SizedBox(
-            width: AppDimensions.height10(context) * 17.0,
+            width: AppDimensions.width10(context) * 17.0,
             height: AppDimensions.height10(context) * 4.8,
             child: GradientText(
               'Hurdle‘s positive\nalternatives',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: AppDimensions.height10(context) * 2.0,
+                fontSize: AppDimensions.font10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
               colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -47,7 +47,7 @@ class link_details extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -67,7 +67,7 @@ class link_details extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: AppDimensions.height10(context) * 34.3,
+                width: AppDimensions.width10(context) * 34.3,
                 height: AppDimensions.height10(context) * 3.9,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 17.0),
@@ -75,14 +75,14 @@ class link_details extends StatelessWidget {
                   'Details',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 2.8,
+                    fontSize: AppDimensions.font10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
                   colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 18.5,
+                width: AppDimensions.width10(context) * 18.5,
                 height: AppDimensions.height10(context) * 2.2,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.1),
@@ -90,14 +90,14 @@ class link_details extends StatelessWidget {
                   'Enter the description',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 1.8,
+                    fontSize: AppDimensions.font10(context) * 1.8,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 36.0,
+                width: AppDimensions.width10(context) * 36.0,
                 height: AppDimensions.height10(context) * 10.6,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.9),
@@ -111,12 +111,12 @@ class link_details extends StatelessWidget {
                   radius:
                       Radius.circular(AppDimensions.height10(context) * 1.5),
                   child: Container(
-                    width: AppDimensions.height10(context) * 34.3,
+                    width: AppDimensions.width10(context) * 34.3,
                     height: AppDimensions.height10(context) * 9.3,
                     margin:
                         EdgeInsets.all(AppDimensions.height10(context) * 0.6),
                     child: Container(
-                      width: AppDimensions.height10(context) * 34.3,
+                      width: AppDimensions.width10(context) * 34.3,
                       height: AppDimensions.height10(context) * 9.3,
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
@@ -131,7 +131,7 @@ class link_details extends StatelessWidget {
                           //crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 6.6,
+                              width: AppDimensions.width10(context) * 6.6,
                               height: AppDimensions.height10(context) * 6.6,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.height10(context) * 1.0),
@@ -143,29 +143,29 @@ class link_details extends StatelessWidget {
                                       fit: BoxFit.cover)),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 25.6,
+                              width: AppDimensions.width10(context) * 25.6,
                               height: AppDimensions.height10(context) * 6.6,
                               child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          25.3,
+                                      width:
+                                          AppDimensions.width10(context) * 25.3,
                                       height:
                                           AppDimensions.height10(context) * 3.6,
                                       child: Text(
                                         'Finding clarity and peace through the\nstorm ',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.4,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xffffffff)),
                                       ),
                                     ),
                                     Container(
-                                      width: AppDimensions.height10(context) *
-                                          19.1,
+                                      width:
+                                          AppDimensions.width10(context) * 19.1,
                                       height:
                                           AppDimensions.height10(context) * 1.4,
                                       margin: EdgeInsets.only(
@@ -177,9 +177,9 @@ class link_details extends StatelessWidget {
                                       child: Text(
                                         'www.angermanagment.com',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.1,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.1,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xffffffff)),
                                       ),
@@ -194,7 +194,7 @@ class link_details extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 36.0,
+                width: AppDimensions.width10(context) * 36.0,
                 height: AppDimensions.height10(context) * 9.0,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
@@ -206,7 +206,7 @@ class link_details extends StatelessWidget {
                   decoration: InputDecoration(
                       hintText: 'Why is it important to you?',
                       hintStyle: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.8,
+                          fontSize: AppDimensions.font10(context) * 1.8,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xff828282)),
                       focusedBorder: const OutlineInputBorder(
@@ -216,7 +216,7 @@ class link_details extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 36.0,
+                width: AppDimensions.width10(context) * 36.0,
                 height: AppDimensions.height10(context) * 5.0,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
@@ -229,7 +229,7 @@ class link_details extends StatelessWidget {
                     decoration: InputDecoration(
                         hintText: '#Tags',
                         hintStyle: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.font10(context) * 1.4,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
@@ -240,7 +240,7 @@ class link_details extends StatelessWidget {
                 ),
               ),
               Container(
-                  width: AppDimensions.height10(context) * 25.4,
+                  width: AppDimensions.width10(context) * 25.4,
                   height: AppDimensions.height10(context) * 5.0,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 24.8),
@@ -265,7 +265,7 @@ class link_details extends StatelessWidget {
                         'Next',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             fontFamily: 'Poppins'),
                       ))),
@@ -294,20 +294,20 @@ class supporting_mat_link extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 2.6,
+                  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
           centerTitle: true,
           title: SizedBox(
-            width: AppDimensions.height10(context) * 17.0,
+            width: AppDimensions.width10(context) * 17.0,
             height: AppDimensions.height10(context) * 4.8,
             child: GradientText(
               'Hurdle‘s positive\nalternatives',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: AppDimensions.height10(context) * 2.0,
+                fontSize: AppDimensions.font10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
               colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -319,7 +319,7 @@ class supporting_mat_link extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
+                    width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
@@ -339,7 +339,7 @@ class supporting_mat_link extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: AppDimensions.height10(context) * 34.3,
+                width: AppDimensions.width10(context) * 34.3,
                 height: AppDimensions.height10(context) * 3.9,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 17.0),
@@ -347,19 +347,19 @@ class supporting_mat_link extends StatelessWidget {
                   'Details Saved',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 2.8,
+                    fontSize: AppDimensions.font10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
                   colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 34.3,
+                width: AppDimensions.width10(context) * 34.3,
                 height: AppDimensions.height10(context) * 9.3,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 5.8),
                 child: Container(
-                  width: AppDimensions.height10(context) * 34.3,
+                  width: AppDimensions.width10(context) * 34.3,
                   height: AppDimensions.height10(context) * 9.3,
                   decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
@@ -374,7 +374,7 @@ class supporting_mat_link extends StatelessWidget {
                       //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          width: AppDimensions.height10(context) * 6.6,
+                          width: AppDimensions.width10(context) * 6.6,
                           height: AppDimensions.height10(context) * 6.6,
                           margin: EdgeInsets.only(
                               right: AppDimensions.height10(context) * 1.0),
@@ -386,26 +386,25 @@ class supporting_mat_link extends StatelessWidget {
                                   fit: BoxFit.cover)),
                         ),
                         SizedBox(
-                          width: AppDimensions.height10(context) * 25.6,
+                          width: AppDimensions.width10(context) * 25.6,
                           height: AppDimensions.height10(context) * 6.6,
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 25.3,
+                                  width: AppDimensions.width10(context) * 25.3,
                                   height: AppDimensions.height10(context) * 3.6,
                                   child: Text(
                                     'Finding clarity and peace through the\nstorm ',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
+                                            AppDimensions.font10(context) * 1.4,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xffffffff)),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 19.1,
+                                  width: AppDimensions.width10(context) * 19.1,
                                   height: AppDimensions.height10(context) * 1.4,
                                   margin: EdgeInsets.only(
                                       top:
@@ -416,8 +415,7 @@ class supporting_mat_link extends StatelessWidget {
                                     'www.angermanagment.com',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.1,
+                                            AppDimensions.font10(context) * 1.1,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xffffffff)),
                                   ),
@@ -430,7 +428,7 @@ class supporting_mat_link extends StatelessWidget {
                 ),
               ),
               Container(
-                  width: AppDimensions.height10(context) * 36.0,
+                  width: AppDimensions.width10(context) * 36.0,
                   height: AppDimensions.height10(context) * 17.4,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 3.0),
@@ -438,7 +436,7 @@ class supporting_mat_link extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: AppDimensions.height10(context) * 36.0,
+                        width: AppDimensions.width10(context) * 36.0,
                         height: AppDimensions.height10(context) * 14.4,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
@@ -447,7 +445,7 @@ class supporting_mat_link extends StatelessWidget {
                         child: Column(
                           children: [
                             Container(
-                              width: AppDimensions.height10(context) * 31.5,
+                              width: AppDimensions.width10(context) * 31.5,
                               height: AppDimensions.height10(context) * 8.4,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 2.2),
@@ -456,14 +454,13 @@ class supporting_mat_link extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: const Color(0xffB353C9),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10(context) * 30.5,
+                              width: AppDimensions.width10(context) * 30.5,
                               height: AppDimensions.height10(context) * 2.1,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.9),
@@ -472,7 +469,7 @@ class supporting_mat_link extends StatelessWidget {
                                 style: TextStyle(
                                     color: const Color(0xff828282),
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.font10(context) * 1.4,
                                     fontWeight: FontWeight.w400),
                               ),
                             )
@@ -481,7 +478,7 @@ class supporting_mat_link extends StatelessWidget {
                       ),
                       Container(
                           height: AppDimensions.height10(context) * 2.0,
-                          width: AppDimensions.height10(context) * 2.0,
+                          width: AppDimensions.width10(context) * 2.0,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.0),
                           padding: EdgeInsets.all(
@@ -499,7 +496,7 @@ class supporting_mat_link extends StatelessWidget {
                     ],
                   )),
               Container(
-                width: AppDimensions.height10(context) * 4.7,
+                width: AppDimensions.width10(context) * 4.7,
                 height: AppDimensions.height10(context) * 4.7,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 1.1,
@@ -507,25 +504,25 @@ class supporting_mat_link extends StatelessWidget {
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     // border: Border.all(
-                    //     width: AppDimensions.height10(context) * 0.3,
+                    //     width: AppDimensions.width10(context) * 0.3,
                     //     color: Colors.white)
                     image: DecorationImage(
                         image: AssetImage('assets/images/Addgoal.webp'))),
               ),
               SizedBox(
-                width: AppDimensions.height10(context) * 26.0,
+                width: AppDimensions.width10(context) * 26.0,
                 height: AppDimensions.height10(context) * 1.9,
                 child: Text(
                   'Add another motivational material',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.3,
+                      fontSize: AppDimensions.font10(context) * 1.3,
                       fontWeight: FontWeight.w400,
                       color: Colors.white),
                 ),
               ),
               Container(
-                  width: AppDimensions.height10(context) * 25.4,
+                  width: AppDimensions.width10(context) * 25.4,
                   height: AppDimensions.height10(context) * 5.0,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 12.8),
@@ -552,7 +549,7 @@ class supporting_mat_link extends StatelessWidget {
                         'Next',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             fontFamily: 'Poppins'),
                       ))),
