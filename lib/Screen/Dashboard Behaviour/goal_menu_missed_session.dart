@@ -181,7 +181,7 @@ class _missed_MenuState extends State<missed_Menu> {
                       'assets/images/Close.webp',
                       width: 26,
                       height: 26,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               )
             ]),
@@ -271,7 +271,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                       height:
                                           AppDimensions.height10(context) * 5.0,
                                       width:
-                                          AppDimensions.height10(context) * 4.6,
+                                          AppDimensions.width10(context) * 4.6,
                                       decoration: BoxDecoration(
                                           //color: Colors.amber,
                                           image: DecorationImage(
@@ -293,7 +293,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                     alignment: const Alignment(1.3, 6),
                                     child: SizedBox(
                                       width:
-                                          AppDimensions.height10(context) * 21,
+                                          AppDimensions.width10(context) * 21,
                                       height: AppDimensions.height10(context) *
                                           10.6,
                                       // color: Colors.amber.withOpacity(0.2),
@@ -369,11 +369,8 @@ class _missed_MenuState extends State<missed_Menu> {
                                           Color(0xffFCC10D),
                                           Color(0xffFDA210),
                                         ]),
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                            AppDimensions.height10(context) *
-                                                13.9)),
+                                    shape: BoxShape.circle,
+
                                     border: Border.all(
                                         width: AppDimensions.width10(context) *
                                             0.3,

@@ -38,13 +38,13 @@ class _message_centerState extends State<message_center> {
             ? Center(
                 child: Container(
                   margin: EdgeInsets.only(
-                      left: AppDimensions.height10(context) * 1.6),
+                      left: AppDimensions.width10(context) * 1.6),
                   // color: Colors.amber,
                   child: SizedBox(
                     width: AppDimensions.width10(context) * 7.5,
                     height: AppDimensions.height10(context) * 2.4,
 
-                    // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.6),
+                    // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.6),
                     child: Text(
                       'Delete All',
                       style: TextStyle(
@@ -92,7 +92,7 @@ class _message_centerState extends State<message_center> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
           ),
         ],
@@ -118,7 +118,7 @@ class _message_centerState extends State<message_center> {
                 height: AppDimensions.height10(context) * 7.6,
                 padding: EdgeInsets.symmetric(
                     vertical: AppDimensions.height10(context) * 0.85,
-                    horizontal: AppDimensions.height10(context) * 1.162),
+                    horizontal: AppDimensions.width10(context) * 1.162),
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Color(0xFFFFFFFF),
@@ -832,7 +832,7 @@ class _message_centerState extends State<message_center> {
               height: AppDimensions.height10(context) * 9.707,
               margin: EdgeInsets.only(
                   bottom: AppDimensions.height10(context) * 2.093,
-                  left: AppDimensions.height10(context) * 1.6,
+                  left: AppDimensions.width10(context) * 1.6,
                   right: AppDimensions.width10(context) * 1.6),
               decoration: BoxDecoration(
                   boxShadow: [
@@ -854,7 +854,7 @@ class _message_centerState extends State<message_center> {
                 children: [
                   Container(
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.261),
+                        left: AppDimensions.width10(context) * 1.261),
                     width: AppDimensions.width10(context) * 4.437,
                     height: AppDimensions.height10(context) * 4.437,
                     decoration: const BoxDecoration(
@@ -866,7 +866,7 @@ class _message_centerState extends State<message_center> {
                     width: AppDimensions.width10(context) * 6.9,
                     height: AppDimensions.height10(context) * 3.6,
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.232),
+                        left: AppDimensions.width10(context) * 1.232),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -900,7 +900,7 @@ class _message_centerState extends State<message_center> {
                     width: AppDimensions.width10(context) * 8.1,
                     height: AppDimensions.height10(context) * 6.0,
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 15.1),
+                        left: AppDimensions.width10(context) * 15.1),
                     decoration: BoxDecoration(
                       border:
                           Border.all(color: const Color(0xFFFFFFFF), width: 1),
@@ -930,7 +930,7 @@ class _message_centerState extends State<message_center> {
                   : EdgeInsets.only(
                       top: AppDimensions.height10(context) * 0.1,
                       right: AppDimensions.width10(context) * 6.2,
-                      left: AppDimensions.height10(context) * 6.2,
+                      left: AppDimensions.width10(context) * 6.2,
                       bottom: AppDimensions.height10(context) * 2.2),
               decoration: BoxDecoration(
                   boxShadow: [
@@ -983,7 +983,7 @@ class _message_centerState extends State<message_center> {
                                                     1.9,
                                                 right: AppDimensions.width10(context) *
                                                     1.6,
-                                                left: AppDimensions.height10(context) *
+                                                left: AppDimensions.width10(context) *
                                                     1.6,
                                                 bottom:
                                                     AppDimensions.height10(context) *
@@ -1142,7 +1142,7 @@ class _message_centerState extends State<message_center> {
                               width: AppDimensions.width10(context) * 10.1,
                               height: AppDimensions.height10(context) * 5.0,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 2.0),
+                                  left: AppDimensions.width10(context) * 2.0),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
                                       AppDimensions.height10(context) * 5.0),
@@ -1232,7 +1232,7 @@ class messages extends StatelessWidget {
                 width: AppDimensions.width10(context) * 31.1,
                 height: AppDimensions.height10(context) * 4.0,
                 margin: EdgeInsets.only(
-                    left: AppDimensions.height10(context) * 3.2),
+                    left: AppDimensions.width10(context) * 3.2),
                 child: Align(
                   alignment: const Alignment(-1, 0.6),
                   child: Text(
@@ -1259,7 +1259,7 @@ class messages extends StatelessWidget {
                 width: AppDimensions.width10(context) * 31.1,
                 // height: AppDimensions.height10(context) * 5.3,
                 margin: EdgeInsets.only(
-                  left: AppDimensions.height10(context) * 3.4,
+                  left: AppDimensions.width10(context) * 3.4,
                 ),
                 child: Text(
                   body,
@@ -1300,7 +1300,7 @@ void notifications_sheet(context) {
               children: [
                 Container(
                   //color: Colors.amber,
-                  // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                  // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                   alignment: const Alignment(1, 0),
                   child: GestureDetector(
                     onTap: () {

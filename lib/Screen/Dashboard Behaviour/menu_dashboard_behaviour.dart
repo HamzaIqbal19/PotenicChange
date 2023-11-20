@@ -181,7 +181,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               )
             ]),
@@ -241,7 +241,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                     alignment: const Alignment(-0.84, -0.32),
                                     child: Container(
                                       width:
-                                          AppDimensions.height10(context) * 7.9,
+                                          AppDimensions.width10(context) * 7.9,
                                       height:
                                           AppDimensions.height10(context) * 7.9,
                                       decoration: BoxDecoration(
@@ -271,7 +271,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                       height:
                                           AppDimensions.height10(context) * 5.0,
                                       width:
-                                          AppDimensions.height10(context) * 4.6,
+                                          AppDimensions.width10(context) * 4.6,
                                       decoration: BoxDecoration(
                                           //color: Colors.amber,
                                           image: DecorationImage(
@@ -293,7 +293,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                     alignment: const Alignment(1.3, 6),
                                     child: SizedBox(
                                       width:
-                                          AppDimensions.height10(context) * 21,
+                                          AppDimensions.width10(context) * 21,
                                       height: AppDimensions.height10(context) *
                                           10.6,
                                       // color: Colors.amber.withOpacity(0.2),
@@ -454,7 +454,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                                 1.9,
                                                             right: AppDimensions.width10(context) *
                                                                 1.6,
-                                                            left: AppDimensions.height10(context) *
+                                                            left: AppDimensions.width10(context) *
                                                                 1.6,
                                                             bottom: AppDimensions.height10(context) *
                                                                 0.2),

@@ -56,7 +56,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             ),
           ]),
@@ -75,7 +75,7 @@ class _add_your_practiceState extends State<add_your_practice> {
             height: AppDimensions.height10(context) * 2.2,
             margin: EdgeInsets.only(
               top: AppDimensions.height10(context) * 5.2,
-              // left: AppDimensions.height10(context) * 12.2,
+
               // right: AppDimensions.width10(context) * 12.1
             ),
             child: Center(
@@ -95,7 +95,8 @@ class _add_your_practiceState extends State<add_your_practice> {
             height: AppDimensions.height10(context) * 2.4,
             margin: EdgeInsets.only(
                 top: AppDimensions.height10(context) * 0.5,
-                left: AppDimensions.height10(context) * 12.2,
+
+                left: AppDimensions.width10(context) * 12.2,
                 right: AppDimensions.width10(context) * 12.1),
             child: Text(
               widget.goalName,
@@ -216,7 +217,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                     width: AppDimensions.width10(context) * 18.5,
                     height: AppDimensions.height10(context) * 2.2,
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.99),
+                        left: AppDimensions.width10(context) * 1.99),
                     child: Text(
                       'Goal details',
                       style: TextStyle(

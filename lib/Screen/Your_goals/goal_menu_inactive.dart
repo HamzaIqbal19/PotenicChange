@@ -221,7 +221,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               ),
             ]),
@@ -244,7 +244,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         height: AppDimensions.height10(context) * 2.2,
                         margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 5.2,
-                          // left: AppDimensions.height10(context) * 12.2,
+
                           // right: AppDimensions.width10(context) * 12.1
                         ),
                         child: Center(
@@ -263,7 +263,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         height: AppDimensions.height10(context) * 2.4,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.5,
-                            left: AppDimensions.height10(context) * 12.2,
+
+                            left: AppDimensions.width10(context) * 12.2,
                             right: AppDimensions.width10(context) * 12.1),
                         child: Text(
                           goalDetails['name'],
@@ -366,7 +367,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         image: const DecorationImage(
                                           image: AssetImage(
                                               'assets/images/Rectangle 192.webp'),
-                                          fit: BoxFit.cover,
+                                          fit: BoxFit.contain,
                                         ))
                                     : BoxDecoration(
                                         borderRadius: BorderRadius.circular(
@@ -382,9 +383,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   children: [
                                     Container(
                                       width: goal_level == 2
-                                          ? AppDimensions.height10(context) *
+                                          ? AppDimensions.width10(context) *
                                               10.135
-                                          : AppDimensions.height10(context) *
+                                          : AppDimensions.width10(context) *
                                               10.1,
                                       height: goal_level == 2
                                           ? AppDimensions.height10(context) *
@@ -393,7 +394,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                               10.1,
                                       margin: EdgeInsets.only(
                                           right:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   0.6),
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
@@ -424,13 +425,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                               fontSize: subscriptions ==
                                                       'active'
                                                   ? goal_level == 0
-                                                      ? AppDimensions.height10(
+                                                      ? AppDimensions.font10(
                                                               context) *
                                                           2.8
-                                                      : AppDimensions.height10(
+                                                      : AppDimensions.font10(
                                                               context) *
                                                           2.0
-                                                  : AppDimensions.height10(
+                                                  : AppDimensions.font10(
                                                           context) *
                                                       2.8,
                                               fontWeight: FontWeight.w500,
@@ -682,7 +683,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.0),
                           padding: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
+
+                              left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 1.9),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
@@ -808,10 +810,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             AppDimensions.height10(context) *
                                                 13.8,
                                         padding: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
+                                            AppDimensions.width10(context) *
                                                 0.8),
                                         margin: EdgeInsets.only(
-                                            left: AppDimensions.height10(
+                                            left: AppDimensions.width10(
                                                 context)),
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
@@ -869,7 +871,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   scrollDirection: Axis.horizontal,
                                   padding: EdgeInsets.symmetric(
                                       horizontal:
-                                          AppDimensions.height10(context) *
+                                          AppDimensions.width10(context) *
                                               1.7),
                                   itemCount: activePractices.length,
                                   itemBuilder: ((context, index) {
@@ -896,10 +898,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             AppDimensions.height10(context) *
                                                 13.8,
                                         padding: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
+                                            AppDimensions.width10(context) *
                                                 0.8),
                                         margin: EdgeInsets.only(
-                                            left: AppDimensions.height10(
+                                            left: AppDimensions.width10(
                                                 context)),
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
@@ -930,7 +932,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         )),
                                         child: Container(
                                           padding: EdgeInsets.all(
-                                              AppDimensions.height10(context)),
+                                              AppDimensions.width10(context)),
                                           child: Center(
                                             child: Text(
                                               activePractices[index]['name'],

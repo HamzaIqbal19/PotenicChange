@@ -31,7 +31,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
           centerTitle: true,
@@ -56,7 +56,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ]),
@@ -278,7 +278,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                                   onPressed: () {},
                                   child: Container(
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             0.8),
                                     child: Text(
                                       'Reset',

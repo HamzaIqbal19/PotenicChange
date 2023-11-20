@@ -90,7 +90,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
           actions: [
@@ -106,7 +106,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                     'assets/images/Addgoal.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             ),
           ],
@@ -143,7 +143,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                               image: DecorationImage(
                                   image: AssetImage(
                                       'assets/images/menu_goals_p.webp'),
-                                  fit: BoxFit.cover)),
+                                  fit: BoxFit.contain)),
                         ),
                       ),
                       Container(
@@ -201,8 +201,9 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                     height:
                                         AppDimensions.height10(context) * 3.5,
                                     margin: EdgeInsets.only(
-                                      right:
-                                          AppDimensions.width10(context) * 15.0,
+
+                                      right: AppDimensions.width10(context) *
+                                          15.0,
                                       top:
                                           AppDimensions.height10(context) * 1.5,
                                     ),
@@ -223,7 +224,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                               image: DecorationImage(
                                                   image: AssetImage(
                                                       'assets/images/menu_goals_b.webp'),
-                                                  fit: BoxFit.cover)),
+                                                  fit: BoxFit.contain)),
                                         ),
                                         SizedBox(
                                           width:
@@ -356,7 +357,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                               Align(
                                                 alignment: Alignment.center,
                                                 child: Container(
-                                                  width: AppDimensions.height10(
+                                                  width: AppDimensions.width10(
                                                           context) *
                                                       26.8,
                                                   height:
@@ -390,7 +391,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                                                               : goalsDetails[index]['color'] == '6'
                                                                                   ? "assets/images/Blue_gradient.webp"
                                                                                   : 'assets/images/orange_moon.webp'),
-                                                          fit: BoxFit.cover)),
+                                                          fit: BoxFit.contain)),
                                                   child: Column(
                                                     // mainAxisAlignment:
                                                     //     MainAxisAlignment.center,
@@ -540,7 +541,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                                                         width: AppDimensions.width10(context) *
                                                                             8.9,
                                                                         padding:
-                                                                            EdgeInsets.all(AppDimensions.height10(context)),
+                                                                            EdgeInsets.all(AppDimensions.width10(context)),
                                                                         decoration: BoxDecoration(
                                                                             // color: Colors.amber,
                                                                             shape: BoxShape.circle,
@@ -1185,7 +1186,8 @@ showBreakcomm(BuildContext context) {
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
             right: AppDimensions.width10(context) * 1.6,
-            left: AppDimensions.height10(context) * 1.6,
+
+            left: AppDimensions.width10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
         width: AppDimensions.width10(context) * 23.8,
@@ -1202,7 +1204,8 @@ showBreakcomm(BuildContext context) {
       content: Container(
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
-            left: AppDimensions.height10(context) * 1.6,
+
+            left: AppDimensions.width10(context) * 1.6,
             right: AppDimensions.width10(context) * 1.6),
         height: AppDimensions.height10(context) * 3.3,
         width: AppDimensions.width10(context) * 23.8,

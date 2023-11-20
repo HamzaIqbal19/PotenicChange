@@ -34,9 +34,12 @@ class circles extends StatelessWidget {
     return Container(
         height: circle_height,
         width: circle_width,
+        padding: EdgeInsets.symmetric(horizontal: AppDimensions.width10(context) *0.2),
         decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(70.0)),
+          shape: BoxShape.circle,
+            //borderRadius: const BorderRadius.all(Radius.circular(70.0)),
             border: Border.all(
+
                 width: circle_border, color: Color(circle_bordercolor)),
             gradient: LinearGradient(
                 begin: Alignment.topCenter,

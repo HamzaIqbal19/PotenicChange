@@ -585,7 +585,7 @@ class _VisualisingState extends State<Visualising> {
                                 // color: Colors.blue,
 
                                 padding: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 1.5,
+                                    left: AppDimensions.width10(context) * 1.5,
                                     right:
                                         AppDimensions.height10(context) * 1.5),
                                 child: Image.asset(
@@ -1393,9 +1393,9 @@ class _VisualisingState extends State<Visualising> {
                                       height:
                                           AppDimensions.height10(context) * 5,
                                       width: widget.comingFromEditScreen
-                                          ? AppDimensions.height10(context) *
+                                          ? AppDimensions.width10(context) *
                                               26.2
-                                          : AppDimensions.height10(context) *
+                                          : AppDimensions.width10(context) *
                                               31.3,
                                       decoration: goalVisualising[0]['text'] !=
                                                   "" ||

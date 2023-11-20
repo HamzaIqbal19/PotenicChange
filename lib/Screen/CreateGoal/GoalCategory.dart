@@ -306,8 +306,8 @@ class _GoalCategoryState extends State<GoalCategory> {
                             circle_height:
                                 AppDimensions.height10(context) * 13.4,
                             circle_width:
-                                AppDimensions.height10(context) * 13.4,
-                            textfont: AppDimensions.height10(context) * 1.6,
+                                AppDimensions.width10(context) * 13.4,
+                            textfont: AppDimensions.font10(context) * 1.6,
                             textcolor: 0XFFFFFFFF),
                         SizedBox(
                           height: AppDimensions.height10(context) * 1.6,
@@ -337,7 +337,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 2.0,
                               bottom: AppDimensions.height10(context) * 8.0,
-                              left: AppDimensions.height10(context) * 2.0,
+                              left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 2.0),
                           child: noData == true
                               ? Container(
@@ -407,11 +407,11 @@ class _GoalCategoryState extends State<GoalCategory> {
                                                               context) *
                                                           13.4,
                                                   circle_width:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.width10(
                                                               context) *
                                                           13.4,
                                                   textfont:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.font10(
                                                               context) *
                                                           1.6,
                                                   textcolor: 0xFFFA9934),
@@ -437,7 +437,7 @@ class _GoalCategoryState extends State<GoalCategory> {
             ),
             // color: Colors.blue,
             padding: EdgeInsets.only(
-                left: AppDimensions.height10(context) * 2.2,
+                left: AppDimensions.width10(context) * 2.2,
                 right: AppDimensions.width10(context) * 2.2),
             height: AppDimensions.height10(context) * 7.0,
             width: AppDimensions.width10(context) * 41.4,

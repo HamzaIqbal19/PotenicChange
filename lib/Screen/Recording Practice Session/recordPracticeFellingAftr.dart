@@ -141,7 +141,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
           actions: [
@@ -186,8 +186,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                           AppDimensions.height10(context) * 1.9,
                                       left:
                                           AppDimensions.height10(context) * 1.6,
-                                      right:
-                                          AppDimensions.width10(context) * 1.6),
+                                      right: AppDimensions.width10(context) *
+                                          1.6),
                                   height: AppDimensions.height10(context) * 3.2,
                                   width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
@@ -274,7 +274,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ],
@@ -361,7 +361,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                 Container(
                   margin: EdgeInsets.only(
                       bottom: AppDimensions.height10(context) * 6.3,
-                      left: AppDimensions.height10(context) * 1.0),
+                      left: AppDimensions.width10(context) * 1.0),
                   height: AppDimensions.height10(context) * 13.7,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -795,6 +795,7 @@ class _addNotesState extends State<addNotes> {
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.6),
                 child: Text(
                   'Add Notes',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w500,

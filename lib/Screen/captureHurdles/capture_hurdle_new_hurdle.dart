@@ -30,7 +30,7 @@ class new_hurdles extends StatelessWidget {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
           centerTitle: true,
@@ -55,7 +55,7 @@ class new_hurdles extends StatelessWidget {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ]),
@@ -116,7 +116,8 @@ class new_hurdles extends StatelessWidget {
                       height: AppDimensions.height10(context) * 16.674,
                       margin: EdgeInsets.only(
                           right: AppDimensions.width10(context) * 1.4,
-                          left: AppDimensions.height10(context) * 1.0),
+
+                          left: AppDimensions.width10(context) * 1.0),
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(10),
@@ -530,7 +531,7 @@ class new_hurdles extends StatelessWidget {
                           onPressed: () {},
                           child: Container(
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 0.8),
+                                left: AppDimensions.width10(context) * 0.8),
                             child: Text(
                               'Skip',
                               style: TextStyle(

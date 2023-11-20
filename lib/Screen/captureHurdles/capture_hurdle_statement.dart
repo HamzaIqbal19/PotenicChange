@@ -147,13 +147,13 @@ class _hurdle_statementState extends State<hurdle_statement> {
                           'assets/images/Back.webp',
                           width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         )),
                   ),
             centerTitle: true,
             title: Container(
               width: AppDimensions.width10(context) * 19.0,
-              height: AppDimensions.height10(context) * 2.4,
+              height: AppDimensions.height10(context) * 2.7,
               child: Row(
                 children: [
                   GradientText(
@@ -373,7 +373,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               )
             ]),
@@ -395,7 +395,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                         children: [
                           Container(
                             width: AppDimensions.width10(context) * 34.3,
-                            height: AppDimensions.height10(context) * 7.3,
+                            height: AppDimensions.height10(context) * 7.75,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 18.0),
                             child: GradientText(
@@ -417,7 +417,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 3.177),
                             padding: EdgeInsets.all(
-                                AppDimensions.height10(context) * 0.6),
+                                AppDimensions.width10(context) * 0.6),
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
@@ -466,11 +466,11 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                             AppDimensions.height10(context) *
                                                 2.0,
                                         margin: EdgeInsets.only(
-                                            //left: AppDimensions.height10(context) * 2.0,
+                                            //left: AppDimensions.width10(context) * 2.0,
                                             top: AppDimensions.height10(
                                                     context) *
                                                 1.3,
-                                            right: AppDimensions.height10(
+                                            right: AppDimensions.width10(
                                                     context) *
                                                 16.9),
                                         child: Center(
@@ -542,9 +542,9 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                 height: AppDimensions.height10(context) * 2.0,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 1.0,
-                                    left: AppDimensions.height10(context) * 3.1,
+                                    left: AppDimensions.width10(context) * 3.1,
                                     right:
-                                        AppDimensions.height10(context) * 26.0),
+                                        AppDimensions.width10(context) * 26.0),
                                 child: Row(
                                   children: [
                                     Text(

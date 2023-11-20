@@ -81,7 +81,7 @@ class _congratulationsState extends State<congratulations> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               )
             ]),
@@ -480,7 +480,7 @@ void goal_achieved_sheet(
                 children: [
                   Container(
                     //color: Colors.amber,
-                    // margin:   EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                    // margin:   EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                     alignment: const Alignment(1, 0),
                     child: GestureDetector(
                       onTap: () {

@@ -41,7 +41,7 @@ void termsSheet(context) {
             width: AppDimensions.width10(context) * 2.4,
             height: AppDimensions.height10(context) * 2.4,
             margin: EdgeInsets.only(
-                left: AppDimensions.height10(context) * 38.7,
+                left: AppDimensions.width10(context) * 38.7,
                 top: AppDimensions.height10(context) * 1.9),
             child: GestureDetector(
               onTap: () {
@@ -49,7 +49,7 @@ void termsSheet(context) {
               },
               child: Image.asset(
                 'assets/images/Close.webp',
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
           ),
@@ -57,7 +57,7 @@ void termsSheet(context) {
             width: AppDimensions.width10(context) * 23.4,
             height: AppDimensions.height10(context) * 2.3,
             margin:
-                EdgeInsets.only(left: AppDimensions.height10(context) * 2.2),
+                EdgeInsets.only(left: AppDimensions.width10(context) * 2.2),
             child: Text(
               'Please read before continuing',
               style: TextStyle(
@@ -92,7 +92,7 @@ void termsSheet(context) {
             child: Container(
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 2.0,
-                    left: AppDimensions.height10(context) * 1.8,
+                    left: AppDimensions.width10(context) * 1.8,
                     right: AppDimensions.width10(context) * 1.8),
                 height: AppDimensions.height10(context) * 6.0,
                 width: AppDimensions.width10(context) * 36.0,
@@ -105,7 +105,7 @@ void termsSheet(context) {
                   children: [
                     Container(
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 1.99),
+                          left: AppDimensions.width10(context) * 1.99),
                       // color: Colors.amberAccent,
                       width: AppDimensions.width10(context) * 12.8,
                       height: AppDimensions.height10(context) * 2.3,
@@ -155,7 +155,7 @@ void termsSheet(context) {
             child: Container(
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 1.0,
-                    left: AppDimensions.height10(context) * 1.8,
+                    left: AppDimensions.width10(context) * 1.8,
                     right: AppDimensions.width10(context) * 1.8),
                 height: AppDimensions.height10(context) * 6.0,
                 width: AppDimensions.width10(context) * 36.0,
@@ -168,7 +168,7 @@ void termsSheet(context) {
                   children: [
                     Container(
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 1.99),
+                          left: AppDimensions.width10(context) * 1.99),
                       // color: Colors.amberAccent,
                       width: AppDimensions.width10(context) * 12.8,
                       height: AppDimensions.height10(context) * 2.3,
@@ -245,7 +245,7 @@ void termsSheet(context) {
                                     top: AppDimensions.height10(context) * 1.9,
                                     right:
                                         AppDimensions.height10(context) * 1.6,
-                                    left: AppDimensions.height10(context) * 1.6,
+                                    left: AppDimensions.width10(context) * 1.6,
                                     bottom:
                                         AppDimensions.height10(context) * 0),
                                 height: AppDimensions.height10(context) * 4.9,
@@ -266,7 +266,7 @@ void termsSheet(context) {
                                 margin: EdgeInsets.only(
                                     bottom:
                                         AppDimensions.height10(context) * 1.9,
-                                    left: AppDimensions.height10(context) * 1.6,
+                                    left: AppDimensions.width10(context) * 1.6,
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 3.2,

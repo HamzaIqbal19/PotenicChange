@@ -194,7 +194,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.7,
+                        left: AppDimensions.width10(context) * 1.7,
                         right: AppDimensions.width10(context) * 0.9,
                         bottom: AppDimensions.height10(context) * 0.3),
                     child: Image.asset(
@@ -214,7 +214,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
               ? Container(
                   color: Colors.transparent,
                   padding:
-                      EdgeInsets.all(AppDimensions.height10(context) * 1.6),
+                      EdgeInsets.all(AppDimensions.width10(context) * 1.6),
                   child: Container(
                     width: AppDimensions.width10(context) * 38.259,
                     height: AppDimensions.height10(context) * 9.707,
@@ -232,7 +232,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 1.261),
+                              left: AppDimensions.width10(context) * 1.261),
                           width: AppDimensions.width10(context) * 4.437,
                           height: AppDimensions.height10(context) * 4.437,
                           decoration: const BoxDecoration(
@@ -244,7 +244,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                           width: AppDimensions.width10(context) * 16.3,
                           height: AppDimensions.height10(context) * 3.6,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 1.232),
+                              left: AppDimensions.width10(context) * 1.232),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -298,9 +298,9 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                             height: AppDimensions.height10(context) * 3.0,
                             width: AppDimensions.width10(context) * 3.0,
                             padding: EdgeInsets.all(
-                                AppDimensions.height10(context) * 0.6),
+                                AppDimensions.width10(context) * 0.6),
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 10.6),
+                                left: AppDimensions.width10(context) * 10.6),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.transparent,
@@ -1450,7 +1450,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                 //             children: [
                                 //               Container(
                                 //                 //color: Colors.amber,
-                                //                 // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                                //                 // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                                 //                 alignment: const Alignment(1, 0),
                                 //                 child: GestureDetector(
                                 //                   onTap: () {
@@ -2455,7 +2455,7 @@ void __share_experience(context, String goalName, String identity, String color,
           width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 62.3,
           margin: EdgeInsets.only(
-              left: AppDimensions.height10(context) * 1.0,
+              left: AppDimensions.width10(context) * 1.0,
               right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
@@ -2470,7 +2470,7 @@ void __share_experience(context, String goalName, String identity, String color,
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: AnimatedScaleButton(
                   onTap: () {
@@ -3084,7 +3084,7 @@ void __share_experience(context, String goalName, String identity, String color,
 // 
     // child: JustTheTooltip(
 //                           margin: EdgeInsets.only(
-//                               left: AppDimensions.height10(context) * 5.0),
+//                               left: AppDimensions.width10(context) * 5.0),
 //                           onDismiss: () {
 //                             print(goal_level);
 //                           },
@@ -3547,7 +3547,7 @@ void __share_experience(context, String goalName, String identity, String color,
   //                                     //height: AppDimensions.height10(context) * 2.2,
   //                                     margin: EdgeInsets.only(
   //                                         top: AppDimensions.height10(context) * 0.5,
-  //                                         left: AppDimensions.height10(context) * 0.5,
+  //                                         left: AppDimensions.width10(context) * 0.5,
   //                                         right: AppDimensions.width10(context) * 7.4),
   //                                     child: Text(
   //                                       goal_level == 2

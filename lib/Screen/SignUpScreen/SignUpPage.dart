@@ -81,7 +81,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   'assets/images/Close.webp',
                   width: AppDimensions.width10(context) * 2.8,
                   height: AppDimensions.height10(context) * 2.8,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -190,7 +190,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                               ),
                               Container(
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 0.8,
+                                    left: AppDimensions.width10(context) * 0.8,
                                     top: AppDimensions.height10(context) * 0.1),
                                 child: Text(
                                   '  Sign up with email',

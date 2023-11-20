@@ -46,7 +46,7 @@ void community_sheet(context) {
               children: [
                 Container(
                   //color: Colors.amber,
-                  // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                  // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                   alignment: const Alignment(1, 0),
                   child: GestureDetector(
                     onTap: () {

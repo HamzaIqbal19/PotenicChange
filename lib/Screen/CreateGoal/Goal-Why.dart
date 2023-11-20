@@ -607,7 +607,7 @@ class _goalwhyState extends State<GoalWhy> {
                               width: AppDimensions.width10(context) * 10.4,
                               height: AppDimensions.height10(context) * 7.6,
                               padding: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 1.5,
+                                  left: AppDimensions.width10(context) * 1.5,
                                   right: AppDimensions.width10(context) * 1.5),
                               child: Image.asset(
                                 "assets/images/image3.webp",
@@ -1394,8 +1394,8 @@ class _goalwhyState extends State<GoalWhy> {
                                   child: Container(
                                     height: AppDimensions.height10(context) * 5,
                                     width: widget.comingFromEditScreen
-                                        ? AppDimensions.height10(context) * 26.3
-                                        : AppDimensions.height10(context) *
+                                        ? AppDimensions.width10(context) * 26.3
+                                        : AppDimensions.width10(context) *
                                             31.3,
                                     decoration: widget.comingFromEditScreen
                                         ? myTextFields[0]['text'] != "" ||
@@ -1633,7 +1633,7 @@ class pop_up_goals extends StatelessWidget {
         content: Container(
           margin: EdgeInsets.only(
               bottom: AppDimensions.height10(context) * 1.9,
-              left: AppDimensions.height10(context) * 1.6,
+              left: AppDimensions.width10(context) * 1.6,
               right: AppDimensions.width10(context) * 1.6),
           //height: AppDimensions.height10(context) * 3.2,
           width: AppDimensions.width10(context) * 23.8,

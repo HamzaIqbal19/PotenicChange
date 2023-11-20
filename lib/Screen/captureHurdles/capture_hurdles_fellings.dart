@@ -230,13 +230,13 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                           'assets/images/Back.webp',
                           width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         )),
                   ),
             centerTitle: true,
             title: SizedBox(
               width: AppDimensions.width10(context) * 19.0,
-              height: AppDimensions.height10(context) * 2.4,
+              height: AppDimensions.height10(context) * 2.7,
               child: Row(
                 children: [
                   GradientText(
@@ -456,7 +456,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               )
             ]),
@@ -476,7 +476,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     child: Column(children: [
                       Container(
                         width: AppDimensions.width10(context) * 34.3,
-                        height: AppDimensions.height10(context) * 7.3,
+                        height: AppDimensions.height10(context) * 7.75,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 18.0),
                         child: GradientText(

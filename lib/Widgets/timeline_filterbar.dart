@@ -104,7 +104,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
           children: [
             Padding(
               padding: EdgeInsets.only(
-                  top: 5, left: AppDimensions.height10(context) * 1.6),
+                  top: 5, left: AppDimensions.width10(context) * 1.6),
               child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(

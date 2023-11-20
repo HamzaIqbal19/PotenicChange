@@ -71,7 +71,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ]),
@@ -951,7 +951,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                         image: AssetImage(
                                             'assets/images/Video_Subtract.webp'))),
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 1),
+                                    left: AppDimensions.width10(context) * 1),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -1043,7 +1043,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                             'assets/images/Rectangle 10.webp'),
                                         fit: BoxFit.cover)),
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 1),
+                                    left: AppDimensions.width10(context) * 1),
                               ),
                               Container(
                                 width: AppDimensions.width10(context) * 18.0,
@@ -1055,7 +1055,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                         image: AssetImage(
                                             'assets/images/Image_Subtract.webp'))),
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 1),
+                                    left: AppDimensions.width10(context) * 1),
                                 child: Column(
                                   children: [
                                     Container(
@@ -1136,7 +1136,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                         image: AssetImage(
                                             'assets/images/Video_Subtract.webp'))),
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 1,
+                                    left: AppDimensions.width10(context) * 1,
                                     right: AppDimensions.width10(context) * 1),
                                 child: Center(
                                   child: Center(

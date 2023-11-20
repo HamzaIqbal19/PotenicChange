@@ -24,7 +24,7 @@ class progress_report_unsub extends StatelessWidget {
                 'assets/images/Back.webp',
                 width: AppDimensions.width10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
         ),
       ),
@@ -322,7 +322,7 @@ class progress_report_unsub extends StatelessWidget {
                       height: AppDimensions.height10(context) * 30.517,
                       margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.0,
-                        // left: AppDimensions.height10(context) * 2.7
+                        // left: AppDimensions.width10(context) * 2.7
                       ),
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -578,7 +578,7 @@ class progress_report_unsub extends StatelessWidget {
                             height: AppDimensions.height10(context) * 18.6,
                             width: AppDimensions.width10(context) * 13.3,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 3.0),
+                                left: AppDimensions.width10(context) * 3.0),
 
                             // color: Colors.amber,
                             child: Column(
@@ -590,7 +590,7 @@ class progress_report_unsub extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       SizedBox(
-                                        // margin: EdgeInsets.only(left: AppDimensions.height10(context)*1.0),
+                                        // margin: EdgeInsets.only(left: AppDimensions.width10(context)*1.0),
                                         height:
                                             AppDimensions.height10(context) *
                                                 7.7,
@@ -1276,7 +1276,7 @@ void report(context) {
           width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 51.3,
           margin: EdgeInsets.only(
-              left: AppDimensions.height10(context) * 1.0,
+              left: AppDimensions.width10(context) * 1.0,
               right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.3),
           decoration: BoxDecoration(
@@ -1293,7 +1293,7 @@ void report(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {

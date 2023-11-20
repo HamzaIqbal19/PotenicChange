@@ -144,8 +144,8 @@ class _emotionsState extends State<emotions> {
                                           AppDimensions.height10(context) * 1.9,
                                       left:
                                           AppDimensions.height10(context) * 1.6,
-                                      right:
-                                          AppDimensions.width10(context) * 1.6),
+                                      right: AppDimensions.width10(context) *
+                                          1.6),
                                   height: AppDimensions.height10(context) * 3.2,
                                   width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
@@ -234,7 +234,7 @@ class _emotionsState extends State<emotions> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ],
@@ -306,7 +306,7 @@ class _emotionsState extends State<emotions> {
                   Container(
                     margin: EdgeInsets.only(
                         bottom: AppDimensions.height10(context) * 5.2,
-                        left: AppDimensions.height10(context) * 1.0),
+                        left: AppDimensions.width10(context) * 1.0),
                     height: AppDimensions.height10(context) * 13.7,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -321,7 +321,7 @@ class _emotionsState extends State<emotions> {
                             width: AppDimensions.width10(context) * 13.7,
                             height: AppDimensions.height10(context) * 13.7,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 4.0,
+                                left: AppDimensions.width10(context) * 4.0,
                                 right: AppDimensions.width10(context) * 1.5),
                             decoration: BoxDecoration(
                                 color: Colors.transparent,
@@ -568,7 +568,7 @@ class _emotionsState extends State<emotions> {
                             height: AppDimensions.height10(context) * 2.7,
                             width: AppDimensions.width10(context) * 2.7,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 0.3),
+                                left: AppDimensions.width10(context) * 0.3),
                             child: IconButton(
                                 onPressed: () {},
                                 icon: const Icon(
@@ -847,8 +847,10 @@ class _addNotesState extends State<addNotes> {
                 height: AppDimensions.height10(context) * 1.9,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.6),
+
                 child: Text(
                   'Add Notes',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w500,

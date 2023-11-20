@@ -29,7 +29,7 @@ class _select_linkState extends State<select_link> {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
           centerTitle: true,
@@ -54,7 +54,7 @@ class _select_linkState extends State<select_link> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ]),
@@ -134,7 +134,7 @@ class _select_linkState extends State<select_link> {
                   color: Colors.white),
               child: Container(
                 margin: EdgeInsets.only(
-                    left: AppDimensions.height10(context) * 2.0,
+                    left: AppDimensions.width10(context) * 2.0,
                     right: AppDimensions.width10(context) * 2.0),
                 height: AppDimensions.height10(context) * 2.2,
                 width: AppDimensions.width10(context) * 30.5,

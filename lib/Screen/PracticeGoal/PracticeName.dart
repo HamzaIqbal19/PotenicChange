@@ -220,7 +220,7 @@ class _PracticeNameState extends State<PracticeName> {
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 1.9,
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.6,
                                         right: AppDimensions.width10(context) *
                                             1.6),
@@ -439,7 +439,7 @@ class _PracticeNameState extends State<PracticeName> {
                     Container(
                         //width: AppDimensions.width10(context) * 22,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 1.5),
+                            left: AppDimensions.width10(context) * 1.5),
                         child: practice.text.toString().length > 20
                             ? Text(
                                 capitalizeFirstLetter(
@@ -511,7 +511,7 @@ class _PracticeNameState extends State<PracticeName> {
                   height: AppDimensions.height10(context) * 10.5,
                   width: AppDimensions.width10(context) * 36.0,
                   padding: EdgeInsets.only(
-                    left: AppDimensions.height10(context) * 2.0,
+                    left: AppDimensions.width10(context) * 2.0,
                     top: AppDimensions.height10(context) * 1.0,
                     right: AppDimensions.width10(context) * 0.5,
                     bottom: AppDimensions.height10(context) * 0.5,
@@ -647,7 +647,7 @@ class _PracticeNameState extends State<PracticeName> {
                                 children: [
                                   Container(
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.261),
                                     width:
                                         AppDimensions.width10(context) * 4.437,
@@ -663,7 +663,7 @@ class _PracticeNameState extends State<PracticeName> {
                                     height:
                                         AppDimensions.height10(context) * 3.6,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.232),
                                     child: Column(
                                       crossAxisAlignment:
@@ -937,7 +937,8 @@ class pop_up_practices extends StatelessWidget {
           margin: EdgeInsets.only(
               top: AppDimensions.height10(context) * 1.9,
               right: AppDimensions.width10(context) * 1.6,
-              left: AppDimensions.height10(context) * 1.6,
+
+              left: AppDimensions.width10(context) * 1.6,
               bottom: AppDimensions.height10(context) * 0.2),
           height: AppDimensions.height10(context) * 2.2,
           width: AppDimensions.width10(context) * 23.8,
@@ -954,7 +955,8 @@ class pop_up_practices extends StatelessWidget {
         content: Container(
           margin: EdgeInsets.only(
               bottom: AppDimensions.height10(context) * 1.9,
-              left: AppDimensions.height10(context) * 1.6,
+
+              left: AppDimensions.width10(context) * 1.6,
               right: AppDimensions.width10(context) * 1.6),
           // height: AppDimensions.height10(context) * 3.2,
           width: AppDimensions.width10(context) * 23.8,

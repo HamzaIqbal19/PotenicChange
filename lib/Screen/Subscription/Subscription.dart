@@ -59,7 +59,7 @@ class _SubscriptionState extends State<Subscription>
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ]),
@@ -483,7 +483,7 @@ class _SubscriptionState extends State<Subscription>
                                     children: [
                                       Container(
                                         //color: Colors.amber,
-                                        // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                                        // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                                         alignment: const Alignment(1, 0),
                                         child: GestureDetector(
                                           onTap: () {
@@ -717,7 +717,7 @@ class _SubscriptionState extends State<Subscription>
                               key: _globalKey,
                               hideIcon: true,
                               tilePadding: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 6.3,
+                                  left: AppDimensions.width10(context) * 6.3,
                                   right: AppDimensions.width10(context) * 6.3),
                               decoration: BoxDecoration(
                                   border: Border.all(
@@ -2323,7 +2323,7 @@ subscribed(context) {
           width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 57.0,
           margin: EdgeInsets.only(
-              left: AppDimensions.height10(context) * 1.0,
+              left: AppDimensions.width10(context) * 1.0,
               right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
@@ -2341,7 +2341,7 @@ subscribed(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {

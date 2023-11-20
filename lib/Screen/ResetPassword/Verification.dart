@@ -200,7 +200,7 @@ class _VerificationState extends State<Verification> {
                     children: [
                       Container(
                         margin: EdgeInsets.symmetric(
-                            horizontal: AppDimensions.height10(context) * 8),
+                            horizontal: AppDimensions.width10(context) * 8),
                         child: Row(
                           children: List.generate(4, (index) {
                             return Expanded(

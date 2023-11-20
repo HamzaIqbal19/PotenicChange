@@ -24,7 +24,7 @@ class link_details extends StatelessWidget {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
           centerTitle: true,
@@ -49,7 +49,7 @@ class link_details extends StatelessWidget {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ]),
@@ -296,7 +296,7 @@ class supporting_mat_link extends StatelessWidget {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
           centerTitle: true,
@@ -321,7 +321,7 @@ class supporting_mat_link extends StatelessWidget {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ]),
@@ -409,8 +409,8 @@ class supporting_mat_link extends StatelessWidget {
                                   margin: EdgeInsets.only(
                                       top:
                                           AppDimensions.height10(context) * 1.3,
-                                      right:
-                                          AppDimensions.width10(context) * 6.3),
+                                      right: AppDimensions.width10(context) *
+                                          6.3),
                                   child: Text(
                                     'www.angermanagment.com',
                                     style: TextStyle(

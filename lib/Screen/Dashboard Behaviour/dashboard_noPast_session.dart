@@ -1238,7 +1238,7 @@ class _no_past_sessionState extends State<no_past_session> {
                           ),
                           Positioned(
                               top: AppDimensions.height10(context) * 64.0,
-                              left: AppDimensions.height10(context) * 1.3,
+                              left: AppDimensions.width10(context) * 1.3,
                               child: Container(
                                 width: AppDimensions.width10(context) * 4.5,
                                 height: AppDimensions.height10(context) * 4.5,
@@ -1286,7 +1286,7 @@ class _no_past_sessionState extends State<no_past_session> {
                           widget.missed
                               ? Positioned(
                                   top: AppDimensions.height10(context) * 56.8,
-                                  left: AppDimensions.height10(context) * 2.5,
+                                  left: AppDimensions.width10(context) * 2.5,
                                   child: Container(
                                     width:
                                         AppDimensions.width10(context) * 38.259,

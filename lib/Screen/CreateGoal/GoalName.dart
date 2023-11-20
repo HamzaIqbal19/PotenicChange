@@ -496,7 +496,7 @@ class _GoalNameState extends State<GoalName> {
                       width: AppDimensions.width10(context) * 10.4,
                       height: AppDimensions.height10(context) * 7.6,
                       padding: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 1.5,
+                          left: AppDimensions.width10(context) * 1.5,
                           right: AppDimensions.width10(context) * 1.5),
                       child: Image.asset(
                         "assets/images/image3.webp",
@@ -547,7 +547,7 @@ class _GoalNameState extends State<GoalName> {
                         top: AppDimensions.height10(context) * 2.0,
                         right: AppDimensions.width10(context) * 0.6,
                         bottom: AppDimensions.height10(context) * 0.4,
-                        left: AppDimensions.height10(context) * 2.0),
+                        left: AppDimensions.width10(context) * 2.0),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.white, width: 2),
@@ -604,7 +604,7 @@ class _GoalNameState extends State<GoalName> {
                         right: AppDimensions.width10(context) * 1.3),
 
                     padding: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 0.1,
+                        left: AppDimensions.width10(context) * 0.1,
                         right: AppDimensions.width10(context) * 20.1),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -971,7 +971,7 @@ class _updateBoxState extends State<updateBox> {
         children: [
           Container(
             margin:
-                EdgeInsets.only(left: AppDimensions.height10(context) * 1.261),
+                EdgeInsets.only(left: AppDimensions.width10(context) * 1.261),
             width: AppDimensions.width10(context) * 4.437,
             height: AppDimensions.height10(context) * 4.437,
             decoration: const BoxDecoration(
@@ -982,7 +982,7 @@ class _updateBoxState extends State<updateBox> {
             //width: AppDimensions.width10(context) * 6.9,
             height: AppDimensions.height10(context) * 3.6,
             margin:
-                EdgeInsets.only(left: AppDimensions.height10(context) * 1.232),
+                EdgeInsets.only(left: AppDimensions.width10(context) * 1.232),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -1023,7 +1023,7 @@ class _updateBoxState extends State<updateBox> {
               width: AppDimensions.width10(context) * 8.1,
               height: AppDimensions.height10(context) * 6.0,
               margin: EdgeInsets.only(
-                  left: AppDimensions.height10(context) * 5,
+                  left: AppDimensions.width10(context) * 5,
                   right: AppDimensions.width10(context) * 1.23),
               decoration: BoxDecoration(
                 border: Border.all(color: const Color(0xFFFFFFFF), width: 1),

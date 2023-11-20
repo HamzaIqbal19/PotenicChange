@@ -307,7 +307,7 @@ class _AllGoalsState extends State<AllGoals> {
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(
-                            horizontal: AppDimensions.height10(context) * 2.0),
+                            horizontal: AppDimensions.width10(context) * 2.0),
                         child: noData == true
                             ? Container(
                                 height: AppDimensions.height10(context) * 21.2,
@@ -471,11 +471,11 @@ class _AllGoalsState extends State<AllGoals> {
                                                                       13.4,
                                                               circle_width:
                                                                   AppDimensions
-                                                                          .height10(
+                                                                          .width10(
                                                                               context) *
                                                                       13.4,
                                                               textfont: AppDimensions
-                                                                      .height10(
+                                                                      .font10(
                                                                           context) *
                                                                   1.6,
                                                               textcolor:
@@ -505,7 +505,7 @@ class _AllGoalsState extends State<AllGoals> {
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
           padding: EdgeInsets.only(
-              left: AppDimensions.height10(context) * 2.2,
+              left: AppDimensions.width10(context) * 2.2,
               right: AppDimensions.width10(context) * 2.2),
           height: AppDimensions.height10(context) * 7.0,
           width: AppDimensions.width10(context) * 41.4,

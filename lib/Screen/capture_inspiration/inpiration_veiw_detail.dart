@@ -79,7 +79,7 @@ class _view_detailsState extends State<view_details> {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           )),
       body: Container(
@@ -118,7 +118,8 @@ class _view_detailsState extends State<view_details> {
                           height: AppDimensions.height10(context) * 36.188,
                           margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 12.0,
-                            left: AppDimensions.height10(context) * 3.4,
+
+                            left: AppDimensions.width10(context) * 3.4,
                             right: AppDimensions.width10(context) * 3.4,
                           ),
                           decoration: BoxDecoration(
@@ -141,7 +142,8 @@ class _view_detailsState extends State<view_details> {
                           alignment: Alignment.center,
                           margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 11.50,
-                            left: AppDimensions.height10(context) * 1.8,
+
+                            left: AppDimensions.width10(context) * 1.8,
                             right: AppDimensions.width10(context) * 1.8,
                           ),
                           decoration: const BoxDecoration(
@@ -189,7 +191,8 @@ class _view_detailsState extends State<view_details> {
                         child: Center(
                           child: Container(
                             margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 5,
+
+                              left: AppDimensions.width10(context) * 5,
                               right: AppDimensions.width10(context) * 5,
                               // bottom: AppDimensions.height10(context) * 3
                             ),
@@ -253,7 +256,7 @@ class _view_detailsState extends State<view_details> {
                                 width: AppDimensions.width10(context) * 30.5,
                                 alignment: Alignment.centerLeft,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 3.6,
+                                    left: AppDimensions.width10(context) * 3.6,
                                     right:
                                         AppDimensions.height10(context) * 8.9,
                                     top: AppDimensions.height10(context) * 3.4),
@@ -274,7 +277,8 @@ class _view_detailsState extends State<view_details> {
                             alignment: Alignment.centerLeft,
                             // color: Colors.amber,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 3.6,
+
+                                left: AppDimensions.width10(context) * 3.6,
                                 right: AppDimensions.width10(context) * 9.0,
                                 top: AppDimensions.height10(context) * 0.3),
                             child: Column(
@@ -450,7 +454,8 @@ class _view_detailsState extends State<view_details> {
                             // width: AppDimensions.width10(context) * 30.5,
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 3.6,
+
+                                left: AppDimensions.width10(context) * 3.6,
                                 right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 2.0),
                             child: Column(
@@ -507,7 +512,8 @@ class _view_detailsState extends State<view_details> {
                             // width: AppDimensions.width10(context) * 30.5,
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 3.6,
+
+                                left: AppDimensions.width10(context) * 3.6,
                                 right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 0.2),
                             child: Column(
@@ -530,7 +536,7 @@ class _view_detailsState extends State<view_details> {
                                 // width: AppDimensions.width10(context) * 30.5,
                                 alignment: Alignment.centerLeft,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 3.6,
+                                    left: AppDimensions.width10(context) * 3.6,
                                     right:
                                         AppDimensions.height10(context) * 8.9,
                                     top: AppDimensions.height10(context) * 2.0),
@@ -554,7 +560,7 @@ class _view_detailsState extends State<view_details> {
                                 // width: AppDimensions.width10(context) * 30.5,
                                 alignment: Alignment.centerLeft,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 3.6,
+                                    left: AppDimensions.width10(context) * 3.6,
                                     right:
                                         AppDimensions.height10(context) * 8.9,
                                     top: AppDimensions.height10(context) * 0.2),
@@ -581,7 +587,7 @@ class _view_detailsState extends State<view_details> {
                                 width: AppDimensions.width10(context) * 30.5,
                                 alignment: Alignment.centerLeft,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 3.6,
+                                    left: AppDimensions.width10(context) * 3.6,
                                     right:
                                         AppDimensions.height10(context) * 8.9,
                                     top: AppDimensions.height10(context) * 2.0),
@@ -602,7 +608,7 @@ class _view_detailsState extends State<view_details> {
                                 // width: AppDimensions.width10(context) * 30.5,
                                 alignment: Alignment.centerLeft,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 3.6,
+                                    left: AppDimensions.width10(context) * 3.6,
                                     right:
                                         AppDimensions.height10(context) * 8.9,
                                     top: AppDimensions.height10(context) * 0.2),
@@ -625,7 +631,7 @@ class _view_detailsState extends State<view_details> {
                           width: AppDimensions.width10(context) * 30.5,
                           alignment: Alignment.centerLeft,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 3.6,
+                              left: AppDimensions.width10(context) * 3.6,
                               bottom: AppDimensions.height10(context) * 0.5,
                               right: AppDimensions.width10(context) * 8.9,
                               top: AppDimensions.height10(context) * 2.0),
@@ -655,7 +661,8 @@ class _view_detailsState extends State<view_details> {
                             width: AppDimensions.width10(context) * 37.5,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 1.0,
-                                left: AppDimensions.height10(context) * 2.2,
+
+                                left: AppDimensions.width10(context) * 2.2,
                                 right: AppDimensions.width10(context) * 1.7,
                                 top: AppDimensions.height10(context) * 0.5),
                             decoration: BoxDecoration(

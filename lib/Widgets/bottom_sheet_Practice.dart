@@ -110,7 +110,7 @@ void bottom_sheet(context, String goal) {
                     Container(
                       height: AppDimensions.height10(context) * 2,
                       padding: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 4.0),
+                          left: AppDimensions.width10(context) * 4.0),
                       child: Row(
                         children: [
                           const Center(

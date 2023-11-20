@@ -173,7 +173,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                     'assets/images/Back.webp',
                     width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             ),
             actions: [
@@ -186,7 +186,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                       'assets/images/ic_info_outline.webp',
                       width: AppDimensions.width10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               ),
             ]),
@@ -287,7 +287,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                             2.1,
                                                     margin: EdgeInsets.only(
                                                         right: AppDimensions
-                                                                .height10(
+                                                                .width10(
                                                                     context) *
                                                             2.0),
                                                     child: Text(
@@ -1344,7 +1344,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                             height: AppDimensions.height10(context) * 3.2,
                             padding: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.1,
-                                left: AppDimensions.height10(context) * 0.6,
+                                left: AppDimensions.width10(context) * 0.6,
                                 right: AppDimensions.width10(context) * 0.6,
                                 bottom: AppDimensions.height10(context) * 0.9),
                             decoration: const BoxDecoration(
@@ -1409,7 +1409,7 @@ class goal_criteria extends StatelessWidget {
             //  height: AppDimensions.height10(context) * 9.9,
 
             margin: EdgeInsets.only(
-              left: AppDimensions.height10(context) * 3.0,
+              left: AppDimensions.width10(context) * 3.0,
               top: AppDimensions.height10(context) * 2.4,
               bottom: AppDimensions.height10(context) * 2.4,
             ),
@@ -1466,7 +1466,7 @@ class goal_criteria extends StatelessWidget {
             width: AppDimensions.width10(context) * 8.7,
             height: AppDimensions.height10(context) * 8.7,
             margin:
-                EdgeInsets.only(left: AppDimensions.height10(context) * 1.0),
+                EdgeInsets.only(left: AppDimensions.width10(context) * 1.0),
             decoration: BoxDecoration(
                 color: Color(colors),
                 shape: BoxShape.circle,
@@ -1496,7 +1496,7 @@ class goal_criteria extends StatelessWidget {
                   width: AppDimensions.width10(context) * 3.2,
                   height: AppDimensions.height10(context) * 3.7,
                   margin: EdgeInsets.only(
-                      left: AppDimensions.height10(context) * 1.0),
+                      left: AppDimensions.width10(context) * 1.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -1526,7 +1526,7 @@ class goal_criteria extends StatelessWidget {
               width: AppDimensions.width10(context) * 2.4,
               height: AppDimensions.height10(context) * 1.31,
               margin:
-                  EdgeInsets.only(left: AppDimensions.height10(context) * 1.7),
+                  EdgeInsets.only(left: AppDimensions.width10(context) * 1.7),
               child: GestureDetector(
                 onTap: () {},
                 child: Image.asset(
@@ -1534,7 +1534,7 @@ class goal_criteria extends StatelessWidget {
                   color: const Color(0xFFFFFFFF),
                   //width: AppDimensions.width10(context) * 2.6,
                   //height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
               )),
         ],
@@ -1590,7 +1590,7 @@ void Upgrade_sheet(context) {
                           height: AppDimensions.height10(context) * 3.2,
                           padding: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.9,
-                              left: AppDimensions.height10(context) * 0.6,
+                              left: AppDimensions.width10(context) * 0.6,
                               right: AppDimensions.width10(context) * 0.6,
                               bottom: AppDimensions.height10(context) * 1.1),
                           decoration: const BoxDecoration(
@@ -1681,7 +1681,7 @@ void evaluation_sheet(context) {
                   children: [
                     Container(
                       //color: Colors.amber,
-                      // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                      // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                       alignment: const Alignment(1, 0),
                       child: GestureDetector(
                         onTap: () {

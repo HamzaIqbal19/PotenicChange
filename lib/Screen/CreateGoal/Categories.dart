@@ -84,7 +84,7 @@ class _CategoriesState extends State<Categories> {
                 'assets/images/Close.webp',
                 width: 28.0,
                 height: 28.0,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -215,10 +215,10 @@ class _CategoriesState extends State<Categories> {
                                                           context) *
                                                       13.4,
                                               circle_width:
-                                                  AppDimensions.height10(
+                                                  AppDimensions.width10(
                                                           context) *
                                                       13.4,
-                                              textfont: AppDimensions.height10(
+                                              textfont: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               textcolor: 0xFFFFFFFF),
@@ -234,10 +234,10 @@ class _CategoriesState extends State<Categories> {
                                                     .height10(context) *
                                                 13.4,
                                             circle_width:
-                                                AppDimensions.height10(
+                                                AppDimensions.width10(
                                                         context) *
                                                     13.4,
-                                            textfont: AppDimensions.height10(
+                                            textfont: AppDimensions.font10(
                                                     context) *
                                                 1.6,
                                             textcolor: 0xFFFFFFFF),
@@ -288,7 +288,7 @@ class _CategoriesState extends State<Categories> {
                                   children: [
                                     SizedBox(
                                       width:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.width10(context) * 2.0,
                                     ),
                                     DragTarget<Map<String, dynamic>>(
                                       builder: (context, candidateData,
@@ -325,11 +325,11 @@ class _CategoriesState extends State<Categories> {
                                                         .height10(context) *
                                                     13.4,
                                                 circle_width:
-                                                    AppDimensions.height10(
+                                                    AppDimensions.width10(
                                                             context) *
                                                         13.4,
                                                 textfont:
-                                                    AppDimensions.height10(
+                                                    AppDimensions.font10(
                                                             context) *
                                                         1.6,
                                                 textcolor: 0xFFFFFFFF),
@@ -347,10 +347,10 @@ class _CategoriesState extends State<Categories> {
                                                           context) *
                                                       13.4,
                                               circle_width:
-                                                  AppDimensions.height10(
+                                                  AppDimensions.width10(
                                                           context) *
                                                       13.4,
-                                              textfont: AppDimensions.height10(
+                                              textfont: AppDimensions.font10(
                                                       context) *
                                                   1.6,
                                               textcolor: 0xFFFFFFFF),
@@ -394,16 +394,21 @@ class _CategoriesState extends State<Categories> {
                           ),
                         );
                       },
-                      child: circles(
-                          circle_text: "View all \n goals",
-                          circle_color1: 0xFFFC854F,
-                          circle_color2: 0xFFFAA960,
-                          circle_border: 3.0,
-                          circle_bordercolor: 0xFFFFFFFF,
-                          circle_height: AppDimensions.height10(context) * 10.0,
-                          circle_width: AppDimensions.width10(context) * 10.0,
-                          textfont: AppDimensions.height10(context) * 1.6,
-                          textcolor: 0xFFFFFFFF),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle
+                        ),
+                        child: circles(
+                            circle_text: "View all \n goals",
+                            circle_color1: 0xFFFC854F,
+                            circle_color2: 0xFFFAA960,
+                            circle_border: 3.0,
+                            circle_bordercolor: 0xFFFFFFFF,
+                            circle_height: AppDimensions.height10(context) * 10.0,
+                            circle_width: AppDimensions.width10(context) * 10.0,
+                            textfont: AppDimensions.font10(context) * 1.6,
+                            textcolor: 0xFFFFFFFF),
+                      ),
                     )
                   ],
                 )

@@ -72,7 +72,7 @@ class _inner_textState extends State<inner_text> {
       padding: EdgeInsets.only(
           top: AppDimensions.height10(context) * 1,
           bottom: AppDimensions.height10(context) * 0.5,
-          left: AppDimensions.height10(context) * 2,
+          left: AppDimensions.width10(context) * 2,
           right: AppDimensions.width10(context) * 2.0),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
@@ -130,7 +130,7 @@ class _inner_textState extends State<inner_text> {
                                     top: AppDimensions.height10(context) * 1.9,
                                     right:
                                         AppDimensions.height10(context) * 1.6,
-                                    left: AppDimensions.height10(context) * 1.6,
+                                    left: AppDimensions.width10(context) * 1.6,
                                     bottom:
                                         AppDimensions.height10(context) * 0),
                                 height: AppDimensions.height10(context) * 2.2,
@@ -151,7 +151,7 @@ class _inner_textState extends State<inner_text> {
                                 margin: EdgeInsets.only(
                                     bottom:
                                         AppDimensions.height10(context) * 1.9,
-                                    left: AppDimensions.height10(context) * 1.6,
+                                    left: AppDimensions.width10(context) * 1.6,
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 3.2,

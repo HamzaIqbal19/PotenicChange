@@ -205,7 +205,7 @@ class _practiceMenuState extends State<practiceMenu> {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
           actions: [
@@ -237,7 +237,7 @@ class _practiceMenuState extends State<practiceMenu> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ],
@@ -454,11 +454,11 @@ class _practiceMenuState extends State<practiceMenu> {
                                               Color(0xffFCC10D),
                                               Color(0xffFDA210),
                                             ]),
-                                        shape: BoxShape.rectangle,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(AppDimensions
-                                                    .height10(context) *
-                                                13.9)),
+                                        shape: BoxShape.circle,
+                                        // borderRadius: BorderRadius.all(
+                                        //     Radius.circular(AppDimensions
+                                        //             .height10(context) *
+                                        //         13.9)),
                                         border: Border.all(
                                             width:
                                                 AppDimensions.width10(context) *
@@ -971,7 +971,7 @@ void info_sheet(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: AnimatedScaleButton(
                   onTap: () {

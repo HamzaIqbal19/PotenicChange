@@ -50,7 +50,11 @@ class practice_session_shimmer extends StatelessWidget {
                 Container(
                   height: AppDimensions.height10(context) * 26.8,
                   margin: EdgeInsets.only(
+<<<<<<< Updated upstream
                       left: AppDimensions.height10(context),
+=======
+                      left: AppDimensions.width10(context),
+>>>>>>> Stashed changes
                       right: AppDimensions.width10(context) * 12.1),
                   child: Stack(
                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -64,7 +68,7 @@ class practice_session_shimmer extends StatelessWidget {
                         alignment: const Alignment(0, 1.5),
                         child: Container(
                           margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context),
+                            left: AppDimensions.width10(context),
                           ),
                           child: Row(
                             children: [
@@ -93,7 +97,11 @@ class practice_session_shimmer extends StatelessWidget {
                 Container(
                   height: AppDimensions.height10(context) * 26.8,
                   margin: EdgeInsets.only(
+<<<<<<< Updated upstream
                       left: AppDimensions.height10(context),
+=======
+                      left: AppDimensions.width10(context),
+>>>>>>> Stashed changes
                       right: AppDimensions.width10(context) * 12.1),
                   child: Stack(
                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -107,7 +115,7 @@ class practice_session_shimmer extends StatelessWidget {
                         alignment: const Alignment(0, 1.5),
                         child: Container(
                           margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context),
+                            left: AppDimensions.width10(context),
                           ),
                           child: Row(
                             children: [

@@ -264,7 +264,7 @@ class _your_whyState extends State<your_why> {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.9,
                           right: AppDimensions.width10(context) * 1.6,
-                          left: AppDimensions.height10(context) * 1.6,
+                          left: AppDimensions.width10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 23.8,
@@ -280,7 +280,7 @@ class _your_whyState extends State<your_why> {
                     content: Container(
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 1.5,
-                          left: AppDimensions.height10(context) * 1.6,
+                          left: AppDimensions.width10(context) * 1.6,
                           right: AppDimensions.width10(context) * 1.6),
                       width: AppDimensions.width10(context) * 23.8,
                       child: Text(
@@ -409,8 +409,8 @@ class _your_whyState extends State<your_why> {
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 1.9,
                                     right:
-                                        AppDimensions.height10(context) * 1.6,
-                                    left: AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.width10(context) * 1.6,
+                                    left: AppDimensions.width10(context) * 1.6,
                                     bottom:
                                         AppDimensions.height10(context) * 0.2),
                                 height: AppDimensions.height10(context) * 2.2,
@@ -429,7 +429,7 @@ class _your_whyState extends State<your_why> {
                                 margin: EdgeInsets.only(
                                     bottom:
                                         AppDimensions.height10(context) * 1.5,
-                                    left: AppDimensions.height10(context) * 1.6,
+                                    left: AppDimensions.width10(context) * 1.6,
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 width: AppDimensions.width10(context) * 23.8,
@@ -535,7 +535,7 @@ class _your_whyState extends State<your_why> {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
         ),
@@ -866,7 +866,7 @@ class _your_whyState extends State<your_why> {
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
                                             3.0,
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             0.425),
                                     child: ListView.builder(
                                         shrinkWrap: true,
@@ -2185,7 +2185,7 @@ class _your_whyState extends State<your_why> {
                             height: AppDimensions.height10(context) * 3.2,
                             padding: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.1,
-                                left: AppDimensions.height10(context) * 0.6,
+                                left: AppDimensions.width10(context) * 0.6,
                                 right: AppDimensions.width10(context) * 0.6,
                                 bottom: AppDimensions.height10(context) * 0.9),
                             decoration: const BoxDecoration(
@@ -2218,7 +2218,7 @@ class _your_whyState extends State<your_why> {
 //     margin: EdgeInsets.only(
 //         top: AppDimensions.height10(context) * 1.9,
 //         right: AppDimensions.width10(context) * 1.6,
-//         left: AppDimensions.height10(context) * 1.6,
+//         left: AppDimensions.width10(context) * 1.6,
 //         bottom: AppDimensions.height10(context) * 0.2),
 //     height: AppDimensions.height10(context) * 2.2,
 //     width: AppDimensions.width10(context) * 23.8,
@@ -2234,7 +2234,7 @@ class _your_whyState extends State<your_why> {
 //   content: Container(
 //     margin: EdgeInsets.only(
 //         bottom: AppDimensions.height10(context) * 1.5,
-//         left: AppDimensions.height10(context) * 1.6,
+//         left: AppDimensions.width10(context) * 1.6,
 //         right: AppDimensions.width10(context) * 1.6),
 //     height: AppDimensions.height10(context) * 3.2,
 //     width: AppDimensions.width10(context) * 23.8,
@@ -2327,7 +2327,7 @@ Widget showSaveWithout(BuildContext context) {
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
             right: AppDimensions.width10(context) * 1.6,
-            left: AppDimensions.height10(context) * 1.6,
+            left: AppDimensions.width10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
         width: AppDimensions.width10(context) * 23.8,
@@ -2343,7 +2343,7 @@ Widget showSaveWithout(BuildContext context) {
       content: Container(
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
-            left: AppDimensions.height10(context) * 1.6,
+            left: AppDimensions.width10(context) * 1.6,
             right: AppDimensions.width10(context) * 1.6),
         // height: AppDimensions.height10(context) * 3.2,
         width: AppDimensions.width10(context) * 23.8,
@@ -2440,7 +2440,7 @@ Widget showAlertBox(BuildContext context) {
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
             right: AppDimensions.width10(context) * 1.6,
-            left: AppDimensions.height10(context) * 1.6,
+            left: AppDimensions.width10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
         width: AppDimensions.width10(context) * 23.8,
@@ -2456,7 +2456,7 @@ Widget showAlertBox(BuildContext context) {
       content: Container(
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
-            left: AppDimensions.height10(context) * 1.6,
+            left: AppDimensions.width10(context) * 1.6,
             right: AppDimensions.width10(context) * 1.6),
         //height: AppDimensions.height10(context) * 3.2,
         width: AppDimensions.width10(context) * 23.8,

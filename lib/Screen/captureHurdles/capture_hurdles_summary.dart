@@ -117,7 +117,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                           'assets/images/Back.webp',
                           width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         )),
                   )
                 : Container(),
@@ -135,7 +135,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             'assets/images/Close.webp',
                             width: AppDimensions.width10(context) * 2.6,
                             height: AppDimensions.height10(context) * 2.6,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                           )),
                     )
                   : Container()
@@ -180,7 +180,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                         width: AppDimensions.width10(context) * 21.252,
                         height: AppDimensions.height10(context) * 21.322,
                         padding: EdgeInsets.symmetric(
-                            horizontal: AppDimensions.height10(context) * 1.5),
+                            horizontal: AppDimensions.width10(context) * 1.5),
                         margin: EdgeInsets.only(
                             top: widget.delete_hurdle
                                 ? AppDimensions.height10(context) * 9.7
@@ -259,7 +259,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         top: AppDimensions.height10(context) *
                                             2.1),
                                     padding: EdgeInsets.all(
-                                        AppDimensions.height10(context) * 0.5),
+                                        AppDimensions.width10(context) * 0.5),
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.transparent,
@@ -352,7 +352,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.1),
                             padding: EdgeInsets.all(
-                                AppDimensions.height10(context) * 0.5),
+                                AppDimensions.width10(context) * 0.5),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.transparent,
@@ -408,7 +408,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                 height: AppDimensions.height10(context) * 2.2,
                                 margin: EdgeInsets.only(
                                     left:
-                                        AppDimensions.height10(context) * 1.99),
+                                        AppDimensions.width10(context) * 1.99),
                                 child: GestureDetector(
                                     onTap: () {},
                                     child: Text(
@@ -466,7 +466,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                         height: AppDimensions.height10(context) * 13.1,
                         width: AppDimensions.width10(context) * 13.1,
                         padding: EdgeInsets.symmetric(
-                            horizontal: AppDimensions.height10(context)),
+                            horizontal: AppDimensions.width10(context)),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
@@ -517,7 +517,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         top: AppDimensions.height10(context) *
                                             1.2),
                                     padding: EdgeInsets.all(
-                                        AppDimensions.height10(context) * 0.5),
+                                        AppDimensions.width10(context) * 0.5),
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.transparent,
@@ -555,7 +555,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         context: context,
                                         builder: (BuildContext context) =>
                                             SizedBox(
-                                              width: AppDimensions.height10(
+                                              width: AppDimensions.width10(
                                                       context) *
                                                   27.0,
                                               height: AppDimensions.height10(
@@ -577,7 +577,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                             1.9,
                                                         right: AppDimensions.width10(context) *
                                                             1.6,
-                                                        left: AppDimensions.height10(context) *
+                                                        left: AppDimensions.width10(context) *
                                                             1.6,
                                                         bottom: AppDimensions.height10(context) *
                                                             0.2),
@@ -585,7 +585,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                         AppDimensions.height10(context) *
                                                             4.4,
                                                     width:
-                                                        AppDimensions.height10(context) *
+                                                        AppDimensions.width10(context) *
                                                             23.8,
                                                     child: RichText(
                                                         textAlign:
@@ -593,7 +593,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                         text: TextSpan(
                                                             style: TextStyle(
                                                                 fontSize:
-                                                                    AppDimensions.height10(context) * 1.7,
+                                                                    AppDimensions.font10(context) * 1.7,
                                                                 fontWeight: FontWeight.w400,
                                                                 color: const Color(0xFF000000)),
                                                             children: const [
@@ -619,18 +619,18 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                                   context) *
                                                           1.5,
                                                       left: AppDimensions
-                                                              .height10(
+                                                              .width10(
                                                                   context) *
                                                           1.6,
                                                       right: AppDimensions
-                                                              .height10(
+                                                              .width10(
                                                                   context) *
                                                           1.6),
                                                   height:
                                                       AppDimensions.height10(
                                                               context) *
                                                           3.4,
-                                                  width: AppDimensions.height10(
+                                                  width: AppDimensions.width10(
                                                           context) *
                                                       23.8,
                                                   child: Text(

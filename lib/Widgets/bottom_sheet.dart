@@ -147,7 +147,7 @@ void bottom_sheet(context) {
                           Padding(
                             padding: EdgeInsets.only(
                                 top: 5,
-                                left: AppDimensions.height10(context) * 1.6),
+                                left: AppDimensions.width10(context) * 1.6),
                             child: Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
@@ -247,7 +247,7 @@ void bottom_sheet(context) {
                         ),
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 3.0,
+                                left: AppDimensions.width10(context) * 3.0,
                                 right: AppDimensions.width10(context) * 3.0),
                             filled: true,
                             fillColor: const Color.fromRGBO(0, 0, 0, 0.1),
@@ -284,7 +284,7 @@ void bottom_sheet(context) {
                   ),
                   Container(
                     padding: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 4.0),
+                        left: AppDimensions.width10(context) * 4.0),
                     child: Row(
                       children: const [
                         Center(
@@ -428,7 +428,7 @@ void bottom_sheet(context) {
 //           children: [
 //             Padding(
 //               padding: EdgeInsets.only(
-//                   top: 5, left: AppDimensions.height10(context) * 1.6),
+//                   top: 5, left: AppDimensions.width10(context) * 1.6),
 //               child: Align(
 //                   alignment: Alignment.topLeft,
 //                   child: Text(

@@ -240,7 +240,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           'assets/images/Back.webp',
                           width: AppDimensions.width10(context) * 2.6,
                           height: AppDimensions.height10(context) * 2.6,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         )),
                   )
                 : Container(),
@@ -250,7 +250,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                     width: AppDimensions.width10(context) * 18.9,
                     height: AppDimensions.height10(context) * 2.4,
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 7.5),
+                        left: AppDimensions.width10(context) * 7.5),
                     child: Row(
                       children: [
                         GradientText(
@@ -538,7 +538,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             'assets/images/Close.webp',
                             width: AppDimensions.width10(context) * 2.6,
                             height: AppDimensions.height10(context) * 2.6,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                           )),
                     )
             ]),
@@ -562,7 +562,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                         : AppDimensions.height10(context) * 67.9,
                     margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 9.3,
-                      // left: AppDimensions.height10(context) * 3.0,
+
+                      // left: AppDimensions.width10(context) * 3.0,
                       // right: AppDimensions.width10(context) * 2.4
                     ),
                     child: SingleChildScrollView(
@@ -628,12 +629,12 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 }
                               },
                               child: Container(
-                                width: AppDimensions.width10(context) * 14.1,
-                                height: AppDimensions.height10(context) * 14.1,
+                                width: AppDimensions.height10(context) * 14.2,
+                                height: AppDimensions.height10(context) * 14.2,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 2.1,
+                                    left: AppDimensions.width10(context) * 2.1,
                                     right:
-                                        AppDimensions.height10(context) * 19.8,
+                                        AppDimensions.width10(context) * 19.8,
                                     top: AppDimensions.height10(context) * 2.9),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
@@ -643,11 +644,11 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             ? Colors.white
                                             : Colors.transparent)),
                                 padding: EdgeInsets.all(
-                                    AppDimensions.height10(context) * 0.5),
+                                    AppDimensions.width10(context) * 0.5),
                                 child: Container(
                                   height:
-                                      AppDimensions.height10(context) * 13.1,
-                                  width: AppDimensions.width10(context) * 13.1,
+                                      AppDimensions.height10(context) * 13.2,
+                                  width: AppDimensions.height10(context) * 13.2,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
@@ -682,7 +683,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.width10(context) * 21.2,
-                                  left: AppDimensions.height10(context) * 2.8,
+
+                                  left: AppDimensions.width10(context) * 2.8,
                                   top: AppDimensions.height10(context) * 2.0),
                               child: Center(
                                 child: Text(
@@ -697,7 +699,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             ),
                             Container(
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 6,
+                                  left: AppDimensions.width10(context) * 6,
                                   top: AppDimensions.height10(context) * 1.0,
                                   right: AppDimensions.width10(context) * 3,
                                   bottom:
@@ -740,7 +742,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       },
                                       child: Container(
                                         margin: EdgeInsets.only(
-                                            right: AppDimensions.height10(
+                                            right: AppDimensions.width10(
                                                     context) *
                                                 3),
                                         height: selectedIndices
@@ -758,7 +760,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             : AppDimensions.width10(context) *
                                                 13.1,
                                         padding: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
+                                            AppDimensions.width10(context) *
                                                 0.8),
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
@@ -785,7 +787,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   13.1,
                                           padding: EdgeInsets.symmetric(
                                               horizontal:
-                                                  AppDimensions.height10(
+                                                  AppDimensions.width10(
                                                           context) *
                                                       0.8),
                                           // margin: EdgeInsets.only(
@@ -831,7 +833,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.width10(context) * 19.5,
-                                  left: AppDimensions.height10(context) * 2.8),
+                                  left: AppDimensions.width10(context) * 2.8),
                               child: Center(
                                 child: Text(
                                   'Inactive Goals',
@@ -846,7 +848,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             ),
                             Container(
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 6,
+                                  left: AppDimensions.width10(context) * 6,
                                   top: AppDimensions.height10(context) * 1.0,
                                   right: AppDimensions.width10(context) * 3,
                                   bottom:
@@ -890,7 +892,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       },
                                       child: Container(
                                         margin: EdgeInsets.only(
-                                            right: AppDimensions.height10(
+                                            right: AppDimensions.width10(
                                                     context) *
                                                 3),
                                         height: selectedInActiveIndices
@@ -935,7 +937,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   13.1,
                                           padding: EdgeInsets.symmetric(
                                               horizontal:
-                                                  AppDimensions.height10(
+                                                  AppDimensions.width10(
                                                           context) *
                                                       1.2),
                                           // margin: EdgeInsets.only(

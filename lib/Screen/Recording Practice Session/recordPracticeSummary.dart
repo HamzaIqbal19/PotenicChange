@@ -169,7 +169,7 @@ class _practice_summaryState extends State<practice_summary> {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
           actions: [
@@ -215,8 +215,8 @@ class _practice_summaryState extends State<practice_summary> {
                                           AppDimensions.height10(context) * 1.9,
                                       left:
                                           AppDimensions.height10(context) * 1.6,
-                                      right:
-                                          AppDimensions.width10(context) * 1.6),
+                                      right: AppDimensions.width10(context) *
+                                          1.6),
                                   height: AppDimensions.height10(context) * 3.2,
                                   width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
@@ -301,7 +301,7 @@ class _practice_summaryState extends State<practice_summary> {
                           'assets/images/Close.webp',
                           width: AppDimensions.width10(context) * 2.6,
                           height: AppDimensions.height10(context) * 2.6,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         )),
                   )
           ],
@@ -433,7 +433,7 @@ class _practice_summaryState extends State<practice_summary> {
                               height: AppDimensions.height10(context) * 13.8,
                               width: AppDimensions.width10(context) * 13.8,
                               padding: EdgeInsets.symmetric(
-                                  horizontal: AppDimensions.height10(context)),
+                                  horizontal: AppDimensions.width10(context)),
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   // border: Border.all(
@@ -698,7 +698,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     top: AppDimensions.height10(context) * 1.4,
                                     bottom:
                                         AppDimensions.height10(context) * 1.0,
-                                    left: AppDimensions.height10(context) * 2.0,
+                                    left: AppDimensions.width10(context) * 2.0,
                                     right:
                                         AppDimensions.height10(context) * 2.0),
                                 width: AppDimensions.width10(context) * 32.0,
@@ -843,7 +843,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     top: AppDimensions.height10(context) * 1.4,
                                     bottom:
                                         AppDimensions.height10(context) * 1.0,
-                                    left: AppDimensions.height10(context) * 2.0,
+                                    left: AppDimensions.width10(context) * 2.0,
                                     right:
                                         AppDimensions.height10(context) * 2.0),
                                 width: AppDimensions.width10(context) * 32.0,
@@ -971,7 +971,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     top: AppDimensions.height10(context) * 1.4,
                                     bottom:
                                         AppDimensions.height10(context) * 1.0,
-                                    left: AppDimensions.height10(context) * 2.0,
+                                    left: AppDimensions.width10(context) * 2.0,
                                     right:
                                         AppDimensions.height10(context) * 2.0),
                                 width: AppDimensions.width10(context) * 32.0,
@@ -1031,7 +1031,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                           1.9,
                                                       right: AppDimensions.width10(context) *
                                                           1.6,
-                                                      left: AppDimensions.height10(context) *
+                                                      left: AppDimensions.width10(context) *
                                                           1.6,
                                                       bottom:
                                                           AppDimensions.height10(context) *

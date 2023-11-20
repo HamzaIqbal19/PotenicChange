@@ -73,7 +73,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               ),
             ]),

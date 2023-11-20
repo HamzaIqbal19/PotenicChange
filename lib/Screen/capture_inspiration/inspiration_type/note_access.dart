@@ -95,7 +95,7 @@ class _note_infoState extends State<note_info> {
                       // height: AppDimensions.height10(context) * 2.2,
                       // width: AppDimensions.width10(context) * 3.3,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 1.5),
+                          left: AppDimensions.width10(context) * 1.5),
                       child: AnimatedScaleButton(
                         onTap: () async {
                           Navigator.push(
@@ -180,7 +180,7 @@ class _note_infoState extends State<note_info> {
                         height: AppDimensions.height10(context) * 2.2,
                         width: AppDimensions.width10(context) * 4.3,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 4.9),
+                            left: AppDimensions.width10(context) * 4.9),
                         child: Text(
                           'Create',
                           style: TextStyle(
@@ -206,11 +206,12 @@ class _note_infoState extends State<note_info> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          height: AppDimensions.height10(context) * 2.1,
+                          height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.width10(context) * 30.5,
                           alignment: Alignment.centerLeft,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
+
+                              left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.2),
                           child: Column(children: [
@@ -410,11 +411,12 @@ class _note_infoState extends State<note_info> {
                                 ),
                         ),
                         Container(
-                          height: AppDimensions.height10(context) * 2.1,
+                          height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.width10(context) * 30.5,
                           alignment: Alignment.centerLeft,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
+
+                              left: AppDimensions.width10(context) * 2.0,
                               // right: AppDimensions.width10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Column(
@@ -532,10 +534,11 @@ class _note_infoState extends State<note_info> {
                         ),
                         if (widget.type_switch == 2) ...[
                           Container(
-                            height: AppDimensions.height10(context) * 2.1,
+                            height: AppDimensions.height10(context) * 2.2,
                             width: AppDimensions.width10(context) * 30.5,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 2.0,
+
+                                left: AppDimensions.width10(context) * 2.0,
                                 right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 3.0),
                             child: Text(
@@ -555,7 +558,8 @@ class _note_infoState extends State<note_info> {
                             width: AppDimensions.width10(context) * 30.5,
                             //  color: Colors.grey,
                             margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
+
+                              left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 8.9,
                             ),
                             child: Text(
@@ -568,10 +572,11 @@ class _note_infoState extends State<note_info> {
                           )
                         ],
                         Container(
-                          height: AppDimensions.height10(context) * 2.1,
+                          height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.width10(context) * 30.5,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
+
+                              left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
@@ -636,10 +641,11 @@ class _note_infoState extends State<note_info> {
                                 ),
                         ),
                         Container(
-                          height: AppDimensions.height10(context) * 2.1,
+                          height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.width10(context) * 30.5,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
+
+                              left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
@@ -674,7 +680,7 @@ class _note_infoState extends State<note_info> {
                             height: AppDimensions.height10(context) * 6.0,
                             width: AppDimensions.width10(context) * 37.5,
                             margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
+                              left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 1.9,
                               // bottom: AppDimensions.height10(context) * 1.0
                             ),
@@ -690,7 +696,7 @@ class _note_infoState extends State<note_info> {
                                   width: AppDimensions.width10(context) * 23.9,
                                   height: AppDimensions.height10(context) * 2.2,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
+                                      left: AppDimensions.width10(context) *
                                           1.99),
                                   child: Text(
                                     '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
@@ -795,7 +801,7 @@ class _noteSavedState extends State<noteSaved> {
               toolbarHeight: AppDimensions.height10(context) * 5.1,
               flexibleSpace: Container(
                 padding: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.height10(context) * 1.5),
+                    horizontal: AppDimensions.width10(context) * 1.5),
                 decoration: BoxDecoration(
                     color: const Color(0xffF5F5F5).withOpacity(0.8),
                     borderRadius: BorderRadius.only(
@@ -960,11 +966,12 @@ class _noteSavedState extends State<noteSaved> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: AppDimensions.height10(context) * 2.1,
+                      height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+
+                          left: AppDimensions.width10(context) * 2.0,
                           right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.2),
                       child: Column(
@@ -984,7 +991,7 @@ class _noteSavedState extends State<noteSaved> {
                       // height: AppDimensions.height10(context) * 2.4,
                       //width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 0.6,
+                        left: AppDimensions.width10(context) * 0.6,
                       ),
                       child: TextFormField(
                         controller: title,
@@ -1015,11 +1022,11 @@ class _noteSavedState extends State<noteSaved> {
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10(context) * 2.1,
+                      height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+                          left: AppDimensions.width10(context) * 2.0,
                           top: AppDimensions.height10(context) * 3.9),
                       child: Text(
                         'Why is it inspirational to you',
@@ -1032,7 +1039,7 @@ class _noteSavedState extends State<noteSaved> {
                     Container(
                       //width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 2.0,
+                        left: AppDimensions.width10(context) * 2.0,
                       ),
                       child: TextFormField(
                         textAlignVertical: TextAlignVertical.top,
@@ -1061,10 +1068,11 @@ class _noteSavedState extends State<noteSaved> {
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10(context) * 2.1,
+                      height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+
+                          left: AppDimensions.width10(context) * 2.0,
                           right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.9),
                       child: Text(
@@ -1079,7 +1087,7 @@ class _noteSavedState extends State<noteSaved> {
                       // height: AppDimensions.height10(context) * 2.4,
                       // width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 0.6,
+                        left: AppDimensions.width10(context) * 0.6,
 
                         // top: AppDimensions.height10(context) * 1.0
                       ),
@@ -1148,10 +1156,10 @@ class _noteSavedState extends State<noteSaved> {
                           ]),
                     ),
                     Container(
-                      height: AppDimensions.height10(context) * 2.1,
+                      height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+                          left: AppDimensions.width10(context) * 2.0,
                           bottom: AppDimensions.height10(context) * 0.5,
                           right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.9),
@@ -1180,7 +1188,8 @@ class _noteSavedState extends State<noteSaved> {
                         height: AppDimensions.height10(context) * 6.0,
                         width: AppDimensions.width10(context) * 37.5,
                         margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+
+                          left: AppDimensions.width10(context) * 2.0,
                           right: AppDimensions.width10(context) * 1.9,
                           // bottom: AppDimensions.height10(context) * 1.0
                         ),
@@ -1195,7 +1204,7 @@ class _noteSavedState extends State<noteSaved> {
                               width: AppDimensions.width10(context) * 23.9,
                               height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 1.99),
+                                  left: AppDimensions.width10(context) * 1.99),
                               child: Text(
                                 '${selectedGoals.length} impacted goals',
                                 style: TextStyle(
@@ -1207,8 +1216,9 @@ class _noteSavedState extends State<noteSaved> {
                             ),
                             Container(
                                 margin: EdgeInsets.only(
-                                    right:
-                                        AppDimensions.width10(context) * 2.391),
+
+                                    right: AppDimensions.width10(context) *
+                                        2.391),
                                 child: Text(
                                   'View',
                                   style: TextStyle(

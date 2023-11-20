@@ -97,7 +97,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               ),
             ]),
@@ -120,7 +120,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                   },
                   child: Container(
                     width: AppDimensions.width10(context) * 34.3,
-                    height: AppDimensions.height10(context) * 7.3,
+                    height: AppDimensions.height10(context) * 7.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 12.0,
                         bottom: AppDimensions.height10(context) * 1.9),

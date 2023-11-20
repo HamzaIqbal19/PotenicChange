@@ -31,7 +31,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                 'assets/images/Back.webp',
                 width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
         ),
       ),
@@ -74,7 +74,11 @@ class _edit_credentialsState extends State<edit_credentials> {
                       width: AppDimensions.width10(context) * 35.7,
                       height: AppDimensions.height10(context) * 1.9,
                       margin: EdgeInsets.only(
+<<<<<<< Updated upstream
                         left: AppDimensions.height10(context) * 2.4,
+=======
+                        left: AppDimensions.width10(context) * 2.4,
+>>>>>>> Stashed changes
                         right: AppDimensions.width10(context) * 3.6,
                         top: AppDimensions.height10(context) * 6.5,
                       ),
@@ -95,7 +99,11 @@ class _edit_credentialsState extends State<edit_credentials> {
                         : AppDimensions.height10(context) * 8.6,
                 width: AppDimensions.width10(context) * 36.0,
                 margin: EdgeInsets.only(
+<<<<<<< Updated upstream
                     left: AppDimensions.height10(context) * 1.8,
+=======
+                    left: AppDimensions.width10(context) * 1.8,
+>>>>>>> Stashed changes
                     right: AppDimensions.width10(context) * 3.6,
                     top: widget.email
                         ? AppDimensions.height10(context) * 4.1
@@ -113,7 +121,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   bottom: AppDimensions.height10(context) * 1.3,
-                                  left: AppDimensions.height10(context) * 0.6),
+                                  left: AppDimensions.width10(context) * 0.6),
                               child: Text(
                                 'Your current email address is\njane.smith@gmail.com',
                                 style: TextStyle(
@@ -173,7 +181,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                           Container(
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 1.0,
+                                left: AppDimensions.width10(context) * 1.0,
                                 bottom: AppDimensions.height10(context) * 1.3),
                             child: Text(
                               "Ooops! Needs to be an email format",
@@ -231,7 +239,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                           Container(
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 1.0),
+                                left: AppDimensions.width10(context) * 1.0),
                             child: Text(
                               "Ooops! Does not match the top email",
                               style: TextStyle(
@@ -308,7 +316,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                   height: AppDimensions.height10(context) * 1.7,
                                   alignment: Alignment.centerLeft,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
+                                      left: AppDimensions.width10(context) *
                                           1.0),
                                   child: Text(
                                     "First name is required",

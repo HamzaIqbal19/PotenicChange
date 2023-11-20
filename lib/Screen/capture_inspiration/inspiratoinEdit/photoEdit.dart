@@ -185,7 +185,7 @@ class _photo_EditState extends State<photo_Edit> {
               toolbarHeight: AppDimensions.height10(context) * 5.1,
               flexibleSpace: Container(
                 padding: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.height10(context) * 1.5),
+                    horizontal: AppDimensions.width10(context) * 1.5),
                 decoration: BoxDecoration(
                     color: const Color(0xffF5F5F5).withOpacity(0.8),
                     borderRadius: BorderRadius.only(
@@ -533,7 +533,7 @@ class _photo_EditState extends State<photo_Edit> {
                           Container(
                             margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 2.9,
-                              left: AppDimensions.height10(context) * 1.8,
+                              left: AppDimensions.width10(context) * 1.8,
                             ),
                             width: AppDimensions.width10(context) * 24.4,
                             height: AppDimensions.height10(context) * 24.4,
@@ -550,12 +550,12 @@ class _photo_EditState extends State<photo_Edit> {
                                 children: [
                                   Container(
                                     height:
-                                        AppDimensions.height10(context) * 2.1,
+                                        AppDimensions.height10(context) * 2.2,
                                     width:
                                         AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             2.0,
                                         right: AppDimensions.width10(context) *
                                             8.9,
@@ -620,7 +620,7 @@ class _photo_EditState extends State<photo_Edit> {
                                   ),
                                   Container(
                                       height:
-                                          AppDimensions.height10(context) * 2.1,
+                                          AppDimensions.height10(context) * 2.2,
                                       width:
                                           AppDimensions.width10(context) * 30.5,
                                       alignment: Alignment.centerLeft,
@@ -691,12 +691,12 @@ class _photo_EditState extends State<photo_Edit> {
                                   ),
                                   Container(
                                     height:
-                                        AppDimensions.height10(context) * 2.1,
+                                        AppDimensions.height10(context) * 2.2,
                                     width:
                                         AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             2.0,
                                         right: AppDimensions.width10(context) *
                                             8.9,
@@ -848,12 +848,12 @@ class _photo_EditState extends State<photo_Edit> {
                                   ),
                                   Container(
                                     height:
-                                        AppDimensions.height10(context) * 2.1,
+                                        AppDimensions.height10(context) * 2.2,
                                     width:
                                         AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             2.0,
                                         right: AppDimensions.width10(context) *
                                             8.9,
@@ -1016,7 +1016,7 @@ class _photo_EditState extends State<photo_Edit> {
                                           AppDimensions.width10(context) * 37.5,
                                       margin: EdgeInsets.only(
                                         // bottom: AppDimensions.height10(context) * 1.0,
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             2.0,
                                         right: AppDimensions.width10(context) *
                                             1.9,

@@ -60,7 +60,7 @@ class _clocksState extends State<clocks> {
                 'assets/images/Back.webp',
                 width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
         ),
         actions: [
@@ -100,7 +100,7 @@ class _clocksState extends State<clocks> {
                         content: Container(
                           margin: EdgeInsets.only(
                               bottom: AppDimensions.height10(context) * 1.9,
-                              left: AppDimensions.height10(context) * 1.6,
+                              left: AppDimensions.width10(context) * 1.6,
                               right: AppDimensions.width10(context) * 1.6),
                           height: AppDimensions.height10(context) * 3.2,
                           width: AppDimensions.width10(context) * 23.8,
@@ -186,7 +186,7 @@ class _clocksState extends State<clocks> {
                   'assets/images/Close.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           )
         ],
@@ -551,7 +551,7 @@ class _watch_timeState extends State<watch_time> {
               //play button
               Positioned(
                 right: AppDimensions.width10(context) * 9.7,
-                left: AppDimensions.height10(context) * 9.7,
+                left: AppDimensions.width10(context) * 9.7,
                 bottom: AppDimensions.height10(context) * 2.0,
                 child: AnimatedScaleButton(
                   onTap: () {
@@ -611,7 +611,7 @@ class _watch_timeState extends State<watch_time> {
                               ? Container(
                                   margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 0.3,
-                                    // left: AppDimensions.height10(context) *
+                                    // left: AppDimensions.width10(context) *
                                     //     1.0
                                   ),
                                   child: Image.asset(
@@ -625,7 +625,7 @@ class _watch_timeState extends State<watch_time> {
                                   margin: EdgeInsets.only(
                                       top:
                                           AppDimensions.height10(context) * 0.3,
-                                      left: AppDimensions.height10(context) *
+                                      left: AppDimensions.width10(context) *
                                           1.0),
                                   child: Image.asset(
                                     'assets/images/start_icon.webp',
@@ -640,7 +640,7 @@ class _watch_timeState extends State<watch_time> {
                             height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 0.5,
-                                left: AppDimensions.height10(context) * 0.5),
+                                left: AppDimensions.width10(context) * 0.5),
                             child: Text(button_text,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(

@@ -90,7 +90,7 @@ class _record_sessionState extends State<record_session> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ]),
@@ -142,7 +142,7 @@ class _record_sessionState extends State<record_session> {
                               height: AppDimensions.height10(context) * 31.3,
                               width: AppDimensions.width10(context) * 46.4,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 2.3,
+                                  left: AppDimensions.width10(context) * 2.3,
                                   bottom:
                                       AppDimensions.height10(context) * 3.2),
                               child: Stack(children: [
@@ -226,7 +226,7 @@ class _record_sessionState extends State<record_session> {
                                         ]))),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
+                                      left: AppDimensions.width10(context) *
                                           2.9),
                                   child: ListView.builder(
                                       // physics: const NeverScrollableScrollPhysics(),

@@ -59,7 +59,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.8,
                       height: AppDimensions.height10(context) * 2.8,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                     onPressed: () {
                       Navigator.push(

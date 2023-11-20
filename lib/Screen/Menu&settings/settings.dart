@@ -38,7 +38,7 @@ class Settings extends StatelessWidget {
                 'assets/images/Back.webp',
                 width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
         ),
         centerTitle: true,
@@ -1008,7 +1008,7 @@ class Settings extends StatelessWidget {
                                     bottom:
                                         AppDimensions.height10(context) * 1.9,
                                     top: AppDimensions.height10(context) * 0.2,
-                                    left: AppDimensions.height10(context) * 1.6,
+                                    left: AppDimensions.width10(context) * 1.6,
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 4.8,
@@ -1174,7 +1174,7 @@ class Settings extends StatelessWidget {
                                     bottom:
                                         AppDimensions.height10(context) * 1.9,
                                     top: AppDimensions.height10(context) * 0.2,
-                                    left: AppDimensions.height10(context) * 1.6,
+                                    left: AppDimensions.width10(context) * 1.6,
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 3.2,
@@ -1362,7 +1362,7 @@ class About_us extends StatelessWidget {
                 'assets/images/Back.webp',
                 width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
         ),
         centerTitle: true,
@@ -1588,7 +1588,7 @@ void export_data_sheet(context) {
               children: [
                 Container(
                   //color: Colors.amber,
-                  // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                  // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                   alignment: const Alignment(1, 0),
                   child: GestureDetector(
                     onTap: () {

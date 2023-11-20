@@ -671,11 +671,11 @@ class _view_goalsState extends State<view_goals> {
                                                                   height: AppDimensions
                                                                           .width10(
                                                                               context) *
-                                                                      2.8,
+                                                                      2.0,
                                                                   width: AppDimensions
                                                                           .width10(
                                                                               context) *
-                                                                      2.8,
+                                                                      2.0,
                                                                   //  margin: const EdgeInsets.only(top: 3.32),
                                                                   decoration: BoxDecoration(
                                                                       shape: BoxShape
@@ -731,7 +731,7 @@ class _view_goalsState extends State<view_goals> {
                                                               image: AssetImage(
                                                                   'assets/images/Asset 10 2.webp'),
                                                               fit: BoxFit
-                                                                  .cover)),
+                                                                  .contain)),
                                                       child: Stack(children: [
                                                         Align(
                                                           alignment:
@@ -741,11 +741,11 @@ class _view_goalsState extends State<view_goals> {
                                                             height: AppDimensions
                                                                     .height10(
                                                                         context) *
-                                                                1.3,
+                                                                1.4,
                                                             width: AppDimensions
                                                                     .width10(
                                                                         context) *
-                                                                1.3,
+                                                                1.4,
                                                             decoration: const BoxDecoration(
                                                                 shape: BoxShape
                                                                     .circle,
@@ -1284,6 +1284,7 @@ class _view_goalsState extends State<view_goals> {
                                                             35.335,
                                                         decoration:
                                                             const BoxDecoration(
+
                                                                 image:
                                                                     DecorationImage(
                                                           image: AssetImage(
@@ -1668,7 +1669,11 @@ class _view_goalsState extends State<view_goals> {
                                                                             Container(
                                                                               width: AppDimensions.width10(context) * 21.6,
                                                                               //height: AppDimensions.height10(context) * 2.2,
+<<<<<<< Updated upstream
                                                                               margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.7, left: AppDimensions.height10(context) * 1.6, right: AppDimensions.width10(context) * 7.4),
+=======
+                                                                              margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.7, left: AppDimensions.width10(context) * 1.6, right: AppDimensions.width10(context) * 7.4),
+>>>>>>> Stashed changes
                                                                               child: Text(
                                                                                 goal_level == 2
                                                                                     ? 'Your Practice'
@@ -1918,7 +1923,7 @@ class _view_goalsState extends State<view_goals> {
                                     //     ? Positioned(
                                     //         top: AppDimensions.height10(context) *
                                     //             56.8,
-                                    //         left: AppDimensions.height10(context) *
+                                    //         left: AppDimensions.width10(context) *
                                     //             2.5,
                                     //         child: Container(
                                     //           width:

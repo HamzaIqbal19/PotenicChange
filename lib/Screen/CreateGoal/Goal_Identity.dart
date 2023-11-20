@@ -593,7 +593,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                 width: AppDimensions.width10(context) * 10.4,
                                 height: AppDimensions.height10(context) * 7.6,
                                 padding: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 1.5,
+                                    left: AppDimensions.width10(context) * 1.5,
                                     right:
                                         AppDimensions.height10(context) * 1.5),
                                 child: Image.asset(
@@ -1402,9 +1402,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                       height:
                                           AppDimensions.height10(context) * 5,
                                       width: widget.comingFromEditScreen
-                                          ? AppDimensions.height10(context) *
+                                          ? AppDimensions.width10(context) *
                                               26.3
-                                          : AppDimensions.height10(context) *
+                                          : AppDimensions.width10(context) *
                                               31.3,
                                       decoration: myIdentity[0]['text'] != "" ||
                                               widget.comingFromEditScreen ==

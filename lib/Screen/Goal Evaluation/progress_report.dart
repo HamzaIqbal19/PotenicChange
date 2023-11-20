@@ -168,7 +168,7 @@ class _progress_reportState extends State<progress_report> {
                 'assets/images/Back.webp',
                 width: AppDimensions.width10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
         ),
       ),
@@ -323,7 +323,7 @@ class _progress_reportState extends State<progress_report> {
                       width: AppDimensions.width10(context) * 34.0,
                       height: AppDimensions.height10(context) * 11.2,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 1.5),
+                          left: AppDimensions.width10(context) * 1.5),
                       child: Center(
                         child: Row(
                           children: [
@@ -332,7 +332,7 @@ class _progress_reportState extends State<progress_report> {
                               height: AppDimensions.height10(context) * 7.94,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.width10(context) * 0.7,
-                                  left: AppDimensions.height10(context) * 0.5),
+                                  left: AppDimensions.width10(context) * 0.5),
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(report['practice']
@@ -401,7 +401,7 @@ class _progress_reportState extends State<progress_report> {
                               width: AppDimensions.width10(context) * 23.9,
                               height: AppDimensions.height10(context) * 5.9,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 0.4,
+                                  left: AppDimensions.width10(context) * 0.4,
                                   top: AppDimensions.height10(context) * 0.8),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -557,7 +557,7 @@ class _progress_reportState extends State<progress_report> {
                             height: AppDimensions.height10(context) * 30.517,
                             margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 3.0,
-                              // left: AppDimensions.height10(context) * 2.7
+                              // left: AppDimensions.width10(context) * 2.7
                             ),
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
@@ -569,7 +569,7 @@ class _progress_reportState extends State<progress_report> {
                                     height: AppDimensions.height10(context) *
                                         30.517,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             2.8098,
                                         right: AppDimensions.width10(context) *
                                             1.098),
@@ -637,7 +637,7 @@ class _progress_reportState extends State<progress_report> {
                               height: AppDimensions.height10(context) * 20.6,
                               width: AppDimensions.width10(context) * 14.9,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 2.0),
+                                  left: AppDimensions.width10(context) * 2.0),
 
                               // color: Colors.amber,
                               child: Center(
@@ -655,7 +655,7 @@ class _progress_reportState extends State<progress_report> {
                                             MainAxisAlignment.center,
                                         children: [
                                           SizedBox(
-                                            // margin: EdgeInsets.only(left: AppDimensions.height10(context)*1.0),
+                                            // margin: EdgeInsets.only(left: AppDimensions.width10(context)*1.0),
                                             // height:
                                             //     AppDimensions.height10(context) *
                                             //         7.7,
@@ -1377,7 +1377,7 @@ void report(context) {
           width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 51.3,
           margin: EdgeInsets.only(
-              left: AppDimensions.height10(context) * 1.0,
+              left: AppDimensions.width10(context) * 1.0,
               right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.3),
           decoration: BoxDecoration(
@@ -1394,7 +1394,7 @@ void report(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {
@@ -1533,7 +1533,7 @@ circlesInRowColored(BuildContext context, int itteration, Color circleColor) {
                 width: AppDimensions.width10(context) * 1.5,
                 height: AppDimensions.height10(context) * 1.5,
                 margin: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.height10(context) * 0.25),
+                    horizontal: AppDimensions.width10(context) * 0.25),
                 decoration:
                     BoxDecoration(color: circleColor, shape: BoxShape.circle),
               ),

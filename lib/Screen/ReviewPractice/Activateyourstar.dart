@@ -732,7 +732,7 @@ void dashboard_sheet(context) {
           width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 62.3,
           margin: EdgeInsets.only(
-              left: AppDimensions.height10(context) * 1.0,
+              left: AppDimensions.width10(context) * 1.0,
               right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
@@ -747,7 +747,7 @@ void dashboard_sheet(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {
@@ -833,7 +833,7 @@ void login_sheet(context) {
           width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 54.4,
           // margin: EdgeInsets.only(
-          //     left: AppDimensions.height10(context) * 1.0,
+          //     left: AppDimensions.width10(context) * 1.0,
           //     right: AppDimensions.width10(context) * 1.0,
           //     bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
@@ -848,7 +848,7 @@ void login_sheet(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   child: Container(
@@ -930,7 +930,7 @@ void login_sheet(context) {
               Container(
                 width: AppDimensions.width10(context) * 28.0,
                 margin: EdgeInsets.only(
-                    left: AppDimensions.height10(context) * 1.5),
+                    left: AppDimensions.width10(context) * 1.5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -1003,7 +1003,7 @@ class maxActivation extends StatelessWidget {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.9,
                           right: AppDimensions.width10(context) * 1.6,
-                          left: AppDimensions.height10(context) * 1.6,
+                          left: AppDimensions.width10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 23.8,
@@ -1024,7 +1024,7 @@ class maxActivation extends StatelessWidget {
                   content: Container(
                     margin: EdgeInsets.only(
                         bottom: AppDimensions.height10(context) * 1.5,
-                        left: AppDimensions.height10(context) * 1.6,
+                        left: AppDimensions.width10(context) * 1.6,
                         right: AppDimensions.width10(context) * 1.6),
                     height: AppDimensions.height10(context) * 3.4,
                     width: AppDimensions.width10(context) * 23.8,

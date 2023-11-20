@@ -124,7 +124,7 @@ class _endofSessionState extends State<endofSession> {
                 'assets/images/Back.webp',
                 width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
         ),
         actions: [
@@ -167,7 +167,7 @@ class _endofSessionState extends State<endofSession> {
                                 margin: EdgeInsets.only(
                                     bottom:
                                         AppDimensions.height10(context) * 1.9,
-                                    left: AppDimensions.height10(context) * 1.6,
+                                    left: AppDimensions.width10(context) * 1.6,
                                     right:
                                         AppDimensions.height10(context) * 1.6),
                                 height: AppDimensions.height10(context) * 3.2,
@@ -243,7 +243,7 @@ class _endofSessionState extends State<endofSession> {
                   'assets/images/Close.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           )
         ],
@@ -297,7 +297,7 @@ class _endofSessionState extends State<endofSession> {
               Container(
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 5.2,
-                    left: AppDimensions.height10(context) * 1.0),
+                    left: AppDimensions.width10(context) * 1.0),
                 height: AppDimensions.height10(context) * 15.4,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -832,6 +832,7 @@ class _addNotesState extends State<addNotes> {
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.6),
                 child: Text(
                   'Add Notes',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w500,

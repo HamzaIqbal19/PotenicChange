@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               'assets/images/Close.webp',
               width: AppDimensions.width10(context) * 2.8,
               height: AppDimensions.height10(context) * 2.8,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
             onPressed: () => Navigator.pushReplacement(
               context,
@@ -182,7 +182,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 children: [
                   Container(
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.6),
+                        left: AppDimensions.width10(context) * 1.6),
                     child: Icon(
                       Icons.mail_outline,
                       color: Colors.white,
@@ -191,7 +191,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 0.8,
+                        left: AppDimensions.width10(context) * 0.8,
                         top: AppDimensions.height10(context) * 0.1),
                     child: Text(
                       '  Email and Password',

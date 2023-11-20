@@ -259,7 +259,7 @@ class _resetState extends State<reset> {
                                 height: AppDimensions.height10(context) * 1.7,
                                 width: AppDimensions.width10(context) * 23.3,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 4.4,
+                                    left: AppDimensions.width10(context) * 4.4,
                                     right:
                                         AppDimensions.height10(context) * 15.6),
                                 child: Text(
@@ -412,7 +412,7 @@ class _resetState extends State<reset> {
                                 height: AppDimensions.height10(context) * 1.7,
                                 width: AppDimensions.width10(context) * 23.3,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 4.4,
+                                    left: AppDimensions.width10(context) * 4.4,
                                     right:
                                         AppDimensions.height10(context) * 15.6),
                                 child: Text(

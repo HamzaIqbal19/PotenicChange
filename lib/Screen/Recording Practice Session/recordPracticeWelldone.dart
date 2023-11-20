@@ -78,7 +78,7 @@ class welldone_splashState extends State<welldone_splash> {
           title: Container(
             margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.3),
             padding: EdgeInsets.symmetric(
-              horizontal: AppDimensions.height10(context) * 3,
+              horizontal: AppDimensions.width10(context) * 3,
             ),
             child: Center(
                 child: Text(
@@ -109,7 +109,7 @@ class welldone_splashState extends State<welldone_splash> {
                   width: AppDimensions.width10(context) * 35.9,
                   height: AppDimensions.height10(context) * 14.8,
                   margin: EdgeInsets.only(
-                      left: AppDimensions.height10(context) * 2.7,
+                      left: AppDimensions.width10(context) * 2.7,
                       right: AppDimensions.width10(context) * 2.7),
                   child: Container(
                     margin: EdgeInsets.only(

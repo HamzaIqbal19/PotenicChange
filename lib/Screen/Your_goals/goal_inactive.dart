@@ -35,7 +35,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                 'assets/images/Back.webp',
                 width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
         ),
         actions: [
@@ -274,7 +274,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                         width: AppDimensions.width10(context) * 5.4,
                         height: AppDimensions.height10(context) * 5.4,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 2.5),
+                            left: AppDimensions.width10(context) * 2.5),
                         decoration: BoxDecoration(
                             border: Border.all(
                                 width: AppDimensions.width10(context) * 0.15,
@@ -290,7 +290,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                         width: AppDimensions.width10(context) * 18.6,
                         height: AppDimensions.height10(context) * 4.9,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 0.8),
+                            left: AppDimensions.width10(context) * 0.8),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -341,7 +341,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                       ),
                       Container(
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 2.0),
+                            left: AppDimensions.width10(context) * 2.0),
                         child: FlutterSwitch(
                           width: AppDimensions.width10(context) * 6.2,
                           height: AppDimensions.height10(context) * 3.4,
@@ -362,7 +362,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                           width: AppDimensions.width10(context) * 2.4,
                           height: AppDimensions.height10(context) * 1.31,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0),
+                              left: AppDimensions.width10(context) * 2.0),
                           child: GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -506,7 +506,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                               width: AppDimensions.width10(context) * 8.1,
                               height: AppDimensions.height10(context) * 6.0,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 15.1),
+                                  left: AppDimensions.width10(context) * 15.1),
                               decoration: BoxDecoration(
                                 border: Border.all(
                                     color: const Color(0xFFFFFFFF), width: 1),
@@ -543,7 +543,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                 width: AppDimensions.width10(context) * 17.4,
                 height: AppDimensions.height10(context) * 4.3,
                 margin: EdgeInsets.only(
-                    left: AppDimensions.height10(context) * 2.6),
+                    left: AppDimensions.width10(context) * 2.6),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Column(
@@ -591,7 +591,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                             1.9,
                                         right: AppDimensions.width10(context) *
                                             1.6,
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.6,
                                         bottom:
                                             AppDimensions.height10(context) *
@@ -615,7 +615,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 1.5,
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.6,
                                         right: AppDimensions.width10(context) *
                                             1.6),
@@ -827,7 +827,7 @@ class _goal_inactiveState extends State<goal_inactive> {
 //                           children: [
 //                             Container(
 //                               margin: EdgeInsets.only(
-//                                   left: AppDimensions.height10(context) * 1.261),
+//                                   left: AppDimensions.width10(context) * 1.261),
 //                               width: AppDimensions.width10(context) * 4.437,
 //                               height: AppDimensions.height10(context) * 4.437,
 //                               decoration: const BoxDecoration(
@@ -839,7 +839,7 @@ class _goal_inactiveState extends State<goal_inactive> {
 //                               width: AppDimensions.width10(context) * 16.3,
 //                               height: AppDimensions.height10(context) * 3.6,
 //                               margin: EdgeInsets.only(
-//                                   left: AppDimensions.height10(context) * 1.232),
+//                                   left: AppDimensions.width10(context) * 1.232),
 //                               child: Column(
 //                                 crossAxisAlignment: CrossAxisAlignment.start,
 //                                 children: [
@@ -875,7 +875,7 @@ class _goal_inactiveState extends State<goal_inactive> {
 //                               width: AppDimensions.width10(context) * 8.1,
 //                               height: AppDimensions.height10(context) * 6.0,
 //                               margin: EdgeInsets.only(
-//                                   left: AppDimensions.height10(context) * 5.1),
+//                                   left: AppDimensions.width10(context) * 5.1),
 //                               decoration: BoxDecoration(
 //                                 border: Border.all(
 //                                     color: const Color(0xFFFFFFFF), width: 1),

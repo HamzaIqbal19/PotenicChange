@@ -294,7 +294,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                         height: AppDimensions.height10(context) * 7.9,
                         // color: Colors.amber,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 10.2,
+                            left: AppDimensions.width10(context) * 10.2,
                             right: AppDimensions.width10(context) * 23.3,
                             top: AppDimensions.height10(context) * 0.6),
                         // color: Colors.blue,
@@ -365,7 +365,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(
-                            horizontal: AppDimensions.height10(context) * 2.0),
+                            horizontal: AppDimensions.width10(context) * 2.0),
                         child: noDate == true
                             ? Container(
                                 height: AppDimensions.height10(context) * 21.2,
@@ -390,7 +390,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   crossAxisCount: 2,
                                   childAspectRatio: 4.2 / 3,
                                   mainAxisSpacing:
-                                      AppDimensions.height10(context) * 1.4,
+                                      AppDimensions.width10(context) * 1.4,
                                   crossAxisSpacing: 0.1,
                                 ),
                                 itemCount: practiceName!.length,
@@ -441,11 +441,11 @@ class _CreatePracticeState extends State<CreatePractice> {
                                                         .height10(context) *
                                                     13.4,
                                                 circle_width:
-                                                    AppDimensions.height10(
+                                                    AppDimensions.width10(
                                                             context) *
                                                         13.4,
                                                 textfont:
-                                                    AppDimensions.height10(
+                                                    AppDimensions.font10(
                                                             context) *
                                                         1.6,
                                                 textcolor: 0xFFFFFFFF),
@@ -470,7 +470,7 @@ class _CreatePracticeState extends State<CreatePractice> {
               bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
             padding: EdgeInsets.only(
-                left: AppDimensions.height10(context) * 2.2,
+                left: AppDimensions.width10(context) * 2.2,
                 right: AppDimensions.width10(context) * 2.2),
             height: AppDimensions.height10(context) * 7.0,
             width: AppDimensions.width10(context) * 41.4,

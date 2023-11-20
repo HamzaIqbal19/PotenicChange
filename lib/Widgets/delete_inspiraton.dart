@@ -25,7 +25,7 @@ class delete_insp extends StatelessWidget {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.9,
                           right: AppDimensions.width10(context) * 1.6,
-                          left: AppDimensions.height10(context) * 1.6,
+                          left: AppDimensions.width10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 23.8,
@@ -46,7 +46,7 @@ class delete_insp extends StatelessWidget {
                   content: Container(
                     margin: EdgeInsets.only(
                         bottom: AppDimensions.height10(context) * 1.5,
-                        left: AppDimensions.height10(context) * 1.6,
+                        left: AppDimensions.width10(context) * 1.6,
                         right: AppDimensions.width10(context) * 1.6),
                     height: AppDimensions.height10(context) * 3.4,
                     width: AppDimensions.width10(context) * 23.8,

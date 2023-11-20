@@ -239,7 +239,7 @@ class _StarReviewState extends State<StarReview> {
                           //             "assets/images/anger_5.webp"))),
                           child: Container(
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 2.0,
+                                left: AppDimensions.width10(context) * 2.0,
                                 right: AppDimensions.width10(context) * 2.0),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
@@ -1831,7 +1831,7 @@ class _inner_text1State extends State<inner_text1> {
       padding: EdgeInsets.only(
           top: AppDimensions.height10(context) * 2,
           bottom: 1,
-          left: AppDimensions.height10(context),
+          left: AppDimensions.width10(context),
           right: AppDimensions.width10(context) * 6.0),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
@@ -1921,7 +1921,7 @@ class _inner_text2State extends State<inner_text2> {
               width: AppDimensions.width10(context) * 32.0,
               padding: EdgeInsets.only(
                   top: AppDimensions.height10(context) * 1.3,
-                  left: AppDimensions.height10(context) * 0.6),
+                  left: AppDimensions.width10(context) * 0.6),
               child: Text("${widget.circle_text}",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,

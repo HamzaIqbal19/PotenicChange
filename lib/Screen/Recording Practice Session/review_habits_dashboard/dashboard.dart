@@ -24,7 +24,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                      left: AppDimensions.height10(context) * 1.7,
+                      left: AppDimensions.width10(context) * 1.7,
                       right: AppDimensions.width10(context) * 0.9),
                   child: Image.asset(
                     'assets/images/calendar_month_black_24dp 1.webp',
@@ -428,7 +428,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                     fit: BoxFit.cover,
                   )),
                   margin: EdgeInsets.only(
-                      left: AppDimensions.height10(context) * 3.4,
+                      left: AppDimensions.width10(context) * 3.4,
                       right: AppDimensions.width10(context) * 2.63),
                   //color: Colors.blue,
                   child: Stack(children: [
@@ -481,7 +481,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                             width: AppDimensions.width10(context) * 26.7,
                             // height: AppDimensions.height10(context) * 5.3,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 3.4,
+                                left: AppDimensions.width10(context) * 3.4,
                                 bottom: AppDimensions.height10(context) * 1.2),
                             child: Text(
                               "You have an extra 20% chance of success if you have a support buddy. Have you got one?",

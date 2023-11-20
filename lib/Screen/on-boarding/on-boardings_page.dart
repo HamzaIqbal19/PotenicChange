@@ -78,10 +78,10 @@ class OnboardingPageState extends State<OnboardingPage>
     return AnimatedContainer(
       duration: Duration(milliseconds: 150),
       padding: EdgeInsets.only(
-          left: AppDimensions.height10(context),
+          left: AppDimensions.width10(context),
           right: AppDimensions.width10(context)),
       margin: EdgeInsets.symmetric(
-          horizontal: AppDimensions.height10(context) * 0.5),
+          horizontal: AppDimensions.width10(context) * 0.5),
       height: isActive
           ? AppDimensions.height10(context)
           : AppDimensions.height10(context),
@@ -152,7 +152,7 @@ class OnboardingPageState extends State<OnboardingPage>
                   'assets/images/Close.webp',
                   width: AppDimensions.width10(context) * 2.8,
                   height: AppDimensions.height10(context) * 2.8,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
                 onPressed: () async {
                   if (Accestoken != null && Routes != null) {
@@ -439,7 +439,7 @@ class OnboardingPageState extends State<OnboardingPage>
   Widget NextButton(String text) {
     return Padding(
       padding: EdgeInsets.only(
-        left: AppDimensions.height10(context) - 2,
+        left: AppDimensions.width10(context) - 2,
         right: AppDimensions.width10(context) - 2,
         top: AppDimensions.height10(context) - 5,
         bottom: AppDimensions.height10(context) * 3,
@@ -554,7 +554,7 @@ class OnboardingPageState extends State<OnboardingPage>
 
     return Padding(
       padding: EdgeInsets.only(
-        left: AppDimensions.height10(context) - 2,
+        left: AppDimensions.width10(context) - 2,
         right: AppDimensions.width10(context) - 2,
         top: AppDimensions.height10(context) - 5,
         bottom: AppDimensions.height10(context) * 3,

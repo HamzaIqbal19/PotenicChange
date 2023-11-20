@@ -193,7 +193,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               )
             ],
@@ -227,7 +227,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 onTap: () {},
                                 child: SizedBox(
                                   width: AppDimensions.width10(context) * 34.3,
-                                  height: AppDimensions.height10(context) * 7.3,
+                                  height: AppDimensions.height10(context) * 7.5,
                                   child: Center(
                                     child: GradientText(
                                       'My current\ninspirations',
@@ -397,7 +397,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                     16.7,
                                             height: AppDimensions.height10(
                                                     context) *
-                                                23.8,
+                                                24,
                                             child: Column(children: [
                                               AnimatedScaleButton(
                                                 onTap: () async {
@@ -515,7 +515,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                 ),
                                               ),
                                               Container(
-                                                width: AppDimensions.height10(
+                                                width: AppDimensions.width10(
                                                         context) *
                                                     16.7,
                                                 //height: AppDimensions.height10(context) * 1.9,
@@ -556,7 +556,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                 )),
                                               ),
                                               SizedBox(
-                                                width: AppDimensions.height10(
+                                                width: AppDimensions.width10(
                                                         context) *
                                                     15.7,
                                                 child: Center(
@@ -600,12 +600,12 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               2, // Half of the items, rounded down
                                           itemBuilder: (context, index) {
                                             return Container(
-                                              width: AppDimensions.height10(
+                                              width: AppDimensions.width10(
                                                       context) *
                                                   16.7,
                                               height: AppDimensions.height10(
                                                       context) *
-                                                  23.8,
+                                                  24,
                                               child: Column(children: [
                                                 AnimatedScaleButton(
                                                   onTap: () async {
@@ -625,7 +625,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                   },
                                                   child: Container(
                                                     width:
-                                                        AppDimensions.width10(
+                                                        AppDimensions.height10(
                                                                 context) *
                                                             16.7,
                                                     height:
@@ -633,6 +633,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 context) *
                                                             16.7,
                                                     decoration: BoxDecoration(
+
                                                         gradient: InspirationList[
                                                                         index * 2 +
                                                                             1][
@@ -982,7 +983,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         //           children: [
                         //             Container(
                         //               margin: EdgeInsets.only(
-                        //                   left: AppDimensions.height10(context) *
+                        //                   left: AppDimensions.width10(context) *
                         //                       1.261),
                         //               width:
                         //                   AppDimensions.height10(context) * 4.437,
@@ -999,7 +1000,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         //               height:
                         //                   AppDimensions.height10(context) * 3.6,
                         //               margin: EdgeInsets.only(
-                        //                   left: AppDimensions.height10(context) *
+                        //                   left: AppDimensions.width10(context) *
                         //                       1.232),
                         //               child: Column(
                         //                 crossAxisAlignment:
@@ -1053,7 +1054,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         //               height:
                         //                   AppDimensions.height10(context) * 6.0,
                         //               margin: EdgeInsets.only(
-                        //                   left: AppDimensions.height10(context) *
+                        //                   left: AppDimensions.width10(context) *
                         //                       15.1),
                         //               decoration: BoxDecoration(
                         //                 border: Border.all(
@@ -1111,7 +1112,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
             child: Container(
               // color: Colors.blue,
               padding: EdgeInsets.only(
-                  left: AppDimensions.height10(context) * 2.2,
+
+                  left: AppDimensions.width10(context) * 2.2,
                   right: AppDimensions.width10(context) * 2.2),
               height: AppDimensions.height10(context) * 7.0,
               // width: AppDimensions.width10(context) * 41.4,
@@ -1375,7 +1377,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 children: [
                                   Container(
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.0),
                                     child: Text(
                                       'Goal:',
@@ -1392,7 +1394,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     height:
                                         AppDimensions.height10(context) * 2.4,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             0.8),
                                     child: Center(
                                       child: Text(
@@ -1413,7 +1415,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     height:
                                         AppDimensions.height10(context) * 2.4,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             0.8,
                                         right: AppDimensions.width10(context) *
                                             1.0,
@@ -1664,7 +1666,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 children: [
                                   Container(
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.0),
                                     child: Text(
                                       'Tags:',
@@ -1681,7 +1683,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     height:
                                         AppDimensions.height10(context) * 2.4,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             0.8),
                                     child: Center(
                                       child: Text(
@@ -1702,7 +1704,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     height:
                                         AppDimensions.height10(context) * 2.4,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             0.8,
                                         bottom:
                                             AppDimensions.height10(context) *
@@ -1933,7 +1935,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 children: [
                                   Container(
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.0),
                                     child: Text(
                                       'Media:',
@@ -1950,7 +1952,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     height:
                                         AppDimensions.height10(context) * 2.4,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             0.8),
                                     child: Center(
                                       child: Text(
@@ -1969,7 +1971,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     height:
                                         AppDimensions.height10(context) * 2.4,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             0.8,
                                         bottom:
                                             AppDimensions.height10(context) *
@@ -2002,7 +2004,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               //width: AppDimensions.width10(context) * 3.9,
                               height: AppDimensions.height10(context) * 3.4,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 1.0,
+                                  left: AppDimensions.width10(context) * 1.0,
                                   right: AppDimensions.width10(context) * 7.0),
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -2459,7 +2461,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ],
@@ -2802,7 +2804,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                       //           children: [
                       //             Container(
                       //               margin: EdgeInsets.only(
-                      //                   left: AppDimensions.height10(context) *
+                      //                   left: AppDimensions.width10(context) *
                       //                       1.261),
                       //               width:
                       //                   AppDimensions.height10(context) * 4.437,
@@ -2818,7 +2820,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                       //               height:
                       //                   AppDimensions.height10(context) * 3.6,
                       //               margin: EdgeInsets.only(
-                      //                   left: AppDimensions.height10(context) *
+                      //                   left: AppDimensions.width10(context) *
                       //                       1.232),
                       //               child: Column(
                       //                 crossAxisAlignment:
@@ -3041,7 +3043,7 @@ class _updateBoxState extends State<updateBox> {
               children: [
                 Container(
                   margin: EdgeInsets.only(
-                      left: AppDimensions.height10(context) * 1.261),
+                      left: AppDimensions.width10(context) * 1.261),
                   width: AppDimensions.width10(context) * 4.437,
                   height: AppDimensions.height10(context) * 4.437,
                   decoration: const BoxDecoration(
@@ -3052,7 +3054,7 @@ class _updateBoxState extends State<updateBox> {
                   //width: AppDimensions.width10(context) * 6.9,
                   //height: AppDimensions.height10(context) * 4.0,
                   margin: EdgeInsets.only(
-                      left: AppDimensions.height10(context) * 1.232),
+                      left: AppDimensions.width10(context) * 1.232),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -3091,7 +3093,7 @@ class _updateBoxState extends State<updateBox> {
                           height: AppDimensions.height10(context) * 2.4,
                           width: AppDimensions.width10(context) * 2.4,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 8),
+                              left: AppDimensions.width10(context) * 8),
                           padding: EdgeInsets.all(
                               AppDimensions.height10(context) * 0.4),
                           decoration: BoxDecoration(
@@ -3107,7 +3109,7 @@ class _updateBoxState extends State<updateBox> {
                           width: AppDimensions.width10(context) * 8.1,
                           height: AppDimensions.height10(context) * 6.0,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 5,
+                              left: AppDimensions.width10(context) * 5,
                               right: AppDimensions.width10(context) * 1.23),
                           decoration: BoxDecoration(
                             border: Border.all(

@@ -198,7 +198,7 @@ class video_EditState extends State<videoEdit> {
               toolbarHeight: AppDimensions.height10(context) * 5.1,
               flexibleSpace: Container(
                 padding: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.height10(context) * 1.5),
+                    horizontal: AppDimensions.width10(context) * 1.5),
                 margin: EdgeInsets.zero,
                 decoration: BoxDecoration(
                     color: const Color(0xffF5F5F5).withOpacity(0.8),
@@ -537,11 +537,12 @@ class video_EditState extends State<videoEdit> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            height: AppDimensions.height10(context) * 2.1,
+                            height: AppDimensions.height10(context) * 2.2,
                             width: AppDimensions.width10(context) * 30.5,
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 2.0,
+
+                                left: AppDimensions.width10(context) * 2.0,
                                 right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 1.8),
                             child: Column(children: [
@@ -563,7 +564,7 @@ class video_EditState extends State<videoEdit> {
                               // width: AppDimensions.width10(context) * 30.5,
                               //color: Colors.amber,
                               margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 0.6,
+                                left: AppDimensions.width10(context) * 0.6,
                               ),
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -644,7 +645,7 @@ class video_EditState extends State<videoEdit> {
                                       width:
                                           AppDimensions.width10(context) * 30.5,
                                       margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             0.6,
                                       ),
                                       child: TextField(
@@ -778,11 +779,12 @@ class video_EditState extends State<videoEdit> {
                                 )
                               : Container(),
                           Container(
-                            height: AppDimensions.height10(context) * 2.1,
+                            height: AppDimensions.height10(context) * 2.2,
                             width: AppDimensions.width10(context) * 30.5,
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 2.0,
+
+                                left: AppDimensions.width10(context) * 2.0,
                                 // right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 3.9),
                             child: Column(
@@ -806,7 +808,7 @@ class video_EditState extends State<videoEdit> {
                             // width: AppDimensions.width10(context) * 30.5,
                             // color: Colors.amber,
                             margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.6,
+                              left: AppDimensions.width10(context) * 0.6,
                               // right: widget.note_saved
                               //     ? AppDimensions.height10(context) * 8.9
                               //     : AppDimensions.height10(context) * 10.0,
@@ -851,7 +853,7 @@ class video_EditState extends State<videoEdit> {
                           ),
                           widget.context
                               ? Container(
-                                  height: AppDimensions.height10(context) * 2.1,
+                                  height: AppDimensions.height10(context) * 2.2,
                                   width: AppDimensions.width10(context) * 30.5,
                                   margin: EdgeInsets.only(
                                       left:
@@ -875,7 +877,7 @@ class video_EditState extends State<videoEdit> {
                                   // width: AppDimensions.width10(context) *
                                   //     30.5,
                                   margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 0.6,
+                                    left: AppDimensions.width10(context) * 0.6,
                                   ),
                                   child: TextFormField(
                                     controller: author,
@@ -912,10 +914,11 @@ class video_EditState extends State<videoEdit> {
                                 )
                               : Container(),
                           Container(
-                            height: AppDimensions.height10(context) * 2.1,
+                            height: AppDimensions.height10(context) * 2.2,
                             width: AppDimensions.width10(context) * 30.5,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 2.0,
+
+                                left: AppDimensions.width10(context) * 2.0,
                                 right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 3.9),
                             child: Text(
@@ -929,7 +932,7 @@ class video_EditState extends State<videoEdit> {
                           Container(
                             // width: AppDimensions.width10(context) * 30.5,
                             margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.6,
+                              left: AppDimensions.width10(context) * 0.6,
                             ),
                             child: TextFormField(
                                 controller: hastags,
@@ -1000,10 +1003,10 @@ class video_EditState extends State<videoEdit> {
                                 ]),
                           ),
                           Container(
-                            height: AppDimensions.height10(context) * 2.1,
+                            height: AppDimensions.height10(context) * 2.2,
                             width: AppDimensions.width10(context) * 30.5,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 2.0,
+                                left: AppDimensions.width10(context) * 2.0,
                                 bottom: AppDimensions.height10(context) * 0.5,
                                 right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 3.9),
@@ -1032,7 +1035,8 @@ class video_EditState extends State<videoEdit> {
                               height: AppDimensions.height10(context) * 6.0,
                               width: AppDimensions.width10(context) * 37.5,
                               margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 2.0,
+
+                                left: AppDimensions.width10(context) * 2.0,
                                 right: AppDimensions.width10(context) * 1.9,
                                 // bottom: AppDimensions.height10(context) * 1.0
                               ),
@@ -1050,7 +1054,7 @@ class video_EditState extends State<videoEdit> {
                                     height:
                                         AppDimensions.height10(context) * 2.2,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.99),
                                     child: Text(
                                       selectedGoals.length == 0

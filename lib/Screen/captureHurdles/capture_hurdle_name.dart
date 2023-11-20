@@ -165,20 +165,20 @@ class _hurdle_nameState extends State<hurdle_name> {
                           'assets/images/Back.webp',
                           width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         )),
                   ),
             centerTitle: true,
             title: SizedBox(
               width: AppDimensions.width10(context) * 19.0,
-              height: AppDimensions.height10(context) * 2.4,
+              height: AppDimensions.height10(context) * 2.7,
               child: Row(
                 children: [
                   GradientText(
                     'Capture Hurdle ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 2.2,
+                      fontSize: AppDimensions.font10(context) * 2.6,
                       fontWeight: FontWeight.w600,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -392,7 +392,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               )
             ]),
@@ -501,7 +501,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                 2.0,
                                         margin: EdgeInsets.only(
                                             // left:   AppDimensions.height10(context)(context)* 2.0,
-                                            right: AppDimensions.height10(
+                                            right: AppDimensions.width10(
                                                     context) *
                                                 25.0,
                                             top: AppDimensions.height10(
@@ -593,9 +593,9 @@ class _hurdle_nameState extends State<hurdle_name> {
                                 width: AppDimensions.width10(context) * 12.3,
                                 height: AppDimensions.height10(context) * 2.0,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 3.1,
+                                    left: AppDimensions.width10(context) * 3.1,
                                     right:
-                                        AppDimensions.height10(context) * 26.0,
+                                        AppDimensions.width10(context) * 26.0,
                                     top: AppDimensions.height10(context) * 1.0),
                                 child: Row(
                                   children: [

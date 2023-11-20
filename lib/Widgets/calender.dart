@@ -233,7 +233,7 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
           calendarStyle: CalendarStyle(
               outsideDaysVisible: false,
               tablePadding: EdgeInsets.symmetric(
-                  horizontal: AppDimensions.height10(context) * 3.7),
+                  horizontal: AppDimensions.width10(context) * 3.7),
               rowDecoration: BoxDecoration(
                   border: Border(
                       bottom: BorderSide(

@@ -64,7 +64,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                     'assets/images/Back.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             ),
             //centerTitle: true,
@@ -72,7 +72,7 @@ class _inspiration_typeState extends State<inspiration_type> {
               width: AppDimensions.width10(context) * 18.9,
               height: AppDimensions.height10(context) * 2.4,
               margin:
-                  EdgeInsets.only(left: AppDimensions.height10(context) * 6.6),
+                  EdgeInsets.only(left: AppDimensions.width10(context) * 6.6),
               child: Row(
                 children: [
                   GradientText(
@@ -297,7 +297,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               )
             ]),
@@ -348,7 +348,7 @@ class _inspiration_typeState extends State<inspiration_type> {
               ),
               Container(
                 height: AppDimensions.height10(context) * 13.3,
-                //margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.6),
+                //margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.6),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -366,7 +366,8 @@ class _inspiration_typeState extends State<inspiration_type> {
                           height: AppDimensions.height10(context) * 13.3,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.4,
-                              left: AppDimensions.height10(context) * 4.0),
+
+                              left: AppDimensions.width10(context) * 4.0),
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               //borderRadius: BorderRadius.circular(10),

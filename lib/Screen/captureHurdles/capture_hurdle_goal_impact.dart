@@ -207,7 +207,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
           centerTitle: true,
           title: SizedBox(
             width: AppDimensions.width10(context) * 18.9,
-            height: AppDimensions.height10(context) * 2.4,
+            height: AppDimensions.height10(context) * 2.6,
             child: Row(
               children: [
                 //increasing font size through out title in hurdles by 2 px
@@ -430,7 +430,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ]),
@@ -460,7 +460,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                         children: [
                           Container(
                             width: AppDimensions.width10(context) * 34.3,
-                            height: AppDimensions.height10(context) * 7.3,
+                            height: AppDimensions.height10(context) * 7.75,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 8.7),
                             child: Center(
@@ -511,11 +511,12 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                               }
                             },
                             child: Container(
-                              width: AppDimensions.width10(context) * 14.1,
-                              height: AppDimensions.height10(context) * 14.1,
+                              width: AppDimensions.width10(context) * 14.2,
+                              height: AppDimensions.height10(context) * 14.2,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 2.1,
-                                  right: AppDimensions.width10(context) * 19.8,
+
+                                  left: AppDimensions.width10(context) * 2.2,
+                                  right: AppDimensions.width10(context) * 19.6,
                                   top: AppDimensions.height10(context) * 2.9),
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
@@ -525,10 +526,10 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                           ? Colors.white
                                           : Colors.transparent)),
                               padding: EdgeInsets.all(
-                                  AppDimensions.height10(context) * 0.5),
+                                  AppDimensions.width10(context) * 0.5),
                               child: Container(
-                                height: AppDimensions.height10(context) * 13.1,
-                                width: AppDimensions.width10(context) * 13.1,
+                                height: AppDimensions.height10(context) * 13.2,
+                                width: AppDimensions.width10(context) * 13.2,
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
@@ -561,7 +562,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             height: AppDimensions.height10(context) * 2.4,
                             margin: EdgeInsets.only(
                                 right: AppDimensions.width10(context) * 21.2,
-                                left: AppDimensions.height10(context) * 2.8,
+
+                                left: AppDimensions.width10(context) * 2.8,
                                 top: AppDimensions.height10(context) * 2.0),
                             child: Center(
                               child: Text(
@@ -576,7 +578,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 6,
+                                left: AppDimensions.width10(context) * 6,
                                 top: AppDimensions.height10(context) * 1.0,
                                 right: AppDimensions.width10(context) * 3,
                                 bottom: AppDimensions.height10(context) * 2.0),
@@ -614,7 +616,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                     child: Container(
                                       margin: EdgeInsets.only(
                                           right:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   3),
                                       height: selectedIndices.contains(index) ||
                                               selectAll == true
@@ -629,7 +631,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                           : AppDimensions.width10(context) *
                                               13.1,
                                       padding: EdgeInsets.all(
-                                          AppDimensions.height10(context) *
+                                          AppDimensions.width10(context) *
                                               0.8),
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
@@ -654,7 +656,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                         width: AppDimensions.width10(context) *
                                             13.1,
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: AppDimensions.height10(
+                                            horizontal: AppDimensions.width10(
                                                     context) *
                                                 0.8),
                                         // margin: EdgeInsets.only(
@@ -699,7 +701,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             height: AppDimensions.height10(context) * 2.4,
                             margin: EdgeInsets.only(
                                 right: AppDimensions.width10(context) * 19.5,
-                                left: AppDimensions.height10(context) * 2.8),
+                                left: AppDimensions.width10(context) * 2.8),
                             child: Center(
                               child: Text(
                                 'Inactive Goals',
@@ -713,7 +715,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 6,
+                                left: AppDimensions.width10(context) * 6,
                                 top: AppDimensions.height10(context) * 1.0,
                                 right: AppDimensions.width10(context) * 3,
                                 bottom: AppDimensions.height10(context) * 2.0),
@@ -752,7 +754,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                     child: Container(
                                       margin: EdgeInsets.only(
                                           right:
-                                              AppDimensions.height10(context) *
+                                              AppDimensions.width10(context) *
                                                   3),
                                       height: selectedInActiveIndices
                                                   .contains(index) ||
@@ -764,12 +766,12 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                       width: selectedInActiveIndices
                                                   .contains(index) ||
                                               selectAll == true
-                                          ? AppDimensions.height10(context) *
+                                          ? AppDimensions.width10(context) *
                                               14.1
-                                          : AppDimensions.height10(context) *
+                                          : AppDimensions.width10(context) *
                                               13.1,
                                       padding: EdgeInsets.all(
-                                          AppDimensions.height10(context) *
+                                          AppDimensions.width10(context) *
                                               0.8),
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
@@ -777,7 +779,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                             width: selectedInActiveIndices
                                                         .contains(index) ||
                                                     selectAll == true
-                                                ? AppDimensions.height10(
+                                                ? AppDimensions.width10(
                                                         context) *
                                                     0.2
                                                 : 0,

@@ -180,7 +180,8 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           content: Container(
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 1.9,
-                                left: AppDimensions.height10(context) * 1.6,
+
+                                left: AppDimensions.width10(context) * 1.6,
                                 right: AppDimensions.width10(context) * 1.6),
                             height: AppDimensions.height10(context) * 3.2,
                             width: AppDimensions.width10(context) * 23.8,
@@ -374,7 +375,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                     Container(
                         //width: AppDimensions.width10(context) * 22,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 1.5),
+                            left: AppDimensions.width10(context) * 1.5),
                         child: practice.text.toString().length > 20
                             ? Text(
                                 capitalizeFirstLetter(

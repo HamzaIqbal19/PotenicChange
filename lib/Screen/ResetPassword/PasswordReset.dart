@@ -180,7 +180,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 2.0,
+                                    left: AppDimensions.width10(context) * 2.0,
                                   ),
                                   width: AppDimensions.width10(context) * 32,
                                   height: AppDimensions.height10(context) * 2.2,
@@ -241,7 +241,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                 // color: Colors.blue,
 
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 4.4,
+                                    left: AppDimensions.width10(context) * 4.4,
                                     right:
                                         AppDimensions.height10(context) * 10.6),
                                 child: Text(
@@ -262,7 +262,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                 height: AppDimensions.height10(context) * 1.7,
                                 width: AppDimensions.width10(context) * 23.3,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 4.4,
+                                    left: AppDimensions.width10(context) * 4.4,
                                     right:
                                         AppDimensions.height10(context) * 15.6),
                                 child: Text(
@@ -281,7 +281,7 @@ class _PasswordResetState extends State<PasswordReset> {
                             height: AppDimensions.height10(context) * 2.2,
                             width: AppDimensions.width10(context) * 26.1,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 3.6,
+                                left: AppDimensions.width10(context) * 3.6,
                                 right: AppDimensions.width10(context) * 15.6),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,

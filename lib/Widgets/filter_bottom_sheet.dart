@@ -19,7 +19,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
       child: Container(
         // color: Colors.blue,
         padding: EdgeInsets.only(
-            left: AppDimensions.height10(context) * 2.2,
+            left: AppDimensions.width10(context) * 2.2,
             right: AppDimensions.width10(context) * 2.2),
         height: AppDimensions.height10(context) * 7.0,
         width: AppDimensions.width10(context) * 41.4,
@@ -62,14 +62,14 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                             width: AppDimensions.width10(context) * 0.1,
                             color: Color(0xFFE0E0E0))),
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.3,
+                        left: AppDimensions.width10(context) * 1.3,
                         right: AppDimensions.width10(context) * 1.0),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 1.0),
+                              left: AppDimensions.width10(context) * 1.0),
                           child: Text(
                             'Goal:',
                             style: TextStyle(
@@ -82,7 +82,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                           width: AppDimensions.width10(context) * 1.9,
                           height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.8),
+                              left: AppDimensions.width10(context) * 0.8),
                           child: Center(
                             child: Text(
                               'All',
@@ -97,7 +97,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                           width: AppDimensions.width10(context) * 2.4,
                           height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.8,
+                              left: AppDimensions.width10(context) * 0.8,
                               bottom: AppDimensions.height10(context) * 0.3),
                           child: Icon(
                             Icons.arrow_drop_down,
@@ -124,7 +124,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 1.0),
+                              left: AppDimensions.width10(context) * 1.0),
                           child: Text(
                             'Type:',
                             style: TextStyle(
@@ -137,7 +137,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                           width: AppDimensions.width10(context) * 1.9,
                           height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.8),
+                              left: AppDimensions.width10(context) * 0.8),
                           child: Center(
                             child: Text(
                               'All',
@@ -152,7 +152,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                           width: AppDimensions.width10(context) * 2.4,
                           height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.8,
+                              left: AppDimensions.width10(context) * 0.8,
                               bottom: AppDimensions.height10(context) * 0.3),
                           child: Icon(
                             Icons.arrow_drop_down,
@@ -168,7 +168,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                     width: AppDimensions.width10(context) * 3.9,
                     height: AppDimensions.height10(context) * 3.4,
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.0),
+                        left: AppDimensions.width10(context) * 1.0),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Clec',

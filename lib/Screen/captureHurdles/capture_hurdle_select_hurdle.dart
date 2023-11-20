@@ -173,13 +173,13 @@ class _select_hurdleState extends State<select_hurdle> {
                           'assets/images/Back.webp',
                           width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         )),
                   ),
             centerTitle: true,
             title: SizedBox(
               width: AppDimensions.width10(context) * 19.0,
-              height: AppDimensions.height10(context) * 2.4,
+              height: AppDimensions.height10(context) * 2.6,
               child: Row(
                 children: [
                   GradientText(
@@ -405,7 +405,7 @@ class _select_hurdleState extends State<select_hurdle> {
                       'assets/images/Close.webp',
                       width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     )),
               )
             ]),
@@ -425,7 +425,7 @@ class _select_hurdleState extends State<select_hurdle> {
                         children: [
                           Container(
                             width: AppDimensions.width10(context) * 33.7,
-                            height: AppDimensions.height10(context) * 7.3,
+                            height: AppDimensions.height10(context) * 7.8,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 18.0),
                             child: Center(
@@ -434,6 +434,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                 'What or who has\ntriggered your hurdle?',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
+                                  height: AppDimensions.height10(context)*0.15,
                                   fontSize: AppDimensions.font10(context) * 2.8,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -451,7 +452,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                 top: AppDimensions.height10(context) * 3.9),
                             padding: EdgeInsets.symmetric(
                                 horizontal:
-                                    AppDimensions.height10(context) * 4),
+                                    AppDimensions.width10(context) * 4),
                             child: GridView.builder(
                                 shrinkWrap: true,
                                 padding: EdgeInsets.zero,
@@ -471,7 +472,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                     height:
                                         AppDimensions.height10(context) * 41.9,
                                     // padding: EdgeInsets.symmetric(
-                                    //     horizontal: AppDimensions.height10(context) * 5),
+                                    //     horizontal: AppDimensions.width10(context) * 5),
                                     child: AnimatedScaleButton(
                                       onTap: () async {
                                         final SharedPreferences prefs =
@@ -504,12 +505,12 @@ class _select_hurdleState extends State<select_hurdle> {
                                             : AppDimensions.height10(context) *
                                                 13.1,
                                         width: selectBox == index
-                                            ? AppDimensions.height10(context) *
+                                            ? AppDimensions.width10(context) *
                                                 14.1
-                                            : AppDimensions.height10(context) *
+                                            : AppDimensions.width10(context) *
                                                 13.1,
                                         padding: EdgeInsets.all(
-                                            AppDimensions.height10(context)),
+                                            AppDimensions.width10(context)),
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           border: Border.all(
@@ -545,7 +546,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                                   ])),
                                           child: Center(
                                             child: SizedBox(
-                                              width: AppDimensions.height10(
+                                              width: AppDimensions.width10(
                                                       context) *
                                                   11,
                                               child: Text(

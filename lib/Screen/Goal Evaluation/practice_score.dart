@@ -352,7 +352,7 @@ class _prac_scoreState extends State<prac_score> {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
         ),
@@ -2000,7 +2000,7 @@ void enjoyment(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {

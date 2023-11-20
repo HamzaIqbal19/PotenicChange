@@ -250,7 +250,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                 children: [
                                   Container(
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             2.0,
                                         bottom:
                                             AppDimensions.height10(context) *
@@ -352,7 +352,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                   height: AppDimensions.height10(context) * 1.7,
                                   width: AppDimensions.width10(context) * 23.3,
                                   padding: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
+                                      left: AppDimensions.width10(context) *
                                           1.2),
                                   child: Text(
                                     emailMsg,
@@ -517,7 +517,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                           errorPassword
                               ? Container(
                                   padding: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
+                                      left: AppDimensions.width10(context) *
                                           1.2),
                                   child: Text(
                                     passwordMsg,
@@ -540,7 +540,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               height: AppDimensions.height10(context) * 2.2,
                               width: AppDimensions.width10(context) * 26.1,
                               padding: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 1.2),
+                                  left: AppDimensions.width10(context) * 1.2),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,

@@ -91,7 +91,7 @@ class _record_inspirationState extends State<record_inspiration> {
                     'assets/images/Close.webp',
                     width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   )),
             )
           ],
@@ -324,7 +324,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                     height:
                                         AppDimensions.height10(context) * 2.2,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.99),
                                     child: Text(
                                       'View details',
@@ -429,7 +429,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                     height:
                                         AppDimensions.height10(context) * 2.2,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
+                                        left: AppDimensions.width10(context) *
                                             1.99),
                                     child: Text(
                                       'Edit details',
@@ -539,10 +539,10 @@ class _record_inspirationState extends State<record_inspiration> {
                                               margin: EdgeInsets.only(
                                                   top: AppDimensions.height10(context) *
                                                       1.9,
-                                                  right:
-                                                      AppDimensions.width10(context) *
-                                                          1.6,
-                                                  left: AppDimensions.height10(context) *
+
+                                                  right: AppDimensions.width10(context) *
+                                                      1.6,
+                                                  left: AppDimensions.width10(context) *
                                                       1.6,
                                                   bottom:
                                                       AppDimensions.height10(context) *

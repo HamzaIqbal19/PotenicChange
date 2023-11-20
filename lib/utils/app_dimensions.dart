@@ -37,7 +37,7 @@ class AppDimensions {
 
   static checkText(context) {
     if (MediaQuery.of(context).size.height < 690) {
-      return ((8.sp));
+      return ((7.73.sp));
     } else {
       return (screenHeight(context) / 90.196080);
     }

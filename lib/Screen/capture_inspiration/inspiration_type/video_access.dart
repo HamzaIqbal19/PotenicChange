@@ -87,7 +87,7 @@ class _video_infoState extends State<video_info> {
               toolbarHeight: AppDimensions.height10(context) * 5.1,
               flexibleSpace: Container(
                 padding: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.height10(context) * 1.5),
+                    horizontal: AppDimensions.width10(context) * 1.5),
                 decoration: BoxDecoration(
                     color: const Color(0xffF5F5F5).withOpacity(0.8),
                     borderRadius: BorderRadius.only(
@@ -270,11 +270,12 @@ class _video_infoState extends State<video_info> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: AppDimensions.height10(context) * 2.1,
+                      height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+
+                          left: AppDimensions.width10(context) * 2.0,
                           right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.9),
                       child: Text(
@@ -291,7 +292,7 @@ class _video_infoState extends State<video_info> {
 
                       //width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 0.6,
+                        left: AppDimensions.width10(context) * 0.6,
                       ),
                       child: TextFormField(
                         controller: title,
@@ -322,10 +323,11 @@ class _video_infoState extends State<video_info> {
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10(context) * 2.1,
+                      height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+
+                          left: AppDimensions.width10(context) * 2.0,
                           right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.2),
                       child: Text(
@@ -343,7 +345,8 @@ class _video_infoState extends State<video_info> {
                           // height: AppDimensions.height10(context) * 2.4,
                           width: AppDimensions.width10(context) * 30.5,
                           margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 1.5,
+
+                            left: AppDimensions.width10(context) * 1.5,
                             right: AppDimensions.width10(context) * 1.0,
                             //top: AppDimensions.height10(context) * 1.0
                           ),
@@ -453,10 +456,11 @@ class _video_infoState extends State<video_info> {
                       ],
                     ),
                     Container(
-                      height: AppDimensions.height10(context) * 2.1,
+                      height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+
+                          left: AppDimensions.width10(context) * 2.0,
                           right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.9),
                       child: Text(
@@ -471,7 +475,8 @@ class _video_infoState extends State<video_info> {
                       // height: AppDimensions.height10(context) * 2.4,
                       // width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 0.6,
+
+                        left: AppDimensions.width10(context) * 0.6,
                         // right: AppDimensions.width10(context) * 10.0,
                         // top: AppDimensions.height10(context) * 1.0
                       ),
@@ -504,10 +509,11 @@ class _video_infoState extends State<video_info> {
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10(context) * 2.1,
+                      height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+
+                          left: AppDimensions.width10(context) * 2.0,
                           right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.9),
                       child: Text(
@@ -522,7 +528,7 @@ class _video_infoState extends State<video_info> {
                       //height: AppDimensions.height10(context) * 2.4,
                       //width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 0.6,
+                        left: AppDimensions.width10(context) * 0.6,
 
                         //top: AppDimensions.height10(context) * 1.0
                       ),
@@ -591,10 +597,11 @@ class _video_infoState extends State<video_info> {
                           ]),
                     ),
                     Container(
-                      height: AppDimensions.height10(context) * 2.1,
+                      height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+
+                          left: AppDimensions.width10(context) * 2.0,
                           right: AppDimensions.width10(context) * 8.9,
                           bottom: AppDimensions.height10(context) * 0.5,
                           top: AppDimensions.height10(context) * 3.9),
@@ -623,7 +630,8 @@ class _video_infoState extends State<video_info> {
                         height: AppDimensions.height10(context) * 6.0,
                         width: AppDimensions.width10(context) * 37.5,
                         margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
+
+                          left: AppDimensions.width10(context) * 2.0,
                           right: AppDimensions.width10(context) * 1.9,
                         ),
                         decoration: BoxDecoration(
@@ -637,7 +645,7 @@ class _video_infoState extends State<video_info> {
                               width: AppDimensions.width10(context) * 23.9,
                               height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 1.99),
+                                  left: AppDimensions.width10(context) * 1.99),
                               child: Text(
                                 '${selectedGoals.length} impacted goals',
                                 style: TextStyle(
@@ -649,8 +657,9 @@ class _video_infoState extends State<video_info> {
                             ),
                             Container(
                                 margin: EdgeInsets.only(
-                                    right:
-                                        AppDimensions.width10(context) * 2.391),
+
+                                    right: AppDimensions.width10(context) *
+                                        2.391),
                                 child: Text(
                                   'View',
                                   style: TextStyle(

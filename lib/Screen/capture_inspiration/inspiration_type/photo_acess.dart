@@ -310,7 +310,7 @@ class _photo_infoState extends State<photo_info> {
               toolbarHeight: AppDimensions.height10(context) * 5.1,
               flexibleSpace: Container(
                 padding: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.height10(context) * 1.5),
+                    horizontal: AppDimensions.width10(context) * 1.5),
                 decoration: BoxDecoration(
                     color: const Color(0xffF5F5F5).withOpacity(0.8),
                     borderRadius: BorderRadius.only(
@@ -905,7 +905,7 @@ class _photo_infoState extends State<photo_info> {
                     Container(
                       margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.9,
-                        left: AppDimensions.height10(context) * 1.8,
+                        left: AppDimensions.width10(context) * 1.8,
                       ),
                       width: AppDimensions.width10(context) * 24.4,
                       height: AppDimensions.height10(context) * 24.4,
@@ -921,11 +921,12 @@ class _photo_infoState extends State<photo_info> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              height: AppDimensions.height10(context) * 2.1,
+                              height: AppDimensions.height10(context) * 2.2,
                               width: AppDimensions.width10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 2.0,
+
+                                  left: AppDimensions.width10(context) * 2.0,
                                   right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 3.9),
                               child: Text(
@@ -943,7 +944,7 @@ class _photo_infoState extends State<photo_info> {
 
                               //width: AppDimensions.width10(context) * 30.5,
                               margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 0.6,
+                                left: AppDimensions.width10(context) * 0.6,
                               ),
                               child: TextFormField(
                                 controller: title,
@@ -976,11 +977,12 @@ class _photo_infoState extends State<photo_info> {
                               ),
                             ),
                             Container(
-                              height: AppDimensions.height10(context) * 2.1,
+                              height: AppDimensions.height10(context) * 2.2,
                               width: AppDimensions.width10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 2.0,
+
+                                  left: AppDimensions.width10(context) * 2.0,
                                   right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 4.0),
                               child: widget.image_detals
@@ -1009,7 +1011,7 @@ class _photo_infoState extends State<photo_info> {
                               // height: AppDimensions.height10(context) * 2.4,
                               // width: AppDimensions.width10(context) * 30.5,
                               margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 0.6,
+                                left: AppDimensions.width10(context) * 0.6,
                               ),
                               child: TextFormField(
                                 controller: statement,
@@ -1042,11 +1044,12 @@ class _photo_infoState extends State<photo_info> {
                               ),
                             ),
                             Container(
-                              height: AppDimensions.height10(context) * 2.1,
+                              height: AppDimensions.height10(context) * 2.2,
                               width: AppDimensions.width10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 2.0,
+
+                                  left: AppDimensions.width10(context) * 2.0,
                                   right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 4.0),
                               child: Text(
@@ -1066,7 +1069,7 @@ class _photo_infoState extends State<photo_info> {
                                   //     AppDimensions.height10(context) * 2.4,
                                   width: AppDimensions.width10(context) * 30.5,
                                   margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 0.6,
+                                    left: AppDimensions.width10(context) * 0.6,
                                   ),
                                   child: TextField(
                                     controller: link,
@@ -1179,11 +1182,12 @@ class _photo_infoState extends State<photo_info> {
                               ],
                             ),
                             Container(
-                              height: AppDimensions.height10(context) * 2.1,
+                              height: AppDimensions.height10(context) * 2.2,
                               width: AppDimensions.width10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 2.0,
+
+                                  left: AppDimensions.width10(context) * 2.0,
                                   right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 4.0),
                               child: Text(
@@ -1201,7 +1205,7 @@ class _photo_infoState extends State<photo_info> {
 
                               //width: AppDimensions.width10(context) * 30.5,
                               margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 0.6,
+                                left: AppDimensions.width10(context) * 0.6,
                               ),
                               child: TextFormField(
                                   controller: hastags,
@@ -1277,10 +1281,10 @@ class _photo_infoState extends State<photo_info> {
                                   ]),
                             ),
                             Container(
-                              height: AppDimensions.height10(context) * 2.1,
+                              height: AppDimensions.height10(context) * 2.2,
                               width: AppDimensions.width10(context) * 30.5,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 2.0,
+                                  left: AppDimensions.width10(context) * 2.0,
                                   bottom: AppDimensions.height10(context) * 0.5,
                                   right: AppDimensions.width10(context) * 8.9,
                                   top: widget.image_detals
@@ -1323,7 +1327,8 @@ class _photo_infoState extends State<photo_info> {
                                 width: AppDimensions.width10(context) * 37.5,
                                 margin: EdgeInsets.only(
                                   // bottom: AppDimensions.height10(context) * 1.0,
-                                  left: AppDimensions.height10(context) * 2.0,
+
+                                  left: AppDimensions.width10(context) * 2.0,
                                   right: AppDimensions.width10(context) * 1.9,
                                 ),
                                 decoration: BoxDecoration(
@@ -1517,7 +1522,7 @@ class _link_setState extends State<link_set> {
                           width: AppDimensions.width10(context) * 1.4,
                           height: AppDimensions.height10(context) * 1.413,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.8),
+                              left: AppDimensions.width10(context) * 0.8),
                           decoration: const BoxDecoration(
                               //shape: BoxShape.circle,
                               image: DecorationImage(
@@ -1691,7 +1696,7 @@ class _link_setState extends State<link_set> {
                       height: AppDimensions.height10(context) * 4.2,
                       width: AppDimensions.width10(context) * 6.2,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 0.9),
+                          left: AppDimensions.width10(context) * 0.9),
                       child: Center(
                         child: Text(
                           'Add link',

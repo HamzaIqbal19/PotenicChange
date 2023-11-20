@@ -45,7 +45,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
         children: [
           Container(
             padding: EdgeInsets.only(
-                left: AppDimensions.height10(context) * 1.0,
+                left: AppDimensions.width10(context) * 1.0,
                 right: AppDimensions.width10(context) * 1.9,
                 top: AppDimensions.height10(context) * 1.2),
             width: AppDimensions.width10(context) * 41.5,

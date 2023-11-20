@@ -115,7 +115,7 @@ class align_circles extends StatelessWidget {
               height: AppDimensions.height10(context) * 13.8,
               width: AppDimensions.width10(context) * 13.8,
               padding: EdgeInsets.symmetric(
-                  horizontal: AppDimensions.height10(context)),
+                  horizontal: AppDimensions.width10(context)),
               decoration: BoxDecoration(
                   //color: Colors.amber,
                   image: DecorationImage(
@@ -123,7 +123,7 @@ class align_circles extends StatelessWidget {
               child: Stack(children: [
                 Container(
                   padding: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.height10(context),
+                    horizontal: AppDimensions.width10(context),
                   ),
                   child: Center(
                       child: SizedBox(

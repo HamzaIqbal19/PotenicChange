@@ -199,7 +199,7 @@ class _practice_progressState extends State<practice_progress> {
                   'assets/images/Back.webp',
                   width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 )),
           ),
         ),
@@ -256,7 +256,7 @@ class _practice_progressState extends State<practice_progress> {
                           height: AppDimensions.height10(context) * 11.2,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.6,
-                              left: AppDimensions.height10(context) * 5),
+                              left: AppDimensions.width10(context) * 5),
                           // color: Colors.blue,
                           child: Row(
                             children: [
@@ -623,7 +623,7 @@ class _practice_progressState extends State<practice_progress> {
                                         margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
                                               2.7,
-                                          // left: AppDimensions.height10(context) * 2.0,
+                                          // left: AppDimensions.width10(context) * 2.0,
                                           //right: AppDimensions.width10(context) * 1.9,
                                         ),
                                         decoration: BoxDecoration(
@@ -1234,7 +1234,7 @@ class _practice_progressState extends State<practice_progress> {
                                             top: AppDimensions.height10(
                                                     context) *
                                                 2.7,
-                                            // left: AppDimensions.height10(context) * 2.0,
+                                            // left: AppDimensions.width10(context) * 2.0,
                                             //right: AppDimensions.width10(context) * 1.9,
                                           ),
                                           decoration: BoxDecoration(
@@ -1459,7 +1459,7 @@ class _practice_progressState extends State<practice_progress> {
                                       margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
                                             2.7,
-                                        // left: AppDimensions.height10(context) * 2.0,
+                                        // left: AppDimensions.width10(context) * 2.0,
                                         //right: AppDimensions.width10(context) * 1.9,
                                       ),
                                       decoration: BoxDecoration(
@@ -3201,7 +3201,7 @@ class _practice_progressState extends State<practice_progress> {
                                       AppDimensions.height10(context) * 20.6,
                                   width: AppDimensions.width10(context) * 14.9,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
+                                      left: AppDimensions.width10(context) *
                                           2.0),
 
                                   // color: Colors.amber,
@@ -3222,7 +3222,7 @@ class _practice_progressState extends State<practice_progress> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               SizedBox(
-                                                // margin: EdgeInsets.only(left: AppDimensions.height10(context)*1.0),
+                                                // margin: EdgeInsets.only(left: AppDimensions.width10(context)*1.0),
                                                 // height: AppDimensions.height10(
                                                 //         context) *
                                                 //     7.7,
@@ -3700,7 +3700,7 @@ circlesInRow(BuildContext context, int itteration) {
                 width: AppDimensions.width10(context) * 1.0,
                 height: AppDimensions.height10(context) * 1.0,
                 margin: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.height10(context) * 0.25),
+                    horizontal: AppDimensions.width10(context) * 0.25),
                 decoration: const BoxDecoration(
                     color: Color(0xFFB695B7), shape: BoxShape.circle),
               ),

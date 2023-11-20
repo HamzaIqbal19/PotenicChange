@@ -32,7 +32,7 @@ class _notificationsState extends State<notifications> {
                 'assets/images/Back.webp',
                 width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
         ),
         centerTitle: true,
@@ -77,7 +77,7 @@ class _notificationsState extends State<notifications> {
                   height: AppDimensions.height10(context) * 6.0,
                   padding: EdgeInsets.symmetric(
                       vertical: 0,
-                      horizontal: AppDimensions.height10(context) * 2.0),
+                      horizontal: AppDimensions.width10(context) * 2.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

@@ -25,7 +25,7 @@ class goal_prac_info extends StatelessWidget {
                 'assets/images/Back.webp',
                 width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
         ),
         actions: [
@@ -126,7 +126,7 @@ class goal_prac_info extends StatelessWidget {
               children: [
                 Container(
                   //color: Colors.amber,
-                  // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                  // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                   alignment: const Alignment(1, 0),
                   child: GestureDetector(
                     onTap: () {
@@ -273,7 +273,8 @@ void prac_info_sheet(context) {
           width: AppDimensions.width10(context) * 39.4,
           height: AppDimensions.height10(context) * 57.0,
           margin: EdgeInsets.only(
-              left: AppDimensions.height10(context) * 1.0,
+
+              left: AppDimensions.width10(context) * 1.0,
               right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
@@ -291,7 +292,7 @@ void prac_info_sheet(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {

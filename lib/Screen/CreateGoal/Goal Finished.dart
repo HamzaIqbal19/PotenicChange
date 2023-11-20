@@ -185,21 +185,19 @@ class _GoalFinishedState extends State<GoalFinished> {
                         Container(
                             // color: Colors.black,
                             // height: AppDimensions.height10(context) * 21.8,
-                            width: AppDimensions.width10(context) * 34.0,
+                            //width: AppDimensions.width10(context) * 34.0,
                             child: Column(
                               children: [
-                                Container(
-                                  child: Center(
-                                    child: Text(
-                                      "You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not  working, you can change it to another \n practice. ",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
-                                        fontFamily: "LaiLa",
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.8,
-                                      ),
+                                Center(
+                                  child: Text(
+                                    "You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not\n working, you can change it to another \n practice. ",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      fontFamily: "LaiLa",
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.8,
                                     ),
                                   ),
                                 ),
@@ -222,7 +220,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                 height: AppDimensions.height10(context) * 38.1,
                                 width: AppDimensions.width10(context) * 38.1,
                                 padding: EdgeInsets.all(
-                                    AppDimensions.height10(context) * 3.5),
+                                    AppDimensions.width10(context) * 3.5),
                                 // decoration: const BoxDecoration(
                                 //     image: DecorationImage(
                                 //         image: AssetImage(
@@ -266,7 +264,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                         width: AppDimensions.width10(context) *
                                             24.0,
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: AppDimensions.height10(
+                                            horizontal: AppDimensions.width10(
                                                     context) *
                                                 2.0),
                                         child: Column(
@@ -299,7 +297,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   4.0,
-                                              width: AppDimensions.height10(
+                                              width: AppDimensions.width10(
                                                       context) *
                                                   22.0,
                                               child: Text('"$identity"',

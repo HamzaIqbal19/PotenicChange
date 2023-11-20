@@ -25,7 +25,7 @@ class button_feilds extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // margin: EdgeInsets.only(
-      //     left: AppDimensions.height10(context) * 0.8,
+      //     left: AppDimensions.width10(context) * 0.8,
       //     right: AppDimensions.width10(context) * 0.8),
       height: AppDimensions.height10(context) * 6.0,
       width: AppDimensions.width10(context) * 36.0,
@@ -40,7 +40,7 @@ class button_feilds extends StatelessWidget {
             width: AppDimensions.width10(context) * 29.9,
             height: AppDimensions.height10(context) * 2.2,
             margin:
-                EdgeInsets.only(left: AppDimensions.height10(context) * 0.99),
+                EdgeInsets.only(left: AppDimensions.width10(context) * 0.99),
             child: Align(
               alignment: Alignment.centerLeft,
               child: RichText(
