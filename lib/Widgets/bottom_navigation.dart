@@ -94,13 +94,13 @@ class Navigation_BarState extends State<Navigation_Bar> {
       //   padding: EdgeInsets.only(
       //       bottom: AppDimensions.height10(context) * 2.5,
       //       left: AppDimensions.height10(context) * 5.4,
-      //       right: AppDimensions.height10(context) * 5.4),
+      //       right: AppDimensions.width10(context) * 5.4),
       //   child:
       Padding(
         padding: EdgeInsets.only(
           bottom: AppDimensions.height10(context) * 3.0,
           left: AppDimensions.height10(context) * 5.4,
-          right: AppDimensions.height10(context) * 5.4,
+          right: AppDimensions.width10(context) * 5.4,
         ),
         child: Container(
           decoration: const BoxDecoration(

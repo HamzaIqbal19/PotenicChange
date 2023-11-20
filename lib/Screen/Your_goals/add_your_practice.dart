@@ -76,7 +76,7 @@ class _add_your_practiceState extends State<add_your_practice> {
             margin: EdgeInsets.only(
               top: AppDimensions.height10(context) * 5.2,
               // left: AppDimensions.height10(context) * 12.2,
-              // right: AppDimensions.height10(context) * 12.1
+              // right: AppDimensions.width10(context) * 12.1
             ),
             child: Center(
               child: Text(
@@ -96,7 +96,7 @@ class _add_your_practiceState extends State<add_your_practice> {
             margin: EdgeInsets.only(
                 top: AppDimensions.height10(context) * 0.5,
                 left: AppDimensions.height10(context) * 12.2,
-                right: AppDimensions.height10(context) * 12.1),
+                right: AppDimensions.width10(context) * 12.1),
             child: Text(
               widget.goalName,
               textAlign: TextAlign.center,
@@ -230,7 +230,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                       width: AppDimensions.width10(context) * 2.4,
                       height: AppDimensions.height10(context) * 1.39,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 2.391),
+                          right: AppDimensions.width10(context) * 2.391),
                       child: Image.asset(
                         'assets/images/BTN Back.webp',
                         //width: AppDimensions.width10(context) * 2.6,

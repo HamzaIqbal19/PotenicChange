@@ -156,7 +156,7 @@ class _your_impactState extends State<your_impact> {
                               AppDimensions.height10(context) * 1.4)),
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.9,
-                          right: AppDimensions.height10(context) * 1.6,
+                          right: AppDimensions.width10(context) * 1.6,
                           left: AppDimensions.height10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
@@ -174,7 +174,7 @@ class _your_impactState extends State<your_impact> {
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 1.5,
                           left: AppDimensions.height10(context) * 1.6,
-                          right: AppDimensions.height10(context) * 1.6),
+                          right: AppDimensions.width10(context) * 1.6),
                       height: AppDimensions.height10(context) * 3.2,
                       width: AppDimensions.width10(context) * 23.8,
                       child: Text(
@@ -754,8 +754,8 @@ class _your_impactState extends State<your_impact> {
                                   height:
                                       AppDimensions.height10(context) * 12.95,
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
-                                          1.5),
+                                      right:
+                                          AppDimensions.width10(context) * 1.5),
                                   child: Stack(children: [
                                     Container(
                                       width: AppDimensions.width10(context) *
@@ -947,8 +947,8 @@ class _your_impactState extends State<your_impact> {
                                   height:
                                       AppDimensions.height10(context) * 12.95,
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
-                                          1.5),
+                                      right:
+                                          AppDimensions.width10(context) * 1.5),
                                   child: Stack(children: [
                                     Container(
                                       width: AppDimensions.width10(context) *
@@ -1951,7 +1951,7 @@ class _your_impactState extends State<your_impact> {
                         children: [
                           Container(
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 1.0),
+                                right: AppDimensions.width10(context) * 1.0),
                             child: Text(
                               'Upgrade to score ',
                               style: TextStyle(
@@ -1966,7 +1966,7 @@ class _your_impactState extends State<your_impact> {
                             padding: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.1,
                                 left: AppDimensions.height10(context) * 0.6,
-                                right: AppDimensions.height10(context) * 0.6,
+                                right: AppDimensions.width10(context) * 0.6,
                                 bottom: AppDimensions.height10(context) * 0.9),
                             decoration: const BoxDecoration(
                                 color: Color(0xFF437296),
@@ -2005,7 +2005,7 @@ Widget showSaveWithout(
                 BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
-            right: AppDimensions.height10(context) * 1.6,
+            right: AppDimensions.width10(context) * 1.6,
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
@@ -2023,7 +2023,7 @@ Widget showSaveWithout(
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
             left: AppDimensions.height10(context) * 1.6,
-            right: AppDimensions.height10(context) * 1.6),
+            right: AppDimensions.width10(context) * 1.6),
         height: AppDimensions.height10(context) * 3.2,
         width: AppDimensions.width10(context) * 23.8,
         child: Text(
@@ -2117,7 +2117,7 @@ Widget showAlertBox(BuildContext context, onTap) {
                 BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
-            right: AppDimensions.height10(context) * 1.6,
+            right: AppDimensions.width10(context) * 1.6,
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
@@ -2135,7 +2135,7 @@ Widget showAlertBox(BuildContext context, onTap) {
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
             left: AppDimensions.height10(context) * 1.6,
-            right: AppDimensions.height10(context) * 1.6),
+            right: AppDimensions.width10(context) * 1.6),
         height: AppDimensions.height10(context) * 3.2,
         width: AppDimensions.width10(context) * 23.8,
         child: Text(

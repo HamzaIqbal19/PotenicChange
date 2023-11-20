@@ -89,7 +89,7 @@ class _timelineState extends State<timeline> {
                 },
                 child: Container(
                   margin: EdgeInsets.only(
-                      right: AppDimensions.height10(context) * 1.4),
+                      right: AppDimensions.width10(context) * 1.4),
                   child: Image.asset(
                     'assets/images/Asset 10 2.webp',
                     width: AppDimensions.width10(context) * 4.1,
@@ -207,7 +207,7 @@ class _timelineState extends State<timeline> {
                           width: AppDimensions.width10(context) * 30.7,
                           height: AppDimensions.height10(context) * 3.5,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 4.5,
+                            right: AppDimensions.width10(context) * 4.5,
                             top: AppDimensions.height10(context) * 1.5,
                           ),
                           child: Row(
@@ -391,7 +391,7 @@ class _timelineState extends State<timeline> {
                           width: AppDimensions.width10(context) * 30.7,
                           height: AppDimensions.height10(context) * 3.5,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 4.5,
+                            right: AppDimensions.width10(context) * 4.5,
                             top: AppDimensions.height10(context) * 1.5,
                           ),
                           child: Row(
@@ -665,7 +665,7 @@ class _timelineState extends State<timeline> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
                         left: AppDimensions.height10(context) * 4.8,
-                        right: AppDimensions.height10(context) * 4.7),
+                        right: AppDimensions.width10(context) * 4.7),
                     child: Text(
                       'All your recorded events & schedule\nin one place',
                       textAlign: TextAlign.center,
@@ -755,7 +755,7 @@ class _timelineState extends State<timeline> {
                           width: AppDimensions.width10(context) * 29.6,
                           height: AppDimensions.height10(context) * 3.5,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 5.5,
+                            right: AppDimensions.width10(context) * 5.5,
                             top: AppDimensions.height10(context) * 1.5,
                           ),
                           child: Row(
@@ -954,7 +954,7 @@ class _timelineState extends State<timeline> {
                           width: AppDimensions.width10(context) * 30.7,
                           height: AppDimensions.height10(context) * 3.5,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 4.9,
+                            right: AppDimensions.width10(context) * 4.9,
                             top: AppDimensions.height10(context) * 1.5,
                           ),
                           child: Row(
@@ -1241,7 +1241,7 @@ class _timelineState extends State<timeline> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0,
                         left: AppDimensions.height10(context) * 1.4,
-                        right: AppDimensions.height10(context) * 1.4),
+                        right: AppDimensions.width10(context) * 1.4),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFBFBFB),
                       borderRadius: BorderRadius.circular(
@@ -1253,7 +1253,7 @@ class _timelineState extends State<timeline> {
                           width: AppDimensions.width10(context) * 20.5,
                           height: AppDimensions.height10(context) * 3.5,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 15.0,
+                            right: AppDimensions.width10(context) * 15.0,
                             top: AppDimensions.height10(context) * 1.5,
                           ),
                           child: Row(
@@ -1386,7 +1386,7 @@ class _timelineState extends State<timeline> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0,
                         left: AppDimensions.height10(context) * 1.4,
-                        right: AppDimensions.height10(context) * 1.4),
+                        right: AppDimensions.width10(context) * 1.4),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFBFBFB),
                       borderRadius: BorderRadius.circular(
@@ -1398,7 +1398,7 @@ class _timelineState extends State<timeline> {
                           width: AppDimensions.width10(context) * 20.5,
                           height: AppDimensions.height10(context) * 3.5,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 14.0,
+                            right: AppDimensions.width10(context) * 14.0,
                             top: AppDimensions.height10(context) * 1.5,
                           ),
                           child: Row(
@@ -1513,7 +1513,7 @@ class _timelineState extends State<timeline> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0,
                         left: AppDimensions.height10(context) * 1.4,
-                        right: AppDimensions.height10(context) * 1.4),
+                        right: AppDimensions.width10(context) * 1.4),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFBFBFB),
                       borderRadius: BorderRadius.circular(
@@ -1525,7 +1525,7 @@ class _timelineState extends State<timeline> {
                           width: AppDimensions.width10(context) * 20.5,
                           height: AppDimensions.height10(context) * 3.5,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 14.9,
+                            right: AppDimensions.width10(context) * 14.9,
                             top: AppDimensions.height10(context) * 1.5,
                           ),
                           child: Row(
@@ -1642,7 +1642,7 @@ class _timelineState extends State<timeline> {
                           width: AppDimensions.width10(context) * 20.5,
                           height: AppDimensions.height10(context) * 3.5,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 14.8,
+                            right: AppDimensions.width10(context) * 14.8,
                             top: AppDimensions.height10(context) * 1.5,
                           ),
                           child: Row(
@@ -2123,7 +2123,7 @@ class _timelineState extends State<timeline> {
           child: Container(
             // color: Colors.blue,
             padding:
-                EdgeInsets.only(right: AppDimensions.height10(context) * 2.2),
+                EdgeInsets.only(right: AppDimensions.width10(context) * 2.2),
             height: AppDimensions.height10(context) * 7.0,
             width: AppDimensions.width10(context) * 41.4,
             child: Stack(
@@ -2140,7 +2140,7 @@ class _timelineState extends State<timeline> {
                       padding: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.2),
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 5.0),
+                          right: AppDimensions.width10(context) * 5.0),
                       child: Row(
                         children: [
                           Row(
@@ -2330,8 +2330,8 @@ class _timelineState extends State<timeline> {
                                   margin: EdgeInsets.only(
                                       left:
                                           AppDimensions.height10(context) * 1.3,
-                                      right: AppDimensions.height10(context) *
-                                          1.0),
+                                      right:
+                                          AppDimensions.width10(context) * 1.0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -2753,8 +2753,8 @@ class _timelineState extends State<timeline> {
                                   margin: EdgeInsets.only(
                                       left:
                                           AppDimensions.height10(context) * 1.3,
-                                      right: AppDimensions.height10(context) *
-                                          1.0),
+                                      right:
+                                          AppDimensions.width10(context) * 1.0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -2839,8 +2839,8 @@ class _timelineState extends State<timeline> {
                                   margin: EdgeInsets.only(
                                       left:
                                           AppDimensions.height10(context) * 1.3,
-                                      right: AppDimensions.height10(context) *
-                                          1.0),
+                                      right:
+                                          AppDimensions.width10(context) * 1.0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -3027,7 +3027,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                     width: AppDimensions.width10(context) * 5.0,
                     height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 2.0),
+                        right: AppDimensions.width10(context) * 2.0),
                     child: Text(
                       'Cancel',
                       textAlign: TextAlign.center,
@@ -3050,7 +3050,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                     width: AppDimensions.width10(context) * 3.7,
                     height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.9),
+                        right: AppDimensions.width10(context) * 1.9),
                     child: Text(
                       'Done',
                       textAlign: TextAlign.center,
@@ -3168,7 +3168,7 @@ class _BottomSheetState extends State<MyBottomSheet> {
                     width: AppDimensions.width10(context) * 5.0,
                     height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 2.0),
+                        right: AppDimensions.width10(context) * 2.0),
                     child: Text(
                       'Cancel',
                       textAlign: TextAlign.center,
@@ -3191,7 +3191,7 @@ class _BottomSheetState extends State<MyBottomSheet> {
                     width: AppDimensions.width10(context) * 3.7,
                     height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.9),
+                        right: AppDimensions.width10(context) * 1.9),
                     child: Text(
                       'Done',
                       textAlign: TextAlign.center,
@@ -3267,7 +3267,7 @@ _TimeBottomSheet(BuildContext context) {
                         width: AppDimensions.width10(context) * 5.0,
                         height: AppDimensions.height10(context) * 2.1,
                         margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 2.0),
+                            right: AppDimensions.width10(context) * 2.0),
                         child: Text(
                           'Cancel',
                           textAlign: TextAlign.center,
@@ -3284,7 +3284,7 @@ _TimeBottomSheet(BuildContext context) {
                         width: AppDimensions.width10(context) * 3.7,
                         height: AppDimensions.height10(context) * 2.1,
                         margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.9),
+                            right: AppDimensions.width10(context) * 1.9),
                         child: Text(
                           'Done',
                           textAlign: TextAlign.center,

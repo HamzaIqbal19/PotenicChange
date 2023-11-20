@@ -1287,7 +1287,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                 17.0,
                                         width: AppDimensions.width10(context) *
                                             36.4,
-                                        // padding:  EdgeInsets.only(top: AppDimensions.height10(context)*2, bottom: AppDimensions.height10(context)*4.8, left: AppDimensions.height10(context)*2.0,right: AppDimensions.height10(context)*3.5),
+                                        // padding:  EdgeInsets.only(top: AppDimensions.height10(context)*2, bottom: AppDimensions.height10(context)*4.8, left: AppDimensions.height10(context)*2.0,right: AppDimensions.width10(context)*3.5),
                                         decoration: BoxDecoration(
                                             // color: Colors.white,
                                             gradient: const LinearGradient(
@@ -1779,7 +1779,7 @@ class _inner_text1State extends State<inner_text1> {
           top: AppDimensions.height10(context) * 1.3,
           bottom: 1,
           left: AppDimensions.height10(context) * 2,
-          right: AppDimensions.height10(context)),
+          right: AppDimensions.width10(context)),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
               ? const LinearGradient(

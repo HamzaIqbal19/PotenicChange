@@ -1137,7 +1137,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                             'assets/images/Video_Subtract.webp'))),
                                 margin: EdgeInsets.only(
                                     left: AppDimensions.height10(context) * 1,
-                                    right: AppDimensions.height10(context) * 1),
+                                    right: AppDimensions.width10(context) * 1),
                                 child: Center(
                                   child: Center(
                                     child: Text(

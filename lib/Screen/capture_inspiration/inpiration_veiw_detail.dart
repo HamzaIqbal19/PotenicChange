@@ -119,7 +119,7 @@ class _view_detailsState extends State<view_details> {
                           margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 12.0,
                             left: AppDimensions.height10(context) * 3.4,
-                            right: AppDimensions.height10(context) * 3.4,
+                            right: AppDimensions.width10(context) * 3.4,
                           ),
                           decoration: BoxDecoration(
                               image: DecorationImage(
@@ -142,7 +142,7 @@ class _view_detailsState extends State<view_details> {
                           margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 11.50,
                             left: AppDimensions.height10(context) * 1.8,
-                            right: AppDimensions.height10(context) * 1.8,
+                            right: AppDimensions.width10(context) * 1.8,
                           ),
                           decoration: const BoxDecoration(
                               //  color: Colors.amber,
@@ -190,7 +190,7 @@ class _view_detailsState extends State<view_details> {
                           child: Container(
                             margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 5,
-                              right: AppDimensions.height10(context) * 5,
+                              right: AppDimensions.width10(context) * 5,
                               // bottom: AppDimensions.height10(context) * 3
                             ),
                             child: Text(
@@ -275,7 +275,7 @@ class _view_detailsState extends State<view_details> {
                             // color: Colors.amber,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 3.6,
-                                right: AppDimensions.height10(context) * 9.0,
+                                right: AppDimensions.width10(context) * 9.0,
                                 top: AppDimensions.height10(context) * 0.3),
                             child: Column(
                               children: [
@@ -451,7 +451,7 @@ class _view_detailsState extends State<view_details> {
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 3.6,
-                                right: AppDimensions.height10(context) * 8.9,
+                                right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 2.0),
                             child: Column(
                               children: [
@@ -508,7 +508,7 @@ class _view_detailsState extends State<view_details> {
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 3.6,
-                                right: AppDimensions.height10(context) * 8.9,
+                                right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 0.2),
                             child: Column(
                               children: [
@@ -627,7 +627,7 @@ class _view_detailsState extends State<view_details> {
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 3.6,
                               bottom: AppDimensions.height10(context) * 0.5,
-                              right: AppDimensions.height10(context) * 8.9,
+                              right: AppDimensions.width10(context) * 8.9,
                               top: AppDimensions.height10(context) * 2.0),
                           child: Text(
                             'Attached goals',
@@ -656,7 +656,7 @@ class _view_detailsState extends State<view_details> {
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 1.0,
                                 left: AppDimensions.height10(context) * 2.2,
-                                right: AppDimensions.height10(context) * 1.7,
+                                right: AppDimensions.width10(context) * 1.7,
                                 top: AppDimensions.height10(context) * 0.5),
                             decoration: BoxDecoration(
                                 color: const Color(0xFFFBFBFB),
@@ -684,7 +684,7 @@ class _view_detailsState extends State<view_details> {
                                 ),
                                 Container(
                                     margin: EdgeInsets.only(
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             2.391),
                                     child: Text(
                                       'View',

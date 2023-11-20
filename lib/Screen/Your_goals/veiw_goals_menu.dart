@@ -1482,7 +1482,7 @@ void _canceled_plan(context) {
           height: AppDimensions.height10(context) * 75.5,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
-              right: AppDimensions.height10(context) * 1.0,
+              right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
               borderRadius:
@@ -1510,7 +1510,7 @@ void _canceled_plan(context) {
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
-                        right: AppDimensions.height10(context) * 1.5),
+                        right: AppDimensions.width10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
@@ -1651,7 +1651,7 @@ void activeReport(
                         height: AppDimensions.height10(context) * 2.6,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.5,
-                            right: AppDimensions.height10(context) * 1.5),
+                            right: AppDimensions.width10(context) * 1.5),
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(

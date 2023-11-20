@@ -452,7 +452,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                         margin: EdgeInsets.only(
                                                             top: AppDimensions.height10(context) *
                                                                 1.9,
-                                                            right: AppDimensions.height10(context) *
+                                                            right: AppDimensions.width10(context) *
                                                                 1.6,
                                                             left: AppDimensions.height10(context) *
                                                                 1.6,

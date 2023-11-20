@@ -73,7 +73,7 @@ class _select_linkState extends State<select_link> {
               width: AppDimensions.width10(context) * 13.339,
               height: AppDimensions.height10(context) * 16.674,
               margin:
-                  EdgeInsets.only(right: AppDimensions.height10(context) * 1.4),
+                  EdgeInsets.only(right: AppDimensions.width10(context) * 1.4),
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(
@@ -135,7 +135,7 @@ class _select_linkState extends State<select_link> {
               child: Container(
                 margin: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 2.0,
-                    right: AppDimensions.height10(context) * 2.0),
+                    right: AppDimensions.width10(context) * 2.0),
                 height: AppDimensions.height10(context) * 2.2,
                 width: AppDimensions.width10(context) * 30.5,
                 child: Center(

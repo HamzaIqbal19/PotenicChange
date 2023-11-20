@@ -384,7 +384,7 @@ class _photo_infoState extends State<photo_info> {
                         //height: AppDimensions.height10(context) * 2.2,
                         //width: AppDimensions.width10(context) * 6.1,
                         // margin: EdgeInsets.only(
-                        //     right: AppDimensions.height10(context) * 1.5),
+                        //     right: AppDimensions.width10(context) * 1.5),
                         child: widget.image_detals
                             ? Container(
                                 child: widget.image_save
@@ -926,7 +926,7 @@ class _photo_infoState extends State<photo_info> {
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0,
-                                  right: AppDimensions.height10(context) * 8.9,
+                                  right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 3.9),
                               child: Text(
                                 'Title',
@@ -981,7 +981,7 @@ class _photo_infoState extends State<photo_info> {
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0,
-                                  right: AppDimensions.height10(context) * 8.9,
+                                  right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 4.0),
                               child: widget.image_detals
                                   ? Text(
@@ -1047,7 +1047,7 @@ class _photo_infoState extends State<photo_info> {
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0,
-                                  right: AppDimensions.height10(context) * 8.9,
+                                  right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 4.0),
                               child: Text(
                                 'Destination website (optional)',
@@ -1127,7 +1127,7 @@ class _photo_infoState extends State<photo_info> {
                                             AppDimensions.height10(context) *
                                                 2.5,
                                         // margin: EdgeInsets.only(
-                                        //     right: AppDimensions.height10(context) * 0.8),
+                                        //     right: AppDimensions.width10(context) * 0.8),
                                         decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           color: Colors.black,
@@ -1184,7 +1184,7 @@ class _photo_infoState extends State<photo_info> {
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0,
-                                  right: AppDimensions.height10(context) * 8.9,
+                                  right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 4.0),
                               child: Text(
                                 'Tags (optional)',
@@ -1282,7 +1282,7 @@ class _photo_infoState extends State<photo_info> {
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.0,
                                   bottom: AppDimensions.height10(context) * 0.5,
-                                  right: AppDimensions.height10(context) * 8.9,
+                                  right: AppDimensions.width10(context) * 8.9,
                                   top: widget.image_detals
                                       ? AppDimensions.height10(context) * 4.0
                                       : AppDimensions.height10(context) * 3.0),
@@ -1324,7 +1324,7 @@ class _photo_infoState extends State<photo_info> {
                                 margin: EdgeInsets.only(
                                   // bottom: AppDimensions.height10(context) * 1.0,
                                   left: AppDimensions.height10(context) * 2.0,
-                                  right: AppDimensions.height10(context) * 1.9,
+                                  right: AppDimensions.width10(context) * 1.9,
                                 ),
                                 decoration: BoxDecoration(
                                     color: const Color(0xFFFBFBFB),
@@ -1489,7 +1489,7 @@ class _link_setState extends State<link_set> {
                             width: AppDimensions.width10(context) * 3.0,
                             height: AppDimensions.height10(context) * 3.0,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 0.8),
+                                right: AppDimensions.width10(context) * 0.8),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color:

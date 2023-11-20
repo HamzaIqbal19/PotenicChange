@@ -240,7 +240,7 @@ class _StarReviewState extends State<StarReview> {
                           child: Container(
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 2.0,
-                                right: AppDimensions.height10(context) * 2.0),
+                                right: AppDimensions.width10(context) * 2.0),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
@@ -1832,7 +1832,7 @@ class _inner_text1State extends State<inner_text1> {
           top: AppDimensions.height10(context) * 2,
           bottom: 1,
           left: AppDimensions.height10(context),
-          right: AppDimensions.height10(context) * 6.0),
+          right: AppDimensions.width10(context) * 6.0),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
               ? const LinearGradient(

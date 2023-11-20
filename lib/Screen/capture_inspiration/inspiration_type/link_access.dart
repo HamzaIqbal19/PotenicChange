@@ -101,7 +101,7 @@ class _link_infoState extends State<link_info> {
                         alignment: Alignment.centerLeft,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 8.9,
+                            right: AppDimensions.width10(context) * 8.9,
                             top: AppDimensions.height10(context) * 3.9),
                         child: Text(
                           'Title',
@@ -152,7 +152,7 @@ class _link_infoState extends State<link_info> {
                         width: AppDimensions.width10(context) * 30.5,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 8.9,
+                            right: AppDimensions.width10(context) * 8.9,
                             top: AppDimensions.height10(context) * 3.2),
                         child: Text(
                           'Content Destination Link',
@@ -169,7 +169,7 @@ class _link_infoState extends State<link_info> {
                             width: AppDimensions.width10(context) * 30.5,
                             margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 1.5,
-                              right: AppDimensions.height10(context) * 1.0,
+                              right: AppDimensions.width10(context) * 1.0,
                               //top: AppDimensions.height10(context) * 1.0
                             ),
                             child: TextFormField(
@@ -231,7 +231,7 @@ class _link_infoState extends State<link_info> {
                                     height:
                                         AppDimensions.height10(context) * 2.5,
                                     // margin: EdgeInsets.only(
-                                    //     right: AppDimensions.height10(context) * 0.8),
+                                    //     right: AppDimensions.width10(context) * 0.8),
                                     decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: Colors.black,
@@ -284,7 +284,7 @@ class _link_infoState extends State<link_info> {
                         width: AppDimensions.width10(context) * 30.5,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 8.9,
+                            right: AppDimensions.width10(context) * 8.9,
                             top: AppDimensions.height10(context) * 3.9),
                         child: Text(
                           'Why is it inspirational to you',
@@ -299,7 +299,7 @@ class _link_infoState extends State<link_info> {
                         //width: AppDimensions.width10(context) * 30.5,
                         margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 0.6,
-                          //right: AppDimensions.height10(context) * 10.0,
+                          //right: AppDimensions.width10(context) * 10.0,
                         ),
                         child: TextField(
                           controller: statement,
@@ -334,7 +334,7 @@ class _link_infoState extends State<link_info> {
                         width: AppDimensions.width10(context) * 30.5,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 8.9,
+                            right: AppDimensions.width10(context) * 8.9,
                             top: AppDimensions.height10(context) * 3.9),
                         child: Text(
                           'Content Author (optional)',
@@ -349,7 +349,7 @@ class _link_infoState extends State<link_info> {
                         //width: AppDimensions.width10(context) * 30.5,
                         margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 0.6,
-                          // right: AppDimensions.height10(context) * 1.0,
+                          // right: AppDimensions.width10(context) * 1.0,
                         ),
                         child: TextField(
                           controller: author,
@@ -385,7 +385,7 @@ class _link_infoState extends State<link_info> {
                         width: AppDimensions.width10(context) * 30.5,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 8.9,
+                            right: AppDimensions.width10(context) * 8.9,
                             top: AppDimensions.height10(context) * 3.9),
                         child: Text(
                           'Tags (optional)',
@@ -469,7 +469,7 @@ class _link_infoState extends State<link_info> {
                         width: AppDimensions.width10(context) * 30.5,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 8.9,
+                            right: AppDimensions.width10(context) * 8.9,
                             bottom: AppDimensions.height10(context) * 0.5,
                             top: AppDimensions.height10(context) * 3.9),
                         child: Text(
@@ -498,7 +498,7 @@ class _link_infoState extends State<link_info> {
                           width: AppDimensions.width10(context) * 37.5,
                           margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 1.9,
+                            right: AppDimensions.width10(context) * 1.9,
                           ),
                           decoration: BoxDecoration(
                               color: const Color(0xFFFBFBFB),
@@ -525,7 +525,7 @@ class _link_infoState extends State<link_info> {
                               ),
                               Container(
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
+                                      right: AppDimensions.width10(context) *
                                           2.391),
                                   child: Text(
                                     'View',

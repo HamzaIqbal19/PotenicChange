@@ -275,7 +275,7 @@ class _video_infoState extends State<video_info> {
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 8.9,
+                          right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.9),
                       child: Text(
                         'Title',
@@ -326,7 +326,7 @@ class _video_infoState extends State<video_info> {
                       width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 8.9,
+                          right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.2),
                       child: Text(
                         'Video Destination Link',
@@ -344,7 +344,7 @@ class _video_infoState extends State<video_info> {
                           width: AppDimensions.width10(context) * 30.5,
                           margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 1.5,
-                            right: AppDimensions.height10(context) * 1.0,
+                            right: AppDimensions.width10(context) * 1.0,
                             //top: AppDimensions.height10(context) * 1.0
                           ),
                           child: TextFormField(
@@ -405,7 +405,7 @@ class _video_infoState extends State<video_info> {
                                   width: AppDimensions.width10(context) * 2.5,
                                   height: AppDimensions.height10(context) * 2.5,
                                   // margin: EdgeInsets.only(
-                                  //     right: AppDimensions.height10(context) * 0.8),
+                                  //     right: AppDimensions.width10(context) * 0.8),
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors.black,
@@ -457,7 +457,7 @@ class _video_infoState extends State<video_info> {
                       width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 8.9,
+                          right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.9),
                       child: Text(
                         'Why is it inspirational to you',
@@ -472,7 +472,7 @@ class _video_infoState extends State<video_info> {
                       // width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 0.6,
-                        // right: AppDimensions.height10(context) * 10.0,
+                        // right: AppDimensions.width10(context) * 10.0,
                         // top: AppDimensions.height10(context) * 1.0
                       ),
                       child: TextField(
@@ -508,7 +508,7 @@ class _video_infoState extends State<video_info> {
                       width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 8.9,
+                          right: AppDimensions.width10(context) * 8.9,
                           top: AppDimensions.height10(context) * 3.9),
                       child: Text(
                         'Tags (optional)',
@@ -595,7 +595,7 @@ class _video_infoState extends State<video_info> {
                       width: AppDimensions.width10(context) * 30.5,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 8.9,
+                          right: AppDimensions.width10(context) * 8.9,
                           bottom: AppDimensions.height10(context) * 0.5,
                           top: AppDimensions.height10(context) * 3.9),
                       child: Text(
@@ -624,7 +624,7 @@ class _video_infoState extends State<video_info> {
                         width: AppDimensions.width10(context) * 37.5,
                         margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 1.9,
+                          right: AppDimensions.width10(context) * 1.9,
                         ),
                         decoration: BoxDecoration(
                             color: const Color(0xFFFBFBFB),
@@ -649,8 +649,8 @@ class _video_infoState extends State<video_info> {
                             ),
                             Container(
                                 margin: EdgeInsets.only(
-                                    right: AppDimensions.height10(context) *
-                                        2.391),
+                                    right:
+                                        AppDimensions.width10(context) * 2.391),
                                 child: Text(
                                   'View',
                                   style: TextStyle(

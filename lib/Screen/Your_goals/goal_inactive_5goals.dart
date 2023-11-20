@@ -84,7 +84,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     title: Container(
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.9,
-                          right: AppDimensions.height10(context) * 1.6,
+                          right: AppDimensions.width10(context) * 1.6,
                           left: AppDimensions.height10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
@@ -102,7 +102,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 1.5,
                           left: AppDimensions.height10(context) * 1.6,
-                          right: AppDimensions.height10(context) * 1.6),
+                          right: AppDimensions.width10(context) * 1.6),
                       height: AppDimensions.height10(context) * 3.4,
                       width: AppDimensions.width10(context) * 23.8,
                       child: Text(
@@ -236,7 +236,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           margin: EdgeInsets.only(
                               bottom: AppDimensions.height10(context) * 1.5,
                               left: AppDimensions.height10(context) * 1.6,
-                              right: AppDimensions.height10(context) * 1.6),
+                              right: AppDimensions.width10(context) * 1.6),
                           width: AppDimensions.width10(context) * 23.8,
                           child: Text(
                             subscriptions == 'inactive'
@@ -1266,7 +1266,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                               actionsPadding: EdgeInsets.zero,
                                                                               titlePadding: EdgeInsets.zero,
                                                                               title: Container(
-                                                                                margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.9, right: AppDimensions.height10(context) * 1.6, left: AppDimensions.height10(context) * 1.6, bottom: AppDimensions.height10(context) * 0.2),
+                                                                                margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.9, right: AppDimensions.width10(context) * 1.6, left: AppDimensions.height10(context) * 1.6, bottom: AppDimensions.height10(context) * 0.2),
                                                                                 height: AppDimensions.height10(context) * 2.2,
                                                                                 width: AppDimensions.width10(context) * 23.8,
                                                                                 child: Text(
@@ -1279,7 +1279,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                                 ),
                                                                               ),
                                                                               content: Container(
-                                                                                margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.5, left: AppDimensions.height10(context) * 1.6, right: AppDimensions.height10(context) * 1.6),
+                                                                                margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.5, left: AppDimensions.height10(context) * 1.6, right: AppDimensions.width10(context) * 1.6),
                                                                                 height: AppDimensions.height10(context) * 3.4,
                                                                                 width: AppDimensions.width10(context) * 23.8,
                                                                                 child: Text(
@@ -1750,7 +1750,7 @@ Widget goalActive(BuildContext context, String goals) {
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
             left: AppDimensions.height10(context) * 1.6,
-            right: AppDimensions.height10(context) * 1.6),
+            right: AppDimensions.width10(context) * 1.6),
         width: AppDimensions.width10(context) * 23.8,
         child: Text(
           "You can't start this goal because you already have the maximum of $goals active goals. You must stop one of your active goals to start a new one.",
@@ -1822,7 +1822,7 @@ Widget showDeleteAlert(BuildContext context, id) {
                 BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
-            right: AppDimensions.height10(context) * 1.6,
+            right: AppDimensions.width10(context) * 1.6,
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
@@ -1840,7 +1840,7 @@ Widget showDeleteAlert(BuildContext context, id) {
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
             left: AppDimensions.height10(context) * 1.6,
-            right: AppDimensions.height10(context) * 1.6),
+            right: AppDimensions.width10(context) * 1.6),
         height: AppDimensions.height10(context) * 4.8,
         width: AppDimensions.width10(context) * 23.8,
         child: Text(
@@ -1940,7 +1940,7 @@ Widget showConfirmationAlert(BuildContext context) {
                 BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
-            right: AppDimensions.height10(context) * 1.6,
+            right: AppDimensions.width10(context) * 1.6,
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
@@ -1958,7 +1958,7 @@ Widget showConfirmationAlert(BuildContext context) {
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.0,
             left: AppDimensions.height10(context) * 1.6,
-            right: AppDimensions.height10(context) * 1.6),
+            right: AppDimensions.width10(context) * 1.6),
         height: AppDimensions.height10(context) * 4.8,
         width: AppDimensions.width10(context) * 23.8,
         child: Text(

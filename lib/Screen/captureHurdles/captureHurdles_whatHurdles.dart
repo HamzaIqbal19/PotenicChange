@@ -266,7 +266,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                               height: AppDimensions.height10(context) * 5.0,
                               width: AppDimensions.width10(context) * 12.8,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 1.4),
+                                  right: AppDimensions.width10(context) * 1.4),
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 border: Border.all(

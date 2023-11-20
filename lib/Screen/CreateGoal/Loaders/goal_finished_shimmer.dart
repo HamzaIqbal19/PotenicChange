@@ -174,7 +174,7 @@ class goalFinished_shimmer extends StatelessWidget {
                   height: AppDimensions.height10(context) * 5.0,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 1.6,
-                      right: AppDimensions.height10(context) * 34.9),
+                      right: AppDimensions.width10(context) * 34.9),
                   child: Image.asset(
                     "assets/images/Moreactions.webp",
                     fit: BoxFit.contain,

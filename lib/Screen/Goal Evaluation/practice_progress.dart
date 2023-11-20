@@ -624,7 +624,7 @@ class _practice_progressState extends State<practice_progress> {
                                           top: AppDimensions.height10(context) *
                                               2.7,
                                           // left: AppDimensions.height10(context) * 2.0,
-                                          //right: AppDimensions.height10(context) * 1.9,
+                                          //right: AppDimensions.width10(context) * 1.9,
                                         ),
                                         decoration: BoxDecoration(
                                             border: Border.all(
@@ -1235,7 +1235,7 @@ class _practice_progressState extends State<practice_progress> {
                                                     context) *
                                                 2.7,
                                             // left: AppDimensions.height10(context) * 2.0,
-                                            //right: AppDimensions.height10(context) * 1.9,
+                                            //right: AppDimensions.width10(context) * 1.9,
                                           ),
                                           decoration: BoxDecoration(
                                               border: Border.all(
@@ -1460,7 +1460,7 @@ class _practice_progressState extends State<practice_progress> {
                                         top: AppDimensions.height10(context) *
                                             2.7,
                                         // left: AppDimensions.height10(context) * 2.0,
-                                        //right: AppDimensions.height10(context) * 1.9,
+                                        //right: AppDimensions.width10(context) * 1.9,
                                       ),
                                       decoration: BoxDecoration(
                                           border: Border.all(
@@ -3613,7 +3613,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                     width: AppDimensions.width10(context) * 5.0,
                     height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 2.0),
+                        right: AppDimensions.width10(context) * 2.0),
                     child: Text(
                       'Cancel',
                       textAlign: TextAlign.center,
@@ -3637,7 +3637,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                     width: AppDimensions.width10(context) * 3.7,
                     height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.9),
+                        right: AppDimensions.width10(context) * 1.9),
                     child: Text(
                       'Done',
                       textAlign: TextAlign.center,

@@ -718,7 +718,7 @@ class _SubscriptionState extends State<Subscription>
                               hideIcon: true,
                               tilePadding: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 6.3,
-                                  right: AppDimensions.height10(context) * 6.3),
+                                  right: AppDimensions.width10(context) * 6.3),
                               decoration: BoxDecoration(
                                   border: Border.all(
                                       width: 0, color: Colors.transparent)),
@@ -2324,7 +2324,7 @@ subscribed(context) {
           height: AppDimensions.height10(context) * 57.0,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
-              right: AppDimensions.height10(context) * 1.0,
+              right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
               borderRadius:
@@ -2352,7 +2352,7 @@ subscribed(context) {
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
-                        right: AppDimensions.height10(context) * 1.5),
+                        right: AppDimensions.width10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(

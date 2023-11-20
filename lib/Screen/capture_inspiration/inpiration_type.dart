@@ -365,7 +365,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                           width: AppDimensions.width10(context) * 13.3,
                           height: AppDimensions.height10(context) * 13.3,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.4,
+                              right: AppDimensions.width10(context) * 1.4,
                               left: AppDimensions.height10(context) * 4.0),
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
@@ -454,7 +454,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                           width: AppDimensions.width10(context) * 13.3,
                           height: AppDimensions.height10(context) * 13.3,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.4),
+                              right: AppDimensions.width10(context) * 1.4),
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -546,7 +546,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                           width: AppDimensions.width10(context) * 13.3,
                           height: AppDimensions.height10(context) * 13.3,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.4),
+                              right: AppDimensions.width10(context) * 1.4),
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -637,7 +637,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                           width: AppDimensions.width10(context) * 13.3,
                           height: AppDimensions.height10(context) * 13.30,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 0.7),
+                              right: AppDimensions.width10(context) * 0.7),
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(

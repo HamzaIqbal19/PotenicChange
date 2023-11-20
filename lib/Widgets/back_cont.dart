@@ -73,7 +73,7 @@ class _inner_textState extends State<inner_text> {
           top: AppDimensions.height10(context) * 1,
           bottom: AppDimensions.height10(context) * 0.5,
           left: AppDimensions.height10(context) * 2,
-          right: AppDimensions.height10(context) * 2.0),
+          right: AppDimensions.width10(context) * 2.0),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
               ? const LinearGradient(
@@ -228,7 +228,7 @@ class _inner_textState extends State<inner_text> {
                         width: AppDimensions.width10(context) * 2.1,
                         margin: EdgeInsets.only(
                             bottom: AppDimensions.height10(context) * 1.0,
-                            right: AppDimensions.height10(context) * 1.0),
+                            right: AppDimensions.width10(context) * 1.0),
                         //margin: EdgeInsets.only(bottom: AppDimensions.height10(context)*1.0),
                         padding: EdgeInsets.all(
                             AppDimensions.height10(context) * 0.3),

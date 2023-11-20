@@ -20,7 +20,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
         // color: Colors.blue,
         padding: EdgeInsets.only(
             left: AppDimensions.height10(context) * 2.2,
-            right: AppDimensions.height10(context) * 2.2),
+            right: AppDimensions.width10(context) * 2.2),
         height: AppDimensions.height10(context) * 7.0,
         width: AppDimensions.width10(context) * 41.4,
         child: Row(
@@ -63,7 +63,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                             color: Color(0xFFE0E0E0))),
                     margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 1.3,
-                        right: AppDimensions.height10(context) * 1.0),
+                        right: AppDimensions.width10(context) * 1.0),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -243,7 +243,7 @@ void _showBottomSheet(BuildContext context) {
                           child: Container(
                             width: AppDimensions.width10(context) * 5.0,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 2.0),
+                                right: AppDimensions.width10(context) * 2.0),
                             child: Text(
                               'Cancel',
                               style: TextStyle(

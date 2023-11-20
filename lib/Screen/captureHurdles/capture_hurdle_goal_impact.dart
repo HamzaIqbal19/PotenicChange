@@ -515,7 +515,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                               height: AppDimensions.height10(context) * 14.1,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 2.1,
-                                  right: AppDimensions.height10(context) * 19.8,
+                                  right: AppDimensions.width10(context) * 19.8,
                                   top: AppDimensions.height10(context) * 2.9),
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
@@ -560,7 +560,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             width: AppDimensions.width10(context) * 12.4,
                             height: AppDimensions.height10(context) * 2.4,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 21.2,
+                                right: AppDimensions.width10(context) * 21.2,
                                 left: AppDimensions.height10(context) * 2.8,
                                 top: AppDimensions.height10(context) * 2.0),
                             child: Center(
@@ -578,7 +578,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 6,
                                 top: AppDimensions.height10(context) * 1.0,
-                                right: AppDimensions.height10(context) * 3,
+                                right: AppDimensions.width10(context) * 3,
                                 bottom: AppDimensions.height10(context) * 2.0),
                             child: GridView.builder(
                                 shrinkWrap: true,
@@ -698,7 +698,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             width: AppDimensions.width10(context) * 13.7,
                             height: AppDimensions.height10(context) * 2.4,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 19.5,
+                                right: AppDimensions.width10(context) * 19.5,
                                 left: AppDimensions.height10(context) * 2.8),
                             child: Center(
                               child: Text(
@@ -715,7 +715,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 6,
                                 top: AppDimensions.height10(context) * 1.0,
-                                right: AppDimensions.height10(context) * 3,
+                                right: AppDimensions.width10(context) * 3,
                                 bottom: AppDimensions.height10(context) * 2.0),
                             child: GridView.builder(
                                 shrinkWrap: true,
@@ -798,7 +798,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                     context) *
                                                 1.2),
                                         // margin: EdgeInsets.only(
-                                        //   right: AppDimensions.height10(context) *
+                                        //   right: AppDimensions.width10(context) *
                                         //       4.5,
                                         // ),
                                         decoration: BoxDecoration(

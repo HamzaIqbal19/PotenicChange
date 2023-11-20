@@ -134,7 +134,7 @@ class link_details extends StatelessWidget {
                               width: AppDimensions.width10(context) * 6.6,
                               height: AppDimensions.height10(context) * 6.6,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 1.0),
+                                  right: AppDimensions.width10(context) * 1.0),
                               decoration: const BoxDecoration(
                                   //  shape: BoxShape.circle,
                                   image: DecorationImage(
@@ -377,7 +377,7 @@ class supporting_mat_link extends StatelessWidget {
                           width: AppDimensions.width10(context) * 6.6,
                           height: AppDimensions.height10(context) * 6.6,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.0),
+                              right: AppDimensions.width10(context) * 1.0),
                           decoration: const BoxDecoration(
                               //  shape: BoxShape.circle,
                               image: DecorationImage(
@@ -409,8 +409,8 @@ class supporting_mat_link extends StatelessWidget {
                                   margin: EdgeInsets.only(
                                       top:
                                           AppDimensions.height10(context) * 1.3,
-                                      right: AppDimensions.height10(context) *
-                                          6.3),
+                                      right:
+                                          AppDimensions.width10(context) * 6.3),
                                   child: Text(
                                     'www.angermanagment.com',
                                     style: TextStyle(

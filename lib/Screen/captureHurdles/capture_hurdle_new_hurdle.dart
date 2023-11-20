@@ -115,7 +115,7 @@ class new_hurdles extends StatelessWidget {
                       width: AppDimensions.width10(context) * 13.339,
                       height: AppDimensions.height10(context) * 16.674,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.4,
+                          right: AppDimensions.width10(context) * 1.4,
                           left: AppDimensions.height10(context) * 1.0),
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
@@ -214,7 +214,7 @@ class new_hurdles extends StatelessWidget {
                       width: AppDimensions.width10(context) * 13.339,
                       height: AppDimensions.height10(context) * 16.674,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.4),
+                          right: AppDimensions.width10(context) * 1.4),
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(10),
@@ -311,7 +311,7 @@ class new_hurdles extends StatelessWidget {
                       width: AppDimensions.width10(context) * 13.339,
                       height: AppDimensions.height10(context) * 16.674,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.4),
+                          right: AppDimensions.width10(context) * 1.4),
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(10),
@@ -408,7 +408,7 @@ class new_hurdles extends StatelessWidget {
                       width: AppDimensions.width10(context) * 13.339,
                       height: AppDimensions.height10(context) * 16.674,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.4),
+                          right: AppDimensions.width10(context) * 1.4),
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(
@@ -518,7 +518,7 @@ class new_hurdles extends StatelessWidget {
                       height: AppDimensions.height10(context) * 5.0,
                       width: AppDimensions.width10(context) * 10.6,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.0),
+                          right: AppDimensions.width10(context) * 1.0),
                       decoration: BoxDecoration(
                         color: Colors.transparent,
                         border: Border.all(

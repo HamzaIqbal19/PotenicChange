@@ -557,7 +557,7 @@ class _photo_EditState extends State<photo_Edit> {
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
                                             2.0,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             8.9,
                                         top: AppDimensions.height10(context) *
                                             3.9),
@@ -698,7 +698,7 @@ class _photo_EditState extends State<photo_Edit> {
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
                                             2.0,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             8.9,
                                         top: AppDimensions.height10(context) *
                                             4.0),
@@ -802,7 +802,7 @@ class _photo_EditState extends State<photo_Edit> {
                                               ),
 
                                               // margin: EdgeInsets.only(
-                                              //     right: AppDimensions.height10(context) * 0.8),
+                                              //     right: AppDimensions.width10(context) * 0.8),
                                               // decoration: BoxDecoration(
 
                                               //     image: DecorationImage(
@@ -855,7 +855,7 @@ class _photo_EditState extends State<photo_Edit> {
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
                                             2.0,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             8.9,
                                         top: AppDimensions.height10(context) *
                                             4.0),
@@ -1018,7 +1018,7 @@ class _photo_EditState extends State<photo_Edit> {
                                         // bottom: AppDimensions.height10(context) * 1.0,
                                         left: AppDimensions.height10(context) *
                                             2.0,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.9,
                                       ),
                                       decoration: BoxDecoration(

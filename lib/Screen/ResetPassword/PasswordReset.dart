@@ -282,7 +282,7 @@ class _PasswordResetState extends State<PasswordReset> {
                             width: AppDimensions.width10(context) * 26.1,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 3.6,
-                                right: AppDimensions.height10(context) * 15.6),
+                                right: AppDimensions.width10(context) * 15.6),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -377,7 +377,7 @@ class _PasswordResetState extends State<PasswordReset> {
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 5.0),
                       ),
-                      // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.height10(context) *0.8),
+                      // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.width10(context) *0.8),
 
                       child: Center(
                           child: Loading == false

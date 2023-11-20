@@ -563,7 +563,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                     margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 9.3,
                       // left: AppDimensions.height10(context) * 3.0,
-                      // right: AppDimensions.height10(context) * 2.4
+                      // right: AppDimensions.width10(context) * 2.4
                     ),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -681,7 +681,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               width: AppDimensions.width10(context) * 12.4,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 21.2,
+                                  right: AppDimensions.width10(context) * 21.2,
                                   left: AppDimensions.height10(context) * 2.8,
                                   top: AppDimensions.height10(context) * 2.0),
                               child: Center(
@@ -699,7 +699,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 6,
                                   top: AppDimensions.height10(context) * 1.0,
-                                  right: AppDimensions.height10(context) * 3,
+                                  right: AppDimensions.width10(context) * 3,
                                   bottom:
                                       AppDimensions.height10(context) * 2.0),
                               child: GridView.builder(
@@ -753,9 +753,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                         width: selectedIndices
                                                     .contains(index) ||
                                                 selectAll == true
-                                            ? AppDimensions.height10(context) *
+                                            ? AppDimensions.width10(context) *
                                                 14.1
-                                            : AppDimensions.height10(context) *
+                                            : AppDimensions.width10(context) *
                                                 13.1,
                                         padding: EdgeInsets.all(
                                             AppDimensions.height10(context) *
@@ -766,7 +766,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               width: selectedIndices
                                                           .contains(index) ||
                                                       selectAll == true
-                                                  ? AppDimensions.height10(
+                                                  ? AppDimensions.width10(
                                                           context) *
                                                       0.2
                                                   : 0,
@@ -830,7 +830,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               width: AppDimensions.width10(context) * 13.7,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 19.5,
+                                  right: AppDimensions.width10(context) * 19.5,
                                   left: AppDimensions.height10(context) * 2.8),
                               child: Center(
                                 child: Text(
@@ -848,7 +848,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 6,
                                   top: AppDimensions.height10(context) * 1.0,
-                                  right: AppDimensions.height10(context) * 3,
+                                  right: AppDimensions.width10(context) * 3,
                                   bottom:
                                       AppDimensions.height10(context) * 2.0),
                               child: GridView.builder(
@@ -939,7 +939,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                           context) *
                                                       1.2),
                                           // margin: EdgeInsets.only(
-                                          //   right: AppDimensions.height10(context) *
+                                          //   right: AppDimensions.width10(context) *
                                           //       4.5,
                                           // ),
                                           decoration: BoxDecoration(

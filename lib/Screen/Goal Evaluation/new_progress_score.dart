@@ -1329,7 +1329,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                         children: [
                           Container(
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 1.0),
+                                right: AppDimensions.width10(context) * 1.0),
                             // width: AppDimensions.width10(context) * 23.6,
                             child: Text(
                               'Upgrade to score ',
@@ -1345,7 +1345,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                             padding: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.1,
                                 left: AppDimensions.height10(context) * 0.6,
-                                right: AppDimensions.height10(context) * 0.6,
+                                right: AppDimensions.width10(context) * 0.6,
                                 bottom: AppDimensions.height10(context) * 0.9),
                             decoration: const BoxDecoration(
                                 color: Color(0xFF437296),
@@ -1575,7 +1575,7 @@ void Upgrade_sheet(context) {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.0),
+                              right: AppDimensions.width10(context) * 1.0),
                           // width: AppDimensions.width10(context) * 23.6,
                           child: Text(
                             'Upgrade to score ',
@@ -1591,7 +1591,7 @@ void Upgrade_sheet(context) {
                           padding: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.9,
                               left: AppDimensions.height10(context) * 0.6,
-                              right: AppDimensions.height10(context) * 0.6,
+                              right: AppDimensions.width10(context) * 0.6,
                               bottom: AppDimensions.height10(context) * 1.1),
                           decoration: const BoxDecoration(
                               color: Color(0xFF437296), shape: BoxShape.circle),
@@ -1692,7 +1692,7 @@ void evaluation_sheet(context) {
                           height: AppDimensions.height10(context) * 2.6,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.5,
-                              right: AppDimensions.height10(context) * 1.5),
+                              right: AppDimensions.width10(context) * 1.5),
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -1833,7 +1833,7 @@ void evaluation_sheet(context) {
 //                             width: AppDimensions.width10(context) * 5.0,
 //                             height: AppDimensions.height10(context) * 2.1,
 //                             margin: EdgeInsets.only(
-//                                 right: AppDimensions.height10(context) * 2.0),
+//                                 right: AppDimensions.width10(context) * 2.0),
 //                             child: Text(
 //                               'Cancel',
 //                               textAlign: TextAlign.center,
@@ -1858,7 +1858,7 @@ void evaluation_sheet(context) {
 //                             width: AppDimensions.width10(context) * 3.7,
 //                             height: AppDimensions.height10(context) * 2.1,
 //                             margin: EdgeInsets.only(
-//                                 right: AppDimensions.height10(context) * 1.9),
+//                                 right: AppDimensions.width10(context) * 1.9),
 //                             child: Text(
 //                               'Done',
 //                               textAlign: TextAlign.center,

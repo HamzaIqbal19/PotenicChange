@@ -110,7 +110,7 @@ class welldone_splashState extends State<welldone_splash> {
                   height: AppDimensions.height10(context) * 14.8,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.7,
-                      right: AppDimensions.height10(context) * 2.7),
+                      right: AppDimensions.width10(context) * 2.7),
                   child: Container(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0),

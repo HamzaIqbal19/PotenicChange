@@ -26,7 +26,7 @@ class button_feilds extends StatelessWidget {
     return Container(
       // margin: EdgeInsets.only(
       //     left: AppDimensions.height10(context) * 0.8,
-      //     right: AppDimensions.height10(context) * 0.8),
+      //     right: AppDimensions.width10(context) * 0.8),
       height: AppDimensions.height10(context) * 6.0,
       width: AppDimensions.width10(context) * 36.0,
       decoration: BoxDecoration(
@@ -79,7 +79,7 @@ class button_feilds extends StatelessWidget {
               width: AppDimensions.width10(context) * 2.4,
               height: AppDimensions.height10(context) * 1.39,
               margin: EdgeInsets.only(
-                  right: AppDimensions.height10(context) * 2.391),
+                  right: AppDimensions.width10(context) * 2.391),
               child: icon_viible
                   ? Image.asset(
                       'assets/images/BTN Back.webp',

@@ -338,7 +338,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                               top: AppDimensions.height10(context) * 2.0,
                               bottom: AppDimensions.height10(context) * 8.0,
                               left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 2.0),
+                              right: AppDimensions.width10(context) * 2.0),
                           child: noData == true
                               ? Container(
                                   height:
@@ -438,7 +438,7 @@ class _GoalCategoryState extends State<GoalCategory> {
             // color: Colors.blue,
             padding: EdgeInsets.only(
                 left: AppDimensions.height10(context) * 2.2,
-                right: AppDimensions.height10(context) * 2.2),
+                right: AppDimensions.width10(context) * 2.2),
             height: AppDimensions.height10(context) * 7.0,
             width: AppDimensions.width10(context) * 41.4,
             child: SearchIcon == true

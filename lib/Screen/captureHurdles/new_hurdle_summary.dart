@@ -354,7 +354,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                               height: AppDimensions.height10(context) * 5.0,
                               width: AppDimensions.width10(context) * 15.7,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 1.4),
+                                  right: AppDimensions.width10(context) * 1.4),
                               decoration: BoxDecoration(
                                 color: const Color(0xff464646),
                                 borderRadius: BorderRadius.circular(

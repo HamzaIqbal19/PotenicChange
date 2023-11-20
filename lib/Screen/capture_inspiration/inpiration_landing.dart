@@ -1112,7 +1112,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
               // color: Colors.blue,
               padding: EdgeInsets.only(
                   left: AppDimensions.height10(context) * 2.2,
-                  right: AppDimensions.height10(context) * 2.2),
+                  right: AppDimensions.width10(context) * 2.2),
               height: AppDimensions.height10(context) * 7.0,
               // width: AppDimensions.width10(context) * 41.4,
               child: Stack(
@@ -1369,7 +1369,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       color: const Color(0xFFE0E0E0))),
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 1.3,
-                                  right: AppDimensions.height10(context) * 1.0),
+                                  right: AppDimensions.width10(context) * 1.0),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -1415,7 +1415,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
                                             0.8,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.0,
                                         bottom:
                                             AppDimensions.height10(context) *
@@ -1707,7 +1707,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 0.3,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.0),
                                     child: const Icon(
                                       Icons.arrow_drop_down,
@@ -1974,7 +1974,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 0.3,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.0),
                                     child: const Icon(
                                       Icons.arrow_drop_down,
@@ -2003,7 +2003,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               height: AppDimensions.height10(context) * 3.4,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 1.0,
-                                  right: AppDimensions.height10(context) * 7.0),
+                                  right: AppDimensions.width10(context) * 7.0),
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 'Clear all',
@@ -2091,7 +2091,7 @@ _showBottomSheet(BuildContext context) {
                           child: Container(
                             width: AppDimensions.width10(context) * 5.0,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 2.0),
+                                right: AppDimensions.width10(context) * 2.0),
                             child: Text(
                               'Cancel',
                               style: TextStyle(
@@ -2244,7 +2244,7 @@ _showTagSheet(BuildContext context) {
                           child: Container(
                             width: AppDimensions.width10(context) * 5.0,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 2.0),
+                                right: AppDimensions.width10(context) * 2.0),
                             child: Text(
                               'Cancel',
                               style: TextStyle(
@@ -2594,7 +2594,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                         // width: AppDimensions.width10(context) * 16.7,
                         //height: AppDimensions.height10(context) * 21.2,
                         margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 18.5,
+                          right: AppDimensions.width10(context) * 18.5,
                           top: AppDimensions.height10(context) * 4.3,
                         ),
                         child: Column(
@@ -3108,7 +3108,7 @@ class _updateBoxState extends State<updateBox> {
                           height: AppDimensions.height10(context) * 6.0,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 5,
-                              right: AppDimensions.height10(context) * 1.23),
+                              right: AppDimensions.width10(context) * 1.23),
                           decoration: BoxDecoration(
                             border: Border.all(
                                 color: const Color(0xFFFFFFFF), width: 1),

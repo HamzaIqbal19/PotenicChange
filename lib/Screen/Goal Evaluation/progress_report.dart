@@ -191,7 +191,7 @@ class _progress_reportState extends State<progress_report> {
                       height: AppDimensions.height10(context) * 11.0,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 11.1,
-                          right: AppDimensions.height10(context) * 10.7),
+                          right: AppDimensions.width10(context) * 10.7),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(
@@ -331,7 +331,7 @@ class _progress_reportState extends State<progress_report> {
                               width: AppDimensions.width10(context) * 7.9,
                               height: AppDimensions.height10(context) * 7.94,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 0.7,
+                                  right: AppDimensions.width10(context) * 0.7,
                                   left: AppDimensions.height10(context) * 0.5),
                               decoration: BoxDecoration(
                                   image: DecorationImage(
@@ -571,7 +571,7 @@ class _progress_reportState extends State<progress_report> {
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
                                             2.8098,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.098),
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
@@ -584,7 +584,7 @@ class _progress_reportState extends State<progress_report> {
                                     height: AppDimensions.height10(context) *
                                         30.517,
                                     margin: EdgeInsets.only(
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.098),
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
@@ -1378,7 +1378,7 @@ void report(context) {
           height: AppDimensions.height10(context) * 51.3,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
-              right: AppDimensions.height10(context) * 1.0,
+              right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.3),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
@@ -1405,7 +1405,7 @@ void report(context) {
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
-                        right: AppDimensions.height10(context) * 1.5),
+                        right: AppDimensions.width10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(

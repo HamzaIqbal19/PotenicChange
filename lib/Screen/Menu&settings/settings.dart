@@ -1599,7 +1599,7 @@ void export_data_sheet(context) {
                       height: AppDimensions.height10(context) * 2.6,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.5,
-                          right: AppDimensions.height10(context) * 1.5),
+                          right: AppDimensions.width10(context) * 1.5),
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(

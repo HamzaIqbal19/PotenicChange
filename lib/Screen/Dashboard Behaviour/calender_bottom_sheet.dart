@@ -58,7 +58,7 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                     width: AppDimensions.width10(context) * 5.0,
                     height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
-                      right: AppDimensions.height10(context) * 2.0,
+                      right: AppDimensions.width10(context) * 2.0,
                     ),
                     child: Text(
                       'Cancel',
@@ -82,7 +82,7 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                     width: AppDimensions.width10(context) * 3.7,
                     height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
-                      right: AppDimensions.height10(context) * 1.9,
+                      right: AppDimensions.width10(context) * 1.9,
                     ),
                     child: Text(
                       'Done',

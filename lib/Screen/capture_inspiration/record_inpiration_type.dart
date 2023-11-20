@@ -539,12 +539,14 @@ class _record_inspirationState extends State<record_inspiration> {
                                               margin: EdgeInsets.only(
                                                   top: AppDimensions.height10(context) *
                                                       1.9,
-                                                  right: AppDimensions.height10(context) *
-                                                      1.6,
+                                                  right:
+                                                      AppDimensions.width10(context) *
+                                                          1.6,
                                                   left: AppDimensions.height10(context) *
                                                       1.6,
-                                                  bottom: AppDimensions.height10(context) *
-                                                      0.2),
+                                                  bottom:
+                                                      AppDimensions.height10(context) *
+                                                          0.2),
                                               height:
                                                   AppDimensions.height10(context) *
                                                       4.4,
@@ -558,8 +560,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                                           fontSize:
                                                               AppDimensions.height10(context) *
                                                                   1.7,
-                                                          fontWeight:
-                                                              FontWeight.w400,
+                                                          fontWeight: FontWeight.w400,
                                                           color: const Color(0xFF000000)),
                                                       children: const [
                                                         TextSpan(

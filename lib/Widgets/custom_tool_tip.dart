@@ -115,7 +115,7 @@ class _TooltipExampleState extends State<TooltipExample> {
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.7,
                                 left: AppDimensions.height10(context) * 1.6,
-                                right: AppDimensions.height10(context) * 7.4),
+                                right: AppDimensions.width10(context) * 7.4),
                             child: Text(
                               goal_level == 2
                                   ? 'Your Practice'

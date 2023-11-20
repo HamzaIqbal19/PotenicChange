@@ -202,7 +202,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                     // color: Colors.amber,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 5.5,
-                        right: AppDimensions.height10(context) * 1.9),
+                        right: AppDimensions.width10(context) * 1.9),
                     child: Center(
                       child: Text(
                         'Record your\nhurdles',

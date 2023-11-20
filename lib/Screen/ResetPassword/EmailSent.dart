@@ -143,7 +143,7 @@ class _EmailSentState extends State<EmailSent> {
                   child: Container(
                     height: AppDimensions.height10(context) * 4.4,
                     width: AppDimensions.width10(context) * 26.7,
-                    // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.height10(context) *0.8),
+                    // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.width10(context) *0.8),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFFFFFF),
                       borderRadius: BorderRadius.circular(

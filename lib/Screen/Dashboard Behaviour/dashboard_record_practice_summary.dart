@@ -462,7 +462,7 @@ class _record_summaryState extends State<record_summary> {
                       height: AppDimensions.height10(context) * 5.0,
                       width: AppDimensions.width10(context) * 14.3,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.2),
+                          right: AppDimensions.width10(context) * 1.2),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(

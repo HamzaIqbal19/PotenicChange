@@ -222,7 +222,7 @@ class _PracticeNameState extends State<PracticeName> {
                                                 1.9,
                                         left: AppDimensions.height10(context) *
                                             1.6,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.6),
                                     height:
                                         AppDimensions.height10(context) * 3.2,
@@ -513,7 +513,7 @@ class _PracticeNameState extends State<PracticeName> {
                   padding: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 2.0,
                     top: AppDimensions.height10(context) * 1.0,
-                    right: AppDimensions.height10(context) * 0.5,
+                    right: AppDimensions.width10(context) * 0.5,
                     bottom: AppDimensions.height10(context) * 0.5,
                   ),
                   decoration: BoxDecoration(
@@ -555,7 +555,7 @@ class _PracticeNameState extends State<PracticeName> {
                   width: AppDimensions.width10(context) * 34.7,
 
                   margin: EdgeInsets.only(
-                      right: AppDimensions.height10(context) * 1.3),
+                      right: AppDimensions.width10(context) * 1.3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -590,7 +590,7 @@ class _PracticeNameState extends State<PracticeName> {
                   height: AppDimensions.height10(context) * 4.2,
                   width: AppDimensions.width10(context) * 34.7,
                   margin: EdgeInsets.only(
-                      right: AppDimensions.height10(context) * 1.3),
+                      right: AppDimensions.width10(context) * 1.3),
                   child: Center(
                     child: Text(
                       "You can change the name of your practice later by going into your Dashboard.  ",
@@ -936,7 +936,7 @@ class pop_up_practices extends StatelessWidget {
         title: Container(
           margin: EdgeInsets.only(
               top: AppDimensions.height10(context) * 1.9,
-              right: AppDimensions.height10(context) * 1.6,
+              right: AppDimensions.width10(context) * 1.6,
               left: AppDimensions.height10(context) * 1.6,
               bottom: AppDimensions.height10(context) * 0.2),
           height: AppDimensions.height10(context) * 2.2,
@@ -955,7 +955,7 @@ class pop_up_practices extends StatelessWidget {
           margin: EdgeInsets.only(
               bottom: AppDimensions.height10(context) * 1.9,
               left: AppDimensions.height10(context) * 1.6,
-              right: AppDimensions.height10(context) * 1.6),
+              right: AppDimensions.width10(context) * 1.6),
           // height: AppDimensions.height10(context) * 3.2,
           width: AppDimensions.width10(context) * 23.8,
           child: Text(

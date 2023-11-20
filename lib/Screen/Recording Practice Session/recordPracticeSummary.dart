@@ -215,8 +215,8 @@ class _practice_summaryState extends State<practice_summary> {
                                           AppDimensions.height10(context) * 1.9,
                                       left:
                                           AppDimensions.height10(context) * 1.6,
-                                      right: AppDimensions.height10(context) *
-                                          1.6),
+                                      right:
+                                          AppDimensions.width10(context) * 1.6),
                                   height: AppDimensions.height10(context) * 3.2,
                                   width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
@@ -1029,26 +1029,27 @@ class _practice_summaryState extends State<practice_summary> {
                                                   margin: EdgeInsets.only(
                                                       top: AppDimensions.height10(context) *
                                                           1.9,
-                                                      right: AppDimensions.height10(context) *
+                                                      right: AppDimensions.width10(context) *
                                                           1.6,
                                                       left: AppDimensions.height10(context) *
                                                           1.6,
-                                                      bottom: AppDimensions.height10(context) *
-                                                          0.2),
-                                                  height: AppDimensions.height10(context) *
-                                                      4.4,
-                                                  width: AppDimensions.width10(context) *
-                                                      23.8,
+                                                      bottom:
+                                                          AppDimensions.height10(context) *
+                                                              0.2),
+                                                  height:
+                                                      AppDimensions.height10(context) *
+                                                          4.4,
+                                                  width:
+                                                      AppDimensions.width10(context) *
+                                                          23.8,
                                                   child: RichText(
                                                       textAlign:
                                                           TextAlign.center,
                                                       text: TextSpan(
                                                           style: TextStyle(
                                                               fontSize:
-                                                                  AppDimensions.height10(context) *
-                                                                      1.7,
-                                                              fontWeight:
-                                                                  FontWeight.w400,
+                                                                  AppDimensions.height10(context) * 1.7,
+                                                              fontWeight: FontWeight.w400,
                                                               color: const Color(0xFF000000)),
                                                           children: const [
                                                             TextSpan(
@@ -1228,7 +1229,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     width:
                                         AppDimensions.width10(context) * 15.7,
                                     margin: EdgeInsets.only(
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.4),
                                     decoration: BoxDecoration(
                                       color: const Color(0xff464646),

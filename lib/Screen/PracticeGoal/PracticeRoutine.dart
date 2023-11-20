@@ -181,7 +181,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 1.9,
                                 left: AppDimensions.height10(context) * 1.6,
-                                right: AppDimensions.height10(context) * 1.6),
+                                right: AppDimensions.width10(context) * 1.6),
                             height: AppDimensions.height10(context) * 3.2,
                             width: AppDimensions.width10(context) * 23.8,
                             child: Text(

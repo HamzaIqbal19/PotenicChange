@@ -75,7 +75,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                       height: AppDimensions.height10(context) * 1.9,
                       margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 2.4,
-                        right: AppDimensions.height10(context) * 3.6,
+                        right: AppDimensions.width10(context) * 3.6,
                         top: AppDimensions.height10(context) * 6.5,
                       ),
                       child: Text(
@@ -96,7 +96,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                 width: AppDimensions.width10(context) * 36.0,
                 margin: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 1.8,
-                    right: AppDimensions.height10(context) * 3.6,
+                    right: AppDimensions.width10(context) * 3.6,
                     top: widget.email
                         ? AppDimensions.height10(context) * 4.1
                         : widget.password_edit

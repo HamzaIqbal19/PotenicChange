@@ -733,7 +733,7 @@ void dashboard_sheet(context) {
           height: AppDimensions.height10(context) * 62.3,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
-              right: AppDimensions.height10(context) * 1.0,
+              right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
               borderRadius:
@@ -758,7 +758,7 @@ void dashboard_sheet(context) {
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
-                        right: AppDimensions.height10(context) * 1.5),
+                        right: AppDimensions.width10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
@@ -834,7 +834,7 @@ void login_sheet(context) {
           height: AppDimensions.height10(context) * 54.4,
           // margin: EdgeInsets.only(
           //     left: AppDimensions.height10(context) * 1.0,
-          //     right: AppDimensions.height10(context) * 1.0,
+          //     right: AppDimensions.width10(context) * 1.0,
           //     bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(
@@ -856,7 +856,7 @@ void login_sheet(context) {
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
-                        right: AppDimensions.height10(context) * 1.5),
+                        right: AppDimensions.width10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
@@ -938,7 +938,7 @@ void login_sheet(context) {
                       width: AppDimensions.width10(context) * 13.0,
                       height: AppDimensions.height10(context) * 5.0,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 2.0),
+                          right: AppDimensions.width10(context) * 2.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 5.0),
@@ -1002,7 +1002,7 @@ class maxActivation extends StatelessWidget {
                   title: Container(
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.9,
-                          right: AppDimensions.height10(context) * 1.6,
+                          right: AppDimensions.width10(context) * 1.6,
                           left: AppDimensions.height10(context) * 1.6,
                           bottom: AppDimensions.height10(context) * 0.2),
                       height: AppDimensions.height10(context) * 2.2,
@@ -1025,7 +1025,7 @@ class maxActivation extends StatelessWidget {
                     margin: EdgeInsets.only(
                         bottom: AppDimensions.height10(context) * 1.5,
                         left: AppDimensions.height10(context) * 1.6,
-                        right: AppDimensions.height10(context) * 1.6),
+                        right: AppDimensions.width10(context) * 1.6),
                     height: AppDimensions.height10(context) * 3.4,
                     width: AppDimensions.width10(context) * 23.8,
                     child: Text(

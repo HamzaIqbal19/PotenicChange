@@ -608,7 +608,7 @@ class _goalwhyState extends State<GoalWhy> {
                               height: AppDimensions.height10(context) * 7.6,
                               padding: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 1.5,
-                                  right: AppDimensions.height10(context) * 1.5),
+                                  right: AppDimensions.width10(context) * 1.5),
                               child: Image.asset(
                                 "assets/images/image3.webp",
                                 fit: BoxFit.contain,
@@ -1634,7 +1634,7 @@ class pop_up_goals extends StatelessWidget {
           margin: EdgeInsets.only(
               bottom: AppDimensions.height10(context) * 1.9,
               left: AppDimensions.height10(context) * 1.6,
-              right: AppDimensions.height10(context) * 1.6),
+              right: AppDimensions.width10(context) * 1.6),
           //height: AppDimensions.height10(context) * 3.2,
           width: AppDimensions.width10(context) * 23.8,
           child: Text(

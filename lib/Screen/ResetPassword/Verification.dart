@@ -386,7 +386,7 @@ class _VerificationState extends State<Verification> {
                       borderRadius: BorderRadius.circular(
                           AppDimensions.height10(context) * 5.0),
                     ),
-                    // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.height10(context) *0.8),
+                    // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.width10(context) *0.8),
 
                     child: Center(
                         child: Loading == false

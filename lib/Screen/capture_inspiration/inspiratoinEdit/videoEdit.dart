@@ -542,7 +542,7 @@ class video_EditState extends State<videoEdit> {
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 2.0,
-                                right: AppDimensions.height10(context) * 8.9,
+                                right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 1.8),
                             child: Column(children: [
                               Text(
@@ -732,7 +732,7 @@ class video_EditState extends State<videoEdit> {
                                             ),
 
                                             // margin: EdgeInsets.only(
-                                            //     right: AppDimensions.height10(context) * 0.8),
+                                            //     right: AppDimensions.width10(context) * 0.8),
                                             // decoration: BoxDecoration(
 
                                             //     image: DecorationImage(
@@ -783,7 +783,7 @@ class video_EditState extends State<videoEdit> {
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 2.0,
-                                // right: AppDimensions.height10(context) * 8.9,
+                                // right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 3.9),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -916,7 +916,7 @@ class video_EditState extends State<videoEdit> {
                             width: AppDimensions.width10(context) * 30.5,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 2.0,
-                                right: AppDimensions.height10(context) * 8.9,
+                                right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 3.9),
                             child: Text(
                               'Tags (optional)',
@@ -1005,7 +1005,7 @@ class video_EditState extends State<videoEdit> {
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 2.0,
                                 bottom: AppDimensions.height10(context) * 0.5,
-                                right: AppDimensions.height10(context) * 8.9,
+                                right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 3.9),
                             child: Text(
                               'Attached goals',
@@ -1033,7 +1033,7 @@ class video_EditState extends State<videoEdit> {
                               width: AppDimensions.width10(context) * 37.5,
                               margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 2.0,
-                                right: AppDimensions.height10(context) * 1.9,
+                                right: AppDimensions.width10(context) * 1.9,
                                 // bottom: AppDimensions.height10(context) * 1.0
                               ),
                               decoration: BoxDecoration(

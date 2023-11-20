@@ -79,7 +79,7 @@ class OnboardingPageState extends State<OnboardingPage>
       duration: Duration(milliseconds: 150),
       padding: EdgeInsets.only(
           left: AppDimensions.height10(context),
-          right: AppDimensions.height10(context)),
+          right: AppDimensions.width10(context)),
       margin: EdgeInsets.symmetric(
           horizontal: AppDimensions.height10(context) * 0.5),
       height: isActive
@@ -440,7 +440,7 @@ class OnboardingPageState extends State<OnboardingPage>
     return Padding(
       padding: EdgeInsets.only(
         left: AppDimensions.height10(context) - 2,
-        right: AppDimensions.height10(context) - 2,
+        right: AppDimensions.width10(context) - 2,
         top: AppDimensions.height10(context) - 5,
         bottom: AppDimensions.height10(context) * 3,
       ),
@@ -555,7 +555,7 @@ class OnboardingPageState extends State<OnboardingPage>
     return Padding(
       padding: EdgeInsets.only(
         left: AppDimensions.height10(context) - 2,
-        right: AppDimensions.height10(context) - 2,
+        right: AppDimensions.width10(context) - 2,
         top: AppDimensions.height10(context) - 5,
         bottom: AppDimensions.height10(context) * 3,
       ),

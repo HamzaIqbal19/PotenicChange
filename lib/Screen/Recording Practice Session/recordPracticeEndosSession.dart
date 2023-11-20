@@ -312,7 +312,7 @@ class _endofSessionState extends State<endofSession> {
                         height: AppDimensions.height10(context) * 15.4,
                         width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.5),
+                            right: AppDimensions.width10(context) * 1.5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -368,7 +368,7 @@ class _endofSessionState extends State<endofSession> {
                         height: AppDimensions.height10(context) * 15.4,
                         width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.5),
+                            right: AppDimensions.width10(context) * 1.5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -429,7 +429,7 @@ class _endofSessionState extends State<endofSession> {
                         height: AppDimensions.height10(context) * 15.4,
                         width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.5),
+                            right: AppDimensions.width10(context) * 1.5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -488,7 +488,7 @@ class _endofSessionState extends State<endofSession> {
                         height: AppDimensions.height10(context) * 15.4,
                         width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.5),
+                            right: AppDimensions.width10(context) * 1.5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -547,7 +547,7 @@ class _endofSessionState extends State<endofSession> {
                         height: AppDimensions.height10(context) * 15.4,
                         width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.5),
+                            right: AppDimensions.width10(context) * 1.5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(

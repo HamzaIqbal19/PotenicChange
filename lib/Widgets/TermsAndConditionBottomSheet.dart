@@ -93,7 +93,7 @@ void termsSheet(context) {
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 2.0,
                     left: AppDimensions.height10(context) * 1.8,
-                    right: AppDimensions.height10(context) * 1.8),
+                    right: AppDimensions.width10(context) * 1.8),
                 height: AppDimensions.height10(context) * 6.0,
                 width: AppDimensions.width10(context) * 36.0,
                 decoration: BoxDecoration(
@@ -122,7 +122,7 @@ void termsSheet(context) {
                       width: AppDimensions.width10(context) * 2.4,
                       height: AppDimensions.height10(context) * 1.3,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 2.3),
+                          right: AppDimensions.width10(context) * 2.3),
                       child: Image.asset(
                         'assets/images/backbtn.webp',
                         fit: BoxFit.cover,
@@ -156,7 +156,7 @@ void termsSheet(context) {
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 1.0,
                     left: AppDimensions.height10(context) * 1.8,
-                    right: AppDimensions.height10(context) * 1.8),
+                    right: AppDimensions.width10(context) * 1.8),
                 height: AppDimensions.height10(context) * 6.0,
                 width: AppDimensions.width10(context) * 36.0,
                 decoration: BoxDecoration(
@@ -185,7 +185,7 @@ void termsSheet(context) {
                       width: AppDimensions.width10(context) * 2.4,
                       height: AppDimensions.height10(context) * 1.3,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 2.3),
+                          right: AppDimensions.width10(context) * 2.3),
                       child: Image.asset(
                         'assets/images/backbtn.webp',
                         fit: BoxFit.cover,

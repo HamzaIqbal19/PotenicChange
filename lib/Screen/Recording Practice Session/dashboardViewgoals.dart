@@ -195,7 +195,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                   Container(
                     margin: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 1.7,
-                        right: AppDimensions.height10(context) * 0.9,
+                        right: AppDimensions.width10(context) * 0.9,
                         bottom: AppDimensions.height10(context) * 0.3),
                     child: Image.asset(
                       'assets/images/calendar_month_black_24dp 1.webp',
@@ -2456,7 +2456,7 @@ void __share_experience(context, String goalName, String identity, String color,
           height: AppDimensions.height10(context) * 62.3,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
-              right: AppDimensions.height10(context) * 1.0,
+              right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
               borderRadius:
@@ -2481,7 +2481,7 @@ void __share_experience(context, String goalName, String identity, String color,
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.9,
-                        right: AppDimensions.height10(context) * 1.5),
+                        right: AppDimensions.width10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
@@ -2794,7 +2794,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                     left: goal_level == 6
 //                         ? AppDimensions.height10(context) * 1.2
 //                         : AppDimensions.height10(context) * 1.2,
-//                     right: AppDimensions.height10(context) * 7.4),
+//                     right: AppDimensions.width10(context) * 7.4),
 //                 child: Text(
 //                   goal_level == 2
 //                       ? 'Your Practice'
@@ -3150,7 +3150,7 @@ void __share_experience(context, String goalName, String identity, String color,
 //                                       left: goal_level == 6
 //                                           ? AppDimensions.height10(context) * 1.2
 //                                           : AppDimensions.height10(context) * 1.2,
-//                                       right: AppDimensions.height10(context) * 7.4),
+//                                       right: AppDimensions.width10(context) * 7.4),
 //                                   child: Text(
 //                                     goal_level == 2
 //                                         ? 'Your Practice'
@@ -3548,7 +3548,7 @@ void __share_experience(context, String goalName, String identity, String color,
   //                                     margin: EdgeInsets.only(
   //                                         top: AppDimensions.height10(context) * 0.5,
   //                                         left: AppDimensions.height10(context) * 0.5,
-  //                                         right: AppDimensions.height10(context) * 7.4),
+  //                                         right: AppDimensions.width10(context) * 7.4),
   //                                     child: Text(
   //                                       goal_level == 2
   //                                           ? 'Your Practice'

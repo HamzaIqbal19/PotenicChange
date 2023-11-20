@@ -144,8 +144,8 @@ class _emotionsState extends State<emotions> {
                                           AppDimensions.height10(context) * 1.9,
                                       left:
                                           AppDimensions.height10(context) * 1.6,
-                                      right: AppDimensions.height10(context) *
-                                          1.6),
+                                      right:
+                                          AppDimensions.width10(context) * 1.6),
                                   height: AppDimensions.height10(context) * 3.2,
                                   width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
@@ -322,7 +322,7 @@ class _emotionsState extends State<emotions> {
                             height: AppDimensions.height10(context) * 13.7,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 4.0,
-                                right: AppDimensions.height10(context) * 1.5),
+                                right: AppDimensions.width10(context) * 1.5),
                             decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 shape: BoxShape.circle,
@@ -369,7 +369,7 @@ class _emotionsState extends State<emotions> {
                             width: AppDimensions.width10(context) * 13.7,
                             height: AppDimensions.height10(context) * 13.7,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 1.5),
+                                right: AppDimensions.width10(context) * 1.5),
                             decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 shape: BoxShape.circle,
@@ -415,7 +415,7 @@ class _emotionsState extends State<emotions> {
                             width: AppDimensions.width10(context) * 13.7,
                             height: AppDimensions.height10(context) * 13.7,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 1.5),
+                                right: AppDimensions.width10(context) * 1.5),
                             decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 shape: BoxShape.circle,
@@ -461,7 +461,7 @@ class _emotionsState extends State<emotions> {
                             width: AppDimensions.width10(context) * 13.7,
                             height: AppDimensions.height10(context) * 13.7,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 1.5),
+                                right: AppDimensions.width10(context) * 1.5),
                             decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 shape: BoxShape.circle,
@@ -507,7 +507,7 @@ class _emotionsState extends State<emotions> {
                             width: AppDimensions.width10(context) * 13.7,
                             height: AppDimensions.height10(context) * 13.7,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 5.0),
+                                right: AppDimensions.width10(context) * 5.0),
                             decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 shape: BoxShape.circle,

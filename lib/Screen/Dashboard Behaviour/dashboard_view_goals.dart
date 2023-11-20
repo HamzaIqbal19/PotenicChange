@@ -364,7 +364,7 @@ class _view_goalsState extends State<view_goals> {
                       },
                       child: Container(
                         margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.7),
+                            right: AppDimensions.width10(context) * 1.7),
                         child: Image.asset(
                           'assets/images/Add goal.webp',
                           height: AppDimensions.height10(context) * 2.4,
@@ -487,7 +487,7 @@ class _view_goalsState extends State<view_goals> {
                       },
                       child: Container(
                         margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.32),
+                            right: AppDimensions.width10(context) * 1.32),
                         child: Image.asset(
                           'assets/images/calendar_month_black_24dp 1.webp',
                           height: AppDimensions.height10(context) * 2.4,
@@ -1668,7 +1668,7 @@ class _view_goalsState extends State<view_goals> {
                                                                             Container(
                                                                               width: AppDimensions.width10(context) * 21.6,
                                                                               //height: AppDimensions.height10(context) * 2.2,
-                                                                              margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.7, left: AppDimensions.height10(context) * 1.6, right: AppDimensions.height10(context) * 7.4),
+                                                                              margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.7, left: AppDimensions.height10(context) * 1.6, right: AppDimensions.width10(context) * 7.4),
                                                                               child: Text(
                                                                                 goal_level == 2
                                                                                     ? 'Your Practice'

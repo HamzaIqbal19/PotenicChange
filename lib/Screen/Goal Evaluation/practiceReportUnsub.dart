@@ -48,7 +48,7 @@ class progress_report_unsub extends StatelessWidget {
                 height: AppDimensions.height10(context) * 11.0,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 11.1,
-                    right: AppDimensions.height10(context) * 10.7),
+                    right: AppDimensions.width10(context) * 10.7),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(
@@ -173,7 +173,7 @@ class progress_report_unsub extends StatelessWidget {
                       width: AppDimensions.width10(context) * 10.4,
                       height: AppDimensions.height10(context) * 11.2,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 0.7),
+                          right: AppDimensions.width10(context) * 0.7),
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
@@ -1277,7 +1277,7 @@ void report(context) {
           height: AppDimensions.height10(context) * 51.3,
           margin: EdgeInsets.only(
               left: AppDimensions.height10(context) * 1.0,
-              right: AppDimensions.height10(context) * 1.0,
+              right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.3),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
@@ -1304,7 +1304,7 @@ void report(context) {
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
-                        right: AppDimensions.height10(context) * 1.5),
+                        right: AppDimensions.width10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(

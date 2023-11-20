@@ -193,7 +193,7 @@ class _image_infoState extends State<image_info> {
                 width: AppDimensions.width10(context) * 14.7,
                 margin: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 9.1,
-                    right: AppDimensions.height10(context) * 6.4),
+                    right: AppDimensions.width10(context) * 6.4),
                 child: Text(
                   'Create inspiration',
                   style: TextStyle(
@@ -225,7 +225,7 @@ class _image_infoState extends State<image_info> {
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 2.9,
                       left: AppDimensions.height10(context) * 1.8,
-                      right: AppDimensions.height10(context) * 15.2),
+                      right: AppDimensions.width10(context) * 15.2),
                   width: AppDimensions.width10(context) * 24.4,
                   height: AppDimensions.height10(context) * 24.4,
                   decoration: const BoxDecoration(
@@ -239,7 +239,7 @@ class _image_infoState extends State<image_info> {
                   width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.0,
-                      right: AppDimensions.height10(context) * 8.9,
+                      right: AppDimensions.width10(context) * 8.9,
                       top: AppDimensions.height10(context) * 3.9),
                   child: Text(
                     'Title',
@@ -255,7 +255,7 @@ class _image_infoState extends State<image_info> {
                   // color: Colors.amber,
                   margin: EdgeInsets.only(
                       //left:   AppDimensions.height10(context)(context)* 2.0,
-                      right: AppDimensions.height10(context) * 9.0,
+                      right: AppDimensions.width10(context) * 9.0,
                       top: AppDimensions.height10(context) * 1.0),
                   child: TextField(
                     style: TextStyle(
@@ -279,7 +279,7 @@ class _image_infoState extends State<image_info> {
                   width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.0,
-                      right: AppDimensions.height10(context) * 8.9,
+                      right: AppDimensions.width10(context) * 8.9,
                       top: AppDimensions.height10(context) * 3.9),
                   child: Text(
                     'Description',
@@ -294,7 +294,7 @@ class _image_infoState extends State<image_info> {
                   width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       //left:   AppDimensions.height10(context)(context)* 2.0,
-                      right: AppDimensions.height10(context) * 9.0,
+                      right: AppDimensions.width10(context) * 9.0,
                       top: AppDimensions.height10(context) * 1.0),
                   child: TextField(
                     style: TextStyle(
@@ -318,7 +318,7 @@ class _image_infoState extends State<image_info> {
                   width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.0,
-                      right: AppDimensions.height10(context) * 8.9,
+                      right: AppDimensions.width10(context) * 8.9,
                       top: AppDimensions.height10(context) * 3.9),
                   child: Text(
                     'Destination website',
@@ -373,8 +373,8 @@ class _image_infoState extends State<image_info> {
                                   width: AppDimensions.width10(context) * 3.0,
                                   height: AppDimensions.height10(context) * 3.0,
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
-                                          0.8),
+                                      right:
+                                          AppDimensions.width10(context) * 0.8),
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors.black,
@@ -413,7 +413,7 @@ class _image_infoState extends State<image_info> {
                               width: AppDimensions.width10(context) * 3.0,
                               height: AppDimensions.height10(context) * 3.0,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 0.8),
+                                  right: AppDimensions.width10(context) * 0.8),
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.black,
@@ -432,7 +432,7 @@ class _image_infoState extends State<image_info> {
                   width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.0,
-                      right: AppDimensions.height10(context) * 8.9,
+                      right: AppDimensions.width10(context) * 8.9,
                       top: AppDimensions.height10(context) * 3.9),
                   child: Text(
                     'Destination website',
@@ -447,7 +447,7 @@ class _image_infoState extends State<image_info> {
                   width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       // left:   AppDimensions.height10(context)(context)* 2.0,
-                      right: AppDimensions.height10(context) * 9.0,
+                      right: AppDimensions.width10(context) * 9.0,
                       top: AppDimensions.height10(context) * 1.0),
                   child: TextField(
                     style: TextStyle(
@@ -471,7 +471,7 @@ class _image_infoState extends State<image_info> {
                   width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.0,
-                      right: AppDimensions.height10(context) * 8.9,
+                      right: AppDimensions.width10(context) * 8.9,
                       top: AppDimensions.height10(context) * 3.9),
                   child: Text(
                     'Visibility',
@@ -486,7 +486,7 @@ class _image_infoState extends State<image_info> {
                   width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 2.0,
-                    right: AppDimensions.height10(context) * 8.9,
+                    right: AppDimensions.width10(context) * 8.9,
                   ),
                   child: Text(
                     'Private',

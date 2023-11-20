@@ -497,7 +497,7 @@ class _GoalNameState extends State<GoalName> {
                       height: AppDimensions.height10(context) * 7.6,
                       padding: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 1.5,
-                          right: AppDimensions.height10(context) * 1.5),
+                          right: AppDimensions.width10(context) * 1.5),
                       child: Image.asset(
                         "assets/images/image3.webp",
                         fit: BoxFit.contain,
@@ -545,7 +545,7 @@ class _GoalNameState extends State<GoalName> {
                     width: AppDimensions.width10(context) * 36.0,
                     padding: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0,
-                        right: AppDimensions.height10(context) * 0.6,
+                        right: AppDimensions.width10(context) * 0.6,
                         bottom: AppDimensions.height10(context) * 0.4,
                         left: AppDimensions.height10(context) * 2.0),
                     decoration: BoxDecoration(
@@ -601,11 +601,11 @@ class _GoalNameState extends State<GoalName> {
                     // width: AppDimensions.width10(context) *12.3,
                     width: AppDimensions.width10(context) * 34.7,
                     margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.3),
+                        right: AppDimensions.width10(context) * 1.3),
 
                     padding: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 0.1,
-                        right: AppDimensions.height10(context) * 20.1),
+                        right: AppDimensions.width10(context) * 20.1),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -644,7 +644,7 @@ class _GoalNameState extends State<GoalName> {
                     height: AppDimensions.height10(context) * 4.2,
                     width: AppDimensions.width10(context) * 34.7,
                     margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.3),
+                        right: AppDimensions.width10(context) * 1.3),
                     child: Center(
                       child: Text(
                         "You can change the name of your goal later by going into your Dashboard.  ",
@@ -1024,7 +1024,7 @@ class _updateBoxState extends State<updateBox> {
               height: AppDimensions.height10(context) * 6.0,
               margin: EdgeInsets.only(
                   left: AppDimensions.height10(context) * 5,
-                  right: AppDimensions.height10(context) * 1.23),
+                  right: AppDimensions.width10(context) * 1.23),
               decoration: BoxDecoration(
                 border: Border.all(color: const Color(0xFFFFFFFF), width: 1),
                 borderRadius: BorderRadius.circular(

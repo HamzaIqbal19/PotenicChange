@@ -230,7 +230,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
             // color: Colors.blue,
             padding: EdgeInsets.only(
                 left: AppDimensions.height10(context) * 2.2,
-                right: AppDimensions.height10(context) * 2.2),
+                right: AppDimensions.width10(context) * 2.2),
             height: AppDimensions.height10(context) * 7.0,
             // width: AppDimensions.width10(context) * 41.4,
             child: Stack(
@@ -469,7 +469,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                     color: const Color(0xFFE0E0E0))),
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 1.3,
-                                right: AppDimensions.height10(context) * 1.0),
+                                right: AppDimensions.width10(context) * 1.0),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
@@ -775,8 +775,8 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                           AppDimensions.height10(context) * 0.8,
                                       bottom:
                                           AppDimensions.height10(context) * 0.3,
-                                      right: AppDimensions.height10(context) *
-                                          1.0),
+                                      right:
+                                          AppDimensions.width10(context) * 1.0),
                                   child: const Icon(
                                     Icons.arrow_drop_down,
                                     color: Color(0xffFA9934),
@@ -802,7 +802,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                             height: AppDimensions.height10(context) * 3.4,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 1.0,
-                                right: AppDimensions.height10(context) * 7.0),
+                                right: AppDimensions.width10(context) * 7.0),
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Clear All',
@@ -874,8 +874,8 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                               children: [
                                 Container(
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
-                                          2.0),
+                                      right:
+                                          AppDimensions.width10(context) * 2.0),
                                   child: GradientText(
                                     'My faced hurdles ',
                                     textAlign: TextAlign.center,
@@ -892,8 +892,8 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
-                                          2.0),
+                                      right:
+                                          AppDimensions.width10(context) * 2.0),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -934,8 +934,8 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                   width: AppDimensions.width10(context) * 9.8,
                                   height: AppDimensions.height10(context) * 2.2,
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
-                                          2.0),
+                                      right:
+                                          AppDimensions.width10(context) * 2.0),
                                   child: Text('New hurdle',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
@@ -1002,8 +1002,8 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
                                             4.0,
-                                        right: AppDimensions.height10(context) *
-                                            2),
+                                        right:
+                                            AppDimensions.width10(context) * 2),
                                     child: Icon(
                                       Icons.add,
                                       size:
@@ -1437,7 +1437,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
                                     height:
                                         AppDimensions.height10(context) * 1.39,
                                     margin: EdgeInsets.only(
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             2.391),
                                     child: Image.asset(
                                       'assets/images/BTN Back.webp',
@@ -1476,7 +1476,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
                                 width: AppDimensions.width10(context) * 2.4,
                                 height: AppDimensions.height10(context) * 2.4,
                                 margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 0.5,
+                                  right: AppDimensions.width10(context) * 0.5,
                                 ),
                                 child: const Icon(
                                   Icons.share,
@@ -1524,7 +1524,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
                                             margin: EdgeInsets.only(
                                                 top: AppDimensions.height10(context) *
                                                     1.9,
-                                                right: AppDimensions.height10(context) *
+                                                right: AppDimensions.width10(context) *
                                                     1.6,
                                                 left: AppDimensions.height10(context) *
                                                     1.6,
@@ -1534,15 +1534,15 @@ class _hurdle_menuState extends State<hurdle_menu> {
                                             height:
                                                 AppDimensions.height10(context) *
                                                     4.4,
-                                            width: AppDimensions.width10(context) *
-                                                23.8,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    23.8,
                                             child: RichText(
                                                 textAlign: TextAlign.center,
                                                 text: TextSpan(
                                                     style: TextStyle(
                                                         fontSize:
-                                                            AppDimensions.height10(context) *
-                                                                1.7,
+                                                            AppDimensions.height10(context) * 1.7,
                                                         fontWeight: FontWeight.w400,
                                                         color: const Color(0xFF000000)),
                                                     children: const [
@@ -1786,7 +1786,7 @@ _showBottomSheet(BuildContext context) {
                           child: Container(
                             width: AppDimensions.width10(context) * 5.0,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 2.0),
+                                right: AppDimensions.width10(context) * 2.0),
                             child: Text(
                               'Cancel',
                               style: TextStyle(
@@ -1937,7 +1937,7 @@ _showTagSheet(BuildContext context) {
                           child: Container(
                             width: AppDimensions.width10(context) * 5.0,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 2.0),
+                                right: AppDimensions.width10(context) * 2.0),
                             child: Text(
                               'Cancel',
                               style: TextStyle(
@@ -2089,7 +2089,7 @@ void hurdle_sheet(context) {
                     height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
-                        right: AppDimensions.height10(context) * 1.5),
+                        right: AppDimensions.width10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(

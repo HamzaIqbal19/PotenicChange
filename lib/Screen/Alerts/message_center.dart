@@ -833,7 +833,7 @@ class _message_centerState extends State<message_center> {
               margin: EdgeInsets.only(
                   bottom: AppDimensions.height10(context) * 2.093,
                   left: AppDimensions.height10(context) * 1.6,
-                  right: AppDimensions.height10(context) * 1.6),
+                  right: AppDimensions.width10(context) * 1.6),
               decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -929,7 +929,7 @@ class _message_centerState extends State<message_center> {
                   ? const EdgeInsets.all(0)
                   : EdgeInsets.only(
                       top: AppDimensions.height10(context) * 0.1,
-                      right: AppDimensions.height10(context) * 6.2,
+                      right: AppDimensions.width10(context) * 6.2,
                       left: AppDimensions.height10(context) * 6.2,
                       bottom: AppDimensions.height10(context) * 2.2),
               decoration: BoxDecoration(
@@ -981,7 +981,7 @@ class _message_centerState extends State<message_center> {
                                             margin: EdgeInsets.only(
                                                 top: AppDimensions.height10(context) *
                                                     1.9,
-                                                right: AppDimensions.height10(context) *
+                                                right: AppDimensions.width10(context) *
                                                     1.6,
                                                 left: AppDimensions.height10(context) *
                                                     1.6,
@@ -1165,7 +1165,7 @@ class _message_centerState extends State<message_center> {
                             width: AppDimensions.width10(context) * 7.7,
                             height: AppDimensions.height10(context) * 2.1,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 2.0),
+                                right: AppDimensions.width10(context) * 2.0),
                             child: Center(
                               child: Text('10 selected',
                                   style: TextStyle(
@@ -1249,7 +1249,7 @@ class messages extends StatelessWidget {
                 width: AppDimensions.width10(context) * 5.245,
                 height: AppDimensions.height10(context) * 1.3,
                 margin: EdgeInsets.only(
-                    right: AppDimensions.height10(context) * 22.0),
+                    right: AppDimensions.width10(context) * 22.0),
                 child: const Divider(
                   thickness: 1,
                   color: Color.fromRGBO(91, 116, 166, 1),
@@ -1311,7 +1311,7 @@ void notifications_sheet(context) {
                       height: AppDimensions.height10(context) * 2.6,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.5,
-                          right: AppDimensions.height10(context) * 1.5),
+                          right: AppDimensions.width10(context) * 1.5),
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(

@@ -589,7 +589,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
                                             1.9,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.6,
                                         left: AppDimensions.height10(context) *
                                             1.6,
@@ -617,7 +617,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                                 1.5,
                                         left: AppDimensions.height10(context) *
                                             1.6,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.6),
                                     height:
                                         AppDimensions.height10(context) * 3.4,
@@ -717,7 +717,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                           width: AppDimensions.width10(context) * 9.1,
                           height: AppDimensions.height10(context) * 9.1,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 3.3),
+                              right: AppDimensions.width10(context) * 3.3),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(width: 3, color: Colors.white),
@@ -765,7 +765,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                           width: AppDimensions.width10(context) * 9.1,
                           height: AppDimensions.height10(context) * 9.1,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 3.3),
+                              right: AppDimensions.width10(context) * 3.3),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(

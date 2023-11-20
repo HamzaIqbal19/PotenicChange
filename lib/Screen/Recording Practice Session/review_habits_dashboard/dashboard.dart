@@ -25,7 +25,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 1.7,
-                      right: AppDimensions.height10(context) * 0.9),
+                      right: AppDimensions.width10(context) * 0.9),
                   child: Image.asset(
                     'assets/images/calendar_month_black_24dp 1.webp',
                     height: AppDimensions.height10(context) * 2.4,
@@ -345,7 +345,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 2.9,
                       bottom: AppDimensions.height10(context) * 1.2,
-                      right: AppDimensions.height10(context) * 7.3,
+                      right: AppDimensions.width10(context) * 7.3,
                       left: 23),
                   child: Stack(children: [
                     Align(
@@ -429,7 +429,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                   )),
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 3.4,
-                      right: AppDimensions.height10(context) * 2.63),
+                      right: AppDimensions.width10(context) * 2.63),
                   //color: Colors.blue,
                   child: Stack(children: [
                     Align(
@@ -471,7 +471,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                             width: AppDimensions.width10(context) * 5.245,
                             height: AppDimensions.height10(context) * 1.3,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 17.5),
+                                right: AppDimensions.width10(context) * 17.5),
                             child: const Divider(
                               thickness: 1,
                               color: Color.fromRGBO(91, 116, 166, 1),

@@ -201,8 +201,8 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                     height:
                                         AppDimensions.height10(context) * 3.5,
                                     margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
-                                          15.0,
+                                      right:
+                                          AppDimensions.width10(context) * 15.0,
                                       top:
                                           AppDimensions.height10(context) * 1.5,
                                     ),
@@ -1184,7 +1184,7 @@ showBreakcomm(BuildContext context) {
                 BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
-            right: AppDimensions.height10(context) * 1.6,
+            right: AppDimensions.width10(context) * 1.6,
             left: AppDimensions.height10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
@@ -1203,7 +1203,7 @@ showBreakcomm(BuildContext context) {
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
             left: AppDimensions.height10(context) * 1.6,
-            right: AppDimensions.height10(context) * 1.6),
+            right: AppDimensions.width10(context) * 1.6),
         height: AppDimensions.height10(context) * 3.3,
         width: AppDimensions.width10(context) * 23.8,
         child: Text(

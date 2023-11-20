@@ -506,7 +506,7 @@ class _AllGoalsState extends State<AllGoals> {
           ),
           padding: EdgeInsets.only(
               left: AppDimensions.height10(context) * 2.2,
-              right: AppDimensions.height10(context) * 2.2),
+              right: AppDimensions.width10(context) * 2.2),
           height: AppDimensions.height10(context) * 7.0,
           width: AppDimensions.width10(context) * 41.4,
 

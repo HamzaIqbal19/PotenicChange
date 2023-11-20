@@ -104,7 +104,7 @@ class _no_past_sessionState extends State<no_past_session> {
                     },
                     child: Container(
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.32),
+                          right: AppDimensions.width10(context) * 1.32),
                       child: Image.asset(
                         'assets/images/Asset 10 2.webp',
                         height: AppDimensions.height10(context) * 4.0,
@@ -124,7 +124,7 @@ class _no_past_sessionState extends State<no_past_session> {
                     },
                     child: Container(
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.7),
+                          right: AppDimensions.width10(context) * 1.7),
                       child: Image.asset(
                         'assets/images/Add goal.webp',
                         height: AppDimensions.height10(context) * 2.0,
@@ -144,7 +144,7 @@ class _no_past_sessionState extends State<no_past_session> {
                     },
                     child: Container(
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.32),
+                          right: AppDimensions.width10(context) * 1.32),
                       child: Image.asset(
                         'assets/images/calendar_month_black_24dp 1.webp',
                         height: AppDimensions.height10(context) * 2.4,

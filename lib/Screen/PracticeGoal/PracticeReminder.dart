@@ -249,7 +249,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                                 1.9,
                                         left: AppDimensions.height10(context) *
                                             1.6,
-                                        right: AppDimensions.height10(context) *
+                                        right: AppDimensions.width10(context) *
                                             1.6),
                                     height:
                                         AppDimensions.height10(context) * 3.2,
@@ -370,7 +370,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           //         margin: EdgeInsets.only(
                           //             bottom: AppDimensions.height10(context) * 1.9,
                           //             left: AppDimensions.height10(context) * 1.6,
-                          //             right: AppDimensions.height10(context) * 1.6),
+                          //             right: AppDimensions.width10(context) * 1.6),
                           //         height: AppDimensions.height10(context) * 1.8,
                           //         width: AppDimensions.width10(context) * 23.8,
                           //         child: const Text(
@@ -606,7 +606,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   width: AppDimensions.width10(context) * 37.2,
                   padding: EdgeInsets.only(
                       left: AppDimensions.height10(context) * 2.1,
-                      right: AppDimensions.height10(context) * 2.1),
+                      right: AppDimensions.width10(context) * 2.1),
                   child: Center(
                     child: Text(
                       "In order to build consistent behaviour, \n allow us to gently nudge you to remind you to do your practice.",
@@ -628,7 +628,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 Container(
                   height: AppDimensions.height10(context) * 17.0,
                   width: AppDimensions.width10(context) * 38.2,
-                  // padding:  EdgeInsets.only(top: AppDimensions.height10(context) *2, bottom: AppDimensions.height10(context) *4.8, left: AppDimensions.height10(context) *2.0,right: AppDimensions.height10(context) *3.5),
+                  // padding:  EdgeInsets.only(top: AppDimensions.height10(context) *2, bottom: AppDimensions.height10(context) *4.8, left: AppDimensions.height10(context) *2.0,right: AppDimensions.width10(context) *3.5),
                   decoration: BoxDecoration(
                       // color: Colors.white,
                       gradient: const LinearGradient(
@@ -843,7 +843,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             // height: AppDimensions.height10(context) * 5.1,
                             width: AppDimensions.width10(context) * 34.5,
                             padding: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.width10(context) * 2.0,
                                 left: AppDimensions.height10(context) * 1.7),
                             child: Text(
                               "We will check in with you to remind you about your practices.You would be able to customise your notifications later in your Account Settings. ",
@@ -868,7 +868,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 Container(
                   height: AppDimensions.height10(context) * 17.0,
                   width: AppDimensions.width10(context) * 38.2,
-                  // padding:  EdgeInsets.only(top: AppDimensions.height10(context) *2, bottom: AppDimensions.height10(context) *4.8, left: AppDimensions.height10(context) *2.0,right: AppDimensions.height10(context) *3.5),
+                  // padding:  EdgeInsets.only(top: AppDimensions.height10(context) *2, bottom: AppDimensions.height10(context) *4.8, left: AppDimensions.height10(context) *2.0,right: AppDimensions.width10(context) *3.5),
                   decoration: BoxDecoration(
                       // color: Colors.white,
                       // color: Colors.white,
@@ -961,7 +961,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             // height: AppDimensions.height10(context) * 6.8,
                             width: AppDimensions.width10(context) * 34.5,
                             padding: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.width10(context) * 2.0,
                                 left: AppDimensions.height10(context) * 1.7),
                             child: Text(
                               "You confirm that you don’t want us to send you reminders and notifications to perform your\npractices. You can always enable and update your notification preferences later in Account Settings. ",

@@ -245,7 +245,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 5.2,
                           // left: AppDimensions.height10(context) * 12.2,
-                          // right: AppDimensions.height10(context) * 12.1
+                          // right: AppDimensions.width10(context) * 12.1
                         ),
                         child: Center(
                           child: Text(
@@ -264,7 +264,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.5,
                             left: AppDimensions.height10(context) * 12.2,
-                            right: AppDimensions.height10(context) * 12.1),
+                            right: AppDimensions.width10(context) * 12.1),
                         child: Text(
                           goalDetails['name'],
                           textAlign: TextAlign.center,
@@ -683,7 +683,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               top: AppDimensions.height10(context) * 1.0),
                           padding: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 1.9),
+                              right: AppDimensions.width10(context) * 1.9),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0),

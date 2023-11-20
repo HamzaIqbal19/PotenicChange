@@ -101,7 +101,7 @@ class _clocksState extends State<clocks> {
                           margin: EdgeInsets.only(
                               bottom: AppDimensions.height10(context) * 1.9,
                               left: AppDimensions.height10(context) * 1.6,
-                              right: AppDimensions.height10(context) * 1.6),
+                              right: AppDimensions.width10(context) * 1.6),
                           height: AppDimensions.height10(context) * 3.2,
                           width: AppDimensions.width10(context) * 23.8,
                           child: Text(
@@ -550,7 +550,7 @@ class _watch_timeState extends State<watch_time> {
               ),
               //play button
               Positioned(
-                right: AppDimensions.height10(context) * 9.7,
+                right: AppDimensions.width10(context) * 9.7,
                 left: AppDimensions.height10(context) * 9.7,
                 bottom: AppDimensions.height10(context) * 2.0,
                 child: AnimatedScaleButton(
@@ -657,7 +657,7 @@ class _watch_timeState extends State<watch_time> {
               ),
               //reset button
               Positioned(
-                right: AppDimensions.height10(context) * 2.7,
+                right: AppDimensions.width10(context) * 2.7,
                 bottom: AppDimensions.height10(context) * 5.6,
                 child: AnimatedScaleButton(
                   onTap: () {

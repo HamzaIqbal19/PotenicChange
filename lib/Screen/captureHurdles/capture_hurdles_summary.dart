@@ -425,7 +425,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                   //width: AppDimensions.width10(context) * 2.4,
                                   // height: AppDimensions.height10(context) * 1.39,
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
+                                      right: AppDimensions.width10(context) *
                                           2.391),
                                   child: Text(
                                     'View',
@@ -575,7 +575,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                     margin: EdgeInsets.only(
                                                         top: AppDimensions.height10(context) *
                                                             1.9,
-                                                        right: AppDimensions.height10(context) *
+                                                        right: AppDimensions.width10(context) *
                                                             1.6,
                                                         left: AppDimensions.height10(context) *
                                                             1.6,

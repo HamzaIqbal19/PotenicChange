@@ -295,7 +295,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                         // color: Colors.amber,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 10.2,
-                            right: AppDimensions.height10(context) * 23.3,
+                            right: AppDimensions.width10(context) * 23.3,
                             top: AppDimensions.height10(context) * 0.6),
                         // color: Colors.blue,
                         child: Stack(
@@ -471,7 +471,7 @@ class _CreatePracticeState extends State<CreatePractice> {
             ),
             padding: EdgeInsets.only(
                 left: AppDimensions.height10(context) * 2.2,
-                right: AppDimensions.height10(context) * 2.2),
+                right: AppDimensions.width10(context) * 2.2),
             height: AppDimensions.height10(context) * 7.0,
             width: AppDimensions.width10(context) * 41.4,
             child: SearchIcon == true

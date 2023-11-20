@@ -186,8 +186,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                           AppDimensions.height10(context) * 1.9,
                                       left:
                                           AppDimensions.height10(context) * 1.6,
-                                      right: AppDimensions.height10(context) *
-                                          1.6),
+                                      right:
+                                          AppDimensions.width10(context) * 1.6),
                                   height: AppDimensions.height10(context) * 3.2,
                                   width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
@@ -376,7 +376,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           width: AppDimensions.width10(context) * 13.7,
                           height: AppDimensions.height10(context) * 13.7,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.5),
+                              right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
                               color: Colors.transparent,
                               shape: BoxShape.circle,
@@ -420,7 +420,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           width: AppDimensions.width10(context) * 13.7,
                           height: AppDimensions.height10(context) * 13.7,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.5),
+                              right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
                               color: Colors.transparent,
                               shape: BoxShape.circle,
@@ -466,7 +466,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           width: AppDimensions.width10(context) * 13.7,
                           height: AppDimensions.height10(context) * 13.7,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.5),
+                              right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
                               color: Colors.transparent,
                               shape: BoxShape.circle,
@@ -511,7 +511,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           width: AppDimensions.width10(context) * 13.7,
                           height: AppDimensions.height10(context) * 13.7,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.5),
+                              right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
                               color: Colors.transparent,
                               shape: BoxShape.circle,
@@ -556,7 +556,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           width: AppDimensions.width10(context) * 13.7,
                           height: AppDimensions.height10(context) * 13.7,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.5),
+                              right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
                               color: Colors.transparent,
                               shape: BoxShape.circle,
@@ -863,7 +863,7 @@ class notes extends StatelessWidget {
               // Container(
               //   //alignment: Alignment(0, 0),
               //   margin: EdgeInsets.only(
-              //       right: AppDimensions.height10(context) * 21.2),
+              //       right: AppDimensions.width10(context) * 21.2),
               //   width: AppDimensions.width10(context) * 13.1,
               //   height: AppDimensions.height10(context) * 2.0,
               //   child: Row(
@@ -916,7 +916,7 @@ class _next_bottonState extends State<next_botton> {
                     height: AppDimensions.height10(context) * 5.0,
                     width: AppDimensions.width10(context) * 14.3,
                     margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.2),
+                        right: AppDimensions.width10(context) * 1.2),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(
