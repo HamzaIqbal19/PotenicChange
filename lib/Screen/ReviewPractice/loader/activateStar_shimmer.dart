@@ -113,11 +113,7 @@ class activateStar_shimmer extends StatelessWidget {
                 // width: AppDimensions.width10(context) * 30.4,
                 height: AppDimensions.height10(context) * 1.2,
                 margin: EdgeInsets.only(
-<<<<<<< Updated upstream
-                    left: AppDimensions.height10(context) * 10.6,
-=======
                     left: AppDimensions.width10(context) * 10.6,
->>>>>>> Stashed changes
                     right: AppDimensions.width10(context) * 11.4),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -131,11 +127,7 @@ class activateStar_shimmer extends StatelessWidget {
                 // width: AppDimensions.width10(context) * 30.4,
                 height: AppDimensions.height10(context) * 1.2,
                 margin: EdgeInsets.only(
-<<<<<<< Updated upstream
-                    left: AppDimensions.height10(context) * 11.6,
-=======
                     left: AppDimensions.width10(context) * 11.6,
->>>>>>> Stashed changes
                     right: AppDimensions.width10(context) * 12.4),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(

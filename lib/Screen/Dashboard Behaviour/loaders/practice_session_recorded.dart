@@ -50,11 +50,7 @@ class practice_session_shimmer extends StatelessWidget {
                 Container(
                   height: AppDimensions.height10(context) * 26.8,
                   margin: EdgeInsets.only(
-<<<<<<< Updated upstream
-                      left: AppDimensions.height10(context),
-=======
                       left: AppDimensions.width10(context),
->>>>>>> Stashed changes
                       right: AppDimensions.width10(context) * 12.1),
                   child: Stack(
                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,11 +93,7 @@ class practice_session_shimmer extends StatelessWidget {
                 Container(
                   height: AppDimensions.height10(context) * 26.8,
                   margin: EdgeInsets.only(
-<<<<<<< Updated upstream
-                      left: AppDimensions.height10(context),
-=======
                       left: AppDimensions.width10(context),
->>>>>>> Stashed changes
                       right: AppDimensions.width10(context) * 12.1),
                   child: Stack(
                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,

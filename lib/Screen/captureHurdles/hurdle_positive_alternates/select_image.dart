@@ -373,8 +373,8 @@ class _image_infoState extends State<image_info> {
                                   width: AppDimensions.width10(context) * 3.0,
                                   height: AppDimensions.height10(context) * 3.0,
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.width10(context) *
-                                          0.8),
+                                      right:
+                                          AppDimensions.width10(context) * 0.8),
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors.black,
@@ -486,10 +486,10 @@ class _image_infoState extends State<image_info> {
                   width: AppDimensions.width10(context) * 30.5,
                   margin: EdgeInsets.only(
                     right: AppDimensions.width10(context) * 8.9,
-                    style: TextStyle(
-                        fontSize: AppDimensions.font10(context) * 1.6,
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xff282828)),
+                    // style: TextStyle(
+                    //     fontSize: AppDimensions.font10(context) * 1.6,
+                    //     fontWeight: FontWeight.w400,
+                    //     color: const Color(0xff282828)),
                   ),
                 ),
               ],
