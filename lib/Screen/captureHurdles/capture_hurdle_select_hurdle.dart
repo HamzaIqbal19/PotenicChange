@@ -171,7 +171,7 @@ class _select_hurdleState extends State<select_hurdle> {
                         },
                         icon: Image.asset(
                           'assets/images/Back.webp',
-                          width: AppDimensions.width10(context) * 3.0,
+                          //width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
                           fit: BoxFit.contain,
                         )),
@@ -179,7 +179,7 @@ class _select_hurdleState extends State<select_hurdle> {
             centerTitle: true,
             title: SizedBox(
               width: AppDimensions.width10(context) * 19.0,
-              height: AppDimensions.height10(context) * 2.6,
+              height: AppDimensions.height10(context) * 2.8,
               child: Row(
                 children: [
                   GradientText(
@@ -403,7 +403,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 2.6,
+                     // width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.contain,
                     )),
@@ -427,7 +427,7 @@ class _select_hurdleState extends State<select_hurdle> {
                             width: AppDimensions.width10(context) * 33.7,
                             height: AppDimensions.height10(context) * 7.8,
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 18.0),
+                                top: AppDimensions.height10(context) * 16.0),
                             child: Center(
                               //slight width issue
                               child: GradientText(
@@ -452,7 +452,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                 top: AppDimensions.height10(context) * 3.9),
                             padding: EdgeInsets.symmetric(
                                 horizontal:
-                                    AppDimensions.width10(context) * 4),
+                                    AppDimensions.width10(context) * 4.6),
                             child: GridView.builder(
                                 shrinkWrap: true,
                                 padding: EdgeInsets.zero,
@@ -470,7 +470,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                 itemBuilder: (context, index) {
                                   return Container(
                                     height:
-                                        AppDimensions.height10(context) * 41.9,
+                                        AppDimensions.height10(context) * 39.9,
                                     // padding: EdgeInsets.symmetric(
                                     //     horizontal: AppDimensions.width10(context) * 5),
                                     child: AnimatedScaleButton(
@@ -501,14 +501,14 @@ class _select_hurdleState extends State<select_hurdle> {
                                       child: Container(
                                         height: selectBox == index
                                             ? AppDimensions.height10(context) *
-                                                14.1
+                                                13.5
                                             : AppDimensions.height10(context) *
-                                                13.1,
+                                                12.5,
                                         width: selectBox == index
                                             ? AppDimensions.width10(context) *
-                                                14.1
+                                                13.5
                                             : AppDimensions.width10(context) *
-                                                13.1,
+                                                12.5,
                                         padding: EdgeInsets.all(
                                             AppDimensions.width10(context)),
                                         decoration: BoxDecoration(

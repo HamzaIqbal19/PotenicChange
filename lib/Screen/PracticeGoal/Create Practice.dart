@@ -172,7 +172,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.width10(context) * 3,
+                    //width: AppDimensions.width10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
@@ -204,7 +204,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 3.0,
+                     // width: AppDimensions.width10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
                     ),
@@ -438,7 +438,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                                 circle_border: 3.0,
                                                 circle_bordercolor: 0xFFFFFFFF,
                                                 circle_height: AppDimensions
-                                                        .height10(context) *
+                                                        .width10(context) *
                                                     13.4,
                                                 circle_width:
                                                     AppDimensions.width10(

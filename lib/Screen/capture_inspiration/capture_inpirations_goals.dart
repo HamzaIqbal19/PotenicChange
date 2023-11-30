@@ -238,7 +238,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                         },
                         icon: Image.asset(
                           'assets/images/Back.webp',
-                          width: AppDimensions.width10(context) * 2.6,
+                         // width: AppDimensions.width10(context) * 2.6,
                           height: AppDimensions.height10(context) * 2.6,
                           fit: BoxFit.contain,
                         )),
@@ -248,7 +248,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                 ? Container()
                 : Container(
                     width: AppDimensions.width10(context) * 18.9,
-                    height: AppDimensions.height10(context) * 2.4,
+                    height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
                         left: AppDimensions.width10(context) * 7.5),
                     child: Row(
@@ -536,7 +536,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           },
                           icon: Image.asset(
                             'assets/images/Close.webp',
-                            width: AppDimensions.width10(context) * 2.6,
+                           // width: AppDimensions.width10(context) * 2.6,
                             height: AppDimensions.height10(context) * 2.6,
                             fit: BoxFit.contain,
                           )),
@@ -558,8 +558,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                   Container(
                     // width: AppDimensions.width10(context) * 36.0,
                     height: widget.route == 'details'
-                        ? AppDimensions.height10(context) * 77.9
-                        : AppDimensions.height10(context) * 67.9,
+                        ? AppDimensions.height10(context) * 76.9
+                        : AppDimensions.height10(context) * 66.9,
                     margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 9.3,
 
@@ -629,12 +629,12 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 }
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 14.2,
-                                height: AppDimensions.height10(context) * 14.2,
+                                width: AppDimensions.width10(context) * 13.5,
+                                height: AppDimensions.width10(context) * 13.5,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.width10(context) * 2.1,
+                                    left: AppDimensions.width10(context) * 3,
                                     right:
-                                        AppDimensions.width10(context) * 19.8,
+                                        AppDimensions.width10(context) * 19.0,
                                     top: AppDimensions.height10(context) * 2.9),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
@@ -647,8 +647,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                     AppDimensions.width10(context) * 0.5),
                                 child: Container(
                                   height:
-                                      AppDimensions.height10(context) * 13.2,
-                                  width: AppDimensions.height10(context) * 13.2,
+                                      AppDimensions.width10(context) * 12.5,
+                                  width: AppDimensions.width10(context) * 12.5,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(

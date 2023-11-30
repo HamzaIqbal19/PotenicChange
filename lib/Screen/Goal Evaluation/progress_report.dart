@@ -166,7 +166,7 @@ class _progress_reportState extends State<progress_report> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.width10(context) * 3.0,
+               // width: AppDimensions.width10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
               )),
@@ -615,7 +615,7 @@ class _progress_reportState extends State<progress_report> {
                     ),
                     Container(
                       width: AppDimensions.width10(context) * 40.5,
-                      height: AppDimensions.height10(context) * 84.569,
+                      height: AppDimensions.height10(context) * 88.569,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 3.7),
                       decoration: BoxDecoration(
@@ -628,7 +628,7 @@ class _progress_reportState extends State<progress_report> {
                             height: AppDimensions.height10(context) * 5.0,
                           ),
                           Circulardates(
-                            size: AppDimensions.height10(context) * 24.0,
+                            size: AppDimensions.width10(context) * 24.0,
                             outerCircleContainers: noData == true
                                 ? []
                                 : generateCircleEmptyContainers(context, 0) +
@@ -649,7 +649,7 @@ class _progress_reportState extends State<progress_report> {
                                       width:
                                           AppDimensions.width10(context) * 13.3,
                                       height:
-                                          AppDimensions.height10(context) * 7.7,
+                                          AppDimensions.height10(context) * 7.9,
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -693,7 +693,7 @@ class _progress_reportState extends State<progress_report> {
                                     ),
                                     Container(
                                       height:
-                                          AppDimensions.height10(context) * 4.6,
+                                          AppDimensions.height10(context) * 4.9,
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
                                               0.5),

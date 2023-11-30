@@ -392,8 +392,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.width10(context) * 2.6,
-                  height: AppDimensions.height10(context) * 2.6,
+                 // width: AppDimensions.width10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
           ),
@@ -522,7 +522,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           children: [
                             Container(
                               width: AppDimensions.width10(context) * 11.4,
-                              height: AppDimensions.height10(context) * 11.4,
+                              height: AppDimensions.width10(context) * 11.4,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color(0xFFFDFBE0)),
@@ -532,7 +532,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   SizedBox(
                                     width: AppDimensions.width10(context) * 9.3,
                                     height:
-                                        AppDimensions.height10(context) * 3.4,
+                                        AppDimensions.height10(context) * 3.6,
                                     child: Text(
                                       'No. of\nActive days',
                                       textAlign: TextAlign.center,
@@ -570,7 +570,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.width10(context) * 11.4,
+                              width: AppDimensions.height10(context) * 11.4,
                               height: AppDimensions.height10(context) * 11.4,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
@@ -581,7 +581,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   SizedBox(
                                     width: AppDimensions.width10(context) * 9.3,
                                     height:
-                                        AppDimensions.height10(context) * 3.4,
+                                        AppDimensions.height10(context) * 3.6,
                                     child: Text(
                                       'Goal\nLevel',
                                       textAlign: TextAlign.center,
@@ -638,7 +638,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       ),
                       Container(
                           width: AppDimensions.width10(context) * 37.2,
-                          height: AppDimensions.height10(context) * 2.9,
+                          height: AppDimensions.height10(context) * 3.1,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 3.8),
                           child: Center(
@@ -1010,7 +1010,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             children: [
                               Container(
                                 width: AppDimensions.width10(context) * 17.4,
-                                height: AppDimensions.height10(context) * 4.7,
+                                height: AppDimensions.height10(context) * 4.9,
                                 margin: EdgeInsets.only(
                                     left:
                                         AppDimensions.width10(context) * 2.6),

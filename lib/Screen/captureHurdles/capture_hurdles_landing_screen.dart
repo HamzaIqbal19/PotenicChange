@@ -214,7 +214,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.width10(context) * 2.6,
+                   // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),
@@ -1008,10 +1008,10 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                   child: Container(
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
-                                            4.0,
+                                        3.8,
 
                                         right: AppDimensions.width10(context) *
-                                            2),
+                                            1.8),
                                     child: Icon(
                                       Icons.add,
                                       size:
@@ -1293,7 +1293,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.width10(context) * 3.0,
+                //width: AppDimensions.width10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
               )),
@@ -1306,7 +1306,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
                 },
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                  width: AppDimensions.width10(context) * 2.6,
+                //  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.contain,
                 )),

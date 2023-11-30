@@ -68,9 +68,9 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
           child: IconButton(
             icon: Image.asset(
               'assets/images/Close.webp',
-              width: AppDimensions.width10(context) * 2.8,
-              height: AppDimensions.height10(context) * 2.8,
-              fit: BoxFit.contain,
+              //width: AppDimensions.width10(context) * 2.8,
+              height: AppDimensions.height10(context) * 3.0,
+              fit: BoxFit.cover,
             ),
             onPressed: () => Navigator.pushReplacement(
               context,
@@ -123,9 +123,9 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             'How did you access your Potenic account\n last time?',
             1.8,
             FontWeight.w600),
-        _buildVerticalSpacing(context, 5.1),
+        _buildVerticalSpacing(context, 4.8),
         _buildButtonSection(context),
-        _buildVerticalSpacing(context, 28.4),
+        _buildVerticalSpacing(context, 28.0),
         _buildBottomButton(context),
       ],
     );

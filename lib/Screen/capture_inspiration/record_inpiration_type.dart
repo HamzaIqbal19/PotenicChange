@@ -89,8 +89,8 @@ class _record_inspirationState extends State<record_inspiration> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.width10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
+                    //width: AppDimensions.width10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.8,
                     fit: BoxFit.contain,
                   )),
             )
@@ -276,7 +276,7 @@ class _record_inspirationState extends State<record_inspiration> {
                     ),
                     Container(
                       width: AppDimensions.width10(context) * 32.0,
-                      height: AppDimensions.height10(context) * 2.6,
+                      height: AppDimensions.height10(context) * 2.9,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 2.9),
                       child: Center(
@@ -773,7 +773,7 @@ class _record_inspirationState extends State<record_inspiration> {
                       height: AppDimensions.height10(context) * 0.5,
                       //alignment: Alignment.bottomCenter,
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 17.5),
+                          top: AppDimensions.height10(context) * 16),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 2.0),

@@ -36,7 +36,7 @@ class Settings extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.width10(context) * 2.6,
+               // width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.contain,
               )),
@@ -72,7 +72,7 @@ class Settings extends StatelessWidget {
               children: [
                 Container(
                   width: AppDimensions.width10(context) * 37.4,
-                  height: AppDimensions.height10(context) * 23.4,
+                  height: AppDimensions.height10(context) * 23.6,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 15.0),
                   child: Column(
@@ -81,7 +81,7 @@ class Settings extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: SizedBox(
                           width: AppDimensions.width10(context) * 19.0,
-                          height: AppDimensions.height10(context) * 2.4,
+                          height: AppDimensions.height10(context) * 2.6,
                           child: Text(
                             'My Account Details',
                             style: TextStyle(
@@ -107,7 +107,7 @@ class Settings extends StatelessWidget {
                               onTap: () {},
                               child: Container(
                                 width: AppDimensions.width10(context) * 33.4,
-                                height: AppDimensions.height10(context) * 5.0,
+                                height: AppDimensions.height10(context) * 5.2,
                                 margin: EdgeInsets.only(
                                     bottom:
                                         AppDimensions.height10(context) * 1.0),
@@ -209,7 +209,7 @@ class Settings extends StatelessWidget {
                               onTap: () {},
                               child: Container(
                                 width: AppDimensions.width10(context) * 33.4,
-                                height: AppDimensions.height10(context) * 5.0,
+                                height: AppDimensions.height10(context) * 5.2,
                                 alignment: Alignment.topLeft,
                                 margin: EdgeInsets.only(
                                     bottom:
@@ -309,7 +309,7 @@ class Settings extends StatelessWidget {
                               child: Container(
                                 alignment: Alignment.topLeft,
                                 width: AppDimensions.width10(context) * 33.4,
-                                height: AppDimensions.height10(context) * 5.0,
+                                height: AppDimensions.height10(context) * 5.2,
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -440,7 +440,7 @@ class Settings extends StatelessWidget {
                               },
                               child: Container(
                                 width: AppDimensions.width10(context) * 33.4,
-                                height: AppDimensions.height10(context) * 5.0,
+                                height: AppDimensions.height10(context) * 5.2,
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
@@ -1360,7 +1360,7 @@ class About_us extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.width10(context) * 2.6,
+               // width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.contain,
               )),

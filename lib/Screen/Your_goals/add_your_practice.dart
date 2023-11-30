@@ -54,7 +54,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.width10(context) * 2.6,
+                  //  width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),

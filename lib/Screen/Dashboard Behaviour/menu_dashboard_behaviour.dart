@@ -179,8 +179,8 @@ class _menu_behaviourState extends State<menu_behaviour> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 2.6,
-                      height: AppDimensions.height10(context) * 2.6,
+                    //  width: AppDimensions.width10(context) * 2.6,
+                      height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     )),
               )
@@ -201,7 +201,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                     children: [
                       Container(
                         width: AppDimensions.width10(context) * 30.4,
-                        height: AppDimensions.height10(context) * 18.6,
+                        height: AppDimensions.height10(context) * 18.9,
                         // color: Colors.grey.withOpacity(0.5),
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 5.0,

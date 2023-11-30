@@ -57,7 +57,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 2.8,
+                     // width: AppDimensions.width10(context) * 2.8,
                       height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     ),

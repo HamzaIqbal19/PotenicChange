@@ -191,8 +191,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 2.6,
-                      height: AppDimensions.height10(context) * 2.6,
+                     // width: AppDimensions.width10(context) * 2.6,
+                      height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     )),
               )
@@ -227,7 +227,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 onTap: () {},
                                 child: SizedBox(
                                   width: AppDimensions.width10(context) * 34.3,
-                                  height: AppDimensions.height10(context) * 7.5,
+                                  height: AppDimensions.height10(context) * 8.1,
                                   child: Center(
                                     child: GradientText(
                                       'My current\ninspirations',
@@ -392,12 +392,12 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             2, // Half of the items, rounded up
                                         itemBuilder: (context, index) {
                                           return Container(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    16.7,
+                                            width: AppDimensions.width10(
+                                                context) *
+                                                17.6,
                                             height: AppDimensions.height10(
-                                                    context) *
-                                                24,
+                                                context) *
+                                                30,
                                             child: Column(children: [
                                               AnimatedScaleButton(
                                                 onTap: () async {
@@ -415,13 +415,14 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                               const record_inspiration()));
                                                 },
                                                 child: Container(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      16.7,
+                                                  width:
+                                                  AppDimensions.width10(
+                                                      context) *
+                                                      17.6,
                                                   height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          16.7,
+                                                  AppDimensions.width10(
+                                                      context) *
+                                                      17.6,
                                                   decoration: BoxDecoration(
                                                       gradient: InspirationList[
                                                                       index * 2][
@@ -476,7 +477,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 fontSize: AppDimensions
                                                                         .font10(
                                                                             context) *
-                                                                    1.4,
+                                                                    1.6,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w400,
@@ -548,7 +549,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.4,
+                                                              1.6,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       color: const Color(
@@ -571,7 +572,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.6,
+                                                              1.8,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: const Color(
@@ -602,10 +603,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             return Container(
                                               width: AppDimensions.width10(
                                                       context) *
-                                                  16.7,
+                                                  17.6,
                                               height: AppDimensions.height10(
                                                       context) *
-                                                  24,
+                                                  30,
                                               child: Column(children: [
                                                 AnimatedScaleButton(
                                                   onTap: () async {
@@ -625,13 +626,13 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                   },
                                                   child: Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
-                                                            16.7,
+                                                            17.6,
                                                     height:
-                                                        AppDimensions.height10(
+                                                        AppDimensions.width10(
                                                                 context) *
-                                                            16.7,
+                                                            17.6,
                                                     decoration: BoxDecoration(
 
                                                         gradient: InspirationList[
@@ -660,7 +661,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 : InspirationList[index * 2 + 1]['inspirationId'] == 3
                                                                     ? 'assets/images/video_play.webp'
                                                                     : ''),
-                                                            fit: BoxFit.cover)),
+                                                            fit: BoxFit.contain)),
                                                     child: InspirationList[
                                                                     index * 2 +
                                                                         1][
@@ -693,7 +694,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                   fontSize:
                                                                       AppDimensions.font10(
                                                                               context) *
-                                                                          1.4,
+                                                                          1.6,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w400,
@@ -765,7 +766,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                         fontSize: AppDimensions
                                                                 .font10(
                                                                     context) *
-                                                            1.4,
+                                                            1.6,
                                                         fontWeight:
                                                             FontWeight.w600,
                                                         color: const Color(
@@ -788,7 +789,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                         fontSize: AppDimensions
                                                                 .font10(
                                                                     context) *
-                                                            1.6,
+                                                            1.8,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         color: const Color(
@@ -2459,8 +2460,8 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.width10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
+                   // width: AppDimensions.width10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.8,
                     fit: BoxFit.contain,
                   )),
             )
@@ -2493,7 +2494,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                               onTap: () {},
                               child: SizedBox(
                                 width: AppDimensions.width10(context) * 34.3,
-                                height: AppDimensions.height10(context) * 7.3,
+                                height: AppDimensions.height10(context) * 8.1,
                                 child: Center(
                                   child: GradientText(
                                     'My current\ninspirations',
@@ -2611,9 +2612,9 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                           page: const record_inspiration()));
                                 },
                                 child: Container(
-                                  width: AppDimensions.width10(context) * 16.7,
+                                  width: AppDimensions.width10(context) * 17.6,
                                   height:
-                                      AppDimensions.height10(context) * 16.7,
+                                      AppDimensions.width10(context) * 17.6,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       gradient:
@@ -2661,7 +2662,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                             style: TextStyle(
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.4,
+                                                    1.6,
                                                 fontWeight: FontWeight.w400,
                                                 color: const Color(0xFFFFFFFF)),
                                           )),
@@ -2714,7 +2715,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                               : 'Content',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w600,
                                       color: const Color(0xFFFFFFFF)),
                                 )),
@@ -2736,7 +2737,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.2,
+                                                  1.5,
                                           height:
                                               AppDimensions.height10(context) *
                                                   0.14,

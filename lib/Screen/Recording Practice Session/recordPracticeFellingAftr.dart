@@ -139,8 +139,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.width10(context) * 2.6,
-                  height: AppDimensions.height10(context) * 2.6,
+                 // width: AppDimensions.width10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
           ),
@@ -272,8 +272,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.width10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
+                   // width: AppDimensions.width10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.8,
                     fit: BoxFit.contain,
                   )),
             )
@@ -362,7 +362,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                   margin: EdgeInsets.only(
                       bottom: AppDimensions.height10(context) * 6.3,
                       left: AppDimensions.width10(context) * 1.0),
-                  height: AppDimensions.height10(context) * 13.7,
+                  height: AppDimensions.width10(context) * 13.7,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(children: [
@@ -374,7 +374,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 13.7,
-                          height: AppDimensions.height10(context) * 13.7,
+                          height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
@@ -386,7 +386,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                       ? Colors.white
                                       : Colors.transparent)),
                           child: Container(
-                            height: AppDimensions.height10(context) * 12.7,
+                            height: AppDimensions.width10(context) * 12.7,
                             width: AppDimensions.width10(context) * 12.5,
                             margin: EdgeInsets.symmetric(
                                 vertical: AppDimensions.height10(context) * 0.4,
@@ -418,7 +418,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 13.7,
-                          height: AppDimensions.height10(context) * 13.7,
+                          height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
@@ -430,7 +430,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                       ? Colors.white
                                       : Colors.transparent)),
                           child: Container(
-                            height: AppDimensions.height10(context) * 12.7,
+                            height: AppDimensions.width10(context) * 12.7,
                             width: AppDimensions.width10(context) * 12.5,
                             alignment: Alignment.center,
                             margin: EdgeInsets.symmetric(
@@ -464,7 +464,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 13.7,
-                          height: AppDimensions.height10(context) * 13.7,
+                          height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
@@ -476,7 +476,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                       ? Colors.white
                                       : Colors.transparent)),
                           child: Container(
-                            height: AppDimensions.height10(context) * 12.7,
+                            height: AppDimensions.width10(context) * 12.7,
                             width: AppDimensions.width10(context) * 12.5,
                             alignment: Alignment.center,
                             margin: EdgeInsets.symmetric(
@@ -509,7 +509,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 13.7,
-                          height: AppDimensions.height10(context) * 13.7,
+                          height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
@@ -521,7 +521,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                       ? Colors.white
                                       : Colors.transparent)),
                           child: Container(
-                            height: AppDimensions.height10(context) * 12.7,
+                            height: AppDimensions.width10(context) * 12.7,
                             width: AppDimensions.width10(context) * 12.5,
                             alignment: Alignment.center,
                             margin: EdgeInsets.symmetric(
@@ -554,7 +554,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 13.7,
-                          height: AppDimensions.height10(context) * 13.7,
+                          height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
@@ -566,7 +566,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                       ? Colors.white
                                       : Colors.transparent)),
                           child: Container(
-                            height: AppDimensions.height10(context) * 12.7,
+                            height: AppDimensions.width10(context) * 12.7,
                             width: AppDimensions.width10(context) * 12.5,
                             alignment: Alignment.center,
                             margin: EdgeInsets.symmetric(

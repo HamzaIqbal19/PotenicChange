@@ -52,11 +52,12 @@ class align_circles extends StatelessWidget {
           child: AnimatedScaleButton(
             onTap: onTap1,
             child: Container(
-              width: AppDimensions.width10(context) * 26.8,
+              width: AppDimensions.height10(context) * 26.8,
               height: AppDimensions.height10(context) * 26.8,
               decoration: BoxDecoration(
+                  shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: AssetImage(asset_1), fit: BoxFit.contain)),
+                      image: AssetImage(asset_1), fit: BoxFit.cover)),
               child: Stack(
                 children: [
                   Align(
@@ -113,11 +114,12 @@ class align_circles extends StatelessWidget {
             onTap: onTap2,
             child: Container(
               height: AppDimensions.height10(context) * 13.8,
-              width: AppDimensions.width10(context) * 13.8,
+              width: AppDimensions.height10(context) * 13.8,
               padding: EdgeInsets.symmetric(
                   horizontal: AppDimensions.width10(context)),
               decoration: BoxDecoration(
                   //color: Colors.amber,
+                //shape: BoxShape.circle,
                   image: DecorationImage(
                       image: AssetImage(asset_2), fit: BoxFit.contain)),
               child: Stack(children: [

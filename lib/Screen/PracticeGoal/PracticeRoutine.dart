@@ -116,7 +116,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.width10(context) * 3,
+                  //width: AppDimensions.width10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
@@ -142,7 +142,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    width: AppDimensions.width10(context) * 3.0,
+                    //width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
@@ -587,7 +587,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                         } else {}
                       },
                       child: Container(
-                        height: AppDimensions.height10(context) * 5,
+                        height: AppDimensions.height10(context) * 5.2,
                         width: AppDimensions.width10(context) * 31.3,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),

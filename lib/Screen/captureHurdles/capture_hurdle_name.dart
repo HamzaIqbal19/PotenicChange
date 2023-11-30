@@ -163,7 +163,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                         },
                         icon: Image.asset(
                           'assets/images/Back.webp',
-                          width: AppDimensions.width10(context) * 3.0,
+                          //width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
                           fit: BoxFit.contain,
                         )),
@@ -171,14 +171,14 @@ class _hurdle_nameState extends State<hurdle_name> {
             centerTitle: true,
             title: SizedBox(
               width: AppDimensions.width10(context) * 19.0,
-              height: AppDimensions.height10(context) * 2.7,
+              height: AppDimensions.height10(context) * 2.8,
               child: Row(
                 children: [
                   GradientText(
                     'Capture Hurdle ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 2.6,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w600,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -390,7 +390,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 2.6,
+                     // width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.contain,
                     )),
@@ -491,30 +491,34 @@ class _hurdle_nameState extends State<hurdle_name> {
                                               2.0),
                                       color: Colors.white),
                                   child: Column(
+
                                     //                  mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Container(
-                                        width: AppDimensions.width10(context) *
-                                            8.0,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                        margin: EdgeInsets.only(
-                                            // left:   AppDimensions.height10(context)(context)* 2.0,
-                                            right: AppDimensions.width10(
-                                                    context) *
-                                                25.0,
-                                            top: AppDimensions.height10(
-                                                    context) *
-                                                1.3),
-                                        child: Center(
-                                          child: Text(
-                                            'Enter Name',
-                                            style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.3,
-                                                fontWeight: FontWeight.w500),
+                                      Align(alignment: Alignment.centerLeft,
+                                        child: Container(
+                                          width: AppDimensions.width10(context) *
+                                              8.0,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.0,
+
+                                          margin: EdgeInsets.only(
+                                              left:   AppDimensions.width10(context)* 1.0,
+                                              // right: AppDimensions.width10(
+                                              //         context) *
+                                              //     25.0,
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  1.3),
+                                          child: Center(
+                                            child: Text(
+                                              'Enter Name',
+                                              style: TextStyle(
+                                                  fontSize: AppDimensions.font10(
+                                                          context) *
+                                                      1.3,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -562,7 +566,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                 //   height: double.minPositive,
                                                 // ),
                                                 contentPadding: EdgeInsets.only(
-                                                  right: AppDimensions.height10(
+                                                  right: AppDimensions.width10(
                                                       context),
                                                 ),
                                                 hintText: 'Enter Name',

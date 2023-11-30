@@ -197,8 +197,8 @@ class _practice_progressState extends State<practice_progress> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.width10(context) * 2.6,
-                  height: AppDimensions.height10(context) * 2.6,
+                //  width: AppDimensions.width10(context) * 2.8,
+                  height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
           ),
@@ -235,7 +235,7 @@ class _practice_progressState extends State<practice_progress> {
                         ),
                         Container(
                           //width: AppDimensions.width10(context) * 17.1,
-                          height: AppDimensions.height10(context) * 2.4,
+                          height: AppDimensions.height10(context) * 2.6,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.5),
                           child: Text(
@@ -397,7 +397,7 @@ class _practice_progressState extends State<practice_progress> {
                           },
                           child: Container(
                             width: AppDimensions.width10(context) * 30.3,
-                            height: AppDimensions.height10(context) * 5.1,
+                            height: AppDimensions.height10(context) * 5.3,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.0),
                             decoration: BoxDecoration(
@@ -409,7 +409,7 @@ class _practice_progressState extends State<practice_progress> {
                             child: Center(
                               child: Container(
                                 //width: AppDimensions.width10(context) * 21.0,
-                                height: AppDimensions.height10(context) * 2.6,
+                                height: AppDimensions.height10(context) * 2.8,
                                 margin: EdgeInsets.only(
                                     bottom:
                                         AppDimensions.height10(context) * 0.8),
@@ -420,7 +420,7 @@ class _practice_progressState extends State<practice_progress> {
                                     SizedBox(
                                       //width: AppDimensions.width10(context) * 16.7,
                                       height:
-                                          AppDimensions.height10(context) * 2.6,
+                                          AppDimensions.height10(context) * 2.8,
                                       child: RichText(
                                           text: TextSpan(
                                               style: TextStyle(
@@ -3187,7 +3187,7 @@ class _practice_progressState extends State<practice_progress> {
                                 height: AppDimensions.height10(context) * 5.0,
                               ),
                               Circulardates(
-                                size: AppDimensions.height10(context) * 24.0,
+                                size: AppDimensions.width10(context) * 24.0,
                                 outerCircleContainers: noData == true
                                     ? []
                                     : completedCount > 19

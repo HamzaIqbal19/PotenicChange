@@ -99,7 +99,7 @@ class _ActivateStarState extends State<ActivateStar> {
           child: IconButton(
             icon: Image.asset(
               'assets/images/Back.webp',
-              width: AppDimensions.width10(context) * 3,
+              //width: AppDimensions.width10(context) * 3,
               height: AppDimensions.height10(context) * 3,
               fit: BoxFit.contain,
             ),
@@ -121,7 +121,7 @@ class _ActivateStarState extends State<ActivateStar> {
             child: IconButton(
               icon: Image.asset(
                 'assets/images/Close.webp',
-                width: AppDimensions.width10(context) * 3.0,
+                //width: AppDimensions.width10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
               ),
@@ -209,8 +209,8 @@ class _ActivateStarState extends State<ActivateStar> {
                     Stack(
                       children: [
                         Container(
-                          height: AppDimensions.height10(context) * 38.1,
-                          width: AppDimensions.width10(context) * 38.1,
+                          height: AppDimensions.height10(context) * 40.1,
+                          width: AppDimensions.width10(context) * 40.1,
                           padding: EdgeInsets.all(
                               AppDimensions.height10(context) * 3.5),
                           // decoration: const BoxDecoration(
@@ -235,7 +235,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                                         ? "assets/images/medBlue_gradient.webp"
                                                         : '$color' == '6'
                                                             ? "assets/images/Blue_gradient.webp"
-                                                            : 'assets/images/orange_moon.webp'))),
+                                                            : 'assets/images/orange_moon.webp'), fit: BoxFit.cover)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -582,7 +582,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                   //  dashboard_sheet(context);
                                 },
                                 child: Container(
-                                  width: AppDimensions.width10(context) * 16,
+                                  width: AppDimensions.height10(context) * 16,
                                   height: AppDimensions.height10(context) * 16,
                                   padding: EdgeInsets.all(
                                       AppDimensions.height10(context) * 0.5),
@@ -597,7 +597,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                     height:
                                         AppDimensions.height10(context) * 14.7,
                                     width:
-                                        AppDimensions.width10(context) * 14.7,
+                                        AppDimensions.height10(context) * 14.7,
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                       image: AssetImage('$pracColor' == '1'
@@ -729,7 +729,7 @@ void dashboard_sheet(context) {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.width10(context) * 39.4,
+          width: AppDimensions.width10(context) * 40,
           height: AppDimensions.height10(context) * 62.3,
           margin: EdgeInsets.only(
               left: AppDimensions.width10(context) * 1.0,
@@ -787,7 +787,7 @@ void dashboard_sheet(context) {
                   'Welcome to\nyour Dashboard',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      height: AppDimensions.height10(context) * 0.12,
+                      height: AppDimensions.height10(context) * 0.14,
                       fontSize: AppDimensions.font10(context) * 2.8,
                       //letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
@@ -795,14 +795,14 @@ void dashboard_sheet(context) {
                 ),
               ),
               Container(
-                  //  width: AppDimensions.width10(context) * 33.2,
+                   width: AppDimensions.width10(context) * 33.2,
                   //  height: AppDimensions.height10(context) * 10.8,
                   // color: Colors.grey,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 1.1),
                   child: Center(
                     child: Text(
-                      'This is a one-stop place to manage your\npersonal development journey. From\nDashboard, you can quickly navigate to\nyour goals, view your practices, record\nhurdles and inspirations.\n\nHave a tour of what’s available to you\nand how you can access the tools that\nare important to your personal growth.\n\nWe look forward to supporting you.\nEnjoy your journey :)',
+                      'This is a one-stop place to manage your personal development journey. From Dashboard, you can quickly navigate to your goals, view your practices, record hurdles and inspirations.\n\nHave a tour of what’s available to you and how you can access the tools that are important to your personal growth.\n\nWe look forward to supporting you. Enjoy your journey :)',
                       style: TextStyle(
                           fontSize: AppDimensions.font10(context) * 1.8,
                           // letterSpacing: AppDimensions.height10(context) * 0.2,

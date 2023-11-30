@@ -165,7 +165,7 @@ class _PracticeReviewState extends State<PracticeReview> {
             child: IconButton(
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.width10(context) * 3,
+              //  width: AppDimensions.width10(context) * 3,
                 height: AppDimensions.height10(context) * 3,
                 fit: BoxFit.contain,
               ),

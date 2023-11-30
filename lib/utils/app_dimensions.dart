@@ -21,7 +21,7 @@ class AppDimensions {
 
   static check(context) {
     if (MediaQuery.of(context).size.height < 690) {
-      return ((7.32.h));
+      return ((7.5.h));
     } else {
       return (screenHeight(context) / 90.196080);
     }
@@ -29,15 +29,15 @@ class AppDimensions {
 
   static checkWidth(context) {
     if (MediaQuery.of(context).size.height < 690) {
-      return ((9.w));
+      return ((8.5.w));
     } else {
-      return (screenHeight(context) / 86.63);
+      return (screenHeight(context) /90.196080);
     }
   }
 
   static checkText(context) {
     if (MediaQuery.of(context).size.height < 690) {
-      return ((7.73.sp));
+      return ((8.20.sp));
     } else {
       return (screenHeight(context) / 90.196080);
     }

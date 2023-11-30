@@ -38,7 +38,7 @@ class button_feilds extends StatelessWidget {
         children: [
           Container(
             width: AppDimensions.width10(context) * 29.9,
-            height: AppDimensions.height10(context) * 2.2,
+            height: AppDimensions.height10(context) * 2.5,
             margin:
                 EdgeInsets.only(left: AppDimensions.width10(context) * 0.99),
             child: Align(

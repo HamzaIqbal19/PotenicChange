@@ -122,8 +122,8 @@ class _endofSessionState extends State<endofSession> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.width10(context) * 2.6,
-                height: AppDimensions.height10(context) * 2.6,
+              //  width: AppDimensions.width10(context) * 2.6,
+                height: AppDimensions.height10(context) * 2.8,
                 fit: BoxFit.contain,
               )),
         ),
@@ -241,8 +241,8 @@ class _endofSessionState extends State<endofSession> {
                 },
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                  width: AppDimensions.width10(context) * 2.6,
-                  height: AppDimensions.height10(context) * 2.6,
+                 // width: AppDimensions.width10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
           )
@@ -298,7 +298,7 @@ class _endofSessionState extends State<endofSession> {
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 5.2,
                     left: AppDimensions.width10(context) * 1.0),
-                height: AppDimensions.height10(context) * 15.4,
+                height: AppDimensions.width10(context) * 15.4,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(children: [
@@ -309,7 +309,7 @@ class _endofSessionState extends State<endofSession> {
                         });
                       },
                       child: Container(
-                        height: AppDimensions.height10(context) * 15.4,
+                        height: AppDimensions.width10(context) * 15.4,
                         width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
                             right: AppDimensions.width10(context) * 1.5),
@@ -322,7 +322,7 @@ class _endofSessionState extends State<endofSession> {
                                   : Colors.transparent),
                         ),
                         child: Container(
-                          height: AppDimensions.height10(context) * 13.4,
+                          height: AppDimensions.width10(context) * 13.4,
                           width: AppDimensions.width10(context) * 13.4,
                           margin: EdgeInsets.all(
                               AppDimensions.height10(context) * 0.9),
@@ -365,7 +365,7 @@ class _endofSessionState extends State<endofSession> {
                         });
                       },
                       child: Container(
-                        height: AppDimensions.height10(context) * 15.4,
+                        height: AppDimensions.width10(context) * 15.4,
                         width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
                             right: AppDimensions.width10(context) * 1.5),
@@ -378,7 +378,7 @@ class _endofSessionState extends State<endofSession> {
                                   : Colors.transparent),
                         ),
                         child: Container(
-                          height: AppDimensions.height10(context) * 13.4,
+                          height: AppDimensions.width10(context) * 13.4,
                           width: AppDimensions.width10(context) * 13.4,
                           alignment: Alignment.center,
                           margin: EdgeInsets.all(
@@ -426,7 +426,7 @@ class _endofSessionState extends State<endofSession> {
                         });
                       },
                       child: Container(
-                        height: AppDimensions.height10(context) * 15.4,
+                        height: AppDimensions.width10(context) * 15.4,
                         width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
                             right: AppDimensions.width10(context) * 1.5),
@@ -439,7 +439,7 @@ class _endofSessionState extends State<endofSession> {
                                   : Colors.transparent),
                         ),
                         child: Container(
-                          height: AppDimensions.height10(context) * 13.4,
+                          height: AppDimensions.width10(context) * 13.4,
                           width: AppDimensions.width10(context) * 13.4,
                           alignment: Alignment.center,
                           margin: EdgeInsets.all(
@@ -485,7 +485,7 @@ class _endofSessionState extends State<endofSession> {
                         });
                       },
                       child: Container(
-                        height: AppDimensions.height10(context) * 15.4,
+                        height: AppDimensions.width10(context) * 15.4,
                         width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
                             right: AppDimensions.width10(context) * 1.5),
@@ -498,7 +498,7 @@ class _endofSessionState extends State<endofSession> {
                                   : Colors.transparent),
                         ),
                         child: Container(
-                          height: AppDimensions.height10(context) * 13.4,
+                          height: AppDimensions.width10(context) * 13.4,
                           width: AppDimensions.width10(context) * 13.4,
                           alignment: Alignment.center,
                           margin: EdgeInsets.all(
@@ -544,7 +544,7 @@ class _endofSessionState extends State<endofSession> {
                         });
                       },
                       child: Container(
-                        height: AppDimensions.height10(context) * 15.4,
+                        height: AppDimensions.width10(context) * 15.4,
                         width: AppDimensions.width10(context) * 15.4,
                         margin: EdgeInsets.only(
                             right: AppDimensions.width10(context) * 1.5),
@@ -557,7 +557,7 @@ class _endofSessionState extends State<endofSession> {
                                   : Colors.transparent),
                         ),
                         child: Container(
-                          height: AppDimensions.height10(context) * 13.4,
+                          height: AppDimensions.width10(context) * 13.4,
                           width: AppDimensions.width10(context) * 13.4,
                           alignment: Alignment.center,
                           margin: EdgeInsets.all(

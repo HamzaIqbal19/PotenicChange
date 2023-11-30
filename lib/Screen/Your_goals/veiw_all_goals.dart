@@ -88,8 +88,8 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.width10(context) * 2.6,
-                  height: AppDimensions.height10(context) * 2.6,
+                //  width: AppDimensions.width10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
           ),
@@ -104,8 +104,8 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                   },
                   icon: Image.asset(
                     'assets/images/Addgoal.webp',
-                    width: AppDimensions.width10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
+                    //width: AppDimensions.width10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.8,
                     fit: BoxFit.contain,
                   )),
             ),

@@ -79,7 +79,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
   @override
   Widget build(BuildContext context) {
     int index = 0;
-    return Stack(alignment: AlignmentDirectional.topStart, children: [
+    return Stack(alignment: AlignmentDirectional.center, children: [
       // Container(
       //   decoration: widget.bg_colored
       //       ? const BoxDecoration(
@@ -98,9 +98,9 @@ class Navigation_BarState extends State<Navigation_Bar> {
       //   child:
       Padding(
         padding: EdgeInsets.only(
-          bottom: AppDimensions.height10(context) * 3.0,
-          left: AppDimensions.width10(context) * 5.4,
-          right: AppDimensions.width10(context) * 5.4,
+          bottom: AppDimensions.height10(context) * 1.0,
+          left: AppDimensions.width10(context) * 4.5,
+          right: AppDimensions.width10(context) * 4.5,
         ),
         child: Container(
           decoration: const BoxDecoration(

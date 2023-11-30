@@ -171,7 +171,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                   },
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.width10(context) * 3.0,
+                  //  width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   )),
@@ -600,9 +600,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   children: [
                                     Container(
                                       width:
-                                          AppDimensions.width10(context) * 20.0,
+                                          AppDimensions.height10(context) * 21.0,
                                       height: AppDimensions.height10(context) *
-                                          20.0,
+                                          21.0,
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
                                               10.9),
@@ -859,7 +859,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                           AppDimensions.height10(context) * 4.9,
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
-                                              2.1),
+                                              1.7),
                                       child: Center(
                                         child: Text(
                                           'Please evaluate each criteria below to see\nyour goal level progress.',
@@ -1464,7 +1464,7 @@ class goal_criteria extends StatelessWidget {
           ),
           Container(
             width: AppDimensions.width10(context) * 8.7,
-            height: AppDimensions.height10(context) * 8.7,
+            height: AppDimensions.width10(context) * 8.7,
             margin:
                 EdgeInsets.only(left: AppDimensions.width10(context) * 1.0),
             decoration: BoxDecoration(
@@ -1479,7 +1479,7 @@ class goal_criteria extends StatelessWidget {
               children: [
                 SizedBox(
                   width: AppDimensions.width10(context) * 3.4,
-                  height: AppDimensions.height10(context) * 1.4,
+                  height: AppDimensions.height10(context) * 1.5,
                   child: Text(
                     'Level',
                     textAlign: TextAlign.center,
@@ -1688,8 +1688,8 @@ void evaluation_sheet(context) {
                           Navigator.pop(context);
                         },
                         child: Container(
-                          width: AppDimensions.width10(context) * 2.6,
-                          height: AppDimensions.height10(context) * 2.6,
+                          width: AppDimensions.width10(context) * 3.0,
+                          height: AppDimensions.height10(context) * 3.0,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.5,
                               right: AppDimensions.width10(context) * 1.5),
@@ -1743,7 +1743,7 @@ void evaluation_sheet(context) {
                                   height:
                                       AppDimensions.height10(context) * 0.15,
                                   fontFamily: 'laila',
-                                  fontSize: AppDimensions.font10(context) * 1.4,
+                                  fontSize: AppDimensions.font10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFF437296)),
                               children: const [

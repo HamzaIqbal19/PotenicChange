@@ -119,9 +119,9 @@ class OnboardingPageState extends State<OnboardingPage>
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Back.webp',
-                      width: AppDimensions.width10(context) * 3,
-                      height: AppDimensions.height10(context) * 3,
-                      fit: BoxFit.contain,
+                      //width: AppDimensions.width10(context) * 3,
+                      height: AppDimensions.width10(context) * 3,
+                      fit: BoxFit.cover,
                     ),
                     onPressed: () {
                       _pageController.previousPage(
@@ -147,56 +147,61 @@ class OnboardingPageState extends State<OnboardingPage>
             Center(
               // alignment: Alignment.center,
 
-              child: IconButton(
-                icon: Image.asset(
-                  'assets/images/Close.webp',
-                  width: AppDimensions.width10(context) * 2.8,
-                  height: AppDimensions.height10(context) * 2.8,
-                  fit: BoxFit.contain,
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle
                 ),
-                onPressed: () async {
-                  if (Accestoken != null && Routes != null) {
-                    Navigator.pushReplacement(
-                      context,
-                      FadePageRoute2(
-                        true,
-                        enterPage: HomeScreenProgressSaved(
-                          login: true,
-                          route: Routes.toString(),
+                child: IconButton(
+                  icon: Image.asset(
+                    'assets/images/Close.webp',
+                    //width: AppDimensions.width10(context) * 2.8,
+                    height: AppDimensions.height10(context) * 2.8,
+                    fit: BoxFit.cover,
+                  ),
+                  onPressed: () async {
+                    if (Accestoken != null && Routes != null) {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute2(
+                          true,
+                          enterPage: HomeScreenProgressSaved(
+                            login: true,
+                            route: Routes.toString(),
+                          ),
+                          exitPage: OnBoarding(),
                         ),
-                        exitPage: OnBoarding(),
-                      ),
-                    );
-                  } else if (Accestoken != null && Routes == null) {
-                    Navigator.pushReplacement(
-                      context,
-                      FadePageRoute2(
-                        true,
-                        enterPage: HomeScreen(login: true),
-                        exitPage: OnBoarding(),
-                      ),
-                    );
-                  } else if (Accestoken == null && Routes == null) {
-                    Navigator.pushReplacement(
-                      context,
-                      FadePageRoute2(
-                        true,
-                        enterPage: HomeScreen(login: false),
-                        exitPage: OnBoarding(),
-                      ),
-                    );
-                  } else if (Accestoken == null && Routes != null) {
-                    Navigator.pushReplacement(
-                      context,
-                      FadePageRoute2(
-                        true,
-                        enterPage: HomeScreen(login: false),
-                        exitPage: OnBoarding(),
-                      ),
-                    );
-                  }
-                  // Add code for performing close action
-                },
+                      );
+                    } else if (Accestoken != null && Routes == null) {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute2(
+                          true,
+                          enterPage: HomeScreen(login: true),
+                          exitPage: OnBoarding(),
+                        ),
+                      );
+                    } else if (Accestoken == null && Routes == null) {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute2(
+                          true,
+                          enterPage: HomeScreen(login: false),
+                          exitPage: OnBoarding(),
+                        ),
+                      );
+                    } else if (Accestoken == null && Routes != null) {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute2(
+                          true,
+                          enterPage: HomeScreen(login: false),
+                          exitPage: OnBoarding(),
+                        ),
+                      );
+                    }
+                    // Add code for performing close action
+                  },
+                ),
               ),
             ),
           ],
@@ -213,23 +218,25 @@ class OnboardingPageState extends State<OnboardingPage>
                     fit: BoxFit.cover)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 // SizedBox(height: AppDimensions.height10(context)),
-                Container(
-                  height: AppDimensions.height10(context) * 90.1,
+                Expanded(
+                  child: Container(
+                    //height: AppDimensions.height10(context) * 89.1,
 
-                  // width: AppDimensions.width10(context) * 90,
-                  // color: Colors.blue,
-                  child: PageView(
-                      physics: ClampingScrollPhysics(),
-                      controller: _pageController,
-                      onPageChanged: (int page) {
-                        setState(() {
-                          _currentPage = page;
-                        });
-                      },
-                      children: buildOnboardingPages()),
+                    // width: AppDimensions.width10(context) * 90,
+                    // color: Colors.blue,
+                    child: PageView(
+                        physics: ClampingScrollPhysics(),
+                        controller: _pageController,
+                        onPageChanged: (int page) {
+                          setState(() {
+                            _currentPage = page;
+                          });
+                        },
+                        children: buildOnboardingPages()),
+                  ),
                 ),
               ],
             ),

@@ -533,7 +533,7 @@ class _your_whyState extends State<your_why> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.width10(context) * 3.0,
+                 // width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.contain,
                 )),
@@ -597,7 +597,7 @@ class _your_whyState extends State<your_why> {
                             ),
                             Container(
                               //  width: AppDimensions.width10(context) * 24.0,
-                              height: AppDimensions.height10(context) * 3.7,
+                              height: AppDimensions.height10(context) * 3.9,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0),
                               alignment: Alignment.topCenter,
@@ -634,7 +634,7 @@ class _your_whyState extends State<your_why> {
                             ),
                             Container(
                               width: AppDimensions.width10(context) * 8.7,
-                              height: AppDimensions.height10(context) * 8.7,
+                              height: AppDimensions.width10(context) * 8.7,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 3.2),
                               decoration: BoxDecoration(
@@ -652,7 +652,7 @@ class _your_whyState extends State<your_why> {
                                   SizedBox(
                                     width: AppDimensions.width10(context) * 3.4,
                                     height:
-                                        AppDimensions.height10(context) * 1.3,
+                                        AppDimensions.height10(context) * 1.6,
                                     child: Text(
                                       'Level',
                                       textAlign: TextAlign.center,
@@ -708,7 +708,7 @@ class _your_whyState extends State<your_why> {
                             ),
                             SizedBox(
                               width: AppDimensions.width10(context) * 23.4,
-                              height: AppDimensions.height10(context) * 8.3,
+                              height: AppDimensions.height10(context) * 7.3,
                               child: Stack(
                                 children: [
                                   Align(
@@ -767,10 +767,10 @@ class _your_whyState extends State<your_why> {
                             ),
                             Container(
                               width: AppDimensions.width10(context) * 28.8,
-                              height: AppDimensions.height10(context) * 4.2,
+                              height: AppDimensions.height10(context) * 4.5,
                               alignment: Alignment.topCenter,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 3.3),
+                                  top: AppDimensions.height10(context) * 2.9),
                               child: Text(
                                 "Please give a score on how close you\nare towards achieving your goal.",
                                 textAlign: TextAlign.center,
@@ -862,7 +862,7 @@ class _your_whyState extends State<your_why> {
                                   Container(
                                     width: double.infinity,
                                     height:
-                                        AppDimensions.height10(context) * 16.3,
+                                        AppDimensions.width10(context) * 16.3,
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
                                             3.0,
@@ -886,23 +886,23 @@ class _your_whyState extends State<your_why> {
                                               }
                                             },
                                             child: Container(
-                                              width: AppDimensions.height10(
+                                              width: AppDimensions.width10(
                                                       context) *
                                                   12.95,
-                                              height: AppDimensions.height10(
+                                              height: AppDimensions.width10(
                                                       context) *
                                                   12.95,
                                               margin: EdgeInsets.only(
-                                                  right: AppDimensions.height10(
+                                                  right: AppDimensions.width10(
                                                           context) *
                                                       1.5),
                                               child: Stack(children: [
                                                 Container(
-                                                  width: AppDimensions.height10(
+                                                  width: AppDimensions.width10(
                                                           context) *
                                                       12.95,
                                                   height:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.width10(
                                                               context) *
                                                           12.95,
                                                   decoration: BoxDecoration(

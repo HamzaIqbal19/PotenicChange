@@ -344,7 +344,7 @@ class _view_goalsState extends State<view_goals> {
                                       AppDimensions.height10(context) * 1.32),
                               child: Image.asset(
                                 'assets/images/Asset 10 2.webp',
-                                height: AppDimensions.height10(context) * 4.0,
+                                height: AppDimensions.width10(context) * 4.0,
                                 width: AppDimensions.width10(context) * 3.977,
                                 fit: BoxFit.contain,
                               ),
@@ -367,7 +367,7 @@ class _view_goalsState extends State<view_goals> {
                             right: AppDimensions.width10(context) * 1.7),
                         child: Image.asset(
                           'assets/images/Add goal.webp',
-                          height: AppDimensions.height10(context) * 2.4,
+                          height: AppDimensions.width10(context) * 2.4,
                           width: AppDimensions.width10(context) * 2.4,
                         ),
                       ),
@@ -490,7 +490,7 @@ class _view_goalsState extends State<view_goals> {
                             right: AppDimensions.width10(context) * 1.32),
                         child: Image.asset(
                           'assets/images/calendar_month_black_24dp 1.webp',
-                          height: AppDimensions.height10(context) * 2.4,
+                          height: AppDimensions.width10(context) * 2.4,
                           width: AppDimensions.width10(context) * 2.4,
                         ),
                       ),
@@ -596,7 +596,7 @@ class _view_goalsState extends State<view_goals> {
                                                                   context) *
                                                           7.9,
                                                       width:
-                                                          AppDimensions.width10(
+                                                          AppDimensions.height10(
                                                                   context) *
                                                               7.9,
                                                       //margin: const EdgeInsets.only(top: 84),
@@ -723,7 +723,7 @@ class _view_goalsState extends State<view_goals> {
                                                                   context) *
                                                           13.81,
                                                       width:
-                                                          AppDimensions.width10(
+                                                          AppDimensions.height10(
                                                                   context) *
                                                               13.265,
                                                       decoration: const BoxDecoration(
@@ -731,7 +731,7 @@ class _view_goalsState extends State<view_goals> {
                                                               image: AssetImage(
                                                                   'assets/images/Asset 10 2.webp'),
                                                               fit: BoxFit
-                                                                  .contain)),
+                                                                  .cover)),
                                                       child: Stack(children: [
                                                         Align(
                                                           alignment:
@@ -869,7 +869,7 @@ class _view_goalsState extends State<view_goals> {
                                                             AppDimensions.height10(context) *
                                                                 7.9,
                                                         width:
-                                                            AppDimensions.width10(context) *
+                                                            AppDimensions.height10(context) *
                                                                 7.9,
                                                         // margin: const EdgeInsets.only(
                                                         //   top: 84,
@@ -1018,7 +1018,7 @@ class _view_goalsState extends State<view_goals> {
                                                             height: AppDimensions
                                                                     .height10(
                                                                         context) *
-                                                                4.4,
+                                                                4.7,
                                                             margin: EdgeInsets.only(
                                                                 left: AppDimensions
                                                                         .height10(
@@ -1082,7 +1082,7 @@ class _view_goalsState extends State<view_goals> {
                                                                           TextStyle(
                                                                         fontSize:
                                                                             AppDimensions.font10(context) *
-                                                                                1.0,
+                                                                                1.2,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                         color: Colors

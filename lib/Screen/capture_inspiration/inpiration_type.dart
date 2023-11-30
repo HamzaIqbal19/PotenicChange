@@ -62,15 +62,15 @@ class _inspiration_typeState extends State<inspiration_type> {
                   },
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.width10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
+                    //width: AppDimensions.width10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.8,
                     fit: BoxFit.contain,
                   )),
             ),
             //centerTitle: true,
             title: Container(
               width: AppDimensions.width10(context) * 18.9,
-              height: AppDimensions.height10(context) * 2.4,
+              height: AppDimensions.height10(context) * 2.6,
               margin:
                   EdgeInsets.only(left: AppDimensions.width10(context) * 6.6),
               child: Row(
@@ -295,8 +295,8 @@ class _inspiration_typeState extends State<inspiration_type> {
                             )),
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 2.6,
-                      height: AppDimensions.height10(context) * 2.6,
+                     // width: AppDimensions.width10(context) * 2.6,
+                      height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     )),
               )
@@ -347,7 +347,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                 ),
               ),
               Container(
-                height: AppDimensions.height10(context) * 13.3,
+                height: AppDimensions.width10(context) * 13.3,
                 //margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.6),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -363,7 +363,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 13.3,
-                          height: AppDimensions.height10(context) * 13.3,
+                          height: AppDimensions.width10(context) * 13.3,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.4,
 
@@ -453,7 +453,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 13.3,
-                          height: AppDimensions.height10(context) * 13.3,
+                          height: AppDimensions.width10(context) * 13.3,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.4),
                           decoration: const BoxDecoration(
@@ -545,7 +545,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 13.3,
-                          height: AppDimensions.height10(context) * 13.3,
+                          height: AppDimensions.width10(context) * 13.3,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.4),
                           decoration: const BoxDecoration(
@@ -636,7 +636,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 13.3,
-                          height: AppDimensions.height10(context) * 13.30,
+                          height: AppDimensions.width10(context) * 13.30,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 0.7),
                           decoration: const BoxDecoration(

@@ -154,7 +154,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                  width: AppDimensions.width10(context) * 3.0,
+                  //width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.contain,
                 ),
@@ -200,7 +200,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                       ),
                       Container(
                         width: AppDimensions.width10(context) * 20.7,
-                        height: AppDimensions.height10(context) * 7.2,
+                        height: AppDimensions.height10(context) * 7.8,
                         // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
                         child: Center(
                           child: GradientText(
@@ -260,8 +260,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                               );
                             },
                             child: Container(
-                              height: AppDimensions.height10(context) * 38.1,
-                              width: AppDimensions.width10(context) * 38.1,
+                              height: AppDimensions.height10(context) * 40.1,
+                              width: AppDimensions.width10(context) * 40.1,
                               padding: EdgeInsets.all(
                                   AppDimensions.height10(context) * 3.5),
                               // decoration: const BoxDecoration(
@@ -416,7 +416,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                     );
                                   },
                                   child: Container(
-                                      height: AppDimensions.height10(context) *
+                                      height: AppDimensions.width10(context) *
                                           14.7,
                                       width:
                                           AppDimensions.width10(context) * 14.7,
@@ -432,7 +432,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                         ? "assets/images/Ellipse light-blue.webp"
                                                         : '$pracColor' == '5'
                                                             ? "assets/images/Ellipse blue.webp"
-                                                            : 'assets/images/Ellipse 158.webp'),
+                                                            : 'assets/images/Ellipse 158.webp'), fit:BoxFit.contain,
                                       )),
                                       child: Column(
                                         mainAxisAlignment:
@@ -509,7 +509,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         ],
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 13.7,
+                        height: AppDimensions.height10(context) * 10.7,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -531,7 +531,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                   ));
                             },
                             child: Container(
-                              height: AppDimensions.height10(context) * 5,
+                              height: AppDimensions.height10(context) * 5.2,
                               width: AppDimensions.width10(context) * 31.3,
                               decoration: BoxDecoration(
                                 // color: Color(0xFFFF7D50),

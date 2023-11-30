@@ -205,53 +205,63 @@ class _GoalCategoryState extends State<GoalCategory> {
               centerTitle: true,
               backgroundColor: Colors.transparent,
               automaticallyImplyLeading: false,
-              leading: Center(
-                // alignment: Alignment.center,
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Back.webp',
-                    width: AppDimensions.width10(context) * 3,
-                    height: AppDimensions.height10(context) * 3,
-                    fit: BoxFit.contain,
-                  ),
-                  onPressed: () async {
-                    Navigator.pop(context);
-
-                    // Add code for performing close action
-                  },
+              leading: Container(
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle
                 ),
-              ),
-              actions: [
-                Center(
+                child: Center(
                   // alignment: Alignment.center,
                   child: IconButton(
                     icon: Image.asset(
-                      'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 3.0,
-                      height: AppDimensions.height10(context) * 3.0,
-                      fit: BoxFit.contain,
+                      'assets/images/Back.webp',
+                      //width: AppDimensions.width10(context) * 3,
+                      height: AppDimensions.height10(context) * 3,
+                      fit: BoxFit.cover,
                     ),
                     onPressed: () async {
-                      if (route == 'view_all_goals') {
-                        Navigator.pushReplacement(
-                            context,
-                            FadePageRouteReverse(
-                                page: const view_all_goals_menu()));
-                      } else {
-                        Navigator.pushReplacement(
-                          context,
-                          FadePageRouteReverse(
-                            page: const HomeScreen(
-                              login: true,
-                            ),
-                          ),
-                        );
-                      }
+                      Navigator.pop(context);
 
-                      final SharedPreferences prefs = await _prefs;
-                      await prefs.remove('goal_route');
                       // Add code for performing close action
                     },
+                  ),
+                ),
+              ),
+              actions: [
+                Container(
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle
+                  ),
+                  child: Center(
+                    // alignment: Alignment.center,
+                    child: IconButton(
+                      icon: Image.asset(
+                        'assets/images/Close.webp',
+                        //width: AppDimensions.width10(context) * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
+                        fit: BoxFit.contain,
+                      ),
+                      onPressed: () async {
+                        if (route == 'view_all_goals') {
+                          Navigator.pushReplacement(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const view_all_goals_menu()));
+                        } else {
+                          Navigator.pushReplacement(
+                            context,
+                            FadePageRouteReverse(
+                              page: const HomeScreen(
+                                login: true,
+                              ),
+                            ),
+                          );
+                        }
+
+                        final SharedPreferences prefs = await _prefs;
+                        await prefs.remove('goal_route');
+                        // Add code for performing close action
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -403,7 +413,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                                   circle_bordercolor:
                                                       0xFFEE8E6F,
                                                   circle_height:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.width10(
                                                               context) *
                                                           13.4,
                                                   circle_width:

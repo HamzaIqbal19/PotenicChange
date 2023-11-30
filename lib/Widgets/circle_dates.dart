@@ -19,7 +19,7 @@ class Circulardates extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: AppDimensions.width10(context) * 24.0,
-      height: AppDimensions.height10(context) * 24.0,
+      height: AppDimensions.width10(context) * 24.0,
       color: Colors.transparent,
       child: Stack(
         children: [
@@ -32,7 +32,7 @@ class Circulardates extends StatelessWidget {
           Positioned.fill(
             child: Container(
               width: AppDimensions.width10(context) * 24.0,
-              height: AppDimensions.height10(context) * 24.0,
+              height: AppDimensions.width10(context) * 24.0,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.transparent),
               child: Stack(

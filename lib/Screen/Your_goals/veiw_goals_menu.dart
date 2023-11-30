@@ -79,8 +79,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                   },
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.width10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
+                  //  width: AppDimensions.width10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.8,
                     fit: BoxFit.contain,
                   )),
             ),
@@ -147,7 +147,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               children: [
                                 SizedBox(
                                   width: AppDimensions.width10(context) * 20.6,
-                                  height: AppDimensions.height10(context) *2,
+                                  height: AppDimensions.height10(context) *2.2,
                                   child: Text(
                                     'Your goals',
                                     style: TextStyle(
@@ -186,7 +186,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             children: [
                               SizedBox(
                                 width: AppDimensions.width10(context) * 20.6,
-                                height: AppDimensions.height10(context) * 2,
+                                height: AppDimensions.height10(context) * 2.2,
                                 child: Text(
                                   'Messages (00 new)',
                                   style: TextStyle(
@@ -330,7 +330,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                 },
                                 child: SizedBox(
                                   width: AppDimensions.width10(context) * 20.6,
-                                  height: AppDimensions.height10(context) * 2,
+                                  height: AppDimensions.height10(context) * 2.2,
                                   child: Text(
                                     'Community (coming soon)',
                                     style: TextStyle(
@@ -374,7 +374,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               children: [
                                 SizedBox(
                                   width: AppDimensions.width10(context) * 20.6,
-                                  height: AppDimensions.height10(context) * 2,
+                                  height: AppDimensions.height10(context) * 2.2,
                                   child: Text(
                                     'Settings',
                                     style: TextStyle(
@@ -461,7 +461,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J1 Onboarding',
                                           style: TextStyle(
@@ -521,7 +521,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J2 Record practice session',
                                           style: TextStyle(
@@ -578,8 +578,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         width: AppDimensions.width10(context) *
                                             20.6,
                                         height:
-                                            AppDimensions.height10(context) *
-                                        2,
+                                            AppDimensions.height10(context) *2.2
+                                        ,
                                         child: Text(
                                           'J3 Your goals',
                                           style: TextStyle(
@@ -637,7 +637,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J4 Record hurdle ',
                                           style: TextStyle(
@@ -698,7 +698,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J5 Record inspiration  ',
                                           style: TextStyle(
@@ -759,7 +759,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J6 Goal evaluation',
                                           style: TextStyle(
@@ -815,7 +815,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J7 Practice evaluation',
                                           style: TextStyle(
@@ -871,7 +871,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J8 Community',
                                           style: TextStyle(
@@ -927,7 +927,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J9 Timeline',
                                           style: TextStyle(
@@ -985,7 +985,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J10 Goal achieved',
                                           style: TextStyle(
@@ -1040,7 +1040,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J11 Alerts',
                                           style: TextStyle(
@@ -1096,7 +1096,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J12 Menu & Settings',
                                           style: TextStyle(
@@ -1157,7 +1157,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J13 Dashboard behaviour',
                                           style: TextStyle(
@@ -1220,7 +1220,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J14 Helpful tips',
                                           style: TextStyle(
@@ -1275,7 +1275,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J15 Subscription ',
                                           style: TextStyle(
@@ -1330,7 +1330,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2,
+                                                2.2,
                                         child: Text(
                                           'J16 Offline mode',
                                           style: TextStyle(
@@ -1380,7 +1380,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             20.6,
                                         height:
                                             AppDimensions.height10(context) *
-                                        2,
+                                                2.2,
                                         child: Text(
                                           'Reset account to it’s default state',
                                           style: TextStyle(

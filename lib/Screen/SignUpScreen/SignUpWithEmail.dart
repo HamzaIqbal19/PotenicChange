@@ -128,7 +128,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.width10(context) * 3,
+                   // width: AppDimensions.width10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
@@ -144,7 +144,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 3.0,
+                     // width: AppDimensions.width10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
                     ),
@@ -248,7 +248,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
                                     //bottom: 15.0,
-                                    left: 10.0,
+                                    left: 20.0,
                                     right: 10.0),
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.always,
@@ -331,7 +331,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                   contentPadding: const EdgeInsets.only(
                                       top: 5.0,
                                       //bottom: 15.0,
-                                      left: 10.0,
+                                      left: 20.0,
                                       right: 10.0),
                                   floatingLabelBehavior:
                                       FloatingLabelBehavior.always,
@@ -430,7 +430,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                       contentPadding: const EdgeInsets.only(
                                           top: 5.0,
                                           bottom: 15.0,
-                                          left: 10.0,
+                                          left: 20.0,
                                           right: 10.0),
                                       alignLabelWithHint: true,
                                       floatingLabelBehavior:

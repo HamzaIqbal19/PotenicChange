@@ -219,8 +219,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 2.6,
-                      height: AppDimensions.height10(context) * 2.6,
+                      //width: AppDimensions.width10(context) * 2.6,
+                      height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     )),
               ),
@@ -367,7 +367,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         image: const DecorationImage(
                                           image: AssetImage(
                                               'assets/images/Rectangle 192.webp'),
-                                          fit: BoxFit.contain,
+                                          fit: BoxFit.cover,
                                         ))
                                     : BoxDecoration(
                                         borderRadius: BorderRadius.circular(
@@ -388,9 +388,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           : AppDimensions.width10(context) *
                                               10.1,
                                       height: goal_level == 2
-                                          ? AppDimensions.height10(context) *
+                                          ? AppDimensions.width10(context) *
                                               10.135
-                                          : AppDimensions.height10(context) *
+                                          : AppDimensions.width10(context) *
                                               10.1,
                                       margin: EdgeInsets.only(
                                           right:
@@ -541,7 +541,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 0.8),
                                         child: Image.asset(
                                           'assets/images/BTN Back.webp',
-                                          color: const Color(0xFFFFFFFF),
+                                          color: Colors.black.withOpacity(0.5),
                                           //width: AppDimensions.width10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           fit: BoxFit.cover,
@@ -782,7 +782,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   scrollDirection: Axis.horizontal,
                                   padding: EdgeInsets.symmetric(
                                       horizontal:
-                                          AppDimensions.height10(context) *
+                                          AppDimensions.width10(context) *
                                               1.7),
                                   itemCount:
                                       goalDetails['userPractices'].length,
@@ -804,7 +804,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 ['id']);
                                       },
                                       child: Container(
-                                        width: AppDimensions.width10(context) *
+                                        width: AppDimensions.height10(context) *
                                             13.8,
                                         height:
                                             AppDimensions.height10(context) *
@@ -892,7 +892,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             'prac_menu_route', 'goal_menu');
                                       },
                                       child: Container(
-                                        width: AppDimensions.width10(context) *
+                                        width: AppDimensions.height10(context) *
                                             13.8,
                                         height:
                                             AppDimensions.height10(context) *
@@ -988,7 +988,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       width:
                                           AppDimensions.width10(context) * 18.5,
                                       height:
-                                          AppDimensions.height10(context) * 2.2,
+                                          AppDimensions.height10(context) * 2.3,
                                       margin: EdgeInsets.only(
                                           left:
                                               AppDimensions.height10(context) *
@@ -1047,7 +1047,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       width:
                                           AppDimensions.width10(context) * 19.2,
                                       height:
-                                          AppDimensions.height10(context) * 2.2,
+                                          AppDimensions.height10(context) * 2.3,
                                       margin: EdgeInsets.only(
                                           left:
                                               AppDimensions.height10(context) *
@@ -1112,7 +1112,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       width:
                                           AppDimensions.width10(context) * 18.5,
                                       height:
-                                          AppDimensions.height10(context) * 2.2,
+                                          AppDimensions.height10(context) * 2.3,
                                       margin: EdgeInsets.only(
                                           left:
                                               AppDimensions.height10(context) *

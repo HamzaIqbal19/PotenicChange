@@ -145,7 +145,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                         },
                         icon: Image.asset(
                           'assets/images/Back.webp',
-                          width: AppDimensions.width10(context) * 3.0,
+                          //width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
                           fit: BoxFit.contain,
                         )),
@@ -153,7 +153,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
             centerTitle: true,
             title: Container(
               width: AppDimensions.width10(context) * 19.0,
-              height: AppDimensions.height10(context) * 2.7,
+              height: AppDimensions.height10(context) * 2.8,
               child: Row(
                 children: [
                   GradientText(
@@ -371,7 +371,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 2.6,
+                     // width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.contain,
                     )),
@@ -457,6 +457,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                               2.0),
                                       color: Colors.white),
                                   child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     //                  mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
@@ -470,9 +471,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                             top: AppDimensions.height10(
                                                     context) *
                                                 1.3,
-                                            right: AppDimensions.width10(
-                                                    context) *
-                                                16.9),
+                                        ),
                                         child: Center(
                                           child: Text(
                                             'Action / Trigger statement',

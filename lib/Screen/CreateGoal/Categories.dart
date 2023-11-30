@@ -155,7 +155,7 @@ class _CategoriesState extends State<Categories> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
-                            fontSize: AppDimensions.font10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 1.9,
                           ),
                         ),
                       ),

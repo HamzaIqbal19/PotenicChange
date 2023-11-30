@@ -966,7 +966,7 @@ class _noteSavedState extends State<noteSaved> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: AppDimensions.height10(context) * 2.2,
+                      height: AppDimensions.height10(context) * 2.4,
                       width: AppDimensions.width10(context) * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(

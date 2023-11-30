@@ -118,7 +118,7 @@ class _AllGoalsState extends State<AllGoals> {
       Navigator.push(
         context,
         FadePageRoute(
-          page: GoalName(
+          page: const GoalName(
             saved: false,
             route: '',
             4,
@@ -178,48 +178,58 @@ class _AllGoalsState extends State<AllGoals> {
             centerTitle: true,
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
-            leading: Center(
-              // alignment: Alignment.center,
-              child: IconButton(
-                icon: Image.asset(
-                  'assets/images/Back.webp',
-                  width: AppDimensions.width10(context) * 3,
-                  height: AppDimensions.height10(context) * 3,
-                  fit: BoxFit.contain,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                  // Add code for performing close action
-                },
+            leading: Container(
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle
               ),
-            ),
-            actions: [
-              Center(
+              child: Center(
                 // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
-                    'assets/images/Close.webp',
-                    width: AppDimensions.width10(context) * 3.0,
-                    height: AppDimensions.height10(context) * 3.0,
+                    'assets/images/Back.webp',
+                   // width: AppDimensions.width10(context) * 3,
+                    height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      FadePageRouteReverse(
-                        page: const HomeScreen(
-                          login: true,
-                        ),
-                      ),
-                    );
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => HomeScreen(),
-                    //   ),
-                    // );
+                    Navigator.pop(context);
                     // Add code for performing close action
                   },
+                ),
+              ),
+            ),
+            actions: [
+              Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle
+                ),
+                child: Center(
+                  // alignment: Alignment.center,
+                  child: IconButton(
+                    icon: Image.asset(
+                      'assets/images/Close.webp',
+                      //width: AppDimensions.width10(context) * 3.0,
+                      height: AppDimensions.height10(context) * 2.8,
+                      fit: BoxFit.contain,
+                    ),
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRouteReverse(
+                          page: const HomeScreen(
+                            login: true,
+                          ),
+                        ),
+                      );
+                      // Navigator.pushReplacement(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => HomeScreen(),
+                      //   ),
+                      // );
+                      // Add code for performing close action
+                    },
+                  ),
                 ),
               ),
             ],
@@ -466,7 +476,7 @@ class _AllGoalsState extends State<AllGoals> {
                                                                   0xFFEE8E6F,
                                                               circle_height:
                                                                   AppDimensions
-                                                                          .height10(
+                                                                          .width10(
                                                                               context) *
                                                                       13.4,
                                                               circle_width:

@@ -228,7 +228,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                         },
                         icon: Image.asset(
                           'assets/images/Back.webp',
-                          width: AppDimensions.width10(context) * 3.0,
+                         // width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
                           fit: BoxFit.contain,
                         )),
@@ -236,7 +236,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
             centerTitle: true,
             title: SizedBox(
               width: AppDimensions.width10(context) * 19.0,
-              height: AppDimensions.height10(context) * 2.7,
+              height: AppDimensions.height10(context) * 2.8,
               child: Row(
                 children: [
                   GradientText(
@@ -454,7 +454,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: AppDimensions.width10(context) * 2.6,
+                    //  width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.contain,
                     )),
@@ -512,7 +512,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                   Container(
                                       width:
                                           AppDimensions.width10(context) * 18.1,
-                                      height: AppDimensions.height10(context) *
+                                      height: AppDimensions.width10(context) *
                                           18.1,
                                       margin: EdgeInsets.only(
                                           bottom:
@@ -623,7 +623,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
-                                                            1.4,
+                                                            1.6,
                                                     fontWeight: FontWeight.w400,
                                                     color: Colors.white),
                                                 focusedBorder:
@@ -642,7 +642,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                 decorationThickness: 0,
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.4,
+                                                    1.6,
                                                 fontWeight: FontWeight.w400,
                                                 color: Colors.white),
                                           ),

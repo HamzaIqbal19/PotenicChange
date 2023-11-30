@@ -179,8 +179,8 @@ class _missed_MenuState extends State<missed_Menu> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                      width: 26,
-                      height: 26,
+                      width: AppDimensions.height10(context)*2.8,
+                      height: AppDimensions.height10(context)*2.8,
                       fit: BoxFit.contain,
                     )),
               )
@@ -201,7 +201,7 @@ class _missed_MenuState extends State<missed_Menu> {
                     children: [
                       Container(
                         width: AppDimensions.width10(context) * 30.4,
-                        height: AppDimensions.height10(context) * 18.6,
+                        height: AppDimensions.height10(context) * 18.9,
                         // color: Colors.grey.withOpacity(0.5),
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 5.0,

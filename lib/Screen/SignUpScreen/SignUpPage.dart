@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                  width: AppDimensions.width10(context) * 2.8,
+                 // width: AppDimensions.width10(context) * 2.8,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 ),
@@ -140,7 +140,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                 ),
                 SizedBox(height: AppDimensions.height10(context) + 1),
                 Container(
-                    height: AppDimensions.height10(context) * 4.4,
+                    height: AppDimensions.height10(context) * 4.6,
                     width: AppDimensions.width10(context) * 35.3,
                     child: Text(
                       'Your Personalised Journey To Better \n  Self Starts Here',
@@ -284,7 +284,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                     ],
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10(context) * 28.4),
+                SizedBox(height: AppDimensions.height10(context) * 28.2),
                 GestureDetector(
                   onTapDown: (TapDownDetails details) {
                     _controller.forward();

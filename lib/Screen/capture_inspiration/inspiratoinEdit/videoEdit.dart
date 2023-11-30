@@ -537,7 +537,7 @@ class video_EditState extends State<videoEdit> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            height: AppDimensions.height10(context) * 2.2,
+                            height: AppDimensions.height10(context) * 2.3,
                             width: AppDimensions.width10(context) * 30.5,
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
@@ -611,7 +611,7 @@ class video_EditState extends State<videoEdit> {
                           inspirationDetails['inspiration']['inspirationId'] !=
                                   2
                               ? Container(
-                                  height: AppDimensions.height10(context) * 2.1,
+                                  height: AppDimensions.height10(context) * 2.3,
                                   width: AppDimensions.width10(context) * 30.5,
                                   alignment: Alignment.centerLeft,
                                   margin: EdgeInsets.only(
@@ -779,7 +779,7 @@ class video_EditState extends State<videoEdit> {
                                 )
                               : Container(),
                           Container(
-                            height: AppDimensions.height10(context) * 2.2,
+                            height: AppDimensions.height10(context) * 2.3,
                             width: AppDimensions.width10(context) * 30.5,
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(

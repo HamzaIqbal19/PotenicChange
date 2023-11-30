@@ -163,7 +163,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.width10(context) * 3,
+                 // width: AppDimensions.width10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
@@ -197,7 +197,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                     : IconButton(
                         icon: Image.asset(
                           'assets/images/Close.webp',
-                          width: AppDimensions.width10(context) * 3.0,
+                         // width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
                           fit: BoxFit.contain,
                         ),
@@ -856,7 +856,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 fontFamily: "Laila",
                                 height: AppDimensions.height10(context) * 0.14,
                                 color: const Color(0xFFFFFFFF),
-                                fontSize: AppDimensions.font10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.7,
                               ),
                             ),
                           )
@@ -974,7 +974,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 fontFamily: "Laila",
                                 height: AppDimensions.height10(context) * 0.14,
                                 color: const Color(0xFFFFFFFF),
-                                fontSize: AppDimensions.font10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.7,
                               ),
                             ),
                           )
@@ -1297,7 +1297,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 }
                               },
                               child: Container(
-                                height: AppDimensions.height10(context) * 5,
+                                height: AppDimensions.height10(context) * 5.2,
                                 width: widget.comingFromEditScreen
                                     ? AppDimensions.width10(context) * 26.3
                                     : AppDimensions.width10(context) * 31.3,

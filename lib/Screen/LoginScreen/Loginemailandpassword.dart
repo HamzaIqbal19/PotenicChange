@@ -139,9 +139,9 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Back.webp',
-                      width: AppDimensions.width10(context) * 3,
+                      //width: AppDimensions.width10(context) * 3,
                       height: AppDimensions.height10(context) * 3,
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                     ),
                     onPressed: () {
                       Navigator.pushReplacement(
@@ -160,9 +160,9 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                     child: IconButton(
                       icon: Image.asset(
                         'assets/images/Close.webp',
-                        width: AppDimensions.width10(context) * 3.0,
+                        //width: AppDimensions.width10(context) * 3.0,
                         height: AppDimensions.height10(context) * 3.0,
-                        fit: BoxFit.contain,
+                        fit: BoxFit.cover,
                       ),
                       onPressed: () {
                         Navigator.pushReplacement(
@@ -562,7 +562,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                           color: const Color(0xFFFFFFFF),
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.4,
+                                                  1.5,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),

@@ -29,7 +29,7 @@ class _edit_credentialsState extends State<edit_credentials> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.width10(context) * 2.6,
+               // width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.contain,
               )),
@@ -74,11 +74,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                       width: AppDimensions.width10(context) * 35.7,
                       height: AppDimensions.height10(context) * 1.9,
                       margin: EdgeInsets.only(
-<<<<<<< Updated upstream
-                        left: AppDimensions.height10(context) * 2.4,
-=======
                         left: AppDimensions.width10(context) * 2.4,
->>>>>>> Stashed changes
                         right: AppDimensions.width10(context) * 3.6,
                         top: AppDimensions.height10(context) * 6.5,
                       ),
@@ -99,11 +95,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                         : AppDimensions.height10(context) * 8.6,
                 width: AppDimensions.width10(context) * 36.0,
                 margin: EdgeInsets.only(
-<<<<<<< Updated upstream
-                    left: AppDimensions.height10(context) * 1.8,
-=======
                     left: AppDimensions.width10(context) * 1.8,
->>>>>>> Stashed changes
                     right: AppDimensions.width10(context) * 3.6,
                     top: widget.email
                         ? AppDimensions.height10(context) * 4.1

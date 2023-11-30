@@ -127,7 +127,7 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: AppDimensions.height10(context) * 2.3,
+                height: AppDimensions.width10(context) * 2.3,
                 width: AppDimensions.width10(context) * 2.3,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100.0),

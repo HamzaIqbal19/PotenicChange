@@ -58,8 +58,8 @@ class _clocksState extends State<clocks> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.width10(context) * 2.6,
-                height: AppDimensions.height10(context) * 2.6,
+               // width: AppDimensions.width10(context) * 2.6,
+                height: AppDimensions.height10(context) * 2.8,
                 fit: BoxFit.contain,
               )),
         ),
@@ -184,8 +184,8 @@ class _clocksState extends State<clocks> {
                 },
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                  width: AppDimensions.width10(context) * 2.6,
-                  height: AppDimensions.height10(context) * 2.6,
+                 // width: AppDimensions.width10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
           )
@@ -230,7 +230,7 @@ class _clocksState extends State<clocks> {
                   'You can use our timer to\nrecord your practice',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      height: AppDimensions.height10(context) * 0.12,
+                      height: AppDimensions.height10(context) * 0.16,
                       fontSize: AppDimensions.font10(context) * 2.8,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
@@ -657,7 +657,7 @@ class _watch_timeState extends State<watch_time> {
               ),
               //reset button
               Positioned(
-                right: AppDimensions.width10(context) * 2.7,
+                right: AppDimensions.width10(context) * 3.78,
                 bottom: AppDimensions.height10(context) * 5.6,
                 child: AnimatedScaleButton(
                   onTap: () {
@@ -674,7 +674,7 @@ class _watch_timeState extends State<watch_time> {
                     }
                   },
                   child: Container(
-                    height: AppDimensions.height10(context) * 5.6,
+                    height: AppDimensions.width10(context) * 5.6,
                     width: AppDimensions.width10(context) * 5.6,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -728,13 +728,13 @@ class _watch_timeState extends State<watch_time> {
   // Function to build the container for the timerPicker
   Widget _buildContainer(Widget picker) {
     return Container(
-      height: AppDimensions.height10(context) * 30.5,
+      height: AppDimensions.height10(context) * 34,
       padding: const EdgeInsets.only(top: 6),
       color: CupertinoColors.white,
       child: Column(
         children: [
           SizedBox(
-            height: AppDimensions.height10(context) * 3.8,
+            height: AppDimensions.height10(context) * 3.9,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -746,12 +746,12 @@ class _watch_timeState extends State<watch_time> {
                     });
                     Navigator.pop(context);
                   },
-                  child: const Text(
+                  child:  Text(
                     'Cancel',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: AppDimensions.font10(context)*1.6,
                       fontWeight: FontWeight.w400,
-                      color: Color(0xff2F80ED),
+                      color: const Color(0xff2F80ED),
                     ),
                   ),
                 ),
@@ -763,12 +763,12 @@ class _watch_timeState extends State<watch_time> {
                     });
                     Navigator.pop(context);
                   },
-                  child: const Text(
+                  child:  Text(
                     'Done',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: AppDimensions.font10(context)*1.6,
                       fontWeight: FontWeight.w400,
-                      color: Color(0xff2F80ED),
+                      color: const Color(0xff2F80ED),
                     ),
                   ),
                 ),

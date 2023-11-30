@@ -311,7 +311,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.width10(context) * 3,
+                    //width: AppDimensions.width10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
@@ -352,7 +352,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       : IconButton(
                           icon: Image.asset(
                             'assets/images/Close.webp',
-                            width: AppDimensions.width10(context) * 3.0,
+                            //width: AppDimensions.width10(context) * 3.0,
                             height: AppDimensions.height10(context) * 3.0,
                             fit: BoxFit.contain,
                           ),
@@ -1110,7 +1110,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             : MediaQuery.of(context).viewInsets.bottom == 0
                                 ? SizedBox(
                                     height:
-                                        AppDimensions.height10(context) * 24.4,
+                                        AppDimensions.height10(context) * 22.4,
                                   )
                                 : SizedBox(
                                     height:
@@ -1400,7 +1400,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                     },
                                     child: Container(
                                       height:
-                                          AppDimensions.height10(context) * 5,
+                                          AppDimensions.height10(context) * 5.2,
                                       width: widget.comingFromEditScreen
                                           ? AppDimensions.width10(context) *
                                               26.3

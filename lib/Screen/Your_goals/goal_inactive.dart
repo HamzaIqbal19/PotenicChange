@@ -33,7 +33,7 @@ class _goal_inactiveState extends State<goal_inactive> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-                width: AppDimensions.width10(context) * 2.6,
+              //  width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.contain,
               )),

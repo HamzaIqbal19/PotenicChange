@@ -225,7 +225,7 @@ class _GoalNameState extends State<GoalName> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                    width: AppDimensions.width10(context) * 3,
+                    //width: AppDimensions.width10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
@@ -263,7 +263,7 @@ class _GoalNameState extends State<GoalName> {
                       : IconButton(
                           icon: Image.asset(
                             'assets/images/Close.webp',
-                            width: AppDimensions.width10(context) * 3.0,
+                           // width: AppDimensions.width10(context) * 3.0,
                             height: AppDimensions.height10(context) * 3.0,
                             fit: BoxFit.contain,
                           ),
@@ -885,7 +885,7 @@ class _GoalNameState extends State<GoalName> {
                                     }
                                   },
                                   child: Container(
-                                    height: AppDimensions.height10(context) * 5,
+                                    height: AppDimensions.height10(context) * 5.2,
                                     width:
                                         AppDimensions.width10(context) * 31.3,
                                     decoration: value.text.isNotEmpty

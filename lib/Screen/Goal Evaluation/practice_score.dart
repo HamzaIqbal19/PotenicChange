@@ -350,7 +350,7 @@ class _prac_scoreState extends State<prac_score> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                  width: AppDimensions.width10(context) * 3.0,
+                 // width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.contain,
                 )),
@@ -456,7 +456,7 @@ class _prac_scoreState extends State<prac_score> {
                                 ),
                                 Container(
                                   width: AppDimensions.width10(context) * 8.7,
-                                  height: AppDimensions.height10(context) * 8.7,
+                                  height: AppDimensions.width10(context) * 8.7,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
                                           3.2),
@@ -476,7 +476,7 @@ class _prac_scoreState extends State<prac_score> {
                                             3.4,
                                         height:
                                             AppDimensions.height10(context) *
-                                                1.3,
+                                                1.6,
                                         child: Text(
                                           'Level',
                                           textAlign: TextAlign.center,
@@ -530,7 +530,7 @@ class _prac_scoreState extends State<prac_score> {
                                 ),
                                 Container(
                                   width: AppDimensions.width10(context) * 28.8,
-                                  height: AppDimensions.height10(context) * 4.2,
+                                  height: AppDimensions.height10(context) * 4.5,
                                   alignment: Alignment.topCenter,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -583,7 +583,7 @@ class _prac_scoreState extends State<prac_score> {
                                 ),
                                 Container(
                                   width: AppDimensions.width10(context) * 37.0,
-                                  height: AppDimensions.height10(context) * 4.9,
+                                  height: AppDimensions.height10(context) * 5.3,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
                                           1.3),
@@ -602,7 +602,7 @@ class _prac_scoreState extends State<prac_score> {
                           ),
                           Container(
                               width: double.infinity,
-                              height: AppDimensions.height10(context) * 16.3,
+                              height: AppDimensions.width10(context) * 16.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 4.0,
                                   left:
@@ -631,7 +631,7 @@ class _prac_scoreState extends State<prac_score> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     12.95,
-                                            height: AppDimensions.height10(
+                                            height: AppDimensions.width10(
                                                     context) *
                                                 12.95,
                                             margin: EdgeInsets.only(
@@ -663,11 +663,11 @@ class _prac_scoreState extends State<prac_score> {
                                             ),
                                             child: Center(
                                               child: Container(
-                                                width: AppDimensions.height10(
+                                                width: AppDimensions.width10(
                                                             context) *
                                                         12.95 -
                                                     4,
-                                                height: AppDimensions.height10(
+                                                height: AppDimensions.width10(
                                                             context) *
                                                         12.95 -
                                                     4,
@@ -750,11 +750,11 @@ class _prac_scoreState extends State<prac_score> {
                                                     const Alignment(0, 0.8),
                                                 widthFactor: 3.35,
                                                 child: Container(
-                                                  width: AppDimensions.height10(
+                                                  width: AppDimensions.width10(
                                                           context) *
                                                       4.0,
                                                   height:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.width10(
                                                               context) *
                                                           4.0,
                                                   decoration: BoxDecoration(
@@ -806,7 +806,7 @@ class _prac_scoreState extends State<prac_score> {
                                 ),
                                 Container(
                                   width: AppDimensions.width10(context) * 37.0,
-                                  height: AppDimensions.height10(context) * 5.1,
+                                  height: AppDimensions.height10(context) * 5.3,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
                                           1.3),
@@ -845,7 +845,7 @@ class _prac_scoreState extends State<prac_score> {
                           ),
                           Container(
                               width: double.infinity,
-                              height: AppDimensions.height10(context) * 16.3,
+                              height: AppDimensions.width10(context) * 16.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 4.0,
                                   left:
@@ -874,7 +874,7 @@ class _prac_scoreState extends State<prac_score> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     12.95,
-                                            height: AppDimensions.height10(
+                                            height: AppDimensions.width10(
                                                     context) *
                                                 12.95,
                                             margin: EdgeInsets.only(
@@ -906,11 +906,11 @@ class _prac_scoreState extends State<prac_score> {
                                             ),
                                             child: Center(
                                               child: Container(
-                                                width: AppDimensions.height10(
+                                                width: AppDimensions.width10(
                                                             context) *
                                                         12.95 -
                                                     4,
-                                                height: AppDimensions.height10(
+                                                height: AppDimensions.width10(
                                                             context) *
                                                         12.95 -
                                                     4,
@@ -993,11 +993,11 @@ class _prac_scoreState extends State<prac_score> {
                                                     const Alignment(0, 0.8),
                                                 widthFactor: 3.35,
                                                 child: Container(
-                                                  width: AppDimensions.height10(
+                                                  width: AppDimensions.width10(
                                                           context) *
                                                       4.0,
                                                   height:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.width10(
                                                               context) *
                                                           4.0,
                                                   decoration: BoxDecoration(
@@ -1028,7 +1028,7 @@ class _prac_scoreState extends State<prac_score> {
                           ),
                           Container(
                             width: AppDimensions.width10(context) * 37.0,
-                            height: AppDimensions.height10(context) * 11.9,
+                            height: AppDimensions.height10(context) * 12.9,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.2),
                             child: Column(
@@ -1069,7 +1069,7 @@ class _prac_scoreState extends State<prac_score> {
                           ),
                           Container(
                               width: double.infinity,
-                              height: AppDimensions.height10(context) * 16.3,
+                              height: AppDimensions.width10(context) * 16.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 4.0,
                                   left:
@@ -1098,7 +1098,7 @@ class _prac_scoreState extends State<prac_score> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     12.95,
-                                            height: AppDimensions.height10(
+                                            height: AppDimensions.width10(
                                                     context) *
                                                 12.95,
                                             margin: EdgeInsets.only(
@@ -1130,11 +1130,11 @@ class _prac_scoreState extends State<prac_score> {
                                             ),
                                             child: Center(
                                               child: Container(
-                                                width: AppDimensions.height10(
+                                                width: AppDimensions.width10(
                                                             context) *
                                                         12.95 -
                                                     4,
-                                                height: AppDimensions.height10(
+                                                height: AppDimensions.width10(
                                                             context) *
                                                         12.95 -
                                                     4,
@@ -1217,11 +1217,11 @@ class _prac_scoreState extends State<prac_score> {
                                                     const Alignment(0, 0.8),
                                                 widthFactor: 3.35,
                                                 child: Container(
-                                                  width: AppDimensions.height10(
+                                                  width: AppDimensions.width10(
                                                           context) *
                                                       4.0,
                                                   height:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.width10(
                                                               context) *
                                                           4.0,
                                                   decoration: BoxDecoration(
@@ -1293,7 +1293,7 @@ class _prac_scoreState extends State<prac_score> {
                           ),
                           Container(
                               width: double.infinity,
-                              height: AppDimensions.height10(context) * 16.3,
+                              height: AppDimensions.width10(context) * 16.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 4.0,
                                   left:
@@ -1322,7 +1322,7 @@ class _prac_scoreState extends State<prac_score> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     12.95,
-                                            height: AppDimensions.height10(
+                                            height: AppDimensions.width10(
                                                     context) *
                                                 12.95,
                                             margin: EdgeInsets.only(
@@ -1354,11 +1354,11 @@ class _prac_scoreState extends State<prac_score> {
                                             ),
                                             child: Center(
                                               child: Container(
-                                                width: AppDimensions.height10(
+                                                width: AppDimensions.width10(
                                                             context) *
                                                         12.95 -
                                                     4,
-                                                height: AppDimensions.height10(
+                                                height: AppDimensions.width10(
                                                             context) *
                                                         12.95 -
                                                     4,
@@ -1441,11 +1441,11 @@ class _prac_scoreState extends State<prac_score> {
                                                     const Alignment(0, 0.8),
                                                 widthFactor: 3.35,
                                                 child: Container(
-                                                  width: AppDimensions.height10(
+                                                  width: AppDimensions.width10(
                                                           context) *
                                                       4.0,
                                                   height:
-                                                      AppDimensions.height10(
+                                                      AppDimensions.width10(
                                                               context) *
                                                           4.0,
                                                   decoration: BoxDecoration(
