@@ -167,7 +167,7 @@ class _practice_summaryState extends State<practice_summary> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                //  width: AppDimensions.width10(context) * 2.6,
+                  //  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
@@ -215,8 +215,8 @@ class _practice_summaryState extends State<practice_summary> {
                                           AppDimensions.height10(context) * 1.9,
                                       left:
                                           AppDimensions.height10(context) * 1.6,
-                                      right: AppDimensions.width10(context) *
-                                          1.6),
+                                      right:
+                                          AppDimensions.width10(context) * 1.6),
                                   height: AppDimensions.height10(context) * 3.2,
                                   width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
@@ -299,7 +299,7 @@ class _practice_summaryState extends State<practice_summary> {
                         },
                         icon: Image.asset(
                           'assets/images/Close.webp',
-                         // width: AppDimensions.width10(context) * 2.6,
+                          // width: AppDimensions.width10(context) * 2.6,
                           height: AppDimensions.height10(context) * 2.8,
                           fit: BoxFit.contain,
                         )),
@@ -900,15 +900,15 @@ class _practice_summaryState extends State<practice_summary> {
                                   bottom:
                                       AppDimensions.height10(context) * 0.5),
                               child: Text(
-                                 Session == 1
-                                        ? 'Found it\ndifficult'
-                                        : Session == 2
-                                            ? 'Had distractins,\nit was hard to\nfocus'
-                                            : Session == 3
-                                                ? 'It was ok'
-                                                : Session == 4
-                                                    ? 'Good, I liked\nit'
-                                                    : 'Great,\nin the zone.',
+                                Session == 1
+                                    ? 'Found it\ndifficult'
+                                    : Session == 2
+                                        ? 'Had distractins,\nit was hard to\nfocus'
+                                        : Session == 3
+                                            ? 'It was ok'
+                                            : Session == 4
+                                                ? 'Good, I liked\nit'
+                                                : 'Great,\nin the zone.',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
