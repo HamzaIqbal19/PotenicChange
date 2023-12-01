@@ -203,7 +203,7 @@ class _practiceMenuState extends State<practiceMenu> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                 // width: AppDimensions.width10(context) * 2.6,
+                  // width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
@@ -235,7 +235,7 @@ class _practiceMenuState extends State<practiceMenu> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.8,
                     fit: BoxFit.contain,
                   )),
@@ -948,6 +948,7 @@ void info_sheet(context) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
+    backgroundColor: Colors.transparent,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
       top: Radius.circular(AppDimensions.height10(context) * 2.0),
@@ -956,18 +957,22 @@ void info_sheet(context) {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.width10(context) * 41.4,
-          height: AppDimensions.height10(context) * 57.7,
+          width: AppDimensions.width10(context) * 40,
+          // height: AppDimensions.height10(context) * 62.3,
+          padding: EdgeInsets.only(bottom: AppDimensions.height10(context) * 3),
+          margin: EdgeInsets.only(
+              left: AppDimensions.width10(context) * 1.0,
+              right: AppDimensions.width10(context) * 1.0,
+              bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(AppDimensions.height10(context) * 2.0),
-              ),
+              borderRadius:
+                  BorderRadius.circular(AppDimensions.height10(context) * 2.0),
               color: const Color(0xFFF5F5F5)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
             //  mainAxisAlignment: MainAxisAlignment.start,
             //  crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 //color: Colors.amber,
@@ -1011,13 +1016,13 @@ void info_sheet(context) {
                   'Practice Assessment',
                   style: TextStyle(
                       fontSize: AppDimensions.font10(context) * 2.8,
-                      letterSpacing: AppDimensions.height10(context) * 0.2,
+                      // letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.width10(context) * 36.7,
+                width: AppDimensions.width10(context) * 33.2,
                 //height: AppDimensions.height10(context) * 26.9,
                 //color: Colors.grey,
                 margin: EdgeInsets.only(
@@ -1027,8 +1032,9 @@ void info_sheet(context) {
                   text: TextSpan(
                       style: TextStyle(
                           fontFamily: 'laila',
-                          fontSize: AppDimensions.font10(context) * 1.47,
+                          fontSize: AppDimensions.font10(context) * 1.6,
                           height: AppDimensions.height10(context) * 0.15,
+
                           //  letterSpacing: AppDimensions.height10(context),
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF437296)),

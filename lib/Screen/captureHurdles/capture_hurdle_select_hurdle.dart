@@ -403,7 +403,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                     // width: AppDimensions.width10(context) * 2.6,
+                      // width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.contain,
                     )),
@@ -434,7 +434,8 @@ class _select_hurdleState extends State<select_hurdle> {
                                 'What or who has\ntriggered your hurdle?',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  height: AppDimensions.height10(context)*0.15,
+                                  height:
+                                      AppDimensions.height10(context) * 0.15,
                                   fontSize: AppDimensions.font10(context) * 2.8,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -481,21 +482,14 @@ class _select_hurdleState extends State<select_hurdle> {
                                             'hurdleName',
                                             hurdlesList[index]['hurdleName']);
 
-                                        var hurdleId = prefs.setInt(
-                                            'hurdleId',
-                                            index == 0
-                                                ? hurdlesList[0]['id']
-                                                : hurdlesList[index - 1]['id']);
+                                        var hurdleId = prefs.setInt('hurdleId',
+                                            hurdlesList[index]['id']);
                                         setState(() {
                                           selectBox = index;
                                         });
                                         if (widget.update == true) {
-                                          Hurdles().updateHurdle(
-                                              'hurdleId',
-                                              index == 0
-                                                  ? hurdlesList[0]['id']
-                                                  : hurdlesList[index - 1]
-                                                      ['id']);
+                                          Hurdles().updateHurdle('hurdleId',
+                                              hurdlesList[index]['id']);
                                         }
                                       },
                                       child: Container(

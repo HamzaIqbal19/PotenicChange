@@ -46,8 +46,9 @@ class _summary_hurdlesState extends State<summary_hurdles> {
       if (response.length != 0) {
         setState(() {
           hurdlesSummary = response['hurdle'];
-          hurdleCat = response['hurdle']['hurdleId'];
+          hurdleCat = response['hurdle']['hurdleId'] - 1;
         });
+
         loadData();
         return response;
       } else {
@@ -64,6 +65,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
         setState(() {
           hurdlesList = response['hurdle'];
         });
+
         _fetchHurdleSummary();
         return response;
       } else {
@@ -115,7 +117,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                         },
                         icon: Image.asset(
                           'assets/images/Back.webp',
-                         // width: AppDimensions.width10(context) * 3.0,
+                          // width: AppDimensions.width10(context) * 3.0,
                           height: AppDimensions.height10(context) * 3.0,
                           fit: BoxFit.contain,
                         )),
@@ -133,7 +135,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                           },
                           icon: Image.asset(
                             'assets/images/Close.webp',
-                           // width: AppDimensions.width10(context) * 2.6,
+                            // width: AppDimensions.width10(context) * 2.6,
                             height: AppDimensions.height10(context) * 2.6,
                             fit: BoxFit.contain,
                           )),
@@ -367,7 +369,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                       ),
                       Container(
                         width: AppDimensions.width10(context) * 32.6,
-                        height: AppDimensions.height10(context) * 5.6 ,
+                        height: AppDimensions.height10(context) * 5.6,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 3.0),
                         child: Center(
@@ -618,14 +620,14 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                               .height10(
                                                                   context) *
                                                           1.5,
-                                                      left: AppDimensions
-                                                              .width10(
+                                                      left:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          1.6,
-                                                      right: AppDimensions
-                                                              .width10(
+                                                              1.6,
+                                                      right:
+                                                          AppDimensions.width10(
                                                                   context) *
-                                                          1.6),
+                                                              1.6),
                                                   height:
                                                       AppDimensions.height10(
                                                               context) *

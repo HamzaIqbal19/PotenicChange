@@ -75,8 +75,11 @@ class Authentication {
 
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
+      print("Loginin response $response");
       var accesstoken = prefs.setString('usertoken', response["accessToken"]);
       var UserId = prefs.setInt('userid', response['id']);
+      var userName = prefs.setString('userName', response['name']);
+      var UseruserEmail = prefs.setString('userEmail', response['email']);
       var RefreshToken =
           prefs.setString("refreshtoken", response["sessionToken"]);
       var subscription =

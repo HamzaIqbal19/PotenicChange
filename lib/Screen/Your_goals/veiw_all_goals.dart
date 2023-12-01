@@ -88,7 +88,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                //  width: AppDimensions.width10(context) * 2.6,
+                  //  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
@@ -201,9 +201,8 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                     height:
                                         AppDimensions.height10(context) * 3.5,
                                     margin: EdgeInsets.only(
-
-                                      right: AppDimensions.width10(context) *
-                                          15.0,
+                                      right:
+                                          AppDimensions.width10(context) * 15.0,
                                       top:
                                           AppDimensions.height10(context) * 1.5,
                                     ),
@@ -834,11 +833,12 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                         ),
                                         GestureDetector(
                                           onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                FadePageRoute(
-                                                    page:
-                                                        const goal_prac_info()));
+                                            prac_info_sheet(context);
+                                            // Navigator.push(
+                                            //     context,
+                                            //     FadePageRoute(
+                                            //         page:
+                                            //             const goal_prac_info()));
                                           },
                                           child: Align(
                                             alignment: const Alignment(0.92, 0),
@@ -1186,7 +1186,6 @@ showBreakcomm(BuildContext context) {
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
             right: AppDimensions.width10(context) * 1.6,
-
             left: AppDimensions.width10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
@@ -1204,7 +1203,6 @@ showBreakcomm(BuildContext context) {
       content: Container(
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
-
             left: AppDimensions.width10(context) * 1.6,
             right: AppDimensions.width10(context) * 1.6),
         height: AppDimensions.height10(context) * 3.3,

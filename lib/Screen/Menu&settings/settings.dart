@@ -17,8 +17,30 @@ import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
   const Settings({super.key});
+
+  @override
+  State<Settings> createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  String userName = 'Jane';
+  String userEmail = 'jane.Smith@email.com';
+
+  getUser() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      userName = prefs.getString('userName') ?? 'Jane';
+      userEmail = prefs.getString('userEmail') ?? 'jane.Smith@email.com';
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +58,7 @@ class Settings extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-               // width: AppDimensions.width10(context) * 2.6,
+                // width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.contain,
               )),
@@ -159,7 +181,7 @@ class Settings extends StatelessWidget {
                                                     context) *
                                                 2.1,
                                             child: Text(
-                                              'Jane',
+                                              userName,
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.font10(
@@ -259,7 +281,7 @@ class Settings extends StatelessWidget {
                                                     context) *
                                                 2.1,
                                             child: Text(
-                                              'jane.Smith@email.com',
+                                              userEmail,
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.font10(
@@ -1360,7 +1382,7 @@ class About_us extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-               // width: AppDimensions.width10(context) * 2.6,
+                // width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.contain,
               )),

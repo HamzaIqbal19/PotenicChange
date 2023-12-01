@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Menu&settings/success.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
@@ -14,7 +15,26 @@ class edit_credentials extends StatefulWidget {
   State<edit_credentials> createState() => _edit_credentialsState();
 }
 
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
 class _edit_credentialsState extends State<edit_credentials> {
+  String userName = 'Jane';
+  String userEmail = 'jane.Smith@email.com';
+
+  getUser() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      userName = prefs.getString('userName') ?? 'Jane';
+      userEmail = prefs.getString('userEmail') ?? 'jane.Smith@email.com';
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +49,7 @@ class _edit_credentialsState extends State<edit_credentials> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-               // width: AppDimensions.width10(context) * 2.6,
+                // width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.contain,
               )),
@@ -115,7 +135,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                   bottom: AppDimensions.height10(context) * 1.3,
                                   left: AppDimensions.width10(context) * 0.6),
                               child: Text(
-                                'Your current email address is\njane.smith@gmail.com',
+                                'Your current email address is\n$userEmail',
                                 style: TextStyle(
                                   color: const Color(0xFFFBFBFB),
                                   height:
@@ -269,8 +289,8 @@ class _edit_credentialsState extends State<edit_credentials> {
                                     floatingLabelBehavior:
                                         FloatingLabelBehavior.always,
                                     hintText: widget.password_edit
-                                        ? "john.smith@yahoo.com"
-                                        : "Jane",
+                                        ? userEmail
+                                        : userName,
                                     hintStyle: TextStyle(
                                       color: const Color(0xFF8C648A),
                                       fontWeight: FontWeight.w600,
@@ -308,8 +328,8 @@ class _edit_credentialsState extends State<edit_credentials> {
                                   height: AppDimensions.height10(context) * 1.7,
                                   alignment: Alignment.centerLeft,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.width10(context) *
-                                          1.0),
+                                      left:
+                                          AppDimensions.width10(context) * 1.0),
                                   child: Text(
                                     "First name is required",
                                     style: TextStyle(

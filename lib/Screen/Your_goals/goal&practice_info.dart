@@ -18,7 +18,6 @@ class goal_prac_info extends StatefulWidget {
 }
 
 class _goal_prac_infoState extends State<goal_prac_info> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -26,10 +25,10 @@ class _goal_prac_infoState extends State<goal_prac_info> {
     getBottomSheet();
   }
 
-  getBottomSheet(){
+  getBottomSheet() {
     Timer(Duration(seconds: 5), () {
       prac_info_sheet(context);
-     });
+    });
   }
 
   @override
@@ -45,7 +44,7 @@ class _goal_prac_infoState extends State<goal_prac_info> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-               // width: AppDimensions.width10(context) * 2.6,
+                // width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.contain,
               )),
@@ -129,7 +128,7 @@ class _goal_prac_infoState extends State<goal_prac_info> {
       //   elevation: 0,
       //   child: Container(
       //       width: AppDimensions.width10(context) * 40,
-            
+
       //      padding: EdgeInsets.only(bottom: AppDimensions.height10(context)*3),
       //     margin: EdgeInsets.only(
 
@@ -274,7 +273,6 @@ class _goal_prac_infoState extends State<goal_prac_info> {
       //         ],
       //       )),
       // ),
-    
     );
   }
 }
@@ -294,10 +292,8 @@ void prac_info_sheet(context) {
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
           width: AppDimensions.width10(context) * 40,
-          
-          padding: EdgeInsets.only(bottom: AppDimensions.height10(context)*3),
+          padding: EdgeInsets.only(bottom: AppDimensions.height10(context) * 3),
           margin: EdgeInsets.only(
-
               left: AppDimensions.width10(context) * 1.0,
               right: AppDimensions.width10(context) * 1.0,
               bottom: AppDimensions.height10(context) * 1.0),
@@ -309,7 +305,7 @@ void prac_info_sheet(context) {
             // alignment: AlignmentDirectional.topCenter,
             //  mainAxisAlignment: MainAxisAlignment.start,
             //  crossAxisAlignment: CrossAxisAlignment.center,
-             mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 //color: Colors.amber,
@@ -359,8 +355,7 @@ void prac_info_sheet(context) {
                 ),
               ),
               Container(
-                height: AppDimensions.height10(context) * 29.9,
-                width: AppDimensions.width10(context) * 32.7,
+                width: AppDimensions.width10(context) * 33.2,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.2),
                 child: RichText(
@@ -368,12 +363,13 @@ void prac_info_sheet(context) {
                       style: TextStyle(
                         fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w400,
+                        fontFamily: 'Laila',
                         color: const Color(0xFF437296),
                       ),
-                      children:const [
+                      children: const [
                         TextSpan(
                           text:
-                              'This is a place to view your goals and their practices.\nYou can view all your ',
+                              'This is a place to view your goals and their practices. You can view all your ',
                         ),
                         TextSpan(
                             text: 'active goals',
@@ -382,25 +378,24 @@ void prac_info_sheet(context) {
                             )),
                         TextSpan(
                             text:
-                                ' that you’re\ncurrently working on and also check your '),
+                                ' that you’re currently working on and also check your '),
                         TextSpan(
-                            text: 'inactive\ngoals',
+                            text: 'inactive goals',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             )),
                         TextSpan(
                             text:
-                                'that you’ve created and saved for\nlater.\n\n'),
-                        TextSpan(
-                            text: 'You will be able to identify which '),
+                                'that you’ve created and saved for later.\n\n'),
+                        TextSpan(text: 'You will be able to identify which '),
                         TextSpan(
                             text: 'goal is active ',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             )),
-                        TextSpan(text: 'or\n'),
+                        TextSpan(text: 'or'),
                         TextSpan(
-                            text: 'inactive',
+                            text: ' inactive',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             )),
@@ -412,7 +407,7 @@ void prac_info_sheet(context) {
                             )),
                         TextSpan(
                             text:
-                                '. If you click on a\ngoal panel window it will take you to a menu, where\nyou can further manage your goal status and\npractices assigned to it.'),
+                                '. If you click on a goal panel window it will take you to a menu, where you can further manage your goal status and practices assigned to it.'),
                         TextSpan(text: '\n\nIf your '),
                         TextSpan(
                             text: 'goal is active',
@@ -420,7 +415,7 @@ void prac_info_sheet(context) {
                               fontWeight: FontWeight.w700,
                             )),
                         TextSpan(
-                            text: ', you will be able to see your\ncurrent '),
+                            text: ', you will be able to see your current '),
                         TextSpan(
                             text: 'goal level ',
                             style: TextStyle(
@@ -432,7 +427,7 @@ void prac_info_sheet(context) {
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             )),
-                        TextSpan(text: ' you’ve\nbeen working on it.')
+                        TextSpan(text: ' you’ve been working on it.')
                       ]),
                 ),
               )

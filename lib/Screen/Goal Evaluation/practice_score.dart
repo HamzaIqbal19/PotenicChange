@@ -350,7 +350,7 @@ class _prac_scoreState extends State<prac_score> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                 // width: AppDimensions.width10(context) * 3.0,
+                  // width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.contain,
                 )),
@@ -631,9 +631,9 @@ class _prac_scoreState extends State<prac_score> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     12.95,
-                                            height: AppDimensions.width10(
-                                                    context) *
-                                                12.95,
+                                            height:
+                                                AppDimensions.width10(context) *
+                                                    12.95,
                                             margin: EdgeInsets.only(
                                                 right: AppDimensions.height10(
                                                         context) *
@@ -753,10 +753,9 @@ class _prac_scoreState extends State<prac_score> {
                                                   width: AppDimensions.width10(
                                                           context) *
                                                       4.0,
-                                                  height:
-                                                      AppDimensions.width10(
-                                                              context) *
-                                                          4.0,
+                                                  height: AppDimensions.width10(
+                                                          context) *
+                                                      4.0,
                                                   decoration: BoxDecoration(
                                                       border: Border.all(
                                                           width: AppDimensions
@@ -874,9 +873,9 @@ class _prac_scoreState extends State<prac_score> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     12.95,
-                                            height: AppDimensions.width10(
-                                                    context) *
-                                                12.95,
+                                            height:
+                                                AppDimensions.width10(context) *
+                                                    12.95,
                                             margin: EdgeInsets.only(
                                                 right: AppDimensions.height10(
                                                         context) *
@@ -996,10 +995,9 @@ class _prac_scoreState extends State<prac_score> {
                                                   width: AppDimensions.width10(
                                                           context) *
                                                       4.0,
-                                                  height:
-                                                      AppDimensions.width10(
-                                                              context) *
-                                                          4.0,
+                                                  height: AppDimensions.width10(
+                                                          context) *
+                                                      4.0,
                                                   decoration: BoxDecoration(
                                                       border: Border.all(
                                                           width: AppDimensions
@@ -1098,9 +1096,9 @@ class _prac_scoreState extends State<prac_score> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     12.95,
-                                            height: AppDimensions.width10(
-                                                    context) *
-                                                12.95,
+                                            height:
+                                                AppDimensions.width10(context) *
+                                                    12.95,
                                             margin: EdgeInsets.only(
                                                 right: AppDimensions.height10(
                                                         context) *
@@ -1220,10 +1218,9 @@ class _prac_scoreState extends State<prac_score> {
                                                   width: AppDimensions.width10(
                                                           context) *
                                                       4.0,
-                                                  height:
-                                                      AppDimensions.width10(
-                                                              context) *
-                                                          4.0,
+                                                  height: AppDimensions.width10(
+                                                          context) *
+                                                      4.0,
                                                   decoration: BoxDecoration(
                                                       border: Border.all(
                                                           width: AppDimensions
@@ -1322,9 +1319,9 @@ class _prac_scoreState extends State<prac_score> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     12.95,
-                                            height: AppDimensions.width10(
-                                                    context) *
-                                                12.95,
+                                            height:
+                                                AppDimensions.width10(context) *
+                                                    12.95,
                                             margin: EdgeInsets.only(
                                                 right: AppDimensions.height10(
                                                         context) *
@@ -1444,10 +1441,9 @@ class _prac_scoreState extends State<prac_score> {
                                                   width: AppDimensions.width10(
                                                           context) *
                                                       4.0,
-                                                  height:
-                                                      AppDimensions.width10(
-                                                              context) *
-                                                          4.0,
+                                                  height: AppDimensions.width10(
+                                                          context) *
+                                                      4.0,
                                                   decoration: BoxDecoration(
                                                       border: Border.all(
                                                           width: AppDimensions
@@ -1978,25 +1974,22 @@ void enjoyment(context) {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.width10(context) * 39.4,
-          height: AppDimensions.height10(context) * 64.4,
-          padding:
-              EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.5),
+          width: AppDimensions.width10(context) * 40,
+          // height: AppDimensions.height10(context) * 64.4,
+          padding: EdgeInsets.only(bottom: AppDimensions.height10(context) * 3),
+          margin: EdgeInsets.only(
+              left: AppDimensions.width10(context) * 1.0,
+              right: AppDimensions.width10(context) * 1.0,
+              bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft:
-                      Radius.circular(AppDimensions.height10(context) * 2.0),
-                  topRight:
-                      Radius.circular(AppDimensions.height10(context) * 2.0)),
-              gradient: const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFFF8F7F9), Color(0xFFE1D7D8)])),
+              borderRadius:
+                  BorderRadius.circular(AppDimensions.height10(context) * 2.0),
+              color: const Color(0xFFF5F5F5)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
             //  mainAxisAlignment: MainAxisAlignment.start,
             //  crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 //color: Colors.amber,
@@ -2041,14 +2034,14 @@ void enjoyment(context) {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.15,
-                      fontSize: AppDimensions.font10(context) * 3.0,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       // letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                  width: AppDimensions.width10(context) * 35.2,
+                  width: AppDimensions.width10(context) * 33.2,
                   //  height: AppDimensions.height10(context) * 10.8,
                   // color: Colors.grey,
                   margin: EdgeInsets.only(
@@ -2057,7 +2050,7 @@ void enjoyment(context) {
                       //textAlign: TextAlign.center,
                       text: TextSpan(
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.4,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontFamily: 'laila',
                               height: AppDimensions.height10(context) * 0.15,
                               fontWeight: FontWeight.w400,
@@ -2069,13 +2062,13 @@ void enjoyment(context) {
                             style: TextStyle(fontWeight: FontWeight.w700)),
                         TextSpan(
                             text:
-                                "we generally mean a\nsatisfying experience of performing a certain action.\n\nHowever,"),
+                                "we generally mean a satisfying experience of performing a certain action.\n\nHowever,"),
                         TextSpan(
                             text: ' ‘enjoyment’ ',
                             style: TextStyle(fontWeight: FontWeight.w700)),
                         TextSpan(
                             text:
-                                "can mean different things for\ndifferent people depending on time, environment and\ncontext.\n\nFor Potenic and this question specifically,"),
+                                "can mean different things for different people depending on time, environment and context.\n\nFor Potenic and this question specifically,"),
                         TextSpan(
                             text: ' ‘enjoyment’ ',
                             style: TextStyle(fontWeight: FontWeight.w700)),
@@ -2083,9 +2076,6 @@ void enjoyment(context) {
                             text:
                                 "means few things:\n\n1. Feeling empowered\n2. Being in control\n3. Making progress\n4. Having choice\n5. Having freedom\n\nWhen you evaluate your practice for this question, just bear this in mind to help you :)")
                       ]))),
-              SizedBox(
-                height: AppDimensions.height10(context) * 2,
-              )
             ],
           )),
     ),

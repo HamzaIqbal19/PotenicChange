@@ -171,7 +171,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                   },
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                  //  width: AppDimensions.width10(context) * 3.0,
+                    //  width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   )),
@@ -600,9 +600,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   children: [
                                     Container(
                                       width:
-                                          AppDimensions.height10(context) * 21.0,
-                                      height: AppDimensions.height10(context) *
-                                          21.0,
+                                          AppDimensions.width10(context) * 21.0,
+                                      height:
+                                          AppDimensions.width10(context) * 21.0,
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
                                               10.9),
@@ -1465,8 +1465,7 @@ class goal_criteria extends StatelessWidget {
           Container(
             width: AppDimensions.width10(context) * 8.7,
             height: AppDimensions.width10(context) * 8.7,
-            margin:
-                EdgeInsets.only(left: AppDimensions.width10(context) * 1.0),
+            margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.0),
             decoration: BoxDecoration(
                 color: Color(colors),
                 shape: BoxShape.circle,
@@ -1668,12 +1667,17 @@ void evaluation_sheet(context) {
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Container(
-              width: AppDimensions.width10(context) * 41.4,
+              width: AppDimensions.width10(context) * 40,
               height: AppDimensions.height10(context) * 79.9,
+              padding:
+                  EdgeInsets.only(bottom: AppDimensions.height10(context) * 3),
+              margin: EdgeInsets.only(
+                  left: AppDimensions.width10(context) * 1.0,
+                  right: AppDimensions.width10(context) * 1.0,
+                  bottom: AppDimensions.height10(context) * 1.0),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(
-                          AppDimensions.height10(context) * 2.0)),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 2.0),
                   color: const Color(0xFFF5F5F5)),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
@@ -1726,7 +1730,7 @@ void evaluation_sheet(context) {
                         'Goal Level Evaluation',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 3.0,
+                            fontSize: AppDimensions.font10(context) * 2.8,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF437296)),
                       ),
@@ -1743,37 +1747,37 @@ void evaluation_sheet(context) {
                                   height:
                                       AppDimensions.height10(context) * 0.15,
                                   fontFamily: 'laila',
-                                  fontSize: AppDimensions.font10(context) * 1.5,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFF437296)),
                               children: const [
                             TextSpan(
                                 text:
-                                    'It’s important to have clarity on the progress you’re\nmaking with your personal development goals.\n\nThis is why we’ve created a '),
-                            TextSpan(
-                                text: 'Goal Level Evaluation\n',
-                                style: TextStyle(fontWeight: FontWeight.w700)),
-                            TextSpan(
-                                text:
-                                    'feature to help you assess your goal progress in\nrelation to your original reasons for wanting to\nachieve it (remember the statements you had to\ncomplete during onboarding when creating your\ngoal)? We use these statements for you to evaluate.\n\n'),
+                                    'It’s important to have clarity on the progress you’re making with your personal development goals.\n\nThis is why we’ve created a '),
                             TextSpan(
                                 text: 'Goal Level Evaluation ',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    'has four core criteria that you’ll need to assess:\n\n 1.Your why’s\n 2.Your new identity\n 3.Your vision for new self\n 4.Impact on your life\n\nBy navigating to each of different criteria, you would\nbe able to '),
+                                    'feature to help you assess your goal progress in relation to your original reasons for wanting to achieve it (remember the statements you had to complete during onboarding when creating your\ngoal)? We use these statements for you to evaluate.\n\n'),
+                            TextSpan(
+                                text: 'Goal Level Evaluation ',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text:
+                                    'has four core criteria that you’ll need to assess:\n\n 1.Your why’s\n 2.Your new identity\n 3.Your vision for new self\n 4.Impact on your life\n\nBy navigating to each of different criteria, you would be able to '),
                             TextSpan(
                                 text: 'evaluate your progress.\n\n',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    'Have fun with it, but also make sure you’re honest\nwith yourself. It’s totally ok to give yourself a low \nscore if you feel you’re not making a considerable\nprogress. This way, we can better support you.\n\nDepending on a goal, some take longer that others to\nachieve. What matters is the '),
+                                    'Have fun with it, but also make sure you’re honest with yourself. It’s totally ok to give yourself a low score if you feel you’re not making a considerable progress. This way, we can better support you.\n\nDepending on a goal, some take longer that others to achieve. What matters is the '),
                             TextSpan(
                                 text: 'daily practices ',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    ' you\nperform that will eventually help you observe\nmeaningful changes into your life.'),
+                                    ' you\nperform that will eventually help you observe meaningful changes into your life.'),
                           ])),
                     )
                   ],

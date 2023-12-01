@@ -595,10 +595,10 @@ class _view_goalsState extends State<view_goals> {
                                                               .height10(
                                                                   context) *
                                                           7.9,
-                                                      width:
-                                                          AppDimensions.height10(
+                                                      width: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              7.9,
+                                                          7.9,
                                                       //margin: const EdgeInsets.only(top: 84),
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
@@ -722,10 +722,10 @@ class _view_goalsState extends State<view_goals> {
                                                               .height10(
                                                                   context) *
                                                           13.81,
-                                                      width:
-                                                          AppDimensions.height10(
+                                                      width: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              13.265,
+                                                          13.265,
                                                       decoration: const BoxDecoration(
                                                           image: DecorationImage(
                                                               image: AssetImage(
@@ -865,22 +865,22 @@ class _view_goalsState extends State<view_goals> {
                                                       //     )));
                                                     },
                                                     child: Container(
-                                                        height:
-                                                            AppDimensions.height10(context) *
-                                                                7.9,
-                                                        width:
-                                                            AppDimensions.height10(context) *
-                                                                7.9,
+                                                        height: AppDimensions.height10(context) *
+                                                            7.9,
+                                                        width: AppDimensions.height10(
+                                                                context) *
+                                                            7.9,
                                                         // margin: const EdgeInsets.only(
                                                         //   top: 84,
                                                         // ),
                                                         decoration: BoxDecoration(
-                                                            shape:
-                                                                BoxShape.circle,
+                                                            shape: BoxShape
+                                                                .circle,
                                                             border: Border.all(
                                                                 width: 3,
-                                                                color: Colors
-                                                                    .white),
+                                                                color:
+                                                                    Colors
+                                                                        .white),
                                                             gradient: const LinearGradient(
                                                                 begin: Alignment
                                                                     .topCenter,
@@ -994,7 +994,7 @@ class _view_goalsState extends State<view_goals> {
                                           margin: EdgeInsets.only(
                                             top: AppDimensions.height10(
                                                     context) *
-                                                23.0,
+                                                21.0,
                                           ),
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.vertical,
@@ -1284,7 +1284,6 @@ class _view_goalsState extends State<view_goals> {
                                                             35.335,
                                                         decoration:
                                                             const BoxDecoration(
-
                                                                 image:
                                                                     DecorationImage(
                                                           image: AssetImage(
