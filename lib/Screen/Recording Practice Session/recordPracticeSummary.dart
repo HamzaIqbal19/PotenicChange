@@ -900,15 +900,13 @@ class _practice_summaryState extends State<practice_summary> {
                                   bottom:
                                       AppDimensions.height10(context) * 0.5),
                               child: Text(
-                                Session == 1
-                                    ? 'Hated it'
-                                    : Session == 2
+                                 Session == 1
                                         ? 'Found it\ndifficult'
-                                        : Session == 3
+                                        : Session == 2
                                             ? 'Had distractins,\nit was hard to\nfocus'
-                                            : Session == 4
+                                            : Session == 3
                                                 ? 'It was ok'
-                                                : Session == 5
+                                                : Session == 4
                                                     ? 'Good, I liked\nit'
                                                     : 'Great,\nin the zone.',
                                 textAlign: TextAlign.center,

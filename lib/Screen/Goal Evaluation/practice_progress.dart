@@ -197,7 +197,7 @@ class _practice_progressState extends State<practice_progress> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                //  width: AppDimensions.width10(context) * 2.8,
+                  //  width: AppDimensions.width10(context) * 2.8,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
@@ -2075,9 +2075,30 @@ class _practice_progressState extends State<practice_progress> {
                                                         circlesInRow(
                                                             context,
                                                             int.parse(report[
-                                                                    'endRecording']
+                                                                    'endRecording'][0]
                                                                 [
-                                                                0]['AfterTotal']))
+                                                                'AfterTotal'])),
+                                                        Container(
+                                                          width: AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              8.4,
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.2,
+                                                          color: const Color(
+                                                              0xFF437296),
+                                                          margin: EdgeInsets.only(
+                                                              top: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.7,
+                                                              bottom: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.7),
+                                                        ),
                                                       ],
                                                     ),
                                                   ),
@@ -2105,96 +2126,7 @@ class _practice_progressState extends State<practice_progress> {
                                                 ],
                                               )
                                             : Container(),
-                                    noData
-                                        ? Container()
-                                        : report['endRecording'][0]
-                                                    ['AfterTotal'] !=
-                                                '0'
-                                            ? Column(
-                                                children: [
-                                                  Container(
-                                                    width:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            22.0,
-                                                    margin: EdgeInsets.only(
-                                                        top: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.0),
-                                                    child: Column(
-                                                      children: [
-                                                        SizedBox(
-                                                          width: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              22.0,
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              4.8,
-                                                          // color: Colors.amber,
-                                                          child: Center(
-                                                            child: Text(
-                                                              '“Hated it”',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: TextStyle(
-                                                                  color: const Color(
-                                                                      0xFFB695B7),
-                                                                  height: 1.2,
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          2.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              3.4,
-                                                          margin: EdgeInsets.only(
-                                                              top: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.0),
-                                                          child: Center(
-                                                            child: Text(
-                                                              noData == true
-                                                                  ? '0'
-                                                                  : '${report['endRecording'][0]['AfterTotal']}x',
-                                                              style: TextStyle(
-                                                                  color: const Color(
-                                                                      0xFFB695B7),
-                                                                  height: 1.2,
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          2.8,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        circlesInRow(
-                                                            context,
-                                                            int.parse(report[
-                                                                    'endRecording']
-                                                                [
-                                                                0]['AfterTotal']))
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              )
-                                            : Container(),
+                                    
                                     SizedBox(
                                       height:
                                           AppDimensions.height10(context) * 4,
@@ -3201,8 +3133,8 @@ class _practice_progressState extends State<practice_progress> {
                                       AppDimensions.height10(context) * 20.6,
                                   width: AppDimensions.width10(context) * 14.9,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.width10(context) *
-                                          2.0),
+                                      left:
+                                          AppDimensions.width10(context) * 2.0),
 
                                   // color: Colors.amber,
                                   child: Center(
