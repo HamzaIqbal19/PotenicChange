@@ -154,509 +154,525 @@ class _CreatePracticeState extends State<CreatePractice> {
         await prefs.remove('route');
         return Future.value(true);
       },
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        resizeToAvoidBottomInset: false,
-        extendBody: true,
-        backgroundColor: Colors.transparent,
-        appBar: PreferredSize(
-            preferredSize:
-                Size.fromHeight(AppDimensions.height10(context) * 5.0),
-            child: AppBar(
-              elevation: 0,
-              centerTitle: true,
-              backgroundColor: Colors.transparent,
-              automaticallyImplyLeading: false,
-              leading: Center(
-                // alignment: Alignment.center,
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Back.webp',
-                    //width: AppDimensions.width10(context) * 3,
-                    height: AppDimensions.height10(context) * 3,
-                    fit: BoxFit.contain,
-                  ),
-                  onPressed: () async {
-                    if (route == 'view_all_goals') {
-                      Navigator.pushReplacement(context,
-                          FadePageRoute(page: const view_all_goals_menu()));
-                    } else if (route == 'view_all_goals_2') {
-                      Navigator.pushReplacement(context,
-                          FadePageRoute(page: const multiple_goal_inactive()));
-                    } else {
-                      Navigator.push(
-                          context,
-                          FadePageRoute3(
-                              enterPage: const GoalFinished(),
-                              exitPage: const CreatePractice()));
-                    }
-                    final SharedPreferences prefs = await _prefs;
-
-                    await prefs.remove('route');
-
-                    // Add code for performing close action
-                  },
-                ),
-              ),
-              actions: [
-                Center(
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          resizeToAvoidBottomInset: false,
+          extendBody: true,
+          backgroundColor: Colors.transparent,
+          appBar: PreferredSize(
+              preferredSize:
+                  Size.fromHeight(AppDimensions.height10(context) * 5.0),
+              child: AppBar(
+                elevation: 0,
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                automaticallyImplyLeading: false,
+                leading: Center(
                   // alignment: Alignment.center,
                   child: IconButton(
                     icon: Image.asset(
-                      'assets/images/Close.webp',
-                     // width: AppDimensions.width10(context) * 3.0,
-                      height: AppDimensions.height10(context) * 3.0,
+                      'assets/images/Back.webp',
+                      //width: AppDimensions.width10(context) * 3,
+                      height: AppDimensions.height10(context) * 3,
                       fit: BoxFit.contain,
                     ),
                     onPressed: () async {
                       if (route == 'view_all_goals') {
+                        Navigator.pushReplacement(context,
+                            FadePageRoute(page: const view_all_goals_menu()));
+                      } else if (route == 'view_all_goals_2') {
                         Navigator.pushReplacement(
                             context,
-                            FadePageRouteReverse(
-                                page: const view_all_goals_menu()));
+                            FadePageRoute(
+                                page: const multiple_goal_inactive()));
                       } else {
-                        Navigator.pushReplacement(
-                          context,
-                          FadePageRouteReverse(
-                            page: const HomeScreen(
-                              login: true,
-                            ),
-                          ),
-                        );
+                        Navigator.push(
+                            context,
+                            FadePageRoute3(
+                                enterPage: const GoalFinished(),
+                                exitPage: const CreatePractice()));
                       }
                       final SharedPreferences prefs = await _prefs;
 
                       await prefs.remove('route');
 
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => HomeScreen(),
-                      //   ),
-                      // );
                       // Add code for performing close action
                     },
                   ),
                 ),
-              ],
-            )),
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/Categories.webp"),
-              fit: BoxFit.cover,
+                actions: [
+                  Center(
+                    // alignment: Alignment.center,
+                    child: IconButton(
+                      icon: Image.asset(
+                        'assets/images/Close.webp',
+                        // width: AppDimensions.width10(context) * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
+                        fit: BoxFit.contain,
+                      ),
+                      onPressed: () async {
+                        if (route == 'view_all_goals') {
+                          Navigator.pushReplacement(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const view_all_goals_menu()));
+                        } else {
+                          Navigator.pushReplacement(
+                            context,
+                            FadePageRouteReverse(
+                              page: const HomeScreen(
+                                login: true,
+                              ),
+                            ),
+                          );
+                        }
+                        final SharedPreferences prefs = await _prefs;
+
+                        await prefs.remove('route');
+
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => HomeScreen(),
+                        //   ),
+                        // );
+                        // Add code for performing close action
+                      },
+                    ),
+                  ),
+                ],
+              )),
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/Categories.webp"),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          child: Loading == false
-              ? SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 5.2),
-                        child: Center(
-                          child: Text(
-                            "Practice Creation 1/3",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: AppDimensions.font10(context) * 1.8,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 0.5,
-                        ),
-                        width: AppDimensions.width10(context) * 30,
-                        child: Center(
-                          child: Text(
-                            mygoal,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: AppDimensions.font10(context) * 2.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context),
-                      ),
-                      Container(
-                        width: AppDimensions.width10(context) * 7.9,
-                        height: AppDimensions.height10(context) * 7.9,
-                        // color: Colors.amber,
-                        margin: EdgeInsets.only(
-                            left: AppDimensions.width10(context) * 10.2,
-                            right: AppDimensions.width10(context) * 23.3,
-                            top: AppDimensions.height10(context) * 0.6),
-                        // color: Colors.blue,
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: const Alignment(-3, 0),
-                              child: Container(
-                                width: AppDimensions.width10(context) * 7.9,
-                                height: AppDimensions.height10(context) * 7.9,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  // color: Colors.amber,
-                                  image: DecorationImage(
-                                      image: AssetImage('$color' == '1'
-                                          ? "assets/images/red_gradient.webp"
-                                          : '$color' == '2'
-                                              ? 'assets/images/orange_moon.webp'
-                                              : '$color' == '3'
-                                                  ? "assets/images/lightGrey_gradient.webp"
-                                                  : '$color' == '4'
-                                                      ? "assets/images/lightBlue_gradient.webp"
-                                                      : '$color' == '5'
-                                                          ? "assets/images/medBlue_gradient.webp"
-                                                          : '$color' == '6'
-                                                              ? "assets/images/Blue_gradient.webp"
-                                                              : 'assets/images/orange_moon.webp'),
-                                      fit: BoxFit.contain),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: const Alignment(1.5, 0),
-                              child: Container(
-                                height: AppDimensions.height10(context) * 4.9,
-                                width: AppDimensions.width10(context) * 4.9,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/Ellipse 158_wb.webp'),
-                                        fit: BoxFit.cover)),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 2.1,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            // height: AppDimensions.height10(context) *7.1,
+            child: Loading == false
+                ? SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 5.2),
+                          child: Center(
                             child: Text(
-                              "Choose your practice",
+                              "Practice Creation 1/3",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: AppDimensions.font10(context) * 1.8,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 0.5,
+                          ),
+                          width: AppDimensions.width10(context) * 30,
+                          child: Center(
+                            child: Text(
+                              mygoal,
+                              overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w600,
                                 color: Colors.white,
-                                fontSize: AppDimensions.font10(context) * 2.8,
+                                fontSize: AppDimensions.font10(context) * 2.0,
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: AppDimensions.width10(context) * 2.0),
-                        child: noDate == true
-                            ? Container(
-                                height: AppDimensions.height10(context) * 21.2,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 5),
-                                child: Center(
-                                    child: Text(
-                                  'Sorry no\nresults found',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: const Color(0xFFFFFFFF),
-                                      fontSize:
-                                          AppDimensions.font10(context) * 2.8,
-                                      fontWeight: FontWeight.w700),
-                                )),
-                              )
-                            : GridView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio: 4.2 / 3,
-                                  mainAxisSpacing:
-                                      AppDimensions.width10(context) * 1.4,
-                                  crossAxisSpacing: 0.1,
+                        ),
+                        SizedBox(
+                          height: AppDimensions.height10(context),
+                        ),
+                        Container(
+                          width: AppDimensions.width10(context) * 7.9,
+                          height: AppDimensions.height10(context) * 7.9,
+                          // color: Colors.amber,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.width10(context) * 10.2,
+                              right: AppDimensions.width10(context) * 23.3,
+                              top: AppDimensions.height10(context) * 0.6),
+                          // color: Colors.blue,
+                          child: Stack(
+                            children: [
+                              Align(
+                                alignment: const Alignment(-3, 0),
+                                child: Container(
+                                  width: AppDimensions.width10(context) * 7.9,
+                                  height: AppDimensions.height10(context) * 7.9,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    // color: Colors.amber,
+                                    image: DecorationImage(
+                                        image: AssetImage('$color' == '1'
+                                            ? "assets/images/red_gradient.webp"
+                                            : '$color' == '2'
+                                                ? 'assets/images/orange_moon.webp'
+                                                : '$color' == '3'
+                                                    ? "assets/images/lightGrey_gradient.webp"
+                                                    : '$color' == '4'
+                                                        ? "assets/images/lightBlue_gradient.webp"
+                                                        : '$color' == '5'
+                                                            ? "assets/images/medBlue_gradient.webp"
+                                                            : '$color' == '6'
+                                                                ? "assets/images/Blue_gradient.webp"
+                                                                : 'assets/images/orange_moon.webp'),
+                                        fit: BoxFit.contain),
+                                  ),
                                 ),
-                                itemCount: practiceName!.length,
-                                itemBuilder: (context, index) {
-                                  return Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          AnimatedScaleButton(
-                                            onTap: () async {
-                                              final SharedPreferences prefs =
-                                                  await _prefs;
-
-                                              var goalColor = prefs.setString(
-                                                  'goalColor', color);
-                                              var pracName = prefs.setString(
-                                                'pracName',
-                                                practiceName?[index]["name"],
-                                              );
-                                              var pracId = prefs.setInt(
-                                                'pracId',
-                                                practiceName?[index]["id"],
-                                              );
-                                              Navigator.push(
-                                                context,
-                                                FadePageRoute2(
-                                                  true,
-                                                  exitPage:
-                                                      const CreatePractice(),
-                                                  enterPage: const PracticeName(
-                                                    comingFromEditScreen: false,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                            child: circles(
-                                                circle_text:
-                                                    practiceName![index]
-                                                        ['name'],
-                                                circle_color1: 0xFF83BB9A,
-                                                circle_color2: 0xFF1E4A22,
-                                                circle_border: 3.0,
-                                                circle_bordercolor: 0xFFFFFFFF,
-                                                circle_height: AppDimensions
-                                                        .width10(context) *
-                                                    13.4,
-                                                circle_width:
-                                                    AppDimensions.width10(
-                                                            context) *
-                                                        13.4,
-                                                textfont:
-                                                    AppDimensions.font10(
-                                                            context) *
-                                                        1.6,
-                                                textcolor: 0xFFFFFFFF),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  );
-                                }),
-                      ),
-                    ],
-                  ),
-                )
-              : const Create_practice_shimmer(),
-        ),
-        bottomNavigationBar: BottomAppBar(
-          shape: const CircularNotchedRectangle(),
-          notchMargin: 10,
-          child: Container(
-            // color: Colors.blue,
-            margin: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom,
-            ),
-            padding: EdgeInsets.only(
-                left: AppDimensions.width10(context) * 2.2,
-                right: AppDimensions.width10(context) * 2.2),
-            height: AppDimensions.height10(context) * 7.0,
-            width: AppDimensions.width10(context) * 41.4,
-            child: SearchIcon == true
-                ? Container(
-                    color: Colors.transparent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
+                              ),
+                              Align(
+                                alignment: const Alignment(1.5, 0),
+                                child: Container(
+                                  height: AppDimensions.height10(context) * 4.9,
+                                  width: AppDimensions.width10(context) * 4.9,
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/Ellipse 158_wb.webp'),
+                                          fit: BoxFit.cover)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: AppDimensions.height10(context) * 2.1,
+                        ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              height: AppDimensions.height10(context) * 3.6,
-                              width: AppDimensions.width10(context) * 31.3,
-                              padding: const EdgeInsets.all(5.0),
-                              decoration: BoxDecoration(
-                                  color:
-                                      const Color(0xFF767680).withOpacity(0.12),
-                                  border:
-                                      Border.all(color: Colors.white, width: 2),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          AppDimensions.height10(context)))),
-                              child: Center(
-                                child: TextFormField(
-                                    controller: _searchController,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        searchText = value;
-                                        _searchPractice(value);
-                                      });
-                                    },
-                                    decoration: InputDecoration(
-                                        contentPadding:
-                                            const EdgeInsets.all(0.0),
-                                        prefixIcon: Image.asset(
-                                          'assets/images/Light.webp',
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  1.5,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.5,
-
-                                          // fit: BoxFit.contain,
-                                          // fit: BoxFit.contain,
-                                        ),
-                                        suffixIcon: AnimatedScaleButton(
-                                          onTap: () {
-                                            _searchController.clear();
-                                            _searchPractice('');
-                                            searchText = '';
-                                            setState(() {
-                                              noDate = false;
-                                            });
-                                          },
-                                          child: Image.asset(
-                                            'assets/images/cancel.webp',
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    2.3,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.3,
-                                            // fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                        hintText: "Search",
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)))),
+                              // height: AppDimensions.height10(context) *7.1,
+                              child: Text(
+                                "Choose your practice",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  fontSize: AppDimensions.font10(context) * 2.8,
+                                ),
                               ),
                             ),
                           ],
                         ),
-                        // fit: BoxFit.contain,
-                        // fit: BoxFit.contain,
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: AppDimensions.width10(context) * 2.0),
+                          child: noDate == true
+                              ? Container(
+                                  height:
+                                      AppDimensions.height10(context) * 21.2,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) * 5),
+                                  child: Center(
+                                      child: Text(
+                                    'Sorry no\nresults found',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: const Color(0xFFFFFFFF),
+                                        fontSize:
+                                            AppDimensions.font10(context) * 2.8,
+                                        fontWeight: FontWeight.w700),
+                                  )),
+                                )
+                              : GridView.builder(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    childAspectRatio: 4.2 / 3,
+                                    mainAxisSpacing:
+                                        AppDimensions.width10(context) * 1.4,
+                                    crossAxisSpacing: 0.1,
+                                  ),
+                                  itemCount: practiceName!.length,
+                                  itemBuilder: (context, index) {
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            AnimatedScaleButton(
+                                              onTap: () async {
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
 
-                        AnimatedScaleButton(
-                          onTap: () {
-                            setState(() {
-                              SearchIcon = false;
-                              _searchPractice('');
-                              _searchController.clear();
-                              searchText = '';
-                            });
-                          },
-                          child: Text(
-                            "Cancel",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.7,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xFF007AFF),
-                            ),
-                          ),
+                                                var goalColor = prefs.setString(
+                                                    'goalColor', color);
+                                                var pracName = prefs.setString(
+                                                  'pracName',
+                                                  practiceName?[index]["name"],
+                                                );
+                                                var pracId = prefs.setInt(
+                                                  'pracId',
+                                                  practiceName?[index]["id"],
+                                                );
+                                                Navigator.push(
+                                                  context,
+                                                  FadePageRoute2(
+                                                    true,
+                                                    exitPage:
+                                                        const CreatePractice(),
+                                                    enterPage:
+                                                        const PracticeName(
+                                                      comingFromEditScreen:
+                                                          false,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: circles(
+                                                  circle_text:
+                                                      practiceName![index]
+                                                          ['name'],
+                                                  circle_color1: 0xFF83BB9A,
+                                                  circle_color2: 0xFF1E4A22,
+                                                  circle_border: 3.0,
+                                                  circle_bordercolor:
+                                                      0xFFFFFFFF,
+                                                  circle_height:
+                                                      AppDimensions.width10(
+                                                              context) *
+                                                          13.4,
+                                                  circle_width:
+                                                      AppDimensions.width10(
+                                                              context) *
+                                                          13.4,
+                                                  textfont:
+                                                      AppDimensions.font10(
+                                                              context) *
+                                                          1.6,
+                                                  textcolor: 0xFFFFFFFF),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    );
+                                  }),
                         ),
-
-                        //const Padding(padding: EdgeInsets.all(10))
                       ],
                     ),
                   )
-                //const Padding(padding: EdgeInsets.all(10))
+                : const Create_practice_shimmer(),
+          ),
+          bottomNavigationBar: BottomAppBar(
+            shape: const CircularNotchedRectangle(),
+            notchMargin: 10,
+            child: Container(
+              // color: Colors.blue,
+              margin: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              padding: EdgeInsets.only(
+                  left: AppDimensions.width10(context) * 2.2,
+                  right: AppDimensions.width10(context) * 2.2),
+              height: AppDimensions.height10(context) * 7.0,
+              width: AppDimensions.width10(context) * 41.4,
+              child: SearchIcon == true
+                  ? Container(
+                      color: Colors.transparent,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                height: AppDimensions.height10(context) * 3.6,
+                                width: AppDimensions.width10(context) * 31.3,
+                                padding: const EdgeInsets.all(5.0),
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFF767680)
+                                        .withOpacity(0.12),
+                                    border: Border.all(
+                                        color: Colors.white, width: 2),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(
+                                            AppDimensions.height10(context)))),
+                                child: Center(
+                                  child: TextFormField(
+                                      controller: _searchController,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          searchText = value;
+                                          _searchPractice(value);
+                                        });
+                                      },
+                                      decoration: InputDecoration(
+                                          contentPadding:
+                                              const EdgeInsets.all(0.0),
+                                          prefixIcon: Image.asset(
+                                            'assets/images/Light.webp',
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    1.5,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                1.5,
 
-                : Container(
-                    color: Colors.transparent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              width: AppDimensions.width10(context) * 4.7,
-                              height: AppDimensions.height10(context) * 4.7,
-                              padding: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 0.5,
-                                  bottom:
-                                      AppDimensions.height10(context) * 0.5),
-                              child: AnimatedScaleButton(
-                                onTap: () {
-                                  // if (mygoal.length > 20) {
-                                  //   setState(() {
-                                  //     var mygoalName =
-                                  //         mygoal.subString(0, 9) + '...';
-                                  //   });
-                                  //   bottom_sheet(context, mygoal);
-                                  // } else {
-                                  bottom_sheet(context, mygoal);
-                                  //}
-                                },
-                                child: Image.asset(
-                                  'assets/images/Add.webp',
-                                  width: AppDimensions.width10(context) * 4.7,
-                                  height: AppDimensions.height10(context) * 4.7,
-                                  fit: BoxFit.contain,
+                                            // fit: BoxFit.contain,
+                                            // fit: BoxFit.contain,
+                                          ),
+                                          suffixIcon: AnimatedScaleButton(
+                                            onTap: () {
+                                              _searchController.clear();
+                                              _searchPractice('');
+                                              searchText = '';
+                                              setState(() {
+                                                noDate = false;
+                                              });
+                                            },
+                                            child: Image.asset(
+                                              'assets/images/cancel.webp',
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  2.3,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  2.3,
+                                              // fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                          hintText: "Search",
+                                          focusedBorder:
+                                              const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors
+                                                          .transparent)),
+                                          enabledBorder:
+                                              const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors
+                                                          .transparent)))),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              width: AppDimensions.width10(context) * 0.5,
-                            ),
-                            Text(
-                              'Create a new practice! ',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: const Color(0xFFFA9934),
-                                // fontFamily: ,
-                                fontSize: AppDimensions.font10(context) * 1.6,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                          // fit: BoxFit.contain,
+                          // fit: BoxFit.contain,
 
-                        Container(
-                          width: AppDimensions.width10(context) * 4.7,
-                          height: AppDimensions.height10(context) * 4.7,
-                          padding: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 0.5,
-                              bottom: AppDimensions.height10(context) * 0.5),
-                          child: GestureDetector(
+                          AnimatedScaleButton(
                             onTap: () {
                               setState(() {
-                                SearchIcon = true;
+                                SearchIcon = false;
+                                _searchPractice('');
+                                _searchController.clear();
+                                searchText = '';
                               });
                             },
-                            child: Image.asset(
-                              'assets/images/Search.webp',
-                              width: AppDimensions.width10(context) * 5,
-                              height: AppDimensions.height10(context) * 5,
-                              fit: BoxFit.contain,
+                            child: Text(
+                              "Cancel",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: AppDimensions.font10(context) * 1.7,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xFF007AFF),
+                              ),
                             ),
                           ),
-                        ),
 
-                        //const Padding(padding: EdgeInsets.all(10))
-                      ],
+                          //const Padding(padding: EdgeInsets.all(10))
+                        ],
+                      ),
+                    )
+                  //const Padding(padding: EdgeInsets.all(10))
+
+                  : Container(
+                      color: Colors.transparent,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                width: AppDimensions.width10(context) * 4.7,
+                                height: AppDimensions.height10(context) * 4.7,
+                                padding: EdgeInsets.only(
+                                    top: AppDimensions.height10(context) * 0.5,
+                                    bottom:
+                                        AppDimensions.height10(context) * 0.5),
+                                child: AnimatedScaleButton(
+                                  onTap: () {
+                                    // if (mygoal.length > 20) {
+                                    //   setState(() {
+                                    //     var mygoalName =
+                                    //         mygoal.subString(0, 9) + '...';
+                                    //   });
+                                    //   bottom_sheet(context, mygoal);
+                                    // } else {
+                                    bottom_sheet(context, mygoal);
+                                    //}
+                                  },
+                                  child: Image.asset(
+                                    'assets/images/Add.webp',
+                                    width: AppDimensions.width10(context) * 4.7,
+                                    height:
+                                        AppDimensions.height10(context) * 4.7,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: AppDimensions.width10(context) * 0.5,
+                              ),
+                              Text(
+                                'Create a new practice! ',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: const Color(0xFFFA9934),
+                                  // fontFamily: ,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          Container(
+                            width: AppDimensions.width10(context) * 4.7,
+                            height: AppDimensions.height10(context) * 4.7,
+                            padding: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 0.5,
+                                bottom: AppDimensions.height10(context) * 0.5),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  SearchIcon = true;
+                                });
+                              },
+                              child: Image.asset(
+                                'assets/images/Search.webp',
+                                width: AppDimensions.width10(context) * 5,
+                                height: AppDimensions.height10(context) * 5,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+
+                          //const Padding(padding: EdgeInsets.all(10))
+                        ],
+                      ),
                     ),
-                  ),
 
-            //const Padding(padding: EdgeInsets.all(10))
+              //const Padding(padding: EdgeInsets.all(10))
+            ),
           ),
         ),
       ),

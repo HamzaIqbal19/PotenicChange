@@ -179,7 +179,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                    //  width: AppDimensions.width10(context) * 2.6,
+                      //  width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     )),
@@ -726,15 +726,20 @@ class _menu_behaviourState extends State<menu_behaviour> {
                         child: Stack(children: [
                           Align(
                             alignment: const Alignment(1, -1.3),
-                            child: IconButton(
-                                onPressed: () {
-                                  info_sheet(context);
-                                },
-                                icon: Image.asset(
-                                  'assets/images/ic_info_outline.webp',
-                                  height: AppDimensions.height10(context) * 3.0,
-                                  width: AppDimensions.width10(context) * 3.0,
-                                )),
+                            child: Container(
+                              margin: EdgeInsets.only(
+                                  right: AppDimensions.height10(context) * 0.5),
+                              child: IconButton(
+                                  onPressed: () {
+                                    info_sheet(context);
+                                  },
+                                  icon: Image.asset(
+                                    'assets/images/ic_info_outline.webp',
+                                    height:
+                                        AppDimensions.height10(context) * 3.0,
+                                    width: AppDimensions.width10(context) * 3.0,
+                                  )),
+                            ),
                           ),
                           Align(
                             alignment: const Alignment(0, -1),

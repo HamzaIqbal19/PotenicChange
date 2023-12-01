@@ -1165,7 +1165,7 @@ class _view_goalsState extends State<view_goals> {
                                                                                         ? 0xFF5C75A6
                                                                                         : timesList[index]['data']['color'] == "5"
                                                                                             ? 0xFF315291
-                                                                                            : 0xFF1A481C,
+                                                                                            : 0xFFFBFBFB,
                                                                     onTap1: () async {
                                                                       if (_showOverlay ==
                                                                           false) {

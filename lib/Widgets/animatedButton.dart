@@ -43,16 +43,29 @@ class _AnimatedScaleButtonState extends State<AnimatedScaleButton>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: (details) => _controller.forward(),
-      onTap: () async {
+      onLongPress: () async {
         _controller.forward();
         // Delay for the forward animation to be visible
-        await Future.delayed(Duration(milliseconds: 200));
+        await Future.delayed(const Duration(milliseconds: 200));
 
         // Press up effect
         _controller.reverse();
 
         // Delay the action for the reverse animation to be visible
-        await Future.delayed(Duration(milliseconds: 200));
+        await Future.delayed(const Duration(milliseconds: 200));
+        widget.onTap();
+      }, // Disable long-press
+      onLongPressCancel: () => _controller.forward(),
+      onTap: () async {
+        _controller.forward();
+        // Delay for the forward animation to be visible
+        await Future.delayed(const Duration(milliseconds: 200));
+
+        // Press up effect
+        _controller.reverse();
+
+        // Delay the action for the reverse animation to be visible
+        await Future.delayed(const Duration(milliseconds: 200));
         widget.onTap();
       },
       child: AnimatedBuilder(

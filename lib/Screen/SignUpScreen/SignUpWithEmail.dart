@@ -112,221 +112,142 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
     // =>
     // SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
 
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-        extendBodyBehindAppBar: true,
-        appBar: PreferredSize(
-            preferredSize:
-                Size.fromHeight(AppDimensions.height10(context) * 5.0),
-            child: AppBar(
-              elevation: 0,
-              centerTitle: true,
-              backgroundColor: Colors.transparent,
-              automaticallyImplyLeading: false,
-              leading: Center(
-                // alignment: Alignment.center,
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Back.webp',
-                   // width: AppDimensions.width10(context) * 3,
-                    height: AppDimensions.height10(context) * 3,
-                    fit: BoxFit.contain,
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    // Add code for performing close action
-                  },
-                ),
-              ),
-              actions: [
-                Center(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          extendBodyBehindAppBar: true,
+          appBar: PreferredSize(
+              preferredSize:
+                  Size.fromHeight(AppDimensions.height10(context) * 5.0),
+              child: AppBar(
+                elevation: 0,
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                automaticallyImplyLeading: false,
+                leading: Center(
                   // alignment: Alignment.center,
                   child: IconButton(
                     icon: Image.asset(
-                      'assets/images/Close.webp',
-                     // width: AppDimensions.width10(context) * 3.0,
-                      height: AppDimensions.height10(context) * 3.0,
+                      'assets/images/Back.webp',
+                      // width: AppDimensions.width10(context) * 3,
+                      height: AppDimensions.height10(context) * 3,
                       fit: BoxFit.contain,
                     ),
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        FadePageRouteReverse(
-                          page: const HomeScreen(
-                            login: false,
-                          ),
-                        ),
-                      );
+                      Navigator.pop(context);
                       // Add code for performing close action
                     },
                   ),
                 ),
-              ],
-            )),
-        body: Stack(
-          children: <Widget>[
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/loginscreenBackground.webp"),
-                  fit: BoxFit.cover,
+                actions: [
+                  Center(
+                    // alignment: Alignment.center,
+                    child: IconButton(
+                      icon: Image.asset(
+                        'assets/images/Close.webp',
+                        // width: AppDimensions.width10(context) * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
+                        fit: BoxFit.contain,
+                      ),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          FadePageRouteReverse(
+                            page: const HomeScreen(
+                              login: false,
+                            ),
+                          ),
+                        );
+                        // Add code for performing close action
+                      },
+                    ),
+                  ),
+                ],
+              )),
+          body: Stack(
+            children: <Widget>[
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image:
+                        AssetImage("assets/images/loginscreenBackground.webp"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            Form(
-              key: _formkey1,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    height: AppDimensions.height10(context) * 8.02,
-                  ),
-                  Center(
-                    child: Image(
-                      // color: Colors.orange,
-                      image: const AssetImage("assets/images/logo.webp"),
-                      height: AppDimensions.height10(context) * 7.75,
-                      width: AppDimensions.width10(context) * 7.75,
+              Form(
+                key: _formkey1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 8.02,
                     ),
-                  ),
-
-                  SizedBox(height: AppDimensions.height10(context)),
-                  SizedBox(
-                    height: AppDimensions.height10(context) * 4.0,
-                    child: Text(
-                      "Sign up",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                        fontSize: AppDimensions.font10(context) * 3.0,
+                    Center(
+                      child: Image(
+                        // color: Colors.orange,
+                        image: const AssetImage("assets/images/logo.webp"),
+                        height: AppDimensions.height10(context) * 7.75,
+                        width: AppDimensions.width10(context) * 7.75,
                       ),
                     ),
-                  ),
-                  SizedBox(height: AppDimensions.height10(context) * 2.0),
-                  SizedBox(
-                      height: AppDimensions.height10(context) * 7 + 4,
-                      width: AppDimensions.screenWidth(context) - 100,
+
+                    SizedBox(height: AppDimensions.height10(context)),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 4.0,
                       child: Text(
-                        'Your Personalised Journey To Better Self Starts Here',
+                        "Sign up",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w700,
                           color: Colors.white,
-                          fontSize: AppDimensions.font10(context) * 2.0,
+                          fontSize: AppDimensions.font10(context) * 3.0,
                         ),
-                      )),
-                  // SizedBox(height: AppDimensions.height0),
+                      ),
+                    ),
+                    SizedBox(height: AppDimensions.height10(context) * 2.0),
+                    SizedBox(
+                        height: AppDimensions.height10(context) * 7 + 4,
+                        width: AppDimensions.screenWidth(context) - 100,
+                        child: Text(
+                          'Your Personalised Journey To Better Self Starts Here',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize: AppDimensions.font10(context) * 2.0,
+                          ),
+                        )),
+                    // SizedBox(height: AppDimensions.height0),
 
-                  SizedBox(
-                    // height: AppDimensions.height10(context) * 34,
-                    width: AppDimensions.width10(context) * 36,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: AppDimensions.height10(context) * 6,
-                          width: AppDimensions.width10(context) * 36,
-                          padding: EdgeInsetsDirectional.only(
-                            top: AppDimensions.height10(context) * 1.2,
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: Colors.white, width: 2),
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  AppDimensions.height10(context) * 1.8))),
-                          child: TextFormField(
-                            style: TextStyle(
-                                color: const Color(0xFF8C648A),
-                                fontWeight: FontWeight.w600,
-                                decoration: TextDecoration.none,
-                                fontSize:
-                                    AppDimensions.height10(context) * 1.8),
-                            decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.only(
-                                    top: 5.0,
-                                    //bottom: 15.0,
-                                    left: 20.0,
-                                    right: 10.0),
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
-                                hintText: "John",
-                                hintStyle: TextStyle(
-                                  color: const Color(0xFF8C648A),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.font10(context) * 1.8,
-                                ),
-                                labelText: "Name",
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent)),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent))),
-                            onChanged: (value) {
-                              setState(() {
-                                passwordMsg = "";
-                                errorPassword = false;
-                                emailMsg = '';
-                                errorEmail = false;
-                                errorName = false;
-                                nameMsg = '';
-                              });
-                            },
-                            controller: nameController,
-                            keyboardType: TextInputType.name,
-                            validator: (val) {
-                              if (val == null || val == "") {
-                                setState(() {
-                                  errorName = true;
-                                  nameMsg = 'Name is required';
-                                });
-                              } else {
-                                setState(() {
-                                  nameMsg = '';
-                                  errorName = false;
-                                });
-                              }
-                            },
-                          ),
-                        ),
-                        errorName
-                            ? Container(
-                                child: Text(
-                                  "Name is required",
-                                  style: TextStyle(
-                                    color: const Color(0xFFFE6624),
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.4,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              )
-                            : Container(),
-                        SizedBox(
-                            height: errorEmail
-                                ? AppDimensions.height10(context)
-                                : AppDimensions.height10(context) * 3),
-                        Container(
-                          height: AppDimensions.height10(context) * 6,
-                          width: AppDimensions.width10(context) * 36,
-                          padding: EdgeInsetsDirectional.only(
-                            top: AppDimensions.height10(context) * 1.2,
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: Colors.white, width: 2),
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  AppDimensions.height10(context) * 1.8))),
-                          child: TextFormField(
+                    SizedBox(
+                      // height: AppDimensions.height10(context) * 34,
+                      width: AppDimensions.width10(context) * 36,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: AppDimensions.height10(context) * 6,
+                            width: AppDimensions.width10(context) * 36,
+                            padding: EdgeInsetsDirectional.only(
+                              top: AppDimensions.height10(context) * 1.2,
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
+                                borderRadius: BorderRadius.all(Radius.circular(
+                                    AppDimensions.height10(context) * 1.8))),
+                            child: TextFormField(
                               style: TextStyle(
                                   color: const Color(0xFF8C648A),
                                   fontWeight: FontWeight.w600,
                                   decoration: TextDecoration.none,
                                   fontSize:
-                                      AppDimensions.font10(context) * 1.8),
+                                      AppDimensions.height10(context) * 1.8),
                               decoration: InputDecoration(
                                   contentPadding: const EdgeInsets.only(
                                       top: 5.0,
@@ -335,14 +256,14 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                       right: 10.0),
                                   floatingLabelBehavior:
                                       FloatingLabelBehavior.always,
-                                  hintText: "abc@gmail.com",
+                                  hintText: "John",
                                   hintStyle: TextStyle(
                                     color: const Color(0xFF8C648A),
                                     fontWeight: FontWeight.w600,
                                     fontSize:
                                         AppDimensions.font10(context) * 1.8,
                                   ),
-                                  labelText: "Email",
+                                  labelText: "Name",
                                   focusedBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(
                                           color: Colors.transparent)),
@@ -359,443 +280,544 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                   nameMsg = '';
                                 });
                               },
-                              controller: emailController,
+                              controller: nameController,
+                              keyboardType: TextInputType.name,
                               validator: (val) {
-                                if (val != null && val.isNotEmpty) {
-                                  val = val.trim();
-                                }
-
-                                if (val == null || val.isEmpty) {
+                                if (val == null || val == "") {
                                   setState(() {
-                                    errorEmail = true;
-                                    emailMsg = 'Email is required';
-                                  });
-                                } else if (!EmailValidator.validate(val)) {
-                                  setState(() {
-                                    errorEmail = true;
-                                    emailMsg =
-                                        ' Ooops! Needs to be an email format';
+                                    errorName = true;
+                                    nameMsg = 'Name is required';
                                   });
                                 } else {
                                   setState(() {
-                                    errorEmail = false;
-                                    emailMsg = '';
+                                    nameMsg = '';
+                                    errorName = false;
                                   });
                                 }
-                                return null;
-                              }),
-                        ),
-                        errorEmail
-                            ? Container(
-                                child: Text(
-                                  emailMsg,
+                              },
+                            ),
+                          ),
+                          errorName
+                              ? Container(
+                                  child: Text(
+                                    "Name is required",
+                                    style: TextStyle(
+                                      color: const Color(0xFFFE6624),
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.4,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                )
+                              : Container(),
+                          SizedBox(
+                              height: errorEmail
+                                  ? AppDimensions.height10(context)
+                                  : AppDimensions.height10(context) * 3),
+                          Container(
+                            height: AppDimensions.height10(context) * 6,
+                            width: AppDimensions.width10(context) * 36,
+                            padding: EdgeInsetsDirectional.only(
+                              top: AppDimensions.height10(context) * 1.2,
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
+                                borderRadius: BorderRadius.all(Radius.circular(
+                                    AppDimensions.height10(context) * 1.8))),
+                            child: TextFormField(
+                                style: TextStyle(
+                                    color: const Color(0xFF8C648A),
+                                    fontWeight: FontWeight.w600,
+                                    decoration: TextDecoration.none,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.8),
+                                decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.only(
+                                        top: 5.0,
+                                        //bottom: 15.0,
+                                        left: 20.0,
+                                        right: 10.0),
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.always,
+                                    hintText: "abc@gmail.com",
+                                    hintStyle: TextStyle(
+                                      color: const Color(0xFF8C648A),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.8,
+                                    ),
+                                    labelText: "Email",
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent)),
+                                    enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent))),
+                                onChanged: (value) {
+                                  setState(() {
+                                    passwordMsg = "";
+                                    errorPassword = false;
+                                    emailMsg = '';
+                                    errorEmail = false;
+                                    errorName = false;
+                                    nameMsg = '';
+                                  });
+                                },
+                                controller: emailController,
+                                validator: (val) {
+                                  if (val != null && val.isNotEmpty) {
+                                    val = val.trim();
+                                  }
+
+                                  if (val == null || val.isEmpty) {
+                                    setState(() {
+                                      errorEmail = true;
+                                      emailMsg = 'Email is required';
+                                    });
+                                  } else if (!EmailValidator.validate(val)) {
+                                    setState(() {
+                                      errorEmail = true;
+                                      emailMsg =
+                                          ' Ooops! Needs to be an email format';
+                                    });
+                                  } else {
+                                    setState(() {
+                                      errorEmail = false;
+                                      emailMsg = '';
+                                    });
+                                  }
+                                  return null;
+                                }),
+                          ),
+                          errorEmail
+                              ? Container(
+                                  child: Text(
+                                    emailMsg,
+                                    style: TextStyle(
+                                      color: const Color(0xFFFE6624),
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.4,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                )
+                              : Container(),
+                          SizedBox(
+                              height: errorEmail
+                                  ? AppDimensions.height10(context)
+                                  : AppDimensions.height10(context) * 3),
+                          Container(
+                            height: AppDimensions.height10(context) * 6,
+                            width: AppDimensions.width10(context) * 36,
+                            padding: EdgeInsetsDirectional.only(
+                              top: AppDimensions.height10(context) * 1.2,
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border:
+                                    Border.all(color: Colors.white, width: 0),
+                                borderRadius: BorderRadius.all(Radius.circular(
+                                    AppDimensions.height10(context) * 1.8))),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.width10(context) * 32,
+                                  child: TextFormField(
+                                    obscureText: pass_obscure,
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                        color: const Color(0xFF8C648A),
+                                        fontWeight: FontWeight.w600,
+                                        decoration: TextDecoration.none,
+                                        fontSize:
+                                            AppDimensions.font10(context) *
+                                                1.8),
+                                    decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.only(
+                                            top: 5.0,
+                                            bottom: 15.0,
+                                            left: 20.0,
+                                            right: 10.0),
+                                        alignLabelWithHint: true,
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.always,
+                                        hintText: "********",
+                                        hintStyle: TextStyle(
+                                          color: const Color(0xFF8C648A),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.8,
+                                        ),
+                                        labelText: "Password",
+                                        focusedBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.transparent)),
+                                        enabledBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.transparent))),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        passwordMsg = "";
+                                        errorPassword = false;
+                                        emailMsg = '';
+                                        errorEmail = false;
+                                        errorName = false;
+                                        nameMsg = '';
+                                      });
+                                    },
+                                    controller: passwordController,
+                                    validator: (val) {
+                                      if ((val == null && val == '')) {
+                                        setState(() {
+                                          passwordMsg = "Password is required";
+                                          errorPassword = true;
+                                        });
+                                      } else if (val!.length < 8) {
+                                        setState(() {
+                                          passwordMsg = "Minimum 8 characters";
+                                          errorPassword = true;
+                                        });
+                                      } else {
+                                        setState(() {
+                                          passwordMsg = "";
+                                          errorPassword = false;
+                                        });
+                                      }
+                                    },
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      if (pass_obscure == true) {
+                                        pass_obscure = false;
+                                      } else {
+                                        pass_obscure = true;
+                                      }
+                                    });
+                                  },
+                                  child: Container(
+                                    height:
+                                        AppDimensions.height10(context) * 2.4,
+                                    width: AppDimensions.width10(context) * 2.4,
+                                    margin: EdgeInsets.only(
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.0),
+                                    child: Image.asset(
+                                      pass_obscure
+                                          ? 'assets/images/visible-icon-9.webp'
+                                          : 'assets/images/ic_remove_red_eye.webp',
+                                      color: const Color(0xFF8C648A),
+                                      height:
+                                          AppDimensions.height10(context) * 2.4,
+                                      width:
+                                          AppDimensions.width10(context) * 2.4,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          errorPassword
+                              ? Text(
+                                  passwordMsg,
                                   style: TextStyle(
                                     color: const Color(0xFFFE6624),
                                     fontSize:
                                         AppDimensions.font10(context) * 1.4,
                                     fontWeight: FontWeight.w600,
                                   ),
-                                ),
-                              )
-                            : Container(),
-                        SizedBox(
-                            height: errorEmail
-                                ? AppDimensions.height10(context)
-                                : AppDimensions.height10(context) * 3),
-                        Container(
-                          height: AppDimensions.height10(context) * 6,
-                          width: AppDimensions.width10(context) * 36,
-                          padding: EdgeInsetsDirectional.only(
-                            top: AppDimensions.height10(context) * 1.2,
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: Colors.white, width: 0),
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  AppDimensions.height10(context) * 1.8))),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: AppDimensions.width10(context) * 32,
-                                child: TextFormField(
-                                  obscureText: pass_obscure,
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                      color: const Color(0xFF8C648A),
-                                      fontWeight: FontWeight.w600,
-                                      decoration: TextDecoration.none,
-                                      fontSize:
-                                          AppDimensions.font10(context) * 1.8),
-                                  decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.only(
-                                          top: 5.0,
-                                          bottom: 15.0,
-                                          left: 20.0,
-                                          right: 10.0),
-                                      alignLabelWithHint: true,
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.always,
-                                      hintText: "********",
-                                      hintStyle: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontWeight: FontWeight.w600,
+                                )
+                              : Container(),
+                          SizedBox(
+                              height: errorEmail
+                                  ? AppDimensions.height10(context)
+                                  : AppDimensions.height10(context) * 3),
+                          SizedBox(
+                              height: AppDimensions.height10(context) * 6.2,
+                              width: AppDimensions.screenWidth(context) - 100,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Checkbox(
+                                    checkColor: Colors.black,
+                                    activeColor: Colors.white,
+                                    side: const BorderSide(
+                                        color: Color(0xffffffff)),
+                                    value: rememberMe,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        rememberMe = value ?? false;
+                                      });
+                                    },
+                                  ),
+                                  Text.rich(
+                                    TextSpan(
+                                      text:
+                                          'By signing up, you agree to Potenic’s \n ',
+                                      style: TextStyle(
+                                        color: const Color(0xFFFFFFFF),
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.8,
+                                            AppDimensions.font10(context) * 1.4,
+                                        fontWeight: FontWeight.w600,
                                       ),
-                                      labelText: "Password",
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent))),
-                                  onChanged: (value) {
-                                    setState(() {
-                                      passwordMsg = "";
-                                      errorPassword = false;
-                                      emailMsg = '';
-                                      errorEmail = false;
-                                      errorName = false;
-                                      nameMsg = '';
-                                    });
-                                  },
-                                  controller: passwordController,
-                                  validator: (val) {
-                                    if ((val == null && val == '')) {
-                                      setState(() {
-                                        passwordMsg = "Password is required";
-                                        errorPassword = true;
-                                      });
-                                    } else if (val!.length < 8) {
-                                      setState(() {
-                                        passwordMsg = "Minimum 8 characters";
-                                        errorPassword = true;
-                                      });
-                                    } else {
-                                      setState(() {
-                                        passwordMsg = "";
-                                        errorPassword = false;
-                                      });
-                                    }
-                                  },
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    if (pass_obscure == true) {
-                                      pass_obscure = false;
-                                    } else {
-                                      pass_obscure = true;
-                                    }
-                                  });
-                                },
-                                child: Container(
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  width: AppDimensions.width10(context) * 2.4,
-                                  margin: EdgeInsets.only(
-                                      bottom: AppDimensions.height10(context) *
-                                          1.0),
-                                  child: Image.asset(
-                                    pass_obscure
-                                        ? 'assets/images/visible-icon-9.webp'
-                                        : 'assets/images/ic_remove_red_eye.webp',
-                                    color: const Color(0xFF8C648A),
-                                    height:
-                                        AppDimensions.height10(context) * 2.4,
-                                    width: AppDimensions.width10(context) * 2.4,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        errorPassword
-                            ? Text(
-                                passwordMsg,
-                                style: TextStyle(
-                                  color: const Color(0xFFFE6624),
-                                  fontSize: AppDimensions.font10(context) * 1.4,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              )
-                            : Container(),
-                        SizedBox(
-                            height: errorEmail
-                                ? AppDimensions.height10(context)
-                                : AppDimensions.height10(context) * 3),
-                        SizedBox(
-                            height: AppDimensions.height10(context) * 6.2,
-                            width: AppDimensions.screenWidth(context) - 100,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Checkbox(
-                                  checkColor: Colors.black,
-                                  activeColor: Colors.white,
-                                  side: const BorderSide(
-                                      color: Color(0xffffffff)),
-                                  value: rememberMe,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      rememberMe = value ?? false;
-                                    });
-                                  },
-                                ),
-                                Text.rich(
-                                  TextSpan(
-                                    text:
-                                        'By signing up, you agree to Potenic’s \n ',
-                                    style: TextStyle(
-                                      color: const Color(0xFFFFFFFF),
-                                      fontSize:
-                                          AppDimensions.font10(context) * 1.4,
-                                      fontWeight: FontWeight.w600,
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                            text: 'User Agreement',
+                                            recognizer: TapGestureRecognizer()
+                                              ..onTap = () async {
+                                                policies(
+                                                    "https://app.getterms.io/view/XWpOJ/tos/en-au");
+                                              },
+                                            style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              color: const Color(0xFFFFFFFF),
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w600,
+                                            )),
+                                        TextSpan(
+                                            text: ' and ',
+                                            style: TextStyle(
+                                              color: const Color(0xFFFFFFFF),
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w600,
+                                            )),
+                                        TextSpan(
+                                            text: 'Privacy Policy',
+                                            recognizer: TapGestureRecognizer()
+                                              ..onTap = () async {
+                                                policies(
+                                                    "https://app.getterms.io/view/XWpOJ/privacy/en-au");
+                                              },
+                                            style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              color: const Color(0xFFFFFFFF),
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w600,
+                                            )),
+                                      ],
                                     ),
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                          text: 'User Agreement',
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () async {
-                                              policies(
-                                                  "https://app.getterms.io/view/XWpOJ/tos/en-au");
-                                            },
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            color: const Color(0xFFFFFFFF),
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.4,
-                                            fontWeight: FontWeight.w600,
-                                          )),
-                                      TextSpan(
-                                          text: ' and ',
-                                          style: TextStyle(
-                                            color: const Color(0xFFFFFFFF),
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.4,
-                                            fontWeight: FontWeight.w600,
-                                          )),
-                                      TextSpan(
-                                          text: 'Privacy Policy',
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () async {
-                                              policies(
-                                                  "https://app.getterms.io/view/XWpOJ/privacy/en-au");
-                                            },
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            color: const Color(0xFFFFFFFF),
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.4,
-                                            fontWeight: FontWeight.w600,
-                                          )),
-                                    ],
                                   ),
-                                ),
-                              ],
-                            )),
-                        userExist != ""
-                            ? AnimatedScaleButton(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: Loginemailandpassword()));
-                                },
-                                child: Container(
-                                  // height: AppDimensions.height10(context) * 2.7,
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: Center(
-                                      child: RichText(
-                                          textAlign: TextAlign.center,
-                                          text: TextSpan(
-                                              style: TextStyle(
-                                                color: const Color(0xFFFE6624),
-                                                fontFamily: 'laila',
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.16,
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.5,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                              children: const [
-                                                TextSpan(
-                                                    text:
-                                                        "This email is already registered."),
-                                                TextSpan(
-                                                    style: TextStyle(
-                                                      decoration: TextDecoration
-                                                          .underline,
-                                                    ),
-                                                    text:
-                                                        "\nPlease Log in to continue")
-                                              ]))),
-                                ),
-                              )
-                            : Container(),
-                      ],
+                                ],
+                              )),
+                          userExist != ""
+                              ? AnimatedScaleButton(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: Loginemailandpassword()));
+                                  },
+                                  child: Container(
+                                    // height: AppDimensions.height10(context) * 2.7,
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10(context) *
+                                            2.0),
+                                    child: Center(
+                                        child: RichText(
+                                            textAlign: TextAlign.center,
+                                            text: TextSpan(
+                                                style: TextStyle(
+                                                  color:
+                                                      const Color(0xFFFE6624),
+                                                  fontFamily: 'laila',
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.16,
+                                                  fontSize:
+                                                      AppDimensions.font10(
+                                                              context) *
+                                                          1.5,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                                children: const [
+                                                  TextSpan(
+                                                      text:
+                                                          "This email is already registered."),
+                                                  TextSpan(
+                                                      style: TextStyle(
+                                                        decoration:
+                                                            TextDecoration
+                                                                .underline,
+                                                      ),
+                                                      text:
+                                                          "\nPlease Log in to continue")
+                                                ]))),
+                                  ),
+                                )
+                              : Container(),
+                        ],
+                      ),
                     ),
-                  ),
 
-                  SizedBox(
-                    height: AppDimensions.height10(context) * 3.0,
-                  ),
-                  GestureDetector(
-                    onTapDown: (TapDownDetails details) {
-                      setState(() {
-                        Loading = true;
-                      });
-                      _controller.forward();
-                    },
-                    onTap: () async {
-                      setState(() {
-                        Loading = true;
-                      });
-                      _controller.forward();
-
-                      await Future.delayed(Duration(milliseconds: 200));
-
-                      _controller.reverse();
-
-                      await Future.delayed(Duration(milliseconds: 200));
-
-                      if (_formkey1.currentState!.validate() &&
-                          rememberMe == true &&
-                          errorPassword == false) {
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 3.0,
+                    ),
+                    GestureDetector(
+                      onTapDown: (TapDownDetails details) {
                         setState(() {
                           Loading = true;
-                          // errorEmail = false;
-                          // errorPassword = false;
-                          // errorName = false;
-                          // userExist = "";
                         });
+                        _controller.forward();
+                      },
+                      onTap: () async {
+                        setState(() {
+                          Loading = true;
+                        });
+                        _controller.forward();
 
-                        Authentication()
-                            .registerApi(
-                          '${nameController.text.toString()}',
-                          '${emailController.text.toString().trim()}',
-                          '${passwordController.text.toString()}',
-                        )
-                            .then((response) {
+                        await Future.delayed(Duration(milliseconds: 200));
+
+                        _controller.reverse();
+
+                        await Future.delayed(Duration(milliseconds: 200));
+
+                        if (_formkey1.currentState!.validate() &&
+                            rememberMe == true &&
+                            errorPassword == false) {
                           setState(() {
-                            Loading = false;
+                            Loading = true;
+                            // errorEmail = false;
+                            // errorPassword = false;
+                            // errorName = false;
+                            // userExist = "";
                           });
-                          if (response["statusCode"] == 200) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text(
-                              response["message"],
-                              style:
-                                  TextStyle(color: Colors.red.withOpacity(0.8)),
-                            )));
-                            Navigator.push(
-                              context,
-                              FadePageRoute(
-                                page: SignUpSuccessful(
-                                    name: nameController.text.toString()),
-                              ),
-                            );
-                          } else if (response["statusCode"] == 409) {
+
+                          Authentication()
+                              .registerApi(
+                            '${nameController.text.toString()}',
+                            '${emailController.text.toString().trim()}',
+                            '${passwordController.text.toString()}',
+                          )
+                              .then((response) {
                             setState(() {
                               Loading = false;
-                              userExist = response["message"];
                             });
+                            if (response["statusCode"] == 200) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                      content: Text(
+                                response["message"],
+                                style: TextStyle(
+                                    color: Colors.red.withOpacity(0.8)),
+                              )));
+                              Navigator.push(
+                                context,
+                                FadePageRoute(
+                                  page: SignUpSuccessful(
+                                      name: nameController.text.toString()),
+                                ),
+                              );
+                            } else if (response["statusCode"] == 409) {
+                              setState(() {
+                                Loading = false;
+                                userExist = response["message"];
+                              });
 
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                      content: Text(
+                                response["message"],
+                                style: TextStyle(
+                                    color: Colors.red.withOpacity(0.8)),
+                              )));
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                      content: Text(
+                                response["message"],
+                                style: TextStyle(
+                                    color: Colors.red.withOpacity(0.8)),
+                              )));
+                            }
+                          }).catchError((error) {
+                            setState(() {
+                              Loading = false;
+                            });
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text(
-                              response["message"],
-                              style:
-                                  TextStyle(color: Colors.red.withOpacity(0.8)),
-                            )));
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text(
-                              response["message"],
-                              style:
-                                  TextStyle(color: Colors.red.withOpacity(0.8)),
-                            )));
-                          }
-                        }).catchError((error) {
+                              content: Text(
+                                'ERROR',
+                                style: TextStyle(
+                                    color: Colors.red.withOpacity(0.8)),
+                              ),
+                            ));
+
+                            print("error");
+                          }).whenComplete(() {
+                            setState(() {
+                              Loading = false;
+                              // errorEmail = false;
+                              // errorPassword = false;
+                              // errorName = false;
+                            });
+                          });
+                        } else if (rememberMe == false) {
                           setState(() {
                             Loading = false;
                           });
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                              'ERROR',
-                              style:
-                                  TextStyle(color: Colors.red.withOpacity(0.8)),
-                            ),
-                          ));
-
-                          print("error");
-                        }).whenComplete(() {
+                              content: Text(
+                            'User Agreement is not checked',
+                            style:
+                                TextStyle(color: Colors.red.withOpacity(0.8)),
+                          )));
+                        } else {
                           setState(() {
                             Loading = false;
-                            // errorEmail = false;
-                            // errorPassword = false;
-                            // errorName = false;
                           });
-                        });
-                      } else if (rememberMe == false) {
-                        setState(() {
-                          Loading = false;
-                        });
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                          'User Agreement is not checked',
-                          style: TextStyle(color: Colors.red.withOpacity(0.8)),
-                        )));
-                      } else {
-                        setState(() {
-                          Loading = false;
-                        });
-                      }
-                    },
-                    child: Transform.scale(
-                      scale: 1 - _controller.value,
-                      child: Container(
-                        height: AppDimensions.height10(context) * 4.4,
-                        width: AppDimensions.width10(context) * 26.7,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFF5F5F5),
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.all(Radius.circular(
-                              AppDimensions.height10(context) * 5.0)),
-                        ),
-                        child: Center(
-                          child: Loading
-                              ? SpinKitThreeBounce(
-                                  color: const Color(0xFF8C648A),
-                                  //  delay: Duration(milliseconds: 0),
-                                  size: AppDimensions.height10(context) * 3.5,
-                                )
-                              : Text(
-                                  "Sign up",
-                                  style: TextStyle(
+                        }
+                      },
+                      child: Transform.scale(
+                        scale: 1 - _controller.value,
+                        child: Container(
+                          height: AppDimensions.height10(context) * 4.4,
+                          width: AppDimensions.width10(context) * 26.7,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFF5F5F5),
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                AppDimensions.height10(context) * 5.0)),
+                          ),
+                          child: Center(
+                            child: Loading
+                                ? SpinKitThreeBounce(
                                     color: const Color(0xFF8C648A),
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.6,
-                                    fontWeight: FontWeight.w600,
+                                    //  delay: Duration(milliseconds: 0),
+                                    size: AppDimensions.height10(context) * 3.5,
+                                  )
+                                : Text(
+                                    "Sign up",
+                                    style: TextStyle(
+                                      color: const Color(0xFF8C648A),
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.6,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
-                                ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-                // child:  Text("Hello background"),
+                  ],
+                  // child:  Text("Hello background"),
+                ),
               ),
-            ),
-          ],
-        ));
+            ],
+          )),
+    );
   }
 }

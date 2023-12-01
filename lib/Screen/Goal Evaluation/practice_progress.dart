@@ -578,7 +578,7 @@ class _practice_progressState extends State<practice_progress> {
                                     ),
                                     Center(
                                       child: Text(
-                                        '“I felt low and irritated ”',
+                                        '“I felt low and irritated”',
                                         style: TextStyle(
                                             color: const Color(0xFFB695B7),
                                             height: 1.2,
@@ -2126,7 +2126,6 @@ class _practice_progressState extends State<practice_progress> {
                                                 ],
                                               )
                                             : Container(),
-                                    
                                     SizedBox(
                                       height:
                                           AppDimensions.height10(context) * 4,
@@ -2475,7 +2474,7 @@ class _practice_progressState extends State<practice_progress> {
                                               1.0),
                                       child: Center(
                                         child: Text(
-                                          '“It is not bad ”',
+                                          '“It is not bad”',
                                           style: TextStyle(
                                               color: const Color(0xFFB695B7),
                                               height: 1.2,
@@ -2675,7 +2674,7 @@ class _practice_progressState extends State<practice_progress> {
                                               1.0),
                                       child: Center(
                                         child: Text(
-                                          '“I feel there is a good chance  ”',
+                                          '“I feel there is a good chance”',
                                           style: TextStyle(
                                               color: const Color(0xFFB695B7),
                                               height: 1.2,
@@ -2874,7 +2873,7 @@ class _practice_progressState extends State<practice_progress> {
                                               1.0),
                                       child: Center(
                                         child: Text(
-                                          '“I have more hard days than easy ”',
+                                          '“I have more hard days than easy”',
                                           style: TextStyle(
                                               color: const Color(0xFFB695B7),
                                               height: 1.2,

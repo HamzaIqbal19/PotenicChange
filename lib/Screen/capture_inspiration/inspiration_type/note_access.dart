@@ -210,7 +210,6 @@ class _note_infoState extends State<note_info> {
                           width: AppDimensions.width10(context) * 30.5,
                           alignment: Alignment.centerLeft,
                           margin: EdgeInsets.only(
-
                               left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.2),
@@ -415,7 +414,6 @@ class _note_infoState extends State<note_info> {
                           width: AppDimensions.width10(context) * 30.5,
                           alignment: Alignment.centerLeft,
                           margin: EdgeInsets.only(
-
                               left: AppDimensions.width10(context) * 2.0,
                               // right: AppDimensions.width10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
@@ -537,7 +535,6 @@ class _note_infoState extends State<note_info> {
                             height: AppDimensions.height10(context) * 2.2,
                             width: AppDimensions.width10(context) * 30.5,
                             margin: EdgeInsets.only(
-
                                 left: AppDimensions.width10(context) * 2.0,
                                 right: AppDimensions.width10(context) * 8.9,
                                 top: AppDimensions.height10(context) * 3.0),
@@ -558,7 +555,6 @@ class _note_infoState extends State<note_info> {
                             width: AppDimensions.width10(context) * 30.5,
                             //  color: Colors.grey,
                             margin: EdgeInsets.only(
-
                               left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 8.9,
                             ),
@@ -575,7 +571,6 @@ class _note_infoState extends State<note_info> {
                           height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.width10(context) * 30.5,
                           margin: EdgeInsets.only(
-
                               left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
@@ -644,7 +639,6 @@ class _note_infoState extends State<note_info> {
                           height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.width10(context) * 30.5,
                           margin: EdgeInsets.only(
-
                               left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
@@ -792,332 +786,217 @@ class _noteSavedState extends State<noteSaved> {
       child: Container(
         color: Colors.white,
         child: SafeArea(
-          child: Scaffold(
-            resizeToAvoidBottomInset: true,
-            appBar: AppBar(
-              automaticallyImplyLeading: false,
-              elevation: 0,
-              backgroundColor: const Color(0xFFC4C4C4),
-              toolbarHeight: AppDimensions.height10(context) * 5.1,
-              flexibleSpace: Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.width10(context) * 1.5),
-                decoration: BoxDecoration(
-                    color: const Color(0xffF5F5F5).withOpacity(0.8),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(
-                            AppDimensions.height10(context) * 1.0),
-                        topRight: Radius.circular(
-                            AppDimensions.height10(context) * 1.0))),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      AnimatedScaleButton(
-                        onTap: () async {
-                          Navigator.push(
-                              context,
-                              FadePageRouteReverse(
-                                  page: const inspiration_type()));
-                          title.clear();
-                          tagList.clear();
-                          hastags.clear();
-                          statement.clear();
-                          Navigator.push(context,
-                              FadePageRoute(page: const inspiration_type()));
-                          final SharedPreferences prefs = await _prefs;
-                          var remove = prefs.remove('ImageLink');
-                        },
-                        child: Center(
-                          child: Text(
-                            'Back',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.6,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff007AFF)),
-                          ),
-                        ),
-                      ),
-                      Center(
-                        child: SizedBox(
-                          // height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.width10(context) * 28.5,
+          child: GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: Scaffold(
+              resizeToAvoidBottomInset: true,
+              appBar: AppBar(
+                automaticallyImplyLeading: false,
+                elevation: 0,
+                backgroundColor: const Color(0xFFC4C4C4),
+                toolbarHeight: AppDimensions.height10(context) * 5.1,
+                flexibleSpace: Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: AppDimensions.width10(context) * 1.5),
+                  decoration: BoxDecoration(
+                      color: const Color(0xffF5F5F5).withOpacity(0.8),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(
+                              AppDimensions.height10(context) * 1.0),
+                          topRight: Radius.circular(
+                              AppDimensions.height10(context) * 1.0))),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        AnimatedScaleButton(
+                          onTap: () async {
+                            Navigator.push(
+                                context,
+                                FadePageRouteReverse(
+                                    page: const inspiration_type()));
+                            title.clear();
+                            tagList.clear();
+                            hastags.clear();
+                            statement.clear();
+                            Navigator.push(context,
+                                FadePageRoute(page: const inspiration_type()));
+                            final SharedPreferences prefs = await _prefs;
+                            var remove = prefs.remove('ImageLink');
+                          },
                           child: Center(
                             child: Text(
-                              'Create note inspiration',
+                              'Back',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.8,
-                                  fontWeight: FontWeight.w700,
-                                  color: const Color(0xff282828)),
+                                  fontSize: AppDimensions.font10(context) * 1.6,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff007AFF)),
                             ),
                           ),
                         ),
-                      ),
-                      ValueListenableBuilder<TextEditingValue>(
-                          valueListenable: statement,
-                          builder: (context, value, child) {
-                            return ValueListenableBuilder<TextEditingValue>(
-                                valueListenable: title,
-                                builder: (context, value, child) {
-                                  return AnimatedScaleButton(
-                                    onTap: () async {
-                                      if (title.text.isNotEmpty &&
-                                          statement.text.isNotEmpty) {
-                                        if (bt_enable == true) {
-                                          setState(() {
-                                            bt_enable = false;
+                        Center(
+                          child: SizedBox(
+                            // height: AppDimensions.height10(context) * 2.2,
+                            width: AppDimensions.width10(context) * 28.5,
+                            child: Center(
+                              child: Text(
+                                'Create note inspiration',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.8,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xff282828)),
+                              ),
+                            ),
+                          ),
+                        ),
+                        ValueListenableBuilder<TextEditingValue>(
+                            valueListenable: statement,
+                            builder: (context, value, child) {
+                              return ValueListenableBuilder<TextEditingValue>(
+                                  valueListenable: title,
+                                  builder: (context, value, child) {
+                                    return AnimatedScaleButton(
+                                      onTap: () async {
+                                        if (title.text.isNotEmpty &&
+                                            statement.text.isNotEmpty) {
+                                          if (bt_enable == true) {
+                                            setState(() {
+                                              bt_enable = false;
+                                            });
+                                          }
+                                          InspirationApi()
+                                              .addInspiration(
+                                                  2,
+                                                  null,
+                                                  title.text.toString(),
+                                                  tagList,
+                                                  ' ',
+                                                  " ",
+                                                  true,
+                                                  statement.text.toString(),
+                                                  selectedGoals)
+                                              .then((response) async {
+                                            if (response.length != 0) {
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page:
+                                                          const updatedLandingPage(
+                                                              delete: false,
+                                                              is_Updated:
+                                                                  false)));
+
+                                              title.clear();
+                                              tagList.clear();
+                                              hastags.clear();
+                                              statement.clear();
+                                              final SharedPreferences prefs =
+                                                  await _prefs;
+                                              var remove =
+                                                  prefs.remove('ImageLink');
+                                              prefs.remove(
+                                                  'inspiration_saved_route');
+                                            }
+
+                                            // return null;
                                           });
                                         }
-                                        InspirationApi()
-                                            .addInspiration(
-                                                2,
-                                                null,
-                                                title.text.toString(),
-                                                tagList,
-                                                ' ',
-                                                " ",
-                                                true,
-                                                statement.text.toString(),
-                                                selectedGoals)
-                                            .then((response) async {
-                                          if (response.length != 0) {
-                                            Navigator.push(
-                                                context,
-                                                FadePageRoute(
-                                                    page:
-                                                        const updatedLandingPage(
-                                                            delete: false,
-                                                            is_Updated:
-                                                                false)));
-
-                                            title.clear();
-                                            tagList.clear();
-                                            hastags.clear();
-                                            statement.clear();
-                                            final SharedPreferences prefs =
-                                                await _prefs;
-                                            var remove =
-                                                prefs.remove('ImageLink');
-                                            prefs.remove(
-                                                'inspiration_saved_route');
-                                          }
-
-                                          // return null;
-                                        });
-                                      }
-                                      final SharedPreferences prefs =
-                                          await _prefs;
-                                      prefs.remove('inspiration_saved_route');
-                                    },
-                                    child: Container(
-                                      // height: AppDimensions.height10(context) * 2.2,
-                                      // width: AppDimensions.width10(context) * 6.1,
-                                      // margin: EdgeInsets.only(
-                                      //     right: AppDimensions.width10(context) *
-                                      //         1.5),
-                                      child: bt_enable == false
-                                          ? Center(
-                                              child: SpinKitThreeBounce(
-                                                color: const Color(0xff007AFF),
-                                                // delay: Duration(milliseconds: 0),
-                                                size: AppDimensions.height10(
-                                                        context) *
-                                                    1.6,
+                                        final SharedPreferences prefs =
+                                            await _prefs;
+                                        prefs.remove('inspiration_saved_route');
+                                      },
+                                      child: Container(
+                                        // height: AppDimensions.height10(context) * 2.2,
+                                        // width: AppDimensions.width10(context) * 6.1,
+                                        // margin: EdgeInsets.only(
+                                        //     right: AppDimensions.width10(context) *
+                                        //         1.5),
+                                        child: bt_enable == false
+                                            ? Center(
+                                                child: SpinKitThreeBounce(
+                                                  color:
+                                                      const Color(0xff007AFF),
+                                                  // delay: Duration(milliseconds: 0),
+                                                  size: AppDimensions.height10(
+                                                          context) *
+                                                      1.6,
+                                                ),
+                                              )
+                                            : Center(
+                                                child: Text(
+                                                  'Create',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          AppDimensions.font10(
+                                                                  context) *
+                                                              1.6,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: title.text
+                                                                  .toString()
+                                                                  .isNotEmpty &&
+                                                              statement.text
+                                                                  .toString()
+                                                                  .isNotEmpty
+                                                          ? const Color(
+                                                              0xff007AFF)
+                                                          : const Color(
+                                                                  0xff007AFF)
+                                                              .withOpacity(
+                                                                  0.5)),
+                                                ),
                                               ),
-                                            )
-                                          : Center(
-                                              child: Text(
-                                                'Create',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.6,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: title.text
-                                                                .toString()
-                                                                .isNotEmpty &&
-                                                            statement.text
-                                                                .toString()
-                                                                .isNotEmpty
-                                                        ? const Color(
-                                                            0xff007AFF)
-                                                        : const Color(
-                                                                0xff007AFF)
-                                                            .withOpacity(0.5)),
-                                              ),
-                                            ),
-                                    ),
-                                  );
-                                });
-                          })
-                    ]),
+                                      ),
+                                    );
+                                  });
+                            })
+                      ]),
+                ),
               ),
-            ),
-            body: Container(
-              height: double.infinity,
-              width: double.infinity,
-              color: Colors.white,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: AppDimensions.height10(context) * 2.4,
-                      width: AppDimensions.width10(context) * 30.5,
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.only(
-
-                          left: AppDimensions.width10(context) * 2.0,
-                          right: AppDimensions.width10(context) * 8.9,
-                          top: AppDimensions.height10(context) * 3.2),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Title',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.5,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff828282)),
-                            ),
-                          ]),
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      // height: AppDimensions.height10(context) * 2.4,
-                      //width: AppDimensions.width10(context) * 30.5,
-                      margin: EdgeInsets.only(
-                        left: AppDimensions.width10(context) * 0.6,
+              body: Container(
+                height: double.infinity,
+                width: double.infinity,
+                color: Colors.white,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: AppDimensions.height10(context) * 2.4,
+                        width: AppDimensions.width10(context) * 30.5,
+                        alignment: Alignment.centerLeft,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.width10(context) * 2.0,
+                            right: AppDimensions.width10(context) * 8.9,
+                            top: AppDimensions.height10(context) * 3.2),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Title',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.5,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xff828282)),
+                              ),
+                            ]),
                       ),
-                      child: TextFormField(
-                        controller: title,
-                        textAlignVertical: TextAlignVertical.center,
-                        maxLines: null,
-                        style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.7,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xff282828)),
-                        decoration: InputDecoration(
-                            isCollapsed: true,
-                            contentPadding: EdgeInsets.fromLTRB(
-                                AppDimensions.height10(context) * 1.5,
-                                AppDimensions.height10(context) * 0.4,
-                                AppDimensions.height10(context) * 4,
-                                0),
-                            hintText: 'Give your inspiration a title',
-                            hintStyle: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.7,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xff828282)),
-                            focusedBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent)),
-                            enabledBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent))),
-                      ),
-                    ),
-                    Container(
-                      height: AppDimensions.height10(context) * 2.2,
-                      width: AppDimensions.width10(context) * 30.5,
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.width10(context) * 2.0,
-                          top: AppDimensions.height10(context) * 3.9),
-                      child: Text(
-                        'Why is it inspirational to you',
-                        style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.5,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff828282)),
-                      ),
-                    ),
-                    Container(
-                      //width: AppDimensions.width10(context) * 30.5,
-                      margin: EdgeInsets.only(
-                        left: AppDimensions.width10(context) * 2.0,
-                      ),
-                      child: TextFormField(
-                        textAlignVertical: TextAlignVertical.top,
-                        controller: statement,
-                        maxLines: null,
-                        minLines: null,
-                        style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.7,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xff282828)),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                                right: AppDimensions.width10(context) * 4),
-                            isCollapsed: true,
-                            hintText: 'Say more about this inspiration ',
-                            hintStyle: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.7,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xff828282)),
-                            focusedBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent)),
-                            enabledBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent))),
-                      ),
-                    ),
-                    Container(
-                      height: AppDimensions.height10(context) * 2.2,
-                      width: AppDimensions.width10(context) * 30.5,
-                      margin: EdgeInsets.only(
-
-                          left: AppDimensions.width10(context) * 2.0,
-                          right: AppDimensions.width10(context) * 8.9,
-                          top: AppDimensions.height10(context) * 3.9),
-                      child: Text(
-                        'Tags (optional)',
-                        style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.5,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff828282)),
-                      ),
-                    ),
-                    Container(
-                      // height: AppDimensions.height10(context) * 2.4,
-                      // width: AppDimensions.width10(context) * 30.5,
-                      margin: EdgeInsets.only(
-                        left: AppDimensions.width10(context) * 0.6,
-
-                        // top: AppDimensions.height10(context) * 1.0
-                      ),
-                      child: TextFormField(
-                          controller: hastags,
-                          maxLines: null,
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        // height: AppDimensions.height10(context) * 2.4,
+                        //width: AppDimensions.width10(context) * 30.5,
+                        margin: EdgeInsets.only(
+                          left: AppDimensions.width10(context) * 0.6,
+                        ),
+                        child: TextFormField(
+                          controller: title,
                           textAlignVertical: TextAlignVertical.center,
-                          onTap: () {
-                            if (hastags.text.isEmpty) {
-                              hastags.text = '#';
-                            }
-                            hastags.selection = TextSelection.fromPosition(
-                              TextPosition(offset: hastags.text.length),
-                            );
-                          },
-                          onChanged: (text) {
-                            List<String> words = text.split(' ');
-
-                            // Filter the words to find the ones that start with '#'
-                            List<String> tags = words
-                                .where((word) => word.startsWith('#'))
-                                .toList();
-                            List<String> finalResult = tags
-                                .map((tag) => '"${tag.replaceAll('#', '')}"')
-                                .toList();
-
-                            tagList.clear();
-
-                            tagList.addAll(finalResult.toSet());
-                          },
+                          maxLines: null,
                           style: TextStyle(
                               fontSize: AppDimensions.font10(context) * 1.7,
                               fontWeight: FontWeight.w500,
@@ -1125,11 +1004,11 @@ class _noteSavedState extends State<noteSaved> {
                           decoration: InputDecoration(
                               isCollapsed: true,
                               contentPadding: EdgeInsets.fromLTRB(
-                                  AppDimensions.height10(context) * 1.6,
+                                  AppDimensions.height10(context) * 1.5,
                                   AppDimensions.height10(context) * 0.4,
                                   AppDimensions.height10(context) * 4,
                                   0),
-                              hintText: 'Add #hashtag',
+                              hintText: 'Give your inspiration a title',
                               hintStyle: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 1.7,
                                   fontWeight: FontWeight.w500,
@@ -1140,106 +1019,230 @@ class _noteSavedState extends State<noteSaved> {
                               enabledBorder: const OutlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.transparent))),
-                          inputFormatters: [
-                            TextInputFormatter.withFunction(
-                                (oldValue, newValue) {
-                              if (newValue.text.isNotEmpty &&
-                                  !newValue.text.startsWith('#')) {
-                                return TextEditingValue(
-                                  text: '#${newValue.text}',
-                                  selection: TextSelection.collapsed(
-                                      offset: newValue.text.length + 1),
-                                );
-                              }
-                              return newValue;
-                            }),
-                          ]),
-                    ),
-                    Container(
-                      height: AppDimensions.height10(context) * 2.2,
-                      width: AppDimensions.width10(context) * 30.5,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.width10(context) * 2.0,
-                          bottom: AppDimensions.height10(context) * 0.5,
-                          right: AppDimensions.width10(context) * 8.9,
-                          top: AppDimensions.height10(context) * 3.9),
-                      child: Text(
-                        'Attached goals',
-                        style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.5,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff828282)),
-                      ),
-                    ),
-                    AnimatedScaleButton(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            FadePageRoute(
-                                page: const inspiraton_goals(
-                              update: false,
-                              data_saved: true,
-                              route: 'note_saved',
-                              context: false,
-                              note: false,
-                            )));
-                      },
-                      child: Container(
-                        height: AppDimensions.height10(context) * 6.0,
-                        width: AppDimensions.width10(context) * 37.5,
-                        margin: EdgeInsets.only(
-
-                          left: AppDimensions.width10(context) * 2.0,
-                          right: AppDimensions.width10(context) * 1.9,
-                          // bottom: AppDimensions.height10(context) * 1.0
                         ),
-                        decoration: BoxDecoration(
-                            color: const Color(0xFFFBFBFB),
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: AppDimensions.width10(context) * 23.9,
-                              height: AppDimensions.height10(context) * 2.2,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.width10(context) * 1.99),
-                              child: Text(
-                                '${selectedGoals.length} impacted goals',
-                                style: TextStyle(
-                                  color: const Color(0xFF646464),
-                                  fontSize: AppDimensions.font10(context) * 1.8,
+                      ),
+                      Container(
+                        height: AppDimensions.height10(context) * 2.2,
+                        width: AppDimensions.width10(context) * 30.5,
+                        alignment: Alignment.centerLeft,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.width10(context) * 2.0,
+                            top: AppDimensions.height10(context) * 3.9),
+                        child: Text(
+                          'Why is it inspirational to you',
+                          style: TextStyle(
+                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff828282)),
+                        ),
+                      ),
+                      Container(
+                        //width: AppDimensions.width10(context) * 30.5,
+                        margin: EdgeInsets.only(
+                          left: AppDimensions.width10(context) * 2.0,
+                        ),
+                        child: TextFormField(
+                          textAlignVertical: TextAlignVertical.top,
+                          controller: statement,
+                          maxLines: null,
+                          minLines: null,
+                          style: TextStyle(
+                              fontSize: AppDimensions.font10(context) * 1.7,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xff282828)),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                  right: AppDimensions.width10(context) * 4),
+                              isCollapsed: true,
+                              hintText: 'Say more about this inspiration ',
+                              hintStyle: TextStyle(
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontWeight: FontWeight.w500,
+                                  color: const Color(0xff828282)),
+                              focusedBorder: const OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent)),
+                              enabledBorder: const OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent))),
+                        ),
+                      ),
+                      Container(
+                        height: AppDimensions.height10(context) * 2.2,
+                        width: AppDimensions.width10(context) * 30.5,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.width10(context) * 2.0,
+                            right: AppDimensions.width10(context) * 8.9,
+                            top: AppDimensions.height10(context) * 3.9),
+                        child: Text(
+                          'Tags (optional)',
+                          style: TextStyle(
+                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff828282)),
+                        ),
+                      ),
+                      Container(
+                        // height: AppDimensions.height10(context) * 2.4,
+                        // width: AppDimensions.width10(context) * 30.5,
+                        margin: EdgeInsets.only(
+                          left: AppDimensions.width10(context) * 0.6,
+
+                          // top: AppDimensions.height10(context) * 1.0
+                        ),
+                        child: TextFormField(
+                            controller: hastags,
+                            maxLines: null,
+                            textAlignVertical: TextAlignVertical.center,
+                            onTap: () {
+                              if (hastags.text.isEmpty) {
+                                hastags.text = '#';
+                              }
+                              hastags.selection = TextSelection.fromPosition(
+                                TextPosition(offset: hastags.text.length),
+                              );
+                            },
+                            onChanged: (text) {
+                              List<String> words = text.split(' ');
+
+                              // Filter the words to find the ones that start with '#'
+                              List<String> tags = words
+                                  .where((word) => word.startsWith('#'))
+                                  .toList();
+                              List<String> finalResult = tags
+                                  .map((tag) => '"${tag.replaceAll('#', '')}"')
+                                  .toList();
+
+                              tagList.clear();
+
+                              tagList.addAll(finalResult.toSet());
+                            },
+                            style: TextStyle(
+                                fontSize: AppDimensions.font10(context) * 1.7,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xff282828)),
+                            decoration: InputDecoration(
+                                isCollapsed: true,
+                                contentPadding: EdgeInsets.fromLTRB(
+                                    AppDimensions.height10(context) * 1.6,
+                                    AppDimensions.height10(context) * 0.4,
+                                    AppDimensions.height10(context) * 4,
+                                    0),
+                                hintText: 'Add #hashtag',
+                                hintStyle: TextStyle(
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.7,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xff828282)),
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent))),
+                            inputFormatters: [
+                              TextInputFormatter.withFunction(
+                                  (oldValue, newValue) {
+                                if (newValue.text.isNotEmpty &&
+                                    !newValue.text.startsWith('#')) {
+                                  return TextEditingValue(
+                                    text: '#${newValue.text}',
+                                    selection: TextSelection.collapsed(
+                                        offset: newValue.text.length + 1),
+                                  );
+                                }
+                                return newValue;
+                              }),
+                            ]),
+                      ),
+                      Container(
+                        height: AppDimensions.height10(context) * 2.2,
+                        width: AppDimensions.width10(context) * 30.5,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.width10(context) * 2.0,
+                            bottom: AppDimensions.height10(context) * 0.5,
+                            right: AppDimensions.width10(context) * 8.9,
+                            top: AppDimensions.height10(context) * 3.9),
+                        child: Text(
+                          'Attached goals',
+                          style: TextStyle(
+                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff828282)),
+                        ),
+                      ),
+                      AnimatedScaleButton(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const inspiraton_goals(
+                                update: false,
+                                data_saved: true,
+                                route: 'note_saved',
+                                context: false,
+                                note: false,
+                              )));
+                        },
+                        child: Container(
+                          height: AppDimensions.height10(context) * 6.0,
+                          width: AppDimensions.width10(context) * 37.5,
+                          margin: EdgeInsets.only(
+                            left: AppDimensions.width10(context) * 2.0,
+                            right: AppDimensions.width10(context) * 1.9,
+                            // bottom: AppDimensions.height10(context) * 1.0
+                          ),
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFFBFBFB),
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) * 2.0)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: AppDimensions.width10(context) * 23.9,
+                                height: AppDimensions.height10(context) * 2.2,
+                                margin: EdgeInsets.only(
+                                    left:
+                                        AppDimensions.width10(context) * 1.99),
+                                child: Text(
+                                  '${selectedGoals.length} impacted goals',
+                                  style: TextStyle(
+                                    color: const Color(0xFF646464),
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.8,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Container(
-                                margin: EdgeInsets.only(
-
-                                    right: AppDimensions.width10(context) *
-                                        2.391),
-                                child: Text(
-                                  'View',
-                                  style: TextStyle(
-                                      color: const Color(0xFF437296),
-                                      fontWeight: FontWeight.w700,
-                                      decoration: TextDecoration.underline,
-                                      decorationThickness:
-                                          AppDimensions.height10(context) * 0.2,
-                                      fontSize:
-                                          AppDimensions.font10(context) * 1.4),
-                                ))
-                          ],
+                              Container(
+                                  margin: EdgeInsets.only(
+                                      right: AppDimensions.width10(context) *
+                                          2.391),
+                                  child: Text(
+                                    'View',
+                                    style: TextStyle(
+                                        color: const Color(0xFF437296),
+                                        fontWeight: FontWeight.w700,
+                                        decoration: TextDecoration.underline,
+                                        decorationThickness:
+                                            AppDimensions.height10(context) *
+                                                0.2,
+                                        fontSize:
+                                            AppDimensions.font10(context) *
+                                                1.4),
+                                  ))
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).viewInsets.bottom == 0
-                          ? AppDimensions.height10(context) * 4
-                          : AppDimensions.height10(context) * 8.0,
-                    )
-                  ],
+                      SizedBox(
+                        height: MediaQuery.of(context).viewInsets.bottom == 0
+                            ? AppDimensions.height10(context) * 4
+                            : AppDimensions.height10(context) * 8.0,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -513,17 +513,23 @@ class _practiceMenuState extends State<practiceMenu> {
                             child: Stack(children: [
                               Align(
                                 alignment: const Alignment(1, -1.125),
-                                child: AnimatedScaleButton(
-                                    onTap: () {
-                                      info_sheet(context);
-                                    },
-                                    child: Image.asset(
-                                      'assets/images/ic_info_outline.webp',
-                                      height:
-                                          AppDimensions.height10(context) * 3.0,
-                                      width:
-                                          AppDimensions.height10(context) * 3.0,
-                                    )),
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      right: AppDimensions.height10(context) *
+                                          0.5),
+                                  child: AnimatedScaleButton(
+                                      onTap: () {
+                                        info_sheet(context);
+                                      },
+                                      child: Image.asset(
+                                        'assets/images/ic_info_outline.webp',
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.0,
+                                        width: AppDimensions.height10(context) *
+                                            3.0,
+                                      )),
+                                ),
                               ),
                               Align(
                                 alignment: const Alignment(0, -1),
