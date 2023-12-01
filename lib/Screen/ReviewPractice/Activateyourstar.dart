@@ -730,7 +730,8 @@ void dashboard_sheet(context) {
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
           width: AppDimensions.width10(context) * 40,
-          height: AppDimensions.height10(context) * 62.3,
+         // height: AppDimensions.height10(context) * 62.3,
+         padding: EdgeInsets.only(bottom: AppDimensions.height10(context)*3),
           margin: EdgeInsets.only(
               left: AppDimensions.width10(context) * 1.0,
               right: AppDimensions.width10(context) * 1.0,
@@ -743,7 +744,7 @@ void dashboard_sheet(context) {
             // alignment: AlignmentDirectional.topCenter,
             //  mainAxisAlignment: MainAxisAlignment.start,
             //  crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisSize: MainAxisSize.min,
+             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 //color: Colors.amber,

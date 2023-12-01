@@ -367,6 +367,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
         return Future.value(false);
       },
       child: Scaffold(
+        backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           elevation: 0,
@@ -972,7 +973,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
         extendBody: true,
         bottomNavigationBar: BottomAppBar(
           elevation: 0,
-          color: Colors.transparent,
+          height: AppDimensions.height10(context)*12.5,
+
+          color: const Color(0xFFFBFBFB),
           child: Loader == false
               ? update
                   ? Container(

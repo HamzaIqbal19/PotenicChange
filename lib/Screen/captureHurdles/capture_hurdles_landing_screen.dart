@@ -2063,6 +2063,7 @@ void hurdle_sheet(context) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
+    backgroundColor: Colors.transparent,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
       top: Radius.circular(AppDimensions.height10(context) * 2.0),
@@ -2071,18 +2072,24 @@ void hurdle_sheet(context) {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.width10(context) * 41.5,
-          height: AppDimensions.height10(context) * 57.7,
+          width: AppDimensions.width10(context) * 40,
+          //height: AppDimensions.height10(context) * 57.7,
+          padding: EdgeInsets.only(bottom: AppDimensions.height10(context)*3),
+          margin: EdgeInsets.only(
+
+              left: AppDimensions.width10(context) * 1.0,
+              right: AppDimensions.width10(context) * 1.0,
+              bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(AppDimensions.height10(context) * 2.0),
-              ),
+              borderRadius:
+                  BorderRadius.circular(AppDimensions.height10(context) * 2.0),
               color: const Color(0xFFF5F5F5)),
           child: Column(
+            
             // alignment: AlignmentDirectional.topCenter,
             //  mainAxisAlignment: MainAxisAlignment.start,
             //  crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 //color: Colors.amber,
@@ -2123,10 +2130,10 @@ void hurdle_sheet(context) {
                 alignment: Alignment.center,
                 //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
                 child: Text(
-                  'My faced hurdles\n& obstacles',
+                  'My faced hurdle\n& obstacles',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 3.0,
+                      fontSize: AppDimensions.font10(context) * 2.8,
                       height: AppDimensions.height10(context) * .16,
                       letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
@@ -2134,7 +2141,7 @@ void hurdle_sheet(context) {
                 ),
               ),
               Container(
-                //width: AppDimensions.width10(context) * 35.4,
+                width: AppDimensions.width10(context) * 33.2,
                 //height: AppDimensions.height10(context) * 26.9,
                 //color: Colors.grey,
                 margin: EdgeInsets.only(
@@ -2142,11 +2149,10 @@ void hurdle_sheet(context) {
                 ),
                 child: Text(
                   'This is your private space to capture any\nobstacles that may divert you of course.\n\nAt Potenic, our aim is to empower you to own\nand enjoy your personal development journey.\n\nWe want to help you stay focused and this is\nwhy we also want you to be prepared for\n challenges ahead, so you can build a self-\nreliance and grow awareness.\n\nWith time, you will start seeing patterns (with\nthe help of Potenic’s frameworks) and will be\nmore aware of situations that get you\ntriggered.',
-                  textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 1.6,
-                      height: AppDimensions.height10(context) * 0.14,
-                      letterSpacing: AppDimensions.height10(context) * 0.12,
+                      fontSize: AppDimensions.font10(context) * 1.8,
+                      //height: AppDimensions.height10(context) * 0.14,
+                      //letterSpacing: AppDimensions.height10(context) * 0.12,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF437296)),
                 ),
