@@ -1083,7 +1083,7 @@ class _StarReviewState extends State<StarReview> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   3.7,
-                                              width: AppDimensions.height10(
+                                              width: AppDimensions.width10(
                                                       context) *
                                                   30.5,
 
@@ -1741,9 +1741,9 @@ class _StarReviewState extends State<StarReview> {
                                     Image.asset(
                                       "assets/images/bin.webp",
                                       height:
-                                          AppDimensions.height10(context) * 1.2,
+                                          AppDimensions.width10(context) * 1.2,
                                       width:
-                                          AppDimensions.height10(context) * 1.4,
+                                          AppDimensions.width10(context) * 1.4,
                                     ),
                                     SizedBox(
                                       width:

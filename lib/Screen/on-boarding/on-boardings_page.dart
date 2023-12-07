@@ -501,7 +501,7 @@ class OnboardingPageState extends State<OnboardingPage>
           }
         },
         child: Container(
-          height: AppDimensions.height10(context) * 5,
+          height: AppDimensions.height10(context) * 5.2,
           width: AppDimensions.width10(context) * 25.4,
           decoration: BoxDecoration(
             border: Border.all(color: Colors.white),

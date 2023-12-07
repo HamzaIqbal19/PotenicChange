@@ -986,9 +986,9 @@ class _your_whyState extends State<your_why> {
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                             fontSize: AppDimensions
-                                                                    .height10(
+                                                                    .font10(
                                                                         context) *
-                                                                1.4,
+                                                                1.46,
                                                             fontWeight: FontWeight
                                                                 .w400,
                                                             color: widget

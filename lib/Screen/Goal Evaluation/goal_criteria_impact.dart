@@ -811,7 +811,7 @@ class _your_impactState extends State<your_impact> {
                                             style: TextStyle(
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.4,
+                                                    1.46,
                                                 fontWeight: FontWeight.w400,
                                                 color: select_item != index1
                                                     ? const Color(0xFFFA9934)
@@ -1004,7 +1004,7 @@ class _your_impactState extends State<your_impact> {
                                             style: TextStyle(
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.4,
+                                                    1.46,
                                                 fontWeight: FontWeight.w400,
                                                 color: select_item_2 != index1
                                                     ? const Color(0xFFFA9934)

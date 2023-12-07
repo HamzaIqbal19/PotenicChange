@@ -120,7 +120,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                   },
                   child: Container(
                     width: AppDimensions.width10(context) * 34.3,
-                    height: AppDimensions.height10(context) * 7.6,
+                    height: AppDimensions.height10(context) * 7.7,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 12.0,
                         bottom: AppDimensions.height10(context) * 1.9),
@@ -201,7 +201,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                     height: AppDimensions.height10(context) * 17.0,
                     // color: Colors.amber,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 5.5,
+                        top: AppDimensions.height10(context) * 5.1,
                         right: AppDimensions.width10(context) * 1.9),
                     child: Center(
                       child: Text(

@@ -58,12 +58,12 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                   },
                   child: Container(
                     width: AppDimensions.width10(context) * 5.0,
-                    height: AppDimensions.height10(context) * 3.1,
+                    height: AppDimensions.width10(context) * 3.1,
                     child: Center(
                       child: Text(
                         "Cancel",
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 1.9,
                             height: AppDimensions.height10(context) * 0.1,
                             color: const Color(0xFF2F80ED)),
                       ),
@@ -84,12 +84,12 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                       },
                       child: Container(
                         width: AppDimensions.width10(context) * 2.9,
-                        height: AppDimensions.height10(context) * 3.1,
+                        height: AppDimensions.width10(context) * 3.1,
                         child: Center(
                           child: Text(
                             "Add",
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.9,
                                 height: AppDimensions.height10(context) * 0.1,
                                 color: const Color(0xFF2F80ED)),
                           ),
@@ -111,12 +111,12 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                       },
                       child: Container(
                         // width: AppDimensions.width10(context) * 3.7,
-                        height: AppDimensions.height10(context) * 3.1,
+                        height: AppDimensions.height10(context) * 3.2,
                         child: Center(
                           child: Text(
                             "Done",
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 1.9,
                                 height: AppDimensions.height10(context) * 0.1,
                                 color: const Color(0xFF2F80ED)),
                           ),

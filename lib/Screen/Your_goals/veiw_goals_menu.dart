@@ -244,7 +244,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
-                                                            1.6,
+                                                            1.45,
                                                     fontWeight: FontWeight.w500,
                                                     color: colorC),
                                                 children: [

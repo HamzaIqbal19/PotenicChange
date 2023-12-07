@@ -109,12 +109,12 @@ class align_circles extends StatelessWidget {
         ),
         Align(
           alignment:
-              is_right ? const Alignment(0.7, 1.3) : const Alignment(-0.5, 1),
+              is_right ? const Alignment(0.7, 1.3) : const Alignment(-0.45, 1),
           child: AnimatedScaleButton(
             onTap: onTap2,
             child: Container(
-              height: AppDimensions.height10(context) * 13.8,
-              width: AppDimensions.height10(context) * 13.8,
+              height: AppDimensions.height10(context) * 14.1,
+              width: AppDimensions.height10(context) * 14.1,
               padding: EdgeInsets.symmetric(
                   horizontal: AppDimensions.width10(context)),
               decoration: BoxDecoration(

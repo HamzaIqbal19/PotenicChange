@@ -733,6 +733,7 @@ class _emotionsState extends State<emotions> {
                           )
                         ]),
                   ),
+                  SizedBox(height: AppDimensions.height10(context)*2,)
                 ],
               ),
             ),
@@ -870,7 +871,7 @@ class _addNotesState extends State<addNotes> {
                       state: widget.state_,
                     ))
                 : SizedBox(
-                    height: AppDimensions.height10(context) * 11.1,
+                    height: AppDimensions.height10(context) * 9.1,
                   )),
       ],
     );

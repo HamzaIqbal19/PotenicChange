@@ -510,16 +510,16 @@ class _AllGoalsState extends State<AllGoals> {
         ),
         bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
-          notchMargin: 10,
+          notchMargin: 4,
           child: Container(
             // color: Colors.blue,
             margin: EdgeInsets.only(
               bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
             padding: EdgeInsets.only(
+                top: AppDimensions.height10(context)*0.8,
                 left: AppDimensions.width10(context) * 2.2,
                 right: AppDimensions.width10(context) * 2.2),
-            height: AppDimensions.height10(context) * 7.0,
             width: AppDimensions.width10(context) * 41.4,
 
             child: SearchIcon == true

@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:potenic_app/API/Goal.dart';
@@ -67,6 +68,9 @@ class _view_goalsState extends State<view_goals> {
   int removeDay = 0;
   String RecordDate = '';
   int goal_level = 0;
+   ScrollController _scrollController = ScrollController();
+
+
   void _incrementValue() {
     setState(() {
       goal_level++;
@@ -107,6 +111,7 @@ class _view_goalsState extends State<view_goals> {
       });
     }
 
+
     super.initState();
 
     // _fetchUserGoal();
@@ -124,6 +129,7 @@ class _view_goalsState extends State<view_goals> {
       });
     }
 
+    _scrollController.animateTo(1000, duration: const Duration(milliseconds: 50), curve: Curves.linear);
     //fetchGoalsByDay();
   }
 
@@ -391,99 +397,6 @@ class _view_goalsState extends State<view_goals> {
                           },
                         );
 
-                        /*
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return SizedBox(
-                                height: AppDimensions.height10(context) * 30.3,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      height:
-                                          AppDimensions.height10(context) * 3.8,
-                                      decoration: BoxDecoration(
-                                          border: Border(
-                                              bottom: BorderSide(
-                                                  color: const Color(0xFF828282),
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      0.1))),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  5.0,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.1,
-                                              margin: EdgeInsets.only(
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      2.0),
-                                              child: Text(
-                                                'Cancel',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.4,
-                                                    fontWeight: FontWeight.w400,
-                                                    color:
-                                                        const Color(0xFF2F80ED)),
-                                              ),
-                                            ),
-                                          ),
-                                          GestureDetector(
-                                            onTap: () {},
-                                            child: Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  3.7,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.1,
-                                              margin: EdgeInsets.only(
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      1.9),
-                                              child: Text(
-                                                'Done',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.4,
-                                                    fontWeight: FontWeight.w400,
-                                                    color:
-                                                        const Color(0xFF2F80ED)),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 26.0,
-                                      child: CupertinoDatePicker(
-                                        mode: CupertinoDatePickerMode.date,
-                                        onDateTimeChanged: (DateTime value) {},
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            });
-                     */
                       },
                       child: Container(
                         margin: EdgeInsets.only(
@@ -512,12 +425,19 @@ class _view_goalsState extends State<view_goals> {
                       FadeFunction: () {},
                       functionText: widget.missed ? 'Undo' : 'Edit'),
                 )
-              : const Navigation_Bar(
-                  bg_colored: true,
-                  membership: true,
-                  cancel: false,
-                  trial: false,
-                ),
+              : const BottomAppBar(
+            elevation: 0,
+                padding: EdgeInsets.zero,
+
+                notchMargin: 0,
+                color: Colors.transparent,
+                child:  Navigation_Bar(
+                    bg_colored: true,
+                    membership: true,
+                    cancel: false,
+                    trial: false,
+                  ),
+              ),
           body: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -994,7 +914,7 @@ class _view_goalsState extends State<view_goals> {
                                           margin: EdgeInsets.only(
                                             top: AppDimensions.height10(
                                                     context) *
-                                                21.0,
+                                                20.0,
                                           ),
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.vertical,
@@ -1281,7 +1201,8 @@ class _view_goalsState extends State<view_goals> {
                                                         width: AppDimensions
                                                                 .width10(
                                                                     context) *
-                                                            35.335,
+                                                            36.335,
+                                                        margin: EdgeInsets.only(top: AppDimensions.height10(context)*1),
                                                         decoration:
                                                             const BoxDecoration(
                                                                 image:
@@ -2079,11 +2000,13 @@ class _view_goalsState extends State<view_goals> {
                                       scrollDirection: Axis.vertical,
                                       child: Column(children: [
                                         SingleChildScrollView(
+                                          controller: _scrollController,
                                           scrollDirection: Axis.horizontal,
-                                          child: SizedBox(
+                                          child: Container(
                                             height: AppDimensions.height10(
                                                     context) *
                                                 19.2,
+                                            margin: EdgeInsets.only(right: 20),
                                             width:
                                                 AppDimensions.width10(context) *
                                                     45.7,

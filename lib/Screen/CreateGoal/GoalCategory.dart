@@ -442,16 +442,16 @@ class _GoalCategoryState extends State<GoalCategory> {
           ),
           bottomNavigationBar: BottomAppBar(
             shape: const CircularNotchedRectangle(),
-            notchMargin: 10,
+            notchMargin: 4,
             child: Container(
               margin: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom,
               ),
               // color: Colors.blue,
               padding: EdgeInsets.only(
+                top: AppDimensions.height10(context)*0.8,
                   left: AppDimensions.width10(context) * 2.2,
                   right: AppDimensions.width10(context) * 2.2),
-              height: AppDimensions.height10(context) * 7.0,
               width: AppDimensions.width10(context) * 41.4,
               child: SearchIcon == true
                   ? Container(
@@ -514,6 +514,11 @@ class _GoalCategoryState extends State<GoalCategory> {
                                             ),
                                           ),
                                           hintText: "Search",
+                                          hintStyle: TextStyle(
+                                              height: AppDimensions.height10(
+                                                  context) *
+                                                  0.14),
+
                                           focusedBorder:
                                               const OutlineInputBorder(
                                                   borderSide: BorderSide(

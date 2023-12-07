@@ -349,7 +349,7 @@ class _photo_infoState extends State<photo_info> {
                               'Back',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff007AFF)),
                             ),
@@ -706,7 +706,7 @@ class _photo_infoState extends State<photo_info> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.6,
+                                                          1.7,
                                                   fontWeight: FontWeight.w400,
                                                   color:
                                                       const Color(0xff007AFF)),
@@ -914,7 +914,7 @@ class _photo_infoState extends State<photo_info> {
                                   'Title',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.5,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xff828282)),
                                 ),
@@ -933,7 +933,7 @@ class _photo_infoState extends State<photo_info> {
                                   textAlignVertical: TextAlignVertical.top,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xff282828)),
                                   decoration: InputDecoration(
@@ -947,7 +947,7 @@ class _photo_infoState extends State<photo_info> {
                                       hintStyle: TextStyle(
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.7,
+                                                  1.8,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff828282)),
                                       focusedBorder: const OutlineInputBorder(
@@ -972,7 +972,7 @@ class _photo_infoState extends State<photo_info> {
                                         style: TextStyle(
                                             fontSize:
                                                 AppDimensions.font10(context) *
-                                                    1.5,
+                                                    1.6,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff828282)),
                                       )
@@ -981,7 +981,7 @@ class _photo_infoState extends State<photo_info> {
                                         style: TextStyle(
                                             fontSize:
                                                 AppDimensions.font10(context) *
-                                                    1.5,
+                                                    1.6,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff828282)),
                                       ),
@@ -1000,7 +1000,7 @@ class _photo_infoState extends State<photo_info> {
                                   maxLines: null,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xff282828)),
                                   decoration: InputDecoration(
@@ -1015,7 +1015,7 @@ class _photo_infoState extends State<photo_info> {
                                       hintStyle: TextStyle(
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.7,
+                                                  1.8,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff828282)),
                                       focusedBorder: const OutlineInputBorder(
@@ -1038,7 +1038,7 @@ class _photo_infoState extends State<photo_info> {
                                   'Destination website (optional)',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.5,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xff828282)),
                                 ),
@@ -1066,7 +1066,7 @@ class _photo_infoState extends State<photo_info> {
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.7,
+                                                  1.8,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff282828)),
                                       decoration: InputDecoration(
@@ -1083,7 +1083,7 @@ class _photo_infoState extends State<photo_info> {
                                           hintStyle: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.7,
+                                                  1.8,
                                               fontWeight: FontWeight.w500,
                                               color: const Color(0xff828282)),
                                           focusedBorder: const OutlineInputBorder(
@@ -1184,7 +1184,7 @@ class _photo_infoState extends State<photo_info> {
                                   'Tags (optional)',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.5,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xff828282)),
                                 ),
@@ -1233,7 +1233,7 @@ class _photo_infoState extends State<photo_info> {
                                     textAlignVertical: TextAlignVertical.top,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.7,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xff282828)),
                                     decoration: InputDecoration(
@@ -1248,7 +1248,7 @@ class _photo_infoState extends State<photo_info> {
                                         hintStyle: TextStyle(
                                             fontSize:
                                                 AppDimensions.font10(context) *
-                                                    1.7,
+                                                    1.8,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xff828282)),
                                         focusedBorder: const OutlineInputBorder(
@@ -1289,7 +1289,7 @@ class _photo_infoState extends State<photo_info> {
                                   'Attached goals',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.5,
+                                          AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xff828282)),
                                 ),
@@ -1352,7 +1352,7 @@ class _photo_infoState extends State<photo_info> {
                                             color: const Color(0xFF646464),
                                             fontSize:
                                                 AppDimensions.font10(context) *
-                                                    1.8,
+                                                    1.9,
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),

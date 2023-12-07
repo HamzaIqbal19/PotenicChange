@@ -103,18 +103,18 @@ void bottom_sheet(context) {
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Container(
               // color:Colors.lightGreen,
-              height: AppDimensions.height10(context) * 45.0,
+              // height: AppDimensions.height10(context) * 45.0,
               width: AppDimensions.width10(context) * 41.4,
 
               child: Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Container(
-                      height: AppDimensions.height10(context) * 3.4,
+                      height: AppDimensions.height10(context) * 3.6,
                       width: AppDimensions.width10(context) * 35.5,
 
                       // padding: const EdgeInsets.only(top: 8.0, bottom: 8),
@@ -135,7 +135,7 @@ void bottom_sheet(context) {
                     SizedBox(
                         child: Container(
                       width: AppDimensions.width10(context) * 36,
-                      height: AppDimensions.height10(context) * 9.0,
+                      height: AppDimensions.height10(context) * 10.0,
                       decoration: BoxDecoration(
                           color: const Color.fromRGBO(0, 0, 0, 0.1),
                           borderRadius: BorderRadius.circular(

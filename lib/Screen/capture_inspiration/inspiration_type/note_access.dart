@@ -980,7 +980,7 @@ class _noteSavedState extends State<noteSaved> {
                                 'Title',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.5,
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -998,7 +998,7 @@ class _noteSavedState extends State<noteSaved> {
                           textAlignVertical: TextAlignVertical.center,
                           maxLines: null,
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 1.8,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xff282828)),
                           decoration: InputDecoration(
@@ -1010,7 +1010,7 @@ class _noteSavedState extends State<noteSaved> {
                                   0),
                               hintText: 'Give your inspiration a title',
                               hintStyle: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xff828282)),
                               focusedBorder: const OutlineInputBorder(
@@ -1031,7 +1031,7 @@ class _noteSavedState extends State<noteSaved> {
                         child: Text(
                           'Why is it inspirational to you',
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff828282)),
                         ),
@@ -1047,7 +1047,7 @@ class _noteSavedState extends State<noteSaved> {
                           maxLines: null,
                           minLines: null,
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 1.8,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xff282828)),
                           decoration: InputDecoration(
@@ -1056,7 +1056,7 @@ class _noteSavedState extends State<noteSaved> {
                               isCollapsed: true,
                               hintText: 'Say more about this inspiration ',
                               hintStyle: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xff828282)),
                               focusedBorder: const OutlineInputBorder(
@@ -1077,7 +1077,7 @@ class _noteSavedState extends State<noteSaved> {
                         child: Text(
                           'Tags (optional)',
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff828282)),
                         ),
@@ -1118,7 +1118,7 @@ class _noteSavedState extends State<noteSaved> {
                               tagList.addAll(finalResult.toSet());
                             },
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
@@ -1131,7 +1131,7 @@ class _noteSavedState extends State<noteSaved> {
                                 hintText: 'Add #hashtag',
                                 hintStyle: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff828282)),
                                 focusedBorder: const OutlineInputBorder(
@@ -1166,7 +1166,7 @@ class _noteSavedState extends State<noteSaved> {
                         child: Text(
                           'Attached goals',
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff828282)),
                         ),
@@ -1210,7 +1210,7 @@ class _noteSavedState extends State<noteSaved> {
                                   style: TextStyle(
                                     color: const Color(0xFF646464),
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.8,
+                                        AppDimensions.font10(context) * 1.9,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),

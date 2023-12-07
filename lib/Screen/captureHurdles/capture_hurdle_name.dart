@@ -514,9 +514,11 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                     context) *
                                                 2.0,
                                             margin: EdgeInsets.only(
-                                                left: AppDimensions.width10(
+                                                left: MediaQuery.of(context).size.height < 690 ? AppDimensions.width10(
                                                         context) *
-                                                    1.0,
+                                                    1.0:AppDimensions.width10(
+                                                    context) *
+                                                    1.5,
                                                 // right: AppDimensions.width10(
                                                 //         context) *
                                                 //     25.0,

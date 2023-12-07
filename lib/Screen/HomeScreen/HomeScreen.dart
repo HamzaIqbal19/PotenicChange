@@ -286,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           ));
                                 },
                                 child: Container(
-                                  height: AppDimensions.height10(context) * 5,
+                                  height: AppDimensions.height10(context) * 5.2,
                                   width: AppDimensions.width10(context) * 13,
                                   decoration: BoxDecoration(
                                     color: const Color(0xFFF5F5F5),
@@ -318,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       context, "Introduction", "OnBoarding");
                                 },
                                 child: Container(
-                                  height: AppDimensions.height10(context) * 5,
+                                  height: AppDimensions.height10(context) * 5.2,
                                   width: AppDimensions.width10(context) * 5,
                                   decoration: BoxDecoration(
                                     color: Colors.transparent,
@@ -358,7 +358,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   );
                                 },
                                 child: Container(
-                                  height: AppDimensions.height10(context) * 5,
+                                  height: AppDimensions.height10(context) * 5.2,
                                   width: AppDimensions.width10(context) * 13,
                                   decoration: BoxDecoration(
                                     color: const Color(0xFFF5F5F5),
@@ -398,7 +398,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     );
                                   },
                                   child: Container(
-                                    height: AppDimensions.height10(context) * 5,
+                                    height: AppDimensions.height10(context) * 5.2,
                                     width: AppDimensions.width10(context) * 13,
                                     decoration: BoxDecoration(
                                       color: const Color(0xFF5A4D73),

@@ -550,6 +550,10 @@ class _CreatePracticeState extends State<CreatePractice> {
                                             ),
                                           ),
                                           hintText: "Search",
+                                          hintStyle: TextStyle(
+                                              height: AppDimensions.height10(
+                                                  context) *
+                                                  0.14),
                                           focusedBorder:
                                               const OutlineInputBorder(
                                                   borderSide: BorderSide(

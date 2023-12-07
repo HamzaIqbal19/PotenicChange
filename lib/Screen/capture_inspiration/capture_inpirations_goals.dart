@@ -988,7 +988,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               width: AppDimensions.width10(context) * 34.2,
                               height: AppDimensions.height10(context) * 5.0,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 3.3,
+                                  top: AppDimensions.height10(context) * 3.0,
                                   bottom:
                                       AppDimensions.height10(context) * 3.6),
                               child: Row(
@@ -1412,7 +1412,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             width: AppDimensions.width10(context) * 25.4,
                             height: AppDimensions.height10(context) * 5.0,
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 3.3,
+                                top: AppDimensions.height10(context) * 3.0,
                                 bottom: AppDimensions.height10(context) * 2.6),
                             decoration: BoxDecoration(
                               gradient: LinearGradient(

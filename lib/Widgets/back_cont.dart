@@ -224,8 +224,8 @@ class _inner_textState extends State<inner_text> {
                         );
                       },
                       child: Container(
-                        height: AppDimensions.height10(context) * 2.1,
-                        width: AppDimensions.width10(context) * 2.1,
+                        height: AppDimensions.width10(context) * 2.3,
+                        width: AppDimensions.width10(context) * 2.3,
                         margin: EdgeInsets.only(
                             bottom: AppDimensions.height10(context) * 1.0,
                             right: AppDimensions.width10(context) * 1.0),

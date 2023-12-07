@@ -1324,7 +1324,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                               children: [
                                                 SizedBox(
                                                   // color: Colors.blue,
-                                                  width: AppDimensions.height10(
+                                                  width: AppDimensions.width10(
                                                           context) *
                                                       25.9,
                                                   height:
@@ -1418,7 +1418,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                       AppDimensions.height10(
                                                               context) *
                                                           5.1,
-                                                  width: AppDimensions.height10(
+                                                  width: AppDimensions.width10(
                                                           context) *
                                                       34.5,
                                                   padding: EdgeInsets.only(

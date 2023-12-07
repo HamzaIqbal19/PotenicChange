@@ -230,7 +230,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            height: AppDimensions.height10(context) * 6,
+                            height: AppDimensions.height10(context) * 6.2,
                             width: AppDimensions.width10(context) * 36,
                             padding: EdgeInsetsDirectional.only(
                               top: AppDimensions.height10(context) * 1.2,
@@ -315,7 +315,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                   ? AppDimensions.height10(context)
                                   : AppDimensions.height10(context) * 3),
                           Container(
-                            height: AppDimensions.height10(context) * 6,
+                            height: AppDimensions.height10(context) * 6.2,
                             width: AppDimensions.width10(context) * 36,
                             padding: EdgeInsetsDirectional.only(
                               top: AppDimensions.height10(context) * 1.2,
@@ -409,7 +409,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                   ? AppDimensions.height10(context)
                                   : AppDimensions.height10(context) * 3),
                           Container(
-                            height: AppDimensions.height10(context) * 6,
+                            height: AppDimensions.height10(context) * 6.2,
                             width: AppDimensions.width10(context) * 36,
                             padding: EdgeInsetsDirectional.only(
                               top: AppDimensions.height10(context) * 1.2,
@@ -784,7 +784,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                       child: Transform.scale(
                         scale: 1 - _controller.value,
                         child: Container(
-                          height: AppDimensions.height10(context) * 4.4,
+                          height: AppDimensions.height10(context) * 5.0,
                           width: AppDimensions.width10(context) * 26.7,
                           decoration: BoxDecoration(
                             color: const Color(0xFFF5F5F5),

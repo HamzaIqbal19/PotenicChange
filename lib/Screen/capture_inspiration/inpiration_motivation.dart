@@ -100,16 +100,17 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
             Align(
               alignment: const Alignment(0, 0.45),
               child: Container(
-                height: AppDimensions.height10(context) * 57.5,
+                //height: AppDimensions.height10(context) * 57.5,
                 width: double.infinity,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
-                            'assets/images/Inspiration_Glow 1.webp'))),
+                            'assets/images/Inspiration_Glow 1.webp'),fit: BoxFit.fitWidth)),
                 child: Center(
                   child: Container(
                     height: AppDimensions.height10(context) * 35.9,
                     width: AppDimensions.width10(context) * 35.9,
+                    margin: EdgeInsets.only(top: AppDimensions.height10(context)*2),
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(

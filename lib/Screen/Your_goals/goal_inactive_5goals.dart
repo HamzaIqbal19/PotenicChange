@@ -973,7 +973,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
         extendBody: true,
         bottomNavigationBar: BottomAppBar(
           elevation: 0,
-          height: AppDimensions.height10(context)*12.5,
+          height: AppDimensions.height10(context)*8.5,
 
           color: const Color(0xFFFBFBFB),
           child: Loader == false
@@ -1007,7 +1007,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       children: [
                         Container(
                           color: const Color(0xFFFBFBFB),
-                          height: AppDimensions.height10(context) * 12.0,
+                          height: AppDimensions.height10(context) * 8.0,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

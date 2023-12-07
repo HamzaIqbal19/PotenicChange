@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             FontWeight.w600),
         _buildVerticalSpacing(context, 4.8),
         _buildButtonSection(context),
-        _buildVerticalSpacing(context, 28.0),
+        _buildVerticalSpacing(context, 23.0),
         _buildBottomButton(context),
       ],
     );
@@ -156,7 +156,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   Widget _buildButtonSection(BuildContext context) {
     return Container(
-      height: AppDimensions.height10(context) * 21.1,
+      height: AppDimensions.height10(context) * 24.1,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               );
             },
             child: Container(
-              height: AppDimensions.height10(context) * 5.5,
+              height: AppDimensions.height10(context) * 5.6,
               width: AppDimensions.width10(context) * 34.1,
               decoration: BoxDecoration(
                   color: Color(0xFF5A4D73),
@@ -266,7 +266,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       Color backgroundColor,
       Color textColor) {
     return Container(
-      height: AppDimensions.height10(context) * 5.5,
+      height: AppDimensions.height10(context) * 5.6,
       width: AppDimensions.width10(context) * 34.1,
       child: OutlinedButton.icon(
         style: OutlinedButton.styleFrom(
@@ -324,7 +324,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       child: Transform.scale(
         scale: 1 - _controller.value,
         child: Container(
-          height: AppDimensions.height10(context) * 5.0,
+          height: AppDimensions.height10(context) * 5.2,
           width: AppDimensions.width10(context) * 29.3,
           decoration: BoxDecoration(
             color: const Color(0xFFF5F5F5),

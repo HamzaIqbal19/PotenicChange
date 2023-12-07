@@ -96,7 +96,7 @@ class _select_hurdleState extends State<select_hurdle> {
     Hurdles().getHurdleById().then((response) {
       if (response.length != 0) {
         setState(() {
-          selectBox = response['hurdle']['hurdleId'];
+          selectBox = response['hurdle']['hurdleId'] -1;
         });
         loadData();
         return response;
@@ -419,153 +419,163 @@ class _select_hurdleState extends State<select_hurdle> {
                     image: AssetImage('assets/images/practicebackground.webp'),
                     fit: BoxFit.cover)),
             child: Loading == false
-                ? SingleChildScrollView(
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: AppDimensions.width10(context) * 33.7,
-                            height: AppDimensions.height10(context) * 7.8,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 16.0),
-                            child: Center(
-                              //slight width issue
-                              child: GradientText(
-                                'What or who has\ntriggered your hurdle?',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  height:
-                                      AppDimensions.height10(context) * 0.15,
-                                  fontSize: AppDimensions.font10(context) * 2.8,
-                                  fontWeight: FontWeight.w700,
+                ? Stack(
+              alignment: AlignmentDirectional.center,
+
+                  children: [
+                    SingleChildScrollView(
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: AppDimensions.width10(context) * 33.7,
+                                height: AppDimensions.height10(context) * 7.8,
+
+                                child: Center(
+                                  //slight width issue
+                                  child: GradientText(
+                                    'What or who has\ntriggered your hurdle?',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      height:
+                                          AppDimensions.height10(context) * 0.15,
+                                      fontSize: AppDimensions.font10(context) * 2.8,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    colors: const [
+                                      Color(0xffFA9934),
+                                      Color(0xffEDD15E)
+                                    ],
+                                  ),
                                 ),
-                                colors: const [
-                                  Color(0xffFA9934),
-                                  Color(0xffEDD15E)
-                                ],
                               ),
-                            ),
-                          ),
-                          Container(
-                            // height: AppDimensions.height10(context) * 45.6,
-                            //width: AppDimensions.width10(context) * 30.6,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 3.9),
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    AppDimensions.width10(context) * 4.6),
-                            child: GridView.builder(
-                                shrinkWrap: true,
-                                padding: EdgeInsets.zero,
-                                physics: const NeverScrollableScrollPhysics(),
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio:
-                                      3.5 / 3, // Two items in each row
+                              Container(
+                                // height: AppDimensions.height10(context) * 45.6,
+                                //width: AppDimensions.width10(context) * 30.6,
+                                margin: EdgeInsets.only(
+                                    top: AppDimensions.height10(context) * 3.9),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal:
+                                        AppDimensions.width10(context) * 4.6),
+                                child: GridView.builder(
+                                    shrinkWrap: true,
+                                    padding: EdgeInsets.zero,
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      childAspectRatio:
+                                          3.5 / 3, // Two items in each row
 
-                                  mainAxisSpacing: 6.5,
-                                  crossAxisSpacing: 3,
-                                ),
-                                itemCount: hurdlesList.length,
-                                itemBuilder: (context, index) {
-                                  return Container(
-                                    height:
-                                        AppDimensions.height10(context) * 39.9,
-                                    // padding: EdgeInsets.symmetric(
-                                    //     horizontal: AppDimensions.width10(context) * 5),
-                                    child: AnimatedScaleButton(
-                                      onTap: () async {
-                                        final SharedPreferences prefs =
-                                            await _prefs;
-                                        var hurdleName = prefs.setString(
-                                            'hurdleName',
-                                            hurdlesList[index]['hurdleName']);
+                                      mainAxisSpacing: 6.5,
+                                      crossAxisSpacing: 3,
+                                    ),
+                                    itemCount: hurdlesList.length,
+                                    itemBuilder: (context, index) {
+                                      return Container(
+                                        height:
+                                            AppDimensions.height10(context) * 39.9,
+                                        // padding: EdgeInsets.symmetric(
+                                        //     horizontal: AppDimensions.width10(context) * 5),
+                                        child: AnimatedScaleButton(
+                                          onTap: () async {
+                                            final SharedPreferences prefs =
+                                                await _prefs;
+                                            var hurdleName = prefs.setString(
+                                                'hurdleName',
+                                                hurdlesList[index]['hurdleName']);
 
-                                        var hurdleId = prefs.setInt('hurdleId',
-                                            hurdlesList[index]['id']);
-                                        setState(() {
-                                          selectBox = index;
-                                        });
-                                        if (widget.update == true) {
-                                          Hurdles().updateHurdle('hurdleId',
-                                              hurdlesList[index]['id']);
-                                        }
-                                      },
-                                      child: Container(
-                                        height: selectBox == index
-                                            ? AppDimensions.height10(context) *
-                                                13.5
-                                            : AppDimensions.height10(context) *
-                                                12.5,
-                                        width: selectBox == index
-                                            ? AppDimensions.width10(context) *
-                                                13.5
-                                            : AppDimensions.width10(context) *
-                                                12.5,
-                                        padding: EdgeInsets.all(
-                                            AppDimensions.width10(context)),
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                              width: selectBox == index
-                                                  ? AppDimensions.height10(
-                                                          context) *
-                                                      0.2
-                                                  : 0,
-                                              color: selectBox == index
-                                                  ? Colors.white
-                                                  : Colors.transparent),
-                                        ),
-                                        child: Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  13.1,
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  13.1,
-                                          decoration: BoxDecoration(
+                                            var hurdleId = prefs.setInt('hurdleId',
+                                                hurdlesList[index]['id']);
+                                            setState(() {
+                                              selectBox = index;
+                                            });
+                                            if (widget.update == true) {
+                                              Hurdles().updateHurdle('hurdleId',
+                                                  hurdlesList[index]['id']);
+                                            }
+                                          },
+                                          child: Container(
+                                            height: selectBox == index
+                                                ? AppDimensions.height10(context) *
+                                                    13.5
+                                                : AppDimensions.height10(context) *
+                                                    12.5,
+                                            width: selectBox == index
+                                                ? AppDimensions.width10(context) *
+                                                    13.5
+                                                : AppDimensions.width10(context) *
+                                                    12.5,
+                                            padding: EdgeInsets.all(
+                                                AppDimensions.width10(context)),
+                                            decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               border: Border.all(
-                                                  width: AppDimensions.height10(
+                                                  width: selectBox == index
+                                                      ? AppDimensions.height10(
+                                                              context) *
+                                                          0.2
+                                                      : 0,
+                                                  color: selectBox == index
+                                                      ? Colors.white
+                                                      : Colors.transparent),
+                                            ),
+                                            child: Container(
+                                              height:
+                                                  AppDimensions.height10(context) *
+                                                      13.1,
+                                              width:
+                                                  AppDimensions.width10(context) *
+                                                      13.1,
+                                              decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                      width: AppDimensions.height10(
+                                                              context) *
+                                                          0.1,
+                                                      color: Colors.white),
+                                                  gradient: const LinearGradient(
+                                                      begin: Alignment.topCenter,
+                                                      end: Alignment.bottomCenter,
+                                                      colors: [
+                                                        Color(0xffBE3FC6),
+                                                        Color(0xff642445)
+                                                      ])),
+                                              child: Center(
+                                                child: SizedBox(
+                                                  width: AppDimensions.width10(
                                                           context) *
-                                                      0.1,
-                                                  color: Colors.white),
-                                              gradient: const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Color(0xffBE3FC6),
-                                                    Color(0xff642445)
-                                                  ])),
-                                          child: Center(
-                                            child: SizedBox(
-                                              width: AppDimensions.width10(
-                                                      context) *
-                                                  11,
-                                              child: Text(
-                                                hurdlesList[index]
-                                                    ['hurdleName'],
-                                                textAlign: TextAlign.center,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.6,
-                                                    fontWeight:
-                                                        FontWeight.w500),
+                                                      11,
+                                                  child: Text(
+                                                    hurdlesList[index]
+                                                        ['hurdleName'],
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: 2,
+                                                    overflow: TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize:
+                                                            AppDimensions.font10(
+                                                                    context) *
+                                                                1.6,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                  );
-                                }),
-                          ),
+                                      );
+                                    }),
+                              ),
+
+                            ]),
+                      ),
+                    Positioned(
+                      bottom: 20,
+                      child: Column(
+                        children: [
                           AnimatedScaleButton(
                             onTap: () async {
                               if (selectBox != -1) {
@@ -578,15 +588,15 @@ class _select_hurdleState extends State<select_hurdle> {
                                       context,
                                       FadePageRoute(
                                           page: const hurdle_name(
-                                        update: false,
-                                      )));
+                                            update: false,
+                                          )));
                                 } else {
                                   Navigator.push(
                                     context,
                                     FadePageRoute(
                                         page: const summary_hurdles(
-                                      delete_hurdle: true,
-                                    )),
+                                          delete_hurdle: true,
+                                        )),
                                   );
                                 }
                               }
@@ -597,22 +607,22 @@ class _select_hurdleState extends State<select_hurdle> {
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 3.2,
                                   bottom:
-                                      AppDimensions.height10(context) * 2.0),
+                                  AppDimensions.height10(context) * 2.0),
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: selectBox != -1
                                       ? [
-                                          const Color(0xffFCC10D),
-                                          const Color(0xffFDA210),
-                                        ]
+                                    const Color(0xffFCC10D),
+                                    const Color(0xffFDA210),
+                                  ]
                                       : [
-                                          const Color(0xffFCC10D)
-                                              .withOpacity(0.5),
-                                          const Color(0xffFDA210)
-                                              .withOpacity(0.5),
-                                        ],
+                                    const Color(0xffFCC10D)
+                                        .withOpacity(0.5),
+                                    const Color(0xffFDA210)
+                                        .withOpacity(0.5),
+                                  ],
                                 ),
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10(context) * 5.0),
@@ -623,7 +633,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.6,
+                                      AppDimensions.font10(context) * 1.6,
                                       fontWeight: FontWeight.w600,
                                       color: selectBox != -1
                                           ? Colors.white
@@ -641,10 +651,14 @@ class _select_hurdleState extends State<select_hurdle> {
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10(context) * 2.0),
                                 color:
-                                    const Color(0xFFFFFFFF).withOpacity(0.3)),
+                                const Color(0xFFFFFFFF).withOpacity(0.3)),
                           )
-                        ]),
-                  )
+                        ],
+                      ),
+                    )
+
+                  ],
+                )
                 : const Center(
                     child: SpinKitFadingCircle(
                       color: Color(0xFFB1B8FF),

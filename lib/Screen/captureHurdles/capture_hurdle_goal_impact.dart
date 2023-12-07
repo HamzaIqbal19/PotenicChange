@@ -891,7 +891,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                     width: AppDimensions.width10(context) * 25.4,
                     height: AppDimensions.height10(context) * 5.0,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.5,
+                        top: AppDimensions.height10(context) * 1.0,
                         bottom: AppDimensions.height10(context) * 2.6),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(

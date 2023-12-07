@@ -108,7 +108,7 @@ class _link_infoState extends State<link_info> {
                           child: Text(
                             'Title',
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.5,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff828282)),
                           ),
@@ -126,7 +126,7 @@ class _link_infoState extends State<link_info> {
                             maxLines: null,
                             textAlignVertical: TextAlignVertical.top,
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
@@ -160,7 +160,7 @@ class _link_infoState extends State<link_info> {
                           child: Text(
                             'Content Destination Link',
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.5,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff828282)),
                           ),
@@ -190,7 +190,7 @@ class _link_infoState extends State<link_info> {
                                 textAlignVertical: TextAlignVertical.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff282828)),
                                 decoration: InputDecoration(
@@ -203,7 +203,7 @@ class _link_infoState extends State<link_info> {
                                     hintText: 'Add a link',
                                     hintStyle: TextStyle(
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.7,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xff828282)),
                                     focusedBorder: const OutlineInputBorder(
@@ -296,7 +296,7 @@ class _link_infoState extends State<link_info> {
                           child: Text(
                             'Why is it inspirational to you',
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.5,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff828282)),
                           ),
@@ -313,7 +313,7 @@ class _link_infoState extends State<link_info> {
                             maxLines: null,
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
@@ -326,7 +326,7 @@ class _link_infoState extends State<link_info> {
                                 hintText: 'Say more about this inspiration ',
                                 hintStyle: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff828282)),
                                 focusedBorder: const OutlineInputBorder(
@@ -347,7 +347,7 @@ class _link_infoState extends State<link_info> {
                           child: Text(
                             'Content Author (optional)',
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.5,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff828282)),
                           ),
@@ -364,7 +364,7 @@ class _link_infoState extends State<link_info> {
                             textAlignVertical: TextAlignVertical.center,
                             maxLines: null,
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
@@ -377,7 +377,7 @@ class _link_infoState extends State<link_info> {
                                 hintText: 'Who created the content',
                                 hintStyle: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w500,
                                     height: 1.5,
                                     color: const Color(0xff828282)),
@@ -399,7 +399,7 @@ class _link_infoState extends State<link_info> {
                           child: Text(
                             'Tags (optional)',
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.5,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff828282)),
                           ),
@@ -437,7 +437,7 @@ class _link_infoState extends State<link_info> {
                               controller: hastags,
                               textAlignVertical: TextAlignVertical.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color.fromARGB(255, 80, 33, 33)),
                               decoration: InputDecoration(
@@ -450,7 +450,7 @@ class _link_infoState extends State<link_info> {
                                   hintText: 'Add #hashtag',
                                   hintStyle: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xff828282)),
                                   focusedBorder: const OutlineInputBorder(
@@ -485,7 +485,7 @@ class _link_infoState extends State<link_info> {
                           child: Text(
                             'Attached goals',
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.5,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff828282)),
                           ),
@@ -528,7 +528,7 @@ class _link_infoState extends State<link_info> {
                                     style: TextStyle(
                                       color: const Color(0xFF646464),
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.8,
+                                          AppDimensions.font10(context) * 1.9,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),

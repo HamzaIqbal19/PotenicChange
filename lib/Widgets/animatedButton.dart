@@ -19,6 +19,28 @@ class AnimatedScaleButton extends StatefulWidget {
 class _AnimatedScaleButtonState extends State<AnimatedScaleButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  bool _ignorePointer = false;
+
+
+  void handleTap() async {
+    setState(() => _ignorePointer = true);
+    _controller.forward();
+    await Future.delayed(const Duration(milliseconds: 180));
+    _controller.reverse();
+    await Future.delayed(const Duration(milliseconds: 180));
+    widget.onTap();
+    setState(() => _ignorePointer = false);
+  }
+
+  void handleLongPress() async {
+    setState(() => _ignorePointer = true);
+    _controller.forward();
+    await Future.delayed(const Duration(milliseconds: 180));
+    _controller.reverse();
+    await Future.delayed(const Duration(milliseconds: 180));
+    widget.onTap();
+    setState(() => _ignorePointer = false);
+  }
 
   @override
   void initState() {
@@ -41,41 +63,23 @@ class _AnimatedScaleButtonState extends State<AnimatedScaleButton>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (details) => _controller.forward(),
-      onLongPress: () async {
-        _controller.forward();
-        // Delay for the forward animation to be visible
-        await Future.delayed(const Duration(milliseconds: 200));
+    return IgnorePointer(
+      ignoring: _ignorePointer,
+      child: InkWell(
+        //onTapDown: (details) => _controller.forward(),
 
-        // Press up effect
-        _controller.reverse();
-
-        // Delay the action for the reverse animation to be visible
-        await Future.delayed(const Duration(milliseconds: 200));
-        widget.onTap();
-      }, // Disable long-press
-      onLongPressCancel: () => _controller.forward(),
-      onTap: () async {
-        _controller.forward();
-        // Delay for the forward animation to be visible
-        await Future.delayed(const Duration(milliseconds: 200));
-
-        // Press up effect
-        _controller.reverse();
-
-        // Delay the action for the reverse animation to be visible
-        await Future.delayed(const Duration(milliseconds: 200));
-        widget.onTap();
-      },
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, child) {
-          return Transform.scale(
-            scale: 1 - _controller.value,
-            child: widget.child,
-          );
-        },
+        onLongPress: handleLongPress, // Disable long-press
+        //onLongPressCancel: () => _controller.forward(),
+        onTap: handleTap,
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            return Transform.scale(
+              scale: 1 - _controller.value,
+              child: widget.child,
+            );
+          },
+        ),
       ),
     );
   }

@@ -436,7 +436,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                       )),
                                       child: Column(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.end,
+                                            MainAxisAlignment.center,
                                         children: [
                                           Container(
                                             //color: Colors.red,
@@ -444,6 +444,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                 AppDimensions.width10(context) *
                                                     11.8,
                                             child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
                                                 Text(
                                                   pracName,
@@ -495,11 +496,11 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                               ],
                                             ),
                                           ),
-                                          SizedBox(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
-                                          )
+                                          // SizedBox(
+                                          //   height: AppDimensions.height10(
+                                          //           context) *
+                                          //       3.0,
+                                          // )
                                         ],
                                       )),
                                 ),

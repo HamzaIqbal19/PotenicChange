@@ -125,7 +125,7 @@ class welldone_splashState extends State<welldone_splash> {
                 ),
               ),
               Positioned(
-                bottom: AppDimensions.height10(context) * 6,
+                bottom: AppDimensions.height10(context) * 2.5,
                 child: AnimatedScaleButton(
                   onTap: () {
                     Navigator.push(

@@ -342,14 +342,14 @@ class _practice_summaryState extends State<practice_summary> {
                         height: AppDimensions.height10(context) * 3.8,
                         //  color: Colors.red,
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 0.5),
+                            top: AppDimensions.height10(context) * 0.8),
                         child: Center(
                           child: Text(
                             'Well done for recording\nyour practice!',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 height: AppDimensions.height10(context) * 0.12,
-                                fontSize: AppDimensions.font10(context) * 1.6,
+                                fontSize: AppDimensions.font10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                                 fontFamily: 'Laila'),
@@ -572,7 +572,7 @@ class _practice_summaryState extends State<practice_summary> {
                       ),
                       Container(
                         width: AppDimensions.width10(context) * 32.6,
-                        height: AppDimensions.height10(context) * 4.8,
+                        //height: AppDimensions.height10(context) * 5.0,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 4.0),
                         child: RichText(
@@ -581,7 +581,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 style: TextStyle(
                                   fontFamily: 'Laila',
                                   height:
-                                      AppDimensions.height10(context) * 0.12,
+                                      AppDimensions.height10(context) * 0.15,
                                   fontSize: AppDimensions.font10(context) * 2.0,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
@@ -718,7 +718,7 @@ class _practice_summaryState extends State<practice_summary> {
                           : Container(),
                       Container(
                         width: AppDimensions.width10(context) * 32.6,
-                        height: AppDimensions.height10(context) * 4.8,
+                        //height: AppDimensions.height10(context) * 5.0,
                         //color: Colors.amber,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 4.0),
@@ -728,7 +728,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 style: TextStyle(
                                   fontFamily: 'Laila',
                                   height:
-                                      AppDimensions.height10(context) * 0.12,
+                                      AppDimensions.height10(context) * 0.15,
                                   fontSize: AppDimensions.font10(context) * 2.0,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
@@ -869,9 +869,9 @@ class _practice_summaryState extends State<practice_summary> {
                             'How did the practice go?',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 2.0,
+                                fontSize: AppDimensions.font10(context) * 2.2,
                                 fontWeight: FontWeight.w600,
-                                height: AppDimensions.height10(context) * 0.12,
+                                height: AppDimensions.height10(context) * 0.15,
                                 color: Colors.white,
                                 fontFamily: 'Laila'),
                           ),

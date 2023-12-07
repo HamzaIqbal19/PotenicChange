@@ -728,7 +728,7 @@ class _prac_scoreState extends State<prac_score> {
                                                           fontSize: AppDimensions
                                                                   .font10(
                                                                       context) *
-                                                              1.4,
+                                                              1.46,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           color: selectedItemIndex !=
@@ -970,7 +970,7 @@ class _prac_scoreState extends State<prac_score> {
                                                           fontSize: AppDimensions
                                                                   .font10(
                                                                       context) *
-                                                              1.4,
+                                                              1.46,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           color: selectedItemIndex2 !=
@@ -1193,7 +1193,7 @@ class _prac_scoreState extends State<prac_score> {
                                                           fontSize: AppDimensions
                                                                   .font10(
                                                                       context) *
-                                                              1.4,
+                                                              1.46,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           color: selectedItemIndex3 !=
@@ -1416,7 +1416,7 @@ class _prac_scoreState extends State<prac_score> {
                                                           fontSize: AppDimensions
                                                                   .font10(
                                                                       context) *
-                                                              1.4,
+                                                              1.46,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           color: selectedItemIndex4 !=

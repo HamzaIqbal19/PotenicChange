@@ -234,7 +234,7 @@ class _practice_progressState extends State<practice_progress> {
                           ),
                         ),
                         Container(
-                          //width: AppDimensions.width10(context) * 17.1,
+                          width: AppDimensions.width10(context) * 30,
                           height: AppDimensions.height10(context) * 2.6,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.5),
@@ -242,6 +242,7 @@ class _practice_progressState extends State<practice_progress> {
                             noData == true
                                 ? 'No data found'
                                 : report['practice']["userGoal"]["name"],
+                            maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -397,7 +398,7 @@ class _practice_progressState extends State<practice_progress> {
                           },
                           child: Container(
                             width: AppDimensions.width10(context) * 30.3,
-                            height: AppDimensions.height10(context) * 5.3,
+                            height: AppDimensions.height10(context) * 5.7,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.0),
                             decoration: BoxDecoration(
@@ -409,7 +410,7 @@ class _practice_progressState extends State<practice_progress> {
                             child: Center(
                               child: Container(
                                 //width: AppDimensions.width10(context) * 21.0,
-                                height: AppDimensions.height10(context) * 2.8,
+                                height: AppDimensions.height10(context) * 3.2,
                                 margin: EdgeInsets.only(
                                     bottom:
                                         AppDimensions.height10(context) * 0.8),
@@ -1577,14 +1578,12 @@ class _practice_progressState extends State<practice_progress> {
                                                                   .height10(
                                                                       context) *
                                                               22.0,
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.4,
+
                                                           // color: Colors.amber,
                                                           child: Center(
                                                             child: Text(
-                                                              '“Great, I enjoyed the experience”',
+                                                              '“Great, I enjoyed the\nexperience”',
+                                                              textAlign: TextAlign.center,
                                                               style: TextStyle(
                                                                   color: const Color(
                                                                       0xFFB695B7),
@@ -3264,7 +3263,7 @@ class _practice_progressState extends State<practice_progress> {
                                 ),
                               ),
                               SizedBox(
-                                height: AppDimensions.height10(context) * 46.8,
+                                height: AppDimensions.width10(context) * 46.8,
                                 child: CalendarWithRadioButtons(
                                   status: true,
                                   dateStatus: noData == true

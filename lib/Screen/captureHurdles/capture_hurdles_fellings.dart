@@ -636,7 +636,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.6,
+                                                              1.7,
+                                                      fontFamily: 'laila',
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: Colors.white),
@@ -654,11 +655,12 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                               style: TextStyle(
                                                   decoration:
                                                       TextDecoration.none,
+                                                  fontFamily: 'laila',
                                                   decorationThickness: 0,
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.6,
+                                                          1.7,
                                                   fontWeight: FontWeight.w400,
                                                   color: Colors.white),
                                             ),

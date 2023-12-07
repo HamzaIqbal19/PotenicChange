@@ -1373,7 +1373,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
                   ),
                   Container(
                     width: AppDimensions.width10(context) * 32.0,
-                    height: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 3.0,
                     // margin:
                     //     EdgeInsets.only(top: AppDimensions.height10(context) * 7.313),
                     child: Center(
@@ -2126,7 +2126,6 @@ void hurdle_sheet(context) {
                   style: TextStyle(
                       fontSize: AppDimensions.font10(context) * 2.8,
                       height: AppDimensions.height10(context) * .16,
-                      letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),

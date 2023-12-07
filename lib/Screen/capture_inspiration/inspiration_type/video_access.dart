@@ -118,7 +118,7 @@ class _video_infoState extends State<video_info> {
                               'Back',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.7,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff007AFF)),
                             ),
@@ -238,7 +238,7 @@ class _video_infoState extends State<video_info> {
                                                             fontSize: AppDimensions
                                                                     .font10(
                                                                         context) *
-                                                                1.6,
+                                                                1.7,
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             color: link.text
@@ -286,7 +286,7 @@ class _video_infoState extends State<video_info> {
                         child: Text(
                           'Title',
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff828282)),
                         ),
@@ -304,7 +304,7 @@ class _video_infoState extends State<video_info> {
                           maxLines: null,
                           textAlignVertical: TextAlignVertical.top,
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 1.8,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xff282828)),
                           decoration: InputDecoration(
@@ -316,7 +316,7 @@ class _video_infoState extends State<video_info> {
                                   0),
                               hintText: 'Give your inspiration a title',
                               hintStyle: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xff828282)),
                               focusedBorder: const OutlineInputBorder(
@@ -337,7 +337,7 @@ class _video_infoState extends State<video_info> {
                         child: Text(
                           'Video Destination Link',
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff828282)),
                         ),
@@ -367,7 +367,7 @@ class _video_infoState extends State<video_info> {
                               minLines: null,
                               textAlignVertical: TextAlignVertical.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xff282828)),
                               decoration: InputDecoration(
@@ -380,7 +380,7 @@ class _video_infoState extends State<video_info> {
                                   hintText: 'Add a link',
                                   hintStyle: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.7,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xff828282)),
                                   focusedBorder: const OutlineInputBorder(
@@ -470,7 +470,7 @@ class _video_infoState extends State<video_info> {
                         child: Text(
                           'Why is it inspirational to you',
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff828282)),
                         ),
@@ -488,7 +488,7 @@ class _video_infoState extends State<video_info> {
                           maxLines: null,
                           minLines: null,
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 1.8,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xff282828)),
                           decoration: InputDecoration(
@@ -500,7 +500,7 @@ class _video_infoState extends State<video_info> {
                                   0),
                               hintText: 'Say more about this inspiration ',
                               hintStyle: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.7,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xff828282)),
                               focusedBorder: const OutlineInputBorder(
@@ -521,7 +521,7 @@ class _video_infoState extends State<video_info> {
                         child: Text(
                           'Tags (optional)',
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff828282)),
                         ),
@@ -562,7 +562,7 @@ class _video_infoState extends State<video_info> {
                               tagList.addAll(finalResult.toSet());
                             },
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
@@ -575,7 +575,7 @@ class _video_infoState extends State<video_info> {
                                 hintText: 'Add #hashtag',
                                 hintStyle: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.7,
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff828282)),
                                 focusedBorder: const OutlineInputBorder(
@@ -610,7 +610,7 @@ class _video_infoState extends State<video_info> {
                         child: Text(
                           'Attached goals',
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.5,
+                              fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff828282)),
                         ),
@@ -653,7 +653,7 @@ class _video_infoState extends State<video_info> {
                                   style: TextStyle(
                                     color: const Color(0xFF646464),
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.8,
+                                        AppDimensions.font10(context) * 1.9,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),

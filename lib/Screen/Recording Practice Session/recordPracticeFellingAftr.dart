@@ -713,7 +713,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                           )),
                     ),
                   ],
-                )
+                ),
+                SizedBox(height: AppDimensions.height10(context)*2,)
                 // Padding(
                 //     padding: EdgeInsets.only(
                 //         bottom: MediaQuery.of(context).viewInsets.bottom))
@@ -815,7 +816,7 @@ class _addNotesState extends State<addNotes> {
                       state: widget.state_,
                     ))
                 : SizedBox(
-                    height: AppDimensions.height10(context) * 11.1,
+                    height: AppDimensions.height10(context) * 9.1,
                   )),
       ],
     );

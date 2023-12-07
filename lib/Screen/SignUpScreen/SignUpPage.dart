@@ -167,7 +167,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                           );
                         },
                         child: Container(
-                          height: AppDimensions.height10(context) * 5.5,
+                          height: AppDimensions.height10(context) * 5.6,
                           width: AppDimensions.width10(context) * 34.1,
                           decoration: BoxDecoration(
                               color: const Color(0xFF5A4D73),
@@ -210,7 +210,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                         height: AppDimensions.height10(context) * 2,
                       ),
                       Container(
-                        height: AppDimensions.height10(context) * 5.5,
+                        height: AppDimensions.height10(context) * 5.6,
                         width: AppDimensions.width10(context) * 34.1,
                         child: OutlinedButton.icon(
                           // <-- OutlinedButton
@@ -248,7 +248,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                         height: AppDimensions.height10(context) * 2,
                       ),
                       Container(
-                        height: AppDimensions.height10(context) * 5.5,
+                        height: AppDimensions.height10(context) * 5.6,
                         width: AppDimensions.width10(context) * 34.1,
                         child: OutlinedButton.icon(
                           // <-- OutlinedButton
@@ -284,7 +284,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                     ],
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10(context) * 28.2),
+                SizedBox(height: AppDimensions.height10(context) * 26.2),
                 GestureDetector(
                   onTapDown: (TapDownDetails details) {
                     _controller.forward();
@@ -309,7 +309,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   child: Transform.scale(
                     scale: 1 - _controller.value,
                     child: Container(
-                      height: AppDimensions.height10(context) * 5.0,
+                      height: AppDimensions.height10(context) * 5.2,
                       width: AppDimensions.width10(context) * 29.3,
                       decoration: BoxDecoration(
                         color: const Color(0xFFF5F5F5),

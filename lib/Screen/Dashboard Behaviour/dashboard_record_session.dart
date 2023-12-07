@@ -114,7 +114,7 @@ class _record_sessionState extends State<record_session> {
                       //mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          height: AppDimensions.height10(context) * 6.8,
+                          //height: AppDimensions.height10(context) * 6.8,
                           width: AppDimensions.width10(context) * 21.7,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 10.0,
@@ -391,11 +391,11 @@ class _record_sessionState extends State<record_session> {
                               FadePageRoute(page: const view_all_goals_menu()));
                         },
                         child: Container(
-                          height: AppDimensions.height10(context) * 5,
+                          height: AppDimensions.height10(context) * 5.5,
                           margin: EdgeInsets.symmetric(
                               vertical: AppDimensions.height10(context) * 3.4),
                           child: Container(
-                            height: AppDimensions.height10(context) * 5,
+                            height: AppDimensions.height10(context) * 5.2,
                             width: AppDimensions.width10(context) * 24.3,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(Radius.circular(
@@ -412,7 +412,7 @@ class _record_sessionState extends State<record_session> {
                               'View all your goals',
                               style: TextStyle(
                                   color: const Color(0xFFFBFBFB),
-                                  fontSize: AppDimensions.font10(context) * 1.6,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                   fontWeight: FontWeight.w600),
                             )),
                           ),

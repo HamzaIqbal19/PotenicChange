@@ -95,31 +95,49 @@ class _new_progress_scoreState extends State<new_progress_score> {
 
         _scrollController =
             FixedExtentScrollController(initialItem: _selectedIndex);
+        print("error start");
+
+        print("error initiate");
         loadData();
         GetDates();
+        print("error off");
       } else {
         loadData();
       }
     }).catchError((error) {
       // loadData();
-      print("error");
+      print("error occured");
     }).whenComplete(() {
       //loadData();
     });
   }
 
   GetDates() {
+    print("error initiate ${goalDetails["goalEvaluations"][0]}");
+
     for (int i = 0; i < goalDetails["goalEvaluations"].length; i++) {
+      print("error initiate 1");
+      late DateTime futureDate ;
       final DateTime originalDate = DateFormat("yyyy-MM-dd")
           .parse(goalDetails["goalEvaluations"][i]['activedate']);
-      final DateTime futureDate = DateFormat("yyyy-MM-dd")
-          .parse(goalDetails["goalEvaluations"][i]['endDate']);
+      print("error initiate 2");
+      if(goalDetails["goalEvaluations"][i]['endDate'] != null){
+         futureDate = DateFormat("yyyy-MM-dd")
+            .parse(goalDetails["goalEvaluations"][i]['endDate']);
+      }else{
+         futureDate = originalDate.add(Duration(days: 30));
+      }
+
+      print("error initiate 3");
       final String formattedDate = DateFormat("dd MMM yy").format(originalDate);
+      print("error initiate 4");
       final String formattedFutureDate =
           DateFormat("dd MMM yy").format(futureDate);
+      print("error initiate 5");
       if (goalDetails["goalEvaluations"][i]['goalLevel'] == null ||
           goalDetails["goalEvaluations"][i]['goalLevel'] == 0) {
         _dates.add('$formattedDate to $formattedFutureDate (-/5)');
+        print("error initiate 6");
       } else {
         _dates.add(
             '$formattedDate to $formattedFutureDate (${goalDetails["goalEvaluations"][i]['totalPoint']}/5)');
@@ -136,6 +154,13 @@ class _new_progress_scoreState extends State<new_progress_score> {
     _fetchGoalDetails();
     _scrollController =
         FixedExtentScrollController(initialItem: _selectedIndex);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _scrollController.dispose();
   }
 
   @override
@@ -221,7 +246,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                         ),
                       ),
                       Container(
-                        //width: AppDimensions.width10(context) * 22.6,
+                        width: AppDimensions.width10(context) * 30,
                         height: AppDimensions.height10(context) * 2.4,
                         //  color: Colors.grey,
                         margin: EdgeInsets.only(
@@ -230,6 +255,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                           child: Text(
                             'For ‘${goalDetails['name']}’',
                             textAlign: TextAlign.center,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 fontSize: AppDimensions.font10(context) * 2.0,
                                 fontWeight: FontWeight.w600,
@@ -411,7 +438,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         ],
                                       ),
                                     );
-                                    ;
+
                                   },
                                 ),
                                 child: Container(
@@ -583,7 +610,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               alignment: Alignment.bottomCenter,
                               child: Container(
                                 width: AppDimensions.width10(context) * 36.5,
-                                height: AppDimensions.height10(context) * 52.0,
+                                //height: AppDimensions.height10(context) * 52.0,
                                 decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                         begin: Alignment.topCenter,
@@ -605,7 +632,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                           AppDimensions.width10(context) * 21.0,
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
-                                              10.9),
+                                              12.9),
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
 
@@ -755,8 +782,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                     Container(
                                       width:
                                           AppDimensions.width10(context) * 24.9,
-                                      height:
-                                          AppDimensions.height10(context) * 8.1,
+                                      // height:
+                                      //     AppDimensions.height10(context) * 8.1,
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
                                               1.1),
@@ -1759,7 +1786,7 @@ void evaluation_sheet(context) {
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    'feature to help you assess your goal progress in relation to your original reasons for wanting to achieve it (remember the statements you had to complete during onboarding when creating your\ngoal)? We use these statements for you to evaluate.\n\n'),
+                                    'feature to help you assess your goal progress in relation to your original reasons for wanting to achieve it (remember the statements you had to complete during onboarding when creating your goal)? We use these statements for you to evaluate.\n\n'),
                             TextSpan(
                                 text: 'Goal Level Evaluation ',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
@@ -1777,7 +1804,7 @@ void evaluation_sheet(context) {
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    ' you\nperform that will eventually help you observe meaningful changes into your life.'),
+                                    ' you perform that will eventually help you observe meaningful changes into your life.'),
                           ])),
                     )
                   ],

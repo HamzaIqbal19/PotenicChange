@@ -229,14 +229,14 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
 
                       // SizedBox(height: AppDimensions.height0),
                       Container(
-                        height: AppDimensions.height10(context) * 26 + 6,
+                        height: AppDimensions.height10(context) * 26 + 12,
                         width: AppDimensions.width10(context) * 36,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                                height: AppDimensions.height10(context) * 6,
+                                height: AppDimensions.height10(context) * 6.2,
                                 width: AppDimensions.width10(context) * 36.0,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
@@ -375,7 +375,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                     ? AppDimensions.height10(context)
                                     : AppDimensions.height10(context) * 3),
                             Container(
-                              height: AppDimensions.height10(context) * 6,
+                              height: AppDimensions.height10(context) * 6.2,
                               width: AppDimensions.width10(context) * 36.0,
                               decoration: BoxDecoration(
                                   color: Colors.white,
@@ -720,7 +720,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                         child: Transform.scale(
                           scale: 1 - _controller.value,
                           child: Container(
-                            height: AppDimensions.height10(context) * 4.4,
+                            height: AppDimensions.height10(context) * 5.0,
                             width: AppDimensions.width10(context) * 26.7,
                             decoration: BoxDecoration(
                               color: const Color(0xFFF5F5F5),
