@@ -87,7 +87,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
           )),
           child: Stack(children: [
             Align(
-              alignment: const Alignment(0, 0.995),
+              alignment: const Alignment(0, 0.8),
               child: Container(
                 width: AppDimensions.width10(context) * 11.1,
                 height: AppDimensions.height10(context) * 27.6,

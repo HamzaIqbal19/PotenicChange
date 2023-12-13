@@ -627,7 +627,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   height: AppDimensions.height10(context) * 3.4,
                 ),
                 Container(
-                  height: AppDimensions.height10(context) * 17.0,
+                  height: AppDimensions.height10(context) * 19,
                   width: AppDimensions.width10(context) * 38.2,
                   decoration: BoxDecoration(
                       // color: Colors.white,
@@ -642,11 +642,11 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       borderRadius: BorderRadius.all(Radius.circular(
                           AppDimensions.height10(context) * 2.0))),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: AppDimensions.height10(context) * 2.4,
+                        height: AppDimensions.height10(context) * 2.0,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -833,7 +833,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         ],
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 2.1,
+                        height: AppDimensions.height10(context) * 1.1,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -858,7 +858,11 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             ),
                           )
                         ],
-                      )
+                      ),
+
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 2.0,
+                      ),
                     ],
                   ),
                 ),
@@ -866,7 +870,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   height: AppDimensions.height10(context) * 2.0,
                 ),
                 Container(
-                  height: AppDimensions.height10(context) * 17.0,
+                  height: AppDimensions.height10(context) * 19.0,
                   width: AppDimensions.width10(context) * 38.2,
                   decoration: BoxDecoration(
                       // color: Colors.white,
@@ -882,11 +886,11 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       borderRadius: BorderRadius.all(Radius.circular(
                           AppDimensions.height10(context) * 2.0))),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: AppDimensions.height10(context) * 2.4,
+                        height: AppDimensions.height10(context) * 2.0,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -975,7 +979,10 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             ),
                           )
                         ],
-                      )
+                      ),SizedBox(
+                        height: AppDimensions.height10(context) * 2.0,
+                      ),
+
                     ],
                   ),
                 ),

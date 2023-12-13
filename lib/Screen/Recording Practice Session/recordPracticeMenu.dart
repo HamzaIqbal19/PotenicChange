@@ -13,6 +13,7 @@ import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -258,7 +259,7 @@ class _practiceMenuState extends State<practiceMenu> {
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.width10(context) * 30.4,
+                            //width: AppDimensions.width10(context) * 30.4,
                             height: AppDimensions.height10(context) * 18.2,
                             margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 5.2,
@@ -298,117 +299,10 @@ class _practiceMenuState extends State<practiceMenu> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  //width: AppDimensions.width10(context) * 2.0,
-                                  height: AppDimensions.height10(context) * 9.3,
-                                  // color: Colors.amber,
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          0.6),
-                                  // color: Colors.blue,
-                                  child: Stack(
-                                    children: [
-                                      Align(
-                                        alignment: const Alignment(-0.55, -0.3),
-                                        child: Container(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  6.56,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  6.56,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            // color: Colors.amber,
-                                            image: DecorationImage(
-                                                image: AssetImage(color == '1'
-                                                    ? "assets/images/red_gradient.webp"
-                                                    : color == '2'
-                                                        ? 'assets/images/orange_moon.webp'
-                                                        : color == '3'
-                                                            ? "assets/images/lightGrey_gradient.webp"
-                                                            : color == '4'
-                                                                ? "assets/images/lightBlue_gradient.webp"
-                                                                : color == '5'
-                                                                    ? "assets/images/medBlue_gradient.webp"
-                                                                    : color ==
-                                                                            '6'
-                                                                        ? "assets/images/Blue_gradient.webp"
-                                                                        : 'assets/images/orange_moon.webp'),
-                                                fit: BoxFit.contain),
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const Alignment(-0.395, -0.2),
-                                        child: Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  4.1,
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  4.06,
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              image: DecorationImage(
-                                                  image: AssetImage(pracColor ==
-                                                          '1'
-                                                      ? "assets/images/Ellipse orange_wb.webp"
-                                                      : pracColor == '2'
-                                                          ? 'assets/images/Ellipse 158_wb.webp'
-                                                          : pracColor == '3'
-                                                              ? "assets/images/Ellipse 157_wb.webp"
-                                                              : pracColor == '4'
-                                                                  ? "assets/images/Ellipse light-blue_wb.webp"
-                                                                  : pracColor ==
-                                                                          '5'
-                                                                      ? "assets/images/Ellipse blue_wb.webp"
-                                                                      : 'assets/images/Ellipse 158_wb.webp'),
-                                                  fit: BoxFit.cover)),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment: const Alignment(1.6, -0.3),
-                                        child: SizedBox(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  20.6,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.4,
-                                          child: pracName.length > 20
-                                              ? Text(
-                                                  pracName,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                      color: const Color(
-                                                          0xff156F6D),
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              2.0,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                )
-                                              : Text(
-                                                  pracName,
-                                                  style: TextStyle(
-                                                      color: const Color(
-                                                          0xff156F6D),
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              2.0,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                goalAndPractice(context,
+                                    color,pracColor,
+                                    pracName),
+
                               ],
                             ),
                           ),

@@ -1370,10 +1370,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       child: Container(
                                           width:
                                               AppDimensions.width10(context) *
-                                                  9.1,
+                                                  7.1,
                                           height:
                                               AppDimensions.height10(context) *
-                                                  9.1,
+                                                  7.1,
                                           margin: EdgeInsets.only(
                                               right: AppDimensions.height10(
                                                       context) *

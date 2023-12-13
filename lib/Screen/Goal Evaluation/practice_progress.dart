@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/calender.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/circle_dates.dart';
@@ -252,129 +253,137 @@ class _practice_progressState extends State<practice_progress> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: AppDimensions.width10(context) * 30.0,
-                          height: AppDimensions.height10(context) * 11.2,
-                          margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 0.6,
-                              left: AppDimensions.width10(context) * 5),
-                          // color: Colors.blue,
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: AppDimensions.width10(context) * 7.5,
-                                height: AppDimensions.height10(context) * 7.5,
-                                child: Stack(
-                                  children: [
-                                    Align(
-                                      alignment: const Alignment(-1, -0.3),
-                                      child: Container(
-                                        width: AppDimensions.width10(context) *
-                                            6.5,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                6.5,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          image: DecorationImage(
-                                              image: noData == true
-                                                  ? const AssetImage(
-                                                      'assets/images/orange_moon.webp')
-                                                  : AssetImage(report['practice']
-                                                                  ['userGoal']
-                                                              ['color'] ==
-                                                          "1"
-                                                      ? "assets/images/red_gradient.webp"
-                                                      : report['practice']
-                                                                      ['userGoal']
-                                                                  ['color'] ==
-                                                              "2"
-                                                          ? 'assets/images/orange_moon.webp'
-                                                          : report['practice']
-                                                                          ['userGoal']
-                                                                      [
-                                                                      'color'] ==
-                                                                  "3"
-                                                              ? "assets/images/lightGrey_gradient.webp"
-                                                              : report['practice']
-                                                                              ['userGoal']
-                                                                          ['color'] ==
-                                                                      "4"
-                                                                  ? "assets/images/lightBlue_gradient.webp"
-                                                                  : report['practice']['userGoal']['color'] == "5"
-                                                                      ? "assets/images/medBlue_gradient.webp"
-                                                                      : report['practice']['userGoal']['color'] == 6
-                                                                          ? "assets/images/Blue_gradient.webp"
-                                                                          : 'assets/images/orange_moon.webp'),
-                                              fit: BoxFit.contain),
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: const Alignment(0.8, -0.2),
-                                      child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                4.1,
-                                        width: AppDimensions.width10(context) *
-                                            4.061,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                                image: noData == true
-                                                    ? const AssetImage(
-                                                        'assets/images/Ellipse 158_wb.webp')
-                                                    : AssetImage(report[
-                                                                    'practice']
-                                                                ['color'] ==
-                                                            "1"
-                                                        ? "assets/images/Ellipse orange_wb.webp"
-                                                        : report['practice']
-                                                                    ['color'] ==
-                                                                "2"
-                                                            ? 'assets/images/Ellipse 158_wb.webp'
-                                                            : report['practice']
-                                                                        [
-                                                                        'color'] ==
-                                                                    "3"
-                                                                ? "assets/images/Ellipse 157_wb.webp"
-                                                                : report['practice']
-                                                                            [
-                                                                            'color'] ==
-                                                                        "4"
-                                                                    ? "assets/images/Ellipse light-blue_wb.webp"
-                                                                    : report['practice']['color'] ==
-                                                                            "5"
-                                                                        ? "assets/images/Ellipse blue_wb.webp"
-                                                                        : noData ==
-                                                                                true
-                                                                            ? 'assets/images/Ellipse 158_wb.webp'
-                                                                            : 'assets/images/Ellipse 158_wb.webp'),
-                                                fit: BoxFit.cover)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: AppDimensions.width10(context) * 21.6,
-                                height: AppDimensions.height10(context) * 2.4,
-                                child: Text(
-                                  noData == true
-                                      ? 'No data found'
-                                      : report['practice']["name"],
-                                  style: TextStyle(
-                                      color: const Color(0xff156F6D),
-                                      height: 1.2,
-                                      overflow: TextOverflow.ellipsis,
-                                      fontSize:
-                                          AppDimensions.font10(context) * 2.0,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        goalAndPractice(context,
+                         noData?"2":   report['practice']
+                        ['userGoal']
+                         ['color'],noData?"2":report[
+                        'practice']
+                        ['color'],
+                          noData?" ":  report['practice']["name"],),
+                        // Container(
+                        //   width: AppDimensions.width10(context) * 30.0,
+                        //   height: AppDimensions.height10(context) * 11.2,
+                        //   margin: EdgeInsets.only(
+                        //       top: AppDimensions.height10(context) * 0.6,
+                        //       left: AppDimensions.width10(context) * 5),
+                        //   // color: Colors.blue,
+                        //   child: Row(
+                        //     children: [
+                        //       SizedBox(
+                        //         width: AppDimensions.width10(context) * 7.5,
+                        //         height: AppDimensions.height10(context) * 7.5,
+                        //         child: Stack(
+                        //           children: [
+                        //             Align(
+                        //               alignment: const Alignment(-1, -0.3),
+                        //               child: Container(
+                        //                 width: AppDimensions.width10(context) *
+                        //                     6.5,
+                        //                 height:
+                        //                 AppDimensions.height10(context) *
+                        //                     6.5,
+                        //                 decoration: BoxDecoration(
+                        //                   shape: BoxShape.circle,
+                        //                   image: DecorationImage(
+                        //                       image: noData == true
+                        //                           ? const AssetImage(
+                        //                           'assets/images/orange_moon.webp')
+                        //                           : AssetImage(report['practice']
+                        //                       ['userGoal']
+                        //                       ['color'] ==
+                        //                           "1"
+                        //                           ? "assets/images/red_gradient.webp"
+                        //                           : report['practice']
+                        //                       ['userGoal']
+                        //                       ['color'] ==
+                        //                           "2"
+                        //                           ? 'assets/images/orange_moon.webp'
+                        //                           : report['practice']
+                        //                       ['userGoal']
+                        //                       [
+                        //                       'color'] ==
+                        //                           "3"
+                        //                           ? "assets/images/lightGrey_gradient.webp"
+                        //                           : report['practice']
+                        //                       ['userGoal']
+                        //                       ['color'] ==
+                        //                           "4"
+                        //                           ? "assets/images/lightBlue_gradient.webp"
+                        //                           : report['practice']['userGoal']['color'] == "5"
+                        //                           ? "assets/images/medBlue_gradient.webp"
+                        //                           : report['practice']['userGoal']['color'] == 6
+                        //                           ? "assets/images/Blue_gradient.webp"
+                        //                           : 'assets/images/orange_moon.webp'),
+                        //                       fit: BoxFit.contain),
+                        //                 ),
+                        //               ),
+                        //             ),
+                        //             Align(
+                        //               alignment: const Alignment(0.8, -0.2),
+                        //               child: Container(
+                        //                 height:
+                        //                 AppDimensions.height10(context) *
+                        //                     4.1,
+                        //                 width: AppDimensions.width10(context) *
+                        //                     4.061,
+                        //                 decoration: BoxDecoration(
+                        //                     shape: BoxShape.circle,
+                        //                     image: DecorationImage(
+                        //                         image: noData == true
+                        //                             ? const AssetImage(
+                        //                             'assets/images/Ellipse 158_wb.webp')
+                        //                             : AssetImage(report[
+                        //                         'practice']
+                        //                         ['color'] ==
+                        //                             "1"
+                        //                             ? "assets/images/Ellipse orange_wb.webp"
+                        //                             : report['practice']
+                        //                         ['color'] ==
+                        //                             "2"
+                        //                             ? 'assets/images/Ellipse 158_wb.webp'
+                        //                             : report['practice']
+                        //                         [
+                        //                         'color'] ==
+                        //                             "3"
+                        //                             ? "assets/images/Ellipse 157_wb.webp"
+                        //                             : report['practice']
+                        //                         [
+                        //                         'color'] ==
+                        //                             "4"
+                        //                             ? "assets/images/Ellipse light-blue_wb.webp"
+                        //                             : report['practice']['color'] ==
+                        //                             "5"
+                        //                             ? "assets/images/Ellipse blue_wb.webp"
+                        //                             : noData ==
+                        //                             true
+                        //                             ? 'assets/images/Ellipse 158_wb.webp'
+                        //                             : 'assets/images/Ellipse 158_wb.webp'),
+                        //                         fit: BoxFit.cover)),
+                        //               ),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //       SizedBox(
+                        //         width: AppDimensions.width10(context) * 21.6,
+                        //         height: AppDimensions.height10(context) * 2.4,
+                        //         child: Text(
+                        //           noData == true
+                        //               ? 'No data found'
+                        //               : report['practice']["name"],
+                        //           style: TextStyle(
+                        //               color: const Color(0xff156F6D),
+                        //               height: 1.2,
+                        //               overflow: TextOverflow.ellipsis,
+                        //               fontSize:
+                        //               AppDimensions.font10(context) * 2.0,
+                        //               fontWeight: FontWeight.w600),
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+                        //
                         Container(
                           width: AppDimensions.width10(context) * 37.6,
                           height: AppDimensions.height10(context) * 7.2,
@@ -3641,3 +3650,4 @@ circlesInRow(BuildContext context, int itteration) {
     ),
   );
 }
+

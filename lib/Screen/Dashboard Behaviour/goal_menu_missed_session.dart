@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Goal.dart';
@@ -200,7 +201,7 @@ class _missed_MenuState extends State<missed_Menu> {
                   child: Column(
                     children: [
                       Container(
-                        width: AppDimensions.width10(context) * 30.4,
+                        //width: AppDimensions.width10(context) * 30.4,
                         height: AppDimensions.height10(context) * 18.9,
                         // color: Colors.grey.withOpacity(0.5),
                         margin: EdgeInsets.only(
@@ -229,112 +230,116 @@ class _missed_MenuState extends State<missed_Menu> {
                                 ),
                               ),
                             ),
-                            Container(
-                              width: AppDimensions.width10(context) * 40.0,
-                              height: AppDimensions.height10(context) * 11.2,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 1.6),
-                              // color: Colors.blue,
-                              child: Stack(
-                                children: [
-                                  Align(
-                                    alignment: const Alignment(-0.84, -0.32),
-                                    child: Container(
-                                      width:
-                                          AppDimensions.height10(context) * 7.9,
-                                      height:
-                                          AppDimensions.height10(context) * 7.9,
-                                      decoration: BoxDecoration(
-                                        // color: Colors.amber,
-                                        image: DecorationImage(
-                                            image: AssetImage(goalColor == '1'
-                                                ? "assets/images/red_gradient.webp"
-                                                : goalColor == '2'
-                                                    ? 'assets/images/orange_moon.webp'
-                                                    : goalColor == '3'
-                                                        ? "assets/images/lightGrey_gradient.webp"
-                                                        : goalColor == '4'
-                                                            ? "assets/images/lightBlue_gradient.webp"
-                                                            : goalColor == '5'
-                                                                ? "assets/images/medBlue_gradient.webp"
-                                                                : goalColor ==
-                                                                        '6'
-                                                                    ? "assets/images/Blue_gradient.webp"
-                                                                    : 'assets/images/orange_moon.webp'),
-                                            fit: BoxFit.contain),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: const Alignment(-0.6, -0.2),
-                                    child: Container(
-                                      height:
-                                          AppDimensions.height10(context) * 5.0,
-                                      width:
-                                          AppDimensions.width10(context) * 4.6,
-                                      decoration: BoxDecoration(
-                                          //color: Colors.amber,
-                                          image: DecorationImage(
-                                              image: AssetImage(pracColor == '1'
-                                                  ? "assets/images/Missed_1.webp"
-                                                  : pracColor == '2'
-                                                      ? 'assets/images/Missed_2.webp'
-                                                      : pracColor == '3'
-                                                          ? "assets/images/Missed_3.webp"
-                                                          : pracColor == '4'
-                                                              ? "assets/images/Missed_4.webp"
-                                                              : pracColor == '5'
-                                                                  ? "assets/images/Missed_4.webp"
-                                                                  : 'assets/images/Missed_1.webp'),
-                                              fit: BoxFit.contain)),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: const Alignment(1.3, 6),
-                                    child: SizedBox(
-                                      width:
-                                          AppDimensions.width10(context) * 21,
-                                      height: AppDimensions.height10(context) *
-                                          10.6,
-                                      // color: Colors.amber.withOpacity(0.2),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            pracName,
-                                            textAlign: TextAlign.left,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                                color: const Color(0xffffffff),
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    2.0,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          SizedBox(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.5,
-                                            child: Text(
-                                              'Session missed',
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.6,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      const Color(0xffEB5757)),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            goalAndPractice(context,
+                                goalColor,pracColor,
+                                pracName),
+                            // Container(
+                            //   width: AppDimensions.width10(context) * 40.0,
+                            //   height: AppDimensions.height10(context) * 11.2,
+                            //   margin: EdgeInsets.only(
+                            //       top: AppDimensions.height10(context) * 1.6),
+                            //   // color: Colors.blue,
+                            //   child: Stack(
+                            //     children: [
+                            //       Align(
+                            //         alignment: const Alignment(-0.84, -0.32),
+                            //         child: Container(
+                            //           width:
+                            //               AppDimensions.height10(context) * 7.9,
+                            //           height:
+                            //               AppDimensions.height10(context) * 7.9,
+                            //           decoration: BoxDecoration(
+                            //             // color: Colors.amber,
+                            //             image: DecorationImage(
+                            //                 image: AssetImage(goalColor == '1'
+                            //                     ? "assets/images/red_gradient.webp"
+                            //                     : goalColor == '2'
+                            //                         ? 'assets/images/orange_moon.webp'
+                            //                         : goalColor == '3'
+                            //                             ? "assets/images/lightGrey_gradient.webp"
+                            //                             : goalColor == '4'
+                            //                                 ? "assets/images/lightBlue_gradient.webp"
+                            //                                 : goalColor == '5'
+                            //                                     ? "assets/images/medBlue_gradient.webp"
+                            //                                     : goalColor ==
+                            //                                             '6'
+                            //                                         ? "assets/images/Blue_gradient.webp"
+                            //                                         : 'assets/images/orange_moon.webp'),
+                            //                 fit: BoxFit.contain),
+                            //           ),
+                            //         ),
+                            //       ),
+                            //       Align(
+                            //         alignment: const Alignment(-0.6, -0.2),
+                            //         child: Container(
+                            //           height:
+                            //               AppDimensions.height10(context) * 5.0,
+                            //           width:
+                            //               AppDimensions.width10(context) * 4.6,
+                            //           decoration: BoxDecoration(
+                            //               //color: Colors.amber,
+                            //               image: DecorationImage(
+                            //                   image: AssetImage(pracColor == '1'
+                            //                       ? "assets/images/Missed_1.webp"
+                            //                       : pracColor == '2'
+                            //                           ? 'assets/images/Missed_2.webp'
+                            //                           : pracColor == '3'
+                            //                               ? "assets/images/Missed_3.webp"
+                            //                               : pracColor == '4'
+                            //                                   ? "assets/images/Missed_4.webp"
+                            //                                   : pracColor == '5'
+                            //                                       ? "assets/images/Missed_4.webp"
+                            //                                       : 'assets/images/Missed_1.webp'),
+                            //                   fit: BoxFit.contain)),
+                            //         ),
+                            //       ),
+                            //       Align(
+                            //         alignment: const Alignment(1.3, 6),
+                            //         child: SizedBox(
+                            //           width:
+                            //               AppDimensions.width10(context) * 21,
+                            //           height: AppDimensions.height10(context) *
+                            //               10.6,
+                            //           // color: Colors.amber.withOpacity(0.2),
+                            //           child: Column(
+                            //             crossAxisAlignment:
+                            //                 CrossAxisAlignment.start,
+                            //             children: [
+                            //               Text(
+                            //                 pracName,
+                            //                 textAlign: TextAlign.left,
+                            //                 overflow: TextOverflow.ellipsis,
+                            //                 style: TextStyle(
+                            //                     color: const Color(0xffffffff),
+                            //                     fontSize: AppDimensions.font10(
+                            //                             context) *
+                            //                         2.0,
+                            //                     fontWeight: FontWeight.w600),
+                            //               ),
+                            //               SizedBox(
+                            //                 height: AppDimensions.height10(
+                            //                         context) *
+                            //                     2.5,
+                            //                 child: Text(
+                            //                   'Session missed',
+                            //                   style: TextStyle(
+                            //                       fontSize:
+                            //                           AppDimensions.font10(
+                            //                                   context) *
+                            //                               1.6,
+                            //                       fontWeight: FontWeight.w500,
+                            //                       color:
+                            //                           const Color(0xffEB5757)),
+                            //                 ),
+                            //               )
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
+                            //
                           ],
                         ),
                       ),

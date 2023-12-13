@@ -402,7 +402,8 @@ void bottom_sheet(context) {
                                 color: const Color.fromARGB(209, 250, 154, 52),
                                 fontSize: AppDimensions.font10(context) * 1.6,
                               ),
-                            )))
+                            ))),
+                    SizedBox(height: AppDimensions.height10(context)*2,)
                   ],
                 ),
               ),
