@@ -130,9 +130,8 @@ class _view_goalsState extends State<view_goals> {
       });
     }
 
-     WidgetsBinding.instance.addPostFrameCallback((_) {
           _scrollToCurrentIndex();
-        });
+       
 
    //fetchGoalsByDay();
   }

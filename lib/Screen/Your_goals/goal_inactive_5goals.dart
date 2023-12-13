@@ -101,7 +101,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     content: Container(
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 1.5,
-
                           left: AppDimensions.width10(context) * 1.6,
                           right: AppDimensions.width10(context) * 1.6),
                       height: AppDimensions.height10(context) * 3.4,
@@ -236,7 +235,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         content: Container(
                           margin: EdgeInsets.only(
                               bottom: AppDimensions.height10(context) * 1.5,
-
                               left: AppDimensions.width10(context) * 1.6,
                               right: AppDimensions.width10(context) * 1.6),
                           width: AppDimensions.width10(context) * 23.8,
@@ -393,7 +391,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                 // width: AppDimensions.width10(context) * 2.6,
+                  // width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
@@ -970,11 +968,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                   ),
                 ),
         ),
-        extendBody: true,
+        // extendBody: true,
         bottomNavigationBar: BottomAppBar(
           elevation: 0,
-          height: AppDimensions.height10(context)*8.5,
-
+          height: AppDimensions.height10(context) * 9.5,
           color: const Color(0xFFFBFBFB),
           child: Loader == false
               ? update
@@ -1003,11 +1000,11 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           edit: false),
                     )
                   : Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           color: const Color(0xFFFBFBFB),
-                          height: AppDimensions.height10(context) * 8.0,
+                          height: AppDimensions.height10(context) * 9.0,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -1015,8 +1012,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 width: AppDimensions.width10(context) * 17.4,
                                 height: AppDimensions.height10(context) * 4.9,
                                 margin: EdgeInsets.only(
-                                    left:
-                                        AppDimensions.width10(context) * 2.6),
+                                    left: AppDimensions.width10(context) * 2.6),
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Column(
@@ -1271,7 +1267,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                               actionsPadding: EdgeInsets.zero,
                                                                               titlePadding: EdgeInsets.zero,
                                                                               title: Container(
-
                                                                                 margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.9, right: AppDimensions.width10(context) * 1.6, left: AppDimensions.width10(context) * 1.6, bottom: AppDimensions.height10(context) * 0.2),
                                                                                 height: AppDimensions.height10(context) * 2.2,
                                                                                 width: AppDimensions.width10(context) * 23.8,
@@ -1285,7 +1280,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                                 ),
                                                                               ),
                                                                               content: Container(
-
                                                                                 margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.5, left: AppDimensions.width10(context) * 1.6, right: AppDimensions.width10(context) * 1.6),
                                                                                 height: AppDimensions.height10(context) * 3.4,
                                                                                 width: AppDimensions.width10(context) * 23.8,
@@ -1645,72 +1639,75 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                           });
                                         }
                                       },
-                                      child: AvatarGlow(
-                                        endRadius:
-                                            AppDimensions.height10(context) * 8,
-                                        glowColor: const Color(0xFFFFA511),
-                                        animate:
-                                            totalItemsOn != 0 ? true : false,
-                                        child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  9.1,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  9.1,
-                                              margin: EdgeInsets.only(
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      3.3),
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Colors.white,
-                                                border: Border.all(
-                                                    width: 3,
-                                                    color: const Color(
-                                                        0xFFFFA511)),
-                                              ),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Container(
-                                                    width:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            2.0,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            2.0,
-                                                    decoration: const BoxDecoration(
-                                                        image: DecorationImage(
-                                                            image: AssetImage(
-                                                                'assets/images/start_icon.webp'))),
-                                                  ),
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        top: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            0.4),
-                                                    child: Text(
-                                                      'Start',
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .font10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: const Color(
-                                                              0xFFFFA511)),
+                                      child: Container(
+                                        margin: EdgeInsets.only(
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                0.5),
+                                        child: AvatarGlow(
+                                          endRadius:
+                                              AppDimensions.height10(context) *
+                                                  9,
+                                          glowColor: const Color(0xFFFFA511),
+                                          animate:
+                                              totalItemsOn != 0 ? true : false,
+                                          child: Align(
+                                            alignment: Alignment.center,
+                                            child: Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    7.1,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    7.1,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Colors.white,
+                                                  border: Border.all(
+                                                      width: 3,
+                                                      color: const Color(
+                                                          0xFFFFA511)),
+                                                ),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      width:
+                                                          AppDimensions.width10(
+                                                                  context) *
+                                                              2.0,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.0,
+                                                      decoration: const BoxDecoration(
+                                                          image: DecorationImage(
+                                                              image: AssetImage(
+                                                                  'assets/images/start_icon.webp'))),
                                                     ),
-                                                  )
-                                                ],
-                                              )),
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.4),
+                                                      child: Text(
+                                                        'Start',
+                                                        style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                1.4,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: const Color(
+                                                                0xFFFFA511)),
+                                                      ),
+                                                    )
+                                                  ],
+                                                )),
+                                          ),
                                         ),
                                       ),
                                     )
@@ -1756,7 +1753,6 @@ Widget goalActive(BuildContext context, String goals) {
       content: Container(
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
-
             left: AppDimensions.width10(context) * 1.6,
             right: AppDimensions.width10(context) * 1.6),
         width: AppDimensions.width10(context) * 23.8,
@@ -1831,7 +1827,6 @@ Widget showDeleteAlert(BuildContext context, id) {
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
             right: AppDimensions.width10(context) * 1.6,
-
             left: AppDimensions.width10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
@@ -1848,7 +1843,6 @@ Widget showDeleteAlert(BuildContext context, id) {
       content: Container(
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.5,
-
             left: AppDimensions.width10(context) * 1.6,
             right: AppDimensions.width10(context) * 1.6),
         height: AppDimensions.height10(context) * 4.8,
@@ -1951,7 +1945,6 @@ Widget showConfirmationAlert(BuildContext context) {
         margin: EdgeInsets.only(
             top: AppDimensions.height10(context) * 1.9,
             right: AppDimensions.width10(context) * 1.6,
-
             left: AppDimensions.width10(context) * 1.6,
             bottom: AppDimensions.height10(context) * 0.2),
         height: AppDimensions.height10(context) * 2.2,
@@ -1968,7 +1961,6 @@ Widget showConfirmationAlert(BuildContext context) {
       content: Container(
         margin: EdgeInsets.only(
             bottom: AppDimensions.height10(context) * 1.0,
-
             left: AppDimensions.width10(context) * 1.6,
             right: AppDimensions.width10(context) * 1.6),
         height: AppDimensions.height10(context) * 4.8,
