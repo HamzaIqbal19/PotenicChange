@@ -57,7 +57,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.width10(context) * 5.0,
+                   // width: AppDimensions.width10(context) * 5.0,
                     height: AppDimensions.width10(context) * 3.1,
                     child: Center(
                       child: Text(
@@ -83,7 +83,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                         // Navigator.pop(context);
                       },
                       child: Container(
-                        width: AppDimensions.width10(context) * 2.9,
+                        //width: AppDimensions.width10(context) * 2.9,
                         height: AppDimensions.width10(context) * 3.1,
                         child: Center(
                           child: Text(

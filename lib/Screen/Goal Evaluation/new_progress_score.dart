@@ -115,37 +115,45 @@ class _new_progress_scoreState extends State<new_progress_score> {
   GetDates() {
     print("error initiate ${goalDetails["goalEvaluations"][0]}");
 
-    for (int i = 0; i < goalDetails["goalEvaluations"].length; i++) {
-      print("error initiate 1");
-      late DateTime futureDate ;
-      final DateTime originalDate = DateFormat("yyyy-MM-dd")
-          .parse(goalDetails["goalEvaluations"][i]['activedate']);
-      print("error initiate 2");
-      if(goalDetails["goalEvaluations"][i]['endDate'] != null){
-         futureDate = DateFormat("yyyy-MM-dd")
-            .parse(goalDetails["goalEvaluations"][i]['endDate']);
-      }else{
-         futureDate = originalDate.add(Duration(days: 30));
-      }
+    if(goalDetails["goalEvaluations"][0]['goalLevel'] == null ||
+        goalDetails["goalEvaluations"][0]['goalLevel'] == 0){
+      for (int i = 0; i < goalDetails["goalEvaluations"].length; i++) {
+        print("error initiate 1");
+        late DateTime futureDate ;
+        final DateTime originalDate = DateFormat("yyyy-MM-dd")
+            .parse(goalDetails["goalEvaluations"][i]['activedate']);
+        print("error initiate 2");
+        if(goalDetails["goalEvaluations"][i]['endDate'] != null){
+          futureDate = DateFormat("yyyy-MM-dd")
+              .parse(goalDetails["goalEvaluations"][i]['endDate']);
+        }else{
+          futureDate = originalDate.add(Duration(days: 30));
+        }
 
-      print("error initiate 3");
-      final String formattedDate = DateFormat("dd MMM yy").format(originalDate);
-      print("error initiate 4");
-      final String formattedFutureDate =
-          DateFormat("dd MMM yy").format(futureDate);
-      print("error initiate 5");
-      if (goalDetails["goalEvaluations"][i]['goalLevel'] == null ||
-          goalDetails["goalEvaluations"][i]['goalLevel'] == 0) {
-        _dates.add('$formattedDate to $formattedFutureDate (-/5)');
-        print("error initiate 6");
-      } else {
-        _dates.add(
-            '$formattedDate to $formattedFutureDate (${goalDetails["goalEvaluations"][i]['totalPoint']}/5)');
+        print("error initiate 3");
+        final String formattedDate = DateFormat("dd MMM yy").format(originalDate);
+        print("error initiate 4");
+        final String formattedFutureDate =
+        DateFormat("dd MMM yy").format(futureDate);
+        print("error initiate 5");
+        if (goalDetails["goalEvaluations"][i]['goalLevel'] == null ||
+            goalDetails["goalEvaluations"][i]['goalLevel'] == 0) {
+          _dates.add('$formattedDate to $formattedFutureDate (-/5)');
+          print("error initiate 6");
+        } else {
+          _dates.add(
+              '$formattedDate to $formattedFutureDate (${goalDetails["goalEvaluations"][i]['totalPoint']}/5)');
+        }
+        setState(() {
+          activity_duration = _dates[selectedEval].substring(0, 22);
+        });
       }
     }
-    setState(() {
-      activity_duration = _dates[selectedEval].substring(0, 22);
-    });
+
+
+
+
+
   }
 
   @override
@@ -266,7 +274,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                       ),
                       Container(
                         width: AppDimensions.width10(context) * 36.5,
-                        height: AppDimensions.height10(context) * 58.1,
+                       // height: AppDimensions.height10(context) * 58.1,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 4.0),
                         child: Stack(
@@ -714,7 +722,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                 SizedBox(
                                                   child: Text(
                                                     widget.premium == false
-                                                        ? ''
+                                                        ? '-'
                                                         : goalDetails['goalEvaluations']
                                                                             [
                                                                             selectedEval]
@@ -911,7 +919,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                             AppDimensions.height10(context) *
                                                 4.1,
                                       ),
-                                    )
+                                    ),
+                                    SizedBox(height: AppDimensions.height10(context),)
                                   ],
                                 ),
                               ),
@@ -920,7 +929,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.width10(context) * 44.1,
+                        //width: AppDimensions.width10(context) * 44.1,
                         height: AppDimensions.height10(context) * 67.2,
                         // color: Colors.amberAccent,
                         margin: EdgeInsets.only(
@@ -1337,7 +1346,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                 },
                 child: BottomAppBar(
                   elevation: 0,
-                  color: Colors.transparent,
+                  color: const Color(0xFFF5F5F5),padding: EdgeInsets.zero,
+                  height: AppDimensions.height10(context) * 7.7,
                   child: Container(
                     height: AppDimensions.height10(context) * 7.7,
                     width: AppDimensions.width10(context) * 41.4,

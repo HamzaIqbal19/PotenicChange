@@ -110,6 +110,7 @@ class _view_goalsState extends State<view_goals> {
         next = widget.record - 1;
       });
     }
+   
 
 
     super.initState();
@@ -129,9 +130,16 @@ class _view_goalsState extends State<view_goals> {
       });
     }
 
-    _scrollController.animateTo(1000, duration: const Duration(milliseconds: 50), curve: Curves.linear);
-    //fetchGoalsByDay();
+     WidgetsBinding.instance.addPostFrameCallback((_) {
+          _scrollToCurrentIndex();
+        });
+
+   //fetchGoalsByDay();
   }
+
+  
+
+
 
   // void _fetchUserGoal() {
   //   AdminGoal.getUserGoalByUserId().then((response) {
@@ -142,7 +150,29 @@ class _view_goalsState extends State<view_goals> {
   //     // _newFunction();
   //   });
   // }
+_scrollToCurrentIndex() {
+    if (_scrollController.hasClients) {
+      double offset = 0.0;
+      //for (int i = 0; i < _currentIndex; i++) {
+        offset += _calculateItemHeight();
+      //}
 
+      _scrollController.animateTo(
+        offset,
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  final GlobalKey centerKey = GlobalKey();
+
+
+  double _calculateItemHeight() {
+    final RenderBox renderBox =
+        centerKey.currentContext!.findRenderObject() as RenderBox;
+    return renderBox.size.height;
+  }
   void fetchPracticeByDay() {
     AdminGoal.checkUserActiveGoal().then((response) {
       if (response == 200) {
@@ -467,6 +497,8 @@ class _view_goalsState extends State<view_goals> {
                                       children: [
                                         SingleChildScrollView(
                                           scrollDirection: Axis.horizontal,
+                                                                                    controller: _scrollController,
+
                                           child: SizedBox(
                                             height: AppDimensions.height10(
                                                     context) *
@@ -628,6 +660,7 @@ class _view_goalsState extends State<view_goals> {
                                                   alignment:
                                                       const Alignment(0, 0),
                                                   child: SizedBox(
+                                                    key: centerKey,
                                                     height:
                                                         AppDimensions.height10(
                                                                 context) *
@@ -954,27 +987,34 @@ class _view_goalsState extends State<view_goals> {
                                                                     1.1),
                                                             child: Column(
                                                                 children: [
-                                                                  Container(
-                                                                    alignment:
-                                                                        Alignment
-                                                                            .centerLeft,
-                                                                    child: Text(
-                                                                      timesList[index]
-                                                                              [
-                                                                              'time']
-                                                                          .toString()
-                                                                          .substring(
-                                                                              0,
-                                                                              5),
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            AppDimensions.font10(context) *
-                                                                                1.8,
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
-                                                                        color: Colors
-                                                                            .white,
+                                                                  GestureDetector(
+                                                                    onTap: () {
+                                                                      WidgetsBinding.instance.addPostFrameCallback((_) {
+          _scrollToCurrentIndex();
+        });
+                                                                    },
+                                                                    child: Container(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .centerLeft,
+                                                                      child: Text(
+                                                                        timesList[index]
+                                                                                [
+                                                                                'time']
+                                                                            .toString()
+                                                                            .substring(
+                                                                                0,
+                                                                                5),
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              AppDimensions.font10(context) *
+                                                                                  1.8,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                          color: Colors
+                                                                              .white,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -2000,7 +2040,6 @@ class _view_goalsState extends State<view_goals> {
                                       scrollDirection: Axis.vertical,
                                       child: Column(children: [
                                         SingleChildScrollView(
-                                          controller: _scrollController,
                                           scrollDirection: Axis.horizontal,
                                           child: Container(
                                             height: AppDimensions.height10(
