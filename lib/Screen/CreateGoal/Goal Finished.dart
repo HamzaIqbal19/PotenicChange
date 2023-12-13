@@ -153,16 +153,15 @@ class _GoalFinishedState extends State<GoalFinished> {
               Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/finalGoal.webp"),
+                    image: AssetImage("assets/images/CreateGoal.webp"),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               Loading == false
                   ? Stack(
-
-                    children: [
-                      Column(
+                      children: [
+                        Column(
                           children: [
                             Container(
                               padding: EdgeInsets.only(
@@ -190,22 +189,22 @@ class _GoalFinishedState extends State<GoalFinished> {
                                 // height: AppDimensions.height10(context) * 21.8,
                                 //width: AppDimensions.width10(context) * 34.0,
                                 child: Column(
-                                  children: [
-                                    Center(
-                                      child: Text(
-                                        "You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not\n working, you can change it to another \n practice. ",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white,
-                                          fontFamily: "LaiLa",
-                                          fontSize:
-                                              AppDimensions.font10(context) * 1.8,
-                                        ),
-                                      ),
+                              children: [
+                                Center(
+                                  child: Text(
+                                    "You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not\n working, you can change it to another \n practice. ",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      fontFamily: "LaiLa",
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.8,
                                     ),
-                                  ],
-                                )),
+                                  ),
+                                ),
+                              ],
+                            )),
                             Stack(
                               children: [
                                 AnimatedScaleButton(
@@ -220,8 +219,10 @@ class _GoalFinishedState extends State<GoalFinished> {
                                     );
                                   },
                                   child: Container(
-                                    height: AppDimensions.height10(context) * 40.1,
-                                    width: AppDimensions.width10(context) * 40.1,
+                                    height:
+                                        AppDimensions.height10(context) * 40.1,
+                                    width:
+                                        AppDimensions.width10(context) * 40.1,
                                     padding: EdgeInsets.all(
                                         AppDimensions.height10(context) * 3.5),
                                     // decoration: const BoxDecoration(
@@ -230,8 +231,9 @@ class _GoalFinishedState extends State<GoalFinished> {
                                     //             'assets/images/anger_5.webp'))),
                                     child: Container(
                                       margin: EdgeInsets.only(
-                                          bottom: AppDimensions.height10(context) *
-                                              4.0),
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  4.0),
                                       // padding: EdgeInsets.only(
                                       //     bottom: AppDimensions.height10(context) *
                                       //         10.0),
@@ -248,73 +250,83 @@ class _GoalFinishedState extends State<GoalFinished> {
                                                               ? "assets/images/lightBlue_gradient.webp"
                                                               : '$color' == '5'
                                                                   ? "assets/images/medBlue_gradient.webp"
-                                                                  : '$color' == '6'
+                                                                  : '$color' ==
+                                                                          '6'
                                                                       ? "assets/images/Blue_gradient.webp"
-                                                                      : 'assets/images/orange_moon.webp'),fit: BoxFit.cover )),
+                                                                      : 'assets/images/orange_moon.webp'),
+                                              fit: BoxFit.cover)),
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           SizedBox(
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    2.5,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.5,
                                           ),
                                           Container(
                                             //color: Colors.red,
                                             // height:
                                             //     AppDimensions.height10(context) *
                                             //         9.0,
-                                            width: AppDimensions.width10(context) *
-                                                24.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    24.0,
                                             padding: EdgeInsets.symmetric(
-                                                horizontal: AppDimensions.width10(
-                                                        context) *
-                                                    2.0),
+                                                horizontal:
+                                                    AppDimensions.width10(
+                                                            context) *
+                                                        2.0),
                                             child: Column(
                                               children: [
                                                 Text(
                                                   "$goalName",
                                                   textAlign: TextAlign.center,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   maxLines: 1,
                                                   style: TextStyle(
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
                                                               2.0,
-                                                      height:
-                                                          AppDimensions.height10(
+                                                      height: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              0.14,
-                                                      fontWeight: FontWeight.w600,
-                                                      color:
-                                                          const Color(0xff5B74A6)),
+                                                          0.14,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: const Color(
+                                                          0xff5B74A6)),
                                                 ),
                                                 SizedBox(
-                                                  height: AppDimensions.height10(
-                                                          context) *
-                                                      0.3,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.3,
                                                 ),
                                                 Container(
                                                   // color: Colors.green,
-                                                  height: AppDimensions.height10(
-                                                          context) *
-                                                      4.0,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.0,
                                                   width: AppDimensions.width10(
                                                           context) *
                                                       22.0,
                                                   child: Text('"$identity"',
                                                       maxLines: 2,
-                                                      textAlign: TextAlign.center,
+                                                      textAlign:
+                                                          TextAlign.center,
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       style: TextStyle(
                                                           fontStyle:
                                                               FontStyle.italic,
-                                                          fontSize:
-                                                              AppDimensions.font10(
+                                                          fontSize: AppDimensions
+                                                                  .font10(
                                                                       context) *
-                                                                  1.6,
+                                                              1.6,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           color: const Color(
@@ -324,27 +336,30 @@ class _GoalFinishedState extends State<GoalFinished> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    1.1,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                1.1,
                                           ),
                                           Text('Review',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   decoration:
                                                       TextDecoration.underline,
-                                                  fontSize: AppDimensions.font10(
-                                                          context) *
-                                                      2.0,
-                                                  height: AppDimensions.height10(
-                                                          context) *
-                                                      0.14,
+                                                  fontSize:
+                                                      AppDimensions.font10(
+                                                              context) *
+                                                          2.0,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.14,
                                                   fontWeight: FontWeight.w600,
-                                                  color: const Color(0xff5B74A6))),
+                                                  color:
+                                                      const Color(0xff5B74A6))),
                                           SizedBox(
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    4.3,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                4.3,
                                           )
                                         ],
                                       ),
@@ -360,13 +375,15 @@ class _GoalFinishedState extends State<GoalFinished> {
                                     // alignment: Alignment.bottomCenter,
                                     alignment: Alignment(
                                         0.01,
-                                        AppDimensions.height10(context) * 0.015 +
+                                        AppDimensions.height10(context) *
+                                                0.015 +
                                             1),
                                     //heightFactor: 0.5,
                                     child: Container(
-                                      height:
-                                          AppDimensions.height10(context) * 17.5,
-                                      width: AppDimensions.width10(context) * 17.5,
+                                      height: AppDimensions.height10(context) *
+                                          17.5,
+                                      width:
+                                          AppDimensions.width10(context) * 17.5,
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
@@ -384,10 +401,12 @@ class _GoalFinishedState extends State<GoalFinished> {
                                         child: Image(
                                           image: const AssetImage(
                                               'assets/images/practice.webp'),
-                                          height: AppDimensions.height10(context) *
-                                              17.5,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  17.5,
                                           width:
-                                              AppDimensions.width10(context) * 17.5,
+                                              AppDimensions.width10(context) *
+                                                  17.5,
                                         ),
                                       ),
                                     ),
@@ -395,37 +414,34 @@ class _GoalFinishedState extends State<GoalFinished> {
                                 )
                               ],
                             ),
-
-
                           ],
                         ),
-                      Positioned(
-
-
-                          bottom: 15,
-                          child:   Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.width10(context) * 1.6,
-                          ),
-                          Container(
-                            // color: Colors.blue,
-                              width: AppDimensions.width10(context) * 5.0,
-                              height: AppDimensions.height10(context) * 5.0,
-                              child: AnimatedScaleButton(
-                                onTap: () {
-                                  //  signupSheet(context, "Sign up / login", "login");
-                                },
-                                child: Image.asset(
-                                  "assets/images/Moreactions.webp",
-                                  fit: BoxFit.contain,
+                        Positioned(
+                            bottom: 15,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.width10(context) * 1.6,
                                 ),
-                              )),
-                        ],
-                      ))
-                    ],
-                  )
+                                Container(
+                                    // color: Colors.blue,
+                                    width: AppDimensions.width10(context) * 5.0,
+                                    height:
+                                        AppDimensions.height10(context) * 5.0,
+                                    child: AnimatedScaleButton(
+                                      onTap: () {
+                                        //  signupSheet(context, "Sign up / login", "login");
+                                      },
+                                      child: Image.asset(
+                                        "assets/images/Moreactions.webp",
+                                        fit: BoxFit.contain,
+                                      ),
+                                    )),
+                              ],
+                            ))
+                      ],
+                    )
                   : const Center(
                       child: SpinKitFadingCircle(
                         color: Color(0xFFB1B8FF),

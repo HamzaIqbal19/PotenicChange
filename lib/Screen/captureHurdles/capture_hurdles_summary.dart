@@ -891,16 +891,16 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                 ],
                               ),
                             ),
-                      Container(
-                        width: AppDimensions.width10(context) * 17.0,
-                        height: AppDimensions.height10(context) * 0.5,
-                        margin: EdgeInsets.only(
-                            bottom: AppDimensions.height10(context) * 2.8),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0),
-                            color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-                      )
+                      // Container(
+                      //   width: AppDimensions.width10(context) * 17.0,
+                      //   height: AppDimensions.height10(context) * 0.5,
+                      //   margin: EdgeInsets.only(
+                      //       bottom: AppDimensions.height10(context) * 2.8),
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(
+                      //           AppDimensions.height10(context) * 2.0),
+                      //       color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                      // )
                     ],
                   ))
               : const Center(

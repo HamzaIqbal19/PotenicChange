@@ -768,17 +768,17 @@ class _record_inspirationState extends State<record_inspiration> {
                         ],
                       ),
                     ),
-                    Container(
-                      width: AppDimensions.width10(context) * 17.0,
-                      height: AppDimensions.height10(context) * 0.5,
-                      //alignment: Alignment.bottomCenter,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 16),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 2.0),
-                          color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-                    ),
+                    // Container(
+                    //   width: AppDimensions.width10(context) * 17.0,
+                    //   height: AppDimensions.height10(context) * 0.5,
+                    //   //alignment: Alignment.bottomCenter,
+                    //   margin: EdgeInsets.only(
+                    //       top: AppDimensions.height10(context) * 16),
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(
+                    //           AppDimensions.height10(context) * 2.0),
+                    //       color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                    // ),
                   ],
                 )
               : const Center(

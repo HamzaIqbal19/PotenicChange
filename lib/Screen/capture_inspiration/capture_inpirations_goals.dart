@@ -238,7 +238,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                         },
                         icon: Image.asset(
                           'assets/images/Back.webp',
-                         // width: AppDimensions.width10(context) * 2.6,
+                          // width: AppDimensions.width10(context) * 2.6,
                           height: AppDimensions.height10(context) * 2.6,
                           fit: BoxFit.contain,
                         )),
@@ -536,7 +536,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           },
                           icon: Image.asset(
                             'assets/images/Close.webp',
-                           // width: AppDimensions.width10(context) * 2.6,
+                            // width: AppDimensions.width10(context) * 2.6,
                             height: AppDimensions.height10(context) * 2.6,
                             fit: BoxFit.contain,
                           )),
@@ -646,8 +646,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 padding: EdgeInsets.all(
                                     AppDimensions.width10(context) * 0.5),
                                 child: Container(
-                                  height:
-                                      AppDimensions.width10(context) * 12.5,
+                                  height: AppDimensions.width10(context) * 12.5,
                                   width: AppDimensions.width10(context) * 12.5,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
@@ -683,7 +682,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.width10(context) * 21.2,
-
                                   left: AppDimensions.width10(context) * 2.8,
                                   top: AppDimensions.height10(context) * 2.0),
                               child: Center(
@@ -742,9 +740,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       },
                                       child: Container(
                                         margin: EdgeInsets.only(
-                                            right: AppDimensions.width10(
-                                                    context) *
-                                                3),
+                                            right:
+                                                AppDimensions.width10(context) *
+                                                    3),
                                         height: selectedIndices
                                                     .contains(index) ||
                                                 selectAll == true
@@ -786,10 +784,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               AppDimensions.width10(context) *
                                                   13.1,
                                           padding: EdgeInsets.symmetric(
-                                              horizontal:
-                                                  AppDimensions.width10(
-                                                          context) *
-                                                      0.8),
+                                              horizontal: AppDimensions.width10(
+                                                      context) *
+                                                  0.8),
                                           // margin: EdgeInsets.only(
                                           //   right:
                                           //       AppDimensions.height10(context) * 4.5,
@@ -892,9 +889,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       },
                                       child: Container(
                                         margin: EdgeInsets.only(
-                                            right: AppDimensions.width10(
-                                                    context) *
-                                                3),
+                                            right:
+                                                AppDimensions.width10(context) *
+                                                    3),
                                         height: selectedInActiveIndices
                                                     .contains(index) ||
                                                 selectAll == true
@@ -936,10 +933,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               AppDimensions.width10(context) *
                                                   13.1,
                                           padding: EdgeInsets.symmetric(
-                                              horizontal:
-                                                  AppDimensions.width10(
-                                                          context) *
-                                                      1.2),
+                                              horizontal: AppDimensions.width10(
+                                                      context) *
+                                                  1.2),
                                           // margin: EdgeInsets.only(
                                           //   right: AppDimensions.width10(context) *
                                           //       4.5,
@@ -1445,17 +1441,16 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             )),
                           ),
                         ),
-                  widget.route == 'details'
-                      ? Container()
-                      : Container(
-                          width: AppDimensions.width10(context) * 17.0,
-                          height: AppDimensions.height10(context) * 0.5,
-                          // margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.0),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10(context) * 2.0),
-                              color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-                        )
+                  // widget.route == 'details'
+                  //     ? Container()
+                  //     : Container(
+                  //         width: AppDimensions.width10(context) * 17.0,
+                  //         height: AppDimensions.height10(context) * 0.5,
+                  //         decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(
+                  //                 AppDimensions.height10(context) * 2.0),
+                  //             color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                  //       )
                 ])
               : const Center(
                   child: SpinKitFadingCircle(

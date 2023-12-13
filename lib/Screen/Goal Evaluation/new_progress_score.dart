@@ -93,6 +93,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
           });
         }
 
+        
         _scrollController =
             FixedExtentScrollController(initialItem: _selectedIndex);
         print("error start");

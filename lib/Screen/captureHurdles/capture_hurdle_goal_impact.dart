@@ -919,16 +919,16 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                     )),
                   ),
                 ),
-                Container(
-                  width: AppDimensions.width10(context) * 17.0,
-                  height: AppDimensions.height10(context) * 0.5,
-                  margin: EdgeInsets.only(
-                      bottom: AppDimensions.height10(context) * 1.0),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 2.0),
-                      color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-                ),
+                // Container(
+                //   width: AppDimensions.width10(context) * 17.0,
+                //   height: AppDimensions.height10(context) * 0.5,
+                //   margin: EdgeInsets.only(
+                //       bottom: AppDimensions.height10(context) * 1.0),
+                //   decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(
+                //           AppDimensions.height10(context) * 2.0),
+                //       color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                // ),
               ])
             : const Center(
                 child: SpinKitFadingCircle(

@@ -695,26 +695,26 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                         ))),
                                   );
                                 }),
-                            MediaQuery.of(context).viewInsets.bottom == 0
-                                ? Container(
-                                    width:
-                                        AppDimensions.width10(context) * 17.0,
-                                    height:
-                                        AppDimensions.height10(context) * 0.5,
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                1.0),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                            AppDimensions.height10(context) *
-                                                2.0),
-                                        color: const Color(0xFFFFFFFF)
-                                            .withOpacity(0.3)),
-                                  )
-                                : SizedBox(
-                                    height: AppDimensions.height10(context) * 0,
-                                  ),
+                            // MediaQuery.of(context).viewInsets.bottom == 0
+                            //     ? Container(
+                            //         width:
+                            //             AppDimensions.width10(context) * 17.0,
+                            //         height:
+                            //             AppDimensions.height10(context) * 0.5,
+                            //         margin: EdgeInsets.only(
+                            //             bottom:
+                            //                 AppDimensions.height10(context) *
+                            //                     1.0),
+                            //         decoration: BoxDecoration(
+                            //             borderRadius: BorderRadius.circular(
+                            //                 AppDimensions.height10(context) *
+                            //                     2.0),
+                            //             color: const Color(0xFFFFFFFF)
+                            //                 .withOpacity(0.3)),
+                            //       )
+                            //     : SizedBox(
+                            //         height: AppDimensions.height10(context) * 0,
+                            //       ),
                             Padding(
                                 padding: EdgeInsets.only(
                                     bottom: MediaQuery.of(context)

@@ -71,7 +71,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                     // width: AppDimensions.width10(context) * 2.6,
+                      // width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.contain,
                     )),
@@ -104,13 +104,15 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                 width: double.infinity,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(
-                            'assets/images/Inspiration_Glow 1.webp'),fit: BoxFit.fitWidth)),
+                        image:
+                            AssetImage('assets/images/Inspiration_Glow 1.webp'),
+                        fit: BoxFit.fitWidth)),
                 child: Center(
                   child: Container(
                     height: AppDimensions.height10(context) * 35.9,
                     width: AppDimensions.width10(context) * 35.9,
-                    margin: EdgeInsets.only(top: AppDimensions.height10(context)*2),
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 2),
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
@@ -233,19 +235,19 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                       FadeFunction: () {},
                     ))
                 : Container(),
-            Align(
-              alignment: const Alignment(0, 1),
-              child: Container(
-                width: AppDimensions.width10(context) * 17.0,
-                height: AppDimensions.height10(context) * 0.5,
-                margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10(context) * 1.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                        AppDimensions.height10(context) * 2.0),
-                    color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-              ),
-            )
+            // Align(
+            //   alignment: const Alignment(0, 1),
+            //   child: Container(
+            //     width: AppDimensions.width10(context) * 17.0,
+            //     height: AppDimensions.height10(context) * 0.5,
+            //     margin: EdgeInsets.only(
+            //         bottom: AppDimensions.height10(context) * 1.0),
+            //     decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(
+            //             AppDimensions.height10(context) * 2.0),
+            //         color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+            //   ),
+            // )
           ]),
         ),
       ),

@@ -901,7 +901,7 @@ class _practice_summaryState extends State<practice_summary> {
                                       AppDimensions.height10(context) * 0.5),
                               child: Text(
                                 Session == 1
-                                    ? 'Found it\ndifficult'
+                                    ? 'Not great,\nhaven’t\nenjoyed it'
                                     : Session == 2
                                         ? 'Had distractins,\nit was hard to\nfocus'
                                         : Session == 3
@@ -1316,15 +1316,7 @@ class _practice_summaryState extends State<practice_summary> {
                             ]),
                       ),
                       Container(
-                        width: AppDimensions.width10(context) * 17.0,
-                        height: AppDimensions.height10(context) * 0.5,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 5.0),
-                        ),
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 3.7,
                             bottom: AppDimensions.height10(context) * 5.0),
                       )
                     ],
