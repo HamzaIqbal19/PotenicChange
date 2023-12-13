@@ -205,6 +205,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
 
   @override
   Widget build(BuildContext context) {
+    bool smallScreen = MediaQuery.of(context).size.height < 690;
+
     return WillPopScope(
       onWillPop: () {
         widget.route == 'landing'
@@ -629,8 +631,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 }
                               },
                               child: Container(
-                                width: AppDimensions.width10(context) * 13.5,
-                                height: AppDimensions.width10(context) * 13.5,
+                                width:!smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5,
+                                height: !smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5,
                                 margin: EdgeInsets.only(
                                     left: AppDimensions.width10(context) * 3,
                                     right:
@@ -646,8 +648,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 padding: EdgeInsets.all(
                                     AppDimensions.width10(context) * 0.5),
                                 child: Container(
-                                  height: AppDimensions.width10(context) * 12.5,
-                                  width: AppDimensions.width10(context) * 12.5,
+                                  height: !smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
+                                  width: !smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
@@ -697,7 +699,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             ),
                             Container(
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.width10(context) * 6,
+                                  left:!smallScreen? AppDimensions.width10(context) * 5: AppDimensions.width10(context) * 6,
                                   top: AppDimensions.height10(context) * 1.0,
                                   right: AppDimensions.width10(context) * 3,
                                   bottom:
@@ -741,7 +743,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       child: Container(
                                         margin: EdgeInsets.only(
                                             right:
-                                                AppDimensions.width10(context) *
+                                               !smallScreen? AppDimensions.width10(context) *
+                                                   2.5:AppDimensions.width10(context) *
                                                     3),
                                         height: selectedIndices
                                                     .contains(index) ||
@@ -845,7 +848,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             ),
                             Container(
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.width10(context) * 6,
+                                  left:!smallScreen? AppDimensions.width10(context) * 5: AppDimensions.width10(context) * 6,
                                   top: AppDimensions.height10(context) * 1.0,
                                   right: AppDimensions.width10(context) * 3,
                                   bottom:
@@ -890,8 +893,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       child: Container(
                                         margin: EdgeInsets.only(
                                             right:
-                                                AppDimensions.width10(context) *
-                                                    3),
+                                            !smallScreen? AppDimensions.width10(context) *
+                                                2.5:AppDimensions.width10(context) *
+                                                3),
                                         height: selectedInActiveIndices
                                                     .contains(index) ||
                                                 selectAll == true

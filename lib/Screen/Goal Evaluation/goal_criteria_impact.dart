@@ -606,7 +606,7 @@ class _your_impactState extends State<your_impact> {
                             ),
                             SizedBox(
                               width: AppDimensions.width10(context) * 23.4,
-                              height: AppDimensions.height10(context) * 7.3,
+                              //height: AppDimensions.height10(context) * 7.3,
                               child: Stack(
                                 children: [
                                   Align(
@@ -629,8 +629,8 @@ class _your_impactState extends State<your_impact> {
                                     child: SizedBox(
                                       width:
                                           AppDimensions.width10(context) * 21.4,
-                                      height:
-                                          AppDimensions.height10(context) * 7.3,
+                                      // height:
+                                      //     AppDimensions.height10(context) * 7.3,
 
                                       ///color: Colors.amber,
                                       child: Center(

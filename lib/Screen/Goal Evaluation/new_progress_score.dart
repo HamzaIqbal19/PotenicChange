@@ -831,57 +831,55 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                         ),
                                                       ),
                                                     ),
-                                          Align(
-                                            alignment: const Alignment(0.5, 0),
-                                            child: SizedBox(
-                                              //  width: AppDimensions.width10(context) * 21.4,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  7.3,
+                                          Container(
+                                            //  width: AppDimensions.width10(context) * 21.4,
+                                            margin: EdgeInsets.only(top: AppDimensions.height10(context)*0.3),
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                7.3,
 
-                                              //color: Colors.amber,
-                                              child: Center(
-                                                child: Text(
-                                                  widget.premium == false
-                                                      ? 'Score needed!'
-                                                      : goalDetails['goalEvaluations']
-                                                                          [selectedEval][
-                                                                      'totalPoint'] ==
-                                                                  null ||
-                                                              goalDetails['goalEvaluations']
-                                                                          [selectedEval][
-                                                                      'totalPoint'] ==
-                                                                  0 ||
-                                                              widget.premium ==
-                                                                  false
-                                                          ? 'Score needed!'
-                                                          : goalDetails['goalEvaluations']
-                                                                          [selectedEval][
-                                                                      'totalPoint'] ==
-                                                                  2
-                                                              ? "I'm making small steps\nforward"
-                                                              : goalDetails['goalEvaluations'][selectedEval]
-                                                                          ['totalPoint'] ==
-                                                                      1
-                                                                  ? 'I’m not making any progress'
-                                                                  : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 3
-                                                                      ? 'I’m making considerable steps forward'
-                                                                      : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 4
-                                                                          ? "I’m almost there"
-                                                                          : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 5
-                                                                              ? "I’m continuously living my why"
-                                                                              : "Score needed",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              2.0,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: const Color(
-                                                          0xFFFFFFFF)),
-                                                ),
+                                            //color: Colors.amber,
+                                            child: Center(
+                                              child: Text(
+                                                widget.premium == false
+                                                    ? 'Score needed!'
+                                                    : goalDetails['goalEvaluations']
+                                                                        [selectedEval][
+                                                                    'totalPoint'] ==
+                                                                null ||
+                                                            goalDetails['goalEvaluations']
+                                                                        [selectedEval][
+                                                                    'totalPoint'] ==
+                                                                0 ||
+                                                            widget.premium ==
+                                                                false
+                                                        ? 'Score needed!'
+                                                        : goalDetails['goalEvaluations']
+                                                                        [selectedEval][
+                                                                    'totalPoint'] ==
+                                                                2
+                                                            ? "I'm making small steps\nforward"
+                                                            : goalDetails['goalEvaluations'][selectedEval]
+                                                                        ['totalPoint'] ==
+                                                                    1
+                                                                ? 'I’m not making any progress'
+                                                                : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 3
+                                                                    ? 'I’m making considerable steps forward'
+                                                                    : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 4
+                                                                        ? "I’m almost there"
+                                                                        : goalDetails['goalEvaluations'][selectedEval]['totalPoint'] == 5
+                                                                            ? "I’m continuously living my why"
+                                                                            : "Score needed",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.font10(
+                                                                context) *
+                                                            2.0,
+                                                    fontWeight:
+                                                        FontWeight.w600,
+                                                    color: const Color(
+                                                        0xFFFFFFFF)),
                                               ),
                                             ),
                                           )
@@ -931,12 +929,14 @@ class _new_progress_scoreState extends State<new_progress_score> {
                       ),
                       Container(
                         //width: AppDimensions.width10(context) * 44.1,
-                        height: AppDimensions.height10(context) * 67.2,
+                       // height: AppDimensions.height10(context) * 67.2,
                         // color: Colors.amberAccent,
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 2.5),
+                            top: AppDimensions.height10(context) * 2.5,
+                        bottom: AppDimensions.height10(context)*3),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             AnimatedScaleButton(
                               onTap: () {
@@ -1317,17 +1317,17 @@ class _new_progress_scoreState extends State<new_progress_score> {
                           ],
                         ),
                       ),
-                      Container(
-                        width: AppDimensions.width10(context) * 17.0,
-                        height: AppDimensions.height10(context) * 0.5,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 20.3,
-                            bottom: AppDimensions.height10(context) * 1.0),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0),
-                            color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-                      )
+                      // Container(
+                      //   width: AppDimensions.width10(context) * 17.0,
+                      //   height: AppDimensions.height10(context) * 0.5,
+                      //   margin: EdgeInsets.only(
+                      //       top: AppDimensions.height10(context) * 20.3,
+                      //       bottom: AppDimensions.height10(context) * 1.0),
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(
+                      //           AppDimensions.height10(context) * 2.0),
+                      //       color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                      // )
                     ],
                   ),
                 )

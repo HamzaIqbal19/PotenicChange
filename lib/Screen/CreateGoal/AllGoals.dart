@@ -168,144 +168,105 @@ class _AllGoalsState extends State<AllGoals> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        extendBody: true,
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.transparent,
-        appBar: PreferredSize(
-            preferredSize:
-                Size.fromHeight(AppDimensions.height10(context) * 5.0),
-            child: AppBar(
-              elevation: 0,
-              centerTitle: true,
-              backgroundColor: Colors.transparent,
-              automaticallyImplyLeading: false,
-              leading: Container(
-                decoration: const BoxDecoration(shape: BoxShape.circle),
-                child: Center(
-                  // alignment: Alignment.center,
-                  child: IconButton(
-                    icon: Image.asset(
-                      'assets/images/Back.webp',
-                      // width: AppDimensions.width10(context) * 3,
-                      height: AppDimensions.height10(context) * 3,
-                      fit: BoxFit.contain,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                      // Add code for performing close action
-                    },
-                  ),
-                ),
-              ),
-              actions: [
-                Container(
+      child: SafeArea(
+        right: false,
+        top: false,
+        left: false,
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          extendBody: true,
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Colors.transparent,
+          appBar: PreferredSize(
+              preferredSize:
+                  Size.fromHeight(AppDimensions.height10(context) * 5.0),
+              child: AppBar(
+                elevation: 0,
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                automaticallyImplyLeading: false,
+                leading: Container(
                   decoration: const BoxDecoration(shape: BoxShape.circle),
                   child: Center(
                     // alignment: Alignment.center,
                     child: IconButton(
                       icon: Image.asset(
-                        'assets/images/Close.webp',
-                        //width: AppDimensions.width10(context) * 3.0,
-                        height: AppDimensions.height10(context) * 2.8,
+                        'assets/images/Back.webp',
+                        // width: AppDimensions.width10(context) * 3,
+                        height: AppDimensions.height10(context) * 3,
                         fit: BoxFit.contain,
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          FadePageRouteReverse(
-                            page: const HomeScreen(
-                              login: true,
-                            ),
-                          ),
-                        );
-                        // Navigator.pushReplacement(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => HomeScreen(),
-                        //   ),
-                        // );
+                        Navigator.pop(context);
                         // Add code for performing close action
                       },
                     ),
                   ),
                 ),
-              ],
-            )),
-        body: Stack(
-          children: [
-            // Loading == false
-            //     ?
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/Categories.webp"),
-                  fit: BoxFit.cover,
+                actions: [
+                  Container(
+                    decoration: const BoxDecoration(shape: BoxShape.circle),
+                    child: Center(
+                      // alignment: Alignment.center,
+                      child: IconButton(
+                        icon: Image.asset(
+                          'assets/images/Close.webp',
+                          //width: AppDimensions.width10(context) * 3.0,
+                          height: AppDimensions.height10(context) * 2.8,
+                          fit: BoxFit.contain,
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            FadePageRouteReverse(
+                              page: const HomeScreen(
+                                login: true,
+                              ),
+                            ),
+                          );
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => HomeScreen(),
+                          //   ),
+                          // );
+                          // Add code for performing close action
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              )),
+          body: Stack(
+            children: [
+              // Loading == false
+              //     ?
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/Categories.webp"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            // : Container(
-            //     color: Colors.white,
-            //   ),
+              // : Container(
+              //     color: Colors.white,
+              //   ),
 
-            // SingleChildScrollView(
-            //   child: ,
-            // )
-            Loading == false
-                ? SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 4.2),
-                          child: Center(
-                            child: Text(
-                              "Star Creation 1/5",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: AppDimensions.font10(context) * 1.8,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: AppDimensions.height10(context) * 2.7,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Center(
-                                child: Text(
-                                  "All Goals ",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.8,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: AppDimensions.height10(context) * 1.6,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              // height: AppDimensions.height10(context) *7.1,
+              // SingleChildScrollView(
+              //   child: ,
+              // )
+              Loading == false
+                  ? SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 4.2),
+                            child: Center(
                               child: Text(
-                                "Which category does your goal belong to? ",
-                                textAlign: TextAlign.center,
+                                "Star Creation 1/5",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
@@ -313,381 +274,425 @@ class _AllGoalsState extends State<AllGoals> {
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: AppDimensions.width10(context) * 2.0),
-                          child: noData == true
-                              ? Container(
-                                  height:
-                                      AppDimensions.height10(context) * 21.2,
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) * 5),
-                                  child: Center(
-                                      child: Text(
-                                    'Sorry no\nresults found',
+                          ),
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 2.7,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                child: Center(
+                                  child: Text(
+                                    "All Goals ",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: const Color(0xFFFFFFFF),
-                                        fontSize:
-                                            AppDimensions.font10(context) * 2.8,
-                                        fontWeight: FontWeight.w700),
-                                  )),
-                                )
-                              : ListView.builder(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: goalNamesAndCategories!.length,
-                                  shrinkWrap: true,
-                                  itemBuilder: (context, index) {
-                                    return Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              padding: EdgeInsets.only(
-                                                  top: AppDimensions.height10(
-                                                          context) *
-                                                      0.1),
-                                              child: circles(
-                                                  circle_text: '',
-                                                  circle_color1: 0xFFFC854F,
-                                                  circle_color2: 0xFFFAA960,
-                                                  circle_border: 1,
-                                                  circle_bordercolor:
-                                                      0xFFFFFFFF,
-                                                  circle_height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.5,
-                                                  circle_width:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.5,
-                                                  textfont: 0,
-                                                  textcolor: 0),
-                                            ),
-                                            SizedBox(
-                                              width: AppDimensions.width10(
-                                                      context) *
-                                                  1.0,
-                                            ),
-                                            Container(
-                                              // color: Colors.yellow,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.4,
-                                              child: Text(
-                                                capitalizeFirstLetter(
-                                                  goalNamesAndCategories![index]
-                                                      ["name"],
-                                                ),
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.white,
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          2.0,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  3.0,
-                                        ),
-                                        Container(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  38,
-                                          padding: EdgeInsets.only(
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  3.1),
-                                          child: GridView.builder(
-                                              shrinkWrap: true,
-                                              physics:
-                                                  const NeverScrollableScrollPhysics(),
-                                              gridDelegate:
-                                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                                crossAxisCount: 2,
-                                                childAspectRatio: 3.5 /
-                                                    3, // Two items in each row
-
-                                                mainAxisSpacing: 1.0,
-                                                crossAxisSpacing: 0.1,
-                                              ),
-                                              itemCount:
-                                                  goalNamesAndCategories![index]
-                                                          ["goals"]
-                                                      .length,
-                                              itemBuilder: (context, index1) {
-                                                return SizedBox(
-                                                    height:
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 2.8,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 1.6,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                // height: AppDimensions.height10(context) *7.1,
+                                child: Text(
+                                  "Which category does your goal belong to? ",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                    fontSize: AppDimensions.font10(context) * 1.8,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: AppDimensions.width10(context) * 2.0),
+                            child: noData == true
+                                ? Container(
+                                    height:
+                                        AppDimensions.height10(context) * 21.2,
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10(context) * 5),
+                                    child: Center(
+                                        child: Text(
+                                      'Sorry no\nresults found',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: const Color(0xFFFFFFFF),
+                                          fontSize:
+                                              AppDimensions.font10(context) * 2.8,
+                                          fontWeight: FontWeight.w700),
+                                    )),
+                                  )
+                                : ListView.builder(
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemCount: goalNamesAndCategories!.length,
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) {
+                                      return Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                padding: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        0.1),
+                                                child: circles(
+                                                    circle_text: '',
+                                                    circle_color1: 0xFFFC854F,
+                                                    circle_color2: 0xFFFAA960,
+                                                    circle_border: 1,
+                                                    circle_bordercolor:
+                                                        0xFFFFFFFF,
+                                                    circle_height:
                                                         AppDimensions.height10(
                                                                 context) *
-                                                            41.9,
-                                                    child: Column(children: [
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceEvenly,
-                                                        children: [
-                                                          AnimatedScaleButton(
-                                                              onTap: () {
-                                                                getUserId(
-                                                                    goalNamesAndCategories![
-                                                                            index]
-                                                                        ['id'],
-                                                                    goalNamesAndCategories![
-                                                                                index]["goals"]
-                                                                            [
-                                                                            index1]
-                                                                        [
-                                                                        "goalName"],
-                                                                    goalNamesAndCategories![
-                                                                                index]
-                                                                            [
-                                                                            "goals"]
-                                                                        [
-                                                                        index1]["id"]);
-                                                              },
-                                                              child: circles(
-                                                                circle_text:
-                                                                    capitalizeFirstLetter(
-                                                                  goalNamesAndCategories![index]["goals"]
+                                                            2.5,
+                                                    circle_width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.5,
+                                                    textfont: 0,
+                                                    textcolor: 0),
+                                              ),
+                                              SizedBox(
+                                                width: AppDimensions.width10(
+                                                        context) *
+                                                    1.0,
+                                              ),
+                                              Container(
+                                                // color: Colors.yellow,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    2.4,
+                                                child: Text(
+                                                  capitalizeFirstLetter(
+                                                    goalNamesAndCategories![index]
+                                                        ["name"],
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white,
+                                                    fontSize:
+                                                        AppDimensions.font10(
+                                                                context) *
+                                                            2.0,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height:
+                                                AppDimensions.height10(context) *
+                                                    3.0,
+                                          ),
+                                          Container(
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    38,
+                                            padding: EdgeInsets.only(
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    3.1),
+                                            child: GridView.builder(
+                                                shrinkWrap: true,
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
+                                                gridDelegate:
+                                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 2,
+                                                  childAspectRatio: 3.5 /
+                                                      3, // Two items in each row
+
+                                                  mainAxisSpacing: 1.0,
+                                                  crossAxisSpacing: 0.1,
+                                                ),
+                                                itemCount:
+                                                    goalNamesAndCategories![index]
+                                                            ["goals"]
+                                                        .length,
+                                                itemBuilder: (context, index1) {
+                                                  return SizedBox(
+                                                      height:
+                                                          AppDimensions.height10(
+                                                                  context) *
+                                                              41.9,
+                                                      child: Column(children: [
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
+                                                            AnimatedScaleButton(
+                                                                onTap: () {
+                                                                  getUserId(
+                                                                      goalNamesAndCategories![
+                                                                              index]
+                                                                          ['id'],
+                                                                      goalNamesAndCategories![
+                                                                                  index]["goals"]
                                                                               [
                                                                               index1]
                                                                           [
-                                                                          "goalName"]
-                                                                      .toString(),
-                                                                ),
-                                                                circle_color1:
-                                                                    0xFFFFFFFF,
-                                                                circle_color2:
-                                                                    0xFFFFFFFF,
-                                                                circle_border:
-                                                                    3.0,
-                                                                circle_bordercolor:
-                                                                    0xFFEE8E6F,
-                                                                circle_height:
-                                                                    AppDimensions.width10(
-                                                                            context) *
-                                                                        13.4,
-                                                                circle_width:
-                                                                    AppDimensions.width10(
-                                                                            context) *
-                                                                        13.4,
-                                                                textfont: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1.6,
-                                                                textcolor:
-                                                                    0xFFFA9934,
-                                                              )),
-                                                        ],
-                                                      ),
-                                                    ]));
-                                              }),
-                                        )
-                                      ],
-                                    );
-                                  }),
-                        ),
-                      ],
-                    ),
-                  )
-                : const AllGoals_shimmer(),
-          ],
-        ),
-        bottomNavigationBar: BottomAppBar(
-          shape: const CircularNotchedRectangle(),
-          notchMargin: 4,
-          child: Container(
-            // color: Colors.blue,
-            margin: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom,
-            ),
-            padding: EdgeInsets.only(
-                top: AppDimensions.height10(context)*0.8,
-                left: AppDimensions.width10(context) * 2.2,
-                right: AppDimensions.width10(context) * 2.2),
-            width: AppDimensions.width10(context) * 41.4,
+                                                                          "goalName"],
+                                                                      goalNamesAndCategories![
+                                                                                  index]
+                                                                              [
+                                                                              "goals"]
+                                                                          [
+                                                                          index1]["id"]);
+                                                                },
+                                                                child: circles(
+                                                                  circle_text:
+                                                                      capitalizeFirstLetter(
+                                                                    goalNamesAndCategories![index]["goals"]
+                                                                                [
+                                                                                index1]
+                                                                            [
+                                                                            "goalName"]
+                                                                        .toString(),
+                                                                  ),
+                                                                  circle_color1:
+                                                                      0xFFFFFFFF,
+                                                                  circle_color2:
+                                                                      0xFFFFFFFF,
+                                                                  circle_border:
+                                                                      3.0,
+                                                                  circle_bordercolor:
+                                                                      0xFFEE8E6F,
+                                                                  circle_height:
+                                                                      AppDimensions.width10(
+                                                                              context) *
+                                                                          13.4,
+                                                                  circle_width:
+                                                                      AppDimensions.width10(
+                                                                              context) *
+                                                                          13.4,
+                                                                  textfont: AppDimensions
+                                                                          .font10(
+                                                                              context) *
+                                                                      1.6,
+                                                                  textcolor:
+                                                                      0xFFFA9934,
+                                                                )),
+                                                          ],
+                                                        ),
+                                                      ]));
+                                                }),
+                                          )
+                                        ],
+                                      );
+                                    }),
+                          ),
+                        ],
+                      ),
+                    )
+                  : const AllGoals_shimmer(),
+            ],
+          ),
+          bottomNavigationBar: BottomAppBar(
+            shape: const CircularNotchedRectangle(),
+            notchMargin: 4,
+            child: Container(
+              // color: Colors.blue,
+              margin: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              padding: EdgeInsets.only(
+                  top: AppDimensions.height10(context)*0.8,
+                  left: AppDimensions.width10(context) * 2.2,
+                  right: AppDimensions.width10(context) * 2.2),
+              width: AppDimensions.width10(context) * 41.4,
 
-            child: SearchIcon == true
-                ? Container(
-                    color: Colors.transparent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              height: AppDimensions.height10(context) * 3.6,
-                              width: AppDimensions.width10(context) * 31.3,
-                              padding: const EdgeInsets.all(6.0),
-                              decoration: BoxDecoration(
-                                  color:
-                                      const Color(0xFF767680).withOpacity(0.12),
-                                  border:
-                                      Border.all(color: Colors.white, width: 2),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          AppDimensions.height10(context)))),
-                              child: Center(
-                                child: TextFormField(
-                                    controller: _searchController,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        searchText = value;
-                                        _searchGoals(value);
-                                      });
-                                    },
-                                    decoration: InputDecoration(
-                                        contentPadding:
-                                            const EdgeInsets.all(0.0),
-                                        prefixIcon: Image.asset(
-                                          'assets/images/Light.webp',
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  1.5,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.5,
-                                        ),
-                                        suffixIcon: AnimatedScaleButton(
-                                          onTap: () {
-                                            searchText = '';
-                                            _searchGoals('');
-                                            _searchController.clear();
-                                          },
-                                          child: Image.asset(
-                                            'assets/images/cancel.webp',
+              child: SearchIcon == true
+                  ? Container(
+                      color: Colors.transparent,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                height: AppDimensions.height10(context) * 3.6,
+                                width: AppDimensions.width10(context) * 31.3,
+                                padding: const EdgeInsets.all(6.0),
+                                decoration: BoxDecoration(
+                                    color:
+                                        const Color(0xFF767680).withOpacity(0.12),
+                                    border:
+                                        Border.all(color: Colors.white, width: 2),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(
+                                            AppDimensions.height10(context)))),
+                                child: Center(
+                                  child: TextFormField(
+                                      controller: _searchController,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          searchText = value;
+                                          _searchGoals(value);
+                                        });
+                                      },
+                                      decoration: InputDecoration(
+                                          contentPadding:
+                                              const EdgeInsets.all(0.0),
+                                          prefixIcon: Image.asset(
+                                            'assets/images/Light.webp',
                                             width:
                                                 AppDimensions.width10(context) *
-                                                    2.3,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.3,
-                                            // fit: BoxFit.contain,
+                                                    1.5,
+                                            height:
+                                                AppDimensions.height10(context) *
+                                                    1.5,
                                           ),
-                                        ),
-                                        hintText: "Search",
-                                        hintStyle: TextStyle(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.14),
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)))),
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              SearchIcon = false;
-                              _searchGoals('');
-                              _searchController.clear();
-                            });
-                          },
-                          child: Text(
-                            "Cancel",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.7,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xFF007AFF),
-                            ),
-                          ),
-                        ),
-
-                        //const Padding(padding: EdgeInsets.all(10))
-                      ],
-                    ),
-                  )
-                : Container(
-                    color: Colors.transparent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            AnimatedScaleButton(
-                              onTap: () {
-                                bottom_sheet(context);
-                              },
-                              child: Container(
-                                width: AppDimensions.width10(context) * 4.7,
-                                height: AppDimensions.height10(context) * 4.7,
-                                padding: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 0.5,
-                                    bottom:
-                                        AppDimensions.height10(context) * 0.5),
-                                child: Image.asset(
-                                  'assets/images/Add.webp',
-                                  width: AppDimensions.width10(context) * 4.7,
-                                  height: AppDimensions.height10(context) * 4.7,
-                                  fit: BoxFit.contain,
+                                          suffixIcon: AnimatedScaleButton(
+                                            onTap: () {
+                                              searchText = '';
+                                              _searchGoals('');
+                                              _searchController.clear();
+                                            },
+                                            child: Image.asset(
+                                              'assets/images/cancel.webp',
+                                              width:
+                                                  AppDimensions.width10(context) *
+                                                      2.3,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  2.3,
+                                              // fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                          hintText: "Search",
+                                          hintStyle: TextStyle(
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.14),
+                                          focusedBorder: const OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.transparent)),
+                                          enabledBorder: const OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.transparent)))),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              width: AppDimensions.width10(context) * 0.5,
-                            ),
-                            Text(
-                              'Create a new goal! ',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: const Color(0xFFFA9934),
-                                // fontFamily: ,
-                                fontSize: AppDimensions.font10(context) * 1.6,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
 
-                        Container(
-                          width: AppDimensions.width10(context) * 4.7,
-                          height: AppDimensions.height10(context) * 4.7,
-                          padding: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 0.5,
-                              bottom: AppDimensions.height10(context) * 0.5),
-                          child: GestureDetector(
+                          GestureDetector(
                             onTap: () {
                               setState(() {
-                                SearchIcon = true;
+                                SearchIcon = false;
+                                _searchGoals('');
+                                _searchController.clear();
                               });
                             },
-                            child: Image.asset(
-                              'assets/images/Search.webp',
-                              width: AppDimensions.width10(context) * 5,
-                              height: AppDimensions.height10(context) * 5,
-                              fit: BoxFit.contain,
+                            child: Text(
+                              "Cancel",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: AppDimensions.font10(context) * 1.7,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xFF007AFF),
+                              ),
                             ),
                           ),
-                        ),
 
-                        //const Padding(padding: EdgeInsets.all(10))
-                      ],
+                          //const Padding(padding: EdgeInsets.all(10))
+                        ],
+                      ),
+                    )
+                  : Container(
+                      color: Colors.transparent,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              AnimatedScaleButton(
+                                onTap: () {
+                                  bottom_sheet(context);
+                                },
+                                child: Container(
+                                  width: AppDimensions.width10(context) * 4.7,
+                                  height: AppDimensions.height10(context) * 4.7,
+                                  padding: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) * 0.5,
+                                      bottom:
+                                          AppDimensions.height10(context) * 0.5),
+                                  child: Image.asset(
+                                    'assets/images/Add.webp',
+                                    width: AppDimensions.width10(context) * 4.7,
+                                    height: AppDimensions.height10(context) * 4.7,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: AppDimensions.width10(context) * 0.5,
+                              ),
+                              Text(
+                                'Create a new goal! ',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: const Color(0xFFFA9934),
+                                  // fontFamily: ,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          Container(
+                            width: AppDimensions.width10(context) * 4.7,
+                            height: AppDimensions.height10(context) * 4.7,
+                            padding: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 0.5,
+                                bottom: AppDimensions.height10(context) * 0.5),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  SearchIcon = true;
+                                });
+                              },
+                              child: Image.asset(
+                                'assets/images/Search.webp',
+                                width: AppDimensions.width10(context) * 5,
+                                height: AppDimensions.height10(context) * 5,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+
+                          //const Padding(padding: EdgeInsets.all(10))
+                        ],
+                      ),
                     ),
-                  ),
+            ),
           ),
         ),
       ),

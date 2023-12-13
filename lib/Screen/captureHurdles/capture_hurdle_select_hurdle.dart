@@ -139,6 +139,7 @@ class _select_hurdleState extends State<select_hurdle> {
 
   @override
   Widget build(BuildContext context) {
+    bool smallScreen = MediaQuery.of(context).size.height < 690;
     return WillPopScope(
       onWillPop: () {
         widget.update
@@ -455,7 +456,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                     top: AppDimensions.height10(context) * 3.9),
                                 padding: EdgeInsets.symmetric(
                                     horizontal:
-                                        AppDimensions.width10(context) * 4.6),
+                                      !smallScreen?  AppDimensions.width10(context) * 3.6:AppDimensions.width10(context) * 4.6),
                                 child: GridView.builder(
                                     shrinkWrap: true,
                                     padding: EdgeInsets.zero,
@@ -500,19 +501,11 @@ class _select_hurdleState extends State<select_hurdle> {
                                           },
                                           child: Container(
                                             height: selectBox == index
-                                                ? AppDimensions.height10(
-                                                        context) *
-                                                    13.5
-                                                : AppDimensions.height10(
-                                                        context) *
-                                                    12.5,
+                                                ? !smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5
+                                                : !smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
                                             width: selectBox == index
-                                                ? AppDimensions.width10(
-                                                        context) *
-                                                    13.5
-                                                : AppDimensions.width10(
-                                                        context) *
-                                                    12.5,
+                                                ? !smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5
+                                                : !smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
                                             padding: EdgeInsets.all(
                                                 AppDimensions.width10(context)),
                                             decoration: BoxDecoration(

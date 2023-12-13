@@ -198,6 +198,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
 
   @override
   Widget build(BuildContext context) {
+    bool smallScreen = MediaQuery.of(context).size.height < 690;
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -511,8 +513,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                               }
                             },
                             child: Container(
-                              width: AppDimensions.width10(context) * 13.5,
-                              height: AppDimensions.width10(context) * 13.5,
+                              width:!smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5,
+                              height: !smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.width10(context) * 3,
                                   right: AppDimensions.width10(context) * 19.0,
@@ -527,8 +529,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                               padding: EdgeInsets.all(
                                   AppDimensions.width10(context) * 0.5),
                               child: Container(
-                                height: AppDimensions.width10(context) * 12.5,
-                                width: AppDimensions.width10(context) * 12.5,
+                                width:!smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
+                                height: !smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
@@ -576,7 +578,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                                left: AppDimensions.width10(context) * 6,
+                                left:!smallScreen? AppDimensions.width10(context) * 5: AppDimensions.width10(context) * 6,
                                 top: AppDimensions.height10(context) * 1.0,
                                 right: AppDimensions.width10(context) * 3,
                                 bottom: AppDimensions.height10(context) * 2.0),
@@ -614,8 +616,9 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                     child: Container(
                                       margin: EdgeInsets.only(
                                           right:
-                                              AppDimensions.width10(context) *
-                                                  3),
+                                          !smallScreen? AppDimensions.width10(context) *
+                                              2.5:AppDimensions.width10(context) *
+                                              3),
                                       height: selectedIndices.contains(index) ||
                                               selectAll == true
                                           ? AppDimensions.height10(context) *
@@ -712,7 +715,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                                left: AppDimensions.width10(context) * 6,
+                                left:!smallScreen? AppDimensions.width10(context) * 5: AppDimensions.width10(context) * 6,
                                 top: AppDimensions.height10(context) * 1.0,
                                 right: AppDimensions.width10(context) * 3,
                                 bottom: AppDimensions.height10(context) * 2.0),
@@ -751,8 +754,9 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                     child: Container(
                                       margin: EdgeInsets.only(
                                           right:
-                                              AppDimensions.width10(context) *
-                                                  3),
+                                          !smallScreen? AppDimensions.width10(context) *
+                                              2.5:AppDimensions.width10(context) *
+                                              3),
                                       height: selectedInActiveIndices
                                                   .contains(index) ||
                                               selectAll == true

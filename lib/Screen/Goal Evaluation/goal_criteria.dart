@@ -708,7 +708,7 @@ class _your_whyState extends State<your_why> {
                             ),
                             SizedBox(
                               width: AppDimensions.width10(context) * 23.4,
-                              height: AppDimensions.height10(context) * 7.3,
+                              //height: AppDimensions.height10(context) * 7.3,
                               child: Stack(
                                 children: [
                                   Align(
@@ -731,8 +731,8 @@ class _your_whyState extends State<your_why> {
                                     child: Container(
                                       width:
                                           AppDimensions.width10(context) * 21.4,
-                                      height:
-                                          AppDimensions.height10(context) * 7.3,
+                                      // height:
+                                      //     AppDimensions.height10(context) * 7.3,
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
                                               1),
