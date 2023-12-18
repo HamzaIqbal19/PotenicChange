@@ -821,7 +821,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                       ? AppDimensions.height10(context) * 14.0
                                       : AppDimensions.height10(context) * 1,
                                   bottom:
-                                      AppDimensions.height10(context) * 1.0),
+                                      AppDimensions.height10(context) * 2.6),
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(
                                   begin: Alignment.topCenter,

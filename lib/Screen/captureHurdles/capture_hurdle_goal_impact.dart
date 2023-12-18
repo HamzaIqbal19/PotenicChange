@@ -437,6 +437,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
             )
           ]),
       extendBodyBehindAppBar: true,
+
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -448,15 +449,13 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
         child: Loading == false
-            ? Column(children: [
-                Container(
-                  // width: AppDimensions.width10(context) * 36.0,
-                  height: AppDimensions.height10(context) * 67.9,
-                  margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 9.3,
-                  ),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
+            ? SingleChildScrollView(
+              child: Column(children: [
+                  Container(
+                    // width: AppDimensions.width10(context) * 36.0,
+                    margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 9.3,
+                    ),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -836,104 +835,107 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                   );
                                 })),
                           ),
+                          AnimatedScaleButton(
+                            onTap: () async {
+                              if (widget.summary == true) {
+                                if (selectAll == true || multiGoals.length != 0) {
+                                  if (selectAll == true) {
+                                    Hurdles()
+                                        .updateHurdle('userGoalId', allgoalsSelected);
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const summary_hurdles(
+                                                delete_hurdle: false)));
+                                  } else {
+                                    Hurdles().updateHurdle('userGoalId', multiGoals);
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const summary_hurdles(
+                                                delete_hurdle: false)));
+                                  }
+                                }
+                              } else {
+                                final SharedPreferences prefs = await _prefs;
+                                var hurdleRoute = prefs.setString('HurdleRoute', 'data');
+                                if (selectAll == true || multiGoals.length != 0) {
+                                  if (selectAll == true) {
+                                    saveGoalsToSharedPreferences(allgoalsSelected);
+                                    Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const select_hurdle(
+                                            update: false,
+                                          )),
+                                    );
+                                  } else {
+                                    saveGoalsToSharedPreferences(multiGoals);
+                                    Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const select_hurdle(
+                                            update: false,
+                                          )),
+                                    );
+                                  }
+                                }
+                              }
+                            },
+                            child: Container(
+                              width: AppDimensions.width10(context) * 25.4,
+                              height: AppDimensions.height10(context) * 5.0,
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 1.0,
+                                  bottom: AppDimensions.height10(context) * 2.6),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    selectAll == true || multiGoals.length != 0
+                                        ? const Color(0xffFCC10D)
+                                        : const Color(0xffFCC10D).withOpacity(0.5),
+                                    selectAll == true || multiGoals.length != 0
+                                        ? const Color(0xffFDA210)
+                                        : const Color(0xffFDA210).withOpacity(0.5),
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 5.0),
+                              ),
+                              child: Center(
+                                  child: Text(
+                                    widget.summary
+                                        ? "Update Summary"
+                                        : selectAll == true
+                                        ? '(${allgoalsSelected.length}/${goals.length} goals selected) Next'
+                                        : '(${multiGoals.length}/${goals.length} goals selected) Next',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: AppDimensions.font10(context) * 1.6,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  )),
+                            ),
+                          ),
+
                         ]),
                   ),
-                ),
-                AnimatedScaleButton(
-                  onTap: () async {
-                    if (widget.summary == true) {
-                      if (selectAll == true || multiGoals.length != 0) {
-                        if (selectAll == true) {
-                          Hurdles()
-                              .updateHurdle('userGoalId', allgoalsSelected);
-                          Navigator.push(
-                              context,
-                              FadePageRoute(
-                                  page: const summary_hurdles(
-                                      delete_hurdle: false)));
-                        } else {
-                          Hurdles().updateHurdle('userGoalId', multiGoals);
-                          Navigator.push(
-                              context,
-                              FadePageRoute(
-                                  page: const summary_hurdles(
-                                      delete_hurdle: false)));
-                        }
-                      }
-                    } else {
-                      final SharedPreferences prefs = await _prefs;
-                      var hurdleRoute = prefs.setString('HurdleRoute', 'data');
-                      if (selectAll == true || multiGoals.length != 0) {
-                        if (selectAll == true) {
-                          saveGoalsToSharedPreferences(allgoalsSelected);
-                          Navigator.push(
-                            context,
-                            FadePageRoute(
-                                page: const select_hurdle(
-                              update: false,
-                            )),
-                          );
-                        } else {
-                          saveGoalsToSharedPreferences(multiGoals);
-                          Navigator.push(
-                            context,
-                            FadePageRoute(
-                                page: const select_hurdle(
-                              update: false,
-                            )),
-                          );
-                        }
-                      }
-                    }
-                  },
-                  child: Container(
-                    width: AppDimensions.width10(context) * 25.4,
-                    height: AppDimensions.height10(context) * 5.0,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.0,
-                        bottom: AppDimensions.height10(context) * 2.6),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          selectAll == true || multiGoals.length != 0
-                              ? const Color(0xffFCC10D)
-                              : const Color(0xffFCC10D).withOpacity(0.5),
-                          selectAll == true || multiGoals.length != 0
-                              ? const Color(0xffFDA210)
-                              : const Color(0xffFDA210).withOpacity(0.5),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 5.0),
-                    ),
-                    child: Center(
-                        child: Text(
-                      widget.summary
-                          ? "Update Summary"
-                          : selectAll == true
-                              ? '(${allgoalsSelected.length}/${goals.length} goals selected) Next'
-                              : '(${multiGoals.length}/${goals.length} goals selected) Next',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: AppDimensions.font10(context) * 1.6,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
-                    )),
-                  ),
-                ),
-                // Container(
-                //   width: AppDimensions.width10(context) * 17.0,
-                //   height: AppDimensions.height10(context) * 0.5,
-                //   margin: EdgeInsets.only(
-                //       bottom: AppDimensions.height10(context) * 1.0),
-                //   decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(
-                //           AppDimensions.height10(context) * 2.0),
-                //       color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-                // ),
-              ])
+
+
+                  // Container(
+                  //   width: AppDimensions.width10(context) * 17.0,
+                  //   height: AppDimensions.height10(context) * 0.5,
+                  //   margin: EdgeInsets.only(
+                  //       bottom: AppDimensions.height10(context) * 1.0),
+                  //   decoration: BoxDecoration(
+                  //       borderRadius: BorderRadius.circular(
+                  //           AppDimensions.height10(context) * 2.0),
+                  //       color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                  // ),
+                ]),
+            )
             : const Center(
                 child: SpinKitFadingCircle(
                   color: Color(0xFFB1B8FF),

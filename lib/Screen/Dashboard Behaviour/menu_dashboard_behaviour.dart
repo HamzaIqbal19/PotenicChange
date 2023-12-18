@@ -15,6 +15,7 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
+import 'package:potenic_app/Widgets/goalAndPracticeStatus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
@@ -230,9 +231,9 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                 ),
                               ),
                             ),
-                            goalAndPractice(context,
+                            goalAndPracticeStatus(context,
                                 goalColor,pracColor,
-                                pracName),
+                                pracName,false),
                             // Container(
                             //   width: AppDimensions.width10(context) * 40.0,
                             //   height: AppDimensions.height10(context) * 11.2,

@@ -375,7 +375,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 2.0),
                                         gradient: LinearGradient(colors: [
                                           const Color(0xFFFF7975)
-                                              .withOpacity(0.8),
+                                              ,
                                           const Color(0xFFF9DCC0).withOpacity(0)
                                         ])),
                                 child: Row(

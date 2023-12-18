@@ -154,6 +154,79 @@ class _select_hurdleState extends State<select_hurdle> {
       },
       child: Scaffold(
         //resizeToAvoidBottomInset: true,
+        extendBody: true,
+        bottomNavigationBar: Container(
+          padding: EdgeInsets.symmetric(
+              horizontal: AppDimensions.width10(context)*8
+          ),
+          child: AnimatedScaleButton(
+            onTap: () async {
+              if (selectBox != -1) {
+                if (widget.update == false) {
+                  final SharedPreferences prefs =
+                  await _prefs;
+
+                  await prefs.setInt(
+                      'hurdle_selected', selectBox);
+                  Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: const hurdle_name(
+                            update: false,
+                          )));
+                } else {
+                  Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page: const summary_hurdles(
+                          delete_hurdle: true,
+                        )),
+                  );
+                }
+              }
+            },
+            child: Container(
+              width: AppDimensions.width10(context) * 25.4,
+              height: AppDimensions.height10(context) * 5.0,
+              margin: EdgeInsets.only(
+                  top: AppDimensions.height10(context) * 1.0,
+                  bottom: AppDimensions.height10(context) * 2.6),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: selectBox != -1
+                      ? [
+                    const Color(0xffFCC10D),
+                    const Color(0xffFDA210),
+                  ]
+                      : [
+                    const Color(0xffFCC10D)
+                        .withOpacity(0.5),
+                    const Color(0xffFDA210)
+                        .withOpacity(0.5),
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(
+                    AppDimensions.height10(context) * 5.0),
+              ),
+              child: Center(
+                child: Text(
+                  widget.update ? 'Update summary' : 'Next',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize:
+                      AppDimensions.font10(context) * 1.6,
+                      fontWeight: FontWeight.w600,
+                      color: selectBox != -1
+                          ? Colors.white
+                          : Colors.white.withOpacity(0.5)),
+                ),
+              ),
+            ),
+          ),
+        ),
+
         appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -576,91 +649,7 @@ class _select_hurdleState extends State<select_hurdle> {
                               ),
                             ]),
                       ),
-                      Positioned(
-                        bottom: 20,
-                        child: Column(
-                          children: [
-                            AnimatedScaleButton(
-                              onTap: () async {
-                                if (selectBox != -1) {
-                                  if (widget.update == false) {
-                                    final SharedPreferences prefs =
-                                        await _prefs;
 
-                                    await prefs.setInt(
-                                        'hurdle_selected', selectBox);
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const hurdle_name(
-                                          update: false,
-                                        )));
-                                  } else {
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const summary_hurdles(
-                                        delete_hurdle: true,
-                                      )),
-                                    );
-                                  }
-                                }
-                              },
-                              child: Container(
-                                width: AppDimensions.width10(context) * 25.4,
-                                height: AppDimensions.height10(context) * 5.0,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 3.2,
-                                    bottom:
-                                        AppDimensions.height10(context) * 2.0),
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: selectBox != -1
-                                        ? [
-                                            const Color(0xffFCC10D),
-                                            const Color(0xffFDA210),
-                                          ]
-                                        : [
-                                            const Color(0xffFCC10D)
-                                                .withOpacity(0.5),
-                                            const Color(0xffFDA210)
-                                                .withOpacity(0.5),
-                                          ],
-                                  ),
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 5.0),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    widget.update ? 'Update summary' : 'Next',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.6,
-                                        fontWeight: FontWeight.w600,
-                                        color: selectBox != -1
-                                            ? Colors.white
-                                            : Colors.white.withOpacity(0.5)),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            // Container(
-                            //   width: AppDimensions.width10(context) * 17.0,
-                            //   height: AppDimensions.height10(context) * 0.5,
-                            //   // margin:
-                            //   //     EdgeInsets.only(bottom: AppDimensions.height10(context) * 0.8),
-                            //   decoration: BoxDecoration(
-                            //       borderRadius: BorderRadius.circular(
-                            //           AppDimensions.height10(context) * 2.0),
-                            //       color:
-                            //           const Color(0xFFFFFFFF).withOpacity(0.3)),
-                            // )
-                          ],
-                        ),
-                      )
                     ],
                   )
                 : const Center(

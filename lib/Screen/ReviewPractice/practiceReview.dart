@@ -16,6 +16,7 @@ import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 
 import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -286,93 +287,98 @@ class _PracticeReviewState extends State<PracticeReview> {
                         SizedBox(
                           height: AppDimensions.height10(context),
                         ),
-                        Container(
-                          //width: AppDimensions.width10(context) * 2.0,
-                          height: AppDimensions.height10(context) * 9.3,
-                          // color: Colors.amber,
-                          margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 0.6),
-                          // color: Colors.blue,
-                          child: Stack(
-                            children: [
-                              Align(
-                                alignment: const Alignment(-0.48, -0.3),
-                                child: Container(
-                                  width: AppDimensions.width10(context) * 6.56,
-                                  height:
-                                      AppDimensions.height10(context) * 6.56,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    // color: Colors.amber,
-                                    image: DecorationImage(
-                                        image: AssetImage('$color' == '1'
-                                            ? "assets/images/red_gradient.webp"
-                                            : '$color' == '2'
-                                                ? 'assets/images/orange_moon.webp'
-                                                : '$color' == '3'
-                                                    ? "assets/images/lightGrey_gradient.webp"
-                                                    : '$color' == '4'
-                                                        ? "assets/images/lightBlue_gradient.webp"
-                                                        : '$color' == '5'
-                                                            ? "assets/images/medBlue_gradient.webp"
-                                                            : '$color' == '6'
-                                                                ? "assets/images/Blue_gradient.webp"
-                                                                : 'assets/images/orange_moon.webp'),
-                                        fit: BoxFit.contain),
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: const Alignment(-0.355, -0.2),
-                                child: Container(
-                                  height: AppDimensions.height10(context) * 4.1,
-                                  width: AppDimensions.width10(context) * 4.1,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                          image: AssetImage('$pracColor' ==
-                                                      '1' ||
-                                                  color1 == true
-                                              ? "assets/images/Ellipse orange_wb.webp"
-                                              : '$pracColor' == '2' ||
-                                                      color2 == true
-                                                  ? 'assets/images/Ellipse 158_wb.webp'
-                                                  : '$pracColor' == '3' ||
-                                                          color3 == true
-                                                      ? "assets/images/Ellipse 157_wb.webp"
-                                                      : '$pracColor' == '4' ||
-                                                              color4 == true
-                                                          ? "assets/images/Ellipse light-blue_wb.webp"
-                                                          : '$pracColor' ==
-                                                                      '5' ||
-                                                                  color5 == true
-                                                              ? "assets/images/Ellipse blue_wb.webp"
-                                                              : 'assets/images/Ellipse 158_wb.webp'),
-                                          fit: BoxFit.cover)),
-                                ),
-                              ),
-                              Align(
-                                alignment: const Alignment(0.55, -0.28),
-                                child: SizedBox(
-                                  width: AppDimensions.width10(context) * 20.6,
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  child: Text(
-                                    pracName.toString().length >= 20
-                                        ? '${pracName.toString().substring(0, 19)}...'
-                                        : pracName.toString(),
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        overflow: TextOverflow.ellipsis,
-                                        color: const Color(0xff156F6D),
-                                        fontSize:
-                                            AppDimensions.font10(context) * 2.0,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        goalAndPractice(context,
+                            color,pracColor,
+                            pracName),
+                        //goalAndPractice(),
+                        // Container(
+                        //   //width: AppDimensions.width10(context) * 2.0,
+                        //   height: AppDimensions.height10(context) * 9.3,
+                        //   // color: Colors.amber,
+                        //   margin: EdgeInsets.only(
+                        //       top: AppDimensions.height10(context) * 0.6),
+                        //   // color: Colors.blue,
+                        //   child: Stack(
+                        //     children: [
+                        //       Align(
+                        //         alignment: const Alignment(-0.48, -0.3),
+                        //         child: Container(
+                        //           width: AppDimensions.width10(context) * 6.56,
+                        //           height:
+                        //               AppDimensions.height10(context) * 6.56,
+                        //           decoration: BoxDecoration(
+                        //             shape: BoxShape.circle,
+                        //             // color: Colors.amber,
+                        //             image: DecorationImage(
+                        //                 image: AssetImage('$color' == '1'
+                        //                     ? "assets/images/red_gradient.webp"
+                        //                     : '$color' == '2'
+                        //                         ? 'assets/images/orange_moon.webp'
+                        //                         : '$color' == '3'
+                        //                             ? "assets/images/lightGrey_gradient.webp"
+                        //                             : '$color' == '4'
+                        //                                 ? "assets/images/lightBlue_gradient.webp"
+                        //                                 : '$color' == '5'
+                        //                                     ? "assets/images/medBlue_gradient.webp"
+                        //                                     : '$color' == '6'
+                        //                                         ? "assets/images/Blue_gradient.webp"
+                        //                                         : 'assets/images/orange_moon.webp'),
+                        //                 fit: BoxFit.contain),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //       Align(
+                        //         alignment: const Alignment(-0.355, -0.2),
+                        //         child: Container(
+                        //           height: AppDimensions.height10(context) * 4.1,
+                        //           width: AppDimensions.width10(context) * 4.1,
+                        //           decoration: BoxDecoration(
+                        //               shape: BoxShape.circle,
+                        //               image: DecorationImage(
+                        //                   image: AssetImage('$pracColor' ==
+                        //                               '1' ||
+                        //                           color1 == true
+                        //                       ? "assets/images/Ellipse orange_wb.webp"
+                        //                       : '$pracColor' == '2' ||
+                        //                               color2 == true
+                        //                           ? 'assets/images/Ellipse 158_wb.webp'
+                        //                           : '$pracColor' == '3' ||
+                        //                                   color3 == true
+                        //                               ? "assets/images/Ellipse 157_wb.webp"
+                        //                               : '$pracColor' == '4' ||
+                        //                                       color4 == true
+                        //                                   ? "assets/images/Ellipse light-blue_wb.webp"
+                        //                                   : '$pracColor' ==
+                        //                                               '5' ||
+                        //                                           color5 == true
+                        //                                       ? "assets/images/Ellipse blue_wb.webp"
+                        //                                       : 'assets/images/Ellipse 158_wb.webp'),
+                        //                   fit: BoxFit.cover)),
+                        //         ),
+                        //       ),
+                        //       Align(
+                        //         alignment: const Alignment(0.55, -0.28),
+                        //         child: SizedBox(
+                        //           width: AppDimensions.width10(context) * 20.6,
+                        //           height: AppDimensions.height10(context) * 2.4,
+                        //           child: Text(
+                        //             pracName.toString().length >= 20
+                        //                 ? '${pracName.toString().substring(0, 19)}...'
+                        //                 : pracName.toString(),
+                        //             textAlign: TextAlign.left,
+                        //             style: TextStyle(
+                        //                 overflow: TextOverflow.ellipsis,
+                        //                 color: const Color(0xff156F6D),
+                        //                 fontSize:
+                        //                     AppDimensions.font10(context) * 2.0,
+                        //                 fontWeight: FontWeight.w600),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+                        //
                         SizedBox(
                           height: AppDimensions.height10(context) * 1.6,
                         ),

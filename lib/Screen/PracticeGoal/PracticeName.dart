@@ -8,6 +8,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
+import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -348,6 +349,7 @@ class _PracticeNameState extends State<PracticeName> {
               reverse: true,
               physics: const ClampingScrollPhysics(),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     padding: EdgeInsets.only(
@@ -389,93 +391,97 @@ class _PracticeNameState extends State<PracticeName> {
                   SizedBox(
                     height: AppDimensions.height10(context),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: AppDimensions.width10(context) * 7.9,
-                        height: AppDimensions.height10(context) * 7.9,
-                        // color: Colors.amber,
-
-                        // color: Colors.blue,
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: const Alignment(-3, 0),
-                              child: Container(
-                                width: AppDimensions.width10(context) * 7.9,
-                                height: AppDimensions.height10(context) * 7.9,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  // color: Colors.amber,
-                                  image: DecorationImage(
-                                      image: AssetImage(color == '1'
-                                          ? "assets/images/red_gradient.webp"
-                                          : color == '2'
-                                              ? 'assets/images/orange_moon.webp'
-                                              : color == '3'
-                                                  ? "assets/images/lightGrey_gradient.webp"
-                                                  : color == '4'
-                                                      ? "assets/images/lightBlue_gradient.webp"
-                                                      : color == '5'
-                                                          ? "assets/images/medBlue_gradient.webp"
-                                                          : color == '6'
-                                                              ? "assets/images/Blue_gradient.webp"
-                                                              : 'assets/images/orange_moon.webp'),
-                                      fit: BoxFit.contain),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: const Alignment(1.5, 0),
-                              child: Container(
-                                height: AppDimensions.height10(context) * 4.9,
-                                width: AppDimensions.width10(context) * 4.9,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/Ellipse 158_wb.webp'),
-                                        fit: BoxFit.cover)),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                          //width: AppDimensions.width10(context) * 22,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.width10(context) * 1.5),
-                          child: practice.text.toString().length > 20
-                              ? Text(
-                                  capitalizeFirstLetter(
-                                    practice.text.substring(0, 19) + '...',
-                                  ),
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: widget.comingFromEditScreen
-                                        ? const Color(0xff437296)
-                                        : const Color(0xFF156F6D),
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.0,
-                                  ),
-                                )
-                              : Text(
-                                  capitalizeFirstLetter(
-                                    practice.text.toString(),
-                                  ),
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: const Color(0xFF156F6D),
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.0,
-                                  ),
-                                )),
-                    ],
-                  ),
+                  goalAndPractice(context,
+                      color,2,
+                      practice),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   crossAxisAlignment: CrossAxisAlignment.center,
+                  //   children: [
+                  //     Container(
+                  //       width: AppDimensions.width10(context) * 7.9,
+                  //       height: AppDimensions.height10(context) * 7.9,
+                  //       // color: Colors.amber,
+                  //
+                  //       // color: Colors.blue,
+                  //       child: Stack(
+                  //         children: [
+                  //           Align(
+                  //             alignment: const Alignment(-3, 0),
+                  //             child: Container(
+                  //               width: AppDimensions.width10(context) * 7.9,
+                  //               height: AppDimensions.height10(context) * 7.9,
+                  //               decoration: BoxDecoration(
+                  //                 shape: BoxShape.circle,
+                  //                 // color: Colors.amber,
+                  //                 image: DecorationImage(
+                  //                     image: AssetImage(color == '1'
+                  //                         ? "assets/images/red_gradient.webp"
+                  //                         : color == '2'
+                  //                             ? 'assets/images/orange_moon.webp'
+                  //                             : color == '3'
+                  //                                 ? "assets/images/lightGrey_gradient.webp"
+                  //                                 : color == '4'
+                  //                                     ? "assets/images/lightBlue_gradient.webp"
+                  //                                     : color == '5'
+                  //                                         ? "assets/images/medBlue_gradient.webp"
+                  //                                         : color == '6'
+                  //                                             ? "assets/images/Blue_gradient.webp"
+                  //                                             : 'assets/images/orange_moon.webp'),
+                  //                     fit: BoxFit.contain),
+                  //               ),
+                  //             ),
+                  //           ),
+                  //           Align(
+                  //             alignment: const Alignment(1.5, 0),
+                  //             child: Container(
+                  //               height: AppDimensions.height10(context) * 4.9,
+                  //               width: AppDimensions.width10(context) * 4.9,
+                  //               decoration: const BoxDecoration(
+                  //                   shape: BoxShape.circle,
+                  //                   image: DecorationImage(
+                  //                       image: AssetImage(
+                  //                           'assets/images/Ellipse 158_wb.webp'),
+                  //                       fit: BoxFit.cover)),
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //     Container(
+                  //         //width: AppDimensions.width10(context) * 22,
+                  //         margin: EdgeInsets.only(
+                  //             left: AppDimensions.width10(context) * 1.5),
+                  //         child: practice.text.toString().length > 20
+                  //             ? Text(
+                  //                 capitalizeFirstLetter(
+                  //                   practice.text.substring(0, 19) + '...',
+                  //                 ),
+                  //                 textAlign: TextAlign.center,
+                  //                 overflow: TextOverflow.ellipsis,
+                  //                 style: TextStyle(
+                  //                   fontWeight: FontWeight.w600,
+                  //                   color: widget.comingFromEditScreen
+                  //                       ? const Color(0xff437296)
+                  //                       : const Color(0xFF156F6D),
+                  //                   fontSize:
+                  //                       AppDimensions.font10(context) * 2.0,
+                  //                 ),
+                  //               )
+                  //             : Text(
+                  //                 capitalizeFirstLetter(
+                  //                   practice.text.toString(),
+                  //                 ),
+                  //                 style: TextStyle(
+                  //                   fontWeight: FontWeight.w600,
+                  //                   color: const Color(0xFF156F6D),
+                  //                   fontSize:
+                  //                       AppDimensions.font10(context) * 2.0,
+                  //                 ),
+                  //               )),
+                  //   ],
+                  // ),
+                  //
                   SizedBox(
                     height: AppDimensions.height10(context) * 7.1,
                   ),

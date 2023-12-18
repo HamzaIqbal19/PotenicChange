@@ -187,6 +187,7 @@ class video_EditState extends State<videoEdit> {
       child: Container(
         color: Colors.white,
         child: SafeArea(
+
           child: GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(

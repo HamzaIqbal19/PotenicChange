@@ -75,7 +75,7 @@ class _inner_textState extends State<inner_text> {
           left: AppDimensions.width10(context) * 2,
           right: AppDimensions.width10(context) * 2.0),
       decoration: BoxDecoration(
-          gradient: _focusNode.hasFocus
+          gradient: !_focusNode.hasFocus
               ? const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -105,7 +105,7 @@ class _inner_textState extends State<inner_text> {
                         fontFamily: "Laila",
                         color: widget.comingFromEditScreen
                             ? Colors.white
-                            : _focusNode.hasFocus
+                            : !_focusNode.hasFocus
                                 ? const Color(0xFFFFFFFF)
                                 : const Color(0xFF828282),
                         fontSize: AppDimensions.font10(context) * 2.2,
@@ -270,7 +270,7 @@ class _inner_textState extends State<inner_text> {
                         fontWeight: FontWeight.w500,
                         color: widget.comingFromEditScreen
                             ? Colors.white
-                            : _focusNode.hasFocus
+                            : !_focusNode.hasFocus
                                 ? const Color(0xFFFFFFFF)
                                 : const Color(0xFF828282)),
                     focusedBorder: InputBorder.none,

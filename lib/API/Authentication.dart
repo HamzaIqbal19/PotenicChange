@@ -72,10 +72,11 @@ class Authentication {
         headers: headers, body: Body);
 
     var response = jsonDecode(request.body);
+    print("Loginin response $response");
 
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
-      print("Loginin response $response");
+      print("Loginin response $response  ${response['roles'][0]['name']}");
       var accesstoken = prefs.setString('usertoken', response["accessToken"]);
       var UserId = prefs.setInt('userid', response['id']);
       var userName = prefs.setString('userName', response['name']);
@@ -84,6 +85,7 @@ class Authentication {
           prefs.setString("refreshtoken", response["sessionToken"]);
       var subscription =
           prefs.setString('subscriptionStatus', response["subscriptionStatus"]);
+      var role = prefs.setString('userRole', response['roles'][0]['name']);
       await prefs.setString('accountCreatedAt',
           response["createdAt"].toString().substring(0, 10));
 

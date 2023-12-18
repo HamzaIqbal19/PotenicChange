@@ -192,9 +192,8 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
           //color: status == 'completed'? Color(0xFF196F6E):status == 'missed'?Color(0xFFFE6624):Color(0xFFFFFFFF),
         ),
         child: TableCalendar(
-          availableGestures: AvailableGestures.none,
+          availableGestures: AvailableGestures.all,
           rowHeight: AppDimensions.height10(context) * 6.2,
-
           firstDay: widget.limitCalender
               ? DateTime.parse(getDateAtFirstIndex(widget.dateStatus))
               : DateTime.utc(2023, 1, 1),
@@ -204,14 +203,15 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
           focusedDay: DateTime.parse(getDateAtLastIndex(widget.dateStatus)),
           headerStyle: HeaderStyle(
             titleCentered: true,
-            leftChevronIcon: const Icon(
-              Icons.chevron_left,
-              color: Color(0xFFFE6624),
-            ),
-            rightChevronIcon: const Icon(
-              Icons.chevron_right,
-              color: Color(0xFFFE6624),
-            ),
+            formatButtonVisible: false,
+            // leftChevronIcon: const Icon(
+            //   Icons.chevron_left,
+            //   color: Color(0xFFFE6624),
+            // ),
+            // rightChevronIcon: const Icon(
+            //   Icons.chevron_right,
+            //   color: Color(0xFFFE6624),
+            // ),
             titleTextStyle: TextStyle(
                 fontSize: AppDimensions.font10(context) * 2.4,
                 color: const Color(0xFF5B74A6),

@@ -12,6 +12,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
@@ -38,6 +39,36 @@ class your_goals_menu extends StatefulWidget {
 }
 
 class _your_goals_menuState extends State<your_goals_menu> {
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  bool admin = false;
+  bool subscribe = false;
+
+  Future<void> getUserRole() async {
+    final SharedPreferences prefs = await _prefs;
+    var role = prefs.getString('userRole');
+    var subscription = prefs.getString('subscriptionStatus');
+
+    if(role == 'admin'){
+      setState(() {
+        admin = true;
+      });
+    }
+    if(subscription == 'active'){
+      setState(() {
+        subscribe = true;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUserRole();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final colorC = Color.alphaBlend(
@@ -249,10 +280,19 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                                     color: colorC),
                                                 children: [
                                               TextSpan(
-                                                  text: widget.membership
+                                                  text: !subscribe
                                                       ? 'Membership subscription\n'
                                                       : 'Manage my subscription\n'),
-                                              widget.membership
+                                              admin?
+                                                  const TextSpan(
+                                                      text:
+                                                      'Current plan: Admin',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                          FontWeight.w700,
+                                                          color: Color(
+                                                              0xFF8C648A)))  :
+                                              !subscribe
                                                   ? const TextSpan(
                                                       text:
                                                           'Current plan: Empowered Starter',

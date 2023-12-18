@@ -41,9 +41,10 @@ class align_circles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool smallScreen = MediaQuery.of(context).size.height < 690;
     return Container(
-      width: AppDimensions.width10(context) * 26.8,
-      height: AppDimensions.height10(context) * 30.2,
+      width: smallScreen? AppDimensions.width10(context) * 27.8:AppDimensions.width10(context) * 26.8,
+      height:smallScreen? AppDimensions.height10(context) * 33.2:AppDimensions.height10(context) * 30.2,
       // color: Colors.blue,
       // margin: const EdgeInsets.only(top: 29, bottom: 12, right: 45),
       child: Stack(children: [
@@ -52,8 +53,8 @@ class align_circles extends StatelessWidget {
           child: AnimatedScaleButton(
             onTap: onTap1,
             child: Container(
-              width: AppDimensions.height10(context) * 26.8,
-              height: AppDimensions.height10(context) * 26.8,
+              width: smallScreen? AppDimensions.height10(context) * 29.9:AppDimensions.height10(context) * 26.8,
+              height: smallScreen? AppDimensions.height10(context) * 29.9:AppDimensions.height10(context) * 26.8,
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -113,8 +114,8 @@ class align_circles extends StatelessWidget {
           child: AnimatedScaleButton(
             onTap: onTap2,
             child: Container(
-              height: AppDimensions.height10(context) * 14.1,
-              width: AppDimensions.height10(context) * 14.1,
+              height:smallScreen?AppDimensions.height10(context) * 16.6: AppDimensions.height10(context) * 14.1,
+              width:smallScreen?AppDimensions.height10(context) * 16.6: AppDimensions.height10(context) * 14.1,
               padding: EdgeInsets.symmetric(
                   horizontal: AppDimensions.width10(context)),
               decoration: BoxDecoration(

@@ -140,12 +140,14 @@ class _record_sessionState extends State<record_session> {
                           itemBuilder: ((context, index) {
                             return Container(
                               height: AppDimensions.height10(context) * 31.3,
-                              width: AppDimensions.width10(context) * 46.4,
+                              //width: AppDimensions.width10(context) * 46.4,
+
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.width10(context) * 2.3,
+
                                   bottom:
                                       AppDimensions.height10(context) * 3.2),
-                              child: Stack(children: [
+                              child: Stack(
+                                  children: [
                                 Align(
                                     alignment: Alignment.topLeft,
                                     child: Container(
@@ -153,6 +155,9 @@ class _record_sessionState extends State<record_session> {
                                             26.8,
                                         height: AppDimensions.height10(context) *
                                             26.8,
+                                        margin: EdgeInsets.only(
+                                          left: AppDimensions.width10(context) * 2.3,
+                                        ),
                                         padding: EdgeInsets.symmetric(
                                             horizontal:
                                                 AppDimensions.height10(context) *
@@ -225,9 +230,7 @@ class _record_sessionState extends State<record_session> {
                                                       const Color(0xff5B74A6))),
                                         ]))),
                                 Container(
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.width10(context) *
-                                          2.9),
+
                                   child: ListView.builder(
                                       // physics: const NeverScrollableScrollPhysics(),
                                       scrollDirection: Axis.horizontal,
@@ -303,6 +306,9 @@ class _record_sessionState extends State<record_session> {
                                                               context) *
                                                           0.5),
                                               margin: EdgeInsets.only(
+                                                left: index1 == 0? AppDimensions.height10(
+                                                    context) *
+                                                    2.9: 0,
                                                   right: AppDimensions.height10(
                                                           context) *
                                                       1.0),
