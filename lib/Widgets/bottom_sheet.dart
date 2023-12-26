@@ -80,12 +80,12 @@ int index = 0;
 int catId = 1;
 //late int goalId;
 
-void bottom_sheet(context) {
+ bottom_sheet(context) {
   final goalName = TextEditingController();
   final _formkey = GlobalKey<FormState>();
   bool enable = false;
 
-  showModalBottomSheet<void>(
+ return showModalBottomSheet(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.white,
@@ -94,11 +94,13 @@ void bottom_sheet(context) {
       top: Radius.circular(AppDimensions.height10(context) * 5.0),
     )),
     builder: (context) {
-      return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-        return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Padding(
+      return GestureDetector(
+        onTap: (){
+          FocusScope.of(context).unfocus();
+        },
+        child: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+          return Padding(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Container(
@@ -184,7 +186,7 @@ void bottom_sheet(context) {
                                   iconStyleData: IconStyleData(
                                       iconSize:
                                           AppDimensions.height10(context) * 4.0,
-                                      iconEnabledColor: Color(0xFFFA9934)),
+                                      iconEnabledColor: const Color(0xFFFA9934)),
 
                                   // elevation: 16,
 
@@ -289,8 +291,8 @@ void bottom_sheet(context) {
                     Container(
                       padding: EdgeInsets.only(
                           left: AppDimensions.width10(context) * 4.0),
-                      child: Row(
-                        children: const [
+                      child: const Row(
+                        children:  [
                           Center(
                             child: Text(
                               "Character count:",
@@ -339,8 +341,8 @@ void bottom_sheet(context) {
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
-                                    Color(0xFFFCC10D).withOpacity(0.3),
-                                    Color(0xFFFDA210).withOpacity(0.3)
+                                    const Color(0xFFFCC10D).withOpacity(0.3),
+                                    const Color(0xFFFDA210).withOpacity(0.3)
                                   ]),
                             ),
                       child: TextButton(
@@ -382,14 +384,14 @@ void bottom_sheet(context) {
                           )),
                     ),
                     Container(
-                        margin: EdgeInsets.only(top: 24),
+                        margin: const EdgeInsets.only(top: 24),
                         height: 40,
                         width: 140,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(
                                 width: 2,
-                                color: Color.fromARGB(209, 250, 154, 52))),
+                                color: const Color.fromARGB(209, 250, 154, 52))),
                         child: TextButton(
                             onPressed: () {
                               Navigator.pop(context);
@@ -408,9 +410,9 @@ void bottom_sheet(context) {
                 ),
               ),
             ),
-          ),
-        );
-      });
+          );
+        }),
+      );
     },
   );
 }
