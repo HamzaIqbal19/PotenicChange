@@ -1068,6 +1068,8 @@ class _your_whyState extends State<your_why> {
                                           );
                                         }),
                                   ),
+                                  widget.premium == false?
+                                      Container(height: AppDimensions.height10(context) * 5,):Container(),
                                   Container(
                                     width: AppDimensions.width10(context) * 7.2,
                                     height:
