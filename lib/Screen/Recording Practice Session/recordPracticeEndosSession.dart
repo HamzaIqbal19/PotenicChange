@@ -293,6 +293,7 @@ class _endofSessionState extends State<endofSession> {
                     style: TextStyle(
                         fontSize: AppDimensions.font10(context) * 2.8,
                         fontWeight: FontWeight.w700,
+                        fontFamily: 'laila',
                         color: Colors.white),
                   )),
                 ),

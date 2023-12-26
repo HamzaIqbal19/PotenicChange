@@ -880,6 +880,12 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 context: context,
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16),
+                                  ),
+                                ),
+
                                 builder: (context) {
                                   return GestureDetector(
                                     onTap: () => Navigator.of(context).pop(),
@@ -908,6 +914,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 context) *
                                                             41.4,
                                                     decoration: BoxDecoration(
+
                                                         border: Border(
                                                             bottom: BorderSide(
                                                                 width: AppDimensions
@@ -1149,6 +1156,11 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 context: context,
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16),
+                                  ),
+                                ),
                                 builder: (context) {
                                   return GestureDetector(
                                     onTap: () => Navigator.of(context).pop(),
@@ -1424,6 +1436,11 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 context: context,
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16),
+                                  ),
+                                ),
                                 builder: (context) {
                                   return GestureDetector(
                                     onTap: () => Navigator.of(context).pop(),
@@ -1740,6 +1757,11 @@ _showBottomSheet(BuildContext context) {
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(16),
+      ),
+    ),
     builder: (context) {
       return GestureDetector(
         onTap: () => Navigator.of(context).pop(),
@@ -1894,6 +1916,11 @@ _showTagSheet(BuildContext context) {
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(16),
+      ),
+    ),
     builder: (context) {
       return GestureDetector(
         onTap: () => Navigator.of(context).pop(),
@@ -2392,7 +2419,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                               ),
                               Container(
                                 width: AppDimensions.width10(context) * 16.7,
-                                height: AppDimensions.height10(context) * 1.9,
+                                //height: AppDimensions.height10(context) * 1.9,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 0.5,
                                     bottom:

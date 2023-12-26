@@ -483,7 +483,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                   left: AppDimensions.width10(context) * 2.2,
                   right: AppDimensions.width10(context) * 2.2),
               height: AppDimensions.height10(context) * 7.0,
-              width: AppDimensions.width10(context) * 41.4,
+              //width: AppDimensions.width10(context) * 41.4,
               child: SearchIcon == true
                   ? Container(
                       color: Colors.transparent,
@@ -608,10 +608,10 @@ class _CreatePracticeState extends State<CreatePractice> {
                               Container(
                                 width: AppDimensions.width10(context) * 4.7,
                                 height: AppDimensions.height10(context) * 4.7,
-                                padding: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 0.5,
-                                    bottom:
-                                        AppDimensions.height10(context) * 0.5),
+                                // padding: EdgeInsets.only(
+                                //     top: AppDimensions.height10(context) * 0.5,
+                                //     bottom:
+                                //         AppDimensions.height10(context) * 0.5),
                                 child: AnimatedScaleButton(
                                   onTap: () {
                                     // if (mygoal.length > 20) {
@@ -650,11 +650,11 @@ class _CreatePracticeState extends State<CreatePractice> {
                           ),
 
                           Container(
-                            width: AppDimensions.width10(context) * 4.7,
-                            height: AppDimensions.height10(context) * 4.7,
-                            padding: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.5,
-                                bottom: AppDimensions.height10(context) * 0.5),
+                            width: AppDimensions.width10(context) * 5,
+                            height: AppDimensions.height10(context) * 5,
+                            // padding: EdgeInsets.only(
+                            //     top: AppDimensions.height10(context) * 0.5,
+                            //     bottom: AppDimensions.height10(context) * 0.5),
                             child: GestureDetector(
                               onTap: () {
                                 setState(() {

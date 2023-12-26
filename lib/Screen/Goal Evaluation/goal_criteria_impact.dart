@@ -759,9 +759,9 @@ class _your_impactState extends State<your_impact> {
                                   child: Stack(children: [
                                     Container(
                                       width: AppDimensions.width10(context) *
-                                          12.95,
+                                          13.0,
                                       height: AppDimensions.width10(context) *
-                                          12.95,
+                                          13.0,
                                       decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           gradient: select_item != index1
@@ -797,7 +797,7 @@ class _your_impactState extends State<your_impact> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          3.2,
+                                                          3.1,
                                                   fontWeight: FontWeight.w500,
                                                   color: select_item != index1
                                                       ? const Color(0xFFFA9934)
@@ -943,9 +943,9 @@ class _your_impactState extends State<your_impact> {
                                 },
                                 child: Container(
                                   width:
-                                      AppDimensions.width10(context) * 12.95,
+                                      AppDimensions.width10(context) * 13.0,
                                   height:
-                                      AppDimensions.width10(context) * 12.95,
+                                      AppDimensions.width10(context) * 13.0,
                                   margin: EdgeInsets.only(
                                       right: AppDimensions.width10(context) *
                                           1.5),
@@ -990,7 +990,7 @@ class _your_impactState extends State<your_impact> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          3.2,
+                                                          3.1,
                                                   fontWeight: FontWeight.w500,
                                                   color: select_item_2 != index1
                                                       ? const Color(0xFFFA9934)
@@ -1933,7 +1933,8 @@ class _your_impactState extends State<your_impact> {
                 },
                 child: BottomAppBar(
                   elevation: 0,
-                  color: Colors.transparent,
+                  color: const Color(0xFFF5F5F5),padding: EdgeInsets.zero,
+                  height: AppDimensions.height10(context) * 7.7,
                   child: Container(
                     height: AppDimensions.height10(context) * 7.7,
                     width: AppDimensions.width10(context) * 41.4,

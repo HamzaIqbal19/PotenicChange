@@ -284,7 +284,9 @@ class _inner_textState extends State<inner_text> {
                     fontWeight: FontWeight.w500,
                     fontFamily: "Laila",
                     height: AppDimensions.height10(context) * 0.14,
-                    color: const Color(0xFFFFFFFF)),
+                    color: !_focusNode.hasFocus
+                        ? const Color(0xFFFFFFFF)
+                        : const Color(0xFF828282)),
               )),
         ],
       ),

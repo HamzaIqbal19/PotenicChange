@@ -321,7 +321,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 ),
                 goalAndPractice(context,
                     color,2,
-                    practice),
+                    practice.text.toString()),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.center,
                 //   crossAxisAlignment: CrossAxisAlignment.center,

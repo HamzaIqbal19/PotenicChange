@@ -442,17 +442,18 @@ class _GoalCategoryState extends State<GoalCategory> {
           ),
           bottomNavigationBar: BottomAppBar(
             shape: const CircularNotchedRectangle(),
-            notchMargin: 4,
+            notchMargin: 10,
             child: Container(
               margin: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom,
               ),
               // color: Colors.blue,
               padding: EdgeInsets.only(
-                top: AppDimensions.height10(context)*0.8,
+               // top: AppDimensions.height10(context)*0.8,
                   left: AppDimensions.width10(context) * 2.2,
                   right: AppDimensions.width10(context) * 2.2),
-              width: AppDimensions.width10(context) * 41.4,
+              //width: AppDimensions.width10(context) * 41.4,
+              height: AppDimensions.width10(context) * 7.0,
               child: SearchIcon == true
                   ? Container(
                       color: Colors.transparent,
@@ -567,10 +568,10 @@ class _GoalCategoryState extends State<GoalCategory> {
                               Container(
                                 width: AppDimensions.width10(context) * 4.7,
                                 height: AppDimensions.height10(context) * 4.7,
-                                padding: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 0.5,
-                                    bottom:
-                                        AppDimensions.height10(context) * 0.5),
+                                // padding: EdgeInsets.only(
+                                //     top: AppDimensions.height10(context) * 0.5,
+                                //     bottom:
+                                //         AppDimensions.height10(context) * 0.5),
                                 child: AnimatedScaleButton(
                                   onTap: () {
                                     bottom_sheet(context);
@@ -601,11 +602,11 @@ class _GoalCategoryState extends State<GoalCategory> {
                           ),
 
                           Container(
-                            width: AppDimensions.width10(context) * 4.7,
-                            height: AppDimensions.height10(context) * 4.7,
-                            padding: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.5,
-                                bottom: AppDimensions.height10(context) * 0.5),
+                            width: AppDimensions.width10(context) * 5,
+                            height: AppDimensions.height10(context) * 5,
+                            // padding: EdgeInsets.only(
+                            //     top: AppDimensions.height10(context) * 0.5,
+                            //     bottom: AppDimensions.height10(context) * 0.5),
                             child: GestureDetector(
                               onTap: () {
                                 setState(() {

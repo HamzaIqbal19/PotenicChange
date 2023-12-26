@@ -888,10 +888,10 @@ class _your_whyState extends State<your_why> {
                                             child: Container(
                                               width: AppDimensions.width10(
                                                       context) *
-                                                  12.95,
+                                                  13.0,
                                               height: AppDimensions.width10(
                                                       context) *
-                                                  12.95,
+                                                  13.0,
                                               margin: EdgeInsets.only(
                                                   right: AppDimensions.width10(
                                                           context) *
@@ -962,7 +962,7 @@ class _your_whyState extends State<your_why> {
                                                               fontSize: AppDimensions
                                                                       .font10(
                                                                           context) *
-                                                                  3.2,
+                                                                  3.1,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w500,
@@ -2153,7 +2153,8 @@ class _your_whyState extends State<your_why> {
                 },
                 child: BottomAppBar(
                   elevation: 0,
-                  color: Colors.transparent,
+                  color: const Color(0xFFF5F5F5),padding: EdgeInsets.zero,
+                  height: AppDimensions.height10(context) * 7.7,
                   child: Container(
                     height: AppDimensions.height10(context) * 7.7,
                     width: AppDimensions.width10(context) * 41.4,

@@ -617,7 +617,7 @@ class _practice_summaryState extends State<practice_summary> {
                                         : Before == 4
                                             ? const Color(0xffFA9458)
                                             : Before == 5
-                                                ? const Color(0xffFA9458)
+                                                ? const Color(0xffFF7C42)
                                                 : const Color(0xffFA9458)),
                         child: Stack(children: [
                           Center(
@@ -627,15 +627,15 @@ class _practice_summaryState extends State<practice_summary> {
                                       AppDimensions.height10(context) * 0.5),
                               child: Text(
                                 Before == 1
-                                    ? 'I felt very\nlow &\ndemotivated'
+                                    ? 'I feel very\nlow &\ndemotivated'
                                     : Before == 2
-                                        ? 'I felt slightly\nirritated, not\nfussed really'
+                                        ? 'I feel slightly\nirritated, not\nfussed really'
                                         : Before == 3
-                                            ? 'I felt good'
+                                            ? 'I feel ok'
                                             : Before == 4
                                                 ? 'Motivated and \nready to start'
                                                 : Before == 5
-                                                    ? "Great, could'nt \nwait to started!"
+                                                    ? "Great, cannot \nwait to start!"
                                                     : 'I felt good',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -764,7 +764,7 @@ class _practice_summaryState extends State<practice_summary> {
                                         : After == 4
                                             ? const Color(0xffFA9458)
                                             : After == 5
-                                                ? const Color(0xffFA9458)
+                                                ? const Color(0xffFF7C42)
                                                 : const Color(0xffFA9458)),
                         child: Stack(children: [
                           Center(
@@ -780,7 +780,7 @@ class _practice_summaryState extends State<practice_summary> {
                                         : After == 3
                                             ? 'I feel ok'
                                             : After == 4
-                                                ? 'I feel focused\n& good'
+                                                ? 'I feel focused\n& motivated'
                                                 : After == 5
                                                     ? 'I feel excited\nand good in\nmyself'
                                                     : 'I feel focused\n& good',
@@ -903,12 +903,12 @@ class _practice_summaryState extends State<practice_summary> {
                                 Session == 1
                                     ? 'Not great,\nhaven’t\nenjoyed it'
                                     : Session == 2
-                                        ? 'Had distractins,\nit was hard to\nfocus'
+                                        ? 'I got distracted,\nit was hard to\nfocus'
                                         : Session == 3
                                             ? 'It was ok'
                                             : Session == 4
-                                                ? 'Good, I liked\nit'
-                                                : 'Great,\nin the zone.',
+                                                ? 'Good, I quite\nliked it'
+                                                : 'Great,\nI enjoyed the experience',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:

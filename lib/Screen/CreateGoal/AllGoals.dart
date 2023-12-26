@@ -510,17 +510,18 @@ class _AllGoalsState extends State<AllGoals> {
         ),
         bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
-          notchMargin: 4,
+          notchMargin: 10,
           child: Container(
             // color: Colors.blue,
             margin: EdgeInsets.only(
               bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
             padding: EdgeInsets.only(
-                top: AppDimensions.height10(context)*0.8,
+                //top: AppDimensions.height10(context)*0.8,
                 left: AppDimensions.width10(context) * 2.2,
                 right: AppDimensions.width10(context) * 2.2),
-            width: AppDimensions.width10(context) * 41.4,
+            //width: AppDimensions.width10(context) * 41.4,
+            height: AppDimensions.width10(context) * 7.0,
 
             child: SearchIcon == true
                 ? Container(
@@ -635,10 +636,10 @@ class _AllGoalsState extends State<AllGoals> {
                               child: Container(
                                 width: AppDimensions.width10(context) * 4.7,
                                 height: AppDimensions.height10(context) * 4.7,
-                                padding: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 0.5,
-                                    bottom:
-                                        AppDimensions.height10(context) * 0.5),
+                                // padding: EdgeInsets.only(
+                                //     top: AppDimensions.height10(context) * 0.5,
+                                //     bottom:
+                                //         AppDimensions.height10(context) * 0.5),
                                 child: Image.asset(
                                   'assets/images/Add.webp',
                                   width: AppDimensions.width10(context) * 4.7,
@@ -664,11 +665,11 @@ class _AllGoalsState extends State<AllGoals> {
                         ),
 
                         Container(
-                          width: AppDimensions.width10(context) * 4.7,
-                          height: AppDimensions.height10(context) * 4.7,
-                          padding: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 0.5,
-                              bottom: AppDimensions.height10(context) * 0.5),
+                          width: AppDimensions.width10(context) * 5,
+                          height: AppDimensions.height10(context) * 5,
+                          // padding: EdgeInsets.only(
+                          //     top: AppDimensions.height10(context) * 0.5,
+                          //     bottom: AppDimensions.height10(context) * 0.5),
                           child: GestureDetector(
                             onTap: () {
                               setState(() {

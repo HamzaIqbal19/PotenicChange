@@ -559,6 +559,8 @@ class _hurdle_nameState extends State<hurdle_name> {
                                               controller: controller,
                                               textAlignVertical:
                                                   TextAlignVertical.top,
+                                              maxLines: null,
+
                                               onTap: () {
                                                 // setState(() {
                                                 //   margin_state = false;

@@ -499,7 +499,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 ),
                 goalAndPractice(context,
                     color,2,
-                    practice),
+                    practice.text.toString()),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.center,
                 //   crossAxisAlignment: CrossAxisAlignment.center,

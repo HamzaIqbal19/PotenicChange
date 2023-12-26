@@ -1003,44 +1003,46 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          color: const Color(0xFFFBFBFB),
+
                           height: AppDimensions.height10(context) * 9.0,
+                          color: const Color(0xFFFBFBFB),
+
+                          margin: EdgeInsets.only(
+                                right: goalDetails['isActive']? AppDimensions.width10(context) * 1.0:0.2,
+                          left: AppDimensions.width10(context) * 1.8),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
                                 width: AppDimensions.width10(context) * 17.4,
                                 height: AppDimensions.height10(context) * 4.9,
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.width10(context) * 2.6),
-                                child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        subscriptions == 'inactive'
-                                            ? '$totalItemsOn/3 items'
-                                            : '$totalItemsOn/5 items',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w700,
-                                            color: const Color(0xFF5B74A6)),
-                                      ),
-                                      Text(
-                                        'have been selected',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xFF5B74A6)),
-                                      ),
-                                    ],
-                                  ),
+
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      subscriptions == 'inactive'
+                                          ? '$totalItemsOn/3 items'
+                                          : '$totalItemsOn/5 items',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xFF5B74A6)),
+                                    ),
+                                    Text(
+                                      'have been selected',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xFF5B74A6)),
+                                    ),
+                                  ],
                                 ),
                               ),
                               goalDetails['isActive']
@@ -1367,70 +1369,72 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                   ],
                                                 ),
                                               )),
-                                      child: Container(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  8.1,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  8.1,
-                                          margin: EdgeInsets.only(
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  3.3),
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
-                                                width: 3, color: Colors.white),
-                                            boxShadow: List.filled(
-                                                4,
-                                                const BoxShadow(
-                                                    color: Color.fromRGBO(
-                                                        0, 0, 0, 0.25))),
-                                            gradient: const LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Color(0xffFEBD0F),
-                                                Color(0xffFFA511),
-                                              ],
-                                            ),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    2.0,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    2.0,
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        2.7),
-                                                color: const Color(0xFFFFFFFF),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        0.4),
-                                                child: Text(
-                                                  'Stop',
-                                                  style: TextStyle(
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              1.4,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: const Color(
-                                                          0xFFFFFFFF)),
+                                      child: SizedBox(
+                                        width:
+                                        AppDimensions.height10(context) *
+                                            7.6,
+                                        child: Center(
+                                          child: Container(
+                                              width:
+                                                  AppDimensions.height10(context) *
+                                                      7.6,
+                                              height:
+                                                  AppDimensions.height10(context) *
+                                                      7.6,
+
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                border: Border.all(
+                                                    width: 3, color: Colors.white),
+                                                boxShadow: List.filled(
+                                                    4,
+                                                    const BoxShadow(
+                                                        color: Color.fromRGBO(
+                                                            0, 0, 0, 0.25))),
+                                                gradient: const LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Color(0xffFEBD0F),
+                                                    Color(0xffFFA511),
+                                                  ],
                                                 ),
-                                              )
-                                            ],
-                                          )),
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    width: AppDimensions.height10(
+                                                            context) *
+                                                        2.0,
+                                                    height: AppDimensions.height10(
+                                                            context) *
+                                                        2.0,
+
+                                                    color: const Color(0xFFFFFFFF),
+                                                  ),
+                                                  Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions.height10(
+                                                                context) *
+                                                            0.4),
+                                                    child: Text(
+                                                      'Stop',
+                                                      style: TextStyle(
+                                                          fontSize:
+                                                              AppDimensions.font10(
+                                                                      context) *
+                                                                  1.4,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xFFFFFFFF)),
+                                                    ),
+                                                  )
+                                                ],
+                                              )),
+                                        ),
+                                      ),
                                     )
                                   : AnimatedScaleButton(
                                       onTap: () {
@@ -1640,14 +1644,11 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                         }
                                       },
                                       child: Container(
-                                        margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
-                                                    context) *
-                                                0.5),
+                                        //color: Colors.red,
                                         child: AvatarGlow(
                                           endRadius:
                                               AppDimensions.height10(context) *
-                                                  9,
+                                                  5.0,
                                           glowColor: const Color(0xFFFFA511),
                                           animate:
                                               totalItemsOn != 0 ? true : false,

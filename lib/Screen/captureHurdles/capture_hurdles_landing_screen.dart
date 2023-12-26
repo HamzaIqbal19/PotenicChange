@@ -268,6 +268,11 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                               context: context,
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(16),
+                                ),
+                              ),
                               builder: (context) {
                                 return GestureDetector(
                                   onTap: () => Navigator.of(context).pop(),
@@ -513,6 +518,11 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                               context: context,
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(16),
+                                ),
+                              ),
                               builder: (context) {
                                 return GestureDetector(
                                   onTap: () => Navigator.of(context).pop(),
@@ -790,7 +800,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: Container(
-                    width: AppDimensions.width10(context) * 4.9,
+                    width: AppDimensions.width10(context) * 5.0,
                     height: AppDimensions.height10(context) * 5.0,
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle, color: Color(0xFFFBFBFB)),
@@ -1723,6 +1733,11 @@ _showBottomSheet(BuildContext context) {
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(16),
+      ),
+    ),
     builder: (context) {
       return GestureDetector(
         onTap: () => Navigator.of(context).pop(),
@@ -1874,6 +1889,11 @@ _showTagSheet(BuildContext context) {
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(16),
+      ),
+    ),
     builder: (context) {
       return GestureDetector(
         onTap: () => Navigator.of(context).pop(),
@@ -2024,10 +2044,11 @@ void hurdle_sheet(context) {
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-      top: Radius.circular(AppDimensions.height10(context) * 2.0),
-    )),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(16),
+      ),
+    ),
     builder: (context) => Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),

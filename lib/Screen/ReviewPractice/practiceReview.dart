@@ -272,14 +272,13 @@ class _PracticeReviewState extends State<PracticeReview> {
                           width: AppDimensions.width10(context) * 30,
                           child: Center(
                             child: Text(
-                              goalName.length >= 30
-                                  ? '${goalName.substring(0, 29)}...'
-                                  : goalName,
+                             goalName,
                               overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFF5B74A6),
-                                fontSize: AppDimensions.font10(context) * 2.2,
+                                fontSize: AppDimensions.font10(context) * 2.0,
                               ),
                             ),
                           ),
