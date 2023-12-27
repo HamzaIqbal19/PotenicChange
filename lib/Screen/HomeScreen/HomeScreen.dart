@@ -25,6 +25,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool admin = false;
+
+  Future<void> getUserRole() async {
+    final SharedPreferences prefs = await _prefs;
+    var role = prefs.getString('userRole');
+    var subscription = prefs.getString('subscriptionStatus');
+
+    if(role == 'admin'){
+      setState(() {
+        admin = true;
+      });
+    }
+
+  }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final formKey = GlobalKey<FormState>();
@@ -37,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    getUserRole();
     super.initState();
   }
 
@@ -315,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               AnimatedScaleButton(
                                 onTap: () {
                                   signupSheet(
-                                      context, "Introduction", "OnBoarding");
+                                      context, "Introduction", "OnBoarding", admin);
                                 },
                                 child: Container(
                                   height: AppDimensions.height10(context) * 5.2,
@@ -435,7 +450,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     )));
                                   } else {
                                     signupSheet(
-                                        context, "Introduction", "OnBoarding");
+                                        context, "Introduction", "OnBoarding", admin);
                                   }
                                 },
                                 child: Container(

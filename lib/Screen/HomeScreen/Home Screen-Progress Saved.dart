@@ -33,6 +33,20 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool admin = false;
+
+  Future<void> getUserRole() async {
+    final SharedPreferences prefs = await _prefs;
+    var role = prefs.getString('userRole');
+    var subscription = prefs.getString('subscriptionStatus');
+
+    if(role == 'admin'){
+      setState(() {
+        admin = true;
+      });
+    }
+
+  }
 
   final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
@@ -45,6 +59,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
 
   @override
   void initState() {
+    getUserRole();
     super.initState();
   }
 
@@ -399,7 +414,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                           AnimatedScaleButton(
                             onTap: () {
                               signupSheet(
-                                  context, "Introduction", "OnBoarding");
+                                  context, "Introduction", "OnBoarding", admin);
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,
@@ -492,7 +507,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                           GestureDetector(
                             onTap: () {
                               signupSheet(
-                                  context, "Introduction", "OnBoarding");
+                                  context, "Introduction", "OnBoarding", admin);
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,

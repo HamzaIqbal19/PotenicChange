@@ -7,20 +7,21 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
-void signupSheet(context, String ButtonName, String Route) {
+void signupSheet(context, String ButtonName, String Route, bool admin) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: false,
     // backgroundColor: const Color(0xFF000000).withOpacity(0.6),
     builder: (context) => Container(
-      height: 216,
+      //height: 216,
       width: 414,
       color: const Color(0xFF000000).withOpacity(0.6),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             margin: const EdgeInsets.only(top: 8, left: 8, right: 8),
-            height: 112,
+            //height: 112,
             width: 396,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
@@ -28,7 +29,7 @@ void signupSheet(context, String ButtonName, String Route) {
             child: Column(
               children: [
                 Container(
-                  height: 56,
+                  height: AppDimensions.height10(context)*5.6,
                   width: 396,
                   color: Colors.transparent,
                   child: TextButton(
@@ -45,14 +46,14 @@ void signupSheet(context, String ButtonName, String Route) {
                       },
                       child: Text(
                         ButtonName,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           color: Color.fromRGBO(0, 120, 255, 1),
-                          fontSize: 16,
+                          fontSize: AppDimensions.height10(context)*1.6,
                         ),
                       )),
                 ),
-                Container(
-                  height: 56,
+             admin?   Container(
+                  height: AppDimensions.height10(context)*5.6,
                   width: 396,
                   decoration: BoxDecoration(
                       border: Border(
@@ -85,20 +86,21 @@ void signupSheet(context, String ButtonName, String Route) {
                           }
                         });
                       },
-                      child: const Text(
+                      child:  Text(
                         " (Dev only) Dashboard logged in",
                         style: TextStyle(
                           color: Color.fromRGBO(0, 120, 255, 1),
-                          fontSize: 16,
+                          fontSize: AppDimensions.height10(context)*1.6,
                         ),
                       )),
-                ),
+                ):Container(),
+
               ],
             ),
           ),
           Container(
             margin: const EdgeInsets.only(top: 8, left: 8, right: 8),
-            height: 56,
+            height: AppDimensions.height10(context)*5.6,
             width: 396,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14), color: Colors.white),
@@ -106,14 +108,15 @@ void signupSheet(context, String ButtonName, String Route) {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text(
+                child:  Text(
                   'Cancel',
                   style: TextStyle(
                     color: Color.fromRGBO(0, 120, 255, 1),
-                    fontSize: 16,
+                    fontSize: AppDimensions.height10(context)*1.6,
                   ),
                 )),
           ),
+          SizedBox(height: AppDimensions.height10(context),)
         ],
       ),
     ),
