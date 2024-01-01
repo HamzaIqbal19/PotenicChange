@@ -328,7 +328,7 @@ class _GoalNameState extends State<GoalName> {
                                         Container(
                                           height: 42,
                                           width: double.infinity,
-                                          color: Colors.white,
+                                          //color: Colors.white,
                                           child: TextButton(
                                             onPressed: () async {
                                               getUserId(

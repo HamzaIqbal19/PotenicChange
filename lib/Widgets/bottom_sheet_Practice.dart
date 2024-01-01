@@ -103,6 +103,10 @@ void bottom_sheet(context, String goal) {
                                   color: Color(0xFF828282)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18)),
+                              focusedBorder: const OutlineInputBorder(
+                                  borderSide:
+                                  BorderSide(color: Colors.transparent)),
+
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
                                   borderSide: const BorderSide(

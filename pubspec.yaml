@@ -53,7 +53,7 @@ dependencies:
   email_validator: ^2.1.17
   flutter_datetime_picker: ^1.5.1
   flutter_reorderable_list:
-  flutter_offline: ^2.1.0
+  #flutter_offline: ^2.1.0
   overlay_tooltip: ^0.2.2
   super_tooltip: ^1.0.1
   simple_tooltip: ^1.2.0
@@ -62,8 +62,8 @@ dependencies:
   speech_balloon: ^0.0.4
   flutter_animated_dialog: ^2.0.1
   shimmer: ^3.0.0
-  internet_connection_checker: ^1.0.0+1
-  internet_connection_checker_plus: ^1.0.1
+  #internet_connection_checker: ^1.0.0+1
+  #internet_connection_checker_plus: ^1.0.1
   provider: ^6.0.5
   timer_count_down: ^2.2.2
   stop_watch_timer: ^3.0.0

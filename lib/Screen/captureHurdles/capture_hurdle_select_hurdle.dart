@@ -361,7 +361,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                             Container(
                                               height: 42,
                                               width: double.infinity,
-                                              color: Colors.white,
+                                              // color: Colors.white,
                                               child: TextButton(
                                                 onPressed: () async {
                                                   checkHurdle();
@@ -453,7 +453,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                                       AppDimensions.height10(
                                                               context) *
                                                           1.0),
-                                              color: Colors.white,
+                                              // color: Colors.white,
                                               child: TextButton(
                                                 onPressed: () {
                                                   Navigator.pop(context);

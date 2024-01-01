@@ -265,6 +265,9 @@ int catId = 1;
                               ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18)),
+                              focusedBorder: const OutlineInputBorder(
+                                  borderSide:
+                                  BorderSide(color: Colors.transparent)),
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
                                   borderSide: const BorderSide(

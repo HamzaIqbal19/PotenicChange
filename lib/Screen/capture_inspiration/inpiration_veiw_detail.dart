@@ -232,6 +232,12 @@ class _view_detailsState extends State<view_details> {
           bottomNavigationBar: Loading == false
               ? BottomAppBar(
                   color: Colors.transparent,
+            height: inspirationDetails['inspiration']['inspirationId'] ==
+                1
+                ? AppDimensions.height10(context) * 38.465
+                : inspirationDetails['inspiration']['inspirationId'] == 2
+                ? AppDimensions.height10(context) * 52.465
+                : AppDimensions.height10(context) * 48.465,
                   elevation: 0,
                   child: Container(
                       //should change according to screen

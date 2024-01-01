@@ -55,8 +55,8 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.width10(context) * 5.0,
-                    height: AppDimensions.height10(context) * 2.1,
+                    // width: AppDimensions.width10(context) * 5.0,
+                    // height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
                       right: AppDimensions.width10(context) * 2.0,
                     ),
@@ -64,7 +64,7 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                       'Cancel',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: AppDimensions.font10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.9,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFF2F80ED),
                       ),
@@ -79,8 +79,8 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.width10(context) * 3.7,
-                    height: AppDimensions.height10(context) * 2.1,
+                    // width: AppDimensions.width10(context) * 3.7,
+                    // height: AppDimensions.height10(context) * 2.1,
                     margin: EdgeInsets.only(
                       right: AppDimensions.width10(context) * 1.9,
                     ),
@@ -88,7 +88,7 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                       'Done',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: AppDimensions.font10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.9,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFF2F80ED),
                       ),

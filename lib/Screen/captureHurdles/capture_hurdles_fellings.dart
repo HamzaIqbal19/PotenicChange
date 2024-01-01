@@ -348,7 +348,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                               Container(
                                                 height: 42,
                                                 width: double.infinity,
-                                                color: Colors.white,
+                                                // color: Colors.white,
                                                 child: TextButton(
                                                   onPressed: () async {
                                                     checkHurdle();
@@ -436,7 +436,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                         AppDimensions.height10(
                                                                 context) *
                                                             1.0),
-                                                color: Colors.white,
+                                                // color: Colors.white,
                                                 child: TextButton(
                                                   onPressed: () {
                                                     Navigator.pop(context);

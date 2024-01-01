@@ -405,7 +405,7 @@ class _VisualisingState extends State<Visualising> {
                                         Container(
                                           height: 42,
                                           width: double.infinity,
-                                          color: Colors.white,
+                                          // color: Colors.white,
                                           child: TextButton(
                                             onPressed: () async {
                                               // updateGoalReason(goalVisualising);
@@ -492,7 +492,7 @@ class _VisualisingState extends State<Visualising> {
                                           height: 42,
                                           width: AppDimensions.width10(context) *
                                               27.0,
-                                          color: Colors.white,
+                                          //color: Colors.white,
                                           child: TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);

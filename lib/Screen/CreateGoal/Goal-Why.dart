@@ -427,7 +427,7 @@ class _goalwhyState extends State<GoalWhy> {
                                         Container(
                                           height: 42,
                                           width: double.infinity,
-                                          color: Colors.white,
+                                         // color: Colors.white,
                                           child: TextButton(
                                             onPressed: () async {
                                               setState(() {
@@ -517,7 +517,7 @@ class _goalwhyState extends State<GoalWhy> {
                                           height: 42,
                                           width: AppDimensions.width10(context) *
                                               27.0,
-                                          color: Colors.white,
+                                          //color: Colors.white,
                                           child: TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);

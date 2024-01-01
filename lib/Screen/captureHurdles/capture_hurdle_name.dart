@@ -283,7 +283,6 @@ class _hurdle_nameState extends State<hurdle_name> {
                                               Container(
                                                 height: 42,
                                                 width: double.infinity,
-                                                color: Colors.white,
                                                 child: TextButton(
                                                   onPressed: () async {
                                                     checkHurdle();
@@ -372,7 +371,6 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                         AppDimensions.height10(
                                                                 context) *
                                                             1.0),
-                                                color: Colors.white,
                                                 child: TextButton(
                                                   onPressed: () {
                                                     Navigator.pop(context);

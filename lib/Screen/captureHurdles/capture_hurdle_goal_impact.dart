@@ -316,7 +316,6 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                           Container(
                                             height: 42,
                                             width: double.infinity,
-                                            color: Colors.white,
                                             child: TextButton(
                                               onPressed: () async {
                                                 checkHurdle();
@@ -406,7 +405,6 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                 bottom: AppDimensions.height10(
                                                         context) *
                                                     1.0),
-                                            color: Colors.white,
                                             child: TextButton(
                                               onPressed: () {
                                                 Navigator.pop(context);

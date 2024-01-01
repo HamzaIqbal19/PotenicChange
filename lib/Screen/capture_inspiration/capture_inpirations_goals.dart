@@ -351,7 +351,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               Container(
                                                 height: 42,
                                                 width: double.infinity,
-                                                color: Colors.white,
+                                                // color: Colors.white,
                                                 child: TextButton(
                                                   onPressed: () async {
                                                     if (selectAll == true) {
@@ -513,7 +513,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                         AppDimensions.height10(
                                                                 context) *
                                                             1.0),
-                                                color: Colors.white,
+                                                // color: Colors.white,
                                                 child: TextButton(
                                                   onPressed: () {
                                                     Navigator.pop(context);

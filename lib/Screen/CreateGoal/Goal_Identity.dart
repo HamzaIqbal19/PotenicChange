@@ -412,7 +412,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                         Container(
                                           height: 42,
                                           width: double.infinity,
-                                          color: Colors.white,
+                                          // color: Colors.white,
                                           child: AnimatedScaleButton(
                                             onTap: () async {
                                               setState(() {
@@ -502,7 +502,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                           height: 42,
                                           width: AppDimensions.width10(context) *
                                               27.0,
-                                          color: Colors.white,
+                                          // color: Colors.white,
                                           child: TextButton(
                                             onPressed: () {
                                               Navigator.pop(context);
