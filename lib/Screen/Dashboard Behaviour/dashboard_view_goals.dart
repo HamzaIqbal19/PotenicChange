@@ -355,10 +355,12 @@ class _view_goalsState extends State<view_goals> {
         top: false,
         maintainBottomViewPadding: true,
         child: Scaffold(
+          
             appBar: AppBar(
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 automaticallyImplyLeading: false,
+                toolbarOpacity: 0.0,
                 actions: [
                   Row(
                     children: [

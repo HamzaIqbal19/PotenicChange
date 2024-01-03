@@ -8,6 +8,7 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -32,12 +33,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     var role = prefs.getString('userRole');
     var subscription = prefs.getString('subscriptionStatus');
 
-    if(role == 'admin'){
+    if (role == 'admin') {
       setState(() {
         admin = true;
       });
     }
-
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       height: AppDimensions.height10(context) * 8.5,
                       child: buildText(
                         context,
-                        "Your Destiny is at \n Your Fingertips",
+                        AppText().homeScreenTitle,
                         3.0,
                         FontWeight.w700,
                       ),
@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       height: AppDimensions.height10(context) * 11.5,
                       child: buildText(
                         context,
-                        'Time waits for no one. The best time to \n start is TODAY. Begin creating your \n star followed by a plan to help you \n achieve your goal.',
+                        AppText().homeScreenSubText,
                         1.8,
                         FontWeight.w600,
                       ),
@@ -329,8 +329,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               ),
                               AnimatedScaleButton(
                                 onTap: () {
-                                  signupSheet(
-                                      context, "Introduction", "OnBoarding", admin);
+                                  signupSheet(context, "Introduction",
+                                      "OnBoarding", admin);
                                 },
                                 child: Container(
                                   height: AppDimensions.height10(context) * 5.2,
@@ -413,7 +413,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     );
                                   },
                                   child: Container(
-                                    height: AppDimensions.height10(context) * 5.2,
+                                    height:
+                                        AppDimensions.height10(context) * 5.2,
                                     width: AppDimensions.width10(context) * 13,
                                     decoration: BoxDecoration(
                                       color: const Color(0xFF5A4D73),
@@ -449,8 +450,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       style: TextStyle(color: Colors.red),
                                     )));
                                   } else {
-                                    signupSheet(
-                                        context, "Introduction", "OnBoarding", admin);
+                                    signupSheet(context, "Introduction",
+                                        "OnBoarding", admin);
                                   }
                                 },
                                 child: Container(

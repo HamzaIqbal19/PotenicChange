@@ -93,6 +93,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
         appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.transparent,
+            toolbarOpacity: 0.0,
             leading: Center(
               child: IconButton(
                   onPressed: () {

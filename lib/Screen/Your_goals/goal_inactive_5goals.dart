@@ -971,6 +971,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
         // extendBody: true,
         bottomNavigationBar: BottomAppBar(
           elevation: 0,
+
           height: AppDimensions.height10(context) * 9.5,
           color: const Color(0xFFFBFBFB),
           child: Loader == false
