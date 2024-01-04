@@ -14,6 +14,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 
@@ -497,9 +498,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 1.7,
                 ),
-                goalAndPractice(context,
-                    color,2,
-                    practice.text.toString()),
+                goalAndPractice(context, color, 2, practice.text.toString()),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.center,
                 //   crossAxisAlignment: CrossAxisAlignment.center,
@@ -592,7 +591,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   width: AppDimensions.width10(context) * 22.3,
                   child: Center(
                     child: Text(
-                      "Your Reminders",
+                      AppText().pracReminder,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
@@ -615,7 +614,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       right: AppDimensions.width10(context) * 2.1),
                   child: Center(
                     child: Text(
-                      "In order to build consistent behaviour, \n allow us to gently nudge you to remind you to do your practice.",
+                      AppText().pracReminderBody,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -679,7 +678,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     height:
                                         AppDimensions.height10(context) * 2.4,
                                     child: Text(
-                                      "Yes, remind me",
+                                      AppText().remindMe,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontFamily: "Laila",
@@ -851,7 +850,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 right: AppDimensions.width10(context) * 2.0,
                                 left: AppDimensions.width10(context) * 1.7),
                             child: Text(
-                              "We will check in with you to remind you about your practices.You would be able to customise your notifications later in your Account Settings. ",
+                              AppText().remindMeBody,
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
@@ -864,7 +863,6 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           )
                         ],
                       ),
-
                       SizedBox(
                         height: AppDimensions.height10(context) * 2.0,
                       ),
@@ -920,7 +918,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                   width: AppDimensions.width10(context) * 20.4,
                                   height: AppDimensions.height10(context) * 2.4,
                                   child: Text(
-                                    "No, don’t remind me",
+                                    AppText().dontRemindMe,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       color: const Color(0xFFFFFFFF),
@@ -972,7 +970,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 right: AppDimensions.width10(context) * 2.0,
                                 left: AppDimensions.width10(context) * 1.7),
                             child: Text(
-                              "You confirm that you don’t want us to send you reminders and notifications to perform your practices. You can always enable and update your notification preferences later in Account Settings. ",
+                              AppText().dontRemindMeBody,
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
@@ -984,10 +982,10 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             ),
                           )
                         ],
-                      ),SizedBox(
+                      ),
+                      SizedBox(
                         height: AppDimensions.height10(context) * 2.0,
                       ),
-
                     ],
                   ),
                 ),
@@ -1180,14 +1178,15 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                                   1.8),
                                     )),
                                   ))
-                              : SizedBox(
-                                  // color: Colors.blue,
-                                  width: AppDimensions.width10(context) * 5.0,
-                                  height: AppDimensions.height10(context) * 5.0,
-                                  child: Image.asset(
-                                    "assets/images/Moreactions.webp",
-                                    fit: BoxFit.contain,
-                                  )),
+                              : Container(),
+                          //  SizedBox(
+                          //     // color: Colors.blue,
+                          //     width: AppDimensions.width10(context) * 5.0,
+                          //     height: AppDimensions.height10(context) * 5.0,
+                          //     child: Image.asset(
+                          //       "assets/images/Moreactions.webp",
+                          //       fit: BoxFit.contain,
+                          //     )),
                           Stack(alignment: Alignment.center, children: [
                             AnimatedScaleButton(
                               onTap: () async {

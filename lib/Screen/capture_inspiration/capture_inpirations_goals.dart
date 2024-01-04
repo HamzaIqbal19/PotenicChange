@@ -18,6 +18,7 @@ import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/video_ac
 import 'package:potenic_app/Screen/capture_inspiration/inspiratoinEdit/photoEdit.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiratoinEdit/videoEdit.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -256,7 +257,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                     child: Row(
                       children: [
                         GradientText(
-                          'Inspiration 1',
+                          AppText().inspiration1,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: AppDimensions.font10(context) * 2.0,
@@ -557,11 +558,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                   fit: BoxFit.cover)),
           child: Loading == false
               ? SingleChildScrollView(
-
-                child: Column(children: [
+                  child: Column(children: [
                     Container(
                       // width: AppDimensions.width10(context) * 36.0,
-                     
+
                       // height: widget.route == 'details'
                       //     ? AppDimensions.height10(context) * 76.9
                       //     : AppDimensions.height10(context) * 66.9,
@@ -582,7 +582,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               child: Center(
                                 //Text alingment changes
                                 child: GradientText(
-                                  'Which goals is the\ninspiration for?',
+                                  AppText().inspiration1Body,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     height: 1.2,
@@ -632,8 +632,12 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 }
                               },
                               child: Container(
-                                width:!smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5,
-                                height: !smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5,
+                                width: !smallScreen
+                                    ? AppDimensions.width10(context) * 14.1
+                                    : AppDimensions.width10(context) * 13.5,
+                                height: !smallScreen
+                                    ? AppDimensions.width10(context) * 14.1
+                                    : AppDimensions.width10(context) * 13.5,
                                 margin: EdgeInsets.only(
                                     left: AppDimensions.width10(context) * 3,
                                     right:
@@ -649,8 +653,12 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 padding: EdgeInsets.all(
                                     AppDimensions.width10(context) * 0.5),
                                 child: Container(
-                                  height: !smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
-                                  width: !smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
+                                  height: !smallScreen
+                                      ? AppDimensions.width10(context) * 13.1
+                                      : AppDimensions.width10(context) * 12.5,
+                                  width: !smallScreen
+                                      ? AppDimensions.width10(context) * 13.1
+                                      : AppDimensions.width10(context) * 12.5,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
@@ -700,7 +708,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             ),
                             Container(
                               margin: EdgeInsets.only(
-                                  left:!smallScreen? AppDimensions.width10(context) * 5: AppDimensions.width10(context) * 6,
+                                  left: !smallScreen
+                                      ? AppDimensions.width10(context) * 5
+                                      : AppDimensions.width10(context) * 6,
                                   top: AppDimensions.height10(context) * 1.0,
                                   right: AppDimensions.width10(context) * 3,
                                   bottom:
@@ -743,9 +753,12 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       },
                                       child: Container(
                                         margin: EdgeInsets.only(
-                                            right:
-                                               !smallScreen? AppDimensions.width10(context) *
-                                                   2.5:AppDimensions.width10(context) *
+                                            right: !smallScreen
+                                                ? AppDimensions.width10(
+                                                        context) *
+                                                    2.5
+                                                : AppDimensions.width10(
+                                                        context) *
                                                     3),
                                         height: selectedIndices
                                                     .contains(index) ||
@@ -849,7 +862,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             ),
                             Container(
                               margin: EdgeInsets.only(
-                                  left:!smallScreen? AppDimensions.width10(context) * 5: AppDimensions.width10(context) * 6,
+                                  left: !smallScreen
+                                      ? AppDimensions.width10(context) * 5
+                                      : AppDimensions.width10(context) * 6,
                                   top: AppDimensions.height10(context) * 1.0,
                                   right: AppDimensions.width10(context) * 3,
                                   bottom:
@@ -893,10 +908,13 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       },
                                       child: Container(
                                         margin: EdgeInsets.only(
-                                            right:
-                                            !smallScreen? AppDimensions.width10(context) *
-                                                2.5:AppDimensions.width10(context) *
-                                                3),
+                                            right: !smallScreen
+                                                ? AppDimensions.width10(
+                                                        context) *
+                                                    2.5
+                                                : AppDimensions.width10(
+                                                        context) *
+                                                    3),
                                         height: selectedInActiveIndices
                                                     .contains(index) ||
                                                 selectAll == true
@@ -979,66 +997,309 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                     );
                                   })),
                             ),
-                            SizedBox(height: AppDimensions.height10(context)*2,),
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 2,
+                            ),
                             widget.data_saved
                                 ? widget.route == 'details'
-                                ? Container()
-                                : Container(
-                              width: AppDimensions.width10(context) * 34.2,
-                              height: AppDimensions.height10(context) * 5.0,
-                              margin: EdgeInsets.only(
-                                  left:AppDimensions.height10(context) * 3.0,
-                                  right: AppDimensions.height10(context) * 3.0,
-                                  bottom:
-                                  AppDimensions.height10(context) * 2.6),
-                              child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  AnimatedScaleButton(
-                                    onTap: () {
-                                      multiGoals.clear();
-                                      selectedGoals.clear();
-                                      selectedInActiveIndices.clear();
-                                      selectedIndices.clear();
-                                      setState(() {
-                                        selectAll = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      width:
-                                      AppDimensions.width10(context) * 12.8,
-                                      height:
-                                      AppDimensions.height10(context) * 5.0,
-                                      decoration: BoxDecoration(
-                                        color: Colors.transparent,
-                                        border: Border.all(
-                                            width: 1,
-                                            color: const Color(0xFFFFFFFF)
-                                                .withOpacity(0.5)),
-                                        borderRadius: BorderRadius.circular(
+                                    ? Container()
+                                    : Container(
+                                        width: AppDimensions.width10(context) *
+                                            34.2,
+                                        height:
                                             AppDimensions.height10(context) *
-                                                5.0),
-                                      ),
-                                      child: Center(
-                                          child: Text(
-                                            'Reset',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                                fontWeight: FontWeight.w600,
-                                                color: selectAll == true ||
-                                                    multiGoals.isNotEmpty
-                                                    ? Colors.white
-                                                    : Colors.white
-                                                    .withOpacity(0.5)),
-                                          )),
-                                    ),
-                                  ),
-                                  AnimatedScaleButton(
-                                    onTap: () {
+                                                5.0,
+                                        margin: EdgeInsets.only(
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+                                            bottom: AppDimensions.height10(
+                                                    context) *
+                                                2.6),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            AnimatedScaleButton(
+                                              onTap: () {
+                                                multiGoals.clear();
+                                                selectedGoals.clear();
+                                                selectedInActiveIndices.clear();
+                                                selectedIndices.clear();
+                                                setState(() {
+                                                  selectAll = false;
+                                                });
+                                              },
+                                              child: Container(
+                                                width: AppDimensions.width10(
+                                                        context) *
+                                                    12.8,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    5.0,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.transparent,
+                                                  border: Border.all(
+                                                      width: 1,
+                                                      color: const Color(
+                                                              0xFFFFFFFF)
+                                                          .withOpacity(0.5)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              5.0),
+                                                ),
+                                                child: Center(
+                                                    child: Text(
+                                                  'Reset',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          AppDimensions.font10(
+                                                                  context) *
+                                                              1.6,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: selectAll ==
+                                                                  true ||
+                                                              multiGoals
+                                                                  .isNotEmpty
+                                                          ? Colors.white
+                                                          : Colors.white
+                                                              .withOpacity(
+                                                                  0.5)),
+                                                )),
+                                              ),
+                                            ),
+                                            AnimatedScaleButton(
+                                              onTap: () {
+                                                if (selectAll == true ||
+                                                    multiGoals.isNotEmpty) {
+                                                  if (selectAll == true) {
+                                                    saveGoalsToSharedPreferences(
+                                                        allgoalsSelected);
+                                                    widget.route ==
+                                                            'photo_create'
+                                                        ? Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    const photo_info(
+                                                              edit_details:
+                                                                  false,
+                                                              image_detals:
+                                                                  false,
+                                                              image_save: false,
+                                                              image_create:
+                                                                  false,
+                                                            )),
+                                                          )
+                                                        : widget.route ==
+                                                                'video_create'
+                                                            ? Navigator.push(
+                                                                context,
+                                                                FadePageRoute(
+                                                                    page: const video_info(
+                                                                        link_state:
+                                                                            false)),
+                                                              )
+                                                            : widget.route ==
+                                                                    'note_create'
+                                                                ? Navigator
+                                                                    .push(
+                                                                    context,
+                                                                    FadePageRoute(
+                                                                        page:
+                                                                            const note_info(
+                                                                      note_saved:
+                                                                          true,
+                                                                      type_switch:
+                                                                          1,
+                                                                    )),
+                                                                  )
+                                                                : widget.route ==
+                                                                        'note_saved'
+                                                                    ? Navigator
+                                                                        .push(
+                                                                        context,
+                                                                        FadePageRoute(
+                                                                            page:
+                                                                                const noteSaved()),
+                                                                      )
+                                                                    : widget.route ==
+                                                                            'note_link'
+                                                                        ? Navigator
+                                                                            .push(
+                                                                            context,
+                                                                            FadePageRoute(
+                                                                                page: const link_info(
+                                                                              link_state: false,
+                                                                            )),
+                                                                          )
+                                                                        : Navigator
+                                                                            .push(
+                                                                            context,
+                                                                            FadePageRoute(page: const inspiration_type()),
+                                                                          );
+                                                  } else {
+                                                    saveGoalsToSharedPreferences(
+                                                        multiGoals);
+
+                                                    widget.route ==
+                                                            'photo_create'
+                                                        ? Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    const photo_info(
+                                                              edit_details:
+                                                                  false,
+                                                              image_detals:
+                                                                  true,
+                                                              image_save: false,
+                                                              image_create:
+                                                                  false,
+                                                            )),
+                                                          )
+                                                        : widget.route ==
+                                                                'video_create'
+                                                            ? Navigator.push(
+                                                                context,
+                                                                FadePageRoute(
+                                                                    page:
+                                                                        const video_info(
+                                                                  link_state:
+                                                                      false,
+                                                                )),
+                                                              )
+                                                            : widget.route ==
+                                                                    'note_create'
+                                                                ? Navigator
+                                                                    .push(
+                                                                    context,
+                                                                    FadePageRoute(
+                                                                        page:
+                                                                            const note_info(
+                                                                      note_saved:
+                                                                          true,
+                                                                      type_switch:
+                                                                          1,
+                                                                    )),
+                                                                  )
+                                                                : widget.route ==
+                                                                        'note_saved'
+                                                                    ? Navigator
+                                                                        .push(
+                                                                        context,
+                                                                        FadePageRoute(
+                                                                            page:
+                                                                                const noteSaved()),
+                                                                      )
+                                                                    : widget.route ==
+                                                                            'note_link'
+                                                                        ? Navigator
+                                                                            .push(
+                                                                            context,
+                                                                            FadePageRoute(
+                                                                                page: const link_info(
+                                                                              link_state: false,
+                                                                            )),
+                                                                          )
+                                                                        : widget.route ==
+                                                                                'edit'
+                                                                            ? Navigator.push(
+                                                                                context,
+                                                                                FadePageRoute(
+                                                                                    page: videoEdit(
+                                                                                  note: widget.note,
+                                                                                  context: widget.context,
+                                                                                  updateData: true,
+                                                                                )),
+                                                                              )
+                                                                            : widget.route == 'photo_edit'
+                                                                                ? Navigator.push(
+                                                                                    context,
+                                                                                    FadePageRoute(
+                                                                                        page: const photo_Edit(
+                                                                                      updateData: true,
+                                                                                    )),
+                                                                                  )
+                                                                                : Navigator.push(
+                                                                                    context,
+                                                                                    FadePageRoute(page: const inspiration_type()),
+                                                                                  );
+                                                  }
+                                                }
+                                              },
+                                              child: Container(
+                                                width: AppDimensions.width10(
+                                                        context) *
+                                                    20.4,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    5.0,
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    begin: Alignment.topCenter,
+                                                    end: Alignment.bottomCenter,
+                                                    colors: [
+                                                      selectAll == true ||
+                                                              multiGoals
+                                                                  .isNotEmpty
+                                                          ? const Color(
+                                                              0xffFCC10D)
+                                                          : const Color(
+                                                                  0xffFCC10D)
+                                                              .withOpacity(0.5),
+                                                      selectAll == true ||
+                                                              multiGoals
+                                                                  .isNotEmpty
+                                                          ? const Color(
+                                                              0xffFDA210)
+                                                          : const Color(
+                                                                  0xffFDA210)
+                                                              .withOpacity(0.5),
+                                                    ],
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              5.0),
+                                                ),
+                                                child: Center(
+                                                    child: Text(
+                                                  'Save',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          AppDimensions.font10(
+                                                                  context) *
+                                                              1.6,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: selectAll ==
+                                                                  true ||
+                                                              multiGoals
+                                                                  .isNotEmpty
+                                                          ? Colors.white
+                                                          : Colors.white
+                                                              .withOpacity(
+                                                                  0.5)),
+                                                )),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                : AnimatedScaleButton(
+                                    onTap: () async {
                                       if (selectAll == true ||
                                           multiGoals.isNotEmpty) {
                                         if (selectAll == true) {
@@ -1046,170 +1307,226 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                               allgoalsSelected);
                                           widget.route == 'photo_create'
                                               ? Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const photo_info(
-                                                  edit_details: false,
-                                                  image_detals: false,
-                                                  image_save: false,
-                                                  image_create: false,
-                                                )),
-                                          )
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const photo_info(
+                                                    edit_details: false,
+                                                    image_detals: false,
+                                                    image_save: false,
+                                                    image_create: false,
+                                                  )),
+                                                )
                                               : widget.route == 'video_create'
-                                              ? Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                const video_info(
-                                                    link_state:
-                                                    false)),
-                                          )
-                                              : widget.route ==
-                                              'note_create'
-                                              ? Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                const note_info(
-                                                  note_saved: true,
-                                                  type_switch: 1,
-                                                )),
-                                          )
-                                              : widget.route ==
-                                              'note_saved'
-                                              ? Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                const noteSaved()),
-                                          )
-                                              : widget.route ==
-                                              'note_link'
-                                              ? Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                const link_info(
-                                                  link_state:
-                                                  false,
-                                                )),
-                                          )
-                                              : Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                const inspiration_type()),
-                                          );
+                                                  ? Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const video_info(
+                                                                  link_state:
+                                                                      false)),
+                                                    )
+                                                  : widget.route ==
+                                                          'note_create'
+                                                      ? Navigator.push(
+                                                          context,
+                                                          FadePageRoute(
+                                                              page:
+                                                                  const note_info(
+                                                            note_saved: true,
+                                                            type_switch: 1,
+                                                          )),
+                                                        )
+                                                      : widget.route ==
+                                                              'note_saved'
+                                                          ? Navigator.push(
+                                                              context,
+                                                              FadePageRoute(
+                                                                  page:
+                                                                      const photo_Edit(
+                                                                updateData:
+                                                                    true,
+                                                              )),
+                                                            )
+                                                          : widget.route ==
+                                                                  'note_saved_video'
+                                                              ? Navigator.push(
+                                                                  context,
+                                                                  FadePageRoute(
+                                                                      page:
+                                                                          videoEdit(
+                                                                    note: widget
+                                                                        .note,
+                                                                    context: widget
+                                                                        .context,
+                                                                    updateData:
+                                                                        true,
+                                                                  )),
+                                                                )
+                                                              : widget.route ==
+                                                                      'edit'
+                                                                  ? Navigator
+                                                                      .push(
+                                                                      context,
+                                                                      FadePageRoute(
+                                                                          page:
+                                                                              videoEdit(
+                                                                        context:
+                                                                            widget.context,
+                                                                        note: widget
+                                                                            .note,
+                                                                        updateData:
+                                                                            true,
+                                                                      )),
+                                                                    )
+                                                                  : widget.route ==
+                                                                          'note_link'
+                                                                      ? Navigator
+                                                                          .push(
+                                                                          context,
+                                                                          FadePageRoute(
+                                                                              page: const link_info(
+                                                                            link_state:
+                                                                                false,
+                                                                          )),
+                                                                        )
+                                                                      : widget.route ==
+                                                                              'details'
+                                                                          ? Navigator
+                                                                              .push(
+                                                                              context,
+                                                                              FadePageRoute(page: const view_details()),
+                                                                            )
+                                                                          : Navigator
+                                                                              .push(
+                                                                              context,
+                                                                              FadePageRoute(page: const inspiration_type()),
+                                                                            );
                                         } else {
                                           saveGoalsToSharedPreferences(
                                               multiGoals);
 
                                           widget.route == 'photo_create'
                                               ? Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const photo_info(
-                                                  edit_details: false,
-                                                  image_detals: true,
-                                                  image_save: false,
-                                                  image_create: false,
-                                                )),
-                                          )
-                                              : widget.route == 'video_create'
-                                              ? Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                const video_info(
-                                                  link_state: false,
-                                                )),
-                                          )
-                                              : widget.route ==
-                                              'note_create'
-                                              ? Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                const note_info(
-                                                  note_saved: true,
-                                                  type_switch: 1,
-                                                )),
-                                          )
-                                              : widget.route ==
-                                              'note_saved'
-                                              ? Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                const noteSaved()),
-                                          )
-                                              : widget.route ==
-                                              'note_link'
-                                              ? Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                const link_info(
-                                                  link_state:
-                                                  false,
-                                                )),
-                                          )
-                                              : widget.route ==
-                                              'edit'
-                                              ? Navigator
-                                              .push(
-                                            context,
-                                            FadePageRoute(
-                                                page:
-                                                videoEdit(
-                                                  note: widget
-                                                      .note,
-                                                  context:
-                                                  widget.context,
-                                                  updateData:
-                                                  true,
-                                                )),
-                                          )
-                                              : widget.route ==
-                                              'photo_edit'
-                                              ? Navigator
-                                              .push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const photo_Edit(
-                                                  updateData:
-                                                  true,
-                                                )),
-                                          )
-                                              : Navigator
-                                              .push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const inspiration_type()),
-                                          );
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const photo_info(
+                                                    edit_details: false,
+                                                    image_detals: false,
+                                                    image_save: false,
+                                                    image_create: false,
+                                                  )),
+                                                )
+                                              : widget.route == 'details'
+                                                  ? Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const view_details()),
+                                                    )
+                                                  : widget.route ==
+                                                          'video_create'
+                                                      ? Navigator.push(
+                                                          context,
+                                                          FadePageRoute(
+                                                              page: const video_info(
+                                                                  link_state:
+                                                                      false)),
+                                                        )
+                                                      : widget.route ==
+                                                              'note_create'
+                                                          ? Navigator.push(
+                                                              context,
+                                                              FadePageRoute(
+                                                                  page:
+                                                                      const note_info(
+                                                                note_saved:
+                                                                    true,
+                                                                type_switch: 1,
+                                                              )),
+                                                            )
+                                                          : widget.route ==
+                                                                  'note_saved'
+                                                              ? Navigator.push(
+                                                                  context,
+                                                                  FadePageRoute(
+                                                                      page:
+                                                                          const photo_Edit(
+                                                                    updateData:
+                                                                        true,
+                                                                  )),
+                                                                )
+                                                              : widget.route ==
+                                                                      'note_saved_video'
+                                                                  ? Navigator
+                                                                      .push(
+                                                                      context,
+                                                                      FadePageRoute(
+                                                                          page:
+                                                                              videoEdit(
+                                                                        note: widget
+                                                                            .note,
+                                                                        context:
+                                                                            widget.context,
+                                                                        updateData:
+                                                                            true,
+                                                                      )),
+                                                                    )
+                                                                  : widget.route ==
+                                                                          'note_link'
+                                                                      ? Navigator
+                                                                          .push(
+                                                                          context,
+                                                                          FadePageRoute(
+                                                                              page: const link_info(
+                                                                            link_state:
+                                                                                false,
+                                                                          )),
+                                                                        )
+                                                                      : Navigator
+                                                                          .push(
+                                                                          context,
+                                                                          FadePageRoute(
+                                                                              page: const inspiration_type()),
+                                                                        );
                                         }
+                                      }
+                                      if (widget.update == false) {
+                                        final SharedPreferences prefs =
+                                            await _prefs;
+                                        var savedRoute = prefs.setString(
+                                            'inspiration_saved_route',
+                                            'goals_saved');
                                       }
                                     },
                                     child: Container(
                                       width:
-                                      AppDimensions.width10(context) * 20.4,
+                                          AppDimensions.width10(context) * 25.4,
                                       height:
-                                      AppDimensions.height10(context) * 5.0,
+                                          AppDimensions.height10(context) * 5.0,
+                                      margin: EdgeInsets.only(
+                                          left: AppDimensions.width10(context) *
+                                              8,
+                                          right:
+                                              AppDimensions.width10(context) *
+                                                  8,
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  2.6),
                                       decoration: BoxDecoration(
                                         gradient: LinearGradient(
                                           begin: Alignment.topCenter,
                                           end: Alignment.bottomCenter,
                                           colors: [
                                             selectAll == true ||
-                                                multiGoals.isNotEmpty
+                                                    multiGoals.isNotEmpty
                                                 ? const Color(0xffFCC10D)
                                                 : const Color(0xffFCC10D)
-                                                .withOpacity(0.5),
+                                                    .withOpacity(0.5),
                                             selectAll == true ||
-                                                multiGoals.isNotEmpty
+                                                    multiGoals.isNotEmpty
                                                 ? const Color(0xffFDA210)
                                                 : const Color(0xffFDA210)
-                                                .withOpacity(0.5),
+                                                    .withOpacity(0.5),
                                           ],
                                         ),
                                         borderRadius: BorderRadius.circular(
@@ -1218,240 +1535,23 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       ),
                                       child: Center(
                                           child: Text(
-                                            'Save',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize:
+                                        selectAll == true
+                                            ? '(${allgoalsSelected.length}/${goals.length} goals selected) Next'
+                                            : '(${multiGoals.length}/${goals.length} goals selected) Next',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize:
                                                 AppDimensions.font10(context) *
                                                     1.6,
-                                                fontWeight: FontWeight.w600,
-                                                color: selectAll == true ||
-                                                    multiGoals.isNotEmpty
-                                                    ? Colors.white
-                                                    : Colors.white
-                                                    .withOpacity(0.5)),
-                                          )),
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      )),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )
-                                : AnimatedScaleButton(
-                              onTap: () async {
-                                if (selectAll == true || multiGoals.isNotEmpty) {
-                                  if (selectAll == true) {
-                                    saveGoalsToSharedPreferences(allgoalsSelected);
-                                    widget.route == 'photo_create'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const photo_info(
-                                            edit_details: false,
-                                            image_detals: false,
-                                            image_save: false,
-                                            image_create: false,
-                                          )),
-                                    )
-                                        : widget.route == 'video_create'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const video_info(
-                                              link_state: false)),
-                                    )
-                                        : widget.route == 'note_create'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const note_info(
-                                            note_saved: true,
-                                            type_switch: 1,
-                                          )),
-                                    )
-                                        : widget.route == 'note_saved'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const photo_Edit(
-                                            updateData: true,
-                                          )),
-                                    )
-                                        : widget.route ==
-                                        'note_saved_video'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: videoEdit(
-                                            note: widget.note,
-                                            context:
-                                            widget.context,
-                                            updateData: true,
-                                          )),
-                                    )
-                                        : widget.route == 'edit'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: videoEdit(
-                                            context: widget
-                                                .context,
-                                            note: widget.note,
-                                            updateData: true,
-                                          )),
-                                    )
-                                        : widget.route ==
-                                        'note_link'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page:
-                                          const link_info(
-                                            link_state:
-                                            false,
-                                          )),
-                                    )
-                                        : widget.route ==
-                                        'details'
-                                        ? Navigator
-                                        .push(
-                                      context,
-                                      FadePageRoute(
-                                          page:
-                                          const view_details()),
-                                    )
-                                        : Navigator
-                                        .push(
-                                      context,
-                                      FadePageRoute(
-                                          page:
-                                          const inspiration_type()),
-                                    );
-                                  } else {
-                                    saveGoalsToSharedPreferences(multiGoals);
-
-                                    widget.route == 'photo_create'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const photo_info(
-                                            edit_details: false,
-                                            image_detals: false,
-                                            image_save: false,
-                                            image_create: false,
-                                          )),
-                                    )
-                                        : widget.route == 'details'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const view_details()),
-                                    )
-                                        : widget.route == 'video_create'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const video_info(
-                                              link_state: false)),
-                                    )
-                                        : widget.route == 'note_create'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const note_info(
-                                            note_saved: true,
-                                            type_switch: 1,
-                                          )),
-                                    )
-                                        : widget.route == 'note_saved'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page:
-                                          const photo_Edit(
-                                            updateData: true,
-                                          )),
-                                    )
-                                        : widget.route ==
-                                        'note_saved_video'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: videoEdit(
-                                            note: widget.note,
-                                            context: widget
-                                                .context,
-                                            updateData: true,
-                                          )),
-                                    )
-                                        : widget.route ==
-                                        'note_link'
-                                        ? Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page:
-                                          const link_info(
-                                            link_state:
-                                            false,
-                                          )),
-                                    )
-                                        : Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page:
-                                          const inspiration_type()),
-                                    );
-                                  }
-                                }
-                                if (widget.update == false) {
-                                  final SharedPreferences prefs = await _prefs;
-                                  var savedRoute = prefs.setString(
-                                      'inspiration_saved_route', 'goals_saved');
-                                }
-                              },
-                              child: Container(
-                                width: AppDimensions.width10(context) * 25.4,
-                                height: AppDimensions.height10(context) * 5.0,
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.width10(context)*8,
-                                    right: AppDimensions.width10(context)*8,
-                                    bottom: AppDimensions.height10(context) * 2.6),
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      selectAll == true || multiGoals.isNotEmpty
-                                          ? const Color(0xffFCC10D)
-                                          : const Color(0xffFCC10D)
-                                          .withOpacity(0.5),
-                                      selectAll == true || multiGoals.isNotEmpty
-                                          ? const Color(0xffFDA210)
-                                          : const Color(0xffFDA210)
-                                          .withOpacity(0.5),
-                                    ],
-                                  ),
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 5.0),
-                                ),
-                                child: Center(
-                                    child: Text(
-                                      selectAll == true
-                                          ? '(${allgoalsSelected.length}/${goals.length} goals selected) Next'
-                                          : '(${multiGoals.length}/${goals.length} goals selected) Next',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: AppDimensions.font10(context) * 1.6,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
-                                    )),
-                              ),
-                            )
+                                  )
                           ]),
                     ),
-
-
                   ]),
-              )
+                )
               : const Center(
                   child: SpinKitFadingCircle(
                     color: Color(0xFFB1B8FF),
@@ -1459,7 +1559,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                   ),
                 ),
         ),
-
       ),
     );
   }

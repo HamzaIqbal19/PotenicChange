@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -159,16 +160,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                 child: Row(
                   children: [
                     GradientText(
-                      'Capture Hurdle ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: AppDimensions.font10(context) * 2.2,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
-                    ),
-                    GradientText(
-                      '4',
+                      AppText().captureHurdle4,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: AppDimensions.font10(context) * 2.2,
@@ -407,7 +399,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 18.0),
                               child: GradientText(
-                                'How this hurdle is\nimpacting you?',
+                                AppText().captureHurdle4Body,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 2.8,
@@ -480,9 +472,14 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                               AppDimensions.height10(context) *
                                                   2.0,
                                           margin: EdgeInsets.only(
-                                            left: MediaQuery.of(context).size.height < 690 ? 0:AppDimensions.width10(
-                                                context) *
-                                                0.6,
+                                            left: MediaQuery.of(context)
+                                                        .size
+                                                        .height <
+                                                    690
+                                                ? 0
+                                                : AppDimensions.width10(
+                                                        context) *
+                                                    0.6,
                                             top: AppDimensions.height10(
                                                     context) *
                                                 1.3,
@@ -684,8 +681,8 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                         child: Center(
                                             child: Text(
                                           widget.update
-                                              ? 'Update Summary'
-                                              : 'Next',
+                                              ? AppText().updateSumm
+                                              : AppText().nextButton,
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: AppDimensions.font10(

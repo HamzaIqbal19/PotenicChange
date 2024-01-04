@@ -6,6 +6,7 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/fading2.dart';
@@ -93,7 +94,7 @@ class _StartProcessState extends State<StartProcess> {
                         top: AppDimensions.height10(context) * 5.7),
                     child: Center(
                       child: GradientText(
-                        "Goal Setting",
+                        AppText().goalSetting,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           // color: Colors.white,
@@ -118,7 +119,7 @@ class _StartProcessState extends State<StartProcess> {
                           Container(
                             child: Center(
                               child: Text(
-                                "Step 1: ",
+                                AppText().step1,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -131,7 +132,7 @@ class _StartProcessState extends State<StartProcess> {
                           Container(
                             child: Center(
                               child: Text(
-                                "Create your ‘star’ (goal) ",
+                                AppText().step1Head,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
@@ -156,7 +157,7 @@ class _StartProcessState extends State<StartProcess> {
                   Container(
                     child: Center(
                       child: Text(
-                        "Create a personal development goal based \n on your vision and why to help you with \n purpose and stay focused. ",
+                        AppText().step1Body,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
@@ -188,7 +189,7 @@ class _StartProcessState extends State<StartProcess> {
                           Container(
                             child: Center(
                               child: Text(
-                                "Step 2: ",
+                                AppText().step2,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -201,7 +202,7 @@ class _StartProcessState extends State<StartProcess> {
                           Container(
                             child: Center(
                               child: Text(
-                                "Assign your ‘planet’ (practice)",
+                                AppText().step2Head,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
@@ -227,7 +228,7 @@ class _StartProcessState extends State<StartProcess> {
                     height: AppDimensions.height10(context) * 8.6,
                     child: Center(
                       child: Text(
-                        "Decide on a tool / practice you’ll be using \n and set your routine (you need to do this 3 \n or more times a week) ",
+                        AppText().step2Body,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
@@ -244,7 +245,7 @@ class _StartProcessState extends State<StartProcess> {
                     height: AppDimensions.height10(context) * 5.6,
                     child: Center(
                       child: Text(
-                        "In 25 mins and less you’ll be on your \n way towards more clarity. ",
+                        AppText().step2Body2,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -278,7 +279,7 @@ class _StartProcessState extends State<StartProcess> {
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)])),
                       child: Center(
                         child: Text(
-                          'Start your journey',
+                          AppText().startJourney,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -293,7 +294,7 @@ class _StartProcessState extends State<StartProcess> {
                     height: AppDimensions.height10(context) * 5.6,
                     child: Center(
                       child: Text(
-                        "You can save and exit at any time. ",
+                        AppText().startJourney2,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,

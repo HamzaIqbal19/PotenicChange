@@ -7,6 +7,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
@@ -194,7 +195,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         left: AppDimensions.width10(context) * 0.8,
                         top: AppDimensions.height10(context) * 0.1),
                     child: Text(
-                      '  Email and Password',
+                      AppText().logInEmail,
                       style: TextStyle(
                         color: const Color(0xFFFFFFFF),
                         fontSize: AppDimensions.font10(context) * 1.8,
@@ -210,12 +211,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             height: AppDimensions.height10(context) * 2,
           ),
           _buildOutlinedButtonWithImage(context, 'assets/images/Google.webp',
-              'Sign in with Google', () {}, Colors.white, Colors.black45),
+              AppText().logInGoogle, () {}, Colors.white, Colors.black45),
           SizedBox(
             height: AppDimensions.height10(context) * 2,
           ),
           _buildOutlinedButtonWithImage(context, 'assets/images/fb.webp',
-              'Sign up with Facebook', () {}, Color(0xFF1877F2), Colors.white),
+              AppText().logInFacebook, () {}, Color(0xFF1877F2), Colors.white),
         ],
       ),
     );
@@ -334,7 +335,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
           ),
           child: Center(
             child: Text(
-              "New account",
+              AppText().newAccount,
               style: TextStyle(
                 color: const Color(0xFF8C648A),
                 fontSize: AppDimensions.font10(context) * 1.6,

@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Screen/capture_inspiration/record_inpiration_type.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../../utils/app_dimensions.dart';
@@ -192,7 +193,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                     // width: AppDimensions.width10(context) * 2.6,
+                      // width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     )),
@@ -393,201 +394,222 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             2, // Half of the items, rounded up
                                         itemBuilder: (context, index) {
                                           return Container(
-                                            margin: EdgeInsets.symmetric(vertical: AppDimensions.height10(context)*1.5),
-                                            width: AppDimensions.width10(
-                                                context) *
-                                                17.6,
+                                            margin: EdgeInsets.symmetric(
+                                                vertical:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.5),
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    17.6,
                                             // height: AppDimensions.height10(
                                             //     context) *
                                             //     30,
                                             child: Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
-                                              AnimatedScaleButton(
-                                                onTap: () async {
-                                                  final SharedPreferences
-                                                      prefs = await _prefs;
+                                                  AnimatedScaleButton(
+                                                    onTap: () async {
+                                                      final SharedPreferences
+                                                          prefs = await _prefs;
 
-                                                  var hurdleId = prefs.setInt(
-                                                      'userInspirationId',
-                                                      InspirationList[index * 2]
-                                                          ['id']);
-                                                  Navigator.push(
-                                                      context,
-                                                      FadePageRoute(
-                                                          page:
-                                                              const record_inspiration()));
-                                                },
-                                                child: Container(
-                                                  width:
-                                                 !smallScreen? AppDimensions.width10(
-                                                     context) *
-                                                     19.313: AppDimensions.width10(
-                                                      context) *
-                                                      17.6,
-                                                  height:
-                                                  !smallScreen? AppDimensions.width10(
-                                                      context) *
-                                                      19.313: AppDimensions.width10(
-                                                      context) *
-                                                      17.6,
-                                                  decoration: BoxDecoration(
-                                                      gradient: InspirationList[
-                                                                      index * 2][
+                                                      var hurdleId = prefs.setInt(
+                                                          'userInspirationId',
+                                                          InspirationList[
+                                                              index * 2]['id']);
+                                                      Navigator.push(
+                                                          context,
+                                                          FadePageRoute(
+                                                              page:
+                                                                  const record_inspiration()));
+                                                    },
+                                                    child: Container(
+                                                      width: !smallScreen
+                                                          ? AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              19.313
+                                                          : AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              17.6,
+                                                      height: !smallScreen
+                                                          ? AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              19.313
+                                                          : AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              17.6,
+                                                      decoration: BoxDecoration(
+                                                          gradient: InspirationList[
+                                                                          index * 2]
+                                                                      [
+                                                                      'inspirationId'] ==
+                                                                  2
+                                                              ? const RadialGradient(
+                                                                  colors: [
+                                                                      Color(
+                                                                          0xFFE9A594),
+                                                                      Color(
+                                                                          0xFFEEBEB2)
+                                                                    ])
+                                                              : const RadialGradient(
+                                                                  colors: [
+                                                                      Color(
+                                                                          0xFFD9D9D9),
+                                                                      Color(
+                                                                          0xFFD9D9D9)
+                                                                    ]),
+                                                          shape: BoxShape.circle,
+                                                          image: DecorationImage(
+                                                              image: AssetImage(InspirationList[index * 2]['inspirationId'] == 4
+                                                                  ? 'assets/images/distraction content.webp'
+                                                                  : InspirationList[index * 2]['inspirationId'] == 3
+                                                                      ? 'assets/images/video_play.webp'
+                                                                      : ''),
+                                                              fit: BoxFit.cover)),
+                                                      child: InspirationList[
+                                                                      index * 2]
+                                                                  [
                                                                   'inspirationId'] ==
                                                               2
-                                                          ? const RadialGradient(colors: [
-                                                              Color(0xFFE9A594),
-                                                              Color(0xFFEEBEB2)
-                                                            ])
-                                                          : const RadialGradient(colors: [
-                                                              Color(0xFFD9D9D9),
-                                                              Color(0xFFD9D9D9)
-                                                            ]),
-                                                      shape: BoxShape.circle,
-                                                      image: DecorationImage(
-                                                          image: AssetImage(InspirationList[
-                                                                          index *
-                                                                              2]
-                                                                      ['inspirationId'] ==
-                                                                  4
-                                                              ? 'assets/images/distraction content.webp'
-                                                              : InspirationList[index * 2]['inspirationId'] == 3
-                                                                  ? 'assets/images/video_play.webp'
-                                                                  : ''),
-                                                          fit: BoxFit.cover)),
-                                                  child: InspirationList[
-                                                                  index * 2][
-                                                              'inspirationId'] ==
-                                                          2
-                                                      ? Container(
-                                                          padding: EdgeInsets.symmetric(
-                                                              horizontal: AppDimensions
+                                                          ? Container(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          AppDimensions.height10(context) *
+                                                                              1.7),
+                                                              height: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  1.7),
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              6.3,
-                                                          child: Center(
-                                                              child: Text(
-                                                            InspirationList[
-                                                                    index * 2]
-                                                                ['description'],
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            maxLines: 2,
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1.6,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: const Color(
-                                                                    0xFFFFFFFF)),
-                                                          )),
-                                                        )
-                                                      : InspirationList[index *
-                                                                      2][
-                                                                  'inspirationId'] ==
-                                                              1
-                                                          ? ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius.circular(
-                                                                      AppDimensions.height10(
-                                                                              context) *
-                                                                          18),
-                                                              child:
-                                                                  FadeInImage(
-                                                                placeholder:
-                                                                    const AssetImage(
-                                                                        'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
-                                                                image: NetworkImage(
-                                                                    InspirationList[index * 2]
-                                                                            [
-                                                                            'file']
-                                                                        .toString()),
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                                placeholderFit:
-                                                                    BoxFit
-                                                                        .contain,
-                                                              ),
+                                                                  6.3,
+                                                              child: Center(
+                                                                  child: Text(
+                                                                InspirationList[
+                                                                        index *
+                                                                            2][
+                                                                    'description'],
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                maxLines: 2,
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        AppDimensions.font10(context) *
+                                                                            1.6,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: const Color(
+                                                                        0xFFFFFFFF)),
+                                                              )),
                                                             )
-                                                          : Container(),
-                                                ),
-                                              ),
-                                              Container(
-                                                width: AppDimensions.width10(
-                                                        context) *
-                                                    16.7,
-                                                //height: AppDimensions.height10(context) * 1.9,
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        0.5),
-                                                child: Center(
-                                                    child: Text(
-                                                  InspirationList[index * 2][
-                                                              'inspirationId'] ==
-                                                          1
-                                                      ? 'Image'
-                                                      : InspirationList[index *
-                                                                      2][
-                                                                  'inspirationId'] ==
-                                                              2
-                                                          ? 'Note'
                                                           : InspirationList[
                                                                           index *
                                                                               2]
                                                                       [
                                                                       'inspirationId'] ==
-                                                                  3
-                                                              ? 'Video'
-                                                              : 'Content',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
+                                                                  1
+                                                              ? ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius.circular(
+                                                                          AppDimensions.height10(context) *
+                                                                              18),
+                                                                  child:
+                                                                      FadeInImage(
+                                                                    placeholder:
+                                                                        const AssetImage(
+                                                                            'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                                                    image: NetworkImage(InspirationList[index *
+                                                                                2]
+                                                                            [
+                                                                            'file']
+                                                                        .toString()),
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                    placeholderFit:
+                                                                        BoxFit
+                                                                            .contain,
+                                                                  ),
+                                                                )
+                                                              : Container(),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    width:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            16.7,
+                                                    //height: AppDimensions.height10(context) * 1.9,
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            0.5),
+                                                    child: Center(
+                                                        child: Text(
+                                                      InspirationList[index * 2]
+                                                                  [
+                                                                  'inspirationId'] ==
+                                                              1
+                                                          ? 'Image'
+                                                          : InspirationList[
+                                                                          index *
+                                                                              2]
+                                                                      [
+                                                                      'inspirationId'] ==
+                                                                  2
+                                                              ? 'Note'
+                                                              : InspirationList[
+                                                                          index *
+                                                                              2]['inspirationId'] ==
+                                                                      3
+                                                                  ? 'Video'
+                                                                  : 'Content',
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .font10(
+                                                                      context) *
                                                               1.6,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: const Color(
-                                                          0xFFFFFFFF)),
-                                                )),
-                                              ),
-                                              SizedBox(
-                                                width: AppDimensions.width10(
-                                                        context) *
-                                                    15.7,
-                                                child: Center(
-                                                    child: Text(
-                                                  InspirationList[index * 2]
-                                                      ['title'],
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  textAlign: TextAlign.center,
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          color: const Color(
+                                                              0xFFFFFFFF)),
+                                                    )),
+                                                  ),
+                                                  SizedBox(
+                                                    width:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            15.7,
+                                                    child: Center(
+                                                        child: Text(
+                                                      InspirationList[index * 2]
+                                                          ['title'],
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      maxLines: 2,
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .font10(
+                                                                      context) *
                                                               1.8,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: const Color(
-                                                          0xFFFFFFFF)),
-                                                )),
-                                              )
-                                            ]),
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: const Color(
+                                                              0xFFFFFFFF)),
+                                                    )),
+                                                  )
+                                                ]),
                                           );
                                           // Replace YourItemWidget with the widget for each item
                                         },
@@ -609,7 +631,11 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               2, // Half of the items, rounded down
                                           itemBuilder: (context, index) {
                                             return Container(
-                                              margin: EdgeInsets.symmetric(vertical: AppDimensions.height10(context)*1.5),
+                                              margin: EdgeInsets.symmetric(
+                                                  vertical:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.5),
                                               width: AppDimensions.width10(
                                                       context) *
                                                   17.6,
@@ -617,201 +643,208 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               //         context) *
                                               //     30,
                                               child: Column(
-                                                  mainAxisSize: MainAxisSize.min,
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
                                                   children: [
-                                                AnimatedScaleButton(
-                                                  onTap: () async {
-                                                    final SharedPreferences
-                                                        prefs = await _prefs;
+                                                    AnimatedScaleButton(
+                                                      onTap: () async {
+                                                        final SharedPreferences
+                                                            prefs =
+                                                            await _prefs;
 
-                                                    var hurdleId = prefs.setInt(
-                                                        'userInspirationId',
-                                                        InspirationList[
-                                                                index * 2 + 1]
-                                                            ['id']);
-                                                    Navigator.push(
-                                                        context,
-                                                        FadePageRoute(
-                                                            page:
-                                                                const record_inspiration()));
-                                                  },
-                                                  child: Container(
-                                                    width:
-                                                    !smallScreen? AppDimensions.width10(
-                                                        context) *
-                                                        19.313: AppDimensions.width10(
-                                                        context) *
-                                                        17.6,
-                                                    height:
-                                                    !smallScreen? AppDimensions.width10(
-                                                        context) *
-                                                        19.313: AppDimensions.width10(
-                                                        context) *
-                                                        17.6,
-                                                    decoration: BoxDecoration(
-
-                                                        gradient: InspirationList[
+                                                        var hurdleId = prefs.setInt(
+                                                            'userInspirationId',
+                                                            InspirationList[
+                                                                index * 2 +
+                                                                    1]['id']);
+                                                        Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    const record_inspiration()));
+                                                      },
+                                                      child: Container(
+                                                        width: !smallScreen
+                                                            ? AppDimensions
+                                                                    .width10(
+                                                                        context) *
+                                                                19.313
+                                                            : AppDimensions
+                                                                    .width10(
+                                                                        context) *
+                                                                17.6,
+                                                        height: !smallScreen
+                                                            ? AppDimensions
+                                                                    .width10(
+                                                                        context) *
+                                                                19.313
+                                                            : AppDimensions
+                                                                    .width10(
+                                                                        context) *
+                                                                17.6,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                                gradient: InspirationList[index * 2 +
+                                                                                1]
+                                                                            [
+                                                                            'inspirationId'] ==
+                                                                        2
+                                                                    ? const RadialGradient(
+                                                                        colors: [
+                                                                            Color(0xFFE9A594),
+                                                                            Color(0xFFEEBEB2)
+                                                                          ])
+                                                                    : const RadialGradient(
+                                                                        colors: [
+                                                                            Color(0xFFD9D9D9),
+                                                                            Color(0xFFD9D9D9)
+                                                                          ]),
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                image: DecorationImage(
+                                                                    image: AssetImage(InspirationList[index * 2 + 1]['inspirationId'] == 4
+                                                                        ? 'assets/images/distraction content.webp'
+                                                                        : InspirationList[index * 2 + 1]['inspirationId'] == 3
+                                                                            ? 'assets/images/video_play.webp'
+                                                                            : ''),
+                                                                    fit: BoxFit.contain)),
+                                                        child: InspirationList[
                                                                         index * 2 +
                                                                             1][
                                                                     'inspirationId'] ==
                                                                 2
-                                                            ? const RadialGradient(
-                                                                colors: [
-                                                                    Color(
-                                                                        0xFFE9A594),
-                                                                    Color(
-                                                                        0xFFEEBEB2)
-                                                                  ])
-                                                            : const RadialGradient(
-                                                                colors: [
-                                                                    Color(
-                                                                        0xFFD9D9D9),
-                                                                    Color(
-                                                                        0xFFD9D9D9)
-                                                                  ]),
-                                                        shape: BoxShape.circle,
-                                                        image: DecorationImage(
-                                                            image: AssetImage(InspirationList[index * 2 + 1]['inspirationId'] == 4
-                                                                ? 'assets/images/distraction content.webp'
-                                                                : InspirationList[index * 2 + 1]['inspirationId'] == 3
-                                                                    ? 'assets/images/video_play.webp'
-                                                                    : ''),
-                                                            fit: BoxFit.contain)),
-                                                    child: InspirationList[
-                                                                    index * 2 +
-                                                                        1][
-                                                                'inspirationId'] ==
-                                                            2
-                                                        ? Container(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
+                                                            ? Container(
+                                                                padding: EdgeInsets.symmetric(
                                                                     horizontal:
                                                                         AppDimensions.height10(context) *
                                                                             1.7),
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                6.3,
-                                                            child: Center(
-                                                                child: Text(
-                                                              InspirationList[
-                                                                      index * 2 +
-                                                                          1][
-                                                                  'description'],
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              maxLines: 2,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          1.6,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: const Color(
-                                                                      0xFFFFFFFF)),
-                                                            )),
-                                                          )
-                                                        : InspirationList[index *
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    6.3,
+                                                                child: Center(
+                                                                    child: Text(
+                                                                  InspirationList[
+                                                                          index * 2 +
+                                                                              1]
+                                                                      [
+                                                                      'description'],
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  maxLines: 2,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          AppDimensions.font10(context) *
+                                                                              1.6,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: const Color(
+                                                                          0xFFFFFFFF)),
+                                                                )),
+                                                              )
+                                                            : InspirationList[index *
+                                                                            2 +
+                                                                        1]['inspirationId'] ==
+                                                                    1
+                                                                ? ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(AppDimensions.height10(context) *
+                                                                            18),
+                                                                    child:
+                                                                        FadeInImage(
+                                                                      placeholder:
+                                                                          const AssetImage(
+                                                                              'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                                                      image: NetworkImage(InspirationList[index * 2 + 1]
+                                                                              [
+                                                                              'file']
+                                                                          .toString()),
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                      placeholderFit:
+                                                                          BoxFit
+                                                                              .contain,
+                                                                    ),
+                                                                  )
+                                                                : Container(),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          16.7,
+                                                      //height: AppDimensions.height10(context) * 1.9,
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.5),
+                                                      child: Center(
+                                                          child: Text(
+                                                        InspirationList[index *
                                                                             2 +
                                                                         1][
                                                                     'inspirationId'] ==
                                                                 1
-                                                            ? ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius.circular(
-                                                                        AppDimensions.height10(context) *
-                                                                            18),
-                                                                child:
-                                                                    FadeInImage(
-                                                                  placeholder:
-                                                                      const AssetImage(
-                                                                          'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
-                                                                  image: NetworkImage(InspirationList[index *
-                                                                              2 +
-                                                                          1]['file']
-                                                                      .toString()),
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                  placeholderFit:
-                                                                      BoxFit
-                                                                          .contain,
-                                                                ),
-                                                              )
-                                                            : Container(),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      16.7,
-                                                  //height: AppDimensions.height10(context) * 1.9,
-                                                  margin: EdgeInsets.only(
-                                                      top: AppDimensions
+                                                            ? 'Image'
+                                                            : InspirationList[index *
+                                                                                2 +
+                                                                            1][
+                                                                        'inspirationId'] ==
+                                                                    2
+                                                                ? 'Note'
+                                                                : InspirationList[index *
+                                                                                2 +
+                                                                            1]['inspirationId'] ==
+                                                                        3
+                                                                    ? 'Video'
+                                                                    : 'Content',
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                1.6,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color: const Color(
+                                                                0xFFFFFFFF)),
+                                                      )),
+                                                    ),
+                                                    SizedBox(
+                                                      width: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          0.5),
-                                                  child: Center(
-                                                      child: Text(
-                                                    InspirationList[index * 2 +
-                                                                    1][
-                                                                'inspirationId'] ==
-                                                            1
-                                                        ? 'Image'
-                                                        : InspirationList[index *
-                                                                            2 +
-                                                                        1][
-                                                                    'inspirationId'] ==
-                                                                2
-                                                            ? 'Note'
-                                                            : InspirationList[index *
-                                                                            2 +
-                                                                        1]['inspirationId'] ==
-                                                                    3
-                                                                ? 'Video'
-                                                                : 'Content',
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .font10(
-                                                                    context) *
-                                                            1.6,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color: const Color(
-                                                            0xFFFFFFFF)),
-                                                  )),
-                                                ),
-                                                SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      15.7,
-                                                  child: Center(
-                                                      child: Text(
-                                                    InspirationList[
-                                                        index * 2 + 1]['title'],
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 2,
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .font10(
-                                                                    context) *
-                                                            1.8,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFFFFFFFF)),
-                                                  )),
-                                                )
-                                              ]),
+                                                          15.7,
+                                                      child: Center(
+                                                          child: Text(
+                                                        InspirationList[
+                                                                index * 2 + 1]
+                                                            ['title'],
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        maxLines: 2,
+                                                        style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                1.8,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: const Color(
+                                                                0xFFFFFFFF)),
+                                                      )),
+                                                    )
+                                                  ]),
                                             );
                                           },
                                         ),
@@ -820,7 +853,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   ],
                                 ),
                               ),
-
                       ],
                     ))
                 : const Center(
@@ -840,7 +872,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
             child: Container(
               // color: Colors.blue,
               padding: EdgeInsets.only(
-
                   left: AppDimensions.width10(context) * 2.2,
                   right: AppDimensions.width10(context) * 2.2),
               height: AppDimensions.height10(context) * 7.0,
@@ -885,7 +916,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     top: Radius.circular(16),
                                   ),
                                 ),
-
                                 builder: (context) {
                                   return GestureDetector(
                                     onTap: () => Navigator.of(context).pop(),
@@ -914,7 +944,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 context) *
                                                             41.4,
                                                     decoration: BoxDecoration(
-
                                                         border: Border(
                                                             bottom: BorderSide(
                                                                 width: AppDimensions
@@ -933,7 +962,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 context);
                                                           },
                                                           child: Container(
-
                                                             margin: EdgeInsets.only(
                                                                 right: AppDimensions
                                                                         .height10(
@@ -942,9 +970,16 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                             child: Text(
                                                               'Cancel',
                                                               style: TextStyle(
-                                                                  fontSize: AppDimensions.font10(context) * 1.9,
-                                                                  height: AppDimensions.height10(context) * 0.1,
-                                                                  color: const Color(0xFF2F80ED)),
+                                                                  fontSize:
+                                                                      AppDimensions.font10(
+                                                                              context) *
+                                                                          1.9,
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.1,
+                                                                  color: const Color(
+                                                                      0xFF2F80ED)),
                                                             ),
                                                           ),
                                                         ),
@@ -968,18 +1003,26 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 context);
                                                           },
                                                           child: SizedBox(
-
                                                             child: Text(
                                                               'Done',
                                                               style: TextStyle(
-                                                                  fontSize: AppDimensions.font10(context) * 1.9,
-                                                                  height: AppDimensions.height10(context) * 0.1,
-                                                                  color: const Color(0xFF2F80ED)),
+                                                                  fontSize:
+                                                                      AppDimensions.font10(
+                                                                              context) *
+                                                                          1.9,
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.1,
+                                                                  color: const Color(
+                                                                      0xFF2F80ED)),
                                                             ),
                                                           ),
                                                         ),
-                                                        SizedBox(width: AppDimensions.width10(context),),
-
+                                                        SizedBox(
+                                                          width: AppDimensions
+                                                              .width10(context),
+                                                        ),
                                                       ],
                                                     ),
                                                   ),
@@ -1207,7 +1250,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 context);
                                                           },
                                                           child: Container(
-
                                                             margin: EdgeInsets.only(
                                                                 right: AppDimensions
                                                                         .height10(
@@ -1215,10 +1257,17 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                     2.0),
                                                             child: Text(
                                                               'Cancel',
-                                                                style: TextStyle(
-                                                                    fontSize: AppDimensions.font10(context) * 1.9,
-                                                                    height: AppDimensions.height10(context) * 0.1,
-                                                                    color: const Color(0xFF2F80ED)),
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.font10(
+                                                                              context) *
+                                                                          1.9,
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.1,
+                                                                  color: const Color(
+                                                                      0xFF2F80ED)),
                                                             ),
                                                           ),
                                                         ),
@@ -1252,14 +1301,23 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                             child: Text(
                                                               'Done',
                                                               style: TextStyle(
-                                                                  fontSize: AppDimensions.font10(context) * 1.9,
-                                                                  height: AppDimensions.height10(context) * 0.1,
-                                                                  color: const Color(0xFF2F80ED)),
+                                                                  fontSize:
+                                                                      AppDimensions.font10(
+                                                                              context) *
+                                                                          1.9,
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.1,
+                                                                  color: const Color(
+                                                                      0xFF2F80ED)),
                                                             ),
                                                           ),
                                                         ),
-                                                        SizedBox(width: AppDimensions.width10(context),),
-
+                                                        SizedBox(
+                                                          width: AppDimensions
+                                                              .width10(context),
+                                                        ),
                                                       ],
                                                     ),
                                                   ),
@@ -1487,7 +1545,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 context);
                                                           },
                                                           child: Container(
-
                                                             margin: EdgeInsets.only(
                                                                 right: AppDimensions
                                                                         .height10(
@@ -1496,9 +1553,16 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                             child: Text(
                                                               'Cancel',
                                                               style: TextStyle(
-                                                                  fontSize: AppDimensions.font10(context) * 1.9,
-                                                                  height: AppDimensions.height10(context) * 0.1,
-                                                                  color: const Color(0xFF2F80ED)),
+                                                                  fontSize:
+                                                                      AppDimensions.font10(
+                                                                              context) *
+                                                                          1.9,
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.1,
+                                                                  color: const Color(
+                                                                      0xFF2F80ED)),
                                                             ),
                                                           ),
                                                         ),
@@ -1518,18 +1582,26 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 context);
                                                           },
                                                           child: SizedBox(
-
                                                             child: Text(
                                                               'Done',
                                                               style: TextStyle(
-                                                                  fontSize: AppDimensions.font10(context) * 1.9,
-                                                                  height: AppDimensions.height10(context) * 0.1,
-                                                                  color: const Color(0xFF2F80ED)),
+                                                                  fontSize:
+                                                                      AppDimensions.font10(
+                                                                              context) *
+                                                                          1.9,
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.1,
+                                                                  color: const Color(
+                                                                      0xFF2F80ED)),
                                                             ),
                                                           ),
                                                         ),
-                                                        SizedBox(width: AppDimensions.width10(context),),
-
+                                                        SizedBox(
+                                                          width: AppDimensions
+                                                              .width10(context),
+                                                        ),
                                                       ],
                                                     ),
                                                   ),
@@ -1804,7 +1876,6 @@ _showBottomSheet(BuildContext context) {
                           ),
                         ),
                         SizedBox(
-
                           child: Text(
                             'Done',
                             style: TextStyle(
@@ -1813,8 +1884,9 @@ _showBottomSheet(BuildContext context) {
                                 color: const Color(0xFF2F80ED)),
                           ),
                         ),
-                        SizedBox(width: AppDimensions.width10(context),),
-
+                        SizedBox(
+                          width: AppDimensions.width10(context),
+                        ),
                       ],
                     ),
                   ),
@@ -1971,8 +2043,9 @@ _showTagSheet(BuildContext context) {
                                 color: const Color(0xFF2F80ED)),
                           ),
                         ),
-                        SizedBox(width: AppDimensions.width10(context),),
-
+                        SizedBox(
+                          width: AppDimensions.width10(context),
+                        ),
                       ],
                     ),
                   ),
@@ -2166,7 +2239,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.8,
                     fit: BoxFit.contain,
                   )),
@@ -2174,25 +2247,23 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
           ],
         ),
         extendBodyBehindAppBar: true,
-        
         bottomNavigationBar: showContainer
             ? Container(
-          margin:const EdgeInsets.all(10),
-              child: updateBox(
-              headText: widget.is_Updated ? 'Updated' : 'SAVED',
-              bodyText: inspirationDetails['inspiration']
-              ['title'],
-              edit: false,
-              onTap1: () {
-                Navigator.push(
-                  context,
-                  FadePageRoute(page: const view_details()),
-                );
-                stopTimer();
-              },
-              FadeFunction: () {},
-              functionText: 'View'),
-            )
+                margin: const EdgeInsets.all(10),
+                child: updateBox(
+                    headText: widget.is_Updated ? 'Updated' : 'SAVED',
+                    bodyText: inspirationDetails['inspiration']['title'],
+                    edit: false,
+                    onTap1: () {
+                      Navigator.push(
+                        context,
+                        FadePageRoute(page: const view_details()),
+                      );
+                      stopTimer();
+                    },
+                    FadeFunction: () {},
+                    functionText: 'View'),
+              )
             : Container(),
         body: Container(
           width: double.infinity,
@@ -2223,7 +2294,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                 height: AppDimensions.height10(context) * 8.1,
                                 child: Center(
                                   child: GradientText(
-                                    'My current\ninspirations',
+                                    AppText().inspirationTitle,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       height: 1.5,
@@ -2339,8 +2410,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                 },
                                 child: Container(
                                   width: AppDimensions.width10(context) * 17.6,
-                                  height:
-                                      AppDimensions.width10(context) * 17.6,
+                                  height: AppDimensions.width10(context) * 17.6,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       gradient:
@@ -2475,7 +2545,6 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                           ],
                         ),
                       ),
-
 
                       // GestureDetector(
                       //   onPanUpdate: (details) {

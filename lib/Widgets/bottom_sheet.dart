@@ -5,6 +5,7 @@ import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // import 'package:flutter_ui/utilities/app_contants.dart';
@@ -80,12 +81,12 @@ int index = 0;
 int catId = 1;
 //late int goalId;
 
- bottom_sheet(context) {
+bottom_sheet(context) {
   final goalName = TextEditingController();
   final _formkey = GlobalKey<FormState>();
   bool enable = false;
 
- return showModalBottomSheet(
+  return showModalBottomSheet(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.white,
@@ -95,7 +96,7 @@ int catId = 1;
     )),
     builder: (context) {
       return GestureDetector(
-        onTap: (){
+        onTap: () {
           FocusScope.of(context).unfocus();
         },
         child: StatefulBuilder(
@@ -121,7 +122,7 @@ int catId = 1;
 
                       // padding: const EdgeInsets.only(top: 8.0, bottom: 8),
                       child: Text(
-                        'Create a new goal',
+                        AppText().createNewGoal2,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: const Color(0xFF464646),
@@ -186,7 +187,8 @@ int catId = 1;
                                   iconStyleData: IconStyleData(
                                       iconSize:
                                           AppDimensions.height10(context) * 4.0,
-                                      iconEnabledColor: const Color(0xFFFA9934)),
+                                      iconEnabledColor:
+                                          const Color(0xFFFA9934)),
 
                                   // elevation: 16,
 
@@ -267,7 +269,7 @@ int catId = 1;
                                   borderRadius: BorderRadius.circular(18)),
                               focusedBorder: const OutlineInputBorder(
                                   borderSide:
-                                  BorderSide(color: Colors.transparent)),
+                                      BorderSide(color: Colors.transparent)),
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
                                   borderSide: const BorderSide(
@@ -295,7 +297,7 @@ int catId = 1;
                       padding: EdgeInsets.only(
                           left: AppDimensions.width10(context) * 4.0),
                       child: const Row(
-                        children:  [
+                        children: [
                           Center(
                             child: Text(
                               "Character count:",
@@ -377,7 +379,7 @@ int catId = 1;
                             }
                           },
                           child: Text(
-                            'Save',
+                            AppText().saveButton,
                             style: TextStyle(
                               fontFamily: "Laila",
                               fontWeight: FontWeight.w600,
@@ -394,13 +396,14 @@ int catId = 1;
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(
                                 width: 2,
-                                color: const Color.fromARGB(209, 250, 154, 52))),
+                                color:
+                                    const Color.fromARGB(209, 250, 154, 52))),
                         child: TextButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
                             child: Text(
-                              'Cancel',
+                              AppText().cancelButton,
                               style: TextStyle(
                                 fontFamily: "Laila",
                                 fontWeight: FontWeight.w600,
@@ -408,7 +411,9 @@ int catId = 1;
                                 fontSize: AppDimensions.font10(context) * 1.6,
                               ),
                             ))),
-                    SizedBox(height: AppDimensions.height10(context)*2,)
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 2,
+                    )
                   ],
                 ),
               ),

@@ -11,6 +11,7 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../HomeScreen/HomeScreen.dart';
@@ -164,7 +165,7 @@ class _ActivateStarState extends State<ActivateStar> {
                       // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
                       child: Center(
                         child: GradientText(
-                          "Activate your star ",
+                          AppText().activateStar,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
@@ -190,7 +191,7 @@ class _ActivateStarState extends State<ActivateStar> {
                             Container(
                               child: Center(
                                 child: Text(
-                                  "I desire to grow and improve my identity. By activating my star, I will be able to evaluate my chosen practice every 20 active days and evaluate my active goal progress monthly. ",
+                                  AppText().activateStarBody,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
@@ -235,7 +236,8 @@ class _ActivateStarState extends State<ActivateStar> {
                                                         ? "assets/images/medBlue_gradient.webp"
                                                         : '$color' == '6'
                                                             ? "assets/images/Blue_gradient.webp"
-                                                            : 'assets/images/orange_moon.webp'), fit: BoxFit.cover)),
+                                                            : 'assets/images/orange_moon.webp'),
+                                    fit: BoxFit.cover)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -684,7 +686,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                 Container(
                                   child: Center(
                                     child: Text(
-                                      "To begin your journey\npress and hold here.  ",
+                                      AppText().activateStarFoot,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w600,
@@ -730,8 +732,8 @@ void dashboard_sheet(context) {
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
           width: AppDimensions.width10(context) * 40,
-         // height: AppDimensions.height10(context) * 62.3,
-         padding: EdgeInsets.only(bottom: AppDimensions.height10(context)*3),
+          // height: AppDimensions.height10(context) * 62.3,
+          padding: EdgeInsets.only(bottom: AppDimensions.height10(context) * 3),
           margin: EdgeInsets.only(
               left: AppDimensions.width10(context) * 1.0,
               right: AppDimensions.width10(context) * 1.0,
@@ -744,7 +746,7 @@ void dashboard_sheet(context) {
             // alignment: AlignmentDirectional.topCenter,
             //  mainAxisAlignment: MainAxisAlignment.start,
             //  crossAxisAlignment: CrossAxisAlignment.center,
-             mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 //color: Colors.amber,
@@ -796,7 +798,7 @@ void dashboard_sheet(context) {
                 ),
               ),
               Container(
-                   width: AppDimensions.width10(context) * 33.2,
+                  width: AppDimensions.width10(context) * 33.2,
                   //  height: AppDimensions.height10(context) * 10.8,
                   // color: Colors.grey,
                   margin: EdgeInsets.only(
@@ -930,8 +932,8 @@ void login_sheet(context) {
                           ]))),
               Container(
                 width: AppDimensions.width10(context) * 28.0,
-                margin: EdgeInsets.only(
-                    left: AppDimensions.width10(context) * 1.5),
+                margin:
+                    EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

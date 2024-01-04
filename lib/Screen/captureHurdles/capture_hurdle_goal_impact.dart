@@ -11,6 +11,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -215,16 +216,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                 //increasing font size through out title in hurdles by 2 px
                 //change was requested by clients
                 GradientText(
-                  'Capture Hurdle ',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: AppDimensions.font10(context) * 2.2,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
-                ),
-                GradientText(
-                  ' 1',
+                  AppText().captureHurdle1,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: AppDimensions.font10(context) * 2.2,
@@ -435,7 +427,6 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
             )
           ]),
       extendBodyBehindAppBar: true,
-
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -448,7 +439,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                 fit: BoxFit.cover)),
         child: Loading == false
             ? SingleChildScrollView(
-              child: Column(children: [
+                child: Column(children: [
                   Container(
                     // width: AppDimensions.width10(context) * 36.0,
                     margin: EdgeInsets.only(
@@ -465,7 +456,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             child: Center(
                               //Text alingment changes
                               child: GradientText(
-                                'Which goals\nare impacted?',
+                                AppText().captureHurdle1Body,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 2.8,
@@ -510,8 +501,12 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                               }
                             },
                             child: Container(
-                              width:!smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5,
-                              height: !smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5,
+                              width: !smallScreen
+                                  ? AppDimensions.width10(context) * 14.1
+                                  : AppDimensions.width10(context) * 13.5,
+                              height: !smallScreen
+                                  ? AppDimensions.width10(context) * 14.1
+                                  : AppDimensions.width10(context) * 13.5,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.width10(context) * 3,
                                   right: AppDimensions.width10(context) * 19.0,
@@ -526,8 +521,12 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                               padding: EdgeInsets.all(
                                   AppDimensions.width10(context) * 0.5),
                               child: Container(
-                                width:!smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
-                                height: !smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
+                                width: !smallScreen
+                                    ? AppDimensions.width10(context) * 13.1
+                                    : AppDimensions.width10(context) * 12.5,
+                                height: !smallScreen
+                                    ? AppDimensions.width10(context) * 13.1
+                                    : AppDimensions.width10(context) * 12.5,
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
@@ -564,7 +563,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 top: AppDimensions.height10(context) * 2.0),
                             child: Center(
                               child: Text(
-                                'Active Goals',
+                                AppText().activeGoals,
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensions.font10(context) * 2.0,
@@ -575,7 +574,9 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                                left:!smallScreen? AppDimensions.width10(context) * 5: AppDimensions.width10(context) * 6,
+                                left: !smallScreen
+                                    ? AppDimensions.width10(context) * 5
+                                    : AppDimensions.width10(context) * 6,
                                 top: AppDimensions.height10(context) * 1.0,
                                 right: AppDimensions.width10(context) * 3,
                                 bottom: AppDimensions.height10(context) * 2.0),
@@ -612,10 +613,11 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
-                                          right:
-                                          !smallScreen? AppDimensions.width10(context) *
-                                              2.5:AppDimensions.width10(context) *
-                                              3),
+                                          right: !smallScreen
+                                              ? AppDimensions.width10(context) *
+                                                  2.5
+                                              : AppDimensions.width10(context) *
+                                                  3),
                                       height: selectedIndices.contains(index) ||
                                               selectAll == true
                                           ? AppDimensions.height10(context) *
@@ -701,7 +703,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 left: AppDimensions.width10(context) * 2.8),
                             child: Center(
                               child: Text(
-                                'Inactive Goals',
+                                AppText().inActiveGoals,
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensions.font10(context) * 2.0,
@@ -712,7 +714,9 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                                left:!smallScreen? AppDimensions.width10(context) * 5: AppDimensions.width10(context) * 6,
+                                left: !smallScreen
+                                    ? AppDimensions.width10(context) * 5
+                                    : AppDimensions.width10(context) * 6,
                                 top: AppDimensions.height10(context) * 1.0,
                                 right: AppDimensions.width10(context) * 3,
                                 bottom: AppDimensions.height10(context) * 2.0),
@@ -750,10 +754,11 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
-                                          right:
-                                          !smallScreen? AppDimensions.width10(context) *
-                                              2.5:AppDimensions.width10(context) *
-                                              3),
+                                          right: !smallScreen
+                                              ? AppDimensions.width10(context) *
+                                                  2.5
+                                              : AppDimensions.width10(context) *
+                                                  3),
                                       height: selectedInActiveIndices
                                                   .contains(index) ||
                                               selectAll == true
@@ -836,17 +841,19 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           AnimatedScaleButton(
                             onTap: () async {
                               if (widget.summary == true) {
-                                if (selectAll == true || multiGoals.length != 0) {
+                                if (selectAll == true ||
+                                    multiGoals.length != 0) {
                                   if (selectAll == true) {
-                                    Hurdles()
-                                        .updateHurdle('userGoalId', allgoalsSelected);
+                                    Hurdles().updateHurdle(
+                                        'userGoalId', allgoalsSelected);
                                     Navigator.push(
                                         context,
                                         FadePageRoute(
                                             page: const summary_hurdles(
                                                 delete_hurdle: false)));
                                   } else {
-                                    Hurdles().updateHurdle('userGoalId', multiGoals);
+                                    Hurdles()
+                                        .updateHurdle('userGoalId', multiGoals);
                                     Navigator.push(
                                         context,
                                         FadePageRoute(
@@ -856,16 +863,19 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 }
                               } else {
                                 final SharedPreferences prefs = await _prefs;
-                                var hurdleRoute = prefs.setString('HurdleRoute', 'data');
-                                if (selectAll == true || multiGoals.length != 0) {
+                                var hurdleRoute =
+                                    prefs.setString('HurdleRoute', 'data');
+                                if (selectAll == true ||
+                                    multiGoals.length != 0) {
                                   if (selectAll == true) {
-                                    saveGoalsToSharedPreferences(allgoalsSelected);
+                                    saveGoalsToSharedPreferences(
+                                        allgoalsSelected);
                                     Navigator.push(
                                       context,
                                       FadePageRoute(
                                           page: const select_hurdle(
-                                            update: false,
-                                          )),
+                                        update: false,
+                                      )),
                                     );
                                   } else {
                                     saveGoalsToSharedPreferences(multiGoals);
@@ -873,8 +883,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                       context,
                                       FadePageRoute(
                                           page: const select_hurdle(
-                                            update: false,
-                                          )),
+                                        update: false,
+                                      )),
                                     );
                                   }
                                 }
@@ -885,7 +895,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                               height: AppDimensions.height10(context) * 5.0,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.0,
-                                  bottom: AppDimensions.height10(context) * 2.6),
+                                  bottom:
+                                      AppDimensions.height10(context) * 2.6),
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -893,10 +904,12 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                   colors: [
                                     selectAll == true || multiGoals.length != 0
                                         ? const Color(0xffFCC10D)
-                                        : const Color(0xffFCC10D).withOpacity(0.5),
+                                        : const Color(0xffFCC10D)
+                                            .withOpacity(0.5),
                                     selectAll == true || multiGoals.length != 0
                                         ? const Color(0xffFDA210)
-                                        : const Color(0xffFDA210).withOpacity(0.5),
+                                        : const Color(0xffFDA210)
+                                            .withOpacity(0.5),
                                   ],
                                 ),
                                 borderRadius: BorderRadius.circular(
@@ -904,23 +917,22 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                               ),
                               child: Center(
                                   child: Text(
-                                    widget.summary
-                                        ? "Update Summary"
-                                        : selectAll == true
+                                widget.summary
+                                    ? "Update Summary"
+                                    : selectAll == true
                                         ? '(${allgoalsSelected.length}/${goals.length} goals selected) Next'
                                         : '(${multiGoals.length}/${goals.length} goals selected) Next',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.font10(context) * 1.6,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white),
-                                  )),
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.6,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white),
+                              )),
                             ),
                           ),
-
                         ]),
                   ),
-
 
                   // Container(
                   //   width: AppDimensions.width10(context) * 17.0,
@@ -933,7 +945,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                   //       color: const Color(0xFFFFFFFF).withOpacity(0.3)),
                   // ),
                 ]),
-            )
+              )
             : const Center(
                 child: SpinKitFadingCircle(
                   color: Color(0xFFB1B8FF),

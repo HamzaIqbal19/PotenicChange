@@ -14,6 +14,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -328,7 +329,7 @@ class _practice_summaryState extends State<practice_summary> {
                             top: AppDimensions.height10(context) * 6.0),
                         child: Center(
                           child: Text(
-                            'Your Practice Summary',
+                            AppText().pracRecSum,
                             style: TextStyle(
                                 fontSize: AppDimensions.font10(context) * 2.8,
                                 fontWeight: FontWeight.w700,
@@ -345,7 +346,7 @@ class _practice_summaryState extends State<practice_summary> {
                             top: AppDimensions.height10(context) * 0.8),
                         child: Center(
                           child: Text(
-                            'Well done for recording\nyour practice!',
+                            AppText().pracRecSumBody,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 height: AppDimensions.height10(context) * 0.12,
@@ -1251,7 +1252,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                       context) *
                                                   0.8),
                                           child: Text(
-                                            'Delete',
+                                            AppText().deleteText,
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: AppDimensions.font10(
@@ -1304,7 +1305,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     ),
                                     child: Center(
                                         child: Text(
-                                      'Save Practice',
+                                      AppText().savePrac,
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize:

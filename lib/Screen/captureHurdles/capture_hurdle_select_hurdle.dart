@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -157,30 +158,27 @@ class _select_hurdleState extends State<select_hurdle> {
         extendBody: true,
         bottomNavigationBar: Container(
           padding: EdgeInsets.symmetric(
-              horizontal: AppDimensions.width10(context)*8
-          ),
+              horizontal: AppDimensions.width10(context) * 8),
           child: AnimatedScaleButton(
             onTap: () async {
               if (selectBox != -1) {
                 if (widget.update == false) {
-                  final SharedPreferences prefs =
-                  await _prefs;
+                  final SharedPreferences prefs = await _prefs;
 
-                  await prefs.setInt(
-                      'hurdle_selected', selectBox);
+                  await prefs.setInt('hurdle_selected', selectBox);
                   Navigator.push(
                       context,
                       FadePageRoute(
                           page: const hurdle_name(
-                            update: false,
-                          )));
+                        update: false,
+                      )));
                 } else {
                   Navigator.push(
                     context,
                     FadePageRoute(
                         page: const summary_hurdles(
-                          delete_hurdle: true,
-                        )),
+                      delete_hurdle: true,
+                    )),
                   );
                 }
               }
@@ -197,26 +195,23 @@ class _select_hurdleState extends State<select_hurdle> {
                   end: Alignment.bottomCenter,
                   colors: selectBox != -1
                       ? [
-                    const Color(0xffFCC10D),
-                    const Color(0xffFDA210),
-                  ]
+                          const Color(0xffFCC10D),
+                          const Color(0xffFDA210),
+                        ]
                       : [
-                    const Color(0xffFCC10D)
-                        .withOpacity(0.5),
-                    const Color(0xffFDA210)
-                        .withOpacity(0.5),
-                  ],
+                          const Color(0xffFCC10D).withOpacity(0.5),
+                          const Color(0xffFDA210).withOpacity(0.5),
+                        ],
                 ),
                 borderRadius: BorderRadius.circular(
                     AppDimensions.height10(context) * 5.0),
               ),
               child: Center(
                 child: Text(
-                  widget.update ? 'Update summary' : 'Next',
+                  widget.update ? AppText().updateSumm : AppText().nextButton,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize:
-                      AppDimensions.font10(context) * 1.6,
+                      fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w600,
                       color: selectBox != -1
                           ? Colors.white
@@ -257,16 +252,7 @@ class _select_hurdleState extends State<select_hurdle> {
               child: Row(
                 children: [
                   GradientText(
-                    'Capture Hurdle ',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 2.2,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
-                  ),
-                  GradientText(
-                    ' 2',
+                    AppText().captureHurdle2,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: AppDimensions.font10(context) * 2.2,
@@ -506,7 +492,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                 child: Center(
                                   //slight width issue
                                   child: GradientText(
-                                    'What or who has\ntriggered your hurdle?',
+                                    AppText().captureHurdle2Body,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       height: AppDimensions.height10(context) *
@@ -528,8 +514,9 @@ class _select_hurdleState extends State<select_hurdle> {
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 3.9),
                                 padding: EdgeInsets.symmetric(
-                                    horizontal:
-                                      !smallScreen?  AppDimensions.width10(context) * 3.6:AppDimensions.width10(context) * 4.6),
+                                    horizontal: !smallScreen
+                                        ? AppDimensions.width10(context) * 3.6
+                                        : AppDimensions.width10(context) * 4.6),
                                 child: GridView.builder(
                                     shrinkWrap: true,
                                     padding: EdgeInsets.zero,
@@ -574,11 +561,35 @@ class _select_hurdleState extends State<select_hurdle> {
                                           },
                                           child: Container(
                                             height: selectBox == index
-                                                ? !smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5
-                                                : !smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
+                                                ? !smallScreen
+                                                    ? AppDimensions.width10(
+                                                            context) *
+                                                        14.1
+                                                    : AppDimensions.width10(
+                                                            context) *
+                                                        13.5
+                                                : !smallScreen
+                                                    ? AppDimensions.width10(
+                                                            context) *
+                                                        13.1
+                                                    : AppDimensions.width10(
+                                                            context) *
+                                                        12.5,
                                             width: selectBox == index
-                                                ? !smallScreen?AppDimensions.width10(context) * 14.1: AppDimensions.width10(context) * 13.5
-                                                : !smallScreen?AppDimensions.width10(context) * 13.1: AppDimensions.width10(context) * 12.5,
+                                                ? !smallScreen
+                                                    ? AppDimensions.width10(
+                                                            context) *
+                                                        14.1
+                                                    : AppDimensions.width10(
+                                                            context) *
+                                                        13.5
+                                                : !smallScreen
+                                                    ? AppDimensions.width10(
+                                                            context) *
+                                                        13.1
+                                                    : AppDimensions.width10(
+                                                            context) *
+                                                        12.5,
                                             padding: EdgeInsets.all(
                                                 AppDimensions.width10(context)),
                                             decoration: BoxDecoration(
@@ -649,7 +660,6 @@ class _select_hurdleState extends State<select_hurdle> {
                               ),
                             ]),
                       ),
-
                     ],
                   )
                 : const Center(

@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Practice.dart';
@@ -357,8 +358,8 @@ class _PracticeNameState extends State<PracticeName> {
                     child: Center(
                       child: Text(
                         widget.comingFromEditScreen
-                            ? "View and edit mode"
-                            : "Practice Creation 2/3",
+                            ? AppText().viewAndEdit
+                            : AppText().createPrac2,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: widget.comingFromEditScreen
@@ -391,9 +392,7 @@ class _PracticeNameState extends State<PracticeName> {
                   SizedBox(
                     height: AppDimensions.height10(context),
                   ),
-                  goalAndPractice(context,
-                      color,2,
-                      practice.text.toString()),
+                  goalAndPractice(context, color, 2, practice.text.toString()),
                   // Row(
                   //   mainAxisAlignment: MainAxisAlignment.center,
                   //   crossAxisAlignment: CrossAxisAlignment.center,
@@ -488,7 +487,7 @@ class _PracticeNameState extends State<PracticeName> {
                   Container(
                     child: Center(
                       child: Text(
-                        "Practice Name",
+                        AppText().practiceName,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
@@ -508,7 +507,7 @@ class _PracticeNameState extends State<PracticeName> {
                     width: AppDimensions.width10(context) * 28.4,
                     child: Center(
                       child: Text(
-                        "Enter the name of your practice",
+                        AppText().practiceNameSub,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.font10(context) * 1.8,
@@ -608,7 +607,7 @@ class _PracticeNameState extends State<PracticeName> {
                         right: AppDimensions.width10(context) * 1.3),
                     child: Center(
                       child: Text(
-                        "You can change the name of your practice later by going into your Dashboard.  ",
+                        AppText().practiceNameBody,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
@@ -816,17 +815,17 @@ class _PracticeNameState extends State<PracticeName> {
                             //           ))
                             //       :
 
-                            Container(
-                                // color: Colors.blue,
-                                width: AppDimensions.width10(context) * 5.0,
-                                height: AppDimensions.height10(context) * 5.0,
-                                child: Image.asset(
-                                  "assets/images/Moreactions.webp",
-                                  fit: BoxFit.contain,
-                                )),
-                            SizedBox(
-                              width: AppDimensions.width10(context) * 2.0,
-                            ),
+                            // Container(
+                            //     // color: Colors.blue,
+                            //     width: AppDimensions.width10(context) * 5.0,
+                            //     height: AppDimensions.height10(context) * 5.0,
+                            //     child: Image.asset(
+                            //       "assets/images/Moreactions.webp",
+                            //       fit: BoxFit.contain,
+                            //     )),
+                            // SizedBox(
+                            //   width: AppDimensions.width10(context) * 2.0,
+                            // ),
 
                             ValueListenableBuilder<TextEditingValue>(
                                 valueListenable: practiceName,

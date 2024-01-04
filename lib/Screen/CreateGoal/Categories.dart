@@ -10,6 +10,7 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 
 import 'Loaders/categories_shimmer.dart';
 
@@ -119,7 +120,7 @@ class _CategoriesState extends State<Categories> {
                           top: AppDimensions.height10(context) * 4.2),
                       child: Center(
                         child: Text(
-                          "Star Creation 1/5",
+                          AppText().starCreate1,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
@@ -134,7 +135,7 @@ class _CategoriesState extends State<Categories> {
                     Container(
                       child: Center(
                         child: Text(
-                          "Select Your Goal Category ",
+                          AppText().selectCategory,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
@@ -150,7 +151,7 @@ class _CategoriesState extends State<Categories> {
                     Container(
                       child: Center(
                         child: Text(
-                          "Which category does your goal belong to? ",
+                          AppText().selectCategoryBody,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -230,16 +231,16 @@ class _CategoriesState extends State<Categories> {
                                             circle_color2: 0xFFFAA960,
                                             circle_border: 3.0,
                                             circle_bordercolor: 0xFFFFFFFF,
-                                            circle_height: AppDimensions
-                                                    .height10(context) *
-                                                13.4,
-                                            circle_width:
-                                                AppDimensions.width10(
+                                            circle_height:
+                                                AppDimensions.height10(
                                                         context) *
                                                     13.4,
-                                            textfont: AppDimensions.font10(
-                                                    context) *
-                                                1.6,
+                                            circle_width:
+                                                AppDimensions.width10(context) *
+                                                    13.4,
+                                            textfont:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             textcolor: 0xFFFFFFFF),
                                         childWhenDragging:
                                             Container(), // empty container when dragging
@@ -328,10 +329,9 @@ class _CategoriesState extends State<Categories> {
                                                     AppDimensions.width10(
                                                             context) *
                                                         13.4,
-                                                textfont:
-                                                    AppDimensions.font10(
-                                                            context) *
-                                                        1.6,
+                                                textfont: AppDimensions.font10(
+                                                        context) *
+                                                    1.6,
                                                 textcolor: 0xFFFFFFFF),
                                           ),
                                           feedback: circles(
@@ -375,7 +375,6 @@ class _CategoriesState extends State<Categories> {
                                       },
                                     )
                                   ],
-
                                 ),
                               ],
                             );
@@ -396,16 +395,15 @@ class _CategoriesState extends State<Categories> {
                         );
                       },
                       child: Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle
-                        ),
+                        decoration: BoxDecoration(shape: BoxShape.circle),
                         child: circles(
-                            circle_text: "View all \n goals",
+                            circle_text: AppText().viewAllGoals,
                             circle_color1: 0xFFFC854F,
                             circle_color2: 0xFFFAA960,
                             circle_border: 3.0,
                             circle_bordercolor: 0xFFFFFFFF,
-                            circle_height: AppDimensions.height10(context) * 10.0,
+                            circle_height:
+                                AppDimensions.height10(context) * 10.0,
                             circle_width: AppDimensions.width10(context) * 10.0,
                             textfont: AppDimensions.font10(context) * 1.6,
                             textcolor: 0xFFFFFFFF),

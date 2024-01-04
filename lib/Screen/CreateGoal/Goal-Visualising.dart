@@ -15,6 +15,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/animatedButton.dart';
@@ -362,12 +363,17 @@ class _VisualisingState extends State<Visualising> {
                                   titlePadding: EdgeInsets.zero,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) * 1.4)),
+                                          AppDimensions.height10(context) *
+                                              1.4)),
                                   title: Container(
                                     margin: const EdgeInsets.only(
-                                        top: 19, right: 16, left: 16, bottom: 2),
+                                        top: 19,
+                                        right: 16,
+                                        left: 16,
+                                        bottom: 2),
                                     // height: AppDimensions.height10(context) * 2.2,
-                                    width: AppDimensions.width10(context) * 23.8,
+                                    width:
+                                        AppDimensions.width10(context) * 23.8,
                                     child: const Text(
                                       "Exit onboarding?",
                                       textAlign: TextAlign.center,
@@ -409,7 +415,7 @@ class _VisualisingState extends State<Visualising> {
                                           child: TextButton(
                                             onPressed: () async {
                                               // updateGoalReason(goalVisualising);
-      
+
                                               Navigator.push(
                                                 context,
                                                 FadePageRouteReverse(
@@ -423,8 +429,8 @@ class _VisualisingState extends State<Visualising> {
                                               final SharedPreferences prefs =
                                                   await _prefs;
                                               var goalvisualising =
-                                                  prefs.setString(
-                                                      'route', "goalVisualising");
+                                                  prefs.setString('route',
+                                                      "goalVisualising");
                                             },
                                             child: const Text(
                                               'Exit & save progress',
@@ -490,8 +496,9 @@ class _VisualisingState extends State<Visualising> {
                                         ),
                                         Container(
                                           height: 42,
-                                          width: AppDimensions.width10(context) *
-                                              27.0,
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  27.0,
                                           //color: Colors.white,
                                           child: TextButton(
                                             onPressed: () {
@@ -542,8 +549,8 @@ class _VisualisingState extends State<Visualising> {
                             child: Center(
                               child: Text(
                                 widget.comingFromEditScreen
-                                    ? "View and edit mode"
-                                    : "Star Creation 5/5",
+                                    ? AppText().viewAndEdit
+                                    : AppText().starCreate5,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: widget.comingFromEditScreen
@@ -585,11 +592,12 @@ class _VisualisingState extends State<Visualising> {
                                   width: AppDimensions.width10(context) * 10.4,
                                   height: AppDimensions.height10(context) * 7.6,
                                   // color: Colors.blue,
-      
+
                                   padding: EdgeInsets.only(
-                                      left: AppDimensions.width10(context) * 1.5,
-                                      right:
-                                          AppDimensions.height10(context) * 1.5),
+                                      left:
+                                          AppDimensions.width10(context) * 1.5,
+                                      right: AppDimensions.height10(context) *
+                                          1.5),
                                   child: Image.asset(
                                     "assets/images/image3.webp",
                                     fit: BoxFit.contain,
@@ -600,7 +608,7 @@ class _VisualisingState extends State<Visualising> {
                           Container(
                             child: Center(
                               child: Text(
-                                "Visualising Your New Self",
+                                AppText().goalVisual,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   color: widget.comingFromEditScreen
@@ -620,10 +628,11 @@ class _VisualisingState extends State<Visualising> {
                             // height: AppDimensions.height10(context) * 4.9,
                             child: Center(
                               child: Text(
-                                "What does it look like? What are you \n  doing? What emotions do you have and \n how does it feel?",
+                                AppText().goalIdentityBody,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: AppDimensions.font10(context) * 1.8,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w600,
                                     color: widget.comingFromEditScreen
                                         ? const Color(0xFF437296)
@@ -657,8 +666,8 @@ class _VisualisingState extends State<Visualising> {
                                     color: Colors.white,
                                     border: Border.all(
                                         color: Colors.white,
-                                        width:
-                                            AppDimensions.width10(context) * 0.2),
+                                        width: AppDimensions.width10(context) *
+                                            0.2),
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(
                                             AppDimensions.height10(context) *
@@ -684,7 +693,8 @@ class _VisualisingState extends State<Visualising> {
                                           length: 200,
                                           onChanged: (newText) {
                                             setState(() {
-                                              visualize[index]['text'] = newText;
+                                              visualize[index]['text'] =
+                                                  newText;
                                             });
                                             handleTextChanged(index, newText);
                                           },
@@ -726,9 +736,10 @@ class _VisualisingState extends State<Visualising> {
                                                   child: Text(
                                                     "${visualize[index]['text'].toString().length}/200",
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.w700,
-                                                      color:
-                                                          const Color(0xFF464646),
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: const Color(
+                                                          0xFF464646),
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
@@ -748,12 +759,14 @@ class _VisualisingState extends State<Visualising> {
                                                     top: AppDimensions.height10(
                                                             context) *
                                                         0.5,
-                                                    left: AppDimensions.height10(
-                                                            context) *
-                                                        0.1),
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.1),
                                                 decoration: BoxDecoration(
-                                                    color: const Color(0xFF282828)
-                                                        .withOpacity(0.2)),
+                                                    color:
+                                                        const Color(0xFF282828)
+                                                            .withOpacity(0.2)),
                                               )
                                             ],
                                           ),
@@ -765,8 +778,8 @@ class _VisualisingState extends State<Visualising> {
                                       }
                                       return Column(children: [
                                         inner_text(
-                                          key:
-                                              Key(goalVisualising[index]['key']!),
+                                          key: Key(
+                                              goalVisualising[index]['key']!),
                                           delete: true,
                                           head_text:
                                               "${index + 1}. I picture myself.... ",
@@ -817,9 +830,10 @@ class _VisualisingState extends State<Visualising> {
                                                   child: Text(
                                                     "${goalVisualising[index]['text'].toString().length}/200",
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.w700,
-                                                      color:
-                                                          const Color(0xFF464646),
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: const Color(
+                                                          0xFF464646),
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
@@ -839,12 +853,14 @@ class _VisualisingState extends State<Visualising> {
                                                     top: AppDimensions.height10(
                                                             context) *
                                                         0.5,
-                                                    left: AppDimensions.height10(
-                                                            context) *
-                                                        0.1),
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.1),
                                                 decoration: BoxDecoration(
-                                                    color: const Color(0xFF282828)
-                                                        .withOpacity(0.2)),
+                                                    color:
+                                                        const Color(0xFF282828)
+                                                            .withOpacity(0.2)),
                                               )
                                             ],
                                           ),
@@ -892,19 +908,20 @@ class _VisualisingState extends State<Visualising> {
                                                       189, 158, 158, 158),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 4,
-                                                      left: 4,
-                                                      right: 4,
-                                                      bottom: 4),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 4,
+                                                          left: 4,
+                                                          right: 4,
+                                                          bottom: 4),
                                                   child: Container(
                                                     color: Colors.transparent,
                                                     child: Image.asset(
                                                       'assets/images/Addgoal.webp',
-                                                      height:
-                                                          AppDimensions.height10(
+                                                      height: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              4.7,
+                                                          4.7,
                                                       width:
                                                           AppDimensions.width10(
                                                                   context) *
@@ -943,27 +960,31 @@ class _VisualisingState extends State<Visualising> {
                                                 decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   gradient: LinearGradient(
-                                                      begin: Alignment.topCenter,
-                                                      end: Alignment.bottomCenter,
+                                                      begin:
+                                                          Alignment.topCenter,
+                                                      end: Alignment
+                                                          .bottomCenter,
                                                       colors: [
                                                         Color(0xFFB1B8FF),
                                                         Color(0xFFC5CAFF)
                                                       ]),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 4,
-                                                      left: 4,
-                                                      right: 4,
-                                                      bottom: 4),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 4,
+                                                          left: 4,
+                                                          right: 4,
+                                                          bottom: 4),
                                                   child: Container(
                                                     height:
                                                         AppDimensions.height10(
                                                                 context) *
                                                             4.7,
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        4.7,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.7,
                                                     decoration:
                                                         const BoxDecoration(
                                                             //color: Colors.transparent,
@@ -1002,19 +1023,20 @@ class _VisualisingState extends State<Visualising> {
                                                       189, 158, 158, 158),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 4,
-                                                      left: 4,
-                                                      right: 4,
-                                                      bottom: 4),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 4,
+                                                          left: 4,
+                                                          right: 4,
+                                                          bottom: 4),
                                                   child: Container(
                                                     color: Colors.transparent,
                                                     child: Image.asset(
                                                       'assets/images/Addgoal.webp',
-                                                      height:
-                                                          AppDimensions.height10(
+                                                      height: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              4.7,
+                                                          4.7,
                                                       width:
                                                           AppDimensions.width10(
                                                                   context) *
@@ -1053,27 +1075,31 @@ class _VisualisingState extends State<Visualising> {
                                                 decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   gradient: LinearGradient(
-                                                      begin: Alignment.topCenter,
-                                                      end: Alignment.bottomCenter,
+                                                      begin:
+                                                          Alignment.topCenter,
+                                                      end: Alignment
+                                                          .bottomCenter,
                                                       colors: [
                                                         Color(0xFFB1B8FF),
                                                         Color(0xFFC5CAFF)
                                                       ]),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 4,
-                                                      left: 4,
-                                                      right: 4,
-                                                      bottom: 4),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 4,
+                                                          left: 4,
+                                                          right: 4,
+                                                          bottom: 4),
                                                   child: Container(
                                                     height:
                                                         AppDimensions.height10(
                                                                 context) *
                                                             4.7,
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        4.7,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.7,
                                                     decoration:
                                                         const BoxDecoration(
                                                             //color: Colors.transparent,
@@ -1098,8 +1124,8 @@ class _VisualisingState extends State<Visualising> {
                                 )
                               : MediaQuery.of(context).viewInsets.bottom == 0
                                   ? SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 22.4,
+                                      height: AppDimensions.height10(context) *
+                                          22.4,
                                     )
                                   : SizedBox(
                                       height:
@@ -1111,9 +1137,10 @@ class _VisualisingState extends State<Visualising> {
                                     setState(() {
                                       swipeOffset += details.delta.dx;
                                     });
-      
+
                                     if (swipeOffset.abs() >=
-                                        MediaQuery.of(context).size.width / 3.0) {
+                                        MediaQuery.of(context).size.width /
+                                            3.0) {
                                       setState(() {
                                         showContainer = false;
                                       });
@@ -1127,11 +1154,13 @@ class _VisualisingState extends State<Visualising> {
                                       child: Container(
                                         width: AppDimensions.width10(context) *
                                             38.259,
-                                        height: AppDimensions.height10(context) *
-                                            9.707,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                9.707,
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(
-                                                AppDimensions.height10(context) *
+                                                AppDimensions.height10(
+                                                        context) *
                                                     2.0),
                                             gradient: const LinearGradient(
                                                 begin: Alignment.topCenter,
@@ -1150,9 +1179,9 @@ class _VisualisingState extends State<Visualising> {
                                                   left: AppDimensions.height10(
                                                           context) *
                                                       1.261),
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      4.437,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  4.437,
                                               height: AppDimensions.height10(
                                                       context) *
                                                   4.437,
@@ -1175,9 +1204,10 @@ class _VisualisingState extends State<Visualising> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   SizedBox(
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        4.6,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.6,
                                                     height:
                                                         AppDimensions.height10(
                                                                 context) *
@@ -1197,9 +1227,10 @@ class _VisualisingState extends State<Visualising> {
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        16.9,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            16.9,
                                                     height:
                                                         AppDimensions.height10(
                                                                 context) *
@@ -1237,31 +1268,34 @@ class _VisualisingState extends State<Visualising> {
                                                         context) *
                                                     6.0,
                                                 margin: EdgeInsets.only(
-                                                    left: AppDimensions.height10(
-                                                            context) *
-                                                        5,
-                                                    right: AppDimensions.height10(
-                                                            context) *
-                                                        1.23),
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            5,
+                                                    right:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.23),
                                                 decoration: BoxDecoration(
                                                   border: Border.all(
-                                                      color:
-                                                          const Color(0xFFFFFFFF),
+                                                      color: const Color(
+                                                          0xFFFFFFFF),
                                                       width: 1),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          AppDimensions.height10(
-                                                                  context) *
+                                                          AppDimensions
+                                                                  .height10(
+                                                                      context) *
                                                               2.0),
                                                 ),
                                                 child: Center(
                                                   child: Text(
                                                     'Undo',
                                                     style: TextStyle(
-                                                        fontSize:
-                                                            AppDimensions.font10(
+                                                        fontSize: AppDimensions
+                                                                .font10(
                                                                     context) *
-                                                                1.8,
+                                                            1.8,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         color: const Color(
@@ -1284,9 +1318,9 @@ class _VisualisingState extends State<Visualising> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     10.0,
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    5.0,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                5.0,
                                             decoration: goalVisualising[0]
                                                         ['text'] !=
                                                     ""
@@ -1324,33 +1358,37 @@ class _VisualisingState extends State<Visualising> {
                                                     color: goalVisualising[0]
                                                                 ['text'] !=
                                                             ""
-                                                        ? const Color(0xffFA9934)
-                                                        : const Color(0xff282828),
+                                                        ? const Color(
+                                                            0xffFA9934)
+                                                        : const Color(
+                                                            0xff282828),
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
                                                             1.8),
                                               )),
                                             ))
-                                        : Container(
-                                            // color: Colors.blue,
-                                            width: AppDimensions
-                                                    .width10(context) *
-                                                5.0,
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    5.0,
-                                            child: AnimatedScaleButton(
-                                              onTap: () {
-                                                // signupSheet(context, "Sign up / login", "login");
-                                              },
-                                              child: Image.asset(
-                                                "assets/images/Moreactions.webp",
-                                                fit: BoxFit.contain,
-                                              ),
-                                            )),
+                                        : Container(),
+                                    // Container(
+                                    //     // color: Colors.blue,
+                                    //     width:
+                                    //         AppDimensions.width10(context) *
+                                    //             5.0,
+                                    //     height:
+                                    //         AppDimensions.height10(context) *
+                                    //             5.0,
+                                    //     child: AnimatedScaleButton(
+                                    //       onTap: () {
+                                    //         //   signupSheet(context, "Sign up / login", "login");
+                                    //       },
+                                    //       child: Image.asset(
+                                    //         "assets/images/Moreactions.webp",
+                                    //         fit: BoxFit.contain,
+                                    //       ),
+                                    //     )),
                                     SizedBox(
-                                      width: AppDimensions.width10(context) * 2.0,
+                                      width:
+                                          AppDimensions.width10(context) * 2.0,
                                     ),
                                     AnimatedScaleButton(
                                       onTap: () async {
@@ -1387,19 +1425,22 @@ class _VisualisingState extends State<Visualising> {
                                               await _prefs;
                                           var goalwhy = prefs.remove('route');
                                           goalVisualising[0]['text'] != ""
-                                              ? updateGoalReason(goalVisualising)
+                                              ? updateGoalReason(
+                                                  goalVisualising)
                                               : Container();
                                         }
                                       },
                                       child: Container(
                                         height:
-                                            AppDimensions.height10(context) * 5.2,
+                                            AppDimensions.height10(context) *
+                                                5.2,
                                         width: widget.comingFromEditScreen
                                             ? AppDimensions.width10(context) *
                                                 26.2
                                             : AppDimensions.width10(context) *
                                                 31.3,
-                                        decoration: goalVisualising[0]['text'] !=
+                                        decoration: goalVisualising[0]
+                                                        ['text'] !=
                                                     "" ||
                                                 widget.comingFromEditScreen ==
                                                     true
@@ -1449,19 +1490,22 @@ class _VisualisingState extends State<Visualising> {
                                           child: Text(
                                             widget.comingFromEditScreen
                                                 ? 'Save'
-                                                : goalVisualising[0]['text'] != ""
+                                                : goalVisualising[0]['text'] !=
+                                                        ""
                                                     ? "Create your goal"
                                                     : "Next",
                                             style: TextStyle(
-                                              color: goalVisualising[0]['text'] !=
+                                              color: goalVisualising[0]
+                                                              ['text'] !=
                                                           "" ||
                                                       widget.comingFromEditScreen ==
                                                           true
                                                   ? Colors.white
-                                                  : Colors.white.withOpacity(0.5),
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.6,
+                                                  : Colors.white
+                                                      .withOpacity(0.5),
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.6,
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),

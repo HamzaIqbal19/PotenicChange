@@ -8,6 +8,7 @@ import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Goal.dart';
@@ -262,7 +263,7 @@ class _AllGoalsState extends State<AllGoals> {
                               top: AppDimensions.height10(context) * 4.2),
                           child: Center(
                             child: Text(
-                              "Star Creation 1/5",
+                              AppText().starCreate1,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
@@ -281,7 +282,7 @@ class _AllGoalsState extends State<AllGoals> {
                             Container(
                               child: Center(
                                 child: Text(
-                                  "All Goals ",
+                                  AppText().allGoals,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
@@ -304,7 +305,7 @@ class _AllGoalsState extends State<AllGoals> {
                             Container(
                               // height: AppDimensions.height10(context) *7.1,
                               child: Text(
-                                "Which category does your goal belong to? ",
+                                AppText().selectCategoryBody,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -652,7 +653,7 @@ class _AllGoalsState extends State<AllGoals> {
                               width: AppDimensions.width10(context) * 0.5,
                             ),
                             Text(
-                              'Create a new goal! ',
+                              AppText().createNewGoal,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: const Color(0xFFFA9934),

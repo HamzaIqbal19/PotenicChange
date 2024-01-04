@@ -7,6 +7,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_statement.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -125,7 +126,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                         top: AppDimensions.height10(context) * 12.0,
                         bottom: AppDimensions.height10(context) * 1.9),
                     child: GradientText(
-                      'My faced\nhurdles & obstacles',
+                      AppText().hurdleTitle,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: AppDimensions.font10(context) * 3.0,

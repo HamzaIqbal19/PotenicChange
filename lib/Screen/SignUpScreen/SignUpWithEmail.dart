@@ -9,6 +9,7 @@ import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
@@ -198,7 +199,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                     SizedBox(
                       height: AppDimensions.height10(context) * 4.0,
                       child: Text(
-                        "Sign up",
+                        AppText().signUp,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
@@ -212,7 +213,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         height: AppDimensions.height10(context) * 7 + 4,
                         width: AppDimensions.screenWidth(context) - 100,
                         child: Text(
-                          'Your Personalised Journey To Better Self Starts Here',
+                          AppText().signUpSubHead,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -800,7 +801,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     size: AppDimensions.height10(context) * 3.5,
                                   )
                                 : Text(
-                                    "Sign up",
+                                    AppText().signUp,
                                     style: TextStyle(
                                       color: const Color(0xFF8C648A),
                                       fontSize:

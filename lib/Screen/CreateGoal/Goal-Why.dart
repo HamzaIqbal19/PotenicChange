@@ -14,6 +14,7 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Goal.dart';
@@ -324,7 +325,7 @@ class _goalwhyState extends State<GoalWhy> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Back.webp',
-                     // width: AppDimensions.width10(context) * 3,
+                      // width: AppDimensions.width10(context) * 3,
                       height: AppDimensions.height10(context) * 3,
                       fit: BoxFit.contain,
                     ),
@@ -381,15 +382,20 @@ class _goalwhyState extends State<GoalWhy> {
                                 child: AlertDialog(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) * 1.4)),
+                                          AppDimensions.height10(context) *
+                                              1.4)),
                                   contentPadding: EdgeInsets.zero,
                                   actionsPadding: EdgeInsets.zero,
                                   titlePadding: EdgeInsets.zero,
                                   title: Container(
                                     margin: const EdgeInsets.only(
-                                        top: 19, right: 16, left: 16, bottom: 2),
+                                        top: 19,
+                                        right: 16,
+                                        left: 16,
+                                        bottom: 2),
                                     //height: AppDimensions.height10(context) * 2.5,
-                                    width: AppDimensions.width10(context) * 23.8,
+                                    width:
+                                        AppDimensions.width10(context) * 23.8,
                                     child: const Text(
                                       "Exit onboarding?",
                                       textAlign: TextAlign.center,
@@ -427,14 +433,14 @@ class _goalwhyState extends State<GoalWhy> {
                                         Container(
                                           height: 42,
                                           width: double.infinity,
-                                         // color: Colors.white,
+                                          // color: Colors.white,
                                           child: TextButton(
                                             onPressed: () async {
                                               setState(() {
                                                 saved = true;
                                               });
                                               updateGoalReason(myTextFields);
-      
+
                                               Navigator.push(
                                                 context,
                                                 FadePageRouteReverse(
@@ -490,7 +496,7 @@ class _goalwhyState extends State<GoalWhy> {
                                               }
                                               final SharedPreferences prefs =
                                                   await _prefs;
-      
+
                                               await prefs.remove('goal');
                                               await prefs.remove('goal_route');
                                               await prefs.remove('route');
@@ -515,8 +521,9 @@ class _goalwhyState extends State<GoalWhy> {
                                         ),
                                         Container(
                                           height: 42,
-                                          width: AppDimensions.width10(context) *
-                                              27.0,
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  27.0,
                                           //color: Colors.white,
                                           child: TextButton(
                                             onPressed: () {
@@ -538,7 +545,7 @@ class _goalwhyState extends State<GoalWhy> {
                                 ),
                               ),
                             ),
-      
+
                             // Add code for performing close action
                           ),
                   ),
@@ -567,8 +574,8 @@ class _goalwhyState extends State<GoalWhy> {
                           child: Center(
                             child: Text(
                               widget.comingFromEditScreen
-                                  ? "View and edit mode"
-                                  : "Star Creation 3/5",
+                                  ? AppText().viewAndEdit
+                                  : AppText().starCreate3,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: widget.comingFromEditScreen
@@ -610,7 +617,8 @@ class _goalwhyState extends State<GoalWhy> {
                                 height: AppDimensions.height10(context) * 7.6,
                                 padding: EdgeInsets.only(
                                     left: AppDimensions.width10(context) * 1.5,
-                                    right: AppDimensions.width10(context) * 1.5),
+                                    right:
+                                        AppDimensions.width10(context) * 1.5),
                                 child: Image.asset(
                                   "assets/images/image3.webp",
                                   fit: BoxFit.contain,
@@ -621,7 +629,7 @@ class _goalwhyState extends State<GoalWhy> {
                         Container(
                           child: Center(
                             child: Text(
-                              "The Why",
+                              AppText().goalWhy,
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 color: widget.comingFromEditScreen
@@ -640,7 +648,7 @@ class _goalwhyState extends State<GoalWhy> {
                           width: AppDimensions.width10(context) * 37.2,
                           child: Center(
                             child: Text(
-                              "Why pursuing this goal is important\nto you?",
+                              AppText().goalWhyBody,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 1.8,
@@ -680,13 +688,13 @@ class _goalwhyState extends State<GoalWhy> {
                                     color: Colors.white,
                                     border: Border.all(
                                         color: Colors.white,
-                                        width:
-                                            AppDimensions.width10(context) * 0.2),
+                                        width: AppDimensions.width10(context) *
+                                            0.2),
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(
                                             AppDimensions.height10(context) *
                                                 1.8))),
-      
+
                                 child: ListView.builder(
                                   itemCount: widget.comingFromEditScreen
                                       ? (Reason?.length ?? 0)
@@ -720,12 +728,12 @@ class _goalwhyState extends State<GoalWhy> {
                                         ),
                                         Container(
                                           margin: EdgeInsets.only(
-                                            left:
-                                                AppDimensions.height10(context) *
-                                                    1.5,
-                                            bottom:
-                                                AppDimensions.height10(context) *
-                                                    1.3,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                1.5,
+                                            bottom: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
                                           ),
                                           child: Row(
                                             children: [
@@ -751,9 +759,10 @@ class _goalwhyState extends State<GoalWhy> {
                                                   child: Text(
                                                     "${Reason[index]['text'].toString().length}/200",
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.w700,
-                                                      color:
-                                                          const Color(0xFF464646),
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: const Color(
+                                                          0xFF464646),
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
@@ -796,7 +805,8 @@ class _goalwhyState extends State<GoalWhy> {
                                           key: Key(myTextFields[index]['key']!),
                                           delete: true,
                                           head_text: "Reason ${index + 1}",
-                                          body_text: myTextFields[index]['text']!,
+                                          body_text: myTextFields[index]
+                                              ['text']!,
                                           length: 200,
                                           onChanged: (newText) {
                                             setState(() {
@@ -814,12 +824,12 @@ class _goalwhyState extends State<GoalWhy> {
                                         ),
                                         Container(
                                           margin: EdgeInsets.only(
-                                            left:
-                                                AppDimensions.height10(context) *
-                                                    1.5,
-                                            bottom:
-                                                AppDimensions.height10(context) *
-                                                    1.3,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                1.5,
+                                            bottom: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
                                           ),
                                           child: Row(
                                             children: [
@@ -845,9 +855,10 @@ class _goalwhyState extends State<GoalWhy> {
                                                   child: Text(
                                                     "${myTextFields[index]['text'].toString().length}/200",
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.w700,
-                                                      color:
-                                                          const Color(0xFF464646),
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: const Color(
+                                                          0xFF464646),
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
@@ -905,7 +916,8 @@ class _goalwhyState extends State<GoalWhy> {
                                                 const SnackBar(
                                                   content: Text(
                                                       'You cannot add more than 5 items.'),
-                                                  duration: Duration(seconds: 3),
+                                                  duration:
+                                                      Duration(seconds: 3),
                                                 ),
                                               );
                                             },
@@ -913,9 +925,9 @@ class _goalwhyState extends State<GoalWhy> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   4.7,
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      4.7,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  4.7,
                                               decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 color: Color.fromARGB(
@@ -935,9 +947,10 @@ class _goalwhyState extends State<GoalWhy> {
                                                         AppDimensions.height10(
                                                                 context) *
                                                             4.7,
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        4.7,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.7,
                                                   ),
                                                 ),
                                               ),
@@ -946,7 +959,7 @@ class _goalwhyState extends State<GoalWhy> {
                                         : AnimatedScaleButton(
                                             onTap: () {
                                               increment();
-      
+
                                               widget.comingFromEditScreen
                                                   ? setState(() {
                                                       Reason.add({
@@ -967,9 +980,9 @@ class _goalwhyState extends State<GoalWhy> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   4.7,
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      4.7,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  4.7,
                                               decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 // color: Colors.orange,
@@ -995,9 +1008,10 @@ class _goalwhyState extends State<GoalWhy> {
                                                         AppDimensions.height10(
                                                                 context) *
                                                             4.7,
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        4.7,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.7,
                                                   ),
                                                 ),
                                               ),
@@ -1011,7 +1025,8 @@ class _goalwhyState extends State<GoalWhy> {
                                                 const SnackBar(
                                                   content: Text(
                                                       'You cannot add more than 5 items.'),
-                                                  duration: Duration(seconds: 3),
+                                                  duration:
+                                                      Duration(seconds: 3),
                                                 ),
                                               );
                                             },
@@ -1019,9 +1034,9 @@ class _goalwhyState extends State<GoalWhy> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   4.7,
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      4.7,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  4.7,
                                               decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 color: Color.fromARGB(
@@ -1041,9 +1056,10 @@ class _goalwhyState extends State<GoalWhy> {
                                                         AppDimensions.height10(
                                                                 context) *
                                                             4.7,
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        4.7,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.7,
                                                   ),
                                                 ),
                                               ),
@@ -1052,7 +1068,7 @@ class _goalwhyState extends State<GoalWhy> {
                                         : AnimatedScaleButton(
                                             onTap: () {
                                               increment();
-      
+
                                               widget.comingFromEditScreen
                                                   ? setState(() {
                                                       Reason.add({
@@ -1073,9 +1089,9 @@ class _goalwhyState extends State<GoalWhy> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   4.7,
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      4.7,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  4.7,
                                               decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 // color: Colors.orange,
@@ -1101,9 +1117,10 @@ class _goalwhyState extends State<GoalWhy> {
                                                         AppDimensions.height10(
                                                                 context) *
                                                             4.7,
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        4.7,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.7,
                                                   ),
                                                 ),
                                               ),
@@ -1125,7 +1142,8 @@ class _goalwhyState extends State<GoalWhy> {
                                         AppDimensions.height10(context) * 24.7,
                                   )
                                 : SizedBox(
-                                    height: AppDimensions.height10(context) * 5.0,
+                                    height:
+                                        AppDimensions.height10(context) * 5.0,
                                   ),
                         update
                             ? GestureDetector(
@@ -1133,7 +1151,7 @@ class _goalwhyState extends State<GoalWhy> {
                                   setState(() {
                                     swipeOffset += details.delta.dx;
                                   });
-      
+
                                   if (swipeOffset.abs() >=
                                       MediaQuery.of(context).size.width / 3.0) {
                                     setState(() {
@@ -1147,10 +1165,10 @@ class _goalwhyState extends State<GoalWhy> {
                                   child: Transform.translate(
                                     offset: Offset(swipeOffset, 0.0),
                                     child: Container(
-                                      width:
-                                          AppDimensions.width10(context) * 38.259,
-                                      height:
-                                          AppDimensions.height10(context) * 9.707,
+                                      width: AppDimensions.width10(context) *
+                                          38.259,
+                                      height: AppDimensions.height10(context) *
+                                          9.707,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(
                                               AppDimensions.height10(context) *
@@ -1175,9 +1193,9 @@ class _goalwhyState extends State<GoalWhy> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     4.437,
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    4.437,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                4.437,
                                             decoration: const BoxDecoration(
                                                 image: DecorationImage(
                                                     image: AssetImage(
@@ -1185,9 +1203,9 @@ class _goalwhyState extends State<GoalWhy> {
                                           ),
                                           Container(
                                             //width: AppDimensions.width10(context) * 6.9,
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    3.6,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.6,
                                             margin: EdgeInsets.only(
                                                 left: AppDimensions.height10(
                                                         context) *
@@ -1200,17 +1218,18 @@ class _goalwhyState extends State<GoalWhy> {
                                                   width: AppDimensions.height10(
                                                           context) *
                                                       4.6,
-                                                  height: AppDimensions.height10(
-                                                          context) *
-                                                      1.4,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.4,
                                                   //   color: Colors.amber,
                                                   child: Text(
                                                     'Updates saved',
                                                     style: TextStyle(
-                                                        fontSize:
-                                                            AppDimensions.font10(
+                                                        fontSize: AppDimensions
+                                                                .font10(
                                                                     context) *
-                                                                1.3,
+                                                            1.3,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         color: const Color(
@@ -1221,18 +1240,19 @@ class _goalwhyState extends State<GoalWhy> {
                                                   width: AppDimensions.height10(
                                                           context) *
                                                       16.9,
-                                                  height: AppDimensions.height10(
-                                                          context) *
-                                                      2.2,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.2,
                                                   child: Text(
                                                     'The Why',
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: TextStyle(
-                                                        fontSize:
-                                                            AppDimensions.font10(
+                                                        fontSize: AppDimensions
+                                                                .font10(
                                                                     context) *
-                                                                1.8,
+                                                            1.8,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         color: const Color(
@@ -1250,9 +1270,9 @@ class _goalwhyState extends State<GoalWhy> {
                                               stopTimer();
                                             },
                                             child: Container(
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      8.1,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  8.1,
                                               height: AppDimensions.height10(
                                                       context) *
                                                   6.0,
@@ -1282,7 +1302,8 @@ class _goalwhyState extends State<GoalWhy> {
                                                           AppDimensions.font10(
                                                                   context) *
                                                               1.8,
-                                                      fontWeight: FontWeight.w500,
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                       color: const Color(
                                                           0xFFFFFFFF)),
                                                 ),
@@ -1300,8 +1321,9 @@ class _goalwhyState extends State<GoalWhy> {
                                 children: [
                                   widget.comingFromEditScreen
                                       ? Container(
-                                          width: AppDimensions.width10(context) *
-                                              10.0,
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  10.0,
                                           height:
                                               AppDimensions.height10(context) *
                                                   5.0,
@@ -1314,7 +1336,8 @@ class _goalwhyState extends State<GoalWhy> {
                                                           0xffFA9934)),
                                                   borderRadius:
                                                       const BorderRadius.all(
-                                                          Radius.circular(50.0)),
+                                                          Radius.circular(
+                                                              50.0)),
                                                 )
                                               : BoxDecoration(
                                                   // color: Color(0xFFFF7D50),
@@ -1324,7 +1347,8 @@ class _goalwhyState extends State<GoalWhy> {
                                                   color: Colors.transparent,
                                                   borderRadius:
                                                       const BorderRadius.all(
-                                                          Radius.circular(50.0)),
+                                                          Radius.circular(
+                                                              50.0)),
                                                 ),
                                           child: AnimatedScaleButton(
                                             onTap: () {
@@ -1344,27 +1368,30 @@ class _goalwhyState extends State<GoalWhy> {
                                                           ""
                                                       ? const Color(0xffFA9934)
                                                       : const Color(0xff282828),
-                                                  fontSize: AppDimensions.font10(
-                                                          context) *
-                                                      1.8),
+                                                  fontSize:
+                                                      AppDimensions.font10(
+                                                              context) *
+                                                          1.8),
                                             )),
                                           ))
-                                      : Container(
-                                          // color: Colors.blue,
-                                          width: AppDimensions.width10(context) *
-                                              5.0,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  5.0,
-                                          child: AnimatedScaleButton(
-                                            onTap: () {
-                                              //   signupSheet(context, "Sign up / login", "login");
-                                            },
-                                            child: Image.asset(
-                                              "assets/images/Moreactions.webp",
-                                              fit: BoxFit.contain,
-                                            ),
-                                          )),
+                                      : Container(),
+                                  // Container(
+                                  //     // color: Colors.blue,
+                                  //     width:
+                                  //         AppDimensions.width10(context) *
+                                  //             5.0,
+                                  //     height:
+                                  //         AppDimensions.height10(context) *
+                                  //             5.0,
+                                  //     child: AnimatedScaleButton(
+                                  //       onTap: () {
+                                  //         //   signupSheet(context, "Sign up / login", "login");
+                                  //       },
+                                  //       child: Image.asset(
+                                  //         "assets/images/Moreactions.webp",
+                                  //         fit: BoxFit.contain,
+                                  //       ),
+                                  //     )),
                                   SizedBox(
                                     width: AppDimensions.width10(context) * 2.0,
                                   ),
@@ -1394,9 +1421,11 @@ class _goalwhyState extends State<GoalWhy> {
                                       }
                                     },
                                     child: Container(
-                                      height: AppDimensions.height10(context) * 5.2,
+                                      height:
+                                          AppDimensions.height10(context) * 5.2,
                                       width: widget.comingFromEditScreen
-                                          ? AppDimensions.width10(context) * 26.3
+                                          ? AppDimensions.width10(context) *
+                                              26.3
                                           : AppDimensions.width10(context) *
                                               31.3,
                                       decoration: widget.comingFromEditScreen
@@ -1406,27 +1435,34 @@ class _goalwhyState extends State<GoalWhy> {
                                               ? BoxDecoration(
                                                   // color: Color(0xFFFF7D50),
                                                   border: Border.all(
-                                                      color: Colors.transparent),
-                                                  gradient: const LinearGradient(
-                                                      begin: Alignment.topCenter,
-                                                      end: Alignment.bottomCenter,
-                                                      colors: [
+                                                      color:
+                                                          Colors.transparent),
+                                                  gradient:
+                                                      const LinearGradient(
+                                                          begin: Alignment
+                                                              .topCenter,
+                                                          end: Alignment
+                                                              .bottomCenter,
+                                                          colors: [
                                                         Color(0xFFFCC10D),
                                                         Color(0xFFFDA210)
                                                       ]),
                                                   borderRadius:
                                                       const BorderRadius.all(
-                                                          Radius.circular(50.0)),
+                                                          Radius.circular(
+                                                              50.0)),
                                                 )
                                               : BoxDecoration(
                                                   // color: Color(0xFFFF7D50),
                                                   border: Border.all(
-                                                      color: Colors.transparent),
+                                                      color:
+                                                          Colors.transparent),
                                                   color: const Color(0xFF282828)
                                                       .withOpacity(0.5),
                                                   borderRadius:
                                                       const BorderRadius.all(
-                                                          Radius.circular(50.0)),
+                                                          Radius.circular(
+                                                              50.0)),
                                                 )
                                           : myTextFields[0]['text'] != "" ||
                                                   widget.comingFromEditScreen ==
@@ -1434,27 +1470,34 @@ class _goalwhyState extends State<GoalWhy> {
                                               ? BoxDecoration(
                                                   // color: Color(0xFFFF7D50),
                                                   border: Border.all(
-                                                      color: Colors.transparent),
-                                                  gradient: const LinearGradient(
-                                                      begin: Alignment.topCenter,
-                                                      end: Alignment.bottomCenter,
-                                                      colors: [
+                                                      color:
+                                                          Colors.transparent),
+                                                  gradient:
+                                                      const LinearGradient(
+                                                          begin: Alignment
+                                                              .topCenter,
+                                                          end: Alignment
+                                                              .bottomCenter,
+                                                          colors: [
                                                         Color(0xFFFCC10D),
                                                         Color(0xFFFDA210)
                                                       ]),
                                                   borderRadius:
                                                       const BorderRadius.all(
-                                                          Radius.circular(50.0)),
+                                                          Radius.circular(
+                                                              50.0)),
                                                 )
                                               : BoxDecoration(
                                                   // color: Color(0xFFFF7D50),
                                                   border: Border.all(
-                                                      color: Colors.transparent),
+                                                      color:
+                                                          Colors.transparent),
                                                   color: const Color(0xFF282828)
                                                       .withOpacity(0.5),
                                                   borderRadius:
                                                       const BorderRadius.all(
-                                                          Radius.circular(50.0)),
+                                                          Radius.circular(
+                                                              50.0)),
                                                 ),
                                       child: Center(
                                         child: Text(
@@ -1463,7 +1506,8 @@ class _goalwhyState extends State<GoalWhy> {
                                               : "Next",
                                           style: TextStyle(
                                             color: widget.comingFromEditScreen
-                                                ? myTextFields[0]['text'] != "" ||
+                                                ? myTextFields[0]['text'] !=
+                                                            "" ||
                                                         widget.comingFromEditScreen ==
                                                             true
                                                     ? Colors.white
@@ -1489,7 +1533,8 @@ class _goalwhyState extends State<GoalWhy> {
                         ),
                         Padding(
                             padding: EdgeInsets.only(
-                                bottom: MediaQuery.of(context).viewInsets.bottom))
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom))
                       ],
                     ),
                   )

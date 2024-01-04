@@ -12,6 +12,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart'
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../../Widgets/fading.dart';
@@ -166,7 +167,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                   bottom:
                                       AppDimensions.height10(context) * 3.349),
                               child: GradientText(
-                                'Well done for capturing your hurdle',
+                                AppText().captureHurdleSumm,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 2.8,
@@ -287,7 +288,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                         height: AppDimensions.height10(context) * 5.6,
                         child: Center(
                           child: Text(
-                            'Your current\nthoughts and feelings',
+                            AppText().captureHurdleSummText1,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: AppDimensions.font10(context) * 2.0,
@@ -374,7 +375,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             top: AppDimensions.height10(context) * 3.0),
                         child: Center(
                           child: Text(
-                            'Which goals\nare impacted?',
+                            AppText().captureHurdle1Body,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: AppDimensions.font10(context) * 2.0,
@@ -453,7 +454,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             top: AppDimensions.height10(context) * 3.0),
                         child: Center(
                           child: Text(
-                            'What or who has triggered\nyour hurdle?',
+                            AppText().captureHurdleSummText2,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: AppDimensions.font10(context) * 2.0,

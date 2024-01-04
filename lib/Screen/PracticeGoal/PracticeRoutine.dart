@@ -10,6 +10,7 @@ import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/animatedButton.dart';
@@ -181,7 +182,6 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           content: Container(
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 1.9,
-
                                 left: AppDimensions.width10(context) * 1.6,
                                 right: AppDimensions.width10(context) * 1.6),
                             height: AppDimensions.height10(context) * 3.2,
@@ -290,7 +290,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       top: AppDimensions.height10(context) * 5.3),
                   child: Center(
                     child: Text(
-                      "Practice Creation 3/3",
+                      AppText().createPrac3,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -319,9 +319,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 SizedBox(
                   height: AppDimensions.height10(context),
                 ),
-                goalAndPractice(context,
-                    color,2,
-                    practice.text.toString()),
+                goalAndPractice(context, color, 2, practice.text.toString()),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.center,
                 //   crossAxisAlignment: CrossAxisAlignment.center,
@@ -414,7 +412,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   width: AppDimensions.width10(context) * 36.4,
                   child: Center(
                     child: Text(
-                      "Your routine commitment",
+                      AppText().practiceRotine,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
@@ -437,8 +435,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                         child: Text.rich(
                           textAlign: TextAlign.center,
                           TextSpan(
-                            text:
-                                'It’s important to set a consistent routine that works for you. Please select time slots\n ',
+                            text: AppText().practiceRotineBody1,
                             style: TextStyle(
                               color: const Color(0xFFFFFFFF),
                               fontSize: AppDimensions.font10(context) * 1.8,
@@ -446,7 +443,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             ),
                             children: <TextSpan>[
                               TextSpan(
-                                  text: 'for 3 or more days.',
+                                  text: AppText().practiceRotineBody2,
                                   style: TextStyle(
                                     color: const Color(0xFFFFFFFF),
                                     fontSize:

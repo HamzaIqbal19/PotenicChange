@@ -12,6 +12,7 @@ import 'package:potenic_app/Widgets/bottom_sheet_Practice.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Practice.dart';
@@ -263,7 +264,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                               top: AppDimensions.height10(context) * 5.2),
                           child: Center(
                             child: Text(
-                              "Practice Creation 1/3",
+                              AppText().createPrac1,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
@@ -356,7 +357,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                             Container(
                               // height: AppDimensions.height10(context) *7.1,
                               child: Text(
-                                "Choose your practice",
+                                AppText().createPractice,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
@@ -515,8 +516,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                                         });
                                       },
                                       decoration: InputDecoration(
-                                          contentPadding:
-                                              const EdgeInsets.all(0.0),
+                                          contentPadding: const EdgeInsets.all(
+                                              0.0),
                                           prefixIcon: Image.asset(
                                             'assets/images/Light.webp',
                                             width:
@@ -552,7 +553,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                           hintText: "Search",
                                           hintStyle: TextStyle(
                                               height: AppDimensions.height10(
-                                                  context) *
+                                                      context) *
                                                   0.14),
                                           focusedBorder:
                                               const OutlineInputBorder(
@@ -637,7 +638,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                 width: AppDimensions.width10(context) * 0.5,
                               ),
                               Text(
-                                'Create a new practice! ',
+                                AppText().createNewPractice,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: const Color(0xFFFA9934),

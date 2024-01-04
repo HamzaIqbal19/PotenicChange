@@ -9,6 +9,7 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.da
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -58,7 +59,7 @@ class _clocksState extends State<clocks> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-               // width: AppDimensions.width10(context) * 2.6,
+                // width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.8,
                 fit: BoxFit.contain,
               )),
@@ -184,7 +185,7 @@ class _clocksState extends State<clocks> {
                 },
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                 // width: AppDimensions.width10(context) * 2.6,
+                  // width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
@@ -227,7 +228,7 @@ class _clocksState extends State<clocks> {
                 alignment: Alignment.center,
                 // margin: EdgeInsets.only(bottom: 86),
                 child: Text(
-                  'You can use our timer to\nrecord your practice',
+                  AppText().clockText,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.16,
@@ -625,8 +626,8 @@ class _watch_timeState extends State<watch_time> {
                                   margin: EdgeInsets.only(
                                       top:
                                           AppDimensions.height10(context) * 0.3,
-                                      left: AppDimensions.width10(context) *
-                                          1.0),
+                                      left:
+                                          AppDimensions.width10(context) * 1.0),
                                   child: Image.asset(
                                     'assets/images/start_icon.webp',
                                     width: AppDimensions.width10(context) * 1.8,
@@ -746,10 +747,10 @@ class _watch_timeState extends State<watch_time> {
                     });
                     Navigator.pop(context);
                   },
-                  child:  Text(
+                  child: Text(
                     'Cancel',
                     style: TextStyle(
-                      fontSize: AppDimensions.font10(context)*1.6,
+                      fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xff2F80ED),
                     ),
@@ -763,10 +764,10 @@ class _watch_timeState extends State<watch_time> {
                     });
                     Navigator.pop(context);
                   },
-                  child:  Text(
+                  child: Text(
                     'Done',
                     style: TextStyle(
-                      fontSize: AppDimensions.font10(context)*1.6,
+                      fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xff2F80ED),
                     ),

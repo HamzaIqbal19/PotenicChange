@@ -11,6 +11,7 @@ import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -204,7 +205,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
                         child: Center(
                           child: GradientText(
-                            "Star & planet created! ",
+                            AppText().starPlanet,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -230,7 +231,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                               Container(
                                 child: Center(
                                   child: Text(
-                                    "Please review and continue ",
+                                    AppText().reviewCont,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
@@ -416,8 +417,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                     );
                                   },
                                   child: Container(
-                                      height: AppDimensions.width10(context) *
-                                          14.7,
+                                      height:
+                                          AppDimensions.width10(context) * 14.7,
                                       width:
                                           AppDimensions.width10(context) * 14.7,
                                       decoration: BoxDecoration(
@@ -432,7 +433,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                         ? "assets/images/Ellipse light-blue.webp"
                                                         : '$pracColor' == '5'
                                                             ? "assets/images/Ellipse blue.webp"
-                                                            : 'assets/images/Ellipse 158.webp'), fit:BoxFit.contain,
+                                                            : 'assets/images/Ellipse 158.webp'),
+                                        fit: BoxFit.contain,
                                       )),
                                       child: Column(
                                         mainAxisAlignment:
@@ -444,7 +446,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                 AppDimensions.width10(context) *
                                                     11.8,
                                             child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
                                                 Text(
                                                   pracName,
@@ -515,14 +518,14 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Container(
-                              // color: Colors.blue,
-                              width: AppDimensions.width10(context) * 5.0,
-                              height: AppDimensions.height10(context) * 5.0,
-                              child: Image.asset(
-                                "assets/images/Moreactions.webp",
-                                fit: BoxFit.contain,
-                              )),
+                          // Container(
+                          //     // color: Colors.blue,
+                          //     width: AppDimensions.width10(context) * 5.0,
+                          //     height: AppDimensions.height10(context) * 5.0,
+                          //     child: Image.asset(
+                          //       "assets/images/Moreactions.webp",
+                          //       fit: BoxFit.contain,
+                          //     )),
                           AnimatedScaleButton(
                             onTap: () {
                               Navigator.push(

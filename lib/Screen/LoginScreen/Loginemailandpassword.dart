@@ -12,6 +12,7 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -216,7 +217,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       Container(
                         height: AppDimensions.height10(context) * 3.9,
                         child: Text(
-                          "Log in",
+                          AppText().login,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
@@ -572,7 +573,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                       },
                                       child: Container(
                                         child: Text(
-                                          "Forgot Password",
+                                          AppText().forgotPass,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -736,7 +737,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                   )
                                 : Center(
                                     child: Text(
-                                      "Log in",
+                                      AppText().login,
                                       style: TextStyle(
                                         color: const Color(0xFF8C648A),
                                         fontSize:

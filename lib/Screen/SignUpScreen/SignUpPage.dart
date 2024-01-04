@@ -5,6 +5,7 @@ import 'package:potenic_app/Widgets/TermsAndConditionBottomSheet.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/animatedButton.dart';
@@ -79,7 +80,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Close.webp',
-                 // width: AppDimensions.width10(context) * 2.8,
+                  // width: AppDimensions.width10(context) * 2.8,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 ),
@@ -130,7 +131,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                 Container(
                   height: AppDimensions.height10(context) * 3.6,
                   child: Text(
-                    "Welcome to Potenic",
+                    AppText().welcomeText,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
@@ -143,7 +144,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                     height: AppDimensions.height10(context) * 4.6,
                     width: AppDimensions.width10(context) * 35.3,
                     child: Text(
-                      'Your Personalised Journey To Better \n  Self Starts Here',
+                      AppText().signUpSubHead,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -193,7 +194,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                                     left: AppDimensions.width10(context) * 0.8,
                                     top: AppDimensions.height10(context) * 0.1),
                                 child: Text(
-                                  '  Sign up with email',
+                                  AppText().signUpEmail,
                                   style: TextStyle(
                                     color: const Color(0xFFFFFFFF),
                                     fontSize:
@@ -233,7 +234,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                             children: [
                               Expanded(
                                   child: Text(
-                                '  Sign up with Google',
+                                AppText().signUpGoogle,
                                 style: TextStyle(
                                   color: Colors.black45,
                                   fontSize: AppDimensions.font10(context) * 1.8,
@@ -270,7 +271,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                             children: [
                               Expanded(
                                   child: Text(
-                                '  Sign up with Facebook',
+                                AppText().signUpFacebook,
                                 style: TextStyle(
                                   color: const Color(0xFFFFFFFF),
                                   fontSize: AppDimensions.font10(context) * 1.8,
@@ -319,7 +320,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                       ),
                       child: Center(
                         child: Text(
-                          "I already have an account",
+                          AppText().alreadySignedUpButton,
                           style: TextStyle(
                             color: const Color(0xFF8C648A),
                             fontSize: AppDimensions.font10(context) * 1.6,
@@ -331,22 +332,8 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   ),
                 )
               ],
-              // child:  Text("Hello background"),
             ),
           ],
-        )
-        //   child:Column(
-        //     mainAxisAlignment: MainAxisAlignment.start,
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //
-        //     // children: [
-        //     //
-        //     //
-        //     //
-        //     //
-        //     // ],
-        //   )
-
-        );
+        ));
   }
 }

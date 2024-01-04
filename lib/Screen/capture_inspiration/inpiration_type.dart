@@ -11,6 +11,7 @@ import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_acc
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/video_access.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -76,7 +77,7 @@ class _inspiration_typeState extends State<inspiration_type> {
               child: Row(
                 children: [
                   GradientText(
-                    'Inspiration 2',
+                    AppText().inspiration2,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: AppDimensions.font10(context) * 2.0,
@@ -188,7 +189,7 @@ class _inspiration_typeState extends State<inspiration_type> {
 
                                             final SharedPreferences prefs =
                                                 await _prefs;
-                                            var savedRoute = prefs.setString(
+                                            prefs.setString(
                                                 'inspiration_saved_route',
                                                 'type_inspiration');
                                           },
@@ -295,7 +296,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                             )),
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                     // width: AppDimensions.width10(context) * 2.6,
+                      // width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     )),
@@ -337,7 +338,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                 child: Center(
                   child: Text(
                     //add 2 px font_size
-                    'What type of inspiration do you want to\nrecord?',
+                    AppText().inspiration2Body,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: AppDimensions.font10(context) * 2.0,
@@ -366,7 +367,6 @@ class _inspiration_typeState extends State<inspiration_type> {
                           height: AppDimensions.width10(context) * 13.3,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.4,
-
                               left: AppDimensions.width10(context) * 4.0),
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,

@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -91,32 +92,11 @@ class _GoalFinishedState extends State<GoalFinished> {
             centerTitle: true,
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
-            // leading: Center(
-            //   // alignment: Alignment.center,
-            //   child: IconButton(
-            //     icon: Image.asset(
-            //       'assets/images/Back.webp',
-            //       width: AppDimensions.width10(context) * 3,
-            //       height: AppDimensions.height10(context) * 3,
-            //       fit: BoxFit.contain,
-            //     ),
-            //     onPressed: () {
-            //       Navigator.push(
-            //           context,
-            //           FadePageRoute3(
-            //               enterPage: const StartProcess(),
-            //               exitPage: const GoalFinished()));
-            //     },
-            //   ),
-            // ),
-
             actions: [
               Center(
-                // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                    //width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
@@ -136,13 +116,6 @@ class _GoalFinishedState extends State<GoalFinished> {
                         ),
                       );
                     }
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => HomeScreen(),
-                    //   ),
-                    // );
-                    // Add code for performing close action
                   },
                 ),
               ),
@@ -168,10 +141,9 @@ class _GoalFinishedState extends State<GoalFinished> {
                                   top: AppDimensions.height10(context) * 10),
                               child: Center(
                                 child: GradientText(
-                                  "Star Created!",
+                                  AppText().starCreated,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    // color: Colors.white,
                                     fontSize: AppDimensions.font10(context) * 3,
                                   ),
                                   colors: const [
@@ -185,14 +157,11 @@ class _GoalFinishedState extends State<GoalFinished> {
                               height: AppDimensions.height10(context) * 2.0,
                             ),
                             Container(
-                                // color: Colors.black,
-                                // height: AppDimensions.height10(context) * 21.8,
-                                //width: AppDimensions.width10(context) * 34.0,
                                 child: Column(
                               children: [
                                 Center(
                                   child: Text(
-                                    "You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not\n working, you can change it to another \n practice. ",
+                                    AppText().starCreatedBody,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
@@ -416,30 +385,30 @@ class _GoalFinishedState extends State<GoalFinished> {
                             ),
                           ],
                         ),
-                        Positioned(
-                            bottom: 15,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: AppDimensions.width10(context) * 1.6,
-                                ),
-                                Container(
-                                    // color: Colors.blue,
-                                    width: AppDimensions.width10(context) * 5.0,
-                                    height:
-                                        AppDimensions.height10(context) * 5.0,
-                                    child: AnimatedScaleButton(
-                                      onTap: () {
-                                        //  signupSheet(context, "Sign up / login", "login");
-                                      },
-                                      child: Image.asset(
-                                        "assets/images/Moreactions.webp",
-                                        fit: BoxFit.contain,
-                                      ),
-                                    )),
-                              ],
-                            ))
+                        // Positioned(
+                        //     bottom: 15,
+                        //     child: Row(
+                        //       mainAxisAlignment: MainAxisAlignment.start,
+                        //       children: [
+                        //         SizedBox(
+                        //           width: AppDimensions.width10(context) * 1.6,
+                        //         ),
+                        //         Container(
+                        //             // color: Colors.blue,
+                        //             width: AppDimensions.width10(context) * 5.0,
+                        //             height:
+                        //                 AppDimensions.height10(context) * 5.0,
+                        //             child: AnimatedScaleButton(
+                        //               onTap: () {
+                        //                 //  signupSheet(context, "Sign up / login", "login");
+                        //               },
+                        //               child: Image.asset(
+                        //                 "assets/images/Moreactions.webp",
+                        //                 fit: BoxFit.contain,
+                        //               ),
+                        //             )),
+                        //       ],
+                        //     ))
                       ],
                     )
                   : const Center(

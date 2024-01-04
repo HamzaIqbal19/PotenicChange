@@ -6,6 +6,7 @@ import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
@@ -19,7 +20,6 @@ class SignUpSuccessful extends StatefulWidget {
 }
 
 class _SignUpSuccessfulState extends State<SignUpSuccessful> {
-  // controllers
   bool isPasswordNotVisible = true;
   bool rememberMe = true;
   bool boolean = true;
@@ -39,11 +39,8 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
               page: Loginemailandpassword(),
             ),
           );
-
           return Future.value(false);
         },
-
-        // SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
         child: Scaffold(
             extendBodyBehindAppBar: true,
             resizeToAvoidBottomInset: false,
@@ -57,7 +54,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                     // width: AppDimensions.width10(context) * 2.8,
+                      // width: AppDimensions.width10(context) * 2.8,
                       height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     ),
@@ -93,18 +90,16 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                     ),
                     Center(
                       child: Image(
-                        // color: Colors.orange,
                         image: const AssetImage("assets/images/logo.webp"),
                         height: AppDimensions.height10(context) * 7.75,
                         width: AppDimensions.width10(context) * 7.75,
                       ),
                     ),
-
                     SizedBox(height: AppDimensions.height10(context) * 2.32),
                     Container(
                       height: AppDimensions.height10(context) * 3.6,
                       child: Text(
-                        "Sign up successful",
+                        AppText().signUpSuccess,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
@@ -114,12 +109,10 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                       ),
                     ),
                     SizedBox(height: AppDimensions.height10(context) * 2.4),
-                    // SizedBox(height: AppDimensions.height2),
                     Container(
                         height: AppDimensions.height10(context) * 2.4,
-                        // width: AppDimensions.width10(context) * 24.1,
                         child: Text(
-                          'Welcome aboard ' + widget.name,
+                          AppText().welcomeAboard + widget.name,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -132,7 +125,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                         height: AppDimensions.height10(context) * 7 + 4,
                         width: AppDimensions.width10(context) * 37.8,
                         child: Text(
-                          'You’re almost ready to get started. Please check \n your registration email now to continue your \n journey. ',
+                          AppText().welcomeAboardBody,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -160,7 +153,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                         ),
                         child: Center(
                           child: Text(
-                            "Log in",
+                            AppText().login,
                             style: TextStyle(
                               color: const Color(0xFF8C648A),
                               fontSize: AppDimensions.font10(context) * 1.6,
@@ -170,10 +163,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                         ),
                       ),
                     ),
-
-                    // SizedBox(height: AppDimensions.height120+90),
                   ],
-                  // child:  Text("Hello background"),
                 ),
               ],
             )));

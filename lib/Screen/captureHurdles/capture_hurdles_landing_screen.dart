@@ -15,6 +15,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -317,7 +318,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                               context);
                                                         },
                                                         child: Container(
-
                                                           margin: EdgeInsets.only(
                                                               right: AppDimensions
                                                                       .height10(
@@ -326,9 +326,16 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                           child: Text(
                                                             'Cancel',
                                                             style: TextStyle(
-                                                                fontSize: AppDimensions.font10(context) * 1.9,
-                                                                height: AppDimensions.height10(context) * 0.1,
-                                                                color: const Color(0xFF2F80ED)),
+                                                                fontSize: AppDimensions
+                                                                        .font10(
+                                                                            context) *
+                                                                    1.9,
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    0.1,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
                                                           ),
                                                         ),
                                                       ),
@@ -351,18 +358,26 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                               context);
                                                         },
                                                         child: SizedBox(
-
                                                           child: Text(
                                                             'Done',
                                                             style: TextStyle(
-                                                                fontSize: AppDimensions.font10(context) * 1.9,
-                                                                height: AppDimensions.height10(context) * 0.1,
-                                                                color: const Color(0xFF2F80ED)),
+                                                                fontSize: AppDimensions
+                                                                        .font10(
+                                                                            context) *
+                                                                    1.9,
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    0.1,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
                                                           ),
                                                         ),
                                                       ),
-                                                      SizedBox(width: AppDimensions.width10(context),),
-
+                                                      SizedBox(
+                                                        width: AppDimensions
+                                                            .width10(context),
+                                                      ),
                                                     ],
                                                   ),
                                                 ),
@@ -567,7 +582,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                               context);
                                                         },
                                                         child: Container(
-
                                                           margin: EdgeInsets.only(
                                                               right: AppDimensions
                                                                       .height10(
@@ -576,9 +590,16 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                           child: Text(
                                                             'Cancel',
                                                             style: TextStyle(
-                                                                fontSize: AppDimensions.font10(context) * 1.9,
-                                                                height: AppDimensions.height10(context) * 0.1,
-                                                                color: const Color(0xFF2F80ED)),
+                                                                fontSize: AppDimensions
+                                                                        .font10(
+                                                                            context) *
+                                                                    1.9,
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    0.1,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
                                                           ),
                                                         ),
                                                       ),
@@ -604,18 +625,26 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                               context);
                                                         },
                                                         child: SizedBox(
-
                                                           child: Text(
                                                             'Done',
                                                             style: TextStyle(
-                                                                fontSize: AppDimensions.font10(context) * 1.9,
-                                                                height: AppDimensions.height10(context) * 0.1,
-                                                                color: const Color(0xFF2F80ED)),
+                                                                fontSize: AppDimensions
+                                                                        .font10(
+                                                                            context) *
+                                                                    1.9,
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    0.1,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
                                                           ),
                                                         ),
                                                       ),
-                                                      SizedBox(width: AppDimensions.width10(context),),
-
+                                                      SizedBox(
+                                                        width: AppDimensions
+                                                            .width10(context),
+                                                      ),
                                                     ],
                                                   ),
                                                 ),
@@ -914,7 +943,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                   margin: EdgeInsets.only(
                                       right:
                                           AppDimensions.width10(context) * 2.0),
-                                  child: Text('New hurdle',
+                                  child: Text(AppText().newHurdle,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
@@ -1788,8 +1817,9 @@ _showBottomSheet(BuildContext context) {
                                 color: const Color(0xFF2F80ED)),
                           ),
                         ),
-                        SizedBox(width: AppDimensions.width10(context),),
-
+                        SizedBox(
+                          width: AppDimensions.width10(context),
+                        ),
                       ],
                     ),
                   ),
@@ -1944,7 +1974,9 @@ _showTagSheet(BuildContext context) {
                                 color: const Color(0xFF2F80ED)),
                           ),
                         ),
-                        SizedBox(width: AppDimensions.width10(context),),
+                        SizedBox(
+                          width: AppDimensions.width10(context),
+                        ),
                       ],
                     ),
                   ),

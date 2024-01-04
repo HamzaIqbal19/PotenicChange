@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
@@ -114,7 +115,7 @@ class welldone_splashState extends State<welldone_splash> {
                   child: Container(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0),
-                    child: Text('Let\'s continue recording\n your practice.',
+                    child: Text(AppText().recordPracSplash,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.font10(context) * 2.8,

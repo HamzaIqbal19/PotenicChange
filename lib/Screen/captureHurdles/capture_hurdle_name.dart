@@ -9,6 +9,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_statement.dart'
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -177,16 +178,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                 child: Row(
                   children: [
                     GradientText(
-                      'Capture Hurdle ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: AppDimensions.font10(context) * 2.2,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
-                    ),
-                    GradientText(
-                      ' 3',
+                      AppText().captureHurdle3,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: AppDimensions.font10(context) * 2.2,
@@ -431,7 +423,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                               width: AppDimensions.width10(context) * 34.3,
                               height: AppDimensions.height10(context) * 7.3,
                               child: GradientText(
-                                'Describe your hurdle',
+                                AppText().captureHurdle3Body,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 2.8,
@@ -558,7 +550,6 @@ class _hurdle_nameState extends State<hurdle_name> {
                                               textAlignVertical:
                                                   TextAlignVertical.top,
                                               maxLines: null,
-
                                               onTap: () {
                                                 // setState(() {
                                                 //   margin_state = false;
@@ -742,8 +733,8 @@ class _hurdle_nameState extends State<hurdle_name> {
                                         child: Center(
                                           child: Text(
                                             widget.update
-                                                ? 'Update Summary'
-                                                : 'Next',
+                                                ? AppText().updateSumm
+                                                : AppText().nextButton,
                                             style: TextStyle(
                                                 color: controller
                                                         .text.isNotEmpty

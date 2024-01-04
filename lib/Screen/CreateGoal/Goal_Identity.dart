@@ -14,6 +14,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Goal.dart';
@@ -369,12 +370,17 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                   titlePadding: EdgeInsets.zero,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) * 1.4)),
+                                          AppDimensions.height10(context) *
+                                              1.4)),
                                   title: Container(
                                     margin: const EdgeInsets.only(
-                                        top: 19, right: 16, left: 16, bottom: 2),
+                                        top: 19,
+                                        right: 16,
+                                        left: 16,
+                                        bottom: 2),
                                     // height: AppDimensions.height10(context) * 2.2,
-                                    width: AppDimensions.width10(context) * 23.8,
+                                    width:
+                                        AppDimensions.width10(context) * 23.8,
                                     child: const Text(
                                       "Exit onboarding?",
                                       textAlign: TextAlign.center,
@@ -419,20 +425,22 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                 saved = true;
                                               });
                                               updateGoalReason(myIdentity);
-      
+
                                               Navigator.push(
                                                 context,
                                                 FadePageRouteReverse(
                                                   page:
                                                       const HomeScreenProgressSaved(
                                                           login: true,
-                                                          route: "GoalIdentity"),
+                                                          route:
+                                                              "GoalIdentity"),
                                                 ),
                                               );
                                               final SharedPreferences prefs =
                                                   await _prefs;
-                                              var GoalIdentity = prefs.setString(
-                                                  'route', "GoalIdentity");
+                                              var GoalIdentity =
+                                                  prefs.setString(
+                                                      'route', "GoalIdentity");
                                             },
                                             child: const Center(
                                               child: Text(
@@ -441,7 +449,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                     color: Color(0xFF007AFF),
                                                     fontSize: 17,
                                                     fontFamily: "Laila",
-                                                    fontWeight: FontWeight.w400),
+                                                    fontWeight:
+                                                        FontWeight.w400),
                                               ),
                                             ),
                                           ),
@@ -500,8 +509,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                         ),
                                         Container(
                                           height: 42,
-                                          width: AppDimensions.width10(context) *
-                                              27.0,
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  27.0,
                                           // color: Colors.white,
                                           child: TextButton(
                                             onPressed: () {
@@ -552,8 +562,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             child: Center(
                               child: Text(
                                 widget.comingFromEditScreen
-                                    ? "View and edit mode"
-                                    : "Star Creation 4/5",
+                                    ? AppText().viewAndEdit
+                                    : AppText().starCreate4,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: widget.comingFromEditScreen
@@ -595,9 +605,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                   width: AppDimensions.width10(context) * 10.4,
                                   height: AppDimensions.height10(context) * 7.6,
                                   padding: EdgeInsets.only(
-                                      left: AppDimensions.width10(context) * 1.5,
-                                      right:
-                                          AppDimensions.height10(context) * 1.5),
+                                      left:
+                                          AppDimensions.width10(context) * 1.5,
+                                      right: AppDimensions.height10(context) *
+                                          1.5),
                                   child: Image.asset(
                                     "assets/images/image3.webp",
                                     fit: BoxFit.contain,
@@ -608,7 +619,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                           Container(
                             child: Center(
                               child: Text(
-                                "New Identity Statement",
+                                AppText().goalIdentity,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   color: widget.comingFromEditScreen
@@ -627,10 +638,11 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             width: AppDimensions.width10(context) * 37.2,
                             child: Center(
                               child: Text(
-                                "What positive statements can you think of \n to help you own your goal & your new \n identity?  ",
+                                AppText().goalIdentityBody,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: AppDimensions.font10(context) * 1.8,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w600,
                                     color: widget.comingFromEditScreen
                                         ? const Color(0xFF437296)
@@ -664,8 +676,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                     color: Colors.white,
                                     border: Border.all(
                                         color: Colors.white,
-                                        width:
-                                            AppDimensions.width10(context) * 0.2),
+                                        width: AppDimensions.width10(context) *
+                                            0.2),
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(
                                             AppDimensions.height10(context) *
@@ -691,7 +703,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                             length: 150,
                                             onChanged: (newText) {
                                               setState(() {
-                                                identity[index]['text'] = newText;
+                                                identity[index]['text'] =
+                                                    newText;
                                               });
                                               handleTextChanged(index, newText);
                                             },
@@ -716,9 +729,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                   child: Text(
                                                     "Character count: ",
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.w400,
-                                                      color:
-                                                          const Color(0xFF464646),
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xFF464646),
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
@@ -728,9 +742,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                 ),
                                                 Center(
                                                   child: SizedBox(
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        6,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6,
                                                     child: Text(
                                                       "${identity[index]['text'].toString().length}/150",
                                                       style: TextStyle(
@@ -738,33 +753,35 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                             FontWeight.w700,
                                                         color: const Color(
                                                             0xFF464646),
-                                                        fontSize:
-                                                            AppDimensions.font10(
+                                                        fontSize: AppDimensions
+                                                                .font10(
                                                                     context) *
-                                                                1.3,
+                                                            1.3,
                                                       ),
                                                     ),
                                                   ),
                                                 ),
                                                 Container(
-                                                  height: AppDimensions.height10(
-                                                          context) *
-                                                      0.3,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.3,
                                                   width: AppDimensions.height10(
                                                           context) *
                                                       4.0,
                                                   margin: EdgeInsets.only(
-                                                      top: AppDimensions.height10(
-                                                              context) *
-                                                          0.5,
-                                                      left:
-                                                          AppDimensions.height10(
+                                                      top: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              0.1),
+                                                          0.5,
+                                                      left: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.1),
                                                   decoration: BoxDecoration(
-                                                      color:
-                                                          const Color(0xFF282828)
-                                                              .withOpacity(0.2)),
+                                                      color: const Color(
+                                                              0xFF282828)
+                                                          .withOpacity(0.2)),
                                                 )
                                               ],
                                             ),
@@ -777,7 +794,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                         return Column(
                                           children: [
                                             inner_text(
-                                              key: Key(myIdentity[index]['key']!),
+                                              key: Key(
+                                                  myIdentity[index]['key']!),
                                               delete: true,
                                               head_text:
                                                   "${index + 1}. I am someone who ",
@@ -789,9 +807,11 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                   myIdentity[index]['text'] =
                                                       newText;
                                                 });
-                                                handleTextChanged(index, newText);
+                                                handleTextChanged(
+                                                    index, newText);
                                               },
-                                              onDelete: () => handleDelete(index),
+                                              onDelete: () =>
+                                                  handleDelete(index),
                                               index: index,
                                               placeHolder:
                                                   'is in control of my anger....',
@@ -802,9 +822,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                   left: AppDimensions.height10(
                                                           context) *
                                                       1.5,
-                                                  bottom: AppDimensions.height10(
-                                                          context) *
-                                                      1.3),
+                                                  bottom:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.3),
                                               child: Row(
                                                 children: [
                                                   Center(
@@ -815,10 +836,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                             FontWeight.w400,
                                                         color: const Color(
                                                             0xFF464646),
-                                                        fontSize:
-                                                            AppDimensions.font10(
+                                                        fontSize: AppDimensions
+                                                                .font10(
                                                                     context) *
-                                                                1.3,
+                                                            1.3,
                                                       ),
                                                     ),
                                                   ),
@@ -848,9 +869,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                         AppDimensions.height10(
                                                                 context) *
                                                             0.3,
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        4.0,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.0,
                                                     margin: EdgeInsets.only(
                                                         top: AppDimensions
                                                                 .height10(
@@ -911,19 +933,20 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                       189, 158, 158, 158),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 4,
-                                                      left: 4,
-                                                      right: 4,
-                                                      bottom: 4),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 4,
+                                                          left: 4,
+                                                          right: 4,
+                                                          bottom: 4),
                                                   child: Container(
                                                     color: Colors.transparent,
                                                     child: Image.asset(
                                                       'assets/images/Addgoal.webp',
-                                                      height:
-                                                          AppDimensions.height10(
+                                                      height: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              4.7,
+                                                          4.7,
                                                       width:
                                                           AppDimensions.width10(
                                                                   context) *
@@ -962,27 +985,30 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                 decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   gradient: LinearGradient(
-                                                      begin: Alignment.topCenter,
-                                                      end: Alignment.bottomCenter,
+                                                      begin:
+                                                          Alignment.topCenter,
+                                                      end: Alignment
+                                                          .bottomCenter,
                                                       colors: [
                                                         Color(0xFFB1B8FF),
                                                         Color(0xFFC5CAFF)
                                                       ]),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 4,
-                                                      left: 4,
-                                                      right: 4,
-                                                      bottom: 4),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 4,
+                                                          left: 4,
+                                                          right: 4,
+                                                          bottom: 4),
                                                   child: Container(
                                                     color: Colors.transparent,
                                                     child: Image.asset(
                                                       'assets/images/Addgoal.webp',
-                                                      height:
-                                                          AppDimensions.height10(
+                                                      height: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              4.7,
+                                                          4.7,
                                                       width:
                                                           AppDimensions.width10(
                                                                   context) *
@@ -1018,19 +1044,20 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                       189, 158, 158, 158),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 4,
-                                                      left: 4,
-                                                      right: 4,
-                                                      bottom: 4),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 4,
+                                                          left: 4,
+                                                          right: 4,
+                                                          bottom: 4),
                                                   child: Container(
                                                     color: Colors.transparent,
                                                     child: Image.asset(
                                                       'assets/images/Addgoal.webp',
-                                                      height:
-                                                          AppDimensions.height10(
+                                                      height: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              4.7,
+                                                          4.7,
                                                       width:
                                                           AppDimensions.width10(
                                                                   context) *
@@ -1069,27 +1096,30 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                 decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   gradient: LinearGradient(
-                                                      begin: Alignment.topCenter,
-                                                      end: Alignment.bottomCenter,
+                                                      begin:
+                                                          Alignment.topCenter,
+                                                      end: Alignment
+                                                          .bottomCenter,
                                                       colors: [
                                                         Color(0xFFB1B8FF),
                                                         Color(0xFFC5CAFF)
                                                       ]),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 4,
-                                                      left: 4,
-                                                      right: 4,
-                                                      bottom: 4),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 4,
+                                                          left: 4,
+                                                          right: 4,
+                                                          bottom: 4),
                                                   child: Container(
                                                     color: Colors.transparent,
                                                     child: Image.asset(
                                                       'assets/images/Addgoal.webp',
-                                                      height:
-                                                          AppDimensions.height10(
+                                                      height: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              4.7,
+                                                          4.7,
                                                       width:
                                                           AppDimensions.width10(
                                                                   context) *
@@ -1111,8 +1141,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                 )
                               : MediaQuery.of(context).viewInsets.bottom == 0
                                   ? SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 22.4,
+                                      height: AppDimensions.height10(context) *
+                                          22.4,
                                     )
                                   : SizedBox(
                                       height:
@@ -1124,9 +1154,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                     setState(() {
                                       swipeOffset += details.delta.dx;
                                     });
-      
+
                                     if (swipeOffset.abs() >=
-                                        MediaQuery.of(context).size.width / 3.0) {
+                                        MediaQuery.of(context).size.width /
+                                            3.0) {
                                       setState(() {
                                         showContainer = false;
                                       });
@@ -1140,11 +1171,13 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                       child: Container(
                                         width: AppDimensions.width10(context) *
                                             38.259,
-                                        height: AppDimensions.height10(context) *
-                                            9.707,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                9.707,
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(
-                                                AppDimensions.height10(context) *
+                                                AppDimensions.height10(
+                                                        context) *
                                                     2.0),
                                             gradient: const LinearGradient(
                                                 begin: Alignment.topCenter,
@@ -1163,9 +1196,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                   left: AppDimensions.height10(
                                                           context) *
                                                       1.261),
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      4.437,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  4.437,
                                               height: AppDimensions.height10(
                                                       context) *
                                                   4.437,
@@ -1188,9 +1221,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   SizedBox(
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        4.6,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.6,
                                                     height:
                                                         AppDimensions.height10(
                                                                 context) *
@@ -1210,9 +1244,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        16.9,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            16.9,
                                                     height:
                                                         AppDimensions.height10(
                                                                 context) *
@@ -1250,31 +1285,34 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                         context) *
                                                     6.0,
                                                 margin: EdgeInsets.only(
-                                                    left: AppDimensions.height10(
-                                                            context) *
-                                                        5,
-                                                    right: AppDimensions.height10(
-                                                            context) *
-                                                        1.23),
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            5,
+                                                    right:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.23),
                                                 decoration: BoxDecoration(
                                                   border: Border.all(
-                                                      color:
-                                                          const Color(0xFFFFFFFF),
+                                                      color: const Color(
+                                                          0xFFFFFFFF),
                                                       width: 1),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          AppDimensions.height10(
-                                                                  context) *
+                                                          AppDimensions
+                                                                  .height10(
+                                                                      context) *
                                                               2.0),
                                                 ),
                                                 child: Center(
                                                   child: Text(
                                                     'Undo',
                                                     style: TextStyle(
-                                                        fontSize:
-                                                            AppDimensions.font10(
+                                                        fontSize: AppDimensions
+                                                                .font10(
                                                                     context) *
-                                                                1.8,
+                                                            1.8,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         color: const Color(
@@ -1294,12 +1332,12 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                   children: [
                                     widget.comingFromEditScreen
                                         ? Container(
-                                            width: AppDimensions.width10(
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    10.0,
+                                            height: AppDimensions.height10(
                                                     context) *
-                                                10.0,
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    5.0,
+                                                5.0,
                                             decoration: myIdentity[0]['text'] !=
                                                     ""
                                                 ? BoxDecoration(
@@ -1336,33 +1374,37 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                     color: myIdentity[0]
                                                                 ['text'] !=
                                                             ""
-                                                        ? const Color(0xffFA9934)
-                                                        : const Color(0xff282828),
+                                                        ? const Color(
+                                                            0xffFA9934)
+                                                        : const Color(
+                                                            0xff282828),
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
                                                             1.8),
                                               )),
                                             ))
-                                        : Container(
-                                            // color: Colors.blue,
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    5.0,
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    5.0,
-                                            child: AnimatedScaleButton(
-                                              onTap: () {
-                                                //signupSheet(context, "Sign up / login", "login");
-                                              },
-                                              child: Image.asset(
-                                                "assets/images/Moreactions.webp",
-                                                fit: BoxFit.contain,
-                                              ),
-                                            )),
+                                        : Container(),
+                                    // Container(
+                                    //     // color: Colors.blue,
+                                    //     width:
+                                    //         AppDimensions.width10(context) *
+                                    //             5.0,
+                                    //     height:
+                                    //         AppDimensions.height10(context) *
+                                    //             5.0,
+                                    //     child: AnimatedScaleButton(
+                                    //       onTap: () {
+                                    //         //   signupSheet(context, "Sign up / login", "login");
+                                    //       },
+                                    //       child: Image.asset(
+                                    //         "assets/images/Moreactions.webp",
+                                    //         fit: BoxFit.contain,
+                                    //       ),
+                                    //     )),
                                     SizedBox(
-                                      width: AppDimensions.width10(context) * 2.0,
+                                      width:
+                                          AppDimensions.width10(context) * 2.0,
                                     ),
                                     AnimatedScaleButton(
                                       onTap: () {
@@ -1370,7 +1412,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                           if (identity[0]['text'] != "") {
                                             AdminGoal()
                                                 .updateUserGoal(
-                                                    'identityStatement', identity)
+                                                    'identityStatement',
+                                                    identity)
                                                 .then((value) {
                                               if (value == true) {
                                                 setState(() {
@@ -1402,13 +1445,15 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                       },
                                       child: Container(
                                         height:
-                                            AppDimensions.height10(context) * 5.2,
+                                            AppDimensions.height10(context) *
+                                                5.2,
                                         width: widget.comingFromEditScreen
                                             ? AppDimensions.width10(context) *
                                                 26.3
                                             : AppDimensions.width10(context) *
                                                 31.3,
-                                        decoration: myIdentity[0]['text'] != "" ||
+                                        decoration: myIdentity[0]['text'] !=
+                                                    "" ||
                                                 widget.comingFromEditScreen ==
                                                     true
                                             ? BoxDecoration(
@@ -1447,10 +1492,11 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                       widget.comingFromEditScreen ==
                                                           true
                                                   ? Colors.white
-                                                  : Colors.white.withOpacity(0.5),
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.6,
+                                                  : Colors.white
+                                                      .withOpacity(0.5),
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.6,
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),

@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -208,8 +209,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                     width: AppDimensions.width10(context) * 34.9,
                     height: AppDimensions.height10(context) * 12.1,
                     //margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 2.0),
-                    child: Text(
-                        'Use this space to capture\ninspirational material that motivates and\npushes you forward towards achieving\nyour personal growth goals. ',
+                    child: Text(AppText().inspirationBody,
                         textAlign: TextAlign.center,
                         textHeightBehavior: const TextHeightBehavior(
                             leadingDistribution: TextLeadingDistribution.even),

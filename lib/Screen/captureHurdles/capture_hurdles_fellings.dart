@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -242,16 +243,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                 child: Row(
                   children: [
                     GradientText(
-                      'Capture Hurdle ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: AppDimensions.font10(context) * 2.2,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
-                    ),
-                    GradientText(
-                      ' 5',
+                      AppText().captureHurdle5,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: AppDimensions.font10(context) * 2.2,
@@ -488,7 +480,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 18.0),
                           child: GradientText(
-                            'How do you feel when\nthis hurdle happens?',
+                            AppText().captureHurdle5Body,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: AppDimensions.font10(context) * 2.8,
@@ -741,7 +733,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                 width: AppDimensions.width10(context) * 21.7,
                                 height: AppDimensions.height10(context) * 1.9,
                                 child: Text(
-                                  'Add another thought/feeling',
+                                  AppText().captureHurdle5Foot,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize:
@@ -836,7 +828,9 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                               ),
                               child: Center(
                                   child: Text(
-                                widget.update ? 'Update' : 'Next',
+                                widget.update
+                                    ? AppText().updateSumm
+                                    : AppText().nextButton,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize:

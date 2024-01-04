@@ -11,6 +11,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/animatedButton.dart';
 import '../ReviewGoal/StarReview.dart';
@@ -465,8 +466,8 @@ class _GoalNameState extends State<GoalName> {
                       child: Center(
                         child: Text(
                           widget.comingFromEditScreen
-                              ? "View and edit mode"
-                              : "Star Creation 2/5",
+                              ? AppText().viewAndEdit
+                              : AppText().starCreate2,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: widget.comingFromEditScreen
@@ -516,7 +517,7 @@ class _GoalNameState extends State<GoalName> {
                     Container(
                       child: Center(
                         child: Text(
-                          'Goal Name',
+                          AppText().goalNameText,
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             color: widget.comingFromEditScreen
@@ -535,7 +536,7 @@ class _GoalNameState extends State<GoalName> {
                       width: AppDimensions.width10(context) * 24.4,
                       child: Center(
                         child: Text(
-                          "Enter the name of your goal ",
+                          AppText().goalNameSub,
                           style: TextStyle(
                               fontSize: AppDimensions.font10(context) * 1.8,
                               fontWeight: FontWeight.w600,
@@ -655,7 +656,7 @@ class _GoalNameState extends State<GoalName> {
                           right: AppDimensions.width10(context) * 1.3),
                       child: Center(
                         child: Text(
-                          "You can change the name of your goal later by going into your Dashboard.  ",
+                          AppText().goalNameBody,
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: widget.comingFromEditScreen
@@ -842,22 +843,22 @@ class _GoalNameState extends State<GoalName> {
                         : Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                  // color: Colors.blue,
-                                  width: AppDimensions.width10(context) * 5.0,
-                                  height: AppDimensions.height10(context) * 5.0,
-                                  child: AnimatedScaleButton(
-                                    onTap: () {
-                                      // signupSheet(context, "Sign up / login", "login");
-                                    },
-                                    child: Image.asset(
-                                      "assets/images/Moreactions.webp",
-                                      fit: BoxFit.contain,
-                                    ),
-                                  )),
-                              SizedBox(
-                                width: AppDimensions.width10(context) * 2.0,
-                              ),
+                              // Container(
+                              //     // color: Colors.blue,
+                              //     width: AppDimensions.width10(context) * 5.0,
+                              //     height: AppDimensions.height10(context) * 5.0,
+                              //     child: AnimatedScaleButton(
+                              //       onTap: () {
+                              //         // signupSheet(context, "Sign up / login", "login");
+                              //       },
+                              //       child: Image.asset(
+                              //         "assets/images/Moreactions.webp",
+                              //         fit: BoxFit.contain,
+                              //       ),
+                              //     )),
+                              // SizedBox(
+                              //   width: AppDimensions.width10(context) * 2.0,
+                              // ),
                               ValueListenableBuilder<TextEditingValue>(
                                 valueListenable: mygoal,
                                 builder: (context, value, child) {

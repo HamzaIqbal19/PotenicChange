@@ -11,6 +11,7 @@ import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Goal.dart';
@@ -293,7 +294,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                 top: AppDimensions.height10(context) * 4.2),
                             child: Center(
                               child: Text(
-                                "Star Creation 2/5",
+                                AppText().starCreate2,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
@@ -449,7 +450,7 @@ class _GoalCategoryState extends State<GoalCategory> {
               ),
               // color: Colors.blue,
               padding: EdgeInsets.only(
-               // top: AppDimensions.height10(context)*0.8,
+                  // top: AppDimensions.height10(context)*0.8,
                   left: AppDimensions.width10(context) * 2.2,
                   right: AppDimensions.width10(context) * 2.2),
               //width: AppDimensions.width10(context) * 41.4,
@@ -485,8 +486,8 @@ class _GoalCategoryState extends State<GoalCategory> {
                                         });
                                       },
                                       decoration: InputDecoration(
-                                          contentPadding:
-                                              const EdgeInsets.all(0.0),
+                                          contentPadding: const EdgeInsets.all(
+                                              0.0),
                                           prefixIcon: Image.asset(
                                             'assets/images/Light.webp',
                                             width:
@@ -517,9 +518,8 @@ class _GoalCategoryState extends State<GoalCategory> {
                                           hintText: "Search",
                                           hintStyle: TextStyle(
                                               height: AppDimensions.height10(
-                                                  context) *
+                                                      context) *
                                                   0.14),
-
                                           focusedBorder:
                                               const OutlineInputBorder(
                                                   borderSide: BorderSide(
@@ -589,7 +589,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                 width: AppDimensions.width10(context) * 0.5,
                               ),
                               Text(
-                                'Create a new goal! ',
+                                AppText().createNewGoal,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: const Color(0xFFFA9934),
