@@ -38,7 +38,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
     });
   }
 
-  bool Loading = true;
+  bool loading = true;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -46,38 +46,40 @@ class _hurdle_statementState extends State<hurdle_statement> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
   void checkHurdle() async {
-    Hurdles().checkUserHurdles().then((response) {
-      if (response == true) {
-        Navigator.push(
-          context,
-          FadePageRouteReverse(page: const landing_hurdles()),
-        );
+    Hurdles()
+        .checkUserHurdles()
+        .then((response) {
+          if (response == true) {
+            Navigator.push(
+              context,
+              FadePageRouteReverse(page: const landing_hurdles()),
+            );
 
-        return response;
-      } else if (response == false) {
-        Navigator.push(
-            context, FadePageRouteReverse(page: const hurdles_splash()));
-      }
-    }).catchError((error) {
-      print("Hello world error");
-    }).whenComplete(() => null);
+            return response;
+          } else if (response == false) {
+            Navigator.push(
+                context, FadePageRouteReverse(page: const hurdles_splash()));
+          }
+        })
+        .catchError((error) {})
+        .whenComplete(() => null);
   }
 
   void _getStatement() async {
     final SharedPreferences prefs = await _prefs;
-    var Name;
+    var name;
     setState(() {
-      Name = prefs.getString('hurdleStatement').toString().isEmpty
+      name = prefs.getString('hurdleStatement').toString().isEmpty
           ? ''
           : prefs.getString('hurdleStatement');
     });
-    if (Name != '' && Name != null) {
-      controller.text = Name;
+    if (name != '' && name != null) {
+      controller.text = name;
     }
   }
 
@@ -93,9 +95,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
       } else {
         return response.statusCode;
       }
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   @override
@@ -104,7 +104,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
     _getStatement();
     if (widget.update == false) {
       setState(() {
-        Loading = false;
+        loading = false;
       });
       _getHurdleName();
     } else {
@@ -154,7 +154,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                           )),
                     ),
               centerTitle: true,
-              title: Container(
+              title: SizedBox(
                 width: AppDimensions.width10(context) * 19.0,
                 height: AppDimensions.height10(context) * 2.8,
                 child: Row(
@@ -189,7 +189,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                             : showAnimatedDialog(
                                 animationType: DialogTransitionType.fadeScale,
                                 curve: Curves.easeInOut,
-                                duration: Duration(seconds: 1),
+                                duration: const Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) => SizedBox(
                                       width:
@@ -254,7 +254,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
-                                              Container(
+                                              SizedBox(
                                                 height: 42,
                                                 width: double.infinity,
                                                 // color: Colors.white,
@@ -301,7 +301,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                                     checkHurdle();
                                                     final SharedPreferences
                                                         prefs = await _prefs;
-                                                    var hurdleRoute = prefs
+                                                    await prefs
                                                         .remove('HurdleRoute');
                                                     await prefs
                                                         .remove('hurdleName');
@@ -386,7 +386,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                       image:
                           AssetImage('assets/images/practicebackground.webp'),
                       fit: BoxFit.cover)),
-              child: Loading == false
+              child: loading == false
                   ? SingleChildScrollView(
                       reverse: true,
                       physics: const ClampingScrollPhysics(),
@@ -617,7 +617,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: summary_hurdles(
+                                                    page: const summary_hurdles(
                                                         delete_hurdle: false)));
                                           }
                                         });
@@ -631,7 +631,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                               )));
                                           final SharedPreferences prefs =
                                               await _prefs;
-                                          var statement = prefs.setString(
+                                          await prefs.setString(
                                               'hurdleStatement',
                                               controller.text.toString());
                                         }

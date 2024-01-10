@@ -25,7 +25,7 @@ class progress_report extends StatefulWidget {
 }
 
 class _progress_reportState extends State<progress_report> {
-  bool Loader = true;
+  bool loader = true;
   bool noData = false;
   var goalDetails;
   var report;
@@ -45,7 +45,7 @@ class _progress_reportState extends State<progress_report> {
 
   void onDoneLoading() {
     setState(() {
-      Loader = false;
+      loader = false;
     });
   }
 
@@ -62,8 +62,6 @@ class _progress_reportState extends State<progress_report> {
         });
 
         loadData();
-
-        int count = 0;
 
         response['report']["howPracticeGoing"].forEach((date, value) {
           if (value is int) {
@@ -166,7 +164,7 @@ class _progress_reportState extends State<progress_report> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-               // width: AppDimensions.width10(context) * 3.0,
+                // width: AppDimensions.width10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
               )),
@@ -181,7 +179,7 @@ class _progress_reportState extends State<progress_report> {
         )),
         width: double.infinity,
         height: double.infinity,
-        child: Loader == false
+        child: loader == false
             ? SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(

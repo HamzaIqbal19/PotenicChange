@@ -36,7 +36,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
           Navigator.push(
             context,
             FadePageRouteReverse(
-              page: Loginemailandpassword(),
+              page: const Loginemailandpassword(),
             ),
           );
           return Future.value(false);
@@ -62,7 +62,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                       Navigator.push(
                         context,
                         FadePageRouteReverse(
-                          page: LoginPage(),
+                          page: const LoginPage(),
                         ),
                       );
                     },
@@ -96,7 +96,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                       ),
                     ),
                     SizedBox(height: AppDimensions.height10(context) * 2.32),
-                    Container(
+                    SizedBox(
                       height: AppDimensions.height10(context) * 3.6,
                       child: Text(
                         AppText().signUpSuccess,
@@ -109,7 +109,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                       ),
                     ),
                     SizedBox(height: AppDimensions.height10(context) * 2.4),
-                    Container(
+                    SizedBox(
                         height: AppDimensions.height10(context) * 2.4,
                         child: Text(
                           AppText().welcomeAboard + widget.name,
@@ -121,7 +121,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                           ),
                         )),
                     SizedBox(height: AppDimensions.height10(context) * 0.92),
-                    Container(
+                    SizedBox(
                         height: AppDimensions.height10(context) * 7 + 4,
                         width: AppDimensions.width10(context) * 37.8,
                         child: Text(
@@ -139,7 +139,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                         Navigator.push(
                             context,
                             FadePageRoute2(false,
-                                enterPage: Loginemailandpassword(),
+                                enterPage: const Loginemailandpassword(),
                                 exitPage: const SignUpSuccessful(name: '')));
                       },
                       child: Container(

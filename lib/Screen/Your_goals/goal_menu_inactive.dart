@@ -33,7 +33,7 @@ class goal_menu_inactive extends StatefulWidget {
 }
 
 class _goal_menu_inactiveState extends State<goal_menu_inactive> {
-  bool Loader = true;
+  bool loader = true;
   var goalDetails;
   String goalName = '';
   List<dynamic> activePractices = [];
@@ -59,55 +59,56 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
 
   void onDoneLoading() {
     setState(() {
-      Loader = false;
+      loader = false;
     });
   }
 
   Future<void> _fetchGoalDetails() async {
     final SharedPreferences prefs = await _prefs;
 
-    AdminGoal.getUserGoalById(prefs.get('goal_num')).then((response) async {
-      if (response.length != 0) {
-        setState(() {
-          goalDetails = response;
-          subscriptions = response['subscriptionsStatus'];
-          inputDate = response['goalEvaluations'].length == 0
-              ? ""
-              : response['goalEvaluations']
-                                  [response['goalEvaluations'].length - 1]
-                              ['endDate']
-                          .toString() !=
-                      'null'
-                  ? response['goalEvaluations']
-                      [response['goalEvaluations'].length - 1]['endDate']
-                  : "";
-          level = response['goalEvaluations'].length == 0
-              ? ''
-              : response['goalEvaluations']
-                              [response['goalEvaluations'].length - 1]
-                          ['totalPoint'] ==
-                      null
+    AdminGoal.getUserGoalById(prefs.get('goal_num'))
+        .then((response) async {
+          if (response.length != 0) {
+            setState(() {
+              goalDetails = response;
+              subscriptions = response['subscriptionsStatus'];
+              inputDate = response['goalEvaluations'].length == 0
+                  ? ""
+                  : response['goalEvaluations']
+                                      [response['goalEvaluations'].length - 1]
+                                  ['endDate']
+                              .toString() !=
+                          'null'
+                      ? response['goalEvaluations']
+                          [response['goalEvaluations'].length - 1]['endDate']
+                      : "";
+              level = response['goalEvaluations'].length == 0
                   ? ''
                   : response['goalEvaluations']
-                          [response['goalEvaluations'].length - 1]['totalPoint']
-                      .toString();
-        });
-        List<dynamic> Practices = [];
-        for (int j = 0; j < goalDetails['userPractices'].length; j++) {
-          if (goalDetails['userPractices'][j]['isActive'] == true) {
-            activePractices.add(goalDetails['userPractices'][j]);
-          }
-        }
+                                  [response['goalEvaluations'].length - 1]
+                              ['totalPoint'] ==
+                          null
+                      ? ''
+                      : response['goalEvaluations']
+                                  [response['goalEvaluations'].length - 1]
+                              ['totalPoint']
+                          .toString();
+            });
+            for (int j = 0; j < goalDetails['userPractices'].length; j++) {
+              if (goalDetails['userPractices'][j]['isActive'] == true) {
+                activePractices.add(goalDetails['userPractices'][j]);
+              }
+            }
 
-        loadData();
-      } else {
-        loadData();
-      }
-    }).catchError((error) {
-      print("error");
-    }).whenComplete(() {
-      //loadData();
-    });
+            loadData();
+          } else {
+            loadData();
+          }
+        })
+        .catchError((error) {})
+        .whenComplete(() {
+          //loadData();
+        });
   }
 
   getRoute() async {
@@ -164,8 +165,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
     getRoute();
   }
 
+  int goalLevel = 2;
   @override
-  int goal_level = 2;
   Widget build(BuildContext context) {
     //bool premium = false;
     return WillPopScope(
@@ -233,7 +234,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
           )),
           width: double.infinity,
           height: double.infinity,
-          child: Loader == false
+          child: loader == false
               ? SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
@@ -263,7 +264,6 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         height: AppDimensions.height10(context) * 2.4,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.5,
-
                             left: AppDimensions.width10(context) * 12.2,
                             right: AppDimensions.width10(context) * 12.1),
                         child: Text(
@@ -374,20 +374,19 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             AppDimensions.height10(context) *
                                                 2.0),
                                         gradient: LinearGradient(colors: [
-                                          const Color(0xFFFF7975)
-                                              ,
+                                          const Color(0xFFFF7975),
                                           const Color(0xFFF9DCC0).withOpacity(0)
                                         ])),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      width: goal_level == 2
+                                      width: goalLevel == 2
                                           ? AppDimensions.width10(context) *
                                               10.135
                                           : AppDimensions.width10(context) *
                                               10.1,
-                                      height: goal_level == 2
+                                      height: goalLevel == 2
                                           ? AppDimensions.width10(context) *
                                               10.135
                                           : AppDimensions.width10(context) *
@@ -414,7 +413,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         // color: Colors.amber,
                                       ),
                                       child: Align(
-                                        alignment: goal_level != 0
+                                        alignment: goalLevel != 0
                                             ? const Alignment(0, -0.1)
                                             : const Alignment(0, -0.07),
                                         child: Text(
@@ -424,7 +423,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           style: TextStyle(
                                               fontSize: subscriptions ==
                                                       'active'
-                                                  ? goal_level == 0
+                                                  ? goalLevel == 0
                                                       ? AppDimensions.font10(
                                                               context) *
                                                           2.8
@@ -439,7 +438,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         ),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       width:
                                           AppDimensions.width10(context) * 20.9,
                                       height:
@@ -448,7 +447,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         children: [
                                           Align(
                                             alignment: Alignment.centerLeft,
-                                            child: Container(
+                                            child: SizedBox(
                                               // width: AppDimensions.width10(context) * 16.5,
                                               height: AppDimensions.height10(
                                                       context) *
@@ -473,7 +472,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           ),
                                           Align(
                                             alignment: Alignment.centerLeft,
-                                            child: Container(
+                                            child: SizedBox(
                                               // width: AppDimensions.width10(context) * 9.5,
                                               height: AppDimensions.height10(
                                                       context) *
@@ -551,7 +550,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               ),
                               Align(
                                 alignment: const Alignment(-0.8, 0.875),
-                                child: Container(
+                                child: SizedBox(
                                   width: AppDimensions.width10(context) * 19.5,
                                   height: AppDimensions.height10(context) * 1.6,
                                   child: subscriptions != 'active'
@@ -683,7 +682,6 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.0),
                           padding: EdgeInsets.only(
-
                               left: AppDimensions.width10(context) * 2.0,
                               right: AppDimensions.width10(context) * 1.9),
                           decoration: BoxDecoration(
@@ -697,54 +695,51 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      'This goal is ',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.font10(context) *
+                              Row(
+                                children: [
+                                  Text(
+                                    'This goal is ',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.font10(context) * 1.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: goalDetails['goalStatus'] ==
+                                                "active"
+                                            ? const Color(0xFF156F6D)
+                                            : const Color(0xFFDE7A11)),
+                                  ),
+                                  widget.isActive
+                                      ? Text(
+                                          capitalizeFirstLetter(
+                                              goalDetails['goalStatus']),
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
                                                   1.8,
-                                          fontWeight: FontWeight.w500,
-                                          color: goalDetails['goalStatus'] ==
-                                                  "active"
-                                              ? const Color(0xFF156F6D)
-                                              : const Color(0xFFDE7A11)),
-                                    ),
-                                    widget.isActive
-                                        ? Text(
-                                            capitalizeFirstLetter(
-                                                goalDetails['goalStatus']),
-                                            style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.8,
-                                                fontWeight: FontWeight.w700,
-                                                color: goalDetails[
-                                                            'goalStatus'] ==
-                                                        "active"
-                                                    ? const Color(0xFF156F6D)
-                                                    : const Color(0xFFDE7A11)),
-                                          )
-                                        : Text(
-                                            capitalizeFirstLetter(
-                                                goalDetails['goalStatus']),
-                                            style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.8,
-                                                fontWeight: FontWeight.w700,
-                                                color: goalDetails[
-                                                            'goalStatus'] ==
-                                                        "active"
-                                                    ? const Color(0xFF156F6D)
-                                                    : const Color(0xFFDE7A11)),
-                                          )
-                                  ],
-                                ),
+                                              fontWeight: FontWeight.w700,
+                                              color: goalDetails[
+                                                          'goalStatus'] ==
+                                                      "active"
+                                                  ? const Color(0xFF156F6D)
+                                                  : const Color(0xFFDE7A11)),
+                                        )
+                                      : Text(
+                                          capitalizeFirstLetter(
+                                              goalDetails['goalStatus']),
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.8,
+                                              fontWeight: FontWeight.w700,
+                                              color: goalDetails[
+                                                          'goalStatus'] ==
+                                                      "active"
+                                                  ? const Color(0xFF156F6D)
+                                                  : const Color(0xFFDE7A11)),
+                                        )
+                                ],
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.width10(context) * 3.6,
                                 height: AppDimensions.height10(context) * 2.2,
                                 child: Center(
@@ -771,7 +766,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             top: AppDimensions.height10(context) * 2.0),
                       ),
                       SizedBox(
-                        child: Container(
+                        child: SizedBox(
                           height: AppDimensions.height10(context) * 18,
                           // width: AppDimensions.width10(context) * 45.4,
 
@@ -782,8 +777,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   scrollDirection: Axis.horizontal,
                                   padding: EdgeInsets.symmetric(
                                       horizontal:
-                                          AppDimensions.width10(context) *
-                                              1.7),
+                                          AppDimensions.width10(context) * 1.7),
                                   itemCount:
                                       goalDetails['userPractices'].length,
                                   itemBuilder: ((context, index) {
@@ -796,9 +790,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
 
                                         final SharedPreferences prefs =
                                             await _prefs;
-                                        var pracName = prefs.setString(
+                                        await prefs.setString(
                                             'practice_review', 'goal_menu');
-                                        var prac_id = prefs.setInt(
+                                        await prefs.setInt(
                                             'prac_num',
                                             goalDetails['userPractices'][index]
                                                 ['id']);
@@ -813,8 +807,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             AppDimensions.width10(context) *
                                                 0.8),
                                         margin: EdgeInsets.only(
-                                            left: AppDimensions.width10(
-                                                context)),
+                                            left:
+                                                AppDimensions.width10(context)),
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
                                           image: AssetImage(goalDetails['userPractices']
@@ -871,8 +865,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   scrollDirection: Axis.horizontal,
                                   padding: EdgeInsets.symmetric(
                                       horizontal:
-                                          AppDimensions.width10(context) *
-                                              1.7),
+                                          AppDimensions.width10(context) * 1.7),
                                   itemCount: activePractices.length,
                                   itemBuilder: ((context, index) {
                                     return AnimatedScaleButton(
@@ -886,7 +879,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
 
                                         final SharedPreferences prefs =
                                             await _prefs;
-                                        var prac_id = prefs.setInt('prac_num',
+                                        await prefs.setInt('prac_num',
                                             activePractices[index]['id']);
                                         await prefs.setString(
                                             'prac_menu_route', 'goal_menu');
@@ -901,8 +894,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             AppDimensions.width10(context) *
                                                 0.8),
                                         margin: EdgeInsets.only(
-                                            left: AppDimensions.width10(
-                                                context)),
+                                            left:
+                                                AppDimensions.width10(context)),
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
                                           image: AssetImage(activePractices[

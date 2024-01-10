@@ -32,7 +32,7 @@ class PracticeName extends StatefulWidget {
 }
 
 String capitalizeFirstLetter(String text) {
-  if (text == null || text.isEmpty) {
+  if (text.isEmpty) {
     return '';
   }
   return text[0].toUpperCase() + text.substring(1);
@@ -53,23 +53,11 @@ class _PracticeNameState extends State<PracticeName> {
     getRoute();
   }
 
-  void _fetchPracticeDetails() async {
-    PracticeGoalApi.getUserPractice().then((response) {
-      if (response.length != 0) {
-        practiceName.text = response["name"];
-
-        // mapItems(schedule, updates);
-      } else {}
-    }).catchError((error) {
-      print("hell");
-    });
-  }
-
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    var goal_route = prefs.getString('goal_route');
+    var goalRoute = prefs.getString('goal_route');
     setState(() {
-      route = goal_route!;
+      route = goalRoute!;
     });
   }
 
@@ -77,14 +65,14 @@ class _PracticeNameState extends State<PracticeName> {
 
   getGoalName() async {
     final SharedPreferences prefs = await _prefs;
-    var my_goal = prefs.getString("goalName");
-    var practice_Name = prefs.getString('pracName');
+    var mygoal = prefs.getString("goalName");
+    var practicename = prefs.getString('pracName');
     var goalColor = prefs.getString('goalColor');
     setState(() {
       color = goalColor;
-      mygoal = my_goal!;
-      practice.text = practice_Name!;
-      practiceName.text = capitalizeFirstLetter(practice_Name);
+      mygoal = mygoal!;
+      practice.text = practicename!;
+      practiceName.text = capitalizeFirstLetter(practicename);
     });
   }
 
@@ -188,7 +176,7 @@ class _PracticeNameState extends State<PracticeName> {
                                 curve: Curves.easeInOut,
                                 duration: const Duration(seconds: 1),
                                 context: context,
-                                builder: (BuildContext context) => Container(
+                                builder: (BuildContext context) => SizedBox(
                                   width: AppDimensions.width10(context) * 27.0,
                                   height:
                                       AppDimensions.height10(context) * 18.2,
@@ -297,7 +285,7 @@ class _PracticeNameState extends State<PracticeName> {
                                               ),
                                             ),
                                           ),
-                                          Container(
+                                          SizedBox(
                                             height: 44,
                                             width: double.infinity,
                                             child: TextButton(
@@ -373,7 +361,7 @@ class _PracticeNameState extends State<PracticeName> {
                   SizedBox(
                     height: AppDimensions.height10(context) * 0.5,
                   ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.width10(context) * 30,
                     child: Center(
                       child: Text(
@@ -484,25 +472,23 @@ class _PracticeNameState extends State<PracticeName> {
                   SizedBox(
                     height: AppDimensions.height10(context) * 7.1,
                   ),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        AppText().practiceName,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: widget.comingFromEditScreen
-                              ? const Color(0xff437296)
-                              : Colors.white,
-                          fontSize: AppDimensions.font10(context) * 2.8,
-                        ),
+                  Center(
+                    child: Text(
+                      AppText().practiceName,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: widget.comingFromEditScreen
+                            ? const Color(0xff437296)
+                            : Colors.white,
+                        fontSize: AppDimensions.font10(context) * 2.8,
                       ),
                     ),
                   ),
                   SizedBox(
                     height: AppDimensions.height10(context) * 0.8,
                   ),
-                  Container(
+                  SizedBox(
                     height: AppDimensions.height10(context) * 2.2,
                     width: AppDimensions.width10(context) * 28.4,
                     child: Center(
@@ -836,8 +822,7 @@ class _PracticeNameState extends State<PracticeName> {
                                         if (widget.comingFromEditScreen) {
                                           final SharedPreferences prefs =
                                               await _prefs;
-                                          var goal_Name = prefs.setString(
-                                              'pracName',
+                                          await prefs.setString('pracName',
                                               practiceName.text.toString());
                                           PracticeGoalApi()
                                               .updateUserPractice(
@@ -855,8 +840,7 @@ class _PracticeNameState extends State<PracticeName> {
                                           if (practiceName.text != '') {
                                             final SharedPreferences prefs =
                                                 await _prefs;
-                                            var goal_Name = prefs.setString(
-                                                'pracName',
+                                            await prefs.setString('pracName',
                                                 practiceName.text.toString());
                                             Navigator.push(
                                               context,
@@ -944,7 +928,7 @@ class pop_up_practices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: AppDimensions.width10(context) * 27.0,
       height: AppDimensions.height10(context) * 18.2,
       child: AlertDialog(
@@ -1010,7 +994,7 @@ class pop_up_practices extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 44,
                 width: double.infinity,
                 child: TextButton(
@@ -1018,8 +1002,7 @@ class pop_up_practices extends StatelessWidget {
                     Navigator.push(context,
                         FadePageRouteReverse(page: const PracticeReview()));
                     final SharedPreferences prefs = await _prefs;
-                    var review_route =
-                        prefs.setString('practice_review', 'practice_edit');
+                    await prefs.setString('practice_review', 'practice_edit');
                   },
                   child: const Text(
                     'Yes, cancel and exit',

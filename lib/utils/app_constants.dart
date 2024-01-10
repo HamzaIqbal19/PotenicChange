@@ -11,7 +11,7 @@ class AppConstants {
   static const String googleMapApiKey = "API KEY";
   static const double defaultPadding = 16.0;
 
-  static const String BASE_URL = "https://api.seatgeek.com/2";
+  static const String bASEURL = "https://api.seatgeek.com/2";
   static const clientId = "Mjk3OTEwMDV8MTY2NjA5MjI0Mi42NDU1OTgy";
   static const apiSecretKey =
       "9187beec5582ab814122fdf67d90b3874c759a3714af8b386b24a6f133b07a46";

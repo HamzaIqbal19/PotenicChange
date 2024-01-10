@@ -28,17 +28,17 @@ class inspiration_landing extends StatefulWidget {
 }
 
 class _inspiration_landingState extends State<inspiration_landing> {
-  var InspirationList;
-  var InspirationAll;
+  var inspirationList;
+  var inspirationAll;
   List<String> tagNames = [];
-  bool Loading = true;
+  bool loading = true;
   var goals = [];
   bool noData = false;
   List goalName = [];
   int goalId = 0;
   String selectionTag = '';
   int inspirationId = 0;
-  var Route;
+  var route;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -46,7 +46,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -54,7 +54,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
     InspirationApi().filterUserInspiration(search, id, tag).then((response) {
       if (response != 404) {
         setState(() {
-          InspirationList = response;
+          inspirationList = response;
           noData = false;
         });
       } else if (response == 404) {
@@ -69,8 +69,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
     InspirationApi().getUserInspiration().then((response) {
       if (response.length != 0) {
         setState(() {
-          InspirationList = response;
-          InspirationAll = response;
+          inspirationList = response;
+          inspirationAll = response;
           noData = false;
         });
 
@@ -107,10 +107,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
   }
 
   _getTagNames() {
-    for (int i = 0; i <= InspirationList.length; i++) {
-      if (InspirationList[i]['hashTags']?.length != 0) {
-        if (InspirationList[i]['hashTags'] != null) {
-          List<String> tags = InspirationList[i]['hashTags']
+    for (int i = 0; i <= inspirationList.length; i++) {
+      if (inspirationList[i]['hashTags']?.length != 0) {
+        if (inspirationList[i]['hashTags'] != null) {
+          List<String> tags = inspirationList[i]['hashTags']
               .toString()
               .replaceAll('[', '')
               .replaceAll(']', '')
@@ -128,7 +128,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
   void getInspirationRoute() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
-      Route = prefs.getString('inspiration_saved_route').toString().isEmpty
+      route = prefs.getString('inspiration_saved_route').toString().isEmpty
           ? ''
           : prefs.getString('inspiration_saved_route');
     });
@@ -141,7 +141,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
     getInspirationRoute();
   }
 
-  @override
   final List<String> type = [
     'All ',
     'Image',
@@ -149,22 +148,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
     'Video',
     'Content',
   ];
-  final List<String> _goals = [
-    'All ',
-    'Goal name 1',
-    'Goal name 2 ',
-    'Goal name 3 ',
-    'Practice name 1 (goal name)',
-  ];
-  int _selectedTag = 0;
-  int TagIndex = 0;
-  String selectedTag = 'All';
-  int _Goal_Index = 0;
-  int type_index = 0;
-  String _selected_activity = 'All';
-  String selected_type = 'All';
-  String _selected_goal = 'All';
 
+  int tagIndex = 0;
+  String selectedTag = 'All';
+  int goalIndex = 0;
+  int typeindex = 0;
+  String selectedtype = 'All';
+  String selectedgoal = 'All';
+
+  @override
   Widget build(BuildContext context) {
     bool smallScreen = MediaQuery.of(context).size.height < 690;
     return WillPopScope(
@@ -212,7 +204,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     colorFilter: ColorFilter.mode(
                         Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                     fit: BoxFit.cover)),
-            child: Loading == false
+            child: loading == false
                 ? SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
@@ -252,7 +244,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 alignment: const Alignment(0, 0.525),
                                 child: AnimatedScaleButton(
                                   onTap: () async {
-                                    if (Route == null) {
+                                    if (route == null) {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
@@ -262,7 +254,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                   context: false,
                                                   note: true,
                                                   route: 'landing')));
-                                    } else if (Route == 'goals_inspiration') {
+                                    } else if (route == 'goals_inspiration') {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
@@ -272,7 +264,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                   context: false,
                                                   note: true,
                                                   route: 'landing')));
-                                    } else if (Route == "type_inspiration") {
+                                    } else if (route == "type_inspiration") {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
@@ -293,7 +285,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                           .remove('inspiration_saved_route');
                                     }
                                   },
-                                  child: Container(
+                                  child: SizedBox(
                                     width:
                                         AppDimensions.width10(context) * 16.43,
                                     height:
@@ -389,7 +381,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                         padding: EdgeInsets.zero,
                                         physics:
                                             const NeverScrollableScrollPhysics(),
-                                        itemCount: (InspirationList.length +
+                                        itemCount: (inspirationList.length +
                                                 1) ~/
                                             2, // Half of the items, rounded up
                                         itemBuilder: (context, index) {
@@ -413,9 +405,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       final SharedPreferences
                                                           prefs = await _prefs;
 
-                                                      var hurdleId = prefs.setInt(
+                                                      await prefs.setInt(
                                                           'userInspirationId',
-                                                          InspirationList[
+                                                          inspirationList[
                                                               index * 2]['id']);
                                                       Navigator.push(
                                                           context,
@@ -443,7 +435,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                       context) *
                                                               17.6,
                                                       decoration: BoxDecoration(
-                                                          gradient: InspirationList[
+                                                          gradient: inspirationList[
                                                                           index * 2]
                                                                       [
                                                                       'inspirationId'] ==
@@ -464,13 +456,13 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                     ]),
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
-                                                              image: AssetImage(InspirationList[index * 2]['inspirationId'] == 4
+                                                              image: AssetImage(inspirationList[index * 2]['inspirationId'] == 4
                                                                   ? 'assets/images/distraction content.webp'
-                                                                  : InspirationList[index * 2]['inspirationId'] == 3
+                                                                  : inspirationList[index * 2]['inspirationId'] == 3
                                                                       ? 'assets/images/video_play.webp'
                                                                       : ''),
                                                               fit: BoxFit.cover)),
-                                                      child: InspirationList[
+                                                      child: inspirationList[
                                                                       index * 2]
                                                                   [
                                                                   'inspirationId'] ==
@@ -487,7 +479,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                   6.3,
                                                               child: Center(
                                                                   child: Text(
-                                                                InspirationList[
+                                                                inspirationList[
                                                                         index *
                                                                             2][
                                                                     'description'],
@@ -509,7 +501,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                         0xFFFFFFFF)),
                                                               )),
                                                             )
-                                                          : InspirationList[
+                                                          : inspirationList[
                                                                           index *
                                                                               2]
                                                                       [
@@ -525,7 +517,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                     placeholder:
                                                                         const AssetImage(
                                                                             'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
-                                                                    image: NetworkImage(InspirationList[index *
+                                                                    image: NetworkImage(inspirationList[index *
                                                                                 2]
                                                                             [
                                                                             'file']
@@ -553,19 +545,19 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                             0.5),
                                                     child: Center(
                                                         child: Text(
-                                                      InspirationList[index * 2]
+                                                      inspirationList[index * 2]
                                                                   [
                                                                   'inspirationId'] ==
                                                               1
                                                           ? 'Image'
-                                                          : InspirationList[
+                                                          : inspirationList[
                                                                           index *
                                                                               2]
                                                                       [
                                                                       'inspirationId'] ==
                                                                   2
                                                               ? 'Note'
-                                                              : InspirationList[
+                                                              : inspirationList[
                                                                           index *
                                                                               2]['inspirationId'] ==
                                                                       3
@@ -591,7 +583,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                             15.7,
                                                     child: Center(
                                                         child: Text(
-                                                      InspirationList[index * 2]
+                                                      inspirationList[index * 2]
                                                           ['title'],
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -627,7 +619,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                           padding: EdgeInsets.zero,
                                           physics:
                                               const NeverScrollableScrollPhysics(),
-                                          itemCount: InspirationList.length ~/
+                                          itemCount: inspirationList.length ~/
                                               2, // Half of the items, rounded down
                                           itemBuilder: (context, index) {
                                             return Container(
@@ -652,9 +644,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                             prefs =
                                                             await _prefs;
 
-                                                        var hurdleId = prefs.setInt(
+                                                        await prefs.setInt(
                                                             'userInspirationId',
-                                                            InspirationList[
+                                                            inspirationList[
                                                                 index * 2 +
                                                                     1]['id']);
                                                         Navigator.push(
@@ -684,7 +676,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 17.6,
                                                         decoration:
                                                             BoxDecoration(
-                                                                gradient: InspirationList[index * 2 +
+                                                                gradient: inspirationList[index * 2 +
                                                                                 1]
                                                                             [
                                                                             'inspirationId'] ==
@@ -702,13 +694,13 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                 shape: BoxShape
                                                                     .circle,
                                                                 image: DecorationImage(
-                                                                    image: AssetImage(InspirationList[index * 2 + 1]['inspirationId'] == 4
+                                                                    image: AssetImage(inspirationList[index * 2 + 1]['inspirationId'] == 4
                                                                         ? 'assets/images/distraction content.webp'
-                                                                        : InspirationList[index * 2 + 1]['inspirationId'] == 3
+                                                                        : inspirationList[index * 2 + 1]['inspirationId'] == 3
                                                                             ? 'assets/images/video_play.webp'
                                                                             : ''),
                                                                     fit: BoxFit.contain)),
-                                                        child: InspirationList[
+                                                        child: inspirationList[
                                                                         index * 2 +
                                                                             1][
                                                                     'inspirationId'] ==
@@ -724,7 +716,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                     6.3,
                                                                 child: Center(
                                                                     child: Text(
-                                                                  InspirationList[
+                                                                  inspirationList[
                                                                           index * 2 +
                                                                               1]
                                                                       [
@@ -747,7 +739,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                           0xFFFFFFFF)),
                                                                 )),
                                                               )
-                                                            : InspirationList[index *
+                                                            : inspirationList[index *
                                                                             2 +
                                                                         1]['inspirationId'] ==
                                                                     1
@@ -760,7 +752,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                       placeholder:
                                                                           const AssetImage(
                                                                               'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
-                                                                      image: NetworkImage(InspirationList[index * 2 + 1]
+                                                                      image: NetworkImage(inspirationList[index * 2 + 1]
                                                                               [
                                                                               'file']
                                                                           .toString()),
@@ -787,19 +779,19 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                               0.5),
                                                       child: Center(
                                                           child: Text(
-                                                        InspirationList[index *
+                                                        inspirationList[index *
                                                                             2 +
                                                                         1][
                                                                     'inspirationId'] ==
                                                                 1
                                                             ? 'Image'
-                                                            : InspirationList[index *
+                                                            : inspirationList[index *
                                                                                 2 +
                                                                             1][
                                                                         'inspirationId'] ==
                                                                     2
                                                                 ? 'Note'
-                                                                : InspirationList[index *
+                                                                : inspirationList[index *
                                                                                 2 +
                                                                             1]['inspirationId'] ==
                                                                         3
@@ -825,7 +817,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                           15.7,
                                                       child: Center(
                                                           child: Text(
-                                                        InspirationList[
+                                                        inspirationList[
                                                                 index * 2 + 1]
                                                             ['title'],
                                                         overflow: TextOverflow
@@ -986,16 +978,16 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                         GestureDetector(
                                                           onTap: () {
                                                             setState(() {
-                                                              _selected_goal =
+                                                              selectedgoal =
                                                                   goalName[
-                                                                      _Goal_Index];
+                                                                      goalIndex];
                                                               goalId = goals[
-                                                                      _Goal_Index]
+                                                                      goalIndex]
                                                                   ['id'];
                                                             });
                                                             filterInspiratonByTag(
-                                                                type_index,
-                                                                goals[_Goal_Index]
+                                                                typeindex,
+                                                                goals[goalIndex]
                                                                     ['id'],
                                                                 selectionTag);
 
@@ -1034,7 +1026,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       onSelectedItemChanged:
                                                           (int index) {
                                                         setState(() {
-                                                          _Goal_Index = index;
+                                                          goalIndex = index;
                                                           //activity_duration = _statements[_selectedIndex];
                                                           // _selected_activity =
                                                           //     _statements[index];
@@ -1160,9 +1152,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             0.8),
                                     child: Center(
                                       child: Text(
-                                        _selected_goal.length <= 30
-                                            ? _selected_goal
-                                            : '${_selected_goal.substring(0, 29)}...',
+                                        selectedgoal.length <= 30
+                                            ? selectedgoal
+                                            : '${selectedgoal.substring(0, 29)}...',
                                         style: TextStyle(
                                             fontSize:
                                                 AppDimensions.font10(context) *
@@ -1276,21 +1268,21 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                             setState(() {
                                                               selectedTag =
                                                                   tagNames[
-                                                                          TagIndex]
+                                                                          tagIndex]
                                                                       .toString()
                                                                       .trim();
                                                               selectionTag =
                                                                   tagNames[
-                                                                          TagIndex]
+                                                                          tagIndex]
                                                                       .toString()
                                                                       .trim();
                                                             });
 
                                                             filterInspiratonByTag(
-                                                                type_index,
+                                                                typeindex,
                                                                 goalId,
                                                                 tagNames[
-                                                                        TagIndex]
+                                                                        tagIndex]
                                                                     .toString()
                                                                     .trim());
 
@@ -1355,7 +1347,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       onSelectedItemChanged:
                                                           (int index) {
                                                         setState(() {
-                                                          TagIndex = index;
+                                                          tagIndex = index;
                                                           //activity_duration = _statements[_selectedIndex];
                                                           // _selected_activity =
                                                           //     _statements[index];
@@ -1569,13 +1561,13 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                         GestureDetector(
                                                           onTap: () {
                                                             setState(() {
-                                                              selected_type =
+                                                              selectedtype =
                                                                   type[
-                                                                      type_index];
+                                                                      typeindex];
                                                             });
 
                                                             filterInspiratonByTag(
-                                                                type_index,
+                                                                typeindex,
                                                                 goalId,
                                                                 selectionTag);
                                                             Navigator.pop(
@@ -1627,7 +1619,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                       onSelectedItemChanged:
                                                           (int index) {
                                                         setState(() {
-                                                          type_index = index;
+                                                          typeindex = index;
                                                           //activity_duration = _statements[_selectedIndex];
                                                           // _selected_activity =
                                                           //     _statements[index];
@@ -1724,7 +1716,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             0.8),
                                     child: Center(
                                       child: Text(
-                                        selected_type,
+                                        selectedtype,
                                         style: TextStyle(
                                             fontSize:
                                                 AppDimensions.font10(context) *
@@ -1758,13 +1750,13 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                InspirationList = InspirationAll;
+                                inspirationList = inspirationAll;
                                 selectionTag = '';
                                 noData = false;
                                 goalId = 0;
-                                type_index = 0;
-                                selected_type = 'All';
-                                _selected_goal = "All";
+                                typeindex = 0;
+                                selectedtype = 'All';
+                                selectedgoal = "All";
                                 selectedTag = 'All';
                               });
                             },
@@ -1822,324 +1814,324 @@ class _inspiration_landingState extends State<inspiration_landing> {
   }
 }
 
-_showBottomSheet(BuildContext context) {
-  String goal = 'Goal Name';
+// _showBottomSheet(BuildContext context) {
+//   String goal = 'Goal Name';
 
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    backgroundColor: Colors.transparent,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        top: Radius.circular(16),
-      ),
-    ),
-    builder: (context) {
-      return GestureDetector(
-        onTap: () => Navigator.of(context).pop(),
-        child: Container(
-          height: AppDimensions.height10(context) * 30.3,
-          color: const Color.fromRGBO(0, 0, 0, 0.001),
-          child: GestureDetector(
-            onTap: () {},
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    height: AppDimensions.height10(context) * 4.0,
-                    width: AppDimensions.width10(context) * 41.4,
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(
-                                width: AppDimensions.width10(context) * 0.1,
-                                color: const Color(0xFF828282)))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.width10(context) * 2.0),
-                            child: Text(
-                              'Cancel',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.9,
-                                  height: AppDimensions.height10(context) * 0.1,
-                                  color: const Color(0xFF2F80ED)),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          child: Text(
-                            'Done',
-                            style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.9,
-                                height: AppDimensions.height10(context) * 0.1,
-                                color: const Color(0xFF2F80ED)),
-                          ),
-                        ),
-                        SizedBox(
-                          width: AppDimensions.width10(context),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: AppDimensions.width10(context) * 37.5,
-                    height: AppDimensions.height10(context) * 24.8,
-                    // color: Colors.amber,
-                    child: ListWheelScrollView(
-                        onSelectedItemChanged: (value) {},
-                        diameterRatio: 1.5,
-                        // magnification: 1.5,
-                        overAndUnderCenterOpacity: 0.5,
-                        itemExtent: AppDimensions.height10(context) * 3.1,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                'All',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                '$goal 1',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                '$goal 2',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                '$goal 3',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          )
-                        ]),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    },
-  );
-}
+//   showModalBottomSheet(
+//     context: context,
+//     isScrollControlled: true,
+//     backgroundColor: Colors.transparent,
+//     shape: const RoundedRectangleBorder(
+//       borderRadius: BorderRadius.vertical(
+//         top: Radius.circular(16),
+//       ),
+//     ),
+//     builder: (context) {
+//       return GestureDetector(
+//         onTap: () => Navigator.of(context).pop(),
+//         child: Container(
+//           height: AppDimensions.height10(context) * 30.3,
+//           color: const Color.fromRGBO(0, 0, 0, 0.001),
+//           child: GestureDetector(
+//             onTap: () {},
+//             child: Container(
+//               decoration: const BoxDecoration(
+//                 color: Colors.white,
+//               ),
+//               child: Column(
+//                 children: [
+//                   Container(
+//                     height: AppDimensions.height10(context) * 4.0,
+//                     width: AppDimensions.width10(context) * 41.4,
+//                     decoration: BoxDecoration(
+//                         border: Border(
+//                             bottom: BorderSide(
+//                                 width: AppDimensions.width10(context) * 0.1,
+//                                 color: const Color(0xFF828282)))),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.end,
+//                       children: [
+//                         GestureDetector(
+//                           onTap: () {
+//                             Navigator.pop(context);
+//                           },
+//                           child: Container(
+//                             margin: EdgeInsets.only(
+//                                 right: AppDimensions.width10(context) * 2.0),
+//                             child: Text(
+//                               'Cancel',
+//                               style: TextStyle(
+//                                   fontSize: AppDimensions.font10(context) * 1.9,
+//                                   height: AppDimensions.height10(context) * 0.1,
+//                                   color: const Color(0xFF2F80ED)),
+//                             ),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                           child: Text(
+//                             'Done',
+//                             style: TextStyle(
+//                                 fontSize: AppDimensions.font10(context) * 1.9,
+//                                 height: AppDimensions.height10(context) * 0.1,
+//                                 color: const Color(0xFF2F80ED)),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                           width: AppDimensions.width10(context),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     width: AppDimensions.width10(context) * 37.5,
+//                     height: AppDimensions.height10(context) * 24.8,
+//                     // color: Colors.amber,
+//                     child: ListWheelScrollView(
+//                         onSelectedItemChanged: (value) {},
+//                         diameterRatio: 1.5,
+//                         // magnification: 1.5,
+//                         overAndUnderCenterOpacity: 0.5,
+//                         itemExtent: AppDimensions.height10(context) * 3.1,
+//                         children: [
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 'All',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 '$goal 1',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 '$goal 2',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 '$goal 3',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           )
+//                         ]),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       );
+//     },
+//   );
+// }
 
-_showTagSheet(BuildContext context) {
-  String goal = 'Tag';
+// _showTagSheet(BuildContext context) {
+//   String goal = 'Tag';
 
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    backgroundColor: Colors.transparent,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        top: Radius.circular(16),
-      ),
-    ),
-    builder: (context) {
-      return GestureDetector(
-        onTap: () => Navigator.of(context).pop(),
-        child: Container(
-          height: AppDimensions.height10(context) * 30.3,
-          color: const Color.fromRGBO(0, 0, 0, 0.001),
-          child: GestureDetector(
-            onTap: () {},
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    height: AppDimensions.height10(context) * 4.0,
-                    width: AppDimensions.width10(context) * 41.4,
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(
-                                width: AppDimensions.width10(context) * 0.1,
-                                color: const Color(0xFF828282)))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.width10(context) * 2.0),
-                            child: Text(
-                              'Cancel',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.9,
-                                  height: AppDimensions.height10(context) * 0.1,
-                                  color: const Color(0xFF2F80ED)),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          child: Text(
-                            'Done',
-                            style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.9,
-                                height: AppDimensions.height10(context) * 0.1,
-                                color: const Color(0xFF2F80ED)),
-                          ),
-                        ),
-                        SizedBox(
-                          width: AppDimensions.width10(context),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: AppDimensions.width10(context) * 37.5,
-                    height: AppDimensions.height10(context) * 24.8,
-                    // color: Colors.amber,
-                    child: ListWheelScrollView(
-                        onSelectedItemChanged: (value) {},
-                        diameterRatio: 1.5,
-                        // magnification: 1.5,
-                        overAndUnderCenterOpacity: 0.5,
-                        itemExtent: AppDimensions.height10(context) * 3.1,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                'All',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    //when it will be reconstructed bottom decororation will be set, at the moment it is there to show presence.
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                '$goal 1',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                '$goal 2',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                '$goal 3',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          )
-                        ]),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    },
-  );
-}
+//   showModalBottomSheet(
+//     context: context,
+//     isScrollControlled: true,
+//     backgroundColor: Colors.transparent,
+//     shape: const RoundedRectangleBorder(
+//       borderRadius: BorderRadius.vertical(
+//         top: Radius.circular(16),
+//       ),
+//     ),
+//     builder: (context) {
+//       return GestureDetector(
+//         onTap: () => Navigator.of(context).pop(),
+//         child: Container(
+//           height: AppDimensions.height10(context) * 30.3,
+//           color: const Color.fromRGBO(0, 0, 0, 0.001),
+//           child: GestureDetector(
+//             onTap: () {},
+//             child: Container(
+//               decoration: const BoxDecoration(
+//                 color: Colors.white,
+//               ),
+//               child: Column(
+//                 children: [
+//                   Container(
+//                     height: AppDimensions.height10(context) * 4.0,
+//                     width: AppDimensions.width10(context) * 41.4,
+//                     decoration: BoxDecoration(
+//                         border: Border(
+//                             bottom: BorderSide(
+//                                 width: AppDimensions.width10(context) * 0.1,
+//                                 color: const Color(0xFF828282)))),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.end,
+//                       children: [
+//                         GestureDetector(
+//                           onTap: () {
+//                             Navigator.pop(context);
+//                           },
+//                           child: Container(
+//                             margin: EdgeInsets.only(
+//                                 right: AppDimensions.width10(context) * 2.0),
+//                             child: Text(
+//                               'Cancel',
+//                               style: TextStyle(
+//                                   fontSize: AppDimensions.font10(context) * 1.9,
+//                                   height: AppDimensions.height10(context) * 0.1,
+//                                   color: const Color(0xFF2F80ED)),
+//                             ),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                           child: Text(
+//                             'Done',
+//                             style: TextStyle(
+//                                 fontSize: AppDimensions.font10(context) * 1.9,
+//                                 height: AppDimensions.height10(context) * 0.1,
+//                                 color: const Color(0xFF2F80ED)),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                           width: AppDimensions.width10(context),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     width: AppDimensions.width10(context) * 37.5,
+//                     height: AppDimensions.height10(context) * 24.8,
+//                     // color: Colors.amber,
+//                     child: ListWheelScrollView(
+//                         onSelectedItemChanged: (value) {},
+//                         diameterRatio: 1.5,
+//                         // magnification: 1.5,
+//                         overAndUnderCenterOpacity: 0.5,
+//                         itemExtent: AppDimensions.height10(context) * 3.1,
+//                         children: [
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 'All',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     //when it will be reconstructed bottom decororation will be set, at the moment it is there to show presence.
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 '$goal 1',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 '$goal 2',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 '$goal 3',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           )
+//                         ]),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       );
+//     },
+//   );
+// }
 
 class updatedLandingPage extends StatefulWidget {
   final bool delete;
@@ -2152,7 +2144,7 @@ class updatedLandingPage extends StatefulWidget {
 }
 
 class _updatedLandingPageState extends State<updatedLandingPage> {
-  bool Loading = true;
+  bool loading = true;
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
@@ -2161,7 +2153,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
       showContainer = true;
     });
     startTimer();
@@ -2275,7 +2267,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                   colorFilter: ColorFilter.mode(
                       Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                   fit: BoxFit.cover)),
-          child: Loading == false
+          child: loading == false
               ? SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
@@ -2516,7 +2508,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                       color: const Color(0xFFFFFFFF)),
                                 )),
                               ),
-                              Container(
+                              SizedBox(
                                 // margin: EdgeInsets.symmetric(
                                 //     horizontal:
                                 //         AppDimensions.height10(context) * 0.5),

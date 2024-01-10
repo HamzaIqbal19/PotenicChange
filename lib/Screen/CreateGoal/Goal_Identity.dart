@@ -46,7 +46,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
   String route = '';
   bool saved = false;
 
-  bool Loading = true;
+  bool loading = true;
 
   //closing the focus
   String goalName = "";
@@ -69,7 +69,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
     if (widget.comingFromEditScreen == false) {
       getGoalName();
       setState(() {
-        Loading = false;
+        loading = false;
       });
     } else {
       _fetchGoalNames();
@@ -95,7 +95,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
     AdminGoal.getUserGoal().then((response) {
       if (response.length != 0) {
         setState(() {
-          Loading = false;
+          loading = false;
           goalName = response["name"];
           identity = response["identityStatement"];
           listReason = response["identityStatement"].length;
@@ -103,7 +103,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
       }
     }).catchError((error) {
       setState(() {
-        Loading = false;
+        loading = false;
       });
     });
   }
@@ -118,9 +118,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    var goal_route = prefs.getString('goal_route');
+    var goalRoute = prefs.getString('goal_route');
     setState(() {
-      route = goal_route!;
+      route = goalRoute!;
     });
   }
 
@@ -190,9 +190,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
 
       await prefs.setString('goal', jsonString);
       getGoal();
-    } else {
-      print("No goal found in shared preferences");
-    }
+    } else {}
   }
 
   Future<Goal> getGoal() async {
@@ -224,7 +222,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
           ),
         );
         final SharedPreferences prefs = await _prefs;
-        var GoalIdentity = prefs.setString('route', "GoalIdentity");
+        await prefs.setString('route', "GoalIdentity");
       }
 
       return Goal.fromJson(jsonMap);
@@ -277,7 +275,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                     curve: Curves.easeInOut,
                     duration: const Duration(seconds: 1),
                     context: context,
-                    builder: (BuildContext context) => const pop_up_goals())
+                    builder: (BuildContext context) => const popUpGoals())
                 : Navigator.push(
                     context,
                     FadePageRouteReverse(
@@ -288,7 +286,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 ? Navigator.pushReplacement(
                     context,
                     FadePageRouteReverse(
-                        page: GoalWhy(
+                        page: const GoalWhy(
                             comingFromEditScreen: false,
                             route: '',
                             saved: true)))
@@ -327,7 +325,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                   duration: const Duration(seconds: 1),
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      const pop_up_goals())
+                                      const popUpGoals())
                               : Navigator.push(
                                   context,
                                   FadePageRouteReverse(
@@ -338,7 +336,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                               ? Navigator.pushReplacement(
                                   context,
                                   FadePageRouteReverse(
-                                      page: GoalWhy(
+                                      page: const GoalWhy(
                                           comingFromEditScreen: false,
                                           route: '',
                                           saved: true)))
@@ -361,7 +359,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             ),
                             onPressed: () => showDialog<String>(
                               context: context,
-                              builder: (BuildContext context) => Container(
+                              builder: (BuildContext context) => SizedBox(
                                 width: AppDimensions.width10(context) * 27.0,
                                 height: AppDimensions.height10(context) * 21.0,
                                 child: AlertDialog(
@@ -415,7 +413,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 42,
                                           width: double.infinity,
                                           // color: Colors.white,
@@ -438,9 +436,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                               );
                                               final SharedPreferences prefs =
                                                   await _prefs;
-                                              var GoalIdentity =
-                                                  prefs.setString(
-                                                      'route', "GoalIdentity");
+                                              await prefs.setString(
+                                                  'route', "GoalIdentity");
                                             },
                                             child: const Center(
                                               child: Text(
@@ -463,7 +460,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 44,
                                           width: double.infinity,
                                           child: TextButton(
@@ -507,7 +504,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 42,
                                           width:
                                               AppDimensions.width10(context) *
@@ -550,7 +547,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                   ),
                 ),
               ),
-              Loading == false
+              loading == false
                   ? SingleChildScrollView(
                       reverse: true,
                       physics: const ClampingScrollPhysics(),
@@ -577,7 +574,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                           SizedBox(
                             height: AppDimensions.height10(context) * 0.5,
                           ),
-                          Container(
+                          SizedBox(
                             width: AppDimensions.width10(context) * 30,
                             child: Center(
                               child: Text(
@@ -616,24 +613,22 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                           SizedBox(
                             height: AppDimensions.height10(context) * 1.0,
                           ),
-                          Container(
-                            child: Center(
-                              child: Text(
-                                AppText().goalIdentity,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: widget.comingFromEditScreen
-                                      ? const Color(0xFF437296)
-                                      : Colors.white,
-                                  fontSize: AppDimensions.font10(context) * 2.8,
-                                ),
+                          Center(
+                            child: Text(
+                              AppText().goalIdentity,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: widget.comingFromEditScreen
+                                    ? const Color(0xFF437296)
+                                    : Colors.white,
+                                fontSize: AppDimensions.font10(context) * 2.8,
                               ),
                             ),
                           ),
                           SizedBox(
                             height: AppDimensions.height10(context) * 1.0,
                           ),
-                          Container(
+                          SizedBox(
                             height: AppDimensions.height10(context) * 7.5,
                             width: AppDimensions.width10(context) * 37.2,
                             child: Center(
@@ -653,7 +648,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                           SizedBox(
                             height: AppDimensions.height10(context) * 3.4,
                           ),
-                          Container(
+                          SizedBox(
                             width: AppDimensions.width10(context) * 38.2,
                             height: widget.comingFromEditScreen
                                 ? identity.length == 1

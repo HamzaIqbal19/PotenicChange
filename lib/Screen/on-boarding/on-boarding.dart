@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use, unnecessary_new, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'on-boardings_page.dart';
 import 'on-boarding_model.dart';
 
@@ -13,8 +12,6 @@ class OnBoarding extends StatefulWidget {
     return OnBoardingState();
   }
 }
-
-final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _globalKey = new GlobalKey<ScaffoldState>();

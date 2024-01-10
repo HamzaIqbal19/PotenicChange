@@ -12,14 +12,14 @@ class RecordingPractice {
   Future userAddRecording(before, after, feedback, summary, practiceId,
       timeSlot, recordingDate) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
     var userId = prefs.getInt('userid');
     var userGoalId = prefs.getInt('goal_num');
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
-    var Body = json.encode({
+    var body = json.encode({
       "feelingsBeforeSession": "$before",
       "feelingsAfterSession": "$after",
       "notes": feedback,
@@ -34,14 +34,13 @@ class RecordingPractice {
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/recording/add-recording'),
         headers: headers,
-        body: Body);
+        body: body);
 
     var responses = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
-      var recording_id =
-          prefs.setInt('recording_id', responses["result"]["id"]);
+      await prefs.setInt('recording_id', responses["result"]["id"]);
       if (responses['report'] == true) {
         await prefs.setBool('isReportActive', true);
         await prefs.setString(
@@ -64,15 +63,14 @@ class RecordingPractice {
 
   static Future getUserPracticeRecord() async {
     final SharedPreferences prefs = await _prefs;
-    var prac_num = prefs.getInt("prac_num");
-    var Accestoken = prefs.getString("usertoken");
-    var recording_id = prefs.getInt('recording_id');
+    var accessToken = prefs.getString("usertoken");
+    var recordingid = prefs.getInt('recording_id');
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/recording/$recording_id'),
+      Uri.parse('${URL.BASE_URL}api/recording/$recordingid'),
       headers: headers,
     );
     if (response.statusCode == 200) {
@@ -86,12 +84,12 @@ class RecordingPractice {
 
   Future updateRecording(destination, message, notes) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
-    var recording_id = prefs.getInt('recording_id');
+    var accessToken = prefs.getString("usertoken");
+    var recordingid = prefs.getInt('recording_id');
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
     var body = jsonEncode({
       "$destination": "$message",
@@ -99,12 +97,11 @@ class RecordingPractice {
     });
 
     var request = await client.put(
-        Uri.parse('${URL.BASE_URL}api/recording/$recording_id'),
+        Uri.parse('${URL.BASE_URL}api/recording/$recordingid'),
         headers: headers,
         body: body);
 
     if (request.statusCode == 200) {
-      var jsonData = jsonDecode(request.body);
       return true;
     } else {
       return false;
@@ -114,15 +111,15 @@ class RecordingPractice {
   Future deleteUserRecording() async {
     final SharedPreferences prefs = await _prefs;
 
-    var Accestoken = prefs.getString("usertoken");
-    var recording_id = prefs.getInt('recording_id');
+    var accessToken = prefs.getString("usertoken");
+    var recordingid = prefs.getInt('recording_id');
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
 
     var request = await client.delete(
-        Uri.parse('${URL.BASE_URL}api/recording/$recording_id'),
+        Uri.parse('${URL.BASE_URL}api/recording/$recordingid'),
         headers: headers);
 
     var responses = jsonDecode(request.body);
@@ -135,20 +132,20 @@ class RecordingPractice {
 
   Future updateRecordingStatus(status) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
-    var recording_Time = prefs.getString('recording_Time1');
-    var Date = prefs.getString('record_date');
-    var Id = prefs.getInt('prac_num');
+    var accessToken = prefs.getString("usertoken");
+    var recordingTime = prefs.getString('recording_Time1');
+    var date = prefs.getString('record_date');
+    var id = prefs.getInt('prac_num');
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
     var body = jsonEncode({
-      "timeSlot": recording_Time,
-      "recordingDate": Date,
+      "timeSlot": recordingTime,
+      "recordingDate": date,
       "recordingStatus": status,
-      "userPracticeId": Id
+      "userPracticeId": id
     });
 
     var request = await client.put(
@@ -157,7 +154,6 @@ class RecordingPractice {
         body: body);
 
     if (request.statusCode == 200) {
-      var jsonData = jsonDecode(request.body);
       return true;
     } else {
       return false;

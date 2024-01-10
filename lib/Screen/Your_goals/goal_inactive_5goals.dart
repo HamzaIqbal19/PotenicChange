@@ -32,11 +32,11 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
 
   // bool color = true;
   int totalItemsOn = 0;
-  bool bt_switch = false;
+  bool btSwitch = false;
   String subscriptions = '';
   bool update = false;
 
-  bool Loader = true;
+  bool loader = true;
   var goalDetails;
 
   Future<Timer> loadData() async {
@@ -55,7 +55,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
 
   void onDoneLoading() {
     setState(() {
-      Loader = false;
+      loader = false;
     });
   }
 
@@ -199,14 +199,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
           if (response == true) {
             totalItemsOn--;
             _fetchGoalDetails();
-            print("Status Updated");
           } else if (response == 400) {
             showAnimatedDialog(
                 animationType: DialogTransitionType.fadeScale,
                 curve: Curves.easeInOut,
                 duration: const Duration(seconds: 1),
                 context: context,
-                builder: (BuildContext context) => Container(
+                builder: (BuildContext context) => SizedBox(
                       width: AppDimensions.width10(context) * 27.0,
                       height: AppDimensions.height10(context) * 23.6,
                       child: AlertDialog(
@@ -304,24 +303,25 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
   Future<void> _fetchGoalDetails() async {
     final SharedPreferences prefs = await _prefs;
 
-    AdminGoal.getUserGoalById(prefs.get('goal_num')).then((response) {
-      if (response.length != 0) {
-        setState(() {
-          goalDetails = response;
-          totalItemsOn = response["activePracticesCount"];
-          subscriptions = response['subscriptionsStatus'];
-        });
+    AdminGoal.getUserGoalById(prefs.get('goal_num'))
+        .then((response) {
+          if (response.length != 0) {
+            setState(() {
+              goalDetails = response;
+              totalItemsOn = response["activePracticesCount"];
+              subscriptions = response['subscriptionsStatus'];
+            });
 
-        loadData();
-        startTimer();
-      } else {
-        loadData();
-      }
-    }).catchError((error) {
-      print("error");
-    }).whenComplete(() {
-      loadData();
-    });
+            loadData();
+            startTimer();
+          } else {
+            loadData();
+          }
+        })
+        .catchError((error) {})
+        .whenComplete(() {
+          loadData();
+        });
   }
 
   void totalActivePractices() {
@@ -330,9 +330,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
         setState(() {
           totalItemsOn = totalItemsOn + 1;
         });
-      } else if (goalDetails['userPractices'][i]['isActive'] == false) {
-        print(totalItemsOn);
-      }
+      } else if (goalDetails['userPractices'][i]['isActive'] == false) {}
     }
   }
 
@@ -397,14 +395,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 )),
           ),
           actions: [
-            bt_switch
+            btSwitch
                 ? Row(
                     children: [
                       Center(
                         child: TextButton(
                           onPressed: () {
                             setState(() {
-                              bt_switch = false;
+                              btSwitch = false;
                             });
                           },
                           child: Text(
@@ -421,7 +419,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         child: TextButton(
                           onPressed: () {
                             setState(() {
-                              bt_switch = false;
+                              btSwitch = false;
                             });
                           },
                           child: Text(
@@ -439,7 +437,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          bt_switch = true;
+                          btSwitch = true;
                         });
                       },
                       child: Text(
@@ -461,7 +459,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
           )),
           width: double.infinity,
           height: double.infinity,
-          child: Loader == false
+          child: loader == false
               ? SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
@@ -664,12 +662,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: goalDetails['userPractices'].length,
                             itemBuilder: ((context, index) {
-                              bool status = goalDetails['userPractices'][index]
-                                          ['practiceStatus'] ==
-                                      'active'
-                                  ? true
-                                  : false;
-                              bool color = status;
+                             
                               return Container(
                                 //  width: AppDimensions.width10(context) * 41.8,
                                 height: AppDimensions.height10(context) * 10.0,
@@ -803,7 +796,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                         ],
                                       ),
                                     ),
-                                    bt_switch
+                                    btSwitch
                                         ? AnimatedScaleButton(
                                             onTap: () => showAnimatedDialog(
                                                 animationType:
@@ -908,11 +901,11 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       AnimatedScaleButton(
                         onTap: () async {
                           final SharedPreferences prefs = await _prefs;
-                          var goalName =
+                          await
                               prefs.setString('goalName', goalDetails['name']);
-                          var goalId =
+                          await
                               prefs.setInt('goal_num', goalDetails['id']);
-                          var route =
+                          await
                               prefs.setString('goal_route', 'view_all_goals_2');
                           Navigator.push(context,
                               FadePageRoute(page: const CreatePractice()));
@@ -971,10 +964,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
         // extendBody: true,
         bottomNavigationBar: BottomAppBar(
           elevation: 0,
-
           height: AppDimensions.height10(context) * 9.5,
           color: const Color(0xFFFBFBFB),
-          child: Loader == false
+          child: loader == false
               ? update
                   ? Container(
                       margin: EdgeInsets.all(AppDimensions.height10(context)),
@@ -1004,23 +996,21 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-
                           height: AppDimensions.height10(context) * 9.0,
                           color: const Color(0xFFFBFBFB),
-
                           margin: EdgeInsets.only(
-                                right: goalDetails['isActive']? AppDimensions.width10(context) * 1.0:0.2,
-                          left: AppDimensions.width10(context) * 1.8),
+                              right: goalDetails['isActive']
+                                  ? AppDimensions.width10(context) * 1.0
+                                  : 0.2,
+                              left: AppDimensions.width10(context) * 1.8),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.width10(context) * 17.4,
                                 height: AppDimensions.height10(context) * 4.9,
-
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
@@ -1230,10 +1220,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                                       (response) {
                                                                 if (response ==
                                                                     true) {
-                                                                  print(
-                                                                      "Goal Inactive");
                                                                   setState(() {
-                                                                    Loader =
+                                                                    loader =
                                                                         true;
                                                                   });
                                                                   Navigator.pop(
@@ -1371,22 +1359,21 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 ),
                                               )),
                                       child: SizedBox(
-                                        width:
-                                        AppDimensions.height10(context) *
+                                        width: AppDimensions.height10(context) *
                                             7.6,
                                         child: Center(
                                           child: Container(
-                                              width:
-                                                  AppDimensions.height10(context) *
-                                                      7.6,
-                                              height:
-                                                  AppDimensions.height10(context) *
-                                                      7.6,
-
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  7.6,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  7.6,
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 border: Border.all(
-                                                    width: 3, color: Colors.white),
+                                                    width: 3,
+                                                    color: Colors.white),
                                                 boxShadow: List.filled(
                                                     4,
                                                     const BoxShadow(
@@ -1402,30 +1389,34 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 ),
                                               ),
                                               child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
                                                 children: [
                                                   Container(
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
-                                                    height: AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
-
-                                                    color: const Color(0xFFFFFFFF),
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    color:
+                                                        const Color(0xFFFFFFFF),
                                                   ),
                                                   Container(
                                                     margin: EdgeInsets.only(
-                                                        top: AppDimensions.height10(
-                                                                context) *
+                                                        top: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             0.4),
                                                     child: Text(
                                                       'Stop',
                                                       style: TextStyle(
-                                                          fontSize:
-                                                              AppDimensions.font10(
+                                                          fontSize: AppDimensions
+                                                                  .font10(
                                                                       context) *
-                                                                  1.4,
+                                                              1.4,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           color: const Color(
@@ -1449,7 +1440,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                   const Duration(seconds: 1),
                                               context: context,
                                               builder: (BuildContext context) =>
-                                                  Container(
+                                                  SizedBox(
                                                     width:
                                                         AppDimensions.width10(
                                                                 context) *
@@ -1614,7 +1605,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                               .then((response) {
                                             if (response == true) {
                                               setState(() {
-                                                Loader = true;
+                                                loader = true;
                                                 update = true;
                                               });
                                               _fetchGoalDetails();
@@ -1644,72 +1635,69 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                           });
                                         }
                                       },
-                                      child: Container(
-                                        //color: Colors.red,
-                                        child: AvatarGlow(
-                                          endRadius:
-                                              AppDimensions.height10(context) *
-                                                  5.0,
-                                          glowColor: const Color(0xFFFFA511),
-                                          animate:
-                                              totalItemsOn != 0 ? true : false,
-                                          child: Align(
-                                            alignment: Alignment.center,
-                                            child: Container(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    7.1,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    7.1,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.white,
-                                                  border: Border.all(
-                                                      width: 3,
-                                                      color: const Color(
-                                                          0xFFFFA511)),
-                                                ),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Container(
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              2.0,
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          2.0,
-                                                      decoration: const BoxDecoration(
-                                                          image: DecorationImage(
-                                                              image: AssetImage(
-                                                                  'assets/images/start_icon.webp'))),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: AppDimensions
-                                                                  .height10(
+                                      child: AvatarGlow(
+                                        endRadius:
+                                            AppDimensions.height10(context) *
+                                                5.0,
+                                        glowColor: const Color(0xFFFFA511),
+                                        animate:
+                                            totalItemsOn != 0 ? true : false,
+                                        child: Align(
+                                          alignment: Alignment.center,
+                                          child: Container(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  7.1,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  7.1,
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Colors.white,
+                                                border: Border.all(
+                                                    width: 3,
+                                                    color: const Color(
+                                                        0xFFFFA511)),
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    width:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            2.0,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    decoration: const BoxDecoration(
+                                                        image: DecorationImage(
+                                                            image: AssetImage(
+                                                                'assets/images/start_icon.webp'))),
+                                                  ),
+                                                  Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            0.4),
+                                                    child: Text(
+                                                      'Start',
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .font10(
                                                                       context) *
-                                                              0.4),
-                                                      child: Text(
-                                                        'Start',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .font10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            color: const Color(
-                                                                0xFFFFA511)),
-                                                      ),
-                                                    )
-                                                  ],
-                                                )),
-                                          ),
+                                                              1.4,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xFFFFA511)),
+                                                    ),
+                                                  )
+                                                ],
+                                              )),
                                         ),
                                       ),
                                     )
@@ -1726,7 +1714,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
 }
 
 Widget goalActive(BuildContext context, String goals) {
-  return Container(
+  return SizedBox(
     width: AppDimensions.width10(context) * 27.0,
     height: AppDimensions.height10(context) * 23.6,
     child: AlertDialog(
@@ -1900,7 +1888,6 @@ Widget showDeleteAlert(BuildContext context, id) {
                 onPressed: () {
                   PracticeGoalApi().deleteUserPracticeById(id).then((response) {
                     if (response == true) {
-                      print("Practice deleted");
                       Navigator.push(context,
                           FadePageRoute(page: const multiple_goal_inactive()));
                     }
@@ -2022,9 +2009,7 @@ Widget showConfirmationAlert(BuildContext context) {
                           page: const goal_menu_inactive(
                               isActive: false, goal_evaluation: false)));
                   AdminGoal().updateUserGoalStatus('inactive').then((response) {
-                    if (response == true) {
-                      print("Goal Inactive");
-                    }
+                    if (response == true) {}
                   });
                 },
                 child: Text(

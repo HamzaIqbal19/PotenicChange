@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class animation extends StatefulWidget {
+  const animation({super.key});
+
   @override
   _animationState createState() => _animationState();
 }
@@ -19,7 +21,7 @@ class _animationState extends State<animation>
 
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
     );
 
     _animation = CurvedAnimation(
@@ -37,20 +39,22 @@ class _animationState extends State<animation>
   void _toggleBottomSheet() {
     setState(() {
       _isBottomSheetVisible = !_isBottomSheetVisible;
-      if (_isBottomSheetVisible)
+      if (_isBottomSheetVisible) {
         _animationController.forward();
-      else
+      } else {
         _animationController.reverse();
+      }
     });
   }
 
   void _togglePopUp() {
     setState(() {
       _isPopUpVisible = !_isPopUpVisible;
-      if (_isPopUpVisible)
+      if (_isPopUpVisible) {
         _animationController.forward();
-      else
+      } else {
         _animationController.reverse();
+      }
     });
   }
 
@@ -58,23 +62,23 @@ class _animationState extends State<animation>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transition Example'),
+        title: const Text('Transition Example'),
       ),
       body: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: _toggleBottomSheet,
-              child: Text('Toggle Bottom Sheet'),
+              child: const Text('Toggle Bottom Sheet'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: _togglePopUp,
-              child: Text('Toggle Pop-up'),
+              child: const Text('Toggle Pop-up'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             AnimatedBuilder(
               animation: _animation,
               builder: (context, child) {
@@ -97,7 +101,7 @@ class _animationState extends State<animation>
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Text(
+                      child: const Text(
                         'Bottom Sheet',
                         style: TextStyle(
                           color: Colors.white,
@@ -127,7 +131,7 @@ class _animationState extends State<animation>
                   width: 200.0,
                   height: 200.0,
                   color: Colors.green,
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       'Pop-up',
                       style: TextStyle(

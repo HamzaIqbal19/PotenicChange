@@ -28,7 +28,7 @@ class Circulardates extends StatelessWidget {
               numOuterCircles: outerCircleContainers.length,
             ),
           ),
-          Align(alignment: Alignment(0, -0.5), child: centerContainer),
+          Align(alignment: const Alignment(0, -0.5), child: centerContainer),
           Positioned.fill(
             child: Container(
               width: AppDimensions.width10(context) * 24.0,

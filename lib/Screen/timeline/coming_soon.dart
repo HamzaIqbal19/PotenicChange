@@ -5,6 +5,8 @@ import 'package:url_launcher/url_launcher_string.dart';
 import '../../utils/app_dimensions.dart';
 
 class timeline_soon extends StatelessWidget {
+  const timeline_soon({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(

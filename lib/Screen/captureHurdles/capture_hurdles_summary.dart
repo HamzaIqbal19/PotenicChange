@@ -55,9 +55,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
       } else {
         return response.statusCode;
       }
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   void _fetchHurdle() async {
@@ -72,9 +70,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
       } else {
         return response.statusCode;
       }
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   void checkHurdle() async {
@@ -89,9 +85,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
       } else if (response == false) {
         Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
       }
-    }).catchError((error) {
-      print("Hello world error");
-    });
+    }).catchError((error) {});
   }
 
   @override

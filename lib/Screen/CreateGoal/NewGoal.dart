@@ -28,7 +28,7 @@ class _NewGoalState extends State<NewGoal> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                 // width: AppDimensions.width10(context) * 3,
+                  // width: AppDimensions.width10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
@@ -49,7 +49,7 @@ class _NewGoalState extends State<NewGoal> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 3.0,
+                    // width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
@@ -106,16 +106,14 @@ class _NewGoalState extends State<NewGoal> {
                   SizedBox(
                     width: AppDimensions.width10(context) * 3.6,
                   ),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        "All Goals ",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                          fontSize: AppDimensions.font10(context) * 2.8,
-                        ),
+                  Center(
+                    child: Text(
+                      "All Goals ",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        fontSize: AppDimensions.font10(context) * 2.8,
                       ),
                     ),
                   ),
@@ -131,16 +129,13 @@ class _NewGoalState extends State<NewGoal> {
                   SizedBox(
                     width: AppDimensions.width10(context) * 3.6,
                   ),
-                  Container(
-                    // height: AppDimensions.height10(context) *7.1,
-                    child: Text(
-                      "Which category does your goal belong to? ",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        fontSize: AppDimensions.font10(context) * 1.8,
-                      ),
+                  Text(
+                    "Which category does your goal belong to? ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                      fontSize: AppDimensions.font10(context) * 1.8,
                     ),
                   ),
                 ],
@@ -180,7 +175,7 @@ class _NewGoalState extends State<NewGoal> {
                             SizedBox(
                               width: AppDimensions.width10(context) * 1.24,
                             ),
-                            Container(
+                            SizedBox(
                               // color: Colors.yellow,
                               height: AppDimensions.height10(context) * 2.4,
                               child: Text(
@@ -198,7 +193,7 @@ class _NewGoalState extends State<NewGoal> {
                         SizedBox(
                           height: AppDimensions.height10(context) * 2.0,
                         ),
-                        Container(
+                        SizedBox(
                           height: AppDimensions.height10(context) * 41.9,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -344,7 +339,7 @@ class _NewGoalState extends State<NewGoal> {
                             SizedBox(
                               width: AppDimensions.width10(context) * 1.24,
                             ),
-                            Container(
+                            SizedBox(
                               // color: Colors.yellow,
                               height: AppDimensions.height10(context) * 2.4,
                               child: Text(
@@ -362,7 +357,7 @@ class _NewGoalState extends State<NewGoal> {
                         SizedBox(
                           height: AppDimensions.height10(context) * 2.0,
                         ),
-                        Container(
+                        SizedBox(
                           height: AppDimensions.height10(context) * 41.9,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -23,15 +23,12 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
 
   final formKey = GlobalKey<FormState>();
   late AnimationController _controller;
-  late AnimationController _controller_log;
   bool isPasswordNotVisible = true;
   bool boolean = true;
 
   setEmail(email) async {
-    setEmail(email) async {
-      SharedPreferences pref = await SharedPreferences.getInstance();
-      pref.setString('email', email);
-    }
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.setString('email', email);
   }
 
   @override
@@ -44,7 +41,6 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
       ..addListener(() {
         setState(() {});
       });
-    // TODO: implement initState
     super.initState();
   }
 
@@ -128,7 +124,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   ),
                 ),
                 SizedBox(height: AppDimensions.height10(context) * 2.32),
-                Container(
+                SizedBox(
                   height: AppDimensions.height10(context) * 3.6,
                   child: Text(
                     AppText().welcomeText,
@@ -140,7 +136,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   ),
                 ),
                 SizedBox(height: AppDimensions.height10(context) + 1),
-                Container(
+                SizedBox(
                     height: AppDimensions.height10(context) * 4.6,
                     width: AppDimensions.width10(context) * 35.3,
                     child: Text(
@@ -153,7 +149,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                       ),
                     )),
                 SizedBox(height: AppDimensions.height10(context) * 4.8),
-                Container(
+                SizedBox(
                   height: AppDimensions.height10(context) * 21.1,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,7 +159,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                           Navigator.push(
                             context,
                             FadePageRoute2(true,
-                                enterPage: SignUpWithEmail(),
+                                enterPage: const SignUpWithEmail(),
                                 exitPage: const SignUpPage()),
                           );
                         },
@@ -210,7 +206,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                       SizedBox(
                         height: AppDimensions.height10(context) * 2,
                       ),
-                      Container(
+                      SizedBox(
                         height: AppDimensions.height10(context) * 5.6,
                         width: AppDimensions.width10(context) * 34.1,
                         child: OutlinedButton.icon(
@@ -248,7 +244,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                       SizedBox(
                         height: AppDimensions.height10(context) * 2,
                       ),
-                      Container(
+                      SizedBox(
                         height: AppDimensions.height10(context) * 5.6,
                         width: AppDimensions.width10(context) * 34.1,
                         child: OutlinedButton.icon(
@@ -286,46 +282,33 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   ),
                 ),
                 SizedBox(height: AppDimensions.height10(context) * 26.2),
-                GestureDetector(
-                  onTapDown: (TapDownDetails details) {
-                    _controller.forward();
-                  },
-                  onTap: () async {
-                    _controller.forward();
-
-                    await Future.delayed(const Duration(milliseconds: 200));
-
-                    _controller.reverse();
-
-                    await Future.delayed(const Duration(milliseconds: 200));
+                AnimatedScaleButton(
+                  onTap: () {
                     Navigator.push(
                       context,
                       FadePageRoute2(
                         true,
                         exitPage: const SignUpPage(),
-                        enterPage: LoginPage(),
+                        enterPage: const LoginPage(),
                       ),
                     );
                   },
-                  child: Transform.scale(
-                    scale: 1 - _controller.value,
-                    child: Container(
-                      height: AppDimensions.height10(context) * 5.2,
-                      width: AppDimensions.width10(context) * 29.3,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF5F5F5),
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.all(Radius.circular(
-                            AppDimensions.height10(context) * 5.0)),
-                      ),
-                      child: Center(
-                        child: Text(
-                          AppText().alreadySignedUpButton,
-                          style: TextStyle(
-                            color: const Color(0xFF8C648A),
-                            fontSize: AppDimensions.font10(context) * 1.6,
-                            fontWeight: FontWeight.w600,
-                          ),
+                  child: Container(
+                    height: AppDimensions.height10(context) * 5.2,
+                    width: AppDimensions.width10(context) * 29.3,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF5F5F5),
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(
+                          AppDimensions.height10(context) * 5.0)),
+                    ),
+                    child: Center(
+                      child: Text(
+                        AppText().alreadySignedUpButton,
+                        style: TextStyle(
+                          color: const Color(0xFF8C648A),
+                          fontSize: AppDimensions.font10(context) * 1.6,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),

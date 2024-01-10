@@ -43,7 +43,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   int hurdleId = 0;
   List goalName = [];
   var allHurdle;
-  bool Loading = true;
+  bool loading = true;
   var Route;
 
   void getHurdleRoute() async {
@@ -59,7 +59,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -86,7 +86,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
       _fetchUserGoal();
       _fetchAllHurdle();
       loadData();
-      print("Hello world error");
     });
   }
 
@@ -120,9 +119,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
         });
         loadData();
       }
-    }).catchError((error) {
-      print("Hell error");
-    });
+    }).catchError((error) {});
   }
 
   void _fetchUserGoal() {
@@ -155,11 +152,11 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   }
 
   bool deleted = false;
+  int selectedTag = 0;
+  int goalIndex = 0;
+  String selectedActivity = 'All';
+  String selectedGoal = 'All';
   @override
-  int _selectedTag = 0;
-  int _Goal_Index = 0;
-  String _selected_activity = 'All';
-  String _selected_goal = 'All';
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
@@ -174,7 +171,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
               record: 0,
             )));
         final SharedPreferences prefs = await _prefs;
-        var hurdleRoute = prefs.remove('HurdleRoute');
+        await prefs.remove('HurdleRoute');
         await prefs.remove('hurdleName');
         await prefs.remove('NameHurdle');
         await prefs.remove('hurdleStatement');
@@ -204,7 +201,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                           record: 0,
                         )));
                     final SharedPreferences prefs = await _prefs;
-                    var hurdleRoute = prefs.remove('HurdleRoute');
+                    await prefs.remove('HurdleRoute');
                     await prefs.remove('hurdleName');
                     await prefs.remove('NameHurdle');
                     await prefs.remove('hurdleStatement');
@@ -342,9 +339,9 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                       GestureDetector(
                                                         onTap: () {
                                                           setState(() {
-                                                            _selected_goal =
+                                                            selectedGoal =
                                                                 goalName[
-                                                                    _Goal_Index];
+                                                                    goalIndex];
                                                             goalId =
                                                                 goals[index]
                                                                     ['id'];
@@ -404,7 +401,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                     onSelectedItemChanged:
                                                         (int index) {
                                                       setState(() {
-                                                        _Goal_Index = index;
+                                                        goalIndex = index;
                                                       });
                                                     },
                                                   ),
@@ -498,7 +495,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                           AppDimensions.width10(context) * 0.8),
                                   child: Center(
                                     child: Text(
-                                      _selected_goal,
+                                      selectedGoal,
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.font10(context) *
@@ -606,12 +603,12 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                       GestureDetector(
                                                         onTap: () {
                                                           setState(() {
-                                                            _selected_activity =
+                                                            selectedActivity =
                                                                 hurdleName[
-                                                                    _selectedTag];
+                                                                    selectedTag];
                                                             hurdleId =
                                                                 hurdlesListName[
-                                                                        _selectedTag]
+                                                                        selectedTag]
                                                                     ['id'];
                                                             // search = hurdlesList[
                                                             //         _selectedTag]
@@ -620,7 +617,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                           filterTerm(
                                                               hurdleId, goalId);
 
-                                                          print('asf');
                                                           Navigator.pop(
                                                               context);
                                                         },
@@ -673,7 +669,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                     onSelectedItemChanged:
                                                         (int index) {
                                                       setState(() {
-                                                        _selectedTag = index;
+                                                        selectedTag = index;
                                                       });
                                                     },
                                                   ),
@@ -764,7 +760,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                           AppDimensions.width10(context) * 0.8),
                                   child: Center(
                                     child: Text(
-                                      _selected_activity,
+                                      selectedActivity,
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.font10(context) *
@@ -800,8 +796,8 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                               noData = false;
                               hurdleId = 0;
                               goalId = 0;
-                              _selected_activity = "All";
-                              _selected_goal = 'All';
+                              selectedActivity = "All";
+                              selectedGoal = 'All';
                             });
                           },
                           child: Container(
@@ -858,7 +854,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
               image: AssetImage('assets/images/practicebackground.webp'),
               fit: BoxFit.cover,
             )),
-            child: Loading == false
+            child: loading == false
                 ? SingleChildScrollView(
                     child: Column(
                       children: [
@@ -920,7 +916,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                       ),
                                       AnimatedScaleButton(
                                         onTap: () {
-                                          hurdle_sheet(context);
+                                          hurdleSheet(context);
                                         },
                                         child: Container(
                                             width:
@@ -1090,7 +1086,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                   final SharedPreferences
                                                       prefs = await _prefs;
 
-                                                  var hurdleId = prefs.setInt(
+                                                  await prefs.setInt(
                                                       'userHurdleId',
                                                       hurdlesList[index]['id']);
                                                   Navigator.push(
@@ -1215,7 +1211,7 @@ class hurdle_menu extends StatefulWidget {
 
 class _hurdle_menuState extends State<hurdle_menu> {
   var hurdlesSummary;
-  bool Loading = true;
+  bool loading = true;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -1223,7 +1219,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -1240,9 +1236,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
         Navigator.push(
             context, FadePageRouteReverse(page: const hurdles_splash()));
       }
-    }).catchError((error) {
-      print("Hello world error");
-    });
+    }).catchError((error) {});
   }
 
   void _fetchHurdleSummary() async {
@@ -1256,9 +1250,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
       } else {
         return response.statusCode;
       }
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   @override
@@ -1321,7 +1313,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
           image: AssetImage('assets/images/practicebackground.webp'),
           fit: BoxFit.cover,
         )),
-        child: Loading == false
+        child: loading == false
             ? Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -1378,7 +1370,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
                   SizedBox(
                     height: AppDimensions.height10(context) * 7.313,
                   ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.width10(context) * 32.0,
                     height: AppDimensions.height10(context) * 3.0,
                     // margin:
@@ -1755,323 +1747,323 @@ class _hurdle_menuState extends State<hurdle_menu> {
   }
 }
 
-_showBottomSheet(BuildContext context) {
-  String goal = 'Goal Name';
+// _showBottomSheet(BuildContext context) {
+//   String goal = 'Goal Name';
 
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    backgroundColor: Colors.transparent,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        top: Radius.circular(16),
-      ),
-    ),
-    builder: (context) {
-      return GestureDetector(
-        onTap: () => Navigator.of(context).pop(),
-        child: Container(
-          height: AppDimensions.height10(context) * 30.3,
-          color: const Color.fromRGBO(0, 0, 0, 0.001),
-          child: GestureDetector(
-            onTap: () {},
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    height: AppDimensions.height10(context) * 4.0,
-                    width: AppDimensions.width10(context) * 41.4,
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(
-                                width: AppDimensions.width10(context) * 0.1,
-                                color: const Color(0xFF828282)))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.width10(context) * 2.0),
-                            child: Text(
-                              'Cancel',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFF2F80ED)),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          child: Text(
-                            'Done',
-                            style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.9,
-                                height: AppDimensions.height10(context) * 0.1,
-                                color: const Color(0xFF2F80ED)),
-                          ),
-                        ),
-                        SizedBox(
-                          width: AppDimensions.width10(context),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: AppDimensions.width10(context) * 37.5,
-                    height: AppDimensions.height10(context) * 24.8,
-                    // color: Colors.amber,
-                    child: ListWheelScrollView(
-                        onSelectedItemChanged: (value) {},
-                        diameterRatio: 1.5,
-                        // magnification: 1.5,
-                        overAndUnderCenterOpacity: 0.5,
-                        itemExtent: AppDimensions.height10(context) * 3.1,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                'All',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                '$goal 1',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                '$goal 2',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                '$goal 3',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          )
-                        ]),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    },
-  );
-}
+//   showModalBottomSheet(
+//     context: context,
+//     isScrollControlled: true,
+//     backgroundColor: Colors.transparent,
+//     shape: const RoundedRectangleBorder(
+//       borderRadius: BorderRadius.vertical(
+//         top: Radius.circular(16),
+//       ),
+//     ),
+//     builder: (context) {
+//       return GestureDetector(
+//         onTap: () => Navigator.of(context).pop(),
+//         child: Container(
+//           height: AppDimensions.height10(context) * 30.3,
+//           color: const Color.fromRGBO(0, 0, 0, 0.001),
+//           child: GestureDetector(
+//             onTap: () {},
+//             child: Container(
+//               decoration: const BoxDecoration(
+//                 color: Colors.white,
+//               ),
+//               child: Column(
+//                 children: [
+//                   Container(
+//                     height: AppDimensions.height10(context) * 4.0,
+//                     width: AppDimensions.width10(context) * 41.4,
+//                     decoration: BoxDecoration(
+//                         border: Border(
+//                             bottom: BorderSide(
+//                                 width: AppDimensions.width10(context) * 0.1,
+//                                 color: const Color(0xFF828282)))),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.end,
+//                       children: [
+//                         GestureDetector(
+//                           onTap: () {
+//                             Navigator.pop(context);
+//                           },
+//                           child: Container(
+//                             margin: EdgeInsets.only(
+//                                 right: AppDimensions.width10(context) * 2.0),
+//                             child: Text(
+//                               'Cancel',
+//                               style: TextStyle(
+//                                   fontSize: AppDimensions.font10(context) * 1.4,
+//                                   fontWeight: FontWeight.w400,
+//                                   color: const Color(0xFF2F80ED)),
+//                             ),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                           child: Text(
+//                             'Done',
+//                             style: TextStyle(
+//                                 fontSize: AppDimensions.font10(context) * 1.9,
+//                                 height: AppDimensions.height10(context) * 0.1,
+//                                 color: const Color(0xFF2F80ED)),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                           width: AppDimensions.width10(context),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     width: AppDimensions.width10(context) * 37.5,
+//                     height: AppDimensions.height10(context) * 24.8,
+//                     // color: Colors.amber,
+//                     child: ListWheelScrollView(
+//                         onSelectedItemChanged: (value) {},
+//                         diameterRatio: 1.5,
+//                         // magnification: 1.5,
+//                         overAndUnderCenterOpacity: 0.5,
+//                         itemExtent: AppDimensions.height10(context) * 3.1,
+//                         children: [
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 'All',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 '$goal 1',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 '$goal 2',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 '$goal 3',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           )
+//                         ]),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       );
+//     },
+//   );
+// }
 
-_showTagSheet(BuildContext context) {
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    backgroundColor: Colors.transparent,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        top: Radius.circular(16),
-      ),
-    ),
-    builder: (context) {
-      return GestureDetector(
-        onTap: () => Navigator.of(context).pop(),
-        child: Container(
-          height: AppDimensions.height10(context) * 30.3,
-          color: const Color.fromRGBO(0, 0, 0, 0.001),
-          child: GestureDetector(
-            onTap: () {},
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    height: AppDimensions.height10(context) * 4.0,
-                    width: AppDimensions.width10(context) * 41.4,
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(
-                                width: AppDimensions.width10(context) * 0.1,
-                                color: const Color(0xFF828282)))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.width10(context) * 2.0),
-                            child: Text(
-                              'Cancel',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFF2F80ED)),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          child: Text(
-                            'Done',
-                            style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.9,
-                                height: AppDimensions.height10(context) * 0.1,
-                                color: const Color(0xFF2F80ED)),
-                          ),
-                        ),
-                        SizedBox(
-                          width: AppDimensions.width10(context),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: AppDimensions.width10(context) * 37.5,
-                    height: AppDimensions.height10(context) * 24.8,
-                    // color: Colors.amber,
-                    child: ListWheelScrollView(
-                        onSelectedItemChanged: (value) {},
-                        diameterRatio: 1.5,
-                        //magnification: 1.1,
-                        overAndUnderCenterOpacity: 0.5,
-                        itemExtent: AppDimensions.height10(context) * 3.1,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                'All',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                'People / person 1',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                'Negative thought 2',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: const Color(0xFF828282)))),
-                            child: Center(
-                              child: Text(
-                                'Place 3',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          )
-                        ]),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    },
-  );
-}
+// _showTagSheet(BuildContext context) {
+//   showModalBottomSheet(
+//     context: context,
+//     isScrollControlled: true,
+//     backgroundColor: Colors.transparent,
+//     shape: const RoundedRectangleBorder(
+//       borderRadius: BorderRadius.vertical(
+//         top: Radius.circular(16),
+//       ),
+//     ),
+//     builder: (context) {
+//       return GestureDetector(
+//         onTap: () => Navigator.of(context).pop(),
+//         child: Container(
+//           height: AppDimensions.height10(context) * 30.3,
+//           color: const Color.fromRGBO(0, 0, 0, 0.001),
+//           child: GestureDetector(
+//             onTap: () {},
+//             child: Container(
+//               decoration: const BoxDecoration(
+//                 color: Colors.white,
+//               ),
+//               child: Column(
+//                 children: [
+//                   Container(
+//                     height: AppDimensions.height10(context) * 4.0,
+//                     width: AppDimensions.width10(context) * 41.4,
+//                     decoration: BoxDecoration(
+//                         border: Border(
+//                             bottom: BorderSide(
+//                                 width: AppDimensions.width10(context) * 0.1,
+//                                 color: const Color(0xFF828282)))),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.end,
+//                       children: [
+//                         GestureDetector(
+//                           onTap: () {
+//                             Navigator.pop(context);
+//                           },
+//                           child: Container(
+//                             margin: EdgeInsets.only(
+//                                 right: AppDimensions.width10(context) * 2.0),
+//                             child: Text(
+//                               'Cancel',
+//                               style: TextStyle(
+//                                   fontSize: AppDimensions.font10(context) * 1.4,
+//                                   fontWeight: FontWeight.w400,
+//                                   color: const Color(0xFF2F80ED)),
+//                             ),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                           child: Text(
+//                             'Done',
+//                             style: TextStyle(
+//                                 fontSize: AppDimensions.font10(context) * 1.9,
+//                                 height: AppDimensions.height10(context) * 0.1,
+//                                 color: const Color(0xFF2F80ED)),
+//                           ),
+//                         ),
+//                         SizedBox(
+//                           width: AppDimensions.width10(context),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     width: AppDimensions.width10(context) * 37.5,
+//                     height: AppDimensions.height10(context) * 24.8,
+//                     // color: Colors.amber,
+//                     child: ListWheelScrollView(
+//                         onSelectedItemChanged: (value) {},
+//                         diameterRatio: 1.5,
+//                         //magnification: 1.1,
+//                         overAndUnderCenterOpacity: 0.5,
+//                         itemExtent: AppDimensions.height10(context) * 3.1,
+//                         children: [
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 'All',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 'People / person 1',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 'Negative thought 2',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           ),
+//                           Container(
+//                             decoration: BoxDecoration(
+//                                 border: Border(
+//                                     bottom: BorderSide(
+//                                         width: AppDimensions.width10(context) *
+//                                             0.1,
+//                                         color: const Color(0xFF828282)))),
+//                             child: Center(
+//                               child: Text(
+//                                 'Place 3',
+//                                 style: TextStyle(
+//                                     fontSize:
+//                                         AppDimensions.font10(context) * 2.2,
+//                                     fontWeight: FontWeight.w400),
+//                               ),
+//                             ),
+//                           )
+//                         ]),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       );
+//     },
+//   );
+// }
 
-void hurdle_sheet(context) {
+void hurdleSheet(context) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,

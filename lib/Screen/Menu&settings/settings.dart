@@ -1241,10 +1241,7 @@ class _SettingsState extends State<Settings> {
                                                   FadePageRoute(
                                                       page:
                                                           const Acc_deleted()));
-                                            } else {
-                                              print(
-                                                  'Account deletion failde!.');
-                                            }
+                                            } else {}
                                           }).whenComplete(() => null);
                                         },
                                         child: Text(

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
@@ -25,7 +24,7 @@ class PracticeRoutine extends StatefulWidget {
 
 class _PracticeRoutineState extends State<PracticeRoutine> {
   bool buttonActive = false;
-  int Count = 0;
+  int count1 = 0;
 
   List<Map<String, dynamic>> timesPerDay = [
     {'day': 'Monday', 'time1': '9:00 am'},
@@ -89,14 +88,14 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
 
   getGoalName() async {
     final SharedPreferences prefs = await _prefs;
-    var my_goal = prefs.getString("goalName");
-    var practice_Name = prefs.getString('pracName');
+    var myGoal = prefs.getString("goalName");
+    var practicename = prefs.getString('pracName');
     var goalColor = prefs.getString('goalColor');
     setState(() {
       color = goalColor;
-      mygoal.text = my_goal!;
-      practice.text = practice_Name!;
-      practiceName.text = practice_Name;
+      mygoal.text = myGoal!;
+      practice.text = practicename!;
+      practiceName.text = practicename;
     });
   }
 
@@ -124,7 +123,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 ),
                 onPressed: () {
                   setState(() {
-                    count = 0;
+                    count1 = 0;
                   });
 
                   Navigator.pop(context);
@@ -514,7 +513,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                       // If it's not already selected, add it to the list
                                       selectedDays.add(timesPerDay[index]);
                                       setState(() {
-                                        Count = count;
+                                        count1 = count;
                                         index1 = index;
                                       });
                                     }
@@ -546,7 +545,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                       selectedDays.removeWhere((element) =>
                                           element['day'] == selectedDay[index]);
                                       setState(() {
-                                        Count = Count - 1;
+                                        count1 = count - 1;
                                       });
                                     }
 
@@ -572,7 +571,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   children: [
                     AnimatedScaleButton(
                       onTap: () async {
-                        if (Count >= 3) {
+                        if (count1 >= 3) {
                           saveTimesPerDay(selectedDays);
 
                           Navigator.push(
@@ -595,7 +594,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
 
-                          gradient: Count >= 3
+                          gradient: count1 >= 3
                               ? const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,

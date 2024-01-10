@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class AppText {
   //HomeScreen
   String homeScreenTitle = 'Your Destiny is at \n Your Fingertips';

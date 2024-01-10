@@ -10,7 +10,6 @@ import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
-import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,6 +18,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../Widgets/fading.dart';
 
 class Loginemailandpassword extends StatefulWidget {
+  const Loginemailandpassword({super.key});
+
   @override
   _LoginemailandpasswordState createState() => _LoginemailandpasswordState();
 }
@@ -33,8 +34,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
   String passwordMsg = "Minimum 8 characters";
   String emailMsg = "Ooops! Needs to be an email format";
   String fcm = 'adsfsf3423424';
-  bool Loading = false;
-  bool pass_obscure = true;
+  bool loading = false;
+  bool passObscure = true;
   final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
   bool rememberMe = true;
@@ -44,7 +45,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
   bool credentials = false;
   String passwordError = "";
   String emailError = "";
-  late SharedPreferences _prefs;
   setEmail(email) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString('email', email);
@@ -86,7 +86,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
           FadePageRoute2(
             true,
             enterPage: const StartProcess(),
-            exitPage: Loginemailandpassword(),
+            exitPage: const Loginemailandpassword(),
           ),
         );
       }
@@ -214,7 +214,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       ),
 
                       SizedBox(height: AppDimensions.height10(context) * 2.35),
-                      Container(
+                      SizedBox(
                         height: AppDimensions.height10(context) * 3.9,
                         child: Text(
                           AppText().login,
@@ -229,7 +229,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       SizedBox(height: AppDimensions.height10(context) * 4.2),
 
                       // SizedBox(height: AppDimensions.height0),
-                      Container(
+                      SizedBox(
                         height: AppDimensions.height10(context) * 26 + 12,
                         width: AppDimensions.width10(context) * 36,
                         child: Column(
@@ -434,7 +434,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                               AppDimensions.height10(context) *
                                                   2.2,
                                           child: TextFormField(
-                                            obscureText: pass_obscure,
+                                            obscureText: passObscure,
                                             style: TextStyle(
                                                 color: const Color(0xFF8C648A),
                                                 fontWeight: FontWeight.w600,
@@ -502,11 +502,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                   GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        if (pass_obscure == true) {
-                                          pass_obscure = false;
-                                        } else {
-                                          pass_obscure = true;
-                                        }
+                                        passObscure = !passObscure;
                                       });
                                     },
                                     child: SizedBox(
@@ -515,7 +511,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                       width:
                                           AppDimensions.width10(context) * 2.4,
                                       child: Image.asset(
-                                        pass_obscure
+                                        passObscure
                                             ? 'assets/images/visible-icon-9.webp'
                                             : 'assets/images/ic_remove_red_eye.webp',
                                         color: const Color(0xFF8C648A),
@@ -568,21 +564,18 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                           FadePageRoute2(true,
                                               enterPage: const PasswordReset(),
                                               exitPage:
-                                                  Loginemailandpassword()),
+                                                  const Loginemailandpassword()),
                                         );
                                       },
-                                      child: Container(
-                                        child: Text(
-                                          AppText().forgotPass,
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            color: const Color(0xFFFFFFFF),
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.5,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                      child: Text(
+                                        AppText().forgotPass,
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          color: const Color(0xFFFFFFFF),
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.5,
+                                          fontWeight: FontWeight.w600,
                                         ),
                                       ),
                                     ),
@@ -646,13 +639,13 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       GestureDetector(
                         onTapDown: (TapDownDetails details) {
                           setState(() {
-                            Loading = true;
+                            loading = true;
                           });
                           _controller.forward();
                         },
                         onTap: () async {
                           setState(() {
-                            Loading = true;
+                            loading = true;
                             emailError = "";
                             passwordError = "";
                           });
@@ -668,10 +661,10 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                           if (_formkey.currentState!.validate() &&
                               errorPassword == false) {
                             Authentication()
-                                .SignIn(
+                                .signIn(
                               fcm,
-                              '${emailController.text.toString().trim()}',
-                              '${passwordController.text.toString()}',
+                              emailController.text.toString().trim(),
+                              passwordController.text.toString(),
                             )
                                 .then((response) {
                               if (response["statusCode"] == 200) {
@@ -682,7 +675,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                             Text("User Login Successfully")));
                               } else if (response["statusCode"] == 401) {
                                 setState(() {
-                                  Loading = false;
+                                  loading = false;
                                   emailError = "";
                                   passwordError = response["message"];
                                 });
@@ -692,7 +685,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                         content: Text(response["message"])));
                               } else if (response["statusCode"] == 404) {
                                 setState(() {
-                                  Loading = false;
+                                  loading = false;
                                   credentials = false;
                                   emailError = response["message"];
                                 });
@@ -708,13 +701,13 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                           Text('An error occurred: $error')));
                             }).whenComplete(() {
                               setState(() {
-                                Loading = false;
+                                loading = false;
                                 credentials = false;
                               });
                             });
                           } else {
                             setState(() {
-                              Loading = false;
+                              loading = false;
                             });
                           }
                         },
@@ -729,7 +722,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               borderRadius: BorderRadius.all(Radius.circular(
                                   AppDimensions.height10(context) * 5.0)),
                             ),
-                            child: Loading
+                            child: loading
                                 ? SpinKitThreeBounce(
                                     color: const Color(0xFF8C648A),
                                     // delay: Duration(milliseconds: 0),

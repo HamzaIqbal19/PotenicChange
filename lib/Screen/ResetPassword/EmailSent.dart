@@ -48,7 +48,7 @@ class _EmailSentState extends State<EmailSent> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                     // width: AppDimensions.width10(context) * 3.0,
+                      // width: AppDimensions.width10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
                     ),
@@ -87,7 +87,7 @@ class _EmailSentState extends State<EmailSent> {
                 ),
 
                 SizedBox(height: AppDimensions.height10(context) * 2.32),
-                Container(
+                SizedBox(
                   height: AppDimensions.height10(context) * 6.8,
                   width: AppDimensions.width10(context) * 32.0,
                   child: Text(
@@ -103,7 +103,7 @@ class _EmailSentState extends State<EmailSent> {
                 ),
                 SizedBox(height: AppDimensions.height10(context) * 2.2),
                 // SizedBox(height: AppDimensions.height2),
-                Container(
+                SizedBox(
                     height: AppDimensions.height10(context) * 2.4,
                     width: AppDimensions.screenWidth(context) - 100,
                     child: Text(
@@ -116,7 +116,7 @@ class _EmailSentState extends State<EmailSent> {
                       ),
                     )),
                 SizedBox(height: AppDimensions.height10(context) * 0.92),
-                Container(
+                SizedBox(
                     height: AppDimensions.height10(context) * 7 + 4,
                     width: AppDimensions.width10(context) * 31.6,
                     child: Text(

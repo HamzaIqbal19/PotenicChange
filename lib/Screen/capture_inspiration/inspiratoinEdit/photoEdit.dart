@@ -41,14 +41,14 @@ class _photo_EditState extends State<photo_Edit> {
   var image;
 
   var inspirationDetails;
-  bool Loading = true;
+  bool loading = true;
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -77,7 +77,7 @@ class _photo_EditState extends State<photo_Edit> {
 
             if (widget.updateData == true) {
               setState(() {
-                Loading = false;
+                loading = false;
               });
             } else {
               link.text =
@@ -166,7 +166,6 @@ class _photo_EditState extends State<photo_Edit> {
 
   @override
   Widget build(BuildContext context) {
-    bool link_state = false;
     return WillPopScope(
       onWillPop: () {
         removePrefs();
@@ -245,249 +244,247 @@ class _photo_EditState extends State<photo_Edit> {
                                             statement.text.isNotEmpty) {
                                           showAnimatedDialog(
                                               animationType:
-                                                  DialogTransitionType.fadeScale,
+                                                  DialogTransitionType
+                                                      .fadeScale,
                                               curve: Curves.easeInOut,
                                               duration:
                                                   const Duration(seconds: 1),
                                               context: context,
-                                              builder: (BuildContext context) =>
-                                                  SizedBox(
-                                                    width: AppDimensions.height10(
-                                                            context) *
-                                                        27.0,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
+                                              builder:
+                                                  (BuildContext context) =>
+                                                      SizedBox(
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            27.0,
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
                                                             18.2,
-                                                    child: AlertDialog(
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius: BorderRadius
-                                                              .circular(AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.4)),
-                                                      contentPadding:
-                                                          EdgeInsets.zero,
-                                                      actionsPadding:
-                                                          EdgeInsets.zero,
-                                                      titlePadding:
-                                                          EdgeInsets.zero,
-                                                      title: Container(
-                                                        margin: EdgeInsets.only(
-                                                            top: AppDimensions
+                                                        child: AlertDialog(
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.4)),
+                                                          contentPadding:
+                                                              EdgeInsets.zero,
+                                                          actionsPadding:
+                                                              EdgeInsets.zero,
+                                                          titlePadding:
+                                                              EdgeInsets.zero,
+                                                          title: Container(
+                                                            margin: EdgeInsets.only(
+                                                                top: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.9,
+                                                                right: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.6,
+                                                                left: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.6,
+                                                                bottom: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    0.2),
+                                                            height: AppDimensions
                                                                     .height10(
                                                                         context) *
-                                                                1.9,
-                                                            right: AppDimensions
-                                                                    .height10(
+                                                                2.2,
+                                                            width: AppDimensions
+                                                                    .width10(
                                                                         context) *
-                                                                1.6,
-                                                            left: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.6,
-                                                            bottom: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                0.2),
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.2,
-                                                        width:
-                                                            AppDimensions.width10(
-                                                                    context) *
                                                                 23.8,
-                                                        child: Text(
-                                                          "Save changes?",
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .font10(
-                                                                        context) *
-                                                                1.7,
-                                                            fontFamily: 'laila',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      content: Container(
-                                                        margin: EdgeInsets.only(
-                                                            bottom: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.5,
-                                                            left: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.6,
-                                                            right: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.6),
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            3.4,
-                                                        width:
-                                                            AppDimensions.width10(
-                                                                    context) *
-                                                                23.8,
-                                                        child: Text(
-                                                          "Are you sure you want to save your\nupdates?",
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .font10(
-                                                                        context) *
-                                                                1.3,
-                                                            fontFamily: 'laila',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      actions: <Widget>[
-                                                        Column(
-                                                          children: [
-                                                            SizedBox(
-                                                              height: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  0.1,
-                                                              child: Divider(
-                                                                color: const Color(
-                                                                        0XFF3C3C43)
-                                                                    .withOpacity(
-                                                                        0.29),
+                                                            child: Text(
+                                                              "Save changes?",
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .font10(
+                                                                            context) *
+                                                                    1.7,
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
                                                               ),
                                                             ),
-                                                            Container(
-                                                              height: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  4.2,
-                                                              width:
-                                                                  double.infinity,
-                                                              color: const Color(
-                                                                  0xFF007AFF),
-                                                              child: TextButton(
-                                                                onPressed:
-                                                                    () async {
-                                                                  InspirationApi()
-                                                                      .updateInspiration(
-                                                                          title
-                                                                              .text
-                                                                              .toString(),
-                                                                          tagList,
-                                                                          link.text
-                                                                              .toString(),
-                                                                          statement
-                                                                              .text
-                                                                              .toString(),
-                                                                          selectedGoals.length ==
-                                                                                  0
-                                                                              ? inspirationDetails['inspiration'][
-                                                                                  'userGoalId']
-                                                                              : selectedGoals,
-                                                                          '')
-                                                                      .then(
-                                                                          (response) async {
-                                                                    if (response ==
-                                                                        true) {
-                                                                      Navigator.push(
-                                                                          context,
-                                                                          FadePageRoute(
-                                                                              page:
-                                                                                  const updatedLandingPage(delete: false, is_Updated: true)));
-                                                                      final SharedPreferences
-                                                                          prefs =
-                                                                          await _prefs;
-                                                                      var hurdleId = prefs.setInt(
-                                                                          'userInspirationId',
-                                                                          inspirationDetails[
-                                                                              'inspirationId']);
-                                                                      removePrefs();
-                                                                      clear();
-                                                                    }
-                                                                  });
-                                                                },
-                                                                child: Text(
-                                                                  'Yes',
-                                                                  style: TextStyle(
-                                                                      color: const Color(
-                                                                          0xFFFFFFFF),
-                                                                      fontSize:
-                                                                          AppDimensions.height10(context) *
-                                                                              1.7,
-                                                                      fontFamily:
-                                                                          "Laila",
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400),
+                                                          ),
+                                                          content: Container(
+                                                            margin: EdgeInsets.only(
+                                                                bottom: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.5,
+                                                                left: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.6,
+                                                                right: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.6),
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                3.4,
+                                                            width: AppDimensions
+                                                                    .width10(
+                                                                        context) *
+                                                                23.8,
+                                                            child: Text(
+                                                              "Are you sure you want to save your\nupdates?",
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .font10(
+                                                                            context) *
+                                                                    1.3,
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          actions: <Widget>[
+                                                            Column(
+                                                              children: [
+                                                                SizedBox(
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.1,
+                                                                  child:
+                                                                      Divider(
+                                                                    color: const Color(
+                                                                            0XFF3C3C43)
+                                                                        .withOpacity(
+                                                                            0.29),
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                            SizedBox(
-                                                              height: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  0.1,
-                                                              child: Divider(
-                                                                color: const Color(
-                                                                        0XFF3C3C43)
-                                                                    .withOpacity(
-                                                                        0.29),
-                                                              ),
-                                                            ),
-                                                            SizedBox(
-                                                              height: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  4.4,
-                                                              width:
-                                                                  double.infinity,
-                                                              child: TextButton(
-                                                                onPressed: () {
-                                                                  Navigator.pop(
-                                                                      context);
-                                                                },
-                                                                child: Text(
-                                                                  'Cancel',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          AppDimensions.height10(context) *
+                                                                Container(
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      4.2,
+                                                                  width: double
+                                                                      .infinity,
+                                                                  color: const Color(
+                                                                      0xFF007AFF),
+                                                                  child:
+                                                                      TextButton(
+                                                                    onPressed:
+                                                                        () async {
+                                                                      InspirationApi()
+                                                                          .updateInspiration(
+                                                                              title.text.toString(),
+                                                                              tagList,
+                                                                              link.text.toString(),
+                                                                              statement.text.toString(),
+                                                                              selectedGoals.length == 0 ? inspirationDetails['inspiration']['userGoalId'] : selectedGoals,
+                                                                              '')
+                                                                          .then((response) async {
+                                                                        if (response ==
+                                                                            true) {
+                                                                          Navigator.push(
+                                                                              context,
+                                                                              FadePageRoute(page: const updatedLandingPage(delete: false, is_Updated: true)));
+                                                                          final SharedPreferences
+                                                                              prefs =
+                                                                              await _prefs;
+                                                                          await prefs.setInt(
+                                                                              'userInspirationId',
+                                                                              inspirationDetails['inspirationId']);
+                                                                          removePrefs();
+                                                                          clear();
+                                                                        }
+                                                                      });
+                                                                    },
+                                                                    child: Text(
+                                                                      'Yes',
+                                                                      style: TextStyle(
+                                                                          color: const Color(
+                                                                              0xFFFFFFFF),
+                                                                          fontSize: AppDimensions.height10(context) *
                                                                               1.7,
-                                                                      fontFamily:
-                                                                          "Laila",
-                                                                      fontWeight:
-                                                                          FontWeight
+                                                                          fontFamily:
+                                                                              "Laila",
+                                                                          fontWeight:
+                                                                              FontWeight.w400),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.1,
+                                                                  child:
+                                                                      Divider(
+                                                                    color: const Color(
+                                                                            0XFF3C3C43)
+                                                                        .withOpacity(
+                                                                            0.29),
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      4.4,
+                                                                  width: double
+                                                                      .infinity,
+                                                                  child:
+                                                                      TextButton(
+                                                                    onPressed:
+                                                                        () {
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                    },
+                                                                    child: Text(
+                                                                      'Cancel',
+                                                                      style: TextStyle(
+                                                                          fontSize: AppDimensions.height10(context) *
+                                                                              1.7,
+                                                                          fontFamily:
+                                                                              "Laila",
+                                                                          fontWeight: FontWeight
                                                                               .w400,
-                                                                      color: const Color(
-                                                                          0xFF007AFF)),
+                                                                          color:
+                                                                              const Color(0xFF007AFF)),
+                                                                    ),
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                            SizedBox(
-                                                              height: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  0.1,
-                                                              child: Divider(
-                                                                color: const Color(
-                                                                        0XFF3C3C43)
-                                                                    .withOpacity(
-                                                                        0.29),
-                                                              ),
+                                                                SizedBox(
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.1,
+                                                                  child:
+                                                                      Divider(
+                                                                    color: const Color(
+                                                                            0XFF3C3C43)
+                                                                        .withOpacity(
+                                                                            0.29),
+                                                                  ),
+                                                                ),
+                                                              ],
                                                             ),
                                                           ],
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ));
+                                                      ));
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(const SnackBar(
@@ -500,9 +497,9 @@ class _photo_EditState extends State<photo_Edit> {
                                           'Save',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.6,
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.6,
                                               fontWeight: FontWeight.w400,
                                               color: title.text
                                                           .toString()
@@ -525,7 +522,7 @@ class _photo_EditState extends State<photo_Edit> {
                 height: double.infinity,
                 width: double.infinity,
                 color: Colors.white,
-                child: Loading == false
+                child: loading == false
                     ? SingleChildScrollView(
                         scrollDirection: Axis.vertical,
                         child: Column(
@@ -559,8 +556,9 @@ class _photo_EditState extends State<photo_Edit> {
                                       margin: EdgeInsets.only(
                                           left: AppDimensions.width10(context) *
                                               2.0,
-                                          right: AppDimensions.width10(context) *
-                                              8.9,
+                                          right:
+                                              AppDimensions.width10(context) *
+                                                  8.9,
                                           top: AppDimensions.height10(context) *
                                               3.9),
                                       child: Text(
@@ -578,8 +576,8 @@ class _photo_EditState extends State<photo_Edit> {
                                       // width: AppDimensions.width10(context) *
                                       //     30.5,
                                       margin: EdgeInsets.only(
-                                        left:
-                                            AppDimensions.height10(context) * 0.6,
+                                        left: AppDimensions.height10(context) *
+                                            0.6,
                                       ),
                                       child: TextField(
                                         controller: title,
@@ -605,42 +603,46 @@ class _photo_EditState extends State<photo_Edit> {
                                             hintText:
                                                 'Give your inspiration a title',
                                             hintStyle: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.7,
+                                                fontSize:
+                                                    AppDimensions.font10(context) *
+                                                        1.7,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xff828282)),
-                                            focusedBorder: const OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: Colors.transparent)),
+                                            focusedBorder:
+                                                const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors
+                                                            .transparent)),
                                             enabledBorder:
                                                 const OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent))),
+                                                        color: Colors
+                                                            .transparent))),
                                       ),
                                     ),
                                     Container(
                                         height:
-                                            AppDimensions.height10(context) * 2.2,
-                                        width:
-                                            AppDimensions.width10(context) * 30.5,
+                                            AppDimensions.height10(context) *
+                                                2.2,
+                                        width: AppDimensions.width10(context) *
+                                            30.5,
                                         alignment: Alignment.centerLeft,
                                         margin: EdgeInsets.only(
-                                            left:
-                                                AppDimensions.height10(context) *
-                                                    2.0,
-                                            right:
-                                                AppDimensions.height10(context) *
-                                                    8.9,
-                                            top: AppDimensions.height10(context) *
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
+                                            top: AppDimensions.height10(
+                                                    context) *
                                                 4.0),
                                         child: Text(
                                           'Description',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.5,
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.5,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xff828282)),
                                         )),
@@ -649,8 +651,8 @@ class _photo_EditState extends State<photo_Edit> {
                                       // width: AppDimensions.width10(context) *
                                       //     30.5,
                                       margin: EdgeInsets.only(
-                                        left:
-                                            AppDimensions.height10(context) * 0.6,
+                                        left: AppDimensions.height10(context) *
+                                            0.6,
                                       ),
                                       child: TextField(
                                         controller: statement,
@@ -676,19 +678,21 @@ class _photo_EditState extends State<photo_Edit> {
                                             hintText:
                                                 'Say more about this inspiration',
                                             hintStyle: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.7,
+                                                fontSize:
+                                                    AppDimensions.font10(context) *
+                                                        1.7,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xff828282)),
-                                            focusedBorder: const OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: Colors.transparent)),
+                                            focusedBorder:
+                                                const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors
+                                                            .transparent)),
                                             enabledBorder:
                                                 const OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent))),
+                                                        color: Colors
+                                                            .transparent))),
                                       ),
                                     ),
                                     Container(
@@ -700,8 +704,9 @@ class _photo_EditState extends State<photo_Edit> {
                                       margin: EdgeInsets.only(
                                           left: AppDimensions.width10(context) *
                                               2.0,
-                                          right: AppDimensions.width10(context) *
-                                              8.9,
+                                          right:
+                                              AppDimensions.width10(context) *
+                                                  8.9,
                                           top: AppDimensions.height10(context) *
                                               4.0),
                                       child: Text(
@@ -718,12 +723,13 @@ class _photo_EditState extends State<photo_Edit> {
                                       children: [
                                         Container(
                                           alignment: Alignment.centerLeft,
-                                          width: AppDimensions.width10(context) *
-                                              30.5,
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  30.5,
                                           margin: EdgeInsets.only(
-                                            left:
-                                                AppDimensions.height10(context) *
-                                                    0.6,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                0.6,
                                           ),
                                           child: TextField(
                                             controller: link,
@@ -752,17 +758,16 @@ class _photo_EditState extends State<photo_Edit> {
                                                         AppDimensions.height10(context) *
                                                             1.7,
                                                     fontWeight: FontWeight.w500,
-                                                    color:
-                                                        const Color(0xff828282)),
-                                                focusedBorder: const OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent)),
-                                                enabledBorder:
+                                                    color: const Color(
+                                                        0xff828282)),
+                                                focusedBorder:
                                                     const OutlineInputBorder(
                                                         borderSide: BorderSide(
                                                             color: Colors
-                                                                .transparent))),
+                                                                .transparent)),
+                                                enabledBorder: const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors.transparent))),
                                           ),
                                         ),
                                         Row(
@@ -782,9 +787,10 @@ class _photo_EditState extends State<photo_Edit> {
                                                         context) *
                                                     2.5,
                                                 margin: EdgeInsets.only(
-                                                    left: AppDimensions.height10(
-                                                            context) *
-                                                        1.15),
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.15),
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     2.5,
@@ -797,9 +803,10 @@ class _photo_EditState extends State<photo_Edit> {
                                                   child: Icon(
                                                     Icons.add,
                                                     color: Colors.white,
-                                                    size: AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                    size:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.8,
                                                   ),
                                                 ),
 
@@ -825,9 +832,10 @@ class _photo_EditState extends State<photo_Edit> {
                                                         context) *
                                                     2.5,
                                                 margin: EdgeInsets.only(
-                                                    left: AppDimensions.height10(
-                                                            context) *
-                                                        0.85),
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.85),
                                                 decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   // image: DecorationImage(image: AssetImage()),
@@ -837,9 +845,10 @@ class _photo_EditState extends State<photo_Edit> {
                                                   child: Icon(
                                                     Icons.delete,
                                                     color: Colors.white,
-                                                    size: AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
+                                                    size:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.8,
                                                   ),
                                                 ),
                                               ),
@@ -857,8 +866,9 @@ class _photo_EditState extends State<photo_Edit> {
                                       margin: EdgeInsets.only(
                                           left: AppDimensions.width10(context) *
                                               2.0,
-                                          right: AppDimensions.width10(context) *
-                                              8.9,
+                                          right:
+                                              AppDimensions.width10(context) *
+                                                  8.9,
                                           top: AppDimensions.height10(context) *
                                               4.0),
                                       child: Text(
@@ -876,8 +886,8 @@ class _photo_EditState extends State<photo_Edit> {
                                       // width: AppDimensions.width10(context) *
                                       //     30.5,
                                       margin: EdgeInsets.only(
-                                        left:
-                                            AppDimensions.height10(context) * 0.6,
+                                        left: AppDimensions.height10(context) *
+                                            0.6,
                                       ),
                                       child: TextField(
                                           controller: hastags,
@@ -894,7 +904,8 @@ class _photo_EditState extends State<photo_Edit> {
                                             );
                                           },
                                           onChanged: (text) {
-                                            List<String> words = text.split(' ');
+                                            List<String> words =
+                                                text.split(' ');
 
                                             List<String> tags = words
                                                 .where((word) =>
@@ -931,13 +942,13 @@ class _photo_EditState extends State<photo_Edit> {
                                                       AppDimensions.height10(context) *
                                                           1.7,
                                                   fontWeight: FontWeight.w500,
-                                                  color: const Color(0xff828282)),
-                                              focusedBorder: const OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      color: Colors.transparent)),
-                                              enabledBorder: const OutlineInputBorder(
-                                                  borderSide:
-                                                      BorderSide(color: Colors.transparent))),
+                                                  color:
+                                                      const Color(0xff828282)),
+                                              focusedBorder:
+                                                  const OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.transparent)),
+                                              enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent))),
                                           inputFormatters: [
                                             TextInputFormatter.withFunction(
                                                 (oldValue, newValue) {
@@ -972,27 +983,29 @@ class _photo_EditState extends State<photo_Edit> {
                                       },
                                       child: Container(
                                         height:
-                                            AppDimensions.height10(context) * 2.1,
-                                        width:
-                                            AppDimensions.width10(context) * 30.5,
+                                            AppDimensions.height10(context) *
+                                                2.1,
+                                        width: AppDimensions.width10(context) *
+                                            30.5,
                                         margin: EdgeInsets.only(
-                                            left:
-                                                AppDimensions.height10(context) *
-                                                    2.0,
-                                            bottom:
-                                                AppDimensions.height10(context) *
-                                                    0.5,
-                                            right:
-                                                AppDimensions.height10(context) *
-                                                    8.9,
-                                            top: AppDimensions.height10(context) *
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
+                                            bottom: AppDimensions.height10(
+                                                    context) *
+                                                0.5,
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
+                                            top: AppDimensions.height10(
+                                                    context) *
                                                 4.0),
                                         child: Text(
                                           'Attached goals',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.5,
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.5,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xff828282)),
                                         ),
@@ -1013,29 +1026,32 @@ class _photo_EditState extends State<photo_Edit> {
                                       },
                                       child: Container(
                                         height:
-                                            AppDimensions.height10(context) * 6.0,
-                                        width:
-                                            AppDimensions.width10(context) * 37.5,
+                                            AppDimensions.height10(context) *
+                                                6.0,
+                                        width: AppDimensions.width10(context) *
+                                            37.5,
                                         margin: EdgeInsets.only(
                                           // bottom: AppDimensions.height10(context) * 1.0,
                                           left: AppDimensions.width10(context) *
                                               2.0,
-                                          right: AppDimensions.width10(context) *
-                                              1.9,
+                                          right:
+                                              AppDimensions.width10(context) *
+                                                  1.9,
                                         ),
                                         decoration: BoxDecoration(
                                             color: const Color(0xFFFBFBFB),
                                             borderRadius: BorderRadius.circular(
-                                                AppDimensions.height10(context) *
+                                                AppDimensions.height10(
+                                                        context) *
                                                     2.0)),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Container(
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      23.9,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  23.9,
                                               height: AppDimensions.height10(
                                                       context) *
                                                   2.2,
@@ -1049,30 +1065,35 @@ class _photo_EditState extends State<photo_Edit> {
                                                     : '${selectedGoals.length} impacted goals',
                                                 style: TextStyle(
                                                   fontFamily: 'laila',
-                                                  color: const Color(0xFF646464),
-                                                  fontSize: AppDimensions.font10(
-                                                          context) *
-                                                      1.8,
+                                                  color:
+                                                      const Color(0xFF646464),
+                                                  fontSize:
+                                                      AppDimensions.font10(
+                                                              context) *
+                                                          1.8,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                               ),
                                             ),
                                             Container(
                                                 margin: EdgeInsets.only(
-                                                    right: AppDimensions.height10(
-                                                            context) *
-                                                        2.391),
+                                                    right:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.391),
                                                 child: Text(
                                                   'View',
                                                   style: TextStyle(
-                                                      color:
-                                                          const Color(0xFF437296),
-                                                      fontWeight: FontWeight.w700,
+                                                      color: const Color(
+                                                          0xFF437296),
+                                                      fontWeight:
+                                                          FontWeight.w700,
                                                       decoration: TextDecoration
                                                           .underline,
                                                       decorationThickness:
-                                                          AppDimensions.height10(
-                                                                  context) *
+                                                          AppDimensions
+                                                                  .height10(
+                                                                      context) *
                                                               0.2,
                                                       fontSize:
                                                           AppDimensions.font10(
@@ -1084,7 +1105,8 @@ class _photo_EditState extends State<photo_Edit> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: AppDimensions.height10(context) * 4,
+                                      height:
+                                          AppDimensions.height10(context) * 4,
                                     )
                                   ]),
                             ),

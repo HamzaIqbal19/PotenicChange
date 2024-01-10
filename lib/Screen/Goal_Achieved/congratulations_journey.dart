@@ -16,37 +16,35 @@ class Congratulations_journey extends StatefulWidget {
 }
 
 class _Congratulations_journeyState extends State<Congratulations_journey> {
-  int goal_level = 0;
+  int goalLevel = 0;
   var goalName;
   var practices;
   var identity;
   var color;
   var hurdles;
-  bool Loading = true;
+  bool loading = true;
 
   void _fetchGoalNames() async {
     AdminGoal.getUserGoal().then((response) {
       if (response.length != 0) {
         setState(() {
-          Loading = false;
+          loading = false;
           goalName = response["name"];
           practices = response['userPractices'];
           color = response["color"];
           hurdles = response['userHurdles'];
           identity = response["identityStatement"][0]['text'];
-          goal_level = response["goalLevel"];
-          ;
+          goalLevel = response["goalLevel"];
         });
       } else {
         setState(() {
-          Loading = false;
+          loading = false;
         });
       }
     }).catchError((error) {
       setState(() {
-        Loading = false;
+        loading = false;
       });
-      print("error");
     });
   }
 
@@ -69,7 +67,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),
@@ -84,7 +82,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                 image:
                     AssetImage('assets/images/Background Congratulations.webp'),
                 fit: BoxFit.cover)),
-        child: Loading == false
+        child: loading == false
             ? SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
@@ -1194,7 +1192,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                         Divider(
                           thickness: AppDimensions.height10(context) * 0.1,
                           height: AppDimensions.height10(context) * 0.1,
-                          color: const Color(0xFF0000000),
+                          color: const Color(0xFF000000),
                         )
                       ]),
                     ),
@@ -1305,7 +1303,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                         Divider(
                           thickness: AppDimensions.height10(context) * 0.1,
                           height: AppDimensions.height10(context) * 0.1,
-                          color: const Color(0xFF0000000),
+                          color: const Color(0xFF000000),
                         )
                       ]),
                     ),
@@ -1581,12 +1579,14 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
 }
 
 class RandomContainers extends StatefulWidget {
+  const RandomContainers({super.key});
+
   @override
   _RandomContainersState createState() => _RandomContainersState();
 }
 
 class _RandomContainersState extends State<RandomContainers> {
-  List<Widget> _containers = [];
+  final List<Widget> _containers = [];
 
   final double _minPosition = 0;
   final double _maxPosition = 850.0;

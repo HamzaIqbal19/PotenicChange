@@ -15,16 +15,17 @@ import 'package:potenic_app/utils/app_texts.dart';
 import 'Loaders/categories_shimmer.dart';
 
 class Categories extends StatefulWidget {
+  const Categories({super.key});
+
   @override
   State<Categories> createState() => _CategoriesState();
 }
 
 class _CategoriesState extends State<Categories> {
-  Future<List<String>>? _goalNamesFuture;
   List<Map<String, dynamic>>? goalCategories;
   ScrollController scrollController = ScrollController();
   late int count;
-  bool Loading = true;
+  bool loading = true;
 
   @override
   void initState() {
@@ -33,7 +34,7 @@ class _CategoriesState extends State<Categories> {
   }
 
   String capitalizeFirstLetter(String text) {
-    if (text == null || text.isEmpty) {
+    if (text.isEmpty) {
       return '';
     }
     return text[0].toUpperCase() + text.substring(1);
@@ -45,7 +46,7 @@ class _CategoriesState extends State<Categories> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -62,7 +63,6 @@ class _CategoriesState extends State<Categories> {
       }
     }).catchError((error) {
       loadData();
-      print("error");
     });
   }
 
@@ -112,7 +112,7 @@ class _CategoriesState extends State<Categories> {
           // : Container(
           //     color: Colors.white,
           //   ),
-          Loading == false
+          loading == false
               ? Column(
                   children: [
                     Container(
@@ -132,32 +132,28 @@ class _CategoriesState extends State<Categories> {
                     SizedBox(
                       height: AppDimensions.height10(context) * 10.5,
                     ),
-                    Container(
-                      child: Center(
-                        child: Text(
-                          AppText().selectCategory,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                            fontSize: AppDimensions.font10(context) * 2.8,
-                          ),
+                    Center(
+                      child: Text(
+                        AppText().selectCategory,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                          fontSize: AppDimensions.font10(context) * 2.8,
                         ),
                       ),
                     ),
                     SizedBox(
                       height: AppDimensions.height10(context) * 1.6,
                     ),
-                    Container(
-                      child: Center(
-                        child: Text(
-                          AppText().selectCategoryBody,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            fontSize: AppDimensions.font10(context) * 1.9,
-                          ),
+                    Center(
+                      child: Text(
+                        AppText().selectCategoryBody,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontSize: AppDimensions.font10(context) * 1.9,
                         ),
                       ),
                     ),
@@ -188,6 +184,25 @@ class _CategoriesState extends State<Categories> {
                                       return LongPressDraggable<
                                           Map<String, dynamic>>(
                                         data: goalCategories![index],
+                                        feedback: circles(
+                                            circle_text: goalCategories![index]
+                                                ["name"],
+                                            circle_color1: 0xFFFC854F,
+                                            circle_color2: 0xFFFAA960,
+                                            circle_border: 3.0,
+                                            circle_bordercolor: 0xFFFFFFFF,
+                                            circle_height:
+                                                AppDimensions.height10(
+                                                        context) *
+                                                    13.4,
+                                            circle_width:
+                                                AppDimensions.width10(context) *
+                                                    13.4,
+                                            textfont:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
+                                            textcolor: 0xFFFFFFFF),
+                                        childWhenDragging: Container(),
                                         child: AnimatedScaleButton(
                                           onTap: () {
                                             Navigator.push(
@@ -224,26 +239,7 @@ class _CategoriesState extends State<Categories> {
                                                   1.6,
                                               textcolor: 0xFFFFFFFF),
                                         ),
-                                        feedback: circles(
-                                            circle_text: goalCategories![index]
-                                                ["name"],
-                                            circle_color1: 0xFFFC854F,
-                                            circle_color2: 0xFFFAA960,
-                                            circle_border: 3.0,
-                                            circle_bordercolor: 0xFFFFFFFF,
-                                            circle_height:
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    13.4,
-                                            circle_width:
-                                                AppDimensions.width10(context) *
-                                                    13.4,
-                                            textfont:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            textcolor: 0xFFFFFFFF),
-                                        childWhenDragging:
-                                            Container(), // empty container when dragging
+                                        // empty container when dragging
                                       );
                                     },
 
@@ -297,6 +293,27 @@ class _CategoriesState extends State<Categories> {
                                         return LongPressDraggable<
                                             Map<String, dynamic>>(
                                           data: goalCategories![dataIndex],
+                                          feedback: circles(
+                                              circle_text:
+                                                  goalCategories![dataIndex]
+                                                      ["name"],
+                                              circle_color1: 0xFFFC854F,
+                                              circle_color2: 0xFFFAA960,
+                                              circle_border: 3.0,
+                                              circle_bordercolor: 0xFFFFFFFF,
+                                              circle_height:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              circle_width:
+                                                  AppDimensions.width10(
+                                                          context) *
+                                                      13.4,
+                                              textfont: AppDimensions.font10(
+                                                      context) *
+                                                  1.6,
+                                              textcolor: 0xFFFFFFFF),
+                                          childWhenDragging: Container(),
                                           child: AnimatedScaleButton(
                                             onTap: () {
                                               Navigator.push(
@@ -334,28 +351,7 @@ class _CategoriesState extends State<Categories> {
                                                     1.6,
                                                 textcolor: 0xFFFFFFFF),
                                           ),
-                                          feedback: circles(
-                                              circle_text:
-                                                  goalCategories![dataIndex]
-                                                      ["name"],
-                                              circle_color1: 0xFFFC854F,
-                                              circle_color2: 0xFFFAA960,
-                                              circle_border: 3.0,
-                                              circle_bordercolor: 0xFFFFFFFF,
-                                              circle_height:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      13.4,
-                                              circle_width:
-                                                  AppDimensions.width10(
-                                                          context) *
-                                                      13.4,
-                                              textfont: AppDimensions.font10(
-                                                      context) *
-                                                  1.6,
-                                              textcolor: 0xFFFFFFFF),
-                                          childWhenDragging:
-                                              Container(), // empty container when dragging
+                                          // empty container when dragging
                                         );
                                       },
 
@@ -390,12 +386,12 @@ class _CategoriesState extends State<Categories> {
                         Navigator.push(
                           context,
                           FadePageRoute(
-                            page: AllGoals(),
+                            page: const AllGoals(),
                           ),
                         );
                       },
                       child: Container(
-                        decoration: BoxDecoration(shape: BoxShape.circle),
+                        decoration: const BoxDecoration(shape: BoxShape.circle),
                         child: circles(
                             circle_text: AppText().viewAllGoals,
                             circle_color1: 0xFFFC854F,

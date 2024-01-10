@@ -57,7 +57,7 @@ class _SubscriptionState extends State<Subscription>
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),
@@ -736,7 +736,7 @@ class _SubscriptionState extends State<Subscription>
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width:
                                           AppDimensions.width10(context) * 14.9,
                                       height:
@@ -1823,7 +1823,7 @@ class _SubscriptionState extends State<Subscription>
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: AppDimensions.width10(context) * 34.4,
                       height: AppDimensions.height10(context) * 8.827,
                       child: Column(
@@ -1985,7 +1985,7 @@ class _SubscriptionState extends State<Subscription>
                             color: const Color(0xFF437296)),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: AppDimensions.width10(context) * 34.4,
                       // height: AppDimensions.height10(context) * 72.2,
                       child: Column(

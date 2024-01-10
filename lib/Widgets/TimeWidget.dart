@@ -23,8 +23,8 @@ class ThreeValues<T1, T2, T3> {
 
 class schedule_card extends StatefulWidget {
   final String days;
-  String startTime;
-  String endTime;
+  final String startTime;
+  final String endTime;
   final bool expansion;
   final ValueChanged<int> onCountChanged;
 
@@ -32,7 +32,7 @@ class schedule_card extends StatefulWidget {
   final ValueChanged<ThreeValues<int, int, int>> onDelete;
   // final ValueChanged<String> onChangedEnd;
 
-  schedule_card(
+  const schedule_card(
       {Key? key,
       required this.startTime,
       required this.endTime,
@@ -115,8 +115,6 @@ class _schedule_cardState extends State<schedule_card> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDaySelected = false;
-
     return Container(
         decoration: BoxDecoration(
             color: Colors.white,
@@ -134,232 +132,224 @@ class _schedule_cardState extends State<schedule_card> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              child: AdvanceExpansionTile(
-                key: _globalKey,
-                initiallyExpanded: widget.expansion,
-                onExpansionChanged: (expanded) {
-                  if (expanded) {
-                    setState(() {
-                      count = count + 1;
-                    });
-                  } else {
-                    setState(() {
-                      count = count - 1;
-                    });
+            AdvanceExpansionTile(
+              key: _globalKey,
+              initiallyExpanded: widget.expansion,
+              onExpansionChanged: (expanded) {
+                if (expanded) {
+                  setState(() {
+                    count = count + 1;
+                  });
+                } else {
+                  setState(() {
+                    count = count - 1;
+                  });
 
-                    // num = 0;
-                  }
-                },
-                disabled: true,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                ),
-                trailing: isDaySelected
-                    ? null
-                    : Container(
-                        height: 32.5,
-                        width: 32.5,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color.fromRGBO(250, 153, 52, 1),
-                        ),
-                        child: FloatingActionButton(
-                            elevation: 0,
-                            backgroundColor: Colors.transparent,
-                            child: const Icon(
-                              Icons.add,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                            onPressed: () {
-                              showModalBottomSheet(
-                                context: context,
-                                builder: (context) {
-                                  return MyListWheelForm(
-                                    key: Key("${widget.key}"),
-                                    onSelectionChanged: (selectedDay,
-                                        selectedHour,
-                                        selectedMinute,
-                                        selectedPeriod,
-                                        Done) {
-                                      setState(() async {
-                                        if (Done) {
-                                          selectedDays.add(days_name);
-
-                                          setState(() {
-                                            num = num + 1;
-                                            start_time =
-                                                "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                                          });
-
-                                          Done = Done;
-                                          if (Done == true) {
-                                            _globalKey.currentState?.expand();
-                                            setState(() {
-                                              start_time =
-                                                  "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
-                                            });
-                                            times.add(start_time);
-                                            TwoValues<String, int> values =
-                                                TwoValues<String, int>(
-                                                    start_time, num);
-                                            widget.onChangedStart(values);
-                                            onCountChanged(count);
-                                            _globalKey.currentState?.expand();
-                                            Navigator.pop(context);
-                                          }
-                                        }
-                                        day = selectedDay;
-                                        hour = selectedHour;
-                                        minute = selectedMinute;
-                                        endday = selectedDay;
-                                        endhour = selectedHour;
-
-                                        period = selectedPeriod;
-                                        endperiod = selectedPeriod;
-                                      });
-                                    },
-                                  );
-                                },
-                                isScrollControlled: true,
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.vertical(
-                                    top: Radius.circular(16),
-                                  ),
-                                ),
-                              );
-                            })),
-                title: Text(
-                  days_name,
-                  style: const TextStyle(
-                      color: Color.fromRGBO(67, 114, 150, 1),
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20.0),
-                ),
-                children: <Widget>[
-                  for (int i = 0; i < num && i <= 9; i++) ...[
-                    Container(
-                      // color:Colors.orange,
-                      width: AppDimensions.width10(context) * 38.2,
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Row(
-                        children: [
-                          startTimerState(
-                            key: Key("$widget.key"),
-                            text: ' $num) Time: ',
-                            start_Time: times[i],
-                            onChanged: (value) {
-                              setState(() {
-                                start_time = value;
-                              });
-                              times[i] = start_time;
-                              TwoValues<String, int> values =
-                                  TwoValues<String, int>(value, num);
-
-                              widget.onChangedStart(values);
-                            },
-                            onChangedStart: (String value) {
-                              setState(() {
-                                start_time = value;
-                              });
-                              times[i] = start_time;
-                            },
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Container(
-                                height: 37,
-                                width: 37,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color.fromRGBO(0, 0, 0, 0.1),
-                                ),
-                                child: FloatingActionButton(
-                                  elevation: 0,
-                                  backgroundColor: Colors.transparent,
-                                  onPressed: () {
-                                    if (num == 0) {
-                                      _globalKey.currentState?.collapse();
-                                    } else {
-                                      times.removeAt(i);
-                                      num = num - 1;
-                                    }
-
-                                    ThreeValues<int, int, int> values =
-                                        ThreeValues<int, int, int>(
-                                            count, i, num);
-
-                                    // TwoValues<int, int> values =
-                                    //     TwoValues<int, int>(count, i);
-                                    widget.onDelete(values);
-                                  },
-                                  child: const Icon(
-                                    Icons.delete,
-                                    color: Colors.black,
-                                    size: 15,
-                                  ),
-                                )),
-                          )
-                        ],
-                      ),
-                    ),
-                  ]
-
-                  // Container(
-                  //   width: AppDimensions.width10(context) * 38.2,
-                  //   padding: const EdgeInsets.only(bottom: 10),
-                  //   child: Row(
-                  //     children: [
-                  //       endTimerState(
-                  //         key: Key("$widget.key"),
-                  //         text: '2) Time: ',
-                  //         endTime: widget.endTime,
-                  //         onChanged: (value) {
-                  //           setState(() {
-                  //             end_time = value;
-                  //           });
-                  //         },
-                  //         onChangedEnd: (String value) {
-                  //           setState(() {
-                  //             end_time = value;
-                  //           });
-                  //           widget.onChangedEnd(value);
-                  //         },
-                  //       ),
-                  //       Padding(
-                  //           padding: const EdgeInsets.only(left: 8.0),
-                  //           child: Container(
-                  //               height: 37,
-                  //               width: 37,
-                  //               decoration: const BoxDecoration(
-                  //                 shape: BoxShape.circle,
-                  //                 color: Color.fromRGBO(0, 0, 0, 0.1),
-                  //               ),
-                  //               child: FloatingActionButton(
-                  //                 elevation: 0,
-                  //                 backgroundColor: Colors.transparent,
-                  //                 onPressed: () {
-                  //                   setState(() {
-                  //                     widget.endTime = null!;
-
-                  //                     //  removeSelectedDay(days_name);
-                  //                   });
-                  //                   //  _globalKey.currentState?.collapse();
-                  //                 },
-                  //                 child: const Icon(
-                  //                   Icons.delete,
-                  //                   color: Colors.black,
-                  //                   size: 15,
-                  //                 ),
-                  //               )))
-                  //     ],
-                  //   ),
-                  // ),
-
-                  // add more data that you want like this
-                ],
+                  // num = 0;
+                }
+              },
+              disabled: true,
+              decoration: const BoxDecoration(
+                shape: BoxShape.rectangle,
               ),
+              trailing: Container(
+                  height: 32.5,
+                  width: 32.5,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color.fromRGBO(250, 153, 52, 1),
+                  ),
+                  child: FloatingActionButton(
+                      elevation: 0,
+                      backgroundColor: Colors.transparent,
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return MyListWheelForm(
+                              key: Key("${widget.key}"),
+                              onSelectionChanged: (selectedDay, selectedHour,
+                                  selectedMinute, selectedPeriod, Done) {
+                                setState(() async {
+                                  if (Done) {
+                                    selectedDays.add(days_name);
+
+                                    setState(() {
+                                      num = num + 1;
+                                      start_time =
+                                          "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                    });
+
+                                    Done = Done;
+                                    if (Done == true) {
+                                      _globalKey.currentState?.expand();
+                                      setState(() {
+                                        start_time =
+                                            "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
+                                      });
+                                      times.add(start_time);
+                                      TwoValues<String, int> values =
+                                          TwoValues<String, int>(
+                                              start_time, num);
+                                      widget.onChangedStart(values);
+                                      onCountChanged(count);
+                                      _globalKey.currentState?.expand();
+                                      Navigator.pop(context);
+                                    }
+                                  }
+                                  day = selectedDay;
+                                  hour = selectedHour;
+                                  minute = selectedMinute;
+                                  endday = selectedDay;
+                                  endhour = selectedHour;
+
+                                  period = selectedPeriod;
+                                  endperiod = selectedPeriod;
+                                });
+                              },
+                            );
+                          },
+                          isScrollControlled: true,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(16),
+                            ),
+                          ),
+                        );
+                      })),
+              title: Text(
+                days_name,
+                style: const TextStyle(
+                    color: Color.fromRGBO(67, 114, 150, 1),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20.0),
+              ),
+              children: <Widget>[
+                for (int i = 0; i < num && i <= 9; i++) ...[
+                  Container(
+                    // color:Colors.orange,
+                    width: AppDimensions.width10(context) * 38.2,
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Row(
+                      children: [
+                        startTimerState(
+                          key: Key("$widget.key"),
+                          text: ' $num) Time: ',
+                          start_Time: times[i],
+                          onChanged: (value) {
+                            setState(() {
+                              start_time = value;
+                            });
+                            times[i] = start_time;
+                            TwoValues<String, int> values =
+                                TwoValues<String, int>(value, num);
+
+                            widget.onChangedStart(values);
+                          },
+                          onChangedStart: (String value) {
+                            setState(() {
+                              start_time = value;
+                            });
+                            times[i] = start_time;
+                          },
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Container(
+                              height: 37,
+                              width: 37,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromRGBO(0, 0, 0, 0.1),
+                              ),
+                              child: FloatingActionButton(
+                                elevation: 0,
+                                backgroundColor: Colors.transparent,
+                                onPressed: () {
+                                  if (num == 0) {
+                                    _globalKey.currentState?.collapse();
+                                  } else {
+                                    times.removeAt(i);
+                                    num = num - 1;
+                                  }
+
+                                  ThreeValues<int, int, int> values =
+                                      ThreeValues<int, int, int>(count, i, num);
+
+                                  // TwoValues<int, int> values =
+                                  //     TwoValues<int, int>(count, i);
+                                  widget.onDelete(values);
+                                },
+                                child: const Icon(
+                                  Icons.delete,
+                                  color: Colors.black,
+                                  size: 15,
+                                ),
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                ]
+
+                // Container(
+                //   width: AppDimensions.width10(context) * 38.2,
+                //   padding: const EdgeInsets.only(bottom: 10),
+                //   child: Row(
+                //     children: [
+                //       endTimerState(
+                //         key: Key("$widget.key"),
+                //         text: '2) Time: ',
+                //         endTime: widget.endTime,
+                //         onChanged: (value) {
+                //           setState(() {
+                //             end_time = value;
+                //           });
+                //         },
+                //         onChangedEnd: (String value) {
+                //           setState(() {
+                //             end_time = value;
+                //           });
+                //           widget.onChangedEnd(value);
+                //         },
+                //       ),
+                //       Padding(
+                //           padding: const EdgeInsets.only(left: 8.0),
+                //           child: Container(
+                //               height: 37,
+                //               width: 37,
+                //               decoration: const BoxDecoration(
+                //                 shape: BoxShape.circle,
+                //                 color: Color.fromRGBO(0, 0, 0, 0.1),
+                //               ),
+                //               child: FloatingActionButton(
+                //                 elevation: 0,
+                //                 backgroundColor: Colors.transparent,
+                //                 onPressed: () {
+                //                   setState(() {
+                //                     widget.endTime = null!;
+
+                //                     //  removeSelectedDay(days_name);
+                //                   });
+                //                   //  _globalKey.currentState?.collapse();
+                //                 },
+                //                 child: const Icon(
+                //                   Icons.delete,
+                //                   color: Colors.black,
+                //                   size: 15,
+                //                 ),
+                //               )))
+                //     ],
+                //   ),
+                // ),
+
+                // add more data that you want like this
+              ],
             ),
           ],
         ));

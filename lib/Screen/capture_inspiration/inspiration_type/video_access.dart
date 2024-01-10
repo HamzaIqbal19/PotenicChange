@@ -34,7 +34,7 @@ class _video_infoState extends State<video_info> {
   List selectedGoals = [];
   List<String> tagList = [];
   List<String> stringTagList = [];
-  bool bt_enable = true;
+  bool btEnable = true;
   String? imageLink;
 
   void getImageLink() async {
@@ -103,7 +103,7 @@ class _video_infoState extends State<video_info> {
                         AnimatedScaleButton(
                           onTap: () async {
                             final SharedPreferences prefs = await _prefs;
-                            var remove = prefs.remove('ImageLink');
+                            await prefs.remove('ImageLink');
                             link.clear();
                             statement.clear();
                             hastags.clear();
@@ -159,9 +159,9 @@ class _video_infoState extends State<video_info> {
                                                       .toString()
                                                       .isNotEmpty &&
                                                   title.text.isNotEmpty) {
-                                                if (bt_enable == true) {
+                                                if (btEnable == true) {
                                                   setState(() {
-                                                    bt_enable = false;
+                                                    btEnable = false;
                                                   });
                                                 }
                                                 InspirationApi()
@@ -179,7 +179,7 @@ class _video_infoState extends State<video_info> {
                                                     .then((response) async {
                                                   if (response.length != 0) {
                                                     setState(() {
-                                                      bt_enable = true;
+                                                      btEnable = true;
                                                     });
                                                     link.clear();
                                                     statement.clear();
@@ -188,7 +188,7 @@ class _video_infoState extends State<video_info> {
                                                     title.clear();
                                                     final SharedPreferences
                                                         prefs = await _prefs;
-                                                    var remove = prefs
+                                                    await prefs
                                                         .remove('ImageLink');
                                                     prefs.remove(
                                                         'inspiration_saved_route');
@@ -217,7 +217,7 @@ class _video_infoState extends State<video_info> {
                                               //     AppDimensions.height10(context) * 2.2,
                                               // width:
                                               //     AppDimensions.height10(context) * 6.1,
-                                              child: bt_enable == false
+                                              child: btEnable == false
                                                   ? Center(
                                                       child: SpinKitThreeBounce(
                                                         color: const Color(

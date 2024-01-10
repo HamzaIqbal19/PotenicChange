@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Future<void> getUserRole() async {
     final SharedPreferences prefs = await _prefs;
     var role = prefs.getString('userRole');
-    var subscription = prefs.getString('subscriptionStatus');
+    //var subscription = prefs.getString('subscriptionStatus');
 
     if (role == 'admin') {
       setState(() {
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     centeredImage(
                         context, "assets/images/homelogo.webp", 10.0, 10.0),
                     verticalSpacing(context, 2.32),
-                    Container(
+                    SizedBox(
                       height: AppDimensions.height10(context) * 8.5,
                       child: buildText(
                         context,
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       ),
                     ),
                     verticalSpacing(context, 0.5),
-                    Container(
+                    SizedBox(
                       height: AppDimensions.height10(context) * 11.5,
                       child: buildText(
                         context,

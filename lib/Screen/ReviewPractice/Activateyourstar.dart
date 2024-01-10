@@ -63,7 +63,6 @@ class _ActivateStarState extends State<ActivateStar> {
       }
     }).catchError((error) {
       loadData();
-      print("error");
     });
   }
 
@@ -80,7 +79,6 @@ class _ActivateStarState extends State<ActivateStar> {
       }
     }).catchError((error) {
       loadData();
-      print("hell");
     });
   }
 
@@ -188,17 +186,14 @@ class _ActivateStarState extends State<ActivateStar> {
                         width: AppDimensions.width10(context) * 35.7,
                         child: Column(
                           children: [
-                            Container(
-                              child: Center(
-                                child: Text(
-                                  AppText().activateStarBody,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.8,
-                                  ),
+                            Center(
+                              child: Text(
+                                AppText().activateStarBody,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                 ),
                               ),
                             ),
@@ -325,7 +320,7 @@ class _ActivateStarState extends State<ActivateStar> {
                               child: AnimatedScaleButton(
                                 onTap: () {
                                   PracticeGoalApi()
-                                      .updateUserPractice_GoalStatus('active')
+                                      .updateUserPracticeGoalStatus('active')
                                       .then((response) {
                                     if (response == true) {
                                       Navigator.push(
@@ -360,7 +355,6 @@ class _ActivateStarState extends State<ActivateStar> {
 
                                       dashboard_sheet(context);
                                     } else if (response == 400) {
-                                      print('max goals');
                                       Navigator.push(
                                         context,
                                         FadePageRoute2(
@@ -683,17 +677,15 @@ class _ActivateStarState extends State<ActivateStar> {
                             width: AppDimensions.width10(context) * 27.4,
                             child: Column(
                               children: [
-                                Container(
-                                  child: Center(
-                                    child: Text(
-                                      AppText().activateStarFoot,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white,
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.8,
-                                      ),
+                                Center(
+                                  child: Text(
+                                    AppText().activateStarFoot,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.8,
                                     ),
                                   ),
                                 ),
@@ -716,7 +708,6 @@ class _ActivateStarState extends State<ActivateStar> {
 }
 
 void dashboard_sheet(context) {
-  bool hide = true;
   showModalBottomSheet(
     context: context,
     isDismissible: false,
@@ -820,7 +811,6 @@ void dashboard_sheet(context) {
 }
 
 void login_sheet(context) {
-  bool hide = true;
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,

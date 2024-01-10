@@ -100,23 +100,18 @@ class _missed_MenuState extends State<missed_Menu> {
 
           await prefs.setInt('goal_eval_id', response["goalEvaluations"]["id"]);
         }
-      } else {
-        // loadData();
-      }
-    }).catchError((error) {
-      // loadData();
-      print("Error");
-    });
+      } else {}
+    }).catchError((error) {});
   }
 
-  bool Loader = true;
+  bool loader = true;
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
     setState(() {
-      Loader = false;
+      loader = false;
     });
   }
 
@@ -196,7 +191,7 @@ class _missed_MenuState extends State<missed_Menu> {
           )),
           width: double.infinity,
           height: double.infinity,
-          child: Loader == false
+          child: loader == false
               ? SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
@@ -217,7 +212,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                   fontSize: AppDimensions.font10(context) * 2.0,
                                   fontWeight: FontWeight.w600),
                             ),
-                            Container(
+                            SizedBox(
                               width: AppDimensions.width10(context) * 30,
                               child: Center(
                                 child: Text(
@@ -709,7 +704,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                       FadePageRoute(
                                           page: const PracticeReview()));
                                   final SharedPreferences prefs = await _prefs;
-                                  var pracName = prefs.setString(
+                                  await prefs.setString(
                                       'practice_review', 'practice_missed');
                                 },
                                 child: const button_feilds(

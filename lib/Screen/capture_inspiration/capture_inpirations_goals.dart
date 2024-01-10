@@ -50,10 +50,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
   int selectBox = -1;
   int selectinActive = -1;
   var inspirationDetails;
-  List<Map<String, dynamic>> Active = [];
+  List<Map<String, dynamic>> active = [];
   List<Map<String, dynamic>> inActive = [];
 
-  bool Loading = true;
+  bool loading = true;
 
   Future<void> saveGoalsToSharedPreferences(List goals) async {
     final SharedPreferences prefs = await _prefs;
@@ -67,7 +67,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -109,7 +109,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
   _newFunction() {
     for (int i = 0; i <= goals.length; i++) {
       if (goals[i]['isActive'] == true) {
-        Active.add(goals[i]);
+        active.add(goals[i]);
         allgoalsSelected.add(goals[i]['id']);
       } else {
         inActive.add(goals[i]);
@@ -128,7 +128,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
       if (goals[i]['isActive'] == true) {
         if (inspirationDetails.contains(goals[i]['id'])) {
           multiGoals.add(goals[i]['id']);
-          selectedIndices.add(Active.indexOf(goals[i]));
+          selectedIndices.add(active.indexOf(goals[i]));
         }
       } else {
         if (inspirationDetails.contains(goals[i]['id'])) {
@@ -154,12 +154,12 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
     });
   }
 
-  var Route;
+  var route;
 
   void getInspirationRoute() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
-      Route = prefs.getString('inspiration_saved_route').toString().isEmpty
+      route = prefs.getString('inspiration_saved_route').toString().isEmpty
           ? ''
           : prefs.getString('inspiration_saved_route');
     });
@@ -182,7 +182,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
         if (goals[i]['isActive'] == true) {
           if (decodedGoals.contains(goals[i]['id'])) {
             multiGoals.add(goals[i]['id']);
-            selectedIndices.add(Active.indexOf(goals[i]));
+            selectedIndices.add(active.indexOf(goals[i]));
           }
         } else {
           if (decodedGoals.contains(goals[i]['id'])) {
@@ -349,7 +349,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
-                                              Container(
+                                              SizedBox(
                                                 height: 42,
                                                 width: double.infinity,
                                                 // color: Colors.white,
@@ -447,9 +447,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                             final SharedPreferences
                                                                 prefs =
                                                                 await _prefs;
-                                                            var deleted =
-                                                                prefs.remove(
-                                                                    'inspiration_saved_route');
+                                                            await prefs.remove(
+                                                                'inspiration_saved_route');
                                                           } else if (response ==
                                                               false) {
                                                             Navigator.push(
@@ -465,9 +464,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                             final SharedPreferences
                                                                 prefs =
                                                                 await _prefs;
-                                                            var deleted =
-                                                                prefs.remove(
-                                                                    'inspiration_saved_route');
+                                                            await prefs.remove(
+                                                                'inspiration_saved_route');
                                                             selectedInActiveIndices
                                                                 .clear();
                                                             selectedIndices
@@ -556,7 +554,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                   colorFilter: ColorFilter.mode(
                       Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                   fit: BoxFit.cover)),
-          child: Loading == false
+          child: loading == false
               ? SingleChildScrollView(
                   child: Column(children: [
                     Container(
@@ -610,9 +608,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       selectedInActiveIndices.clear();
                                       multiGoals.clear();
                                     });
-                                    for (int i = 0; i < Active.length; i++) {
+                                    for (int i = 0; i < active.length; i++) {
                                       selectedIndices.add(i);
-                                      multiGoals.add(Active[i]['id']);
+                                      multiGoals.add(active[i]['id']);
                                     }
                                     for (int i = 0; i < inActive.length; i++) {
                                       selectedInActiveIndices.add(i);
@@ -728,7 +726,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                     mainAxisSpacing: 9.0,
                                     crossAxisSpacing: 3,
                                   ),
-                                  itemCount: Active.length,
+                                  itemCount: active.length,
                                   itemBuilder: ((context, index) {
                                     return AnimatedScaleButton(
                                       onTap: () {
@@ -737,12 +735,12 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             if (selectedIndices
                                                 .contains(index)) {
                                               multiGoals
-                                                  .remove(Active[index]['id']);
+                                                  .remove(active[index]['id']);
                                               selectedIndices.remove(index);
                                             } else {
                                               selectedIndices.add(index);
                                               multiGoals
-                                                  .add(Active[index]['id']);
+                                                  .add(active[index]['id']);
                                             }
                                           });
 
@@ -824,7 +822,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   ])),
                                           child: Center(
                                             child: Text(
-                                              Active[index]['name'],
+                                              active[index]['name'],
                                               maxLines: 2,
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.center,
@@ -1493,7 +1491,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       if (widget.update == false) {
                                         final SharedPreferences prefs =
                                             await _prefs;
-                                        var savedRoute = prefs.setString(
+                                        await prefs.setString(
                                             'inspiration_saved_route',
                                             'goals_saved');
                                       }

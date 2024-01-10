@@ -5,7 +5,6 @@ import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
-import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -17,6 +16,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 class SignUpWithEmail extends StatefulWidget {
+  const SignUpWithEmail({super.key});
+
   @override
   _SignUpWithEmailState createState() => _SignUpWithEmailState();
 }
@@ -36,14 +37,13 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
   bool isPasswordNotVisible = true;
   bool rememberMe = false;
   bool boolean = true;
-  bool Loading = false;
+  bool loading = false;
   bool errorEmail = false;
   bool errorName = false;
   bool errorPassword = false;
-  bool pass_obscure = true;
+  bool passObscure = true;
   String userExist = "";
 
-  late SharedPreferences _prefs;
   setEmail(email) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString('email', email);
@@ -53,7 +53,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
   void initState() {
     _controller = AnimationController(
         vsync: this,
-        duration: Duration(milliseconds: 200), // increased duration
+        duration: const Duration(milliseconds: 200), // increased duration
         lowerBound: 0.0,
         upperBound: 0.1)
       ..addListener(() {
@@ -96,7 +96,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
@@ -104,7 +103,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
   }
 
   final _formkey1 = GlobalKey<FormState>();
-  final _formkey2 = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -295,19 +293,18 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     errorName = false;
                                   });
                                 }
+                                return null;
                               },
                             ),
                           ),
                           errorName
-                              ? Container(
-                                  child: Text(
-                                    "Name is required",
-                                    style: TextStyle(
-                                      color: const Color(0xFFFE6624),
-                                      fontSize:
-                                          AppDimensions.font10(context) * 1.4,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                              ? Text(
+                                  "Name is required",
+                                  style: TextStyle(
+                                    color: const Color(0xFFFE6624),
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.4,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 )
                               : Container(),
@@ -393,15 +390,13 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                 }),
                           ),
                           errorEmail
-                              ? Container(
-                                  child: Text(
-                                    emailMsg,
-                                    style: TextStyle(
-                                      color: const Color(0xFFFE6624),
-                                      fontSize:
-                                          AppDimensions.font10(context) * 1.4,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                              ? Text(
+                                  emailMsg,
+                                  style: TextStyle(
+                                    color: const Color(0xFFFE6624),
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.4,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 )
                               : Container(),
@@ -426,7 +421,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                 SizedBox(
                                   width: AppDimensions.width10(context) * 32,
                                   child: TextFormField(
-                                    obscureText: pass_obscure,
+                                    obscureText: passObscure,
                                     textAlign: TextAlign.justify,
                                     style: TextStyle(
                                         color: const Color(0xFF8C648A),
@@ -487,17 +482,14 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                           errorPassword = false;
                                         });
                                       }
+                                      return null;
                                     },
                                   ),
                                 ),
                                 GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      if (pass_obscure == true) {
-                                        pass_obscure = false;
-                                      } else {
-                                        pass_obscure = true;
-                                      }
+                                      passObscure = !passObscure;
                                     });
                                   },
                                   child: Container(
@@ -509,7 +501,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                             AppDimensions.height10(context) *
                                                 1.0),
                                     child: Image.asset(
-                                      pass_obscure
+                                      passObscure
                                           ? 'assets/images/visible-icon-9.webp'
                                           : 'assets/images/ic_remove_red_eye.webp',
                                       color: const Color(0xFF8C648A),
@@ -620,7 +612,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     Navigator.push(
                                         context,
                                         FadePageRoute(
-                                            page: Loginemailandpassword()));
+                                            page:
+                                                const Loginemailandpassword()));
                                   },
                                   child: Container(
                                     // height: AppDimensions.height10(context) * 2.7,
@@ -671,27 +664,27 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                     GestureDetector(
                       onTapDown: (TapDownDetails details) {
                         setState(() {
-                          Loading = true;
+                          loading = true;
                         });
                         _controller.forward();
                       },
                       onTap: () async {
                         setState(() {
-                          Loading = true;
+                          loading = true;
                         });
                         _controller.forward();
 
-                        await Future.delayed(Duration(milliseconds: 200));
+                        await Future.delayed(const Duration(milliseconds: 200));
 
                         _controller.reverse();
 
-                        await Future.delayed(Duration(milliseconds: 200));
+                        await Future.delayed(const Duration(milliseconds: 200));
 
                         if (_formkey1.currentState!.validate() &&
                             rememberMe == true &&
                             errorPassword == false) {
                           setState(() {
-                            Loading = true;
+                            loading = true;
                             // errorEmail = false;
                             // errorPassword = false;
                             // errorName = false;
@@ -700,13 +693,13 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
 
                           Authentication()
                               .registerApi(
-                            '${nameController.text.toString()}',
-                            '${emailController.text.toString().trim()}',
-                            '${passwordController.text.toString()}',
+                            nameController.text.toString(),
+                            emailController.text.toString().trim(),
+                            passwordController.text.toString(),
                           )
                               .then((response) {
                             setState(() {
-                              Loading = false;
+                              loading = false;
                             });
                             if (response["statusCode"] == 200) {
                               ScaffoldMessenger.of(context)
@@ -725,7 +718,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                               );
                             } else if (response["statusCode"] == 409) {
                               setState(() {
-                                Loading = false;
+                                loading = false;
                                 userExist = response["message"];
                               });
 
@@ -747,7 +740,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                             }
                           }).catchError((error) {
                             setState(() {
-                              Loading = false;
+                              loading = false;
                             });
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(
@@ -756,11 +749,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     color: Colors.red.withOpacity(0.8)),
                               ),
                             ));
-
-                            print("error");
                           }).whenComplete(() {
                             setState(() {
-                              Loading = false;
+                              loading = false;
                               // errorEmail = false;
                               // errorPassword = false;
                               // errorName = false;
@@ -768,7 +759,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           });
                         } else if (rememberMe == false) {
                           setState(() {
-                            Loading = false;
+                            loading = false;
                           });
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(
@@ -778,7 +769,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           )));
                         } else {
                           setState(() {
-                            Loading = false;
+                            loading = false;
                           });
                         }
                       },
@@ -794,7 +785,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                 AppDimensions.height10(context) * 5.0)),
                           ),
                           child: Center(
-                            child: Loading
+                            child: loading
                                 ? SpinKitThreeBounce(
                                     color: const Color(0xFF8C648A),
                                     //  delay: Duration(milliseconds: 0),

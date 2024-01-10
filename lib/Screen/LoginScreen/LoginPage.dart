@@ -5,12 +5,13 @@ import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
-import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -26,7 +27,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   void initState() {
     _controller = AnimationController(
         vsync: this,
-        duration: Duration(milliseconds: 200), // increased duration
+        duration: const Duration(milliseconds: 200), // increased duration
         lowerBound: 0.0,
         upperBound: 0.1)
       ..addListener(() {
@@ -35,8 +36,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     // TODO: implement initState
     super.initState();
   }
-
-  late SharedPreferences _prefs;
 
   setEmail(email) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -134,7 +133,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   Widget _buildText(BuildContext context, String text, double fontSize,
       FontWeight fontWeight) {
-    return Container(
+    return SizedBox(
       height: AppDimensions.height10(context) * 4.4,
       child: Text(
         text,
@@ -156,7 +155,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   }
 
   Widget _buildButtonSection(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: AppDimensions.height10(context) * 24.1,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,19 +165,20 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               Navigator.push(
                 context,
                 FadePageRoute2(true,
-                    enterPage: Loginemailandpassword(), exitPage: LoginPage()),
+                    enterPage: const Loginemailandpassword(),
+                    exitPage: const LoginPage()),
               );
             },
             child: Container(
               height: AppDimensions.height10(context) * 5.6,
               width: AppDimensions.width10(context) * 34.1,
               decoration: BoxDecoration(
-                  color: Color(0xFF5A4D73),
+                  color: const Color(0xFF5A4D73),
                   borderRadius: BorderRadius.circular(
                       AppDimensions.height10(context) * 4.0),
                   border: Border.all(
                       width: AppDimensions.width10(context) * 0.1,
-                      color: Color(0xFFFFFFFF))),
+                      color: const Color(0xFFFFFFFF))),
               child: Row(
                 children: [
                   Container(
@@ -215,8 +215,13 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
           SizedBox(
             height: AppDimensions.height10(context) * 2,
           ),
-          _buildOutlinedButtonWithImage(context, 'assets/images/fb.webp',
-              AppText().logInFacebook, () {}, Color(0xFF1877F2), Colors.white),
+          _buildOutlinedButtonWithImage(
+              context,
+              'assets/images/fb.webp',
+              AppText().logInFacebook,
+              () {},
+              const Color(0xFF1877F2),
+              Colors.white),
         ],
       ),
     );
@@ -224,12 +229,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   Widget _buildOutlinedButton(BuildContext context, IconData icon, String label,
       Function onPressed, Color backgroundColor, Color textColor) {
-    return Container(
+    return SizedBox(
       height: AppDimensions.height10(context) * 5.5,
       width: AppDimensions.width10(context) * 34.1,
       child: OutlinedButton.icon(
         style: OutlinedButton.styleFrom(
-          side: BorderSide(width: 1.0, color: Colors.white),
+          side: const BorderSide(width: 1.0, color: Colors.white),
           backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(40.0),
@@ -266,7 +271,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       Function onPressed,
       Color backgroundColor,
       Color textColor) {
-    return Container(
+    return SizedBox(
       height: AppDimensions.height10(context) * 5.6,
       width: AppDimensions.width10(context) * 34.1,
       child: OutlinedButton.icon(
@@ -308,17 +313,17 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       onTap: () async {
         _controller.forward();
 
-        await Future.delayed(Duration(milliseconds: 200));
+        await Future.delayed(const Duration(milliseconds: 200));
 
         _controller.reverse();
 
-        await Future.delayed(Duration(milliseconds: 200));
+        await Future.delayed(const Duration(milliseconds: 200));
         Navigator.push(
           context,
           FadePageRoute2(
             true,
             enterPage: const SignUpPage(),
-            exitPage: LoginPage(),
+            exitPage: const LoginPage(),
           ),
         );
       },

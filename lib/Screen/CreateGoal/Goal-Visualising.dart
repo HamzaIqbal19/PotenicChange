@@ -43,7 +43,7 @@ class _VisualisingState extends State<Visualising> {
 
   //closing the focus
   final FocusNode blankNode = FocusNode();
-  bool Loading = true;
+  bool loading = true;
   String goalName = "";
   var visualize;
   String route = '';
@@ -124,14 +124,14 @@ class _VisualisingState extends State<Visualising> {
     AdminGoal.getUserGoal().then((response) {
       if (response.length != 0) {
         setState(() {
-          Loading = false;
+          loading = false;
           goalName = response["name"];
           visualize = response["visualizingYourSelf"];
         });
       }
     }).catchError((error) {
       setState(() {
-        Loading = false;
+        loading = false;
       });
     });
   }
@@ -141,7 +141,7 @@ class _VisualisingState extends State<Visualising> {
 
     setState(() {
       goalName = prefs.getString("goalName")!;
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -159,9 +159,9 @@ class _VisualisingState extends State<Visualising> {
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    var goal_route = prefs.getString('goal_route');
+    var goalRoute = prefs.getString('goal_route');
     setState(() {
-      route = goal_route!;
+      route = goalRoute!;
     });
   }
 
@@ -216,9 +216,7 @@ class _VisualisingState extends State<Visualising> {
       // Save updated Goal object back to shared preferences
       await prefs.setString('goal', jsonString);
       getGoal();
-    } else {
-      print("No goal found in shared preferences");
-    }
+    } else {}
   }
 
   Future<Goal> getGoal() async {
@@ -229,7 +227,7 @@ class _VisualisingState extends State<Visualising> {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
       AdminGoal().userAddGoal(jsonMap).then((response) async {
         setState(() {
-          Loading = false;
+          loading = false;
         });
         if (response == true) {
           Navigator.push(
@@ -241,14 +239,14 @@ class _VisualisingState extends State<Visualising> {
           await prefs.remove('goal');
         } else {
           setState(() {
-            Loading = false;
+            loading = false;
           });
           return false;
           // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           //     content: Text("Your sign in details are incorrect, please try again!!")));
         }
       }).catchError((error) {
-        print("error");
+        return error;
       });
 
       return Goal.fromJson(jsonMap);
@@ -268,7 +266,7 @@ class _VisualisingState extends State<Visualising> {
                     curve: Curves.easeInOut,
                     duration: const Duration(seconds: 1),
                     context: context,
-                    builder: (BuildContext context) => const pop_up_goals())
+                    builder: (BuildContext context) => const popUpGoals())
                 : Navigator.push(
                     context,
                     FadePageRouteReverse(
@@ -319,7 +317,7 @@ class _VisualisingState extends State<Visualising> {
                                   duration: const Duration(seconds: 1),
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      const pop_up_goals())
+                                      const popUpGoals())
                               : Navigator.push(
                                   context,
                                   FadePageRouteReverse(
@@ -354,7 +352,7 @@ class _VisualisingState extends State<Visualising> {
                             ),
                             onPressed: () => showDialog<String>(
                               context: context,
-                              builder: (BuildContext context) => Container(
+                              builder: (BuildContext context) => SizedBox(
                                 width: AppDimensions.width10(context) * 27.0,
                                 height: AppDimensions.height10(context) * 21.0,
                                 child: AlertDialog(
@@ -408,7 +406,7 @@ class _VisualisingState extends State<Visualising> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 42,
                                           width: double.infinity,
                                           // color: Colors.white,
@@ -428,9 +426,8 @@ class _VisualisingState extends State<Visualising> {
                                               );
                                               final SharedPreferences prefs =
                                                   await _prefs;
-                                              var goalvisualising =
-                                                  prefs.setString('route',
-                                                      "goalVisualising");
+                                              await prefs.setString(
+                                                  'route', "goalVisualising");
                                             },
                                             child: const Text(
                                               'Exit & save progress',
@@ -450,7 +447,7 @@ class _VisualisingState extends State<Visualising> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 44,
                                           width: double.infinity,
                                           child: TextButton(
@@ -494,7 +491,7 @@ class _VisualisingState extends State<Visualising> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 42,
                                           width:
                                               AppDimensions.width10(context) *
@@ -537,7 +534,7 @@ class _VisualisingState extends State<Visualising> {
                   ),
                 ),
               ),
-              Loading == false
+              loading == false
                   ? SingleChildScrollView(
                       reverse: true,
                       physics: const ClampingScrollPhysics(),
@@ -564,7 +561,7 @@ class _VisualisingState extends State<Visualising> {
                           SizedBox(
                             height: AppDimensions.height10(context) * 0.5,
                           ),
-                          Container(
+                          SizedBox(
                             width: AppDimensions.width10(context) * 30,
                             child: Center(
                               child: Text(
@@ -605,24 +602,22 @@ class _VisualisingState extends State<Visualising> {
                           SizedBox(
                             height: AppDimensions.height10(context) * 1.0,
                           ),
-                          Container(
-                            child: Center(
-                              child: Text(
-                                AppText().goalVisual,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: widget.comingFromEditScreen
-                                      ? const Color(0xFF437296)
-                                      : Colors.white,
-                                  fontSize: AppDimensions.font10(context) * 2.8,
-                                ),
+                          Center(
+                            child: Text(
+                              AppText().goalVisual,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: widget.comingFromEditScreen
+                                    ? const Color(0xFF437296)
+                                    : Colors.white,
+                                fontSize: AppDimensions.font10(context) * 2.8,
                               ),
                             ),
                           ),
                           SizedBox(
                             height: AppDimensions.height10(context) * 1.0,
                           ),
-                          Container(
+                          SizedBox(
                             // height: AppDimensions.height10(context) * 4.9,
                             width: AppDimensions.width10(context) * 37.2,
                             // height: AppDimensions.height10(context) * 4.9,
@@ -643,7 +638,7 @@ class _VisualisingState extends State<Visualising> {
                           SizedBox(
                             height: AppDimensions.height10(context) * 3.4,
                           ),
-                          Container(
+                          SizedBox(
                             width: AppDimensions.width10(context) * 38.2,
                             height: widget.comingFromEditScreen
                                 ? visualize.length == 1
@@ -1423,7 +1418,7 @@ class _VisualisingState extends State<Visualising> {
                                         } else {
                                           final SharedPreferences prefs =
                                               await _prefs;
-                                          var goalwhy = prefs.remove('route');
+                                          await prefs.remove('route');
                                           goalVisualising[0]['text'] != ""
                                               ? updateGoalReason(
                                                   goalVisualising)

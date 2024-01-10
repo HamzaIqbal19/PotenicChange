@@ -33,10 +33,10 @@ class welldone_splashState extends State<welldone_splash> {
 
   void _fetchPracticeNames() async {
     final SharedPreferences prefs = await _prefs;
-    var Name = prefs.getString('pracName');
+    var name = prefs.getString('pracName');
 
     setState(() {
-      pracName = '$Name';
+      pracName = '$name';
     });
   }
 

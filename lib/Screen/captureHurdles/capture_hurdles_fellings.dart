@@ -33,7 +33,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
   List selectedGoals = [];
   String? hurdleStatement;
   List updatedSummary = [];
-  bool Loader = true;
+  bool loader = true;
   int? hurdleId;
   var hurdleDetails;
   var trigger;
@@ -69,7 +69,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
 
   void onDoneLoading() {
     setState(() {
-      Loader = false;
+      loader = false;
     });
   }
 
@@ -95,12 +95,9 @@ class _felling_hurdlesState extends State<felling_hurdles> {
         }
         setState(() {
           scroll = false;
-          // statements = response['hurdle']['thoughtsAndFeelings'];
-          circle_state = response['hurdle']['thoughtsAndFeelings'].length;
+          circleState = response['hurdle']['thoughtsAndFeelings'].length;
         });
         loadData();
-        // controllersUpdate();
-        // controllersUpdateText();
 
         return response;
       } else {
@@ -129,9 +126,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
       }
       setState(() {
         scroll = false;
-        // statements = response['hurdle']['thoughtsAndFeelings'];
 
-        circle_state = myList.length - 1;
+        circleState = myList.length - 1;
       });
     } else if (myList.isEmpty) {
       statements.add('i feel');
@@ -139,9 +135,9 @@ class _felling_hurdlesState extends State<felling_hurdles> {
     }
   }
 
-  Future<void> _loadList() async {
-    List<String> tempList = await getListFromSharedPreferences();
-  }
+  // Future<void> _loadList() async {
+  //   List<String> tempList = await getListFromSharedPreferences();
+  // }
 
   void controllersUpdate() {
     for (int i = 0;
@@ -169,7 +165,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
       _fetchHurdleSummary();
     } else {
       setState(() {
-        Loader = false;
+        loader = false;
       });
 
       getListFromSharedPreferences();
@@ -193,7 +189,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
     }).catchError((error) {});
   }
 
-  int circle_state = 0;
+  int circleState = 0;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -227,7 +223,6 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                     page: const hurdle_statement(
                                   update: false,
                                 )));
-                            ;
                           },
                           icon: Image.asset(
                             'assets/images/Back.webp',
@@ -337,7 +332,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
-                                              Container(
+                                              SizedBox(
                                                 height: 42,
                                                 width: double.infinity,
                                                 // color: Colors.white,
@@ -346,10 +341,9 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                     checkHurdle();
                                                     final SharedPreferences
                                                         prefs = await _prefs;
-                                                    var hurdleRoute =
-                                                        prefs.setString(
-                                                            'HurdleRoute',
-                                                            'Feelings');
+                                                    await prefs.setString(
+                                                        'HurdleRoute',
+                                                        'Feelings');
                                                     saveListToSharedPreferences(
                                                         statements);
                                                   },
@@ -382,7 +376,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                     checkHurdle();
                                                     final SharedPreferences
                                                         prefs = await _prefs;
-                                                    var hurdleRoute = prefs
+                                                    await prefs
                                                         .remove('HurdleRoute');
                                                     await prefs
                                                         .remove('hurdleName');
@@ -469,7 +463,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                       image:
                           AssetImage('assets/images/practicebackground.webp'),
                       fit: BoxFit.cover)),
-              child: Loader == false
+              child: loader == false
                   ? SingleChildScrollView(
                       reverse: scroll,
                       physics: const ClampingScrollPhysics(),
@@ -507,8 +501,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                             children: [
                               for (int i = widget.update ? 1 : 0;
                                   widget.update
-                                      ? i <= circle_state
-                                      : i <= circle_state;
+                                      ? i <= circleState
+                                      : i <= circleState;
                                   i++) ...[
                                 Column(
                                   children: [
@@ -710,7 +704,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                       TextEditingController(text: 'I feel'));
                                   statements.add('I feel');
                                   setState(() {
-                                    circle_state = circle_state + 1;
+                                    circleState = circleState + 1;
                                   });
                                 },
                                 child: Container(
@@ -797,7 +791,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                   await prefs.remove("hurdle_selected");
                                 }
                                 final SharedPreferences prefs = await _prefs;
-                                var userHurdleId = prefs.setInt(
+                                await prefs.setInt(
                                     'userHurdleId', response['result']['id']);
                               });
                             }

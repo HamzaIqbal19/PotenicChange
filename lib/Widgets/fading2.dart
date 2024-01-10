@@ -117,7 +117,7 @@ class FadePageRoute2<T> extends PageRouteBuilder<T> {
   @override
   bool didPop(T? result) {
     // Enable navigation after a delay of 10 seconds
-    Future.delayed(Duration(seconds: 10), () {
+    Future.delayed(const Duration(seconds: 10), () {
       _canNavigate = true;
     });
     return super.didPop(result);
@@ -129,7 +129,6 @@ class FadePageRoute2<T> extends PageRouteBuilder<T> {
     return super.didPush();
   }
 
-  @override
   bool canTransition() {
     // Only allow the transition if _canNavigate is true
     return _canNavigate;

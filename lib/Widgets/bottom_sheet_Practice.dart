@@ -26,7 +26,6 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 final goalName = TextEditingController();
 
 void bottom_sheet(context, String goal) {
-  bool enable = false;
   String? name = goal;
   showModalBottomSheet<void>(
     context: context,
@@ -42,12 +41,11 @@ void bottom_sheet(context, String goal) {
         return GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
-
           },
           child: Padding(
-            padding:
-                EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: Container(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: SizedBox(
               // color:Colors.lightGreen,
               height: AppDimensions.height10(context) * 45.0,
               width: AppDimensions.width10(context) * 41.4,
@@ -60,7 +58,7 @@ void bottom_sheet(context, String goal) {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Container(
+                      SizedBox(
                         //height: AppDimensions.height10(context) * 6.3,
                         width: AppDimensions.width10(context) * 35.5,
                         child: Text(
@@ -76,7 +74,7 @@ void bottom_sheet(context, String goal) {
                       SizedBox(
                         height: AppDimensions.height10(context) * 3.9,
                       ),
-                      Container(
+                      SizedBox(
                         width: AppDimensions.width10(context) * 36.0,
                         child: TextField(
                           controller: goalName,
@@ -84,9 +82,9 @@ void bottom_sheet(context, String goal) {
                           maxLength: getMaxCharacters(),
 
                           onChanged: (value) {
-                            setState(() {
-                              enable = true;
-                            });
+                            // setState(() {
+                            //   enable = true;
+                            // });
                           },
                           style: const TextStyle(
                             fontWeight: FontWeight.w600,
@@ -105,8 +103,7 @@ void bottom_sheet(context, String goal) {
                                   borderRadius: BorderRadius.circular(18)),
                               focusedBorder: const OutlineInputBorder(
                                   borderSide:
-                                  BorderSide(color: Colors.transparent)),
-
+                                      BorderSide(color: Colors.transparent)),
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
                                   borderSide: const BorderSide(
@@ -172,9 +169,9 @@ void bottom_sheet(context, String goal) {
                             onPressed: () async {
                               if (goalName.text.toString().isNotEmpty) {
                                 final SharedPreferences prefs = await _prefs;
-                                var pracName = prefs.setString(
-                                    'pracName', '${goalName.text.toString()}');
-                                var pracId = prefs.remove(
+                                await prefs.setString(
+                                    'pracName', goalName.text.toString());
+                                await prefs.remove(
                                   'pracId',
                                 );
                                 Navigator.push(
@@ -231,6 +228,8 @@ void bottom_sheet(context, String goal) {
 }
 
 class DropdownButtonExample extends StatefulWidget {
+  const DropdownButtonExample({super.key});
+
   @override
   State<DropdownButtonExample> createState() => _DropdownButtonExampleState();
 }

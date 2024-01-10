@@ -11,16 +11,18 @@ List<String> categories = [
 ];
 
 class Time_filter extends StatelessWidget {
+  const Time_filter({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Dropdown Filter'),
+          title: const Text('Dropdown Filter'),
         ),
-        body: FilterScreen(),
-        bottomNavigationBar: BottomAppBar(
-          child: Container(
+        body: const FilterScreen(),
+        bottomNavigationBar: const BottomAppBar(
+          child: SizedBox(
             height: 56.0,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -40,6 +42,8 @@ class Time_filter extends StatelessWidget {
 }
 
 class FilterDropdown extends StatefulWidget {
+  const FilterDropdown({super.key});
+
   @override
   _FilterDropdownState createState() => _FilterDropdownState();
 }
@@ -69,9 +73,11 @@ class _FilterDropdownState extends State<FilterDropdown> {
 }
 
 class FilterScreen extends StatelessWidget {
+  const FilterScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text(
         'Filtered Content',
         style: TextStyle(fontSize: 24.0),
@@ -81,6 +87,8 @@ class FilterScreen extends StatelessWidget {
 }
 
 class DropdownButtonExample extends StatefulWidget {
+  const DropdownButtonExample({super.key});
+
   @override
   State<DropdownButtonExample> createState() => _DropdownButtonExampleState();
 }
@@ -123,7 +131,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
               isExpanded: true,
               iconStyleData: IconStyleData(
                   iconSize: AppDimensions.height10(context) * 4.0,
-                  iconEnabledColor: Color(0xFFFA9934)),
+                  iconEnabledColor: const Color(0xFFFA9934)),
               underline: Container(),
               // elevation: 16,
               style: TextStyle(

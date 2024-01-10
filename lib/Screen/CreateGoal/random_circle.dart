@@ -9,6 +9,8 @@ import '../../utils/app_dimensions.dart';
 //import 'package:r_dart_library/asset_svg.dart';
 
 class RandomCircles extends StatefulWidget {
+  const RandomCircles({super.key});
+
   @override
   _RandomCirclesState createState() => _RandomCirclesState();
 }
@@ -17,8 +19,8 @@ class _RandomCirclesState extends State<RandomCircles> {
   final Random _random = Random();
   final List<Circles> _circles = [];
   List<Map<String, dynamic>>? goalCategories;
-  var goal_detail = "";
-  var goal_name;
+  var goalDetail = "";
+  var goalName;
   // final double containerHeight = AppDimensions2.height10 * 35.40;
   final double circleWidth = AppDimensions2.height10 * 13.4;
   final double circleHeight = AppDimensions2.height10 * 13.4;
@@ -44,16 +46,14 @@ class _RandomCirclesState extends State<RandomCircles> {
           });
         });
       } else {}
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Container(
+      child: SizedBox(
         width: AppDimensions.width10(context) * 95.00,
         height: AppDimensions.height10(context) * 35.40,
         child: Stack(
@@ -116,6 +116,7 @@ class Circles extends StatelessWidget {
   // final String Route;
 
   const Circles({
+    super.key,
     required this.x,
     required this.y,
     required this.circle_text,

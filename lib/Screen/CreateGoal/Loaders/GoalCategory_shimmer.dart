@@ -31,7 +31,7 @@ class GoalCategory_shimmer extends StatelessWidget {
               SizedBox(
                 height: AppDimensions.height10(context) * 5.0,
               ),
-              const continer_const(),
+              const ContinerConst(),
               SizedBox(
                 height: AppDimensions.height10(context) * 5,
               ),
@@ -57,31 +57,31 @@ class GoalCategory_shimmer extends StatelessWidget {
               SizedBox(
                 height: AppDimensions.height10(context) * 8.0,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  continer_const(),
-                  continer_const(),
+                children: [
+                  ContinerConst(),
+                  ContinerConst(),
                 ],
               ),
               SizedBox(
                 height: AppDimensions.height10(context) * 2.5,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  continer_const(),
-                  continer_const(),
+                children: [
+                  ContinerConst(),
+                  ContinerConst(),
                 ],
               ),
               SizedBox(
                 height: AppDimensions.height10(context) * 2.5,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  continer_const(),
-                  continer_const(),
+                children: [
+                  ContinerConst(),
+                  ContinerConst(),
                 ],
               ),
             ],
@@ -90,8 +90,8 @@ class GoalCategory_shimmer extends StatelessWidget {
   }
 }
 
-class continer_const extends StatelessWidget {
-  const continer_const({
+class ContinerConst extends StatelessWidget {
+  const ContinerConst({
     Key? key,
   }) : super(key: key);
 

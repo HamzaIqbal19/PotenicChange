@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class TooltipExample extends StatefulWidget {
+  const TooltipExample({super.key});
+
   @override
   _TooltipExampleState createState() => _TooltipExampleState();
 }
@@ -38,7 +40,7 @@ class _TooltipExampleState extends State<TooltipExample> {
                                   : goal_level == 1
                                       ? const Alignment(0.1, -0.27)
                                       : const Alignment(0.12, 0.37),
-              child: Container(
+              child: SizedBox(
                 width: AppDimensions.width10(context) * 30.6,
                 height: goal_level == 1
                     ? AppDimensions.height10(context) * 22.3
@@ -70,17 +72,15 @@ class _TooltipExampleState extends State<TooltipExample> {
                                           : goal_level == 1
                                               ? const Alignment(0, 1.1)
                                               : const Alignment(0, 1.1),
-                      child: Container(
-                        child: Image.asset(
-                          (goal_level == 3 ||
-                                  goal_level == 4 ||
-                                  goal_level == 5 ||
-                                  goal_level == 6)
-                              ? 'assets/images/arrow-192-up.webp'
-                              : 'assets/images/arrow-192.webp',
-                          height: AppDimensions.height10(context) * 2.0,
-                          width: AppDimensions.width10(context) * 2.0,
-                        ),
+                      child: Image.asset(
+                        (goal_level == 3 ||
+                                goal_level == 4 ||
+                                goal_level == 5 ||
+                                goal_level == 6)
+                            ? 'assets/images/arrow-192-up.webp'
+                            : 'assets/images/arrow-192.webp',
+                        height: AppDimensions.height10(context) * 2.0,
+                        width: AppDimensions.width10(context) * 2.0,
                       ),
                     ),
                     Container(

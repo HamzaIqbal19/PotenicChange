@@ -54,14 +54,14 @@ class video_EditState extends State<videoEdit> {
     hashList.clear();
   }
 
-  bool Loading = true;
+  bool loading = true;
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -73,7 +73,7 @@ class video_EditState extends State<videoEdit> {
         });
         if (widget.updateData == true) {
           setState(() {
-            Loading = false;
+            loading = false;
           });
         } else {
           link.text = inspirationDetails['inspiration']['destinationLink']
@@ -177,7 +177,6 @@ class video_EditState extends State<videoEdit> {
 
   @override
   Widget build(BuildContext context) {
-    bool link_state = false;
     return WillPopScope(
       onWillPop: () {
         removePrefs();
@@ -187,7 +186,6 @@ class video_EditState extends State<videoEdit> {
       child: Container(
         color: Colors.white,
         child: SafeArea(
-
           child: GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(
@@ -246,7 +244,8 @@ class video_EditState extends State<videoEdit> {
                                         : 'Edit inspiration video link',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: AppDimensions.font10(context) * 1.8,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xff282828)),
                               ),
@@ -265,7 +264,8 @@ class video_EditState extends State<videoEdit> {
                                             statement.text.isNotEmpty) {
                                           showAnimatedDialog(
                                               animationType:
-                                                  DialogTransitionType.fadeScale,
+                                                  DialogTransitionType
+                                                      .fadeScale,
                                               curve: Curves.easeInOut,
                                               duration:
                                                   const Duration(seconds: 1),
@@ -273,21 +273,21 @@ class video_EditState extends State<videoEdit> {
                                               builder:
                                                   (BuildContext context) =>
                                                       SizedBox(
-                                                        width:
-                                                            AppDimensions.width10(
+                                                        width: AppDimensions
+                                                                .width10(
                                                                     context) *
-                                                                27.0,
+                                                            27.0,
                                                         height: AppDimensions
                                                                 .height10(
                                                                     context) *
                                                             18.2,
                                                         child: AlertDialog(
                                                           shape: RoundedRectangleBorder(
-                                                              borderRadius: BorderRadius
-                                                                  .circular(AppDimensions
-                                                                          .height10(
+                                                              borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      AppDimensions.height10(
                                                                               context) *
-                                                                      1.4)),
+                                                                          1.4)),
                                                           contentPadding:
                                                               EdgeInsets.zero,
                                                           actionsPadding:
@@ -322,8 +322,9 @@ class video_EditState extends State<videoEdit> {
                                                                 23.8,
                                                             child: Text(
                                                               "Save changes?",
-                                                              textAlign: TextAlign
-                                                                  .center,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
                                                               style: TextStyle(
                                                                 fontSize: AppDimensions
                                                                         .font10(
@@ -361,8 +362,9 @@ class video_EditState extends State<videoEdit> {
                                                                 23.8,
                                                             child: Text(
                                                               "Are you sure you want to save your\nupdates?",
-                                                              textAlign: TextAlign
-                                                                  .center,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
                                                               style: TextStyle(
                                                                 fontSize: AppDimensions
                                                                         .font10(
@@ -384,7 +386,8 @@ class video_EditState extends State<videoEdit> {
                                                                           .height10(
                                                                               context) *
                                                                       0.1,
-                                                                  child: Divider(
+                                                                  child:
+                                                                      Divider(
                                                                     color: const Color(
                                                                             0XFF3C3C43)
                                                                         .withOpacity(
@@ -432,9 +435,8 @@ class video_EditState extends State<videoEdit> {
                                                                       style: TextStyle(
                                                                           color: const Color(
                                                                               0xFFFFFFFF),
-                                                                          fontSize:
-                                                                              AppDimensions.font10(context) *
-                                                                                  1.7,
+                                                                          fontSize: AppDimensions.font10(context) *
+                                                                              1.7,
                                                                           fontFamily:
                                                                               "Laila",
                                                                           fontWeight:
@@ -447,7 +449,8 @@ class video_EditState extends State<videoEdit> {
                                                                           .height10(
                                                                               context) *
                                                                       0.1,
-                                                                  child: Divider(
+                                                                  child:
+                                                                      Divider(
                                                                     color: const Color(
                                                                             0XFF3C3C43)
                                                                         .withOpacity(
@@ -471,16 +474,14 @@ class video_EditState extends State<videoEdit> {
                                                                     child: Text(
                                                                       'Cancel',
                                                                       style: TextStyle(
-                                                                          fontSize:
-                                                                              AppDimensions.font10(context) *
-                                                                                  1.7,
+                                                                          fontSize: AppDimensions.font10(context) *
+                                                                              1.7,
                                                                           fontFamily:
                                                                               "Laila",
-                                                                          fontWeight:
-                                                                              FontWeight
-                                                                                  .w400,
-                                                                          color: const Color(
-                                                                              0xFF007AFF)),
+                                                                          fontWeight: FontWeight
+                                                                              .w400,
+                                                                          color:
+                                                                              const Color(0xFF007AFF)),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -489,7 +490,8 @@ class video_EditState extends State<videoEdit> {
                                                                           .height10(
                                                                               context) *
                                                                       0.1,
-                                                                  child: Divider(
+                                                                  child:
+                                                                      Divider(
                                                                     color: const Color(
                                                                             0XFF3C3C43)
                                                                         .withOpacity(
@@ -508,9 +510,9 @@ class video_EditState extends State<videoEdit> {
                                           'Save',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.6,
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.6,
                                               fontWeight: FontWeight.w400,
                                               color: title.text
                                                           .toString()
@@ -533,7 +535,7 @@ class video_EditState extends State<videoEdit> {
                 height: double.infinity,
                 width: double.infinity,
                 color: Colors.white,
-                child: Loading == false
+                child: loading == false
                     ? SingleChildScrollView(
                         scrollDirection: Axis.vertical,
                         child: Column(
@@ -544,7 +546,6 @@ class video_EditState extends State<videoEdit> {
                               width: AppDimensions.width10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
-          
                                   left: AppDimensions.width10(context) * 2.0,
                                   right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 1.8),
@@ -570,7 +571,8 @@ class video_EditState extends State<videoEdit> {
                                   left: AppDimensions.width10(context) * 0.6,
                                 ),
                                 child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       TextFormField(
                                         controller: title,
@@ -596,32 +598,37 @@ class video_EditState extends State<videoEdit> {
                                             hintText:
                                                 'Give your inspiration a title',
                                             hintStyle: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.7,
+                                                fontSize:
+                                                    AppDimensions.font10(context) *
+                                                        1.7,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xff828282)),
-                                            focusedBorder: const OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: Colors.transparent)),
+                                            focusedBorder:
+                                                const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors
+                                                            .transparent)),
                                             enabledBorder:
                                                 const OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent))),
+                                                        color: Colors
+                                                            .transparent))),
                                       ),
                                     ])),
-                            inspirationDetails['inspiration']['inspirationId'] !=
+                            inspirationDetails['inspiration']
+                                        ['inspirationId'] !=
                                     2
                                 ? Container(
-                                    height: AppDimensions.height10(context) * 2.3,
-                                    width: AppDimensions.width10(context) * 30.5,
+                                    height:
+                                        AppDimensions.height10(context) * 2.3,
+                                    width:
+                                        AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
-                                        left:
-                                            AppDimensions.height10(context) * 2.0,
-                                        right:
-                                            AppDimensions.height10(context) * 8.9,
+                                        left: AppDimensions.height10(context) *
+                                            2.0,
+                                        right: AppDimensions.height10(context) *
+                                            8.9,
                                         top: AppDimensions.height10(context) *
                                             3.2),
                                     child: Column(children: [
@@ -639,14 +646,15 @@ class video_EditState extends State<videoEdit> {
                                     ]),
                                   )
                                 : Container(),
-                            inspirationDetails['inspiration']['inspirationId'] !=
+                            inspirationDetails['inspiration']
+                                        ['inspirationId'] !=
                                     2
                                 ? Row(
                                     children: [
                                       Container(
                                         alignment: Alignment.centerLeft,
-                                        width:
-                                            AppDimensions.width10(context) * 30.5,
+                                        width: AppDimensions.width10(context) *
+                                            30.5,
                                         margin: EdgeInsets.only(
                                           left: AppDimensions.width10(context) *
                                               0.6,
@@ -658,9 +666,9 @@ class video_EditState extends State<videoEdit> {
                                           maxLines: null,
                                           scrollPadding: EdgeInsets.zero,
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.7,
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.7,
                                               fontWeight: FontWeight.w500,
                                               color: const Color(0xff282828)),
                                           decoration: InputDecoration(
@@ -678,12 +686,12 @@ class video_EditState extends State<videoEdit> {
                                                       AppDimensions.font10(context) *
                                                           1.7,
                                                   fontWeight: FontWeight.w500,
-                                                  color: const Color(0xff828282)),
-                                              focusedBorder:
-                                                  const OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Colors
-                                                              .transparent)),
+                                                  color:
+                                                      const Color(0xff828282)),
+                                              focusedBorder: const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color:
+                                                          Colors.transparent)),
                                               enabledBorder:
                                                   const OutlineInputBorder(
                                                       borderSide: BorderSide(
@@ -710,9 +718,9 @@ class video_EditState extends State<videoEdit> {
                                                   )));
                                             },
                                             child: Container(
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      2.5,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  2.5,
                                               margin: EdgeInsets.only(
                                                   left: AppDimensions.height10(
                                                           context) *
@@ -734,11 +742,11 @@ class video_EditState extends State<videoEdit> {
                                                       1.8,
                                                 ),
                                               ),
-          
+
                                               // margin: EdgeInsets.only(
                                               //     right: AppDimensions.width10(context) * 0.8),
                                               // decoration: BoxDecoration(
-          
+
                                               //     image: DecorationImage(
                                               //         image: AssetImage(
                                               //             'assets/images/ic_add_circle_black.webp'),
@@ -750,9 +758,9 @@ class video_EditState extends State<videoEdit> {
                                               link.clear();
                                             },
                                             child: Container(
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      2.5,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  2.5,
                                               height: AppDimensions.height10(
                                                       context) *
                                                   2.5,
@@ -786,7 +794,6 @@ class video_EditState extends State<videoEdit> {
                               width: AppDimensions.width10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
-          
                                   left: AppDimensions.width10(context) * 2.0,
                                   // right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 3.9),
@@ -797,7 +804,8 @@ class video_EditState extends State<videoEdit> {
                                       'What it means to me',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.5,
+                                              AppDimensions.font10(context) *
+                                                  1.5,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff828282)),
                                     ),
@@ -807,7 +815,7 @@ class video_EditState extends State<videoEdit> {
                               // height: widget.note_saved
                               //     ? AppDimensions.height10(context) * 39.0
                               //     : AppDimensions.height10(context) * 2.4,
-          
+
                               // width: AppDimensions.width10(context) * 30.5,
                               // color: Colors.amber,
                               margin: EdgeInsets.only(
@@ -842,7 +850,8 @@ class video_EditState extends State<videoEdit> {
                                           'Say more about this inspiration ',
                                       hintStyle: TextStyle(
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.7,
+                                              AppDimensions.font10(context) *
+                                                  1.7,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff828282)),
                                       focusedBorder: const OutlineInputBorder(
@@ -856,20 +865,23 @@ class video_EditState extends State<videoEdit> {
                             ),
                             widget.context
                                 ? Container(
-                                    height: AppDimensions.height10(context) * 2.2,
-                                    width: AppDimensions.width10(context) * 30.5,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    width:
+                                        AppDimensions.width10(context) * 30.5,
                                     margin: EdgeInsets.only(
-                                        left:
-                                            AppDimensions.height10(context) * 2.0,
-                                        right:
-                                            AppDimensions.height10(context) * 8.9,
+                                        left: AppDimensions.height10(context) *
+                                            2.0,
+                                        right: AppDimensions.height10(context) *
+                                            8.9,
                                         top: AppDimensions.height10(context) *
                                             3.9),
                                     child: Text(
                                       'Content Author (optional)',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.5,
+                                              AppDimensions.font10(context) *
+                                                  1.5,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff828282)),
                                     ),
@@ -880,16 +892,19 @@ class video_EditState extends State<videoEdit> {
                                     // width: AppDimensions.width10(context) *
                                     //     30.5,
                                     margin: EdgeInsets.only(
-                                      left: AppDimensions.width10(context) * 0.6,
+                                      left:
+                                          AppDimensions.width10(context) * 0.6,
                                     ),
                                     child: TextFormField(
                                       controller: author,
                                       maxLines: null,
                                       scrollPadding: EdgeInsets.zero,
-                                      textAlignVertical: TextAlignVertical.center,
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.6,
+                                              AppDimensions.font10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff282828)),
                                       decoration: InputDecoration(
@@ -898,21 +913,24 @@ class video_EditState extends State<videoEdit> {
                                               AppDimensions.height10(context) *
                                                   1.5,
                                               0,
-                                              AppDimensions.height10(context) * 4,
+                                              AppDimensions.height10(context) *
+                                                  4,
                                               0),
                                           hintText: 'Author name',
                                           hintStyle: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.7,
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.7,
                                               fontWeight: FontWeight.w500,
                                               color: const Color(0xff828282)),
                                           focusedBorder: const OutlineInputBorder(
                                               borderSide: BorderSide(
                                                   color: Colors.transparent)),
-                                          enabledBorder: const OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Colors.transparent))),
+                                          enabledBorder:
+                                              const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color:
+                                                          Colors.transparent))),
                                     ),
                                   )
                                 : Container(),
@@ -920,14 +938,14 @@ class video_EditState extends State<videoEdit> {
                               height: AppDimensions.height10(context) * 2.2,
                               width: AppDimensions.width10(context) * 30.5,
                               margin: EdgeInsets.only(
-          
                                   left: AppDimensions.width10(context) * 2.0,
                                   right: AppDimensions.width10(context) * 8.9,
                                   top: AppDimensions.height10(context) * 3.9),
                               child: Text(
                                 'Tags (optional)',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.font10(context) * 1.5,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -943,17 +961,17 @@ class video_EditState extends State<videoEdit> {
                                   scrollPadding: EdgeInsets.zero,
                                   onChanged: (text) {
                                     List<String> words = text.split(' ');
-          
+
                                     List<String> tags = words
                                         .where((word) => word.startsWith('#'))
                                         .toList();
-          
+
                                     List<String> finalResult = tags
                                         .map((tag) =>
                                             '"${tag.replaceAll('#', '')}"')
                                         .toList();
                                     tagList.clear();
-          
+
                                     tagList.addAll(finalResult.toSet());
                                   },
                                   textAlignVertical: TextAlignVertical.center,
@@ -981,7 +999,8 @@ class video_EditState extends State<videoEdit> {
                                       hintText: 'Add #hashtag',
                                       hintStyle: TextStyle(
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.7,
+                                              AppDimensions.font10(context) *
+                                                  1.7,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff828282)),
                                       focusedBorder: const OutlineInputBorder(
@@ -1016,7 +1035,8 @@ class video_EditState extends State<videoEdit> {
                               child: Text(
                                 'Attached goals',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.font10(context) * 1.5,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -1038,7 +1058,6 @@ class video_EditState extends State<videoEdit> {
                                 height: AppDimensions.height10(context) * 6.0,
                                 width: AppDimensions.width10(context) * 37.5,
                                 margin: EdgeInsets.only(
-          
                                   left: AppDimensions.width10(context) * 2.0,
                                   right: AppDimensions.width10(context) * 1.9,
                                   // bottom: AppDimensions.height10(context) * 1.0
@@ -1066,16 +1085,17 @@ class video_EditState extends State<videoEdit> {
                                         style: TextStyle(
                                           color: const Color(0xFF646464),
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.8,
+                                              AppDimensions.font10(context) *
+                                                  1.8,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                     ),
                                     Container(
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10(context) *
-                                                    2.391),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                2.391),
                                         child: Text(
                                           'View',
                                           style: TextStyle(
@@ -1087,9 +1107,9 @@ class video_EditState extends State<videoEdit> {
                                                   AppDimensions.height10(
                                                           context) *
                                                       0.2,
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.4),
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.4),
                                         ))
                                   ],
                                 ),

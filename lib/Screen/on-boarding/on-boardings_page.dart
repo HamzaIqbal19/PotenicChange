@@ -39,8 +39,6 @@ class OnboardingPageState extends State<OnboardingPage>
   var Accestoken;
   var Routes;
 
-  double _value = 0.0;
-
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
     for (int i = 0; i < widget.pages.length; i++) {
@@ -148,9 +146,7 @@ class OnboardingPageState extends State<OnboardingPage>
               // alignment: Alignment.center,
 
               child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle
-                ),
+                decoration: BoxDecoration(shape: BoxShape.circle),
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.webp',
@@ -220,23 +216,16 @@ class OnboardingPageState extends State<OnboardingPage>
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // SizedBox(height: AppDimensions.height10(context)),
                 Expanded(
-                  child: Container(
-                    //height: AppDimensions.height10(context) * 89.1,
-
-                    // width: AppDimensions.width10(context) * 90,
-                    // color: Colors.blue,
-                    child: PageView(
-                        physics: ClampingScrollPhysics(),
-                        controller: _pageController,
-                        onPageChanged: (int page) {
-                          setState(() {
-                            _currentPage = page;
-                          });
-                        },
-                        children: buildOnboardingPages()),
-                  ),
+                  child: PageView(
+                      physics: ClampingScrollPhysics(),
+                      controller: _pageController,
+                      onPageChanged: (int page) {
+                        setState(() {
+                          _currentPage = page;
+                        });
+                      },
+                      children: buildOnboardingPages()),
                 ),
               ],
             ),
@@ -287,7 +276,7 @@ class OnboardingPageState extends State<OnboardingPage>
                       ? SizedBox(height: AppDimensions.height10(context) * 10.3)
                       : SizedBox(
                           height: AppDimensions.height10(context) * 12.1),
-          Container(
+          SizedBox(
             height: page.description2 != ""
                 ? AppDimensions.height10(context) * 3.6
                 : (page.index == 3 || page.index == 1)
@@ -307,7 +296,7 @@ class OnboardingPageState extends State<OnboardingPage>
           SizedBox(height: AppDimensions.height10(context) * 2.0),
           Column(
             children: [
-              Container(
+              SizedBox(
                 // width: double.infinity,
                 width: AppDimensions.width10(context) * 35.4,
                 height: page.description2 != ""
@@ -333,7 +322,7 @@ class OnboardingPageState extends State<OnboardingPage>
                       height: AppDimensions.height10(context) * 2.0,
                     )
                   : SizedBox(height: AppDimensions.height10(context) * 0),
-              Container(
+              SizedBox(
                 // width: double.infinity,
 
                 width: AppDimensions.width10(context) * 28.5,
@@ -371,7 +360,7 @@ class OnboardingPageState extends State<OnboardingPage>
               ? SizedBox(height: AppDimensions.height10(context) * 4.7)
               : Container(),
           page.description2 != ""
-              ? Container(
+              ? SizedBox(
                   // color: Colors.blue,
                   height: AppDimensions.height10(context) * 9.3,
                   width: AppDimensions.width10(context) * 35.4,
@@ -414,16 +403,14 @@ class OnboardingPageState extends State<OnboardingPage>
             ],
           ),
           SizedBox(height: AppDimensions.height10(context) * 0.1),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: _buildPageIndicator(),
-                ),
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPageIndicator(),
+              ),
+            ],
           ),
         ],
       ),
@@ -439,8 +426,6 @@ class OnboardingPageState extends State<OnboardingPage>
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setDouble('walletAddress', balance);
     pref.setString('account', account);
-    print("setWalletAddress/////////////////////////data: $balance");
-    print("setWalletAddress////////////////////account: $account");
   }
 
   Widget NextButton(String text) {
@@ -568,10 +553,5 @@ class OnboardingPageState extends State<OnboardingPage>
       ),
       child: loginButtonWithGesture,
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

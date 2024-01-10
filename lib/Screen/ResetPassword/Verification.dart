@@ -144,7 +144,7 @@ class _VerificationState extends State<Verification> {
                   ),
 
                   SizedBox(height: AppDimensions.height10(context) * 2.32),
-                  Container(
+                  SizedBox(
                     height: AppDimensions.height10(context) * 6.8,
                     width: AppDimensions.width10(context) * 32.0,
                     child: Text(
@@ -159,7 +159,7 @@ class _VerificationState extends State<Verification> {
                   ),
                   SizedBox(height: AppDimensions.height10(context) * 2.2),
                   // SizedBox(height: AppDimensions.height2),
-                  Container(
+                  SizedBox(
                       height: AppDimensions.height10(context) * 2.4,
                       width: AppDimensions.screenWidth(context) - 100,
                       child: Text(
@@ -172,7 +172,7 @@ class _VerificationState extends State<Verification> {
                         ),
                       )),
                   SizedBox(height: AppDimensions.height10(context) * 0.92),
-                  Container(
+                  SizedBox(
                       height: AppDimensions.height10(context) * 7 + 4,
                       width: AppDimensions.width10(context) * 31.6,
                       child: RichText(
@@ -236,6 +236,7 @@ class _VerificationState extends State<Verification> {
                                         if (value == null || value.isEmpty) {
                                           return null;
                                         }
+                                        return null;
                                       },
                                       controller: controllers[index],
                                       keyboardType: TextInputType.number,
@@ -368,21 +369,21 @@ class _VerificationState extends State<Verification> {
                         });
                         Authentication()
                             .passReset(
-                          widget.email,
-                        )
+                              widget.email,
+                            )
                             .then((response) {
-                          if (response == true) {
-                            resetTimer();
-                            resetControllers(controllers);
-                            FocusScope.of(context).unfocus();
-                            setState(() {
-                              _timerActive = false;
-                              Loading = false;
-                            });
-                          } else {}
-                        }).catchError((error) {
-                          print("error");
-                        }).whenComplete(() => null);
+                              if (response == true) {
+                                resetTimer();
+                                resetControllers(controllers);
+                                FocusScope.of(context).unfocus();
+                                setState(() {
+                                  _timerActive = false;
+                                  Loading = false;
+                                });
+                              } else {}
+                            })
+                            .catchError((error) {})
+                            .whenComplete(() => null);
                       }
                     },
                     child: Container(

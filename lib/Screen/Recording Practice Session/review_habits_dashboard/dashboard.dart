@@ -6,6 +6,8 @@ import 'package:potenic_app/Widgets/bottom_navigation.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class reviw_habit_dashBoard extends StatelessWidget {
+  const reviw_habit_dashBoard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,12 +17,10 @@ class reviw_habit_dashBoard extends StatelessWidget {
           actions: [
             Row(
               children: [
-                Container(
-                  child: Image.asset(
-                    'assets/images/Add goal.webp',
-                    height: AppDimensions.height10(context) * 2.1,
-                    width: AppDimensions.width10(context) * 2.2,
-                  ),
+                Image.asset(
+                  'assets/images/Add goal.webp',
+                  height: AppDimensions.height10(context) * 2.1,
+                  width: AppDimensions.width10(context) * 2.2,
                 ),
                 Container(
                   margin: EdgeInsets.only(
@@ -91,7 +91,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       height:
                                           AppDimensions.height10(context) * 1.7,
 
@@ -106,7 +106,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                             color: Colors.white),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       //width: AppDimensions.width10(context) * 4.0,
                                       height:
                                           AppDimensions.height10(context) * 1.7,
@@ -150,7 +150,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                         ),
                         Align(
                           alignment: const Alignment(0, 0),
-                          child: Container(
+                          child: SizedBox(
                             height: AppDimensions.height10(context) * 19.2,
                             width: AppDimensions.width10(context) * 18.8,
                             // margin: EdgeInsets.only(left: 55.5, right: 55.5),
@@ -247,9 +247,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                         Color(0xffFBF9EF),
                                         Color(0xffF8F3DA)
                                       ])),
-                              child: Container(
-                                  //margin: const EdgeInsets.only(top: 11.52),
-                                  child: Column(
+                              child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
@@ -274,7 +272,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                       border: Border.all(
                                           width: 1, color: Colors.white),
                                     ),
-                                    child: Container(
+                                    child: SizedBox(
                                         width: AppDimensions.width10(context) *
                                             1.7,
                                         height:
@@ -294,7 +292,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                         )),
                                   )
                                 ],
-                              ))),
+                              )),
                         ),
                       ],
                     ),

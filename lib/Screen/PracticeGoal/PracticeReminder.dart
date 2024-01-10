@@ -21,8 +21,6 @@ import 'package:intl/intl.dart';
 import '../HomeScreen/HomeScreen.dart';
 import '../ReviewPractice/practiceReview.dart';
 
-final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-
 class PracticeReminder extends StatefulWidget {
   final bool comingFromEditScreen;
   const PracticeReminder({Key? key, required this.comingFromEditScreen})
@@ -37,8 +35,6 @@ class _PracticeReminderState extends State<PracticeReminder> {
   bool radio2 = false;
   bool updated = false;
   bool reminderSelected = false;
-  var Start_time;
-  var End_time;
   var reminder;
 
   void _fetchPracticeDetails() async {
@@ -50,9 +46,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
           radio2 = !reminder;
         });
       } else {}
-    }).catchError((error) {
-      print("hell");
-    });
+    }).catchError((error) {});
   }
 
   String currentDay = DateFormat('EEEE').format(DateTime.now());
@@ -62,7 +56,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
   var practice = TextEditingController();
   var color;
   String route = '';
-  bool Loader = false;
+  bool loader = false;
 
   @override
   void initState() {
@@ -76,9 +70,9 @@ class _PracticeReminderState extends State<PracticeReminder> {
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    var goal_route = prefs.getString('goal_route');
+    var goalRoute = prefs.getString('goal_route');
     setState(() {
-      route = goal_route!;
+      route = goalRoute!;
     });
   }
 
@@ -86,14 +80,14 @@ class _PracticeReminderState extends State<PracticeReminder> {
 
   getGoalName() async {
     final SharedPreferences prefs = await _prefs;
-    var my_goal = prefs.getString("goalName");
-    var practice_Name = prefs.getString('pracName');
+    var myGoal = prefs.getString("goalName");
+    var practicename = prefs.getString('pracName');
     var goalColor = prefs.getString('goalColor');
     setState(() {
       color = goalColor;
-      mygoal.text = my_goal!;
-      practice.text = practice_Name!;
-      practiceName.text = practice_Name;
+      mygoal.text = myGoal!;
+      practice.text = practicename!;
+      practiceName.text = practicename;
     });
   }
 
@@ -1193,47 +1187,44 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 if (widget.comingFromEditScreen) {
                                   if (reminderSelected == true) {
                                     setState(() {
-                                      Loader =
+                                      loader =
                                           true; // Show loader when the API call starts
                                     });
 
-                                    List<Map<String, dynamic>>
-                                        loadedTimesPerDay =
-                                        await loadTimesPerDay();
+                                    // List<Map<String, dynamic>>
+                                    //     loadedTimesPerDay =
+                                    //     await loadTimesPerDay();
                                     final SharedPreferences prefs =
                                         await _prefs;
 
-                                    var reminder =
-                                        prefs.setBool('pracReminder', radio1);
+                                    await prefs.setBool('pracReminder', radio1);
                                     //add Id
                                     PracticeGoalApi()
                                         .updateUserPractice(
-                                      'reminder',
-                                      radio1,
-                                    )
+                                          'reminder',
+                                          radio1,
+                                        )
                                         .then((response) {
-                                      if (response == true) {
-                                        setState(() {
-                                          updated = true;
-                                          showContainer = true;
+                                          if (response == true) {
+                                            setState(() {
+                                              updated = true;
+                                              showContainer = true;
+                                            });
+                                            startTimer();
+                                          } else if (response == false) {}
+                                        })
+                                        .catchError((error) {})
+                                        .whenComplete(() {
+                                          setState(() {
+                                            loader =
+                                                false; // Hide loader when the API call completes
+                                          });
                                         });
-                                        startTimer();
-                                      } else if (response == false) {
-                                        print('Api call failed');
-                                      }
-                                    }).catchError((error) {
-                                      print('===>Error');
-                                    }).whenComplete(() {
-                                      setState(() {
-                                        Loader =
-                                            false; // Hide loader when the API call completes
-                                      });
-                                    });
                                   }
                                 } else {
                                   if (reminderSelected == true) {
                                     setState(() {
-                                      Loader =
+                                      loader =
                                           true; // Show loader when the API call starts
                                     });
 
@@ -1243,63 +1234,61 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     final SharedPreferences prefs =
                                         await _prefs;
 
-                                    var reminder =
-                                        prefs.setBool('pracReminder', radio1);
+                                    await prefs.setBool('pracReminder', radio1);
                                     //add Id
                                     PracticeGoalApi()
                                         .userAddPractice(
-                                      practiceName.text.toString(),
-                                      radio1,
-                                      loadedTimesPerDay,
-                                    )
+                                          practiceName.text.toString(),
+                                          radio1,
+                                          loadedTimesPerDay,
+                                        )
                                         .then((response) async {
-                                      if (response == true) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(const SnackBar(
-                                                content: Text(
-                                                    "Practice Added Successfully")));
-                                        if (route == 'view_all_goals') {
-                                          Navigator.pushReplacement(
-                                              context,
-                                              FadePageRoute(
-                                                  page:
-                                                      const view_all_goals_menu()));
-                                        } else if (route ==
-                                            'view_all_goals_2') {
-                                          Navigator.pushReplacement(
-                                              context,
-                                              FadePageRoute(
-                                                  page:
-                                                      const multiple_goal_inactive()));
-                                        } else {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            FadePageRoute2(
-                                              true,
-                                              exitPage: const PracticeReminder(
-                                                comingFromEditScreen: false,
-                                              ),
-                                              enterPage:
-                                                  const PracticeFinished(),
-                                            ),
-                                          );
-                                        }
-                                        final SharedPreferences prefs =
-                                            await _prefs;
+                                          if (response == true) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(const SnackBar(
+                                                    content: Text(
+                                                        "Practice Added Successfully")));
+                                            if (route == 'view_all_goals') {
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page:
+                                                          const view_all_goals_menu()));
+                                            } else if (route ==
+                                                'view_all_goals_2') {
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page:
+                                                          const multiple_goal_inactive()));
+                                            } else {
+                                              Navigator.pushReplacement(
+                                                context,
+                                                FadePageRoute2(
+                                                  true,
+                                                  exitPage:
+                                                      const PracticeReminder(
+                                                    comingFromEditScreen: false,
+                                                  ),
+                                                  enterPage:
+                                                      const PracticeFinished(),
+                                                ),
+                                              );
+                                            }
+                                            final SharedPreferences prefs =
+                                                await _prefs;
 
-                                        await prefs.remove('goal_route');
-                                        await prefs.remove('route');
-                                      } else if (response == false) {
-                                        print('Api call failed');
-                                      }
-                                    }).catchError((error) {
-                                      print('===>Error');
-                                    }).whenComplete(() {
-                                      setState(() {
-                                        Loader =
-                                            false; // Hide loader when the API call completes
-                                      });
-                                    });
+                                            await prefs.remove('goal_route');
+                                            await prefs.remove('route');
+                                          } else if (response == false) {}
+                                        })
+                                        .catchError((error) {})
+                                        .whenComplete(() {
+                                          setState(() {
+                                            loader =
+                                                false; // Hide loader when the API call completes
+                                          });
+                                        });
                                   }
                                 }
                               },
@@ -1329,7 +1318,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       Radius.circular(50.0)),
                                 ),
                                 child: Center(
-                                  child: Loader
+                                  child: loader
                                       ? SpinKitThreeBounce(
                                           color: const Color(0xFF8C648A),
                                           // delay: Duration(milliseconds: 0),

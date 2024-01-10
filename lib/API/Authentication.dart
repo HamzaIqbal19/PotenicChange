@@ -10,14 +10,14 @@ class Authentication {
   Future registerApi(name, email, password) async {
     var headers = {'Content-Type': 'application/json'};
 
-    var Body = json.encode({
+    var body = json.encode({
       "name": "$name",
       "email": "$email",
       "password": "$password",
     });
 
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signup'),
-        headers: headers, body: Body);
+        headers: headers, body: body);
 
     var responses = jsonDecode(request.body);
 
@@ -36,22 +36,22 @@ class Authentication {
     }
   }
 
-  Future refreshTokenApi(String SessionToken) async {
+  Future refreshTokenApi(String sessionToken) async {
     var headers = {'Content-Type': 'application/json'};
 
-    var Body = json.encode({
-      "sessionToken": SessionToken,
+    var body = json.encode({
+      "sessionToken": sessionToken,
     });
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/auth/refresh-access-token'),
         headers: headers,
-        body: Body);
+        body: body);
 
     var responses = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
-      var accesstoken = prefs.setString('usertoken', responses);
+      await prefs.setString('usertoken', responses);
 
       return true;
     } else {
@@ -59,33 +59,30 @@ class Authentication {
     }
   }
 
-  Future SignIn(fcmRegistrationToken, email, password) async {
+  Future signIn(fcmRegistrationToken, email, password) async {
     var headers = {'Content-Type': 'application/json'};
 
-    var Body = json.encode({
+    var body = json.encode({
       "fcmRegistrationToken": "$fcmRegistrationToken",
       "email": "$email",
       "password": "$password",
     });
 
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signin'),
-        headers: headers, body: Body);
+        headers: headers, body: body);
 
     var response = jsonDecode(request.body);
-    print("Loginin response $response");
 
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
-      print("Loginin response $response  ${response['roles'][0]['name']}");
-      var accesstoken = prefs.setString('usertoken', response["accessToken"]);
-      var UserId = prefs.setInt('userid', response['id']);
-      var userName = prefs.setString('userName', response['name']);
-      var UseruserEmail = prefs.setString('userEmail', response['email']);
-      var RefreshToken =
-          prefs.setString("refreshtoken", response["sessionToken"]);
-      var subscription =
-          prefs.setString('subscriptionStatus', response["subscriptionStatus"]);
-      var role = prefs.setString('userRole', response['roles'][0]['name']);
+      await prefs.setString('usertoken', response["accessToken"]);
+      await prefs.setInt('userid', response['id']);
+      await prefs.setString('userName', response['name']);
+      await prefs.setString('userEmail', response['email']);
+      await prefs.setString("refreshtoken", response["sessionToken"]);
+      await prefs.setString(
+          'subscriptionStatus', response["subscriptionStatus"]);
+      await prefs.setString('userRole', response['roles'][0]['name']);
       await prefs.setString('accountCreatedAt',
           response["createdAt"].toString().substring(0, 10));
 
@@ -108,22 +105,21 @@ class Authentication {
   Future passReset(email) async {
     var headers = {'Content-Type': 'application/json'};
 
-    var Body = json.encode({
+    var body = json.encode({
       "email": "$email",
     });
 
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/auth/forgot-password'),
         headers: headers,
-        body: Body);
+        body: body);
 
     var responses = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
-      var resetEmail = prefs.setString('resetEmail', email);
-      var resetId = prefs.setInt('ResetId', responses["userId"]);
-      var reset = prefs.getString('resetEmail');
+      await prefs.setString('resetEmail', email);
+      await prefs.setInt('ResetId', responses["userId"]);
 
       return true;
     } else if (request.statusCode == 404) {
@@ -141,14 +137,12 @@ class Authentication {
     var reset = prefs.getInt('ResetId');
     String token =
         'KEeQ5q3JlCOwXC5IgPw3Qnwakrs0wwgfI%2FDnm%2BiQRmYSc7CqniIDXi6QeDnB4wzsSnZNBcilk6YdIMx1QWAz1A%3D%3D';
-    var Body = json.encode({"userId": "$reset", "newPassword": "$password"});
+    var body = json.encode({"userId": "$reset", "newPassword": "$password"});
 
     var request = await client.put(
         Uri.parse('${URL.BASE_URL}api/auth/reset-password?token=$token'),
         headers: headers,
-        body: Body);
-
-    var responses = jsonDecode(request.body);
+        body: body);
 
     if (request.statusCode == 200) {
       return true;
@@ -166,14 +160,12 @@ class Authentication {
     final SharedPreferences prefs = await _prefs;
     var resetId = prefs.getInt('ResetId');
 
-    var Body = json.encode({"userId": resetId, "otp": otp});
+    var body = json.encode({"userId": resetId, "otp": otp});
 
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/auth/verify-otp'),
         headers: headers,
-        body: Body);
-
-    var responses = jsonDecode(request.body);
+        body: body);
 
     if (request.statusCode == 200) {
       return true;
@@ -189,10 +181,10 @@ class Authentication {
 
     var userId = prefs.getInt('userid');
 
-    var Accestoken = prefs.getString("userId");
+    var accesToken = prefs.getString("userId");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accesToken'
     };
 
     var request = await client.delete(
@@ -201,7 +193,6 @@ class Authentication {
 
     var responses = jsonDecode(request.body);
     if (request.statusCode == 200) {
-      print('Account deleted');
       return true;
     } else {
       return responses["message"];

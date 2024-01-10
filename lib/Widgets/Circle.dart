@@ -16,7 +16,7 @@ class circles extends StatelessWidget {
   final bool state;
   // final String Route;
 
-  const circles({
+  const circles({super.key, 
     required this.circle_text,
     required this.circle_color1,
     required this.circle_color2,
@@ -34,12 +34,12 @@ class circles extends StatelessWidget {
     return Container(
         height: circle_height,
         width: circle_width,
-        padding: EdgeInsets.symmetric(horizontal: AppDimensions.width10(context) *0.2),
+        padding: EdgeInsets.symmetric(
+            horizontal: AppDimensions.width10(context) * 0.2),
         decoration: BoxDecoration(
-          shape: BoxShape.circle,
+            shape: BoxShape.circle,
             //borderRadius: const BorderRadius.all(Radius.circular(70.0)),
             border: Border.all(
-
                 width: circle_border, color: Color(circle_bordercolor)),
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -49,7 +49,7 @@ class circles extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: AppDimensions.width10(context) * 10.9,
               child: Text(
                 circle_text,

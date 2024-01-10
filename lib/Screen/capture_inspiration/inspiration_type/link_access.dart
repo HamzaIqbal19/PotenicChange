@@ -34,7 +34,7 @@ class _link_infoState extends State<link_info> {
   List selectedGoals = [];
   List<String> tagList = [];
   String? imageLink;
-  bool bt_enable = true;
+  bool btEnable = true;
 
   void getInspiration() async {
     final SharedPreferences prefs = await _prefs;
@@ -70,7 +70,6 @@ class _link_infoState extends State<link_info> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -595,7 +594,7 @@ class _link_infoState extends State<link_info> {
                                     FadePageRoute(
                                         page: const inspiration_type()));
                                 final SharedPreferences prefs = await _prefs;
-                                var remove = prefs.remove('ImageLink');
+                                await prefs.remove('ImageLink');
                               },
                               child: Center(
                                 child: Text(
@@ -643,9 +642,9 @@ class _link_infoState extends State<link_info> {
                                                       statement
                                                           .text.isNotEmpty &&
                                                       title.text.isNotEmpty) {
-                                                    if (bt_enable == true) {
+                                                    if (btEnable == true) {
                                                       setState(() {
-                                                        bt_enable = false;
+                                                        btEnable = false;
                                                       });
                                                     }
                                                     InspirationApi()
@@ -701,9 +700,8 @@ class _link_infoState extends State<link_info> {
                                                         final SharedPreferences
                                                             prefs =
                                                             await _prefs;
-                                                        var remove =
-                                                            prefs.remove(
-                                                                'ImageLink');
+                                                        await prefs.remove(
+                                                            'ImageLink');
                                                         prefs.remove(
                                                             'inspiration_saved_route');
                                                       }
@@ -730,7 +728,7 @@ class _link_infoState extends State<link_info> {
                                                   //             .height10(
                                                   //                 context) *
                                                   //         4.0),
-                                                  child: bt_enable == false
+                                                  child: btEnable == false
                                                       ? Center(
                                                           child:
                                                               SpinKitThreeBounce(

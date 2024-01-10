@@ -112,10 +112,7 @@ class _practiceMenuState extends State<practiceMenu> {
         );
       } else {}
       getSubscription();
-    }).catchError((error) {
-      // loadData();
-      print("hell");
-    });
+    }).catchError((error) {});
   }
 
   Future<Timer> loadData() async {
@@ -717,7 +714,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                               page: const PracticeReview()));
                                       final SharedPreferences prefs =
                                           await _prefs;
-                                      var pracName = prefs.setString(
+                                      await prefs.setString(
                                           'practice_review', 'practice_menu');
                                     },
                                     child: const button_feilds(

@@ -14,7 +14,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      shape: CircularNotchedRectangle(),
+      shape: const CircularNotchedRectangle(),
       notchMargin: 10,
       child: Container(
         // color: Colors.blue,
@@ -29,7 +29,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
           children: [
             Row(
               children: [
-                Container(
+                SizedBox(
                   width: AppDimensions.width10(context) * 2.4,
                   height: AppDimensions.height10(context) * 2.4,
                   // padding: EdgeInsets.only(
@@ -60,7 +60,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                             AppDimensions.height10(context) * 1.0),
                         border: Border.all(
                             width: AppDimensions.width10(context) * 0.1,
-                            color: Color(0xFFE0E0E0))),
+                            color: const Color(0xFFE0E0E0))),
                     margin: EdgeInsets.only(
                         left: AppDimensions.width10(context) * 1.3,
                         right: AppDimensions.width10(context) * 1.0),
@@ -75,7 +75,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                             style: TextStyle(
                                 fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xffFA9934)),
+                                color: const Color(0xffFA9934)),
                           ),
                         ),
                         Container(
@@ -89,7 +89,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                               style: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xffFA9934)),
+                                  color: const Color(0xffFA9934)),
                             ),
                           ),
                         ),
@@ -99,7 +99,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                           margin: EdgeInsets.only(
                               left: AppDimensions.width10(context) * 0.8,
                               bottom: AppDimensions.height10(context) * 0.3),
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_drop_down,
                             color: Color(0xffFA9934),
                           ),
@@ -118,7 +118,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                             AppDimensions.height10(context) * 1.0),
                         border: Border.all(
                             width: AppDimensions.width10(context) * 0.1,
-                            color: Color(0xFFE0E0E0))),
+                            color: const Color(0xFFE0E0E0))),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -130,7 +130,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                             style: TextStyle(
                                 fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xffFA9934)),
+                                color: const Color(0xffFA9934)),
                           ),
                         ),
                         Container(
@@ -144,7 +144,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                               style: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xffFA9934)),
+                                  color: const Color(0xffFA9934)),
                             ),
                           ),
                         ),
@@ -154,7 +154,7 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                           margin: EdgeInsets.only(
                               left: AppDimensions.width10(context) * 0.8,
                               bottom: AppDimensions.height10(context) * 0.3),
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_drop_down,
                             color: Color(0xffFA9934),
                           ),
@@ -176,14 +176,14 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
                           fontSize: AppDimensions.font10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           decoration: TextDecoration.underline,
-                          color: Color(0xFFFA9934).withOpacity(0.30)),
+                          color: const Color(0xFFFA9934).withOpacity(0.30)),
                     ),
                   ),
                 )
               ],
             ),
 
-            Container(
+            SizedBox(
               width: AppDimensions.width10(context) * 4.9,
               height: AppDimensions.height10(context) * 5.0,
               child: GestureDetector(
@@ -216,11 +216,11 @@ void _showBottomSheet(BuildContext context) {
         onTap: () => Navigator.of(context).pop(),
         child: Container(
           height: AppDimensions.height10(context) * 30.3,
-          color: Color.fromRGBO(0, 0, 0, 0.001),
+          color: const Color.fromRGBO(0, 0, 0, 0.001),
           child: GestureDetector(
             onTap: () {},
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
               child: Column(
@@ -232,7 +232,7 @@ void _showBottomSheet(BuildContext context) {
                         border: Border(
                             bottom: BorderSide(
                                 width: AppDimensions.width10(context) * 0.1,
-                                color: Color(0xFF828282)))),
+                                color: const Color(0xFF828282)))),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -249,24 +249,24 @@ void _showBottomSheet(BuildContext context) {
                               style: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xFF2F80ED)),
+                                  color: const Color(0xFF2F80ED)),
                             ),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.width10(context) * 3.7,
                           child: Text(
                             'Done',
                             style: TextStyle(
                                 fontSize: AppDimensions.font10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF2F80ED)),
+                                color: const Color(0xFF2F80ED)),
                           ),
                         )
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.width10(context) * 37.5,
                     height: AppDimensions.height10(context) * 24.8,
                     // color: Colors.amber,
@@ -283,7 +283,7 @@ void _showBottomSheet(BuildContext context) {
                                     bottom: BorderSide(
                                         width: AppDimensions.width10(context) *
                                             0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 'All',
@@ -300,7 +300,7 @@ void _showBottomSheet(BuildContext context) {
                                     bottom: BorderSide(
                                         width: AppDimensions.width10(context) *
                                             0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 1',
@@ -317,7 +317,7 @@ void _showBottomSheet(BuildContext context) {
                                     bottom: BorderSide(
                                         width: AppDimensions.width10(context) *
                                             0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 2',
@@ -334,7 +334,7 @@ void _showBottomSheet(BuildContext context) {
                                     bottom: BorderSide(
                                         width: AppDimensions.width10(context) *
                                             0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 3',

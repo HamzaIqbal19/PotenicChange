@@ -180,71 +180,65 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return  Container(
-        decoration: BoxDecoration(
-          //color: Colors.red,
-          borderRadius:
-              BorderRadius.circular(AppDimensions.height10(context) * 2.0),
-          //color: status == 'completed'? Color(0xFF196F6E):status == 'missed'?Color(0xFFFE6624):Color(0xFFFFFFFF),
-        ),
-        child: Center(
-          child: TableCalendar(
-            rowHeight: AppDimensions.height10(context) * 6.2,
-            firstDay: widget.limitCalender
-                ? DateTime.parse(getDateAtFirstIndex(widget.dateStatus))
-                : DateTime.utc(2023, 1, 1),
-            lastDay: widget.limitCalender
-                ? DateTime.parse(getDateAtLastIndex(widget.dateStatus))
-                : DateTime.utc(2030, 12, 31),
-            focusedDay: DateTime.parse(getDateAtLastIndex(widget.dateStatus)),
-            //headerVisible: false,
-            onHeaderTapped: (date){
-              print('Header Tapped');
-            },
-            headerStyle: HeaderStyle(
-              titleCentered: true, formatButtonVisible: false,
-              leftChevronIcon: const Icon(
-                Icons.chevron_left,
-                size: 30,
-                color: Color(0xFFFE6624),
-              ),
-              rightChevronIcon: const Icon(
-
-                    Icons.chevron_right,
-                    size: 30,
-                    color: Color(0xFFFE6624),
-                ),
-              titleTextStyle: TextStyle(
-                  fontSize: AppDimensions.font10(context) * 2.4,
-                  color: const Color(0xFF5B74A6),
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'laila'),
+    return Container(
+      decoration: BoxDecoration(
+        //color: Colors.red,
+        borderRadius:
+            BorderRadius.circular(AppDimensions.height10(context) * 2.0),
+        //color: status == 'completed'? Color(0xFF196F6E):status == 'missed'?Color(0xFFFE6624):Color(0xFFFFFFFF),
+      ),
+      child: Center(
+        child: TableCalendar(
+          rowHeight: AppDimensions.height10(context) * 6.2,
+          firstDay: widget.limitCalender
+              ? DateTime.parse(getDateAtFirstIndex(widget.dateStatus))
+              : DateTime.utc(2023, 1, 1),
+          lastDay: widget.limitCalender
+              ? DateTime.parse(getDateAtLastIndex(widget.dateStatus))
+              : DateTime.utc(2030, 12, 31),
+          focusedDay: DateTime.parse(getDateAtLastIndex(widget.dateStatus)),
+          headerStyle: HeaderStyle(
+            titleCentered: true,
+            formatButtonVisible: false,
+            leftChevronIcon: const Icon(
+              Icons.chevron_left,
+              size: 30,
+              color: Color(0xFFFE6624),
             ),
-            calendarFormat: CalendarFormat.month,
-            availableCalendarFormats: const {
-              CalendarFormat.month: 'Month',
-            },
-            onPageChanged: (focusedDay) {},
-            calendarBuilders: CalendarBuilders(
-              defaultBuilder: (context, date, _) => _buildDayCell(context, date),
-              todayBuilder: (context, date, _) => _buildDayCell(context, date),
-              selectedBuilder: (context, date, _) => _buildDayCell(context, date),
+            rightChevronIcon: const Icon(
+              Icons.chevron_right,
+              size: 30,
+              color: Color(0xFFFE6624),
             ),
-
-            calendarStyle: CalendarStyle(
-                outsideDaysVisible: false,
-                tablePadding: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.width10(context) * 3.7),
-                rowDecoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                            color: const Color(0xFF828282),
-                            width: AppDimensions.width10(context) * 0.05)))),
+            titleTextStyle: TextStyle(
+                fontSize: AppDimensions.font10(context) * 2.4,
+                color: const Color(0xFF5B74A6),
+                fontWeight: FontWeight.w600,
+                fontFamily: 'laila'),
           ),
+          calendarFormat: CalendarFormat.month,
+          availableCalendarFormats: const {
+            CalendarFormat.month: 'Month',
+          },
+          onPageChanged: (focusedDay) {},
+          calendarBuilders: CalendarBuilders(
+            defaultBuilder: (context, date, _) => _buildDayCell(context, date),
+            todayBuilder: (context, date, _) => _buildDayCell(context, date),
+            selectedBuilder: (context, date, _) => _buildDayCell(context, date),
+          ),
+          calendarStyle: CalendarStyle(
+              outsideDaysVisible: false,
+              tablePadding: EdgeInsets.symmetric(
+                  horizontal: AppDimensions.width10(context) * 3.7),
+              rowDecoration: BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(
+                          color: const Color(0xFF828282),
+                          width: AppDimensions.width10(context) * 0.05)))),
         ),
+      ),
     );
   }
 }

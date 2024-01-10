@@ -41,7 +41,7 @@ class _GoalNameState extends State<GoalName> {
   String route = '';
   var id;
   String capitalizeFirstLetter(String text) {
-    if (text == null || text.isEmpty) {
+    if (text.isEmpty) {
       return '';
     }
     return text[0].toUpperCase() + text.substring(1);
@@ -65,9 +65,9 @@ class _GoalNameState extends State<GoalName> {
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    var goal_route = prefs.getString('goal_route');
+    var goalRoute = prefs.getString('goal_route');
     setState(() {
-      route = goal_route!;
+      route = goalRoute!;
     });
   }
 
@@ -84,7 +84,7 @@ class _GoalNameState extends State<GoalName> {
   //
   getGoalName() async {
     final SharedPreferences prefs = await _prefs;
-    var catId = prefs.setInt('goalCategoryId', widget.catId);
+    await prefs.setInt('goalCategoryId', widget.catId);
     setState(() {
       goalName = prefs.getString("goalName")!;
       mygoal.text = capitalizeFirstLetter(prefs.getString("goalName")!);
@@ -107,7 +107,7 @@ class _GoalNameState extends State<GoalName> {
     var goalName,
   ) async {
     final SharedPreferences prefs = await _prefs;
-    var GoalName = prefs.setString('goalName', goalName);
+    await prefs.setString('goalName', goalName);
     //var GoalCategory = prefs.setString("GoalCategory", widget.Circletitle);
 
     Goal goal = Goal(
@@ -189,7 +189,7 @@ class _GoalNameState extends State<GoalName> {
                     curve: Curves.easeInOut,
                     duration: const Duration(seconds: 1),
                     context: context,
-                    builder: (BuildContext context) => const pop_up_goals())
+                    builder: (BuildContext context) => const popUpGoals())
                 : Navigator.push(
                     context,
                     FadePageRouteReverse(
@@ -241,7 +241,7 @@ class _GoalNameState extends State<GoalName> {
                                   duration: const Duration(seconds: 1),
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      const pop_up_goals())
+                                      const popUpGoals())
                               : Navigator.push(
                                   context,
                                   FadePageRouteReverse(
@@ -272,7 +272,7 @@ class _GoalNameState extends State<GoalName> {
                             ),
                             onPressed: () => showDialog<String>(
                               context: context,
-                              builder: (BuildContext context) => Container(
+                              builder: (BuildContext context) => SizedBox(
                                 width: AppDimensions.width10(context) * 27.0,
                                 height: AppDimensions.height10(context) * 21.0,
                                 child: AlertDialog(
@@ -326,7 +326,7 @@ class _GoalNameState extends State<GoalName> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 42,
                                           width: double.infinity,
                                           //color: Colors.white,
@@ -369,7 +369,7 @@ class _GoalNameState extends State<GoalName> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 44,
                                           width: double.infinity,
                                           child: TextButton(
@@ -413,7 +413,7 @@ class _GoalNameState extends State<GoalName> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 42,
                                           width:
                                               AppDimensions.width10(context) *
@@ -481,7 +481,7 @@ class _GoalNameState extends State<GoalName> {
                     SizedBox(
                       height: AppDimensions.height10(context) * 0.5,
                     ),
-                    Container(
+                    SizedBox(
                       width: AppDimensions.width10(context) * 30,
                       child: Center(
                         child: Text(
@@ -514,24 +514,22 @@ class _GoalNameState extends State<GoalName> {
                     SizedBox(
                       height: AppDimensions.height10(context) * 3.4,
                     ),
-                    Container(
-                      child: Center(
-                        child: Text(
-                          AppText().goalNameText,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: widget.comingFromEditScreen
-                                ? const Color(0xff437296)
-                                : Colors.white,
-                            fontSize: AppDimensions.font10(context) * 2.8,
-                          ),
+                    Center(
+                      child: Text(
+                        AppText().goalNameText,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          color: widget.comingFromEditScreen
+                              ? const Color(0xff437296)
+                              : Colors.white,
+                          fontSize: AppDimensions.font10(context) * 2.8,
                         ),
                       ),
                     ),
                     SizedBox(
                       height: AppDimensions.height10(context) * 1.0,
                     ),
-                    Container(
+                    SizedBox(
                       height: AppDimensions.height10(context) * 2.8,
                       width: AppDimensions.width10(context) * 24.4,
                       child: Center(
@@ -888,9 +886,6 @@ class _GoalNameState extends State<GoalName> {
                                             mygoal.text.toString(),
                                           );
 
-                                          final SharedPreferences prefs =
-                                              await _prefs;
-
                                           Navigator.push(
                                             context,
                                             FadePageRoute(
@@ -1037,9 +1032,7 @@ class _updateBoxState extends State<updateBox> {
           ),
           AnimatedScaleButton(
             onTap: () {
-              OnTap() {
-                setState(() {});
-              }
+              setState(() {});
             },
             child: Container(
               width: AppDimensions.width10(context) * 8.1,

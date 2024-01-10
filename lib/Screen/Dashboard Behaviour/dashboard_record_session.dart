@@ -28,7 +28,7 @@ class _record_sessionState extends State<record_session> {
   var allGoals;
   var allPractice;
   List<Map<String, dynamic>> activePractices = [];
-  bool Loader = true;
+  bool loader = true;
   @override
   void initState() {
     super.initState();
@@ -42,7 +42,7 @@ class _record_sessionState extends State<record_session> {
 
   void onDoneLoading() {
     setState(() {
-      Loader = false;
+      loader = false;
     });
   }
 
@@ -54,14 +54,14 @@ class _record_sessionState extends State<record_session> {
         });
 
         for (int i = 0; i < allGoals.length; i++) {
-          List<dynamic> Practices = [];
+          List<dynamic> practices = [];
           for (int j = 0; j < allGoals[i]['userPractices'].length; j++) {
             if (allGoals[i]['userPractices'][j]['isActive'] == true) {
-              Practices.add(allGoals[i]['userPractices'][j]);
+              practices.add(allGoals[i]['userPractices'][j]);
             }
           }
 
-          activePractices.add({"practices": Practices});
+          activePractices.add({"practices": practices});
         }
         loadData();
       } else {
@@ -69,7 +69,6 @@ class _record_sessionState extends State<record_session> {
       }
     }).catchError((error) {
       loadData();
-      print("error");
     });
   }
 
@@ -106,7 +105,7 @@ class _record_sessionState extends State<record_session> {
         height: double.infinity,
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child: Loader == false
+          child: loader == false
               ? Stack(
                   alignment: AlignmentDirectional.bottomCenter,
                   children: [
@@ -229,157 +228,154 @@ class _record_sessionState extends State<record_session> {
                                                   color:
                                                       const Color(0xff5B74A6))),
                                         ]))),
-                                Container(
-
-                                  child: ListView.builder(
-                                      // physics: const NeverScrollableScrollPhysics(),
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: widget.past_session
-                                          ? activePractices[index]['practices']
-                                              .length
-                                          : allGoals[index]['userPractices']
-                                              .length,
-                                      shrinkWrap: true,
-                                      padding: EdgeInsets.zero,
-                                      itemBuilder: ((context, index1) {
-                                        return Align(
-                                          alignment: const Alignment(1, 1),
-                                          child: AnimatedScaleButton(
-                                            onTap: () async {
-                                              widget.past_session
-                                                  ? Navigator.push(
-                                                      context,
-                                                      FadePageRoute(
-                                                          page: emotions(
-                                                        summary: false,
-                                                        pracName: widget
-                                                                .past_session
-                                                            ? activePractices[
-                                                                        index][
-                                                                    'practices']
-                                                                [index1]['name']
-                                                            : allGoals[index][
-                                                                    'userPractices']
-                                                                [
-                                                                index1]['name'],
-                                                        record: true,
-                                                        selected: 0,
-                                                      )))
-                                                  : Navigator.pushReplacement(
-                                                      context,
-                                                      FadePageRoute(
-                                                          page:
-                                                              const PracticeReview()));
-
-                                              final SharedPreferences prefs =
-                                                  await _prefs;
-                                              await prefs.setInt('goal_num',
-                                                  allGoals[index]['id']);
-                                              if (widget.past_session == true) {
-                                                await prefs.setInt(
-                                                    'prac_num',
-                                                    activePractices[index]
-                                                            ['practices']
-                                                        [index1]['id']);
-                                              } else {
-                                                await prefs.setInt(
-                                                    'prac_num',
-                                                    allGoals[index]
-                                                            ['userPractices']
-                                                        [index1]['id']);
-                                              }
-
-                                              await prefs.setString(
-                                                  'practice_review',
-                                                  'record_session');
-                                            },
-                                            child: Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  13.8,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  13.8,
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          0.5),
-                                              margin: EdgeInsets.only(
-                                                left: index1 == 0? AppDimensions.height10(
-                                                    context) *
-                                                    2.9: 0,
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      1.0),
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                image: DecorationImage(
-                                                    image: widget.past_session
-                                                        ? AssetImage(activePractices[index]['practices'][index1]['color']
-                                                                    .toString() ==
-                                                                '1'
-                                                            ? "assets/images/Ellipse orange.webp"
-                                                            : activePractices[index]['practices'][index1]['color']
-                                                                        .toString() ==
-                                                                    '2'
-                                                                ? 'assets/images/Ellipse 158.webp'
-                                                                : activePractices[index]['practices'][index1]['color'].toString() ==
-                                                                        '3'
-                                                                    ? "assets/images/Ellipse 157.webp"
-                                                                    : activePractices[index]['practices'][index1]['color'].toString() ==
-                                                                            '4'
-                                                                        ? "assets/images/Ellipse light-blue.webp"
-                                                                        : activePractices[index]['practices'][index1]['color'].toString() ==
-                                                                                '5'
-                                                                            ? "assets/images/Ellipse blue.webp"
-                                                                            : 'assets/images/Ellipse 158.webp')
-                                                        : AssetImage(allGoals[index]['userPractices']
-                                                                        [index1]
-                                                                    ['color'] ==
-                                                                '1'
-                                                            ? "assets/images/Ellipse orange.webp"
-                                                            : allGoals[index]['userPractices'][index1]['color'] == '2'
-                                                                ? 'assets/images/Ellipse 158.webp'
-                                                                : allGoals[index]['userPractices'][index1]['color'] == '3'
-                                                                    ? "assets/images/Ellipse 157.webp"
-                                                                    : allGoals[index]['userPractices'][index1]['color'] == '4'
-                                                                        ? "assets/images/Ellipse light-blue.webp"
-                                                                        : allGoals[index]['userPractices'][index1]['color'] == '5'
-                                                                            ? "assets/images/Ellipse blue.webp"
-                                                                            : 'assets/images/Ellipse 158.webp'),
-                                                    fit: BoxFit.cover),
-                                              ),
-                                              child: Center(
-                                                child: Text(
-                                                  widget.past_session
-                                                      ? activePractices[index]
-                                                                  ['practices']
+                                ListView.builder(
+                                    // physics: const NeverScrollableScrollPhysics(),
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: widget.past_session
+                                        ? activePractices[index]['practices']
+                                            .length
+                                        : allGoals[index]['userPractices']
+                                            .length,
+                                    shrinkWrap: true,
+                                    padding: EdgeInsets.zero,
+                                    itemBuilder: ((context, index1) {
+                                      return Align(
+                                        alignment: const Alignment(1, 1),
+                                        child: AnimatedScaleButton(
+                                          onTap: () async {
+                                            widget.past_session
+                                                ? Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page: emotions(
+                                                      summary: false,
+                                                      pracName: widget
+                                                              .past_session
+                                                          ? activePractices[
+                                                                      index][
+                                                                  'practices']
                                                               [index1]['name']
-                                                          .toString()
-                                                      : allGoals[index]
-                                                              ['userPractices']
-                                                          [index1]['name'],
-                                                  maxLines: 2,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                      fontFamily: 'laila',
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              1.8,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: Colors.white),
-                                                  textAlign: TextAlign.center,
-                                                ),
+                                                          : allGoals[index][
+                                                                  'userPractices']
+                                                              [
+                                                              index1]['name'],
+                                                      record: true,
+                                                      selected: 0,
+                                                    )))
+                                                : Navigator.pushReplacement(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            const PracticeReview()));
+
+                                            final SharedPreferences prefs =
+                                                await _prefs;
+                                            await prefs.setInt('goal_num',
+                                                allGoals[index]['id']);
+                                            if (widget.past_session == true) {
+                                              await prefs.setInt(
+                                                  'prac_num',
+                                                  activePractices[index]
+                                                          ['practices']
+                                                      [index1]['id']);
+                                            } else {
+                                              await prefs.setInt(
+                                                  'prac_num',
+                                                  allGoals[index]
+                                                          ['userPractices']
+                                                      [index1]['id']);
+                                            }
+
+                                            await prefs.setString(
+                                                'practice_review',
+                                                'record_session');
+                                          },
+                                          child: Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                13.8,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                13.8,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.5),
+                                            margin: EdgeInsets.only(
+                                              left: index1 == 0? AppDimensions.height10(
+                                                  context) *
+                                                  2.9: 0,
+                                                right: AppDimensions.height10(
+                                                        context) *
+                                                    1.0),
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              image: DecorationImage(
+                                                  image: widget.past_session
+                                                      ? AssetImage(activePractices[index]['practices'][index1]['color']
+                                                                  .toString() ==
+                                                              '1'
+                                                          ? "assets/images/Ellipse orange.webp"
+                                                          : activePractices[index]['practices'][index1]['color']
+                                                                      .toString() ==
+                                                                  '2'
+                                                              ? 'assets/images/Ellipse 158.webp'
+                                                              : activePractices[index]['practices'][index1]['color'].toString() ==
+                                                                      '3'
+                                                                  ? "assets/images/Ellipse 157.webp"
+                                                                  : activePractices[index]['practices'][index1]['color'].toString() ==
+                                                                          '4'
+                                                                      ? "assets/images/Ellipse light-blue.webp"
+                                                                      : activePractices[index]['practices'][index1]['color'].toString() ==
+                                                                              '5'
+                                                                          ? "assets/images/Ellipse blue.webp"
+                                                                          : 'assets/images/Ellipse 158.webp')
+                                                      : AssetImage(allGoals[index]['userPractices']
+                                                                      [index1]
+                                                                  ['color'] ==
+                                                              '1'
+                                                          ? "assets/images/Ellipse orange.webp"
+                                                          : allGoals[index]['userPractices'][index1]['color'] == '2'
+                                                              ? 'assets/images/Ellipse 158.webp'
+                                                              : allGoals[index]['userPractices'][index1]['color'] == '3'
+                                                                  ? "assets/images/Ellipse 157.webp"
+                                                                  : allGoals[index]['userPractices'][index1]['color'] == '4'
+                                                                      ? "assets/images/Ellipse light-blue.webp"
+                                                                      : allGoals[index]['userPractices'][index1]['color'] == '5'
+                                                                          ? "assets/images/Ellipse blue.webp"
+                                                                          : 'assets/images/Ellipse 158.webp'),
+                                                  fit: BoxFit.cover),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                widget.past_session
+                                                    ? activePractices[index]
+                                                                ['practices']
+                                                            [index1]['name']
+                                                        .toString()
+                                                    : allGoals[index]
+                                                            ['userPractices']
+                                                        [index1]['name'],
+                                                maxLines: 2,
+                                                overflow:
+                                                    TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    fontFamily: 'laila',
+                                                    fontSize:
+                                                        AppDimensions.font10(
+                                                                context) *
+                                                            1.8,
+                                                    fontWeight:
+                                                        FontWeight.w500,
+                                                    color: Colors.white),
+                                                textAlign: TextAlign.center,
                                               ),
                                             ),
                                           ),
-                                        );
-                                      })),
-                                ),
+                                        ),
+                                      );
+                                    })),
                               ]),
                             );
                           }),

@@ -29,14 +29,14 @@ class note_info extends StatefulWidget {
 
 class _note_infoState extends State<note_info> {
   var inspirationDetails;
-  bool Loading = true;
+  bool loading = true;
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -63,13 +63,11 @@ class _note_infoState extends State<note_info> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    bool link_state = false;
     return Container(
       color: Colors.white,
       child: SafeArea(
@@ -103,7 +101,7 @@ class _note_infoState extends State<note_info> {
                               FadePageRouteReverse(
                                   page: const inspiration_type()));
                           final SharedPreferences prefs = await _prefs;
-                          var remove = prefs.remove('ImageLink');
+                          await prefs.remove('ImageLink');
                         },
                         child: Text(
                           'Back',
@@ -174,7 +172,7 @@ class _note_infoState extends State<note_info> {
                         Navigator.push(context,
                             FadePageRoute(page: const inspiration_type()));
                         final SharedPreferences prefs = await _prefs;
-                        var remove = prefs.remove('ImageLink');
+                        await prefs.remove('ImageLink');
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 2.2,
@@ -201,7 +199,7 @@ class _note_infoState extends State<note_info> {
             color: Colors.white,
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
-              child: Loading == false
+              child: loading == false
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -757,7 +755,7 @@ class noteSaved extends StatefulWidget {
 class _noteSavedState extends State<noteSaved> {
   List selectedGoals = [];
   List<String> tagList = [];
-  bool bt_enable = true;
+  bool btEnable = true;
 
   void getInspiration() async {
     final SharedPreferences prefs = await _prefs;
@@ -778,7 +776,6 @@ class _noteSavedState extends State<noteSaved> {
 
   @override
   Widget build(BuildContext context) {
-    bool link_state = false;
     return WillPopScope(
       onWillPop: () {
         return Future.value(false);
@@ -821,7 +818,7 @@ class _noteSavedState extends State<noteSaved> {
                             Navigator.push(context,
                                 FadePageRoute(page: const inspiration_type()));
                             final SharedPreferences prefs = await _prefs;
-                            var remove = prefs.remove('ImageLink');
+                            await prefs.remove('ImageLink');
                           },
                           child: Center(
                             child: Text(
@@ -861,9 +858,9 @@ class _noteSavedState extends State<noteSaved> {
                                       onTap: () async {
                                         if (title.text.isNotEmpty &&
                                             statement.text.isNotEmpty) {
-                                          if (bt_enable == true) {
+                                          if (btEnable == true) {
                                             setState(() {
-                                              bt_enable = false;
+                                              btEnable = false;
                                             });
                                           }
                                           InspirationApi()
@@ -894,8 +891,7 @@ class _noteSavedState extends State<noteSaved> {
                                               statement.clear();
                                               final SharedPreferences prefs =
                                                   await _prefs;
-                                              var remove =
-                                                  prefs.remove('ImageLink');
+                                              await prefs.remove('ImageLink');
                                               prefs.remove(
                                                   'inspiration_saved_route');
                                             }
@@ -913,7 +909,7 @@ class _noteSavedState extends State<noteSaved> {
                                         // margin: EdgeInsets.only(
                                         //     right: AppDimensions.width10(context) *
                                         //         1.5),
-                                        child: bt_enable == false
+                                        child: btEnable == false
                                             ? Center(
                                                 child: SpinKitThreeBounce(
                                                   color:

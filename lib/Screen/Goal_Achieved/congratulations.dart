@@ -15,46 +15,38 @@ class congratulations extends StatefulWidget {
 }
 
 class _congratulationsState extends State<congratulations> {
-  int goal_level = 0;
+  int goalLevel = 0;
   var goalName;
 
   var identity;
   var color;
-  bool Loading = true;
+  bool loading = true;
 
   void _fetchGoalNames() async {
     AdminGoal.getUserGoal().then((response) {
       if (response.length != 0) {
         setState(() {
-          Loading = false;
+          loading = false;
           goalName = response["name"];
           color = response["color"];
           identity = response["identityStatement"][0]['text'];
-          goal_level = response["goalLevel"];
-          ;
+          goalLevel = response["goalLevel"];
         });
       } else {
         setState(() {
-          Loading = false;
+          loading = false;
         });
       }
     }).catchError((error) {
       setState(() {
-        Loading = false;
+        loading = false;
       });
-      print("error");
     });
   }
 
   void _incrementValue() {
     setState(() {
-      goal_level++;
-    });
-  }
-
-  void _decrementValue() {
-    setState(() {
-      goal_level--;
+      goalLevel++;
     });
   }
 
@@ -79,7 +71,7 @@ class _congratulationsState extends State<congratulations> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                     // width: AppDimensions.width10(context) * 2.6,
+                      // width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.contain,
                     )),
@@ -93,7 +85,7 @@ class _congratulationsState extends State<congratulations> {
               image: DecorationImage(
                   image: AssetImage('assets/images/goal_achieved_bg.webp'),
                   fit: BoxFit.cover)),
-          child: Loading == false
+          child: loading == false
               ? Column(
                   children: [
                     GestureDetector(
@@ -131,7 +123,7 @@ class _congratulationsState extends State<congratulations> {
                                     ),
                                   ),
                                   TextSpan(
-                                      text: goal_level == 5
+                                      text: goalLevel == 5
                                           ? '\nYou are living your goal and your\ndesired identity :)'
                                           : 'You’ve gone up a level, it’s another\nstep towards living your goal and\nyour desired identity.',
                                       style: const TextStyle(
@@ -248,13 +240,13 @@ class _congratulationsState extends State<congratulations> {
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
-                                      image: AssetImage(goal_level == 1
+                                      image: AssetImage(goalLevel == 1
                                           ? 'assets/images/goal_level_1.webp'
-                                          : goal_level == 2
+                                          : goalLevel == 2
                                               ? 'assets/images/goal_level_2.webp'
-                                              : goal_level == 3
+                                              : goalLevel == 3
                                                   ? 'assets/images/goal_level_3.webp'
-                                                  : goal_level == 4
+                                                  : goalLevel == 4
                                                       ? 'assets/images/goal_level_4.webp'
                                                       : 'assets/images/goal_level_5.webp'),
                                       fit: BoxFit.cover)),
@@ -298,10 +290,10 @@ class _congratulationsState extends State<congratulations> {
                                                 ),
                                                 children: [
                                                   TextSpan(
-                                                      text: goal_level == 0
+                                                      text: goalLevel == 0
                                                           ? '-'
-                                                          : goal_level < 5
-                                                              ? '$goal_level'
+                                                          : goalLevel < 5
+                                                              ? '$goalLevel'
                                                               : '5',
                                                       style: TextStyle(
                                                         fontFamily: 'Poppins',
@@ -328,13 +320,13 @@ class _congratulationsState extends State<congratulations> {
                                                 5.1,
                                         child: Center(
                                           child: Text(
-                                            goal_level == 1
+                                            goalLevel == 1
                                                 ? "I'm making\nconsiderable steps\nforward"
-                                                : goal_level == 2
+                                                : goalLevel == 2
                                                     ? "I'm making\nconsiderable steps\nforward"
-                                                    : goal_level == 3
+                                                    : goalLevel == 3
                                                         ? "I'm almost there"
-                                                        : goal_level == 4
+                                                        : goalLevel == 4
                                                             ? 'I feel like I’m living\nmy goal and desired\nidentity '
                                                             : "I've achieved my\ngoal and living my\nnew identity :)",
                                             textAlign: TextAlign.center,
@@ -363,7 +355,7 @@ class _congratulationsState extends State<congratulations> {
                     ),
                     AnimatedScaleButton(
                       onTap: () {
-                        if (goal_level > 3) {
+                        if (goalLevel > 3) {
                           Navigator.push(
                             context,
                             FadePageRoute(
@@ -386,7 +378,7 @@ class _congratulationsState extends State<congratulations> {
                           height: AppDimensions.height10(context) * 2.4,
                           child: Center(
                             child: Text(
-                              goal_level > 3 ? 'Yes I am' : 'Exit',
+                              goalLevel > 3 ? 'Yes I am' : 'Exit',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: AppDimensions.font10(context) * 1.6,
@@ -411,7 +403,7 @@ class _congratulationsState extends State<congratulations> {
                         height: AppDimensions.height10(context) * 2.4,
                         child: Center(
                           child: Text(
-                            goal_level < 4
+                            goalLevel < 4
                                 ? 'View goal level evaluation'
                                 : 'No I’m not, review evaluation',
                             textAlign: TextAlign.center,

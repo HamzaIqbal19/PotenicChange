@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
@@ -29,8 +27,8 @@ class CreatePractice extends StatefulWidget {
 }
 
 class _CreatePracticeState extends State<CreatePractice> {
-  bool SearchIcon = false;
-  bool Loading = true;
+  bool searchIcon = false;
+  bool loading = true;
   String searchText = '';
   var mygoal;
   var color = '0';
@@ -47,7 +45,7 @@ class _CreatePracticeState extends State<CreatePractice> {
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   getGoalName() async {
     final SharedPreferences prefs = await _prefs;
@@ -60,9 +58,9 @@ class _CreatePracticeState extends State<CreatePractice> {
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    var goal_route = prefs.getString('goal_route');
+    var goalRoute = prefs.getString('goal_route');
     setState(() {
-      route = goal_route!;
+      route = goalRoute!;
     });
   }
 
@@ -72,7 +70,7 @@ class _CreatePracticeState extends State<CreatePractice> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -87,7 +85,6 @@ class _CreatePracticeState extends State<CreatePractice> {
       }
     }).catchError((error) {
       loadData();
-      print("error");
     });
   }
 
@@ -104,25 +101,24 @@ class _CreatePracticeState extends State<CreatePractice> {
       }
     }).catchError((error) {
       loadData();
-      print("error");
     });
   }
 
   void _searchPractice(String searchTerm) {
     setState(() {
       //if (searchTerm) {
-      PracticeGoalApi.SearchPractice(searchTerm).then((value) {
+      PracticeGoalApi.searchPractice(searchTerm).then((value) {
         if (value.isEmpty) {
           setState(() {
             noDate = true;
             practiceName = value;
-            Loading = false;
+            loading = false;
           });
         } else {
           setState(() {
             practiceName = value;
             noDate = false;
-            Loading = false;
+            loading = false;
           });
         }
       });
@@ -254,7 +250,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                 fit: BoxFit.cover,
               ),
             ),
-            child: Loading == false
+            child: loading == false
                 ? SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
@@ -354,16 +350,13 @@ class _CreatePracticeState extends State<CreatePractice> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
-                              // height: AppDimensions.height10(context) *7.1,
-                              child: Text(
-                                AppText().createPractice,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white,
-                                  fontSize: AppDimensions.font10(context) * 2.8,
-                                ),
+                            Text(
+                              AppText().createPractice,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                fontSize: AppDimensions.font10(context) * 2.8,
                               ),
                             ),
                           ],
@@ -414,13 +407,13 @@ class _CreatePracticeState extends State<CreatePractice> {
                                                 final SharedPreferences prefs =
                                                     await _prefs;
 
-                                                var goalColor = prefs.setString(
+                                                await prefs.setString(
                                                     'goalColor', color);
-                                                var pracName = prefs.setString(
+                                                await prefs.setString(
                                                   'pracName',
                                                   practiceName?[index]["name"],
                                                 );
-                                                var pracId = prefs.setInt(
+                                                await prefs.setInt(
                                                   'pracId',
                                                   practiceName?[index]["id"],
                                                 );
@@ -485,7 +478,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                   right: AppDimensions.width10(context) * 2.2),
               height: AppDimensions.height10(context) * 7.0,
               //width: AppDimensions.width10(context) * 41.4,
-              child: SearchIcon == true
+              child: searchIcon == true
                   ? Container(
                       color: Colors.transparent,
                       child: Row(
@@ -575,7 +568,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                           AnimatedScaleButton(
                             onTap: () {
                               setState(() {
-                                SearchIcon = false;
+                                searchIcon = false;
                                 _searchPractice('');
                                 _searchController.clear();
                                 searchText = '';
@@ -606,24 +599,12 @@ class _CreatePracticeState extends State<CreatePractice> {
                         children: [
                           Row(
                             children: [
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.width10(context) * 4.7,
                                 height: AppDimensions.height10(context) * 4.7,
-                                // padding: EdgeInsets.only(
-                                //     top: AppDimensions.height10(context) * 0.5,
-                                //     bottom:
-                                //         AppDimensions.height10(context) * 0.5),
                                 child: AnimatedScaleButton(
                                   onTap: () {
-                                    // if (mygoal.length > 20) {
-                                    //   setState(() {
-                                    //     var mygoalName =
-                                    //         mygoal.subString(0, 9) + '...';
-                                    //   });
-                                    //   bottom_sheet(context, mygoal);
-                                    // } else {
                                     bottom_sheet(context, mygoal);
-                                    //}
                                   },
                                   child: Image.asset(
                                     'assets/images/Add.webp',
@@ -650,16 +631,13 @@ class _CreatePracticeState extends State<CreatePractice> {
                             ],
                           ),
 
-                          Container(
+                          SizedBox(
                             width: AppDimensions.width10(context) * 5,
                             height: AppDimensions.height10(context) * 5,
-                            // padding: EdgeInsets.only(
-                            //     top: AppDimensions.height10(context) * 0.5,
-                            //     bottom: AppDimensions.height10(context) * 0.5),
                             child: GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  SearchIcon = true;
+                                  searchIcon = true;
                                 });
                               },
                               child: Image.asset(

@@ -27,7 +27,7 @@ class _select_videoState extends State<select_video> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                //  width: AppDimensions.width10(context) * 2.6,
+                  //  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.contain,
                 )),
@@ -52,7 +52,7 @@ class _select_videoState extends State<select_video> {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),
@@ -128,15 +128,13 @@ class _select_videoState extends State<select_video> {
                                     image: AssetImage(
                                         'assets/images/Addgoal.webp'))),
                           ),
-                          Container(
-                            child: Text(
-                              'Attach',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.2,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
+                          Text(
+                            'Attach',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: AppDimensions.font10(context) * 1.2,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
                           ),
                         ],
                       ),

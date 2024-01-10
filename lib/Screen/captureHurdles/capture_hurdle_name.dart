@@ -27,13 +27,13 @@ class hurdle_name extends StatefulWidget {
 }
 
 class _hurdle_nameState extends State<hurdle_name> {
-  bool button_state = false;
+  bool buttonState = false;
   var hurdleName;
   TextEditingController controller = TextEditingController();
   var hurdlesSummary;
   var hurdlesList;
   int? hurdleCat;
-  bool Loading = true;
+  bool loading = true;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -41,7 +41,7 @@ class _hurdle_nameState extends State<hurdle_name> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -73,9 +73,7 @@ class _hurdle_nameState extends State<hurdle_name> {
       } else {
         return response.statusCode;
       }
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   void _fetchHurdle() async {
@@ -89,9 +87,7 @@ class _hurdle_nameState extends State<hurdle_name> {
       } else {
         return response.statusCode;
       }
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   void _getHurdleName() async {
@@ -105,14 +101,14 @@ class _hurdle_nameState extends State<hurdle_name> {
 
   void _getName() async {
     final SharedPreferences prefs = await _prefs;
-    var Name;
+    var name;
     setState(() {
-      Name = prefs.getString('NameHurdle').toString().isEmpty
+      name = prefs.getString('NameHurdle').toString().isEmpty
           ? ''
           : prefs.getString('NameHurdle');
     });
-    if (Name != '' && Name != null) {
-      controller.text = Name;
+    if (name != '' && name != null) {
+      controller.text = name;
     }
   }
 
@@ -123,7 +119,7 @@ class _hurdle_nameState extends State<hurdle_name> {
     if (widget.update == false) {
       _getHurdleName();
       setState(() {
-        Loading = false;
+        loading = false;
       });
     } else {
       _fetchHurdle();
@@ -272,7 +268,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
-                                              Container(
+                                              SizedBox(
                                                 height: 42,
                                                 width: double.infinity,
                                                 child: TextButton(
@@ -280,10 +276,8 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                     checkHurdle();
                                                     final SharedPreferences
                                                         prefs = await _prefs;
-                                                    var hurdleRoute =
-                                                        prefs.setString(
-                                                            'HurdleRoute',
-                                                            'Name');
+                                                    await prefs.setString(
+                                                        'HurdleRoute', 'Name');
 
                                                     await prefs.setString(
                                                         'NameHurdle',
@@ -319,7 +313,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                     checkHurdle();
                                                     final SharedPreferences
                                                         prefs = await _prefs;
-                                                    var hurdleRoute = prefs
+                                                    await prefs
                                                         .remove('HurdleRoute');
                                                     await prefs
                                                         .remove('hurdleName');
@@ -403,7 +397,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                       image:
                           AssetImage('assets/images/practicebackground.webp'),
                       fit: BoxFit.cover)),
-              child: Loading == false
+              child: loading == false
                   ? SingleChildScrollView(
                       reverse: true,
                       physics: const ClampingScrollPhysics(),
@@ -558,7 +552,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                               scrollPadding: EdgeInsets.zero,
                                               onChanged: (value) {
                                                 setState(() {
-                                                  button_state = true;
+                                                  buttonState = true;
                                                 });
                                               },
                                               style: TextStyle(
@@ -677,7 +671,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                       } else {
                                         final SharedPreferences prefs =
                                             await _prefs;
-                                        var Name = prefs.setString('NameHurdle',
+                                        await prefs.setString('NameHurdle',
                                             controller.text.toString());
                                         if (controller.text.isNotEmpty) {
                                           Navigator.push(

@@ -16,7 +16,7 @@ class record_summary extends StatefulWidget {
 }
 
 class _record_summaryState extends State<record_summary> {
-  String date_time = 'Now';
+  String dateTime = 'Now';
   String time = 'Am';
   String day = '';
 
@@ -150,12 +150,12 @@ class _record_summaryState extends State<record_summary> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                         //margin: EdgeInsets.only(left: 92, right: 66),
                         height: AppDimensions.height10(context) * 2.6,
                         width: AppDimensions.width10(context) * 20.0,
                         child: Text(
-                          date_time,
+                          dateTime,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: AppDimensions.font10(context) * 2.0,
@@ -217,8 +217,8 @@ class _record_summaryState extends State<record_summary> {
                                             });
                                           }
                                         });
-                                        setState(() => date_time =
-                                            " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                                        setState(() => dateTime =
+                                            " $day:${newDateTime.hour}:${newDateTime.minute}:$time");
                                       }
                                     }),
                               );

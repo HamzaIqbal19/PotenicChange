@@ -67,15 +67,14 @@ class _GoalFinishedState extends State<GoalFinished> {
       setState(() {
         Loading = false;
       });
-      print("error");
     });
   }
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    var goal_route = prefs.getString('goal_route');
+    var goalRoute = prefs.getString('goal_route');
     setState(() {
-      route = goal_route!;
+      route = goalRoute!;
     });
   }
 
@@ -156,8 +155,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                             SizedBox(
                               height: AppDimensions.height10(context) * 2.0,
                             ),
-                            Container(
-                                child: Column(
+                            Column(
                               children: [
                                 Center(
                                   child: Text(
@@ -173,7 +171,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                   ),
                                 ),
                               ],
-                            )),
+                            ),
                             Stack(
                               children: [
                                 AnimatedScaleButton(
@@ -274,7 +272,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                                               context) *
                                                           0.3,
                                                 ),
-                                                Container(
+                                                SizedBox(
                                                   // color: Colors.green,
                                                   height:
                                                       AppDimensions.height10(

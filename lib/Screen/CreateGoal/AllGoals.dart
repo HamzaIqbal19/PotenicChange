@@ -26,10 +26,10 @@ class AllGoals extends StatefulWidget {
 }
 
 class _AllGoalsState extends State<AllGoals> {
-  bool SearchIcon = false;
+  bool searchIcon = false;
   bool noData = false;
-  bool Loading = true;
-  var AllGoals;
+  bool loading = true;
+  var allGoals;
 
   List<Map<String, dynamic>>? goalNamesAndCategories;
 
@@ -45,7 +45,7 @@ class _AllGoalsState extends State<AllGoals> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -54,7 +54,7 @@ class _AllGoalsState extends State<AllGoals> {
       if (response.length != 0) {
         setState(() {
           goalNamesAndCategories = response;
-          AllGoals = response;
+          allGoals = response;
         });
         loadData();
       } else {
@@ -62,7 +62,6 @@ class _AllGoalsState extends State<AllGoals> {
       }
     }).catchError((error) {
       loadData();
-      print("error");
     });
   }
 
@@ -78,8 +77,8 @@ class _AllGoalsState extends State<AllGoals> {
   Future<void> saveGoalToPrefs(
       var userId, var categoryId, var goalName, var goalId) async {
     final SharedPreferences prefs = await _prefs;
-    var GoalName = prefs.setString('goalName', goalName);
-    var usergoalId = prefs.setInt("goalId", goalId);
+    await prefs.setString('goalName', goalName);
+    await prefs.setInt("goalId", goalId);
     Goal goal = Goal(
       name: goalName,
       reason: [
@@ -98,13 +97,13 @@ class _AllGoalsState extends State<AllGoals> {
     String jsonString =
         jsonEncode(goal.toJson()); // converting object to json string
     prefs.setString('goal', jsonString);
-    var userGoalId = prefs.setInt('goalId', goalId);
+    await prefs.setInt('goalId', goalId);
 
     getGoal();
   }
 
   String capitalizeFirstLetter(String text) {
-    if (text == null || text.isEmpty) {
+    if (text.isEmpty) {
       return '';
     }
     return text[0].toUpperCase() + text.substring(1);
@@ -133,8 +132,7 @@ class _AllGoalsState extends State<AllGoals> {
     throw Exception('No goal found in local storage');
   }
 
-  TextEditingController _searchController = TextEditingController();
-  List<Map<String, dynamic>> _searchResults = [];
+  final TextEditingController _searchController = TextEditingController();
 
   String searchText = ''; // Add this line
 
@@ -145,8 +143,8 @@ class _AllGoalsState extends State<AllGoals> {
             if (value.isEmpty)
               {
                 setState(() {
-                  goalNamesAndCategories = AllGoals;
-                  Loading = false;
+                  goalNamesAndCategories = allGoals;
+                  loading = false;
                   noData = true;
                 }),
               }
@@ -154,7 +152,7 @@ class _AllGoalsState extends State<AllGoals> {
               {
                 setState(() {
                   goalNamesAndCategories = value;
-                  Loading = false;
+                  loading = false;
                   noData = false;
                 }),
               }
@@ -253,7 +251,7 @@ class _AllGoalsState extends State<AllGoals> {
             // SingleChildScrollView(
             //   child: ,
             // )
-            Loading == false
+            loading == false
                 ? SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
@@ -279,17 +277,14 @@ class _AllGoalsState extends State<AllGoals> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              child: Center(
-                                child: Text(
-                                  AppText().allGoals,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.8,
-                                  ),
+                            Center(
+                              child: Text(
+                                AppText().allGoals,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  fontSize: AppDimensions.font10(context) * 2.8,
                                 ),
                               ),
                             ),
@@ -302,16 +297,13 @@ class _AllGoalsState extends State<AllGoals> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              // height: AppDimensions.height10(context) *7.1,
-                              child: Text(
-                                AppText().selectCategoryBody,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontSize: AppDimensions.font10(context) * 1.8,
-                                ),
+                            Text(
+                              AppText().selectCategoryBody,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: AppDimensions.font10(context) * 1.8,
                               ),
                             ),
                           ],
@@ -377,7 +369,7 @@ class _AllGoalsState extends State<AllGoals> {
                                                       context) *
                                                   1.0,
                                             ),
-                                            Container(
+                                            SizedBox(
                                               // color: Colors.yellow,
                                               height: AppDimensions.height10(
                                                       context) *
@@ -524,7 +516,7 @@ class _AllGoalsState extends State<AllGoals> {
             //width: AppDimensions.width10(context) * 41.4,
             height: AppDimensions.width10(context) * 7.0,
 
-            child: SearchIcon == true
+            child: searchIcon == true
                 ? Container(
                     color: Colors.transparent,
                     child: Row(
@@ -602,7 +594,7 @@ class _AllGoalsState extends State<AllGoals> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              SearchIcon = false;
+                              searchIcon = false;
                               _searchGoals('');
                               _searchController.clear();
                             });
@@ -634,7 +626,7 @@ class _AllGoalsState extends State<AllGoals> {
                               onTap: () {
                                 bottom_sheet(context);
                               },
-                              child: Container(
+                              child: SizedBox(
                                 width: AppDimensions.width10(context) * 4.7,
                                 height: AppDimensions.height10(context) * 4.7,
                                 // padding: EdgeInsets.only(
@@ -665,7 +657,7 @@ class _AllGoalsState extends State<AllGoals> {
                           ],
                         ),
 
-                        Container(
+                        SizedBox(
                           width: AppDimensions.width10(context) * 5,
                           height: AppDimensions.height10(context) * 5,
                           // padding: EdgeInsets.only(
@@ -674,7 +666,7 @@ class _AllGoalsState extends State<AllGoals> {
                           child: GestureDetector(
                             onTap: () {
                               setState(() {
-                                SearchIcon = true;
+                                searchIcon = true;
                               });
                             },
                             child: Image.asset(

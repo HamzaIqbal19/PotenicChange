@@ -4,21 +4,19 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 
 class cards extends StatelessWidget {
-  cards({super.key});
+  const cards({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          ElevatedButton(
-            child: const Text('termsSheet'),
-            onPressed: () {
-              termsSheet(context);
-            },
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        ElevatedButton(
+          child: const Text('termsSheet'),
+          onPressed: () {
+            termsSheet(context);
+          },
+        ),
+      ],
     );
   }
 }
@@ -56,8 +54,7 @@ void termsSheet(context) {
           Container(
             width: AppDimensions.width10(context) * 23.4,
             height: AppDimensions.height10(context) * 2.3,
-            margin:
-                EdgeInsets.only(left: AppDimensions.width10(context) * 2.2),
+            margin: EdgeInsets.only(left: AppDimensions.width10(context) * 2.2),
             child: Text(
               'Please read before continuing',
               style: TextStyle(
@@ -199,7 +196,7 @@ void termsSheet(context) {
             height: AppDimensions.height10(context) * 3.1,
           ),
           Center(
-            child: Container(
+            child: SizedBox(
               height: AppDimensions.height10(context) * 6.0,
               width: AppDimensions.width10(context) * 28.0,
               child: Row(
@@ -229,11 +226,11 @@ void termsSheet(context) {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           border: Border.all(color: Colors.white),
-                          color: Color.fromRGBO(250, 153, 52, 1)),
+                          color: const Color.fromRGBO(250, 153, 52, 1)),
                       child: TextButton(
                         onPressed: () => showDialog<String>(
                           context: context,
-                          builder: (BuildContext context) => Container(
+                          builder: (BuildContext context) => SizedBox(
                             width: AppDimensions.width10(context) * 27.0,
                             height: AppDimensions.height10(context) * 20.4,
                             child: AlertDialog(
@@ -305,7 +302,7 @@ void termsSheet(context) {
                                         ),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height:
                                           AppDimensions.height10(context) * 4.4,
                                       width:

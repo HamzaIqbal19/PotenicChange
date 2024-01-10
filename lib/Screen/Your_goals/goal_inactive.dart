@@ -33,7 +33,7 @@ class _goal_inactiveState extends State<goal_inactive> {
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
-              //  width: AppDimensions.width10(context) * 2.6,
+                //  width: AppDimensions.width10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.contain,
               )),
@@ -542,8 +542,8 @@ class _goal_inactiveState extends State<goal_inactive> {
               Container(
                 width: AppDimensions.width10(context) * 17.4,
                 height: AppDimensions.height10(context) * 4.3,
-                margin: EdgeInsets.only(
-                    left: AppDimensions.width10(context) * 2.6),
+                margin:
+                    EdgeInsets.only(left: AppDimensions.width10(context) * 2.6),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Column(
@@ -572,7 +572,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                       onTap: () => showAnimatedDialog(
                           animationType: DialogTransitionType.fadeScale,
                           curve: Curves.easeInOut,
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           context: context,
                           builder: (BuildContext context) => SizedBox(
                                 width: AppDimensions.width10(context) * 27.0,

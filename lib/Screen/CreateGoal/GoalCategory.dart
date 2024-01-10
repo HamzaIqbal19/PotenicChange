@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
@@ -24,20 +23,19 @@ class GoalCategory extends StatefulWidget {
   final int id;
   // final String message;
 
-  GoalCategory(this.title, this.Circletitle, this.id);
+  const GoalCategory(this.title, this.Circletitle, this.id, {super.key});
 
   @override
   State<GoalCategory> createState() => _GoalCategoryState();
 }
 
 class _GoalCategoryState extends State<GoalCategory> {
-  bool SearchIcon = false;
-  bool Loading = true;
+  bool searchIcon = false;
+  bool loading = true;
   String route = '';
   bool noData = false;
   String searchText = ''; // Add this line
   final double overlapFactor = 0.85;
-  final Random _random = Random();
   List<String> categories = [
     'Fulfil Potential',
     'Happiness & Wellbeing',
@@ -45,7 +43,6 @@ class _GoalCategoryState extends State<GoalCategory> {
     'Relationship'
   ];
   List<Map<String, dynamic>>? Allgoal;
-  final List<circles> _circles = [];
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   @override
@@ -65,9 +62,9 @@ class _GoalCategoryState extends State<GoalCategory> {
   Future<void> saveGoalToPrefs(
       var userId, var categoryId, var goalName, var goalId) async {
     final SharedPreferences prefs = await _prefs;
-    var GoalName = prefs.setString('goalName', goalName);
-    var GoalCategory = prefs.setString("GoalCategory", widget.Circletitle);
-    var usergoalId = prefs.setInt("goalId", goalId);
+    await prefs.setString('goalName', goalName);
+    await prefs.setString("GoalCategory", widget.Circletitle);
+    await prefs.setInt("goalId", goalId);
     Goal goal = Goal(
       name: goalName,
       reason: [
@@ -85,8 +82,8 @@ class _GoalCategoryState extends State<GoalCategory> {
     );
     String jsonString =
         jsonEncode(goal.toJson()); // converting object to json string
-    prefs.setString('goal', jsonString);
-    var userGoalId = prefs.setInt('goalId', goalId);
+    await prefs.setString('goal', jsonString);
+    await prefs.setInt('goalId', goalId);
 
     getGoal();
   }
@@ -96,7 +93,7 @@ class _GoalCategoryState extends State<GoalCategory> {
   // }
 
   String capitalizeFirstLetter(String text) {
-    if (text == null || text.isEmpty) {
+    if (text.isEmpty) {
       return '';
     }
     return text[0].toUpperCase() + text.substring(1);
@@ -131,21 +128,21 @@ class _GoalCategoryState extends State<GoalCategory> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    var goal_route = prefs.getString('goal_route');
+    var goalRoute = prefs.getString('goal_route');
     setState(() {
-      route = goal_route!;
+      route = goalRoute!;
     });
   }
 
   void _fetchgetAllGoal() {
     AdminGoal.getAllGoal(widget.id).then((response) {
-      if (response.length != 0) {
+      if (response.isNotEmpty) {
         setState(() {
           goalNamesAndCategories = response;
           Allgoal = response;
@@ -156,12 +153,10 @@ class _GoalCategoryState extends State<GoalCategory> {
       }
     }).catchError((error) {
       loadData();
-      print("error");
     });
   }
 
-  TextEditingController _searchController = TextEditingController();
-  List<Map<String, dynamic>> _searchResults = [];
+  final TextEditingController _searchController = TextEditingController();
   List<Map<String, dynamic>>? goalNamesAndCategories;
 
   void _searchGoals(String searchTerm, int id) {
@@ -171,7 +166,7 @@ class _GoalCategoryState extends State<GoalCategory> {
             if (response.isEmpty)
               {
                 setState(() {
-                  Loading = false;
+                  loading = false;
                   Allgoal = goalNamesAndCategories;
                   noData = true;
                 }),
@@ -180,7 +175,7 @@ class _GoalCategoryState extends State<GoalCategory> {
               {
                 setState(() {
                   Allgoal = response;
-                  Loading = false;
+                  loading = false;
                   noData = false;
                 }),
               }
@@ -284,7 +279,7 @@ class _GoalCategoryState extends State<GoalCategory> {
               // SingleChildScrollView(
               //   child: ,
               // )
-              Loading == false
+              loading == false
                   ? SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Column(
@@ -328,7 +323,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                               SizedBox(
                                 width: AppDimensions.width10(context) * 1.5,
                               ),
-                              Container(
+                              SizedBox(
                                 height: AppDimensions.height10(context) * 8.9,
                                 child: Text(
                                   "Select your goal for \n ‘${widget.Circletitle}’ ",
@@ -384,9 +379,6 @@ class _GoalCategoryState extends State<GoalCategory> {
                                     ),
                                     itemCount: Allgoal![0]["goals"].length,
                                     itemBuilder: (context, index1) {
-                                      final goalName = Allgoal![0]["goals"]
-                                          [index1]["goalName"];
-
                                       return Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
@@ -455,7 +447,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                   right: AppDimensions.width10(context) * 2.2),
               //width: AppDimensions.width10(context) * 41.4,
               height: AppDimensions.width10(context) * 7.0,
-              child: SearchIcon == true
+              child: searchIcon == true
                   ? Container(
                       color: Colors.transparent,
                       child: Row(
@@ -538,7 +530,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                SearchIcon = false;
+                                searchIcon = false;
                                 _searchController.clear();
                               });
                             },
@@ -565,7 +557,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                         children: [
                           Row(
                             children: [
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.width10(context) * 4.7,
                                 height: AppDimensions.height10(context) * 4.7,
                                 // padding: EdgeInsets.only(
@@ -601,7 +593,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                             ],
                           ),
 
-                          Container(
+                          SizedBox(
                             width: AppDimensions.width10(context) * 5,
                             height: AppDimensions.height10(context) * 5,
                             // padding: EdgeInsets.only(
@@ -610,7 +602,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                             child: GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  SearchIcon = true;
+                                  searchIcon = true;
                                 });
                               },
                               child: Image.asset(

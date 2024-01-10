@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,13 +19,12 @@ class goal_prac_info extends StatefulWidget {
 class _goal_prac_infoState extends State<goal_prac_info> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getBottomSheet();
   }
 
   getBottomSheet() {
-    Timer(Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 5), () {
       prac_info_sheet(context);
     });
   }
@@ -54,9 +52,9 @@ class _goal_prac_infoState extends State<goal_prac_info> {
             child: IconButton(
                 onPressed: () async {
                   Navigator.push(
-                      context, FadePageRouteReverse(page: Categories()));
+                      context, FadePageRouteReverse(page: const Categories()));
                   final SharedPreferences prefs = await _prefs;
-                  var route = prefs.setString('goal_route', 'view_all_goals');
+                  await prefs.setString('goal_route', 'view_all_goals');
                 },
                 icon: Image.asset(
                   'assets/images/Addgoal.webp',

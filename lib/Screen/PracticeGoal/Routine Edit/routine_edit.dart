@@ -27,11 +27,10 @@ int count = 0;
 
 class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
   bool buttonActive = false;
-  int Count = 0;
   var pracName;
   bool updated = false;
   String goalName = '';
-  bool Loading = true;
+  bool loading = true;
   var schedule;
   var starttime;
   var color;
@@ -90,7 +89,6 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
       }
     }).catchError((error) {
       loadData();
-      print("hell");
     });
   }
 
@@ -100,7 +98,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -177,7 +175,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                //  width: AppDimensions.width10(context) * 3,
+                  //  width: AppDimensions.width10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
@@ -209,7 +207,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 3.0,
+                    // width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
@@ -231,7 +229,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
               ),
             ),
           ),
-          Loading == false
+          loading == false
               ? SingleChildScrollView(
                   physics: const ClampingScrollPhysics(),
                   child: Column(
@@ -358,259 +356,259 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
-                                              Container(
-                                                child: AdvanceExpansionTile(
-                                                  key: const Key('expand'),
-                                                  maintainState: true,
-                                                  initiallyExpanded: true,
-                                                  onExpansionChanged:
-                                                      (expanded) {
-                                                    if (expanded) {
-                                                      setState(() {
-                                                        count = count + 1;
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        count = count - 1;
-                                                      });
+                                              AdvanceExpansionTile(
+                                                key: const Key('expand'),
+                                                maintainState: true,
+                                                initiallyExpanded: true,
+                                                onExpansionChanged: (expanded) {
+                                                  if (expanded) {
+                                                    setState(() {
+                                                      count = count + 1;
+                                                    });
+                                                  } else {
+                                                    setState(() {
+                                                      count = count - 1;
+                                                    });
 
-                                                      // num = 0;
-                                                    }
-                                                  },
-                                                  disabled: true,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                    shape: BoxShape.rectangle,
-                                                  ),
-                                                  trailing: Container(
-                                                      height: 32.5,
-                                                      width: 32.5,
-                                                      decoration:
-                                                          const BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        color: Color.fromRGBO(
-                                                            250, 153, 52, 1),
-                                                      ),
-                                                      child:
-                                                          FloatingActionButton(
-                                                              elevation: 0,
-                                                              backgroundColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              child: const Icon(
-                                                                Icons.add,
-                                                                color: Colors
-                                                                    .white,
-                                                                size: 30,
-                                                              ),
-                                                              onPressed: () {
-                                                                showModalBottomSheet(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (context) {
-                                                                    return MyListWheelForm(
-                                                                      key: Key(
-                                                                          "${widget.key}"),
-                                                                      onSelectionChanged: (selectedDay,
-                                                                          selectedHour,
-                                                                          selectedMinute,
-                                                                          selectedPeriod,
-                                                                          Done) {
-                                                                        setState(
-                                                                            () async {
-                                                                          if (Done) {
-                                                                            //selectedDays.add(days_name);
-                                                                            // _globalKey.currentState?.expand();
-
-                                                                            setState(() {
-                                                                              // num = num + 1;
-                                                                              //   start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                                                                            });
-
-                                                                            // final SharedPreferences prefs =
-                                                                            //     await _prefs;
-                                                                            // var Start_Time = prefs.setString(
-                                                                            //     'startTime', '$start_time');
-                                                                            // var End_Time = prefs.setString(
-                                                                            //     'endTime', '$end_time');
-
-                                                                            Done =
-                                                                                Done;
-                                                                            if (Done ==
-                                                                                true) {
-                                                                              // _globalKey.currentState?.expand();
-                                                                              String start_time = '';
-                                                                              setState(() {
-                                                                                start_time = "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
-                                                                              });
-                                                                              if (timesPerDay[index].keys.length < 11) {
-                                                                                timesPerDay[index]['time${timesPerDay[index].keys.length}'] = start_time;
-                                                                              } else {
-                                                                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Practice routine in limited to 10 sessions par day.")));
-                                                                              }
-
-                                                                              Navigator.pop(context);
-                                                                            }
-                                                                          }
-                                                                        });
-                                                                      },
-                                                                    );
-                                                                  },
-                                                                  isScrollControlled:
-                                                                      true,
-                                                                  shape:
-                                                                      const RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .vertical(
-                                                                      top: Radius
-                                                                          .circular(
-                                                                              16),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              })),
-                                                  title: Text(
-                                                    selectedDay[index],
-                                                    style: const TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            67, 114, 150, 1),
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        fontSize: 20.0),
-                                                  ),
-                                                  children: <Widget>[
-                                                    for (int i = 0;
-                                                        i <
-                                                                timesPerDay[index]
-                                                                        .keys
-                                                                        .length -
-                                                                    1 &&
-                                                            i <= 9;
-                                                        i++) ...[
-                                                      Container(
-                                                        // color:Colors.orange,
-                                                        width: AppDimensions
-                                                                .width10(
-                                                                    context) *
-                                                            38.2,
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(
-                                                                bottom: 10),
-                                                        child: Row(
-                                                          children: [
-                                                            startTimerState(
-                                                              key: Key(
-                                                                  "$widget.key"),
-                                                              text:
-                                                                  ' ${i + 1}) Time: ',
-                                                              start_Time:
-                                                                  timesPerDay[
-                                                                          index]
-                                                                      .values
-                                                                      .elementAt(
-                                                                          i + 1),
-                                                              onChanged:
-                                                                  (value) {
-                                                                setState(() {
-                                                                  // start_time = value;
-                                                                });
-                                                              },
-                                                              onChangedStart:
-                                                                  (value) {
-                                                                Map<String,
-                                                                        dynamic>
-                                                                    DayMap =
-                                                                    timesPerDay
-                                                                        .firstWhere(
-                                                                  (map) =>
-                                                                      map['day'] ==
-                                                                      selectedDay[
-                                                                          index],
-                                                                );
-                                                                DayMap['time${i + 1}'] =
-                                                                    value;
-                                                                setState(() {
-                                                                  //  start_time = value;
-                                                                });
-                                                                //times[i] = start_time;
-                                                              },
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .only(
-                                                                      left:
-                                                                          8.0),
-                                                              child: Container(
-                                                                  height: 37,
-                                                                  width: 37,
-                                                                  decoration:
-                                                                      const BoxDecoration(
-                                                                    shape: BoxShape
-                                                                        .circle,
-                                                                    color: Color
-                                                                        .fromRGBO(
-                                                                            0,
-                                                                            0,
-                                                                            0,
-                                                                            0.1),
-                                                                  ),
-                                                                  child:
-                                                                      FloatingActionButton(
-                                                                    elevation:
-                                                                        0,
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onPressed:
-                                                                        () {
-                                                                      timesPerDay[
-                                                                              index]
-                                                                          .remove(
-                                                                              'time${i + 1}');
-
-                                                                      for (int y = i +
-                                                                              1;
-                                                                          y <=
-                                                                              timesPerDay[index].keys.length;
-                                                                          y++) {
-                                                                        String
-                                                                            currentTimeKey =
-                                                                            'time${y}';
-                                                                        if (timesPerDay[index]
-                                                                            .containsKey(currentTimeKey)) {
-                                                                          timesPerDay[index]
-                                                                              [
-                                                                              'time${y - 1}'] = timesPerDay[
-                                                                                  index]
-                                                                              [
-                                                                              currentTimeKey];
-                                                                          timesPerDay[index]
-                                                                              .remove(currentTimeKey);
-                                                                        }
-                                                                      }
-                                                                      setState(
-                                                                          () {});
-                                                                    },
-                                                                    child:
-                                                                        const Icon(
-                                                                      Icons
-                                                                          .delete,
-                                                                      color: Colors
-                                                                          .black,
-                                                                      size: 15,
-                                                                    ),
-                                                                  )),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ]
-                                                  ],
+                                                    // num = 0;
+                                                  }
+                                                },
+                                                disabled: true,
+                                                decoration: const BoxDecoration(
+                                                  shape: BoxShape.rectangle,
                                                 ),
+                                                trailing: Container(
+                                                    height: 32.5,
+                                                    width: 32.5,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: Color.fromRGBO(
+                                                          250, 153, 52, 1),
+                                                    ),
+                                                    child: FloatingActionButton(
+                                                        elevation: 0,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        child: const Icon(
+                                                          Icons.add,
+                                                          color: Colors.white,
+                                                          size: 30,
+                                                        ),
+                                                        onPressed: () {
+                                                          showModalBottomSheet(
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return MyListWheelForm(
+                                                                key: Key(
+                                                                    "${widget.key}"),
+                                                                onSelectionChanged:
+                                                                    (selectedDay,
+                                                                        selectedHour,
+                                                                        selectedMinute,
+                                                                        selectedPeriod,
+                                                                        done) {
+                                                                  setState(
+                                                                      () async {
+                                                                    if (done) {
+                                                                      //selectedDays.add(days_name);
+                                                                      // _globalKey.currentState?.expand();
+
+                                                                      setState(
+                                                                          () {
+                                                                        // num = num + 1;
+                                                                        //   startTime = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                                                      });
+
+                                                                      // final SharedPreferences prefs =
+                                                                      //     await _prefs;
+                                                                      // var Start_Time = prefs.setString(
+                                                                      //     'startTime', '$startTime');
+                                                                      // var End_Time = prefs.setString(
+                                                                      //     'endTime', '$end_time');
+
+                                                                      done =
+                                                                          done;
+                                                                      if (done ==
+                                                                          true) {
+                                                                        // _globalKey.currentState?.expand();
+                                                                        String
+                                                                            startTime =
+                                                                            '';
+                                                                        setState(
+                                                                            () {
+                                                                          startTime =
+                                                                              "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
+                                                                        });
+                                                                        if (timesPerDay[index].keys.length <
+                                                                            11) {
+                                                                          timesPerDay[index]['time${timesPerDay[index].keys.length}'] =
+                                                                              startTime;
+                                                                        } else {
+                                                                          ScaffoldMessenger.of(context)
+                                                                              .showSnackBar(const SnackBar(content: Text("Practice routine in limited to 10 sessions par day.")));
+                                                                        }
+
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      }
+                                                                    }
+                                                                  });
+                                                                },
+                                                              );
+                                                            },
+                                                            isScrollControlled:
+                                                                true,
+                                                            shape:
+                                                                const RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .vertical(
+                                                                top: Radius
+                                                                    .circular(
+                                                                        16),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        })),
+                                                title: Text(
+                                                  selectedDay[index],
+                                                  style: const TextStyle(
+                                                      color: Color.fromRGBO(
+                                                          67, 114, 150, 1),
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 20.0),
+                                                ),
+                                                children: <Widget>[
+                                                  for (int i = 0;
+                                                      i <
+                                                              timesPerDay[index]
+                                                                      .keys
+                                                                      .length -
+                                                                  1 &&
+                                                          i <= 9;
+                                                      i++) ...[
+                                                    Container(
+                                                      // color:Colors.orange,
+                                                      width:
+                                                          AppDimensions.width10(
+                                                                  context) *
+                                                              38.2,
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              bottom: 10),
+                                                      child: Row(
+                                                        children: [
+                                                          startTimerState(
+                                                            key: Key(
+                                                                "$widget.key"),
+                                                            text:
+                                                                ' ${i + 1}) Time: ',
+                                                            start_Time:
+                                                                timesPerDay[
+                                                                        index]
+                                                                    .values
+                                                                    .elementAt(
+                                                                        i + 1),
+                                                            onChanged: (value) {
+                                                              setState(() {
+                                                                // startTime = value;
+                                                              });
+                                                            },
+                                                            onChangedStart:
+                                                                (value) {
+                                                              Map<String,
+                                                                      dynamic>
+                                                                  dayMap =
+                                                                  timesPerDay
+                                                                      .firstWhere(
+                                                                (map) =>
+                                                                    map['day'] ==
+                                                                    selectedDay[
+                                                                        index],
+                                                              );
+                                                              dayMap['time${i + 1}'] =
+                                                                  value;
+                                                              setState(() {
+                                                                //  startTime = value;
+                                                              });
+                                                              //times[i] = startTime;
+                                                            },
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .only(
+                                                                    left: 8.0),
+                                                            child: Container(
+                                                                height: 37,
+                                                                width: 37,
+                                                                decoration:
+                                                                    const BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  color: Color
+                                                                      .fromRGBO(
+                                                                          0,
+                                                                          0,
+                                                                          0,
+                                                                          0.1),
+                                                                ),
+                                                                child:
+                                                                    FloatingActionButton(
+                                                                  elevation: 0,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onPressed:
+                                                                      () {
+                                                                    timesPerDay[
+                                                                            index]
+                                                                        .remove(
+                                                                            'time${i + 1}');
+
+                                                                    for (int y =
+                                                                            i +
+                                                                                1;
+                                                                        y <=
+                                                                            timesPerDay[index].keys.length;
+                                                                        y++) {
+                                                                      String
+                                                                          currentTimeKey =
+                                                                          'time$y';
+                                                                      if (timesPerDay[
+                                                                              index]
+                                                                          .containsKey(
+                                                                              currentTimeKey)) {
+                                                                        timesPerDay[index]
+                                                                            [
+                                                                            'time${y - 1}'] = timesPerDay[
+                                                                                index]
+                                                                            [
+                                                                            currentTimeKey];
+                                                                        timesPerDay[index]
+                                                                            .remove(currentTimeKey);
+                                                                      }
+                                                                    }
+                                                                    setState(
+                                                                        () {});
+                                                                  },
+                                                                  child:
+                                                                      const Icon(
+                                                                    Icons
+                                                                        .delete,
+                                                                    color: Colors
+                                                                        .black,
+                                                                    size: 15,
+                                                                  ),
+                                                                )),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ]
+                                                ],
                                               ),
                                             ],
                                           )),
@@ -812,20 +810,20 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                     PracticeGoalApi()
                                         .updateUserPractice('schedule', updates)
                                         .then((response) {
-                                      if (response == true) {
-                                        setState(() {
-                                          updated = true;
-                                          showContainer = true;
+                                          if (response == true) {
+                                            setState(() {
+                                              updated = true;
+                                              showContainer = true;
+                                            });
+                                            startTimer();
+                                          } else if (response == false) {}
+                                        })
+                                        .catchError((error) {})
+                                        .whenComplete(() {
+                                          setState(() {
+                                            // Hide loader when the API call completes
+                                          });
                                         });
-                                        startTimer();
-                                      } else if (response == false) {}
-                                    }).catchError((error) {
-                                      print('===>Error');
-                                    }).whenComplete(() {
-                                      setState(() {
-                                        // Hide loader when the API call completes
-                                      });
-                                    });
                                   },
                                   child: Container(
                                     height: AppDimensions.height10(context) * 5,

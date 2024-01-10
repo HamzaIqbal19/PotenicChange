@@ -98,9 +98,9 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
               child: IconButton(
                   onPressed: () async {
                     Navigator.push(
-                        context, FadePageRouteReverse(page: Categories()));
+                        context, FadePageRouteReverse(page: const Categories()));
                     final SharedPreferences prefs = await _prefs;
-                    var route = prefs.setString('goal_route', 'view_all_goals');
+                    await prefs.setString('goal_route', 'view_all_goals');
                   },
                   icon: Image.asset(
                     'assets/images/Addgoal.webp',
@@ -336,7 +336,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
 
                                             final SharedPreferences prefs =
                                                 await _prefs;
-                                            var setId = prefs.setInt('goal_num',
+                                            await prefs.setInt('goal_num',
                                                 goalsDetails[index]['id']);
                                             await prefs.setString(
                                                 'goal_menu_route', 'your_goal');
@@ -594,7 +594,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                                                 final SharedPreferences
                                                                     prefs =
                                                                     await _prefs;
-                                                                var setId = prefs.setInt(
+                                                                await prefs.setInt(
                                                                     'goal_num',
                                                                     goalsDetails[
                                                                             index]

@@ -22,7 +22,7 @@ class InspirationApi {
       userGoalId) async {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
-    var UserId = prefs.getInt('userid');
+    var userId = prefs.getInt('userid');
     var headers = {'x-access-token': '$accessToken'};
 
     var request = http.MultipartRequest('POST',
@@ -37,7 +37,7 @@ class InspirationApi {
       "destinationLink": destinationLink,
       "userGoalId": userGoalId.toString(),
       "description": description,
-      "userId": "$UserId"
+      "userId": "$userId"
     });
 
     request.headers.addAll(headers);
@@ -55,25 +55,22 @@ class InspirationApi {
     if (response.statusCode == 200) {
       var responses = await response.stream.bytesToString();
       var responseBody = jsonDecode(responses);
-      var inspirationId =
-          prefs.setInt('userInspirationId', responseBody['result']['id']);
+      await prefs.setInt('userInspirationId', responseBody['result']['id']);
       prefs.remove('inspiration_saved_route');
 
       return responseBody;
-    } else {
-      print("request==========>$response.statusCode");
-    }
+    } else {}
   }
 
   Future updateInspiration(String title, hashTags, String destinationLink,
       String description, userGoalId, String author) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
     var userInspirationId = prefs.getInt('userInspirationId');
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
     var body = jsonEncode({
       "title": title,
@@ -90,10 +87,8 @@ class InspirationApi {
         body: body);
 
     if (request.statusCode == 200) {
-      var jsonData = jsonDecode(request.body);
       return true;
     } else {
-      print("Update failed");
       return false;
     }
   }
@@ -101,10 +96,10 @@ class InspirationApi {
   Future deleteUserInspiraton() async {
     final SharedPreferences prefs = await _prefs;
     var userInspirationId = prefs.getInt('userInspirationId');
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
 
     var request = await client.delete(
@@ -114,7 +109,6 @@ class InspirationApi {
     var responses = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
-      print('object deleted');
       return true;
     } else {
       return responses["message"];
@@ -123,11 +117,11 @@ class InspirationApi {
 
   Future getInspirationById() async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
     var userInspirationId = prefs.getInt('userInspirationId');
 
     var headers = {
-      'x-access-token': '$Accestoken',
+      'x-access-token': '$accessToken',
     };
     var response = await http.get(
       Uri.parse('${URL.BASE_URL}api/userInspiration/$userInspirationId'),
@@ -138,25 +132,22 @@ class InspirationApi {
       var jsonData = jsonDecode(response.body);
 
       return jsonData;
-    } else {
-      print(
-          'Failed to fetch inspiration names Request failed with status: ${response.statusCode}');
-    }
+    } else {}
   }
 
   Future getUserInspiration() async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
-    var UserId = prefs.getInt('userid');
+    var accessToken = prefs.getString("usertoken");
+    var userId = prefs.getInt('userid');
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken',
+      'x-access-token': '$accessToken',
     };
 
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId'),
+          '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$userId'),
       headers: headers,
     );
 
@@ -171,23 +162,21 @@ class InspirationApi {
 
   Future checkUserInspiration() async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
-    var UserId = prefs.getInt('userid');
+    var accessToken = prefs.getString("usertoken");
+    var userId = prefs.getInt('userid');
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken',
+      'x-access-token': '$accessToken',
     };
 
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId'),
+          '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$userId'),
       headers: headers,
     );
 
     if (response.statusCode == 200) {
-      var jsonData = jsonDecode(response.body);
-
       return true;
     } else {
       return false;
@@ -196,30 +185,30 @@ class InspirationApi {
 
   Future filterUserInspiration(type, goalId, tag) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
-    var UserId = prefs.getInt('userid');
+    var accessToken = prefs.getString("usertoken");
+    var userId = prefs.getInt('userid');
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken',
+      'x-access-token': '$accessToken',
     };
 
     var response = await http.get(
       Uri.parse(goalId != 0 && type != 0 && tag != null
-          ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId&inspirationId=$type&tag=$tag'
+          ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$userId?userGoalId=$goalId&inspirationId=$type&tag=$tag'
           : type != 0 && goalId != 0
-              ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId&inspirationId=$type'
+              ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$userId?userGoalId=$goalId&inspirationId=$type'
               : goalId != 0 && tag != null
-                  ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId&$tag=$tag'
+                  ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$userId?userGoalId=$goalId&$tag=$tag'
                   : tag != null && type != 0
-                      ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag&inspirationId=$type'
+                      ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$userId?tag=$tag&inspirationId=$type'
                       : type != 0
-                          ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?inspirationId=$type'
+                          ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$userId?inspirationId=$type'
                           : goalId != 0
-                              ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId'
+                              ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$userId?userGoalId=$goalId'
                               : tag != null
-                                  ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag'
-                                  : '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId'),
+                                  ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$userId?tag=$tag'
+                                  : '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$userId'),
       headers: headers,
     );
 
@@ -229,9 +218,6 @@ class InspirationApi {
       return jsonData;
     } else if (response.statusCode == 404) {
       return response.statusCode;
-    } else {
-      print(
-          'Failed to fetch inspiration names Request failed with status: ${response.statusCode}');
-    }
+    } else {}
   }
 }

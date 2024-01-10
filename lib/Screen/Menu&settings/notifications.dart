@@ -458,12 +458,13 @@ void _showBottomSheet(BuildContext context) {
 }
 
 class MyBottomSheet extends StatefulWidget {
+  const MyBottomSheet({super.key});
+
   @override
   _MyBottomSheetState createState() => _MyBottomSheetState();
 }
 
 class _MyBottomSheetState extends State<MyBottomSheet> {
-  int _selectedIndex = 0;
   final List<String> _statements = [
     'None',
     '10 minutes before',
@@ -496,7 +497,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                   .toList(),
               onSelectedItemChanged: (int index) {
                 setState(() {
-                  _selectedIndex = index;
+                  // _selectedIndex = index;
                   //activity_duration = _statements[_selectedIndex];
                   // _selected_activity = _statements[_selectedIndex];
                 });

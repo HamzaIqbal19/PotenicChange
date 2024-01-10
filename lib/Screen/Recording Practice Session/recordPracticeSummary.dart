@@ -30,10 +30,10 @@ class practice_summary extends StatefulWidget {
 }
 
 class _practice_summaryState extends State<practice_summary> {
-  String date_time = 'Now';
+  String dateTime = 'Now';
   String time = 'Am';
   String day = '';
-  var behaviour_route;
+  var behaviourRoute;
 
   String goalName = "";
   String identity = "";
@@ -42,21 +42,21 @@ class _practice_summaryState extends State<practice_summary> {
   var color = '0';
   String recordedDate = '';
   int differenceInDays1 = 0;
-  bool Loading = true;
+  bool loading = true;
   var report;
-  int Before = 0;
-  int After = 0;
-  String Feedback = '';
-  int Session = 0;
-  String EmotionFeedback = "";
-  String SessionFeedBack = "";
+  int before = 0;
+  int after = 0;
+  String feedback = '';
+  int session = 0;
+  String emotionFeedback = "";
+  String sessionFeedBack = "";
   var details;
 
   void _fetchRoute() async {
     final SharedPreferences prefs = await _prefs;
 
     setState(() {
-      behaviour_route = prefs.getBool('behaviour_route');
+      behaviourRoute = prefs.getBool('behaviour_route');
       report = prefs.getBool('isReportActive');
     });
   }
@@ -67,7 +67,7 @@ class _practice_summaryState extends State<practice_summary> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -84,7 +84,6 @@ class _practice_summaryState extends State<practice_summary> {
       }
     }).catchError((error) {
       loadData();
-      print("hell");
     });
   }
 
@@ -102,10 +101,7 @@ class _practice_summaryState extends State<practice_summary> {
       } else {
         loadData();
       }
-    }).catchError((error) {
-      //  loadData();
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   void recording() {
@@ -113,12 +109,12 @@ class _practice_summaryState extends State<practice_summary> {
       if (response.length != 0) {
         setState(() {
           details = response;
-          Before = response['recording']['feelingsBeforeSession'];
-          After = response['recording']['feelingsAfterSession'];
-          Feedback = response['recording']['notes'][0]['afterNote'];
-          EmotionFeedback = response['recording']['notes'][0]['beforeNote'];
-          SessionFeedBack = response['recording']['notes'][0]['endNote'];
-          Session = response['recording']['practiceSummary'];
+          before = response['recording']['feelingsBeforeSession'];
+          after = response['recording']['feelingsAfterSession'];
+          feedback = response['recording']['notes'][0]['afterNote'];
+          emotionFeedback = response['recording']['notes'][0]['beforeNote'];
+          sessionFeedBack = response['recording']['notes'][0]['endNote'];
+          session = response['recording']['practiceSummary'];
           recordedDate = response['recording']['recordingDate'];
         });
         DateTime currentDate =
@@ -240,7 +236,7 @@ class _practice_summaryState extends State<practice_summary> {
                                         color: const Color(0xFF007AFF),
                                         child: TextButton(
                                           onPressed: () {
-                                            if (behaviour_route == false) {
+                                            if (behaviourRoute == false) {
                                               Navigator.pushReplacement(
                                                   context,
                                                   FadePageRouteReverse(
@@ -316,7 +312,7 @@ class _practice_summaryState extends State<practice_summary> {
             image: AssetImage('assets/images/Mask Group.webp'),
             fit: BoxFit.cover,
           )),
-          child: Loading == false
+          child: loading == false
               ? SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
@@ -526,8 +522,8 @@ class _practice_summaryState extends State<practice_summary> {
                                           });
                                         }
                                       });
-                                      setState(() => date_time =
-                                          " ${day}:${newDateTime.hour}:${newDateTime.minute}:$time");
+                                      setState(() => dateTime =
+                                          " $day:${newDateTime.hour}:${newDateTime.minute}:$time");
                                     }
                                   }));
                             },
@@ -552,7 +548,7 @@ class _practice_summaryState extends State<practice_summary> {
                                   height: AppDimensions.height10(context) * 2.6,
                                   width: AppDimensions.width10(context) * 21.0,
                                   child: Text(
-                                    date_time,
+                                    dateTime,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize:
@@ -609,15 +605,15 @@ class _practice_summaryState extends State<practice_summary> {
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(width: 2, color: Colors.white),
-                            color: Before == 1
+                            color: before == 1
                                 ? const Color(0xff546096)
-                                : Before == 2
+                                : before == 2
                                     ? const Color(0xff7291A0)
-                                    : Before == 3
+                                    : before == 3
                                         ? const Color(0xffE1C44F)
-                                        : Before == 4
+                                        : before == 4
                                             ? const Color(0xffFA9458)
-                                            : Before == 5
+                                            : before == 5
                                                 ? const Color(0xffFF7C42)
                                                 : const Color(0xffFA9458)),
                         child: Stack(children: [
@@ -627,15 +623,15 @@ class _practice_summaryState extends State<practice_summary> {
                                   bottom:
                                       AppDimensions.height10(context) * 0.5),
                               child: Text(
-                                Before == 1
+                                before == 1
                                     ? 'I feel very\nlow &\ndemotivated'
-                                    : Before == 2
+                                    : before == 2
                                         ? 'I feel slightly\nirritated, not\nfussed really'
-                                        : Before == 3
+                                        : before == 3
                                             ? 'I feel ok'
-                                            : Before == 4
+                                            : before == 4
                                                 ? 'Motivated and \nready to start'
-                                                : Before == 5
+                                                : before == 5
                                                     ? "Great, cannot \nwait to start!"
                                                     : 'I felt good',
                                 textAlign: TextAlign.center,
@@ -661,7 +657,7 @@ class _practice_summaryState extends State<practice_summary> {
                                       summary: true,
                                       pracName: pracName,
                                       record: false,
-                                      selected: Before,
+                                      selected: before,
                                     )));
                               },
                               child: Container(
@@ -682,7 +678,7 @@ class _practice_summaryState extends State<practice_summary> {
                           )
                         ]),
                       ),
-                      EmotionFeedback != " "
+                      emotionFeedback != " "
                           ? Container(
                               width: AppDimensions.width10(context) * 36.0,
                               // height: AppDimensions.height10(context) * 7.3,
@@ -704,7 +700,7 @@ class _practice_summaryState extends State<practice_summary> {
                                         AppDimensions.height10(context) * 2.0),
                                 width: AppDimensions.width10(context) * 32.0,
                                 child: Text(
-                                  EmotionFeedback,
+                                  emotionFeedback,
                                   style: TextStyle(
                                       color: const Color(0xff646464),
                                       fontSize:
@@ -756,15 +752,15 @@ class _practice_summaryState extends State<practice_summary> {
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(width: 2, color: Colors.white),
-                            color: After == 1
+                            color: after == 1
                                 ? const Color(0xff546096)
-                                : After == 2
+                                : after == 2
                                     ? const Color(0xff7291A0)
-                                    : After == 3
+                                    : after == 3
                                         ? const Color(0xffE1C44F)
-                                        : After == 4
+                                        : after == 4
                                             ? const Color(0xffFA9458)
-                                            : After == 5
+                                            : after == 5
                                                 ? const Color(0xffFF7C42)
                                                 : const Color(0xffFA9458)),
                         child: Stack(children: [
@@ -774,15 +770,15 @@ class _practice_summaryState extends State<practice_summary> {
                                   bottom:
                                       AppDimensions.height10(context) * 0.5),
                               child: Text(
-                                After == 1
+                                after == 1
                                     ? 'I feel very low\n& irritated'
-                                    : After == 2
+                                    : after == 2
                                         ? 'I feel alright,\n but slightly\ndown'
-                                        : After == 3
+                                        : after == 3
                                             ? 'I feel ok'
-                                            : After == 4
+                                            : after == 4
                                                 ? 'I feel focused\n& motivated'
-                                                : After == 5
+                                                : after == 5
                                                     ? 'I feel excited\nand good in\nmyself'
                                                     : 'I feel focused\n& good',
                                 textAlign: TextAlign.center,
@@ -806,7 +802,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     FadePageRoute(
                                         page: feelingsAfter(
                                       summary: true,
-                                      selected: After,
+                                      selected: after,
                                     )));
                               },
                               child: Container(
@@ -849,7 +845,7 @@ class _practice_summaryState extends State<practice_summary> {
                                         AppDimensions.height10(context) * 2.0),
                                 width: AppDimensions.width10(context) * 32.0,
                                 child: Text(
-                                  Feedback.toString(),
+                                  feedback.toString(),
                                   style: TextStyle(
                                       color: const Color(0xff646464),
                                       fontSize:
@@ -901,13 +897,13 @@ class _practice_summaryState extends State<practice_summary> {
                                   bottom:
                                       AppDimensions.height10(context) * 0.5),
                               child: Text(
-                                Session == 1
+                                session == 1
                                     ? 'Not great,\nhaven’t\nenjoyed it'
-                                    : Session == 2
+                                    : session == 2
                                         ? 'I got distracted,\nit was hard to\nfocus'
-                                        : Session == 3
+                                        : session == 3
                                             ? 'It was ok'
-                                            : Session == 4
+                                            : session == 4
                                                 ? 'Good, I quite\nliked it'
                                                 : 'Great,\nI enjoyed the experience',
                                 textAlign: TextAlign.center,
@@ -931,7 +927,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     FadePageRoute(
                                         page: endofSession(
                                       summary: true,
-                                      selected: Session,
+                                      selected: session,
                                     )));
                               },
                               child: Container(
@@ -953,7 +949,7 @@ class _practice_summaryState extends State<practice_summary> {
                           )
                         ]),
                       ),
-                      SessionFeedBack != " "
+                      sessionFeedBack != " "
                           ? Container(
                               width: AppDimensions.width10(context) * 36.0,
                               // height: AppDimensions.height10(context) * 7.3,
@@ -975,7 +971,7 @@ class _practice_summaryState extends State<practice_summary> {
                                         AppDimensions.height10(context) * 2.0),
                                 width: AppDimensions.width10(context) * 32.0,
                                 child: Text(
-                                  SessionFeedBack,
+                                  sessionFeedBack,
                                   style: TextStyle(
                                       color: const Color(0xff646464),
                                       fontSize:
@@ -1181,10 +1177,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                                     record:
                                                                         differenceInDays1,
                                                                   )));
-                                                            } else {
-                                                              print(
-                                                                  'Api failed');
-                                                            }
+                                                            } else {}
                                                           });
                                                         },
                                                         child: Text(

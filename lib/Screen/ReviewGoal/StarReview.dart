@@ -9,7 +9,6 @@ import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -38,7 +37,6 @@ bool color5 = false;
 bool color6 = false;
 
 class _StarReviewState extends State<StarReview> {
-  Future<List<String>>? _goalNamesFuture;
   var goalName;
   var reason;
 
@@ -87,7 +85,6 @@ class _StarReviewState extends State<StarReview> {
       setState(() {
         Loading = false;
       });
-      print("error");
     });
   }
 
@@ -150,7 +147,7 @@ class _StarReviewState extends State<StarReview> {
                 ? IconButton(
                     icon: Image.asset(
                       'assets/images/Back.webp',
-                     // width: AppDimensions.width10(context) * 3,
+                      // width: AppDimensions.width10(context) * 3,
                       height: AppDimensions.height10(context) * 3,
                       fit: BoxFit.contain,
                     ),
@@ -266,15 +263,13 @@ class _StarReviewState extends State<StarReview> {
                         SizedBox(
                           height: AppDimensions.height10(context) * 0.6,
                         ),
-                        Container(
-                          child: Center(
-                            child: Text(
-                              "Star Details",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: const Color(0xFF437296),
-                                fontSize: AppDimensions.font10(context) * 3.0,
-                              ),
+                        Center(
+                          child: Text(
+                            "Star Details",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFF437296),
+                              fontSize: AppDimensions.font10(context) * 3.0,
                             ),
                           ),
                         ),
@@ -555,9 +550,8 @@ class _StarReviewState extends State<StarReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -637,9 +631,8 @@ class _StarReviewState extends State<StarReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -719,9 +712,8 @@ class _StarReviewState extends State<StarReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -804,9 +796,8 @@ class _StarReviewState extends State<StarReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -886,9 +877,8 @@ class _StarReviewState extends State<StarReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -968,9 +958,8 @@ class _StarReviewState extends State<StarReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -1692,9 +1681,7 @@ class _StarReviewState extends State<StarReview> {
                                                           login: true,
                                                         )));
                                                   }
-                                                }).catchError((error) {
-                                                  print("error");
-                                                });
+                                                }).catchError((error) {});
                                               },
                                               child: Text(
                                                 'Yes',
@@ -1801,7 +1788,7 @@ class _StarReviewState extends State<StarReview> {
 class inner_text1 extends StatefulWidget {
   final String circle_text;
 
-  inner_text1(this.circle_text, {super.key});
+  const inner_text1(this.circle_text, {super.key});
 
   @override
   State<inner_text1> createState() => _inner_text1State();
@@ -1814,6 +1801,7 @@ class _inner_text1State extends State<inner_text1> {
 
   late FocusNode _focusNode;
 
+  @override
   void initState() {
     super.initState();
     _focusNode = FocusNode()..addListener(_onFocus);
@@ -1838,7 +1826,7 @@ class _inner_text1State extends State<inner_text1> {
               ? const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Color(0xFFEFBEB2), Color(0xFFFEAA897)])
+                  colors: [Color(0xFFEFBEB2), Color(0xFFEAA897)])
               : const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -1872,7 +1860,7 @@ class inner_text2 extends StatefulWidget {
   final String circle_text;
   final String panel_Text;
 
-  inner_text2(this.circle_text, this.panel_Text, {super.key});
+  const inner_text2(this.circle_text, this.panel_Text, {super.key});
 
   @override
   State<inner_text2> createState() => _inner_text2State();
@@ -1885,6 +1873,7 @@ class _inner_text2State extends State<inner_text2> {
 
   late FocusNode _focusNode;
 
+  @override
   void initState() {
     super.initState();
     _focusNode = FocusNode()..addListener(_onFocus);
@@ -1922,7 +1911,7 @@ class _inner_text2State extends State<inner_text2> {
               padding: EdgeInsets.only(
                   top: AppDimensions.height10(context) * 1.3,
                   left: AppDimensions.width10(context) * 0.6),
-              child: Text("${widget.circle_text}",
+              child: Text(widget.circle_text,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontFamily: "Laila",

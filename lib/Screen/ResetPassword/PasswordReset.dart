@@ -16,7 +16,7 @@ class PasswordReset extends StatefulWidget {
 }
 
 class _PasswordResetState extends State<PasswordReset> {
-  bool Loading = false;
+  bool loading = false;
   bool errorEmail = false;
   bool noEmail = false;
   final email = TextEditingController();
@@ -27,8 +27,6 @@ class _PasswordResetState extends State<PasswordReset> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
-
     super.dispose();
     email.dispose();
   }
@@ -244,6 +242,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                             errorEmail = false;
                                           });
                                         }
+                                        return null;
                                       },
                                     ),
                                   )
@@ -310,7 +309,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                       Navigator.push(
                                         context,
                                         FadePageRoute(
-                                          page: Loginemailandpassword(),
+                                          page: const Loginemailandpassword(),
                                         ),
                                       );
                                     },
@@ -348,17 +347,17 @@ class _PasswordResetState extends State<PasswordReset> {
                         if (_formkey1.currentState!.validate() &&
                             errorEmail == false) {
                           setState(() {
-                            Loading = true;
+                            loading = true;
                           });
 
                           Authentication()
                               .passReset(
-                            '${email.text.toString()}',
+                            email.text.toString(),
                           )
                               .then((response) {
                             if (response == true) {
                               setState(() {
-                                Loading = false;
+                                loading = false;
                                 noEmail = false;
                               });
                               Navigator.pushReplacement(
@@ -371,20 +370,19 @@ class _PasswordResetState extends State<PasswordReset> {
                               );
                             } else if (response == 404) {
                               setState(() {
-                                Loading = false;
+                                loading = false;
                                 noEmail = true;
                               });
                             } else {
                               setState(() {
-                                Loading = false;
+                                loading = false;
                                 noEmail = false;
                               });
                             }
                           }).catchError((error) {
                             setState(() {
-                              Loading = false;
+                              loading = false;
                             });
-                            print("error");
                           });
                         }
                       },
@@ -396,10 +394,8 @@ class _PasswordResetState extends State<PasswordReset> {
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 5.0),
                         ),
-                        // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.width10(context) *0.8),
-
                         child: Center(
-                            child: Loading == false
+                            child: loading == false
                                 ? Text(
                                     'Reset password',
                                     style: TextStyle(

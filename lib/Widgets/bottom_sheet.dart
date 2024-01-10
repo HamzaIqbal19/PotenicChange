@@ -39,7 +39,7 @@ Future<void> saveGoalToPrefs(
   var goalName,
 ) async {
   final SharedPreferences prefs = await _prefs;
-  var GoalName = prefs.setString('goalName', goalName);
+  await prefs.setString('goalName', goalName);
   //var GoalCategory = prefs.setString("GoalCategory", widget.Circletitle);
 
   Goal goal = Goal(
@@ -83,7 +83,7 @@ int catId = 1;
 
 bottom_sheet(context) {
   final goalName = TextEditingController();
-  final _formkey = GlobalKey<FormState>();
+  final formkey = GlobalKey<FormState>();
   bool enable = false;
 
   return showModalBottomSheet(
@@ -104,7 +104,7 @@ bottom_sheet(context) {
           return Padding(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: Container(
+            child: SizedBox(
               // color:Colors.lightGreen,
               // height: AppDimensions.height10(context) * 45.0,
               width: AppDimensions.width10(context) * 41.4,
@@ -116,7 +116,7 @@ bottom_sheet(context) {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                       height: AppDimensions.height10(context) * 3.6,
                       width: AppDimensions.width10(context) * 35.5,
 
@@ -167,70 +167,64 @@ bottom_sheet(context) {
                                     ),
                                   )),
                             ),
-                            Container(
-                              //  height: AppDimensions.height10(context) * 9.0,
-                              child: DropdownButtonHideUnderline(
-                                child: DropdownButton2<String>(
-                                  hint: Text(
-                                    "Select a category ",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize:
-                                            AppDimensions.font10(context) * 2.4,
-                                        fontFamily: "Laila",
-                                        color: const Color.fromARGB(
-                                            209, 250, 154, 52)),
-                                  ),
-                                  value: dropdownValue,
-
-                                  isExpanded: true,
-                                  iconStyleData: IconStyleData(
-                                      iconSize:
-                                          AppDimensions.height10(context) * 4.0,
-                                      iconEnabledColor:
-                                          const Color(0xFFFA9934)),
-
-                                  // elevation: 16,
-
-                                  onChanged: (String? value) {
-                                    // This is called when the user selects an item.
-
-                                    setState(() {
-                                      dropdownValue = value!;
-                                      index = categories.indexOf(value);
-                                    });
-                                  },
-
-                                  dropdownStyleData: DropdownStyleData(
-                                      maxHeight:
-                                          AppDimensions.height10(context) *
-                                              25.0,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                              AppDimensions.height10(context) *
-                                                  2.0))),
-                                  items: categories
-                                      .map<DropdownMenuItem<String>>(
-                                          (String value) {
-                                    // setState(() {
-                                    //   index =
-                                    // });
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(
-                                        value,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    2.4,
-                                            fontFamily: "Laila",
-                                            color: const Color.fromARGB(
-                                                209, 250, 154, 52)),
-                                      ),
-                                    );
-                                  }).toList(),
+                            DropdownButtonHideUnderline(
+                              child: DropdownButton2<String>(
+                                hint: Text(
+                                  "Select a category ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 2.4,
+                                      fontFamily: "Laila",
+                                      color: const Color.fromARGB(
+                                          209, 250, 154, 52)),
                                 ),
+                                value: dropdownValue,
+
+                                isExpanded: true,
+                                iconStyleData: IconStyleData(
+                                    iconSize:
+                                        AppDimensions.height10(context) * 4.0,
+                                    iconEnabledColor: const Color(0xFFFA9934)),
+
+                                // elevation: 16,
+
+                                onChanged: (String? value) {
+                                  // This is called when the user selects an item.
+
+                                  setState(() {
+                                    dropdownValue = value!;
+                                    index = categories.indexOf(value);
+                                  });
+                                },
+
+                                dropdownStyleData: DropdownStyleData(
+                                    maxHeight:
+                                        AppDimensions.height10(context) * 25.0,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10(context) *
+                                                2.0))),
+                                items: categories.map<DropdownMenuItem<String>>(
+                                    (String value) {
+                                  // setState(() {
+                                  //   index =
+                                  // });
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  2.4,
+                                          fontFamily: "Laila",
+                                          color: const Color.fromARGB(
+                                              209, 250, 154, 52)),
+                                    ),
+                                  );
+                                }).toList(),
                               ),
                             ),
                           ],
@@ -240,11 +234,11 @@ bottom_sheet(context) {
                     SizedBox(
                       height: AppDimensions.height10(context),
                     ),
-                    Container(
+                    SizedBox(
                       width: AppDimensions.width10(context) * 36.0,
                       height: AppDimensions.height10(context) * 8.0,
                       child: Form(
-                        key: _formkey,
+                        key: formkey,
                         child: TextFormField(
                           maxLength: 50,
                           style: TextStyle(
@@ -356,14 +350,14 @@ bottom_sheet(context) {
                               catId = index + 1;
                             });
 
-                            if (_formkey.currentState!.validate()) {
+                            if (formkey.currentState!.validate()) {
                               getUserId(catId, goalName.text.toString());
 
                               goalName.clear();
 
                               final SharedPreferences prefs = await _prefs;
-                              var goal_Name = prefs.setString(
-                                  'goalName', '${goalName.text.toString()}');
+                              await prefs.setString(
+                                  'goalName', goalName.text.toString());
 
                               Navigator.push(
                                 context,

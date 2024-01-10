@@ -71,51 +71,50 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
 
   void _fetchGoalNames() async {
     final SharedPreferences prefs = await _prefs;
-    AdminGoal.getUserActiveGoal().then((response) {
-      if (response.length != 0) {
-        setState(() {
-          goalDetails = response[0];
-          goalName = response[0]["name"];
-          // pracColor = response['userPractices'] [0]['color'];
-          identity = response[0]["identityStatement"][0]["text"];
-          color = response[0]["color"] ?? 0;
-          no_activegoals = false;
-        });
+    AdminGoal.getUserActiveGoal()
+        .then((response) async {
+          if (response.length != 0) {
+            setState(() {
+              goalDetails = response[0];
+              goalName = response[0]["name"];
+              // pracColor = response['userPractices'] [0]['color'];
+              identity = response[0]["identityStatement"][0]["text"];
+              color = response[0]["color"] ?? 0;
+              no_activegoals = false;
+            });
 
-        var goalId = prefs.setInt('goal_num', response[0]["id"]);
-        loadData();
-      } else if (response == 404) {
-        setState(() {
-          no_activegoals = true;
+            await prefs.setInt('goal_num', response[0]["id"]);
+            loadData();
+          } else if (response == 404) {
+            setState(() {
+              no_activegoals = true;
+            });
+            loadData();
+          }
+        })
+        .catchError((error) {})
+        .whenComplete(() {
+          loadData();
         });
-        loadData();
-      }
-    }).catchError((error) {
-      // loadData();
-      print("error");
-    }).whenComplete(() {
-      loadData();
-    });
   }
 
   void _fetchPracticeNames() async {
     final SharedPreferences prefs = await _prefs;
-    PracticeGoalApi.getUserPractice().then((response) {
-      var pracId = prefs.setInt('prac_score_id', response["id"]);
-      if (response.length != 0) {
-        setState(() {
-          pracName = response["name"];
-          pracColor = response["color"];
-          pracDetails = response;
-        });
-        var time = prefs.setString(
-            'recording_Time1', pracDetails["schedule"][0]['time1'].toString());
-      } else {
-        print("response:$response");
-      }
-    }).catchError((error) {
-      print("hell");
-    }).whenComplete(() {});
+    PracticeGoalApi.getUserPractice()
+        .then((response) async {
+          await prefs.setInt('prac_score_id', response["id"]);
+          if (response.length != 0) {
+            setState(() {
+              pracName = response["name"];
+              pracColor = response["color"];
+              pracDetails = response;
+            });
+            await prefs.setString('recording_Time1',
+                pracDetails["schedule"][0]['time1'].toString());
+          } else {}
+        })
+        .catchError((error) {})
+        .whenComplete(() {});
   }
 
   late AnimationController controller;
@@ -172,7 +171,6 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
   }
 
   bool _showOverlay = true;
-  late bool _isVisible = true;
   late bool connected;
   @override
   Widget build(BuildContext context) {
@@ -185,12 +183,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
             actions: [
               Row(
                 children: [
-                  Container(
-                    child: Image.asset(
-                      'assets/images/Add goal.webp',
-                      height: AppDimensions.height10(context) * 2.4,
-                      width: AppDimensions.width10(context) * 2.4,
-                    ),
+                  Image.asset(
+                    'assets/images/Add goal.webp',
+                    height: AppDimensions.height10(context) * 2.4,
+                    width: AppDimensions.width10(context) * 2.4,
                   ),
                   Container(
                     margin: EdgeInsets.only(
@@ -213,8 +209,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
           bottomNavigationBar: widget.saved
               ? Container(
                   color: Colors.transparent,
-                  padding:
-                      EdgeInsets.all(AppDimensions.width10(context) * 1.6),
+                  padding: EdgeInsets.all(AppDimensions.width10(context) * 1.6),
                   child: Container(
                     width: AppDimensions.width10(context) * 38.259,
                     height: AppDimensions.height10(context) * 9.707,
@@ -578,9 +573,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                     Color(0xffFBF9EF),
                                                     Color(0xffF8F3DA)
                                                   ])),
-                                          child: Container(
-                                              //margin: const EdgeInsets.only(top: 11.52),
-                                              child: Column(
+                                          child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
@@ -645,7 +638,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                     )),
                                               )
                                             ],
-                                          ))),
+                                          )),
                                     ),
                                   ],
                                 ),
@@ -717,7 +710,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: practiceMenu(
+                                                    page: const practiceMenu(
                                                   goal_eval: false,
                                                 )));
                                           },
@@ -912,7 +905,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
-                                              Container(
+                                              SizedBox(
                                                 width: AppDimensions.height10(
                                                         context) *
                                                     34.3,
@@ -934,7 +927,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                   ),
                                                 ),
                                               ),
-                                              Container(
+                                              SizedBox(
                                                 width: AppDimensions.height10(
                                                         context) *
                                                     26.9,
@@ -971,7 +964,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                   Navigator.push(
                                                       context,
                                                       FadePageRoute(
-                                                          page: Categories()));
+                                                          page:
+                                                              const Categories()));
                                                 },
                                                 child: Container(
                                                   width: AppDimensions.height10(
@@ -1241,11 +1235,9 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                               onTap: () async {
                                                 final SharedPreferences prefs =
                                                     await _prefs;
-                                                var dash_boardRoute =
-                                                    prefs.setBool(
-                                                        'behaviour_route',
-                                                        false);
-                                                var prac_id = prefs.setInt(
+                                                await prefs.setBool(
+                                                    'behaviour_route', false);
+                                                await prefs.setInt(
                                                     'prac_num',
                                                     goalDetails['userPractices']
                                                         [0]['id']);
@@ -1276,7 +1268,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                               trial: false,
                                                             ),
                                                             enterPage:
-                                                                practiceMenu(
+                                                                const practiceMenu(
                                                               goal_eval: false,
                                                             )));
                                               },
@@ -1970,23 +1962,21 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                           : const Alignment(
                                                                               0,
                                                                               1.1),
-                                                  child: Container(
-                                                    child: Image.asset(
-                                                      (goal_level == 3 ||
-                                                              goal_level == 4 ||
-                                                              goal_level == 5 ||
-                                                              goal_level == 6)
-                                                          ? 'assets/images/arrow-192-up.webp'
-                                                          : 'assets/images/arrow-192.webp',
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          2.0,
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              2.0,
-                                                    ),
+                                                  child: Image.asset(
+                                                    (goal_level == 3 ||
+                                                            goal_level == 4 ||
+                                                            goal_level == 5 ||
+                                                            goal_level == 6)
+                                                        ? 'assets/images/arrow-192-up.webp'
+                                                        : 'assets/images/arrow-192.webp',
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    width:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            2.0,
                                                   ),
                                                 ),
                                                 Container(

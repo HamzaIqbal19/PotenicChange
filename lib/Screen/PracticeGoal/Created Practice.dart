@@ -33,7 +33,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
   String pracName = "";
   var pracColor;
   String route = '';
-  bool Loading = true;
+  bool loading = true;
 
   @override
   void initState() {
@@ -48,7 +48,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -71,9 +71,9 @@ class _PracticeFinishedState extends State<PracticeFinished> {
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    var goal_route = prefs.getString('goal_route');
+    var goalRoute = prefs.getString('goal_route');
     setState(() {
-      route = goal_route!;
+      route = goalRoute!;
     });
   }
 
@@ -90,13 +90,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
       }
     }).catchError((error) {
       loadData();
-      print("hell");
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   @override
@@ -191,7 +185,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 ),
               ),
             ),
-            Loading == false
+            loading == false
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -199,7 +193,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                       SizedBox(
                         height: AppDimensions.height10(context) * 8.9,
                       ),
-                      Container(
+                      SizedBox(
                         width: AppDimensions.width10(context) * 20.7,
                         height: AppDimensions.height10(context) * 7.8,
                         // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
@@ -222,23 +216,21 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                       SizedBox(
                         height: AppDimensions.height10(context) * 2.2,
                       ),
-                      Container(
+                      SizedBox(
                           // color: Colors.black,
                           height: AppDimensions.height10(context) * 5.1,
                           width: AppDimensions.width10(context) * 34.0,
                           child: Column(
                             children: [
-                              Container(
-                                child: Center(
-                                  child: Text(
-                                    AppText().reviewCont,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                      fontSize:
-                                          AppDimensions.font10(context) * 2.2,
-                                    ),
+                              Center(
+                                child: Text(
+                                  AppText().reviewCont,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 2.2,
                                   ),
                                 ),
                               ),
@@ -333,7 +325,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                       context) *
                                                   0.3,
                                             ),
-                                            Container(
+                                            SizedBox(
                                               // color: Colors.green,
                                               height: AppDimensions.height10(
                                                       context) *
@@ -440,7 +432,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             //color: Colors.red,
                                             width:
                                                 AppDimensions.width10(context) *

@@ -71,7 +71,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         width: AppDimensions.width10(context) * 7.1,
                         height: AppDimensions.height10(context) * 1.9,
                         child: Text(
@@ -96,7 +96,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: AppDimensions.width10(context) * 32.6,
                   height: AppDimensions.height10(context) * 2.4,
                   child: Center(

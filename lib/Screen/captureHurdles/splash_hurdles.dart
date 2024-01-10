@@ -54,7 +54,7 @@ class hurdles_splashState extends State<hurdles_splash> {
               record: 0,
             )));
         final SharedPreferences prefs = await _prefs;
-        var hurdleRoute = prefs.remove('HurdleRoute');
+        await prefs.remove('HurdleRoute');
         await prefs.remove('hurdleName');
         await prefs.remove('NameHurdle');
         await prefs.remove('hurdleStatement');
@@ -85,7 +85,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                             record: 0,
                           )));
                       final SharedPreferences prefs = await _prefs;
-                      var hurdleRoute = prefs.remove('HurdleRoute');
+                      await prefs.remove('HurdleRoute');
                       await prefs.remove('hurdleName');
                       await prefs.remove('NameHurdle');
                       await prefs.remove('hurdleStatement');
@@ -187,7 +187,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                       );
                     } else {
                       final SharedPreferences prefs = await _prefs;
-                      var hurdleRoute = prefs.remove('HurdleRoute');
+                      await prefs.remove('HurdleRoute');
                       Navigator.push(
                         context,
                         FadePageRoute(

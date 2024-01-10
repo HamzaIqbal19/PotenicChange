@@ -10,13 +10,13 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 class PracticeGoalApi {
   Future userAddPractice(name, reminder, day) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
     var practiceId = prefs.getInt('pracId');
     var userId = prefs.getInt('userid');
     var userGoalId = prefs.getInt('goal_num');
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
 
     Map<String, dynamic> requestBody = {
@@ -30,16 +30,16 @@ class PracticeGoalApi {
     if (practiceId != null) {
       requestBody["practiceId"] = "$practiceId";
     }
-    var Body = json.encode(requestBody);
+    var body = json.encode(requestBody);
 
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/userPractice/add-user-practice'),
         headers: headers,
-        body: Body);
+        body: body);
 
     var responses = jsonDecode(request.body);
     if (request.statusCode == 200) {
-      var prac_num = prefs.setInt("prac_num", responses['result']['id']);
+      await prefs.setInt("prac_num", responses['result']['id']);
 
       return true;
     } else {
@@ -49,12 +49,12 @@ class PracticeGoalApi {
 
   Future userAddPracticeColor(name, reminder, userId, practiceId) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
-    var Body = json.encode({
+    var body = json.encode({
       "name": "$name",
       "userId": "$userId",
       "practiceId": "$practiceId",
@@ -62,9 +62,7 @@ class PracticeGoalApi {
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/userPractice/add-user-practice'),
         headers: headers,
-        body: Body);
-
-    var responses = jsonDecode(request.body);
+        body: body);
 
     if (request.statusCode == 200) {
       return true;
@@ -77,10 +75,10 @@ class PracticeGoalApi {
 
   static Future<List<Map<String, dynamic>>> getPractice() async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
 
     var response = await http.get(
@@ -101,18 +99,18 @@ class PracticeGoalApi {
     }
   }
 
-  static Future<List<Map<String, dynamic>>> SearchPractice(
-      String Search) async {
+  static Future<List<Map<String, dynamic>>> searchPractice(
+      String search) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
 
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/practice/all-practice?practiceName=$Search'),
+          '${URL.BASE_URL}api/practice/all-practice?practiceName=$search'),
       headers: headers,
     );
 
@@ -131,16 +129,16 @@ class PracticeGoalApi {
 
   static Future getUserPractice() async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
-    var prac_num = prefs.getInt("prac_num");
+    var accessToken = prefs.getString("usertoken");
+    var pracNum = prefs.getInt("prac_num");
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
 
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userPractice/$prac_num'),
+      Uri.parse('${URL.BASE_URL}api/userPractice/$pracNum'),
       headers: headers,
     );
 
@@ -167,16 +165,16 @@ class PracticeGoalApi {
   Future deleteUserPractice() async {
     final SharedPreferences prefs = await _prefs;
 
-    var prac_num = prefs.getInt('prac_num');
+    var pracNum = prefs.getInt('prac_num');
 
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
 
     var request = await client.delete(
-        Uri.parse('${URL.BASE_URL}api/userPractice/$prac_num'),
+        Uri.parse('${URL.BASE_URL}api/userPractice/$pracNum'),
         headers: headers);
 
     var responses = jsonDecode(request.body);
@@ -190,10 +188,10 @@ class PracticeGoalApi {
   Future deleteUserPracticeById(id) async {
     final SharedPreferences prefs = await _prefs;
 
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
 
     var request = await client.delete(
@@ -210,24 +208,23 @@ class PracticeGoalApi {
 
   Future updateUserPractice(destination, update) async {
     final SharedPreferences prefs = await _prefs;
-    var prac_num = prefs.getInt('prac_num');
-    var Accestoken = prefs.getString("usertoken");
+    var pracNum = prefs.getInt('prac_num');
+    var accessToken = prefs.getString("usertoken");
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
     var body = jsonEncode({
       destination: update,
     });
 
     var request = await client.put(
-        Uri.parse('${URL.BASE_URL}api/userPractice/$prac_num'),
+        Uri.parse('${URL.BASE_URL}api/userPractice/$pracNum'),
         headers: headers,
         body: body);
 
     if (request.statusCode == 200) {
-      var jsonData = jsonDecode(request.body);
       return true;
     } else {
       return false;
@@ -236,64 +233,59 @@ class PracticeGoalApi {
 
   Future updateUserPracticeColor(color) async {
     final SharedPreferences prefs = await _prefs;
-    var prac_num = prefs.getInt('prac_num');
-    var Accestoken = prefs.getString("usertoken");
+    var pracNum = prefs.getInt('prac_num');
+    var accessToken = prefs.getString("usertoken");
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
     var body = jsonEncode({
       "color": "$color",
     });
 
     var request = await client.put(
-        Uri.parse('${URL.BASE_URL}api/userPractice/$prac_num'),
+        Uri.parse('${URL.BASE_URL}api/userPractice/$pracNum'),
         headers: headers,
         body: body);
 
     if (request.statusCode == 200) {
-      var jsonData = jsonDecode(request.body);
       return true;
     } else {
       return false;
     }
   }
 
-  static Future getUserPracticeByDay(Day) async {
+  static Future getUserPracticeByDay(day) async {
     final SharedPreferences prefs = await _prefs;
 
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
 
     var userId = prefs.getInt('userid');
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/userPractice/userPractice-by-date/$userId?date=$Day'),
+          '${URL.BASE_URL}api/userPractice/userPractice-by-date/$userId?date=$day'),
       headers: headers,
     );
 
     if (response.statusCode == 200) {
-      var jsonData = jsonDecode(response.body);
-
       return response;
     } else if (response.statusCode == 404) {
-      var jsonData = jsonDecode(response.body);
-
       return response;
     }
   }
 
   Future updateUserPracticeStatus(status, id) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
+    var accessToken = prefs.getString("usertoken");
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
     var body = jsonEncode({"practiceStatus": "$status"});
 
@@ -304,7 +296,6 @@ class PracticeGoalApi {
         body: body);
 
     if (request.statusCode == 200) {
-      var jsonData = jsonDecode(request.body);
       return true;
     } else if (request.statusCode == 400) {
       return request.statusCode;
@@ -313,20 +304,20 @@ class PracticeGoalApi {
     }
   }
 
-  Future updateUserPractice_GoalStatus(status) async {
+  Future updateUserPracticeGoalStatus(status) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
-    var prac_num = prefs.getInt("prac_num");
+    var accessToken = prefs.getString("usertoken");
+    var pracNum = prefs.getInt("prac_num");
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
     var body = jsonEncode({"practiceStatus": "$status"});
 
     var request = await client.put(
         Uri.parse(
-            '${URL.BASE_URL}api/userPractice/active-user-practice-goal-by-id/$prac_num'),
+            '${URL.BASE_URL}api/userPractice/active-user-practice-goal-by-id/$pracNum'),
         headers: headers,
         body: body);
 
@@ -346,16 +337,16 @@ class PracticeGoalApi {
 
   static Future getUserPracticeById() async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
-    var prac_num = prefs.getInt("prac_num");
+    var accessToken = prefs.getString("usertoken");
+    var pracNum = prefs.getInt("prac_num");
 
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '$Accestoken'
+      'x-access-token': '$accessToken'
     };
 
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userPractice/$prac_num'),
+      Uri.parse('${URL.BASE_URL}api/userPractice/$pracNum'),
       headers: headers,
     );
 

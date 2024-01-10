@@ -5,7 +5,6 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Dashboard Behaviour/dashboard_view_goals.dart';
@@ -33,12 +32,12 @@ class SplashPageState extends State<SplashPage> {
 
   Future loadData() async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
-    var SessionToken = prefs.getString("refreshtoken");
-    var Routes = prefs.getString("route");
+    var accestoken = prefs.getString("usertoken");
+    var sessionToken = prefs.getString("refreshtoken");
+    var routes = prefs.getString("route");
 //
-    if (Accestoken != null && Routes == null) {
-      Authentication().refreshTokenApi(SessionToken!).then((response) {
+    if (accestoken != null && routes == null) {
+      Authentication().refreshTokenApi(sessionToken!).then((response) {
         if (response == true) {
           AdminGoal.checkUserGoalByUserId().then((response) {
             if (response == true) {
@@ -71,26 +70,26 @@ class SplashPageState extends State<SplashPage> {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(response["message"])));
         }
-      }).catchError((error) {
-        print("error");
-      });
-    } else if (Accestoken != null && Routes != null) {
-      Authentication().refreshTokenApi(SessionToken!).then((response) {
-        if (response == true) {
-          Navigator.push(
-              context,
-              FadePageRoute(
-                page: const HomeScreen(login: true),
-              ));
-        } else {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(response["message"])));
-        }
-      }).catchError((error) {
-        print("error");
-      }).whenComplete(() {
-        onDoneLoading();
-      });
+      }).catchError((error) {});
+    } else if (accestoken != null && routes != null) {
+      Authentication()
+          .refreshTokenApi(sessionToken!)
+          .then((response) {
+            if (response == true) {
+              Navigator.push(
+                  context,
+                  FadePageRoute(
+                    page: const HomeScreen(login: true),
+                  ));
+            } else {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(response["message"])));
+            }
+          })
+          .catchError((error) {})
+          .whenComplete(() {
+            onDoneLoading();
+          });
     } else {
       onDoneLoading();
     }

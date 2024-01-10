@@ -80,133 +80,129 @@ class _your_whyState extends State<your_why> {
     });
   }
 
-  void _fetchGoalEvauation() {
-    goalEvaluationApi.getGoalEvaluation().then((response) {});
-  }
-
   void _fetchGoalDetails() {
-    AdminGoal.getUserGoal().then((response) async {
-      if (response.length != 0) {
-        setState(() {
-          goalDetails = response;
+    AdminGoal.getUserGoal()
+        .then((response) async {
+          if (response.length != 0) {
+            setState(() {
+              goalDetails = response;
+            });
+
+            final SharedPreferences prefs = await _prefs;
+            await prefs.setInt('goal_eval_id',
+                response["goalEvaluations"][widget.index]["id"]);
+            loadData();
+            if (widget.destination == 'reason') {
+              if (response['goalEvaluations'][widget.index]["YourWay"] !=
+                  null) {
+                setState(() {
+                  totalPoint = response['goalEvaluations'][widget.index]
+                          ["YourWay"]['level']
+                      .toString();
+                  selectedItemIndexesOuter =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                  resetList =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                });
+                for (int i = 0;
+                    i <
+                        response['goalEvaluations'][widget.index]["YourWay"]
+                            .keys
+                            .length;
+                    i++) {
+                  selectedItemIndexesOuter![i] = response['goalEvaluations']
+                          [widget.index]["YourWay"]['reason ${i + 1}'] -
+                      1;
+                  resetList![i] = response['goalEvaluations'][widget.index]
+                          ["YourWay"]['reason ${i + 1}'] -
+                      1;
+                }
+              } else {
+                setState(() {
+                  selectedItemIndexesOuter =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                  resetList =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                });
+              }
+            } else if (widget.destination == 'identityStatement') {
+              if (response['goalEvaluations'][widget.index]["newIdentity"] !=
+                  null) {
+                setState(() {
+                  totalPoint = response['goalEvaluations'][widget.index]
+                          ["newIdentity"]['level']
+                      .toString();
+                  selectedItemIndexesOuter =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                  resetList =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                });
+                for (int i = 0;
+                    i <
+                        response['goalEvaluations'][widget.index]["newIdentity"]
+                            .keys
+                            .length;
+                    i++) {
+                  selectedItemIndexesOuter![i] = response['goalEvaluations']
+                          [widget.index]["newIdentity"]['reason ${i + 1}'] -
+                      1;
+                  resetList![i] = response['goalEvaluations'][widget.index]
+                          ["newIdentity"]['reason ${i + 1}'] -
+                      1;
+                }
+              } else {
+                setState(() {
+                  selectedItemIndexesOuter =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                  resetList =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                });
+              }
+            } else {
+              if (response['goalEvaluations'][widget.index]
+                      ["visualisingYourSelf"] !=
+                  null) {
+                setState(() {
+                  totalPoint = response['goalEvaluations'][widget.index]
+                          ["visualisingYourSelf"]['level']
+                      .toString();
+                  selectedItemIndexesOuter =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                  resetList =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                });
+                for (int i = 0;
+                    i <
+                        response['goalEvaluations'][widget.index]
+                                ["visualisingYourSelf"]
+                            .keys
+                            .length;
+                    i++) {
+                  selectedItemIndexesOuter![i] = response['goalEvaluations']
+                              [widget.index]["visualisingYourSelf"]
+                          ['reason ${i + 1}'] -
+                      1;
+                  resetList![i] = response['goalEvaluations'][widget.index]
+                          ["visualisingYourSelf"]['reason ${i + 1}'] -
+                      1;
+                }
+              } else {
+                setState(() {
+                  selectedItemIndexesOuter =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                  resetList =
+                      List.filled(goalDetails[widget.destination].length, -1);
+                });
+              }
+            }
+          } else {
+            loadData();
+          }
+        })
+        .catchError((error) {})
+        .whenComplete(() {
+          loadData();
         });
-
-        final SharedPreferences prefs = await _prefs;
-        await prefs.setInt(
-            'goal_eval_id', response["goalEvaluations"][widget.index]["id"]);
-        loadData();
-        if (widget.destination == 'reason') {
-          if (response['goalEvaluations'][widget.index]["YourWay"] != null) {
-            setState(() {
-              totalPoint = response['goalEvaluations'][widget.index]["YourWay"]
-                      ['level']
-                  .toString();
-              selectedItemIndexesOuter =
-                  List.filled(goalDetails[widget.destination].length, -1);
-              resetList =
-                  List.filled(goalDetails[widget.destination].length, -1);
-            });
-            for (int i = 0;
-                i <
-                    response['goalEvaluations'][widget.index]["YourWay"]
-                        .keys
-                        .length;
-                i++) {
-              selectedItemIndexesOuter![i] = response['goalEvaluations']
-                      [widget.index]["YourWay"]['reason ${i + 1}'] -
-                  1;
-              resetList![i] = response['goalEvaluations'][widget.index]
-                      ["YourWay"]['reason ${i + 1}'] -
-                  1;
-            }
-          } else {
-            setState(() {
-              selectedItemIndexesOuter =
-                  List.filled(goalDetails[widget.destination].length, -1);
-              resetList =
-                  List.filled(goalDetails[widget.destination].length, -1);
-            });
-          }
-        } else if (widget.destination == 'identityStatement') {
-          if (response['goalEvaluations'][widget.index]["newIdentity"] !=
-              null) {
-            setState(() {
-              totalPoint = response['goalEvaluations'][widget.index]
-                      ["newIdentity"]['level']
-                  .toString();
-              selectedItemIndexesOuter =
-                  List.filled(goalDetails[widget.destination].length, -1);
-              resetList =
-                  List.filled(goalDetails[widget.destination].length, -1);
-            });
-            for (int i = 0;
-                i <
-                    response['goalEvaluations'][widget.index]["newIdentity"]
-                        .keys
-                        .length;
-                i++) {
-              selectedItemIndexesOuter![i] = response['goalEvaluations']
-                      [widget.index]["newIdentity"]['reason ${i + 1}'] -
-                  1;
-              resetList![i] = response['goalEvaluations'][widget.index]
-                      ["newIdentity"]['reason ${i + 1}'] -
-                  1;
-            }
-          } else {
-            setState(() {
-              selectedItemIndexesOuter =
-                  List.filled(goalDetails[widget.destination].length, -1);
-              resetList =
-                  List.filled(goalDetails[widget.destination].length, -1);
-            });
-          }
-        } else {
-          if (response['goalEvaluations'][widget.index]
-                  ["visualisingYourSelf"] !=
-              null) {
-            setState(() {
-              totalPoint = response['goalEvaluations'][widget.index]
-                      ["visualisingYourSelf"]['level']
-                  .toString();
-              selectedItemIndexesOuter =
-                  List.filled(goalDetails[widget.destination].length, -1);
-              resetList =
-                  List.filled(goalDetails[widget.destination].length, -1);
-            });
-            for (int i = 0;
-                i <
-                    response['goalEvaluations'][widget.index]
-                            ["visualisingYourSelf"]
-                        .keys
-                        .length;
-                i++) {
-              selectedItemIndexesOuter![i] = response['goalEvaluations']
-                      [widget.index]["visualisingYourSelf"]['reason ${i + 1}'] -
-                  1;
-              resetList![i] = response['goalEvaluations'][widget.index]
-                      ["visualisingYourSelf"]['reason ${i + 1}'] -
-                  1;
-            }
-          } else {
-            setState(() {
-              selectedItemIndexesOuter =
-                  List.filled(goalDetails[widget.destination].length, -1);
-              resetList =
-                  List.filled(goalDetails[widget.destination].length, -1);
-            });
-          }
-        }
-
-        print(response);
-      } else {
-        loadData();
-      }
-    }).catchError((error) {
-      // loadData();
-      print("error");
-    }).whenComplete(() {
-      loadData();
-    });
   }
 
   @override
@@ -408,8 +404,7 @@ class _your_whyState extends State<your_why> {
                                         AppDimensions.height10(context) * 1.4)),
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 1.9,
-                                    right:
-                                        AppDimensions.width10(context) * 1.6,
+                                    right: AppDimensions.width10(context) * 1.6,
                                     left: AppDimensions.width10(context) * 1.6,
                                     bottom:
                                         AppDimensions.height10(context) * 0.2),
@@ -533,7 +528,7 @@ class _your_whyState extends State<your_why> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                 // width: AppDimensions.width10(context) * 3.0,
+                  // width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.contain,
                 )),
@@ -901,10 +896,9 @@ class _your_whyState extends State<your_why> {
                                                   width: AppDimensions.width10(
                                                           context) *
                                                       12.95,
-                                                  height:
-                                                      AppDimensions.width10(
-                                                              context) *
-                                                          12.95,
+                                                  height: AppDimensions.width10(
+                                                          context) *
+                                                      12.95,
                                                   decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       gradient: widget.premium ==
@@ -955,30 +949,27 @@ class _your_whyState extends State<your_why> {
                                                         MainAxisAlignment
                                                             .center,
                                                     children: [
-                                                      Container(
-                                                        child: Text(
-                                                          '${index1 + 1}',
-                                                          style: TextStyle(
-                                                              fontSize: AppDimensions
-                                                                      .font10(
-                                                                          context) *
-                                                                  3.1,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              color: widget
-                                                                          .premium ==
-                                                                      false
-                                                                  ? const Color(
-                                                                      0xFFFA9934)
-                                                                  : selectedItemIndexesOuter![
-                                                                              index] !=
-                                                                          index1
-                                                                      ? const Color(
-                                                                          0xFFFA9934)
-                                                                      : const Color(
-                                                                          0xFFFFFFFF)),
-                                                        ),
+                                                      Text(
+                                                        '${index1 + 1}',
+                                                        style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                3.1,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: widget
+                                                                        .premium ==
+                                                                    false
+                                                                ? const Color(
+                                                                    0xFFFA9934)
+                                                                : selectedItemIndexesOuter![
+                                                                            index] !=
+                                                                        index1
+                                                                    ? const Color(
+                                                                        0xFFFA9934)
+                                                                    : const Color(
+                                                                        0xFFFFFFFF)),
                                                       ),
                                                       Text(
                                                         options[index1],
@@ -989,8 +980,8 @@ class _your_whyState extends State<your_why> {
                                                                     .font10(
                                                                         context) *
                                                                 1.46,
-                                                            fontWeight: FontWeight
-                                                                .w400,
+                                                            fontWeight:
+                                                                FontWeight.w400,
                                                             color: widget
                                                                         .premium ==
                                                                     false
@@ -1068,8 +1059,13 @@ class _your_whyState extends State<your_why> {
                                           );
                                         }),
                                   ),
-                                  widget.premium == false?
-                                      Container(height: AppDimensions.height10(context) * 5,):Container(),
+                                  widget.premium == false
+                                      ? Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  5,
+                                        )
+                                      : Container(),
                                   Container(
                                     width: AppDimensions.width10(context) * 7.2,
                                     height:
@@ -1983,7 +1979,7 @@ class _your_whyState extends State<your_why> {
                                                                               selectedItemIndexesOuter![i] + 1;
                                                                         }
 
-                                                                        goalEvaluationApi()
+                                                                        GoalEvaluationApi()
                                                                             .updateEvaluation(
                                                                           widget.destination == 'reason'
                                                                               ? "YourWay"
@@ -2155,7 +2151,8 @@ class _your_whyState extends State<your_why> {
                 },
                 child: BottomAppBar(
                   elevation: 0,
-                  color: const Color(0xFFF5F5F5),padding: EdgeInsets.zero,
+                  color: const Color(0xFFF5F5F5),
+                  padding: EdgeInsets.zero,
                   height: AppDimensions.height10(context) * 7.7,
                   child: Container(
                     height: AppDimensions.height10(context) * 7.7,

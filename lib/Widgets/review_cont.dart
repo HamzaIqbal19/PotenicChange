@@ -32,9 +32,7 @@ class _reviewboxState extends State<reviewbox> {
           // reason3 = response["reason"][2]['text'];
         });
       } else {}
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   @override
@@ -130,7 +128,7 @@ class _reviewboxState extends State<reviewbox> {
         right: 0,
         child: Align(
           //alignment: Alignment.bottomCenter,
-          alignment: Alignment(0.01, 1.155),
+          alignment: const Alignment(0.01, 1.155),
           //heightFactor: 0.5,
           child: Container(
             height: AppDimensions.height10(context) * 4.7,
@@ -180,6 +178,7 @@ class _inner_textState extends State<inner_text> {
 
   late FocusNode _focusNode;
 
+  @override
   void initState() {
     super.initState();
     _focusNode = FocusNode()..addListener(_onFocus);
@@ -221,7 +220,7 @@ class _inner_textState extends State<inner_text> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                   height: AppDimensions.height10(context) * 2.2,
                   width: AppDimensions.width10(context) * 29,
                   child: Text("Reason1",
@@ -236,7 +235,7 @@ class _inner_textState extends State<inner_text> {
                   ? GestureDetector(
                       onTap: () => showDialog<String>(
                         context: context,
-                        builder: (BuildContext context) => Container(
+                        builder: (BuildContext context) => SizedBox(
                           width: AppDimensions.width10(context) * 27.0,
                           height: AppDimensions.height10(context) * 18.2,
                           child: AlertDialog(
@@ -303,7 +302,7 @@ class _inner_textState extends State<inner_text> {
                                       ),
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     height:
                                         AppDimensions.height10(context) * 4.4,
                                     width:
@@ -349,7 +348,7 @@ class _inner_textState extends State<inner_text> {
           SizedBox(
             height: AppDimensions.height10(context) * 0.9,
           ),
-          Container(
+          SizedBox(
               height: AppDimensions.height10(context) * 5.3,
               width: AppDimensions.width10(context) * 32.0,
               child: CupertinoTextField(

@@ -71,9 +71,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
       } else if (response == false) {
         Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
       }
-    }).catchError((error) {
-      print("Hello world error");
-    });
+    }).catchError((error) {});
   }
 
   @override
@@ -98,7 +96,9 @@ class Navigation_BarState extends State<Navigation_Bar> {
       //   child:
       Padding(
         padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height < 690? AppDimensions.height10(context) * 1.0:0,
+          bottom: MediaQuery.of(context).size.height < 690
+              ? AppDimensions.height10(context) * 1.0
+              : 0,
           left: AppDimensions.width10(context) * 4.5,
           right: AppDimensions.width10(context) * 4.5,
         ),

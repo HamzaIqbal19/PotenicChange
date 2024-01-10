@@ -38,14 +38,13 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
   Future<void> getUserRole() async {
     final SharedPreferences prefs = await _prefs;
     var role = prefs.getString('userRole');
-    var subscription = prefs.getString('subscriptionStatus');
+    //var subscription = prefs.getString('subscriptionStatus');
 
-    if(role == 'admin'){
+    if (role == 'admin') {
       setState(() {
         admin = true;
       });
     }
-
   }
 
   final formKey = GlobalKey<FormState>();
@@ -109,7 +108,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                   ),
                 ),
                 SizedBox(height: AppDimensions.height10(context) * 2.32),
-                Container(
+                SizedBox(
                   height: AppDimensions.height10(context) * 8.5,
                   child: Text(
                     "Your Destiny is at \n Your Fingertips",
@@ -122,7 +121,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                   ),
                 ),
                 SizedBox(height: AppDimensions.height10(context) * 0.5),
-                Container(
+                SizedBox(
                     height: AppDimensions.height10(context) * 11.5,
                     child: Text(
                       'Time waits for no one. The best time to \n start is TODAY. Begin creating your \n star followed by a plan to help you \n achieve your goal.',

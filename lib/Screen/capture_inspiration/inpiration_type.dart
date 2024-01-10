@@ -155,7 +155,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                               .withOpacity(0.29),
                                         ),
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height: 42,
                                         width: double.infinity,
                                         // color: Colors.white,
@@ -245,7 +245,7 @@ class _inspiration_typeState extends State<inspiration_type> {
 
                                             final SharedPreferences prefs =
                                                 await _prefs;
-                                            var deleted = prefs.remove(
+                                            await prefs.remove(
                                                 'inspiration_saved_route');
                                           },
                                           child: const Text(
@@ -347,7 +347,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: AppDimensions.width10(context) * 13.3,
                 //margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.6),
                 child: SingleChildScrollView(
@@ -358,7 +358,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                         onTap: () async {
                           final SharedPreferences prefs = await _prefs;
 
-                          var hurdleId = prefs.setInt('hurdleId', 1);
+                          await prefs.setInt('hurdleId', 1);
                           Navigator.push(context,
                               FadePageRoute(page: const photo_pop_up()));
                         },
@@ -447,7 +447,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                         onTap: () async {
                           final SharedPreferences prefs = await _prefs;
 
-                          var hurdleId = prefs.setInt('hurdleId', 2);
+                          await prefs.setInt('hurdleId', 2);
                           Navigator.push(
                               context, FadePageRoute(page: const noteSaved()));
                         },
@@ -535,7 +535,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                         onTap: () async {
                           final SharedPreferences prefs = await _prefs;
 
-                          var hurdleId = prefs.setInt('hurdleId', 4);
+                          await prefs.setInt('hurdleId', 4);
                           Navigator.push(
                               context,
                               FadePageRoute(
@@ -628,7 +628,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                         onTap: () async {
                           final SharedPreferences prefs = await _prefs;
 
-                          var hurdleId = prefs.setInt('hurdleId', 3);
+                          await prefs.setInt('hurdleId', 3);
                           Navigator.push(
                               context,
                               FadePageRoute(

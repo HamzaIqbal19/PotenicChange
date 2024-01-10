@@ -33,8 +33,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
   int selectinActive = -1;
   var hurdlesSummary;
   var goals = [];
-  bool Loading = true;
-  List<Map<String, dynamic>> Active = [];
+  bool loading = true;
+  List<Map<String, dynamic>> active = [];
   List<Map<String, dynamic>> inActive = [];
   List<int> selectedIndices = [];
   List<int> selectedInActiveIndices = [];
@@ -56,7 +56,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -91,9 +91,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
       } else {
         return response.statusCode;
       }
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   _sort() {
@@ -106,7 +104,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
       if (goals[i]['isActive'] == true) {
         if (hurdlesSummary.contains(goals[i]['id'])) {
           multiGoals.add(goals[i]['id']);
-          selectedIndices.add(Active.indexOf(goals[i]));
+          selectedIndices.add(active.indexOf(goals[i]));
         }
       } else {
         if (hurdlesSummary.contains(goals[i]['id'])) {
@@ -118,27 +116,29 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
   }
 
   void checkHurdle() async {
-    Hurdles().checkUserHurdles().then((response) {
-      if (response == true) {
-        Navigator.push(
-          context,
-          FadePageRouteReverse(page: const landing_hurdles()),
-        );
+    Hurdles()
+        .checkUserHurdles()
+        .then((response) {
+          if (response == true) {
+            Navigator.push(
+              context,
+              FadePageRouteReverse(page: const landing_hurdles()),
+            );
 
-        return response;
-      } else if (response == false) {
-        Navigator.push(
-            context, FadePageRouteReverse(page: const hurdles_splash()));
-      }
-    }).catchError((error) {
-      print("Hello world error");
-    }).whenComplete(() {});
+            return response;
+          } else if (response == false) {
+            Navigator.push(
+                context, FadePageRouteReverse(page: const hurdles_splash()));
+          }
+        })
+        .catchError((error) {})
+        .whenComplete(() {});
   }
 
   _newFunction() {
     for (int i = 0; i <= goals.length; i++) {
       if (goals[i]['isActive'] == true) {
-        Active.add(goals[i]);
+        active.add(goals[i]);
         allgoalsSelected.add(goals[i]['id']);
       } else {
         inActive.add(goals[i]);
@@ -147,12 +147,12 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
     }
   }
 
-  var Route;
+  var route;
 
   void getHurdleRoute() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
-      Route = prefs.getString('HurdleRoute').toString().isEmpty
+      route = prefs.getString('HurdleRoute').toString().isEmpty
           ? ''
           : prefs.getString('HurdleRoute');
     });
@@ -178,7 +178,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
         if (goals[i]['isActive'] == true) {
           if (decodedGoals.contains(goals[i]['id'])) {
             multiGoals.add(goals[i]['id']);
-            selectedIndices.add(Active.indexOf(goals[i]));
+            selectedIndices.add(active.indexOf(goals[i]));
           }
         } else {
           if (decodedGoals.contains(goals[i]['id'])) {
@@ -305,7 +305,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                   .withOpacity(0.29),
                                             ),
                                           ),
-                                          Container(
+                                          SizedBox(
                                             height: 42,
                                             width: double.infinity,
                                             child: TextButton(
@@ -313,10 +313,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                 checkHurdle();
                                                 final SharedPreferences prefs =
                                                     await _prefs;
-                                                var hurdleRoute =
-                                                    prefs.setString(
-                                                        'HurdleRoute',
-                                                        'Impact');
+                                                await prefs.setString(
+                                                    'HurdleRoute', 'Impact');
                                                 if (selectAll == true ||
                                                     multiGoals.isNotEmpty) {
                                                   if (selectAll == true) {
@@ -357,8 +355,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                 final SharedPreferences prefs =
                                                     await _prefs;
 
-                                                var hurdleRoute =
-                                                    prefs.remove('HurdleRoute');
+                                                await prefs
+                                                    .remove('HurdleRoute');
                                                 await prefs
                                                     .remove('hurdleName');
                                                 await prefs
@@ -437,7 +435,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                 colorFilter: ColorFilter.mode(
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
-        child: Loading == false
+        child: loading == false
             ? SingleChildScrollView(
                 child: Column(children: [
                   Container(
@@ -480,9 +478,9 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                   selectedInActiveIndices.clear();
                                   multiGoals.clear();
                                 });
-                                for (int i = 0; i < Active.length; i++) {
+                                for (int i = 0; i < active.length; i++) {
                                   selectedIndices.add(i);
-                                  multiGoals.add(Active[i]['id']);
+                                  multiGoals.add(active[i]['id']);
                                 }
                                 for (int i = 0; i < inActive.length; i++) {
                                   selectedInActiveIndices.add(i);
@@ -593,18 +591,18 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                   mainAxisSpacing: 9.0,
                                   crossAxisSpacing: 3,
                                 ),
-                                itemCount: Active.length,
+                                itemCount: active.length,
                                 itemBuilder: ((context, index) {
                                   return AnimatedScaleButton(
                                     onTap: () {
                                       setState(() {
                                         if (selectedIndices.contains(index)) {
                                           multiGoals
-                                              .remove(Active[index]['id']);
+                                              .remove(active[index]['id']);
                                           selectedIndices.remove(index);
                                         } else {
                                           selectedIndices.add(index);
-                                          multiGoals.add(Active[index]['id']);
+                                          multiGoals.add(active[index]['id']);
                                         }
                                       });
                                       setState(() {
@@ -678,7 +676,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                                 ])),
                                         child: Center(
                                           child: Text(
-                                            Active[index]['name'],
+                                            active[index]['name'],
                                             maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.center,
@@ -863,8 +861,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 }
                               } else {
                                 final SharedPreferences prefs = await _prefs;
-                                var hurdleRoute =
-                                    prefs.setString('HurdleRoute', 'data');
+                                await prefs.setString('HurdleRoute', 'data');
                                 if (selectAll == true ||
                                     multiGoals.length != 0) {
                                   if (selectAll == true) {

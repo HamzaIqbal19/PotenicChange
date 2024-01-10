@@ -28,8 +28,6 @@ class _clocksState extends State<clocks> {
   String pracName = "";
   var behaviour_route;
 
-  final _scrollController = ScrollController();
-
   @override
   void initState() {
     super.initState();
@@ -237,7 +235,7 @@ class _clocksState extends State<clocks> {
                       color: Colors.white),
                 ),
               ),
-              Container(child: const watch_time()),
+              const watch_time(),
               AnimatedScaleButton(
                 onTap: () {
                   Navigator.push(
@@ -289,7 +287,7 @@ class _watch_timeState extends State<watch_time> {
   String button_text = 'Start';
   bool clock_state = true;
 
-  Stopwatch _stopwatch = Stopwatch();
+  final Stopwatch _stopwatch = Stopwatch();
   Timer? _timer;
   String _elapsedTime = "00:00";
   int _seconds = 00;
@@ -297,13 +295,8 @@ class _watch_timeState extends State<watch_time> {
   int _hours = 0;
   bool enabled = false;
 
-  // The state of the timer (running or not)
   bool _isRunning = false;
 
-  // This function will be called when the user presses the start button
-  // Start the timer
-  // The timer will run every second
-  // The timer will stop when the hours, minutes and seconds are all 0
   void _startTimer() {
     setState(() {
       _isRunning = true;
@@ -407,7 +400,6 @@ class _watch_timeState extends State<watch_time> {
                       button_text = "start";
                       clock_state = true;
                     });
-                    ;
                   },
                   child: clock_state
                       ? SizedBox(
@@ -519,10 +511,10 @@ class _watch_timeState extends State<watch_time> {
                                 shape: Shape.line,
                                 linePosition: LinePosition.bottom,
                                 color: Colors.white,
-                                dash: [2, 2]),
+                                dash: const [2, 2]),
                         child: clock_state
                             ? Text(
-                                '$_elapsedTime',
+                                _elapsedTime,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize:

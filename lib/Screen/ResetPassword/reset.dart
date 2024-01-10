@@ -19,15 +19,14 @@ class _resetState extends State<reset> {
   final password = TextEditingController();
   final confirm = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  bool Loading = false;
-  bool pass_obscure = true;
-  bool pass_obscure2 = true;
+  bool loading = false;
+  bool passObscure = true;
+  bool passObscure2 = true;
   bool errorPassword = false;
   bool errorMatch = false;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -96,7 +95,7 @@ class _resetState extends State<reset> {
                     ),
 
                     SizedBox(height: AppDimensions.height10(context) * 2.35),
-                    Container(
+                    SizedBox(
                       height: AppDimensions.height10(context) * 3.9,
                       child: Text(
                         "Reset your password",
@@ -111,7 +110,7 @@ class _resetState extends State<reset> {
                     SizedBox(height: AppDimensions.height10(context) * 0.9),
 
                     // SizedBox(height: AppDimensions.height0),
-                    Container(
+                    SizedBox(
                       height: AppDimensions.height10(context) * 26 + 6,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -174,7 +173,7 @@ class _resetState extends State<reset> {
                                               AppDimensions.height10(context) *
                                                   2.2,
                                           child: TextFormField(
-                                              obscureText: pass_obscure,
+                                              obscureText: passObscure,
                                               controller: password,
                                               validator: (val) {
                                                 if (val == null ||
@@ -188,6 +187,7 @@ class _resetState extends State<reset> {
                                                     errorPassword = false;
                                                   });
                                                 }
+                                                return null;
                                               },
                                               onChanged: (value) {
                                                 setState(() {
@@ -235,11 +235,7 @@ class _resetState extends State<reset> {
                                   GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        if (pass_obscure == true) {
-                                          pass_obscure = false;
-                                        } else {
-                                          pass_obscure = true;
-                                        }
+                                        passObscure = !passObscure;
                                       });
                                     },
                                     child: SizedBox(
@@ -249,7 +245,7 @@ class _resetState extends State<reset> {
                                           AppDimensions.width10(context) * 2.4,
                                       child: Center(
                                         child: Image.asset(
-                                          pass_obscure
+                                          passObscure
                                               ? 'assets/images/visible-icon-9.webp'
                                               : 'assets/images/ic_remove_red_eye.webp',
                                           color: const Color(0xFF8C648A),
@@ -343,7 +339,7 @@ class _resetState extends State<reset> {
                                                   2.2,
                                           child: TextFormField(
                                               controller: confirm,
-                                              obscureText: pass_obscure2,
+                                              obscureText: passObscure2,
                                               validator: (value) {
                                                 if (confirm.text.toString() !=
                                                     password.text.toString()) {
@@ -355,6 +351,7 @@ class _resetState extends State<reset> {
                                                     errorMatch = false;
                                                   });
                                                 }
+                                                return null;
                                               },
                                               onChanged: (value) {
                                                 setState(() {
@@ -402,11 +399,7 @@ class _resetState extends State<reset> {
                                   GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        if (pass_obscure2 == true) {
-                                          pass_obscure2 = false;
-                                        } else {
-                                          pass_obscure2 = true;
-                                        }
+                                        passObscure2 = !passObscure2;
                                       });
                                     },
                                     child: SizedBox(
@@ -415,7 +408,7 @@ class _resetState extends State<reset> {
                                       width:
                                           AppDimensions.width10(context) * 2.4,
                                       child: Image.asset(
-                                        pass_obscure2
+                                        passObscure2
                                             ? 'assets/images/visible-icon-9.webp'
                                             : 'assets/images/ic_remove_red_eye.webp',
                                         color: const Color(0xFF8C648A),
@@ -464,14 +457,14 @@ class _resetState extends State<reset> {
                             errorMatch == false &&
                             errorPassword == false) {
                           setState(() {
-                            Loading = true;
+                            loading = true;
                           });
                           Authentication()
                               .passwordReset(confirm.text.toString())
                               .then((value) {
                             if (value == true) {
                               setState(() {
-                                Loading = false;
+                                loading = false;
                               });
                               Navigator.push(
                                 context,
@@ -481,7 +474,7 @@ class _resetState extends State<reset> {
                               );
                             } else if (value == 400) {
                               setState(() {
-                                Loading = false;
+                                loading = false;
                               });
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(const SnackBar(
@@ -491,20 +484,17 @@ class _resetState extends State<reset> {
                               )));
                             } else {
                               setState(() {
-                                Loading = false;
+                                loading = false;
                               });
-                              print('======DATA FAILED');
                             }
                           }).catchError((error) {
                             setState(() {
-                              Loading = false;
+                              loading = false;
                             });
-
-                            print("error");
                           });
                         } else {
                           setState(() {
-                            Loading = false;
+                            loading = false;
                           });
                         }
                       },
@@ -519,7 +509,7 @@ class _resetState extends State<reset> {
                         // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.width10(context) *0.8),
 
                         child: Center(
-                          child: Loading == false
+                          child: loading == false
                               ? Text(
                                   'Confirm new pasword',
                                   style: TextStyle(
@@ -617,28 +607,23 @@ class Confirmation extends StatelessWidget {
                 ),
 
                 SizedBox(height: AppDimensions.height10(context) * 2.35),
-                Container(
-                  //height: AppDimensions.height10(context) * 7.2,
-                  child: Text(
-                    "You have updated\nyour password",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      height: AppDimensions.height10(context) * 0.15,
-                      color: Colors.white,
-                      fontSize: AppDimensions.font10(context) * 3.0,
-                    ),
+                Text(
+                  "You have updated\nyour password",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    height: AppDimensions.height10(context) * 0.15,
+                    color: Colors.white,
+                    fontSize: AppDimensions.font10(context) * 3.0,
                   ),
                 ),
                 SizedBox(height: AppDimensions.height10(context) * 4.6),
-
-                // SizedBox(height: AppDimensions.height0),
 
                 AnimatedScaleButton(
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
-                      FadePageRoute(page: Loginemailandpassword()),
+                      FadePageRoute(page: const Loginemailandpassword()),
                     );
                   },
                   child: Container(
@@ -649,8 +634,6 @@ class Confirmation extends StatelessWidget {
                           AppDimensions.height10(context) * 5.0),
                       color: const Color(0xFFFFFFFF),
                     ),
-                    // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.width10(context) *0.8),
-
                     child: Center(
                         child: Text(
                       'Login',

@@ -33,7 +33,7 @@ class practice_assesment extends StatefulWidget {
 class _practice_assesmentState extends State<practice_assesment> {
   var goalDetails;
   var pracDetails;
-  bool Loader = true;
+  bool loader = true;
   String route = '';
 
   Future<void> _getRoute() async {
@@ -47,19 +47,20 @@ class _practice_assesmentState extends State<practice_assesment> {
   void fetchGoalDetails() async {
     final SharedPreferences prefs = await _prefs;
 
-    AdminGoal.getUserGoalById(prefs.get('goal_num')).then((response) async {
-      if (response.length != 0) {
-        setState(() {
-          goalDetails = response;
-          pracDetails = response['userPractices'];
-        });
-        loadData();
-      } else {
-        loadData();
-      }
-    }).catchError((error) {
-      print("error");
-    }).whenComplete(() {});
+    AdminGoal.getUserGoalById(prefs.get('goal_num'))
+        .then((response) async {
+          if (response.length != 0) {
+            setState(() {
+              goalDetails = response;
+              pracDetails = response['userPractices'];
+            });
+            loadData();
+          } else {
+            loadData();
+          }
+        })
+        .catchError((error) {})
+        .whenComplete(() {});
   }
 
   void fetchPracticeAssesment() async {
@@ -79,7 +80,7 @@ class _practice_assesmentState extends State<practice_assesment> {
 
   void onDoneLoading() {
     setState(() {
-      Loader = false;
+      loader = false;
     });
   }
 
@@ -161,7 +162,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                //  width: AppDimensions.width10(context) * 2.6,
+                  //  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.contain,
                 )),
@@ -199,7 +200,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),
@@ -215,7 +216,7 @@ class _practice_assesmentState extends State<practice_assesment> {
           )),
           width: double.infinity,
           height: double.infinity,
-          child: Loader == false
+          child: loader == false
               ? SingleChildScrollView(
                   child: Column(
                   children: [
@@ -255,16 +256,21 @@ class _practice_assesmentState extends State<practice_assesment> {
                                     alignment: const Alignment(1, -1.3),
                                     child: Container(
                                       margin: EdgeInsets.only(
-                                          right: AppDimensions.height10(context) * 0.5),
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  0.5),
                                       child: IconButton(
                                           onPressed: () {
                                             info_sheet(context);
                                           },
                                           icon: Image.asset(
                                             'assets/images/ic_info_outline.webp',
-                                            height:
-                                            AppDimensions.height10(context) * 3.0,
-                                            width: AppDimensions.width10(context) * 3.0,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    3.0,
                                           )),
                                     ),
                                   ),

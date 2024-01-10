@@ -107,7 +107,6 @@ class _prac_scoreState extends State<prac_score> {
         loadData();
       } else {}
     }).catchError((error) {
-      print("hell");
     }).whenComplete(() {});
   }
 

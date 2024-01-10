@@ -121,13 +121,13 @@ class goalFinished_shimmer extends StatelessWidget {
               SizedBox(
                 height: AppDimensions.height10(context) * 8.0,
               ),
-              Container(
+              SizedBox(
                 height: AppDimensions.height10(context) * 26.8,
                 width: AppDimensions.width10(context) * 26.8,
                 child: Stack(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    const continer_const(
+                    const ContinerConst(
                       height_of: 26.8,
                       width_of: 26.8,
                     ),
@@ -185,10 +185,10 @@ class goalFinished_shimmer extends StatelessWidget {
   }
 }
 
-class continer_const extends StatelessWidget {
+class ContinerConst extends StatelessWidget {
   final double height_of;
   final double width_of;
-  const continer_const({
+  const ContinerConst({
     Key? key,
     required this.height_of,
     required this.width_of,

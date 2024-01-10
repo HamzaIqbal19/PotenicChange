@@ -33,9 +33,9 @@ class _endofSessionState extends State<endofSession> {
   var afterSession;
   var afterSessionNotes;
   var emotionsNotes;
-  var selected_date;
+  var selectedDate;
   //var sessionFeedback;
-  int prac_num = 0;
+  int pracNum = 0;
 
   @override
   void initState() {
@@ -54,10 +54,10 @@ class _endofSessionState extends State<endofSession> {
 
   void _fetchPracticeNames() async {
     final SharedPreferences prefs = await _prefs;
-    var Name = prefs.getString('pracName');
+    var name = prefs.getString('pracName');
 
     setState(() {
-      pracName = '$Name';
+      pracName = '$name';
     });
     onLoad();
     if (widget.summary == true) {
@@ -69,14 +69,14 @@ class _endofSessionState extends State<endofSession> {
   void onLoad() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
-      prac_num = prefs.getInt("prac_num")!;
+      pracNum = prefs.getInt("prac_num")!;
       emotions = prefs.getInt('emotions');
       afterSession = prefs.getInt('afterSession');
       afterSessionNotes = prefs.getString('sessionFeedback');
       emotionsNotes = prefs.getString('emotionsFeedback');
       timeSlot = prefs.getString('recording_Time1') ?? "12:00 am";
       behaviour_route = prefs.getBool('behaviour_route');
-      selected_date = prefs.getString('record_date') ?? "2023:08:12";
+      selectedDate = prefs.getString('record_date') ?? "2023:08:12";
     });
 
     feedback3.text = prefs.getString('endSessionFeedback')!;
@@ -124,7 +124,7 @@ class _endofSessionState extends State<endofSession> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                //  width: AppDimensions.width10(context) * 2.6,
+                  //  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.contain,
                 )),
@@ -169,17 +169,18 @@ class _endofSessionState extends State<endofSession> {
                                   margin: EdgeInsets.only(
                                       bottom:
                                           AppDimensions.height10(context) * 1.9,
-                                      left: AppDimensions.width10(context) * 1.6,
-                                      right:
-                                          AppDimensions.height10(context) * 1.6),
+                                      left:
+                                          AppDimensions.width10(context) * 1.6,
+                                      right: AppDimensions.height10(context) *
+                                          1.6),
                                   height: AppDimensions.height10(context) * 3.2,
                                   width: AppDimensions.width10(context) * 23.8,
                                   child: Text(
                                     "If you close it now, you will lose all your progress.",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      height:
-                                          AppDimensions.height10(context) * 0.15,
+                                      height: AppDimensions.height10(context) *
+                                          0.15,
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -243,7 +244,7 @@ class _endofSessionState extends State<endofSession> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.8,
                     fit: BoxFit.contain,
                   )),
@@ -332,7 +333,8 @@ class _endofSessionState extends State<endofSession> {
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(width: 1, color: Colors.white),
+                                border:
+                                    Border.all(width: 1, color: Colors.white),
                                 gradient: RadialGradient(
                                   // radius: 0.5,
                                   colors: <Color>[
@@ -388,7 +390,8 @@ class _endofSessionState extends State<endofSession> {
                                 AppDimensions.height10(context) * 0.9),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(width: 1, color: Colors.white),
+                                border:
+                                    Border.all(width: 1, color: Colors.white),
                                 gradient: RadialGradient(
                                   // radius: 0.5,
                                   colors: <Color>[
@@ -449,7 +452,8 @@ class _endofSessionState extends State<endofSession> {
                                 AppDimensions.height10(context) * 0.9),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(width: 1, color: Colors.white),
+                                border:
+                                    Border.all(width: 1, color: Colors.white),
                                 gradient: RadialGradient(
                                   //radius: 0.5,
                                   colors: <Color>[
@@ -508,7 +512,8 @@ class _endofSessionState extends State<endofSession> {
                                 AppDimensions.height10(context) * 0.9),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(width: 1, color: Colors.white),
+                                border:
+                                    Border.all(width: 1, color: Colors.white),
                                 gradient: RadialGradient(
                                   // radius: 0.5,
                                   colors: <Color>[
@@ -567,7 +572,8 @@ class _endofSessionState extends State<endofSession> {
                                 AppDimensions.height10(context) * 0.9),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(width: 1, color: Colors.white),
+                                border:
+                                    Border.all(width: 1, color: Colors.white),
                                 gradient: RadialGradient(
                                   // radius: 0.5,
                                   colors: <Color>[
@@ -619,15 +625,17 @@ class _endofSessionState extends State<endofSession> {
                                   height: AppDimensions.height10(context) * 5.0,
                                   width: AppDimensions.width10(context) * 14.3,
                                   margin: EdgeInsets.only(
-                                      right:
-                                          AppDimensions.height10(context) * 1.2),
+                                      right: AppDimensions.height10(context) *
+                                          1.2),
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) * 5.0),
+                                          AppDimensions.height10(context) *
+                                              5.0),
                                       border: Border.all(
-                                          width: AppDimensions.width10(context) *
-                                              0.2,
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  0.2,
                                           color: const Color(0xffFA9934))),
                                   child: Center(
                                       child: Text(
@@ -644,7 +652,7 @@ class _endofSessionState extends State<endofSession> {
                         onTap: () async {
                           if (sessionEnd != 0) {
                             final SharedPreferences prefs = await _prefs;
-                            var afterSessionFeedback = feedback.text.isNotEmpty
+                            feedback.text.isNotEmpty
                                 ? prefs.setString('endSessionFeedback',
                                     feedback3.text.toString())
                                 : prefs.setString('endSessionFeedback', " ");
@@ -670,51 +678,45 @@ class _endofSessionState extends State<endofSession> {
                                           page: const practice_summary(
                                         view: false,
                                       )));
-                                } else {
-                                  print('Update Failed');
-                                }
+                                } else {}
                               });
                             } else {
                               RecordingPractice()
                                   .userAddRecording(
-                                '$emotions',
-                                '$afterSession',
-                                [
-                                  {
-                                    "beforeNote": emotionsNotes,
-                                    "afterNote": afterSessionNotes,
-                                    "endNote": feedback3.text.isNotEmpty
-                                        ? feedback3.text.toString()
-                                        : " "
-                                  }
-                                ],
-                                '$sessionEnd',
-                                prac_num,
-                                timeSlot.toString(),
-                                selected_date,
-                              )
+                                    '$emotions',
+                                    '$afterSession',
+                                    [
+                                      {
+                                        "beforeNote": emotionsNotes,
+                                        "afterNote": afterSessionNotes,
+                                        "endNote": feedback3.text.isNotEmpty
+                                            ? feedback3.text.toString()
+                                            : " "
+                                      }
+                                    ],
+                                    '$sessionEnd',
+                                    pracNum,
+                                    timeSlot.toString(),
+                                    selectedDate,
+                                  )
                                   .then((response) {
-                                if (response == true) {
-                                  feedback.clear();
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text(
-                                              "Recording Added Successfully")));
-                                  feedback3.clear();
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const practice_summary(
-                                        view: false,
-                                      )));
-                                } else if (response == false) {
-                                  print('Api call failed');
-                                }
-                              }).catchError((error) {
-                                print('===>error');
-                              }).whenComplete(() {
-                                print('Completed');
-                              });
+                                    if (response == true) {
+                                      feedback.clear();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  "Recording Added Successfully")));
+                                      feedback3.clear();
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const practice_summary(
+                                            view: false,
+                                          )));
+                                    } else if (response == false) {}
+                                  })
+                                  .catchError((error) {})
+                                  .whenComplete(() {});
                             }
                           }
                         },
@@ -746,7 +748,8 @@ class _endofSessionState extends State<endofSession> {
                                 widget.summary ? 'Update Summary' : 'Summary',
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: AppDimensions.font10(context) * 1.6,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w600),
                               ),
                             )),
@@ -754,7 +757,9 @@ class _endofSessionState extends State<endofSession> {
                     ],
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10(context)*2,)
+                SizedBox(
+                  height: AppDimensions.height10(context) * 2,
+                )
               ],
             ),
           ),
@@ -778,9 +783,9 @@ class addNotes extends StatefulWidget {
 }
 
 class _addNotesState extends State<addNotes> {
-  int icon_color = 0xffffffff;
-  int back_color = 0x000000ff;
-  bool note_check = false;
+  int iconColor = 0xffffffff;
+  int backColor = 0x000000ff;
+  bool noteCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -795,16 +800,16 @@ class _addNotesState extends State<addNotes> {
             children: [
               AnimatedScaleButton(
                 onTap: () {
-                  note_check
+                  noteCheck
                       ? setState(() {
-                          back_color = 0x000000ff;
-                          icon_color = 0xffffffff;
-                          note_check = false;
+                          backColor = 0x000000ff;
+                          iconColor = 0xffffffff;
+                          noteCheck = false;
                         })
                       : setState(() {
-                          back_color = 0xffffffff;
-                          icon_color = 0xffFA9934;
-                          note_check = true;
+                          backColor = 0xffffffff;
+                          iconColor = 0xffFA9934;
+                          noteCheck = true;
                           // icon_color = 0xffFA9934,
                         });
                 },
@@ -813,10 +818,10 @@ class _addNotesState extends State<addNotes> {
                   height: AppDimensions.height10(context) * 5.0,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(back_color),
+                      color: Color(backColor),
                       border: Border.all(
                           width: AppDimensions.width10(context) * 0.2,
-                          color: Color(icon_color))),
+                          color: Color(iconColor))),
                   child: Container(
                     height: AppDimensions.height10(context) * 2.7,
                     width: AppDimensions.width10(context) * 2.7,
@@ -825,7 +830,7 @@ class _addNotesState extends State<addNotes> {
                         child: Icon(
                       Icons.edit_note,
                       //size: 27,
-                      color: Color(icon_color),
+                      color: Color(iconColor),
                     )),
                   ),
                 ),
@@ -848,7 +853,7 @@ class _addNotesState extends State<addNotes> {
           ),
         ),
         Container(
-            child: note_check
+            child: noteCheck
                 ? Container(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.0,
@@ -881,24 +886,22 @@ class notes extends StatelessWidget {
               color: Colors.white),
           child: Column(
             children: [
-              Container(
-                child: TextField(
-                  controller: feedback3,
-                  maxLength: 200,
-                  maxLines: null,
-                  minLines: null,
-                  decoration: InputDecoration(
-                      hintText: 'Add notes here',
-                      hintStyle: TextStyle(
-                        fontSize: AppDimensions.font10(context) * 1.6,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff646464),
-                      ),
-                      focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.transparent)),
-                      enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.transparent))),
-                ),
+              TextField(
+                controller: feedback3,
+                maxLength: 200,
+                maxLines: null,
+                minLines: null,
+                decoration: InputDecoration(
+                    hintText: 'Add notes here',
+                    hintStyle: TextStyle(
+                      fontSize: AppDimensions.font10(context) * 1.6,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xff646464),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent)),
+                    enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent))),
               ),
             ],
           ),

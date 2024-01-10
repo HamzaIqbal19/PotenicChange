@@ -92,17 +92,13 @@ void community_sheet(context) {
                               height: AppDimensions.height10(context) * 0.15,
                               color: const Color(0xFF437296)),
                         ),
-                        Container(
-                          // padding: EdgeInsets.only(
-                          //     bottom: AppDimensions.height10(context) * 1.0),
-                          child: Text(
-                            ' coming soon...',
-                            style: TextStyle(
-                                height: AppDimensions.height10(context) * 0.15,
-                                fontSize: AppDimensions.font10(context) * 2.2,
-                                fontWeight: FontWeight.w600,
-                                color: const Color(0xFF437296)),
-                          ),
+                        Text(
+                          ' coming soon...',
+                          style: TextStyle(
+                              height: AppDimensions.height10(context) * 0.15,
+                              fontSize: AppDimensions.font10(context) * 2.2,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF437296)),
                         )
                       ],
                     )),

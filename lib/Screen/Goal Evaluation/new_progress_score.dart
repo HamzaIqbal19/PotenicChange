@@ -30,16 +30,9 @@ class new_progress_score extends StatefulWidget {
 class _new_progress_scoreState extends State<new_progress_score> {
   int _selectedIndex = 0;
   int datesIndex = 0;
-  final List<String> _statements = [
-    '01 Jan 23 to 01 Feb 23 (2/5) ',
-    '01 Dec 22 to 01 Jan 23 (-/5)  ',
-    '01 Nov 22 to 01 Dec 22 (2/5)  ',
-    '01 Oct 22 to 01 Nov 22 (3/5)  ',
-    '01 Sep 22 to 01 Oct 22 (2/5)  ',
-  ];
-  List<String> _dates = [];
+
+  final List<String> _dates = [];
   String activity_duration = '01 Jan 23 to 01 Feb 23 ';
-  String _selected_activity = '';
   int goal_level = 2;
   int selectedEval = 0;
   int mirror = 0;
@@ -79,68 +72,56 @@ class _new_progress_scoreState extends State<new_progress_score> {
   Future<void> _fetchGoalDetails() async {
     final SharedPreferences prefs = await _prefs;
 
-    AdminGoal.getUserGoalById(prefs.get('goal_num')).then((response) async {
-      if (response.length != 0) {
-        setState(() {
-          goalDetails = response;
-          selectedEval = response["goalEvaluations"].length - 1;
-          _selectedIndex = response["goalEvaluations"].length - 1;
-        });
-        if (widget.evaluationIndex != response["goalEvaluations"].length - 1) {
-          setState(() {
-            _selectedIndex = widget.evaluationIndex;
-            selectedEval = widget.evaluationIndex;
-          });
-        }
+    AdminGoal.getUserGoalById(prefs.get('goal_num'))
+        .then((response) async {
+          if (response.length != 0) {
+            setState(() {
+              goalDetails = response;
+              selectedEval = response["goalEvaluations"].length - 1;
+              _selectedIndex = response["goalEvaluations"].length - 1;
+            });
+            if (widget.evaluationIndex !=
+                response["goalEvaluations"].length - 1) {
+              setState(() {
+                _selectedIndex = widget.evaluationIndex;
+                selectedEval = widget.evaluationIndex;
+              });
+            }
 
-        
-        _scrollController =
-            FixedExtentScrollController(initialItem: _selectedIndex);
-        print("error start");
+            _scrollController =
+                FixedExtentScrollController(initialItem: _selectedIndex);
 
-        print("error initiate");
-        loadData();
-        GetDates();
-        print("error off");
-      } else {
-        loadData();
-      }
-    }).catchError((error) {
-      // loadData();
-      print("error occured");
-    }).whenComplete(() {
-      //loadData();
-    });
+            loadData();
+            GetDates();
+          } else {
+            loadData();
+          }
+        })
+        .catchError((error) {})
+        .whenComplete(() {});
   }
 
   GetDates() {
-    print("error initiate ${goalDetails["goalEvaluations"][0]}");
-
-    if(goalDetails["goalEvaluations"][0]['goalLevel'] == null ||
-        goalDetails["goalEvaluations"][0]['goalLevel'] == 0){
+    if (goalDetails["goalEvaluations"][0]['goalLevel'] == null ||
+        goalDetails["goalEvaluations"][0]['goalLevel'] == 0) {
       for (int i = 0; i < goalDetails["goalEvaluations"].length; i++) {
-        print("error initiate 1");
-        late DateTime futureDate ;
+        late DateTime futureDate;
         final DateTime originalDate = DateFormat("yyyy-MM-dd")
             .parse(goalDetails["goalEvaluations"][i]['activedate']);
-        print("error initiate 2");
-        if(goalDetails["goalEvaluations"][i]['endDate'] != null){
+        if (goalDetails["goalEvaluations"][i]['endDate'] != null) {
           futureDate = DateFormat("yyyy-MM-dd")
               .parse(goalDetails["goalEvaluations"][i]['endDate']);
-        }else{
+        } else {
           futureDate = originalDate.add(Duration(days: 30));
         }
 
-        print("error initiate 3");
-        final String formattedDate = DateFormat("dd MMM yy").format(originalDate);
-        print("error initiate 4");
+        final String formattedDate =
+            DateFormat("dd MMM yy").format(originalDate);
         final String formattedFutureDate =
-        DateFormat("dd MMM yy").format(futureDate);
-        print("error initiate 5");
+            DateFormat("dd MMM yy").format(futureDate);
         if (goalDetails["goalEvaluations"][i]['goalLevel'] == null ||
             goalDetails["goalEvaluations"][i]['goalLevel'] == 0) {
           _dates.add('$formattedDate to $formattedFutureDate (-/5)');
-          print("error initiate 6");
         } else {
           _dates.add(
               '$formattedDate to $formattedFutureDate (${goalDetails["goalEvaluations"][i]['totalPoint']}/5)');
@@ -150,11 +131,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
         });
       }
     }
-
-
-
-
-
   }
 
   @override
@@ -167,7 +143,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _scrollController.dispose();
   }
@@ -275,7 +250,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                       ),
                       Container(
                         width: AppDimensions.width10(context) * 36.5,
-                       // height: AppDimensions.height10(context) * 58.1,
+                        // height: AppDimensions.height10(context) * 58.1,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 4.0),
                         child: Stack(
@@ -429,9 +404,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                   (int index) {
                                                 setState(() {
                                                   _selectedIndex = index;
-                                                  _selected_activity =
-                                                      _statements[
-                                                          _selectedIndex];
                                                 });
                                                 _scrollController =
                                                     FixedExtentScrollController(
@@ -447,7 +419,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         ],
                                       ),
                                     );
-
                                   },
                                 ),
                                 child: Container(
@@ -833,7 +804,10 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                     ),
                                           Container(
                                             //  width: AppDimensions.width10(context) * 21.4,
-                                            margin: EdgeInsets.only(top: AppDimensions.height10(context)*0.3),
+                                            margin: EdgeInsets.only(
+                                                top: AppDimensions.height10(
+                                                        context) *
+                                                    0.3),
                                             height: AppDimensions.height10(
                                                     context) *
                                                 7.3,
@@ -876,8 +850,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                         AppDimensions.font10(
                                                                 context) *
                                                             2.0,
-                                                    fontWeight:
-                                                        FontWeight.w600,
+                                                    fontWeight: FontWeight.w600,
                                                     color: const Color(
                                                         0xFFFFFFFF)),
                                               ),
@@ -907,19 +880,16 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      // width: AppDimensions.width10(context) * 2.1,
-                                      // height: AppDimensions.height10(context) * 4.3,
-                                      child: Image.asset(
-                                        'assets/images/Arrow.webp',
-                                        width: AppDimensions.width10(context) *
-                                            4.1,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                4.1,
-                                      ),
+                                    Image.asset(
+                                      'assets/images/Arrow.webp',
+                                      width:
+                                          AppDimensions.width10(context) * 4.1,
+                                      height:
+                                          AppDimensions.height10(context) * 4.1,
                                     ),
-                                    SizedBox(height: AppDimensions.height10(context),)
+                                    SizedBox(
+                                      height: AppDimensions.height10(context),
+                                    )
                                   ],
                                 ),
                               ),
@@ -929,11 +899,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
                       ),
                       Container(
                         //width: AppDimensions.width10(context) * 44.1,
-                       // height: AppDimensions.height10(context) * 67.2,
+                        // height: AppDimensions.height10(context) * 67.2,
                         // color: Colors.amberAccent,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 2.5,
-                        bottom: AppDimensions.height10(context)*3),
+                            bottom: AppDimensions.height10(context) * 3),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
@@ -1347,7 +1317,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                 },
                 child: BottomAppBar(
                   elevation: 0,
-                  color: const Color(0xFFF5F5F5),padding: EdgeInsets.zero,
+                  color: const Color(0xFFF5F5F5),
+                  padding: EdgeInsets.zero,
                   height: AppDimensions.height10(context) * 7.7,
                   child: Container(
                     height: AppDimensions.height10(context) * 7.7,

@@ -12,7 +12,7 @@ import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import 'dashboardViewgoals.dart';
 
-bool note_check = false;
+bool noteCheck = false;
 int EmotionsAfter = 0;
 TextEditingController feedback = TextEditingController();
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -63,29 +63,29 @@ class _feelingsAfterState extends State<feelingsAfter> {
 
   void _fetchPracticeNames() async {
     final SharedPreferences prefs = await _prefs;
-    var Name = prefs.getString('pracName');
+    var name = prefs.getString('pracName');
 
     setState(() {
-      pracName = '$Name';
+      pracName = '$name';
     });
   }
 
   void recording() {
     RecordingPractice.getUserPracticeRecord().then((response) {
       if (response.length != 0) {
-        String SessionFeedBack = '';
+        String sessionFeedBack = '';
 
         setState(() {
           emotionsNotes = response['recording']['notes'][0]['beforeNote'];
           endSession = response['recording']['notes'][0]['endNote'];
-          SessionFeedBack =
+          sessionFeedBack =
               response['recording']['notes'][0]['afterNote'].toString().isEmpty
                   ? ''
                   : response['recording']['notes'][0]['afterNote'];
           EmotionsAfter = response['recording']['feelingsAfterSession'];
         });
-        if (SessionFeedBack != '') {
-          feedback.text = SessionFeedBack;
+        if (sessionFeedBack != '') {
+          feedback.text = sessionFeedBack;
         }
       }
     });
@@ -141,7 +141,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                   },
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.8,
                     fit: BoxFit.contain,
                   )),
@@ -156,7 +156,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                               curve: Curves.easeInOut,
                               duration: const Duration(seconds: 1),
                               context: context,
-                              builder: (BuildContext context) => Container(
+                              builder: (BuildContext context) => SizedBox(
                                 width: AppDimensions.width10(context) * 27.0,
                                 height: AppDimensions.height10(context) * 18.2,
                                 child: AlertDialog(
@@ -165,12 +165,18 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                   titlePadding: EdgeInsets.zero,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) * 1.4)),
+                                          AppDimensions.height10(context) *
+                                              1.4)),
                                   title: Container(
                                     margin: const EdgeInsets.only(
-                                        top: 19, right: 16, left: 16, bottom: 2),
-                                    height: AppDimensions.height10(context) * 2.2,
-                                    width: AppDimensions.width10(context) * 23.8,
+                                        top: 19,
+                                        right: 16,
+                                        left: 16,
+                                        bottom: 2),
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    width:
+                                        AppDimensions.width10(context) * 23.8,
                                     child: Text(
                                       "Are you sure?",
                                       textAlign: TextAlign.center,
@@ -185,19 +191,23 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                   content: Container(
                                     margin: EdgeInsets.only(
                                         bottom:
-                                            AppDimensions.height10(context) * 1.9,
-                                        left:
-                                            AppDimensions.height10(context) * 1.6,
+                                            AppDimensions.height10(context) *
+                                                1.9,
+                                        left: AppDimensions.height10(context) *
+                                            1.6,
                                         right: AppDimensions.width10(context) *
                                             1.6),
-                                    height: AppDimensions.height10(context) * 3.2,
-                                    width: AppDimensions.width10(context) * 23.8,
+                                    height:
+                                        AppDimensions.height10(context) * 3.2,
+                                    width:
+                                        AppDimensions.width10(context) * 23.8,
                                     child: Text(
                                       "If you close it now, you will lose all your progress.",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        height: AppDimensions.height10(context) *
-                                            0.15,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.15,
                                         fontSize: 13,
                                         fontWeight: FontWeight.w400,
                                       ),
@@ -247,7 +257,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                             ),
                                           ),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 44,
                                           width: double.infinity,
                                           child: TextButton(
@@ -274,7 +284,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.webp',
-                     // width: AppDimensions.width10(context) * 2.6,
+                      // width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     )),
@@ -320,7 +330,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                       : SizedBox(
                           height: AppDimensions.height10(context) * 0,
                         ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.width10(context) * 35.9,
                     height: AppDimensions.height10(context) * 14.8,
                     // alignment: Alignment.center,
@@ -391,13 +401,15 @@ class _feelingsAfterState extends State<feelingsAfter> {
                               height: AppDimensions.width10(context) * 12.7,
                               width: AppDimensions.width10(context) * 12.5,
                               margin: EdgeInsets.symmetric(
-                                  vertical: AppDimensions.height10(context) * 0.4,
+                                  vertical:
+                                      AppDimensions.height10(context) * 0.4,
                                   horizontal:
                                       AppDimensions.height10(context) * 0.3),
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(width: 2, color: Colors.white),
+                                border:
+                                    Border.all(width: 2, color: Colors.white),
                                 color: const Color(0xff546096),
                               ),
                               child: Text(
@@ -436,7 +448,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                               width: AppDimensions.width10(context) * 12.5,
                               alignment: Alignment.center,
                               margin: EdgeInsets.symmetric(
-                                  vertical: AppDimensions.height10(context) * 0.4,
+                                  vertical:
+                                      AppDimensions.height10(context) * 0.4,
                                   horizontal:
                                       AppDimensions.height10(context) * 0.3),
                               decoration: BoxDecoration(
@@ -482,7 +495,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                               width: AppDimensions.width10(context) * 12.5,
                               alignment: Alignment.center,
                               margin: EdgeInsets.symmetric(
-                                  vertical: AppDimensions.height10(context) * 0.4,
+                                  vertical:
+                                      AppDimensions.height10(context) * 0.4,
                                   horizontal:
                                       AppDimensions.height10(context) * 0.3),
                               decoration: BoxDecoration(
@@ -527,7 +541,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                               width: AppDimensions.width10(context) * 12.5,
                               alignment: Alignment.center,
                               margin: EdgeInsets.symmetric(
-                                  vertical: AppDimensions.height10(context) * 0.4,
+                                  vertical:
+                                      AppDimensions.height10(context) * 0.4,
                                   horizontal:
                                       AppDimensions.height10(context) * 0.3),
                               decoration: BoxDecoration(
@@ -572,7 +587,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                               width: AppDimensions.width10(context) * 12.5,
                               alignment: Alignment.center,
                               margin: EdgeInsets.symmetric(
-                                  vertical: AppDimensions.height10(context) * 0.4,
+                                  vertical:
+                                      AppDimensions.height10(context) * 0.4,
                                   horizontal:
                                       AppDimensions.height10(context) * 0.3),
                               decoration: BoxDecoration(
@@ -612,15 +628,17 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                   height: AppDimensions.height10(context) * 5.0,
                                   width: AppDimensions.width10(context) * 14.3,
                                   margin: EdgeInsets.only(
-                                      right:
-                                          AppDimensions.height10(context) * 1.2),
+                                      right: AppDimensions.height10(context) *
+                                          1.2),
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) * 5.0),
+                                          AppDimensions.height10(context) *
+                                              5.0),
                                       border: Border.all(
-                                          width: AppDimensions.width10(context) *
-                                              0.2,
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  0.2,
                                           color: const Color(0xffFA9934))),
                                   child: Center(
                                       child: Text(
@@ -637,9 +655,8 @@ class _feelingsAfterState extends State<feelingsAfter> {
                         onTap: () async {
                           if (EmotionsAfter != 0) {
                             final SharedPreferences prefs = await _prefs;
-                            var emotionResult =
-                                prefs.setInt('afterSession', EmotionsAfter);
-                            var afterSessionFeedback = prefs.setString(
+                            await prefs.setInt('afterSession', EmotionsAfter);
+                            await prefs.setString(
                                 'sessionFeedback',
                                 feedback.text.toString().isNotEmpty
                                     ? feedback.text.toString()
@@ -650,9 +667,10 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                   "feelingsAfterSession", EmotionsAfter, [
                                 {
                                   "beforeNote": emotionsNotes ?? " ",
-                                  "afterNote": feedback.text.toString().isNotEmpty
-                                      ? feedback.text.toString()
-                                      : " ",
+                                  "afterNote":
+                                      feedback.text.toString().isNotEmpty
+                                          ? feedback.text.toString()
+                                          : " ",
                                   "endNote": endSession ?? " "
                                 }
                               ]).then((value) {
@@ -676,7 +694,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                             }
 
                             setState(() {
-                              note_check = false;
+                              noteCheck = false;
                             });
                           }
                         },
@@ -709,14 +727,17 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                 widget.summary ? 'Update Summary' : 'Next',
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: AppDimensions.font10(context) * 1.6,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w600),
                               ),
                             )),
                       ),
                     ],
                   ),
-                  SizedBox(height: AppDimensions.height10(context)*2,)
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 2,
+                  )
                   // Padding(
                   //     padding: EdgeInsets.only(
                   //         bottom: MediaQuery.of(context).viewInsets.bottom))
@@ -742,13 +763,13 @@ class addNotes extends StatefulWidget {
 }
 
 class _addNotesState extends State<addNotes> {
-  int icon_color = 0xffffffff;
-  int back_color = 0x000000ff;
+  int iconColor = 0xffffffff;
+  int backColor = 0x000000ff;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: AppDimensions.width10(context) * 7.6,
           height: AppDimensions.height10(context) * 7.6,
           //margin: EdgeInsets.only(bottom: 113),
@@ -757,16 +778,16 @@ class _addNotesState extends State<addNotes> {
             children: [
               AnimatedScaleButton(
                 onTap: () {
-                  note_check
+                  noteCheck
                       ? setState(() {
-                          back_color = 0x000000ff;
-                          icon_color = 0xffffffff;
-                          note_check = false;
+                          backColor = 0x000000ff;
+                          iconColor = 0xffffffff;
+                          noteCheck = false;
                         })
                       : setState(() {
-                          back_color = 0xffffffff;
-                          icon_color = 0xffFA9934;
-                          note_check = true;
+                          backColor = 0xffffffff;
+                          iconColor = 0xffFA9934;
+                          noteCheck = true;
                           // icon_color = 0xffFA9934,
                         });
                 },
@@ -775,10 +796,10 @@ class _addNotesState extends State<addNotes> {
                   height: AppDimensions.height10(context) * 5.0,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(back_color),
+                      color: Color(backColor),
                       border: Border.all(
                           width: AppDimensions.width10(context) * 0.2,
-                          color: Color(icon_color))),
+                          color: Color(iconColor))),
                   child: Container(
                     height: AppDimensions.height10(context) * 2.7,
                     width: AppDimensions.width10(context) * 2.7,
@@ -787,7 +808,7 @@ class _addNotesState extends State<addNotes> {
                         child: Icon(
                       Icons.edit_note,
                       //size: 27,
-                      color: Color(icon_color),
+                      color: Color(iconColor),
                     )),
                   ),
                 ),
@@ -810,7 +831,7 @@ class _addNotesState extends State<addNotes> {
           ),
         ),
         Container(
-            child: note_check
+            child: noteCheck
                 ? Container(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.0,
@@ -843,24 +864,22 @@ class notes extends StatelessWidget {
               color: Colors.white),
           child: Column(
             children: [
-              Container(
-                child: TextField(
-                  controller: feedback,
-                  maxLength: 200,
-                  maxLines: null,
-                  minLines: null,
-                  decoration: InputDecoration(
-                      hintText: 'Add notes here',
-                      hintStyle: TextStyle(
-                        fontSize: AppDimensions.font10(context) * 1.6,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff646464),
-                      ),
-                      focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.transparent)),
-                      enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.transparent))),
-                ),
+              TextField(
+                controller: feedback,
+                maxLength: 200,
+                maxLines: null,
+                minLines: null,
+                decoration: InputDecoration(
+                    hintText: 'Add notes here',
+                    hintStyle: TextStyle(
+                      fontSize: AppDimensions.font10(context) * 1.6,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xff646464),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent)),
+                    enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent))),
               ),
               // SizedBox(
               //   height: AppDimensions.height10(context) * 1.4,
@@ -943,8 +962,8 @@ class _next_bottonState extends State<next_botton> {
           onTap: () async {
             if (EmotionsAfter != 0) {
               final SharedPreferences prefs = await _prefs;
-              var emotionResult = prefs.setInt('afterSession', EmotionsAfter);
-              var afterSessionFeedback = prefs.setString(
+              await prefs.setInt('afterSession', EmotionsAfter);
+              await prefs.setString(
                   'sessionFeedback',
                   feedback.text.toString().isNotEmpty
                       ? feedback.text.toString()
@@ -981,7 +1000,7 @@ class _next_bottonState extends State<next_botton> {
               }
 
               setState(() {
-                note_check = false;
+                noteCheck = false;
               });
             }
           },

@@ -31,7 +31,7 @@ class _select_hurdleState extends State<select_hurdle> {
   var hurdlesList;
 
   int selectBox = -1;
-  bool Loading = true;
+  bool loading = true;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -49,17 +49,17 @@ class _select_hurdleState extends State<select_hurdle> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
-  var Route;
+  var route;
 
   void getHurdleRoute() async {
     final SharedPreferences prefs = await _prefs;
     var integer;
     setState(() {
-      Route = prefs.getString('HurdleRoute').toString().isEmpty
+      route = prefs.getString('HurdleRoute').toString().isEmpty
           ? ''
           : prefs.getString('HurdleRoute');
       integer = prefs.getInt('hurdle_selected').toString().isEmpty
@@ -70,7 +70,7 @@ class _select_hurdleState extends State<select_hurdle> {
       selectBox = integer == '-1' ? -1 : int.parse(integer);
     });
 
-    if (Route == '' || Route == null) {
+    if (route == '' || route == null) {
       setState(() {
         selectBox = -1;
       });
@@ -88,9 +88,7 @@ class _select_hurdleState extends State<select_hurdle> {
       } else {
         return response.statusCode;
       }
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   void _fetchHurdleSummary() async {
@@ -104,9 +102,7 @@ class _select_hurdleState extends State<select_hurdle> {
       } else {
         return response.statusCode;
       }
-    }).catchError((error) {
-      print("error");
-    });
+    }).catchError((error) {});
   }
 
   @override
@@ -133,9 +129,7 @@ class _select_hurdleState extends State<select_hurdle> {
         Navigator.push(
             context, FadePageRouteReverse(page: const hurdles_splash()));
       }
-    }).catchError((error) {
-      print("Hello world error");
-    });
+    }).catchError((error) {});
   }
 
   @override
@@ -344,7 +338,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                                     .withOpacity(0.29),
                                               ),
                                             ),
-                                            Container(
+                                            SizedBox(
                                               height: 42,
                                               width: double.infinity,
                                               // color: Colors.white,
@@ -354,10 +348,8 @@ class _select_hurdleState extends State<select_hurdle> {
 
                                                   final SharedPreferences
                                                       prefs = await _prefs;
-                                                  var hurdleRoute =
-                                                      prefs.setString(
-                                                          'HurdleRoute',
-                                                          'Select');
+                                                  await prefs.setString(
+                                                      'HurdleRoute', 'Select');
                                                   await prefs.setInt(
                                                       'hurdle_selected',
                                                       selectBox);
@@ -391,7 +383,7 @@ class _select_hurdleState extends State<select_hurdle> {
 
                                                   final SharedPreferences
                                                       prefs = await _prefs;
-                                                  var hurdleRoute = prefs
+                                                  await prefs
                                                       .remove('HurdleRoute');
                                                   await prefs
                                                       .remove('hurdleName');
@@ -478,7 +470,7 @@ class _select_hurdleState extends State<select_hurdle> {
                 image: DecorationImage(
                     image: AssetImage('assets/images/practicebackground.webp'),
                     fit: BoxFit.cover)),
-            child: Loading == false
+            child: loading == false
                 ? Stack(
                     alignment: AlignmentDirectional.center,
                     children: [
@@ -486,7 +478,7 @@ class _select_hurdleState extends State<select_hurdle> {
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.width10(context) * 33.7,
                                 height: AppDimensions.height10(context) * 7.8,
                                 child: Center(
@@ -533,7 +525,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                     ),
                                     itemCount: hurdlesList.length,
                                     itemBuilder: (context, index) {
-                                      return Container(
+                                      return SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
                                                 39.9,
@@ -543,13 +535,12 @@ class _select_hurdleState extends State<select_hurdle> {
                                           onTap: () async {
                                             final SharedPreferences prefs =
                                                 await _prefs;
-                                            var hurdleName = prefs.setString(
+                                            await prefs.setString(
                                                 'hurdleName',
                                                 hurdlesList[index]
                                                     ['hurdleName']);
 
-                                            var hurdleId = prefs.setInt(
-                                                'hurdleId',
+                                            await prefs.setInt('hurdleId',
                                                 hurdlesList[index]['id']);
                                             setState(() {
                                               selectBox = index;

@@ -80,31 +80,31 @@ class AllGoals_shimmer extends StatelessWidget {
               SizedBox(
                 height: AppDimensions.height10(context) * 2.0,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  continer_const(),
-                  continer_const(),
-                ],
-              ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 2.5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  continer_const(),
-                  continer_const(),
-                ],
-              ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 2.5,
-              ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  continer_const(),
-                  continer_const(),
+                  ContinerConst(),
+                  ContinerConst(),
+                ],
+              ),
+              SizedBox(
+                height: AppDimensions.height10(context) * 2.5,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ContinerConst(),
+                  ContinerConst(),
+                ],
+              ),
+              SizedBox(
+                height: AppDimensions.height10(context) * 2.5,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ContinerConst(),
+                  ContinerConst(),
                 ],
               ),
             ],
@@ -113,8 +113,8 @@ class AllGoals_shimmer extends StatelessWidget {
   }
 }
 
-class continer_const extends StatelessWidget {
-  const continer_const({
+class ContinerConst extends StatelessWidget {
+  const ContinerConst({
     Key? key,
   }) : super(key: key);
 

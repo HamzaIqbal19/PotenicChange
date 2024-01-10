@@ -11,6 +11,8 @@ String? minutes;
 String? hours;
 
 class routinecommitment extends StatefulWidget {
+  const routinecommitment({super.key});
+
   @override
   State<routinecommitment> createState() => _routinecommitmentState();
 }
@@ -18,7 +20,7 @@ class routinecommitment extends StatefulWidget {
 class _routinecommitmentState extends State<routinecommitment> {
   var pracDetails;
   var schedule;
-  bool Loading = true;
+  bool loading = true;
 
   @override
   void initState() {
@@ -32,7 +34,7 @@ class _routinecommitmentState extends State<routinecommitment> {
 
   void onDoneLoading() {
     setState(() {
-      Loading = false;
+      loading = false;
     });
   }
 
@@ -60,9 +62,7 @@ class _routinecommitmentState extends State<routinecommitment> {
         });
         loadData();
       } else {}
-    }).catchError((error) {
-      print("hell");
-    });
+    }).catchError((error) {});
   }
 
   List<Map<String, dynamic>> updates = [];
@@ -75,8 +75,11 @@ class _routinecommitmentState extends State<routinecommitment> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(left: AppDimensions.width10(context)*1.3, right: AppDimensions.width10(context)*0.5, bottom: AppDimensions.height10(context)*0.5),
-      child: Loading == true
+      padding: EdgeInsets.only(
+          left: AppDimensions.width10(context) * 1.3,
+          right: AppDimensions.width10(context) * 0.5,
+          bottom: AppDimensions.height10(context) * 0.5),
+      child: loading == true
           ? const Center(
               child: SpinKitFadingCircle(
                 color: Color(0xFFB1B8FF),
@@ -145,49 +148,46 @@ class _schedule_cardState extends State<schedule_card> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              child: AdvanceExpansionTile(
-                key: _globalKey,
-                initiallyExpanded: true,
-                disabled: true,
-                hideIcon: true,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                ),
-                title: Text(
-                  widget.days,
-                  style: const TextStyle(
-                      color: Color.fromRGBO(67, 114, 150, 1),
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20.0),
-                ),
-                children: <Widget>[
-                  for (int i = 0;
-                      i < widget.startTime[0].keys.length - 1;
-                      i++) ...[
-                    Container(
-                      // color:Colors.orange,
-                      width: AppDimensions.width10(context) * 36.2,
-                      padding: const EdgeInsets.only(bottom: 10, left: 10),
-                      child: Row(
-                        children: [
-                          startTimerState(
-                            key: Key("${widget.key}"),
-                            text: ' ${i + 1}) Time: ',
-                            startTime: widget.startTime[0].values
-                                .elementAt(i + 1)
-                                // .firstWhere(
-                                //     (element) => element['day'] == widget.days)
-                                // .containsKey('time${i + 1}')
-                                .toString(),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ]
-
-                ],
+            AdvanceExpansionTile(
+              key: _globalKey,
+              initiallyExpanded: true,
+              disabled: true,
+              hideIcon: true,
+              decoration: const BoxDecoration(
+                shape: BoxShape.rectangle,
               ),
+              title: Text(
+                widget.days,
+                style: const TextStyle(
+                    color: Color.fromRGBO(67, 114, 150, 1),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20.0),
+              ),
+              children: <Widget>[
+                for (int i = 0;
+                    i < widget.startTime[0].keys.length - 1;
+                    i++) ...[
+                  Container(
+                    // color:Colors.orange,
+                    width: AppDimensions.width10(context) * 36.2,
+                    padding: const EdgeInsets.only(bottom: 10, left: 10),
+                    child: Row(
+                      children: [
+                        startTimerState(
+                          key: Key("${widget.key}"),
+                          text: ' ${i + 1}) Time: ',
+                          startTime: widget.startTime[0].values
+                              .elementAt(i + 1)
+                              // .firstWhere(
+                              //     (element) => element['day'] == widget.days)
+                              // .containsKey('time${i + 1}')
+                              .toString(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ]
+              ],
             ),
           ],
         ));
@@ -238,7 +238,7 @@ class _startTimerStateState extends State<startTimerState> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              Container(
+              SizedBox(
                 width: AppDimensions.width10(context) * 16.2,
                 child: Text(
                   widget.startTime,
@@ -270,9 +270,9 @@ class endTimerState extends StatefulWidget {
 }
 
 class _endTimerStateState extends State<endTimerState> {
-  String text_state;
+  String textState;
 
-  _endTimerStateState(this.text_state);
+  _endTimerStateState(this.textState);
 
   @override
   Widget build(BuildContext context) {
@@ -289,7 +289,7 @@ class _endTimerStateState extends State<endTimerState> {
           Row(
             children: [
               Text(
-                text_state,
+                textState,
                 //textAlign: TextAlign.left,
                 style: const TextStyle(
                   color: Color.fromRGBO(100, 100, 100, 1),
@@ -298,7 +298,7 @@ class _endTimerStateState extends State<endTimerState> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              Container(
+              SizedBox(
                 width: AppDimensions.width10(context) * 16.2,
                 child: Text(
                   widget.endTime,

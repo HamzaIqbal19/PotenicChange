@@ -29,7 +29,7 @@ void signupSheet(context, String ButtonName, String Route, bool admin) {
             child: Column(
               children: [
                 Container(
-                  height: AppDimensions.height10(context)*5.6,
+                  height: AppDimensions.height10(context) * 5.6,
                   width: 396,
                   color: Colors.transparent,
                   child: TextButton(
@@ -38,7 +38,7 @@ void signupSheet(context, String ButtonName, String Route, bool admin) {
                             ? Navigator.push(
                                 context,
                                 FadePageRoute3(
-                                  enterPage: OnBoarding(),
+                                  enterPage: const OnBoarding(),
                                   exitPage: const HomeScreen(login: true),
                                 ),
                               )
@@ -46,61 +46,64 @@ void signupSheet(context, String ButtonName, String Route, bool admin) {
                       },
                       child: Text(
                         ButtonName,
-                        style:  TextStyle(
-                          color: Color.fromRGBO(0, 120, 255, 1),
-                          fontSize: AppDimensions.height10(context)*1.6,
+                        style: TextStyle(
+                          color: const Color.fromRGBO(0, 120, 255, 1),
+                          fontSize: AppDimensions.height10(context) * 1.6,
                         ),
                       )),
                 ),
-             admin?   Container(
-                  height: AppDimensions.height10(context)*5.6,
-                  width: 396,
-                  decoration: BoxDecoration(
-                      border: Border(
-                          top: BorderSide(
-                              color: const Color(0xFF000000).withOpacity(0.4),
-                              width: AppDimensions.width10(context) * 0.1))),
-                  child: TextButton(
-                      onPressed: () {
-                        AdminGoal.checkUserActiveGoal().then((response) {
-                          if (response == 200) {
-                            Navigator.push(
-                              context,
-                              FadePageRoute(
-                                page: const view_goals(
-                                    missed: false,
-                                    update: false,
-                                    name: '',
-                                    helpfulTips: false,
-                                    record: 0),
+                admin
+                    ? Container(
+                        height: AppDimensions.height10(context) * 5.6,
+                        width: 396,
+                        decoration: BoxDecoration(
+                            border: Border(
+                                top: BorderSide(
+                                    color: const Color(0xFF000000)
+                                        .withOpacity(0.4),
+                                    width:
+                                        AppDimensions.width10(context) * 0.1))),
+                        child: TextButton(
+                            onPressed: () {
+                              AdminGoal.checkUserActiveGoal().then((response) {
+                                if (response == 200) {
+                                  Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                      page: const view_goals(
+                                          missed: false,
+                                          update: false,
+                                          name: '',
+                                          helpfulTips: false,
+                                          record: 0),
+                                    ),
+                                  );
+                                } else if (response == 404) {
+                                  Navigator.pop(context);
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                          content: Text(
+                                    "There are no active goals ",
+                                    style: TextStyle(color: Colors.red),
+                                  )));
+                                }
+                              });
+                            },
+                            child: Text(
+                              " (Dev only) Dashboard logged in",
+                              style: TextStyle(
+                                color: const Color.fromRGBO(0, 120, 255, 1),
+                                fontSize: AppDimensions.height10(context) * 1.6,
                               ),
-                            );
-                          } else if (response == 404) {
-                            Navigator.pop(context);
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(
-                                    content: Text(
-                              "There are no active goals ",
-                              style: TextStyle(color: Colors.red),
-                            )));
-                          }
-                        });
-                      },
-                      child:  Text(
-                        " (Dev only) Dashboard logged in",
-                        style: TextStyle(
-                          color: Color.fromRGBO(0, 120, 255, 1),
-                          fontSize: AppDimensions.height10(context)*1.6,
-                        ),
-                      )),
-                ):Container(),
-
+                            )),
+                      )
+                    : Container(),
               ],
             ),
           ),
           Container(
             margin: const EdgeInsets.only(top: 8, left: 8, right: 8),
-            height: AppDimensions.height10(context)*5.6,
+            height: AppDimensions.height10(context) * 5.6,
             width: 396,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14), color: Colors.white),
@@ -108,15 +111,17 @@ void signupSheet(context, String ButtonName, String Route, bool admin) {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child:  Text(
+                child: Text(
                   'Cancel',
                   style: TextStyle(
-                    color: Color.fromRGBO(0, 120, 255, 1),
-                    fontSize: AppDimensions.height10(context)*1.6,
+                    color: const Color.fromRGBO(0, 120, 255, 1),
+                    fontSize: AppDimensions.height10(context) * 1.6,
                   ),
                 )),
           ),
-          SizedBox(height: AppDimensions.height10(context),)
+          SizedBox(
+            height: AppDimensions.height10(context),
+          )
         ],
       ),
     ),

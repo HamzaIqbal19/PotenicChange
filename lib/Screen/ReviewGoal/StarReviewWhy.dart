@@ -16,9 +16,8 @@ class StarReviewWhy extends StatefulWidget {
 }
 
 class _StarReviewWhyState extends State<StarReviewWhy> {
-  bool Loading = true;
+  bool loading = true;
 
-  Future<List<String>>? _goalNamesFuture;
   var goalName;
   var reason;
   var reason2;
@@ -43,7 +42,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
     AdminGoal.getUserGoal().then((response) {
       if (response.length != 0) {
         setState(() {
-          Loading = false;
+          loading = false;
           goalName = response["name"];
           reason = response["reason"];
           color = response["color"];
@@ -52,14 +51,13 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
         });
       } else {
         setState(() {
-          Loading = false;
+          loading = false;
         });
       }
     }).catchError((error) {
       setState(() {
-        Loading = false;
+        loading = false;
       });
-      print("error");
     });
   }
 
@@ -81,7 +79,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                 // width: AppDimensions.width10(context) * 3,
+                  // width: AppDimensions.width10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
@@ -101,7 +99,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
               ),
             ),
           ),
-          Loading == false
+          loading == false
               ? SingleChildScrollView(
                   reverse: true,
                   physics: const ClampingScrollPhysics(),
@@ -126,7 +124,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                           SizedBox(
                             height: AppDimensions.height10(context) * 0.8,
                           ),
-                          Container(
+                          SizedBox(
                             width: AppDimensions.width10(context) * 30,
                             child: Center(
                               child: Text(
@@ -143,26 +141,24 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                           SizedBox(
                             height: AppDimensions.height10(context) * 4.0,
                           ),
-                          Container(
-                            child: Center(
-                              child: Text(
-                                widget.updatedCategory == 1
-                                    ? "The Why"
-                                    : widget.updatedCategory == 2
-                                        ? 'New Identity Statement'
-                                        : 'Visualising Your New Self',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: const Color(0xFF437296),
-                                  fontSize: AppDimensions.font10(context) * 2.8,
-                                ),
+                          Center(
+                            child: Text(
+                              widget.updatedCategory == 1
+                                  ? "The Why"
+                                  : widget.updatedCategory == 2
+                                      ? 'New Identity Statement'
+                                      : 'Visualising Your New Self',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: const Color(0xFF437296),
+                                fontSize: AppDimensions.font10(context) * 2.8,
                               ),
                             ),
                           ),
                           SizedBox(
                             height: AppDimensions.height10(context) * 0.8,
                           ),
-                          Container(
+                          SizedBox(
                             height: AppDimensions.height10(context) * 4.6,
                             width: AppDimensions.width10(context) * 37.2,
                             child: Center(
@@ -181,7 +177,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                             height: AppDimensions.height10(context) * 3.4,
                           ),
                           Column(children: [
-                            Container(
+                            SizedBox(
                                 width: AppDimensions.width10(context) * 38.2,
                                 height: widget.updatedCategory == 3 &&
                                             visualize.length == 1 ||
@@ -403,9 +399,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                                       .then((response) {
                                     if (response == true) {
                                     } else {}
-                                  }).catchError((error) {
-                                    print("error");
-                                  });
+                                  }).catchError((error) {});
                                 },
                                 child: Container(
                                   height: AppDimensions.height10(context) * 5,
@@ -476,12 +470,13 @@ class inner_text extends StatefulWidget {
 }
 
 class _inner_textState extends State<inner_text> {
-  final TextEditingController body_text = TextEditingController();
+  final TextEditingController bodyText = TextEditingController();
 
-  final TextEditingController heading_text = TextEditingController();
+  final TextEditingController headingText = TextEditingController();
 
   late FocusNode _focusNode;
 
+  @override
   void initState() {
     super.initState();
     _focusNode = FocusNode()..addListener(_onFocus);
@@ -523,7 +518,7 @@ class _inner_textState extends State<inner_text> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                   height: AppDimensions.height10(context) * 2.2,
                   width: AppDimensions.width10(context) * 29,
                   child: Text(widget.circle_text,
@@ -538,7 +533,7 @@ class _inner_textState extends State<inner_text> {
                   ? GestureDetector(
                       onTap: () => showDialog<String>(
                         context: context,
-                        builder: (BuildContext context) => Container(
+                        builder: (BuildContext context) => SizedBox(
                           width: AppDimensions.width10(context) * 27.0,
                           height: AppDimensions.height10(context) * 18.2,
                           child: AlertDialog(
@@ -605,7 +600,7 @@ class _inner_textState extends State<inner_text> {
                                       ),
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     height:
                                         AppDimensions.height10(context) * 4.4,
                                     width:
@@ -651,7 +646,7 @@ class _inner_textState extends State<inner_text> {
           SizedBox(
             height: AppDimensions.height10(context) * 0.9,
           ),
-          Container(
+          SizedBox(
               height: AppDimensions.height10(context) * 5.3,
               width: AppDimensions.width10(context) * 32.0,
               child: CupertinoTextField(
@@ -660,7 +655,7 @@ class _inner_textState extends State<inner_text> {
                     fontSize: AppDimensions.font10(context) * 1.6,
                     fontWeight: FontWeight.w500,
                     color: const Color(0xFFFFFFFF)),
-                controller: body_text,
+                controller: bodyText,
                 maxLines: 4,
                 focusNode: _focusNode,
                 style: const TextStyle(

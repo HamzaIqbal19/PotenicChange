@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
@@ -33,12 +32,12 @@ class inner_text extends StatefulWidget {
 }
 
 class _inner_textState extends State<inner_text> {
-  @override
   late TextEditingController body_text;
 
   late FocusNode _focusNode;
   bool delete = true;
 
+  @override
   void initState() {
     super.initState();
     _focusNode = FocusNode()..addListener(_onFocus);
@@ -79,7 +78,7 @@ class _inner_textState extends State<inner_text> {
               ? const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Color(0xFFEFBEB2), Color(0xFFFEAA897)])
+                  colors: [Color(0xFFEFBEB2), Color(0xFFEAA897)])
               : const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -96,7 +95,7 @@ class _inner_textState extends State<inner_text> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                   height: AppDimensions.height10(context) * 3.6,
                   // width: AppDimensions.width10(context) * 26.9,
                   child: Text(widget.head_text,
@@ -118,7 +117,7 @@ class _inner_textState extends State<inner_text> {
                           curve: Curves.easeInOut,
                           duration: const Duration(seconds: 1),
                           context: context,
-                          builder: (BuildContext context) => Container(
+                          builder: (BuildContext context) => SizedBox(
                             width: AppDimensions.width10(context) * 27.0,
                             height: AppDimensions.height10(context) * 18.2,
                             child: AlertDialog(
@@ -192,7 +191,7 @@ class _inner_textState extends State<inner_text> {
                                         ),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height:
                                           AppDimensions.height10(context) * 4.4,
                                       width:

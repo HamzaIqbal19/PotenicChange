@@ -30,7 +30,6 @@ class _add_your_practiceState extends State<add_your_practice> {
 
   @override
   void initState() {
-    // TODO: implement initState
     getRecorDetails();
     super.initState();
   }
@@ -54,7 +53,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                  //  width: AppDimensions.width10(context) * 2.6,
+                    //  width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),
@@ -95,7 +94,6 @@ class _add_your_practiceState extends State<add_your_practice> {
             height: AppDimensions.height10(context) * 2.4,
             margin: EdgeInsets.only(
                 top: AppDimensions.height10(context) * 0.5,
-
                 left: AppDimensions.width10(context) * 12.2,
                 right: AppDimensions.width10(context) * 12.1),
             child: Text(
@@ -198,7 +196,7 @@ class _add_your_practiceState extends State<add_your_practice> {
                     route: 'add_your_practice',
                   )));
               final SharedPreferences prefs = await _prefs;
-              var route = prefs.setString('goal_route', 'view_all_goals');
+              await prefs.setString('goal_route', 'view_all_goals');
             },
             child: Container(
               width: AppDimensions.width10(context) * 36.4,

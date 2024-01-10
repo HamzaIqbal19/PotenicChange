@@ -105,7 +105,7 @@ class categories_shimmer extends StatelessWidget {
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 SizedBox(

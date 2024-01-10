@@ -46,9 +46,9 @@ class _goalwhyState extends State<GoalWhy> {
   String goalName = "";
   bool saved = false;
   String Route = '';
-  var Reason;
+  var reason;
   var resetData;
-  bool Loading = true;
+  bool loading = true;
   int listReason = 0;
 
   getData() async {
@@ -68,9 +68,9 @@ class _goalwhyState extends State<GoalWhy> {
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    var goal_route = prefs.getString('goal_route');
+    var goalRoute = prefs.getString('goal_route');
     setState(() {
-      Route = goal_route!;
+      Route = goalRoute!;
     });
   }
 
@@ -94,7 +94,7 @@ class _goalwhyState extends State<GoalWhy> {
       getGoalName();
 
       setState(() {
-        Loading = false;
+        loading = false;
       });
     } else {
       _fetchGoalNames();
@@ -105,16 +105,16 @@ class _goalwhyState extends State<GoalWhy> {
     AdminGoal.getUserGoal().then((response) {
       if (response.length != 0) {
         setState(() {
-          Loading = false;
+          loading = false;
           goalName = response["name"];
-          Reason = response["reason"];
+          reason = response["reason"];
           resetData = response["reason"];
           listReason = response["reason"].length;
         });
       }
     }).catchError((error) {
       setState(() {
-        Loading = false;
+        loading = false;
       });
     });
   }
@@ -144,10 +144,10 @@ class _goalwhyState extends State<GoalWhy> {
         ? setState(() {
             // myTextFields[index]['text'].remove(index);
 
-            Reason.removeAt(index);
+            reason.removeAt(index);
 
-            for (int i = index + 1; i < Reason.length; i++) {
-              Reason[i]['key'] = i.toString();
+            for (int i = index + 1; i < reason.length; i++) {
+              reason[i]['key'] = i.toString();
 
               // Assuming 'key' is the identifier you want to update.
             }
@@ -195,9 +195,7 @@ class _goalwhyState extends State<GoalWhy> {
 
       await prefs.setString('goal', jsonString);
       getGoal();
-    } else {
-      print("No goal found in shared preferences");
-    }
+    } else {}
   }
 
   Future<Goal> getGoal() async {
@@ -231,7 +229,7 @@ class _goalwhyState extends State<GoalWhy> {
           ),
         );
         final SharedPreferences prefs = await _prefs;
-        var goalwhy = prefs.setString('route', "goalWhy");
+        await prefs.setString('route', "goalWhy");
       }
 
       return Goal.fromJson(jsonMap);
@@ -283,7 +281,7 @@ class _goalwhyState extends State<GoalWhy> {
                     curve: Curves.easeInOut,
                     duration: const Duration(seconds: 1),
                     context: context,
-                    builder: (BuildContext context) => const pop_up_goals())
+                    builder: (BuildContext context) => const popUpGoals())
                 : Navigator.pushReplacement(
                     context,
                     FadePageRouteReverse(
@@ -338,7 +336,7 @@ class _goalwhyState extends State<GoalWhy> {
                                   duration: const Duration(seconds: 1),
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      const pop_up_goals())
+                                      const popUpGoals())
                               : Navigator.pushReplacement(
                                   context,
                                   FadePageRouteReverse(
@@ -376,7 +374,7 @@ class _goalwhyState extends State<GoalWhy> {
                             ),
                             onPressed: () => showDialog<String>(
                               context: context,
-                              builder: (BuildContext context) => Container(
+                              builder: (BuildContext context) => SizedBox(
                                 width: AppDimensions.width10(context) * 27.0,
                                 height: AppDimensions.height10(context) * 22.0,
                                 child: AlertDialog(
@@ -430,7 +428,7 @@ class _goalwhyState extends State<GoalWhy> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 42,
                                           width: double.infinity,
                                           // color: Colors.white,
@@ -453,7 +451,7 @@ class _goalwhyState extends State<GoalWhy> {
                                               );
                                               final SharedPreferences prefs =
                                                   await _prefs;
-                                              var goalwhy = prefs.setString(
+                                              await prefs.setString(
                                                   'route', "goalWhy");
                                             },
                                             child: const Text(
@@ -474,7 +472,7 @@ class _goalwhyState extends State<GoalWhy> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 44,
                                           width: double.infinity,
                                           child: TextButton(
@@ -519,7 +517,7 @@ class _goalwhyState extends State<GoalWhy> {
                                           dottedLength: 10.0,
                                           space: 0.7,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 42,
                                           width:
                                               AppDimensions.width10(context) *
@@ -562,7 +560,7 @@ class _goalwhyState extends State<GoalWhy> {
                 ),
               ),
             ),
-            Loading == false
+            loading == false
                 ? SingleChildScrollView(
                     reverse: true,
                     physics: const ClampingScrollPhysics(),
@@ -589,7 +587,7 @@ class _goalwhyState extends State<GoalWhy> {
                         SizedBox(
                           height: AppDimensions.height10(context) * 0.5,
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.width10(context) * 30,
                           child: Center(
                             child: Text(
@@ -626,24 +624,22 @@ class _goalwhyState extends State<GoalWhy> {
                         SizedBox(
                           height: AppDimensions.height10(context) * 1.0,
                         ),
-                        Container(
-                          child: Center(
-                            child: Text(
-                              AppText().goalWhy,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: widget.comingFromEditScreen
-                                    ? const Color(0xFF437296)
-                                    : Colors.white,
-                                fontSize: AppDimensions.font10(context) * 2.8,
-                              ),
+                        Center(
+                          child: Text(
+                            AppText().goalWhy,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: widget.comingFromEditScreen
+                                  ? const Color(0xFF437296)
+                                  : Colors.white,
+                              fontSize: AppDimensions.font10(context) * 2.8,
                             ),
                           ),
                         ),
                         SizedBox(
                           height: AppDimensions.height10(context) * 1.0,
                         ),
-                        Container(
+                        SizedBox(
                           // height: AppDimensions.height10(context) * 4.9,
                           width: AppDimensions.width10(context) * 37.2,
                           child: Center(
@@ -662,10 +658,10 @@ class _goalwhyState extends State<GoalWhy> {
                         SizedBox(
                           height: AppDimensions.height10(context) * 3.4,
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.width10(context) * 38.2,
                           height: widget.comingFromEditScreen
-                              ? Reason.length == 1
+                              ? reason.length == 1
                                   ? AppDimensions.height10(context) * 22.0
                                   : AppDimensions.height10(context) * 36.0
                               : item == 1
@@ -697,25 +693,25 @@ class _goalwhyState extends State<GoalWhy> {
 
                                 child: ListView.builder(
                                   itemCount: widget.comingFromEditScreen
-                                      ? (Reason?.length ?? 0)
+                                      ? (reason?.length ?? 0)
                                       : myTextFields.length,
                                   padding: EdgeInsets.zero,
                                   itemBuilder: (BuildContext context, index) {
                                     if (widget.comingFromEditScreen) {
-                                      if (Reason == null ||
-                                          index >= Reason.length) {
+                                      if (reason == null ||
+                                          index >= reason.length) {
                                         return Container(); // Return an empty container if the index is out of range.
                                       }
                                       return Column(children: [
                                         inner_text(
-                                          key: Key(Reason[index]['key']),
+                                          key: Key(reason[index]['key']),
                                           delete: true,
                                           head_text: "Reason ${index + 1}",
-                                          body_text: Reason[index]['text'],
+                                          body_text: reason[index]['text'],
                                           length: 200,
                                           onChanged: (newText) {
                                             setState(() {
-                                              Reason[index]['text'] = newText;
+                                              reason[index]['text'] = newText;
                                             });
                                             handleTextChanged(index, newText);
                                           },
@@ -757,7 +753,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                           context) *
                                                       6,
                                                   child: Text(
-                                                    "${Reason[index]['text'].toString().length}/200",
+                                                    "${reason[index]['text'].toString().length}/200",
                                                     style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w700,
@@ -908,7 +904,7 @@ class _goalwhyState extends State<GoalWhy> {
                                 //     : const Alignment(0.01, 1.25),
                                 //heightFactor: 0.5,
                                 child: widget.comingFromEditScreen
-                                    ? Reason.length > 4
+                                    ? reason.length > 4
                                         ? AnimatedScaleButton(
                                             onTap: () {
                                               ScaffoldMessenger.of(context)
@@ -962,9 +958,9 @@ class _goalwhyState extends State<GoalWhy> {
 
                                               widget.comingFromEditScreen
                                                   ? setState(() {
-                                                      Reason.add({
+                                                      reason.add({
                                                         'key':
-                                                            'Reason ${Reason.length.toString()}',
+                                                            'Reason ${reason.length.toString()}',
                                                         'text': '',
                                                       });
                                                     })
@@ -1071,9 +1067,9 @@ class _goalwhyState extends State<GoalWhy> {
 
                                               widget.comingFromEditScreen
                                                   ? setState(() {
-                                                      Reason.add({
+                                                      reason.add({
                                                         'key':
-                                                            'Reason ${Reason.length.toString()}',
+                                                            'Reason ${reason.length.toString()}',
                                                         'text': '',
                                                       });
                                                     })
@@ -1132,7 +1128,7 @@ class _goalwhyState extends State<GoalWhy> {
                         ),
                         widget.comingFromEditScreen
                             ? SizedBox(
-                                height: Reason.length > 1
+                                height: reason.length > 1
                                     ? AppDimensions.height10(context) * 14.5
                                     : AppDimensions.height10(context) * 26.0,
                               )
@@ -1353,7 +1349,7 @@ class _goalwhyState extends State<GoalWhy> {
                                           child: AnimatedScaleButton(
                                             onTap: () {
                                               setState(() {
-                                                Reason = resetData;
+                                                reason = resetData;
                                               });
                                               //   signupSheet(context, "Sign up / login", "login");
                                             },
@@ -1398,9 +1394,9 @@ class _goalwhyState extends State<GoalWhy> {
                                   AnimatedScaleButton(
                                     onTap: () async {
                                       if (widget.comingFromEditScreen) {
-                                        if (Reason[0]['text'] != "") {
+                                        if (reason[0]['text'] != "") {
                                           AdminGoal()
-                                              .updateUserGoal('reason', Reason)
+                                              .updateUserGoal('reason', reason)
                                               .then((value) {
                                             if (value == true) {
                                               setState(() {
@@ -1628,7 +1624,7 @@ class ArcClipper extends CustomClipper<Path> {
 class Arc extends StatelessWidget {
   final double height;
   final Widget child;
-  const Arc({
+  const Arc({super.key, 
     required this.height,
     required this.child,
   });
@@ -1648,12 +1644,12 @@ class Arc extends StatelessWidget {
   }
 }
 
-class pop_up_goals extends StatelessWidget {
-  const pop_up_goals({super.key});
+class popUpGoals extends StatelessWidget {
+  const popUpGoals({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: AppDimensions.width10(context) * 27.0,
       height: AppDimensions.height10(context) * 18.2,
       child: AlertDialog(
@@ -1716,7 +1712,7 @@ class pop_up_goals extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 44,
                 width: double.infinity,
                 child: TextButton(

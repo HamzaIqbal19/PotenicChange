@@ -86,39 +86,39 @@ class _your_impactState extends State<your_impact> {
   }
 
   void _fetchGoalDetails() {
-    AdminGoal.getUserGoal().then((response) async {
-      if (response.length != 0) {
-        setState(() {
-          goalDetails = response;
-          level = goalDetails['goalEvaluations'][widget.index]
-              ["impactOnYourSelf"]['level'];
-          select_item = goalDetails['goalEvaluations'][widget.index]
-                  ["impactOnYourSelf"]['currentImpact'] -
-              1;
-          select_item_2 = goalDetails['goalEvaluations'][widget.index]
-                  ["impactOnYourSelf"]['currentEmotions'] -
-              1;
-          reset_item_1 = goalDetails['goalEvaluations'][widget.index]
-                  ["impactOnYourSelf"]['currentImpact'] -
-              1;
-          reset_item_2 = goalDetails['goalEvaluations'][widget.index]
-                  ["impactOnYourSelf"]['currentEmotions'] -
-              1;
-        });
+    AdminGoal.getUserGoal()
+        .then((response) async {
+          if (response.length != 0) {
+            setState(() {
+              goalDetails = response;
+              level = goalDetails['goalEvaluations'][widget.index]
+                  ["impactOnYourSelf"]['level'];
+              select_item = goalDetails['goalEvaluations'][widget.index]
+                      ["impactOnYourSelf"]['currentImpact'] -
+                  1;
+              select_item_2 = goalDetails['goalEvaluations'][widget.index]
+                      ["impactOnYourSelf"]['currentEmotions'] -
+                  1;
+              reset_item_1 = goalDetails['goalEvaluations'][widget.index]
+                      ["impactOnYourSelf"]['currentImpact'] -
+                  1;
+              reset_item_2 = goalDetails['goalEvaluations'][widget.index]
+                      ["impactOnYourSelf"]['currentEmotions'] -
+                  1;
+            });
 
-        loadData();
-        final SharedPreferences prefs = await _prefs;
-        await prefs.setInt(
-            'goal_eval_id', response["goalEvaluations"][widget.index]["id"]);
-      } else {
-        loadData();
-      }
-    }).catchError((error) {
-      // loadData();
-      print("error");
-    }).whenComplete(() {
-      loadData();
-    });
+            loadData();
+            final SharedPreferences prefs = await _prefs;
+            await prefs.setInt('goal_eval_id',
+                response["goalEvaluations"][widget.index]["id"]);
+          } else {
+            loadData();
+          }
+        })
+        .catchError((error) {})
+        .whenComplete(() {
+          loadData();
+        });
   }
 
   @override
@@ -444,7 +444,7 @@ class _your_impactState extends State<your_impact> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                 // width: AppDimensions.width10(context) * 3.0,
+                  // width: AppDimensions.width10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.contain,
                 )),
@@ -749,19 +749,18 @@ class _your_impactState extends State<your_impact> {
                                   }
                                 },
                                 child: Container(
-                                  width:
-                                      AppDimensions.width10(context) * 12.95,
+                                  width: AppDimensions.width10(context) * 12.95,
                                   height:
                                       AppDimensions.width10(context) * 12.95,
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.width10(context) *
-                                          1.5),
+                                      right:
+                                          AppDimensions.width10(context) * 1.5),
                                   child: Stack(children: [
                                     Container(
-                                      width: AppDimensions.width10(context) *
-                                          13.0,
-                                      height: AppDimensions.width10(context) *
-                                          13.0,
+                                      width:
+                                          AppDimensions.width10(context) * 13.0,
+                                      height:
+                                          AppDimensions.width10(context) * 13.0,
                                       decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           gradient: select_item != index1
@@ -790,20 +789,16 @@ class _your_impactState extends State<your_impact> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Container(
-                                            child: Text(
-                                              '${index1 + 1}',
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          3.1,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: select_item != index1
-                                                      ? const Color(0xFFFA9934)
-                                                      : const Color(
-                                                          0xFFFFFFFF)),
-                                            ),
+                                          Text(
+                                            '${index1 + 1}',
+                                            style: TextStyle(
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    3.1,
+                                                fontWeight: FontWeight.w500,
+                                                color: select_item != index1
+                                                    ? const Color(0xFFFA9934)
+                                                    : const Color(0xFFFFFFFF)),
                                           ),
                                           Text(
                                             options[index1],
@@ -942,13 +937,11 @@ class _your_impactState extends State<your_impact> {
                                   }
                                 },
                                 child: Container(
-                                  width:
-                                      AppDimensions.width10(context) * 13.0,
-                                  height:
-                                      AppDimensions.width10(context) * 13.0,
+                                  width: AppDimensions.width10(context) * 13.0,
+                                  height: AppDimensions.width10(context) * 13.0,
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.width10(context) *
-                                          1.5),
+                                      right:
+                                          AppDimensions.width10(context) * 1.5),
                                   child: Stack(children: [
                                     Container(
                                       width: AppDimensions.width10(context) *
@@ -983,20 +976,16 @@ class _your_impactState extends State<your_impact> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Container(
-                                            child: Text(
-                                              '${index1 + 1}',
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          3.1,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: select_item_2 != index1
-                                                      ? const Color(0xFFFA9934)
-                                                      : const Color(
-                                                          0xFFFFFFFF)),
-                                            ),
+                                          Text(
+                                            '${index1 + 1}',
+                                            style: TextStyle(
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    3.1,
+                                                fontWeight: FontWeight.w500,
+                                                color: select_item_2 != index1
+                                                    ? const Color(0xFFFA9934)
+                                                    : const Color(0xFFFFFFFF)),
                                           ),
                                           Text(
                                             options2[index1],
@@ -1759,7 +1748,7 @@ class _your_impactState extends State<your_impact> {
                                                                               ((select_item + select_item_2 + 2) / 2).round();
                                                                         });
 
-                                                                        goalEvaluationApi()
+                                                                        GoalEvaluationApi()
                                                                             .updateEvaluation(
                                                                           "impactOnYourSelf",
                                                                           {
@@ -1933,7 +1922,8 @@ class _your_impactState extends State<your_impact> {
                 },
                 child: BottomAppBar(
                   elevation: 0,
-                  color: const Color(0xFFF5F5F5),padding: EdgeInsets.zero,
+                  color: const Color(0xFFF5F5F5),
+                  padding: EdgeInsets.zero,
                   height: AppDimensions.height10(context) * 7.7,
                   child: Container(
                     height: AppDimensions.height10(context) * 7.7,

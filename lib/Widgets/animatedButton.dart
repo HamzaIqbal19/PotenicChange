@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedScaleButton extends StatefulWidget {
@@ -6,7 +5,8 @@ class AnimatedScaleButton extends StatefulWidget {
   final Function onTap;
   final Duration duration;
 
-  AnimatedScaleButton({
+  const AnimatedScaleButton({
+    super.key,
     required this.child,
     required this.onTap,
     this.duration = const Duration(milliseconds: 50),
@@ -20,7 +20,6 @@ class _AnimatedScaleButtonState extends State<AnimatedScaleButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   bool _ignorePointer = false;
-
 
   void handleTap() async {
     setState(() => _ignorePointer = true);

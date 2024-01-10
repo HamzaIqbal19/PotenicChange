@@ -39,7 +39,7 @@ class DashBoard_shimmer extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(0, 0),
+                          alignment: const Alignment(0, 0),
                           child: Container(
                             width: 20,
                             height: 13,
@@ -49,7 +49,7 @@ class DashBoard_shimmer extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(0, 0),
+                          alignment: const Alignment(0, 0),
                           child: Container(
                             width: 20,
                             height: 13,
@@ -72,7 +72,7 @@ class DashBoard_shimmer extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 80,
                     height: 80,
                     child: Stack(
@@ -86,7 +86,7 @@ class DashBoard_shimmer extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(0, 0),
+                          alignment: const Alignment(0, 0),
                           child: Container(
                             width: 20,
                             height: 13,
@@ -96,7 +96,7 @@ class DashBoard_shimmer extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(0, 0),
+                          alignment: const Alignment(0, 0),
                           child: Container(
                             width: 20,
                             height: 13,
@@ -135,7 +135,7 @@ class DashBoard_shimmer extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(0, 0),
+                          alignment: const Alignment(0, 0),
                           child: Container(
                             width: 20,
                             height: 13,
@@ -145,7 +145,7 @@ class DashBoard_shimmer extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(0, 0),
+                          alignment: const Alignment(0, 0),
                           child: Container(
                             width: 20,
                             height: 13,
@@ -187,19 +187,19 @@ class DashBoard_shimmer extends StatelessWidget {
               SizedBox(
                 height: AppDimensions.height10(context) * 8.0,
               ),
-              Container(
+              SizedBox(
                 height: AppDimensions.height10(context) * 26.8,
                 width: AppDimensions.width10(context) * 26.8,
-                child: Stack(
+                child: const Stack(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    continer_const(
+                  children: [
+                    ContinerConst(
                       height_of: 26.8,
                       width_of: 26.8,
                     ),
                     Align(
                       alignment: Alignment(0.4, 0.6),
-                      child: continer_const(
+                      child: ContinerConst(
                         height_of: 13.8,
                         width_of: 13.8,
                       ),
@@ -216,7 +216,7 @@ class DashBoard_shimmer extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
                         AppDimensions.height10(context) * 2),
-                    color: Color.fromARGB(144, 224, 224, 224)),
+                    color: const Color.fromARGB(144, 224, 224, 224)),
               )
             ],
           )),
@@ -224,10 +224,10 @@ class DashBoard_shimmer extends StatelessWidget {
   }
 }
 
-class continer_const extends StatelessWidget {
+class ContinerConst extends StatelessWidget {
   final double height_of;
   final double width_of;
-  const continer_const({
+  const ContinerConst({
     Key? key,
     required this.height_of,
     required this.width_of,
@@ -240,7 +240,7 @@ class continer_const extends StatelessWidget {
         height: AppDimensions.height10(context) * height_of,
         decoration: const BoxDecoration(
             shape: BoxShape.circle, color: Color.fromARGB(144, 224, 224, 224)),
-        child: Center(
+        child: const Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

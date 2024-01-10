@@ -100,23 +100,18 @@ class _menu_behaviourState extends State<menu_behaviour> {
 
           await prefs.setInt('goal_eval_id', response["goalEvaluations"]["id"]);
         }
-      } else {
-        // loadData();
-      }
-    }).catchError((error) {
-      // loadData();
-      print("hell");
-    });
+      } else {}
+    }).catchError((error) {});
   }
 
-  bool Loader = true;
+  bool loader = true;
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
     setState(() {
-      Loader = false;
+      loader = false;
     });
   }
 
@@ -196,7 +191,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
           )),
           width: double.infinity,
           height: double.infinity,
-          child: Loader == false
+          child: loader == false
               ? SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
@@ -1015,7 +1010,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                       FadePageRoute(
                                           page: const PracticeReview()));
                                   final SharedPreferences prefs = await _prefs;
-                                  var pracName = prefs.setString(
+                                  await prefs.setString(
                                       'practice_review', 'practice_completed');
                                 },
                                 child: const button_feilds(

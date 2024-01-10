@@ -12,9 +12,9 @@ class delete_insp extends StatelessWidget {
       onTap: () => showAnimatedDialog(
           animationType: DialogTransitionType.fadeScale,
           curve: Curves.easeInOut,
-          duration: Duration(seconds: 1),
+          duration: const Duration(seconds: 1),
           context: context,
-          builder: (BuildContext context) => Container(
+          builder: (BuildContext context) => SizedBox(
                 width: AppDimensions.width10(context) * 27.0,
                 height: AppDimensions.height10(context) * 18.2,
                 child: AlertDialog(
@@ -30,7 +30,7 @@ class delete_insp extends StatelessWidget {
                       height: AppDimensions.height10(context) * 2.2,
                       width: AppDimensions.width10(context) * 23.8,
                       child: RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                               style: TextStyle(
                                   fontSize: 1.7,
                                   fontWeight: FontWeight.w400,
@@ -90,7 +90,7 @@ class delete_insp extends StatelessWidget {
                             color: const Color(0XFF3C3C43).withOpacity(0.29),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           height: AppDimensions.height10(context) * 4.4,
                           width: double.infinity,
                           child: TextButton(

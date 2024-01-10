@@ -2,15 +2,10 @@
 
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_noPast_session.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_no_planned_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/dashboard_behaviour_shimmer.dart';
@@ -59,7 +54,7 @@ class _view_goalsState extends State<view_goals> {
   bool noActive = false;
   bool noPlanned = false;
   bool noData = false;
-  bool Loader = true;
+  bool loader = true;
   bool redaVisble = false;
 
   bool maxViewDate = false;
@@ -70,13 +65,13 @@ class _view_goalsState extends State<view_goals> {
   bool contain = false;
   bool single = false;
   int removeDay = 0;
-  String RecordDate = '';
-  int goal_level = 0;
-  ScrollController _scrollController = ScrollController();
+  String recordDate = '';
+  int goalLevel = 0;
+  final ScrollController _scrollController = ScrollController();
 
   void _incrementValue() {
     setState(() {
-      goal_level++;
+      goalLevel++;
     });
   }
 
@@ -154,7 +149,7 @@ class _view_goalsState extends State<view_goals> {
           : noActive
               ? 35
               : 15,
-      duration: Duration(microseconds: 10),
+      duration: const Duration(microseconds: 10),
       curve: Curves.easeInOut,
     );
   }
@@ -249,31 +244,28 @@ class _view_goalsState extends State<view_goals> {
                     DateTime.parse(currentDate.toString().substring(0, 10)))
                 .inDays;
             setState(() {
-              RecordDate = parsedDate.toString();
+              recordDate = parsedDate.toString();
             });
 
             if (difference.isNegative && difference != 0) {
               setState(() {
                 noPlanned = false;
               });
-              print('The formatted date is in the past.');
             } else if (difference == 0) {
               setState(() {
                 noPlanned = false;
               });
-              print('The formatted date is the same as the current date.');
             } else {
               setState(() {
                 noPlanned = true;
               });
-              print('The formatted date is in the future.');
             }
           }
         });
       } else if (response == 404) {
         setState(() {
           noData = true;
-          Loader = false;
+          loader = false;
         });
       }
     });
@@ -295,9 +287,9 @@ class _view_goalsState extends State<view_goals> {
 
   void onDoneLoading() {
     setState(() {
-      Loader = false;
+      loader = false;
     });
-    Future.delayed(Duration(milliseconds: 50), () => _scrollToCurrentIndex());
+    Future.delayed(const Duration(milliseconds: 50), () => _scrollToCurrentIndex());
   }
 
   getSixthday() {
@@ -306,7 +298,6 @@ class _view_goalsState extends State<view_goals> {
 
     // Check if the provided date is in the future
     if (DateTime.parse(providedDate).isBefore(DateTime.parse(currentDate))) {
-      print('Provided date is in the past.');
     } else {
       var difference = DateTime.parse(providedDate)
           .difference(DateTime.parse(currentDate))
@@ -316,7 +307,6 @@ class _view_goalsState extends State<view_goals> {
       } else {
         maxViewDate = false;
       }
-      print('Provided date is in the future. $difference && $maxViewDate');
     }
 
     // Calculate the difference in days
@@ -357,7 +347,7 @@ class _view_goalsState extends State<view_goals> {
                           ? AnimatedScaleButton(
                               onTap: () {
                                 setState(() {
-                                  Loader = true;
+                                  loader = true;
                                   current = 0;
                                   // past = past - 1;
                                   // next = next - 1;
@@ -413,7 +403,7 @@ class _view_goalsState extends State<view_goals> {
                                     current = -value;
                                     next = -value - 1;
                                     past = -value + 1;
-                                    Loader = true;
+                                    loader = true;
                                   });
                                   fetchPracticeByDay();
                                 },
@@ -470,13 +460,13 @@ class _view_goalsState extends State<view_goals> {
                 ),
                 width: double.infinity,
                 height: AppDimensions.height10(context) * 79.8,
-                child: Loader == false
+                child: loader == false
                     ? noData == false
                         ? noActive == false
                             ? GestureDetector(
                                 onTap: () {
                                   if (widget.helpfulTips) {
-                                    if (goal_level == 0) {
+                                    if (goalLevel == 0) {
                                       _incrementValue();
                                     }
                                   }
@@ -508,7 +498,7 @@ class _view_goalsState extends State<view_goals> {
                                                         if (_showOverlay ==
                                                             false) {
                                                           setState(() {
-                                                            Loader = true;
+                                                            loader = true;
 
                                                             // past = past - 1;
                                                             // next = next - 1;
@@ -522,7 +512,7 @@ class _view_goalsState extends State<view_goals> {
                                                             // next = next - 1;
                                                           });
                                                         } else {
-                                                          if (goal_level == 0) {
+                                                          if (goalLevel == 0) {
                                                             _incrementValue();
                                                           }
                                                         }
@@ -795,7 +785,7 @@ class _view_goalsState extends State<view_goals> {
                                                             false) {
                                                           if (!maxViewDate) {
                                                             setState(() {
-                                                              Loader = true;
+                                                              loader = true;
                                                             });
                                                             future();
                                                             fetchPracticeByDay();
@@ -804,7 +794,7 @@ class _view_goalsState extends State<view_goals> {
                                                             });
                                                           } else {}
                                                         } else {
-                                                          if (goal_level == 0) {
+                                                          if (goalLevel == 0) {
                                                             _incrementValue();
                                                           }
                                                         }
@@ -1125,7 +1115,7 @@ class _view_goalsState extends State<view_goals> {
                                                                           final SharedPreferences
                                                                               prefs =
                                                                               await _prefs;
-                                                                          var setId = prefs.setInt(
+                                                                          await prefs.setInt(
                                                                               'goal_num',
                                                                               timesList[index]['data']['userGoal']['id']);
 
@@ -1133,7 +1123,7 @@ class _view_goalsState extends State<view_goals> {
                                                                               'goal_menu_route',
                                                                               'dashboard');
                                                                         } else {
-                                                                          if (goal_level ==
+                                                                          if (goalLevel ==
                                                                               0) {
                                                                             _incrementValue();
                                                                           }
@@ -1148,33 +1138,33 @@ class _view_goalsState extends State<view_goals> {
                                                                           await prefs.setString(
                                                                               'prac_menu_route',
                                                                               'dashboard');
-                                                                          var pracId = prefs.setInt(
+                                                                          await prefs.setInt(
                                                                               'prac_num',
                                                                               timesList[index]['data']['id']);
-                                                                          var setId = prefs.setInt(
+                                                                          await prefs.setInt(
                                                                               'goal_num',
                                                                               timesList[index]['data']['userGoal']['id']);
 
-                                                                          var pracName = prefs.setString(
+                                                                          await prefs.setString(
                                                                               'dash_pracName',
                                                                               timesList[index]['data']['name']);
-                                                                          var goalName = prefs.setString(
+                                                                          await prefs.setString(
                                                                               'dash_goalName',
                                                                               timesList[index]['data']['userGoal']['name']);
-                                                                          prefs.setString(
+                                                                          await prefs.setString(
                                                                               'record_date',
                                                                               getFormattedDate(current).toString());
 
-                                                                          var pracColor = timesList[index]['data']['color'] != null
+                                                                          await timesList[index]['data']['color'] != null
                                                                               ? prefs.setString('dash_pracColor', timesList[index]['data']['color'])
                                                                               : prefs.setString('dash_pracColor', '0');
-                                                                          var time = prefs.setString(
+                                                                          await prefs.setString(
                                                                               'recording_Time1',
                                                                               timesList[index]['time']);
-                                                                          var dash_boardRoute = prefs.setBool(
+                                                                          await prefs.setBool(
                                                                               'behaviour_route',
                                                                               true);
-                                                                          var goalColor = timesList[index]['data']['userGoal']['color'] != null
+                                                                          await timesList[index]['data']['userGoal']['color'] != null
                                                                               ? prefs.setString('dash_goalColor', timesList[index]['data']['userGoal']['color'])
                                                                               : '0';
                                                                           if (timesList[index]['status'] ==
@@ -1194,7 +1184,7 @@ class _view_goalsState extends State<view_goals> {
                                                                                 FadePageRoute(page: const menu_behaviour()));
                                                                           }
                                                                         } else {
-                                                                          if (goal_level ==
+                                                                          if (goalLevel ==
                                                                               0) {
                                                                             _incrementValue();
                                                                           }
@@ -1346,31 +1336,31 @@ class _view_goalsState extends State<view_goals> {
                                                     s.connectionState ==
                                                             ConnectionState.done
                                                         ? Align(
-                                                            alignment: goal_level ==
+                                                            alignment: goalLevel ==
                                                                     2
                                                                 ? const Alignment(
                                                                     -0.9, -0.08)
-                                                                : goal_level ==
+                                                                : goalLevel ==
                                                                         3
                                                                     ? const Alignment(
                                                                         -0.67,
                                                                         -0.07)
-                                                                    : goal_level ==
+                                                                    : goalLevel ==
                                                                             4
                                                                         ? const Alignment(
                                                                             0.25,
                                                                             -0.45)
-                                                                        : goal_level ==
+                                                                        : goalLevel ==
                                                                                 5
                                                                             ? const Alignment(0.36,
                                                                                 -0.67)
-                                                                            : goal_level == 6
+                                                                            : goalLevel == 6
                                                                                 ? const Alignment(0.99, -0.67)
-                                                                                : goal_level == 1
+                                                                                : goalLevel == 1
                                                                                     ? const Alignment(0.3, -0.69)
-                                                                                    : goal_level == 7 && single
+                                                                                    : goalLevel == 7 && single
                                                                                         ? const Alignment(0.4, 0.345)
-                                                                                        : goal_level == 7 && single == false
+                                                                                        : goalLevel == 7 && single == false
                                                                                             ? const Alignment(-0.87, 0.55)
                                                                                             : const Alignment(0, 0),
                                                             child: SizedBox(
@@ -1378,78 +1368,75 @@ class _view_goalsState extends State<view_goals> {
                                                                       .width10(
                                                                           context) *
                                                                   30.6,
-                                                              height: goal_level ==
+                                                              height: goalLevel ==
                                                                       1
                                                                   ? AppDimensions
                                                                           .height10(
                                                                               context) *
                                                                       22.3
-                                                                  : goal_level ==
+                                                                  : goalLevel ==
                                                                           2
                                                                       ? AppDimensions.height10(
                                                                               context) *
                                                                           22.1
-                                                                      : goal_level ==
+                                                                      : goalLevel ==
                                                                               3
                                                                           ? AppDimensions.height10(context) *
                                                                               18.3
-                                                                          : goal_level == 4
+                                                                          : goalLevel == 4
                                                                               ? AppDimensions.height10(context) * 20.6
-                                                                              : goal_level == 5
+                                                                              : goalLevel == 5
                                                                                   ? AppDimensions.height10(context) * 22.6
-                                                                                  : goal_level == 6
+                                                                                  : goalLevel == 6
                                                                                       ? AppDimensions.height10(context) * 18.4
                                                                                       : AppDimensions.height10(context) * 20.6,
                                                               child: Stack(
                                                                 children: [
-                                                                  goal_level ==
+                                                                  goalLevel ==
                                                                           0
                                                                       ? Container()
                                                                       : Align(
-                                                                          alignment: goal_level == 2
+                                                                          alignment: goalLevel == 2
                                                                               ? const Alignment(0.87, 1.1)
-                                                                              : goal_level == 3
+                                                                              : goalLevel == 3
                                                                                   ? const Alignment(-0.9, -1.1)
-                                                                                  : goal_level == 4
+                                                                                  : goalLevel == 4
                                                                                       ? const Alignment(0, -1.1)
-                                                                                      : goal_level == 5
+                                                                                      : goalLevel == 5
                                                                                           ? const Alignment(0.9, -1.1)
-                                                                                          : goal_level == 6
+                                                                                          : goalLevel == 6
                                                                                               ? const Alignment(0.9, -1.1)
-                                                                                              : goal_level == 1
+                                                                                              : goalLevel == 1
                                                                                                   ? const Alignment(0, 1.1)
-                                                                                                  : goal_level == 7 && single
+                                                                                                  : goalLevel == 7 && single
                                                                                                       ? const Alignment(0, 1.1)
-                                                                                                      : goal_level == 7 && single == false
+                                                                                                      : goalLevel == 7 && single == false
                                                                                                           ? const Alignment(-0.88, 1.1)
                                                                                                           : const Alignment(0, 1.1),
                                                                           child:
-                                                                              Container(
-                                                                            child:
-                                                                                Image.asset(
-                                                                              (goal_level == 3 || goal_level == 4 || goal_level == 5 || goal_level == 6) ? 'assets/images/arrow-192-up.webp' : 'assets/images/arrow-192.webp',
+                                                                              Image.asset(
+                                                                              (goalLevel == 3 || goalLevel == 4 || goalLevel == 5 || goalLevel == 6) ? 'assets/images/arrow-192-up.webp' : 'assets/images/arrow-192.webp',
                                                                               height: AppDimensions.height10(context) * 2.0,
                                                                               width: AppDimensions.width10(context) * 2.0,
                                                                             ),
-                                                                          ),
                                                                         ),
-                                                                  goal_level ==
+                                                                  goalLevel ==
                                                                           0
                                                                       ? Container()
                                                                       : Container(
                                                                           width:
                                                                               AppDimensions.width10(context) * 30.6,
-                                                                          height: goal_level == 1
+                                                                          height: goalLevel == 1
                                                                               ? AppDimensions.height10(context) * 22.3
-                                                                              : goal_level == 2
+                                                                              : goalLevel == 2
                                                                                   ? AppDimensions.height10(context) * 22.1
-                                                                                  : goal_level == 3
+                                                                                  : goalLevel == 3
                                                                                       ? AppDimensions.height10(context) * 18.3
-                                                                                      : goal_level == 4
+                                                                                      : goalLevel == 4
                                                                                           ? AppDimensions.height10(context) * 20.6
-                                                                                          : goal_level == 5
+                                                                                          : goalLevel == 5
                                                                                               ? AppDimensions.height10(context) * 22.6
-                                                                                              : goal_level == 6
+                                                                                              : goalLevel == 6
                                                                                                   ? AppDimensions.height10(context) * 18.4
                                                                                                   : AppDimensions.height10(context) * 20.6,
                                                                           decoration: BoxDecoration(
@@ -1464,17 +1451,17 @@ class _view_goalsState extends State<view_goals> {
 
                                                                                 margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.7, left: AppDimensions.width10(context) * 1.6, right: AppDimensions.width10(context) * 7.4),
                                                                                 child: Text(
-                                                                                  goal_level == 2
+                                                                                  goalLevel == 2
                                                                                       ? 'Your Practice'
-                                                                                      : goal_level == 3
+                                                                                      : goalLevel == 3
                                                                                           ? 'Time'
-                                                                                          : goal_level == 4
+                                                                                          : goalLevel == 4
                                                                                               ? 'Your Schedule'
-                                                                                              : goal_level == 5
+                                                                                              : goalLevel == 5
                                                                                                   ? 'Record Practice'
-                                                                                                  : goal_level == 6
+                                                                                                  : goalLevel == 6
                                                                                                       ? 'Your Calendar'
-                                                                                                      : goal_level == 1
+                                                                                                      : goalLevel == 1
                                                                                                           ? 'Your Goal'
                                                                                                           : 'Reda',
                                                                                   style: TextStyle(
@@ -1488,149 +1475,149 @@ class _view_goalsState extends State<view_goals> {
                                                                               ),
                                                                               Container(
                                                                                 width: AppDimensions.width10(context) * 27.4,
-                                                                                height: goal_level == 1
+                                                                                height: goalLevel == 1
                                                                                     ? AppDimensions.height10(context) * 11.8
-                                                                                    : goal_level == 2
+                                                                                    : goalLevel == 2
                                                                                         ? AppDimensions.height10(context) * 11.6
-                                                                                        : goal_level == 3
+                                                                                        : goalLevel == 3
                                                                                             ? AppDimensions.height10(context) * 7.8
-                                                                                            : goal_level == 4
+                                                                                            : goalLevel == 4
                                                                                                 ? AppDimensions.height10(context) * 10.1
-                                                                                                : goal_level == 5
+                                                                                                : goalLevel == 5
                                                                                                     ? AppDimensions.height10(context) * 12.1
-                                                                                                    : goal_level == 6
+                                                                                                    : goalLevel == 6
                                                                                                         ? AppDimensions.height10(context) * 7.9
                                                                                                         : AppDimensions.height10(context) * 10.1,
                                                                                 margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.3),
                                                                                 child: RichText(
                                                                                     text: TextSpan(style: TextStyle(fontWeight: FontWeight.w400, color: const Color(0xFF464646), decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: AppDimensions.font10(context) * 1.4, height: AppDimensions.height10(context) * 0.15), children: [
                                                                                   TextSpan(
-                                                                                    text: goal_level == 1
+                                                                                    text: goalLevel == 1
                                                                                         ? 'This is your own star that you’ve created.\nRemember, '
-                                                                                        : goal_level == 2
+                                                                                        : goalLevel == 2
                                                                                             ? 'Smaller circles that spin around your\nstars are the planets. The '
-                                                                                            : goal_level == 3
+                                                                                            : goalLevel == 3
                                                                                                 ? 'This shows the '
-                                                                                                : goal_level == 4 || goal_level == 6
+                                                                                                : goalLevel == 4 || goalLevel == 6
                                                                                                     ? 'This is your '
-                                                                                                    : goal_level == 5
+                                                                                                    : goalLevel == 5
                                                                                                         ? 'If you want to '
                                                                                                         : 'This is your friend who sends out',
                                                                                   ),
                                                                                   TextSpan(
-                                                                                      text: goal_level == 1
+                                                                                      text: goalLevel == 1
                                                                                           ? '‘stars’ '
-                                                                                          : goal_level == 2
+                                                                                          : goalLevel == 2
                                                                                               ? '‘planets’ '
-                                                                                              : goal_level == 3
+                                                                                              : goalLevel == 3
                                                                                                   ? 'actual time '
-                                                                                                  : goal_level == 4
+                                                                                                  : goalLevel == 4
                                                                                                       ? 'daily view '
-                                                                                                      : goal_level == 5
+                                                                                                      : goalLevel == 5
                                                                                                           ? 'record a practice session\n'
-                                                                                                          : goal_level == 6
+                                                                                                          : goalLevel == 6
                                                                                                               ? 'calender '
                                                                                                               : ' helpful\nreminders ',
                                                                                       style: const TextStyle(fontWeight: FontWeight.w700)),
                                                                                   TextSpan(
-                                                                                      text: goal_level == 1
+                                                                                      text: goalLevel == 1
                                                                                           ? 'are your '
-                                                                                          : goal_level == 2
+                                                                                          : goalLevel == 2
                                                                                               ? 'are\nyour own '
-                                                                                              : goal_level == 3
+                                                                                              : goalLevel == 3
                                                                                                   ? 'the practice\nis '
-                                                                                                  : goal_level == 4
+                                                                                                  : goalLevel == 4
                                                                                                       ? 'schedule.\nNavigate here if you want quick access to\nsee all your '
-                                                                                                      : goal_level == 5
+                                                                                                      : goalLevel == 5
                                                                                                           ? 'that it’s not currently scheduled, navigate\nhere. You will see all your '
-                                                                                                          : goal_level == 6
+                                                                                                          : goalLevel == 6
                                                                                                               ? 'It’s very similar to your schedule. Navigate here if you want to see your '
                                                                                                               : 'and '),
                                                                                   TextSpan(
-                                                                                      text: goal_level == 1
+                                                                                      text: goalLevel == 1
                                                                                           ? 'personal\ngrowth goals. '
-                                                                                          : goal_level == 2
+                                                                                          : goalLevel == 2
                                                                                               ? 'practices '
-                                                                                              : goal_level == 3
+                                                                                              : goalLevel == 3
                                                                                                   ? 'scheduled '
-                                                                                                  : goal_level == 4
+                                                                                                  : goalLevel == 4
                                                                                                       ? 'scheduled practices '
-                                                                                                      : goal_level == 5
+                                                                                                      : goalLevel == 5
                                                                                                           ? 'active goals '
-                                                                                                          : goal_level == 6
+                                                                                                          : goalLevel == 6
                                                                                                               ? 'past '
                                                                                                               : 'messages. ',
                                                                                       style: const TextStyle(fontWeight: FontWeight.w700)),
                                                                                   TextSpan(
-                                                                                      text: goal_level == 1
+                                                                                      text: goalLevel == 1
                                                                                           ? 'They wil always look bigger and will have '
-                                                                                          : goal_level == 2
+                                                                                          : goalLevel == 2
                                                                                               ? 'that you’ve created to help you progress with your goal. The\n'
-                                                                                              : goal_level == 3
+                                                                                              : goalLevel == 3
                                                                                                   ? 'for on that day (centred daily calendar view at the top shows you the actual date).'
-                                                                                                  : goal_level == 4
+                                                                                                  : goalLevel == 4
                                                                                                       ? 'for that day. Scroll left or right to see your\n'
-                                                                                                      : goal_level == 5
+                                                                                                      : goalLevel == 5
                                                                                                           ? 'with its'
-                                                                                                          : goal_level == 6
+                                                                                                          : goalLevel == 6
                                                                                                               ? 'or'
                                                                                                               : ' You will see\nReda appearing every time you have a new\nnotification with gentle prompts to help\nyou '),
                                                                                   TextSpan(
-                                                                                      text: goal_level == 1
+                                                                                      text: goalLevel == 1
                                                                                           ? 'goal name '
-                                                                                          : goal_level == 2
+                                                                                          : goalLevel == 2
                                                                                               ? 'practice '
-                                                                                              : goal_level == 3
+                                                                                              : goalLevel == 3
                                                                                                   ? ''
-                                                                                                  : goal_level == 4
+                                                                                                  : goalLevel == 4
                                                                                                       ? 'schedule '
-                                                                                                      : goal_level == 5
+                                                                                                      : goalLevel == 5
                                                                                                           ? ' assigned practices.'
-                                                                                                          : goal_level == 6
+                                                                                                          : goalLevel == 6
                                                                                                               ? ' future schedule '
                                                                                                               : 'stay focused.',
                                                                                       style: const TextStyle(fontWeight: FontWeight.w700)),
                                                                                   TextSpan(
-                                                                                      text: goal_level == 1
+                                                                                      text: goalLevel == 1
                                                                                           ? 'with\n'
-                                                                                          : goal_level == 2
+                                                                                          : goalLevel == 2
                                                                                               ? 'will have a '
-                                                                                              : goal_level == 3
+                                                                                              : goalLevel == 3
                                                                                                   ? ''
-                                                                                                  : goal_level == 4
+                                                                                                  : goalLevel == 4
                                                                                                       ? 'for previous or next day.'
-                                                                                                      : goal_level == 5
+                                                                                                      : goalLevel == 5
                                                                                                           ? ' Click on the\npractice you want to record the session\nfor and you’ll be taken to capture it.'
-                                                                                                          : goal_level == 6
+                                                                                                          : goalLevel == 6
                                                                                                               ? 'for a\ncertain date.'
                                                                                                               : ''),
                                                                                   TextSpan(
-                                                                                      text: goal_level == 1
+                                                                                      text: goalLevel == 1
                                                                                           ? 'identity statement  '
-                                                                                          : goal_level == 2
+                                                                                          : goalLevel == 2
                                                                                               ? 'name '
-                                                                                              : goal_level == 3
+                                                                                              : goalLevel == 3
                                                                                                   ? ''
-                                                                                                  : goal_level == 4
+                                                                                                  : goalLevel == 4
                                                                                                       ? ''
-                                                                                                      : goal_level == 5
+                                                                                                      : goalLevel == 5
                                                                                                           ? ''
-                                                                                                          : goal_level == 6
+                                                                                                          : goalLevel == 6
                                                                                                               ? ''
                                                                                                               : '',
                                                                                       style: const TextStyle(fontWeight: FontWeight.w700)),
                                                                                   TextSpan(
-                                                                                      text: goal_level == 1
+                                                                                      text: goalLevel == 1
                                                                                           ? 'written on it, so you\ncan easily identify it.'
-                                                                                          : goal_level == 2
+                                                                                          : goalLevel == 2
                                                                                               ? 'written on it to help you identify it.'
-                                                                                              : goal_level == 3
+                                                                                              : goalLevel == 3
                                                                                                   ? ''
-                                                                                                  : goal_level == 4
+                                                                                                  : goalLevel == 4
                                                                                                       ? ''
-                                                                                                      : goal_level == 5
+                                                                                                      : goalLevel == 5
                                                                                                           ? ''
-                                                                                                          : goal_level == 6
+                                                                                                          : goalLevel == 6
                                                                                                               ? ''
                                                                                                               : '')
                                                                                 ])),
@@ -1664,7 +1651,7 @@ class _view_goalsState extends State<view_goals> {
                                                                                     GestureDetector(
                                                                                       onTap: () {
                                                                                         _incrementValue();
-                                                                                        if (goal_level > 7) {
+                                                                                        if (goalLevel > 7) {
                                                                                           setState(() {
                                                                                             _showOverlay = false;
                                                                                           });
@@ -1676,19 +1663,19 @@ class _view_goalsState extends State<view_goals> {
                                                                                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 5.0), color: const Color(0xFF5A4D73)),
                                                                                         child: Center(
                                                                                           child: Text(
-                                                                                            goal_level == 2
+                                                                                            goalLevel == 2
                                                                                                 ? '(2/7) Next'
-                                                                                                : goal_level == 3
+                                                                                                : goalLevel == 3
                                                                                                     ? '(3/7) Next'
-                                                                                                    : goal_level == 4
+                                                                                                    : goalLevel == 4
                                                                                                         ? '(4/7) Next'
-                                                                                                        : goal_level == 5
+                                                                                                        : goalLevel == 5
                                                                                                             ? '(5/7) Next'
-                                                                                                            : goal_level == 6
+                                                                                                            : goalLevel == 6
                                                                                                                 ? '(6/7) Next'
-                                                                                                                : goal_level == 7
+                                                                                                                : goalLevel == 7
                                                                                                                     ? '(7/7) Next'
-                                                                                                                    : goal_level == 1
+                                                                                                                    : goalLevel == 1
                                                                                                                         ? '(1/7) Next'
                                                                                                                         : '(7/7) Next',
                                                                                             style: TextStyle(decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: AppDimensions.font10(context) * 1.6, color: const Color(0xFFFFFFFF), fontWeight: FontWeight.w600),
@@ -1725,7 +1712,7 @@ class _view_goalsState extends State<view_goals> {
                                                       context) *
                                                   19.2,
                                               margin:
-                                                  EdgeInsets.only(right: 20),
+                                                  const EdgeInsets.only(right: 20),
                                               width: AppDimensions.width10(
                                                       context) *
                                                   45.7,
@@ -1738,7 +1725,7 @@ class _view_goalsState extends State<view_goals> {
                                                       onTap: () {
                                                         previous();
                                                         setState(() {
-                                                          Loader = true;
+                                                          loader = true;
                                                         });
                                                         fetchPracticeByDay();
                                                       },
@@ -1983,7 +1970,7 @@ class _view_goalsState extends State<view_goals> {
                                                       onTap: () {
                                                         if (!maxViewDate) {
                                                           setState(() {
-                                                            Loader = true;
+                                                            loader = true;
                                                           });
                                                           future();
                                                           fetchPracticeByDay();
@@ -2016,79 +2003,78 @@ class _view_goalsState extends State<view_goals> {
                                                                       .white),
                                                               color: Colors
                                                                   .transparent),
-                                                          child: Container(
-                                                              child: Column(
+                                                          child: Column(
                                                             mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
+                                                            MainAxisAlignment
+                                                                .center,
                                                             children: [
-                                                              Text(
-                                                                getFormattedDay(
-                                                                        next)
-                                                                    .substring(
-                                                                        0, 3),
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.font10(context) *
-                                                                            1.2,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color: Colors
-                                                                        .white),
-                                                              ),
-                                                              Text(
-                                                                '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.font10(context) *
-                                                                            1.4,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .white),
-                                                              ),
-                                                              Container(
-                                                                height: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    2.5,
-                                                                width: AppDimensions
-                                                                        .width10(
-                                                                            context) *
-                                                                    2.5,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                  border: Border.all(
-                                                                      width: AppDimensions.height10(
-                                                                              context) *
-                                                                          0.1,
-                                                                      color: Colors
-                                                                          .white),
-                                                                ),
-                                                                child: Container(
-                                                                    width: AppDimensions.width10(context) * 1.7,
-                                                                    height: AppDimensions.width10(context) * 1.5,
+                                                          Text(
+                                                            getFormattedDay(
+                                                                    next)
+                                                                .substring(
+                                                                    0, 3),
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                    AppDimensions.font10(context) *
+                                                                        1.2,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                          Text(
+                                                            '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                    AppDimensions.font10(context) *
+                                                                        1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                          Container(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.5,
+                                                            width: AppDimensions
+                                                                    .width10(
+                                                                        context) *
+                                                                2.5,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              border: Border.all(
+                                                                  width: AppDimensions.height10(
+                                                                          context) *
+                                                                      0.1,
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
+                                                            child: SizedBox(
+                                                                width: AppDimensions.width10(context) * 1.7,
+                                                                height: AppDimensions.width10(context) * 1.5,
 
-                                                                    // margin: const EdgeInsets.only(left: 1),
-                                                                    child: Center(
-                                                                      child:
-                                                                          Text(
-                                                                        '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
-                                                                        style: TextStyle(
-                                                                            fontSize: AppDimensions.font10(context) *
-                                                                                1.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w400,
-                                                                            color: Colors.white),
-                                                                      ),
-                                                                    )),
-                                                              )
+                                                                // margin: const EdgeInsets.only(left: 1),
+                                                                child: Center(
+                                                                  child:
+                                                                      Text(
+                                                                    '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
+                                                                    style: TextStyle(
+                                                                        fontSize: AppDimensions.font10(context) *
+                                                                            1.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w400,
+                                                                        color: Colors.white),
+                                                                  ),
+                                                                )),
+                                                          )
                                                             ],
-                                                          ))),
+                                                          )),
                                                     ),
                                                   ),
                                                 ],
@@ -2211,7 +2197,7 @@ class _view_goalsState extends State<view_goals> {
                                     child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
                                         child: Column(children: [
-                                          Container(
+                                          SizedBox(
                                             //  color: Colors.red,
                                             height: AppDimensions.height10(
                                                     context) *
@@ -2226,7 +2212,7 @@ class _view_goalsState extends State<view_goals> {
                                                     onTap: () {
                                                       previous();
                                                       setState(() {
-                                                        Loader = true;
+                                                        loader = true;
                                                       });
                                                       fetchPracticeByDay();
                                                     },
@@ -2260,83 +2246,82 @@ class _view_goalsState extends State<view_goals> {
                                                               Color(0xffEDDC97)
                                                             ]),
                                                       ),
-                                                      child: Container(
-                                                          child: Column(
+                                                      child: Column(
                                                         mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
+                                                        MainAxisAlignment
+                                                            .center,
                                                         children: [
-                                                          Text(
-                                                            getFormattedDay(
-                                                                    past)
-                                                                .substring(
-                                                                    0, 3),
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1.2,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                color: const Color(
-                                                                    0xff5B74A6)),
-                                                          ),
-                                                          Text(
-                                                            '${getFormattedDate(past).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(past).split('-').reversed.join().substring(2, 4)}',
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1.4,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: const Color(
-                                                                    0xff5B74A6)),
-                                                          ),
-                                                          Container(
+                                                      Text(
+                                                        getFormattedDay(
+                                                                past)
+                                                            .substring(
+                                                                0, 3),
+                                                        style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                1.2,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600,
+                                                            color: const Color(
+                                                                0xff5B74A6)),
+                                                      ),
+                                                      Text(
+                                                        '${getFormattedDate(past).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(past).split('-').reversed.join().substring(2, 4)}',
+                                                        style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                1.4,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400,
+                                                            color: const Color(
+                                                                0xff5B74A6)),
+                                                      ),
+                                                      Container(
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            2.5,
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            2.5,
+                                                        decoration: const BoxDecoration(
+                                                            shape: BoxShape
+                                                                .circle,
+                                                            color: Color(
+                                                                0xff156F6D)),
+                                                        child: SizedBox(
+                                                            width: AppDimensions
+                                                                    .width10(
+                                                                        context) *
+                                                                1.7,
                                                             height: AppDimensions
                                                                     .height10(
                                                                         context) *
-                                                                2.5,
-                                                            width: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                2.5,
-                                                            decoration: const BoxDecoration(
-                                                                shape: BoxShape
-                                                                    .circle,
-                                                                color: Color(
-                                                                    0xff156F6D)),
-                                                            child: Container(
-                                                                width: AppDimensions
-                                                                        .width10(
-                                                                            context) *
-                                                                    1.7,
-                                                                height: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    1.5,
+                                                                1.5,
 
-                                                                // margin: const EdgeInsets.only(left: 1),
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    '${responseData['previousCompletePractice']}/${responseData['previousTotalPractice']}',
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                            AppDimensions.font10(context) *
-                                                                                1.0,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .w400,
-                                                                        color: Colors
-                                                                            .white),
-                                                                  ),
-                                                                )),
-                                                          )
+                                                            // margin: const EdgeInsets.only(left: 1),
+                                                            child: Center(
+                                                              child: Text(
+                                                                '${responseData['previousCompletePractice']}/${responseData['previousTotalPractice']}',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        AppDimensions.font10(context) *
+                                                                            1.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .white),
+                                                              ),
+                                                            )),
+                                                      )
                                                         ],
-                                                      )),
+                                                      ),
                                                     ),
                                                   ),
                                                   Container(
@@ -2477,7 +2462,7 @@ class _view_goalsState extends State<view_goals> {
                                                     onTap: () {
                                                       if (!maxViewDate) {
                                                         setState(() {
-                                                          Loader = true;
+                                                          loader = true;
                                                         });
                                                         future();
                                                         fetchPracticeByDay();
@@ -2522,81 +2507,80 @@ class _view_goalsState extends State<view_goals> {
                                                                     0xffEDDC97)
                                                               ]),
                                                         ),
-                                                        child: Container(
-                                                            child: Column(
+                                                        child: Column(
                                                           mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
+                                                          MainAxisAlignment
+                                                              .center,
                                                           children: [
-                                                            Text(
-                                                              getFormattedDay(
-                                                                      next)
-                                                                  .substring(
-                                                                      0, 3),
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          1.2,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: const Color(
-                                                                      0xff5B74A6)),
-                                                            ),
-                                                            Text(
-                                                              '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          1.4,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: const Color(
-                                                                      0xff5B74A6)),
-                                                            ),
-                                                            Container(
-                                                              height: AppDimensions
-                                                                      .height10(
+                                                        Text(
+                                                          getFormattedDay(
+                                                                  next)
+                                                              .substring(
+                                                                  0, 3),
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  AppDimensions.font10(
                                                                           context) *
-                                                                  2.5,
+                                                                      1.2,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: const Color(
+                                                                  0xff5B74A6)),
+                                                        ),
+                                                        Text(
+                                                          '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  AppDimensions.font10(
+                                                                          context) *
+                                                                      1.4,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: const Color(
+                                                                  0xff5B74A6)),
+                                                        ),
+                                                        Container(
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              2.5,
+                                                          width: AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              2.5,
+                                                          decoration: const BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              color: Color(
+                                                                  0xff156F6D)),
+                                                          child: SizedBox(
                                                               width: AppDimensions
                                                                       .width10(
                                                                           context) *
-                                                                  2.5,
-                                                              decoration: const BoxDecoration(
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                  color: Color(
-                                                                      0xff156F6D)),
-                                                              child: Container(
-                                                                  width: AppDimensions
-                                                                          .width10(
-                                                                              context) *
-                                                                      1.7,
-                                                                  height: AppDimensions
-                                                                          .height10(
-                                                                              context) *
-                                                                      1.5,
+                                                                  1.7,
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.5,
 
-                                                                  // margin: const EdgeInsets.only(left: 1),
-                                                                  child: Center(
-                                                                    child: Text(
-                                                                      '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
-                                                                      style: TextStyle(
-                                                                          fontSize: AppDimensions.font10(context) *
-                                                                              1.0,
-                                                                          fontWeight: FontWeight
-                                                                              .w400,
-                                                                          color:
-                                                                              Colors.white),
-                                                                    ),
-                                                                  )),
-                                                            )
+                                                              // margin: const EdgeInsets.only(left: 1),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
+                                                                  style: TextStyle(
+                                                                      fontSize: AppDimensions.font10(context) *
+                                                                          1.0,
+                                                                      fontWeight: FontWeight
+                                                                          .w400,
+                                                                      color:
+                                                                          Colors.white),
+                                                                ),
+                                                              )),
+                                                        )
                                                           ],
-                                                        ))),
+                                                        )),
                                                   ),
                                                 ],
                                               ),
@@ -2627,7 +2611,7 @@ class _view_goalsState extends State<view_goals> {
                                               ),
                                             ),
                                           ),
-                                          Container(
+                                          SizedBox(
                                             width:
                                                 AppDimensions.width10(context) *
                                                     26.9,
@@ -2727,23 +2711,21 @@ class _view_goalsState extends State<view_goals> {
                                                                     context) *
                                                             2.9,
                                                       )),
-                                                  Container(
-                                                    child: Center(
-                                                      child: Text(
-                                                        'Add\npractice',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontFamily: 'laila',
-                                                            fontSize: AppDimensions
-                                                                    .font10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400),
-                                                      ),
+                                                  Center(
+                                                    child: Text(
+                                                      'Add\npractice',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontFamily: 'laila',
+                                                          fontSize: AppDimensions
+                                                                  .font10(
+                                                                      context) *
+                                                              1.4,
+                                                          fontWeight:
+                                                              FontWeight
+                                                                  .w400),
                                                     ),
                                                   )
                                                 ],
@@ -2772,7 +2754,7 @@ class _view_goalsState extends State<view_goals> {
                                               onTap: () {
                                                 previous();
                                                 setState(() {
-                                                  Loader = true;
+                                                  loader = true;
                                                 });
                                                 fetchPracticeByDay();
                                               },
@@ -2992,7 +2974,7 @@ class _view_goalsState extends State<view_goals> {
                                             child: AnimatedScaleButton(
                                               onTap: () {
                                                 setState(() {
-                                                  Loader = true;
+                                                  loader = true;
                                                 });
                                                 future();
                                                 fetchPracticeByDay();
@@ -3017,83 +2999,81 @@ class _view_goalsState extends State<view_goals> {
                                                           color: Colors.white),
                                                       color:
                                                           Colors.transparent),
-                                                  child: Container(
-                                                      //margin: const EdgeInsets.only(top: 10.52),
-                                                      child: Column(
+                                                  child: Column(
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
+                                                    MainAxisAlignment
+                                                        .center,
                                                     children: [
-                                                      Text(
-                                                        getFormattedDay(next)
-                                                            .substring(0, 3),
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .font10(
-                                                                        context) *
-                                                                1.2,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                      Text(
-                                                        '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
-                                                        style: const TextStyle(
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                      Container(
+                                                  Text(
+                                                    getFormattedDay(next)
+                                                        .substring(0, 3),
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .font10(
+                                                                    context) *
+                                                            1.2,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color:
+                                                            Colors.white),
+                                                  ),
+                                                  Text(
+                                                    '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
+                                                    style: const TextStyle(
+                                                        color:
+                                                            Colors.white),
+                                                  ),
+                                                  Container(
+                                                    height: AppDimensions
+                                                            .height10(
+                                                                context) *
+                                                        2.7,
+                                                    width: AppDimensions
+                                                            .width10(
+                                                                context) *
+                                                        2.7,
+                                                    margin: const EdgeInsets
+                                                        .only(top: 3.32),
+                                                    decoration:
+                                                        BoxDecoration(
+                                                      shape:
+                                                          BoxShape.circle,
+                                                      border: Border.all(
+                                                          width: 1,
+                                                          color:
+                                                              Colors.white),
+                                                    ),
+                                                    child: Container(
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.7,
                                                         height: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            2.7,
-                                                        width: AppDimensions
-                                                                .width10(
-                                                                    context) *
-                                                            2.7,
-                                                        margin: const EdgeInsets
-                                                            .only(top: 3.32),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                          border: Border.all(
-                                                              width: 1,
-                                                              color:
-                                                                  Colors.white),
-                                                        ),
-                                                        child: Container(
-                                                            width: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.7,
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.5,
-                                                            margin:
-                                                                const EdgeInsets
-                                                                    .only(
-                                                                    top: 3.32),
-                                                            // margin: const EdgeInsets.only(left: 1),
-                                                            child: Center(
-                                                              child: Text(
-                                                                '0/2',
-                                                                style: TextStyle(
-                                                                    fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context),
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .white),
-                                                              ),
-                                                            )),
-                                                      )
+                                                            1.5,
+                                                        margin:
+                                                            const EdgeInsets
+                                                                .only(
+                                                                top: 3.32),
+                                                        // margin: const EdgeInsets.only(left: 1),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '0/2',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        )),
+                                                  )
                                                     ],
-                                                  ))),
+                                                  )),
                                             ),
                                           ),
                                         ],
@@ -3191,318 +3171,318 @@ class _view_goalsState extends State<view_goals> {
   }
 }
 
-class noActivity extends StatelessWidget {
-  const noActivity({super.key});
+// class noActivity extends StatelessWidget {
+//   const noActivity({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-        width: double.infinity,
-        height: AppDimensions.height10(context) * 19.2,
-        child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: SizedBox(
-                  height: AppDimensions.height10(context) * 19.2,
-                  width: AppDimensions.width10(context) * 45.7,
-                  child: Stack(
-                    children: [
-                      Align(
-                        alignment: const Alignment(-1, 1),
-                        child: AnimatedScaleButton(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: const no_past_session(
-                                  missed: false,
-                                )));
-                          },
-                          child: Container(
-                            height: AppDimensions.height10(context) * 7.9,
-                            width: AppDimensions.width10(context) * 7.9,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 8.4),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 3, color: Colors.white),
-                                color: Colors.transparent),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'MON',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.font10(context) * 1.2,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white),
-                                ),
-                                const Text(
-                                  '02.06',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                Container(
-                                  height: AppDimensions.height10(context) * 2.7,
-                                  width: AppDimensions.width10(context) * 2.7,
-                                  margin: const EdgeInsets.only(top: 3.32),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        width: 1, color: Colors.white),
-                                  ),
-                                  child: Container(
-                                      width:
-                                          AppDimensions.height10(context) * 1.7,
-                                      height:
-                                          AppDimensions.height10(context) * 1.5,
-                                      margin: EdgeInsets.only(
-                                          top: AppDimensions.height10(context) *
-                                              0.2),
-                                      // margin: const EdgeInsets.only(left: 1),
-                                      child: const Center(
-                                        child: Text(
-                                          '0/2',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white),
-                                        ),
-                                      )),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: const Alignment(0, 0),
-                        child: Container(
-                          width: AppDimensions.width10(context) * 8.3,
-                          height: AppDimensions.height10(context) * 8.3,
-                          //  margin: EdgeInsets.only(right: 121, left: 121),
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                  width: AppDimensions.width10(context) * 0.1,
-                                  color: Colors.white),
-                              color: Colors.transparent),
-                          child: Container(
-                            height: AppDimensions.height10(context) * 7.9,
-                            width: AppDimensions.width10(context) * 7.9,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    width: AppDimensions.width10(context) * 0.3,
-                                    color: Colors.white),
-                                color: Colors.transparent),
-                            child: Stack(children: [
-                              Align(
-                                alignment: const Alignment(0, 0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'TUE',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.4,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
-                                    ),
-                                    Text(
-                                      '02.07',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                    Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.5,
-                                        width: AppDimensions.width10(context) *
-                                            2.5,
-                                        margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
-                                                    context) *
-                                                0.202),
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: DottedBorder(
-                                          borderType: BorderType.Circle,
-                                          color: Colors.white,
-                                          child: Center(
-                                            child: Text(
-                                              '0/0',
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                          context),
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        )),
-                                  ],
-                                ),
-                              ),
-                            ]),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: const Alignment(1, 1),
-                        child: AnimatedScaleButton(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: const no_planned_session(
-                                  missed: false,
-                                )));
-                          },
-                          child: Container(
-                              height: AppDimensions.height10(context) * 7.9,
-                              width: AppDimensions.width10(context) * 7.9,
-                              margin: const EdgeInsets.only(
-                                top: 84,
-                              ),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensions.height10(context) * 0.3,
-                                      color: Colors.white),
-                                  color: Colors.transparent),
-                              child: Container(
-                                  //margin: const EdgeInsets.only(top: 10.52),
-                                  child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'MON',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.2,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white),
-                                  ),
-                                  const Text(
-                                    '03.07',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  Container(
-                                    height:
-                                        AppDimensions.height10(context) * 2.7,
-                                    width: AppDimensions.width10(context) * 2.7,
-                                    margin: const EdgeInsets.only(top: 3.32),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                          width: 1, color: Colors.white),
-                                    ),
-                                    child: Container(
-                                        width: AppDimensions.width10(context) *
-                                            1.7,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.5,
-                                        margin:
-                                            const EdgeInsets.only(top: 3.32),
-                                        // margin: const EdgeInsets.only(left: 1),
-                                        child: Center(
-                                          child: Text(
-                                            '0/2',
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                        context),
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.white),
-                                          ),
-                                        )),
-                                  )
-                                ],
-                              ))),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                // width: 343,
-                // height: 49,
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 14.9,
-                    bottom: AppDimensions.height10(context) * 2.2),
-                child: Center(
-                  child: Text(
-                    'All your practices are\ninactive',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: AppDimensions.font10(context) * 3.0,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: 'Laila'),
-                  ),
-                ),
-              ),
-              Container(
-                // width: 269,
-                // height: 58,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.2),
-                child: Center(
-                  child: Text(
-                    "You don’t have any active or\nplanned practices. Please view\nyour current goals to manage\nand update your practices.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Laila',
-                        fontSize: AppDimensions.font10(context) * 1.8,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
-              ),
-              AnimatedScaleButton(
-                onTap: () {},
-                child: Container(
-                    height: AppDimensions.height10(context) * 5.0,
-                    width: AppDimensions.width10(context) * 24.3,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 4.6),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xffFCC10D),
-                            Color(0xffFDA210),
-                          ]),
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 5.0),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'View all goals',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: AppDimensions.font10(context) * 1.6,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'poppins'),
-                      ),
-                    )),
-              )
-            ])));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//         width: double.infinity,
+//         height: AppDimensions.height10(context) * 19.2,
+//         child: SingleChildScrollView(
+//             scrollDirection: Axis.vertical,
+//             child: Column(children: [
+//               SingleChildScrollView(
+//                 scrollDirection: Axis.horizontal,
+//                 child: SizedBox(
+//                   height: AppDimensions.height10(context) * 19.2,
+//                   width: AppDimensions.width10(context) * 45.7,
+//                   child: Stack(
+//                     children: [
+//                       Align(
+//                         alignment: const Alignment(-1, 1),
+//                         child: AnimatedScaleButton(
+//                           onTap: () {
+//                             Navigator.push(
+//                                 context,
+//                                 FadePageRoute(
+//                                     page: const no_past_session(
+//                                   missed: false,
+//                                 )));
+//                           },
+//                           child: Container(
+//                             height: AppDimensions.height10(context) * 7.9,
+//                             width: AppDimensions.width10(context) * 7.9,
+//                             margin: EdgeInsets.only(
+//                                 top: AppDimensions.height10(context) * 8.4),
+//                             decoration: BoxDecoration(
+//                                 shape: BoxShape.circle,
+//                                 border:
+//                                     Border.all(width: 3, color: Colors.white),
+//                                 color: Colors.transparent),
+//                             child: Column(
+//                               mainAxisAlignment: MainAxisAlignment.center,
+//                               children: [
+//                                 Text(
+//                                   'MON',
+//                                   style: TextStyle(
+//                                       fontSize:
+//                                           AppDimensions.font10(context) * 1.2,
+//                                       fontWeight: FontWeight.w600,
+//                                       color: Colors.white),
+//                                 ),
+//                                 const Text(
+//                                   '02.06',
+//                                   style: TextStyle(color: Colors.white),
+//                                 ),
+//                                 Container(
+//                                   height: AppDimensions.height10(context) * 2.7,
+//                                   width: AppDimensions.width10(context) * 2.7,
+//                                   margin: const EdgeInsets.only(top: 3.32),
+//                                   decoration: BoxDecoration(
+//                                     shape: BoxShape.circle,
+//                                     border: Border.all(
+//                                         width: 1, color: Colors.white),
+//                                   ),
+//                                   child: Container(
+//                                       width:
+//                                           AppDimensions.height10(context) * 1.7,
+//                                       height:
+//                                           AppDimensions.height10(context) * 1.5,
+//                                       margin: EdgeInsets.only(
+//                                           top: AppDimensions.height10(context) *
+//                                               0.2),
+//                                       // margin: const EdgeInsets.only(left: 1),
+//                                       child: const Center(
+//                                         child: Text(
+//                                           '0/2',
+//                                           style: TextStyle(
+//                                               fontSize: 10,
+//                                               fontWeight: FontWeight.w400,
+//                                               color: Colors.white),
+//                                         ),
+//                                       )),
+//                                 )
+//                               ],
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+//                       Align(
+//                         alignment: const Alignment(0, 0),
+//                         child: Container(
+//                           width: AppDimensions.width10(context) * 8.3,
+//                           height: AppDimensions.height10(context) * 8.3,
+//                           //  margin: EdgeInsets.only(right: 121, left: 121),
+//                           padding: const EdgeInsets.all(4),
+//                           decoration: BoxDecoration(
+//                               shape: BoxShape.circle,
+//                               border: Border.all(
+//                                   width: AppDimensions.width10(context) * 0.1,
+//                                   color: Colors.white),
+//                               color: Colors.transparent),
+//                           child: Container(
+//                             height: AppDimensions.height10(context) * 7.9,
+//                             width: AppDimensions.width10(context) * 7.9,
+//                             decoration: BoxDecoration(
+//                                 shape: BoxShape.circle,
+//                                 border: Border.all(
+//                                     width: AppDimensions.width10(context) * 0.3,
+//                                     color: Colors.white),
+//                                 color: Colors.transparent),
+//                             child: Stack(children: [
+//                               Align(
+//                                 alignment: const Alignment(0, 0),
+//                                 child: Column(
+//                                   mainAxisAlignment: MainAxisAlignment.center,
+//                                   children: [
+//                                     Text(
+//                                       'TUE',
+//                                       style: TextStyle(
+//                                           fontSize:
+//                                               AppDimensions.font10(context) *
+//                                                   1.4,
+//                                           fontWeight: FontWeight.w600,
+//                                           color: Colors.white),
+//                                     ),
+//                                     Text(
+//                                       '02.07',
+//                                       style: TextStyle(
+//                                           color: Colors.white,
+//                                           fontSize:
+//                                               AppDimensions.font10(context) *
+//                                                   1.3,
+//                                           fontWeight: FontWeight.w400),
+//                                     ),
+//                                     Container(
+//                                         height:
+//                                             AppDimensions.height10(context) *
+//                                                 2.5,
+//                                         width: AppDimensions.width10(context) *
+//                                             2.5,
+//                                         margin: EdgeInsets.only(
+//                                             top: AppDimensions.height10(
+//                                                     context) *
+//                                                 0.202),
+//                                         decoration: const BoxDecoration(
+//                                           shape: BoxShape.circle,
+//                                         ),
+//                                         child: DottedBorder(
+//                                           borderType: BorderType.Circle,
+//                                           color: Colors.white,
+//                                           child: Center(
+//                                             child: Text(
+//                                               '0/0',
+//                                               style: TextStyle(
+//                                                   fontSize:
+//                                                       AppDimensions.height10(
+//                                                           context),
+//                                                   fontWeight: FontWeight.w400,
+//                                                   color: Colors.white),
+//                                             ),
+//                                           ),
+//                                         )),
+//                                   ],
+//                                 ),
+//                               ),
+//                             ]),
+//                           ),
+//                         ),
+//                       ),
+//                       Align(
+//                         alignment: const Alignment(1, 1),
+//                         child: AnimatedScaleButton(
+//                           onTap: () {
+//                             Navigator.push(
+//                                 context,
+//                                 FadePageRoute(
+//                                     page: const no_planned_session(
+//                                   missed: false,
+//                                 )));
+//                           },
+//                           child: Container(
+//                               height: AppDimensions.height10(context) * 7.9,
+//                               width: AppDimensions.width10(context) * 7.9,
+//                               margin: const EdgeInsets.only(
+//                                 top: 84,
+//                               ),
+//                               decoration: BoxDecoration(
+//                                   shape: BoxShape.circle,
+//                                   border: Border.all(
+//                                       width:
+//                                           AppDimensions.height10(context) * 0.3,
+//                                       color: Colors.white),
+//                                   color: Colors.transparent),
+//                               child: Container(
+//                                   //margin: const EdgeInsets.only(top: 10.52),
+//                                   child: Column(
+//                                 mainAxisAlignment: MainAxisAlignment.center,
+//                                 children: [
+//                                   Text(
+//                                     'MON',
+//                                     style: TextStyle(
+//                                         fontSize:
+//                                             AppDimensions.font10(context) * 1.2,
+//                                         fontWeight: FontWeight.w600,
+//                                         color: Colors.white),
+//                                   ),
+//                                   const Text(
+//                                     '03.07',
+//                                     style: TextStyle(color: Colors.white),
+//                                   ),
+//                                   Container(
+//                                     height:
+//                                         AppDimensions.height10(context) * 2.7,
+//                                     width: AppDimensions.width10(context) * 2.7,
+//                                     margin: const EdgeInsets.only(top: 3.32),
+//                                     decoration: BoxDecoration(
+//                                       shape: BoxShape.circle,
+//                                       border: Border.all(
+//                                           width: 1, color: Colors.white),
+//                                     ),
+//                                     child: Container(
+//                                         width: AppDimensions.width10(context) *
+//                                             1.7,
+//                                         height:
+//                                             AppDimensions.height10(context) *
+//                                                 1.5,
+//                                         margin:
+//                                             const EdgeInsets.only(top: 3.32),
+//                                         // margin: const EdgeInsets.only(left: 1),
+//                                         child: Center(
+//                                           child: Text(
+//                                             '0/2',
+//                                             style: TextStyle(
+//                                                 fontSize:
+//                                                     AppDimensions.height10(
+//                                                         context),
+//                                                 fontWeight: FontWeight.w400,
+//                                                 color: Colors.white),
+//                                           ),
+//                                         )),
+//                                   )
+//                                 ],
+//                               ))),
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//               Container(
+//                 // width: 343,
+//                 // height: 49,
+//                 margin: EdgeInsets.only(
+//                     top: AppDimensions.height10(context) * 14.9,
+//                     bottom: AppDimensions.height10(context) * 2.2),
+//                 child: Center(
+//                   child: Text(
+//                     'All your practices are\ninactive',
+//                     textAlign: TextAlign.center,
+//                     style: TextStyle(
+//                         color: Colors.white,
+//                         fontSize: AppDimensions.font10(context) * 3.0,
+//                         fontWeight: FontWeight.w700,
+//                         fontFamily: 'Laila'),
+//                   ),
+//                 ),
+//               ),
+//               Container(
+//                 // width: 269,
+//                 // height: 58,
+//                 margin:
+//                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.2),
+//                 child: Center(
+//                   child: Text(
+//                     "You don’t have any active or\nplanned practices. Please view\nyour current goals to manage\nand update your practices.",
+//                     textAlign: TextAlign.center,
+//                     style: TextStyle(
+//                         color: Colors.white,
+//                         fontFamily: 'Laila',
+//                         fontSize: AppDimensions.font10(context) * 1.8,
+//                         fontWeight: FontWeight.w600),
+//                   ),
+//                 ),
+//               ),
+//               AnimatedScaleButton(
+//                 onTap: () {},
+//                 child: Container(
+//                     height: AppDimensions.height10(context) * 5.0,
+//                     width: AppDimensions.width10(context) * 24.3,
+//                     margin: EdgeInsets.only(
+//                         top: AppDimensions.height10(context) * 4.6),
+//                     decoration: BoxDecoration(
+//                       gradient: const LinearGradient(
+//                           begin: Alignment.topCenter,
+//                           end: Alignment.bottomCenter,
+//                           colors: [
+//                             Color(0xffFCC10D),
+//                             Color(0xffFDA210),
+//                           ]),
+//                       borderRadius: BorderRadius.circular(
+//                           AppDimensions.height10(context) * 5.0),
+//                     ),
+//                     child: Center(
+//                       child: Text(
+//                         'View all goals',
+//                         style: TextStyle(
+//                             color: Colors.white,
+//                             fontSize: AppDimensions.font10(context) * 1.6,
+//                             fontWeight: FontWeight.w600,
+//                             fontFamily: 'poppins'),
+//                       ),
+//                     )),
+//               )
+//             ])));
+//   }
+// }

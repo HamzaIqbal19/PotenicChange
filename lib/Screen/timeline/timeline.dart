@@ -13,8 +13,7 @@ class timeline extends StatefulWidget {
 
 class _timelineState extends State<timeline> {
   late ScrollController _scrollController;
-  int goal_level = 2;
-  bool _showBackToTopButton = false;
+  int goalLevel = 2;
   final List<String> _statements = [
     'All ',
     'Sessions completed',
@@ -31,9 +30,9 @@ class _timelineState extends State<timeline> {
     'Practice name 1 (goal name)',
   ];
   int _selectedTag = 0;
-  int _Goal_Index = 0;
-  String _selected_activity = 'All';
-  String _selected_goal = 'All';
+  int goalIndex = 0;
+  String selectedActivity = 'All';
+  String selectedGoal = 'All';
 
   @override
   void initState() {
@@ -41,9 +40,9 @@ class _timelineState extends State<timeline> {
       ..addListener(() {
         setState(() {
           if (_scrollController.offset >= 400) {
-            _showBackToTopButton = true; // show the back-to-top button
+// show the back-to-top button
           } else {
-            _showBackToTopButton = false; // hide the back-to-top button
+// hide the back-to-top button
           }
         });
       });
@@ -77,7 +76,7 @@ class _timelineState extends State<timeline> {
                   },
                   icon: Image.asset(
                     'assets/images/Back.webp',
-                  //  width: AppDimensions.width10(context) * 3.0,
+                    //  width: AppDimensions.width10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   )),
@@ -133,8 +132,7 @@ class _timelineState extends State<timeline> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFF5F2E6), Color(0xffECDA91)])),
-                      child: Container(
-                          child: Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -154,7 +152,7 @@ class _timelineState extends State<timeline> {
                                 color: const Color(0xff5B74A6)),
                           ),
                         ],
-                      ))),
+                      )),
                   Container(
                       height: AppDimensions.height10(context) * 6.2,
                       width: AppDimensions.width10(context) * 6.2,
@@ -168,8 +166,7 @@ class _timelineState extends State<timeline> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFF5F2E6), Color(0xffECDA91)])),
-                      child: Container(
-                          child: Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -189,7 +186,7 @@ class _timelineState extends State<timeline> {
                                 color: const Color(0xff5B74A6)),
                           ),
                         ],
-                      ))),
+                      )),
                   Container(
                     width: AppDimensions.width10(context) * 39.5,
                     height: AppDimensions.height10(context) * 25.4,
@@ -569,8 +566,7 @@ class _timelineState extends State<timeline> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFF5F2E6), Color(0xffECDA91)])),
-                      child: Container(
-                          child: Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -590,7 +586,7 @@ class _timelineState extends State<timeline> {
                                 color: const Color(0xff5B74A6)),
                           ),
                         ],
-                      ))),
+                      )),
                   Container(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.5),
@@ -664,7 +660,6 @@ class _timelineState extends State<timeline> {
                     height: AppDimensions.height10(context) * 4.4,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
-
                         left: AppDimensions.width10(context) * 4.8,
                         right: AppDimensions.width10(context) * 4.7),
                     child: Text(
@@ -717,8 +712,7 @@ class _timelineState extends State<timeline> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFF5F2E6), Color(0xffECDA91)])),
-                      child: Container(
-                          child: Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -738,7 +732,7 @@ class _timelineState extends State<timeline> {
                                 color: const Color(0xff5B74A6)),
                           ),
                         ],
-                      ))),
+                      )),
                   Container(
                     width: AppDimensions.width10(context) * 38.4,
                     height: AppDimensions.height10(context) * 49.1,
@@ -1077,9 +1071,9 @@ class _timelineState extends State<timeline> {
                                                 0.12,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff5B74A6)),
-                                        children: [
-                                      const TextSpan(text: 'How did you feel '),
-                                      const TextSpan(
+                                        children: const [
+                                      TextSpan(text: 'How did you feel '),
+                                      TextSpan(
                                           text: 'before:',
                                           style: TextStyle(
                                             fontWeight: FontWeight.w700,
@@ -1165,9 +1159,9 @@ class _timelineState extends State<timeline> {
                                                 0.12,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff5B74A6)),
-                                        children: [
-                                      const TextSpan(text: 'How did you feel '),
-                                      const TextSpan(
+                                        children: const [
+                                      TextSpan(text: 'How did you feel '),
+                                      TextSpan(
                                           text: 'after:',
                                           style: TextStyle(
                                             fontWeight: FontWeight.w700,
@@ -1314,9 +1308,9 @@ class _timelineState extends State<timeline> {
                                         AppDimensions.font10(context) * 2.8,
                                     fontWeight: FontWeight.w700,
                                   ),
-                                  colors: [
-                                    const Color(0xffFA9934),
-                                    const Color(0xffEDD15E)
+                                  colors: const [
+                                    Color(0xffFA9934),
+                                    Color(0xffEDD15E)
                                   ],
                                 ),
                               ),
@@ -1921,16 +1915,16 @@ class _timelineState extends State<timeline> {
                                           decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               image: DecorationImage(
-                                                  image: AssetImage(goal_level ==
+                                                  image: AssetImage(goalLevel ==
                                                           1
-                                                      ? 'assets/images/goal_level_1.webp'
-                                                      : goal_level == 2
+                                                      ? 'assets/images/goalLevel_1.webp'
+                                                      : goalLevel == 2
                                                           ? 'assets/images/Nebula pie 2.webp'
-                                                          : goal_level == 3
+                                                          : goalLevel == 3
                                                               ? 'assets/images/Nebula pie 3.webp'
-                                                              : goal_level == 4
-                                                                  ? 'assets/images/goal_level_4.webp'
-                                                                  : 'assets/images/goal_level_5.webp'),
+                                                              : goalLevel == 4
+                                                                  ? 'assets/images/goalLevel_4.webp'
+                                                                  : 'assets/images/goalLevel_5.webp'),
                                                   fit: BoxFit.contain)),
                                           child: Stack(
                                             alignment: Alignment.center,
@@ -1984,7 +1978,7 @@ class _timelineState extends State<timeline> {
                                                   children: [
                                                     SizedBox(
                                                       child: Text(
-                                                        '$goal_level',
+                                                        '$goalLevel',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(
@@ -2054,8 +2048,7 @@ class _timelineState extends State<timeline> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFF5F2E6), Color(0xffECDA91)])),
-                      child: Container(
-                          child: Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -2075,7 +2068,7 @@ class _timelineState extends State<timeline> {
                                 color: const Color(0xff5B74A6)),
                           ),
                         ],
-                      ))),
+                      )),
                   Container(
                       height: AppDimensions.height10(context) * 6.2,
                       width: AppDimensions.width10(context) * 6.2,
@@ -2090,8 +2083,7 @@ class _timelineState extends State<timeline> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFF5F2E6), Color(0xffECDA91)])),
-                      child: Container(
-                          child: Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -2111,7 +2103,7 @@ class _timelineState extends State<timeline> {
                                 color: const Color(0xff5B74A6)),
                           ),
                         ],
-                      ))),
+                      )),
                 ],
               ),
             ),
@@ -2246,9 +2238,9 @@ class _timelineState extends State<timeline> {
                                                         GestureDetector(
                                                           onTap: () {
                                                             setState(() {
-                                                              _selected_goal =
+                                                              selectedGoal =
                                                                   _goals[
-                                                                      _Goal_Index];
+                                                                      goalIndex];
                                                             });
 
                                                             Navigator.pop(
@@ -2299,9 +2291,9 @@ class _timelineState extends State<timeline> {
                                                       onSelectedItemChanged:
                                                           (int index) {
                                                         setState(() {
-                                                          _Goal_Index = index;
+                                                          goalIndex = index;
                                                           //activity_duration = _statements[_selectedIndex];
-                                                          // _selected_activity =
+                                                          // selectedActivity =
                                                           //     _statements[index];
                                                         });
                                                       },
@@ -2331,8 +2323,8 @@ class _timelineState extends State<timeline> {
                                   margin: EdgeInsets.only(
                                       left:
                                           AppDimensions.height10(context) * 1.3,
-                                      right: AppDimensions.width10(context) *
-                                          1.0),
+                                      right:
+                                          AppDimensions.width10(context) * 1.0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -2363,7 +2355,7 @@ class _timelineState extends State<timeline> {
                                                 0.8),
                                         child: Center(
                                           child: Text(
-                                            _selected_goal,
+                                            selectedGoal,
                                             style: TextStyle(
                                                 fontSize: AppDimensions.font10(
                                                         context) *
@@ -2477,7 +2469,7 @@ class _timelineState extends State<timeline> {
                                                         GestureDetector(
                                                           onTap: () {
                                                             setState(() {
-                                                              _selected_activity =
+                                                              selectedActivity =
                                                                   _statements[
                                                                       _selectedTag];
                                                             });
@@ -2532,7 +2524,7 @@ class _timelineState extends State<timeline> {
                                                         setState(() {
                                                           _selectedTag = index;
                                                           //activity_duration = _statements[_selectedIndex];
-                                                          // _selected_activity =
+                                                          // selectedActivity =
                                                           //     _statements[index];
                                                         });
                                                       },
@@ -2589,7 +2581,7 @@ class _timelineState extends State<timeline> {
                                                 0.8),
                                         child: Center(
                                           child: Text(
-                                            _selected_activity,
+                                            selectedActivity,
                                             style: TextStyle(
                                                 fontSize: AppDimensions.font10(
                                                         context) *
@@ -2754,8 +2746,8 @@ class _timelineState extends State<timeline> {
                                   margin: EdgeInsets.only(
                                       left:
                                           AppDimensions.height10(context) * 1.3,
-                                      right: AppDimensions.width10(context) *
-                                          1.0),
+                                      right:
+                                          AppDimensions.width10(context) * 1.0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -2840,8 +2832,8 @@ class _timelineState extends State<timeline> {
                                   margin: EdgeInsets.only(
                                       left:
                                           AppDimensions.height10(context) * 1.3,
-                                      right: AppDimensions.width10(context) *
-                                          1.0),
+                                      right:
+                                          AppDimensions.width10(context) * 1.0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -2912,8 +2904,8 @@ class _timelineState extends State<timeline> {
                                   // width: AppDimensions.width10(context) * 6.0,
                                   height: AppDimensions.height10(context) * 2.1,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.width10(context) *
-                                          1.0),
+                                      left:
+                                          AppDimensions.width10(context) * 1.0),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
                                     'Clear all',
@@ -2961,12 +2953,12 @@ class _timelineState extends State<timeline> {
 }
 
 _showBottomSheet(BuildContext context) {
-  final bool bottom_sheet = true;
+  const bool bottom_sheet = true;
   showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
       return StatefulBuilder(builder: (context, StateSetter setState) {
-        return MyBottomSheet(
+        return const MyBottomSheet(
           sheet_bottom: bottom_sheet,
         );
       });
@@ -2989,7 +2981,7 @@ class MyBottomSheet extends StatefulWidget {
 class _MyBottomSheetState extends State<MyBottomSheet> {
   int _selectedIndex = 0;
 
-  final List<String> _goals_name = [
+  final List<String> goalsname = [
     'All',
     'Goal name 1',
     'Goal name 2',
@@ -3042,7 +3034,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      //activity_duration = _selected_activity;
+                      //activity_duration = selectedActivity;
                       //activity_duration = _statements[_selectedIndex];
                     });
                     Navigator.of(context).pop(_sessions[_selectedIndex]);
@@ -3078,7 +3070,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                             fontWeight: FontWeight.w400,
                           )))
                       .toList()
-                  : _goals_name
+                  : goalsname
                       .map((statement) => Text(statement,
                           style: TextStyle(
                             fontSize: AppDimensions.font10(context) * 2.0,
@@ -3089,7 +3081,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                 setState(() {
                   _selectedIndex = index;
                   //activity_duration = _statements[_selectedIndex];
-                  //  _selected_activity = _statements[_selectedIndex];
+                  //  selectedActivity = _statements[_selectedIndex];
                 });
               },
             ),
@@ -3102,12 +3094,12 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
 }
 
 _BottomSheet(BuildContext context) {
-  final bool bottom_sheet = false;
+  const bool bottom_sheet = false;
   showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
       return StatefulBuilder(builder: (context, StateSetter setState) {
-        return MyBottomSheet(
+        return const MyBottomSheet(
           sheet_bottom: bottom_sheet,
         );
       });
@@ -3130,7 +3122,7 @@ class BottomSheet extends StatefulWidget {
 class _BottomSheetState extends State<MyBottomSheet> {
   int _selectedIndex = 0;
 
-  final List<String> _goals_name = [
+  final List<String> goalsname = [
     'All',
     'Goal name 1',
     'Goal name 2',
@@ -3183,7 +3175,7 @@ class _BottomSheetState extends State<MyBottomSheet> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      //activity_duration = _selected_activity;
+                      //activity_duration = selectedActivity;
                       //activity_duration = _statements[_selectedIndex];
                     });
                     Navigator.of(context).pop(_sessions[_selectedIndex]);
@@ -3219,7 +3211,7 @@ class _BottomSheetState extends State<MyBottomSheet> {
                             fontWeight: FontWeight.w400,
                           )))
                       .toList()
-                  : _goals_name
+                  : goalsname
                       .map((statement) => Text(statement,
                           style: TextStyle(
                             fontSize: AppDimensions.font10(context) * 2.0,
@@ -3230,7 +3222,7 @@ class _BottomSheetState extends State<MyBottomSheet> {
                 setState(() {
                   _selectedIndex = index;
                   //activity_duration = _statements[_selectedIndex];
-                  //  _selected_activity = _statements[_selectedIndex];
+                  //  selectedActivity = _statements[_selectedIndex];
                 });
               },
             ),

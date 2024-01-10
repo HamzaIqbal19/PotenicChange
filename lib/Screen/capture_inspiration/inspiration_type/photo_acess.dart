@@ -3,7 +3,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -56,7 +55,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
       });
       // final bytes = imageFile?.readAsBytesSync();
       // String imageString = base64Encode(bytes!);
-      var image = prefs.setString('imagePicked', file!.path);
+      await prefs.setString('imagePicked', file!.path);
       Navigator.push(
           context,
           FadePageRoute(
@@ -246,7 +245,7 @@ class _photo_infoState extends State<photo_info> {
   List selectedGoals = [];
   List<String> tagList = [];
   List<String> stringTagList = [];
-  bool bt_enable = true;
+  bool btEnable = true;
 
   void getInspiration() async {
     final SharedPreferences prefs = await _prefs;
@@ -293,7 +292,6 @@ class _photo_infoState extends State<photo_info> {
 
   @override
   Widget build(BuildContext context) {
-    bool link_state = false;
     return WillPopScope(
       onWillPop: () {
         return Future.value(false);
@@ -394,7 +392,7 @@ class _photo_infoState extends State<photo_info> {
                                           onTap: () async {
                                             final SharedPreferences prefs =
                                                 await _prefs;
-                                            var remove =
+                                            await
                                                 prefs.remove('ImageLink');
 
                                             if (widget.image_create == true) {
@@ -404,15 +402,12 @@ class _photo_infoState extends State<photo_info> {
                                                   statement.text
                                                       .toString()
                                                       .isNotEmpty) {
-                                                if (bt_enable == true) {
+                                                if (btEnable == true) {
                                                   setState(() {
-                                                    bt_enable = false;
+                                                    btEnable = false;
                                                   });
                                                 }
-                                                final SharedPreferences prefs =
-                                                    await _prefs;
-                                                var imagePicked = prefs
-                                                    .getString('imagePicked');
+                                               
 
                                                 InspirationApi()
                                                     .addInspiration(
@@ -434,7 +429,7 @@ class _photo_infoState extends State<photo_info> {
                                                     .then((response) async {
                                                   if (response.length != 0) {
                                                     setState(() {
-                                                      bt_enable = true;
+                                                      btEnable = true;
                                                     });
 
                                                     title.clear();
@@ -773,15 +768,13 @@ class _photo_infoState extends State<photo_info> {
                                                   statement.text
                                                       .toString()
                                                       .isNotEmpty) {
-                                                if (bt_enable == true) {
+                                                if (btEnable == true) {
                                                   setState(() {
-                                                    bt_enable = false;
+                                                    btEnable = false;
                                                   });
                                                 }
-                                                final SharedPreferences prefs =
-                                                    await _prefs;
-                                                var imagePicked = prefs
-                                                    .getString('imagePicked');
+                                               
+                                              
 
                                                 InspirationApi()
                                                     .addInspiration(
@@ -803,7 +796,7 @@ class _photo_infoState extends State<photo_info> {
                                                     .then((response) {
                                                   if (response.length != 0) {
                                                     setState(() {
-                                                      bt_enable = true;
+                                                      btEnable = true;
                                                     });
 
                                                     title.clear();
@@ -829,7 +822,7 @@ class _photo_infoState extends State<photo_info> {
                                                             "Title or Inspiration is empty.")));
                                               }
                                             },
-                                            child: bt_enable == false
+                                            child: btEnable == false
                                                 ? Center(
                                                     child: SpinKitThreeBounce(
                                                       color: const Color(
@@ -1413,14 +1406,13 @@ class link_set extends StatefulWidget {
 
 class _link_setState extends State<link_set> {
   final linkController = TextEditingController();
-  static final GlobalKey<FormState> key1 = GlobalKey<FormState>();
 
-  bool link_bt = false;
+  bool linkbt = false;
   bool showKeyboardOverlay = false;
   List allgoalsSelected = [];
 
-  FocusNode _textFocusNode = FocusNode();
-  String link_url = '';
+  final FocusNode _textFocusNode = FocusNode();
+  String linkUrl = '';
   final WebViewController _controller = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
     ..setNavigationDelegate(
@@ -1462,7 +1454,7 @@ class _link_setState extends State<link_set> {
               width: double.infinity,
               height: double.infinity,
               color: const Color(0xFFC4C4C4),
-              child: link_url == ''
+              child: linkUrl == ''
                   ? Container()
                   : WebViewWidget(controller: _controller),
             ),
@@ -1484,7 +1476,7 @@ class _link_setState extends State<link_set> {
                       ? AnimatedScaleButton(
                           onTap: () {
                             setState(() {
-                              link_bt = false;
+                              linkbt = false;
                             });
                             Navigator.pop(context);
                             linkController.clear();
@@ -1541,7 +1533,7 @@ class _link_setState extends State<link_set> {
                             focusNode: _textFocusNode,
                             onChanged: (value) {
                               setState(() {
-                                link_bt = true;
+                                linkbt = true;
                               });
                             },
                             onTap: () {
@@ -1585,7 +1577,7 @@ class _link_setState extends State<link_set> {
                               _controller.loadRequest(Uri.parse(url));
 
                               setState(() {
-                                link_url = linkController.text.toString();
+                                linkUrl = linkController.text.toString();
                               });
                             },
                           ),
@@ -1595,7 +1587,7 @@ class _link_setState extends State<link_set> {
                                 onTap: () {
                                   setState(() {});
                                   linkController.clear();
-                                  link_url = '';
+                                  linkUrl = '';
                                   _controller.clearCache();
                                 },
                                 child: Container(
@@ -1636,7 +1628,7 @@ class _link_setState extends State<link_set> {
                   AnimatedScaleButton(
                     onTap: () async {
                       final SharedPreferences prefs = await _prefs;
-                      var link = prefs.setString(
+                      await prefs.setString(
                           'ImageLink', linkController.text.toString());
                       if (widget.route == 'image') {
                         Navigator.push(

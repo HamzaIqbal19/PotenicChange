@@ -61,13 +61,13 @@ class Create_practice_shimmer extends StatelessWidget {
                             ),
                           ),
                           Align(
-                            alignment: Alignment(1.5, 0),
+                            alignment: const Alignment(1.5, 0),
                             child: Container(
                               width: 40,
                               height: 40,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100),
-                                color: Color.fromARGB(226, 224, 224, 224),
+                                color: const Color.fromARGB(226, 224, 224, 224),
                               ),
                             ),
                           ),
@@ -94,31 +94,31 @@ class Create_practice_shimmer extends StatelessWidget {
               SizedBox(
                 height: AppDimensions.height10(context) * 8.0,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  continer_const(),
-                  continer_const(),
+                children: [
+                  ContinerConst(),
+                  ContinerConst(),
                 ],
               ),
               SizedBox(
                 height: AppDimensions.height10(context) * 2.5,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  continer_const(),
-                  continer_const(),
+                children: [
+                  ContinerConst(),
+                  ContinerConst(),
                 ],
               ),
               SizedBox(
                 height: AppDimensions.height10(context) * 2.5,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  continer_const(),
-                  continer_const(),
+                children: [
+                  ContinerConst(),
+                  ContinerConst(),
                 ],
               ),
             ],
@@ -127,8 +127,8 @@ class Create_practice_shimmer extends StatelessWidget {
   }
 }
 
-class continer_const extends StatelessWidget {
-  const continer_const({
+class ContinerConst extends StatelessWidget {
+  const ContinerConst({
     Key? key,
   }) : super(key: key);
 

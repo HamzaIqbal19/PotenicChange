@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
@@ -41,7 +40,6 @@ class _PracticeReviewState extends State<PracticeReview> {
   bool color4 = false;
   bool color5 = false;
   bool color6 = false;
-  Future<List<String>>? _goalNamesFuture;
   var pracName;
   String goalName = '';
   var reminder;
@@ -103,7 +101,6 @@ class _PracticeReviewState extends State<PracticeReview> {
       }
     }).catchError((error) {
       loadData();
-      print("error");
     });
   }
 
@@ -143,7 +140,6 @@ class _PracticeReviewState extends State<PracticeReview> {
       }
     }).catchError((error) {
       loadData();
-      print("hell");
     });
   }
 
@@ -166,7 +162,7 @@ class _PracticeReviewState extends State<PracticeReview> {
             child: IconButton(
               icon: Image.asset(
                 'assets/images/Back.webp',
-              //  width: AppDimensions.width10(context) * 3,
+                //  width: AppDimensions.width10(context) * 3,
                 height: AppDimensions.height10(context) * 3,
                 fit: BoxFit.contain,
               ),
@@ -272,7 +268,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                           width: AppDimensions.width10(context) * 30,
                           child: Center(
                             child: Text(
-                             goalName,
+                              goalName,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               style: TextStyle(
@@ -286,9 +282,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                         SizedBox(
                           height: AppDimensions.height10(context),
                         ),
-                        goalAndPractice(context,
-                            color,pracColor,
-                            pracName),
+                        goalAndPractice(context, color, pracColor, pracName),
                         //goalAndPractice(),
                         // Container(
                         //   //width: AppDimensions.width10(context) * 2.0,
@@ -381,15 +375,13 @@ class _PracticeReviewState extends State<PracticeReview> {
                         SizedBox(
                           height: AppDimensions.height10(context) * 1.6,
                         ),
-                        Container(
-                          child: Center(
-                            child: Text(
-                              "Practice Details",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: const Color(0xFF437296),
-                                fontSize: AppDimensions.font10(context) * 3.0,
-                              ),
+                        Center(
+                          child: Text(
+                            "Practice Details",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFF437296),
+                              fontSize: AppDimensions.font10(context) * 3.0,
                             ),
                           ),
                         ),
@@ -472,8 +464,6 @@ class _PracticeReviewState extends State<PracticeReview> {
 
                                           AnimatedScaleButton(
                                             onTap: () async {
-                                              print("new");
-
                                               Navigator.push(
                                                 context,
                                                 FadePageRoute(
@@ -607,9 +597,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -688,9 +677,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -769,9 +757,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -853,9 +840,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -934,9 +920,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           if (response ==
                                                               true) {
                                                           } else {}
-                                                        }).catchError((error) {
-                                                          print("error");
-                                                        });
+                                                        }).catchError(
+                                                                (error) {});
                                                       }
                                                     },
                                                     child: Container(
@@ -1147,7 +1132,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             AppDimensions.height10(context) *
                                                 1.5,
                                       ),
-                                      SingleChildScrollView(
+                                      const SingleChildScrollView(
                                         // height:
                                         //     AppDimensions.height10(context) *
                                         //         89.5,
@@ -1709,16 +1694,13 @@ class _PracticeReviewState extends State<PracticeReview> {
                                       width:
                                           AppDimensions.height10(context) * 1.3,
                                     ),
-                                    Container(
-                                      child: Text(
-                                        "Delete Practice",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.8,
-                                          fontWeight: FontWeight.w600,
-                                        ),
+                                    Text(
+                                      "Delete Practice",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize:
+                                            AppDimensions.font10(context) * 1.8,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     )
                                   ],
@@ -1753,7 +1735,7 @@ class _PracticeReviewState extends State<PracticeReview> {
 class inner_text1 extends StatefulWidget {
   final String circle_text;
 
-  inner_text1(this.circle_text, {super.key});
+  const inner_text1(this.circle_text, {super.key});
 
   @override
   State<inner_text1> createState() => _inner_text1State();
@@ -1766,6 +1748,7 @@ class _inner_text1State extends State<inner_text1> {
 
   late FocusNode _focusNode;
 
+  @override
   void initState() {
     super.initState();
     _focusNode = FocusNode()..addListener(_onFocus);
@@ -1810,7 +1793,7 @@ class _inner_text1State extends State<inner_text1> {
               child: Text(
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  "${widget.circle_text}",
+                  widget.circle_text,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: _focusNode.hasFocus
