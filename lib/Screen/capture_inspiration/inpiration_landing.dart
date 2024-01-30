@@ -293,14 +293,14 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           child: Stack(
                             children: [
                               Container(
-                                width: AppDimensions.width10(context) * 34.3,
-                                  height: AppDimensions.height10(context) * 8.1,
+                                  width: AppDimensions.width10(context) * 34.3,
+                                  //height: AppDimensions.height10(context) * 9.1,
                                   // margin: EdgeInsets.only(
                                   //     top:
                                   //         AppDimensions.height10(context) * 7.5,
                                   //     left: AppDimensions.width10(context) * 2),
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
@@ -376,6 +376,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       ),
                                     ],
                                   )),
+
                               // GestureDetector(
                               //   onTap: () {},
                               //   child: SizedBox(
@@ -399,7 +400,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               //     ),
                               //   ),
                               // ),
-                              
+
                               Align(
                                 alignment: const Alignment(0, 0.525),
                                 child: AnimatedScaleButton(
@@ -463,48 +464,48 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                           16.43,
                                       decoration: const BoxDecoration(
                                           image: DecorationImage(
-                                        opacity: 0.2,
+                                        //opacity: 0.2,
                                         image: AssetImage(
-                                            'assets/images/Star.webp'),
+                                            'assets/images/addInspiration.webp'),
                                       )),
-                                      child: Center(
-                                        child: Container(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  15.6,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  15.6,
-                                          decoration: const BoxDecoration(
-                                              image: DecorationImage(
-                                                  image: AssetImage(
-                                                      'assets/images/Inspiration_center 1.webp'))),
-                                          child: Center(
-                                              child: Container(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    6.8,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                6.8,
-                                            decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Color(0xFFFFFFFF)),
-                                            child: Center(
-                                                child: SizedBox(
-                                                    width: AppDimensions
-                                                            .height10(context) *
-                                                        3.2,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            3.2,
-                                                    child: Image.asset(
-                                                      'assets/images/plus.webp',
-                                                    ))),
-                                          )),
-                                        ),
-                                      ),
+                                      // child: Center(
+                                      //   child: Container(
+                                      //     width:
+                                      //         AppDimensions.width10(context) *
+                                      //             15.6,
+                                      //     height:
+                                      //         AppDimensions.height10(context) *
+                                      //             15.6,
+                                      //     decoration: const BoxDecoration(
+                                      //         image: DecorationImage(
+                                      //             image: AssetImage(
+                                      //                 'assets/images/Inspiration_center 1.webp'))),
+                                      //     child: Center(
+                                      //         child: Container(
+                                      //       width:
+                                      //           AppDimensions.width10(context) *
+                                      //               6.8,
+                                      //       height: AppDimensions.height10(
+                                      //               context) *
+                                      //           6.8,
+                                      //       decoration: const BoxDecoration(
+                                      //           shape: BoxShape.circle,
+                                      //           color: Color(0xFFFFFFFF)),
+                                      //       child: Center(
+                                      //           child: SizedBox(
+                                      //               width: AppDimensions
+                                      //                       .height10(context) *
+                                      //                   3.2,
+                                      //               height:
+                                      //                   AppDimensions.height10(
+                                      //                           context) *
+                                      //                       3.2,
+                                      //               child: Image.asset(
+                                      //                 'assets/images/plus.webp',
+                                      //               ))),
+                                      //     )),
+                                      //   ),
+                                      // ),
                                     ),
                                   ),
                                 ),

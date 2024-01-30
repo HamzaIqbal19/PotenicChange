@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -189,22 +190,74 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
               child: Column(
                 children: [
                   Container(
-                    width: AppDimensions.width10(context) * 34.3,
-                    height: AppDimensions.height10(context) * 7.9,
-                    margin: EdgeInsets.only(
-                        //increased 10 px
-                        top: AppDimensions.height10(context) * 11.6,
-                        bottom: AppDimensions.height10(context) * 1.7),
-                    child: GradientText(
-                      'My current\ninspirations',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: AppDimensions.font10(context) * 3.0,
-                          fontWeight: FontWeight.w700,
-                          height: 1.3),
-                      colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
-                    ),
-                  ),
+                      width: AppDimensions.width10(context) * 34.3,
+                      height: AppDimensions.height10(context) * 9.1,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 7.5,
+                          left: AppDimensions.width10(context) * 2),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.width10(context) * 2.0),
+                            child: GradientText(
+                              'My current ',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: AppDimensions.font10(context) * 3.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                              colors: const [
+                                Color(0xffFA9934),
+                                Color(0xffEDD15E)
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.width10(context) * 2.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                GradientText(
+                                  'inspiration ',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.font10(context) * 3.0,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  colors: const [
+                                    Color(0xffFA9934),
+                                    Color(0xffEDD15E)
+                                  ],
+                                ),
+                                AnimatedScaleButton(
+                                  onTap: () {
+                                    //hurdleSheet(context);
+                                    journeyBottomSheet(
+                                        context,
+                                        AppText().inspirationTitle,
+                                        AppText().inspirationBottomSheedBody,
+                                        "");
+                                  },
+                                  child: Container(
+                                      width:
+                                          AppDimensions.width10(context) * 3.0,
+                                      height:
+                                          AppDimensions.height10(context) * 3.0,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/ic_info_outline_orange.webp')))),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )),
                   SizedBox(
                     width: AppDimensions.width10(context) * 34.9,
                     height: AppDimensions.height10(context) * 12.1,
