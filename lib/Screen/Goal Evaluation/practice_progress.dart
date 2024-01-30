@@ -3130,6 +3130,7 @@ class _practice_progressState extends State<practice_progress> {
                                       textAlign: TextAlign.center,
                                       text: TextSpan(
                                           style: TextStyle(
+                                            fontFamily: 'laila',
                                             height: 1.2,
                                             fontSize:
                                                 AppDimensions.font10(context) *

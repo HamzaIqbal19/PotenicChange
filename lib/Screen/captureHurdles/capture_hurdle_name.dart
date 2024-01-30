@@ -177,6 +177,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                       AppText().captureHurdle3,
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                        fontFamily: 'Laila',
                         fontSize: AppDimensions.font10(context) * 2.2,
                         fontWeight: FontWeight.w600,
                       ),
@@ -186,6 +187,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                       '/5',
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                        fontFamily: 'Laila',
                         fontSize: AppDimensions.font10(context) * 2.2,
                         fontWeight: FontWeight.w400,
                       ),
@@ -420,6 +422,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                 AppText().captureHurdle3Body,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
+                                  fontFamily: 'Laila',
                                   fontSize: AppDimensions.font10(context) * 2.8,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -556,6 +559,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                 });
                                               },
                                               style: TextStyle(
+                                                  fontFamily: 'Laila',
                                                   decoration: TextDecoration
                                                       .none,
                                                   decorationThickness: 0,
@@ -584,6 +588,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                   ),
                                                   hintText: 'Enter Name',
                                                   hintStyle: TextStyle(
+                                                      fontFamily: 'Laila',
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
@@ -739,7 +744,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                         context) *
                                                     1.6,
                                                 fontWeight: FontWeight.w600,
-                                                fontFamily: 'Poppins'),
+                                                fontFamily: 'Laila'),
                                           ),
                                         )),
                                   );

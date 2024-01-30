@@ -200,7 +200,7 @@ class _select_videoState extends State<select_video> {
                           color: Colors.white,
                           fontSize: AppDimensions.font10(context) * 1.6,
                           fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins'),
+                          fontFamily: 'Laila'),
                     ))),
           ],
         ),

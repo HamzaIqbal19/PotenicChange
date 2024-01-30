@@ -103,7 +103,7 @@ class Acc_deleted extends StatelessWidget {
                       ),
                       Container(
                           width: AppDimensions.width10(context) * 35.4,
-                          height: AppDimensions.height10(context) * 12.4,
+                          // height: AppDimensions.height10(context) * 12.4,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 2.5),
                           child: RichText(
@@ -119,7 +119,7 @@ class Acc_deleted extends StatelessWidget {
                                   children: const [
                                     TextSpan(
                                         text:
-                                            'It’s sad to see you go. Is there\nsomething we did wrong?\nLet us know by emailing us at\n'),
+                                            'It’s sad to see you go.\n\nIf you have feedback, please let us know by emailing us at\n'),
                                     TextSpan(
                                         text: 'info@potenic.com.',
                                         style: TextStyle(

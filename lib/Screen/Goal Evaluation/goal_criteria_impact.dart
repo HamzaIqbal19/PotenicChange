@@ -768,15 +768,15 @@ class _your_impactState extends State<your_impact> {
                                                   begin: Alignment.topCenter,
                                                   end: Alignment.bottomCenter,
                                                   colors: [
-                                                      Color(0XFFFFFFFF),
-                                                      Color(0xFFFFFFFF)
+                                                      Color(0XFFF5F5F5),
+                                                      Color(0XFFF5F5F5)
                                                     ])
                                               : const LinearGradient(
                                                   begin: Alignment.topCenter,
                                                   end: Alignment.bottomCenter,
                                                   colors: [
-                                                      Color(0XFFFA9934),
-                                                      Color(0xFFFA9934)
+                                                      Color(0XFFFA9E71),
+                                                      Color(0xFFF9B87E)
                                                     ]),
                                           border: Border.all(
                                               width: AppDimensions.height10(
@@ -955,15 +955,15 @@ class _your_impactState extends State<your_impact> {
                                                   begin: Alignment.topCenter,
                                                   end: Alignment.bottomCenter,
                                                   colors: [
-                                                      Color(0XFFFFFFFF),
-                                                      Color(0xFFFFFFFF)
+                                                      Color(0XFFF5F5F5),
+                                                      Color(0XFFF5F5F5)
                                                     ])
                                               : const LinearGradient(
                                                   begin: Alignment.topCenter,
                                                   end: Alignment.bottomCenter,
                                                   colors: [
-                                                      Color(0XFFFA9934),
-                                                      Color(0xFFFA9934)
+                                                      Color(0XFFFA9E71),
+                                                      Color(0xFFF9B87E)
                                                     ]),
                                           border: Border.all(
                                               width: AppDimensions.height10(

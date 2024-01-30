@@ -596,70 +596,70 @@ class _practice_summaryState extends State<practice_summary> {
                                   ),
                                 ])),
                       ),
-                      Container(
-                        width: AppDimensions.width10(context) * 13.4,
-                        height: AppDimensions.height10(context) * 13.4,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 3.0),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.white),
-                            color: before == 1
-                                ? const Color(0xff546096)
-                                : before == 2
-                                    ? const Color(0xff7291A0)
-                                    : before == 3
-                                        ? const Color(0xffE1C44F)
-                                        : before == 4
-                                            ? const Color(0xffFA9458)
-                                            : before == 5
-                                                ? const Color(0xffFF7C42)
-                                                : const Color(0xffFA9458)),
-                        child: Stack(children: [
-                          Center(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  bottom:
-                                      AppDimensions.height10(context) * 0.5),
-                              child: Text(
-                                before == 1
-                                    ? 'I feel very\nlow &\ndemotivated'
-                                    : before == 2
-                                        ? 'I feel slightly\nirritated, not\nfussed really'
-                                        : before == 3
-                                            ? 'I feel ok'
-                                            : before == 4
-                                                ? 'Motivated and \nready to start'
-                                                : before == 5
-                                                    ? "Great, cannot \nwait to start!"
-                                                    : 'I felt good',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.6,
-                                    height:
-                                        AppDimensions.height10(context) * 0.16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                    fontFamily: 'Laila'),
+                      AnimatedScaleButton(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: emotions(
+                                summary: true,
+                                pracName: pracName,
+                                record: false,
+                                selected: before,
+                              )));
+                        },
+                        child: Container(
+                          width: AppDimensions.width10(context) * 13.4,
+                          height: AppDimensions.height10(context) * 13.4,
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 3.0),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(width: 2, color: Colors.white),
+                              color: before == 1
+                                  ? const Color(0xff546096)
+                                  : before == 2
+                                      ? const Color(0xff7291A0)
+                                      : before == 3
+                                          ? const Color(0xffE1C44F)
+                                          : before == 4
+                                              ? const Color(0xffFA9458)
+                                              : before == 5
+                                                  ? const Color(0xffFF7C42)
+                                                  : const Color(0xffFA9458)),
+                          child: Stack(children: [
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    bottom:
+                                        AppDimensions.height10(context) * 0.5),
+                                child: Text(
+                                  before == 1
+                                      ? 'I feel very\nlow &\ndemotivated'
+                                      : before == 2
+                                          ? 'I feel slightly\nirritated, not\nfussed really'
+                                          : before == 3
+                                              ? 'I feel ok'
+                                              : before == 4
+                                                  ? 'Motivated and \nready to start'
+                                                  : before == 5
+                                                      ? "Great, cannot \nwait to start!"
+                                                      : 'I felt good',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.6,
+                                      height: AppDimensions.height10(context) *
+                                          0.16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      fontFamily: 'Laila'),
+                                ),
                               ),
                             ),
-                          ),
-                          Align(
-                            alignment: const Alignment(0, 0.85),
-                            child: AnimatedScaleButton(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: emotions(
-                                      summary: true,
-                                      pracName: pracName,
-                                      record: false,
-                                      selected: before,
-                                    )));
-                              },
+                            Align(
+                              alignment: const Alignment(0, 0.85),
                               child: Container(
                                   height: AppDimensions.height10(context) * 2.4,
                                   width: AppDimensions.width10(context) * 2.4,
@@ -674,9 +674,9 @@ class _practice_summaryState extends State<practice_summary> {
                                     AssetImage('assets/images/edit_icon.webp'),
                                     color: Colors.white,
                                   )),
-                            ),
-                          )
-                        ]),
+                            )
+                          ]),
+                        ),
                       ),
                       emotionFeedback != " "
                           ? Container(
@@ -743,68 +743,68 @@ class _practice_summaryState extends State<practice_summary> {
                                   ),
                                 ])),
                       ),
-                      Container(
-                        width: AppDimensions.width10(context) * 13.4,
-                        height: AppDimensions.height10(context) * 13.4,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 3.0),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.white),
-                            color: after == 1
-                                ? const Color(0xff546096)
-                                : after == 2
-                                    ? const Color(0xff7291A0)
-                                    : after == 3
-                                        ? const Color(0xffE1C44F)
-                                        : after == 4
-                                            ? const Color(0xffFA9458)
-                                            : after == 5
-                                                ? const Color(0xffFF7C42)
-                                                : const Color(0xffFA9458)),
-                        child: Stack(children: [
-                          Center(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  bottom:
-                                      AppDimensions.height10(context) * 0.5),
-                              child: Text(
-                                after == 1
-                                    ? 'I feel very low\n& irritated'
-                                    : after == 2
-                                        ? 'I feel alright,\n but slightly\ndown'
-                                        : after == 3
-                                            ? 'I feel ok'
-                                            : after == 4
-                                                ? 'I feel focused\n& motivated'
-                                                : after == 5
-                                                    ? 'I feel excited\nand good in\nmyself'
-                                                    : 'I feel focused\n& good',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.6,
-                                    height:
-                                        AppDimensions.height10(context) * 0.16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                    fontFamily: 'Laila'),
+                      AnimatedScaleButton(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: feelingsAfter(
+                                summary: true,
+                                selected: after,
+                              )));
+                        },
+                        child: Container(
+                          width: AppDimensions.width10(context) * 13.4,
+                          height: AppDimensions.height10(context) * 13.4,
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 3.0),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(width: 2, color: Colors.white),
+                              color: after == 1
+                                  ? const Color(0xff546096)
+                                  : after == 2
+                                      ? const Color(0xff7291A0)
+                                      : after == 3
+                                          ? const Color(0xffE1C44F)
+                                          : after == 4
+                                              ? const Color(0xffFA9458)
+                                              : after == 5
+                                                  ? const Color(0xffFF7C42)
+                                                  : const Color(0xffFA9458)),
+                          child: Stack(children: [
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    bottom:
+                                        AppDimensions.height10(context) * 0.5),
+                                child: Text(
+                                  after == 1
+                                      ? 'I feel very low\n& irritated'
+                                      : after == 2
+                                          ? 'I feel alright,\n but slightly\ndown'
+                                          : after == 3
+                                              ? 'I feel ok'
+                                              : after == 4
+                                                  ? 'I feel focused\n& motivated'
+                                                  : after == 5
+                                                      ? 'I feel excited\nand good in\nmyself'
+                                                      : 'I feel focused\n& good',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.6,
+                                      height: AppDimensions.height10(context) *
+                                          0.16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      fontFamily: 'Laila'),
+                                ),
                               ),
                             ),
-                          ),
-                          Align(
-                            alignment: const Alignment(0, 0.85),
-                            child: AnimatedScaleButton(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: feelingsAfter(
-                                      summary: true,
-                                      selected: after,
-                                    )));
-                              },
+                            Align(
+                              alignment: const Alignment(0, 0.85),
                               child: Container(
                                   height: AppDimensions.height10(context) * 2.4,
                                   width: AppDimensions.width10(context) * 2.4,
@@ -819,9 +819,9 @@ class _practice_summaryState extends State<practice_summary> {
                                     AssetImage('assets/images/edit_icon.webp'),
                                     color: Colors.white,
                                   )),
-                            ),
-                          )
-                        ]),
+                            )
+                          ]),
+                        ),
                       ),
                       Feedback != " "
                           ? Container(
@@ -874,62 +874,62 @@ class _practice_summaryState extends State<practice_summary> {
                           ),
                         ),
                       ),
-                      Container(
-                        width: AppDimensions.width10(context) * 13.4,
-                        height: AppDimensions.height10(context) * 13.2,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 3.0),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.white),
-                            gradient: const RadialGradient(
-                              radius: 0.5,
-                              colors: <Color>[
-                                Color(0xFFBDA7C2), // yellow sun
-                                Color(0xFFB38FB4), // blue sky
-                              ],
-                            )),
-                        child: Stack(children: [
-                          Center(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  bottom:
-                                      AppDimensions.height10(context) * 0.5),
-                              child: Text(
-                                session == 1
-                                    ? 'Not great,\nhaven’t\nenjoyed it'
-                                    : session == 2
-                                        ? 'I got distracted,\nit was hard to\nfocus'
-                                        : session == 3
-                                            ? 'It was ok'
-                                            : session == 4
-                                                ? 'Good, I quite\nliked it'
-                                                : 'Great,\nI enjoyed the experience',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                    height:
-                                        AppDimensions.height10(context) * 0.16,
-                                    color: Colors.white,
-                                    fontFamily: 'Poppins'),
+                      AnimatedScaleButton(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: endofSession(
+                                summary: true,
+                                selected: session,
+                              )));
+                        },
+                        child: Container(
+                          width: AppDimensions.width10(context) * 13.4,
+                          height: AppDimensions.height10(context) * 13.2,
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 3.0),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(width: 2, color: Colors.white),
+                              gradient: const RadialGradient(
+                                radius: 0.5,
+                                colors: <Color>[
+                                  Color(0xFFBDA7C2), // yellow sun
+                                  Color(0xFFB38FB4), // blue sky
+                                ],
+                              )),
+                          child: Stack(children: [
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    bottom:
+                                        AppDimensions.height10(context) * 0.5),
+                                child: Text(
+                                  session == 1
+                                      ? 'Not great,\nhaven’t\nenjoyed it'
+                                      : session == 2
+                                          ? 'I got distracted,\nit was hard to\nfocus'
+                                          : session == 3
+                                              ? 'It was ok'
+                                              : session == 4
+                                                  ? 'Good, I quite\nliked it'
+                                                  : 'Great,\nI enjoyed the experience',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.6,
+                                      fontWeight: FontWeight.w500,
+                                      height: AppDimensions.height10(context) *
+                                          0.16,
+                                      color: Colors.white,
+                                      fontFamily: 'Laila'),
+                                ),
                               ),
                             ),
-                          ),
-                          Align(
-                            alignment: const Alignment(0, 0.85),
-                            child: AnimatedScaleButton(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: endofSession(
-                                      summary: true,
-                                      selected: session,
-                                    )));
-                              },
+                            Align(
+                              alignment: const Alignment(0, 0.85),
                               child: Container(
                                 height: AppDimensions.height10(context) * 2.4,
                                 width: AppDimensions.width10(context) * 2.4,
@@ -945,9 +945,9 @@ class _practice_summaryState extends State<practice_summary> {
                                   color: Colors.white,
                                 ),
                               ),
-                            ),
-                          )
-                        ]),
+                            )
+                          ]),
+                        ),
                       ),
                       sessionFeedBack != " "
                           ? Container(
@@ -1024,10 +1024,12 @@ class _practice_summaryState extends State<practice_summary> {
                                                   margin: EdgeInsets.only(
                                                       top: AppDimensions.height10(context) *
                                                           1.9,
-                                                      right: AppDimensions.width10(context) *
-                                                          1.6,
-                                                      left: AppDimensions.width10(context) *
-                                                          1.6,
+                                                      right:
+                                                          AppDimensions.width10(context) *
+                                                              1.6,
+                                                      left:
+                                                          AppDimensions.width10(context) *
+                                                              1.6,
                                                       bottom:
                                                           AppDimensions.height10(context) *
                                                               0.2),
@@ -1042,8 +1044,9 @@ class _practice_summaryState extends State<practice_summary> {
                                                           TextAlign.center,
                                                       text: TextSpan(
                                                           style: TextStyle(
-                                                              fontSize:
-                                                                  AppDimensions.height10(context) * 1.7,
+                                                              fontFamily: 'laila',
+                                                              height: AppDimensions.height10(context) * 0.15,
+                                                              fontSize: AppDimensions.font10(context) * 1.6,
                                                               fontWeight: FontWeight.w400,
                                                               color: const Color(0xFF000000)),
                                                           children: const [

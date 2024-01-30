@@ -296,7 +296,7 @@ class _congratulationsState extends State<congratulations> {
                                                               ? '$goalLevel'
                                                               : '5',
                                                       style: TextStyle(
-                                                        fontFamily: 'Poppins',
+                                                        fontFamily: 'Laila',
                                                         fontSize: AppDimensions
                                                                 .font10(
                                                                     context) *
@@ -665,7 +665,7 @@ void goal_achieved_sheet(
                                                         ? '$goal_level'
                                                         : '5',
                                                     style: TextStyle(
-                                                      fontFamily: 'Poppins',
+                                                      fontFamily: 'Laila',
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *

@@ -300,6 +300,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                       'It’s important to set a consistent routine\nthat works for you. Please select time\nslots for 3 or more days.',
                                   style: TextStyle(
                                     color: const Color(0xFF437296),
+                                    fontFamily: 'Laila',
                                     fontSize:
                                         AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w600,
@@ -455,6 +456,11 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                                     }
                                                                   });
                                                                 },
+                                                                initialHour: '',
+                                                                initialMinute:
+                                                                    '',
+                                                                initialPeriod:
+                                                                    '',
                                                               );
                                                             },
                                                             isScrollControlled:

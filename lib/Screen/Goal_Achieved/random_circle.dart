@@ -101,7 +101,7 @@ class Circle extends StatelessWidget {
       child: Container(
         width: width,
         height: height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/Ellipse 158.webp')),
           shape: BoxShape.circle,
@@ -114,11 +114,12 @@ class Circle extends StatelessWidget {
             child: RichText(
                 text: TextSpan(
                     style: TextStyle(
+                        fontFamily: 'laila',
                         color: Colors.white,
                         fontSize: AppDimensions.font10(context) * 1.4,
                         fontWeight: FontWeight.w400),
                     children: [
-                  TextSpan(
+                  const TextSpan(
                     text: 'Tue',
                   ),
                   TextSpan(
@@ -128,11 +129,11 @@ class Circle extends StatelessWidget {
                 ])),
           )),
           Align(
-            alignment: Alignment(0, 1.15),
+            alignment: const Alignment(0, 1.15),
             child: Container(
               width: AppDimensions.width10(context) * 2.0,
               height: AppDimensions.height10(context) * 2.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/images/task_comp.webp'))),
             ),

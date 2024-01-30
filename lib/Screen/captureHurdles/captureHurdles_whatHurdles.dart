@@ -320,7 +320,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                                         fontSize:
                                             AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w600,
-                                        fontFamily: 'Poppins'),
+                                        fontFamily: 'Laila'),
                                   ))),
                         ],
                       ),

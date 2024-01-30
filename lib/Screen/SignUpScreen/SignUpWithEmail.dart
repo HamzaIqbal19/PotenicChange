@@ -14,6 +14,7 @@ import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 
 class SignUpWithEmail extends StatefulWidget {
   const SignUpWithEmail({super.key});
@@ -32,8 +33,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
   String passwordMsg = "Minimum 8 characters";
   String emailMsg = "Ooops! Needs to be an email format";
   String nameMsg = "Name is required";
-
-  // final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
   bool rememberMe = false;
   bool boolean = true;
@@ -554,6 +553,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                       text:
                                           'By signing up, you agree to Potenic’s \n ',
                                       style: TextStyle(
+                                        fontFamily: 'Laila',
                                         color: const Color(0xFFFFFFFF),
                                         fontSize:
                                             AppDimensions.font10(context) * 1.4,
@@ -568,6 +568,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                                     "https://app.getterms.io/view/XWpOJ/tos/en-au");
                                               },
                                             style: TextStyle(
+                                              fontFamily: 'Laila',
                                               decoration:
                                                   TextDecoration.underline,
                                               color: const Color(0xFFFFFFFF),
@@ -579,6 +580,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                         TextSpan(
                                             text: ' and ',
                                             style: TextStyle(
+                                              fontFamily: 'Laila',
                                               color: const Color(0xFFFFFFFF),
                                               fontSize: AppDimensions.font10(
                                                       context) *
@@ -593,6 +595,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                                     "https://app.getterms.io/view/XWpOJ/privacy/en-au");
                                               },
                                             style: TextStyle(
+                                              fontFamily: 'Laila',
                                               decoration:
                                                   TextDecoration.underline,
                                               color: const Color(0xFFFFFFFF),

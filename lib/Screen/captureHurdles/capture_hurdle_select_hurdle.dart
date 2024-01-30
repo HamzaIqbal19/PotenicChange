@@ -205,6 +205,7 @@ class _select_hurdleState extends State<select_hurdle> {
                   widget.update ? AppText().updateSumm : AppText().nextButton,
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                      fontFamily: 'Laila',
                       fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w600,
                       color: selectBox != -1
@@ -249,6 +250,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     AppText().captureHurdle2,
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      fontFamily: 'Laila',
                       fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w600,
                     ),
@@ -258,6 +260,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     '/5',
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      fontFamily: 'Laila',
                       fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w400,
                     ),
@@ -487,6 +490,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                     AppText().captureHurdle2Body,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
+                                      fontFamily: 'Laila',
                                       height: AppDimensions.height10(context) *
                                           0.15,
                                       fontSize:

@@ -662,7 +662,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: goalDetails['userPractices'].length,
                             itemBuilder: ((context, index) {
-                             
                               return Container(
                                 //  width: AppDimensions.width10(context) * 41.8,
                                 height: AppDimensions.height10(context) * 10.0,
@@ -786,7 +785,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                               1.3,
                                                           fontWeight:
                                                               FontWeight.w500,
-                                                          // fontFamily: 'Poppins',
+                                                          // fontFamily: 'Laila',
                                                           color: const Color(
                                                               0xFFF6F6F6))),
                                                 ),
@@ -901,12 +900,11 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       AnimatedScaleButton(
                         onTap: () async {
                           final SharedPreferences prefs = await _prefs;
-                          await
-                              prefs.setString('goalName', goalDetails['name']);
-                          await
-                              prefs.setInt('goal_num', goalDetails['id']);
-                          await
-                              prefs.setString('goal_route', 'view_all_goals_2');
+                          await prefs.setString(
+                              'goalName', goalDetails['name']);
+                          await prefs.setInt('goal_num', goalDetails['id']);
+                          await prefs.setString(
+                              'goal_route', 'view_all_goals_2');
                           Navigator.push(context,
                               FadePageRoute(page: const CreatePractice()));
                         },

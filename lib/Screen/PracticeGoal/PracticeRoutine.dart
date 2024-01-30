@@ -436,6 +436,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           TextSpan(
                             text: AppText().practiceRotineBody1,
                             style: TextStyle(
+                              fontFamily: 'Laila',
                               color: const Color(0xFFFFFFFF),
                               fontSize: AppDimensions.font10(context) * 1.8,
                               fontWeight: FontWeight.w500,
@@ -444,6 +445,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                               TextSpan(
                                   text: AppText().practiceRotineBody2,
                                   style: TextStyle(
+                                    fontFamily: 'Laila',
                                     color: const Color(0xFFFFFFFF),
                                     fontSize:
                                         AppDimensions.font10(context) * 1.8,
@@ -582,6 +584,8 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                               ),
                             ),
                           );
+                          final SharedPreferences prefs = await _prefs;
+                          await prefs.setBool('pracRoute', false);
                           // setState(() {
                           //   count = 0;
                           // });

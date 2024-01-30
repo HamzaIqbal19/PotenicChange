@@ -203,4 +203,29 @@ class Hurdles {
       return false;
     }
   }
+
+  Future deleteMulipleHurdle(userHurdeId) async {
+    final SharedPreferences prefs = await _prefs;
+    var accessToken = prefs.getString("usertoken");
+    var userId = prefs.getInt('userid');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$accessToken'
+    };
+    var body = json.encode({"userHurdleIds": userHurdeId, "userId": userId});
+    var request = await client.post(
+        Uri.parse('${URL.BASE_URL}api/userHurdle/deleteMultipleHurdle'),
+        headers: headers,
+        body: body);
+
+    var responses = jsonDecode(request.body);
+    print("DElete multple $responses");
+
+    if (request.statusCode == 200) {
+      return true;
+    } else {
+      return responses;
+    }
+  }
 }

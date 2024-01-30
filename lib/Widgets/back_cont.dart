@@ -109,7 +109,7 @@ class _inner_textState extends State<inner_text> {
                                 : const Color(0xFF828282),
                         fontSize: AppDimensions.font10(context) * 2.2,
                       ))),
-              widget.delete && widget.index != 0
+              widget.delete
                   ? GestureDetector(
                       onTap: () {
                         showAnimatedDialog(

@@ -830,7 +830,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                     fontSize:
                                         AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: 'Poppins'),
+                                    fontFamily: 'Laila'),
                               ))),
                         ),
                         // MediaQuery.of(context).viewInsets.bottom == 0

@@ -239,7 +239,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                             AppDimensions.font10(context) * 9.6,
                                         fontWeight: FontWeight.w300,
                                         letterSpacing: -6,
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Laila',
                                         color: const Color(0xFFFBFBFB),
                                         height:
                                             AppDimensions.height10(context) *
@@ -262,7 +262,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                                       context) *
                                                   3.0,
                                               fontWeight: FontWeight.w300,
-                                              fontFamily: 'Poppins',
+                                              fontFamily: 'laila',
                                               color: const Color(0xFFFBFBFB),
                                               height: AppDimensions.height10(
                                                       context) *
@@ -439,7 +439,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                   child: Center(
                                     child: Text('${practices.length}',
                                         style: TextStyle(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Laila',
                                             fontSize:
                                                 AppDimensions.font10(context) *
                                                     9.6,
@@ -611,7 +611,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                   child: Center(
                                     child: Text('${hurdles.length}',
                                         style: TextStyle(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Laila',
                                             fontSize:
                                                 AppDimensions.font10(context) *
                                                     9.6,
@@ -925,7 +925,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                             child: Center(
                               child: Text('4',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'Laila',
                                       fontSize:
                                           AppDimensions.font10(context) * 9.6,
                                       fontWeight: FontWeight.w300,
@@ -980,7 +980,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                         'Music Eye Of\nThe Tiger ',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Laila',
                                             fontSize:
                                                 AppDimensions.font10(context) *
                                                     1.5,
@@ -1016,7 +1016,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                         'Survivors',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Laila',
                                             fontSize:
                                                 AppDimensions.font10(context) *
                                                     1.4,
@@ -1087,7 +1087,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                           'Finding clarity\nand peace through\nthe storm ',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontFamily: 'Poppins',
+                                              fontFamily: 'Laila',
                                               fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.4,
@@ -1109,7 +1109,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                           'www.angermanagment\ncom',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontFamily: 'Poppins',
+                                              fontFamily: 'Laila',
                                               fontSize: AppDimensions.font10(
                                                       context) *
                                                   1.1,
@@ -1142,7 +1142,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                       'Lorem ipsum dolor sit\namet, consectetur\nadipiscing elit.\nAenean quis aliquam\nligula, sit amet viverra\nnibh. Quisque finibus\nvolutpat dapibus.',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
+                                          fontFamily: 'Laila',
                                           fontSize:
                                               AppDimensions.font10(context) *
                                                   1.4,
@@ -1233,7 +1233,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                   fontSize: AppDimensions.font10(context) * 9.6,
                                   fontWeight: FontWeight.w300,
                                   letterSpacing: 0,
-                                  fontFamily: 'Poppins',
+                                  fontFamily: 'Laila',
                                   color: const Color(0xFFFBFBFB),
                                   height:
                                       AppDimensions.height10(context) * 0.12),
@@ -1630,6 +1630,7 @@ class _RandomContainersState extends State<RandomContainers> {
                 child: RichText(
                     text: TextSpan(
                         style: TextStyle(
+                            fontFamily: 'laila',
                             color: Colors.white,
                             fontSize: AppDimensions.font10(context) * 1.4,
                             fontWeight: FontWeight.w400),

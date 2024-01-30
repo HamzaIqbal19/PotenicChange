@@ -22,7 +22,7 @@ class link_details extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                //  width: AppDimensions.width10(context) * 2.6,
+                  //  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.contain,
                 )),
@@ -47,7 +47,7 @@ class link_details extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),
@@ -267,7 +267,7 @@ class link_details extends StatelessWidget {
                             color: Colors.white,
                             fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
-                            fontFamily: 'Poppins'),
+                            fontFamily: 'Laila'),
                       ))),
             ],
           ),
@@ -294,7 +294,7 @@ class supporting_mat_link extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                //  width: AppDimensions.width10(context) * 2.6,
+                  //  width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.contain,
                 )),
@@ -319,7 +319,7 @@ class supporting_mat_link extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),
@@ -409,8 +409,8 @@ class supporting_mat_link extends StatelessWidget {
                                   margin: EdgeInsets.only(
                                       top:
                                           AppDimensions.height10(context) * 1.3,
-                                      right: AppDimensions.width10(context) *
-                                          6.3),
+                                      right:
+                                          AppDimensions.width10(context) * 6.3),
                                   child: Text(
                                     'www.angermanagment.com',
                                     style: TextStyle(
@@ -551,7 +551,7 @@ class supporting_mat_link extends StatelessWidget {
                             color: Colors.white,
                             fontSize: AppDimensions.font10(context) * 1.6,
                             fontWeight: FontWeight.w600,
-                            fontFamily: 'Poppins'),
+                            fontFamily: 'Laila'),
                       ))),
             ],
           ),

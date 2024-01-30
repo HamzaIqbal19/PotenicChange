@@ -3,12 +3,14 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
+import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Goal.dart';
@@ -165,6 +167,7 @@ class _AllGoalsState extends State<AllGoals> {
 
   @override
   Widget build(BuildContext context) {
+    final goalProvider = Provider.of<GoalProvider>(context);
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -436,6 +439,22 @@ class _AllGoalsState extends State<AllGoals> {
                                                         children: [
                                                           AnimatedScaleButton(
                                                               onTap: () {
+                                                                goalProvider.updateGoalCategoryId(
+                                                                    goalNamesAndCategories![
+                                                                            index]
+                                                                        ['id']);
+                                                                goalProvider.updateName(goalNamesAndCategories![index]
+                                                                            [
+                                                                            "goals"]
+                                                                        [index1]
+                                                                    [
+                                                                    "goalName"]);
+                                                                goalProvider.updateGoalId(
+                                                                    goalNamesAndCategories![index]
+                                                                            [
+                                                                            "goals"]
+                                                                        [
+                                                                        index1]["id"]);
                                                                 getUserId(
                                                                     goalNamesAndCategories![
                                                                             index]

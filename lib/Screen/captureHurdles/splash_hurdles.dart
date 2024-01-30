@@ -129,6 +129,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                       AppText().hurdleTitle,
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                        fontFamily: 'Laila',
                         fontSize: AppDimensions.font10(context) * 3.0,
                         fontWeight: FontWeight.w700,
                       ),

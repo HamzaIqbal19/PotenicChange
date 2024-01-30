@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
+import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
@@ -11,6 +12,7 @@ import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Goal.dart';
@@ -188,6 +190,7 @@ class _GoalCategoryState extends State<GoalCategory> {
 
   @override
   Widget build(BuildContext context) {
+    final goalProvider = Provider.of<GoalProvider>(context);
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -389,6 +392,12 @@ class _GoalCategoryState extends State<GoalCategory> {
                                             children: [
                                               AnimatedScaleButton(
                                                 onTap: () {
+                                                  goalProvider.updateGoalId(
+                                                      Allgoal![0]["goals"]
+                                                          [index1]["id"]);
+                                                  goalProvider.updateName(
+                                                      Allgoal![0]["goals"]
+                                                          [index1]["goalName"]);
                                                   getUserId(
                                                       widget.id,
                                                       Allgoal![0]["goals"]

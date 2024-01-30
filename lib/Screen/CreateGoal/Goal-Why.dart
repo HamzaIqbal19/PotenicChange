@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/GoalModel.dart';
+import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
@@ -15,6 +16,7 @@ import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Goal.dart';
@@ -166,6 +168,7 @@ class _goalwhyState extends State<GoalWhy> {
             //index--;
           });
     decrement();
+
     //closing the focus
     blankNode.requestFocus();
   }
@@ -272,6 +275,11 @@ class _goalwhyState extends State<GoalWhy> {
 
   @override
   Widget build(BuildContext context) {
+    final goalProvider = Provider.of<GoalProvider>(context);
+    if (widget.comingFromEditScreen == false) {
+      myTextFields = goalProvider.currentGoal!.reason;
+    }
+
     return WillPopScope(
       onWillPop: () {
         widget.comingFromEditScreen
@@ -715,7 +723,9 @@ class _goalwhyState extends State<GoalWhy> {
                                             });
                                             handleTextChanged(index, newText);
                                           },
-                                          onDelete: () => handleDelete(index),
+                                          onDelete: () {
+                                            handleDelete(index);
+                                          },
                                           index: index,
                                           placeHolder:
                                               'I want to achieve this goal because...',
@@ -799,7 +809,9 @@ class _goalwhyState extends State<GoalWhy> {
                                       return Column(children: [
                                         inner_text(
                                           key: Key(myTextFields[index]['key']!),
-                                          delete: true,
+                                          delete: myTextFields.length > 1
+                                              ? true
+                                              : false,
                                           head_text: "Reason ${index + 1}",
                                           body_text: myTextFields[index]
                                               ['text']!,
@@ -810,8 +822,14 @@ class _goalwhyState extends State<GoalWhy> {
                                                   newText;
                                             });
                                             handleTextChanged(index, newText);
+                                            goalProvider
+                                                .updateReason(myTextFields);
                                           },
-                                          onDelete: () => handleDelete(index),
+                                          onDelete: () {
+                                            handleDelete(index);
+                                            goalProvider
+                                                .updateReason(myTextFields);
+                                          },
                                           index: index,
                                           placeHolder:
                                               'I want to achieve this goal because...',
@@ -1624,7 +1642,8 @@ class ArcClipper extends CustomClipper<Path> {
 class Arc extends StatelessWidget {
   final double height;
   final Widget child;
-  const Arc({super.key, 
+  const Arc({
+    super.key,
     required this.height,
     required this.child,
   });

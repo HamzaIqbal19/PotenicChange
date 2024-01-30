@@ -219,6 +219,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                   AppText().captureHurdle1,
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                    fontFamily: 'Laila',
                     fontSize: AppDimensions.font10(context) * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
@@ -228,6 +229,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                   '/5',
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                    fontFamily: 'Laila',
                     fontSize: AppDimensions.font10(context) * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
@@ -457,6 +459,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 AppText().captureHurdle1Body,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
+                                  fontFamily: 'Laila',
                                   fontSize: AppDimensions.font10(context) * 2.8,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -921,6 +924,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                         : '(${multiGoals.length}/${goals.length} goals selected) Next',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
+                                    fontFamily: 'Laila',
                                     fontSize:
                                         AppDimensions.font10(context) * 1.6,
                                     fontWeight: FontWeight.w600,

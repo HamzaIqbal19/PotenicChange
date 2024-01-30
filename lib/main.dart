@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:potenic_app/Notifier/GoalNotifier.dart';
+import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:potenic_app/Screen/splash/splash_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +22,12 @@ Future<void> main() async {
       // We recommend adjusting this value in production.
       options.tracesSampleRate = 1.0;
     },
-    appRunner: () => runApp(const MyApp()),
+    appRunner: () => runApp(
+      ChangeNotifierProvider(
+        create: (context) => GoalProvider(),
+        child: const MyApp(),
+      ),
+    ),
   );
   //runApp(MyApp());
 }

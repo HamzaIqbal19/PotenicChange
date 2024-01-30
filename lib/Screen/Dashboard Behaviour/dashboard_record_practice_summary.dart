@@ -242,6 +242,7 @@ class _record_summaryState extends State<record_summary> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         style: TextStyle(
+                          fontFamily: 'laila',
                           fontSize: AppDimensions.font10(context) * 2.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
@@ -319,6 +320,7 @@ class _record_summaryState extends State<record_summary> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         style: TextStyle(
+                          fontFamily: 'laila',
                           fontSize: AppDimensions.font10(context) * 2.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
@@ -502,7 +504,7 @@ class _record_summaryState extends State<record_summary> {
                                 color: Colors.white,
                                 fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'Poppins'),
+                                fontFamily: 'Laila'),
                           )))
                 ]),
               ),

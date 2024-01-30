@@ -909,9 +909,9 @@ class _your_whyState extends State<your_why> {
                                                               end: Alignment.bottomCenter,
                                                               colors: [
                                                                   Color(
-                                                                      0XFFFFFFFF),
+                                                                      0XFFF5F5F5),
                                                                   Color(
-                                                                      0xFFFFFFFF)
+                                                                      0XFFF5F5F5)
                                                                 ])
                                                           : selectedItemIndexesOuter![index] !=
                                                                   index1
@@ -920,9 +920,9 @@ class _your_whyState extends State<your_why> {
                                                                   end: Alignment.bottomCenter,
                                                                   colors: [
                                                                       Color(
-                                                                          0XFFFFFFFF),
+                                                                          0XFFF5F5F5),
                                                                       Color(
-                                                                          0xFFFFFFFF)
+                                                                          0XFFF5F5F5)
                                                                     ])
                                                               : const LinearGradient(
                                                                   begin: Alignment
@@ -930,9 +930,9 @@ class _your_whyState extends State<your_why> {
                                                                   end: Alignment.bottomCenter,
                                                                   colors: [
                                                                       Color(
-                                                                          0XFFFA9934),
+                                                                          0XFFFA9E71),
                                                                       Color(
-                                                                          0xFFFA9934)
+                                                                          0xFFF9B87E)
                                                                     ]),
                                                       border: Border.all(
                                                           width:

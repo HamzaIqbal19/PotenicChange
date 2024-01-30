@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/CreateGoal/AllGoals.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalCategory.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -11,7 +12,8 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/utils/app_texts.dart';
-
+import 'package:potenic_app/API/GoalModel.dart';
+import 'package:provider/provider.dart';
 import 'Loaders/categories_shimmer.dart';
 
 class Categories extends StatefulWidget {
@@ -25,6 +27,7 @@ class _CategoriesState extends State<Categories> {
   List<Map<String, dynamic>>? goalCategories;
   ScrollController scrollController = ScrollController();
   late int count;
+
   bool loading = true;
 
   @override
@@ -50,6 +53,22 @@ class _CategoriesState extends State<Categories> {
     });
   }
 
+  Goal goal = Goal(
+    name: 'Enter goal name',
+    reason: [
+      {"key": "reason1", "text": "I want to achieve this goal because..."},
+    ],
+    identityStatement: [
+      {"key": "reason1", "text": "is in control of my anger..."},
+    ],
+    visualizingYourSelf: [
+      {"key": "reason1", "text": ""},
+    ],
+    userId: 13,
+    goalId: 0,
+    goalCategoryId: 0,
+  );
+
   void _fetchGoalNames() {
     AdminGoal.getAllCategoriesNames().then((response) {
       if (response.length != 0) {
@@ -68,6 +87,8 @@ class _CategoriesState extends State<Categories> {
 
   @override
   Widget build(BuildContext context) {
+    final goalProvider = Provider.of<GoalProvider>(context);
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
@@ -205,6 +226,9 @@ class _CategoriesState extends State<Categories> {
                                         childWhenDragging: Container(),
                                         child: AnimatedScaleButton(
                                           onTap: () {
+                                            goalProvider.setGoal(goal);
+                                            goalProvider.updateGoalCategoryId(
+                                                goalCategories![index]["id"]);
                                             Navigator.push(
                                               context,
                                               FadePageRoute(
@@ -316,6 +340,10 @@ class _CategoriesState extends State<Categories> {
                                           childWhenDragging: Container(),
                                           child: AnimatedScaleButton(
                                             onTap: () {
+                                              goalProvider.setGoal(goal);
+                                              goalProvider.updateGoalCategoryId(
+                                                  goalCategories![dataIndex]
+                                                      ["id"]);
                                               Navigator.push(
                                                 context,
                                                 FadePageRoute(
@@ -383,6 +411,7 @@ class _CategoriesState extends State<Categories> {
                     ),
                     AnimatedScaleButton(
                       onTap: () {
+                        goalProvider.setGoal(goal);
                         Navigator.push(
                           context,
                           FadePageRoute(

@@ -212,6 +212,9 @@ class _schedule_cardState extends State<schedule_card> {
                                   endperiod = selectedPeriod;
                                 });
                               },
+                              initialHour: hour,
+                              initialMinute: minute,
+                              initialPeriod: period,
                             );
                           },
                           isScrollControlled: true,
@@ -234,8 +237,11 @@ class _schedule_cardState extends State<schedule_card> {
                   Container(
                     // color:Colors.orange,
                     width: AppDimensions.width10(context) * 38.2,
-                    padding: const EdgeInsets.only(bottom: 10),
+                    padding: const EdgeInsets.only(
+                      bottom: 10,
+                    ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         startTimerState(
                           key: Key("$widget.key"),
@@ -261,8 +267,8 @@ class _schedule_cardState extends State<schedule_card> {
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Container(
-                              height: 37,
-                              width: 37,
+                              height: 36,
+                              width: 36,
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -403,7 +409,7 @@ class _startTimerStateState extends State<startTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.width10(context) * 31.6,
+      width: AppDimensions.width10(context) * 32.5,
       height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
           color: const Color.fromRGBO(0, 0, 0, 0.1),
@@ -469,6 +475,9 @@ class _startTimerStateState extends State<startTimerState> {
                             widget.onChanged(start_time);
                             Navigator.pop(context);
                           },
+                          initialHour: widget.start_Time.substring(0, 1),
+                          initialMinute: widget.start_Time.substring(2, 4),
+                          initialPeriod: widget.start_Time.substring(5, 7),
                         );
                       },
                       isScrollControlled: true,
@@ -605,6 +614,9 @@ class _endTimerStateState extends State<endTimerState> {
                             widget.onChangedEnd(end_time);
                             Navigator.pop(context);
                           },
+                          initialHour: hour,
+                          initialMinute: minute,
+                          initialPeriod: period,
                         );
                       },
                       isScrollControlled: true,

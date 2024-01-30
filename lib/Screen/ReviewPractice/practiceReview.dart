@@ -1499,6 +1499,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                           AppDimensions.width10(context) * 23.8,
                                       child: Text.rich(
                                         style: TextStyle(
+                                          fontFamily: 'Laila',
                                             height: AppDimensions.height10(
                                                     context) *
                                                 0.14),

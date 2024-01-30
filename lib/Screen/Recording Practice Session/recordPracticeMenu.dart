@@ -14,6 +14,7 @@ import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
+import 'package:potenic_app/Widgets/webVisit.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -970,6 +971,48 @@ void info_sheet(context) {
                       ]),
                 ),
               ),
+              SizedBox(
+                height: AppDimensions.height10(context) * 2,
+              ),
+              AnimatedScaleButton(
+                onTap: () {
+                  webVisit('https://youtu.be/JcUT5EMVaLU?si=QSC-nSC3-grr0nnc');
+                },
+                child: Container(
+                  width: AppDimensions.height10(context) * 37.5,
+                  height: AppDimensions.height10(context) * 5,
+                  decoration: BoxDecoration(
+                      color: const Color(0xFFFBFBFB),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: AppDimensions.height10(context) * 2.4,
+                        height: AppDimensions.height10(context) * 2.4,
+                        decoration: const BoxDecoration(
+                            color: Colors.transparent,
+                            image: DecorationImage(
+                              image:
+                                  AssetImage('assets/images/youtubeIcon.png'),
+                              fit: BoxFit.contain,
+                            )),
+                      ),
+                      SizedBox(
+                        width: AppDimensions.height10(context),
+                      ),
+                      Text(
+                        'Watch Demo',
+                        style: TextStyle(
+                          fontSize: AppDimensions.height10(context) * 1.8,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFF646464),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           )),
     ),

@@ -29,17 +29,17 @@ class AppText {
 
   //Create Goal
 
-  String goalSetting = 'Goal Setting';
+  String goalSetting = 'Onboarding';
   String step1 = "Step 1: ";
   String step1Head = "Create your ‘star’ (goal) ";
   String step1Body =
-      'Create a personal development goal based \n on your vision and why to help you with \n purpose and stay focused. ';
+      'Create a personal development goal by\ndefining your vision to help you stay\nfocused and self-motivated.';
   String step2 = "Step 2: ";
-  String step2Head = "Assign your ‘planet’ (practice)";
+  String step2Head = "Add your ‘planet’ (practice)";
   String step2Body =
-      "Decide on a tool / practice you’ll be using \n and set your routine (you need to do this 3 \n or more times a week) ";
+      "Select a practice you’ll be using and set a\nroutine (you are encouraged to do this 3 or\nmore times a week)";
   String step2Body2 =
-      "In 25 mins and less you’ll be on your \n way towards more clarity. ";
+      "It’s a self-driven process that takes you\non a journey of self-discovery towards\nimproving yourself";
   String startJourney = 'Start your journey';
   String startJourney2 = "You can save and exit at any time. ";
 
@@ -129,10 +129,14 @@ class AppText {
   String noSessionBody = 'There are no recorded\npractices for this date.';
   String noPlanned = 'No planned sessions';
   String noPlannedBody = 'There are no scheduled\npractices for this date.';
+  String dashboardTitle = 'Welcome to\nyour Dashboard';
+  String dashboardBody =
+      'This is a one-stop place to manage your personal development journey. From Dashboard, you can quickly navigate to your goals, view your practices, record hurdles and inspirations.\n\nHave a tour of what’s available to you and how you can access the tools that are important to your personal growth.\n\nWe look forward to supporting you. Enjoy your journey :)';
+  String dashboardLink = 'https://youtu.be/f2fGU6MwZS4?si=Mt6Bcnm2v3OPf5UO';
 
   //Hurdle
 
-  String hurdleTitle = 'My faced hurdles /n& obstacles';
+  String hurdleTitle = 'My faced hurdles\n& obstacles';
   String newHurdle = 'New hurdle';
   String hurdleSumTitle = 'Your Hurdle Summary';
   String hurdleSumBody = 'Below is an overview of your faced hurdles';
@@ -151,6 +155,12 @@ class AppText {
   String captureHurdleSummText1 = 'Your current\nthoughts and feelings';
   String captureHurdleSummText2 = 'What or who has triggered\nyour hurdle?';
 
+  String hurdleBottomSheedTitle = 'My faced hurdle\n& obstacles';
+  String hurdleBottomSheedBody =
+      'This is your private space to capture any obstacles that may divert you of course.\n\nAt Potenic, our aim is to empower you to own and enjoy your personal development journey.\n\nWe want to help you stay focused and this is why we also want you to be prepared for challenges ahead, so you can build a self-reliance and grow awareness.\n\nWith time, you will start seeing patterns (with the help of Potenic’s frameworks) and will be more aware of situations that get you triggered.';
+  String hurdleTutorialLink =
+      'https://youtu.be/jrdWM7XLj4g?si=GTEa86Qnfb4B5CJA';
+
   //Inspiration
   String inspirationTitle = 'My current\ninspirations';
   String inspirationBody =
@@ -167,4 +177,7 @@ class AppText {
   String cancelButton = 'Cancel';
   String deleteText = 'Delete';
   String nextButton = 'Next';
+
+  String inspirationBottomSheedBody =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo mauris massa, eu iaculis erat laoreet sit amet. Suspendisse vitae neque quis nibh molestie tempor. Suspendisse ut lectus mi. Phasellus ultricies velit felis, at rhoncus nisi condimentum nec. Phasellus hendrerit tincidunt erat sit amet sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo mauris massa, eu iaculis erat laoreet sit amet. Suspendisse vitae neque quis nibh molestie tempor. Suspendisse ut lectus mi. Phasellus ultricies velit felis, at rhoncus nisi condimentum nec. Phasellus hendrerit tincidunt erat sit amet sollicitudin. ";
 }

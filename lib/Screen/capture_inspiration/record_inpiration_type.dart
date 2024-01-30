@@ -539,9 +539,9 @@ class _record_inspirationState extends State<record_inspiration> {
                                               margin: EdgeInsets.only(
                                                   top: AppDimensions.height10(context) *
                                                       1.9,
-
-                                                  right: AppDimensions.width10(context) *
-                                                      1.6,
+                                                  right:
+                                                      AppDimensions.width10(context) *
+                                                          1.6,
                                                   left: AppDimensions.width10(context) *
                                                       1.6,
                                                   bottom:
@@ -557,9 +557,11 @@ class _record_inspirationState extends State<record_inspiration> {
                                                   textAlign: TextAlign.center,
                                                   text: TextSpan(
                                                       style: TextStyle(
+                                                          fontFamily: 'laila',
                                                           fontSize:
                                                               AppDimensions.height10(context) *
-                                                                  1.7,
+                                                                  1.6,
+                                                          height: AppDimensions.height10(context)*0.15,
                                                           fontWeight: FontWeight.w400,
                                                           color: const Color(0xFF000000)),
                                                       children: const [

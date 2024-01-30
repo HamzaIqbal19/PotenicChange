@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/GoalModel.dart';
+import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Visualising.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
@@ -15,6 +16,7 @@ import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Goal.dart';
@@ -266,6 +268,11 @@ class _Goal_IdentityState extends State<Goal_Identity> {
 
   @override
   Widget build(BuildContext context) {
+    final goalProvider = Provider.of<GoalProvider>(context);
+    if (widget.comingFromEditScreen == false) {
+      myIdentity = goalProvider.currentGoal!.identityStatement;
+    }
+
     return WillPopScope(
       onWillPop: () {
         widget.comingFromEditScreen
@@ -791,7 +798,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                             inner_text(
                                               key: Key(
                                                   myIdentity[index]['key']!),
-                                              delete: true,
+                                              delete: myIdentity.length > 1
+                                                  ? true
+                                                  : false,
                                               head_text:
                                                   "${index + 1}. I am someone who ",
                                               body_text: myIdentity[index]
@@ -804,9 +813,15 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                 });
                                                 handleTextChanged(
                                                     index, newText);
+                                                goalProvider
+                                                    .updateIdentityStatement(
+                                                        myIdentity);
                                               },
-                                              onDelete: () =>
-                                                  handleDelete(index),
+                                              onDelete: () {
+                                                handleDelete(index);
+                                                goalProvider
+                                                    .updateReason(myIdentity);
+                                              },
                                               index: index,
                                               placeHolder:
                                                   'is in control of my anger....',

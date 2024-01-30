@@ -83,7 +83,7 @@ class _view_detailsState extends State<view_details> {
                     },
                     icon: Image.asset(
                       'assets/images/Back.webp',
-                     // width: AppDimensions.width10(context) * 2.6,
+                      // width: AppDimensions.width10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.8,
                       fit: BoxFit.contain,
                     )),
@@ -93,7 +93,8 @@ class _view_detailsState extends State<view_details> {
             height: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/bg_inpiration_purple.webp'),
+                    image:
+                        AssetImage('assets/images/bg_inpiration_purple.webp'),
                     colorFilter: ColorFilter.mode(
                         Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                     fit: BoxFit.cover)),
@@ -106,7 +107,8 @@ class _view_detailsState extends State<view_details> {
                             image: inspirationDetails['inspiration']
                                         ['inspirationId'] ==
                                     3
-                                ? const AssetImage('assets/images/video_image.webp')
+                                ? const AssetImage(
+                                    'assets/images/video_image.webp')
                                 : const AssetImage(
                                     'assets/images/bg_inpiration_purple.webp'),
                             colorFilter: const ColorFilter.mode(
@@ -114,7 +116,8 @@ class _view_detailsState extends State<view_details> {
                             fit: BoxFit.cover)),
                     child: Stack(
                       children: [
-                        if (inspirationDetails['inspiration']['inspirationId'] ==
+                        if (inspirationDetails['inspiration']
+                                ['inspirationId'] ==
                             1) ...[
                           Container(
                             width: double.infinity,
@@ -124,14 +127,14 @@ class _view_detailsState extends State<view_details> {
                               height: AppDimensions.height10(context) * 36.188,
                               margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 12.0,
-
                                 left: AppDimensions.width10(context) * 3.4,
                                 right: AppDimensions.width10(context) * 3.4,
                               ),
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: NetworkImage(
-                                          inspirationDetails['inspiration']['file']
+                                          inspirationDetails['inspiration']
+                                                  ['file']
                                               .toString()),
                                       fit: BoxFit.cover)),
                             ),
@@ -148,7 +151,6 @@ class _view_detailsState extends State<view_details> {
                               alignment: Alignment.center,
                               margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 11.50,
-
                                 left: AppDimensions.width10(context) * 1.8,
                                 right: AppDimensions.width10(context) * 1.8,
                               ),
@@ -178,8 +180,8 @@ class _view_detailsState extends State<view_details> {
                               child: SizedBox(
                                 width: AppDimensions.width10(context) * 8.6,
                                 height: AppDimensions.height10(context) * 8.6,
-                                child:
-                                    Image.asset('assets/images/play_button.webp'),
+                                child: Image.asset(
+                                    'assets/images/play_button.webp'),
                               ),
                             ),
                           ),
@@ -191,26 +193,29 @@ class _view_detailsState extends State<view_details> {
                             height: AppDimensions.height10(context) * 52.5,
 
                             decoration: const BoxDecoration(
-                              gradient: RadialGradient(
-                                  colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]),
+                              gradient: RadialGradient(colors: [
+                                Color(0xFFE9A594),
+                                Color(0xFFEEBEB2)
+                              ]),
                             ),
                             child: Center(
                               child: Container(
                                 margin: EdgeInsets.only(
-
                                   left: AppDimensions.width10(context) * 5,
                                   right: AppDimensions.width10(context) * 5,
                                   // bottom: AppDimensions.height10(context) * 3
                                 ),
                                 child: Text(
-                                  inspirationDetails['inspiration']['description'],
+                                  inspirationDetails['inspiration']
+                                      ['description'],
                                   maxLines: 3,
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      height:
-                                          AppDimensions.height10(context) * 0.15,
-                                      fontSize: AppDimensions.font10(context) * 2.4,
+                                      height: AppDimensions.height10(context) *
+                                          0.15,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 2.4,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFFFFFFFF)),
                                 ),
@@ -232,19 +237,22 @@ class _view_detailsState extends State<view_details> {
           bottomNavigationBar: Loading == false
               ? BottomAppBar(
                   color: Colors.transparent,
-            height: inspirationDetails['inspiration']['inspirationId'] ==
-                1
-                ? AppDimensions.height10(context) * 38.465
-                : inspirationDetails['inspiration']['inspirationId'] == 2
-                ? AppDimensions.height10(context) * 52.465
-                : AppDimensions.height10(context) * 48.465,
+                  height: inspirationDetails['inspiration']['inspirationId'] ==
+                          1
+                      ? AppDimensions.height10(context) * 38.465
+                      : inspirationDetails['inspiration']['inspirationId'] == 2
+                          ? AppDimensions.height10(context) * 52.465
+                          : AppDimensions.height10(context) * 48.465,
                   elevation: 0,
                   child: Container(
                       //should change according to screen
-                      height: inspirationDetails['inspiration']['inspirationId'] ==
+                      height: inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
                               1
                           ? AppDimensions.height10(context) * 38.465
-                          : inspirationDetails['inspiration']['inspirationId'] == 2
+                          : inspirationDetails['inspiration']
+                                      ['inspirationId'] ==
+                                  2
                               ? AppDimensions.height10(context) * 52.465
                               : AppDimensions.height10(context) * 48.465,
                       decoration: BoxDecoration(
@@ -264,14 +272,18 @@ class _view_detailsState extends State<view_details> {
                                     .toString()
                                     .isNotEmpty
                                 ? Container(
-                                    height: AppDimensions.height10(context) * 2.1,
-                                    width: AppDimensions.width10(context) * 30.5,
+                                    height:
+                                        AppDimensions.height10(context) * 2.1,
+                                    width:
+                                        AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.width10(context) * 3.6,
-                                        right:
-                                            AppDimensions.height10(context) * 8.9,
-                                        top: AppDimensions.height10(context) * 3.4),
+                                        left: AppDimensions.width10(context) *
+                                            3.6,
+                                        right: AppDimensions.height10(context) *
+                                            8.9,
+                                        top: AppDimensions.height10(context) *
+                                            3.4),
                                     child: Text(
                                       'Title',
                                       style: TextStyle(
@@ -289,24 +301,26 @@ class _view_detailsState extends State<view_details> {
                                 alignment: Alignment.centerLeft,
                                 // color: Colors.amber,
                                 margin: EdgeInsets.only(
-
                                     left: AppDimensions.width10(context) * 3.6,
                                     right: AppDimensions.width10(context) * 9.0,
                                     top: AppDimensions.height10(context) * 0.3),
                                 child: Column(
                                   children: [
                                     Text(
-                                      inspirationDetails['inspiration']['title'],
+                                      inspirationDetails['inspiration']
+                                          ['title'],
                                       style: TextStyle(
                                           height: 1.5,
                                           color: const Color(0xFF282828),
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.6,
+                                              AppDimensions.font10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 )),
-                            inspirationDetails['inspiration']['inspirationId'] !=
+                            inspirationDetails['inspiration']
+                                            ['inspirationId'] !=
                                         2 &&
                                     inspirationDetails['inspiration']
                                             ['destinationLink']
@@ -319,9 +333,9 @@ class _view_detailsState extends State<view_details> {
                                           3) ...[
                                         AnimatedScaleButton(
                                           onTap: () async {
-                                            String url =
-                                                inspirationDetails['inspiration']
-                                                    ['destinationLink'];
+                                            String url = inspirationDetails[
+                                                    'inspiration']
+                                                ['destinationLink'];
                                             if (!url.startsWith("https://")) {
                                               url = "https://$url";
                                             }
@@ -331,7 +345,8 @@ class _view_detailsState extends State<view_details> {
                                                   const CustomTabsOptions(
                                                 colorScheme:
                                                     CustomTabsColorScheme.dark,
-                                                shareState: CustomTabsShareState.on,
+                                                shareState:
+                                                    CustomTabsShareState.on,
                                                 instantAppsEnabled: true,
                                                 showTitle: true,
                                                 urlBarHidingEnabled: true,
@@ -339,7 +354,8 @@ class _view_detailsState extends State<view_details> {
                                               safariVCOptions:
                                                   const SafariViewControllerOptions(
                                                 barCollapsingEnabled: true,
-                                                preferredBarTintColor: Colors.green,
+                                                preferredBarTintColor:
+                                                    Colors.green,
                                                 preferredControlTintColor:
                                                     Colors.amber,
                                                 dismissButtonStyle:
@@ -351,11 +367,12 @@ class _view_detailsState extends State<view_details> {
                                             );
                                           },
                                           child: Container(
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    3.0,
-                                            width: AppDimensions.width10(context) *
-                                                25.3,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    25.3,
                                             margin: EdgeInsets.only(
                                                 right: AppDimensions.height10(
                                                         context) *
@@ -366,34 +383,38 @@ class _view_detailsState extends State<view_details> {
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                     width: 1,
-                                                    color: const Color(0xFF282828)),
-                                                borderRadius: BorderRadius.circular(
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0)),
+                                                    color: const Color(
+                                                        0xFF282828)),
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0)),
                                             child: Center(
                                               child: Text(
                                                 'Listen from this website',
                                                 style: TextStyle(
-                                                    fontSize: AppDimensions.font10(
-                                                            context) *
-                                                        1.8,
+                                                    fontSize:
+                                                        AppDimensions.font10(
+                                                                context) *
+                                                            1.8,
                                                     fontWeight: FontWeight.w500,
-                                                    color: const Color(0xFF646464)),
+                                                    color: const Color(
+                                                        0xFF646464)),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ] else if (inspirationDetails['inspiration']
-                                              ['inspirationId'] ==
+                                      ] else if (inspirationDetails[
+                                              'inspiration']['inspirationId'] ==
                                           2) ...[
                                         Container(),
                                       ] else ...[
                                         AnimatedScaleButton(
                                           onTap: () async {
-                                            String url =
-                                                inspirationDetails['inspiration']
-                                                    ['destinationLink'];
+                                            String url = inspirationDetails[
+                                                    'inspiration']
+                                                ['destinationLink'];
                                             if (!url.startsWith("https://")) {
                                               url = "https://$url";
                                             }
@@ -404,7 +425,8 @@ class _view_detailsState extends State<view_details> {
                                                   const CustomTabsOptions(
                                                 colorScheme:
                                                     CustomTabsColorScheme.dark,
-                                                shareState: CustomTabsShareState.on,
+                                                shareState:
+                                                    CustomTabsShareState.on,
                                                 instantAppsEnabled: true,
                                                 showTitle: true,
                                                 urlBarHidingEnabled: true,
@@ -412,7 +434,8 @@ class _view_detailsState extends State<view_details> {
                                               safariVCOptions:
                                                   const SafariViewControllerOptions(
                                                 barCollapsingEnabled: true,
-                                                preferredBarTintColor: Colors.green,
+                                                preferredBarTintColor:
+                                                    Colors.green,
                                                 preferredControlTintColor:
                                                     Colors.amber,
                                                 dismissButtonStyle:
@@ -424,11 +447,12 @@ class _view_detailsState extends State<view_details> {
                                             );
                                           },
                                           child: Container(
-                                            height:
-                                                AppDimensions.height10(context) *
-                                                    3.0,
-                                            width: AppDimensions.width10(context) *
-                                                15.0,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    15.0,
                                             margin: EdgeInsets.only(
                                                 right: AppDimensions.height10(
                                                         context) *
@@ -439,20 +463,24 @@ class _view_detailsState extends State<view_details> {
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                     width: 1,
-                                                    color: const Color(0xFF282828)),
-                                                borderRadius: BorderRadius.circular(
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0)),
+                                                    color: const Color(
+                                                        0xFF282828)),
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0)),
                                             child: Center(
                                               child: Text(
                                                 'Visit website',
                                                 style: TextStyle(
-                                                    fontSize: AppDimensions.font10(
-                                                            context) *
-                                                        1.8,
+                                                    fontSize:
+                                                        AppDimensions.font10(
+                                                                context) *
+                                                            1.8,
                                                     fontWeight: FontWeight.w500,
-                                                    color: const Color(0xFF646464)),
+                                                    color: const Color(
+                                                        0xFF646464)),
                                               ),
                                             ),
                                           ),
@@ -466,7 +494,6 @@ class _view_detailsState extends State<view_details> {
                                 // width: AppDimensions.width10(context) * 30.5,
                                 alignment: Alignment.centerLeft,
                                 margin: EdgeInsets.only(
-
                                     left: AppDimensions.width10(context) * 3.6,
                                     right: AppDimensions.width10(context) * 8.9,
                                     top: AppDimensions.height10(context) * 2.0),
@@ -479,7 +506,8 @@ class _view_detailsState extends State<view_details> {
                                         'Description',
                                         style: TextStyle(
                                             fontSize:
-                                                AppDimensions.font10(context) * 1.4,
+                                                AppDimensions.font10(context) *
+                                                    1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff828282)),
                                       ),
@@ -490,7 +518,8 @@ class _view_detailsState extends State<view_details> {
                                         'Why is it inspirational to you',
                                         style: TextStyle(
                                             fontSize:
-                                                AppDimensions.font10(context) * 1.4,
+                                                AppDimensions.font10(context) *
+                                                    1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff828282)),
                                       ),
@@ -501,7 +530,8 @@ class _view_detailsState extends State<view_details> {
                                         'What it means to me',
                                         style: TextStyle(
                                             fontSize:
-                                                AppDimensions.font10(context) * 1.4,
+                                                AppDimensions.font10(context) *
+                                                    1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff828282)),
                                       ),
@@ -512,7 +542,8 @@ class _view_detailsState extends State<view_details> {
                                         'Description',
                                         style: TextStyle(
                                             fontSize:
-                                                AppDimensions.font10(context) * 1.4,
+                                                AppDimensions.font10(context) *
+                                                    1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff828282)),
                                       ),
@@ -524,7 +555,6 @@ class _view_detailsState extends State<view_details> {
                                 // width: AppDimensions.width10(context) * 30.5,
                                 alignment: Alignment.centerLeft,
                                 margin: EdgeInsets.only(
-
                                     left: AppDimensions.width10(context) * 3.6,
                                     right: AppDimensions.width10(context) * 8.9,
                                     top: AppDimensions.height10(context) * 0.2),
@@ -537,45 +567,54 @@ class _view_detailsState extends State<view_details> {
                                           height: 1.5,
                                           color: const Color(0xFF282828),
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.6,
+                                              AppDimensions.font10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 )),
-                            inspirationDetails['inspiration']['inspirationId'] == 4
+                            inspirationDetails['inspiration']
+                                        ['inspirationId'] ==
+                                    4
                                 ? Container(
                                     // height: AppDimensions.height10(context) * 2.1,
                                     // width: AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.width10(context) * 3.6,
-                                        right:
-                                            AppDimensions.height10(context) * 8.9,
-                                        top: AppDimensions.height10(context) * 2.0),
+                                        left: AppDimensions.width10(context) *
+                                            3.6,
+                                        right: AppDimensions.height10(context) *
+                                            8.9,
+                                        top: AppDimensions.height10(context) *
+                                            2.0),
                                     child: Column(
                                       children: [
                                         Text(
                                           'Content Author',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.4,
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.4,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xff828282)),
                                         ),
                                       ],
                                     ))
                                 : Container(),
-                            inspirationDetails['inspiration']['inspirationId'] == 4
+                            inspirationDetails['inspiration']
+                                        ['inspirationId'] ==
+                                    4
                                 ? Container(
                                     // height: AppDimensions.height10(context) * 2.4,
                                     // width: AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.width10(context) * 3.6,
-                                        right:
-                                            AppDimensions.height10(context) * 8.9,
-                                        top: AppDimensions.height10(context) * 0.2),
+                                        left: AppDimensions.width10(context) *
+                                            3.6,
+                                        right: AppDimensions.height10(context) *
+                                            8.9,
+                                        top: AppDimensions.height10(context) *
+                                            0.2),
                                     child: Column(
                                       children: [
                                         Text(
@@ -584,46 +623,55 @@ class _view_detailsState extends State<view_details> {
                                           style: TextStyle(
                                               height: 1.5,
                                               color: const Color(0xFF282828),
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.6,
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.6,
                                               fontWeight: FontWeight.w500),
                                         ),
                                       ],
                                     ))
                                 : Container(),
-                            inspirationDetails['inspiration']['hashTags'].length !=
+                            inspirationDetails['inspiration']['hashTags']
+                                        .length !=
                                     0
                                 ? Container(
-                                    height: AppDimensions.height10(context) * 2.1,
-                                    width: AppDimensions.width10(context) * 30.5,
+                                    height:
+                                        AppDimensions.height10(context) * 2.1,
+                                    width:
+                                        AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.width10(context) * 3.6,
-                                        right:
-                                            AppDimensions.height10(context) * 8.9,
-                                        top: AppDimensions.height10(context) * 2.0),
+                                        left: AppDimensions.width10(context) *
+                                            3.6,
+                                        right: AppDimensions.height10(context) *
+                                            8.9,
+                                        top: AppDimensions.height10(context) *
+                                            2.0),
                                     child: Text(
                                       'Tags',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.4,
+                                              AppDimensions.font10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff828282)),
                                     ),
                                   )
                                 : Container(),
-                            inspirationDetails['inspiration']['hashTags'].length !=
+                            inspirationDetails['inspiration']['hashTags']
+                                        .length !=
                                     0
                                 ? Container(
                                     // height: AppDimensions.height10(context) * 2.4,
                                     // width: AppDimensions.width10(context) * 30.5,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.width10(context) * 3.6,
-                                        right:
-                                            AppDimensions.height10(context) * 8.9,
-                                        top: AppDimensions.height10(context) * 0.2),
+                                        left: AppDimensions.width10(context) *
+                                            3.6,
+                                        right: AppDimensions.height10(context) *
+                                            8.9,
+                                        top: AppDimensions.height10(context) *
+                                            0.2),
                                     child: Text(
                                       tags
                                           .toString()
@@ -634,7 +682,8 @@ class _view_detailsState extends State<view_details> {
                                           height: 1.5,
                                           color: const Color(0xFF282828),
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.6,
+                                              AppDimensions.font10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500),
                                     ))
                                 : Container(),
@@ -650,7 +699,8 @@ class _view_detailsState extends State<view_details> {
                               child: Text(
                                 'Attached goals',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.font10(context) * 1.4,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 1.4,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -672,8 +722,8 @@ class _view_detailsState extends State<view_details> {
                                 height: AppDimensions.height10(context) * 6.0,
                                 width: AppDimensions.width10(context) * 37.5,
                                 margin: EdgeInsets.only(
-                                    bottom: AppDimensions.height10(context) * 1.0,
-
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.0,
                                     left: AppDimensions.width10(context) * 2.2,
                                     right: AppDimensions.width10(context) * 1.7,
                                     top: AppDimensions.height10(context) * 0.5),
@@ -682,41 +732,48 @@ class _view_detailsState extends State<view_details> {
                                     borderRadius: BorderRadius.circular(
                                         AppDimensions.height10(context) * 2.0)),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: AppDimensions.width10(context) * 23.9,
-                                      height: AppDimensions.height10(context) * 2.2,
+                                      width:
+                                          AppDimensions.width10(context) * 23.9,
+                                      height:
+                                          AppDimensions.height10(context) * 2.2,
                                       margin: EdgeInsets.only(
-                                        left:
-                                            AppDimensions.height10(context) * 1.99,
+                                        left: AppDimensions.height10(context) *
+                                            1.99,
                                       ),
                                       child: Text(
                                         '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
                                         style: TextStyle(
                                           color: const Color(0xFF646464),
                                           fontSize:
-                                              AppDimensions.font10(context) * 1.8,
+                                              AppDimensions.font10(context) *
+                                                  1.8,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                     ),
                                     Container(
                                         margin: EdgeInsets.only(
-                                            right: AppDimensions.width10(context) *
-                                                2.391),
+                                            right:
+                                                AppDimensions.width10(context) *
+                                                    2.391),
                                         child: Text(
                                           'View',
                                           style: TextStyle(
                                               color: const Color(0xFF437296),
                                               fontWeight: FontWeight.w700,
-                                              decoration: TextDecoration.underline,
+                                              decoration:
+                                                  TextDecoration.underline,
                                               decorationThickness:
-                                                  AppDimensions.height10(context) *
+                                                  AppDimensions.height10(
+                                                          context) *
                                                       0.2,
-                                              fontSize:
-                                                  AppDimensions.font10(context) *
-                                                      1.4),
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.4),
                                         ))
                                   ],
                                 ),

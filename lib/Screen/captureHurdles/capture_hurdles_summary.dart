@@ -574,10 +574,12 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                             1.9,
                                                         right: AppDimensions.width10(context) *
                                                             1.6,
-                                                        left: AppDimensions.width10(context) *
-                                                            1.6,
-                                                        bottom: AppDimensions.height10(context) *
-                                                            0.2),
+                                                        left:
+                                                            AppDimensions.width10(context) *
+                                                                1.6,
+                                                        bottom:
+                                                            AppDimensions.height10(context) *
+                                                                0.2),
                                                     height:
                                                         AppDimensions.height10(context) *
                                                             4.4,
@@ -589,8 +591,11 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                             TextAlign.center,
                                                         text: TextSpan(
                                                             style: TextStyle(
-                                                                fontSize:
-                                                                    AppDimensions.font10(context) * 1.7,
+                                                                fontFamily: 'laila',
+                                                                height:
+                                                            AppDimensions.height10(context) *
+                                                                0.15,
+                                                        fontSize: AppDimensions.font10(context) * 1.6,
                                                                 fontWeight: FontWeight.w400,
                                                                 color: const Color(0xFF000000)),
                                                             children: const [

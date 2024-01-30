@@ -97,8 +97,8 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
             Center(
               child: IconButton(
                   onPressed: () async {
-                    Navigator.push(
-                        context, FadePageRouteReverse(page: const Categories()));
+                    Navigator.push(context,
+                        FadePageRouteReverse(page: const Categories()));
                     final SharedPreferences prefs = await _prefs;
                     await prefs.setString('goal_route', 'view_all_goals');
                   },

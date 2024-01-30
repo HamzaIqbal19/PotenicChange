@@ -6,8 +6,16 @@ class MyListWheelForm extends StatefulWidget {
   final Function(
           String day, String hour, String minute, String period, bool Done)
       onSelectionChanged;
+  final String initialHour;
+  final String initialMinute;
+  final String initialPeriod;
 
-  const MyListWheelForm({Key? key, required this.onSelectionChanged})
+  const MyListWheelForm(
+      {Key? key,
+      required this.onSelectionChanged,
+      required this.initialHour,
+      required this.initialMinute,
+      required this.initialPeriod})
       : super(key: key);
 
   @override
@@ -21,21 +29,41 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
   String period = "am";
   bool done = false;
 
-  // List<String> _days = [
-  //   'Monday',
-  //   'Tuesday',
-  //   'Wednesday',
-  //   'Thursday',
-  //   'Friday',
-  //   'Saturday',
-  //   'Sunday'
-  // ];
-
-  final List<String> _hours =
-      List<String>.generate(12, (i) => (i + 1).toString());
-  final List<String> _minutes =
+  List<String> _hours = List<String>.generate(12, (i) => (i + 1).toString());
+  List<String> _minutes =
       List<String>.generate(60, (i) => i.toString().padLeft(2, '0'));
-  final List<String> _periods = ['AM', 'PM'];
+  List<String> _periods = ['AM', 'PM'];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(
+        'StartTime = ${widget.initialHour}, ${widget.initialMinute}, ${widget.initialPeriod}');
+
+    if (widget.initialPeriod == 'PM') {
+      setState(() {
+        _periods = ['PM', 'AM'];
+        period = 'pm';
+      });
+    }
+    if (widget.initialHour.isNotEmpty) {
+      setState(() {
+        int initialHourIndex = _hours.indexOf(widget.initialHour);
+        _hours = _hours.sublist(initialHourIndex)
+          ..addAll(_hours.sublist(0, initialHourIndex));
+        hour = widget.initialHour;
+      });
+    }
+    if (widget.initialMinute != "00" && widget.initialMinute.isNotEmpty) {
+      setState(() {
+        int initialMinuteIndex = _minutes.indexOf(widget.initialMinute);
+        _minutes = _minutes.sublist(initialMinuteIndex)
+          ..addAll(_minutes.sublist(0, initialMinuteIndex));
+        minute = widget.initialMinute;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

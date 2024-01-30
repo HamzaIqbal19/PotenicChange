@@ -93,21 +93,23 @@ class _prac_scoreState extends State<prac_score> {
   ];
 
   void getPracticeDetail() {
-    PracticeGoalApi.getUserPracticeById().then((response) {
-      if (response.length != 0) {
-        setState(() {
-          pracDetails = response;
-          pracId = response['id'];
-        });
+    PracticeGoalApi.getUserPracticeById()
+        .then((response) {
+          if (response.length != 0) {
+            setState(() {
+              pracDetails = response;
+              pracId = response['id'];
+            });
 
-        getGoalDetails(pracDetails["userGoalId"]);
+            getGoalDetails(pracDetails["userGoalId"]);
 
-        fetchPracticeAssesment();
+            fetchPracticeAssesment();
 
-        loadData();
-      } else {}
-    }).catchError((error) {
-    }).whenComplete(() {});
+            loadData();
+          } else {}
+        })
+        .catchError((error) {})
+        .whenComplete(() {});
   }
 
   void getGoalDetails(Id) {

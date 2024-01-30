@@ -289,7 +289,8 @@ class _view_goalsState extends State<view_goals> {
     setState(() {
       loader = false;
     });
-    Future.delayed(const Duration(milliseconds: 50), () => _scrollToCurrentIndex());
+    Future.delayed(
+        const Duration(milliseconds: 50), () => _scrollToCurrentIndex());
   }
 
   getSixthday() {
@@ -1340,8 +1341,7 @@ class _view_goalsState extends State<view_goals> {
                                                                     2
                                                                 ? const Alignment(
                                                                     -0.9, -0.08)
-                                                                : goalLevel ==
-                                                                        3
+                                                                : goalLevel == 3
                                                                     ? const Alignment(
                                                                         -0.67,
                                                                         -0.07)
@@ -1392,8 +1392,7 @@ class _view_goalsState extends State<view_goals> {
                                                                                       : AppDimensions.height10(context) * 20.6,
                                                               child: Stack(
                                                                 children: [
-                                                                  goalLevel ==
-                                                                          0
+                                                                  goalLevel == 0
                                                                       ? Container()
                                                                       : Align(
                                                                           alignment: goalLevel == 2
@@ -1415,13 +1414,16 @@ class _view_goalsState extends State<view_goals> {
                                                                                                           : const Alignment(0, 1.1),
                                                                           child:
                                                                               Image.asset(
-                                                                              (goalLevel == 3 || goalLevel == 4 || goalLevel == 5 || goalLevel == 6) ? 'assets/images/arrow-192-up.webp' : 'assets/images/arrow-192.webp',
-                                                                              height: AppDimensions.height10(context) * 2.0,
-                                                                              width: AppDimensions.width10(context) * 2.0,
-                                                                            ),
+                                                                            (goalLevel == 3 || goalLevel == 4 || goalLevel == 5 || goalLevel == 6)
+                                                                                ? 'assets/images/arrow-192-up.webp'
+                                                                                : 'assets/images/arrow-192.webp',
+                                                                            height:
+                                                                                AppDimensions.height10(context) * 2.0,
+                                                                            width:
+                                                                                AppDimensions.width10(context) * 2.0,
+                                                                          ),
                                                                         ),
-                                                                  goalLevel ==
-                                                                          0
+                                                                  goalLevel == 0
                                                                       ? Container()
                                                                       : Container(
                                                                           width:
@@ -1711,8 +1713,8 @@ class _view_goalsState extends State<view_goals> {
                                               height: AppDimensions.height10(
                                                       context) *
                                                   19.2,
-                                              margin:
-                                                  const EdgeInsets.only(right: 20),
+                                              margin: const EdgeInsets.only(
+                                                  right: 20),
                                               width: AppDimensions.width10(
                                                       context) *
                                                   45.7,
@@ -2005,74 +2007,79 @@ class _view_goalsState extends State<view_goals> {
                                                                   .transparent),
                                                           child: Column(
                                                             mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
+                                                                MainAxisAlignment
+                                                                    .center,
                                                             children: [
-                                                          Text(
-                                                            getFormattedDay(
-                                                                    next)
-                                                                .substring(
-                                                                    0, 3),
-                                                            style: TextStyle(
-                                                                fontSize:
-                                                                    AppDimensions.font10(context) *
-                                                                        1.2,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                          Text(
-                                                            '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
-                                                            style: TextStyle(
-                                                                fontSize:
-                                                                    AppDimensions.font10(context) *
-                                                                        1.4,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                          Container(
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                2.5,
-                                                            width: AppDimensions
-                                                                    .width10(
-                                                                        context) *
-                                                                2.5,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              border: Border.all(
-                                                                  width: AppDimensions.height10(
-                                                                          context) *
-                                                                      0.1,
-                                                                  color: Colors
-                                                                      .white),
-                                                            ),
-                                                            child: SizedBox(
-                                                                width: AppDimensions.width10(context) * 1.7,
-                                                                height: AppDimensions.width10(context) * 1.5,
+                                                              Text(
+                                                                getFormattedDay(
+                                                                        next)
+                                                                    .substring(
+                                                                        0, 3),
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        AppDimensions.font10(context) *
+                                                                            1.2,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    color: Colors
+                                                                        .white),
+                                                              ),
+                                                              Text(
+                                                                '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        AppDimensions.font10(context) *
+                                                                            1.4,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .white),
+                                                              ),
+                                                              Container(
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    2.5,
+                                                                width: AppDimensions
+                                                                        .width10(
+                                                                            context) *
+                                                                    2.5,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  border: Border.all(
+                                                                      width: AppDimensions.height10(
+                                                                              context) *
+                                                                          0.1,
+                                                                      color: Colors
+                                                                          .white),
+                                                                ),
+                                                                child: SizedBox(
+                                                                    width: AppDimensions.width10(
+                                                                            context) *
+                                                                        1.7,
+                                                                    height:
+                                                                        AppDimensions.width10(context) *
+                                                                            1.5,
 
-                                                                // margin: const EdgeInsets.only(left: 1),
-                                                                child: Center(
-                                                                  child:
-                                                                      Text(
-                                                                    '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
-                                                                    style: TextStyle(
-                                                                        fontSize: AppDimensions.font10(context) *
-                                                                            1.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w400,
-                                                                        color: Colors.white),
-                                                                  ),
-                                                                )),
-                                                          )
+                                                                    // margin: const EdgeInsets.only(left: 1),
+                                                                    child:
+                                                                        Center(
+                                                                      child:
+                                                                          Text(
+                                                                        '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
+                                                                        style: TextStyle(
+                                                                            fontSize: AppDimensions.font10(context) *
+                                                                                1.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                            color: Colors.white),
+                                                                      ),
+                                                                    )),
+                                                              )
                                                             ],
                                                           )),
                                                     ),
@@ -2248,78 +2255,78 @@ class _view_goalsState extends State<view_goals> {
                                                       ),
                                                       child: Column(
                                                         mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
+                                                            MainAxisAlignment
+                                                                .center,
                                                         children: [
-                                                      Text(
-                                                        getFormattedDay(
-                                                                past)
-                                                            .substring(
-                                                                0, 3),
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .font10(
-                                                                        context) *
-                                                                1.2,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600,
-                                                            color: const Color(
-                                                                0xff5B74A6)),
-                                                      ),
-                                                      Text(
-                                                        '${getFormattedDate(past).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(past).split('-').reversed.join().substring(2, 4)}',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .font10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                            color: const Color(
-                                                                0xff5B74A6)),
-                                                      ),
-                                                      Container(
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.5,
-                                                        width: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.5,
-                                                        decoration: const BoxDecoration(
-                                                            shape: BoxShape
-                                                                .circle,
-                                                            color: Color(
-                                                                0xff156F6D)),
-                                                        child: SizedBox(
-                                                            width: AppDimensions
-                                                                    .width10(
-                                                                        context) *
-                                                                1.7,
+                                                          Text(
+                                                            getFormattedDay(
+                                                                    past)
+                                                                .substring(
+                                                                    0, 3),
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .font10(
+                                                                            context) *
+                                                                    1.2,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color: const Color(
+                                                                    0xff5B74A6)),
+                                                          ),
+                                                          Text(
+                                                            '${getFormattedDate(past).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(past).split('-').reversed.join().substring(2, 4)}',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .font10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xff5B74A6)),
+                                                          ),
+                                                          Container(
                                                             height: AppDimensions
                                                                     .height10(
                                                                         context) *
-                                                                1.5,
+                                                                2.5,
+                                                            width: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.5,
+                                                            decoration: const BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                color: Color(
+                                                                    0xff156F6D)),
+                                                            child: SizedBox(
+                                                                width: AppDimensions
+                                                                        .width10(
+                                                                            context) *
+                                                                    1.7,
+                                                                height: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.5,
 
-                                                            // margin: const EdgeInsets.only(left: 1),
-                                                            child: Center(
-                                                              child: Text(
-                                                                '${responseData['previousCompletePractice']}/${responseData['previousTotalPractice']}',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.font10(context) *
-                                                                            1.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .white),
-                                                              ),
-                                                            )),
-                                                      )
+                                                                // margin: const EdgeInsets.only(left: 1),
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    '${responseData['previousCompletePractice']}/${responseData['previousTotalPractice']}',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            AppDimensions.font10(context) *
+                                                                                1.0,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .white),
+                                                                  ),
+                                                                )),
+                                                          )
                                                         ],
                                                       ),
                                                     ),
@@ -2509,76 +2516,76 @@ class _view_goalsState extends State<view_goals> {
                                                         ),
                                                         child: Column(
                                                           mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
+                                                              MainAxisAlignment
+                                                                  .center,
                                                           children: [
-                                                        Text(
-                                                          getFormattedDay(
-                                                                  next)
-                                                              .substring(
-                                                                  0, 3),
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  AppDimensions.font10(
-                                                                          context) *
-                                                                      1.2,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: const Color(
-                                                                  0xff5B74A6)),
-                                                        ),
-                                                        Text(
-                                                          '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  AppDimensions.font10(
-                                                                          context) *
-                                                                      1.4,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: const Color(
-                                                                  0xff5B74A6)),
-                                                        ),
-                                                        Container(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.5,
-                                                          width: AppDimensions
-                                                                  .width10(
-                                                                      context) *
-                                                              2.5,
-                                                          decoration: const BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              color: Color(
-                                                                  0xff156F6D)),
-                                                          child: SizedBox(
-                                                              width: AppDimensions
-                                                                      .width10(
-                                                                          context) *
-                                                                  1.7,
+                                                            Text(
+                                                              getFormattedDay(
+                                                                      next)
+                                                                  .substring(
+                                                                      0, 3),
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.font10(
+                                                                              context) *
+                                                                          1.2,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: const Color(
+                                                                      0xff5B74A6)),
+                                                            ),
+                                                            Text(
+                                                              '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.font10(
+                                                                              context) *
+                                                                          1.4,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: const Color(
+                                                                      0xff5B74A6)),
+                                                            ),
+                                                            Container(
                                                               height: AppDimensions
                                                                       .height10(
                                                                           context) *
-                                                                  1.5,
+                                                                  2.5,
+                                                              width: AppDimensions
+                                                                      .width10(
+                                                                          context) *
+                                                                  2.5,
+                                                              decoration: const BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  color: Color(
+                                                                      0xff156F6D)),
+                                                              child: SizedBox(
+                                                                  width: AppDimensions
+                                                                          .width10(
+                                                                              context) *
+                                                                      1.7,
+                                                                  height: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.5,
 
-                                                              // margin: const EdgeInsets.only(left: 1),
-                                                              child: Center(
-                                                                child: Text(
-                                                                  '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
-                                                                  style: TextStyle(
-                                                                      fontSize: AppDimensions.font10(context) *
-                                                                          1.0,
-                                                                      fontWeight: FontWeight
-                                                                          .w400,
-                                                                      color:
-                                                                          Colors.white),
-                                                                ),
-                                                              )),
-                                                        )
+                                                                  // margin: const EdgeInsets.only(left: 1),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
+                                                                      style: TextStyle(
+                                                                          fontSize: AppDimensions.font10(context) *
+                                                                              1.0,
+                                                                          fontWeight: FontWeight
+                                                                              .w400,
+                                                                          color:
+                                                                              Colors.white),
+                                                                    ),
+                                                                  )),
+                                                            )
                                                           ],
                                                         )),
                                                   ),
@@ -2724,8 +2731,7 @@ class _view_goalsState extends State<view_goals> {
                                                                       context) *
                                                               1.4,
                                                           fontWeight:
-                                                              FontWeight
-                                                                  .w400),
+                                                              FontWeight.w400),
                                                     ),
                                                   )
                                                 ],
@@ -3001,77 +3007,77 @@ class _view_goalsState extends State<view_goals> {
                                                           Colors.transparent),
                                                   child: Column(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .center,
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
-                                                  Text(
-                                                    getFormattedDay(next)
-                                                        .substring(0, 3),
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .font10(
-                                                                    context) *
-                                                            1.2,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            Colors.white),
-                                                  ),
-                                                  Text(
-                                                    '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
-                                                    style: const TextStyle(
-                                                        color:
-                                                            Colors.white),
-                                                  ),
-                                                  Container(
-                                                    height: AppDimensions
-                                                            .height10(
-                                                                context) *
-                                                        2.7,
-                                                    width: AppDimensions
-                                                            .width10(
-                                                                context) *
-                                                        2.7,
-                                                    margin: const EdgeInsets
-                                                        .only(top: 3.32),
-                                                    decoration:
-                                                        BoxDecoration(
-                                                      shape:
-                                                          BoxShape.circle,
-                                                      border: Border.all(
-                                                          width: 1,
-                                                          color:
-                                                              Colors.white),
-                                                    ),
-                                                    child: Container(
-                                                        width: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
+                                                      Text(
+                                                        getFormattedDay(next)
+                                                            .substring(0, 3),
+                                                        style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                1.2,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                      Text(
+                                                        '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
+                                                        style: const TextStyle(
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                      Container(
                                                         height: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            1.5,
-                                                        margin:
-                                                            const EdgeInsets
-                                                                .only(
-                                                                top: 3.32),
-                                                        // margin: const EdgeInsets.only(left: 1),
-                                                        child: Center(
-                                                          child: Text(
-                                                            '0/2',
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                    .font10(
-                                                                        context),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                        )),
-                                                  )
+                                                            2.7,
+                                                        width: AppDimensions
+                                                                .width10(
+                                                                    context) *
+                                                            2.7,
+                                                        margin: const EdgeInsets
+                                                            .only(top: 3.32),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          border: Border.all(
+                                                              width: 1,
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        child: Container(
+                                                            width: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.7,
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.5,
+                                                            margin:
+                                                                const EdgeInsets
+                                                                    .only(
+                                                                    top: 3.32),
+                                                            // margin: const EdgeInsets.only(left: 1),
+                                                            child: Center(
+                                                              child: Text(
+                                                                '0/2',
+                                                                style: TextStyle(
+                                                                    fontSize: AppDimensions
+                                                                        .font10(
+                                                                            context),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: Colors
+                                                                        .white),
+                                                              ),
+                                                            )),
+                                                      )
                                                     ],
                                                   )),
                                             ),
@@ -3160,7 +3166,7 @@ class _view_goalsState extends State<view_goals> {
                                                         context) *
                                                     1.6,
                                                 fontWeight: FontWeight.w600,
-                                                fontFamily: 'poppins'),
+                                                fontFamily: 'Laila'),
                                           ),
                                         )),
                                   )
@@ -3479,7 +3485,7 @@ class _view_goalsState extends State<view_goals> {
 //                             color: Colors.white,
 //                             fontSize: AppDimensions.font10(context) * 1.6,
 //                             fontWeight: FontWeight.w600,
-//                             fontFamily: 'poppins'),
+//                             fontFamily: 'Laila'),
 //                       ),
 //                     )),
 //               )

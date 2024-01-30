@@ -38,6 +38,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                     'Your Hurdle Summary',
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      fontFamily: 'Laila',
                       fontSize: AppDimensions.font10(context) * 2.8,
                       fontWeight: FontWeight.w700,
                     ),
@@ -53,6 +54,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                     'Below is an overview of your\nfaced hurdles',
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      fontFamily: 'Laila',
                       fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w500,
                     ),
@@ -418,7 +420,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                                         fontSize:
                                             AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w600,
-                                        fontFamily: 'Poppins'),
+                                        fontFamily: 'Laila'),
                                   ))),
                         ])),
               ],

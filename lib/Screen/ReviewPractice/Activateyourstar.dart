@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -352,8 +353,13 @@ class _ActivateStarState extends State<ActivateStar> {
                                           ),
                                         ),
                                       );
+                                      journeyBottomSheet(
+                                          context,
+                                          AppText().dashboardTitle,
+                                          AppText().dashboardBody,
+                                          AppText().dashboardLink);
 
-                                      dashboard_sheet(context);
+                                      //dashboard_sheet(context);
                                     } else if (response == 400) {
                                       Navigator.push(
                                         context,
@@ -1003,6 +1009,7 @@ class maxActivation extends StatelessWidget {
                       child: RichText(
                           text: const TextSpan(
                               style: TextStyle(
+                                  fontFamily: 'laila',
                                   fontSize: 1.7,
                                   fontWeight: FontWeight.w400,
                                   color: Color(0xFF000000)),

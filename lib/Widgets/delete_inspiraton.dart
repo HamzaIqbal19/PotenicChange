@@ -32,6 +32,7 @@ class delete_insp extends StatelessWidget {
                       child: RichText(
                           text: const TextSpan(
                               style: TextStyle(
+                                  fontFamily: 'laila',
                                   fontSize: 1.7,
                                   fontWeight: FontWeight.w400,
                                   color: Color(0xFF000000)),

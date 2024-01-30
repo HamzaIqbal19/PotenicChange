@@ -689,7 +689,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                                       context) *
                                                   1.6,
                                               fontWeight: FontWeight.w600,
-                                              fontFamily: 'Poppins'),
+                                              fontFamily: 'Laila'),
                                         ))),
                                   );
                                 }),

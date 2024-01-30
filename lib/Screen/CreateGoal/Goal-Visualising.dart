@@ -7,6 +7,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/GoalModel.dart';
+import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
@@ -16,6 +17,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/animatedButton.dart';
@@ -257,6 +259,11 @@ class _VisualisingState extends State<Visualising> {
 
   @override
   Widget build(BuildContext context) {
+    final goalProvider = Provider.of<GoalProvider>(context);
+    if (widget.comingFromEditScreen == false) {
+      goalVisualising = goalProvider.currentGoal!.visualizingYourSelf;
+    }
+
     return WillPopScope(
       onWillPop: () {
         widget.comingFromEditScreen
@@ -563,16 +570,23 @@ class _VisualisingState extends State<Visualising> {
                           ),
                           SizedBox(
                             width: AppDimensions.width10(context) * 30,
-                            child: Center(
-                              child: Text(
-                                goalName,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: widget.comingFromEditScreen
-                                      ? const Color(0xFF437296)
-                                      : Colors.white,
-                                  fontSize: AppDimensions.font10(context) * 2.2,
+                            child: GestureDetector(
+                              onTap: () {
+                                print(goalProvider
+                                    .currentGoal!.identityStatement);
+                              },
+                              child: Center(
+                                child: Text(
+                                  goalName,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: widget.comingFromEditScreen
+                                        ? const Color(0xFF437296)
+                                        : Colors.white,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 2.2,
+                                  ),
                                 ),
                               ),
                             ),
@@ -775,7 +789,9 @@ class _VisualisingState extends State<Visualising> {
                                         inner_text(
                                           key: Key(
                                               goalVisualising[index]['key']!),
-                                          delete: true,
+                                          delete: goalVisualising.length > 1
+                                              ? true
+                                              : false,
                                           head_text:
                                               "${index + 1}. I picture myself.... ",
                                           body_text: goalVisualising[index]
@@ -787,8 +803,15 @@ class _VisualisingState extends State<Visualising> {
                                                   newText;
                                             });
                                             handleTextChanged(index, newText);
+                                            goalProvider
+                                                .updateIdentityStatement(
+                                                    goalVisualising);
                                           },
-                                          onDelete: () => handleDelete(index),
+                                          onDelete: () {
+                                            handleDelete(index);
+                                            goalProvider
+                                                .updateReason(goalVisualising);
+                                          },
                                           index: index,
                                           placeHolder: '',
                                           comingFromEditScreen: false,

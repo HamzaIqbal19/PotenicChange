@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
@@ -258,6 +259,43 @@ class _photo_infoState extends State<photo_info> {
     }
   }
 
+  File? imageFile;
+
+  cropImage() async {
+    print("crop called");
+    CroppedFile? croppedFile = await ImageCropper().cropImage(
+      sourcePath: image,
+      cropStyle: CropStyle.circle,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.original,
+        CropAspectRatioPreset.ratio3x2,
+        CropAspectRatioPreset.original,
+        CropAspectRatioPreset.ratio4x3,
+        CropAspectRatioPreset.ratio16x9
+      ],
+      uiSettings: [
+        AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: Colors.deepOrange,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.original,
+            lockAspectRatio: false),
+        IOSUiSettings(
+          title: 'Cropper',
+        ),
+        WebUiSettings(
+          context: context,
+        ),
+      ],
+    );
+    if (croppedFile != null) {
+      image = croppedFile.path;
+      setState(() {});
+    } else {
+      print("Image is not cropped.");
+    }
+  }
+
   void getImage() async {
     final SharedPreferences prefs = await _prefs;
     var imagePick = prefs.getString('imagePicked');
@@ -392,8 +430,7 @@ class _photo_infoState extends State<photo_info> {
                                           onTap: () async {
                                             final SharedPreferences prefs =
                                                 await _prefs;
-                                            await
-                                                prefs.remove('ImageLink');
+                                            await prefs.remove('ImageLink');
 
                                             if (widget.image_create == true) {
                                               if (title.text
@@ -407,7 +444,6 @@ class _photo_infoState extends State<photo_info> {
                                                     btEnable = false;
                                                   });
                                                 }
-                                               
 
                                                 InspirationApi()
                                                     .addInspiration(
@@ -773,8 +809,6 @@ class _photo_infoState extends State<photo_info> {
                                                     btEnable = false;
                                                   });
                                                 }
-                                               
-                                              
 
                                                 InspirationApi()
                                                     .addInspiration(
@@ -877,18 +911,23 @@ class _photo_infoState extends State<photo_info> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 2.9,
-                          left: AppDimensions.width10(context) * 1.8,
+                      GestureDetector(
+                        onTap: () {
+                          cropImage();
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 2.9,
+                            left: AppDimensions.width10(context) * 1.8,
+                          ),
+                          width: AppDimensions.width10(context) * 24.4,
+                          height: AppDimensions.height10(context) * 24.4,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: FileImage(File(image)),
+                                  fit: BoxFit.cover)),
                         ),
-                        width: AppDimensions.width10(context) * 24.4,
-                        height: AppDimensions.height10(context) * 24.4,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: FileImage(File(image)),
-                                fit: BoxFit.cover)),
                       ),
                       SingleChildScrollView(
                         scrollDirection: Axis.vertical,

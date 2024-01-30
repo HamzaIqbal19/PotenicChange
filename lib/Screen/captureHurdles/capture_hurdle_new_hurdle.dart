@@ -28,7 +28,7 @@ class new_hurdles extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
-                 // width: AppDimensions.width10(context) * 2.6,
+                  // width: AppDimensions.width10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.contain,
                 )),
@@ -41,6 +41,7 @@ class new_hurdles extends StatelessWidget {
               'Hurdle‘s positive\nalternatives',
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: 'Laila',
                 fontSize: AppDimensions.font10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
@@ -53,7 +54,7 @@ class new_hurdles extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),
@@ -79,6 +80,7 @@ class new_hurdles extends StatelessWidget {
                   'Motivational Material',
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                    fontFamily: 'Laila',
                     fontSize: AppDimensions.font10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
@@ -96,6 +98,7 @@ class new_hurdles extends StatelessWidget {
                   'Are there any supporting materials you\ncan use to help you get over\nthis hurdle?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                    fontFamily: 'Laila',
                     fontSize: AppDimensions.font10(context) * 1.8,
                     fontWeight: FontWeight.w600,
                   ),
@@ -116,7 +119,6 @@ class new_hurdles extends StatelessWidget {
                       height: AppDimensions.height10(context) * 16.674,
                       margin: EdgeInsets.only(
                           right: AppDimensions.width10(context) * 1.4,
-
                           left: AppDimensions.width10(context) * 1.0),
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
@@ -562,7 +564,7 @@ class new_hurdles extends StatelessWidget {
                                 color: Colors.white,
                                 fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'Poppins'),
+                                fontFamily: 'Laila'),
                           ))),
                 ],
               ),

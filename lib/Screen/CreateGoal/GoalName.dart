@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/GoalModel.dart';
+import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
@@ -12,6 +13,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/animatedButton.dart';
 import '../ReviewGoal/StarReview.dart';
@@ -36,6 +38,7 @@ class GoalName extends StatefulWidget {
 class _GoalNameState extends State<GoalName> {
   String goalCategory = "";
   String goalName = "";
+  var userIdentity;
   bool updated = false;
   final FocusNode _focusNode = FocusNode();
   String route = '';
@@ -131,6 +134,10 @@ class _GoalNameState extends State<GoalName> {
     getGoal();
   }
 
+  void getGoalStatus() {
+    print("Current goal");
+  }
+
   Future<Goal> getGoal() async {
     final prefs = await SharedPreferences.getInstance();
     String? jsonString = prefs.getString('goal');
@@ -178,6 +185,13 @@ class _GoalNameState extends State<GoalName> {
 
   @override
   Widget build(BuildContext context) {
+    final goalProvider = Provider.of<GoalProvider>(context);
+
+    Goal? currentGoal = goalProvider.currentGoal;
+    if (widget.comingFromEditScreen == false) {
+      mygoal.text = currentGoal!.name;
+    }
+
     //final _formkey1 = GlobalKey<FormState>();
 
     return WillPopScope(
@@ -485,7 +499,9 @@ class _GoalNameState extends State<GoalName> {
                       width: AppDimensions.width10(context) * 30,
                       child: Center(
                         child: Text(
-                          capitalizeFirstLetter(goalName),
+                          widget.comingFromEditScreen
+                              ? goalName
+                              : currentGoal!.name,
                           style: TextStyle(
                             overflow: TextOverflow.ellipsis,
                             fontWeight: FontWeight.w600,
@@ -863,6 +879,7 @@ class _GoalNameState extends State<GoalName> {
                                   return AnimatedScaleButton(
                                     onTap: () async {
                                       _focusNode.unfocus();
+
                                       if (widget.comingFromEditScreen) {
                                         final SharedPreferences prefs =
                                             await _prefs;
@@ -881,6 +898,7 @@ class _GoalNameState extends State<GoalName> {
                                         });
                                         // Navigator.pop(context, mygoal.text);
                                       } else {
+                                        goalProvider.updateName(mygoal.text);
                                         if (mygoal.text != "") {
                                           getUserId(
                                             mygoal.text.toString(),

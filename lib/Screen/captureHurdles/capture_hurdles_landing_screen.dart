@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -15,6 +16,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
+import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -36,7 +38,10 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   var hurdlesList;
   var hurdlesListName;
   List hurdleName = [];
+  bool deleteAll = false;
   bool noData = false;
+  bool longPress = false;
+  bool searchIcon = false;
   var goals = [];
   int search = 0;
   int goalId = 0;
@@ -45,6 +50,8 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   var allHurdle;
   bool loading = true;
   var Route;
+
+  final TextEditingController _searchController = TextEditingController();
 
   void getHurdleRoute() async {
     final SharedPreferences prefs = await _prefs;
@@ -61,6 +68,26 @@ class _landing_hurdlesState extends State<landing_hurdles> {
     setState(() {
       loading = false;
     });
+  }
+
+  void searchHurdles(String searchText) {
+    var searchTerm = allHurdle.where((hurdle) => hurdle["hurdleName"]
+        .toString()
+        .toLowerCase()
+        .contains(searchText.toLowerCase()));
+
+    setState(() {
+      hurdlesList = searchTerm.toList();
+    });
+    if (searchTerm.toList().length == 0) {
+      setState(() {
+        noData = true;
+      });
+    } else {
+      setState(() {
+        noData = false;
+      });
+    }
   }
 
   void _fetchHurdle() async {
@@ -104,6 +131,42 @@ class _landing_hurdlesState extends State<landing_hurdles> {
     });
   }
 
+  List selectItems = [];
+  void doMultiSelection(String path) {
+    print('Double tapped $selectItems');
+    //if (isMultiSelectionEnabled) {
+    setState(() {
+      if (selectItems.contains(path)) {
+        selectItems.remove(path);
+      } else {
+        selectItems.add(path);
+      }
+    });
+    if (selectItems.isEmpty) {
+      setState(() {
+        longPress = false;
+      });
+    }
+    print('Double tapped $selectItems');
+  }
+
+  void selectAll() {
+    if (!deleteAll) {
+      setState(() {
+        selectItems.clear();
+        longPress = false;
+      });
+    } else {
+      selectItems.clear();
+      for (int i = 0; i < hurdlesList.length; i++) {
+        selectItems.add(hurdlesList[i]['id'].toString());
+      }
+      setState(() {
+        longPress = true;
+      });
+    }
+  }
+
   void _fetchAllHurdle() async {
     Hurdles().getAllHurdles().then((response) {
       if (response.length != 0 && response != false) {
@@ -135,6 +198,18 @@ class _landing_hurdlesState extends State<landing_hurdles> {
     for (int i = 0; i <= goals.length; i++) {
       goalName.add(goals[i]['name']);
     }
+  }
+
+  deleteMult() {
+    setState(() {
+      loading = true;
+    });
+    Hurdles().deleteMulipleHurdle(selectItems).then((value) {
+      if (value == true) {
+        selectItems.clear();
+        _fetchHurdle();
+      }
+    });
   }
 
   _newFunctionForHurdle() {
@@ -226,624 +301,780 @@ class _landing_hurdlesState extends State<landing_hurdles> {
           notchMargin: 10,
           child: Container(
             // color: Colors.blue,
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+
             padding: EdgeInsets.only(
                 left: AppDimensions.width10(context) * 2.2,
                 right: AppDimensions.width10(context) * 2.2),
             height: AppDimensions.height10(context) * 7.0,
             // width: AppDimensions.width10(context) * 41.4,
-            child: Stack(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
+            child: searchIcon == true
+                ? Container(
+                    color: Colors.transparent,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          width: AppDimensions.width10(context) * 2.4,
-                          height: AppDimensions.height10(context) * 2.4,
-                          // padding: EdgeInsets.only(
-                          //     top: AppDimensions.height10(context) * 0.5,
-                          //     bottom: AppDimensions.height10(context) * 0.5),
+                        Row(
+                          children: [
+                            Container(
+                              height: AppDimensions.height10(context) * 3.6,
+                              width: AppDimensions.width10(context) * 31.3,
+                              padding: const EdgeInsets.all(6.0),
+                              decoration: BoxDecoration(
+                                  color:
+                                      const Color(0xFF767680).withOpacity(0.12),
+                                  border:
+                                      Border.all(color: Colors.white, width: 2),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(
+                                          AppDimensions.height10(context)))),
+                              child: Center(
+                                child: TextFormField(
+                                    controller: _searchController,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        searchHurdles(value);
+                                      });
+                                    },
+                                    decoration: InputDecoration(
+                                        contentPadding:
+                                            const EdgeInsets.all(0.0),
+                                        prefixIcon: Image.asset(
+                                          'assets/images/Light.webp',
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  1.5,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.5,
+                                        ),
+                                        suffixIcon: AnimatedScaleButton(
+                                          onTap: () {
+                                            _searchController.clear();
+                                            setState(() {
+                                              hurdlesList = allHurdle;
+                                            });
+                                          },
+                                          child: Image.asset(
+                                            'assets/images/cancel.webp',
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    2.3,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.3,
+                                            // fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                        hintText: "Search",
+                                        hintStyle: TextStyle(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.14),
+                                        focusedBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.transparent)),
+                                        enabledBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.transparent)))),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _searchController.clear();
+                              hurdlesList = allHurdle;
+                              searchIcon = false;
+                            });
+                            print("allHurdle $hurdlesList");
+                          },
+                          child: Text(
+                            "Cancel",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: AppDimensions.font10(context) * 1.7,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xFF007AFF),
+                            ),
+                          ),
+                        ),
+
+                        //const Padding(padding: EdgeInsets.all(10))
+                      ],
+                    ),
+                  )
+                : Stack(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: AppDimensions.width10(context) * 2.4,
+                                height: AppDimensions.height10(context) * 2.4,
+                                // padding: EdgeInsets.only(
+                                //     top: AppDimensions.height10(context) * 0.5,
+                                //     bottom: AppDimensions.height10(context) * 0.5),
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Image.asset(
+                                    'assets/images/ic_filter_list.webp',
+                                    width: AppDimensions.width10(context) * 2.4,
+                                    height:
+                                        AppDimensions.height10(context) * 2.4,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: AppDimensions.width10(context) * 0.5,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(16),
+                                      ),
+                                    ),
+                                    builder: (context) {
+                                      return GestureDetector(
+                                        onTap: () =>
+                                            Navigator.of(context).pop(),
+                                        child: Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  30.3,
+                                          color: const Color.fromRGBO(
+                                              0, 0, 0, 0.001),
+                                          child: GestureDetector(
+                                            onTap: () {},
+                                            child: Container(
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: Stack(
+                                                children: [
+                                                  Column(
+                                                    children: [
+                                                      Container(
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            4.0,
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            41.4,
+                                                        decoration: BoxDecoration(
+                                                            border: Border(
+                                                                bottom: BorderSide(
+                                                                    width: AppDimensions.width10(
+                                                                            context) *
+                                                                        0.1,
+                                                                    color: const Color(
+                                                                        0xFF828282)))),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            GestureDetector(
+                                                              onTap: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Container(
+                                                                margin: EdgeInsets.only(
+                                                                    right: AppDimensions.height10(
+                                                                            context) *
+                                                                        2.0),
+                                                                child: Text(
+                                                                  'Cancel',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          AppDimensions.font10(context) *
+                                                                              1.9,
+                                                                      height:
+                                                                          AppDimensions.height10(context) *
+                                                                              0.1,
+                                                                      color: const Color(
+                                                                          0xFF2F80ED)),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            GestureDetector(
+                                                              onTap: () {
+                                                                setState(() {
+                                                                  selectedGoal =
+                                                                      goalName[
+                                                                          goalIndex];
+                                                                  goalId = goals[
+                                                                          index]
+                                                                      ['id'];
+                                                                });
+                                                                filterTerm(
+                                                                    hurdleId,
+                                                                    goals[index]
+                                                                        ['id']);
+
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: SizedBox(
+                                                                child: Text(
+                                                                  'Done',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          AppDimensions.font10(context) *
+                                                                              1.9,
+                                                                      height:
+                                                                          AppDimensions.height10(context) *
+                                                                              0.1,
+                                                                      color: const Color(
+                                                                          0xFF2F80ED)),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              width: AppDimensions
+                                                                  .width10(
+                                                                      context),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child:
+                                                            ListWheelScrollView(
+                                                          itemExtent: 40,
+                                                          magnification: 1.3,
+                                                          useMagnifier:
+                                                              true, // Set the height of each statement
+                                                          children: goalName
+                                                              .map((statement) =>
+                                                                  Text(
+                                                                      statement,
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            AppDimensions.font10(context) *
+                                                                                2.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w400,
+                                                                      )))
+                                                              .toList(),
+                                                          onSelectedItemChanged:
+                                                              (int index) {
+                                                            setState(() {
+                                                              goalIndex = index;
+                                                            });
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Positioned(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        13.5,
+                                                    right:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    child: Align(
+                                                      alignment:
+                                                          const Alignment(0, 0),
+                                                      child: Container(
+                                                          width: 400,
+                                                          height: 1,
+                                                          color: const Color(
+                                                                  0xFF828282)
+                                                              .withOpacity(
+                                                                  0.5)),
+                                                    ),
+                                                  ),
+                                                  Positioned(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        18.0,
+                                                    right:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    child: Align(
+                                                      alignment:
+                                                          const Alignment(0, 0),
+                                                      child: Container(
+                                                          width: 400,
+                                                          height: 1,
+                                                          color: const Color(
+                                                                  0xFF828282)
+                                                              .withOpacity(
+                                                                  0.5)),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Container(
+                                  // width: AppDimensions.width10(context) * 11.5,
+                                  height: AppDimensions.height10(context) * 3.4,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              1.0),
+                                      border: Border.all(
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  0.1,
+                                          color: const Color(0xFFE0E0E0))),
+                                  margin: EdgeInsets.only(
+                                      left:
+                                          AppDimensions.width10(context) * 1.3,
+                                      right:
+                                          AppDimensions.width10(context) * 1.0),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left:
+                                                AppDimensions.width10(context) *
+                                                    1.0),
+                                        child: Text(
+                                          'Goal:',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xffFA9934)),
+                                        ),
+                                      ),
+                                      Container(
+                                        //width: AppDimensions.width10(context) * 1.9,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.4,
+                                        margin: EdgeInsets.only(
+                                            left:
+                                                AppDimensions.width10(context) *
+                                                    0.8),
+                                        child: Center(
+                                          child: Text(
+                                            selectedGoal,
+                                            style: TextStyle(
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.4,
+                                                fontWeight: FontWeight.w700,
+                                                color: const Color(0xffFA9934)),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: AppDimensions.width10(context) *
+                                            2.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.4,
+                                        margin: EdgeInsets.only(
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                0.8,
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0,
+                                            bottom: AppDimensions.height10(
+                                                    context) *
+                                                0.3),
+                                        child: const Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Color(0xffFA9934),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(16),
+                                      ),
+                                    ),
+                                    builder: (context) {
+                                      return GestureDetector(
+                                        onTap: () =>
+                                            Navigator.of(context).pop(),
+                                        child: Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  30.3,
+                                          color: const Color.fromRGBO(
+                                              0, 0, 0, 0.001),
+                                          child: GestureDetector(
+                                            onTap: () {},
+                                            child: Container(
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: Stack(
+                                                children: [
+                                                  Column(
+                                                    children: [
+                                                      Container(
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            4.0,
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            41.4,
+                                                        decoration: BoxDecoration(
+                                                            border: Border(
+                                                                bottom: BorderSide(
+                                                                    width: AppDimensions.width10(
+                                                                            context) *
+                                                                        0.1,
+                                                                    color: const Color(
+                                                                        0xFF828282)))),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            GestureDetector(
+                                                              onTap: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Container(
+                                                                margin: EdgeInsets.only(
+                                                                    right: AppDimensions.height10(
+                                                                            context) *
+                                                                        2.0),
+                                                                child: Text(
+                                                                  'Cancel',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          AppDimensions.font10(context) *
+                                                                              1.9,
+                                                                      height:
+                                                                          AppDimensions.height10(context) *
+                                                                              0.1,
+                                                                      color: const Color(
+                                                                          0xFF2F80ED)),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            GestureDetector(
+                                                              onTap: () {
+                                                                setState(() {
+                                                                  selectedActivity =
+                                                                      hurdleName[
+                                                                          selectedTag];
+                                                                  hurdleId =
+                                                                      hurdlesListName[
+                                                                              selectedTag]
+                                                                          [
+                                                                          'id'];
+                                                                  // search = hurdlesList[
+                                                                  //         _selectedTag]
+                                                                  //     ['hurdleId'];
+                                                                });
+                                                                filterTerm(
+                                                                    hurdleId,
+                                                                    goalId);
+
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: SizedBox(
+                                                                child: Text(
+                                                                  'Done',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          AppDimensions.font10(context) *
+                                                                              1.9,
+                                                                      height:
+                                                                          AppDimensions.height10(context) *
+                                                                              0.1,
+                                                                      color: const Color(
+                                                                          0xFF2F80ED)),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              width: AppDimensions
+                                                                  .width10(
+                                                                      context),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child:
+                                                            ListWheelScrollView(
+                                                          itemExtent: 40,
+                                                          magnification: 1.3,
+                                                          useMagnifier: true,
+                                                          children: hurdleName
+                                                              .map(
+                                                                  (statement) =>
+                                                                      Column(
+                                                                        children: [
+                                                                          Text(
+                                                                              statement,
+                                                                              style: TextStyle(
+                                                                                fontSize: AppDimensions.height10(context) * 2.0,
+                                                                                fontWeight: FontWeight.w400,
+                                                                              )),
+                                                                        ],
+                                                                      ))
+                                                              .toList(),
+                                                          onSelectedItemChanged:
+                                                              (int index) {
+                                                            setState(() {
+                                                              selectedTag =
+                                                                  index;
+                                                            });
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Positioned(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        13.5,
+                                                    right:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    child: Align(
+                                                      alignment:
+                                                          const Alignment(0, 0),
+                                                      child: Container(
+                                                          width: 400,
+                                                          height: 1,
+                                                          color: const Color(
+                                                                  0xFF828282)
+                                                              .withOpacity(
+                                                                  0.5)),
+                                                    ),
+                                                  ),
+                                                  Positioned(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        18.0,
+                                                    right:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    child: Align(
+                                                      alignment:
+                                                          const Alignment(0, 0),
+                                                      child: Container(
+                                                          width: 400,
+                                                          height: 1,
+                                                          color: const Color(
+                                                                  0xFF828282)
+                                                              .withOpacity(
+                                                                  0.5)),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Container(
+                                  //width: AppDimensions.width10(context) * 11.6,
+                                  height: AppDimensions.height10(context) * 3.4,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              1.0),
+                                      border: Border.all(
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  0.1,
+                                          color: const Color(0xFFE0E0E0))),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left:
+                                                AppDimensions.width10(context) *
+                                                    1.0),
+                                        child: Text(
+                                          'Type:',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xffFA9934)),
+                                        ),
+                                      ),
+                                      Container(
+                                        // width: AppDimensions.width10(context) * 1.9,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.4,
+                                        margin: EdgeInsets.only(
+                                            left:
+                                                AppDimensions.width10(context) *
+                                                    0.8),
+                                        child: Center(
+                                          child: Text(
+                                            selectedActivity,
+                                            style: TextStyle(
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.4,
+                                                fontWeight: FontWeight.w700,
+                                                color: const Color(0xffFA9934)),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: AppDimensions.width10(context) *
+                                            2.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.4,
+                                        margin: EdgeInsets.only(
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                0.8,
+                                            bottom: AppDimensions.height10(
+                                                    context) *
+                                                0.3,
+                                            right:
+                                                AppDimensions.width10(context) *
+                                                    1.0),
+                                        child: const Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Color(0xffFA9934),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              AnimatedScaleButton(
+                                onTap: () {
+                                  setState(() {
+                                    hurdlesList = allHurdle;
+                                    noData = false;
+                                    hurdleId = 0;
+                                    goalId = 0;
+                                    selectedActivity = "All";
+                                    selectedGoal = 'All';
+                                  });
+                                },
+                                child: Container(
+                                  //width: AppDimensions.width10(context) * 3.9,
+                                  height: AppDimensions.height10(context) * 3.4,
+                                  margin: EdgeInsets.only(
+                                      left:
+                                          AppDimensions.width10(context) * 1.0,
+                                      right:
+                                          AppDimensions.width10(context) * 7.0),
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    'Clear All',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.font10(context) * 1.4,
+                                        fontWeight: FontWeight.w400,
+                                        decoration: TextDecoration.underline,
+                                        color: const Color(0xFFFA9934)),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          width: AppDimensions.width10(context) * 5.0,
+                          height: AppDimensions.height10(context) * 5.0,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Color(0xFFFBFBFB)),
                           child: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              setState(() {
+                                searchIcon = true;
+                              });
+                            },
                             child: Image.asset(
-                              'assets/images/ic_filter_list.webp',
-                              width: AppDimensions.width10(context) * 2.4,
-                              height: AppDimensions.height10(context) * 2.4,
+                              'assets/images/Search.webp',
+                              width: AppDimensions.width10(context) * 5,
+                              height: AppDimensions.height10(context) * 5,
                               fit: BoxFit.contain,
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: AppDimensions.width10(context) * 0.5,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            showModalBottomSheet(
-                              context: context,
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(16),
-                                ),
-                              ),
-                              builder: (context) {
-                                return GestureDetector(
-                                  onTap: () => Navigator.of(context).pop(),
-                                  child: Container(
-                                    height:
-                                        AppDimensions.height10(context) * 30.3,
-                                    color: const Color.fromRGBO(0, 0, 0, 0.001),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: Stack(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Container(
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          4.0,
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      41.4,
-                                                  decoration: BoxDecoration(
-                                                      border: Border(
-                                                          bottom: BorderSide(
-                                                              width: AppDimensions
-                                                                      .width10(
-                                                                          context) *
-                                                                  0.1,
-                                                              color: const Color(
-                                                                  0xFF828282)))),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              right: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  2.0),
-                                                          child: Text(
-                                                            'Cancel',
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1.9,
-                                                                height: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    0.1,
-                                                                color: const Color(
-                                                                    0xFF2F80ED)),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          setState(() {
-                                                            selectedGoal =
-                                                                goalName[
-                                                                    goalIndex];
-                                                            goalId =
-                                                                goals[index]
-                                                                    ['id'];
-                                                          });
-                                                          filterTerm(
-                                                              hurdleId,
-                                                              goals[index]
-                                                                  ['id']);
-
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: SizedBox(
-                                                          child: Text(
-                                                            'Done',
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1.9,
-                                                                height: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    0.1,
-                                                                color: const Color(
-                                                                    0xFF2F80ED)),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: AppDimensions
-                                                            .width10(context),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: ListWheelScrollView(
-                                                    itemExtent: 40,
-                                                    magnification: 1.3,
-                                                    useMagnifier:
-                                                        true, // Set the height of each statement
-                                                    children: goalName
-                                                        .map((statement) =>
-                                                            Text(statement,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          2.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                )))
-                                                        .toList(),
-                                                    onSelectedItemChanged:
-                                                        (int index) {
-                                                      setState(() {
-                                                        goalIndex = index;
-                                                      });
-                                                    },
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Positioned(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  13.5,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              child: Align(
-                                                alignment:
-                                                    const Alignment(0, 0),
-                                                child: Container(
-                                                    width: 400,
-                                                    height: 1,
-                                                    color:
-                                                        const Color(0xFF828282)
-                                                            .withOpacity(0.5)),
-                                              ),
-                                            ),
-                                            Positioned(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  18.0,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              child: Align(
-                                                alignment:
-                                                    const Alignment(0, 0),
-                                                child: Container(
-                                                    width: 400,
-                                                    height: 1,
-                                                    color:
-                                                        const Color(0xFF828282)
-                                                            .withOpacity(0.5)),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                          child: Container(
-                            // width: AppDimensions.width10(context) * 11.5,
-                            height: AppDimensions.height10(context) * 3.4,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 1.0),
-                                border: Border.all(
-                                    width: AppDimensions.width10(context) * 0.1,
-                                    color: const Color(0xFFE0E0E0))),
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.width10(context) * 1.3,
-                                right: AppDimensions.width10(context) * 1.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      left:
-                                          AppDimensions.width10(context) * 1.0),
-                                  child: Text(
-                                    'Goal:',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xffFA9934)),
-                                  ),
-                                ),
-                                Container(
-                                  //width: AppDimensions.width10(context) * 1.9,
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  margin: EdgeInsets.only(
-                                      left:
-                                          AppDimensions.width10(context) * 0.8),
-                                  child: Center(
-                                    child: Text(
-                                      selectedGoal,
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.4,
-                                          fontWeight: FontWeight.w700,
-                                          color: const Color(0xffFA9934)),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: AppDimensions.width10(context) * 2.4,
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  margin: EdgeInsets.only(
-                                      left:
-                                          AppDimensions.height10(context) * 0.8,
-                                      right:
-                                          AppDimensions.height10(context) * 1.0,
-                                      bottom: AppDimensions.height10(context) *
-                                          0.3),
-                                  child: const Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Color(0xffFA9934),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            showModalBottomSheet(
-                              context: context,
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(16),
-                                ),
-                              ),
-                              builder: (context) {
-                                return GestureDetector(
-                                  onTap: () => Navigator.of(context).pop(),
-                                  child: Container(
-                                    height:
-                                        AppDimensions.height10(context) * 30.3,
-                                    color: const Color.fromRGBO(0, 0, 0, 0.001),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: Stack(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Container(
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          4.0,
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      41.4,
-                                                  decoration: BoxDecoration(
-                                                      border: Border(
-                                                          bottom: BorderSide(
-                                                              width: AppDimensions
-                                                                      .width10(
-                                                                          context) *
-                                                                  0.1,
-                                                              color: const Color(
-                                                                  0xFF828282)))),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              right: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  2.0),
-                                                          child: Text(
-                                                            'Cancel',
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1.9,
-                                                                height: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    0.1,
-                                                                color: const Color(
-                                                                    0xFF2F80ED)),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          setState(() {
-                                                            selectedActivity =
-                                                                hurdleName[
-                                                                    selectedTag];
-                                                            hurdleId =
-                                                                hurdlesListName[
-                                                                        selectedTag]
-                                                                    ['id'];
-                                                            // search = hurdlesList[
-                                                            //         _selectedTag]
-                                                            //     ['hurdleId'];
-                                                          });
-                                                          filterTerm(
-                                                              hurdleId, goalId);
-
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: SizedBox(
-                                                          child: Text(
-                                                            'Done',
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1.9,
-                                                                height: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    0.1,
-                                                                color: const Color(
-                                                                    0xFF2F80ED)),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: AppDimensions
-                                                            .width10(context),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: ListWheelScrollView(
-                                                    itemExtent: 40,
-                                                    magnification: 1.3,
-                                                    useMagnifier: true,
-                                                    children: hurdleName
-                                                        .map(
-                                                            (statement) =>
-                                                                Column(
-                                                                  children: [
-                                                                    Text(
-                                                                        statement,
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              AppDimensions.height10(context) * 2.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w400,
-                                                                        )),
-                                                                  ],
-                                                                ))
-                                                        .toList(),
-                                                    onSelectedItemChanged:
-                                                        (int index) {
-                                                      setState(() {
-                                                        selectedTag = index;
-                                                      });
-                                                    },
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Positioned(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  13.5,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              child: Align(
-                                                alignment:
-                                                    const Alignment(0, 0),
-                                                child: Container(
-                                                    width: 400,
-                                                    height: 1,
-                                                    color:
-                                                        const Color(0xFF828282)
-                                                            .withOpacity(0.5)),
-                                              ),
-                                            ),
-                                            Positioned(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  18.0,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              child: Align(
-                                                alignment:
-                                                    const Alignment(0, 0),
-                                                child: Container(
-                                                    width: 400,
-                                                    height: 1,
-                                                    color:
-                                                        const Color(0xFF828282)
-                                                            .withOpacity(0.5)),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                          child: Container(
-                            //width: AppDimensions.width10(context) * 11.6,
-                            height: AppDimensions.height10(context) * 3.4,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 1.0),
-                                border: Border.all(
-                                    width: AppDimensions.width10(context) * 0.1,
-                                    color: const Color(0xFFE0E0E0))),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      left:
-                                          AppDimensions.width10(context) * 1.0),
-                                  child: Text(
-                                    'Type:',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xffFA9934)),
-                                  ),
-                                ),
-                                Container(
-                                  // width: AppDimensions.width10(context) * 1.9,
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  margin: EdgeInsets.only(
-                                      left:
-                                          AppDimensions.width10(context) * 0.8),
-                                  child: Center(
-                                    child: Text(
-                                      selectedActivity,
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.4,
-                                          fontWeight: FontWeight.w700,
-                                          color: const Color(0xffFA9934)),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: AppDimensions.width10(context) * 2.4,
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  margin: EdgeInsets.only(
-                                      left:
-                                          AppDimensions.height10(context) * 0.8,
-                                      bottom:
-                                          AppDimensions.height10(context) * 0.3,
-                                      right:
-                                          AppDimensions.width10(context) * 1.0),
-                                  child: const Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Color(0xffFA9934),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        AnimatedScaleButton(
-                          onTap: () {
-                            setState(() {
-                              hurdlesList = allHurdle;
-                              noData = false;
-                              hurdleId = 0;
-                              goalId = 0;
-                              selectedActivity = "All";
-                              selectedGoal = 'All';
-                            });
-                          },
-                          child: Container(
-                            //width: AppDimensions.width10(context) * 3.9,
-                            height: AppDimensions.height10(context) * 3.4,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.width10(context) * 1.0,
-                                right: AppDimensions.width10(context) * 7.0),
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Clear All',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  decoration: TextDecoration.underline,
-                                  color: const Color(0xFFFA9934)),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    width: AppDimensions.width10(context) * 5.0,
-                    height: AppDimensions.height10(context) * 5.0,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Color(0xFFFBFBFB)),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Image.asset(
-                        'assets/images/Search.webp',
-                        width: AppDimensions.width10(context) * 5,
-                        height: AppDimensions.height10(context) * 5,
-                        fit: BoxFit.contain,
                       ),
-                    ),
-                  ),
-                ),
 
-                //const Padding(padding: EdgeInsets.all(10))
-              ],
-            ),
+                      //const Padding(padding: EdgeInsets.all(10))
+                    ],
+                  ),
           ),
         ),
         body: Container(
@@ -859,15 +1090,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                     child: Column(
                       children: [
                         Container(
-                            width: AppDimensions.width10(context) * 34.3,
-                            height: AppDimensions.height10(context) * 34.2,
-                            decoration: const BoxDecoration(
-                                color: Colors.transparent,
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/Blackhole.webp'),
-                                  fit: BoxFit.contain,
-                                )),
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 7.5,
                                 left: AppDimensions.width10(context) * 2),
@@ -916,7 +1138,12 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                       ),
                                       AnimatedScaleButton(
                                         onTap: () {
-                                          hurdleSheet(context);
+                                          //hurdleSheet(context);
+                                          journeyBottomSheet(
+                                              context,
+                                              AppText().hurdleBottomSheedTitle,
+                                              AppText().hurdleBottomSheedBody,
+                                              AppText().hurdleTutorialLink);
                                         },
                                         child: Container(
                                             width:
@@ -933,106 +1160,190 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                     ],
                                   ),
                                 ),
-                                Container(
-                                  width: AppDimensions.width10(context) * 9.8,
-                                  height: AppDimensions.height10(context) * 2.2,
-                                  margin: EdgeInsets.only(
-                                      right:
-                                          AppDimensions.width10(context) * 2.0),
-                                  child: Text(AppText().newHurdle,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.8,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white,
-                                          fontFamily: 'laila')),
-                                ),
-                                AnimatedScaleButton(
-                                  onTap: () async {
-                                    if (Route == 'Impact') {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const hurdles_goal_impact(
-                                          summary: false,
-                                        )),
-                                      );
-                                    } else if (Route == 'Select') {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const select_hurdle(
-                                                update: false)),
-                                      );
-                                    } else if (Route == 'Name') {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const hurdle_name(
-                                                update: false)),
-                                      );
-                                    } else if (Route == 'Statements') {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const hurdle_statement(
-                                                update: false)),
-                                      );
-                                    } else if (Route == 'Feelings') {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const felling_hurdles(
-                                          update: false,
-                                        )),
-                                      );
-                                    } else {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const hurdles_goal_impact(
-                                          summary: false,
-                                        )),
-                                      );
-                                      final SharedPreferences prefs =
-                                          await _prefs;
-                                      await prefs.remove('HurdleRoute');
-                                    }
-                                  },
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            3.8,
-                                        right: AppDimensions.width10(context) *
-                                            1.8),
-                                    child: Icon(
-                                      Icons.add,
-                                      size:
-                                          AppDimensions.height10(context) * 5.6,
-                                      color: const Color(0xFFFFFFFF),
-                                    ),
-                                  ),
-                                ),
                               ],
                             )),
-                        // Container(
-                        //   width: AppDimensions.width10(context) * 9.8,
-                        //   height: AppDimensions.height10(context) * 2.2,
-                        //   margin: EdgeInsets.only(
-                        //       // top: AppDimensions.height10(context) * 1.6,
-                        //       left: AppDimensions.width10(context) * 0.5),
-                        //   child: Text('New hurdle',
-                        //       textAlign: TextAlign.center,
-                        //       style: TextStyle(
-                        //           fontSize:
-                        //               AppDimensions.height10(context) * 1.8,
-                        //           fontWeight: FontWeight.w500,
-                        //           color: Colors.white,
-                        //           fontFamily: 'laila')),
-                        // ),
-
+                        AnimatedScaleButton(
+                          onTap: () async {
+                            if (Route == 'Impact') {
+                              Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const hurdles_goal_impact(
+                                  summary: false,
+                                )),
+                              );
+                            } else if (Route == 'Select') {
+                              Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const select_hurdle(update: false)),
+                              );
+                            } else if (Route == 'Name') {
+                              Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const hurdle_name(update: false)),
+                              );
+                            } else if (Route == 'Statements') {
+                              Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page:
+                                        const hurdle_statement(update: false)),
+                              );
+                            } else if (Route == 'Feelings') {
+                              Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const felling_hurdles(
+                                  update: false,
+                                )),
+                              );
+                            } else {
+                              Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const hurdles_goal_impact(
+                                  summary: false,
+                                )),
+                              );
+                              final SharedPreferences prefs = await _prefs;
+                              await prefs.remove('HurdleRoute');
+                            }
+                          },
+                          child: Container(
+                            width: AppDimensions.width10(context) * 21.6,
+                            height: AppDimensions.height10(context) * 23.5,
+                            decoration: const BoxDecoration(
+                                color: Colors.transparent,
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/addHurdle.webp'),
+                                  fit: BoxFit.contain,
+                                )),
+                          ),
+                        ),
+                        selectItems.isNotEmpty
+                            ? Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal:
+                                        AppDimensions.height10(context) * 1.5),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        GradientText(
+                                          'Select All',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.8,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                          colors: const [
+                                            Color(0xffFA9934),
+                                            Color(0xffEDD15E)
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                              color: Colors
+                                                  .white, // Set the border color to white
+                                            ),
+                                          ),
+                                          child: InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                deleteAll = !deleteAll;
+                                              });
+                                              selectAll();
+                                            },
+                                            borderRadius: BorderRadius.circular(
+                                                50.0), // Set the borderRadius to make it circular
+                                            child: Container(
+                                              width:
+                                                  20.0, // Set the size of the circular checkbox
+                                              height: 20.0,
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: deleteAll
+                                                    ? Colors.white
+                                                    : Colors
+                                                        .transparent, // Set the background color when selected
+                                              ),
+                                              child: deleteAll
+                                                  ? const Icon(
+                                                      Icons.check,
+                                                      size: 16.0,
+                                                      color: Color(
+                                                          0xffFA9934), // Set the check mark color
+                                                    )
+                                                  : null, // Show the check mark icon only when selected
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            selectItems.clear();
+                                            setState(() {
+                                              deleteAll = false;
+                                            });
+                                          },
+                                          child: GradientText(
+                                            'Clear',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.8,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                            colors: const [
+                                              Color(0xffFA9934),
+                                              Color(0xffEDD15E)
+                                            ],
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        AnimatedScaleButton(
+                                          onTap: () {
+                                            deleteMult();
+                                          },
+                                          child: GradientText(
+                                            'Delete',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
+                                                  1.8,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                            colors: const [
+                                              Color(0xffFA9934),
+                                              Color(0xffEDD15E)
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              )
+                            : Container(),
                         noData == true
                             ? Container(
                                 margin: EdgeInsets.only(
@@ -1075,111 +1386,200 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                     ),
                                     itemCount: hurdlesList.length,
                                     itemBuilder: (context, index) {
+                                      bool selected = selectItems.contains(
+                                          hurdlesList[index]['id'].toString());
                                       return Column(
                                         children: [
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
-                                              AnimatedScaleButton(
-                                                onTap: () async {
-                                                  final SharedPreferences
-                                                      prefs = await _prefs;
-
-                                                  await prefs.setInt(
-                                                      'userHurdleId',
-                                                      hurdlesList[index]['id']);
-                                                  Navigator.push(
-                                                    context,
-                                                    FadePageRoute(
-                                                        page:
-                                                            const hurdle_menu()),
-                                                  );
+                                              MulitiSelectionButton(
+                                                longPress: () {
+                                                  print(
+                                                      "Hurdle List $hurdlesList");
+                                                  setState(() {
+                                                    longPress = true;
+                                                  });
+                                                  doMultiSelection(
+                                                      hurdlesList[index]['id']
+                                                          .toString());
                                                 },
-                                                child: Container(
-                                                  width: AppDimensions.width10(
-                                                          context) *
-                                                      19.313,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          19.942,
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal:
+                                                onTap: () async {
+                                                  if (longPress) {
+                                                    doMultiSelection(
+                                                        hurdlesList[index]['id']
+                                                            .toString());
+                                                  } else {
+                                                    final SharedPreferences
+                                                        prefs = await _prefs;
+
+                                                    await prefs.setInt(
+                                                        'userHurdleId',
+                                                        hurdlesList[index]
+                                                            ['id']);
+                                                    Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const hurdle_menu()),
+                                                    );
+                                                  }
+                                                },
+                                                child: Stack(
+                                                  alignment:
+                                                      AlignmentDirectional
+                                                          .topEnd,
+                                                  children: [
+                                                    InkWell(
+                                                      onTap: () {
+                                                        doMultiSelection(
+                                                            hurdlesList[index]
+                                                                    ['id']
+                                                                .toString());
+                                                      },
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50.0), // Set the borderRadius to make it circular
+                                                      child: Container(
+                                                        width:
+                                                            20.0, // Set the size of the circular checkbox
+                                                        height: 20.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          border: Border.all(
+                                                              color: selectItems
+                                                                      .isNotEmpty
+                                                                  ? Colors.white
+                                                                  : Colors
+                                                                      .transparent),
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: selected
+                                                              ? Colors.white
+                                                              : Colors
+                                                                  .transparent, // Set the background color when selected
+                                                        ),
+                                                        child: selected
+                                                            ? const Icon(
+                                                                Icons.check,
+                                                                size: 16.0,
+                                                                color: Color(
+                                                                    0xffFA9934), // Set the check mark color
+                                                              )
+                                                            : null, // Show the check mark icon only when selected
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width:
                                                           AppDimensions.width10(
                                                                   context) *
+                                                              19.313,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          19.942,
+                                                      padding: EdgeInsets.symmetric(
+                                                          horizontal: AppDimensions
+                                                                  .width10(
+                                                                      context) *
                                                               1.5),
-                                                  decoration: const BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      image: DecorationImage(
-                                                          image: AssetImage(
-                                                              'assets/images/black_hole.webp'))),
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      SizedBox(
-                                                        width: AppDimensions
-                                                                .width10(
-                                                                    context) *
-                                                            14.0,
-                                                        child: Text(
-                                                          capitalizeFirstLetter(
-                                                              hurdlesList[index]
-                                                                  [
-                                                                  'hurdleName']),
-                                                          maxLines: 1,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                              color: const Color(
-                                                                  0xFFFFFFFF),
-                                                              fontSize: AppDimensions
-                                                                      .font10(
-                                                                          context) *
-                                                                  1.8,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        margin: EdgeInsets.only(
-                                                            top: AppDimensions
-                                                                    .height10(
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              image:
+                                                                  DecorationImage(
+                                                                image: AssetImage(
+                                                                    'assets/images/black_hole.webp'),
+                                                                // colorFilter: ColorFilter.mode(
+                                                                //     selectItems.contains(
+                                                                //             hurdlesList[index]
+                                                                //                     [
+                                                                //                     'id']
+                                                                //                 .toString())
+                                                                //         ? Colors.black
+                                                                //             .withOpacity(
+                                                                //                 0.8)
+                                                                //         : Colors
+                                                                //             .transparent,
+                                                                //     BlendMode
+                                                                //         .color)
+                                                              )),
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          SizedBox(
+                                                            width: AppDimensions
+                                                                    .width10(
                                                                         context) *
-                                                                0.6),
-                                                        width: AppDimensions
-                                                                .width10(
-                                                                    context) *
-                                                            15.7,
-                                                        child: Text(
-                                                          capitalizeFirstLetter(
-                                                              hurdlesList[index]
-                                                                  [
-                                                                  'triggerStatment']),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          maxLines: 4,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          style: TextStyle(
-                                                              color: const Color(
-                                                                  0xFFFFFFFF),
-                                                              fontSize: AppDimensions
-                                                                      .font10(
-                                                                          context) *
-                                                                  1.6,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
+                                                                14.0,
+                                                            child: Text(
+                                                              capitalizeFirstLetter(
+                                                                  hurdlesList[
+                                                                          index]
+                                                                      [
+                                                                      'hurdleName']),
+                                                              maxLines: 1,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: TextStyle(
+                                                                  color: const Color(
+                                                                      0xFFFFFFFF),
+                                                                  fontSize:
+                                                                      AppDimensions.font10(
+                                                                              context) *
+                                                                          1.8,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            margin: EdgeInsets.only(
+                                                                top: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    0.6),
+                                                            width: AppDimensions
+                                                                    .width10(
+                                                                        context) *
+                                                                15.7,
+                                                            child: Text(
+                                                              capitalizeFirstLetter(
+                                                                  hurdlesList[
+                                                                          index]
+                                                                      [
+                                                                      'triggerStatment']),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              maxLines: 4,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: TextStyle(
+                                                                  color: const Color(
+                                                                      0xFFFFFFFF),
+                                                                  fontSize:
+                                                                      AppDimensions.font10(
+                                                                              context) *
+                                                                          1.6,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
                                             ],
@@ -1523,9 +1923,8 @@ class _hurdle_menuState extends State<hurdle_menu> {
                                             margin: EdgeInsets.only(
                                                 top: AppDimensions.height10(context) *
                                                     1.9,
-                                                right:
-                                                    AppDimensions.width10(context) *
-                                                        1.6,
+                                                right: AppDimensions.width10(context) *
+                                                    1.6,
                                                 left: AppDimensions.width10(context) *
                                                     1.6,
                                                 bottom:
@@ -1534,15 +1933,17 @@ class _hurdle_menuState extends State<hurdle_menu> {
                                             height:
                                                 AppDimensions.height10(context) *
                                                     4.4,
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    23.8,
+                                            width: AppDimensions.width10(context) *
+                                                23.8,
                                             child: RichText(
                                                 textAlign: TextAlign.center,
                                                 text: TextSpan(
                                                     style: TextStyle(
-                                                        fontSize:
-                                                            AppDimensions.height10(context) * 1.7,
+                                                        fontFamily: 'laila',
+                                                        height:
+                                                            AppDimensions.height10(context) *
+                                                                0.15,
+                                                        fontSize: AppDimensions.font10(context) * 1.6,
                                                         fontWeight: FontWeight.w400,
                                                         color: const Color(0xFF000000)),
                                                     children: const [
@@ -2159,6 +2560,26 @@ void hurdleSheet(context) {
                       color: const Color(0xFF437296)),
                 ),
               ),
+              Container(
+                width: AppDimensions.height10(context) * 37.5,
+                height: AppDimensions.height10(context) * 5,
+                decoration: BoxDecoration(
+                    color: const Color(0xFFFBFBFB),
+                    borderRadius: BorderRadius.circular(20)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Watch Demo',
+                      style: TextStyle(
+                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xFF646464),
+                      ),
+                    )
+                  ],
+                ),
+              )
             ],
           )),
     ),

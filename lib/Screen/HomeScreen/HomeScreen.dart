@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
@@ -27,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool admin = false;
+  var pracRoute;
 
   Future<void> getUserRole() async {
     final SharedPreferences prefs = await _prefs;
@@ -52,7 +54,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     getUserRole();
+    getRoute();
     super.initState();
+  }
+
+  getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    pracRoute = prefs.getBool('pracRoute') ?? false;
   }
 
   // final contractAddress = "0xaBE2ec3a68A15a382BcDC93499Ab751D3d954BB2";
@@ -105,14 +113,22 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     AnimatedScaleButton(
                       onTap: () async {
                         if (widget.login == true) {
-                          Navigator.push(
-                            context,
-                            FadePageRoute2(
-                              enterPage: const StartProcess(),
-                              exitPage: const HomeScreen(login: false),
-                              true,
-                            ),
-                          );
+                          if (pracRoute != false) {
+                            Navigator.push(
+                                context,
+                                FadePageRoute2(true,
+                                    enterPage: const GoalFinished(),
+                                    exitPage: const HomeScreen(login: false)));
+                          } else {
+                            Navigator.push(
+                              context,
+                              FadePageRoute2(
+                                enterPage: const StartProcess(),
+                                exitPage: const HomeScreen(login: false),
+                                true,
+                              ),
+                            );
+                          }
                         } else {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
@@ -406,7 +422,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        enterPage: LoginPage(),
+                                        enterPage: const LoginPage(),
                                         exitPage:
                                             const HomeScreen(login: false),
                                       ),

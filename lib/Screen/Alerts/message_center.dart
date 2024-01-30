@@ -1001,7 +1001,7 @@ class _message_centerState extends State<message_center> {
                                                         height:
                                                             AppDimensions.height10(context) *
                                                                 0.15,
-                                                        fontSize: AppDimensions.font10(context) * 1.7,
+                                                        fontSize: AppDimensions.font10(context) * 1.6,
                                                         fontWeight: FontWeight.w400,
                                                         color: const Color(0xFF000000)),
                                                     children: const [
@@ -1231,8 +1231,8 @@ class messages extends StatelessWidget {
               Container(
                 width: AppDimensions.width10(context) * 31.1,
                 height: AppDimensions.height10(context) * 4.0,
-                margin: EdgeInsets.only(
-                    left: AppDimensions.width10(context) * 3.2),
+                margin:
+                    EdgeInsets.only(left: AppDimensions.width10(context) * 3.2),
                 child: Align(
                   alignment: const Alignment(-1, 0.6),
                   child: Text(

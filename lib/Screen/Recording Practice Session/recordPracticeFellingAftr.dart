@@ -349,14 +349,14 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                   color: const Color(0xFFFBFBFB)),
                               children: const [
                                 TextSpan(
-                                  text: 'How do you feel\n',
+                                  text: 'How do you feel',
                                 ),
                                 TextSpan(
-                                  text: 'after',
+                                  text: ' after',
                                   style: TextStyle(color: Color(0xff8C648A)),
                                 ),
                                 TextSpan(
-                                  text: ' recording your\npractice?',
+                                  text: '\nrecording your practice?',
                                 ),
                               ]),
                         )

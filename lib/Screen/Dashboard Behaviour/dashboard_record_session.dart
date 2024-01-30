@@ -87,7 +87,7 @@ class _record_sessionState extends State<record_session> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',
-                   // width: AppDimensions.width10(context) * 2.6,
+                    // width: AppDimensions.width10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.contain,
                   )),
@@ -142,11 +142,9 @@ class _record_sessionState extends State<record_session> {
                               //width: AppDimensions.width10(context) * 46.4,
 
                               margin: EdgeInsets.only(
-
                                   bottom:
                                       AppDimensions.height10(context) * 3.2),
-                              child: Stack(
-                                  children: [
+                              child: Stack(children: [
                                 Align(
                                     alignment: Alignment.topLeft,
                                     child: Container(
@@ -155,7 +153,8 @@ class _record_sessionState extends State<record_session> {
                                         height: AppDimensions.height10(context) *
                                             26.8,
                                         margin: EdgeInsets.only(
-                                          left: AppDimensions.width10(context) * 2.3,
+                                          left: AppDimensions.width10(context) *
+                                              2.3,
                                         ),
                                         padding: EdgeInsets.symmetric(
                                             horizontal:
@@ -252,13 +251,12 @@ class _record_sessionState extends State<record_session> {
                                                       pracName: widget
                                                               .past_session
                                                           ? activePractices[
-                                                                      index][
-                                                                  'practices']
+                                                                      index]
+                                                                  ['practices']
                                                               [index1]['name']
                                                           : allGoals[index][
                                                                   'userPractices']
-                                                              [
-                                                              index1]['name'],
+                                                              [index1]['name'],
                                                       record: true,
                                                       selected: 0,
                                                     )))
@@ -276,8 +274,8 @@ class _record_sessionState extends State<record_session> {
                                               await prefs.setInt(
                                                   'prac_num',
                                                   activePractices[index]
-                                                          ['practices']
-                                                      [index1]['id']);
+                                                          ['practices'][index1]
+                                                      ['id']);
                                             } else {
                                               await prefs.setInt(
                                                   'prac_num',
@@ -303,9 +301,11 @@ class _record_sessionState extends State<record_session> {
                                                             context) *
                                                         0.5),
                                             margin: EdgeInsets.only(
-                                              left: index1 == 0? AppDimensions.height10(
-                                                  context) *
-                                                  2.9: 0,
+                                                left: index1 == 0
+                                                    ? AppDimensions.height10(
+                                                            context) *
+                                                        2.9
+                                                    : 0,
                                                 right: AppDimensions.height10(
                                                         context) *
                                                     1.0),
@@ -313,28 +313,30 @@ class _record_sessionState extends State<record_session> {
                                               shape: BoxShape.circle,
                                               image: DecorationImage(
                                                   image: widget.past_session
-                                                      ? AssetImage(activePractices[index]['practices'][index1]['color']
+                                                      ? AssetImage(activePractices[index]
+                                                                              ['practices']
+                                                                          [index1]
+                                                                      ['color']
                                                                   .toString() ==
                                                               '1'
                                                           ? "assets/images/Ellipse orange.webp"
-                                                          : activePractices[index]['practices'][index1]['color']
+                                                          : activePractices[index]
+                                                                              ['practices'][index1][
+                                                                          'color']
                                                                       .toString() ==
                                                                   '2'
                                                               ? 'assets/images/Ellipse 158.webp'
-                                                              : activePractices[index]['practices'][index1]['color'].toString() ==
+                                                              : activePractices[index]['practices'][index1]['color']
+                                                                          .toString() ==
                                                                       '3'
                                                                   ? "assets/images/Ellipse 157.webp"
                                                                   : activePractices[index]['practices'][index1]['color'].toString() ==
                                                                           '4'
                                                                       ? "assets/images/Ellipse light-blue.webp"
-                                                                      : activePractices[index]['practices'][index1]['color'].toString() ==
-                                                                              '5'
+                                                                      : activePractices[index]['practices'][index1]['color'].toString() == '5'
                                                                           ? "assets/images/Ellipse blue.webp"
                                                                           : 'assets/images/Ellipse 158.webp')
-                                                      : AssetImage(allGoals[index]['userPractices']
-                                                                      [index1]
-                                                                  ['color'] ==
-                                                              '1'
+                                                      : AssetImage(allGoals[index]['userPractices'][index1]['color'] == '1'
                                                           ? "assets/images/Ellipse orange.webp"
                                                           : allGoals[index]['userPractices'][index1]['color'] == '2'
                                                               ? 'assets/images/Ellipse 158.webp'
@@ -358,16 +360,14 @@ class _record_sessionState extends State<record_session> {
                                                             ['userPractices']
                                                         [index1]['name'],
                                                 maxLines: 2,
-                                                overflow:
-                                                    TextOverflow.ellipsis,
+                                                overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
                                                     fontFamily: 'laila',
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
                                                             1.8,
-                                                    fontWeight:
-                                                        FontWeight.w500,
+                                                    fontWeight: FontWeight.w500,
                                                     color: Colors.white),
                                                 textAlign: TextAlign.center,
                                               ),

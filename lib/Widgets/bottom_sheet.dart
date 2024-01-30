@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
+import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // import 'package:flutter_ui/utilities/app_contants.dart';
@@ -82,6 +84,7 @@ int catId = 1;
 //late int goalId;
 
 bottom_sheet(context) {
+  final goalProvider = Provider.of<GoalProvider>(context);
   final goalName = TextEditingController();
   final formkey = GlobalKey<FormState>();
   bool enable = false;
@@ -351,8 +354,9 @@ bottom_sheet(context) {
                             });
 
                             if (formkey.currentState!.validate()) {
+                              goalProvider.updateName(goalName.text.toString());
+                              goalProvider.updateGoalCategoryId(catId);
                               getUserId(catId, goalName.text.toString());
-
                               goalName.clear();
 
                               final SharedPreferences prefs = await _prefs;

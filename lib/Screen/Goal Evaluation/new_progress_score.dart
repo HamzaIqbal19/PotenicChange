@@ -11,6 +11,7 @@ import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria_impact.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/webVisit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -1621,7 +1622,7 @@ void Upgrade_sheet(context) {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                           style: TextStyle(
-                              fontFamily: 'LAILA',
+                              fontFamily: 'laila',
                               color: const Color(0xFF437296),
                               fontSize: AppDimensions.font10(context) * 1.6,
                               fontWeight: FontWeight.w400),
@@ -1788,6 +1789,49 @@ void evaluation_sheet(context) {
                                 text:
                                     ' you perform that will eventually help you observe meaningful changes into your life.'),
                           ])),
+                    ),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 2,
+                    ),
+                    AnimatedScaleButton(
+                      onTap: () {
+                        webVisit(
+                            'https://youtu.be/kE9-KY53zqc?si=WFZsBCYfeF4_kHj3');
+                      },
+                      child: Container(
+                        width: AppDimensions.height10(context) * 37.5,
+                        height: AppDimensions.height10(context) * 5,
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFFBFBFB),
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: AppDimensions.height10(context) * 2.4,
+                              height: AppDimensions.height10(context) * 2.4,
+                              decoration: const BoxDecoration(
+                                  color: Colors.transparent,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/youtubeIcon.png'),
+                                    fit: BoxFit.contain,
+                                  )),
+                            ),
+                            SizedBox(
+                              width: AppDimensions.height10(context),
+                            ),
+                            Text(
+                              'Watch Demo',
+                              style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF646464),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     )
                   ],
                 ),
