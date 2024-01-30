@@ -56,10 +56,10 @@ class _CategoriesState extends State<Categories> {
   Goal goal = Goal(
     name: 'Enter goal name',
     reason: [
-      {"key": "reason1", "text": "I want to achieve this goal because..."},
+      {"key": "reason1", "text": ""},
     ],
     identityStatement: [
-      {"key": "reason1", "text": "is in control of my anger..."},
+      {"key": "reason1", "text": ""},
     ],
     visualizingYourSelf: [
       {"key": "reason1", "text": ""},

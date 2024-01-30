@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   getRoute() async {
     final SharedPreferences prefs = await _prefs;
-    pracRoute = prefs.getBool('pracRoute') ?? false;
+    pracRoute = prefs.getBool('pracRoute') == true? true: false;
   }
 
   // final contractAddress = "0xaBE2ec3a68A15a382BcDC93499Ab751D3d954BB2";
@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     AnimatedScaleButton(
                       onTap: () async {
                         if (widget.login == true) {
-                          if (pracRoute != false) {
+                          if (pracRoute == true) {
                             Navigator.push(
                                 context,
                                 FadePageRoute2(true,

@@ -53,6 +53,14 @@ class _VisualisingState extends State<Visualising> {
   int listReason = 0;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
+  Future<void> saveAddPracRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    if (prefs.getBool('pracRoute') != false) {
+      await prefs.setBool("pracRoute", true);
+    }
+  }
+
+
   @override
   void initState() {
     super.initState();
@@ -1442,6 +1450,7 @@ class _VisualisingState extends State<Visualising> {
                                           final SharedPreferences prefs =
                                               await _prefs;
                                           await prefs.remove('route');
+                                          saveAddPracRoute();
                                           goalVisualising[0]['text'] != ""
                                               ? updateGoalReason(
                                                   goalVisualising)

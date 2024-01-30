@@ -37,7 +37,7 @@ class _GoalFinishedState extends State<GoalFinished> {
     super.initState();
     getRoute();
     _fetchGoalNames();
-    saveAddPracRoute();
+    //aveAddPracRoute();
   }
 
   Future<Timer> loadData() async {
@@ -48,13 +48,6 @@ class _GoalFinishedState extends State<GoalFinished> {
     setState(() {
       Loading = false;
     });
-  }
-
-  Future<void> saveAddPracRoute() async {
-    final SharedPreferences prefs = await _prefs;
-    if (prefs.getBool('pracRoute') != false) {
-      await prefs.setBool("pracRoute", true);
-    }
   }
 
   void _fetchGoalNames() async {
