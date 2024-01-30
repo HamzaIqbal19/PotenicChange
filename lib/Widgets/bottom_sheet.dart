@@ -83,8 +83,12 @@ int index = 0;
 int catId = 1;
 //late int goalId;
 
-bottom_sheet(context) {
-  final goalProvider = Provider.of<GoalProvider>(context);
+void saveName(BuildContext context, goalName, catId) {
+  Provider.of<GoalProvider>(context).updateName(goalName);
+  Provider.of<GoalProvider>(context).updateGoalCategoryId(catId);
+}
+
+bottom_sheet(BuildContext context) {
   final goalName = TextEditingController();
   final formkey = GlobalKey<FormState>();
   bool enable = false;
@@ -98,6 +102,7 @@ bottom_sheet(context) {
       top: Radius.circular(AppDimensions.height10(context) * 5.0),
     )),
     builder: (context) {
+      final goalProvider = Provider.of<GoalProvider>(context);
       return GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -357,11 +362,11 @@ bottom_sheet(context) {
                               goalProvider.updateName(goalName.text.toString());
                               goalProvider.updateGoalCategoryId(catId);
                               getUserId(catId, goalName.text.toString());
-                              goalName.clear();
 
                               final SharedPreferences prefs = await _prefs;
                               await prefs.setString(
                                   'goalName', goalName.text.toString());
+                              goalName.clear();
 
                               Navigator.push(
                                 context,
