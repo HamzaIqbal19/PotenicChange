@@ -214,7 +214,7 @@ class _schedule_cardState extends State<schedule_card> {
                               },
                               initialHour: hour,
                               initialMinute: minute,
-                              initialPeriod: period,
+                              initialPeriod: endperiod,
                             );
                           },
                           isScrollControlled: true,

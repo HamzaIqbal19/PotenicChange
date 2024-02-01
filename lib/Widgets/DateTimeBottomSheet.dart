@@ -41,7 +41,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
     print(
         'StartTime = ${widget.initialHour}, ${widget.initialMinute}, ${widget.initialPeriod}');
 
-    if (widget.initialPeriod == 'PM') {
+    if (widget.initialPeriod.toUpperCase() == 'PM') {
       setState(() {
         _periods = ['PM', 'AM'];
         period = 'pm';

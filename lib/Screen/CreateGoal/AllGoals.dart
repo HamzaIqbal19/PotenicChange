@@ -643,7 +643,7 @@ class _AllGoalsState extends State<AllGoals> {
                           children: [
                             AnimatedScaleButton(
                               onTap: () {
-                                bottom_sheet(context);
+                                bottom_sheet(context,);
                               },
                               child: SizedBox(
                                 width: AppDimensions.width10(context) * 4.7,

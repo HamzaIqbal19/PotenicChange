@@ -13,8 +13,8 @@ void webVisit(String url) {
     ),
     safariVCOptions: const SafariViewControllerOptions(
       barCollapsingEnabled: true,
-      preferredBarTintColor: Colors.green,
-      preferredControlTintColor: Colors.amber,
+      preferredBarTintColor: Colors.white,
+      preferredControlTintColor: Colors.blue,
       dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
       modalPresentationCapturesStatusBarAppearance: true,
     ),

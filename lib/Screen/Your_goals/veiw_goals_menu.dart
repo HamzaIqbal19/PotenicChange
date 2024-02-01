@@ -12,6 +12,8 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
@@ -1292,7 +1294,11 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                               record: 0,
                                             ),
                                           ));
-                                      dashboard_sheet(context);
+                                      journeyBottomSheet(
+                                          context,
+                                          AppText().dashboardTitle,
+                                          AppText().dashboardBody,
+                                          AppText().dashboardLink);
                                     },
                                     child: Container(
                                       width:

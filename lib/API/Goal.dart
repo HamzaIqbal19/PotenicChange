@@ -461,7 +461,7 @@ class AdminGoal {
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       if (jsonData.length != 0) {
-        return true;
+        return jsonData.length;
       } else {
         return false;
       }

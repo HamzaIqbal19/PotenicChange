@@ -2,9 +2,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Dashboard Behaviour/dashboard_view_goals.dart';
@@ -35,12 +37,16 @@ class SplashPageState extends State<SplashPage> {
     var accestoken = prefs.getString("usertoken");
     var sessionToken = prefs.getString("refreshtoken");
     var routes = prefs.getString("route");
+    bool pracRoute = prefs.getBool('pracRoute') == true ? true : false;
 //
     if (accestoken != null && routes == null) {
       Authentication().refreshTokenApi(sessionToken!).then((response) {
         if (response == true) {
           AdminGoal.checkUserGoalByUserId().then((response) {
-            if (response == true) {
+            if (response == 1 && pracRoute) {
+              Navigator.push(
+                  context, FadePageRoute(page: const GoalFinished()));
+            } else if (response != 0) {
               Navigator.push(
                   context,
                   FadePageRoute(
