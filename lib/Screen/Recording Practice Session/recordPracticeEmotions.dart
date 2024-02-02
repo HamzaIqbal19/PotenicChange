@@ -663,7 +663,7 @@ class _emotionsState extends State<emotions> {
                                               color: const Color(0xffFA9934),
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  2,
                                               fontWeight: FontWeight.w600),
                                         ))),
                                   )
@@ -743,7 +743,7 @@ class _emotionsState extends State<emotions> {
                                               color: Colors.white,
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  2,
                                               fontWeight: FontWeight.w600),
                                         )
                                       : Text(
@@ -752,7 +752,7 @@ class _emotionsState extends State<emotions> {
                                               color: Colors.white,
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  2.0,
                                               fontWeight: FontWeight.w600),
                                         ),
                                 ),

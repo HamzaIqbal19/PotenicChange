@@ -263,7 +263,7 @@ class _clocksState extends State<clocks> {
                         'Next',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: AppDimensions.font10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 2,
                             fontWeight: FontWeight.w600),
                       ),
                     )),

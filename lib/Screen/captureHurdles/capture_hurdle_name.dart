@@ -543,6 +543,8 @@ class _hurdle_nameState extends State<hurdle_name> {
                                           child: Center(
                                             child: TextFormField(
                                               maxLength: 80,
+                                              textCapitalization:
+                                                  TextCapitalization.sentences,
                                               controller: controller,
                                               textAlignVertical:
                                                   TextAlignVertical.top,

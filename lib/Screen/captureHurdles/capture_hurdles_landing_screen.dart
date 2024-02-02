@@ -334,6 +334,8 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                               child: Center(
                                 child: TextFormField(
                                     controller: _searchController,
+                                    textCapitalization:
+                                        TextCapitalization.sentences,
                                     onChanged: (value) {
                                       setState(() {
                                         searchHurdles(value);

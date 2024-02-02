@@ -303,6 +303,7 @@ class _video_infoState extends State<video_info> {
                           controller: title,
                           maxLines: null,
                           textAlignVertical: TextAlignVertical.top,
+                          textCapitalization: TextCapitalization.sentences,
                           style: TextStyle(
                               fontSize: AppDimensions.font10(context) * 1.8,
                               fontWeight: FontWeight.w500,
@@ -359,6 +360,7 @@ class _video_infoState extends State<video_info> {
                                   // link_state = true;
                                 });
                               },
+                              textCapitalization: TextCapitalization.sentences,
                               onChanged: (value) {
                                 setState(() {});
                               },

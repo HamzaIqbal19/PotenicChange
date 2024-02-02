@@ -536,6 +536,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                           child: Center(
                                             child: TextFormField(
                                               maxLength: getMaxCharacters(),
+                                              textCapitalization:
+                                                  TextCapitalization.sentences,
                                               controller: control[i],
                                               expands: true,
                                               maxLines: null,

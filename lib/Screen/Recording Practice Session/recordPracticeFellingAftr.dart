@@ -646,7 +646,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                     style: TextStyle(
                                         color: const Color(0xffFA9934),
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.6,
+                                            AppDimensions.font10(context) * 2,
                                         fontWeight: FontWeight.w600),
                                   ))),
                             )
@@ -727,8 +727,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                 widget.summary ? 'Update Summary' : 'Next',
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.6,
+                                    fontSize: AppDimensions.font10(context) * 2,
                                     fontWeight: FontWeight.w600),
                               ),
                             )),
@@ -953,7 +952,7 @@ class _next_bottonState extends State<next_botton> {
                       'Cancel',
                       style: TextStyle(
                           color: const Color(0xffFA9934),
-                          fontSize: AppDimensions.font10(context) * 1.6,
+                          fontSize: AppDimensions.font10(context) * 2,
                           fontWeight: FontWeight.w600),
                     ))),
               )
@@ -1031,7 +1030,7 @@ class _next_bottonState extends State<next_botton> {
                   widget.state ? 'Update Summary' : 'Next',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: AppDimensions.font10(context) * 1.6,
+                      fontSize: AppDimensions.font10(context) * 2,
                       fontWeight: FontWeight.w600),
                 ),
               )),

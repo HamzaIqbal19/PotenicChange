@@ -963,6 +963,8 @@ class _photo_infoState extends State<photo_info> {
                                   controller: title,
                                   maxLines: null,
                                   textAlignVertical: TextAlignVertical.top,
+                                  textCapitalization:
+                                      TextCapitalization.sentences,
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.font10(context) * 1.8,
@@ -1029,6 +1031,8 @@ class _photo_infoState extends State<photo_info> {
                                 child: TextFormField(
                                   controller: statement,
                                   textAlignVertical: TextAlignVertical.top,
+                                  textCapitalization:
+                                      TextCapitalization.sentences,
                                   maxLines: null,
                                   style: TextStyle(
                                       fontSize:
@@ -1231,6 +1235,8 @@ class _photo_infoState extends State<photo_info> {
                                 ),
                                 child: TextFormField(
                                     controller: hastags,
+                                    textCapitalization:
+                                        TextCapitalization.sentences,
                                     maxLines: null,
                                     onTap: () {
                                       if (hastags.text.isEmpty) {
@@ -1569,6 +1575,7 @@ class _link_setState extends State<link_set> {
                           //     top: AppDimensions.height10(context) * 1.5),
                           child: TextFormField(
                             controller: linkController,
+                            textCapitalization: TextCapitalization.sentences,
                             focusNode: _textFocusNode,
                             onChanged: (value) {
                               setState(() {

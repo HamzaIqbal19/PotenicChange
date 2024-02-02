@@ -992,6 +992,7 @@ class _noteSavedState extends State<noteSaved> {
                         child: TextFormField(
                           controller: title,
                           textAlignVertical: TextAlignVertical.center,
+                          textCapitalization: TextCapitalization.sentences,
                           maxLines: null,
                           style: TextStyle(
                               fontSize: AppDimensions.font10(context) * 1.8,
@@ -1039,6 +1040,7 @@ class _noteSavedState extends State<noteSaved> {
                         ),
                         child: TextFormField(
                           textAlignVertical: TextAlignVertical.top,
+                          textCapitalization: TextCapitalization.sentences,
                           controller: statement,
                           maxLines: null,
                           minLines: null,
@@ -1090,6 +1092,7 @@ class _noteSavedState extends State<noteSaved> {
                             controller: hastags,
                             maxLines: null,
                             textAlignVertical: TextAlignVertical.center,
+                            textCapitalization: TextCapitalization.sentences,
                             onTap: () {
                               if (hastags.text.isEmpty) {
                                 hastags.text = '#';

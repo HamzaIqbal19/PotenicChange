@@ -580,6 +580,7 @@ class _GoalNameState extends State<GoalName> {
                         expands: true,
                         maxLines: null,
                         minLines: null,
+                        textCapitalization: TextCapitalization.sentences,
                         maxLength: 50,
                         focusNode: _focusNode,
                         textAlignVertical: TextAlignVertical.top,

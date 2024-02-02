@@ -49,9 +49,9 @@ class _goalwhyState extends State<GoalWhy> {
   bool saved = false;
   String Route = '';
   var reason;
-  var resetData;
   bool loading = true;
   int listReason = 0;
+  String trigger = '1';
 
   getData() async {
     final prefs = await SharedPreferences.getInstance();
@@ -66,6 +66,141 @@ class _goalwhyState extends State<GoalWhy> {
         });
       }
     }
+  }
+
+  resetDialog() {
+    return showAnimatedDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+          width: AppDimensions.height10(context) * 27.0,
+          height: AppDimensions.height10(context) * 18.2,
+          child: AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                    AppDimensions.height10(context) * 1.4)),
+            contentPadding: EdgeInsets.zero,
+            actionsPadding: EdgeInsets.zero,
+            titlePadding: EdgeInsets.zero,
+            title: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 1.4)),
+              margin: EdgeInsets.only(
+                  top: AppDimensions.height10(context) * 1.9,
+                  right: AppDimensions.height10(context) * 1.6,
+                  left: AppDimensions.height10(context) * 1.6,
+                  bottom: AppDimensions.height10(context) * 0.2),
+              height: AppDimensions.height10(context) * 2.2,
+              width: AppDimensions.height10(context) * 23.8,
+              child: Text(
+                "Reset answers?",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: AppDimensions.font10(context) * 1.7,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            content: Container(
+              margin: EdgeInsets.only(
+                  bottom: AppDimensions.height10(context) * 1.5,
+                  left: AppDimensions.height10(context) * 1.6,
+                  right: AppDimensions.height10(context) * 1.6),
+              // height: AppDimensions.height10(context) * 3.2,
+              width: AppDimensions.height10(context) * 23.8,
+              child: Text(
+                "Are you sure you want to reset, all your\nchanges for goal reason?",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: AppDimensions.font10(context) * 1.3,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            actions: <Widget>[
+              Column(
+                children: [
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 0.1,
+                    child: Divider(
+                      color: const Color(0XFF3C3C43).withOpacity(0.29),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        trigger = '0';
+                      });
+                      setState(() {
+                        reason = jsonDecode(resetData);
+                      });
+                      setState(() {
+                        trigger = '1';
+                      });
+                      print('Reason $reason');
+                      blankNode.requestFocus();
+
+                      Navigator.pop(context);
+                    }
+
+                    // selectedItemIndexesOuter!.clear();
+                    ,
+                    child: Container(
+                      height: AppDimensions.height10(context) * 4.2,
+                      width: double.infinity,
+                      color: const Color(0xFF007AFF),
+                      child: Center(
+                        child: Text(
+                          'Yes',
+                          style: TextStyle(
+                              color: const Color(0xFFFFFFFF),
+                              fontSize: AppDimensions.font10(context) * 1.7,
+                              fontFamily: "Laila",
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 0.1,
+                    child: Divider(
+                      color: const Color(0XFF3C3C43).withOpacity(0.29),
+                    ),
+                  ),
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 4.4,
+                    width: double.infinity,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'Cancel',
+                        style: TextStyle(
+                            fontSize: AppDimensions.font10(context) * 1.7,
+                            fontFamily: "Laila",
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xFF007AFF)),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 0.1,
+                    child: Divider(
+                      color: const Color(0XFF3C3C43).withOpacity(0.29),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+      animationType: DialogTransitionType.fadeScale,
+      curve: Curves.easeInOut,
+      duration: const Duration(seconds: 1),
+    );
   }
 
   Future<void> getRoute() async {
@@ -103,6 +238,8 @@ class _goalwhyState extends State<GoalWhy> {
     }
   }
 
+  var resetData;
+
   void _fetchGoalNames() async {
     AdminGoal.getUserGoal().then((response) {
       if (response.length != 0) {
@@ -110,7 +247,7 @@ class _goalwhyState extends State<GoalWhy> {
           loading = false;
           goalName = response["name"];
           reason = response["reason"];
-          resetData = response["reason"];
+          resetData = jsonEncode(response["reason"]);
           listReason = response["reason"].length;
         });
       }
@@ -139,6 +276,7 @@ class _goalwhyState extends State<GoalWhy> {
 
   void decrement() {
     item = item - 1;
+    print("Decrement");
   }
 
   void handleDelete(int index) {
@@ -279,6 +417,9 @@ class _goalwhyState extends State<GoalWhy> {
     if (widget.comingFromEditScreen == false) {
       myTextFields = goalProvider.currentGoal!.reason;
     }
+    //else {
+
+    //}
 
     return WillPopScope(
       onWillPop: () {
@@ -669,10 +810,10 @@ class _goalwhyState extends State<GoalWhy> {
                         SizedBox(
                           width: AppDimensions.width10(context) * 38.2,
                           height: widget.comingFromEditScreen
-                              ? reason.length == 1
+                              ? reason.length <= 1
                                   ? AppDimensions.height10(context) * 22.0
                                   : AppDimensions.height10(context) * 36.0
-                              : item == 1
+                              : item <= 1
                                   ? AppDimensions.height10(context) * 22.0
                                   : AppDimensions.height10(context) * 36.0,
                           // color: Colors.amber,
@@ -712,12 +853,22 @@ class _goalwhyState extends State<GoalWhy> {
                                       }
                                       return Column(children: [
                                         inner_text(
-                                          key: Key(reason[index]['key']),
-                                          delete: true,
+                                          key: Key(
+                                              reason[index]['key'] + trigger),
+                                          delete:
+                                              reason.length > 1 ? true : false,
                                           head_text: "Reason ${index + 1}",
                                           body_text: reason[index]['text'],
                                           length: 200,
                                           onChanged: (newText) {
+                                            if (myTextFields.isEmpty) {
+                                              myTextFields.add({
+                                                'key':
+                                                    'Reason ${myTextFields.length.toString()}',
+                                                'text': '',
+                                              });
+                                            }
+
                                             setState(() {
                                               reason[index]['text'] = newText;
                                             });
@@ -1334,60 +1485,71 @@ class _goalwhyState extends State<GoalWhy> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   widget.comingFromEditScreen
-                                      ? Container(
-                                          width:
-                                              AppDimensions.width10(context) *
+                                      ? AnimatedScaleButton(
+                                          onTap: () {
+                                            resetDialog();
+                                            // print(
+                                            //     "ReasonReset $resetData ${reason == resetData}");
+                                            // setState(() {
+                                            //   reason = resetData;
+                                            // });
+                                            // print("Reason $reason");
+                                            // print(
+                                            //     "ReasonReset $resetData ${reason == resetData}");
+                                            //   signupSheet(context, "Sign up / login", "login");
+                                          },
+                                          child: Container(
+                                              width: AppDimensions.width10(
+                                                      context) *
                                                   10.0,
-                                          height:
-                                              AppDimensions.height10(context) *
+                                              height: AppDimensions.height10(
+                                                      context) *
                                                   5.0,
-                                          decoration: myTextFields[0]['text'] !=
-                                                  ""
-                                              ? BoxDecoration(
-                                                  color: Colors.white,
-                                                  border: Border.all(
-                                                      color: const Color(
-                                                          0xffFA9934)),
-                                                  borderRadius:
-                                                      const BorderRadius.all(
-                                                          Radius.circular(
-                                                              50.0)),
-                                                )
-                                              : BoxDecoration(
-                                                  // color: Color(0xFFFF7D50),
-                                                  border: Border.all(
-                                                      color: const Color(
-                                                          0xff282828)),
-                                                  color: Colors.transparent,
-                                                  borderRadius:
-                                                      const BorderRadius.all(
-                                                          Radius.circular(
-                                                              50.0)),
-                                                ),
-                                          child: AnimatedScaleButton(
-                                            onTap: () {
-                                              setState(() {
-                                                reason = resetData;
-                                              });
-                                              //   signupSheet(context, "Sign up / login", "login");
-                                            },
-                                            child: Center(
-                                                child: Text(
-                                              "Reset",
-                                              style: TextStyle(
-                                                  fontFamily: "Laila",
-                                                  fontWeight: FontWeight.w600,
-                                                  color: myTextFields[0]
-                                                              ['text'] !=
-                                                          ""
-                                                      ? const Color(0xffFA9934)
-                                                      : const Color(0xff282828),
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.8),
-                                            )),
-                                          ))
+                                              decoration: myTextFields[0]
+                                                          ['text'] !=
+                                                      ""
+                                                  ? BoxDecoration(
+                                                      color: Colors.white,
+                                                      border: Border.all(
+                                                          color: const Color(
+                                                              0xffFA9934)),
+                                                      borderRadius:
+                                                          const BorderRadius
+                                                              .all(
+                                                              Radius.circular(
+                                                                  50.0)),
+                                                    )
+                                                  : BoxDecoration(
+                                                      // color: Color(0xFFFF7D50),
+                                                      border: Border.all(
+                                                          color: const Color(
+                                                              0xff282828)),
+                                                      color: Colors.transparent,
+                                                      borderRadius:
+                                                          const BorderRadius
+                                                              .all(
+                                                              Radius.circular(
+                                                                  50.0)),
+                                                    ),
+                                              child: Center(
+                                                  child: Text(
+                                                "Reset",
+                                                style: TextStyle(
+                                                    fontFamily: "Laila",
+                                                    fontWeight: FontWeight.w600,
+                                                    color: myTextFields[0]
+                                                                ['text'] !=
+                                                            ""
+                                                        ? const Color(
+                                                            0xffFA9934)
+                                                        : const Color(
+                                                            0xff282828),
+                                                    fontSize:
+                                                        AppDimensions.font10(
+                                                                context) *
+                                                            1.8),
+                                              ))),
+                                        )
                                       : Container(),
                                   // Container(
                                   //     // color: Colors.blue,
@@ -1428,7 +1590,7 @@ class _goalwhyState extends State<GoalWhy> {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(const SnackBar(
                                                   content: Text(
-                                                      "Feld can't be empty")));
+                                                      "Field can't be empty")));
                                         }
                                       } else {
                                         updateGoalReason(myTextFields);

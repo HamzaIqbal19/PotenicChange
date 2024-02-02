@@ -253,6 +253,7 @@ class _inner_textState extends State<inner_text> {
               child: TextFormField(
                 onChanged: widget.onChanged,
                 maxLength: widget.length,
+                textCapitalization: TextCapitalization.sentences,
                 maxLines: 6,
                 minLines: 3,
                 scrollPadding: EdgeInsets.zero,

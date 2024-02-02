@@ -512,6 +512,8 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                             child: TextFormField(
                                               maxLength: 150,
                                               controller: controller,
+                                              textCapitalization:
+                                                  TextCapitalization.sentences,
                                               maxLines: null,
                                               onChanged: (value) {},
                                               style: TextStyle(

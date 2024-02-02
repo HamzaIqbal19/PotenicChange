@@ -61,6 +61,95 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
     super.initState();
   }
 
+  signUp() {
+    setState(() {
+      loading = true;
+    });
+    if (_formkey1.currentState!.validate() &&
+        rememberMe == true &&
+        errorPassword == false) {
+      setState(() {
+        loading = true;
+        // errorEmail = false;
+        // errorPassword = false;
+        // errorName = false;
+        // userExist = "";
+      });
+
+      Authentication()
+          .registerApi(
+        nameController.text.toString(),
+        emailController.text.toString().trim(),
+        passwordController.text.toString(),
+      )
+          .then((response) {
+        setState(() {
+          loading = false;
+        });
+        if (response["statusCode"] == 200) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(
+            response["message"],
+            style: TextStyle(color: Colors.red.withOpacity(0.8)),
+          )));
+          Navigator.push(
+            context,
+            FadePageRoute(
+              page: SignUpSuccessful(name: nameController.text.toString()),
+            ),
+          );
+        } else if (response["statusCode"] == 409) {
+          setState(() {
+            loading = false;
+            userExist = response["message"];
+          });
+
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(
+            response["message"],
+            style: TextStyle(color: Colors.red.withOpacity(0.8)),
+          )));
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(
+            response["message"],
+            style: TextStyle(color: Colors.red.withOpacity(0.8)),
+          )));
+        }
+      }).catchError((error) {
+        setState(() {
+          loading = false;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+            'ERROR',
+            style: TextStyle(color: Colors.red.withOpacity(0.8)),
+          ),
+        ));
+      }).whenComplete(() {
+        setState(() {
+          loading = false;
+          // errorEmail = false;
+          // errorPassword = false;
+          // errorName = false;
+        });
+      });
+    } else if (rememberMe == false) {
+      setState(() {
+        loading = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+        'User Agreement is not checked',
+        style: TextStyle(color: Colors.red.withOpacity(0.8)),
+      )));
+    } else {
+      setState(() {
+        loading = false;
+      });
+    }
+  }
+
   // final contractAddress = "0xaBE2ec3a68A15a382BcDC93499Ab751D3d954BB2";
 
   bool isLoadWallet = true;
@@ -464,6 +553,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                       });
                                     },
                                     controller: passwordController,
+                                    onFieldSubmitted: (value) {
+                                      signUp();
+                                    },
                                     validator: (val) {
                                       if ((val == null && val == '')) {
                                         setState(() {

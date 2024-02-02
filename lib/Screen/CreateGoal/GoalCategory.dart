@@ -480,6 +480,8 @@ class _GoalCategoryState extends State<GoalCategory> {
                                 child: Center(
                                   child: TextFormField(
                                       controller: _searchController,
+                                      textCapitalization: TextCapitalization
+                                          .sentences,
                                       onChanged: (value) {
                                         setState(() {
                                           searchText = value;

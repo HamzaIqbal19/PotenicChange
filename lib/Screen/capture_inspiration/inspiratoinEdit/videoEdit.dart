@@ -576,6 +576,7 @@ class video_EditState extends State<videoEdit> {
                                     children: [
                                       TextFormField(
                                         controller: title,
+                                        textCapitalization: TextCapitalization.sentences,
                                         maxLines: null,
                                         scrollPadding: EdgeInsets.zero,
                                         textAlignVertical:
@@ -831,6 +832,7 @@ class video_EditState extends State<videoEdit> {
                                 // width: AppDimensions.width10(context) * 37.5,
                                 child: TextFormField(
                                   controller: statement,
+                                  textCapitalization: TextCapitalization.sentences,
                                   maxLines: null,
                                   scrollPadding: EdgeInsets.zero,
                                   textAlignVertical: TextAlignVertical.center,
@@ -897,6 +899,7 @@ class video_EditState extends State<videoEdit> {
                                     ),
                                     child: TextFormField(
                                       controller: author,
+                                      textCapitalization: TextCapitalization.sentences,
                                       maxLines: null,
                                       scrollPadding: EdgeInsets.zero,
                                       textAlignVertical:
@@ -957,6 +960,7 @@ class video_EditState extends State<videoEdit> {
                               ),
                               child: TextFormField(
                                   controller: hastags,
+                                  textCapitalization: TextCapitalization.sentences,
                                   maxLines: null,
                                   scrollPadding: EdgeInsets.zero,
                                   onChanged: (text) {

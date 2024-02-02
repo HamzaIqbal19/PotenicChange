@@ -165,6 +165,8 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           AppDimensions.height10(context) *
                                               1.8))),
                               child: TextFormField(
+                                  textCapitalization:
+                                      TextCapitalization.sentences,
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           top: 5.0,
@@ -226,6 +228,8 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           AppDimensions.height10(context) *
                                               1.8))),
                               child: TextFormField(
+                                  textCapitalization:
+                                      TextCapitalization.sentences,
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           top: 5.0,
@@ -289,6 +293,8 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           AppDimensions.height10(context) *
                                               1.8))),
                               child: TextFormField(
+                                  textCapitalization:
+                                      TextCapitalization.sentences,
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           top: 5.0,

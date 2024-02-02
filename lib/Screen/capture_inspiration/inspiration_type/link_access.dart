@@ -122,6 +122,7 @@ class _link_infoState extends State<link_info> {
                           ),
                           child: TextFormField(
                             controller: title,
+                            textCapitalization: TextCapitalization.sentences,
                             maxLines: null,
                             textAlignVertical: TextAlignVertical.top,
                             style: TextStyle(
@@ -177,6 +178,8 @@ class _link_infoState extends State<link_info> {
                               child: TextFormField(
                                 controller: link,
                                 scrollPadding: EdgeInsets.zero,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
                                 maxLines: null,
                                 onEditingComplete: () {
                                   setState(() {
@@ -412,6 +415,7 @@ class _link_infoState extends State<link_info> {
                           child: TextFormField(
                               maxLines: null,
                               scrollPadding: EdgeInsets.zero,
+                              textCapitalization: TextCapitalization.sentences,
                               onChanged: (text) {
                                 List<String> words = text.split(' ');
 

@@ -302,7 +302,7 @@ class _endofSessionState extends State<endofSession> {
                   margin: EdgeInsets.only(
                       bottom: AppDimensions.height10(context) * 5.2,
                       left: AppDimensions.width10(context) * 1.0),
-                  height: AppDimensions.width10(context) * 15.4,
+                  height: AppDimensions.width10(context) * 13.7,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(children: [
@@ -313,9 +313,10 @@ class _endofSessionState extends State<endofSession> {
                           });
                         },
                         child: Container(
-                          height: AppDimensions.width10(context) * 15.4,
-                          width: AppDimensions.width10(context) * 15.4,
+                          width: AppDimensions.width10(context) * 13.7,
+                          height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
+                              left: AppDimensions.width10(context) * 4.0,
                               right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
@@ -326,10 +327,12 @@ class _endofSessionState extends State<endofSession> {
                                     : Colors.transparent),
                           ),
                           child: Container(
-                            height: AppDimensions.width10(context) * 13.4,
-                            width: AppDimensions.width10(context) * 13.4,
-                            margin: EdgeInsets.all(
-                                AppDimensions.height10(context) * 0.9),
+                            height: AppDimensions.width10(context) * 12.7,
+                            width: AppDimensions.width10(context) * 12.5,
+                            margin: EdgeInsets.symmetric(
+                                vertical: AppDimensions.height10(context) * 0.4,
+                                horizontal:
+                                    AppDimensions.width10(context) * 0.3),
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
@@ -370,8 +373,8 @@ class _endofSessionState extends State<endofSession> {
                           });
                         },
                         child: Container(
-                          height: AppDimensions.width10(context) * 15.4,
-                          width: AppDimensions.width10(context) * 15.4,
+                          width: AppDimensions.width10(context) * 13.7,
+                          height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
@@ -383,11 +386,13 @@ class _endofSessionState extends State<endofSession> {
                                     : Colors.transparent),
                           ),
                           child: Container(
-                            height: AppDimensions.width10(context) * 13.4,
-                            width: AppDimensions.width10(context) * 13.4,
+                            height: AppDimensions.width10(context) * 12.7,
+                            width: AppDimensions.width10(context) * 12.5,
                             alignment: Alignment.center,
-                            margin: EdgeInsets.all(
-                                AppDimensions.height10(context) * 0.9),
+                            margin: EdgeInsets.symmetric(
+                                vertical: AppDimensions.height10(context) * 0.4,
+                                horizontal:
+                                    AppDimensions.width10(context) * 0.3),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border:
@@ -432,8 +437,8 @@ class _endofSessionState extends State<endofSession> {
                           });
                         },
                         child: Container(
-                          height: AppDimensions.width10(context) * 15.4,
-                          width: AppDimensions.width10(context) * 15.4,
+                          width: AppDimensions.width10(context) * 13.7,
+                          height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
@@ -445,11 +450,13 @@ class _endofSessionState extends State<endofSession> {
                                     : Colors.transparent),
                           ),
                           child: Container(
-                            height: AppDimensions.width10(context) * 13.4,
-                            width: AppDimensions.width10(context) * 13.4,
+                            height: AppDimensions.width10(context) * 12.7,
+                            width: AppDimensions.width10(context) * 12.5,
                             alignment: Alignment.center,
-                            margin: EdgeInsets.all(
-                                AppDimensions.height10(context) * 0.9),
+                            margin: EdgeInsets.symmetric(
+                                vertical: AppDimensions.height10(context) * 0.4,
+                                horizontal:
+                                    AppDimensions.width10(context) * 0.3),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border:
@@ -492,8 +499,8 @@ class _endofSessionState extends State<endofSession> {
                           });
                         },
                         child: Container(
-                          height: AppDimensions.width10(context) * 15.4,
-                          width: AppDimensions.width10(context) * 15.4,
+                          width: AppDimensions.width10(context) * 13.7,
+                          height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
                               right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
@@ -505,11 +512,13 @@ class _endofSessionState extends State<endofSession> {
                                     : Colors.transparent),
                           ),
                           child: Container(
-                            height: AppDimensions.width10(context) * 13.4,
-                            width: AppDimensions.width10(context) * 13.4,
+                            height: AppDimensions.width10(context) * 12.7,
+                            width: AppDimensions.width10(context) * 12.5,
                             alignment: Alignment.center,
-                            margin: EdgeInsets.all(
-                                AppDimensions.height10(context) * 0.9),
+                            margin: EdgeInsets.symmetric(
+                                vertical: AppDimensions.height10(context) * 0.4,
+                                horizontal:
+                                    AppDimensions.width10(context) * 0.3),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border:
@@ -552,10 +561,10 @@ class _endofSessionState extends State<endofSession> {
                           });
                         },
                         child: Container(
-                          height: AppDimensions.width10(context) * 15.4,
-                          width: AppDimensions.width10(context) * 15.4,
+                          width: AppDimensions.width10(context) * 13.7,
+                          height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.width10(context) * 1.5),
+                              right: AppDimensions.width10(context) * 5.0),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
@@ -565,11 +574,13 @@ class _endofSessionState extends State<endofSession> {
                                     : Colors.transparent),
                           ),
                           child: Container(
-                            height: AppDimensions.width10(context) * 13.4,
-                            width: AppDimensions.width10(context) * 13.4,
+                            height: AppDimensions.width10(context) * 12.7,
+                            width: AppDimensions.width10(context) * 12.5,
                             alignment: Alignment.center,
-                            margin: EdgeInsets.all(
-                                AppDimensions.height10(context) * 0.9),
+                            margin: EdgeInsets.symmetric(
+                                vertical: AppDimensions.height10(context) * 0.4,
+                                horizontal:
+                                    AppDimensions.width10(context) * 0.3),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border:
@@ -643,7 +654,7 @@ class _endofSessionState extends State<endofSession> {
                                     style: TextStyle(
                                         color: const Color(0xffFA9934),
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.6,
+                                            AppDimensions.font10(context) * 2.0,
                                         fontWeight: FontWeight.w600),
                                   ))),
                             )
@@ -748,8 +759,7 @@ class _endofSessionState extends State<endofSession> {
                                 widget.summary ? 'Update Summary' : 'Summary',
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.6,
+                                    fontSize: AppDimensions.font10(context) * 2,
                                     fontWeight: FontWeight.w600),
                               ),
                             )),

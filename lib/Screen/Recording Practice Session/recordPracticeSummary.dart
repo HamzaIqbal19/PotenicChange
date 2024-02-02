@@ -1253,7 +1253,7 @@ class _practice_summaryState extends State<practice_summary> {
                                               color: Colors.white,
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  2.0,
                                               fontWeight: FontWeight.w700,
                                             ),
                                           ),
@@ -1305,7 +1305,7 @@ class _practice_summaryState extends State<practice_summary> {
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.6,
+                                            AppDimensions.font10(context) * 2,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ))),

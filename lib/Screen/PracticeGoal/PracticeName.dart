@@ -65,12 +65,12 @@ class _PracticeNameState extends State<PracticeName> {
 
   getGoalName() async {
     final SharedPreferences prefs = await _prefs;
-    var mygoal = prefs.getString("goalName");
+    var goalName = prefs.getString("goalName");
     var practicename = prefs.getString('pracName');
     var goalColor = prefs.getString('goalColor');
     setState(() {
       color = goalColor;
-      mygoal = mygoal!;
+      mygoal = goalName!;
       practice.text = practicename!;
       practiceName.text = capitalizeFirstLetter(practicename);
     });
@@ -524,6 +524,7 @@ class _PracticeNameState extends State<PracticeName> {
                     child: TextFormField(
                         maxLines: null,
                         minLines: null,
+                        textCapitalization: TextCapitalization.sentences,
                         maxLength: 80,
                         controller: practiceName,
                         style: TextStyle(

@@ -217,6 +217,7 @@ class _schedule_cardState extends State<schedule_card> {
                               initialPeriod: endperiod,
                             );
                           },
+                          isDismissible: false,
                           isScrollControlled: true,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(

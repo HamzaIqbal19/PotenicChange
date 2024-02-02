@@ -99,60 +99,59 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    AnimatedScaleButton(
-                      onTap: () {
-                        setState(() {
-                          done = true;
-                        });
-                        widget.onSelectionChanged(
-                            day, hour, minute, period, done);
+                // Row(
+                //   children: [
+                AnimatedScaleButton(
+                  onTap: () {
+                    setState(() {
+                      done = true;
+                    });
+                    widget.onSelectionChanged(day, hour, minute, period, done);
 
-                        // Navigator.pop(context);
-                      },
-                      child: SizedBox(
-                        //width: AppDimensions.width10(context) * 2.9,
-                        height: AppDimensions.width10(context) * 3.1,
-                        child: Center(
-                          child: Text(
-                            "Add",
-                            style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.9,
-                                height: AppDimensions.height10(context) * 0.1,
-                                color: const Color(0xFF2F80ED)),
-                          ),
-                        ),
+                    // Navigator.pop(context);
+                  },
+                  child: SizedBox(
+                    //width: AppDimensions.width10(context) * 2.9,
+                    height: AppDimensions.width10(context) * 3.1,
+                    child: Center(
+                      child: Text(
+                        "Add",
+                        style: TextStyle(
+                            fontSize: AppDimensions.font10(context) * 1.9,
+                            height: AppDimensions.height10(context) * 0.1,
+                            color: const Color(0xFF2F80ED)),
                       ),
                     ),
-                    SizedBox(
-                      width: AppDimensions.width10(context) * 3.1,
-                    ),
-                    AnimatedScaleButton(
-                      onTap: () {
-                        setState(() {
-                          done = true;
-                        });
-                        widget.onSelectionChanged(
-                            day, hour, minute, period, done);
-                        //Navigator.pop(context);
-                      },
-                      child: SizedBox(
-                        // width: AppDimensions.width10(context) * 3.7,
-                        height: AppDimensions.height10(context) * 3.2,
-                        child: Center(
-                          child: Text(
-                            "Done",
-                            style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.9,
-                                height: AppDimensions.height10(context) * 0.1,
-                                color: const Color(0xFF2F80ED)),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
+                //   SizedBox(
+                //     width: AppDimensions.width10(context) * 3.1,
+                //   ),
+                //   // AnimatedScaleButton(
+                //   //   onTap: () {
+                //   //     setState(() {
+                //   //       done = true;
+                //   //     });
+                //   //     widget.onSelectionChanged(
+                //   //         day, hour, minute, period, done);
+                //   //     //Navigator.pop(context);
+                //   //   },
+                //   //   child: SizedBox(
+                //   //     // width: AppDimensions.width10(context) * 3.7,
+                //   //     height: AppDimensions.height10(context) * 3.2,
+                //   //     child: Center(
+                //   //       child: Text(
+                //   //         "Done",
+                //   //         style: TextStyle(
+                //   //             fontSize: AppDimensions.font10(context) * 1.9,
+                //   //             height: AppDimensions.height10(context) * 0.1,
+                //   //             color: const Color(0xFF2F80ED)),
+                //   //       ),
+                //   //     ),
+                //   //   ),
+                //   // ),
+                // ],
+                //  ),
               ],
             ),
           ),

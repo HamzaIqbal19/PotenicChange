@@ -194,6 +194,8 @@ class _PasswordResetState extends State<PasswordReset> {
                                         AppDimensions.height10(context) * 2.2,
                                     child: TextFormField(
                                       keyboardType: TextInputType.emailAddress,
+                                      textCapitalization:
+                                          TextCapitalization.sentences,
                                       style: TextStyle(
                                           color: const Color(0xFF8C648A),
                                           fontWeight: FontWeight.w600,

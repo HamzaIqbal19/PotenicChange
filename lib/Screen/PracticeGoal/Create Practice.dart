@@ -502,6 +502,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                                 child: Center(
                                   child: TextFormField(
                                       controller: _searchController,
+                                      textCapitalization: TextCapitalization
+                                          .sentences,
                                       onChanged: (value) {
                                         setState(() {
                                           searchText = value;

@@ -67,7 +67,16 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
 
   onLoggedIn() {
     AdminGoal.checkUserGoalByUserId().then((response) {
-      if (response == true) {
+      if (response == false) {
+        Navigator.push(
+          context,
+          FadePageRoute2(
+            true,
+            enterPage: const StartProcess(),
+            exitPage: const Loginemailandpassword(),
+          ),
+        );
+      } else if (response >= 1) {
         Navigator.push(
             context,
             FadePageRoute(
@@ -80,15 +89,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
               ),
               // exitPage:SplashPage(),
             ));
-      } else if (response == false) {
-        Navigator.push(
-          context,
-          FadePageRoute2(
-            true,
-            enterPage: const StartProcess(),
-            exitPage: const Loginemailandpassword(),
-          ),
-        );
+        print("response $response");
       }
     });
   }
@@ -106,6 +107,59 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
     passwordController.dispose();
     _controller.dispose();
     super.dispose();
+  }
+
+  loginFunction() {
+    setState(() {
+      loading = true;
+      emailError = "";
+      passwordError = "";
+    });
+    if (_formkey.currentState!.validate() && errorPassword == false) {
+      Authentication()
+          .signIn(
+        fcm,
+        emailController.text.toString().trim(),
+        passwordController.text.toString(),
+      )
+          .then((response) {
+        if (response["statusCode"] == 200) {
+          onLoggedIn();
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("User Login Successfully")));
+        } else if (response["statusCode"] == 401) {
+          setState(() {
+            loading = false;
+            emailError = "";
+            passwordError = response["message"];
+          });
+
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(response["message"])));
+        } else if (response["statusCode"] == 404) {
+          setState(() {
+            loading = false;
+            credentials = false;
+            emailError = response["message"];
+          });
+
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(response["message"])));
+        }
+      }).catchError((error) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('An error occurred: $error')));
+      }).whenComplete(() {
+        setState(() {
+          loading = false;
+          credentials = false;
+        });
+      });
+    } else {
+      setState(() {
+        loading = false;
+      });
+    }
   }
 
   @override
@@ -494,6 +548,9 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                               }
                                               return null;
                                             },
+                                            onFieldSubmitted: (value) {
+                                              loginFunction();
+                                            },
                                           ),
                                         ),
                                       ],
@@ -710,6 +767,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               loading = false;
                             });
                           }
+                          FocusScope.of(context).unfocus();
                         },
                         child: Transform.scale(
                           scale: 1 - _controller.value,
