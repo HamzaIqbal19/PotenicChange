@@ -193,13 +193,13 @@ class _VisualisingState extends State<Visualising> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        trigger = '0';
+                        trigger = '${int.parse(trigger) + 1}';
                       });
                       setState(() {
                         visualize = jsonDecode(resetData);
                       });
                       setState(() {
-                        trigger = '1';
+                        //  trigger = '1';
                       });
                       Navigator.pop(context);
                     }

@@ -161,7 +161,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                         identity = jsonDecode(resetIdentity);
                       });
                       setState(() {
-                        trigger = '1';
+                        //   trigger = '1';
                       });
                       Navigator.pop(context);
                     }

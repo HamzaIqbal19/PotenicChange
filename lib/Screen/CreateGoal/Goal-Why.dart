@@ -130,13 +130,13 @@ class _goalwhyState extends State<GoalWhy> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        trigger = '0';
+                        trigger = '${int.parse(trigger) + 1}';
                       });
                       setState(() {
                         reason = jsonDecode(resetData);
                       });
                       setState(() {
-                        trigger = '1';
+                        // trigger = '1';
                       });
                       print('Reason $reason');
                       blankNode.requestFocus();
