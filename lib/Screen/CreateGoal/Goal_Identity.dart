@@ -155,7 +155,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        trigger = '0';
+                        trigger = '${int.parse(trigger) + 1}';
                       });
                       setState(() {
                         identity = jsonDecode(resetIdentity);

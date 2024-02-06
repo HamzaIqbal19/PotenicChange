@@ -180,4 +180,10 @@ class AppText {
 
   String inspirationBottomSheedBody =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo mauris massa, eu iaculis erat laoreet sit amet. Suspendisse vitae neque quis nibh molestie tempor. Suspendisse ut lectus mi. Phasellus ultricies velit felis, at rhoncus nisi condimentum nec. Phasellus hendrerit tincidunt erat sit amet sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo mauris massa, eu iaculis erat laoreet sit amet. Suspendisse vitae neque quis nibh molestie tempor. Suspendisse ut lectus mi. Phasellus ultricies velit felis, at rhoncus nisi condimentum nec. Phasellus hendrerit tincidunt erat sit amet sollicitudin. ";
+
+//Goal Achieved Text
+
+  String goalLevelUp = '';
+  String goalLevelDown =
+      "Based on your latest evaluation, your total goal\nlevel has gone down. Don’t despair yet.\n\nLife is a journey of ups and downs, and working on\nyourself is part of the transformation process.\nPlease review your latest assessment and adjust\nyour original ‘why’ reasons, if needed.";
 }

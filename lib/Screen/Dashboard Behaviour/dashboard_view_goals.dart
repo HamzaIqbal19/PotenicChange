@@ -9,6 +9,7 @@ import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/dashboard_behaviour_shimmer.dart';
+import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
@@ -75,6 +76,36 @@ class _view_goalsState extends State<view_goals> {
     });
   }
 
+  Future<void> getGoalUpdates() async {
+    final SharedPreferences prefs = await _prefs;
+    var levelChange = await prefs.getBool('goalLevelUpdate');
+
+   
+
+  
+
+    if (levelChange.toString() == 'true') {
+       var goalUpdate = await prefs.getString('goalLevelUpOrDown');
+    
+     
+      if (goalUpdate == 'up') {
+        Timer(const Duration(seconds: 5), () {
+          Navigator.push(context, FadePageRoute(page: const congratulations()));
+        });
+      } else if (goalUpdate.toString() == 'down') {
+        var length = await prefs.getInt('goalAchievedLenght');
+    var getSubscription = await prefs.getString('subscriptionStatus');
+    var goalData = prefs.getString('goalAcieved');
+     var newData = json.decode(goalData!);
+        print('Goal Achieved');
+        Timer(const Duration(seconds: 5), (){goal_achieved_sheet(context, newData, getSubscription, length);});
+        
+      }
+      await prefs.setBool(
+          'goalLevelUpdate', false);
+    }
+  }
+
   bool _showOverlay = false;
   int current = 0;
   int next = -1;
@@ -125,6 +156,7 @@ class _view_goalsState extends State<view_goals> {
         _showOverlay = true;
       });
     }
+    getGoalUpdates();
 
     // WidgetsBinding.instance.addPostFrameCallback((_) {
     //   Future.delayed(Duration(milliseconds: 2500), () => _scrollToCurrentIndex());

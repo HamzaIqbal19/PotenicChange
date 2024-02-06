@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations_journey.dart';
+import 'package:potenic_app/Screen/Subscription/Subscription.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -17,13 +20,15 @@ class congratulations extends StatefulWidget {
 class _congratulationsState extends State<congratulations> {
   int goalLevel = 0;
   var goalName;
+  String subscriptions = '';
+  var goalDetails;
 
   var identity;
   var color;
   bool loading = true;
 
   void _fetchGoalNames() async {
-    AdminGoal.getUserGoal().then((response) {
+    AdminGoal.getUpdatedGoal().then((response) {
       if (response.length != 0) {
         setState(() {
           loading = false;
@@ -31,6 +36,8 @@ class _congratulationsState extends State<congratulations> {
           color = response["color"];
           identity = response["identityStatement"][0]['text'];
           goalLevel = response["goalLevel"];
+          subscriptions = response['subscriptionsStatus'];
+          goalDetails = response;
         });
       } else {
         setState(() {
@@ -88,49 +95,41 @@ class _congratulationsState extends State<congratulations> {
           child: loading == false
               ? Column(
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        // goal_achieved_sheet(
-                        //     context, goal_level, goalName, identity, "$color");
-                        _incrementValue();
-                      },
-                      child: Container(
-                        width: AppDimensions.width10(context) * 35.5,
-                        //height: AppDimensions.height10(context) * 13.2,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 10.0),
-                        child: RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'laila',
-                                  height:
-                                      AppDimensions.height10(context) * 0.14,
-                                  //have reduced size so it does,nt overflow
-                                  fontSize: AppDimensions.font10(context) * 2.0,
-                                  color: const Color(0xFFFFFFFF),
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: 'Congratulations!\n\n',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      // fontFamily: 'laila',
-                                      fontSize:
-                                          AppDimensions.font10(context) * 3.0,
-                                      color: const Color(0xFFFFFFFF),
-                                    ),
+                    Container(
+                      width: AppDimensions.width10(context) * 35.5,
+                      //height: AppDimensions.height10(context) * 13.2,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 10.0),
+                      child: RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'laila',
+                                height: AppDimensions.height10(context) * 0.14,
+                                //have reduced size so it does,nt overflow
+                                fontSize: AppDimensions.font10(context) * 2.0,
+                                color: const Color(0xFFFFFFFF),
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: 'Congratulations!\n\n',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    // fontFamily: 'laila',
+                                    fontSize:
+                                        AppDimensions.font10(context) * 3.0,
+                                    color: const Color(0xFFFFFFFF),
                                   ),
-                                  TextSpan(
-                                      text: goalLevel == 5
-                                          ? '\nYou are living your goal and your\ndesired identity :)'
-                                          : 'You’ve gone up a level, it’s another\nstep towards living your goal and\nyour desired identity.',
-                                      style: const TextStyle(
-                                          //height: AppDimensions.height10(context) * 0.14,
-                                          ))
-                                ])),
-                      ),
+                                ),
+                                TextSpan(
+                                    text: goalLevel == 5
+                                        ? '\nYou are living your goal and your\ndesired identity :)'
+                                        : 'You’ve gone up a level, it’s another\nstep towards living your goal and\nyour desired identity.',
+                                    style: const TextStyle(
+                                        //height: AppDimensions.height10(context) * 0.14,
+                                        ))
+                              ])),
                     ),
                     Container(
                       width: AppDimensions.width10(context) * 26.8,
@@ -139,96 +138,86 @@ class _congratulationsState extends State<congratulations> {
                           top: AppDimensions.height10(context) * 12.7),
                       child: Stack(
                         children: [
-                          AnimatedScaleButton(
-                            onTap: () {},
-                            child: Container(
-                              width: AppDimensions.width10(context) * 26.8,
-                              height: AppDimensions.height10(context) * 26.8,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage('$color' == '1'
-                                        ? "assets/images/red_gradient.webp"
-                                        : '$color' == '2'
-                                            ? 'assets/images/orange_moon.webp'
-                                            : '$color' == '3'
-                                                ? "assets/images/lightGrey_gradient.webp"
-                                                : '$color' == '4'
-                                                    ? "assets/images/lightBlue_gradient.webp"
-                                                    : '$color' == '5'
-                                                        ? "assets/images/medBlue_gradient.webp"
-                                                        : '$color' == '6'
-                                                            ? "assets/images/Blue_gradient.webp"
-                                                            : 'assets/images/orange_moon.webp'),
-                                    fit: BoxFit.contain),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    // color: Colors.red,
-                                    height:
-                                        AppDimensions.height10(context) * 9.0,
-                                    width:
-                                        AppDimensions.width10(context) * 24.0,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal:
+                          Container(
+                            width: AppDimensions.width10(context) * 26.8,
+                            height: AppDimensions.height10(context) * 26.8,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage('$color' == '1'
+                                      ? "assets/images/red_gradient.webp"
+                                      : '$color' == '2'
+                                          ? 'assets/images/orange_moon.webp'
+                                          : '$color' == '3'
+                                              ? "assets/images/lightGrey_gradient.webp"
+                                              : '$color' == '4'
+                                                  ? "assets/images/lightBlue_gradient.webp"
+                                                  : '$color' == '5'
+                                                      ? "assets/images/medBlue_gradient.webp"
+                                                      : '$color' == '6'
+                                                          ? "assets/images/Blue_gradient.webp"
+                                                          : 'assets/images/orange_moon.webp'),
+                                  fit: BoxFit.contain),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  // color: Colors.red,
+                                  height: AppDimensions.height10(context) * 9.0,
+                                  width: AppDimensions.width10(context) * 24.0,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          AppDimensions.height10(context) *
+                                              2.0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        goalName,
+                                        textAlign: TextAlign.center,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    2.0,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.14,
+                                            fontWeight: FontWeight.w600,
+                                            color: const Color(0xff5B74A6)),
+                                      ),
+                                      SizedBox(
+                                        height:
                                             AppDimensions.height10(context) *
-                                                2.0),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          goalName,
-                                          // "Control my anger",
-
-                                          textAlign: TextAlign.center,
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 1,
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  2.0,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.14,
-                                              fontWeight: FontWeight.w600,
-                                              color: const Color(0xff5B74A6)),
-                                        ),
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  0.7,
-                                        ),
-                                        SizedBox(
-                                          // color: Colors.green,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  4.0,
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  22.0,
-                                          child: Text('"$identity"',
-                                              maxLines: 2,
-                                              textAlign: TextAlign.center,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                  fontStyle: FontStyle.italic,
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.6,
-                                                  fontWeight: FontWeight.w400,
-                                                  color:
-                                                      const Color(0xff5B74A6))),
-                                        ),
-                                      ],
-                                    ),
+                                                0.7,
+                                      ),
+                                      SizedBox(
+                                        // color: Colors.green,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                4.0,
+                                        width: AppDimensions.width10(context) *
+                                            22.0,
+                                        child: Text('"$identity"',
+                                            maxLines: 2,
+                                            textAlign: TextAlign.center,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                fontStyle: FontStyle.italic,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.6,
+                                                fontWeight: FontWeight.w400,
+                                                color:
+                                                    const Color(0xff5B74A6))),
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(
-                                    height:
-                                        AppDimensions.height10(context) * 4.3,
-                                  )
-                                ],
-                              ),
+                                ),
+                                SizedBox(
+                                  height: AppDimensions.height10(context) * 4.3,
+                                )
+                              ],
                             ),
                           ),
                           Align(
@@ -361,6 +350,13 @@ class _congratulationsState extends State<congratulations> {
                             FadePageRoute(
                                 page: const Congratulations_journey()),
                           );
+                        } else {
+                          Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const Congratulations_journey()),
+                          );
+                          //  Navigator.pop(context);
                         }
                       },
                       child: Container(
@@ -373,59 +369,51 @@ class _congratulationsState extends State<congratulations> {
                                 colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 5.0)),
-                        child: SizedBox(
-                          width: AppDimensions.width10(context) * 6.9,
-                          height: AppDimensions.height10(context) * 2.4,
-                          child: Center(
-                            child: Text(
-                              goalLevel > 3 ? 'Yes I am' : 'Exit',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: AppDimensions.font10(context) * 1.6,
-                                color: const Color(0xFFFFFFFF),
-                              ),
+                        child: Center(
+                          child: Text(
+                            goalLevel > 3 ? 'Yes I am' : 'Exit',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: AppDimensions.font10(context) * 1.8,
+                              color: const Color(0xFFFFFFFF),
                             ),
                           ),
                         ),
                       ),
                     ),
-                    Container(
-                      width: AppDimensions.width10(context) * 29.0,
-                      height: AppDimensions.height10(context) * 5.0,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 1.8),
-                      decoration: BoxDecoration(
-                          color: const Color(0xFFF5F5F5),
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 5.0)),
-                      child: SizedBox(
-                        width: AppDimensions.width10(context) * 23.4,
-                        height: AppDimensions.height10(context) * 2.4,
+                    AnimatedScaleButton(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: new_progress_score(
+                              premium: subscriptions == 'active' ? true : false,
+                              evaluationIndex:
+                                  goalDetails['goalEvaluations'].length - 1,
+                            )));
+                      },
+                      child: Container(
+                        width: AppDimensions.width10(context) * 29.0,
+                        height: AppDimensions.height10(context) * 5.0,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 1.8),
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFF5F5F5),
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 5.0)),
                         child: Center(
                           child: Text(
-                            goalLevel < 4
-                                ? 'View goal level evaluation'
-                                : 'No I’m not, review evaluation',
+                            'View goal level evaluation',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               height: AppDimensions.height10(context) * 0.15,
-                              fontSize: AppDimensions.font10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.8,
                               color: const Color(0xFFFA9934),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: AppDimensions.width10(context) * 17.0,
-                      height: AppDimensions.height10(context) * 0.5,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 2.0),
-                          color: const Color(0xFFFFFFFF).withOpacity(0.3)),
                     ),
                   ],
                 )
@@ -439,8 +427,7 @@ class _congratulationsState extends State<congratulations> {
   }
 }
 
-void goal_achieved_sheet(
-    context, int goal_level, String goalName, String identity, String color) {
+void goal_achieved_sheet(context, data, subscription, length) {
   showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -451,6 +438,7 @@ void goal_achieved_sheet(
         top: Radius.circular(AppDimensions.height10(context) * 2.0),
       )),
       builder: (context) {
+        print('');
         return Container(
           margin: EdgeInsets.only(top: AppDimensions.height10(context) * 4.6),
           padding:
@@ -469,6 +457,7 @@ void goal_achieved_sheet(
                       end: Alignment.bottomCenter,
                       colors: [Color(0xFFE7DEDF), Color(0xFFF9F7F9)])),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     //color: Colors.amber,
@@ -492,20 +481,17 @@ void goal_achieved_sheet(
                       ),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 0.5),
-                      child: Text(
-                        'Goal level has gone down',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 3.0,
-                            // letterSpacing: AppDimensions.height10(context) * 0.2,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF437296)),
-                      ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 4),
+                    child: Text(
+                      'Goal level has gone\ndown!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: AppDimensions.font10(context) * 2.8,
+                          // letterSpacing: AppDimensions.height10(context) * 0.2,
+                          fontWeight: FontWeight.w700,
+                          color: const Color(0xFF437296)),
                     ),
                   ),
                   Container(
@@ -514,7 +500,7 @@ void goal_achieved_sheet(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.6),
                     child: Text(
-                      'Based on your latest evaluation, your total goal\nscore level has gone down. Don’t despair yet.\nLife is a journey of ups and downs, and working\non yourself is part of the transformation\nprocess. Please review your latest assessment\nand adjust your original ‘why’ reasons if needed.',
+                      AppText().goalLevelDown,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: AppDimensions.font10(context) * 1.6,
@@ -523,28 +509,28 @@ void goal_achieved_sheet(
                     ),
                   ),
                   Container(
-                    width: AppDimensions.width10(context) * 26.8,
-                    height: AppDimensions.height10(context) * 26.8,
+                    width: AppDimensions.width10(context) * 25.8,
+                    height: AppDimensions.height10(context) * 25.8,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 5.7),
+                        top: AppDimensions.height10(context) * 3.0),
                     child: Stack(
                       children: [
                         Container(
-                          width: AppDimensions.width10(context) * 26.8,
-                          height: AppDimensions.height10(context) * 26.8,
+                          width: AppDimensions.width10(context) * 25.8,
+                          height: AppDimensions.height10(context) * 25.8,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage(color == '1'
+                                image: AssetImage(data['color'] == '1'
                                     ? "assets/images/red_gradient.webp"
-                                    : color == '2'
+                                    : data['color'] == '2'
                                         ? 'assets/images/orange_moon.webp'
-                                        : color == '3'
+                                        : data['color'] == '3'
                                             ? "assets/images/lightGrey_gradient.webp"
-                                            : color == '4'
+                                            : data['color'] == '4'
                                                 ? "assets/images/lightBlue_gradient.webp"
-                                                : color == '5'
+                                                : data['color'] == '5'
                                                     ? "assets/images/medBlue_gradient.webp"
-                                                    : color == '6'
+                                                    : data['color'] == '6'
                                                         ? "assets/images/Blue_gradient.webp"
                                                         : 'assets/images/orange_moon.webp'),
                                 fit: BoxFit.contain),
@@ -562,7 +548,7 @@ void goal_achieved_sheet(
                                 child: Column(
                                   children: [
                                     Text(
-                                      goalName,
+                                      data['name'],
                                       // "Control my anger",
 
                                       textAlign: TextAlign.center,
@@ -588,7 +574,8 @@ void goal_achieved_sheet(
                                           AppDimensions.height10(context) * 4.0,
                                       width:
                                           AppDimensions.width10(context) * 22.0,
-                                      child: Text('"$identity"',
+                                      child: Text(
+                                          data['identityStatement'][0]['text'],
                                           maxLines: 2,
                                           textAlign: TextAlign.center,
                                           overflow: TextOverflow.ellipsis,
@@ -610,20 +597,20 @@ void goal_achieved_sheet(
                           ),
                         ),
                         Align(
-                          alignment: const Alignment(0, 10.5),
+                          alignment: const Alignment(0, 4.0),
                           child: Container(
-                            width: AppDimensions.width10(context) * 24.2,
-                            height: AppDimensions.height10(context) * 24.2,
+                            width: AppDimensions.width10(context) * 20.2,
+                            height: AppDimensions.height10(context) * 20.2,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                    image: AssetImage(goal_level == 1
+                                    image: AssetImage(data['goalLevel'] == 1
                                         ? 'assets/images/goal_level_1.webp'
-                                        : goal_level == 2
+                                        : data['goalLevel'] == 2
                                             ? 'assets/images/goal_level_2.webp'
-                                            : goal_level == 3
+                                            : data['goalLevel'] == 3
                                                 ? 'assets/images/goal_level_3.webp'
-                                                : goal_level == 4
+                                                : data['goalLevel'] == 4
                                                     ? 'assets/images/goal_level_4.webp'
                                                     : 'assets/images/goal_level_5.webp'),
                                     fit: BoxFit.cover)),
@@ -661,8 +648,12 @@ void goal_achieved_sheet(
                                               ),
                                               children: [
                                                 TextSpan(
-                                                    text: goal_level < 5
-                                                        ? '$goal_level'
+                                                    text: int.parse(data[
+                                                                    'goalLevel']
+                                                                .toString()) <
+                                                            5
+                                                        ? data['goalLevel']
+                                                            .toString()
                                                         : '5',
                                                     style: TextStyle(
                                                       fontFamily: 'Laila',
@@ -688,9 +679,15 @@ void goal_achieved_sheet(
                                           AppDimensions.height10(context) * 5.1,
                                       child: Center(
                                         child: Text(
-                                          // goal_level == 2
-                                          //     ? 'I feel like I’m living\nmy goal and desired\nidentity':
-                                          "I am making small\nsteps towards my\ngoal",
+                                          data['goalLevel'] == 1
+                                              ? "I'm making small\nsteps towards my\ngoal"
+                                              : data['goalLevel'] == 2
+                                                  ? "I'm making\nconsiderable steps\nforward"
+                                                  : data['goalLevel'] == 3
+                                                      ? "I'm almost there"
+                                                      : data['goalLevel'] == 4
+                                                          ? 'I feel like I’m living\nmy goal and desired\nidentity '
+                                                          : "I've achieved my\ngoal and living my\nnew identity :)",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontFamily: 'laila',
@@ -715,21 +712,15 @@ void goal_achieved_sheet(
                       ],
                     ),
                   ),
-                  GestureDetector(
+                  AnimatedScaleButton(
                     onTap: () {
-                      // if (goal_level > 3) {
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => const Congratulations_journey()),
-                      //   );
-                      // }
+                      Navigator.pop(context);
                     },
                     child: Container(
                       width: AppDimensions.width10(context) * 29.0,
                       height: AppDimensions.height10(context) * 5.0,
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 13.1),
+                          top: AppDimensions.height10(context) * 10.1),
                       decoration: BoxDecoration(
                           gradient: const LinearGradient(
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
@@ -743,7 +734,7 @@ void goal_achieved_sheet(
                             'Exit',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: AppDimensions.font10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 2,
                               color: const Color(0xFFFFFFFF),
                             ),
                           ),
@@ -751,27 +742,38 @@ void goal_achieved_sheet(
                       ),
                     ),
                   ),
-                  Container(
-                    width: AppDimensions.width10(context) * 29.0,
-                    height: AppDimensions.height10(context) * 5.0,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.8,
-                        bottom: AppDimensions.height10(context) * 4.3),
-                    decoration: BoxDecoration(
-                        color: const Color(0xFFF5F5F5),
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 5.0)),
-                    child: SizedBox(
-                      width: AppDimensions.width10(context) * 23.4,
-                      height: AppDimensions.height10(context) * 2.4,
-                      child: Center(
-                        child: Text(
-                          'View goal level evaluation',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: AppDimensions.font10(context) * 1.6,
-                            color: const Color(0xFFFA9934),
+                  AnimatedScaleButton(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: new_progress_score(
+                            premium: subscription == 'active' ? true : false,
+                            evaluationIndex: length - 1,
+                          )));
+                    },
+                    child: Container(
+                      width: AppDimensions.width10(context) * 29.0,
+                      height: AppDimensions.height10(context) * 5.0,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.8,
+                          bottom: AppDimensions.height10(context) * 4.3),
+                      decoration: BoxDecoration(
+                          color: const Color(0xFFF5F5F5),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 5.0)),
+                      child: SizedBox(
+                        width: AppDimensions.width10(context) * 23.4,
+                        height: AppDimensions.height10(context) * 2.4,
+                        child: Center(
+                          child: Text(
+                            'View goal level evaluation',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: AppDimensions.font10(context) * 2,
+                              color: const Color(0xFFFA9934),
+                            ),
                           ),
                         ),
                       ),

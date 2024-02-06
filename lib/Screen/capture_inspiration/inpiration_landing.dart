@@ -1304,7 +1304,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 child: Center(
                                   child: TextFormField(
                                       controller: _searchController,
-                                      textCapitalization: TextCapitalization.sentences,
+                                      textCapitalization: TextCapitalization
+                                          .sentences,
                                       onChanged: (value) {
                                         setState(() {
                                           searchHurdles(value);
