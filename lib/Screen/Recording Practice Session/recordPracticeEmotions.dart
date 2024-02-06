@@ -688,12 +688,8 @@ class _emotionsState extends State<emotions> {
                                         "beforeNote": feedback.text.isNotEmpty
                                             ? feedback.text.toString()
                                             : " ",
-                                        "afterNote": afterSessionNotes == null
-                                            ? " "
-                                            : afterSessionNotes,
-                                        "endNote": endSession == null
-                                            ? " "
-                                            : endSession
+                                        "afterNote": afterSessionNotes ?? " ",
+                                        "endNote": endSession ?? " "
                                       }
                                     ]).then((reaponse) {
                                       if (reaponse == true) {

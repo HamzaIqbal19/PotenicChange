@@ -678,7 +678,7 @@ class _practice_summaryState extends State<practice_summary> {
                           ]),
                         ),
                       ),
-                      emotionFeedback != " "
+                      emotionFeedback != " " && emotionFeedback.isNotEmpty
                           ? Container(
                               width: AppDimensions.width10(context) * 36.0,
                               // height: AppDimensions.height10(context) * 7.3,
@@ -823,7 +823,7 @@ class _practice_summaryState extends State<practice_summary> {
                           ]),
                         ),
                       ),
-                      Feedback != " "
+                      feedback != " " && feedback.isNotEmpty
                           ? Container(
                               width: AppDimensions.width10(context) * 36.0,
                               // height: AppDimensions.height10(context) * 7.3,
@@ -949,7 +949,7 @@ class _practice_summaryState extends State<practice_summary> {
                           ]),
                         ),
                       ),
-                      sessionFeedBack != " "
+                      sessionFeedBack != " " && sessionFeedBack.isNotEmpty
                           ? Container(
                               width: AppDimensions.width10(context) * 36.0,
                               // height: AppDimensions.height10(context) * 7.3,

@@ -1038,10 +1038,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const congratulations()));
+                                      // Navigator.push(
+                                      //     context,
+                                      //     FadePageRoute(
+                                      //         page: const congratulations()));
                                     },
                                     child: Container(
                                       width:

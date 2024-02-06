@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/random_circle.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
@@ -1268,24 +1269,138 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: AppDimensions.width10(context) * 29.0,
-                          height: AppDimensions.height10(context) * 5.0,
-                          margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 1.8),
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFF5F5F5),
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10(context) * 5.0)),
-                          child: Center(
-                            child: Text(
-                              'Stop goal',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                height: AppDimensions.height10(context) * 0.15,
-                                fontSize: AppDimensions.font10(context) * 1.8,
-                                color: const Color(0xFFFA9934),
+                        AnimatedScaleButton(
+                          onTap: () {
+                            AdminGoal()
+                                .updateUserGoalStatus('inactive')
+                                .then((response) {
+                              if (response == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const view_goals(
+                                      missed: false,
+                                      name: '',
+                                      update: false,
+                                      helpfulTips: false,
+                                      record: 0,
+                                    )));
+                                // _fetchGoalDetails();
+                              } else if (response == 400) {
+                                Navigator.pop(context);
+                                // showAnimatedDialog(
+                                //     animationType:
+                                //         DialogTransitionType
+                                //             .fadeScale,
+                                //     curve: Curves
+                                //         .easeInOut,
+                                //     duration: const Duration(
+                                //         seconds:
+                                //             1),
+                                //     context:
+                                //         context,
+                                //     builder: (BuildContext
+                                //             context) =>
+                                //         Container(
+                                //           width:
+                                //               AppDimensions.width10(context) * 27.0,
+                                //           height:
+                                //               AppDimensions.height10(context) * 18.2,
+                                //           decoration:
+                                //               BoxDecoration(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
+                                //           child:
+                                //               AlertDialog(
+                                //             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
+                                //             contentPadding: EdgeInsets.zero,
+                                //             actionsPadding: EdgeInsets.zero,
+                                //             titlePadding: EdgeInsets.zero,
+                                //             title: Container(
+                                //               margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.9, right: AppDimensions.width10(context) * 1.6, left: AppDimensions.width10(context) * 1.6, bottom: AppDimensions.height10(context) * 0.2),
+                                //               height: AppDimensions.height10(context) * 2.2,
+                                //               width: AppDimensions.width10(context) * 23.8,
+                                //               child: Text(
+                                //                 "Turn off goal?",
+                                //                 textAlign: TextAlign.center,
+                                //                 style: TextStyle(
+                                //                   fontSize: AppDimensions.font10(context) * 1.7,
+                                //                   fontWeight: FontWeight.w400,
+                                //                 ),
+                                //               ),
+                                //             ),
+                                //             content: Container(
+                                //               margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.5, left: AppDimensions.width10(context) * 1.6, right: AppDimensions.width10(context) * 1.6),
+                                //               height: AppDimensions.height10(context) * 3.4,
+                                //               width: AppDimensions.width10(context) * 23.8,
+                                //               child: Text(
+                                //                 "Goal status can only be changed after 60 days",
+                                //                 textAlign: TextAlign.center,
+                                //                 style: TextStyle(
+                                //                   fontSize: AppDimensions.font10(context) * 1.3,
+                                //                   fontWeight: FontWeight.w400,
+                                //                 ),
+                                //               ),
+                                //             ),
+                                //             actions: <Widget>[
+                                //               Column(
+                                //                 children: [
+                                //                   SizedBox(
+                                //                     height: AppDimensions.height10(context) * 0.1,
+                                //                     child: Divider(
+                                //                       color: const Color(0XFF3C3C43).withOpacity(0.29),
+                                //                     ),
+                                //                   ),
+                                //                   Container(
+                                //                     height: AppDimensions.height10(context) * 4.2,
+                                //                     width: double.infinity,
+                                //                     color: const Color(0xFF007AFF),
+                                //                     child: TextButton(
+                                //                       onPressed: () {
+                                //                         Navigator.pop(context);
+                                //                       },
+                                //                       child: Text(
+                                //                         'OK',
+                                //                         style: TextStyle(color: const Color(0xFFFFFFFF), fontSize: AppDimensions.font10(context) * 1.7, fontFamily: "Laila", fontWeight: FontWeight.w400),
+                                //                       ),
+                                //                     ),
+                                //                   ),
+                                //                   SizedBox(
+                                //                     height: AppDimensions.height10(context) * 0.1,
+                                //                     child: Divider(
+                                //                       color: const Color(0XFF3C3C43).withOpacity(0.29),
+                                //                     ),
+                                //                   ),
+                                //                   SizedBox(
+                                //                     height: AppDimensions.height10(context) * 4.4,
+                                //                     width: double.infinity,
+                                //                   ),
+                                //                 ],
+                                //               ),
+                                //             ],
+                                //           ),
+                                //         ));
+                              }
+                            });
+                          },
+                          child: Container(
+                            width: AppDimensions.width10(context) * 29.0,
+                            height: AppDimensions.height10(context) * 5.0,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.8),
+                            decoration: BoxDecoration(
+                                color: const Color(0xFFF5F5F5),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 5.0)),
+                            child: Center(
+                              child: Text(
+                                'Stop goal',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  height:
+                                      AppDimensions.height10(context) * 0.15,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
+                                  color: const Color(0xFFFA9934),
+                                ),
                               ),
                             ),
                           ),

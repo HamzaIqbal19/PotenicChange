@@ -60,7 +60,7 @@ class GoalEvaluationApi {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
     var goalEval = prefs.getInt('goal_eval_id');
-     var levelChange = await prefs.getBool('goalLevelUpdate');
+    var levelChange = await prefs.getBool('goalLevelUpdate');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -75,19 +75,20 @@ class GoalEvaluationApi {
     var jsonData = jsonDecode(request.body);
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
-      if(levelChange != true){
- await prefs.setBool(
-          'goalLevelUpdate', jsonData['data']['goalLevelUpdate']);
-      await prefs.setString(
-          'goalLevelUpOrDown', jsonData['data']['goalLevelUpOrDown']);
-      await prefs.setInt('goalAchievedId', jsonData['data']['userGoal']['id']);
-      await prefs.setInt(
-          'goalAchievedLenght', jsonData['data']['goalEvaluationLength']);
-      await prefs.setString(
-          'goalAcieved', jsonEncode(jsonData['data']['userGoal']));
-
+      if (levelChange != true) {
+        await prefs.setBool(
+            'goalLevelUpdate', jsonData['data']['goalLevelUpdate']);
+        await prefs.setString(
+            'goalLevelUpOrDown', jsonData['data']['goalLevelUpOrDown']);
+        await prefs.setInt(
+            'goalAchievedId', jsonData['data']['userGoal']['id']);
+        await prefs.setInt(
+            'goalAchievedLenght', jsonData['data']['goalEvaluationLength']);
+        await prefs.setString(
+            'goalAcieved', jsonEncode(jsonData['data']['userGoal']));
+        print("Goal Achieved :${jsonData['data']['userGoal']['id']}");
       }
-     
+
       return true;
     } else {
       return false;

@@ -79,30 +79,24 @@ class _view_goalsState extends State<view_goals> {
   Future<void> getGoalUpdates() async {
     final SharedPreferences prefs = await _prefs;
     var levelChange = await prefs.getBool('goalLevelUpdate');
-
-   
-
-  
+    var goalUpdate = await prefs.getString('goalLevelUpOrDown');
+    var length = await prefs.getInt('goalAchievedLenght');
+    var getSubscription = await prefs.getString('subscriptionStatus');
+    var goalData = prefs.getString('goalAcieved');
+    var newData = json.decode(goalData!);
 
     if (levelChange.toString() == 'true') {
-       var goalUpdate = await prefs.getString('goalLevelUpOrDown');
-    
-     
       if (goalUpdate == 'up') {
         Timer(const Duration(seconds: 5), () {
           Navigator.push(context, FadePageRoute(page: const congratulations()));
         });
       } else if (goalUpdate.toString() == 'down') {
-        var length = await prefs.getInt('goalAchievedLenght');
-    var getSubscription = await prefs.getString('subscriptionStatus');
-    var goalData = prefs.getString('goalAcieved');
-     var newData = json.decode(goalData!);
         print('Goal Achieved');
-        Timer(const Duration(seconds: 5), (){goal_achieved_sheet(context, newData, getSubscription, length);});
-        
+        Timer(const Duration(seconds: 5), () {
+          goal_achieved_sheet(context, newData, getSubscription, length);
+        });
       }
-      await prefs.setBool(
-          'goalLevelUpdate', false);
+      await prefs.setBool('goalLevelUpdate', false);
     }
   }
 
