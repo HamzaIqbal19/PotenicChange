@@ -344,23 +344,29 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                           );
                         },
                         child: Container(
-                            height: AppDimensions.height10(context) * 3.0,
-                            width: AppDimensions.width10(context) * 3.0,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 2.1),
-                            padding: EdgeInsets.all(
-                                AppDimensions.width10(context) * 0.5),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.transparent,
-                                border: Border.all(
-                                    width: AppDimensions.width10(context) * 0.2,
-                                    color: const Color(0xFFFBFBFB))),
-                            child: const ImageIcon(
-                              AssetImage('assets/images/edit_icon.webp'),
-                              color: Colors.white,
-                              size: 10,
-                            )),
+                                    height:
+                                        AppDimensions.height10(context) * 3.0,
+                                    width: AppDimensions.width10(context) * 3.0,
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10(context) *
+                                            2.1),
+                                    padding: EdgeInsets.all(
+                                        AppDimensions.width10(context) * 0.5),
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.transparent,
+                                        border: Border.all(
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  0.2,
+                                          color: const Color(0xFFFBFBFB),
+                                        )),
+                                    child: const ImageIcon(
+                                      AssetImage(
+                                          'assets/images/edit_icon.webp'),
+                                      color: Colors.white,
+                                      size: 10,
+                                    ))
                       ),
                       Container(
                         width: AppDimensions.width10(context) * 32.6,
@@ -519,10 +525,11 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         shape: BoxShape.circle,
                                         color: Colors.transparent,
                                         border: Border.all(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    0.2,
-                                            color: const Color(0XFFFBFBFB))),
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  0.2,
+                                          color: const Color(0xFFFBFBFB),
+                                        )),
                                     child: const ImageIcon(
                                       AssetImage(
                                           'assets/images/edit_icon.webp'),

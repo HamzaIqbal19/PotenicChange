@@ -78,15 +78,16 @@ class _view_goalsState extends State<view_goals> {
 
   Future<void> getGoalUpdates() async {
     final SharedPreferences prefs = await _prefs;
-    var levelChange = await prefs.getBool('goalLevelUpdate');
-    var goalUpdate = await prefs.getString('goalLevelUpOrDown');
-    var length = await prefs.getInt('goalAchievedLenght');
-    var getSubscription = await prefs.getString('subscriptionStatus');
+    var levelChange = prefs.getBool('goalLevelUpdate');
+    var goalUpdate = prefs.getString('goalLevelUpOrDown');
+    var length = prefs.getInt('goalAchievedLenght');
+    var getSubscription = prefs.getString('subscriptionStatus');
     var goalData = prefs.getString('goalAcieved');
     var newData = json.decode(goalData!);
 
     if (levelChange.toString() == 'true') {
-      if (goalUpdate == 'up') {
+      print("Goal Evaluation json data $goalUpdate");
+      if (goalUpdate.toString() == 'up') {
         Timer(const Duration(seconds: 5), () {
           Navigator.push(context, FadePageRoute(page: const congratulations()));
         });
@@ -148,6 +149,7 @@ class _view_goalsState extends State<view_goals> {
       //dashboard_sheet(context);
       setState(() {
         _showOverlay = true;
+        goalLevel = 1;
       });
     }
     getGoalUpdates();

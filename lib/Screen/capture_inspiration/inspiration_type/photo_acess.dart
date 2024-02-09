@@ -275,9 +275,9 @@ class _photo_infoState extends State<photo_info> {
       ],
       uiSettings: [
         AndroidUiSettings(
-            toolbarTitle: 'Cropper',
-            toolbarColor: Colors.deepOrange,
-            toolbarWidgetColor: Colors.white,
+            toolbarTitle: 'Reposition Image',
+            toolbarColor: Colors.white,
+            toolbarWidgetColor: Colors.blue,
             initAspectRatio: CropAspectRatioPreset.original,
             lockAspectRatio: false),
         IOSUiSettings(

@@ -92,36 +92,42 @@ class _practice_assesmentState extends State<practice_assesment> {
     fetchPracticeAssesment();
   }
 
+  setRoute() {
+    if (route == 'practice_menu') {
+      Navigator.pushReplacement(
+          context,
+          FadePageRouteReverse(
+              page: const practiceMenu(
+            goal_eval: false,
+          )));
+    } else if (route == 'practice_menu_missed') {
+      Navigator.pushReplacement(
+          context,
+          FadePageRouteReverse(
+              page: const missed_Menu(
+            pracName: '',
+          )));
+    } else if (route == 'practice_completed') {
+      Navigator.pushReplacement(
+          context, FadePageRouteReverse(page: const menu_behaviour()));
+    } else if (route == 'practice_completed') {
+      Navigator.pushReplacement(
+          context,
+          FadePageRouteReverse(
+              page: practice_progress(
+            days: widget.days,
+            route: widget.route,
+          )));
+    } else {
+      Navigator.pop(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        if (route == 'practice_menu') {
-          Navigator.pushReplacement(
-              context,
-              FadePageRouteReverse(
-                  page: const practiceMenu(
-                goal_eval: false,
-              )));
-        } else if (route == 'practice_menu_missed') {
-          Navigator.pushReplacement(
-              context,
-              FadePageRouteReverse(
-                  page: const missed_Menu(
-                pracName: '',
-              )));
-        } else if (route == 'practice_completed') {
-          Navigator.pushReplacement(
-              context, FadePageRouteReverse(page: const menu_behaviour()));
-        } else if (route == 'practice_completed') {
-          Navigator.pushReplacement(
-              context,
-              FadePageRouteReverse(
-                  page: practice_progress(
-                days: widget.days,
-                route: widget.route,
-              )));
-        }
+        setRoute();
 
         return Future.value(false);
       },
@@ -133,32 +139,7 @@ class _practice_assesmentState extends State<practice_assesment> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
-                  if (route == 'practice_menu') {
-                    Navigator.pushReplacement(
-                        context,
-                        FadePageRouteReverse(
-                            page: const practiceMenu(
-                          goal_eval: false,
-                        )));
-                  } else if (route == 'practice_menu_missed') {
-                    Navigator.pushReplacement(
-                        context,
-                        FadePageRouteReverse(
-                            page: const missed_Menu(
-                          pracName: '',
-                        )));
-                  } else if (route == 'practice_completed') {
-                    Navigator.pushReplacement(context,
-                        FadePageRouteReverse(page: const menu_behaviour()));
-                  } else if (route == 'practice_completed') {
-                    Navigator.pushReplacement(
-                        context,
-                        FadePageRouteReverse(
-                            page: practice_progress(
-                          days: widget.days,
-                          route: widget.route,
-                        )));
-                  }
+                  setRoute();
                 },
                 icon: Image.asset(
                   'assets/images/Back.webp',
@@ -171,32 +152,7 @@ class _practice_assesmentState extends State<practice_assesment> {
             Center(
               child: IconButton(
                   onPressed: () {
-                    if (route == 'practice_menu') {
-                      Navigator.pushReplacement(
-                          context,
-                          FadePageRouteReverse(
-                              page: const practiceMenu(
-                            goal_eval: false,
-                          )));
-                    } else if (route == 'practice_menu_missed') {
-                      Navigator.pushReplacement(
-                          context,
-                          FadePageRouteReverse(
-                              page: const missed_Menu(
-                            pracName: '',
-                          )));
-                    } else if (route == 'practice_completed') {
-                      Navigator.pushReplacement(context,
-                          FadePageRouteReverse(page: const menu_behaviour()));
-                    } else if (route == 'practice_completed') {
-                      Navigator.pushReplacement(
-                          context,
-                          FadePageRouteReverse(
-                              page: practice_progress(
-                            days: widget.days,
-                            route: widget.route,
-                          )));
-                    }
+                    setRoute();
                   },
                   icon: Image.asset(
                     'assets/images/Close.webp',

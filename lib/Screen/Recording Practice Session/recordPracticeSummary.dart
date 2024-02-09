@@ -739,7 +739,7 @@ class _practice_summaryState extends State<practice_summary> {
                                       style:
                                           TextStyle(color: Color(0xff8C648A))),
                                   TextSpan(
-                                    text: ' your practice?',
+                                    text: ' recording your practice?',
                                   ),
                                 ])),
                       ),
@@ -862,16 +862,23 @@ class _practice_summaryState extends State<practice_summary> {
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 4.0),
                         child: Center(
-                          child: Text(
-                            'How did the practice go?',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 2.2,
-                                fontWeight: FontWeight.w600,
-                                height: AppDimensions.height10(context) * 0.15,
-                                color: Colors.white,
-                                fontFamily: 'Laila'),
-                          ),
+                          child: RichText(
+                              textAlign: TextAlign.center,
+                              text: TextSpan(
+                                  style: TextStyle(
+                                    fontFamily: 'Laila',
+                                    height:
+                                        AppDimensions.height10(context) * 0.15,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 2.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                  children: const [
+                                    TextSpan(
+                                      text: 'How did the practice go?',
+                                    ),
+                                  ])),
                         ),
                       ),
                       AnimatedScaleButton(

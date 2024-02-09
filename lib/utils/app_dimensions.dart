@@ -31,7 +31,7 @@ class AppDimensions {
     if (MediaQuery.of(context).size.height < 690) {
       return ((8.5.w));
     } else {
-      return (screenHeight(context) /90.196080);
+      return (screenHeight(context) / 90.196080);
     }
   }
 
@@ -40,6 +40,53 @@ class AppDimensions {
       return ((8.22.sp));
     } else {
       return (screenHeight(context) / 90.196080);
+    }
+  }
+
+  static double height10(BuildContext context) => check(context);
+  static double font10(BuildContext context) => checkText(context);
+
+  // static double height10(BuildContext context) =>
+  //     screenHeight(context) / 90.196080;
+  static double width10(BuildContext context) => checkWidth(context);
+}
+
+class AppDimensionsUpdated {
+  static screenHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+  static screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
+
+  // screen height 866.2857142857143
+  // screen width  411.4285714285714
+  double pageView(BuildContext context) => screenHeight(context) / 2.71;
+  double pageViewContainer(BuildContext context) =>
+      screenHeight(context) / 3.94;
+  double pageViewTextContainer(BuildContext context) =>
+      screenHeight(context) / 7.22;
+
+  // dynamic heights
+
+  static check(context) {
+    if (MediaQuery.of(context).size.height < 690) {
+      return ((7.545.h));
+    } else {
+      return (screenHeight(context) / 86.196080);
+    }
+  }
+
+  static checkWidth(context) {
+    if (MediaQuery.of(context).size.height < 690) {
+      return ((8.5.w));
+    } else {
+      return (screenHeight(context) / 86.196080);
+    }
+  }
+
+  static checkText(context) {
+    if (MediaQuery.of(context).size.height < 690) {
+      return ((8.22.sp));
+    } else {
+      return (screenHeight(context) / 86.196080);
     }
   }
 

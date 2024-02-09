@@ -124,8 +124,8 @@ class _congratulationsState extends State<congratulations> {
                                 ),
                                 TextSpan(
                                     text: goalLevel == 5
-                                        ? '\nYou are living your goal and your\ndesired identity :)'
-                                        : 'You’ve gone up a level, it’s another\nstep towards living your goal and\nyour desired identity.',
+                                        ? '\nYou are living your vision and your\ndesired identity :)'
+                                        : 'You’ve gone up a level, it’s another\nstep towards living your vision and\nyour desired identity.',
                                     style: const TextStyle(
                                         //height: AppDimensions.height10(context) * 0.14,
                                         ))

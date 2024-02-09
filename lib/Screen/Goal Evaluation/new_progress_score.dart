@@ -75,6 +75,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
 
     AdminGoal.getUserGoalById(prefs.get('goal_num'))
         .then((response) async {
+          print(
+              'Response goal evaluation: ${response["goalEvaluations"][0]['goalLevel']}');
           if (response.length != 0) {
             setState(() {
               goalDetails = response;
@@ -103,8 +105,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
   }
 
   GetDates() {
-    if (goalDetails["goalEvaluations"][0]['goalLevel'] == null ||
-        goalDetails["goalEvaluations"][0]['goalLevel'] == 0) {
+    if (goalDetails["goalEvaluations"] != null) {
       for (int i = 0; i < goalDetails["goalEvaluations"].length; i++) {
         late DateTime futureDate;
         final DateTime originalDate = DateFormat("yyyy-MM-dd")
@@ -113,13 +114,14 @@ class _new_progress_scoreState extends State<new_progress_score> {
           futureDate = DateFormat("yyyy-MM-dd")
               .parse(goalDetails["goalEvaluations"][i]['endDate']);
         } else {
-          futureDate = originalDate.add(Duration(days: 30));
+          futureDate = originalDate.add(const Duration(days: 30));
         }
 
         final String formattedDate =
             DateFormat("dd MMM yy").format(originalDate);
         final String formattedFutureDate =
             DateFormat("dd MMM yy").format(futureDate);
+
         if (goalDetails["goalEvaluations"][i]['goalLevel'] == null ||
             goalDetails["goalEvaluations"][i]['goalLevel'] == 0) {
           _dates.add('$formattedDate to $formattedFutureDate (-/5)');
@@ -128,7 +130,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
               '$formattedDate to $formattedFutureDate (${goalDetails["goalEvaluations"][i]['totalPoint']}/5)');
         }
         setState(() {
-          activity_duration = _dates[selectedEval].substring(0, 22);
+          activity_duration = _dates[_dates.length - 1].substring(0, 22);
         });
       }
     }
@@ -256,337 +258,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
                             top: AppDimensions.height10(context) * 4.0),
                         child: Stack(
                           children: [
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: GestureDetector(
-                                onTap: () => showModalBottomSheet(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return SizedBox(
-                                      height: AppDimensions.height10(context) *
-                                          31.3, // Set the height of the bottom sheet
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.8,
-                                            decoration: BoxDecoration(
-                                                border: Border(
-                                                    bottom: BorderSide(
-                                                        color: const Color(
-                                                            0xFF828282),
-                                                        width: AppDimensions
-                                                                .width10(
-                                                                    context) *
-                                                            0.1))),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    width:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            5.0,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            2.1,
-                                                    margin: EdgeInsets.only(
-                                                        right: AppDimensions
-                                                                .width10(
-                                                                    context) *
-                                                            2.0),
-                                                    child: Text(
-                                                      'Cancel',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .font10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: const Color(
-                                                              0xFF2F80ED)),
-                                                    ),
-                                                  ),
-                                                ),
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    int select = 0;
-                                                    setState(() {
-                                                      activity_duration =
-                                                          _dates[_selectedIndex]
-                                                              .substring(0, 22);
-                                                      select = _selectedIndex;
-                                                    });
-                                                    if (select < 0 ||
-                                                        select >=
-                                                            _dates.length) {
-                                                      setState(() {
-                                                        selectedEval =
-                                                            _selectedIndex;
-                                                        mirror = _selectedIndex;
-                                                      });
-                                                    } else {
-                                                      int mirrorIndex =
-                                                          _dates.length -
-                                                              1 -
-                                                              _selectedIndex;
-                                                      setState(() {
-                                                        selectedEval =
-                                                            _selectedIndex;
-                                                        mirror = mirrorIndex;
-                                                      });
-                                                    }
-                                                    Navigator.of(context).pop(
-                                                        _dates[_selectedIndex]);
-                                                  },
-                                                  child: Container(
-                                                    width:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            3.7,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            2.1,
-                                                    margin: EdgeInsets.only(
-                                                        right: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.9),
-                                                    child: Text(
-                                                      'Done',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .font10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: const Color(
-                                                              0xFF2F80ED)),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: ListWheelScrollView(
-                                              controller: _scrollController,
-                                              itemExtent: 40,
-                                              magnification: 1.2,
-                                              useMagnifier:
-                                                  true, // Set the height of each statement
-                                              children: _dates
-                                                  .map((statement) =>
-                                                      Text(statement,
-                                                          style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                2.0,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          )))
-                                                  .toList(),
-                                              onSelectedItemChanged:
-                                                  (int index) {
-                                                setState(() {
-                                                  _selectedIndex = index;
-                                                });
-                                                _scrollController =
-                                                    FixedExtentScrollController(
-                                                        initialItem:
-                                                            _selectedIndex);
-                                              },
-                                            ),
-                                          ),
-                                          SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  3.6),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                                child: Container(
-                                  width: AppDimensions.width10(context) * 31.3,
-                                  height:
-                                      AppDimensions.height10(context) * 12.3,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  0.1,
-                                          color: const Color(0xFFFFFFFF)),
-                                      borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) *
-                                              1.8)),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        // width: AppDimensions.width10(context) * 30.3,
-                                        height: widget.premium != true
-                                            ? AppDimensions.height10(context) *
-                                                2.2
-                                            : goalDetails['goalEvaluations']
-                                                                [selectedEval]
-                                                            ['totalPoint'] ==
-                                                        null ||
-                                                    goalDetails['goalEvaluations']
-                                                                [selectedEval]
-                                                            ['totalPoint'] ==
-                                                        0
-                                                ? AppDimensions.height10(
-                                                        context) *
-                                                    4.4
-                                                : AppDimensions.height10(
-                                                        context) *
-                                                    2.2,
-                                        // color: Colors.grey,
-                                        margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
-                                                    context) *
-                                                1.4),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          //crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            SizedBox(
-                                              //  width: AppDimensions.width10(context) * 25.2,
-                                              child: Text(
-                                                widget.premium == false
-                                                    ? 'From 01 Jan 23 to 01 Feb 23'
-                                                    : goalDetails['goalEvaluations']
-                                                                        [
-                                                                        selectedEval]
-                                                                    [
-                                                                    'totalPoint'] ==
-                                                                null ||
-                                                            goalDetails['goalEvaluations']
-                                                                        [
-                                                                        selectedEval]
-                                                                    [
-                                                                    'totalPoint'] ==
-                                                                0
-                                                        ? 'From $activity_duration\nMissing'
-                                                        : 'From $activity_duration',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.75,
-                                                    fontWeight: FontWeight.w600,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.15,
-                                                    color: widget.premium ==
-                                                            false
-                                                        ? Colors.white
-                                                        : goalDetails['goalEvaluations']
-                                                                            [selectedEval]
-                                                                        [
-                                                                        'totalPoint'] ==
-                                                                    null ||
-                                                                goalDetails['goalEvaluations']
-                                                                            [selectedEval]
-                                                                        ['totalPoint'] ==
-                                                                    0
-                                                            ? Colors.red
-                                                            : const Color(0xFFFFFFFF)),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  0.8,
-                                            ),
-                                            SizedBox(
-                                                child: Image.asset(
-                                              'assets/images/Polygon 9.webp',
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  1.7,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  1.7,
-                                            ))
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                          width: AppDimensions.width10(context) *
-                                              23.7,
-                                          height: widget.premium == false
-                                              ? AppDimensions.height10(context) *
-                                                  5.4
-                                              : goalDetails['goalEvaluations']
-                                                                  [selectedEval]
-                                                              ['totalPoint'] ==
-                                                          null ||
-                                                      goalDetails['goalEvaluations']
-                                                                  [selectedEval]
-                                                              ['totalPoint'] ==
-                                                          0
-                                                  ? AppDimensions.height10(context) *
-                                                      5.4
-                                                  : AppDimensions.height10(
-                                                          context) *
-                                                      7.1,
-                                          margin: EdgeInsets.only(
-                                              top:
-                                                  AppDimensions.height10(context) *
-                                                      0.7),
-                                          child: Text(
-                                            widget.premium == false
-                                                ? 'Evaluate how close you\nwere to living your goal'
-                                                : goalDetails['goalEvaluations']
-                                                                    [
-                                                                    selectedEval]
-                                                                [
-                                                                'totalPoint'] ==
-                                                            null ||
-                                                        goalDetails['goalEvaluations']
-                                                                    [
-                                                                    selectedEval]
-                                                                [
-                                                                'totalPoint'] ==
-                                                            0
-                                                    ? 'Evaluate how close you\nwere to living your goal'
-                                                    : 'This is how close you were\nto living your goal and\ndesired identity.',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.15,
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.8,
-                                                fontWeight: FontWeight.w500,
-                                                color: const Color(0xFFFFFFFF)),
-                                          ))
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
@@ -894,7 +565,341 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   ],
                                 ),
                               ),
-                            )
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    print('BottomSheet');
+                                    return SizedBox(
+                                      height: AppDimensions.height10(context) *
+                                          31.3, // Set the height of the bottom sheet
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.8,
+                                            decoration: BoxDecoration(
+                                                border: Border(
+                                                    bottom: BorderSide(
+                                                        color: const Color(
+                                                            0xFF828282),
+                                                        width: AppDimensions
+                                                                .width10(
+                                                                    context) *
+                                                            0.1))),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Container(
+                                                    width:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            5.0,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.1,
+                                                    margin: EdgeInsets.only(
+                                                        right: AppDimensions
+                                                                .width10(
+                                                                    context) *
+                                                            2.0),
+                                                    child: Text(
+                                                      'Cancel',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .font10(
+                                                                      context) *
+                                                              1.4,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: const Color(
+                                                              0xFF2F80ED)),
+                                                    ),
+                                                  ),
+                                                ),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    int select = 0;
+                                                    setState(() {
+                                                      activity_duration =
+                                                          _dates[_selectedIndex]
+                                                              .substring(0, 22);
+                                                      select = _selectedIndex;
+                                                    });
+                                                    if (select < 0 ||
+                                                        select >=
+                                                            _dates.length) {
+                                                      setState(() {
+                                                        selectedEval =
+                                                            _selectedIndex;
+                                                        mirror = _selectedIndex;
+                                                      });
+                                                    } else {
+                                                      int mirrorIndex =
+                                                          _dates.length -
+                                                              1 -
+                                                              _selectedIndex;
+                                                      setState(() {
+                                                        selectedEval =
+                                                            _selectedIndex;
+                                                        mirror = mirrorIndex;
+                                                      });
+                                                    }
+                                                    Navigator.of(context).pop(
+                                                        _dates[_selectedIndex]);
+                                                  },
+                                                  child: Container(
+                                                    width:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            3.7,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.1,
+                                                    margin: EdgeInsets.only(
+                                                        right: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.9),
+                                                    child: Text(
+                                                      'Done',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .font10(
+                                                                      context) *
+                                                              1.4,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: const Color(
+                                                              0xFF2F80ED)),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: ListWheelScrollView(
+                                              controller: _scrollController,
+                                              itemExtent: 40,
+                                              magnification: 1.2,
+                                              useMagnifier:
+                                                  true, // Set the height of each statement
+                                              children: _dates
+                                                  .map((statement) =>
+                                                      Text(statement,
+                                                          style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.0,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                          )))
+                                                  .toList(),
+                                              onSelectedItemChanged:
+                                                  (int index) {
+                                                setState(() {
+                                                  _selectedIndex = index;
+                                                });
+                                                _scrollController =
+                                                    FixedExtentScrollController(
+                                                        initialItem:
+                                                            _selectedIndex);
+                                              },
+                                            ),
+                                          ),
+                                          SizedBox(
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  3.6),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: Align(
+                                alignment: Alignment.topCenter,
+                                child: Container(
+                                  width: AppDimensions.width10(context) * 31.3,
+                                  height:
+                                      AppDimensions.height10(context) * 12.3,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  0.1,
+                                          color: const Color(0xFFFFFFFF)),
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              1.8)),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        // width: AppDimensions.width10(context) * 30.3,
+                                        height: widget.premium != true
+                                            ? AppDimensions.height10(context) *
+                                                2.2
+                                            : goalDetails['goalEvaluations']
+                                                                [selectedEval]
+                                                            ['totalPoint'] ==
+                                                        null ||
+                                                    goalDetails['goalEvaluations']
+                                                                [selectedEval]
+                                                            ['totalPoint'] ==
+                                                        0
+                                                ? AppDimensions.height10(
+                                                        context) *
+                                                    4.4
+                                                : AppDimensions.height10(
+                                                        context) *
+                                                    2.2,
+                                        // color: Colors.grey,
+                                        margin: EdgeInsets.only(
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                1.4),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          //crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              //  width: AppDimensions.width10(context) * 25.2,
+                                              child: Text(
+                                                widget.premium == false
+                                                    ? 'From 01 Jan 23 to 01 Feb 23'
+                                                    : goalDetails['goalEvaluations']
+                                                                        [
+                                                                        selectedEval]
+                                                                    [
+                                                                    'totalPoint'] ==
+                                                                null ||
+                                                            goalDetails['goalEvaluations']
+                                                                        [
+                                                                        selectedEval]
+                                                                    [
+                                                                    'totalPoint'] ==
+                                                                0
+                                                        ? 'From $activity_duration\nMissing'
+                                                        : 'From $activity_duration',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.font10(
+                                                                context) *
+                                                            1.75,
+                                                    fontWeight: FontWeight.w600,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.15,
+                                                    color: widget.premium ==
+                                                            false
+                                                        ? Colors.white
+                                                        : goalDetails['goalEvaluations']
+                                                                            [selectedEval]
+                                                                        [
+                                                                        'totalPoint'] ==
+                                                                    null ||
+                                                                goalDetails['goalEvaluations']
+                                                                            [selectedEval]
+                                                                        ['totalPoint'] ==
+                                                                    0
+                                                            ? Colors.red
+                                                            : const Color(0xFFFFFFFF)),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  0.8,
+                                            ),
+                                            SizedBox(
+                                                child: Image.asset(
+                                              'assets/images/Polygon 9.webp',
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
+                                            ))
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                          width: AppDimensions.width10(context) *
+                                              23.7,
+                                          height: widget.premium == false
+                                              ? AppDimensions.height10(context) *
+                                                  5.4
+                                              : goalDetails['goalEvaluations']
+                                                                  [selectedEval]
+                                                              ['totalPoint'] ==
+                                                          null ||
+                                                      goalDetails['goalEvaluations']
+                                                                  [selectedEval]
+                                                              ['totalPoint'] ==
+                                                          0
+                                                  ? AppDimensions.height10(context) *
+                                                      5.4
+                                                  : AppDimensions.height10(
+                                                          context) *
+                                                      7.1,
+                                          margin: EdgeInsets.only(
+                                              top:
+                                                  AppDimensions.height10(context) *
+                                                      0.7),
+                                          child: Text(
+                                            widget.premium == false
+                                                ? 'Evaluate how close you\nwere to living your goal'
+                                                : goalDetails['goalEvaluations']
+                                                                    [
+                                                                    selectedEval]
+                                                                [
+                                                                'totalPoint'] ==
+                                                            null ||
+                                                        goalDetails['goalEvaluations']
+                                                                    [
+                                                                    selectedEval]
+                                                                [
+                                                                'totalPoint'] ==
+                                                            0
+                                                    ? 'Evaluate how close you\nwere to living your goal'
+                                                    : 'This is how close you were\nto living your goal and\ndesired identity.',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.15,
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xFFFFFFFF)),
+                                          ))
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
