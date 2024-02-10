@@ -84,6 +84,7 @@ class _view_goalsState extends State<view_goals> {
     var getSubscription = prefs.getString('subscriptionStatus');
     var goalData = prefs.getString('goalAcieved');
     var newData = json.decode(goalData!);
+    Navigator.push(context, FadePageRoute(page: const congratulations()));
 
     if (levelChange.toString() == 'true') {
       print("Goal Evaluation json data $goalUpdate");

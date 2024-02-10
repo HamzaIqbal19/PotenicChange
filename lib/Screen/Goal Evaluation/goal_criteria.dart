@@ -46,6 +46,7 @@ class _your_whyState extends State<your_why> {
   bool disable = false;
 
   void startTimer() {
+    print("function Called");
     Timer(const Duration(seconds: 4), () {
       setState(() {
         visible = false;
@@ -53,6 +54,16 @@ class _your_whyState extends State<your_why> {
         disable = true;
       });
     });
+  }
+
+  void undoTimer() {
+   
+      setState(() {
+        visible = false;
+        saved = false;
+        disable = false;
+      });
+   
   }
   // List<int?> selectedOptions = List.generate(3, (_) => null);
 
@@ -1097,7 +1108,7 @@ class _your_whyState extends State<your_why> {
                                         setState(() {
                                           saved = false;
                                         });
-                                        startTimer();
+                                        undoTimer();
                                       },
                                       functionText: 'Undo',
                                       FadeFunction: () {},

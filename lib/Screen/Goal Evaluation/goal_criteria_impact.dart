@@ -75,6 +75,15 @@ class _your_impactState extends State<your_impact> {
     });
   }
 
+  void undoTimer() {
+
+    setState(() {
+      visible = false;
+      saved = false;
+      disable = false;
+    });
+  }
+
   Future<Timer> loadData() async {
     return Timer(const Duration(milliseconds: 1), onDoneLoading);
   }
@@ -1067,7 +1076,7 @@ class _your_impactState extends State<your_impact> {
                                           saved = false;
                                           disable = false;
                                         });
-                                        startTimer();
+                                        undoTimer();
                                       },
                                       functionText: 'Undo',
                                       FadeFunction: () {},
