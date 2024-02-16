@@ -320,10 +320,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                 ),
           body: GestureDetector(
             onTap: () {
-              if (widget.saved == true) {
+              //if (widget.saved == true) {
                 __share_experience(
                     context, goalName, identity, color, pracColor, pracName);
-              }
+             // }
             },
             child: Container(
               decoration: const BoxDecoration(

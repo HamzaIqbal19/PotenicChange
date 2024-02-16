@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Menu&settings/settings.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
+import 'package:potenic_app/Screen/Subscription/Subscription.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
@@ -26,15 +27,9 @@ import '../community/community.dart';
 import 'goal_menu_inactive.dart';
 
 class your_goals_menu extends StatefulWidget {
-  final bool trial;
-  final bool membership;
-  final bool cancel;
-
-  const your_goals_menu(
-      {super.key,
-      required this.trial,
-      required this.membership,
-      required this.cancel});
+  const your_goals_menu({
+    super.key,
+  });
 
   @override
   State<your_goals_menu> createState() => _your_goals_menuState();
@@ -254,7 +249,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const Subscription()));
+                                  },
                                   child: SizedBox(
                                       width:
                                           AppDimensions.width10(context) * 27.6,
@@ -322,26 +322,6 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                     ))
                               ],
                             ),
-                            widget.trial
-                                ? Container(
-                                    width:
-                                        AppDimensions.width10(context) * 33.9,
-                                    // height: AppDimensions.height10(context) * 1.9,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            1.0),
-                                    child: Text(
-                                        widget.cancel
-                                            ? 'Renews March 9th 2023'
-                                            : '5 day trial, 4 days left (tap here to cancel)',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w700,
-                                            color: const Color(0xFF8C648A))),
-                                  )
-                                : Container()
                           ],
                         ),
                       ),

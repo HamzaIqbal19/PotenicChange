@@ -17,6 +17,7 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:intl/intl.dart';
 import 'package:potenic_app/Widgets/redaMessage.dart';
 import 'package:potenic_app/utils/app_texts.dart';
+import 'package:potenic_app/utils/inappreview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/bottom_navigation.dart';
@@ -84,10 +85,8 @@ class _view_goalsState extends State<view_goals> {
     var getSubscription = prefs.getString('subscriptionStatus');
     var goalData = prefs.getString('goalAcieved');
     var newData = json.decode(goalData!);
-    Navigator.push(context, FadePageRoute(page: const congratulations()));
-
+  
     if (levelChange.toString() == 'true') {
-      print("Goal Evaluation json data $goalUpdate");
       if (goalUpdate.toString() == 'up') {
         Timer(const Duration(seconds: 5), () {
           Navigator.push(context, FadePageRoute(page: const congratulations()));
@@ -2647,30 +2646,35 @@ class _view_goalsState extends State<view_goals> {
                                               ),
                                             ),
                                           ),
-                                          SizedBox(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    26.9,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                5.8,
-                                            child: Center(
-                                              child: Text(
-                                                AppText().noSessionBody,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontFamily: 'Laila',
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.15,
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.8,
-                                                    fontWeight:
-                                                        FontWeight.w600),
+                                          AnimatedScaleButton(
+                                            onTap: (){
+                                              Navigator.push(context, FadePageRoute(page: const InAppReviewExampleApp()));
+                                            },
+                                            child: SizedBox(
+                                              width:
+                                                  AppDimensions.width10(context) *
+                                                      26.9,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  5.8,
+                                              child: Center(
+                                                child: Text(
+                                                  AppText().noSessionBody,
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Laila',
+                                                      height:
+                                                          AppDimensions.height10(
+                                                                  context) *
+                                                              0.15,
+                                                      fontSize:
+                                                          AppDimensions.font10(
+                                                                  context) *
+                                                              1.8,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
                                               ),
                                             ),
                                           ),

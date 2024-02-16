@@ -64,9 +64,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
             context,
             FadePageRouteReverse(
                 page: const your_goals_menu(
-              cancel: false,
-              membership: false,
-              trial: false,
+            
             )));
         return Future.value(false);
       },
@@ -81,9 +79,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                       context,
                       FadePageRouteReverse(
                           page: const your_goals_menu(
-                        cancel: false,
-                        membership: false,
-                        trial: false,
+                       
                       )));
                 },
                 icon: Image.asset(

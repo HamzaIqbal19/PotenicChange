@@ -215,13 +215,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                 icon: AnimatedScaleButton(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        FadePageRoute(
-                            page: your_goals_menu(
-                          membership: widget.membership ? true : false,
-                          trial: widget.trial ? true : false,
-                          cancel: widget.cancel ? true : false,
-                        )));
+                        context, FadePageRoute(page: your_goals_menu()));
                   },
                   child: Container(
                     margin: EdgeInsets.only(

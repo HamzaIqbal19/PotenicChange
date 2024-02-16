@@ -1283,9 +1283,13 @@ class _practice_summaryState extends State<practice_summary> {
                                             helpfulTips: false,
                                             record: differenceInDays1,
                                           )));
+
                                   if (report == true) {
                                     activeReport(context, goalName, pracName,
                                         int.parse(color), int.parse(pracColor));
+                                  } else {
+                                    __share_experience(context, goalName,
+                                        identity, color, pracColor, pracName);
                                   }
                                 },
                                 child: Container(
@@ -1360,4 +1364,225 @@ Widget _buildBottomPicker(Widget picker) {
       ),
     );
   });
+}
+
+void __share_experience(context, String goalName, String identity, String color,
+    String pracColor, String pracName) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+      top: Radius.circular(AppDimensions.height10(context) * 2.0),
+    )),
+    builder: (context) => Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+          width: AppDimensions.width10(context) * 39.4,
+          margin: EdgeInsets.only(
+              left: AppDimensions.width10(context) * 1.0,
+              right: AppDimensions.width10(context) * 1.0,
+              bottom: AppDimensions.height10(context) * 1.0),
+          decoration: BoxDecoration(
+              borderRadius:
+                  BorderRadius.circular(AppDimensions.height10(context) * 2.0),
+              color: const Color(0xFFF5F5F5)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                //color: Colors.amber,
+                // margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
+                alignment: const Alignment(1, 0),
+                child: AnimatedScaleButton(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: AppDimensions.width10(context) * 2.8,
+                    height: AppDimensions.height10(context) * 2.8,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 1.5,
+                        right: AppDimensions.width10(context) * 1.5),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 2.1,
+                    bottom: AppDimensions.height10(context) * 2.1),
+                child: Image.asset(
+                  'assets/images/potenic__icon.webp',
+                  width: AppDimensions.width10(context) * 8.202,
+                  height: AppDimensions.height10(context) * 11.2,
+                ),
+              ),
+              Container(
+                  margin: EdgeInsets.only(
+                      bottom: AppDimensions.height10(context) * 1.4),
+                  child: Text(
+                    'Share your\nfirst experience...',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        height: AppDimensions.height10(context) * 0.12,
+                        fontSize: AppDimensions.font10(context) * 3,
+                        // letterSpacing: AppDimensions.height10(context) * 0.2,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xFF437296)),
+                  )),
+              Container(
+                child: Text(
+                  'True happiness comes from sharing and helping\nothers who are on the same journey as you.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      height: AppDimensions.height10(context) * 0.12,
+                      fontSize: AppDimensions.font10(context) * 1.6,
+                      // letterSpacing: AppDimensions.height10(context) * 0.2,
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xFF437296)),
+                ),
+              ),
+              Container(
+                width: AppDimensions.width10(context) * 24.8,
+                height: AppDimensions.height10(context) * 24.8,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.8),
+                child: Stack(children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: AppDimensions.width10(context) * 24.8,
+                      height: AppDimensions.height10(context) * 24.8,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(color == '1'
+                                  ? "assets/images/red_gradient.webp"
+                                  : color == '2'
+                                      ? 'assets/images/orange_moon.webp'
+                                      : color == '3'
+                                          ? "assets/images/lightGrey_gradient.webp"
+                                          : color == '4'
+                                              ? "assets/images/lightBlue_gradient.webp"
+                                              : color == '5'
+                                                  ? "assets/images/medBlue_gradient.webp"
+                                                  : color == '6'
+                                                      ? "assets/images/Blue_gradient.webp"
+                                                      : 'assets/images/orange_moon.webp'),
+                              fit: BoxFit.cover)),
+                      child: Stack(
+                        children: [
+                          Align(
+                              alignment: const Alignment(0, -0.45),
+                              child: Container(
+                                width: AppDimensions.width10(context) * 24.0,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal:
+                                        AppDimensions.height10(context) * 2.0),
+                                child: Text(
+                                  goalName,
+                                  textAlign: TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.font10(context) * 2.0,
+                                      height: AppDimensions.height10(context) *
+                                          0.14,
+                                      fontWeight: FontWeight.w600,
+                                      color: const Color(0xff5B74A6)),
+                                ),
+                              )),
+                          Align(
+                            alignment: const Alignment(0, -0.3),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      AppDimensions.height10(context) * 2.0),
+                              child: Text(identity,
+                                  textAlign: TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.6,
+                                      fontWeight: FontWeight.w400,
+                                      color: const Color(0xff5B74A6))),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: const Alignment(0.9, 1),
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        height: AppDimensions.height10(context) * 14.8,
+                        width: AppDimensions.width10(context) * 14.8,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: AppDimensions.height10(context) * 0.7),
+                        decoration: BoxDecoration(
+                            //color: Colors.amber,
+                            image: DecorationImage(
+                                image: AssetImage(pracColor == '1'
+                                    ? "assets/images/Practice_Completed_1.webp"
+                                    : pracColor == '2'
+                                        ? 'assets/images/Practice_Completed_2.webp'
+                                        : pracColor == '3'
+                                            ? "assets/images/Practice_Completed_3.webp"
+                                            : pracColor == '4'
+                                                ? "assets/images/Practice_Completed_4.webp"
+                                                : pracColor == '5'
+                                                    ? "assets/images/Practice_Completed_4.webp"
+                                                    : 'assets/images/Practice_Completed_1.webp'),
+                                fit: BoxFit.contain)),
+                        child: Center(
+                          child: Text(
+                            pracName,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: pracColor == "1"
+                                    ? const Color(0XFFFC7133)
+                                    : pracColor == "2"
+                                        ? const Color(0xFF1A481C)
+                                        : pracColor == "3"
+                                            ? const Color(0xFF6D4B77)
+                                            : pracColor == "4"
+                                                ? const Color(0xFF5C75A6)
+                                                : pracColor == "5"
+                                                    ? const Color(0xFF315291)
+                                                    : const Color(0XFFFC7133),
+                                fontSize: AppDimensions.font10(context) * 1.8,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
+              ),
+              Container(
+                  height: AppDimensions.height10(context) * 12.5,
+                  width: AppDimensions.width10(context) * 12.5,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.9,
+                      bottom: AppDimensions.height10(context) * 3),
+                  decoration: const BoxDecoration(
+                      //color: Colors.amber,
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/share_exp.webp'),
+                          fit: BoxFit.contain)))
+            ],
+          )),
+    ),
+  );
 }

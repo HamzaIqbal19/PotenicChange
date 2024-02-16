@@ -538,6 +538,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                               maxLength: getMaxCharacters(),
                                               textCapitalization:
                                                   TextCapitalization.sentences,
+                                              enableInteractiveSelection: false,
                                               controller: control[i],
                                               expands: true,
                                               maxLines: null,
