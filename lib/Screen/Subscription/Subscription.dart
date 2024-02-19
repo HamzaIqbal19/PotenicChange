@@ -1,9 +1,13 @@
 import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:potenic_app/Screen/Subscription/methods.dart';
+import 'package:potenic_app/Screen/Subscription/testSubs.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 class Subscription extends StatefulWidget {
   const Subscription({super.key});
@@ -195,13 +199,16 @@ class _SubscriptionState extends State<Subscription>
                       ),
                     ),
                     AnimatedScaleButton(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context, FadePageRoute(page: const testSubs()));
+                      },
                       child: priceBox(context, '£7.49', 'Per Month',
                           '5 days free', const Color(0xFFFA9934)),
                     ),
                     AnimatedScaleButton(
                       onTap: () {
-                        subscribed(context);
+                        CardFormField();
                       },
                       child: priceBox(context, '£79.98', 'Per Year',
                           '5 days free', const Color(0xFFFE6624)),
