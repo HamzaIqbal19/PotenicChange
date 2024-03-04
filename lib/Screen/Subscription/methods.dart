@@ -29,7 +29,7 @@ Future<void> makePayment() async {
                 applePay: aPay,
                 merchantDisplayName: 'Potenic'))
         .then((value) {
-      print("Stripe Called $value");
+      print("Stripe value Called $value");
     });
     print("Stripe Called 5");
 

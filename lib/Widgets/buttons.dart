@@ -3,7 +3,7 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 
 class Buttons {
   linearGradButton(double height, double width, String text, double fontSize,
-      bool transparent) {
+      Color colour1, Color colour2, bool transparent) {
     return Container(
       height: height,
       width: width,
@@ -14,7 +14,7 @@ class Buttons {
               end: Alignment.bottomCenter,
               colors: transparent
                   ? [const Color(0xFF282828).withOpacity(0.5)]
-                  : [const Color(0xFFFCC10D), const Color(0xFFFDA210)])),
+                  : [colour1, colour2])),
       child: Center(
         child: Text(
           text,

@@ -74,9 +74,11 @@ class Authentication {
     var response = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
+      print('Login response: $response');
       final SharedPreferences prefs = await _prefs;
       await prefs.setString('usertoken', response["accessToken"]);
       await prefs.setInt('userid', response['id']);
+      await prefs.setString('customerID', response['userStripeId']);
       await prefs.setString('userName', response['name']);
       await prefs.setString('userEmail', response['email']);
       await prefs.setString("refreshtoken", response["sessionToken"]);

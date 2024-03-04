@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 
@@ -26,7 +27,7 @@ class _testSubsState extends State<testSubs> {
             TextButton(
               child: const Text('Buy Now'),
               onPressed: () async {
-                await makePayment();
+                makePayment();
               },
             ),
           ],
@@ -35,61 +36,140 @@ class _testSubsState extends State<testSubs> {
     );
   }
 
+  Future<Map<String, dynamic>> _createPaymentMethod(
+      {required String number,
+      required String expMonth,
+      required String expYear,
+      required String cvc}) async {
+    String url = 'https://api.stripe.com/v1/payment_methods';
+    var response = await http.post(
+      Uri.parse(url),
+      headers: {
+        'Authorization':
+            'Bearer sk_test_51MP8GqRkeqntfFwknA2biblerDGWYbBO6Q1ZWpHtXtQRBOdM3BDoCXTzH57IFqFLOORrudZThiGdQFNqSCwLHHnm00kFTgGr2M',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: {
+        'type': 'card',
+        'card[number]': '$number',
+        'card[exp_month]': '$expMonth',
+        'card[exp_year]': '$expYear',
+        'card[cvc]': '$cvc',
+      },
+    );
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      print(json.decode(response.body));
+      throw 'Failed to create PaymentMethod.';
+    }
+  }
+
   Future<void> makePayment() async {
     try {
-      paymentIntent = await createPaymentIntent('79.98', 'GBP');
+      Map<String, dynamic> paymentIntent = await createPaymentIntent();
+      await createCreditCard(
+          'cus_Pb6S9z48OEolda', paymentIntent['client_secret']);
+      Map<String, dynamic> customerPaymentMethods =
+          await getCustomerPaymentMethods();
 
-      var gpay = const PaymentSheetGooglePay(
-          merchantCountryCode: "GB", currencyCode: "GBP", testEnv: true);
-
-      var applePay = const PaymentSheetApplePay(
-        merchantCountryCode: "GB",
-      );
-
-      //STEP 2: Initialize Payment Sheet
-      await Stripe.instance
-          .initPaymentSheet(
-              paymentSheetParameters: SetupPaymentSheetParameters(
-                  paymentIntentClientSecret: paymentIntent![
-                      'client_secret'], //Gotten from payment intent
-                  style: ThemeMode.light,
-                  merchantDisplayName: 'Potenic',
-                  googlePay: gpay))
-          .then((value) {});
-
-      //STEP 3: Display Payment sheet
-      displayPaymentSheet();
+      await createSubscriptionIntent(customerPaymentMethods['data'][0]['id']);
     } catch (err) {
       print(err);
+    }
+  }
+
+  Future<void> createCreditCard(
+    String customerId,
+    String paymentIntentClientSecret,
+  ) async {
+    await Stripe.instance.initPaymentSheet(
+      paymentSheetParameters: SetupPaymentSheetParameters(
+        style: ThemeMode.light,
+        merchantDisplayName: 'Potenic',
+        customerId: customerId,
+        setupIntentClientSecret: paymentIntentClientSecret,
+      ),
+    );
+
+    await Stripe.instance.presentPaymentSheet();
+  }
+
+  Future<Map<String, dynamic>> createPaymentIntent() async {
+    try {
+      var requestBody = {
+        'customer': 'cus_Pb6S9z48OEolda',
+        'automatic_payment_methods[enabled]': 'true',
+      };
+      var response = await http.post(
+        Uri.parse('https://api.stripe.com/v1/setup_intents'),
+        headers: {
+          'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: requestBody,
+      );
+      print('Stripe : ${json.decode(response.body)}');
+
+      return json.decode(response.body);
+    } catch (err) {
+      throw Exception(err.toString());
     }
   }
 
   displayPaymentSheet() async {
     try {
       await Stripe.instance.presentPaymentSheet().then((value) {
-        print("Payment Successfully");
+        print("Payment Successfully $value");
       });
     } catch (e) {
-      print('$e');
+      print("Payment unSuccessfully $e");
     }
   }
 
-  createPaymentIntent(String amount, String currency) async {
+  createSubscriptionIntent(
+    String paymentId,
+  ) async {
     try {
       Map<String, dynamic> body = {
-        'amount': amount,
-        'currency': currency,
+        // 'amount': amount,
+        // 'currency': currency,
+
+        'customer': 'cus_Pb6S9z48OEolda',
+        'items[0][price]': 'price_1OlQz5RkeqntfFwkHoelDUgz',
+        'default_payment_method': paymentId,
       };
 
       var response = await http.post(
-        Uri.parse('https://api.stripe.com/v1/payment_intents'),
+        Uri.parse('https://api.stripe.com/v1/subscriptions'),
         headers: {
-          'Authorization':
-              'Bearer sk_test_51MP8GqRkeqntfFwknA2biblerDGWYbBO6Q1ZWpHtXtQRBOdM3BDoCXTzH57IFqFLOORrudZThiGdQFNqSCwLHHnm00kFTgGr2M',
+          'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: body,
       );
+
+      print('Stripe : ${json.decode(response.body)}');
+
+      return json.decode(response.body);
+    } catch (err) {
+      throw Exception(err.toString());
+    }
+  }
+
+  getCustomerPaymentMethods() async {
+    try {
+      var response = await http.get(
+        Uri.parse(
+            'https://api.stripe.com/v1/customers/cus_Pb6S9z48OEolda/payment_methods'),
+        headers: {
+          'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+      );
+
+      print('Stripe : ${json.decode(response.body)}');
+
       return json.decode(response.body);
     } catch (err) {
       throw Exception(err.toString());

@@ -311,6 +311,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
               totalItemsOn = response["activePracticesCount"];
               subscriptions = response['subscriptionsStatus'];
             });
+            print("subscriptions $subscriptions");
 
             loadData();
             startTimer();
@@ -1634,7 +1635,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                         }
                                       },
                                       child: AvatarGlow(
-                                        endRadius:
+                                        glowRadiusFactor:
                                             AppDimensions.height10(context) *
                                                 5.0,
                                         glowColor: const Color(0xFFFFA511),

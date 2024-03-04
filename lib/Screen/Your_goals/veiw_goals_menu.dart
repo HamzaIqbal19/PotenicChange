@@ -9,6 +9,7 @@ import 'package:potenic_app/Screen/Menu&settings/settings.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/Subscription/Subscription.dart';
+import 'package:potenic_app/Screen/Subscription/subscriptionService.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
@@ -39,6 +40,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   bool admin = false;
   bool subscribe = false;
+  String trial = '';
+  String subId = '';
 
   Future<void> getUserRole() async {
     final SharedPreferences prefs = await _prefs;
@@ -57,10 +60,26 @@ class _your_goals_menuState extends State<your_goals_menu> {
     }
   }
 
+  getSubscriptionData() {
+    SubscriptionService().getCustomerData().then((value) => {
+          print(
+              "Subscription data ${value['subscriptions']['data'][0].toString()}"),
+          setState(() {
+            trial = value['subscriptions'] == null
+                ? ''
+                : value['subscriptions']['data'][0]['trial_start'].toString();
+            subId = value['subscriptions'] == null
+                ? ''
+                : value['subscriptions']['data'][0]['id'].toString();
+          }),
+        });
+  }
+
   @override
   void initState() {
     super.initState();
     getUserRole();
+    getSubscriptionData();
   }
 
   @override
@@ -254,6 +273,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         context,
                                         FadePageRoute(
                                             page: const Subscription()));
+                                    // SubscriptionService()
+                                    //     .cancelSubscription(subId);
                                   },
                                   child: SizedBox(
                                       width:
@@ -277,7 +298,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                             TextSpan(
                                                 text: !subscribe
                                                     ? 'Membership subscription\n'
-                                                    : 'Manage my subscription\n'),
+                                                    : 'Membership subscription\n'),
                                             admin
                                                 ? const TextSpan(
                                                     text: 'Current plan: Admin',
@@ -286,26 +307,29 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                                             FontWeight.w700,
                                                         color:
                                                             Color(0xFF8C648A)))
-                                                : !subscribe
-                                                    ? const TextSpan(
-                                                        text:
-                                                            'Current plan: Empowered Starter',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            color: Color(
-                                                                0xFF8C648A)))
-                                                    : TextSpan(
-                                                        text:
-                                                            'Your subscription is managed through\nthe App Store.',
-                                                        style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .font10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        )),
+                                                : TextSpan(
+                                                    text: !subscribe
+                                                        ? 'Current plan: Empowered Starter'
+                                                        : 'Current plan: Ownership Plan',
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color:
+                                                            Color(0xFF8C648A))),
+                                            trial != 'null' && trial.isNotEmpty
+                                                ? TextSpan(
+                                                    text:
+                                                        '\n5 day trial, ${UnixTime().unixIntoRemainingDays(trial)} remaining (Tap here to cancel)',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: const Color(
+                                                            0xFF8C648A),
+                                                        fontSize: AppDimensions
+                                                                .font10(
+                                                                    context) *
+                                                            1.4))
+                                                : const TextSpan(text: '')
                                           ]))),
                                 ),
                                 SizedBox(
