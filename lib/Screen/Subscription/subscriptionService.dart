@@ -68,7 +68,7 @@ class SubscriptionService {
         'items[0][price]': priceId,
         "trial_period_days": "5",
         'default_payment_method': paymentId,
-        "prorate": 'true',
+        //"prorate": 'true',
       };
 
       var response = await http.post(
@@ -153,7 +153,7 @@ class SubscriptionService {
     } else {}
   }
 
-  cancelSubscription(String subId) async {
+  cancelSubscription(String subId, bool trial) async {
     final SharedPreferences prefs = await _prefs;
     var customerId = prefs.getString('customerID');
 
@@ -164,14 +164,18 @@ class SubscriptionService {
           'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: {"prorate": 'false', "invoice_now": 'true'},
+        body: {
+          "prorate": 'false',
+          "invoice_now": 'true',
+          //  'cancel_at_period_end': '${!trial}'
+        },
       );
 
       print(
           "Cancel status: ${response.statusCode} ${json.decode(response.body)}");
       var data = json.decode(response.body);
 
-      return data;
+      return response.statusCode;
     } catch (error) {
       print('Error canceling subscription: $error');
     }
@@ -210,8 +214,14 @@ class UnixTime {
     // Create a DateTime object from the milliseconds
     DateTime date = DateTime.fromMillisecondsSinceEpoch(milliseconds);
 
+    print('Unix DATE: $date');
+
     // Format the date as day:month:year
-    String formattedDate = DateTime.now().difference(date).inDays.toString();
+    String formattedDate = DateTime.now()
+        .add(const Duration(days: 5))
+        .difference(date)
+        .inDays
+        .toString();
 
     return formattedDate == '1' ? '$formattedDate day' : '$formattedDate days';
   }

@@ -14,6 +14,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/resetDialog.dart';
 import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -58,6 +59,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
         subscribe = true;
       });
     }
+  }
+
+  void updateStatus() async {
+    final SharedPreferences prefs = await _prefs;
+
+    prefs.setString('subscriptionStatus', 'inactive');
   }
 
   getSubscriptionData() {
@@ -269,12 +276,36 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const Subscription()));
-                                    // SubscriptionService()
-                                    //     .cancelSubscription(subId);
+                                    if (trial != 'null' && trial.isNotEmpty) {
+                                      dialog(context,
+                                          'Are you sure you want to cancel your subscription',
+                                          () {
+                                        SubscriptionService()
+                                            .cancelSubscription(subId, true)
+                                            .then((value) {
+                                          print('Vaalue: ${value}');
+                                          if (value == 200) {
+                                            Navigator.push(
+                                                context,
+                                                FadePageRoute(
+                                                    page: const view_goals(
+                                                  missed: false,
+                                                  name: '',
+                                                  update: false,
+                                                  helpfulTips: false,
+                                                  record: 0,
+                                                )));
+                                            updateStatus();
+                                            unsubscribed(context);
+                                          }
+                                        });
+                                      }, true);
+                                    } else {
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const Subscription()));
+                                    }
                                   },
                                   child: SizedBox(
                                       width:
@@ -296,9 +327,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                                   color: colorC),
                                               children: [
                                             TextSpan(
-                                                text: !subscribe
-                                                    ? 'Membership subscription\n'
-                                                    : 'Membership subscription\n'),
+                                                text:
+                                                    'Membership subscription\n'),
                                             admin
                                                 ? const TextSpan(
                                                     text: 'Current plan: Admin',

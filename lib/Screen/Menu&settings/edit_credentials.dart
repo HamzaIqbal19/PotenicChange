@@ -1,5 +1,11 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Authentication.dart';
+import 'package:potenic_app/Screen/Menu&settings/settings.dart';
 import 'package:potenic_app/Screen/Menu&settings/success.dart';
+import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/resetDialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
@@ -20,6 +26,12 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 class _edit_credentialsState extends State<edit_credentials> {
   String userName = 'Jane';
   String userEmail = 'jane.Smith@email.com';
+  bool update = false;
+  String emailMsg = '';
+  bool errorEmail = false;
+
+  TextEditingController feildController = TextEditingController();
+  TextEditingController feildController2 = TextEditingController();
 
   getUser() async {
     final SharedPreferences prefs = await _prefs;
@@ -27,6 +39,59 @@ class _edit_credentialsState extends State<edit_credentials> {
       userName = prefs.getString('userName') ?? 'Jane';
       userEmail = prefs.getString('userEmail') ?? 'jane.Smith@email.com';
     });
+    if (widget.password_edit) {
+      setState(() {
+        feildController.text = userEmail;
+      });
+    }
+  }
+
+  updateUser() {
+    if (widget.email) {
+      if (feildController.text == feildController2.text) {
+        setState(() {
+          errorEmail = false;
+          emailMsg = "";
+        });
+        Authentication()
+            .userUpdate(
+                feildController.text, feildController2.text, widget.email)
+            .then((value) async {
+          print("User update value $value");
+          if (value == true) {
+            final SharedPreferences prefs = await _prefs;
+            prefs.setString('userEmail', feildController2.text);
+            Navigator.pushReplacement(
+                context, FadePageRoute(page: const Settings()));
+          } else {
+            dialog(context, value['message'], () {
+              Navigator.pop(context);
+            }, false);
+          }
+        });
+      } else {
+        setState(() {
+          errorEmail = true;
+          emailMsg = "Email doesnot match";
+        });
+      }
+    } else {
+      Authentication()
+          .userUpdate(feildController.text, feildController2.text, widget.email)
+          .then((value) async {
+        print("User update value $value");
+        if (value == true) {
+          final SharedPreferences prefs = await _prefs;
+          prefs.setString('userName', feildController.text);
+          Navigator.pushReplacement(
+              context, FadePageRoute(page: const Settings()));
+        } else {
+          dialog(context, value['message'], () {
+            Navigator.pop(context);
+          }, false);
+        }
+      });
+    }
   }
 
   @override
@@ -165,6 +230,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           AppDimensions.height10(context) *
                                               1.8))),
                               child: TextFormField(
+                                  controller: feildController,
                                   textCapitalization:
                                       TextCapitalization.sentences,
                                   decoration: InputDecoration(
@@ -205,7 +271,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                   bottom:
                                       AppDimensions.height10(context) * 1.3),
                               child: Text(
-                                "Ooops! Needs to be an email format",
+                                emailMsg,
                                 style: TextStyle(
                                   color: const Color(0xFFFE6624),
                                   fontSize: AppDimensions.font10(context) * 1.4,
@@ -230,6 +296,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                               child: TextFormField(
                                   textCapitalization:
                                       TextCapitalization.sentences,
+                                  controller: feildController2,
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           top: 5.0,
@@ -259,14 +326,38 @@ class _edit_credentialsState extends State<edit_credentials> {
                                               color: Colors.transparent)),
                                       enabledBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(
-                                              color: Colors.transparent)))),
+                                              color: Colors.transparent))),
+                                  validator: (val) {
+                                    if (val != null && val.isNotEmpty) {
+                                      val = val.trim();
+                                    }
+
+                                    if (val == null || val.isEmpty) {
+                                      setState(() {
+                                        errorEmail = true;
+                                        emailMsg = 'Email is required';
+                                      });
+                                    } else if (!EmailValidator.validate(val)) {
+                                      setState(() {
+                                        errorEmail = true;
+                                        emailMsg =
+                                            ' Ooops! Needs to be an email format';
+                                      });
+                                    } else {
+                                      setState(() {
+                                        errorEmail = false;
+                                        emailMsg = '';
+                                      });
+                                    }
+                                    return null;
+                                  }),
                             ),
                             Container(
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.width10(context) * 1.0),
                               child: Text(
-                                "Ooops! Does not match the top email",
+                                emailMsg,
                                 style: TextStyle(
                                   color: const Color(0xFFFE6624),
                                   fontSize: AppDimensions.font10(context) * 1.4,
@@ -293,43 +384,48 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           AppDimensions.height10(context) *
                                               1.8))),
                               child: TextFormField(
-                                  textCapitalization:
-                                      TextCapitalization.sentences,
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.only(
-                                          top: 5.0,
-                                          bottom:
-                                              AppDimensions.height10(context) *
-                                                  1.50,
-                                          left: 10.0,
-                                          right: 10.0),
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.always,
-                                      hintText: widget.password_edit
-                                          ? userEmail
-                                          : userName,
-                                      hintStyle: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontWeight: FontWeight.w600,
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.8,
-                                      ),
-                                      labelText: widget.password_edit
-                                          ? "Confirm Email"
-                                          : "Name",
-                                      labelStyle: TextStyle(
-                                        color: const Color(0xFF282828),
-                                        fontFamily: 'laila',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize:
-                                            AppDimensions.font10(context) * 2.1,
-                                      ),
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)))),
+                                textCapitalization:
+                                    TextCapitalization.sentences,
+                                controller: feildController,
+                                decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.only(
+                                        top: 5.0,
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.50,
+                                        left: 10.0,
+                                        right: 10.0),
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.always,
+                                    hintText: widget.password_edit
+                                        ? userEmail
+                                        : userName,
+                                    hintStyle: TextStyle(
+                                      color: const Color(0xFF8C648A),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.8,
+                                    ),
+                                    labelText: widget.password_edit
+                                        ? "Confirm Email"
+                                        : "Name",
+                                    labelStyle: TextStyle(
+                                      color: const Color(0xFF282828),
+                                      fontFamily: 'laila',
+                                      fontWeight: FontWeight.w500,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 2.1,
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent)),
+                                    enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent))),
+                                onChanged: (value) {
+                                  setState(() {});
+                                },
+                              ),
                             ),
                             widget.password_edit
                                 ? Container()
@@ -362,13 +458,45 @@ class _edit_credentialsState extends State<edit_credentials> {
                           ],
                         ),
                 ),
-                GestureDetector(
+                AnimatedScaleButton(
                   onTap: () {
                     if (widget.password_edit == true) {
-                      Navigator.push(
-                        context,
-                        FadePageRoute(page: const Success()),
-                      );
+                      Authentication()
+                          .passReset(
+                        feildController.text.toString(),
+                      )
+                          .then((response) {
+                        if (response == true) {
+                          setState(() {
+                            // loading = false;
+                            // noEmail = false;
+                          });
+                          Navigator.pushReplacement(
+                            context,
+                            FadePageRoute(
+                              page: EmailSent(
+                                email: feildController.text.toString(),
+                              ),
+                            ),
+                          );
+                        } else if (response == 404) {
+                          // setState(() {
+                          //   loading = false;
+                          //   noEmail = true;
+                          // });
+                        } else {
+                          // setState(() {
+                          //   loading = false;
+                          //   noEmail = false;
+                          // });
+                        }
+                      }).catchError((error) {
+                        setState(() {
+                          // loading = false;
+                        });
+                      });
+                    } else {
+                      updateUser();
                     }
                   },
                   child: Container(
@@ -383,12 +511,16 @@ class _edit_credentialsState extends State<edit_credentials> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 3.6),
-                        color: const Color(0xFF282828).withOpacity(0.5)),
+                        color: feildController.text.isEmpty
+                            ? const Color(0xFF282828).withOpacity(0.5)
+                            : const Color(0xFFFBFBFB)),
                     child: Center(
                       child: Text(
                         widget.password_edit ? 'Send' : 'Save updates',
                         style: TextStyle(
-                          color: const Color(0xFFFFFFFF).withOpacity(0.9),
+                          color: feildController.text.isEmpty
+                              ? const Color(0xFFFFFFFF).withOpacity(0.9)
+                              : const Color(0xFF8C648A),
                           fontSize: AppDimensions.font10(context) * 1.6,
                           height: AppDimensions.height10(context) * 0.12,
                           fontWeight: FontWeight.w600,

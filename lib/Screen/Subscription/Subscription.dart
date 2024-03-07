@@ -2,17 +2,13 @@ import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
-import 'package:potenic_app/Screen/Subscription/methods.dart';
 import 'package:potenic_app/Screen/Subscription/subscriptionService.dart';
-import 'package:potenic_app/Screen/Subscription/testSubs.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/Widgets/webVisit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/app_dimensions.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 
 class Subscription extends StatefulWidget {
   const Subscription({super.key});

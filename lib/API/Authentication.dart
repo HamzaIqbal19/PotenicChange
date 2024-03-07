@@ -200,4 +200,36 @@ class Authentication {
       return responses["message"];
     }
   }
+
+  Future userUpdate(userName, email, bool name) async {
+    print("User Email $email, User NAME $userName");
+    final SharedPreferences prefs = await _prefs;
+    var userId = prefs.getInt('userid');
+    var accessToken = prefs.getString("usertoken");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$accessToken'
+    };
+
+    var body = json.encode({"name": "$userName"});
+
+    var body2 = json.encode({"email": "$email"});
+
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/user/update-user/$userId'),
+        headers: headers,
+        body: name ? body2 : body);
+
+    var response = jsonDecode(request.body);
+
+    print('response ${request.statusCode}  $response');
+
+    if (request.statusCode == 200) {
+      return true;
+    } else if (request.statusCode == 400) {
+      return response;
+    } else {
+      return false;
+    }
+  }
 }
