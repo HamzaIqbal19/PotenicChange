@@ -20,7 +20,7 @@ class SubscriptionService {
           setupIntentClientSecret: paymentIntentClientSecret,
           primaryButtonLabel: 'Proceed',
           appearance: const PaymentSheetAppearance(
-              shapes: PaymentSheetShape(borderRadius: 50),
+             
               primaryButton: PaymentSheetPrimaryButtonAppearance(
                   colors: PaymentSheetPrimaryButtonTheme(
                       light: PaymentSheetPrimaryButtonThemeColors(
@@ -66,7 +66,7 @@ class SubscriptionService {
       Map<String, dynamic> body = {
         'customer': customerId,
         'items[0][price]': priceId,
-        "trial_period_days": "5",
+       // "trial_period_days": "5",
         'default_payment_method': paymentId,
         //"prorate": 'true',
       };

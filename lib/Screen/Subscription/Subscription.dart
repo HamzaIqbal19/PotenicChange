@@ -6,6 +6,7 @@ import 'package:potenic_app/Screen/Subscription/subscriptionService.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/resetDialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/app_dimensions.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
@@ -16,19 +17,20 @@ class Subscription extends StatefulWidget {
   @override
   State<Subscription> createState() => _SubscriptionState();
 }
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+void updateStatus() async {
+  final SharedPreferences prefs = await _prefs;
 
+  prefs.setString('subscriptionStatus', 'active');
+}
 class _SubscriptionState extends State<Subscription>
     with TickerProviderStateMixin {
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
 
   late AnimationController controller;
 
-  void updateStatus() async {
-    final SharedPreferences prefs = await _prefs;
 
-    prefs.setString('subscriptionStatus', 'active');
-  }
 
   //late Animation<double> opacityAnimation;
 
@@ -262,8 +264,7 @@ class _SubscriptionState extends State<Subscription>
                                       updateStatus()
                                     }
                                 });
-                        // webVisit(
-                        //     "https://buy.stripe.com/test_dR68zV1ExeVQ7CMaEE");
+
                       },
                       child: priceBox(context, '£79.98', 'Per Year',
                           '5 days free', const Color(0xFFFE6624)),
@@ -2063,6 +2064,204 @@ unsubscribed(context) {
                   const Color(0xFF5A4D73),
                   const Color(0xFF5A4D73),
                   false),
+              SizedBox(height: AppDimensionsUpdated.height10(context) * 3),
+            ],
+          )),
+    ),
+  );
+}
+
+
+
+subscribedUser(context, bool yearly, String subId) {
+  String planId =!yearly?'price_1OlQz5RkeqntfFwk39D9nntN': "price_1OlQz5RkeqntfFwkHoelDUgz";
+  print('Yearly: $yearly');
+  //bool cancel = canceled;
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(AppDimensionsUpdated.height10(context) * 2.0),
+        )),
+    builder: (context) => Padding(
+      padding:
+      EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+          width: AppDimensionsUpdated.width10(context) * 39.4,
+          margin: EdgeInsets.only(
+              left: AppDimensionsUpdated.width10(context) * 1.0,
+              right: AppDimensionsUpdated.width10(context) * 1.0,
+              bottom: AppDimensionsUpdated.height10(context) * 1.0),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(
+                  AppDimensionsUpdated.height10(context) * 2.0),
+              gradient: const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color(0xFFF8F7F9), Color(0xFFE1D7D8)])),
+          child: Column(
+            // alignment: AlignmentDirectional.topCenter,
+            //  mainAxisAlignment: MainAxisAlignment.start,
+            //  crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                //color: Colors.amber,
+                // margin: EdgeInsets.only(left: AppDimensionsUpdated.width10(context) * 1.5),
+                alignment: const Alignment(1, 0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: AppDimensionsUpdated.width10(context) * 2.6,
+                    height: AppDimensionsUpdated.height10(context) * 2.6,
+                    margin: EdgeInsets.only(
+                        top: AppDimensionsUpdated.height10(context) * 1.9,
+                        right: AppDimensionsUpdated.width10(context) * 1.5),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image:
+                            AssetImage('assets/images/Close_blue.webp'))),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: AppDimensionsUpdated.height10(context) * 1.5,
+                    bottom: AppDimensionsUpdated.height10(context) * 1.9),
+                child: Image.asset(
+                  'assets/images/potenic__icon.webp',
+                  width: AppDimensionsUpdated.width10(context) * 8.202,
+                  height: AppDimensionsUpdated.height10(context) * 11.2,
+                ),
+              ),
+              Container(
+                width: AppDimensionsUpdated.width10(context) * 30.7,
+                height: AppDimensionsUpdated.height10(context) * 6.8,
+                // color: Colors.amber,
+                alignment: Alignment.center,
+                //  margin: EdgeInsets.only(top: AppDimensionsUpdated.height10(context) * 1.2),
+                child: Text(
+                  'Your Membership',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      height: AppDimensionsUpdated.height10(context) * 0.15,
+                      fontSize: AppDimensions.font10(context) * 2.4,
+                      // letterSpacing: AppDimensionsUpdated.height10(context) * 0.2,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF437296)),
+                ),
+              ),
+              Container(
+                  width: AppDimensionsUpdated.width10(context) * 33.2,
+                  //  height: AppDimensionsUpdated.height10(context) * 10.8,
+                  // color: Colors.grey,
+                  margin: EdgeInsets.only(
+                      top: AppDimensionsUpdated.height10(context) * 1.9),
+                  child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                          style: TextStyle(
+                              fontSize: AppDimensions.font10(context) * 1.6,
+                              fontFamily: 'laila',
+                              height:
+                              AppDimensionsUpdated.height10(context) * 0.15,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xFF437296)),
+                          children: const [
+                            TextSpan(
+                                text:
+                                "We wanted to take a moment to express our gratitude for being part of the Potenic family and for already subscribing to our Ownership Plan! 🎉 Your commitment to enhancing your experience with us means the world to us.\n\n We're thrilled to have you on board and look forward to continuing this journey together.\n\nIf you have any questions or need assistance, feel free to reach out to our support team anytime.Thank you once again for choosing Potenic. Here's to a rewarding and enriching experience ahead!",
+                               ),
+
+                          ]))),
+              SizedBox(height: AppDimensionsUpdated.height10(context) * 2),
+              AnimatedScaleButton(
+                onTap:(){
+                   dialog(context,
+                      'Are you sure you want to change your membership plan. The plans will be changed after current duration ends.',
+                          () {
+                          SubscriptionService()
+                      .makePayment(planId)
+                      .then((value) => {
+                    print(
+                        'Response Stripe Value: ${value['status']}'),
+                    print('Response Stripe Value: $value'),
+                    if (value['status'] == 'active' ||
+                        value['status'] == 'trialing')
+                      {
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const view_goals(
+                                  missed: false,
+                                  name: '',
+                                  update: false,
+                                  helpfulTips: false,
+                                  record: 0,
+                                ))),
+                        subscribed(context),
+                        updateStatus()
+                      }
+                  });
+              
+                      }, true);
+               
+                
+                },
+                child:  Buttons().linearGradButton(
+                    AppDimensionsUpdated.height10(context) * 5,
+                    AppDimensionsUpdated.height10(context) * 33.5,
+                    yearly?'Renew as Monthly Membership': 'Renew as Yearly Membership',
+                    AppDimensionsUpdated.height10(context) * 2,
+                    const Color(0xFF5A4D73),
+                    const Color(0xFF5A4D73),
+                    false),
+              ),
+
+              SizedBox(height: AppDimensionsUpdated.height10(context) * 2),
+              AnimatedScaleButton(
+                onTap:(){
+                  dialog(context,
+                      'Are you sure you want to cancel your subscription',
+                          () {
+                        SubscriptionService()
+                            .cancelSubscription(subId, true)
+                            .then((value) async {
+                          print('Vaalue: ${value}');
+                          if (value == 200) {
+                            Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const view_goals(
+                                      missed: false,
+                                      name: '',
+                                      update: false,
+                                      helpfulTips: false,
+                                      record: 0,
+                                    )));
+                            final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+                            prefs.setString('subscriptionStatus', 'inactive');
+                            unsubscribed(context);
+                          }
+                        });
+                      }, true);
+               
+                },
+                child:  Buttons().linearGradButton(
+                    AppDimensionsUpdated.height10(context) * 5,
+                    AppDimensionsUpdated.height10(context) * 33.5,
+                    'Cancel Membership',
+                    AppDimensionsUpdated.height10(context) * 2,
+                    const Color(0xFF5A4D73).withOpacity(0.5),
+                    const Color(0xFF5A4D73).withOpacity(0.5),
+                    false),
+              ),
               SizedBox(height: AppDimensionsUpdated.height10(context) * 3),
             ],
           )),

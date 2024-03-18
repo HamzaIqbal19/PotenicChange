@@ -43,6 +43,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
   bool subscribe = false;
   String trial = '';
   String subId = '';
+  String planId = '';
+  bool yearly = false;
 
   Future<void> getUserRole() async {
     final SharedPreferences prefs = await _prefs;
@@ -78,9 +80,24 @@ class _your_goals_menuState extends State<your_goals_menu> {
             subId = value['subscriptions'] == null
                 ? ''
                 : value['subscriptions']['data'][0]['id'].toString();
+            planId = value['subscriptions'] == null
+                ? ''
+                : value['subscriptions']['data'][0]['plan']['id'].toString();
           }),
+
+          if(planId == 'price_1OlQz5RkeqntfFwk39D9nntN'){
+            setState(() {
+              yearly = true;
+            }),
+
+            print('Yearly plan: $yearly :: planId: $planId')
+          }
+
+          
+         
         });
   }
+
 
   @override
   void initState() {
@@ -276,36 +293,45 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    if (trial != 'null' && trial.isNotEmpty) {
-                                      dialog(context,
-                                          'Are you sure you want to cancel your subscription',
-                                          () {
-                                        SubscriptionService()
-                                            .cancelSubscription(subId, true)
-                                            .then((value) {
-                                          print('Vaalue: ${value}');
-                                          if (value == 200) {
-                                            Navigator.push(
-                                                context,
-                                                FadePageRoute(
-                                                    page: const view_goals(
-                                                  missed: false,
-                                                  name: '',
-                                                  update: false,
-                                                  helpfulTips: false,
-                                                  record: 0,
-                                                )));
-                                            updateStatus();
-                                            unsubscribed(context);
-                                          }
-                                        });
-                                      }, true);
-                                    } else {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const Subscription()));
+                                    if(admin){
+                                      dialog(context,"You are Potenic's admin.",(){Navigator.pop(context);},false);
+                                    }else{
+                                      if (trial != 'null' && trial.isNotEmpty) {
+                                        dialog(context,
+                                            'Are you sure you want to cancel your subscription',
+                                                () {
+                                              SubscriptionService()
+                                                  .cancelSubscription(subId, true)
+                                                  .then((value) {
+                                                print('Vaalue: ${value}');
+                                                if (value == 200) {
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page: const view_goals(
+                                                            missed: false,
+                                                            name: '',
+                                                            update: false,
+                                                            helpfulTips: false,
+                                                            record: 0,
+                                                          )));
+                                                  updateStatus();
+                                                  unsubscribed(context);
+                                                }
+                                              });
+                                            }, true);
+                                      }else if(subscribe){
+                                        print("Subscribe PLan $yearly");
+                                        subscribedUser(context,yearly,subId);
+                                      }
+                                      else {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const Subscription()));
+                                      }
                                     }
+
                                   },
                                   child: SizedBox(
                                       width:
@@ -326,7 +352,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                                   fontWeight: FontWeight.w500,
                                                   color: colorC),
                                               children: [
-                                            TextSpan(
+                                            const TextSpan(
                                                 text:
                                                     'Membership subscription\n'),
                                             admin
