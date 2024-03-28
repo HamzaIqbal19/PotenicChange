@@ -57,13 +57,11 @@ class _your_whyState extends State<your_why> {
   }
 
   void undoTimer() {
-   
-      setState(() {
-        visible = false;
-        saved = false;
-        disable = false;
-      });
-   
+    setState(() {
+      visible = false;
+      saved = false;
+      disable = false;
+    });
   }
   // List<int?> selectedOptions = List.generate(3, (_) => null);
 
@@ -82,10 +80,12 @@ class _your_whyState extends State<your_why> {
   final Map<String, dynamic> level = {};
 
   Future<Timer> loadData() async {
+    print("Update call");
     return Timer(const Duration(milliseconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
+    print("Update called");
     setState(() {
       Loader = false;
     });

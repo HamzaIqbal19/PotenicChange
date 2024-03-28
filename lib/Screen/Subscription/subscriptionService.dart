@@ -18,23 +18,27 @@ class SubscriptionService {
           merchantDisplayName: 'Potenic',
           customerId: customerId,
           setupIntentClientSecret: paymentIntentClientSecret,
+          // applePay: const PaymentSheetApplePay(merchantCountryCode: 'US'),
+          // googlePay: const PaymentSheetGooglePay(
+          //     merchantCountryCode: 'US', currencyCode: 'US', testEnv: true),
           primaryButtonLabel: 'Proceed',
           appearance: const PaymentSheetAppearance(
-             
               primaryButton: PaymentSheetPrimaryButtonAppearance(
                   colors: PaymentSheetPrimaryButtonTheme(
                       light: PaymentSheetPrimaryButtonThemeColors(
-                        background: Color(0xFF5A4D73),
-                      ),
+                          background: Color(0xFFF5F5F5),
+                          text: Color(0XFF8C648A)),
                       dark: PaymentSheetPrimaryButtonThemeColors(
-                        background: Color(0xFF5A4D73),
-                      ))),
+                          background: Color(0xFFF5F5F5),
+                          text: Color(0XFF8C648A)))),
               colors: PaymentSheetAppearanceColors(
-                  primaryText: Color(0xFF437296),
-                  secondaryText: Color(0xFF437296),
-                  componentBackground: Color(0xFF5A4D73),
-                  background: Color(0xFFFBFBFB),
-                  icon: Colors.black87))),
+                  primaryText: Color(0xFFF5F5F5),
+                  secondaryText: Color(0xFFF5F5F5),
+                  componentBackground: Color(0xFFF5F5F5),
+                  placeholderText: Color(0xFF282828),
+                  componentText: Color(0XFF8C648A),
+                  background: Color(0xFF333232),
+                  icon: Color(0xFFF5F5F5)))),
     );
 
     await Stripe.instance.presentPaymentSheet();
@@ -66,7 +70,7 @@ class SubscriptionService {
       Map<String, dynamic> body = {
         'customer': customerId,
         'items[0][price]': priceId,
-       // "trial_period_days": "5",
+        // "trial_period_days": "5",
         'default_payment_method': paymentId,
         //"prorate": 'true',
       };

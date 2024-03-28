@@ -73,8 +73,8 @@ class GoalEvaluationApi {
         headers: headers,
         body: body);
     var jsonData = jsonDecode(request.body);
+    print('Goal Evaluation: $jsonData');
     if (request.statusCode == 200) {
-      print("Goal Evaluation json data $jsonData");
       final SharedPreferences prefs = await _prefs;
       if (levelChange != true || jsonData['data']['goalLevelUpdate']) {
         await prefs.setBool(

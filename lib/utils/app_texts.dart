@@ -132,7 +132,6 @@ class AppText {
   String dashboardTitle = 'Welcome to\nyour Dashboard';
   String dashboardBody =
       'This is a one-stop place to manage your personal development journey. From Dashboard, you can quickly navigate to your goals, view your practices, record hurdles and inspirations.\n\nHave a tour of what’s available to you and how you can access the tools that are important to your personal growth.\n\nWe look forward to supporting you. Enjoy your journey :)';
-  String dashboardLink = 'https://youtu.be/f2fGU6MwZS4?si=Mt6Bcnm2v3OPf5UO';
 
   //Hurdle
 
@@ -158,8 +157,6 @@ class AppText {
   String hurdleBottomSheedTitle = 'My faced hurdle\n& obstacles';
   String hurdleBottomSheedBody =
       'This is your private space to capture any obstacles that may divert you of course.\n\nAt Potenic, our aim is to empower you to own and enjoy your personal development journey.\n\nWe want to help you stay focused and this is why we also want you to be prepared for challenges ahead, so you can build a self-reliance and grow awareness.\n\nWith time, you will start seeing patterns (with the help of Potenic’s frameworks) and will be more aware of situations that get you triggered.';
-  String hurdleTutorialLink =
-      'https://youtu.be/jrdWM7XLj4g?si=GTEa86Qnfb4B5CJA';
 
   //Inspiration
   String inspirationTitle = 'My current\ninspirations';

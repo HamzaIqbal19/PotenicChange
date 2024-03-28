@@ -16,6 +16,7 @@ import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:potenic_app/Widgets/webVisit.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_link.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -976,7 +977,7 @@ void info_sheet(context) {
               ),
               AnimatedScaleButton(
                 onTap: () {
-                  webVisit('https://youtu.be/JcUT5EMVaLU?si=QSC-nSC3-grr0nnc');
+                  webVisit(AppLinks().recordPracticeTutorial);
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 37.5,

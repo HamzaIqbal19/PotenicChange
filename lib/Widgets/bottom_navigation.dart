@@ -6,6 +6,8 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
+import 'package:potenic_app/Screen/timeline/coming_soon.dart';
+import 'package:potenic_app/Screen/timeline/timeline.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 
 import '../utils/app_dimensions.dart';
@@ -126,8 +128,9 @@ class Navigation_BarState extends State<Navigation_Bar> {
               BottomNavigationBarItem(
                 icon: AnimatedScaleButton(
                   onTap: () {
-                    //  timeline_sheet(context);
-                    // Navigator.push(context, FadePageRoute(page: const timeline()));
+                    timeline_sheet(context);
+                    Navigator.push(
+                        context, FadePageRoute(page: const timeline()));
                   },
                   child: Container(
                     margin: EdgeInsets.only(

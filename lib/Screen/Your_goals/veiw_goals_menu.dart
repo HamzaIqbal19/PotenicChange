@@ -16,6 +16,7 @@ import 'package:potenic_app/Screen/timeline/timeline.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/resetDialog.dart';
 import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
+import 'package:potenic_app/utils/app_link.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -84,20 +85,15 @@ class _your_goals_menuState extends State<your_goals_menu> {
                 ? ''
                 : value['subscriptions']['data'][0]['plan']['id'].toString();
           }),
-
-          if(planId == 'price_1OlQz5RkeqntfFwk39D9nntN'){
-            setState(() {
-              yearly = true;
-            }),
-
-            print('Yearly plan: $yearly :: planId: $planId')
-          }
-
-          
-         
+          if (planId == 'price_1OlQz5RkeqntfFwk39D9nntN')
+            {
+              setState(() {
+                yearly = true;
+              }),
+              print('Yearly plan: $yearly :: planId: $planId')
+            }
         });
   }
-
 
   @override
   void initState() {
@@ -293,45 +289,47 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    if(admin){
-                                      dialog(context,"You are Potenic's admin.",(){Navigator.pop(context);},false);
-                                    }else{
+                                    if (admin) {
+                                      dialog(
+                                          context, "You are Potenic's admin.",
+                                          () {
+                                        Navigator.pop(context);
+                                      }, false);
+                                    } else {
                                       if (trial != 'null' && trial.isNotEmpty) {
                                         dialog(context,
                                             'Are you sure you want to cancel your subscription',
-                                                () {
-                                              SubscriptionService()
-                                                  .cancelSubscription(subId, true)
-                                                  .then((value) {
-                                                print('Vaalue: ${value}');
-                                                if (value == 200) {
-                                                  Navigator.push(
-                                                      context,
-                                                      FadePageRoute(
-                                                          page: const view_goals(
-                                                            missed: false,
-                                                            name: '',
-                                                            update: false,
-                                                            helpfulTips: false,
-                                                            record: 0,
-                                                          )));
-                                                  updateStatus();
-                                                  unsubscribed(context);
-                                                }
-                                              });
-                                            }, true);
-                                      }else if(subscribe){
+                                            () {
+                                          SubscriptionService()
+                                              .cancelSubscription(subId, true)
+                                              .then((value) {
+                                            print('Vaalue: ${value}');
+                                            if (value == 200) {
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const view_goals(
+                                                    missed: false,
+                                                    name: '',
+                                                    update: false,
+                                                    helpfulTips: false,
+                                                    record: 0,
+                                                  )));
+                                              updateStatus();
+                                              unsubscribed(context);
+                                            }
+                                          });
+                                        }, true);
+                                      } else if (subscribe) {
                                         print("Subscribe PLan $yearly");
-                                        subscribedUser(context,yearly,subId);
-                                      }
-                                      else {
+                                        subscribedUser(context, yearly, subId);
+                                      } else {
                                         Navigator.push(
                                             context,
                                             FadePageRoute(
                                                 page: const Subscription()));
                                       }
                                     }
-
                                   },
                                   child: SizedBox(
                                       width:
@@ -1358,7 +1356,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                           context,
                                           AppText().dashboardTitle,
                                           AppText().dashboardBody,
-                                          AppText().dashboardLink);
+                                          AppLinks().dashboardLink);
                                     },
                                     child: Container(
                                       width:

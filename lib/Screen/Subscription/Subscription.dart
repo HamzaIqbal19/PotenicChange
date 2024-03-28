@@ -7,6 +7,8 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/resetDialog.dart';
+import 'package:potenic_app/Widgets/webVisit.dart';
+import 'package:potenic_app/utils/app_link.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/app_dimensions.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
@@ -17,20 +19,19 @@ class Subscription extends StatefulWidget {
   @override
   State<Subscription> createState() => _SubscriptionState();
 }
+
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 void updateStatus() async {
   final SharedPreferences prefs = await _prefs;
 
   prefs.setString('subscriptionStatus', 'active');
 }
+
 class _SubscriptionState extends State<Subscription>
     with TickerProviderStateMixin {
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
 
-
   late AnimationController controller;
-
-
 
   //late Animation<double> opacityAnimation;
 
@@ -264,7 +265,6 @@ class _SubscriptionState extends State<Subscription>
                                       updateStatus()
                                     }
                                 });
-
                       },
                       child: priceBox(context, '£79.98', 'Per Year',
                           '5 days free', const Color(0xFFFE6624)),
@@ -2056,14 +2056,19 @@ unsubscribed(context) {
                                     'We always look to improve and provide better service - if you could let us know your feedback by completing a short survey below we would be very grateful. Your experience is important to us.\n'),
                           ]))),
               SizedBox(height: AppDimensionsUpdated.height10(context) * 2),
-              Buttons().linearGradButton(
-                  AppDimensionsUpdated.height10(context) * 5,
-                  AppDimensionsUpdated.height10(context) * 33.5,
-                  'Send Feedback',
-                  AppDimensionsUpdated.height10(context) * 2,
-                  const Color(0xFF5A4D73),
-                  const Color(0xFF5A4D73),
-                  false),
+              GestureDetector(
+                onTap: () {
+                  webVisit(AppLinks().feedbackForm);
+                },
+                child: Buttons().linearGradButton(
+                    AppDimensionsUpdated.height10(context) * 5,
+                    AppDimensionsUpdated.height10(context) * 33.5,
+                    'Send Feedback',
+                    AppDimensionsUpdated.height10(context) * 2,
+                    const Color(0xFF5A4D73),
+                    const Color(0xFF5A4D73),
+                    false),
+              ),
               SizedBox(height: AppDimensionsUpdated.height10(context) * 3),
             ],
           )),
@@ -2071,10 +2076,10 @@ unsubscribed(context) {
   );
 }
 
-
-
 subscribedUser(context, bool yearly, String subId) {
-  String planId =!yearly?'price_1OlQz5RkeqntfFwk39D9nntN': "price_1OlQz5RkeqntfFwkHoelDUgz";
+  String planId = !yearly
+      ? 'price_1OlQz5RkeqntfFwk39D9nntN'
+      : "price_1OlQz5RkeqntfFwkHoelDUgz";
   print('Yearly: $yearly');
   //bool cancel = canceled;
   showModalBottomSheet(
@@ -2083,11 +2088,11 @@ subscribedUser(context, bool yearly, String subId) {
     backgroundColor: Colors.transparent,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppDimensionsUpdated.height10(context) * 2.0),
-        )),
+      top: Radius.circular(AppDimensionsUpdated.height10(context) * 2.0),
+    )),
     builder: (context) => Padding(
       padding:
-      EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
           width: AppDimensionsUpdated.width10(context) * 39.4,
           margin: EdgeInsets.only(
@@ -2125,7 +2130,7 @@ subscribedUser(context, bool yearly, String subId) {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             image:
-                            AssetImage('assets/images/Close_blue.webp'))),
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -2169,91 +2174,83 @@ subscribedUser(context, bool yearly, String subId) {
                               fontSize: AppDimensions.font10(context) * 1.6,
                               fontFamily: 'laila',
                               height:
-                              AppDimensionsUpdated.height10(context) * 0.15,
+                                  AppDimensionsUpdated.height10(context) * 0.15,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFF437296)),
                           children: const [
                             TextSpan(
-                                text:
-                                "We wanted to take a moment to express our gratitude for being part of the Potenic family and for already subscribing to our Ownership Plan! 🎉 Your commitment to enhancing your experience with us means the world to us.\n\n We're thrilled to have you on board and look forward to continuing this journey together.\n\nIf you have any questions or need assistance, feel free to reach out to our support team anytime.Thank you once again for choosing Potenic. Here's to a rewarding and enriching experience ahead!",
-                               ),
-
+                              text:
+                                  "We wanted to take a moment to express our gratitude for being part of of the Potenic family:tada:. Your commitment to enhancing your experience means the world to us.\n\nWe’re thrilled to have you on board, and look forward to continuing this journey together.\n\nIf you have any questions or need assistance, feel free to reach out to our support team. Thank you for choosing Potenic.",
+                            ),
                           ]))),
               SizedBox(height: AppDimensionsUpdated.height10(context) * 2),
               AnimatedScaleButton(
-                onTap:(){
-                   dialog(context,
-                      'Are you sure you want to change your membership plan. The plans will be changed after current duration ends.',
-                          () {
-                          SubscriptionService()
-                      .makePayment(planId)
-                      .then((value) => {
-                    print(
-                        'Response Stripe Value: ${value['status']}'),
-                    print('Response Stripe Value: $value'),
-                    if (value['status'] == 'active' ||
-                        value['status'] == 'trialing')
-                      {
-                        Navigator.push(
-                            context,
-                            FadePageRoute(
-                                page: const view_goals(
-                                  missed: false,
-                                  name: '',
-                                  update: false,
-                                  helpfulTips: false,
-                                  record: 0,
-                                ))),
-                        subscribed(context),
-                        updateStatus()
-                      }
-                  });
-              
-                      }, true);
-               
-                
+                onTap: () {
+                  dialog(context,
+                      'Are you sure you want to change your membership plan? The plans will be changed after current duration ends.',
+                      () {
+                    SubscriptionService().makePayment(planId).then((value) => {
+                          print('Response Stripe Value: ${value['status']}'),
+                          print('Response Stripe Value: $value'),
+                          if (value['status'] == 'active' ||
+                              value['status'] == 'trialing')
+                            {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const view_goals(
+                                    missed: false,
+                                    name: '',
+                                    update: false,
+                                    helpfulTips: false,
+                                    record: 0,
+                                  ))),
+                              subscribed(context),
+                              updateStatus()
+                            }
+                        });
+                  }, true);
                 },
-                child:  Buttons().linearGradButton(
+                child: Buttons().linearGradButton(
                     AppDimensionsUpdated.height10(context) * 5,
                     AppDimensionsUpdated.height10(context) * 33.5,
-                    yearly?'Renew as Monthly Membership': 'Renew as Yearly Membership',
+                    yearly
+                        ? 'Renew as Monthly Membership'
+                        : 'Renew as Yearly Membership',
                     AppDimensionsUpdated.height10(context) * 2,
                     const Color(0xFF5A4D73),
                     const Color(0xFF5A4D73),
                     false),
               ),
-
               SizedBox(height: AppDimensionsUpdated.height10(context) * 2),
               AnimatedScaleButton(
-                onTap:(){
+                onTap: () {
                   dialog(context,
-                      'Are you sure you want to cancel your subscription',
-                          () {
-                        SubscriptionService()
-                            .cancelSubscription(subId, true)
-                            .then((value) async {
-                          print('Vaalue: ${value}');
-                          if (value == 200) {
-                            Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: const view_goals(
-                                      missed: false,
-                                      name: '',
-                                      update: false,
-                                      helpfulTips: false,
-                                      record: 0,
-                                    )));
-                            final SharedPreferences prefs = await SharedPreferences.getInstance();
+                      'Are you sure you want to cancel your subscription?', () {
+                    SubscriptionService()
+                        .cancelSubscription(subId, true)
+                        .then((value) async {
+                      if (value == 200) {
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const view_goals(
+                              missed: false,
+                              name: '',
+                              update: false,
+                              helpfulTips: false,
+                              record: 0,
+                            )));
+                        final SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
 
-                            prefs.setString('subscriptionStatus', 'inactive');
-                            unsubscribed(context);
-                          }
-                        });
-                      }, true);
-               
+                        prefs.setString('subscriptionStatus', 'inactive');
+                        unsubscribed(context);
+                      }
+                    });
+                  }, true);
                 },
-                child:  Buttons().linearGradButton(
+                child: Buttons().linearGradButton(
                     AppDimensionsUpdated.height10(context) * 5,
                     AppDimensionsUpdated.height10(context) * 33.5,
                     'Cancel Membership',

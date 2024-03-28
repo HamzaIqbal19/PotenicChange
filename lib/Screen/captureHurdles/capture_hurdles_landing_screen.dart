@@ -17,6 +17,7 @@ import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
+import 'package:potenic_app/utils/app_link.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -1145,7 +1146,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                               context,
                                               AppText().hurdleBottomSheedTitle,
                                               AppText().hurdleBottomSheedBody,
-                                              AppText().hurdleTutorialLink);
+                                              AppLinks().hurdleTutorialLink);
                                         },
                                         child: Container(
                                             width:

@@ -52,7 +52,10 @@ class MyApp extends StatelessWidget {
         builder: (_, child) {
           return MaterialApp(
             title: 'Potenic',
-            theme: ThemeData(primarySwatch: Colors.grey, fontFamily: "Laila"),
+            theme: ThemeData(
+                primarySwatch: Colors.grey,
+                fontFamily: "Laila",
+                useMaterial3: false),
             builder: (context, child) {
               return MediaQuery(
                 data: MediaQuery.of(context)

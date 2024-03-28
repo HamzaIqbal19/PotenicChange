@@ -7,14 +7,14 @@ import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:potenic_app/Widgets/webVisit.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_link.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter_web_browser/flutter_web_browser.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 
 class SignUpWithEmail extends StatefulWidget {
   const SignUpWithEmail({super.key});
@@ -158,26 +158,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
   booleanValue(value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('bool', value);
-  }
-
-  void policies(String url) {
-    FlutterWebBrowser.openWebPage(
-      url: url,
-      customTabsOptions: const CustomTabsOptions(
-        colorScheme: CustomTabsColorScheme.dark,
-        shareState: CustomTabsShareState.on,
-        instantAppsEnabled: true,
-        showTitle: true,
-        urlBarHidingEnabled: true,
-      ),
-      safariVCOptions: const SafariViewControllerOptions(
-        barCollapsingEnabled: true,
-        preferredBarTintColor: Colors.green,
-        preferredControlTintColor: Colors.amber,
-        dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
-        modalPresentationCapturesStatusBarAppearance: true,
-      ),
-    );
   }
 
   String fcm = 'adsfsf3423424';
@@ -656,8 +636,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                             text: 'User Agreement',
                                             recognizer: TapGestureRecognizer()
                                               ..onTap = () async {
-                                                policies(
-                                                    "https://app.getterms.io/view/XWpOJ/tos/en-au");
+                                                webVisit(
+                                                    AppLinks().termsOfService);
                                               },
                                             style: TextStyle(
                                               fontFamily: 'Laila',
@@ -683,8 +663,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                             text: 'Privacy Policy',
                                             recognizer: TapGestureRecognizer()
                                               ..onTap = () async {
-                                                policies(
-                                                    "https://app.getterms.io/view/XWpOJ/privacy/en-au");
+                                                webVisit(
+                                                    AppLinks().privacyPolicy);
                                               },
                                             style: TextStyle(
                                               fontFamily: 'Laila',

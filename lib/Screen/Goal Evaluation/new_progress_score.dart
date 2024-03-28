@@ -12,6 +12,7 @@ import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/webVisit.dart';
+import 'package:potenic_app/utils/app_link.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -1800,8 +1801,7 @@ void evaluation_sheet(context) {
                     ),
                     AnimatedScaleButton(
                       onTap: () {
-                        webVisit(
-                            'https://youtu.be/kE9-KY53zqc?si=WFZsBCYfeF4_kHj3');
+                        webVisit(AppLinks().goalEvaluationLink);
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 37.5,

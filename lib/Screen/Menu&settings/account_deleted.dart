@@ -121,7 +121,7 @@ class Acc_deleted extends StatelessWidget {
                                         text:
                                             'It’s sad to see you go.\n\nIf you have feedback, please let us know by emailing us at\n'),
                                     TextSpan(
-                                        text: 'info@potenic.com.',
+                                        text: 'support@potenic.com.',
                                         style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline))

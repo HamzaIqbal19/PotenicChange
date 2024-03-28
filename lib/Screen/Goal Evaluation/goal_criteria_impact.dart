@@ -76,7 +76,6 @@ class _your_impactState extends State<your_impact> {
   }
 
   void undoTimer() {
-
     setState(() {
       visible = false;
       saved = false;
@@ -1769,6 +1768,8 @@ class _your_impactState extends State<your_impact> {
                                                                                 (select_item_2 + 1)
                                                                           },
                                                                         ).then((response) {
+                                                                          print(
+                                                                              "criteria update response $response");
                                                                           if (response ==
                                                                               true) {
                                                                             setState(() {

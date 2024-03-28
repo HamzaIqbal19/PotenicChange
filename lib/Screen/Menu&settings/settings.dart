@@ -9,6 +9,10 @@ import 'package:potenic_app/Screen/Menu&settings/edit_credentials.dart';
 import 'package:potenic_app/Screen/Menu&settings/notifications.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/followUs.dart';
+import 'package:potenic_app/Widgets/webVisit.dart';
+import 'package:potenic_app/utils/app_link.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
@@ -749,51 +753,57 @@ class _SettingsState extends State<Settings> {
                                 ],
                               ),
                             ),
-                            Container(
-                              width: AppDimensions.width10(context) * 33.4,
-                              height: AppDimensions.height10(context) * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  0.1,
-                                          color: colorC))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        AppDimensions.width10(context) * 20.6,
-                                    height:
-                                        AppDimensions.height10(context) * 1.9,
-                                    child: Text(
-                                      'Contact us',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: colorC),
-                                    ),
-                                  ),
-                                  SizedBox(
+                            GestureDetector(
+                              onTap: () {
+                                webVisit(AppLinks().contactUs);
+                              },
+                              child: Container(
+                                width: AppDimensions.width10(context) * 33.4,
+                                height: AppDimensions.height10(context) * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
                                       width:
-                                          AppDimensions.height10(context) * 2.4,
-                                      height: AppDimensions.height10(context) *
-                                          1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.width10(context) * 2.6,
-                                          //height: AppDimensions.height10(context) * 2.6,
-                                          color: colorC,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
+                                          AppDimensions.width10(context) * 20.6,
+                                      height:
+                                          AppDimensions.height10(context) * 1.9,
+                                      child: Text(
+                                        'Contact us',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            2.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.webp',
+                                            //width: AppDimensions.width10(context) * 2.6,
+                                            //height: AppDimensions.height10(context) * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
                               ),
                             ),
                             GestureDetector(
@@ -848,28 +858,7 @@ class _SettingsState extends State<Settings> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                FlutterWebBrowser.openWebPage(
-                                  url:
-                                      "https://app.getterms.io/view/XWpOJ/tos/en-au",
-                                  customTabsOptions: const CustomTabsOptions(
-                                    colorScheme: CustomTabsColorScheme.dark,
-                                    shareState: CustomTabsShareState.on,
-                                    instantAppsEnabled: true,
-                                    showTitle: true,
-                                    urlBarHidingEnabled: true,
-                                  ),
-                                  safariVCOptions:
-                                      const SafariViewControllerOptions(
-                                    barCollapsingEnabled: true,
-                                    preferredBarTintColor: Colors.green,
-                                    preferredControlTintColor: Colors.amber,
-                                    dismissButtonStyle:
-                                        SafariViewControllerDismissButtonStyle
-                                            .close,
-                                    modalPresentationCapturesStatusBarAppearance:
-                                        true,
-                                  ),
-                                );
+                                webVisit(AppLinks().termsOfService);
                               },
                               child: Container(
                                 width: AppDimensions.width10(context) * 33.4,
@@ -919,28 +908,7 @@ class _SettingsState extends State<Settings> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                FlutterWebBrowser.openWebPage(
-                                  url:
-                                      "https://app.getterms.io/view/XWpOJ/privacy/en-au",
-                                  customTabsOptions: const CustomTabsOptions(
-                                    colorScheme: CustomTabsColorScheme.dark,
-                                    shareState: CustomTabsShareState.on,
-                                    instantAppsEnabled: true,
-                                    showTitle: true,
-                                    urlBarHidingEnabled: true,
-                                  ),
-                                  safariVCOptions:
-                                      const SafariViewControllerOptions(
-                                    barCollapsingEnabled: true,
-                                    preferredBarTintColor: Colors.green,
-                                    preferredControlTintColor: Colors.amber,
-                                    dismissButtonStyle:
-                                        SafariViewControllerDismissButtonStyle
-                                            .close,
-                                    modalPresentationCapturesStatusBarAppearance:
-                                        true,
-                                  ),
-                                );
+                                webVisit(AppLinks().privacyPolicy);
                               },
                               child: SizedBox(
                                 width: AppDimensions.width10(context) * 33.4,
@@ -1442,7 +1410,9 @@ class About_us extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            webVisit(AppLinks().ourStory);
+                          },
                           child: Container(
                             width: AppDimensions.width10(context) * 33.4,
                             height: AppDimensions.height10(context) * 5.0,
@@ -1529,39 +1499,45 @@ class About_us extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: AppDimensions.width10(context) * 33.4,
-                          height: AppDimensions.height10(context) * 5.0,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                width: AppDimensions.width10(context) * 20.6,
-                                height: AppDimensions.height10(context) * 1.9,
-                                child: Text(
-                                  'Follow us',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.font10(context) * 1.6,
-                                      fontWeight: FontWeight.w500,
-                                      color: colorC),
+                        GestureDetector(
+                          onTap: () {
+                            print("Follow Us");
+                            dialogs().FollowUsDialogs(context);
+                          },
+                          child: SizedBox(
+                            width: AppDimensions.width10(context) * 33.4,
+                            height: AppDimensions.height10(context) * 5.0,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.width10(context) * 20.6,
+                                  height: AppDimensions.height10(context) * 1.9,
+                                  child: Text(
+                                    'Follow us',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.font10(context) * 1.6,
+                                        fontWeight: FontWeight.w500,
+                                        color: colorC),
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                  width: AppDimensions.width10(context) * 2.4,
-                                  height:
-                                      AppDimensions.height10(context) * 1.39,
-                                  child: GestureDetector(
-                                    onTap: () {},
-                                    child: Image.asset(
-                                      'assets/images/BTN Back.webp',
-                                      //width: AppDimensions.width10(context) * 2.6,
-                                      //height: AppDimensions.height10(context) * 2.6,
-                                      color: colorC,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ))
-                            ],
+                                SizedBox(
+                                    width: AppDimensions.width10(context) * 2.4,
+                                    height:
+                                        AppDimensions.height10(context) * 1.39,
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: Image.asset(
+                                        'assets/images/BTN Back.webp',
+                                        //width: AppDimensions.width10(context) * 2.6,
+                                        //height: AppDimensions.height10(context) * 2.6,
+                                        color: colorC,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ))
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -1673,7 +1649,7 @@ void export_data_sheet(context) {
                                   text:
                                       'To access your data, please email to us at\n'),
                               TextSpan(
-                                  text: 'info@potenic.com',
+                                  text: 'support@potenic.com',
                                   style:
                                       TextStyle(fontWeight: FontWeight.w600)),
                               TextSpan(
