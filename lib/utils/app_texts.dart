@@ -183,4 +183,20 @@ class AppText {
   String goalLevelUp = '';
   String goalLevelDown =
       "Based on your latest evaluation, your total goal\nlevel has gone down. Don’t despair yet.\n\nLife is a journey of ups and downs, and working on\nyourself is part of the transformation process.\nPlease review your latest assessment and adjust\nyour original ‘why’ reasons, if needed.";
+
+//Subscription
+  String question1 = 'Is there a free trial on Ownership Plan?';
+  String question2 =
+      'Can I upgrade from monthly to yearly or downgrade from yearly to monthly?';
+  String question3 = 'Can I cancel my subscription?';
+  String question4 =
+      'I don’t want to upgrade to Ownership Plan, what happens to my Empowered Starter\nPlan?';
+  String answer1 =
+      'Yes, we offer a free 5-day trial period for both\nmonthly and yearly plans.';
+  String answer2 =
+      'You can upgrade to an yearly plan in any month\nbefore your recurring monthly billing is due. If you\nwant to downgrade from yearly plan, make sure to\nchoose monthly payment by the time your yearly\nplan is due to renew.';
+  String answer3 =
+      'Yes you can by going into your Account Settings.\nRemember to cancel your subscription plan no\nearlier than 3 working days before your plan is due\nto renew.';
+  String answer4 =
+      'If you stay on our free Empowered Starter plan,\nyou get it for lifetime. No subscription fees, it’s\nyours to own :)\n\nFor a more personalised experience and clarity on\nyour growth progress towards self-fulfilment, we\nrecommend you upgrade to our Ownership Plan (if\nyou’re serious about your personal growth).';
 }

@@ -9,6 +9,7 @@ import 'package:potenic_app/Screen/Menu&settings/settings.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/Subscription/Subscription.dart';
+import 'package:potenic_app/Screen/Subscription/subscriptionComponents.dart';
 import 'package:potenic_app/Screen/Subscription/subscriptionService.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';

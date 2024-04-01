@@ -8,6 +8,7 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:intl/intl.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria_impact.dart';
+import 'package:potenic_app/Screen/Subscription/Subscription.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -1643,26 +1644,32 @@ void Upgrade_sheet(context) {
                                 text: 'that is available for premium users. ')
                           ])),
                 ),
-                Container(
-                  width: AppDimensions.width10(context) * 36.0,
-                  height: AppDimensions.height10(context) * 5.0,
-                  margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 2.7),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 5.0),
-                      gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Color(0xFFFCC10D), Color(0xFFFCC10D)])),
-                  child: Center(
-                    child: Text(
-                      'View Ownership Plan',
-                      style: TextStyle(
-                          fontFamily: 'LAILA',
-                          color: const Color(0xFFFFFFFF),
-                          fontSize: AppDimensions.font10(context) * 1.8,
-                          fontWeight: FontWeight.w600),
+                AnimatedScaleButton(
+                  onTap: () {
+                    Navigator.pushReplacement(context,
+                        FadePageRouteReverse(page: const Subscription()));
+                  },
+                  child: Container(
+                    width: AppDimensions.width10(context) * 36.0,
+                    height: AppDimensions.height10(context) * 5.0,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 2.7),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
+                        gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Color(0xFFFCC10D), Color(0xFFFCC10D)])),
+                    child: Center(
+                      child: Text(
+                        'View Ownership Plan',
+                        style: TextStyle(
+                            fontFamily: 'LAILA',
+                            color: const Color(0xFFFFFFFF),
+                            fontSize: AppDimensions.font10(context) * 1.8,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ),
                 )
