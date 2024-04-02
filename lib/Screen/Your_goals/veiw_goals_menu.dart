@@ -289,49 +289,49 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 GestureDetector(
-                                  onTap: () {
-                                    if (admin) {
-                                      dialog(
-                                          context, "You are Potenic's admin.",
-                                          () {
-                                        Navigator.pop(context);
-                                      }, false);
-                                    } else {
-                                      if (trial != 'null' && trial.isNotEmpty) {
-                                        dialog(context,
-                                            'Are you sure you want to cancel your subscription',
-                                            () {
-                                          SubscriptionService()
-                                              .cancelSubscription(subId, true)
-                                              .then((value) {
-                                            print('Vaalue: ${value}');
-                                            if (value == 200) {
-                                              Navigator.push(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page: const view_goals(
-                                                    missed: false,
-                                                    name: '',
-                                                    update: false,
-                                                    helpfulTips: false,
-                                                    record: 0,
-                                                  )));
-                                              updateStatus();
-                                              unsubscribed(context);
-                                            }
-                                          });
-                                        }, true);
-                                      } else if (subscribe) {
-                                        print("Subscribe PLan $yearly");
-                                        subscribedUser(context, yearly, subId);
-                                      } else {
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const Subscription()));
-                                      }
-                                    }
-                                  },
+                                  // onTap: () {
+                                  //   if (admin) {
+                                  //     dialog(
+                                  //         context, "You are Potenic's admin.",
+                                  //         () {
+                                  //       Navigator.pop(context);
+                                  //     }, false);
+                                  //   } else {
+                                  //     if (trial != 'null' && trial.isNotEmpty) {
+                                  //       dialog(context,
+                                  //           'Are you sure you want to cancel your subscription',
+                                  //           () {
+                                  //         SubscriptionService()
+                                  //             .cancelSubscription(subId, true)
+                                  //             .then((value) {
+                                  //           print('Vaalue: ${value}');
+                                  //           if (value == 200) {
+                                  //             Navigator.push(
+                                  //                 context,
+                                  //                 FadePageRoute(
+                                  //                     page: const view_goals(
+                                  //                   missed: false,
+                                  //                   name: '',
+                                  //                   update: false,
+                                  //                   helpfulTips: false,
+                                  //                   record: 0,
+                                  //                 )));
+                                  //             updateStatus();
+                                  //             unsubscribed(context);
+                                  //           }
+                                  //         });
+                                  //       }, true);
+                                  //     } else if (subscribe) {
+                                  //       print("Subscribe PLan $yearly");
+                                  //       subscribedUser(context, yearly, subId);
+                                  //     } else {
+                                  //       Navigator.push(
+                                  //           context,
+                                  //           FadePageRoute(
+                                  //               page: const Subscription()));
+                                  //     }
+                                  //   }
+                                  // },
                                   child: SizedBox(
                                       width:
                                           AppDimensions.width10(context) * 27.6,
@@ -1035,10 +1035,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const timeline()));
+                                      // Navigator.push(
+                                      //     context,
+                                      //     FadePageRoute(
+                                      //         page: const timeline()));
                                     },
                                     child: Container(
                                       width:

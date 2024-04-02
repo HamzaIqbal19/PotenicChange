@@ -129,8 +129,8 @@ class Navigation_BarState extends State<Navigation_Bar> {
                 icon: AnimatedScaleButton(
                   onTap: () {
                     timeline_sheet(context);
-                    Navigator.push(
-                        context, FadePageRoute(page: const timeline()));
+                    // Navigator.push(
+                    //     context, FadePageRoute(page: const timeline()));
                   },
                   child: Container(
                     margin: EdgeInsets.only(

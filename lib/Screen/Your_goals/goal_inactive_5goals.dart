@@ -1634,69 +1634,71 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                           });
                                         }
                                       },
-                                      child: AvatarGlow(
-                                        glowRadiusFactor:
-                                            AppDimensions.height10(context) *
-                                                5.0,
-                                        glowColor: const Color(0xFFFFA511),
-                                        animate:
-                                            totalItemsOn != 0 ? true : false,
-                                        child: Align(
-                                          alignment: Alignment.center,
-                                          child: Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  7.1,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  7.1,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Colors.white,
-                                                border: Border.all(
-                                                    width: 3,
-                                                    color: const Color(
-                                                        0xFFFFA511)),
-                                              ),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Container(
-                                                    width:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            2.0,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            2.0,
-                                                    decoration: const BoxDecoration(
-                                                        image: DecorationImage(
-                                                            image: AssetImage(
-                                                                'assets/images/start_icon.webp'))),
-                                                  ),
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        top: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            0.4),
-                                                    child: Text(
-                                                      'Start',
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .font10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: const Color(
-                                                              0xFFFFA511)),
+                                      child: Container(
+                                        margin: EdgeInsets.only(right: AppDimensions.width10(context)),
+                                        child: AvatarGlow(
+                                          glowRadiusFactor:
+                                              0.3,
+                                          glowColor: const Color(0xFFFFA511),
+                                          animate:
+                                              totalItemsOn != 0 ? true : false,
+                                          child: Align(
+                                            alignment: Alignment.center,
+                                            child: Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    7.1,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    7.1,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Colors.white,
+                                                  border: Border.all(
+                                                      width: 3,
+                                                      color: const Color(
+                                                          0xFFFFA511)),
+                                                ),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      width:
+                                                          AppDimensions.width10(
+                                                                  context) *
+                                                              2.0,
+                                                      height:
+                                                          AppDimensions.height10(
+                                                                  context) *
+                                                              2.0,
+                                                      decoration: const BoxDecoration(
+                                                          image: DecorationImage(
+                                                              image: AssetImage(
+                                                                  'assets/images/start_icon.webp'))),
                                                     ),
-                                                  )
-                                                ],
-                                              )),
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.4),
+                                                      child: Text(
+                                                        'Start',
+                                                        style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                1.4,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: const Color(
+                                                                0xFFFFA511)),
+                                                      ),
+                                                    )
+                                                  ],
+                                                )),
+                                          ),
                                         ),
                                       ),
                                     )
