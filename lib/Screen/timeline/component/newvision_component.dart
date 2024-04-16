@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/timeline/component/imageComponent.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 
@@ -8,15 +9,15 @@ class NewVisionComponent extends StatefulWidget {
   String mainText;
   String subText;
   String levelText;
-  String quoteText;
-  NewVisionComponent(
-      {super.key,
-      required this.mainText,
-      required this.subText,
-      required this.image1,
-      required this.image2,
-      required this.levelText,
-      required this.quoteText});
+
+  NewVisionComponent({
+    super.key,
+    required this.mainText,
+    required this.subText,
+    required this.image1,
+    required this.image2,
+    required this.levelText,
+  });
 
   @override
   State<NewVisionComponent> createState() => _NewVisionComponentState();
@@ -26,45 +27,47 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.width10(context) * 38.4,
-      height: AppDimensions.height10(context) * 62.7,
+      width: AppDimensionsUpdated.width10(context) * 33.5,
+      height: AppDimensionsUpdated.height10(context) * 61.2,
       margin: EdgeInsets.only(
-        top: AppDimensions.height10(context) * 2.0,
+        top: AppDimensionsUpdated.height10(context) * 2.0,
+        right: AppDimensionsUpdated.height10(context) * 2.0,
+        left: AppDimensionsUpdated.height10(context) * 2.0,
       ),
       decoration: BoxDecoration(
         color: const Color(0xFFFBFBFB),
         borderRadius:
-            BorderRadius.circular(AppDimensions.height10(context) * 2.6),
+            BorderRadius.circular(AppDimensionsUpdated.height10(context) * 2.6),
       ),
       child: Column(
         children: [
           Container(
-            width: AppDimensions.width10(context) * 20.5,
-            height: AppDimensions.height10(context) * 3.5,
+            width: AppDimensionsUpdated.width10(context) * 20.5,
+            height: AppDimensionsUpdated.height10(context) * 3.5,
             margin: EdgeInsets.only(
-              right: AppDimensions.width10(context) * 14.8,
-              top: AppDimensions.height10(context) * 1.5,
+              right: AppDimensionsUpdated.width10(context) * 12.8,
+              top: AppDimensionsUpdated.height10(context) * 1.5,
             ),
             child: Row(
               children: [
                 Container(
-                  width: AppDimensions.width10(context) * 3.5,
-                  height: AppDimensions.height10(context) * 3.5,
+                  width: AppDimensionsUpdated.width10(context) * 3.5,
+                  height: AppDimensionsUpdated.height10(context) * 3.5,
                   margin: EdgeInsets.only(
-                      right: AppDimensions.height10(context) * 0.8),
+                      right: AppDimensionsUpdated.height10(context) * 0.8),
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/images/menu_goals_b.webp'),
                           fit: BoxFit.contain)),
                 ),
                 SizedBox(
-                  width: AppDimensions.width10(context) * 16.1,
-                  height: AppDimensions.height10(context) * 2.2,
+                  width: AppDimensionsUpdated.width10(context) * 16.1,
+                  height: AppDimensionsUpdated.height10(context) * 2.2,
                   child: Text(
                     'New Vision Score!',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: AppDimensions.font10(context) * 1.8,
+                        fontSize: AppDimensionsUpdated.font10(context) * 1.8,
                         color: const Color(0xff437296)),
                   ),
                 )
@@ -72,50 +75,51 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
             ),
           ),
           Container(
-            width: AppDimensions.width10(context) * 35.4,
-            height: AppDimensions.height10(context) * 53.2,
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.5),
+            width: AppDimensionsUpdated.width10(context) * 32.5,
+            height: AppDimensionsUpdated.height10(context) * 52.7,
+            margin: EdgeInsets.only(
+                top: AppDimensionsUpdated.height10(context) * 1.5),
             decoration: BoxDecoration(
               image: const DecorationImage(
-                  image: AssetImage('assets/images/timeline_4.webp')),
-              borderRadius:
-                  BorderRadius.circular(AppDimensions.height10(context) * 2.0),
+                  image: AssetImage('assets/images/timeline_4.webp'),
+                  fit: BoxFit.cover),
+              borderRadius: BorderRadius.circular(
+                  AppDimensionsUpdated.height10(context) * 2.0),
             ),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
-                    AppDimensions.height10(context) * 2.0),
+                    AppDimensionsUpdated.height10(context) * 2.0),
                 image: const DecorationImage(
-                    image: AssetImage('assets/images/bg_stars.webp')),
+                    image: AssetImage('assets/images/bg_stars.webp'),
+                    fit: BoxFit.cover),
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: AppDimensions.width10(context) * 26.6,
-                    height: AppDimensions.height10(context) * 3.4,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 3.2),
                     child: Text(
                       'New progress level',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: AppDimensions.font10(context) * 2.8,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppDimensionsUpdated.font10(context) * 2.2,
                           color: const Color(0xff437296)),
                     ),
                   ),
                   Container(
-                    width: AppDimensions.width10(context) * 31.1,
-                    height: AppDimensions.height10(context) * 42.2,
+                    width: AppDimensionsUpdated.width10(context) * 31.1,
+                    height: AppDimensionsUpdated.height10(context) * 40.2,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.9),
+                        top: AppDimensionsUpdated.height10(context) * 1.9),
                     child: Stack(
                       children: [
                         Align(
                           alignment: const Alignment(0, 1),
                           child: Container(
-                            width: AppDimensions.width10(context) * 31.1,
-                            height: AppDimensions.height10(context) * 29.6,
+                            width: AppDimensionsUpdated.width10(context) * 28.5,
+                            height:
+                                AppDimensionsUpdated.height10(context) * 29.6,
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                   colors: [
@@ -125,27 +129,33 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter),
                               borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10(context) * 2.0),
+                                  AppDimensionsUpdated.height10(context) * 2.0),
                             ),
                             child: Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                width: AppDimensions.height10(context) * 25.8,
-                                height: AppDimensions.height10(context) * 5.866,
+                                width: AppDimensionsUpdated.height10(context) *
+                                    25.8,
+                                height: AppDimensionsUpdated.height10(context) *
+                                    5.866,
                                 margin: EdgeInsets.only(
                                     bottom:
-                                        AppDimensions.height10(context) * 2.856,
-                                    top: AppDimensions.height10(context) * 1.1),
+                                        AppDimensionsUpdated.height10(context) *
+                                            2.856,
+                                    top:
+                                        AppDimensionsUpdated.height10(context) *
+                                            1.1),
                                 child: Stack(
                                   children: [
                                     Align(
                                       alignment: Alignment.topLeft,
                                       child: Container(
-                                        width: AppDimensions.width10(context) *
+                                        width: AppDimensionsUpdated.width10(
+                                                context) *
                                             2.13,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.8,
+                                        height: AppDimensionsUpdated.height10(
+                                                context) *
+                                            1.8,
                                         decoration: const BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(
@@ -157,21 +167,23 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                     Align(
                                       alignment: const Alignment(0.7, 0),
                                       child: SizedBox(
-                                        width: AppDimensions.width10(context) *
+                                        width: AppDimensionsUpdated.width10(
+                                                context) *
                                             25.5,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                5.366,
+                                        height: AppDimensionsUpdated.height10(
+                                                context) *
+                                            5.366,
 
                                         ///color: Colors.amber,
                                         child: Center(
                                           child: Text(
-                                            widget.quoteText,
+                                            goalLevelMessages(widget.levelText),
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.8,
+                                                fontSize:
+                                                    AppDimensionsUpdated.font10(
+                                                            context) *
+                                                        1.8,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFFFFFFFF)),
                                           ),
@@ -187,54 +199,66 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                         Align(
                           alignment: const Alignment(0, -1),
                           child: Container(
-                            width: AppDimensions.width10(context) * 26.8,
-                            height: AppDimensions.height10(context) * 26.8,
+                            width: AppDimensionsUpdated.width10(context) * 25.8,
+                            height:
+                                AppDimensionsUpdated.height10(context) * 25.8,
                             padding: EdgeInsets.only(
-                                bottom: AppDimensions.height10(context) * 6.0),
+                                bottom: AppDimensionsUpdated.height10(context) *
+                                    6.0),
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage(widget.image1),
+                                    image: AssetImage(
+                                        goalImages(widget.image1.toString())),
                                     fit: BoxFit.cover)),
                             child: Column(
                               children: [
                                 Container(
-                                  width: AppDimensions.height10(context) * 17.1,
-                                  height: AppDimensions.height10(context) * 2.4,
+                                  width:
+                                      AppDimensionsUpdated.height10(context) *
+                                          17.1,
+                                  height:
+                                      AppDimensionsUpdated.height10(context) *
+                                          2.4,
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
+                                      top: AppDimensionsUpdated.height10(
+                                              context) *
                                           7.3),
                                   alignment: Alignment.center,
                                   child: Text(
                                     widget.mainText,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.font10(context) * 2.0,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.12,
+                                        fontSize: AppDimensionsUpdated.font10(
+                                                context) *
+                                            1.8,
+                                        height: AppDimensionsUpdated.height10(
+                                                context) *
+                                            0.12,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xff5B74A6)),
                                   ),
                                 ),
                                 Container(
                                   // width:
-                                  //     AppDimensions.height10(context) * 20.9,
+                                  //     AppDimensionsUpdated.height10(context) * 20.9,
                                   height:
-                                      AppDimensions.height10(context) * 3.63,
+                                      AppDimensionsUpdated.height10(context) *
+                                          3.63,
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
+                                      top: AppDimensionsUpdated.height10(
+                                              context) *
                                           0.2),
                                   alignment: Alignment.center,
-                                  child: Text(widget.subText,
+                                  child: Text('"${widget.subText}"',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.6,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  0.15,
+                                              AppDimensionsUpdated.font10(
+                                                      context) *
+                                                  1.4,
+                                          height: AppDimensionsUpdated.height10(
+                                                  context) *
+                                              0.15,
                                           fontWeight: FontWeight.w400,
                                           fontStyle: FontStyle.italic,
                                           color: const Color(0xff5B74A6))),
@@ -246,62 +270,77 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                         Align(
                           alignment: const Alignment(0, 0.2),
                           child: Container(
-                            width: AppDimensions.width10(context) * 15.3,
-                            height: AppDimensions.height10(context) * 15.3,
+                            width: AppDimensionsUpdated.width10(context) * 15.3,
+                            height:
+                                AppDimensionsUpdated.height10(context) * 15.3,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                    image: AssetImage(widget.image2),
+                                    image: AssetImage(
+                                        goalLevel(widget.levelText.toString())),
                                     fit: BoxFit.contain)),
                             child: Stack(
                               alignment: Alignment.center,
                               children: [
                                 Container(
                                   alignment: Alignment.bottomCenter,
-                                  width: AppDimensions.height10(context) * 2.6,
-                                  height: AppDimensions.height10(context) * 0.8,
+                                  width:
+                                      AppDimensionsUpdated.height10(context) *
+                                          2.6,
+                                  height:
+                                      AppDimensionsUpdated.height10(context) *
+                                          1.2,
                                   margin: EdgeInsets.only(
-                                      bottom: AppDimensions.height10(context) *
+                                      bottom: AppDimensionsUpdated.height10(
+                                              context) *
                                           3.5),
                                   child: Center(
                                     child: Text(
                                       'LEVEL',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  0.8,
+                                          fontSize: AppDimensionsUpdated.font10(
+                                                  context) *
+                                              0.8,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xFF464646)),
                                     ),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10(context) * 5.1,
+                                  width:
+                                      AppDimensionsUpdated.height10(context) *
+                                          5.1,
                                   height:
-                                      AppDimensions.height10(context) * 2.805,
+                                      AppDimensionsUpdated.height10(context) *
+                                          2.805,
                                   // color: Colors.amber,
                                   margin: EdgeInsets.only(
-                                      bottom: AppDimensions.height10(context) *
+                                      top: AppDimensionsUpdated.height10(
+                                              context) *
+                                          0.8,
+                                      bottom: AppDimensionsUpdated.height10(
+                                              context) *
                                           1.0),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
                                         child: Text(
-                                          '${widget.levelText}',
+                                          widget.levelText,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  2.8,
+                                              fontSize:
+                                                  AppDimensionsUpdated.height10(
+                                                          context) *
+                                                      2,
                                               fontWeight: FontWeight.w500,
                                               color: const Color(0xFF646464)),
                                         ),
                                       ),
                                       Container(
                                         margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
+                                            top: AppDimensionsUpdated.height10(
                                                     context) *
                                                 0.7),
                                         child: Text(
@@ -309,12 +348,13 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               letterSpacing:
-                                                  AppDimensions.height10(
+                                                  AppDimensionsUpdated.height10(
                                                           context) *
                                                       -0.1,
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
+                                              fontSize:
+                                                  AppDimensionsUpdated.height10(
+                                                          context) *
+                                                      1.7,
                                               fontWeight: FontWeight.w300,
                                               color: const Color(0xFF828282)),
                                         ),

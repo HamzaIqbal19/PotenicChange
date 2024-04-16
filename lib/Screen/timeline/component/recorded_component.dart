@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/timeline/component/imageComponent.dart';
+import 'package:potenic_app/Screen/timeline/component/practiceProgressText.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class RecordedComponent extends StatefulWidget {
   String recordedText;
-  String orangeText;
+  String goalName;
   String beforeText;
   String afterText;
+  String pracName;
   final orangeImage;
   final greenImage;
+  final status;
+  final missedGreenImage;
   RecordedComponent(
       {super.key,
       required this.recordedText,
-      required this.orangeText,
+      required this.goalName,
+      required this.pracName,
       required this.beforeText,
       required this.afterText,
       required this.orangeImage,
-      required this.greenImage});
+      required this.greenImage,
+      required this.status,
+      required this.missedGreenImage});
 
   @override
   State<RecordedComponent> createState() => _RecordedComponentState();
@@ -26,32 +34,34 @@ class _RecordedComponentState extends State<RecordedComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.width10(context) * 38.4,
-      height: AppDimensions.height10(context) * 43.9,
+      height: widget.status != 'Not Started' && widget.status != 'missed'
+          ? AppDimensionsUpdated.height10(context) * 43.9
+          : AppDimensionsUpdated.height10(context) * 25.4,
       margin: EdgeInsets.only(
-        top: AppDimensions.height10(context) * 2.0,
-      ),
+          top: AppDimensionsUpdated.height10(context) * 2.0,
+          right: AppDimensionsUpdated.height10(context) * 1.5,
+          left: AppDimensionsUpdated.height10(context) * 1.5),
       decoration: BoxDecoration(
         color: const Color(0xFFFBFBFB),
         borderRadius:
-            BorderRadius.circular(AppDimensions.height10(context) * 2.6),
+            BorderRadius.circular(AppDimensionsUpdated.height10(context) * 2.6),
       ),
       child: Column(
         children: [
           Container(
-            width: AppDimensions.width10(context) * 30.7,
-            height: AppDimensions.height10(context) * 3.5,
+            width: AppDimensionsUpdated.width10(context) * 30.7,
+            height: AppDimensionsUpdated.height10(context) * 3.5,
             margin: EdgeInsets.only(
-              right: AppDimensions.width10(context) * 4.9,
-              top: AppDimensions.height10(context) * 1.5,
+              right: AppDimensionsUpdated.width10(context) * 4.9,
+              top: AppDimensionsUpdated.height10(context) * 1.5,
             ),
             child: Row(
               children: [
                 Container(
-                  width: AppDimensions.width10(context) * 3.58,
-                  height: AppDimensions.height10(context) * 3.58,
+                  width: AppDimensionsUpdated.width10(context) * 3.58,
+                  height: AppDimensionsUpdated.height10(context) * 3.58,
                   margin: EdgeInsets.only(
-                      right: AppDimensions.height10(context) * 0.8),
+                      right: AppDimensionsUpdated.height10(context) * 0.8),
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                           image:
@@ -59,226 +69,325 @@ class _RecordedComponentState extends State<RecordedComponent> {
                           fit: BoxFit.contain)),
                 ),
                 SizedBox(
-                  width: AppDimensions.width10(context) * 23.6,
-                  height: AppDimensions.height10(context) * 2.2,
-                  child: Text(
-                    widget.recordedText,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: AppDimensions.font10(context) * 1.8,
-                        color: const Color(0xff437296)),
-                  ),
-                )
+                    width: AppDimensionsUpdated.width10(context) * 23.6,
+                    height: AppDimensionsUpdated.height10(context) * 2.2,
+                    child: RichText(
+                        text: TextSpan(
+                            text: 'Practice session',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize:
+                                    AppDimensionsUpdated.font10(context) * 1.8,
+                                color: const Color(0xff437296)),
+                            children: [
+                          TextSpan(
+                            text: widget.status == 'Not Started'
+                                ? ' "Scheduled"'
+                                : widget.status == 'missed'
+                                    ? ' "Missed"'
+                                    : ' "Recorded"',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize:
+                                    AppDimensionsUpdated.font10(context) * 1.8,
+                                color: widget.status == 'Not Started'
+                                    ? const Color(0xff437296)
+                                    : const Color(0xffFA9934)),
+                          )
+                        ])))
               ],
             ),
           ),
           Container(
-            width: AppDimensions.width10(context) * 35.5,
-            height: AppDimensions.height10(context) * 18.3,
+            height: AppDimensionsUpdated.height10(context) * 16.3,
             clipBehavior: Clip.antiAlias,
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
+            margin: EdgeInsets.only(
+              top: AppDimensionsUpdated.height10(context) * 1.9,
+              left: AppDimensionsUpdated.height10(context) * 1.5,
+              right: AppDimensionsUpdated.height10(context) * 1.5,
+            ),
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.4),
-                    spreadRadius: AppDimensions.height10(context) * 0.5,
-                    blurRadius: AppDimensions.height10(context) * 0.7,
+                    spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
+                    blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
                     offset: const Offset(0, 3),
                   )
                 ],
                 borderRadius: BorderRadius.circular(
-                    AppDimensions.height10(context) * 2.0),
+                    AppDimensionsUpdated.height10(context) * 2.0),
                 image: const DecorationImage(
                     image: AssetImage('assets/images/timeline_1.webp'),
                     fit: BoxFit.cover)),
             child: Stack(children: [
               Align(
-                alignment: const Alignment(-3, 0),
+                alignment: const Alignment(-2.65, 0),
                 child: Container(
-                  width: AppDimensions.width10(context) * 26.8,
-                  height: AppDimensions.height10(context) * 26.8,
+                  width: AppDimensionsUpdated.width10(context) * 22.6,
+                  height: AppDimensionsUpdated.height10(context) * 24.2,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage(widget.orangeImage),
+                          image: AssetImage(
+                              goalImages(widget.orangeImage.toString())),
                           fit: BoxFit.cover)),
-                  child: Container(
-                    width: AppDimensions.width10(context) * 15.8,
-                    height: AppDimensions.height10(context) * 4.8,
-                    alignment: const Alignment(0.3, -0.1),
-                    child: Text(
-                      widget.orangeText,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: AppDimensions.font10(context) * 2.0,
-                          //  height: AppDimensions.height10(context) * 0.12,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff5B74A6)),
-                    ),
-                  ),
+                  child: Align(
+                      alignment: const Alignment(0.42, 0),
+                      child: SizedBox(
+                        width: AppDimensionsUpdated.width10(context) * 7.5,
+                        height: AppDimensionsUpdated.height10(context) * 4.8,
+                        //changed font family due to client's request
+                        child: Text(
+                          widget.goalName,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              height:
+                                  AppDimensionsUpdated.height10(context) * 0.15,
+                              fontSize:
+                                  AppDimensionsUpdated.font10(context) * 1.6,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xff5B74A6)),
+                        ),
+                      )),
                 ),
               ),
               Align(
-                alignment: const Alignment(0.3, 0),
+                alignment: const Alignment(-0.175, 0),
                 child: Container(
-                  width: AppDimensions.width10(context) * 13.8,
-                  height: AppDimensions.height10(context) * 13.8,
+                  width: AppDimensionsUpdated.width10(context) * 11.6,
+                  height: AppDimensionsUpdated.height10(context) * 11.6,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: AssetImage(widget.greenImage),
-                          fit: BoxFit.contain)),
+                    shape: BoxShape.circle,
+                    border: widget.status == 'missed'
+                        ? Border.all(color: Colors.transparent)
+                        : Border.all(color: Colors.white, width: 1),
+                    image: widget.status == 'missed'
+                        ? DecorationImage(
+                            image: AssetImage(practiceImagesMissed(
+                                widget.greenImage.toString())),
+                            fit: BoxFit.contain)
+                        : DecorationImage(
+                            image: AssetImage(
+                                practiceImages(widget.greenImage.toString())),
+                            fit: BoxFit.contain),
+                  ),
+                  child: Center(
+                    child: Text(
+                      widget.pracName,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: AppDimensionsUpdated.font10(context) * 1.6,
+                        height: AppDimensionsUpdated.height10(context) * 0.12,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xffFBFBFB),
+                      ),
+                    ),
+                  ),
                 ),
               )
             ]),
           ),
-          Container(
-            width: AppDimensions.width10(context) * 33.7,
-            height: AppDimensions.height10(context) * 4.1,
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: AppDimensions.width10(context) * 16.7,
-                  height: AppDimensions.height10(context) * 1.7,
-                  alignment: Alignment.centerLeft,
-                  child: RichText(
-                      text: TextSpan(
-                          style: TextStyle(
-                              fontFamily: 'laila',
-                              fontSize: AppDimensions.font10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 0.12,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xff5B74A6)),
-                          children: const [
-                        TextSpan(text: 'How did you feel '),
-                        TextSpan(
-                            text: 'before:',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                            ))
-                      ])),
-                ),
-                SizedBox(
-                  width: AppDimensions.width10(context) * 33.7,
-                  height: AppDimensions.height10(context) * 2.3,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: AppDimensions.width10(context) * 16.7,
-                        height: AppDimensions.height10(context) * 1.7,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 0.7),
-                        child: Text(
-                          '“${widget.beforeText}”',
-                          style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 0.12,
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xff5B74A6)),
-                        ),
+          (widget.status != 'Not Started' && widget.status != 'missed')
+              ? Column(
+                  children: [
+                    Container(
+                      width: AppDimensionsUpdated.width10(context) * 33.7,
+                      height: AppDimensionsUpdated.height10(context) * 4.1,
+                      margin: EdgeInsets.only(
+                          top: AppDimensionsUpdated.height10(context) * 2.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: AppDimensionsUpdated.width10(context) * 16.7,
+                            height:
+                                AppDimensionsUpdated.height10(context) * 1.7,
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                                text: TextSpan(
+                                    style: TextStyle(
+                                        fontFamily: 'laila',
+                                        fontSize: AppDimensionsUpdated.font10(
+                                                context) *
+                                            1.4,
+                                        height: AppDimensionsUpdated.height10(
+                                                context) *
+                                            0.12,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xff5B74A6)),
+                                    children: const [
+                                  TextSpan(text: 'How did you feel '),
+                                  TextSpan(
+                                      text: 'before:',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                      ))
+                                ])),
+                          ),
+                          SizedBox(
+                            width: AppDimensionsUpdated.width10(context) * 33.7,
+                            height:
+                                AppDimensionsUpdated.height10(context) * 2.3,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: AppDimensionsUpdated.width10(context) *
+                                      16.7,
+                                  height:
+                                      AppDimensionsUpdated.height10(context) *
+                                          1.7,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensionsUpdated.height10(
+                                              context) *
+                                          0.7),
+                                  child: Text(
+                                    practiceProgressBeforeText(
+                                        widget.beforeText),
+                                    style: TextStyle(
+                                        fontSize: AppDimensionsUpdated.font10(
+                                                context) *
+                                            1.4,
+                                        height: AppDimensionsUpdated.height10(
+                                                context) *
+                                            0.12,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(practiceBeforeColor(
+                                            widget.beforeText.toString()))),
+                                  ),
+                                ),
+                                Container(
+                                  width:
+                                      AppDimensionsUpdated.height10(context) *
+                                          2.0,
+                                  height:
+                                      AppDimensionsUpdated.height10(context) *
+                                          2.0,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(practiceBeforeColor(
+                                          widget.beforeText.toString()))),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
                       ),
-                      Container(
-                        width: AppDimensions.height10(context) * 2.0,
-                        height: AppDimensions.height10(context) * 2.0,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: Color(0xFF718FB1)),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: AppDimensions.height10(context) * 1.0,
-          ),
-          SizedBox(
-            width: AppDimensions.width10(context) * 34.4,
-            child: Divider(
-              height: AppDimensions.height10(context) * 0.1,
-              color: const Color(0xFFE0E0E0),
-            ),
-          ),
-          SizedBox(
-            height: AppDimensions.height10(context) * 1.0,
-          ),
-          SizedBox(
-            width: AppDimensions.width10(context) * 33.7,
-            height: AppDimensions.height10(context) * 4.1,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: AppDimensions.width10(context) * 16.7,
-                  height: AppDimensions.height10(context) * 1.7,
-                  alignment: Alignment.centerLeft,
-                  child: RichText(
-                      text: TextSpan(
-                          style: TextStyle(
-                              fontFamily: 'laila',
-                              fontSize: AppDimensions.font10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 0.12,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xff5B74A6)),
-                          children: const [
-                        TextSpan(text: 'How did you feel '),
-                        TextSpan(
-                            text: 'after:',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                            ))
-                      ])),
-                ),
-                SizedBox(
-                  width: AppDimensions.width10(context) * 33.7,
-                  height: AppDimensions.height10(context) * 2.3,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: AppDimensions.width10(context) * 16.7,
-                        height: AppDimensions.height10(context) * 1.7,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 0.7),
-                        child: Text(
-                          '“${widget.afterText}”',
-                          style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 0.12,
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xFFFD6F32)),
-                        ),
+                    ),
+                    SizedBox(
+                      height: AppDimensionsUpdated.height10(context) * 1.0,
+                    ),
+                    SizedBox(
+                      width: AppDimensionsUpdated.width10(context) * 34.4,
+                      child: Divider(
+                        height: AppDimensionsUpdated.height10(context) * 0.1,
+                        color: const Color(0xFFE0E0E0),
                       ),
-                      Container(
-                        width: AppDimensions.height10(context) * 2.0,
-                        height: AppDimensions.height10(context) * 2.0,
+                    ),
+                    SizedBox(
+                      height: AppDimensionsUpdated.height10(context) * 1.0,
+                    ),
+                    SizedBox(
+                      width: AppDimensionsUpdated.width10(context) * 33.7,
+                      height: AppDimensionsUpdated.height10(context) * 4.1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: AppDimensionsUpdated.width10(context) * 16.7,
+                            height:
+                                AppDimensionsUpdated.height10(context) * 1.7,
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                                text: TextSpan(
+                                    style: TextStyle(
+                                        fontFamily: 'laila',
+                                        fontSize: AppDimensionsUpdated.font10(
+                                                context) *
+                                            1.4,
+                                        height: AppDimensionsUpdated.height10(
+                                                context) *
+                                            0.12,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xff5B74A6)),
+                                    children: const [
+                                  TextSpan(text: 'How did you feel '),
+                                  TextSpan(
+                                      text: 'after:',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                      ))
+                                ])),
+                          ),
+                          SizedBox(
+                            width: AppDimensionsUpdated.width10(context) * 33.7,
+                            height:
+                                AppDimensionsUpdated.height10(context) * 2.3,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: AppDimensionsUpdated.width10(context) *
+                                      16.7,
+                                  height:
+                                      AppDimensionsUpdated.height10(context) *
+                                          1.7,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensionsUpdated.height10(
+                                              context) *
+                                          0.7),
+                                  child: Text(
+                                    practiceProgressAfterText(widget.afterText),
+                                    style: TextStyle(
+                                        fontSize: AppDimensionsUpdated.font10(
+                                                context) *
+                                            1.4,
+                                        height: AppDimensionsUpdated.height10(
+                                                context) *
+                                            0.12,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(practiceBeforeColor(
+                                            widget.beforeText.toString()))),
+                                  ),
+                                ),
+                                Container(
+                                  width:
+                                      AppDimensionsUpdated.height10(context) *
+                                          2.0,
+                                  height:
+                                      AppDimensionsUpdated.height10(context) *
+                                          2.0,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(practiceBeforeColor(
+                                          widget.beforeText.toString()))),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      alignment: const Alignment(-0.8685, 0),
+                      child: Container(
+                        width: AppDimensionsUpdated.width10(context) * 3.5,
+                        height: AppDimensionsUpdated.height10(context) * 3.5,
+                        margin: EdgeInsets.only(
+                            top: AppDimensionsUpdated.height10(context) * 1.6),
                         decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: Color(0xFFFD6F32)),
-                      )
-                    ],
-                  ),
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: AssetImage('assets/images/session.webp'),
+                                fit: BoxFit.contain)),
+                      ),
+                    ),
+                  ],
                 )
-              ],
-            ),
-          ),
-          Container(
-            alignment: const Alignment(-0.8685, 0),
-            child: Container(
-              width: AppDimensions.width10(context) * 3.5,
-              height: AppDimensions.height10(context) * 3.5,
-              margin:
-                  EdgeInsets.only(top: AppDimensions.height10(context) * 1.6),
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/session.webp'),
-                      fit: BoxFit.contain)),
-            ),
-          ),
+              : Container(),
         ],
       ),
     );

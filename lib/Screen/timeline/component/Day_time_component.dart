@@ -9,9 +9,10 @@ class DayTimeComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: AppDimensions.height10(context) * 6.2,
-        width: AppDimensions.width10(context) * 6.2,
-        margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.8),
+        height: AppDimensionsUpdated.height10(context) * 6.2,
+        width: AppDimensionsUpdated.width10(context) * 6.2,
+        margin:
+            EdgeInsets.only(top: AppDimensionsUpdated.height10(context) * 2.8),
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(width: 3, color: const Color(0xFFF5F5F5)),
@@ -25,15 +26,15 @@ class DayTimeComponent extends StatelessWidget {
             Text(
               DayText,
               style: TextStyle(
-                  fontSize: AppDimensions.font10(context) * 1.5,
+                  fontSize: AppDimensionsUpdated.font10(context) * 1.5,
                   fontWeight: FontWeight.w600,
                   color: const Color(0xff5B74A6)),
             ),
             Text(
               TimeText,
               style: TextStyle(
-                  fontSize: AppDimensions.font10(context) * 1.5,
-                  height: AppDimensions.height10(context) * 0.12,
+                  fontSize: AppDimensionsUpdated.font10(context) * 1.5,
+                  height: AppDimensionsUpdated.height10(context) * 0.12,
                   fontWeight: FontWeight.w400,
                   color: const Color(0xff5B74A6)),
             ),

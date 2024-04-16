@@ -1,40 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/timeline/component/imageComponent.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class PracticeSessionComponent extends StatelessWidget {
   String scheduleTime;
-  PracticeSessionComponent({super.key, required this.scheduleTime});
+  String orangeText;
+  String greenText;
+  final image1;
+  final image2;
+  final status;
+
+  PracticeSessionComponent(
+      {super.key,
+      required this.scheduleTime,
+      required this.greenText,
+      required this.orangeText,
+      required this.image1,
+      required this.status,
+      required this.image2});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.width10(context) * 39.5,
-      height: AppDimensions.height10(context) * 25.4,
+      //width: AppDimensionsUpdated.width10(context) * 33.5,
+      height: AppDimensionsUpdated.height10(context) * 25.4,
       margin: EdgeInsets.only(
-        top: AppDimensions.height10(context) * 1.9,
+        top: AppDimensionsUpdated.height10(context) * 1.9,
+        left: AppDimensionsUpdated.height10(context) * 2,
+        right: AppDimensionsUpdated.height10(context) * 2,
       ),
       decoration: BoxDecoration(
         color: const Color(0xFFFBFBFB),
         borderRadius:
-            BorderRadius.circular(AppDimensions.height10(context) * 2.6),
+            BorderRadius.circular(AppDimensionsUpdated.height10(context) * 2.6),
       ),
       child: Column(
         children: [
           Container(
-            width: AppDimensions.width10(context) * 30.7,
-            height: AppDimensions.height10(context) * 3.5,
+            width: AppDimensionsUpdated.width10(context) * 30.7,
+            height: AppDimensionsUpdated.height10(context) * 3.5,
             margin: EdgeInsets.only(
-              right: AppDimensions.width10(context) * 4.5,
-              top: AppDimensions.height10(context) * 1.5,
+              right: AppDimensionsUpdated.width10(context) * 4.0,
+              top: AppDimensionsUpdated.height10(context) * 1.5,
             ),
             child: Row(
               children: [
                 Container(
-                  width: AppDimensions.width10(context) * 3.5,
-                  height: AppDimensions.height10(context) * 3.5,
+                  width: AppDimensionsUpdated.width10(context) * 3.5,
+                  height: AppDimensionsUpdated.height10(context) * 3.5,
                   margin: EdgeInsets.only(
-                      right: AppDimensions.height10(context) * 0.7),
+                      right: AppDimensionsUpdated.height10(context) * 0.7),
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
@@ -43,13 +59,19 @@ class PracticeSessionComponent extends StatelessWidget {
                           fit: BoxFit.contain)),
                 ),
                 SizedBox(
-                  width: AppDimensions.width10(context) * 23.6,
-                  height: AppDimensions.height10(context) * 2.2,
+                  width: AppDimensionsUpdated.width10(context) * 23.6,
+                  height: AppDimensionsUpdated.height10(context) * 2.2,
                   child: Text(
-                    'Practice session',
+                    status == 'deleted'
+                        ? 'Practice deleted'
+                        : status == 'inactive'
+                            ? 'Practice inactive'
+                            : status == 'update'
+                                ? 'Practice session edited'
+                                : 'Practice session',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: AppDimensions.font10(context) * 1.8,
+                        fontSize: AppDimensionsUpdated.font10(context) * 1.8,
                         color: const Color(0xff437296)),
                   ),
                 )
@@ -57,69 +79,96 @@ class PracticeSessionComponent extends StatelessWidget {
             ),
           ),
           Container(
-            width: AppDimensions.width10(context) * 35.5,
-            height: AppDimensions.height10(context) * 16.3,
+            //width: AppDimensionsUpdated.width10(context) * 31.5,
+            height: AppDimensionsUpdated.height10(context) * 16.3,
             clipBehavior: Clip.antiAlias,
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: AppDimensions.height10(context) * 0.5,
-                  blurRadius: AppDimensions.height10(context) * 0.7,
-                  offset: const Offset(0, 3),
-                )
-              ],
-              borderRadius:
-                  BorderRadius.circular(AppDimensions.height10(context) * 2.0),
-              gradient: const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFFD9B4B4), Color(0xFFF5EDED)]),
+            margin: EdgeInsets.only(
+              top: AppDimensionsUpdated.height10(context) * 1.9,
+              left: AppDimensionsUpdated.height10(context) * 1.5,
+              right: AppDimensionsUpdated.height10(context) * 1.5,
             ),
+            decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.4),
+                    spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
+                    blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
+                    offset: const Offset(0, 3),
+                  )
+                ],
+                borderRadius: BorderRadius.circular(
+                    AppDimensionsUpdated.height10(context) * 2.0),
+                gradient: status == 'deleted'
+                    ? const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Color(0xff828282), Color(0xff828282)])
+                    : const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Color(0xFFD9B4B4), Color(0xFFF5EDED)])),
             child: Stack(children: [
               Align(
-                alignment: const Alignment(-1.45, 0),
+                alignment: const Alignment(-2.65, 0),
                 child: Container(
-                  width: AppDimensions.width10(context) * 17.6,
-                  height: AppDimensions.height10(context) * 19.3,
-                  decoration: const BoxDecoration(
+                  width: AppDimensionsUpdated.width10(context) * 22.6,
+                  height: AppDimensionsUpdated.height10(context) * 24.2,
+                  decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/images/orange_moon.webp'),
+                          image: AssetImage(goalImages(image1.toString())),
                           fit: BoxFit.cover)),
-                  child: Container(
-                    width: AppDimensions.width10(context) * 15.8,
-                    height: AppDimensions.height10(context) * 4.8,
-                    alignment: const Alignment(0.1, -0.1),
-                    //changed font family due to client's request
-                    child: Text(
-                      ' Control\nmy anger',
-                      style: TextStyle(
-                          height: AppDimensions.height10(context) * 0.15,
-                          fontSize: AppDimensions.font10(context) * 1.6,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xff5B74A6)),
-                    ),
-                  ),
+                  child: Align(
+                      alignment: const Alignment(0.32, 0),
+                      child: SizedBox(
+                        width: AppDimensionsUpdated.width10(context) * 7.5,
+                        height: AppDimensionsUpdated.height10(context) * 4.8,
+                        //changed font family due to client's request
+                        child: Text(
+                          orangeText,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              height:
+                                  AppDimensionsUpdated.height10(context) * 0.15,
+                              fontSize:
+                                  AppDimensionsUpdated.font10(context) * 1.6,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xff5B74A6)),
+                        ),
+                      )),
                 ),
               ),
               Align(
                 alignment: const Alignment(-0.175, 0),
                 child: Container(
-                  width: AppDimensions.width10(context) * 11.6,
-                  height: AppDimensions.height10(context) * 11.7,
-                  decoration: const BoxDecoration(
+                  width: AppDimensionsUpdated.width10(context) * 11.6,
+                  height: AppDimensionsUpdated.height10(context) * 11.6,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 1),
                       image: DecorationImage(
-                          image: AssetImage('assets/images/Ellipse 158.webp'),
-                          fit: BoxFit.contain)),
+                        image: AssetImage(practiceImages(image2.toString())),
+                        fit: BoxFit.contain,
+                        opacity: status == 'deleted'
+                            ? 0.5
+                            : status == 'inactive'
+                                ? 0.3
+                                : 1,
+                      )),
                   child: Center(
                     child: Text(
-                      'Meditation',
+                      greenText,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.font10(context) * 1.8,
-                          height: AppDimensions.height10(context) * 0.12,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xffFBFBFB)),
+                        fontSize: AppDimensionsUpdated.font10(context) * 1.6,
+                        height: AppDimensionsUpdated.height10(context) * 0.12,
+                        fontWeight: FontWeight.w500,
+                        color: status == 'deleted'
+                            ? const Color(0xffFBFBFB).withOpacity(0.4)
+                            : status == 'inactive'
+                                ? const Color(0xffFBFBFB).withOpacity(0.4)
+                                : const Color(0xffFBFBFB),
+                      ),
                     ),
                   ),
                 ),
@@ -127,33 +176,45 @@ class PracticeSessionComponent extends StatelessWidget {
               Align(
                 alignment: const Alignment(0.9, 0),
                 child: SizedBox(
-                  width: AppDimensions.width10(context) * 8.2,
-                  height: AppDimensions.height10(context) * 4.1,
+                  width: AppDimensionsUpdated.width10(context) * 8.2,
+                  height: AppDimensionsUpdated.height10(context) * 4.1,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: AppDimensions.height10(context) * 8.2,
-                        height: AppDimensions.height10(context) * 2.0,
+                        width: AppDimensionsUpdated.height10(context) * 8.2,
+                        height: AppDimensionsUpdated.height10(context) * 2.0,
                         child: Text(
-                          'Scheduled',
+                          status == 'deleted'
+                              ? ''
+                              : status == 'inactive'
+                                  ? ''
+                                  : 'Scheduled',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 0.12,
+                              fontSize:
+                                  AppDimensionsUpdated.font10(context) * 1.4,
+                              height:
+                                  AppDimensionsUpdated.height10(context) * 0.12,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xffFA8552)),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10(context) * 6.3,
-                        height: AppDimensions.height10(context) * 1.9,
+                        width: AppDimensionsUpdated.height10(context) * 6.5,
+                        height: AppDimensionsUpdated.height10(context) * 1.9,
                         alignment: Alignment.topCenter,
                         child: Text(
-                          scheduleTime,
+                          status == 'deleted'
+                              ? ''
+                              : status == 'inactive'
+                                  ? ''
+                                  : scheduleTime,
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.6,
-                              height: AppDimensions.height10(context) * 0.12,
+                              fontSize:
+                                  AppDimensionsUpdated.font10(context) * 1.6,
+                              height:
+                                  AppDimensionsUpdated.height10(context) * 0.12,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xffFBFBFB)),
                         ),

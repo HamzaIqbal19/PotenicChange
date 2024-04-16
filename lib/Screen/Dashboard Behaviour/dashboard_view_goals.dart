@@ -475,9 +475,7 @@ class _view_goalsState extends State<view_goals> {
                     color: Colors.transparent,
                     child: Navigation_Bar(
                       bg_colored: true,
-                      membership: true,
-                      cancel: false,
-                      trial: false,
+                      
                     ),
                   ),
             body: Container(

@@ -314,16 +314,13 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                 )
               : Navigation_Bar(
                   bg_colored: false,
-                  membership: widget.membership ? true : false,
-                  cancel: widget.cancel ? true : false,
-                  trial: widget.trial ? true : false,
                 ),
           body: GestureDetector(
             onTap: () {
               //if (widget.saved == true) {
-                __share_experience(
-                    context, goalName, identity, color, pracColor, pracName);
-             // }
+              __share_experience(
+                  context, goalName, identity, color, pracColor, pracName);
+              // }
             },
             child: Container(
               decoration: const BoxDecoration(

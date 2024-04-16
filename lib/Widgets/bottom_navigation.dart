@@ -16,16 +16,11 @@ import 'fading.dart';
 class Navigation_Bar extends StatefulWidget {
   static int _selectedIndex = 0;
   final bool bg_colored;
-  final bool membership;
-  final bool trial;
-  final bool cancel;
 
-  const Navigation_Bar(
-      {super.key,
-      required this.bg_colored,
-      required this.membership,
-      required this.trial,
-      required this.cancel});
+  const Navigation_Bar({
+    super.key,
+    required this.bg_colored,
+  });
 
   @override
   Navigation_BarState createState() => Navigation_BarState();
@@ -128,9 +123,8 @@ class Navigation_BarState extends State<Navigation_Bar> {
               BottomNavigationBarItem(
                 icon: AnimatedScaleButton(
                   onTap: () {
-                    timeline_sheet(context);
-                    // Navigator.push(
-                    //     context, FadePageRoute(page: const timeline()));
+                    Navigator.push(
+                        context, FadePageRoute(page: const timeline()));
                   },
                   child: Container(
                     margin: EdgeInsets.only(

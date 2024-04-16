@@ -41,9 +41,6 @@ class reviw_habit_dashBoard extends StatelessWidget {
         extendBody: true,
         bottomNavigationBar: const Navigation_Bar(
           bg_colored: false,
-          membership: true,
-          cancel: false,
-          trial: false,
         ),
         body: Container(
           decoration: const BoxDecoration(
