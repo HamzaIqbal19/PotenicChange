@@ -75,26 +75,26 @@ class GoalEvaluationApi {
     var jsonData = jsonDecode(request.body);
     print('Goal Evaluation: $jsonData');
     if (request.statusCode == 200) {
-      if(jsonData['sucess'] == true && jsonData['data'] == null){
+      if (jsonData['sucess'] == true && jsonData['data'] == null) {
         return true;
-      }else{
-      final SharedPreferences prefs = await _prefs;
-      print('Goal Evaluation: called with data');
-      if (levelChange != true || jsonData['data']['goalLevelUpdate']) {
-        await prefs.setBool(
-            'goalLevelUpdate', jsonData['data']['goalLevelUpdate']);
-        await prefs.setString(
-            'goalLevelUpOrDown', jsonData['data']['goalLevelUpOrDown']);
-        await prefs.setInt(
-            'goalAchievedId', jsonData['data']['userGoal']['id']);
-        await prefs.setInt(
-            'goalAchievedLenght', jsonData['data']['goalEvaluationLength']);
-        await prefs.setString(
-            'goalAcieved', jsonEncode(jsonData['data']['userGoal']));
-        print("Goal Achieved :${jsonData['data']['userGoal']['id']}");
-      }
+      } else {
+        final SharedPreferences prefs = await _prefs;
+        print('Goal Evaluation: called with data');
+        if (levelChange != true || jsonData['data']['goalLevelUpdate']) {
+          await prefs.setBool(
+              'goalLevelUpdate', jsonData['data']['goalLevelUpdate']);
+          await prefs.setString(
+              'goalLevelUpOrDown', jsonData['data']['goalLevelUpOrDown']);
+          await prefs.setInt(
+              'goalAchievedId', jsonData['data']['userGoal']['id']);
+          // await prefs.setInt(
+          //     'goalAchievedLenght', jsonData['data']['goalEvaluationLength']);
+          await prefs.setString(
+              'goalAcieved', jsonEncode(jsonData['data']['userGoal']));
+        }
 
-      return true;}
+        return true;
+      }
     } else {
       return false;
     }

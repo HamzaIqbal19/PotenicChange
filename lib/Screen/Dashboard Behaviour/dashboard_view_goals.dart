@@ -81,11 +81,11 @@ class _view_goalsState extends State<view_goals> {
     final SharedPreferences prefs = await _prefs;
     var levelChange = prefs.getBool('goalLevelUpdate');
     var goalUpdate = prefs.getString('goalLevelUpOrDown');
-    var length = prefs.getInt('goalAchievedLenght');
+    // var length = prefs.getInt('goalAchievedLenght');
     var getSubscription = prefs.getString('subscriptionStatus');
     var goalData = prefs.getString('goalAcieved');
     var newData = json.decode(goalData!);
-  
+
     if (levelChange.toString() == 'true') {
       if (goalUpdate.toString() == 'up') {
         Timer(const Duration(seconds: 5), () {
@@ -94,7 +94,7 @@ class _view_goalsState extends State<view_goals> {
       } else if (goalUpdate.toString() == 'down') {
         print('Goal Achieved');
         Timer(const Duration(seconds: 5), () {
-          goal_achieved_sheet(context, newData, getSubscription, length);
+          goal_achieved_sheet(context, newData, getSubscription, 0);
         });
       }
       await prefs.setBool('goalLevelUpdate', false);
@@ -475,7 +475,6 @@ class _view_goalsState extends State<view_goals> {
                     color: Colors.transparent,
                     child: Navigation_Bar(
                       bg_colored: true,
-                      
                     ),
                   ),
             body: Container(
@@ -2645,13 +2644,17 @@ class _view_goalsState extends State<view_goals> {
                                             ),
                                           ),
                                           AnimatedScaleButton(
-                                            onTap: (){
-                                              Navigator.push(context, FadePageRoute(page: const InAppReviewExampleApp()));
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page:
+                                                          const InAppReviewExampleApp()));
                                             },
                                             child: SizedBox(
-                                              width:
-                                                  AppDimensions.width10(context) *
-                                                      26.9,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  26.9,
                                               height: AppDimensions.height10(
                                                       context) *
                                                   5.8,
@@ -2662,10 +2665,10 @@ class _view_goalsState extends State<view_goals> {
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontFamily: 'Laila',
-                                                      height:
-                                                          AppDimensions.height10(
+                                                      height: AppDimensions
+                                                              .height10(
                                                                   context) *
-                                                              0.15,
+                                                          0.15,
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *

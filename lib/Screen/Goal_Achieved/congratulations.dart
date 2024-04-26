@@ -775,7 +775,7 @@ void goal_achieved_sheet(context, data, subscription, length) {
                           FadePageRoute(
                               page: new_progress_score(
                             premium: subscription == 'active' ? true : false,
-                            evaluationIndex: length - 1,
+                            evaluationIndex: 0,
                           )));
                     },
                     child: Container(
