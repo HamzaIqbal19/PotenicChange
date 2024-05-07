@@ -47,7 +47,7 @@ class _your_impactState extends State<your_impact> {
   ];
 
   List messages = [
-    "It hasn't started to impact my life yet",
+    "It hasn’t started to impact my life",
     "It has little impact on my life",
     "It has positive impact on my life",
     "It has a significant impact on my life",

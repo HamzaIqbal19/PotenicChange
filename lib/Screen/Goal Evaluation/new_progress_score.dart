@@ -1257,7 +1257,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                               ? ' my life yet'
                                               : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 5
                                                   ? ' my life positively and consistently'
-                                                  : ' on my life',
+                                                  : '  my life',
                                   border: goalDetails['goalEvaluations'] == null || widget.premium == false
                                       ? true
                                       : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']

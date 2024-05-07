@@ -234,7 +234,7 @@ class _your_whyState extends State<your_why> {
       messages = [
         "No progress towards my $text yet",
         "I'm making small steps towards my $text",
-        "I'm making gradual steps towards my $text",
+        "I'm making considerable steps towards my $text",
         "I'm making significant and consistent steps towards my $text",
         "I'm living my $text"
       ];

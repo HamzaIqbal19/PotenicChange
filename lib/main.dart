@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:potenic_app/Screen/splash/splash_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -21,6 +23,13 @@ Future<void> main() async {
 
   //Load our .env file that contains our Stripe Secret key
   await dotenv.load(fileName: "assets/.env");
+  await Firebase.initializeApp();
+  final notificationSettings =
+      await FirebaseMessaging.instance.requestPermission(provisional: true);
+  await FirebaseMessaging.instance.setAutoInitEnabled(true);
+
+  var fcmToken = await FirebaseMessaging.instance.getToken();
+
   await SentryFlutter.init(
     (options) {
       options.dsn =
@@ -36,6 +45,7 @@ Future<void> main() async {
       ),
     ),
   );
+  print("FCM TOKEN $fcmToken");
   //runApp(MyApp());
 }
 

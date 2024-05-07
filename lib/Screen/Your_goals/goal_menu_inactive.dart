@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
+import 'package:potenic_app/Screen/timeline/component/imageComponent.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -253,15 +254,15 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             'Goal Menu',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.8,
+                                fontSize: AppDimensions.font10(context) * 2,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xffffffff)),
                           ),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.width10(context) * 30.1,
-                        height: AppDimensions.height10(context) * 2.4,
+                        width: AppDimensions.width10(context) * 32.1,
+                        //height: AppDimensions.height10(context) * 2.4,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.5,
                             left: AppDimensions.width10(context) * 12.2,
@@ -271,7 +272,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 2.0,
+                              fontSize: AppDimensions.font10(context) * 2.2,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xffffffff)),
                         ),
@@ -459,7 +460,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
-                                                            1.7,
+                                                            2.0,
                                                     fontWeight: FontWeight.w700,
                                                     color: subscriptions ==
                                                             'active'
@@ -486,7 +487,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
-                                                            1.5,
+                                                            1.6,
                                                     fontWeight: FontWeight.w500,
                                                     color: subscriptions ==
                                                             'active'
@@ -516,7 +517,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.5,
+                                                          1.6,
                                                   fontWeight: FontWeight.w400,
                                                   color: subscriptions ==
                                                           'active'
@@ -549,17 +550,17 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 ),
                               ),
                               Align(
-                                alignment: const Alignment(-0.8, 0.875),
+                                alignment: const Alignment(-0.8, 0.9),
                                 child: SizedBox(
-                                  width: AppDimensions.width10(context) * 19.5,
-                                  height: AppDimensions.height10(context) * 1.6,
+                                  //width: AppDimensions.width10(context) * 19.5,
+                                  //height: AppDimensions.height10(context) * 1.8,
                                   child: subscriptions != 'active'
                                       ? Text(
                                           'Next score needed in 30 days',
                                           style: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.3,
+                                                  1.6,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xff464646)),
                                         )
@@ -570,7 +571,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.3,
+                                                          1.6,
                                                   fontWeight: FontWeight.w400,
                                                   color:
                                                       const Color(0xff464646)),
@@ -583,7 +584,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.3,
+                                                              1.6,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: const Color(
@@ -595,7 +596,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.3,
+                                                              1.6,
                                                       fontWeight:
                                                           FontWeight.w700,
                                                       color: const Color(
@@ -607,7 +608,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.3,
+                                                              1.6,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: const Color(
@@ -740,14 +741,12 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 ],
                               ),
                               SizedBox(
-                                width: AppDimensions.width10(context) * 3.6,
-                                height: AppDimensions.height10(context) * 2.2,
                                 child: Center(
                                   child: Text(
                                     'View',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.4,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w700,
                                         color: const Color(0xFF437296),
                                         decoration: TextDecoration.underline),
@@ -810,33 +809,16 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             left:
                                                 AppDimensions.width10(context)),
                                         decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.white, width: 2),
+                                            shape: BoxShape.circle,
                                             image: DecorationImage(
-                                          image: AssetImage(goalDetails['userPractices']
-                                                      [index]['color'] ==
-                                                  '1'
-                                              ? "assets/images/Ellipse orange_wb.webp"
-                                              : goalDetails['userPractices']
-                                                          [index]['color'] ==
-                                                      '2'
-                                                  ? 'assets/images/Ellipse 158_wb.webp'
-                                                  : goalDetails['userPractices']
-                                                                  [index]
-                                                              ['color'] ==
-                                                          '3'
-                                                      ? "assets/images/Ellipse 157_wb.webp"
-                                                      : goalDetails['userPractices']
-                                                                      [index]
-                                                                  ['color'] ==
-                                                              '4'
-                                                          ? "assets/images/Ellipse light-blue_wb.webp"
-                                                          : goalDetails['userPractices']
-                                                                          [index]
-                                                                      ['color'] ==
-                                                                  '5'
-                                                              ? "assets/images/Ellipse blue_wb.webp"
-                                                              : 'assets/images/Ellipse 158_wb.webp'),
-                                          fit: BoxFit.contain,
-                                        )),
+                                              image: AssetImage(
+                                                  activePractices[index]
+                                                          ['color']
+                                                      .toString()),
+                                              fit: BoxFit.contain,
+                                            )),
                                         child: Container(
                                           padding: EdgeInsets.all(
                                               AppDimensions.height10(context)),
@@ -897,32 +879,16 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             left:
                                                 AppDimensions.width10(context)),
                                         decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.white, width: 2),
+                                            shape: BoxShape.circle,
                                             image: DecorationImage(
-                                          image: AssetImage(activePractices[
-                                                      index]['color'] ==
-                                                  '1'
-                                              ? "assets/images/Ellipse orange_wb.webp"
-                                              : activePractices[index]
-                                                          ['color'] ==
-                                                      '2'
-                                                  ? 'assets/images/Ellipse 158_wb.webp'
-                                                  : activePractices[index]
-                                                              ['color'] ==
-                                                          '3'
-                                                      ? "assets/images/Ellipse 157_wb.webp"
-                                                      : activePractices[index]
-                                                                  ['color'] ==
-                                                              '4'
-                                                          ? "assets/images/Ellipse light-blue_wb.webp"
-                                                          : activePractices[
-                                                                          index]
-                                                                      [
-                                                                      'color'] ==
-                                                                  '5'
-                                                              ? "assets/images/Ellipse blue_wb.webp"
-                                                              : 'assets/images/Ellipse 158_wb.webp'),
-                                          fit: BoxFit.contain,
-                                        )),
+                                              image: AssetImage(practiceImages(
+                                                  activePractices[index]
+                                                          ['color']
+                                                      .toString())),
+                                              fit: BoxFit.contain,
+                                            )),
                                         child: Container(
                                           padding: EdgeInsets.all(
                                               AppDimensions.width10(context)),
@@ -963,60 +929,61 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         ),
                         child: Column(
                           children: [
-                            AnimatedScaleButton(
-                              onTap: () {},
-                              child: Container(
-                                width: AppDimensions.width10(context) * 36.0,
-                                height: AppDimensions.height10(context) * 6.0,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 2.0),
-                                  color: const Color(0xFFFFFFFF),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width:
-                                          AppDimensions.width10(context) * 18.5,
-                                      height:
-                                          AppDimensions.height10(context) * 2.3,
-                                      margin: EdgeInsets.only(
-                                          left:
-                                              AppDimensions.height10(context) *
-                                                  1.99),
-                                      child: Text(
-                                        'Progress report  (00)',
-                                        style: TextStyle(
-                                          color: const Color(0xff646464),
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.8,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                        width: AppDimensions.width10(context) *
-                                            2.4,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.39,
-                                        margin: EdgeInsets.only(
-                                            right: AppDimensions.height10(
-                                                    context) *
-                                                2.391),
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.width10(context) * 2.6,
-                                          //height: AppDimensions.height10(context) * 2.6,
-                                          fit: BoxFit.cover,
-                                        ))
-                                  ],
-                                ),
-                              ),
-                            ),
+                            // AnimatedScaleButton(
+                            //   onTap: () {},
+                            //   child: Container(
+                            //     width: AppDimensions.width10(context) * 36.0,
+                            //     height: AppDimensions.height10(context) * 6.0,
+                            //     decoration: BoxDecoration(
+                            //       borderRadius: BorderRadius.circular(
+                            //           AppDimensions.height10(context) * 2.0),
+                            //       color: const Color(0xFFFFFFFF),
+                            //     ),
+                            //     child: Row(
+                            //       mainAxisAlignment:
+                            //           MainAxisAlignment.spaceBetween,
+                            //       children: [
+                            //         Container(
+                            //           width:
+                            //               AppDimensions.width10(context) * 18.5,
+                            //           height:
+                            //               AppDimensions.height10(context) * 2.3,
+                            //           margin: EdgeInsets.only(
+                            //               left:
+                            //                   AppDimensions.height10(context) *
+                            //                       1.99),
+                            //           child: Text(
+                            //             'Progress report  (00)',
+                            //             style: TextStyle(
+                            //               color: const Color(0xff646464),
+                            //               fontSize:
+                            //                   AppDimensions.font10(context) *
+                            //                       1.8,
+                            //               fontWeight: FontWeight.w500,
+                            //             ),
+                            //           ),
+                            //         ),
+                            //         Container(
+                            //             width: AppDimensions.width10(context) *
+                            //                 2.4,
+                            //             height:
+                            //                 AppDimensions.height10(context) *
+                            //                     1.39,
+                            //             margin: EdgeInsets.only(
+                            //                 right: AppDimensions.height10(
+                            //                         context) *
+                            //                     2.391),
+                            //             child: Image.asset(
+                            //               'assets/images/BTN Back.webp',
+                            //               //width: AppDimensions.width10(context) * 2.6,
+                            //               //height: AppDimensions.height10(context) * 2.6,
+                            //               fit: BoxFit.cover,
+                            //             ))
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+
                             AnimatedScaleButton(
                               onTap: () {},
                               child: Container(
@@ -1039,8 +1006,6 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     Container(
                                       width:
                                           AppDimensions.width10(context) * 19.2,
-                                      height:
-                                          AppDimensions.height10(context) * 2.3,
                                       margin: EdgeInsets.only(
                                           left:
                                               AppDimensions.height10(context) *
@@ -1053,7 +1018,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           color: const Color(0xff646464),
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.8,
+                                                  2.0,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -1104,8 +1069,6 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     Container(
                                       width:
                                           AppDimensions.width10(context) * 18.5,
-                                      height:
-                                          AppDimensions.height10(context) * 2.3,
                                       margin: EdgeInsets.only(
                                           left:
                                               AppDimensions.height10(context) *
@@ -1116,7 +1079,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           color: const Color(0xff646464),
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.8,
+                                                  2.0,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
