@@ -1,7 +1,9 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:potenic_app/MyServices/Notification/notificationService.dart';
 import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -11,6 +13,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
@@ -29,6 +32,21 @@ Future<void> main() async {
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
 
   var fcmToken = await FirebaseMessaging.instance.getToken();
+  AwesomeNotifications().initialize(null, [
+    NotificationChannel(
+        channelKey: "call_channel",
+        channelName: "Call Channel",
+        channelDescription: "Channel of Calling",
+        defaultColor: Colors.redAccent,
+        ledColor: Colors.white,
+        importance: NotificationImportance.Max,
+        channelShowBadge: true,
+        playSound: true,
+        locked: false,
+        defaultRingtoneType: DefaultRingtoneType.Notification)
+  ]);
+  foregroundMessaging();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   await SentryFlutter.init(
     (options) {
@@ -45,11 +63,16 @@ Future<void> main() async {
       ),
     ),
   );
-  print("FCM TOKEN $fcmToken");
+  // print("FCM TOKEN $fcmToken");
   //runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+}
+
+class MyApp extends StatelessWidget with WidgetsBindingObserver {
   const MyApp({super.key});
 
   @override
