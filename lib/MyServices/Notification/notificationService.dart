@@ -37,3 +37,26 @@ void CreateNotification(String body) {
           notificationLayout: NotificationLayout.BigText,
           backgroundColor: Colors.transparent));
 }
+
+
+DateTime scheduledTime = DateTime.now().add(Duration(minutes: 2));
+
+void SceduleNotification(String body){
+  AwesomeNotifications().createNotification(
+      schedule: NotificationInterval(
+        interval: 100,
+        repeats: false, // Set to true if you want it to repeat
+      ),
+      content: NotificationContent(
+          id: 1,
+          channelKey: "call_channel",
+          color: Colors.white,
+          title: 'Earnscape',
+          body: body,
+          category: NotificationCategory.Message,
+          wakeUpScreen: true,
+          fullScreenIntent: true,
+          autoDismissible: false,
+          notificationLayout: NotificationLayout.BigText,
+          backgroundColor: Colors.transparent));
+}

@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:potenic_app/API/Apispecs.dart';
+import 'package:potenic_app/MyServices/Notification/notificationService.dart';
 import 'package:sentry/sentry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -59,11 +61,12 @@ class Authentication {
     }
   }
 
-  Future signIn(fcmRegistrationToken, email, password) async {
+  Future signIn( email, password) async {
     var headers = {'Content-Type': 'application/json'};
+    var fcmToken = await FirebaseMessaging.instance.getToken();
 
     var body = json.encode({
-      "fcmRegistrationToken": "$fcmRegistrationToken",
+      "fcmRegistrationToken": "$fcmToken",
       "email": "$email",
       "password": "$password",
     });
@@ -92,6 +95,7 @@ class Authentication {
         "message": response["message"],
         "statusCode": request.statusCode,
       };
+      SceduleNotification("Logged in");
       return responses;
     } else if (request.statusCode == 404 ||
         request.statusCode == 401 ||

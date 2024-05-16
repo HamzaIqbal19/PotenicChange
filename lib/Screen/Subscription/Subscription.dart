@@ -158,7 +158,7 @@ class _SubscriptionState extends State<Subscription>
                           text: TextSpan(
                               style: TextStyle(
                                   fontSize:
-                                      AppDimensions.font10(context) * 1.45,
+                                      AppDimensions.font10(context) * 1.6F,
                                   //height: AppDimensionsUpdated.height10(context) * 0.15,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Laila',
@@ -166,7 +166,7 @@ class _SubscriptionState extends State<Subscription>
                               children: [
                                 TextSpan(
                                     text:
-                                        'Upgrade today to unlock the following benefits.\nYou get everything that is included in the\n',
+                                        'Upgrade today to unlock the following benefits. You get everything that is included in the\n',
                                     style: TextStyle(
                                       height: AppDimensionsUpdated.height10(
                                               context) *

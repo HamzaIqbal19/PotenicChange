@@ -489,7 +489,7 @@ subscribedUser(context, bool yearly, String subId) {
                           children: const [
                             TextSpan(
                               text:
-                                  "We wanted to take a moment to express our gratitude for being part of of the Potenic family:tada:. Your commitment to enhancing your experience means the world to us.\n\nWe’re thrilled to have you on board, and look forward to continuing this journey together.\n\nIf you have any questions or need assistance, feel free to reach out to our support team. Thank you for choosing Potenic.",
+                                  "We wanted to take a moment to express our gratitude for being part of of the Potenic family. Your commitment to enhancing your experience means the world to us.\n\nWe’re thrilled to have you on board, and look forward to continuing this journey together.\n\nIf you have any questions or need assistance, feel free to reach out to our support team. Thank you for choosing Potenic.",
                             ),
                           ]))),
               SizedBox(height: AppDimensionsUpdated.height10(context) * 2),

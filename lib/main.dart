@@ -31,7 +31,7 @@ Future<void> main() async {
       await FirebaseMessaging.instance.requestPermission(provisional: true);
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
 
-  var fcmToken = await FirebaseMessaging.instance.getToken();
+ var fcmToken = await FirebaseMessaging.instance.getToken();
   AwesomeNotifications().initialize(null, [
     NotificationChannel(
         channelKey: "call_channel",
@@ -52,8 +52,7 @@ Future<void> main() async {
     (options) {
       options.dsn =
           'https://591f2b424a6342c48fc692daed3d8bc3@o4504826441760768.ingest.sentry.io/4505311747702784';
-      // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
-      // We recommend adjusting this value in production.
+
       options.tracesSampleRate = 1.0;
     },
     appRunner: () => runApp(
@@ -63,7 +62,7 @@ Future<void> main() async {
       ),
     ),
   );
-  // print("FCM TOKEN $fcmToken");
+   print("FCM TOKEN $fcmToken");
   //runApp(MyApp());
 }
 
