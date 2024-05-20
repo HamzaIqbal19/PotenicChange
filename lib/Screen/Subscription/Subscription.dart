@@ -165,7 +165,11 @@ class _SubscriptionState extends State<Subscription>
                               children: [
                                 TextSpan(
                                     text:
+<<<<<<< HEAD
                                         'Upgrade today to unlock the following\nbenefits. You get everything that is included\nin the',
+=======
+                                        'Upgrade today to unlock the following benefits. You get everything that is included in the\n',
+>>>>>>> 0b1c9c6b08c221e08e38a2a34ba66fa8bbbd1f68
                                     style: TextStyle(
                                       height: AppDimensionsUpdated.height10(
                                               context) *
