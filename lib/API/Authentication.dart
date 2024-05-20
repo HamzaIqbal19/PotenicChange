@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:potenic_app/API/Apispecs.dart';
 import 'package:sentry/sentry.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var client = SentryHttpClient();
@@ -59,17 +61,22 @@ class Authentication {
     }
   }
 
-  Future signIn(fcmRegistrationToken, email, password) async {
+  Future signIn(email, password) async {
     var headers = {'Content-Type': 'application/json'};
+    var fcmToken = await FirebaseMessaging.instance.getToken();
+    final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
 
     var body = json.encode({
-      "fcmRegistrationToken": "$fcmRegistrationToken",
+      "fcmRegistrationToken": "$fcmToken",
       "email": "$email",
       "password": "$password",
+      //"timeZone": "$currentTimeZone"
     });
 
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signin'),
         headers: headers, body: body);
+
+    // print("Response: ${request.statusCode}");
 
     var response = jsonDecode(request.body);
 

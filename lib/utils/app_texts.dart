@@ -190,13 +190,13 @@ class AppText {
       'Can I upgrade from monthly to yearly or downgrade from yearly to monthly?';
   String question3 = 'Can I cancel my subscription?';
   String question4 =
-      'I don’t want to upgrade to Ownership Plan, what happens to my Empowered Starter\nPlan?';
+      'I don’t want to upgrade to Ownership Plan, what happens to my Empowered Starter Plan?';
   String answer1 =
-      'Yes, we offer a free 5-day trial period for both\nmonthly and yearly plans.';
+      'Yes, we offer a free 5-day trial period for both monthly and yearly plans.';
   String answer2 =
-      'You can upgrade to an yearly plan in any month\nbefore your recurring monthly billing is due. If you\nwant to downgrade from yearly plan, make sure to\nchoose monthly payment by the time your yearly\nplan is due to renew.';
+      'You can upgrade to an yearly plan in any month before your recurring monthly billing is due. If you want to downgrade from yearly plan, make sure to choose monthly payment by the time your yearly plan is due to renew.';
   String answer3 =
-      'Yes you can by going into your Account Settings.\nRemember to cancel your subscription plan no\nearlier than 3 working days before your plan is due\nto renew.';
+      'Yes you can by going into your Account Settings. Remember to cancel your subscription plan no earlier than 3 working days before your plan is due to renew.';
   String answer4 =
-      'If you stay on our free Empowered Starter plan,\nyou get it for lifetime. No subscription fees, it’s\nyours to own :)\n\nFor a more personalised experience and clarity on\nyour growth progress towards self-fulfilment, we\nrecommend you upgrade to our Ownership Plan (if\nyou’re serious about your personal growth).';
+      'If you stay on our free Empowered Starter plan, you get it for lifetime. No subscription fees, it’s yours to own :)\n\nFor a more personalised experience and clarity on your growth progress towards self-fulfilment, we recommend you upgrade to our Ownership Plan (if you’re serious about your personal growth).';
 }

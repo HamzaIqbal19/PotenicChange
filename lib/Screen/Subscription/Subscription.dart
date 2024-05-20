@@ -110,14 +110,14 @@ class _SubscriptionState extends State<Subscription>
                 ),
               ),
               Container(
-                width: AppDimensionsUpdated.width10(context) * 34.2,
+                //width: AppDimensionsUpdated.width10(context) * 34.2,
                 margin: EdgeInsets.only(
                     top: AppDimensionsUpdated.height10(context) * 0.9),
                 child: Text(
-                  'Get more value from Potenic to help you\nachieve personal transformation towards\nself-fulfilment consistently.',
+                  'Get more value from Potenic to help\nyou achieve personal transformation\ntowards self-fulfilment consistently.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.9,
                       fontWeight: FontWeight.w500,
                       height: AppDimensionsUpdated.height10(context) * 0.155,
                       color: const Color(0xFFFBFBFB)),
@@ -157,8 +157,7 @@ class _SubscriptionState extends State<Subscription>
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.font10(context) * 1.45,
+                                  fontSize: AppDimensions.font10(context) * 1.6,
                                   //height: AppDimensionsUpdated.height10(context) * 0.15,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Laila',
@@ -166,7 +165,7 @@ class _SubscriptionState extends State<Subscription>
                               children: [
                                 TextSpan(
                                     text:
-                                        'Upgrade today to unlock the following benefits.\nYou get everything that is included in the\n',
+                                        'Upgrade today to unlock the following\nbenefits. You get everything that is included\nin the',
                                     style: TextStyle(
                                       height: AppDimensionsUpdated.height10(
                                               context) *
@@ -274,14 +273,14 @@ class _SubscriptionState extends State<Subscription>
                     ),
                     Container(
                       // width: AppDimensionsUpdated.width10(context) * 14.9,
-                      height: AppDimensionsUpdated.height10(context) * 1.9,
+                      // height: AppDimensionsUpdated.height10(context) * 1.9,
                       margin: EdgeInsets.only(
                           top: AppDimensionsUpdated.height10(context) * 3),
                       child: Center(
                         child: Text(
                           'Check what you get',
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 2.2,
                               fontWeight: FontWeight.w600,
                               height:
                                   AppDimensionsUpdated.height10(context) * 0.15,
@@ -291,7 +290,7 @@ class _SubscriptionState extends State<Subscription>
                     ),
                     Container(
                       // width: AppDimensionsUpdated.width10(context) * 32.4,
-                      height: AppDimensionsUpdated.height10(context) * 4.629,
+                      // height: AppDimensionsUpdated.height10(context) * 4.629,
                       margin: EdgeInsets.only(
                           top: AppDimensionsUpdated.height10(context) * 0.15),
                       child: Center(
@@ -299,7 +298,7 @@ class _SubscriptionState extends State<Subscription>
                           'More focused ME time awaits you\nfrom a single mouse click...',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.7,
+                              fontSize: AppDimensions.font10(context) * 2.0,
                               fontWeight: FontWeight.w400,
                               height:
                                   AppDimensionsUpdated.height10(context) * 0.15,
@@ -349,7 +348,7 @@ class _SubscriptionState extends State<Subscription>
                                           style: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.5,
+                                                  1.6,
                                               fontWeight: FontWeight.w700,
                                               // height:
                                               //     AppDimensionsUpdated.height10(context) * 0.15,
@@ -369,7 +368,7 @@ class _SubscriptionState extends State<Subscription>
                                         style: TextStyle(
                                             fontSize:
                                                 AppDimensions.font10(context) *
-                                                    1.5,
+                                                    1.6,
                                             fontWeight: FontWeight.w700,
                                             height: AppDimensions.height10(
                                                     context) *
@@ -421,7 +420,7 @@ class _SubscriptionState extends State<Subscription>
                                                   fontWeight: FontWeight.w600)),
                                           TextSpan(
                                               text:
-                                                  ' (create\nand save as many as\nyou like)')
+                                                  '\n(create and save as\nmany as you like)')
                                         ]))),
                                   ),
                                   Container(

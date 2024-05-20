@@ -118,7 +118,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
     if (_formkey.currentState!.validate() && errorPassword == false) {
       Authentication()
           .signIn(
-        fcm,
         emailController.text.toString().trim(),
         passwordController.text.toString(),
       )
@@ -720,7 +719,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               errorPassword == false) {
                             Authentication()
                                 .signIn(
-                              fcm,
                               emailController.text.toString().trim(),
                               passwordController.text.toString(),
                             )

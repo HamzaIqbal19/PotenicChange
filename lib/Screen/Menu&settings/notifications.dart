@@ -1,6 +1,8 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-
+import 'package:permission_handler/permission_handler.dart';
 import '../../utils/app_dimensions.dart';
 
 class notifications extends StatefulWidget {
@@ -16,6 +18,24 @@ class _notificationsState extends State<notifications> {
   bool status2 = true;
   bool status3 = true;
   bool status4 = true;
+  bool notificationStatus = false;
+
+  checkAndRequestNotificationPermission() async {
+    bool notificationStatus = await Permission.notification.isProvisional;
+    print("Notification status $notificationStatus");
+    // if (!status.isGranted) {
+    //   status = await Permission.notification.request();
+    // }
+
+    //return status;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkAndRequestNotificationPermission();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,49 +90,47 @@ class _notificationsState extends State<notifications> {
                   borderRadius: BorderRadius.circular(
                       AppDimensions.height10(context) * 2.0),
                   color: Colors.white),
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  width: AppDimensions.width10(context) * 33.4,
-                  height: AppDimensions.height10(context) * 6.0,
-                  padding: EdgeInsets.symmetric(
-                      vertical: 0,
-                      horizontal: AppDimensions.width10(context) * 2.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        //width: AppDimensions.width10(context) * 20.6,
-                        height: AppDimensions.height10(context) * 1.9,
-                        child: Text(
-                          'Receive notifications',
-                          style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.6,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0XFF5B74A6)),
-                        ),
+              child: Container(
+                width: AppDimensions.width10(context) * 33.4,
+                height: AppDimensions.height10(context) * 6.0,
+                padding: EdgeInsets.symmetric(
+                    vertical: 0,
+                    horizontal: AppDimensions.width10(context) * 2.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      //width: AppDimensions.width10(context) * 20.6,
+                      height: AppDimensions.height10(context) * 1.9,
+                      child: Text(
+                        'Receive notifications',
+                        style: TextStyle(
+                            fontSize: AppDimensions.font10(context) * 1.6,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0XFF5B74A6)),
                       ),
-                      FlutterSwitch(
-                        width: AppDimensions.width10(context) * 5.1,
-                        height: AppDimensions.height10(context) * 3.1,
-                        valueFontSize: 12.0,
-                        toggleSize: 18.0,
-                        activeColor: const Color(0xFF34C759),
-                        inactiveColor: const Color(0xFF2F3A4B),
-                        value: status,
-                        onToggle: (val) {
-                          setState(() {
-                            status1 = val;
-                            status = val;
-                            status2 = val;
-                            status3 = val;
-                            status4 = val;
-                            // color3 = val;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
+                    ),
+                    FlutterSwitch(
+                      width: AppDimensions.width10(context) * 5.1,
+                      height: AppDimensions.height10(context) * 3.1,
+                      valueFontSize: 12.0,
+                      toggleSize: 18.0,
+                      activeColor: const Color(0xFF34C759),
+                      inactiveColor: const Color(0xFF2F3A4B),
+                      value: status,
+                      onToggle: (val) {
+                        checkAndRequestNotificationPermission();
+                        setState(() {
+                          status1 = val;
+                          status = val;
+                          status2 = val;
+                          status3 = val;
+                          status4 = val;
+                          // color3 = val;
+                        });
+                      },
+                    ),
+                  ],
                 ),
               ),
             ),

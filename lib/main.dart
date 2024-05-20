@@ -32,7 +32,7 @@ Future<void> main() async {
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
 
   var fcmToken = await FirebaseMessaging.instance.getToken();
-  AwesomeNotifications().initialize(null, [
+  AwesomeNotifications().initialize("assets/images/potenicIcon.png", [
     NotificationChannel(
         channelKey: "call_channel",
         channelName: "Call Channel",
@@ -63,8 +63,6 @@ Future<void> main() async {
       ),
     ),
   );
-  // print("FCM TOKEN $fcmToken");
-  //runApp(MyApp());
 }
 
 @pragma('vm:entry-point')

@@ -186,7 +186,7 @@ priceBox(BuildContext context, price, duration, trialPeriod, color) {
                 child: Text(
                   'Unlock ‘Ownership’ Plan',
                   style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.8,
                       fontWeight: FontWeight.w500,
                       // height: AppDimensionsUpdated.height10(context) * 0.15,
                       fontFamily: 'Laila',
@@ -199,7 +199,7 @@ priceBox(BuildContext context, price, duration, trialPeriod, color) {
                 child: Text(
                   price,
                   style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 1.7,
+                      fontSize: AppDimensions.font10(context) * 1.8,
                       fontWeight: FontWeight.w500,
                       // height: AppDimensionsUpdated.height10(context) * 0.15,
                       fontFamily: 'Laila',
@@ -219,11 +219,11 @@ priceBox(BuildContext context, price, duration, trialPeriod, color) {
             children: [
               SizedBox(
                 width: AppDimensionsUpdated.width10(context) * 7.0,
-                height: AppDimensionsUpdated.height10(context) * 1.7,
+                //height: AppDimensionsUpdated.height10(context) * 1.7,
                 child: Text(
                   trialPeriod,
                   style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 1.5,
+                      fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w400,
                       // height: AppDimensionsUpdated.height10(context) * 0.15,
                       fontFamily: 'Laila',
@@ -232,12 +232,12 @@ priceBox(BuildContext context, price, duration, trialPeriod, color) {
               ),
               SizedBox(
                 width: AppDimensionsUpdated.width10(context) * 6.9,
-                height: AppDimensionsUpdated.height10(context) * 1.7,
+                // height: AppDimensionsUpdated.height10(context) * 1.7,
                 child: Text(
                   duration,
                   textAlign: TextAlign.right,
                   style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 1.5,
+                      fontSize: AppDimensions.font10(context) * 1.6,
                       fontWeight: FontWeight.w400,
                       // height: AppDimensionsUpdated.height10(context) * 0.15,
                       fontFamily: 'Laila',
@@ -489,14 +489,14 @@ subscribedUser(context, bool yearly, String subId) {
                           children: const [
                             TextSpan(
                               text:
-                                  "We wanted to take a moment to express our gratitude for being part of of the Potenic family:tada:. Your commitment to enhancing your experience means the world to us.\n\nWe’re thrilled to have you on board, and look forward to continuing this journey together.\n\nIf you have any questions or need assistance, feel free to reach out to our support team. Thank you for choosing Potenic.",
+                                  "We wanted to take a moment to express our gratitude for being part of of the Potenic family. Your commitment to enhancing your experience means the world to us.\n\nWe’re thrilled to have you on board, and look forward to continuing this journey together.\n\nIf you have any questions or need assistance, feel free to reach out to our support team. Thank you for choosing Potenic.",
                             ),
                           ]))),
               SizedBox(height: AppDimensionsUpdated.height10(context) * 2),
               AnimatedScaleButton(
                 onTap: () {
                   dialog(context,
-                      'Are you sure you want to change your membership plan? The plans will be changed after current duration ends.',
+                      'Are you sure you want to change your membership plan? You can update your existing plan frequency after the current duration ends',
                       () {
                     SubscriptionService().makePayment(planId).then((value) => {
                           print('Response Stripe Value: ${value['status']}'),
@@ -588,7 +588,7 @@ faqsBoxc(context, qNum, question, answer) {
           child: RichText(
               text: TextSpan(
                   style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 1.6,
+                      fontSize: AppDimensions.font10(context) * 1.8,
                       fontFamily: 'laila',
                       fontWeight: FontWeight.w500,
                       height: AppDimensionsUpdated.height10(context) * 0.12,
@@ -610,7 +610,7 @@ faqsBoxc(context, qNum, question, answer) {
           child: RichText(
               text: TextSpan(
                   style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 1.4,
+                      fontSize: AppDimensions.font10(context) * 1.8,
                       fontFamily: 'laila',
                       fontWeight: FontWeight.w400,
                       height: AppDimensionsUpdated.height10(context) * 0.14,
@@ -618,7 +618,9 @@ faqsBoxc(context, qNum, question, answer) {
                   children: [
                 const TextSpan(
                     text: 'Answer:  \n',
-                    style: TextStyle(fontWeight: FontWeight.w600)),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                    )),
                 TextSpan(text: answer)
               ])),
         ),

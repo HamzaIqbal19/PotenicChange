@@ -326,7 +326,7 @@ class _congratulationsState extends State<congratulations> {
                                             goalLevel == 1
                                                 ? "I'm making\nconsiderable steps\nforward"
                                                 : goalLevel == 2
-                                                    ? "I'm making\nconsiderable steps\nforward"
+                                                    ? "I’m making\ngradual steps towards\nmy vision"
                                                     : goalLevel == 3
                                                         ? "I'm almost there"
                                                         : goalLevel == 4
@@ -705,9 +705,9 @@ void goal_achieved_sheet(context, data, subscription, length) {
                                       child: Center(
                                         child: Text(
                                           data['goalLevel'] == 1
-                                              ? "I'm making small\nsteps towards my\ngoal"
+                                              ? "I haven’t noticed\nmuch progress yet"
                                               : data['goalLevel'] == 2
-                                                  ? "I'm making\nconsiderable steps\nforward"
+                                                  ? "I'm making\gradual steps\nforward"
                                                   : data['goalLevel'] == 3
                                                       ? "I'm almost there"
                                                       : data['goalLevel'] == 4
