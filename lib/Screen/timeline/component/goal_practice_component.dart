@@ -117,12 +117,12 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                   child: Center(
                     child: Text(
                       widget.status == 'deleted'
-                          ? 'Goal deleted!'
+                          ? 'Goal deleted'
                           : widget.status == 'inactive'
-                              ? 'Schedule stopped!'
+                              ? 'Schedule stopped'
                               : widget.status == 'update' ||
                                       widget.status == 'practiceUpdate'
-                                  ? 'Information updated!'
+                                  ? 'Information updated'
                                   : widget.status == 'Created'
                                       ? "New Goal Created"
                                       : 'New schedule started',

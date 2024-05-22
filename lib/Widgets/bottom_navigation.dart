@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/timeline/coming_soon.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
+import 'package:potenic_app/Screen/timeline/timelinePopup.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 
 import '../utils/app_dimensions.dart';
@@ -16,10 +17,11 @@ import 'fading.dart';
 class Navigation_Bar extends StatefulWidget {
   static int _selectedIndex = 0;
   final bool bg_colored;
+  final String subscription;
 
   const Navigation_Bar({
     super.key,
-    required this.bg_colored,
+    required this.bg_colored, required this.subscription,
   });
 
   @override
@@ -123,8 +125,11 @@ class Navigation_BarState extends State<Navigation_Bar> {
               BottomNavigationBarItem(
                 icon: AnimatedScaleButton(
                   onTap: () {
-                    Navigator.push(
-                        context, FadePageRoute(page: const timeline()));
+                   if(widget.subscription == 'active'){
+                     // Navigator.push(context, FadePageRoute(page: const timeline()));
+                    }else{
+                      timelinePopup(context);
+                    }
                   },
                   child: Container(
                     margin: EdgeInsets.only(

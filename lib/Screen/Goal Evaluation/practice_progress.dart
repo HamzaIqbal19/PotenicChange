@@ -15,6 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/circle_dates.dart';
 import '../../utils/app_dimensions.dart';
+import '../timeline/timeline.dart';
 
 String activity_duration = 'Past month';
 String _selected_activity = '';
@@ -538,7 +539,16 @@ class _practice_progressState extends State<practice_progress> {
                                                                 context) *
                                                             1.99),
                                                 child: GestureDetector(
-                                                    onTap: () {},
+                                                    onTap: () {
+                                                      //if(subscriptions == 'active'){
+                                                      //  Navigator.push(context, FadePageRoute(page: const timeline()));
+                                                      // }else{
+                                                      //   ScaffoldMessenger.of(context)
+                                                      //       .showSnackBar(const SnackBar(
+                                                      //       content: Text(
+                                                      //           "This feature is only available for premium members")));
+                                                      // }
+                                                    },
                                                     child: Text(
                                                       'View timeline',
                                                       style: TextStyle(

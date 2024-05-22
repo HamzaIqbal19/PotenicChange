@@ -980,7 +980,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return goalActive(context,
-                                      subscriptions == 'inactive' ? "3" : "5");
+                                      subscriptions != 'active' ? "1" : "3");
                                 });
                           },
                           FadeFunction: () {
@@ -1621,10 +1621,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                       (BuildContext context) {
                                                     return goalActive(
                                                         context,
-                                                        subscriptions ==
-                                                                'inactive'
-                                                            ? "3"
-                                                            : "5");
+                                                        subscriptions == 'inactive'
+                                                            ? "1"
+                                                            : "3");
                                                   });
                                               Timer(const Duration(seconds: 3),
                                                   () {

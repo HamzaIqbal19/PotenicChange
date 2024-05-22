@@ -58,7 +58,7 @@ class _view_goalsState extends State<view_goals> {
   bool noData = false;
   bool loader = true;
   bool redaVisble = false;
-
+ var getSubscription = '';
   bool maxViewDate = false;
   List<Map<String, dynamic>> timesList = [];
   int pastPracCompleted = -1;
@@ -82,7 +82,7 @@ class _view_goalsState extends State<view_goals> {
     var levelChange = prefs.getBool('goalLevelUpdate');
     var goalUpdate = prefs.getString('goalLevelUpOrDown');
     // var length = prefs.getInt('goalAchievedLenght');
-    var getSubscription = prefs.getString('subscriptionStatus');
+     getSubscription = prefs.getString('subscriptionStatus').toString();
     var goalData = prefs.getString('goalAcieved');
     var newData = json.decode(goalData!);
 
@@ -468,13 +468,13 @@ class _view_goalsState extends State<view_goals> {
                         FadeFunction: () {},
                         functionText: widget.missed ? 'Undo' : 'Edit'),
                   )
-                : const BottomAppBar(
+                :  BottomAppBar(
                     elevation: 0,
                     padding: EdgeInsets.zero,
                     notchMargin: 0,
                     color: Colors.transparent,
                     child: Navigation_Bar(
-                      bg_colored: true,
+                      bg_colored: true,subscription: getSubscription.toString(),
                     ),
                   ),
             body: Container(

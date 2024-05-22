@@ -496,7 +496,7 @@ subscribedUser(context, bool yearly, String subId) {
               AnimatedScaleButton(
                 onTap: () {
                   dialog(context,
-                      'Are you sure you want to change your membership plan? You can update your existing plan frequency after the current duration ends',
+                      'Are you sure you want to change your membership plan? You can update your existing plan frequency after the current duration ends.',
                       () {
                     SubscriptionService().makePayment(planId).then((value) => {
                           print('Response Stripe Value: ${value['status']}'),
@@ -553,7 +553,7 @@ subscribedUser(context, bool yearly, String subId) {
                         final SharedPreferences prefs =
                             await SharedPreferences.getInstance();
 
-                        prefs.setString('subscriptionStatus', 'inactive');
+                       // prefs.setString('subscriptionStatus', 'inactive');
                         unsubscribed(context);
                       }
                     });

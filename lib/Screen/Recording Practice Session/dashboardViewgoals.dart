@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
@@ -8,11 +7,6 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/loaders/dashbo
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-// import 'package:simple_tooltip/simple_tooltip.dart';
-//import 'package:super_tooltip/super_tooltip.dart';
-// import 'package:flutter_showcaseview/flutter_showcaseview.dart';
-
-// import 'package:flutter_offline/flutter_offline.dart';
 import 'package:intl/intl.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
@@ -312,8 +306,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                     ),
                   ),
                 )
-              : Navigation_Bar(
-                  bg_colored: false,
+              : const Navigation_Bar(
+                  bg_colored: false, subscription: 'active',
                 ),
           body: GestureDetector(
             onTap: () {

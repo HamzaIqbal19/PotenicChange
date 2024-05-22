@@ -40,7 +40,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
         extendBodyBehindAppBar: true,
         extendBody: true,
         bottomNavigationBar: const Navigation_Bar(
-          bg_colored: false,
+          bg_colored: false, subscription: 'inactive',
         ),
         body: Container(
           decoration: const BoxDecoration(

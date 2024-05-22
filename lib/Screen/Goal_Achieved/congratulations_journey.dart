@@ -1264,7 +1264,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/share_exp.webp'))),
+                                            'assets/images/share_exp.webp'),fit: BoxFit.contain)),
                               ),
                             ),
                           ]),

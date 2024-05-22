@@ -11,6 +11,7 @@ import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/timeline/component/imageComponent.dart';
+import 'package:potenic_app/Screen/timeline/timeline.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -100,6 +101,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                 activePractices.add(goalDetails['userPractices'][j]);
               }
             }
+
 
             loadData();
           } else {
@@ -814,9 +816,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
                                               image: AssetImage(
-                                                  activePractices[index]
-                                                          ['color']
-                                                      .toString()),
+                                                  practiceImages(goalDetails['userPractices']
+                                                  [index]['color'].toString())),
                                               fit: BoxFit.contain,
                                             )),
                                         child: Container(
@@ -883,8 +884,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 color: Colors.white, width: 2),
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
-                                              image: AssetImage(practiceImages(
-                                                  activePractices[index]
+                                              image: AssetImage(
+                                                practiceImages(activePractices[index]
                                                           ['color']
                                                       .toString())),
                                               fit: BoxFit.contain,
@@ -929,63 +930,18 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         ),
                         child: Column(
                           children: [
-                            // AnimatedScaleButton(
-                            //   onTap: () {},
-                            //   child: Container(
-                            //     width: AppDimensions.width10(context) * 36.0,
-                            //     height: AppDimensions.height10(context) * 6.0,
-                            //     decoration: BoxDecoration(
-                            //       borderRadius: BorderRadius.circular(
-                            //           AppDimensions.height10(context) * 2.0),
-                            //       color: const Color(0xFFFFFFFF),
-                            //     ),
-                            //     child: Row(
-                            //       mainAxisAlignment:
-                            //           MainAxisAlignment.spaceBetween,
-                            //       children: [
-                            //         Container(
-                            //           width:
-                            //               AppDimensions.width10(context) * 18.5,
-                            //           height:
-                            //               AppDimensions.height10(context) * 2.3,
-                            //           margin: EdgeInsets.only(
-                            //               left:
-                            //                   AppDimensions.height10(context) *
-                            //                       1.99),
-                            //           child: Text(
-                            //             'Progress report  (00)',
-                            //             style: TextStyle(
-                            //               color: const Color(0xff646464),
-                            //               fontSize:
-                            //                   AppDimensions.font10(context) *
-                            //                       1.8,
-                            //               fontWeight: FontWeight.w500,
-                            //             ),
-                            //           ),
-                            //         ),
-                            //         Container(
-                            //             width: AppDimensions.width10(context) *
-                            //                 2.4,
-                            //             height:
-                            //                 AppDimensions.height10(context) *
-                            //                     1.39,
-                            //             margin: EdgeInsets.only(
-                            //                 right: AppDimensions.height10(
-                            //                         context) *
-                            //                     2.391),
-                            //             child: Image.asset(
-                            //               'assets/images/BTN Back.webp',
-                            //               //width: AppDimensions.width10(context) * 2.6,
-                            //               //height: AppDimensions.height10(context) * 2.6,
-                            //               fit: BoxFit.cover,
-                            //             ))
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-
+                           
                             AnimatedScaleButton(
-                              onTap: () {},
+                              onTap: () {
+                                if(subscriptions == 'active'){
+                                 // Navigator.push(context, FadePageRoute(page: const timeline()));
+                                }else{
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                      content: Text(
+                                          "This feature is only available for premium members")));
+                                }
+                              },
                               child: Container(
                                 width: AppDimensions.width10(context) * 36.0,
                                 height: AppDimensions.height10(context) * 6.0,
@@ -1005,7 +961,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   children: [
                                     Container(
                                       width:
-                                          AppDimensions.width10(context) * 19.2,
+                                          AppDimensions.width10(context) * 21.2,
                                       margin: EdgeInsets.only(
                                           left:
                                               AppDimensions.height10(context) *

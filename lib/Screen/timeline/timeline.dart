@@ -40,7 +40,7 @@ class _timelineState extends State<timeline> {
     'Hurdle',
     'Inspiration',
     'Report',
-    'New Vision Score!'
+    'New Vision Score'
   ];
 
   int _selectedTag = 0;

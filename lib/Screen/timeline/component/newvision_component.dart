@@ -64,7 +64,7 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                   width: AppDimensionsUpdated.width10(context) * 16.1,
                   height: AppDimensionsUpdated.height10(context) * 2.2,
                   child: Text(
-                    'New Vision Score!',
+                    'New Vision Score',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: AppDimensionsUpdated.font10(context) * 1.8,

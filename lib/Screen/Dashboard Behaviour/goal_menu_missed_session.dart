@@ -6,6 +6,7 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.da
 import 'package:potenic_app/Screen/Goal%20Evaluation/practiceReportUnsub.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
+import 'package:potenic_app/Screen/timeline/timeline.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
@@ -595,7 +596,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                                 ? '   ${formatDate(reportDate)}'
                                                 : '',
                                             text_color_2: 0xff8EA1B1,
-                                            premium: true,
+                                            premium: subscripption == 'active',
                                             feild_text_3: '',
                                             feild_text_4: '',
                                           ),
@@ -682,7 +683,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                 //               "Practice progress is not active")));
                                 // }
                               },
-                              child: const button_feilds(
+                              child:  const button_feilds(
                                 feild_text: 'View practice progress',
                                 icon_viible: true,
                                 text_color: 0xff646464,
@@ -724,7 +725,16 @@ class _missed_MenuState extends State<missed_Menu> {
                                   bottom:
                                       AppDimensions.height10(context) * 1.0),
                               child: AnimatedScaleButton(
-                                onTap: () {},
+                                onTap: () {
+                                  if(subscripption == 'active'){
+                                   // Navigator.push(context, FadePageRoute(page: const timeline()));
+                                  }else{
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(const SnackBar(
+                                        content: Text(
+                                            "This feature is only available for premium members")));
+                                  }
+                                },
                                 child: button_feilds(
                                   feild_text: 'View upcoming schedules',
                                   icon_viible: true,
@@ -757,13 +767,13 @@ class _missed_MenuState extends State<missed_Menu> {
                                               "Practice assessment is activated after first practice evaluation.")));
                                 }
                               },
-                              child: const button_feilds(
+                              child:  button_feilds(
                                 feild_text: 'Practice assesment history',
                                 icon_viible: true,
                                 text_color: 0xff646464,
                                 feild_text_2: '',
                                 text_color_2: 0xffEA1B1,
-                                premium: true,
+                                premium: subscripption == 'active',
                                 feild_text_3: '',
                                 feild_text_4: '',
                               ),

@@ -90,6 +90,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                                 fontWeight: FontWeight.w600,
                                 fontSize:
                                     AppDimensionsUpdated.font10(context) * 1.8,
+                                fontFamily: 'Laila',
                                 color: widget.status == 'Not Started'
                                     ? const Color(0xff437296)
                                     : const Color(0xffFA9934)),

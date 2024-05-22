@@ -47,7 +47,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
   List messages = [
     "No progress towards my ",
     "I'm making small steps towards my ",
-    "I'm making gradual steps towards my ",
+    "I'm making considerable steps towards my ",
     "I'm making significant and consistent steps towards my ",
     "I'm living my "
   ];
@@ -1673,6 +1673,7 @@ void Upgrade_sheet(context) {
                     ),
                   ),
                 )
+             
               ],
             ),
           ));

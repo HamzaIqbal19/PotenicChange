@@ -157,7 +157,9 @@ class _SubscriptionState extends State<Subscription>
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.6,
+
+                                  fontSize:
+                                      AppDimensions.font10(context) * 1.6,
                                   //height: AppDimensionsUpdated.height10(context) * 0.15,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Laila',
@@ -165,11 +167,7 @@ class _SubscriptionState extends State<Subscription>
                               children: [
                                 TextSpan(
                                     text:
-<<<<<<< HEAD
-                                        'Upgrade today to unlock the following\nbenefits. You get everything that is included\nin the',
-=======
                                         'Upgrade today to unlock the following benefits. You get everything that is included in the\n',
->>>>>>> 0b1c9c6b08c221e08e38a2a34ba66fa8bbbd1f68
                                     style: TextStyle(
                                       height: AppDimensionsUpdated.height10(
                                               context) *
@@ -1053,7 +1051,7 @@ class _SubscriptionState extends State<Subscription>
                                     // height: AppDimensionsUpdated.height10(context) * 1.9,
                                     child: Center(
                                       child: Text(
-                                        'Practice sessions\nprogress only',
+                                        'Practice \nevaluation\nonly',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize:

@@ -358,4 +358,59 @@ class PracticeGoalApi {
       throw Exception('Failed to fetch goal names');
     }
   }
+
+
+  static Future getUserReminder() async {
+    final SharedPreferences prefs = await _prefs;
+    var accessToken = prefs.getString("usertoken");
+    var userId = prefs.getInt('userid');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$accessToken'
+    };
+
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/user/getUserReminderByUserId/$userId'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+
+      return (jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
+
+
+
+
+  Future updateUserReminder(name, reminder) async {
+    final SharedPreferences prefs = await _prefs;
+    var accessToken = prefs.getString("usertoken");
+    var userId = prefs.getInt('userid');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$accessToken'
+    };
+    var body = json.encode({
+      name: reminder,
+      
+    });
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/user/updateUserReminderByUserId/$userId'),
+        headers: headers,
+        body: body);
+
+    if (request.statusCode == 200) {
+      
+      return true;
+    } else {
+      client.close();
+
+      return false;
+    }
+  }
+
 }
