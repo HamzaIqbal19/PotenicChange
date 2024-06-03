@@ -95,11 +95,9 @@ class Navigation_BarState extends State<Navigation_Bar> {
       //   child:
       Padding(
         padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height < 690
-              ? AppDimensions.height10(context) * 1.0
-              : 0,
-          left: AppDimensions.width10(context) * 4.5,
-          right: AppDimensions.width10(context) * 4.5,
+          bottom:  0,
+          left: AppDimensions.width10(context) * 3.5,
+          right: AppDimensions.width10(context) * 3.5,
         ),
         child: Container(
           decoration: const BoxDecoration(
@@ -115,8 +113,10 @@ class Navigation_BarState extends State<Navigation_Bar> {
           ),
           child: BottomNavigationBar(
             //selectedIconTheme: null,
-            unselectedItemColor: const Color(0xff5B74A6),
-            fixedColor: const Color(0xff5B74A6),
+            unselectedItemColor: const Color(0xffFBFBFB),
+            fixedColor: const Color(0xffFBFBFB),
+            unselectedFontSize: 15,
+            selectedFontSize: 15,
             type: BottomNavigationBarType.fixed,
             elevation: 0,
             landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
@@ -141,15 +141,9 @@ class Navigation_BarState extends State<Navigation_Bar> {
                         width: AppDimensions.width10(context) * 3.318,
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
-                            gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Color(0xff93ABD0),
-                                  Color(0xff8C648A)
-                                ])),
+                           ),
                         padding: EdgeInsets.all(
-                            AppDimensions.height10(context) * 1.2),
+                            AppDimensions.height10(context) * 0.5),
                         child: const ImageIcon(
                           AssetImage('assets/images/timeline_icon.webp'),
                           color: Colors.white,
@@ -169,15 +163,12 @@ class Navigation_BarState extends State<Navigation_Bar> {
                       //margin: EdgeInsets.only(right: 30),
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+                         ),
                       child: Container(
                           height: AppDimensions.height10(context) * 1.889,
                           width: AppDimensions.width10(context) * 2.444,
                           padding: EdgeInsets.all(
-                              AppDimensions.height10(context) * 1.2),
+                              AppDimensions.height10(context) * 0.7),
                           child: const ImageIcon(
                             AssetImage('assets/images/insp (1).webp'),
                             color: Colors.white,
@@ -195,15 +186,12 @@ class Navigation_BarState extends State<Navigation_Bar> {
                       height: AppDimensions.height10(context) * 6.0,
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+                          ),
                       child: Container(
                         height: AppDimensions.height10(context) * 2.612,
                         width: AppDimensions.width10(context) * 3.318,
                         padding: EdgeInsets.all(
-                            AppDimensions.height10(context) * 1.2),
+                            AppDimensions.height10(context) * 0.7),
                         child: const ImageIcon(
                           AssetImage('assets/images/hurdle_icon.webp'),
                           //size: ,
@@ -226,15 +214,12 @@ class Navigation_BarState extends State<Navigation_Bar> {
                     height: AppDimensions.height10(context) * 4.0,
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+                       ),
                     child: Container(
-                        height: AppDimensions.height10(context) * 1.889,
-                        width: AppDimensions.width10(context) * 2.444,
+                        height: AppDimensions.height10(context) * 2.612,
+                        width: AppDimensions.width10(context) * 3.318,
                         padding: EdgeInsets.all(
-                            AppDimensions.height10(context) * 1.2),
+                            AppDimensions.height10(context) * 1),
                         child: const ImageIcon(
                           AssetImage('assets/images/menu_icon.webp'),
                           color: Colors.white,
@@ -247,6 +232,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
             selectedLabelStyle: TextStyle(
               fontSize: AppDimensions.font10(context) * 1.4,
               fontWeight: FontWeight.w400,
+
             ),
             unselectedLabelStyle: TextStyle(
               fontSize: AppDimensions.font10(context) * 1.4,

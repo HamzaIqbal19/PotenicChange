@@ -472,7 +472,7 @@ class _view_goalsState extends State<view_goals> {
                     elevation: 0,
                     padding: EdgeInsets.zero,
                     notchMargin: 0,
-                    color: Colors.transparent,
+                    color: Color(0xffD9B4B4),
                     child: Navigation_Bar(
                       bg_colored: true,subscription: getSubscription.toString(),
                     ),

@@ -18,15 +18,22 @@ class AppDimensions {
       screenHeight(context) / 7.22;
 
   // dynamic heights
-
+//Variation 1 7.545 90
+//Variation 2 85
+// Variation 3 8.5 82
+//Variation 4 9 80
   static check(context) {
     if (MediaQuery.of(context).size.height < 690) {
-      return ((7.545.h));
+      return ((7.5.h));
     } else {
       return (screenHeight(context) / 90.196080);
     }
   }
 
+// Variation 1 8.5 90
+// Variation 2 9 88
+// Variation 3 9.5 82
+//Variation 4 10 80
   static checkWidth(context) {
     if (MediaQuery.of(context).size.height < 690) {
       return ((8.5.w));
@@ -35,6 +42,10 @@ class AppDimensions {
     }
   }
 
+//Variation 1 8.22 90
+// Variation 2 8.5 88
+// Variation 3 9 82
+// Variation 4 9.5 80
   static checkText(context) {
     if (MediaQuery.of(context).size.height < 690) {
       return ((8.22.sp));
@@ -66,27 +77,40 @@ class AppDimensionsUpdated {
 
   // dynamic heights
 
+
+//Variation 1 7.545 86.196080
+//Variation 2 8 88
+// Variation 3 8.5 90
+
   static check(context) {
     if (MediaQuery.of(context).size.height < 690) {
-      return ((7.545.h));
+      return ((8.5.h));
     } else {
-      return (screenHeight(context) / 86.196080);
+      return (screenHeight(context) / 90.196080);
     }
   }
+
+
+// Variation 1 8.5
+// Variation 2 9 88
+// Variation 3 9.5 90
 
   static checkWidth(context) {
     if (MediaQuery.of(context).size.height < 690) {
-      return ((8.5.w));
+      return ((9.5.w));
     } else {
-      return (screenHeight(context) / 86.196080);
+      return (screenHeight(context) / 90.196080);
     }
   }
 
+//Variation 1 8.22
+// Variation 2 8.5 88
+// Variation 3 9 90
   static checkText(context) {
     if (MediaQuery.of(context).size.height < 690) {
-      return ((8.22.sp));
+      return ((9.sp));
     } else {
-      return (screenHeight(context) / 86.196080);
+      return (screenHeight(context) / 90.196080);
     }
   }
 

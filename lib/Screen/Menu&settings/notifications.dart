@@ -255,7 +255,7 @@ setUserReminder(name, reminder){
                                                     context) *
                                                 0.6),
                                         child: Text(
-                                          statements[selectedIndex].toString(),
+                                        selectedIndex!=0?"${statements[selectedIndex].toString()} before":  statements[selectedIndex].toString(),
                                           style: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *
@@ -341,7 +341,7 @@ setUserReminder(name, reminder){
                                                     context) *
                                                 0.6),
                                         child: Text(
-                                         missedPractices[missedIndex].toString(),
+                                       missedIndex!=0?"${missedPractices[missedIndex].toString()} after":  missedPractices[missedIndex].toString(),
                                           style: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *

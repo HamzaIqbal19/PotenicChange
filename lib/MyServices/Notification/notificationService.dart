@@ -57,7 +57,7 @@ void SceduleNotification(String body){
           id: 1,
           channelKey: "call_channel",
           color: Colors.white,
-          title: 'Earnscape',
+          title: 'Potenic',
           body: body,
           category: NotificationCategory.Message,
           wakeUpScreen: true,

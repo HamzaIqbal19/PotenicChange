@@ -101,7 +101,7 @@ class Authentication {
         "message": response["message"],
         "statusCode": request.statusCode,
       };
-      SceduleNotification("Logged in");
+
       return responses;
     } else if (request.statusCode == 404 ||
         request.statusCode == 401 ||

@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/MyServices/Notification/notificationService.dart';
 import 'package:potenic_app/Notifier/GoalNotifier.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:potenic_app/Screen/splash/splash_page.dart';
@@ -12,7 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-Future<void> main() async {
+Future<void> main(context) async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
@@ -32,6 +34,7 @@ Future<void> main() async {
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
 
   var fcmToken = await FirebaseMessaging.instance.getToken();
+  print("FCM TOKEN : $fcmToken");
   AwesomeNotifications().initialize(null, [
     NotificationChannel(
         channelKey: "call_channel",
@@ -45,8 +48,19 @@ Future<void> main() async {
         locked: false,
         defaultRingtoneType: DefaultRingtoneType.Notification)
   ]);
+  
   foregroundMessaging();
+
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+    print("onMessage: ${message.data}");
+  });
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message)async { 
+    var route = message.data['route'];
+    if(route == 'hurdle'){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> landing_hurdles()));
+    }
+  });
 
   await SentryFlutter.init(
     (options) {
@@ -66,6 +80,7 @@ Future<void> main() async {
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print("onMessage: ${message.data}");
   await Firebase.initializeApp();
 }
 
