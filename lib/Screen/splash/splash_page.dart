@@ -4,6 +4,7 @@ import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
@@ -27,9 +28,26 @@ class SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2), loadData);
+    Future.delayed(const Duration(seconds: 2), _checkForNavigation);
 
     super.initState();
+  }
+
+  Future _checkForNavigation() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var navigateTo = prefs.getString('navigateTo');
+
+    if (navigateTo != null) {
+      prefs.remove('navigateTo'); // Clear the navigation intent
+      if (navigateTo == 'hurdle') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => landing_hurdles()),
+        );
+      }
+    } else{
+      loadData();
+    }
   }
 
   Future loadData() async {

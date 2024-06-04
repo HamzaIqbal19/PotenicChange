@@ -1,11 +1,15 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
+import 'package:potenic_app/main.dart';
 
 void foregroundMessaging() {
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     String? title = message.notification!.title;
     String? body = message.notification!.body;
+    String? route = message.data['name'];
+
     AwesomeNotifications().createNotification(
         content: NotificationContent(
             id: 1,
@@ -15,14 +19,21 @@ void foregroundMessaging() {
             body: body,
             category: NotificationCategory.Message,
             roundedLargeIcon: true,
-            largeIcon: 'assets/images/potenicIcon.png',
-            icon: 'assets/images/potenicIcon.png',
             wakeUpScreen: true,
             fullScreenIntent: true,
             autoDismissible: false,
             notificationLayout: NotificationLayout.BigText,
             backgroundColor: Colors.transparent));
+    // if (route == 'hurdle') {
+    //   navigatorKey.currentState?.push(
+    //     MaterialPageRoute(builder: (context) => landing_hurdles()),
+    //   );
+    // }
+
   });
+
+
+
 }
 
 void CreateNotification(String body) {
@@ -34,8 +45,6 @@ void CreateNotification(String body) {
           title: 'Potenic',
           body: body,
           roundedLargeIcon: true,
-          largeIcon: 'assets/images/potenicIcon.png',
-          icon: 'assets/images/potenicIcon.png',
           category: NotificationCategory.Message,
           wakeUpScreen: true,
           fullScreenIntent: true,

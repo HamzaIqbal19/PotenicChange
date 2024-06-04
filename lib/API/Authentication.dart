@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:potenic_app/API/Apispecs.dart';
-import 'package:potenic_app/MyServices/Notification/notificationService.dart';
 import 'package:sentry/sentry.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:shared_preferences/shared_preferences.dart';

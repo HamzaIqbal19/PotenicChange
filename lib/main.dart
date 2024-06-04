@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +15,10 @@ import 'package:potenic_app/Screen/splash/splash_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 
 Future<void> main(context) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,18 +54,35 @@ Future<void> main(context) async {
         locked: false,
         defaultRingtoneType: DefaultRingtoneType.Notification)
   ]);
+
+
+
+  @pragma("vm:entry-point")
+   Future <void> onActionReceivedMethod(ReceivedAction receivedAction) async {
+
+    // String? route = receivedAction.payload?['name'];
+    // if (route == 'hurdle') {
+    //   navigatorKey.currentState?.push(
+    //     MaterialPageRoute(builder: (context) => landing_hurdles()),
+    //    );
+    // }
+  }
   
   foregroundMessaging();
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-    print("onMessage: ${message.data}");
   });
+
+
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message)async { 
-    var route = message.data['route'];
-    if(route == 'hurdle'){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> landing_hurdles()));
-    }
+    var route = message.data['name'];
+    // if(route == 'hurdle'){
+    //   print("onMessage: hurdle route back}");
+    //   navigatorKey.currentState?.push(
+    //     MaterialPageRoute(builder: (context) => landing_hurdles()),
+    //   );
+    // }
   });
 
   await SentryFlutter.init(
@@ -80,8 +103,10 @@ Future<void> main(context) async {
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print("onMessage: ${message.data}");
+  print("onMessage background: ${message.data}");
   await Firebase.initializeApp();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setString('navigateTo', message.data['name']);
 }
 
 class MyApp extends StatelessWidget with WidgetsBindingObserver {
@@ -96,6 +121,7 @@ class MyApp extends StatelessWidget with WidgetsBindingObserver {
         // splitScreenMode: true,
         builder: (_, child) {
           return MaterialApp(
+            navigatorKey: navigatorKey,
             title: 'Potenic',
             theme: ThemeData(
                 primarySwatch: Colors.grey,
