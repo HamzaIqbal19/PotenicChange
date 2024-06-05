@@ -4,8 +4,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:get/get.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
+import 'package:potenic_app/MyServices/Notification/notificationController.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/dashboard_behaviour_shimmer.dart';
@@ -20,6 +22,7 @@ import 'package:potenic_app/utils/app_texts.dart';
 import 'package:potenic_app/utils/inappreview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../MyServices/Notification/emailLauncher.dart';
 import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/fading.dart';
 import '../../Widgets/mult_circles.dart';
@@ -69,12 +72,25 @@ class _view_goalsState extends State<view_goals> {
   int removeDay = 0;
   String recordDate = '';
   int goalLevel = 0;
+  var notificationBody;
+  var notificationRoute;
+  var notificationId;
+  var notificationUrl;
   final ScrollController _scrollController = ScrollController();
 
   void _incrementValue() {
     setState(() {
       goalLevel++;
     });
+  }
+
+  getNotificationData() async {
+    final notificationController controller = Get.find<notificationController>();
+    notificationBody = controller.getNotificationBody;
+    notificationRoute = controller.getNotificationRoute;
+    notificationId = controller.getNotificationId;
+    notificationUrl = controller.getNotificationUrl;
+    print("Natification data: $notificationBody");
   }
 
   Future<void> getGoalUpdates() async {
@@ -355,6 +371,9 @@ class _view_goalsState extends State<view_goals> {
 
   @override
   Widget build(BuildContext context) {
+   // getNotificationData();
+    final notificationController notificationsController = Get.find<notificationController>();
+
     return WillPopScope(
       onWillPop: () {
         return Future.value(false);
@@ -390,11 +409,11 @@ class _view_goalsState extends State<view_goals> {
                               child: Container(
                                 margin: EdgeInsets.only(
                                     right:
-                                        AppDimensions.height10(context) * 1.32),
+                                    UpdatedDimensions.height10(context) * 1.32),
                                 child: Image.asset(
                                   'assets/images/Asset 10 2.webp',
-                                  height: AppDimensions.width10(context) * 4.0,
-                                  width: AppDimensions.width10(context) * 3.977,
+                                  height: UpdatedDimensions.width10(context) * 4.0,
+                                  width: UpdatedDimensions.width10(context) * 3.977,
                                   fit: BoxFit.contain,
                                 ),
                               ),
@@ -413,11 +432,11 @@ class _view_goalsState extends State<view_goals> {
                         },
                         child: Container(
                           margin: EdgeInsets.only(
-                              right: AppDimensions.width10(context) * 1.7),
+                              right: UpdatedDimensions.width10(context) * 1.7),
                           child: Image.asset(
                             'assets/images/Add goal.webp',
-                            height: AppDimensions.width10(context) * 2.4,
-                            width: AppDimensions.width10(context) * 2.4,
+                            height: UpdatedDimensions.width10(context) * 2.4,
+                            width: UpdatedDimensions.width10(context) * 2.4,
                           ),
                         ),
                       ),
@@ -442,11 +461,11 @@ class _view_goalsState extends State<view_goals> {
                         },
                         child: Container(
                           margin: EdgeInsets.only(
-                              right: AppDimensions.width10(context) * 1.32),
+                              right: UpdatedDimensions.width10(context) * 1.32),
                           child: Image.asset(
                             'assets/images/calendar_month_black_24dp 1.webp',
-                            height: AppDimensions.width10(context) * 2.4,
-                            width: AppDimensions.width10(context) * 2.4,
+                            height: UpdatedDimensions.width10(context) * 2.4,
+                            width: UpdatedDimensions.width10(context) * 2.4,
                           ),
                         ),
                       ),
@@ -459,7 +478,7 @@ class _view_goalsState extends State<view_goals> {
             bottomNavigationBar: contain
                 ? Container(
                     margin:
-                        EdgeInsets.all(AppDimensions.height10(context) * 1.8),
+                        EdgeInsets.all(UpdatedDimensions.height10(context) * 1.8),
                     child: updateBox(
                         headText: widget.missed ? 'Missed' : 'SAVED',
                         bodyText: widget.name,
@@ -472,7 +491,7 @@ class _view_goalsState extends State<view_goals> {
                     elevation: 0,
                     padding: EdgeInsets.zero,
                     notchMargin: 0,
-                    color: Color(0xffD9B4B4),
+                    color: const Color(0xffD9B4B4),
                     child: Navigation_Bar(
                       bg_colored: true,subscription: getSubscription.toString(),
                     ),
@@ -485,7 +504,7 @@ class _view_goalsState extends State<view_goals> {
                   ),
                 ),
                 width: double.infinity,
-                height: AppDimensions.height10(context) * 79.8,
+                height: UpdatedDimensions.height10(context) * 79.8,
                 child: loader == false
                     ? noData == false
                         ? noActive == false
@@ -500,7 +519,7 @@ class _view_goalsState extends State<view_goals> {
                                 child: SizedBox(
                                     width: double.infinity,
                                     height:
-                                        AppDimensions.height10(context) * 19.2,
+                                    UpdatedDimensions.height10(context) * 19.2,
                                     child: Stack(children: [
                                       Stack(
                                         children: [
@@ -508,10 +527,10 @@ class _view_goalsState extends State<view_goals> {
                                             scrollDirection: Axis.horizontal,
                                             controller: _scrollController,
                                             child: SizedBox(
-                                              height: AppDimensions.height10(
+                                              height: UpdatedDimensions.height10(
                                                       context) *
                                                   19.2,
-                                              width: AppDimensions.width10(
+                                              width: UpdatedDimensions.width10(
                                                       context) *
                                                   45.0,
                                               child: Stack(
@@ -551,11 +570,11 @@ class _view_goalsState extends State<view_goals> {
                                                         //     )));
                                                       },
                                                       child: Container(
-                                                        height: AppDimensions
+                                                        height: UpdatedDimensions
                                                                 .height10(
                                                                     context) *
                                                             7.9,
-                                                        width: AppDimensions
+                                                        width: UpdatedDimensions
                                                                 .height10(
                                                                     context) *
                                                             7.9,
@@ -589,7 +608,7 @@ class _view_goalsState extends State<view_goals> {
                                                                       .center,
                                                               children: [
                                                                 SizedBox(
-                                                                  height: AppDimensions
+                                                                  height: UpdatedDimensions
                                                                           .height10(
                                                                               context) *
                                                                       1.7,
@@ -603,7 +622,7 @@ class _view_goalsState extends State<view_goals> {
                                                                             3),
                                                                     style: TextStyle(
                                                                         fontSize:
-                                                                            AppDimensions.font10(context) *
+                                                                        UpdatedDimensions.font10(context) *
                                                                                 1.2,
                                                                         fontWeight:
                                                                             FontWeight
@@ -613,8 +632,7 @@ class _view_goalsState extends State<view_goals> {
                                                                   ),
                                                                 ),
                                                                 SizedBox(
-                                                                  //width: AppDimensions.width10(context) * 4.0,
-                                                                  height: AppDimensions
+                                                                  height: UpdatedDimensions
                                                                           .height10(
                                                                               context) *
                                                                       1.7,
@@ -628,15 +646,15 @@ class _view_goalsState extends State<view_goals> {
                                                                             FontWeight
                                                                                 .w400,
                                                                         fontSize:
-                                                                            AppDimensions.font10(context) *
+                                                                        UpdatedDimensions.font10(context) *
                                                                                 1.4),
                                                                   ),
                                                                 ),
                                                                 Container(
                                                                     height:
-                                                                        AppDimensions.width10(context) *
+                                                                    UpdatedDimensions.width10(context) *
                                                                             2.0,
-                                                                    width: AppDimensions.width10(
+                                                                    width: UpdatedDimensions.width10(
                                                                             context) *
                                                                         2.0,
                                                                     //  margin: const EdgeInsets.only(top: 3.32),
@@ -674,21 +692,21 @@ class _view_goalsState extends State<view_goals> {
                                                         const Alignment(0, 0),
                                                     child: SizedBox(
                                                       key: centerKey,
-                                                      height: AppDimensions
+                                                      height: UpdatedDimensions
                                                               .height10(
                                                                   context) *
                                                           19.2,
                                                       width:
-                                                          AppDimensions.width10(
+                                                      UpdatedDimensions.width10(
                                                                   context) *
                                                               18.8,
                                                       // margin: EdgeInsets.only(left: 55.5, right: 55.5),
                                                       child: Container(
-                                                        height: AppDimensions
+                                                        height: UpdatedDimensions
                                                                 .height10(
                                                                     context) *
                                                             13.81,
-                                                        width: AppDimensions
+                                                        width: UpdatedDimensions
                                                                 .height10(
                                                                     context) *
                                                             13.265,
@@ -705,11 +723,11 @@ class _view_goalsState extends State<view_goals> {
                                                                     0.185,
                                                                     0.215),
                                                             child: Container(
-                                                              height: AppDimensions
+                                                              height: UpdatedDimensions
                                                                       .height10(
                                                                           context) *
                                                                   1.4,
-                                                              width: AppDimensions
+                                                              width: UpdatedDimensions
                                                                       .width10(
                                                                           context) *
                                                                   1.4,
@@ -742,7 +760,7 @@ class _view_goalsState extends State<view_goals> {
                                                                           0, 3),
                                                                   style: TextStyle(
                                                                       fontSize:
-                                                                          AppDimensions.font10(context) *
+                                                                      UpdatedDimensions.font10(context) *
                                                                               1.2,
                                                                       fontWeight:
                                                                           FontWeight
@@ -756,7 +774,7 @@ class _view_goalsState extends State<view_goals> {
                                                                       color: const Color(
                                                                           0xff5B74A6),
                                                                       fontSize:
-                                                                          AppDimensions.height10(context) *
+                                                                      UpdatedDimensions.height10(context) *
                                                                               1.4,
                                                                       fontWeight:
                                                                           FontWeight
@@ -764,9 +782,9 @@ class _view_goalsState extends State<view_goals> {
                                                                 ),
                                                                 Container(
                                                                     height:
-                                                                        AppDimensions.height10(context) *
+                                                                    UpdatedDimensions.height10(context) *
                                                                             2.8,
-                                                                    width: AppDimensions.width10(
+                                                                    width: UpdatedDimensions.width10(
                                                                             context) *
                                                                         2.8,
                                                                     // margin: const EdgeInsets.only(top: 2),
@@ -832,12 +850,12 @@ class _view_goalsState extends State<view_goals> {
                                                         //     )));
                                                       },
                                                       child: Container(
-                                                          height: AppDimensions
+                                                          height: UpdatedDimensions
                                                                   .height10(
                                                                       context) *
                                                               7.9,
                                                           width:
-                                                              AppDimensions.height10(
+                                                          UpdatedDimensions.height10(
                                                                       context) *
                                                                   7.9,
                                                           // margin: const EdgeInsets.only(
@@ -875,7 +893,7 @@ class _view_goalsState extends State<view_goals> {
                                                                         0, 3),
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        AppDimensions.font10(context) *
+                                                                    UpdatedDimensions.font10(context) *
                                                                             1.2,
                                                                     fontWeight:
                                                                         FontWeight
@@ -887,7 +905,7 @@ class _view_goalsState extends State<view_goals> {
                                                                 '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        AppDimensions.font10(context) *
+                                                                    UpdatedDimensions.font10(context) *
                                                                             1.4,
                                                                     fontWeight:
                                                                         FontWeight
@@ -896,11 +914,11 @@ class _view_goalsState extends State<view_goals> {
                                                                         0xff5B74A6)),
                                                               ),
                                                               Container(
-                                                                height: AppDimensions
+                                                                height: UpdatedDimensions
                                                                         .height10(
                                                                             context) *
                                                                     3,
-                                                                width: AppDimensions
+                                                                width: UpdatedDimensions
                                                                         .width10(
                                                                             context) *
                                                                     3,
@@ -920,11 +938,11 @@ class _view_goalsState extends State<view_goals> {
                                                                           .white),
                                                                 ),
                                                                 child: SizedBox(
-                                                                    width: AppDimensions.width10(
+                                                                    width: UpdatedDimensions.width10(
                                                                             context) *
                                                                         1.7,
                                                                     height:
-                                                                        AppDimensions.height10(context) *
+                                                                    UpdatedDimensions.height10(context) *
                                                                             1.5,
                                                                     // margin:
                                                                     //     const EdgeInsets.only(top: 3.32),
@@ -955,7 +973,7 @@ class _view_goalsState extends State<view_goals> {
                                           ),
                                           Container(
                                             margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
+                                              top: UpdatedDimensions.height10(
                                                       context) *
                                                   20.0,
                                             ),
@@ -974,24 +992,24 @@ class _view_goalsState extends State<view_goals> {
                                                         return Column(
                                                           children: [
                                                             Container(
-                                                              width: AppDimensions
+                                                              width: UpdatedDimensions
                                                                       .width10(
                                                                           context) *
                                                                   35.6,
-                                                              height: AppDimensions
+                                                              height: UpdatedDimensions
                                                                       .height10(
                                                                           context) *
                                                                   4.7,
                                                               margin: EdgeInsets.only(
-                                                                  left: AppDimensions
+                                                                  left: UpdatedDimensions
                                                                           .height10(
                                                                               context) *
                                                                       2.4,
-                                                                  right: AppDimensions
+                                                                  right: UpdatedDimensions
                                                                           .height10(
                                                                               context) *
                                                                       3.4,
-                                                                  top: AppDimensions
+                                                                  top: UpdatedDimensions
                                                                           .height10(
                                                                               context) *
                                                                       1.1),
@@ -1014,7 +1032,7 @@ class _view_goalsState extends State<view_goals> {
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                AppDimensions.font10(context) * 1.8,
+                                                                                UpdatedDimensions.font10(context) * 1.8,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                             color:
@@ -1025,7 +1043,7 @@ class _view_goalsState extends State<view_goals> {
                                                                     ),
                                                                     Divider(
                                                                       height:
-                                                                          AppDimensions.height10(context) *
+                                                                          UpdatedDimensions.height10(context) *
                                                                               0.2,
                                                                       color: Colors
                                                                           .white,
@@ -1044,7 +1062,7 @@ class _view_goalsState extends State<view_goals> {
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              AppDimensions.font10(context) * 1.2,
+                                                                              UpdatedDimensions.font10(context) * 1.2,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                           color:
@@ -1111,8 +1129,8 @@ class _view_goalsState extends State<view_goals> {
                                                                       body_text: timesList[index]['data']['userGoal']['identityStatement'][0]['text'],
                                                                       body_text_color: 0xff5B74A6,
                                                                       head_text_color: 0xff5B74A6,
-                                                                      body_text_size: AppDimensions.font10(context) * 1.6,
-                                                                      head_text_size: AppDimensions.font10(context) * 2.0,
+                                                                      body_text_size: UpdatedDimensions.font10(context) * 1.6,
+                                                                      head_text_size: UpdatedDimensions.font10(context) * 2.0,
                                                                       enable_icon: widget.missed ? false : true,
                                                                       is_right: true,
                                                                       s_circle_text_col: timesList[index]['status'] == "Not Started"
@@ -1220,7 +1238,7 @@ class _view_goalsState extends State<view_goals> {
                                                               ],
                                                             ),
                                                             SizedBox(
-                                                              height: AppDimensions
+                                                              height: UpdatedDimensions
                                                                       .height10(
                                                                           context) *
                                                                   3.0,
@@ -1228,128 +1246,119 @@ class _view_goalsState extends State<view_goals> {
                                                           ],
                                                         );
                                                       })),
-                                                  single == true
-                                                      ? reda(context, true)
-                                                      : Container(),
-                                                  Container(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            13,
-                                                  )
+
                                                 ],
                                               ),
                                             ),
                                           ),
                                         ],
                                       ),
-                                      single == true
-                                          ? Container()
-                                          : Positioned(
-                                              top: AppDimensions.height10(
+                                       Positioned(
+                                              top: UpdatedDimensions.height10(
                                                       context) *
-                                                  62.0,
-                                              left: AppDimensions.height10(
+                                                  55.0,
+                                              left: UpdatedDimensions.height10(
                                                       context) *
                                                   1.3,
                                               child: Stack(
                                                 children: [
-                                                  redaVisble
-                                                      ? Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.2,
-                                                              top: AppDimensions
-                                                                  .height10(
-                                                                      context)),
-                                                          child: reda(
-                                                              context, false),
-                                                        )
-                                                      : Container(),
-                                                  AnimatedScaleButton(
-                                                    onTap: () {
-                                                      // setState(() {
-                                                      //   redaVisble =!redaVisble;
-                                                      // });
-                                                    },
-                                                    child: Container(
-                                                      width: AppDimensions
+                                                  Obx((){
+                                                    if (notificationsController.getNotificationBody.isEmpty) {
+                                                      return const SizedBox(); // Return an empty widget if the string is empty
+                                                    } else {
+                                                      return reda(
+                                                          context,"Hi, it's Reda here", notificationsController.getNotificationBody, true);
+                                                    }
+                                                  }),
+                                                  Obx((){
+                                                    if (notificationsController.getNotificationBody.isEmpty) {
+                                                      return AnimatedScaleButton(
+                                                        onTap: () {
+                                                          //laucherForNotifications().urlLauncher("https://potenic.com/community/");
+
+                                                        },
+                                                        child: Container(
+                                                          width: UpdatedDimensions
                                                               .height10(
-                                                                  context) *
-                                                          4.5,
-                                                      height: AppDimensions
+                                                              context) *
+                                                              4.5,
+                                                          height: UpdatedDimensions
                                                               .height10(
-                                                                  context) *
-                                                          4.5,
-                                                      padding: EdgeInsets.all(
-                                                          AppDimensions
+                                                              context) *
+                                                              4.5,
+                                                          padding: EdgeInsets.all(
+                                                              UpdatedDimensions
                                                                   .height10(
-                                                                      context) *
-                                                              0.4),
-                                                      decoration:
+                                                                  context) *
+                                                                  0.4),
+                                                          decoration:
                                                           const BoxDecoration(
                                                               shape: BoxShape
                                                                   .circle,
                                                               color:
-                                                                  Colors.white),
-                                                      child: Container(
-                                                        width: AppDimensions
+                                                              Colors.white),
+                                                          child: Container(
+                                                            width: UpdatedDimensions
                                                                 .width10(
-                                                                    context) *
-                                                            4.16,
-                                                        height: AppDimensions
+                                                                context) *
+                                                                4.16,
+                                                            height: UpdatedDimensions
                                                                 .height10(
-                                                                    context) *
-                                                            4.16,
-                                                        decoration: const BoxDecoration(
-                                                            shape:
+                                                                context) *
+                                                                4.16,
+                                                            decoration: const BoxDecoration(
+                                                                shape:
                                                                 BoxShape.circle,
-                                                            color: Colors.white,
-                                                            image: DecorationImage(
-                                                                image: AssetImage(
-                                                                    'assets/images/Smart Object_1.webp'))),
-                                                        child: Align(
-                                                          alignment:
+                                                                color: Colors.white,
+                                                                image: DecorationImage(
+                                                                    image: AssetImage(
+                                                                        'assets/images/Smart Object_1.webp'))),
+                                                            child: Align(
+                                                              alignment:
                                                               const Alignment(
                                                                   0, 2.8),
-                                                          child: Container(
-                                                            width: AppDimensions
+                                                              child: Container(
+                                                                width: UpdatedDimensions
                                                                     .width10(
-                                                                        context) *
-                                                                2.1,
-                                                            height: AppDimensions
+                                                                    context) *
+                                                                    2.1,
+                                                                height: UpdatedDimensions
                                                                     .height10(
-                                                                        context) *
-                                                                2.1,
-                                                            decoration:
+                                                                    context) *
+                                                                    2.1,
+                                                                decoration:
                                                                 const BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              color:
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  color:
                                                                   Colors.white,
-                                                            ),
-                                                            child: Center(
-                                                              child: Text(
-                                                                allGoals.length
-                                                                    .toString(),
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.font10(context) *
+                                                                ),
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    allGoals.length
+                                                                        .toString(),
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                        UpdatedDimensions.font10(context) *
                                                                             1.2,
-                                                                    fontWeight:
+                                                                        fontWeight:
                                                                         FontWeight
                                                                             .w500,
-                                                                    color: const Color(
-                                                                        0xFFFA9934)),
+                                                                        color: const Color(
+                                                                            0xFFFA9934)),
+                                                                  ),
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                  ),
+                                                      ); // Return an empty widget if the string is empty
+                                                    } else {
+                                                      return const SizedBox();
+                                                    }
+                                                  }),
+
+
                                                 ],
                                               )),
                                       if (_showOverlay)
@@ -1389,32 +1398,32 @@ class _view_goalsState extends State<view_goals> {
                                                                                             ? const Alignment(-0.87, 0.55)
                                                                                             : const Alignment(0, 0),
                                                             child: SizedBox(
-                                                              width: AppDimensions
+                                                              width: UpdatedDimensions
                                                                       .width10(
                                                                           context) *
                                                                   30.6,
                                                               height: goalLevel ==
                                                                       1
-                                                                  ? AppDimensions
+                                                                  ? UpdatedDimensions
                                                                           .height10(
                                                                               context) *
                                                                       22.3
                                                                   : goalLevel ==
                                                                           2
-                                                                      ? AppDimensions.height10(
+                                                                      ? UpdatedDimensions.height10(
                                                                               context) *
                                                                           22.1
                                                                       : goalLevel ==
                                                                               3
-                                                                          ? AppDimensions.height10(context) *
+                                                                          ? UpdatedDimensions.height10(context) *
                                                                               18.3
                                                                           : goalLevel == 4
-                                                                              ? AppDimensions.height10(context) * 20.6
+                                                                              ? UpdatedDimensions.height10(context) * 20.6
                                                                               : goalLevel == 5
-                                                                                  ? AppDimensions.height10(context) * 22.6
+                                                                                  ? UpdatedDimensions.height10(context) * 22.6
                                                                                   : goalLevel == 6
-                                                                                      ? AppDimensions.height10(context) * 18.4
-                                                                                      : AppDimensions.height10(context) * 20.6,
+                                                                                      ? UpdatedDimensions.height10(context) * 18.4
+                                                                                      : UpdatedDimensions.height10(context) * 20.6,
                                                               child: Stack(
                                                                 children: [
                                                                   goalLevel == 0
@@ -1443,40 +1452,40 @@ class _view_goalsState extends State<view_goals> {
                                                                                 ? 'assets/images/arrow-192-up.webp'
                                                                                 : 'assets/images/arrow-192.webp',
                                                                             height:
-                                                                                AppDimensions.height10(context) * 2.0,
+                                                                                UpdatedDimensions.height10(context) * 2.0,
                                                                             width:
-                                                                                AppDimensions.width10(context) * 2.0,
+                                                                                UpdatedDimensions.width10(context) * 2.0,
                                                                           ),
                                                                         ),
                                                                   goalLevel == 0
                                                                       ? Container()
                                                                       : Container(
                                                                           width:
-                                                                              AppDimensions.width10(context) * 30.6,
+                                                                              UpdatedDimensions.width10(context) * 30.6,
                                                                           height: goalLevel == 1
-                                                                              ? AppDimensions.height10(context) * 22.3
+                                                                              ? UpdatedDimensions.height10(context) * 22.3
                                                                               : goalLevel == 2
-                                                                                  ? AppDimensions.height10(context) * 22.1
+                                                                                  ? UpdatedDimensions.height10(context) * 22.1
                                                                                   : goalLevel == 3
-                                                                                      ? AppDimensions.height10(context) * 18.3
+                                                                                      ? UpdatedDimensions.height10(context) * 18.3
                                                                                       : goalLevel == 4
-                                                                                          ? AppDimensions.height10(context) * 20.6
+                                                                                          ? UpdatedDimensions.height10(context) * 20.6
                                                                                           : goalLevel == 5
-                                                                                              ? AppDimensions.height10(context) * 22.6
+                                                                                              ? UpdatedDimensions.height10(context) * 22.6
                                                                                               : goalLevel == 6
-                                                                                                  ? AppDimensions.height10(context) * 18.4
-                                                                                                  : AppDimensions.height10(context) * 20.6,
+                                                                                                  ? UpdatedDimensions.height10(context) * 18.4
+                                                                                                  : UpdatedDimensions.height10(context) * 20.6,
                                                                           decoration: BoxDecoration(
                                                                               color: Colors.white,
-                                                                              borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 1.0)),
+                                                                              borderRadius: BorderRadius.circular(UpdatedDimensions.height10(context) * 1.0)),
                                                                           child:
                                                                               Column(
                                                                             children: [
                                                                               Container(
-                                                                                width: AppDimensions.width10(context) * 21.6,
-                                                                                //height: AppDimensions.height10(context) * 2.2,
+                                                                                width: UpdatedDimensions.width10(context) * 21.6,
+                                                                                //height: UpdatedDimensions.height10(context) * 2.2,
 
-                                                                                margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.7, left: AppDimensions.width10(context) * 1.6, right: AppDimensions.width10(context) * 7.4),
+                                                                                margin: EdgeInsets.only(top: UpdatedDimensions.height10(context) * 1.7, left: UpdatedDimensions.width10(context) * 1.6, right: UpdatedDimensions.width10(context) * 7.4),
                                                                                 child: Text(
                                                                                   goalLevel == 2
                                                                                       ? 'Your Practice'
@@ -1495,29 +1504,29 @@ class _view_goalsState extends State<view_goals> {
                                                                                     decoration: TextDecoration.none,
                                                                                     fontFamily: 'Laila',
                                                                                     color: const Color(0xFF000000),
-                                                                                    fontSize: AppDimensions.font10(context) * 1.6,
+                                                                                    fontSize: UpdatedDimensions.font10(context) * 1.6,
                                                                                     fontWeight: FontWeight.w700,
                                                                                   ),
                                                                                 ),
                                                                               ),
                                                                               Container(
-                                                                                width: AppDimensions.width10(context) * 27.4,
+                                                                                width: UpdatedDimensions.width10(context) * 27.4,
                                                                                 height: goalLevel == 1
-                                                                                    ? AppDimensions.height10(context) * 11.8
+                                                                                    ? UpdatedDimensions.height10(context) * 11.8
                                                                                     : goalLevel == 2
-                                                                                        ? AppDimensions.height10(context) * 11.6
+                                                                                        ? UpdatedDimensions.height10(context) * 11.6
                                                                                         : goalLevel == 3
-                                                                                            ? AppDimensions.height10(context) * 7.8
+                                                                                            ? UpdatedDimensions.height10(context) * 7.8
                                                                                             : goalLevel == 4
-                                                                                                ? AppDimensions.height10(context) * 10.1
+                                                                                                ? UpdatedDimensions.height10(context) * 10.1
                                                                                                 : goalLevel == 5
-                                                                                                    ? AppDimensions.height10(context) * 12.1
+                                                                                                    ? UpdatedDimensions.height10(context) * 12.1
                                                                                                     : goalLevel == 6
-                                                                                                        ? AppDimensions.height10(context) * 7.9
-                                                                                                        : AppDimensions.height10(context) * 10.1,
-                                                                                margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.3),
+                                                                                                        ? UpdatedDimensions.height10(context) * 7.9
+                                                                                                        : UpdatedDimensions.height10(context) * 10.1,
+                                                                                margin: EdgeInsets.only(top: UpdatedDimensions.height10(context) * 0.3),
                                                                                 child: RichText(
-                                                                                    text: TextSpan(style: TextStyle(fontWeight: FontWeight.w400, color: const Color(0xFF464646), decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: AppDimensions.font10(context) * 1.4, height: AppDimensions.height10(context) * 0.15), children: [
+                                                                                    text: TextSpan(style: TextStyle(fontWeight: FontWeight.w400, color: const Color(0xFF464646), decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: UpdatedDimensions.font10(context) * 1.4, height: UpdatedDimensions.height10(context) * 0.15), children: [
                                                                                   TextSpan(
                                                                                     text: goalLevel == 1
                                                                                         ? 'This is your own star that you’ve created.\nRemember, '
@@ -1650,9 +1659,9 @@ class _view_goalsState extends State<view_goals> {
                                                                                 ])),
                                                                               ),
                                                                               Container(
-                                                                                width: AppDimensions.width10(context) * 24.3,
-                                                                                height: AppDimensions.height10(context) * 4.0,
-                                                                                margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.8),
+                                                                                width: UpdatedDimensions.width10(context) * 24.3,
+                                                                                height: UpdatedDimensions.height10(context) * 4.0,
+                                                                                margin: EdgeInsets.only(top: UpdatedDimensions.height10(context) * 0.8),
                                                                                 child: Row(
                                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                   children: [
@@ -1663,14 +1672,14 @@ class _view_goalsState extends State<view_goals> {
                                                                                         });
                                                                                       }),
                                                                                       child: Container(
-                                                                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 5.0), border: Border.all(width: AppDimensions.width10(context) * 0.1, color: const Color(0xFFFBFBFB))),
-                                                                                        width: AppDimensions.width10(context) * 9.60,
-                                                                                        height: AppDimensions.height10(context) * 3.2,
+                                                                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(UpdatedDimensions.height10(context) * 5.0), border: Border.all(width: UpdatedDimensions.width10(context) * 0.1, color: const Color(0xFFFBFBFB))),
+                                                                                        width: UpdatedDimensions.width10(context) * 9.60,
+                                                                                        height: UpdatedDimensions.height10(context) * 3.2,
                                                                                         child: Center(
                                                                                           child: Text(
                                                                                             'Skip tour',
                                                                                             textAlign: TextAlign.center,
-                                                                                            style: TextStyle(fontFamily: 'Laila', decoration: TextDecoration.none, fontSize: AppDimensions.font10(context) * 1.6, color: const Color(0xFF8C648A), fontWeight: FontWeight.w700),
+                                                                                            style: TextStyle(fontFamily: 'Laila', decoration: TextDecoration.none, fontSize: UpdatedDimensions.font10(context) * 1.6, color: const Color(0xFF8C648A), fontWeight: FontWeight.w700),
                                                                                           ),
                                                                                         ),
                                                                                       ),
@@ -1685,9 +1694,9 @@ class _view_goalsState extends State<view_goals> {
                                                                                         }
                                                                                       },
                                                                                       child: Container(
-                                                                                        width: AppDimensions.width10(context) * 11.7,
-                                                                                        height: AppDimensions.height10(context) * 4.0,
-                                                                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 5.0), color: const Color(0xFF5A4D73)),
+                                                                                        width: UpdatedDimensions.width10(context) * 11.7,
+                                                                                        height: UpdatedDimensions.height10(context) * 4.0,
+                                                                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(UpdatedDimensions.height10(context) * 5.0), color: const Color(0xFF5A4D73)),
                                                                                         child: Center(
                                                                                           child: Text(
                                                                                             goalLevel == 2
@@ -1705,7 +1714,7 @@ class _view_goalsState extends State<view_goals> {
                                                                                                                     : goalLevel == 1
                                                                                                                         ? '(1/7) Next'
                                                                                                                         : '(7/7) Next',
-                                                                                            style: TextStyle(decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: AppDimensions.font10(context) * 1.6, color: const Color(0xFFFFFFFF), fontWeight: FontWeight.w600),
+                                                                                            style: TextStyle(decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: UpdatedDimensions.font10(context) * 1.6, color: const Color(0xFFFFFFFF), fontWeight: FontWeight.w600),
                                                                                           ),
                                                                                         ),
                                                                                       ),
@@ -1727,7 +1736,7 @@ class _view_goalsState extends State<view_goals> {
                                 ? SizedBox(
                                     width: double.infinity,
                                     height:
-                                        AppDimensions.height10(context) * 19.2,
+                                        UpdatedDimensions.height10(context) * 19.2,
                                     child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
                                         child: Column(children: [
@@ -1735,12 +1744,12 @@ class _view_goalsState extends State<view_goals> {
                                             scrollDirection: Axis.horizontal,
                                             controller: _scrollController,
                                             child: Container(
-                                              height: AppDimensions.height10(
+                                              height: UpdatedDimensions.height10(
                                                       context) *
                                                   19.2,
                                               margin: const EdgeInsets.only(
                                                   right: 20),
-                                              width: AppDimensions.width10(
+                                              width: UpdatedDimensions.width10(
                                                       context) *
                                                   45.7,
                                               child: Stack(
@@ -1757,16 +1766,16 @@ class _view_goalsState extends State<view_goals> {
                                                         fetchPracticeByDay();
                                                       },
                                                       child: Container(
-                                                        height: AppDimensions
+                                                        height: UpdatedDimensions
                                                                 .height10(
                                                                     context) *
                                                             7.9,
-                                                        width: AppDimensions
+                                                        width: UpdatedDimensions
                                                                 .width10(
                                                                     context) *
                                                             7.9,
                                                         margin: EdgeInsets.only(
-                                                            top: AppDimensions
+                                                            top: UpdatedDimensions
                                                                     .height10(
                                                                         context) *
                                                                 8.4),
@@ -1774,7 +1783,7 @@ class _view_goalsState extends State<view_goals> {
                                                             shape:
                                                                 BoxShape.circle,
                                                             border: Border.all(
-                                                                width: AppDimensions
+                                                                width: UpdatedDimensions
                                                                         .width10(
                                                                             context) *
                                                                     0.3,
@@ -1794,7 +1803,7 @@ class _view_goalsState extends State<view_goals> {
                                                                       0, 3),
                                                               style: TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.font10(
+                                                                      UpdatedDimensions.font10(
                                                                               context) *
                                                                           1.2,
                                                                   fontWeight:
@@ -1807,7 +1816,7 @@ class _view_goalsState extends State<view_goals> {
                                                               '${getFormattedDate(past).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(past).split('-').reversed.join().substring(2, 4)}',
                                                               style: TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.font10(
+                                                                      UpdatedDimensions.font10(
                                                                               context) *
                                                                           1.4,
                                                                   fontWeight:
@@ -1817,16 +1826,16 @@ class _view_goalsState extends State<view_goals> {
                                                                       .white),
                                                             ),
                                                             Container(
-                                                              height: AppDimensions
+                                                              height: UpdatedDimensions
                                                                       .height10(
                                                                           context) *
                                                                   2.5,
-                                                              width: AppDimensions
+                                                              width: UpdatedDimensions
                                                                       .width10(
                                                                           context) *
                                                                   2.5,
                                                               margin: EdgeInsets.only(
-                                                                  top: AppDimensions
+                                                                  top: UpdatedDimensions
                                                                           .height10(
                                                                               context) *
                                                                       0.332),
@@ -1835,21 +1844,21 @@ class _view_goalsState extends State<view_goals> {
                                                                 shape: BoxShape
                                                                     .circle,
                                                                 border: Border.all(
-                                                                    width: AppDimensions.width10(
+                                                                    width: UpdatedDimensions.width10(
                                                                             context) *
                                                                         0.1,
                                                                     color: const Color(
                                                                         0xFFFBFBFB)),
                                                               ),
                                                               child: Container(
-                                                                  width: AppDimensions.width10(
+                                                                  width: UpdatedDimensions.width10(
                                                                           context) *
                                                                       1.7,
-                                                                  height: AppDimensions.height10(
+                                                                  height: UpdatedDimensions.height10(
                                                                           context) *
                                                                       1.5,
                                                                   margin: EdgeInsets.only(
-                                                                      top: AppDimensions.height10(
+                                                                      top: UpdatedDimensions.height10(
                                                                               context) *
                                                                           0.332),
                                                                   // margin: const EdgeInsets.only(left: 1),
@@ -1857,7 +1866,7 @@ class _view_goalsState extends State<view_goals> {
                                                                     child: Text(
                                                                       '${responseData['previousCompletePractice']}/${responseData['previousTotalPractice']}',
                                                                       style: TextStyle(
-                                                                          fontSize: AppDimensions.font10(context) *
+                                                                          fontSize: UpdatedDimensions.font10(context) *
                                                                               1.0,
                                                                           fontWeight: FontWeight
                                                                               .w400,
@@ -1884,11 +1893,11 @@ class _view_goalsState extends State<view_goals> {
                                                         //     )));
                                                       },
                                                       child: Container(
-                                                        width: AppDimensions
+                                                        width: UpdatedDimensions
                                                                 .width10(
                                                                     context) *
                                                             8.3,
-                                                        height: AppDimensions
+                                                        height: UpdatedDimensions
                                                                 .height10(
                                                                     context) *
                                                             8.3,
@@ -1906,11 +1915,11 @@ class _view_goalsState extends State<view_goals> {
                                                             color: Colors
                                                                 .transparent),
                                                         child: Container(
-                                                          height: AppDimensions
+                                                          height: UpdatedDimensions
                                                                   .height10(
                                                                       context) *
                                                               7.9,
-                                                          width: AppDimensions
+                                                          width: UpdatedDimensions
                                                                   .width10(
                                                                       context) *
                                                               7.9,
@@ -1942,7 +1951,7 @@ class _view_goalsState extends State<view_goals> {
                                                                             0,
                                                                             3),
                                                                         style: TextStyle(
-                                                                            fontSize: AppDimensions.font10(context) *
+                                                                            fontSize: UpdatedDimensions.font10(context) *
                                                                                 1.2,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
@@ -1953,15 +1962,15 @@ class _view_goalsState extends State<view_goals> {
                                                                         style: TextStyle(
                                                                             color: Colors
                                                                                 .white,
-                                                                            fontSize: AppDimensions.font10(context) *
+                                                                            fontSize: UpdatedDimensions.font10(context) *
                                                                                 1.4,
                                                                             fontWeight:
                                                                                 FontWeight.w400),
                                                                       ),
                                                                       Container(
-                                                                          height: AppDimensions.height10(context) *
+                                                                          height: UpdatedDimensions.height10(context) *
                                                                               2.5,
-                                                                          width: AppDimensions.width10(context) *
+                                                                          width: UpdatedDimensions.width10(context) *
                                                                               2.5,
                                                                           decoration:
                                                                               const BoxDecoration(
@@ -1978,7 +1987,7 @@ class _view_goalsState extends State<view_goals> {
                                                                                 Center(
                                                                               child: Text(
                                                                                 '0/0',
-                                                                                style: TextStyle(fontSize: AppDimensions.font10(context) * 1.0, fontWeight: FontWeight.w400, color: Colors.white),
+                                                                                style: TextStyle(fontSize: UpdatedDimensions.font10(context) * 1.0, fontWeight: FontWeight.w400, color: Colors.white),
                                                                               ),
                                                                             ),
                                                                           )),
@@ -2005,16 +2014,16 @@ class _view_goalsState extends State<view_goals> {
                                                       },
                                                       child: Container(
                                                           height:
-                                                              AppDimensions.height10(
+                                                              UpdatedDimensions.height10(
                                                                       context) *
                                                                   7.9,
                                                           width:
-                                                              AppDimensions.height10(
+                                                              UpdatedDimensions.height10(
                                                                       context) *
                                                                   7.9,
                                                           margin:
                                                               EdgeInsets.only(
-                                                            top: AppDimensions
+                                                            top: UpdatedDimensions
                                                                     .height10(
                                                                         context) *
                                                                 8.4,
@@ -2023,7 +2032,7 @@ class _view_goalsState extends State<view_goals> {
                                                               shape: BoxShape
                                                                   .circle,
                                                               border: Border.all(
-                                                                  width: AppDimensions.height10(
+                                                                  width: UpdatedDimensions.height10(
                                                                           context) *
                                                                       0.3,
                                                                   color: Colors
@@ -2042,7 +2051,7 @@ class _view_goalsState extends State<view_goals> {
                                                                         0, 3),
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        AppDimensions.font10(context) *
+                                                                        UpdatedDimensions.font10(context) *
                                                                             1.2,
                                                                     fontWeight:
                                                                         FontWeight
@@ -2054,7 +2063,7 @@ class _view_goalsState extends State<view_goals> {
                                                                 '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        AppDimensions.font10(context) *
+                                                                        UpdatedDimensions.font10(context) *
                                                                             1.4,
                                                                     fontWeight:
                                                                         FontWeight
@@ -2063,11 +2072,11 @@ class _view_goalsState extends State<view_goals> {
                                                                         .white),
                                                               ),
                                                               Container(
-                                                                height: AppDimensions
+                                                                height: UpdatedDimensions
                                                                         .height10(
                                                                             context) *
                                                                     2.5,
-                                                                width: AppDimensions
+                                                                width: UpdatedDimensions
                                                                         .width10(
                                                                             context) *
                                                                     2.5,
@@ -2076,18 +2085,18 @@ class _view_goalsState extends State<view_goals> {
                                                                   shape: BoxShape
                                                                       .circle,
                                                                   border: Border.all(
-                                                                      width: AppDimensions.height10(
+                                                                      width: UpdatedDimensions.height10(
                                                                               context) *
                                                                           0.1,
                                                                       color: Colors
                                                                           .white),
                                                                 ),
                                                                 child: SizedBox(
-                                                                    width: AppDimensions.width10(
+                                                                    width: UpdatedDimensions.width10(
                                                                             context) *
                                                                         1.7,
                                                                     height:
-                                                                        AppDimensions.width10(context) *
+                                                                        UpdatedDimensions.width10(context) *
                                                                             1.5,
 
                                                                     // margin: const EdgeInsets.only(left: 1),
@@ -2097,7 +2106,7 @@ class _view_goalsState extends State<view_goals> {
                                                                           Text(
                                                                         '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
                                                                         style: TextStyle(
-                                                                            fontSize: AppDimensions.font10(context) *
+                                                                            fontSize: UpdatedDimensions.font10(context) *
                                                                                 1.0,
                                                                             fontWeight:
                                                                                 FontWeight.w400,
@@ -2115,13 +2124,13 @@ class _view_goalsState extends State<view_goals> {
                                           ),
                                           Container(
                                             width:
-                                                AppDimensions.width10(context) *
+                                                UpdatedDimensions.width10(context) *
                                                     34.3,
-                                            height: AppDimensions.height10(
+                                            height: UpdatedDimensions.height10(
                                                     context) *
                                                 4.9,
                                             margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
+                                                top: UpdatedDimensions.height10(
                                                         context) *
                                                     18.9),
                                             child: Text(
@@ -2129,12 +2138,12 @@ class _view_goalsState extends State<view_goals> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   height:
-                                                      AppDimensions.height10(
+                                                      UpdatedDimensions.height10(
                                                               context) *
                                                           0.12,
                                                   color: Colors.white,
                                                   fontSize:
-                                                      AppDimensions.font10(
+                                                      UpdatedDimensions.font10(
                                                               context) *
                                                           3.0,
                                                   fontWeight: FontWeight.w700,
@@ -2143,13 +2152,13 @@ class _view_goalsState extends State<view_goals> {
                                           ),
                                           Container(
                                             width:
-                                                AppDimensions.width10(context) *
+                                                UpdatedDimensions.width10(context) *
                                                     26.9,
-                                            height: AppDimensions.height10(
+                                            height: UpdatedDimensions.height10(
                                                     context) *
                                                 5.8,
                                             margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
+                                                top: UpdatedDimensions.height10(
                                                         context) *
                                                     0.2),
                                             child: Text(
@@ -2158,12 +2167,12 @@ class _view_goalsState extends State<view_goals> {
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   height:
-                                                      AppDimensions.height10(
+                                                      UpdatedDimensions.height10(
                                                               context) *
                                                           0.12,
                                                   fontFamily: 'Laila',
                                                   fontSize:
-                                                      AppDimensions.font10(
+                                                      UpdatedDimensions.font10(
                                                               context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w600),
@@ -2180,14 +2189,14 @@ class _view_goalsState extends State<view_goals> {
                                                   )));
                                             },
                                             child: Container(
-                                              width: AppDimensions.width10(
+                                              width: UpdatedDimensions.width10(
                                                       context) *
                                                   10.1,
-                                              height: AppDimensions.height10(
+                                              height: UpdatedDimensions.height10(
                                                       context) *
                                                   10.1,
                                               margin: EdgeInsets.only(
-                                                  top: AppDimensions.height10(
+                                                  top: UpdatedDimensions.height10(
                                                           context) *
                                                       1.4),
                                               decoration: BoxDecoration(
@@ -2195,7 +2204,7 @@ class _view_goalsState extends State<view_goals> {
                                                   color: Colors.transparent,
                                                   border: Border.all(
                                                       width:
-                                                          AppDimensions.width10(
+                                                          UpdatedDimensions.width10(
                                                                   context) *
                                                               0.3,
                                                       color: Colors.white)),
@@ -2205,13 +2214,13 @@ class _view_goalsState extends State<view_goals> {
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Colors.white,
-                                                      height: AppDimensions
+                                                      height: UpdatedDimensions
                                                               .height10(
                                                                   context) *
                                                           0.12,
                                                       fontFamily: 'laila',
                                                       fontSize:
-                                                          AppDimensions.font10(
+                                                          UpdatedDimensions.font10(
                                                                   context) *
                                                               1.6,
                                                       //add 2 px font size from feedback
@@ -2225,16 +2234,16 @@ class _view_goalsState extends State<view_goals> {
                                 : SizedBox(
                                     width: double.infinity,
                                     height:
-                                        AppDimensions.height10(context) * 19.2,
+                                        UpdatedDimensions.height10(context) * 19.2,
                                     child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
                                         child: Column(children: [
                                           SizedBox(
                                             //  color: Colors.red,
-                                            height: AppDimensions.height10(
+                                            height: UpdatedDimensions.height10(
                                                     context) *
                                                 19.2,
-                                            // width: AppDimensions.width10(context) * 39.2,
+                                            // width: UpdatedDimensions.width10(context) * 39.2,
                                             child: SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
                                               controller: _scrollController,
@@ -2249,16 +2258,16 @@ class _view_goalsState extends State<view_goals> {
                                                       fetchPracticeByDay();
                                                     },
                                                     child: Container(
-                                                      height: AppDimensions
+                                                      height: UpdatedDimensions
                                                               .height10(
                                                                   context) *
                                                           7.9,
                                                       width:
-                                                          AppDimensions.width10(
+                                                          UpdatedDimensions.width10(
                                                                   context) *
                                                               7.9,
                                                       margin: EdgeInsets.only(
-                                                          top: AppDimensions
+                                                          top: UpdatedDimensions
                                                                   .height10(
                                                                       context) *
                                                               8.4),
@@ -2289,7 +2298,7 @@ class _view_goalsState extends State<view_goals> {
                                                                 .substring(
                                                                     0, 3),
                                                             style: TextStyle(
-                                                                fontSize: AppDimensions
+                                                                fontSize: UpdatedDimensions
                                                                         .font10(
                                                                             context) *
                                                                     1.2,
@@ -2302,7 +2311,7 @@ class _view_goalsState extends State<view_goals> {
                                                           Text(
                                                             '${getFormattedDate(past).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(past).split('-').reversed.join().substring(2, 4)}',
                                                             style: TextStyle(
-                                                                fontSize: AppDimensions
+                                                                fontSize: UpdatedDimensions
                                                                         .font10(
                                                                             context) *
                                                                     1.4,
@@ -2313,11 +2322,11 @@ class _view_goalsState extends State<view_goals> {
                                                                     0xff5B74A6)),
                                                           ),
                                                           Container(
-                                                            height: AppDimensions
+                                                            height: UpdatedDimensions
                                                                     .height10(
                                                                         context) *
                                                                 2.5,
-                                                            width: AppDimensions
+                                                            width: UpdatedDimensions
                                                                     .height10(
                                                                         context) *
                                                                 2.5,
@@ -2327,11 +2336,11 @@ class _view_goalsState extends State<view_goals> {
                                                                 color: Color(
                                                                     0xff156F6D)),
                                                             child: SizedBox(
-                                                                width: AppDimensions
+                                                                width: UpdatedDimensions
                                                                         .width10(
                                                                             context) *
                                                                     1.7,
-                                                                height: AppDimensions
+                                                                height: UpdatedDimensions
                                                                         .height10(
                                                                             context) *
                                                                     1.5,
@@ -2342,7 +2351,7 @@ class _view_goalsState extends State<view_goals> {
                                                                     '${responseData['previousCompletePractice']}/${responseData['previousTotalPractice']}',
                                                                     style: TextStyle(
                                                                         fontSize:
-                                                                            AppDimensions.font10(context) *
+                                                                            UpdatedDimensions.font10(context) *
                                                                                 1.0,
                                                                         fontWeight:
                                                                             FontWeight
@@ -2358,11 +2367,11 @@ class _view_goalsState extends State<view_goals> {
                                                   ),
                                                   Container(
                                                     width:
-                                                        AppDimensions.height10(
+                                                        UpdatedDimensions.height10(
                                                                 context) *
                                                             8.3,
                                                     height:
-                                                        AppDimensions.height10(
+                                                        UpdatedDimensions.height10(
                                                                 context) *
                                                             8.3,
                                                     margin:
@@ -2388,11 +2397,11 @@ class _view_goalsState extends State<view_goals> {
                                                         //             missed: false)));
                                                       },
                                                       child: Container(
-                                                        height: AppDimensions
+                                                        height: UpdatedDimensions
                                                                 .height10(
                                                                     context) *
                                                             7.9,
-                                                        width: AppDimensions
+                                                        width: UpdatedDimensions
                                                                 .width10(
                                                                     context) *
                                                             7.9,
@@ -2434,9 +2443,9 @@ class _view_goalsState extends State<view_goals> {
                                                                               0,
                                                                               3),
                                                                       style: TextStyle(
-                                                                          height: AppDimensions.height10(context) *
+                                                                          height: UpdatedDimensions.height10(context) *
                                                                               0.12,
-                                                                          fontSize: AppDimensions.font10(context) *
+                                                                          fontSize: UpdatedDimensions.font10(context) *
                                                                               1.2,
                                                                           fontWeight: FontWeight
                                                                               .w600,
@@ -2446,22 +2455,22 @@ class _view_goalsState extends State<view_goals> {
                                                                     Text(
                                                                       '${getFormattedDate(current).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(current).split('-').reversed.join().substring(2, 4)}',
                                                                       style: TextStyle(
-                                                                          height: AppDimensions.height10(context) *
+                                                                          height: UpdatedDimensions.height10(context) *
                                                                               0.12,
                                                                           color: const Color(
                                                                               0xFFFBFBFB),
-                                                                          fontSize: AppDimensions.font10(context) *
+                                                                          fontSize: UpdatedDimensions.font10(context) *
                                                                               1.4,
                                                                           fontWeight:
                                                                               FontWeight.w400),
                                                                     ),
                                                                     Container(
-                                                                        height: AppDimensions.height10(context) *
+                                                                        height: UpdatedDimensions.height10(context) *
                                                                             2.5,
-                                                                        width: AppDimensions.height10(context) *
+                                                                        width: UpdatedDimensions.height10(context) *
                                                                             2.5,
                                                                         margin: EdgeInsets.only(
-                                                                            top: AppDimensions.height10(context) *
+                                                                            top: UpdatedDimensions.height10(context) *
                                                                                 0.3),
                                                                         decoration:
                                                                             const BoxDecoration(
@@ -2479,7 +2488,7 @@ class _view_goalsState extends State<view_goals> {
                                                                             child:
                                                                                 Text(
                                                                               '0/0',
-                                                                              style: TextStyle(fontSize: AppDimensions.font10(context) * 1.0, fontWeight: FontWeight.w400, color: Colors.white),
+                                                                              style: TextStyle(fontSize: UpdatedDimensions.font10(context) * 1.0, fontWeight: FontWeight.w400, color: Colors.white),
                                                                             ),
                                                                           ),
                                                                         ))
@@ -2502,16 +2511,16 @@ class _view_goalsState extends State<view_goals> {
                                                     },
                                                     child: Container(
                                                         height:
-                                                            AppDimensions
+                                                            UpdatedDimensions
                                                                     .height10(
                                                                         context) *
                                                                 7.9,
-                                                        width: AppDimensions
+                                                        width: UpdatedDimensions
                                                                 .width10(
                                                                     context) *
                                                             7.9,
                                                         margin: EdgeInsets.only(
-                                                          top: AppDimensions
+                                                          top: UpdatedDimensions
                                                                   .height10(
                                                                       context) *
                                                               8.4,
@@ -2521,7 +2530,7 @@ class _view_goalsState extends State<view_goals> {
                                                           shape:
                                                               BoxShape.circle,
                                                           border: Border.all(
-                                                              width: AppDimensions
+                                                              width: UpdatedDimensions
                                                                       .width10(
                                                                           context) *
                                                                   0.3,
@@ -2551,7 +2560,7 @@ class _view_goalsState extends State<view_goals> {
                                                                       0, 3),
                                                               style: TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.font10(
+                                                                      UpdatedDimensions.font10(
                                                                               context) *
                                                                           1.2,
                                                                   fontWeight:
@@ -2564,7 +2573,7 @@ class _view_goalsState extends State<view_goals> {
                                                               '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
                                                               style: TextStyle(
                                                                   fontSize:
-                                                                      AppDimensions.font10(
+                                                                      UpdatedDimensions.font10(
                                                                               context) *
                                                                           1.4,
                                                                   fontWeight:
@@ -2574,11 +2583,11 @@ class _view_goalsState extends State<view_goals> {
                                                                       0xff5B74A6)),
                                                             ),
                                                             Container(
-                                                              height: AppDimensions
+                                                              height: UpdatedDimensions
                                                                       .height10(
                                                                           context) *
                                                                   2.5,
-                                                              width: AppDimensions
+                                                              width: UpdatedDimensions
                                                                       .width10(
                                                                           context) *
                                                                   2.5,
@@ -2588,11 +2597,11 @@ class _view_goalsState extends State<view_goals> {
                                                                   color: Color(
                                                                       0xff156F6D)),
                                                               child: SizedBox(
-                                                                  width: AppDimensions
+                                                                  width: UpdatedDimensions
                                                                           .width10(
                                                                               context) *
                                                                       1.7,
-                                                                  height: AppDimensions
+                                                                  height: UpdatedDimensions
                                                                           .height10(
                                                                               context) *
                                                                       1.5,
@@ -2602,7 +2611,7 @@ class _view_goalsState extends State<view_goals> {
                                                                     child: Text(
                                                                       '${responseData['nextCompletePractice']}/${responseData['nextTotalPratice']}',
                                                                       style: TextStyle(
-                                                                          fontSize: AppDimensions.font10(context) *
+                                                                          fontSize: UpdatedDimensions.font10(context) *
                                                                               1.0,
                                                                           fontWeight: FontWeight
                                                                               .w400,
@@ -2620,13 +2629,13 @@ class _view_goalsState extends State<view_goals> {
                                           ),
                                           Container(
                                             width:
-                                                AppDimensions.width10(context) *
+                                                UpdatedDimensions.width10(context) *
                                                     34.3,
-                                            height: AppDimensions.height10(
+                                            height: UpdatedDimensions.height10(
                                                     context) *
                                                 4.9,
                                             margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
+                                                top: UpdatedDimensions.height10(
                                                         context) *
                                                     18.9),
                                             child: Center(
@@ -2635,7 +2644,7 @@ class _view_goalsState extends State<view_goals> {
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize:
-                                                        AppDimensions.font10(
+                                                        UpdatedDimensions.font10(
                                                                 context) *
                                                             3.0,
                                                     fontWeight: FontWeight.w700,
@@ -2652,10 +2661,10 @@ class _view_goalsState extends State<view_goals> {
                                                           const InAppReviewExampleApp()));
                                             },
                                             child: SizedBox(
-                                              width: AppDimensions.width10(
+                                              width: UpdatedDimensions.width10(
                                                       context) *
                                                   26.9,
-                                              height: AppDimensions.height10(
+                                              height: UpdatedDimensions.height10(
                                                       context) *
                                                   5.8,
                                               child: Center(
@@ -2665,12 +2674,12 @@ class _view_goalsState extends State<view_goals> {
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontFamily: 'Laila',
-                                                      height: AppDimensions
+                                                      height: UpdatedDimensions
                                                               .height10(
                                                                   context) *
                                                           0.15,
                                                       fontSize:
-                                                          AppDimensions.font10(
+                                                          UpdatedDimensions.font10(
                                                                   context) *
                                                               1.8,
                                                       fontWeight:
@@ -2680,7 +2689,7 @@ class _view_goalsState extends State<view_goals> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: AppDimensions.height10(
+                                            height: UpdatedDimensions.height10(
                                                     context) *
                                                 1.4,
                                           ),
@@ -2701,10 +2710,10 @@ class _view_goalsState extends State<view_goals> {
                                                       .toString());
                                             },
                                             child: Container(
-                                              width: AppDimensions.width10(
+                                              width: UpdatedDimensions.width10(
                                                       context) *
                                                   10.1,
-                                              height: AppDimensions.height10(
+                                              height: UpdatedDimensions.height10(
                                                       context) *
                                                   10.1,
                                               decoration: BoxDecoration(
@@ -2712,7 +2721,7 @@ class _view_goalsState extends State<view_goals> {
                                                   color: Colors.transparent,
                                                   border: Border.all(
                                                       width:
-                                                          AppDimensions.width10(
+                                                          UpdatedDimensions.width10(
                                                                   context) *
                                                               0.3,
                                                       color: Colors.white)),
@@ -2722,15 +2731,15 @@ class _view_goalsState extends State<view_goals> {
                                                 children: [
                                                   Container(
                                                       height:
-                                                          AppDimensions.height10(
+                                                          UpdatedDimensions.height10(
                                                                   context) *
                                                               3.5,
                                                       width:
-                                                          AppDimensions.width10(
+                                                          UpdatedDimensions.width10(
                                                                   context) *
                                                               3.5,
                                                       padding: EdgeInsets.all(
-                                                          AppDimensions.height10(
+                                                          UpdatedDimensions.height10(
                                                                   context) *
                                                               0.6),
                                                       decoration: BoxDecoration(
@@ -2743,11 +2752,11 @@ class _view_goalsState extends State<view_goals> {
                                                           color: Colors.transparent),
                                                       child: Image.asset(
                                                         'assets/images/Add goal.webp',
-                                                        height: AppDimensions
+                                                        height: UpdatedDimensions
                                                                 .height10(
                                                                     context) *
                                                             2.9,
-                                                        width: AppDimensions
+                                                        width: UpdatedDimensions
                                                                 .width10(
                                                                     context) *
                                                             2.9,
@@ -2760,7 +2769,7 @@ class _view_goalsState extends State<view_goals> {
                                                       style: TextStyle(
                                                           color: Colors.white,
                                                           fontFamily: 'laila',
-                                                          fontSize: AppDimensions
+                                                          fontSize: UpdatedDimensions
                                                                   .font10(
                                                                       context) *
                                                               1.4,
@@ -2775,17 +2784,17 @@ class _view_goalsState extends State<view_goals> {
                                         ])))
                         : SizedBox(
                             width: double.infinity,
-                            height: AppDimensions.height10(context) * 19.2,
+                            height: UpdatedDimensions.height10(context) * 19.2,
                             child: SingleChildScrollView(
                                 scrollDirection: Axis.vertical,
                                 child: Column(children: [
                                   SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: SizedBox(
-                                      height: AppDimensions.height10(context) *
+                                      height: UpdatedDimensions.height10(context) *
                                           19.2,
                                       width:
-                                          AppDimensions.width10(context) * 45.7,
+                                          UpdatedDimensions.width10(context) * 45.7,
                                       child: Stack(
                                         children: [
                                           Align(
@@ -2799,14 +2808,14 @@ class _view_goalsState extends State<view_goals> {
                                                 fetchPracticeByDay();
                                               },
                                               child: Container(
-                                                height: AppDimensions.height10(
+                                                height: UpdatedDimensions.height10(
                                                         context) *
                                                     7.9,
-                                                width: AppDimensions.height10(
+                                                width: UpdatedDimensions.height10(
                                                         context) *
                                                     7.9,
                                                 margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
+                                                    top: UpdatedDimensions.height10(
                                                             context) *
                                                         8.4),
                                                 decoration: BoxDecoration(
@@ -2823,7 +2832,7 @@ class _view_goalsState extends State<view_goals> {
                                                       getFormattedDay(past)
                                                           .substring(0, 3),
                                                       style: TextStyle(
-                                                          fontSize: AppDimensions
+                                                          fontSize: UpdatedDimensions
                                                                   .font10(
                                                                       context) *
                                                               1.2,
@@ -2837,12 +2846,12 @@ class _view_goalsState extends State<view_goals> {
                                                           color: Colors.white),
                                                     ),
                                                     Container(
-                                                      height: AppDimensions
+                                                      height: UpdatedDimensions
                                                               .height10(
                                                                   context) *
                                                           2.7,
                                                       width:
-                                                          AppDimensions.width10(
+                                                          UpdatedDimensions.width10(
                                                                   context) *
                                                               2.7,
                                                       margin:
@@ -2856,16 +2865,16 @@ class _view_goalsState extends State<view_goals> {
                                                                 Colors.white),
                                                       ),
                                                       child: Container(
-                                                          width: AppDimensions
+                                                          width: UpdatedDimensions
                                                                   .width10(
                                                                       context) *
                                                               1.7,
-                                                          height: AppDimensions
+                                                          height: UpdatedDimensions
                                                                   .height10(
                                                                       context) *
                                                               1.5,
                                                           margin: EdgeInsets.only(
-                                                              top: AppDimensions
+                                                              top: UpdatedDimensions
                                                                       .height10(
                                                                           context) *
                                                                   0.2),
@@ -2891,10 +2900,10 @@ class _view_goalsState extends State<view_goals> {
                                           Align(
                                             alignment: const Alignment(0, 0),
                                             child: Container(
-                                              width: AppDimensions.width10(
+                                              width: UpdatedDimensions.width10(
                                                       context) *
                                                   8.3,
-                                              height: AppDimensions.height10(
+                                              height: UpdatedDimensions.height10(
                                                       context) *
                                                   8.3,
                                               //  margin: EdgeInsets.only(right: 121, left: 121),
@@ -2903,22 +2912,22 @@ class _view_goalsState extends State<view_goals> {
                                                   shape: BoxShape.circle,
                                                   border: Border.all(
                                                       width:
-                                                          AppDimensions.width10(
+                                                          UpdatedDimensions.width10(
                                                                   context) *
                                                               0.1,
                                                       color: Colors.white),
                                                   color: Colors.transparent),
                                               child: Container(
-                                                height: AppDimensions.height10(
+                                                height: UpdatedDimensions.height10(
                                                         context) *
                                                     7.9,
-                                                width: AppDimensions.height10(
+                                                width: UpdatedDimensions.height10(
                                                         context) *
                                                     7.9,
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                        width: AppDimensions
+                                                        width: UpdatedDimensions
                                                                 .width10(
                                                                     context) *
                                                             0.3,
@@ -2938,7 +2947,7 @@ class _view_goalsState extends State<view_goals> {
                                                                   current)
                                                               .substring(0, 3),
                                                           style: TextStyle(
-                                                              fontSize: AppDimensions
+                                                              fontSize: UpdatedDimensions
                                                                       .height10(
                                                                           context) *
                                                                   1.4,
@@ -2953,7 +2962,7 @@ class _view_goalsState extends State<view_goals> {
                                                           style: TextStyle(
                                                               color:
                                                                   Colors.white,
-                                                              fontSize: AppDimensions
+                                                              fontSize: UpdatedDimensions
                                                                       .height10(
                                                                           context) *
                                                                   1.3,
@@ -2963,16 +2972,16 @@ class _view_goalsState extends State<view_goals> {
                                                         ),
                                                         Container(
                                                             height:
-                                                                AppDimensions
+                                                                UpdatedDimensions
                                                                         .height10(
                                                                             context) *
                                                                     2.5,
-                                                            width: AppDimensions
+                                                            width: UpdatedDimensions
                                                                     .height10(
                                                                         context) *
                                                                 2.5,
                                                             margin: EdgeInsets.only(
-                                                                top: AppDimensions
+                                                                top: UpdatedDimensions
                                                                         .height10(
                                                                             context) *
                                                                     0.202),
@@ -2992,7 +3001,7 @@ class _view_goalsState extends State<view_goals> {
                                                                   '0/0',
                                                                   style: TextStyle(
                                                                       fontSize:
-                                                                          AppDimensions.font10(
+                                                                          UpdatedDimensions.font10(
                                                                               context),
                                                                       fontWeight:
                                                                           FontWeight
@@ -3020,10 +3029,10 @@ class _view_goalsState extends State<view_goals> {
                                                 fetchPracticeByDay();
                                               },
                                               child: Container(
-                                                  height: AppDimensions
+                                                  height: UpdatedDimensions
                                                           .height10(context) *
                                                       7.9,
-                                                  width: AppDimensions.height10(
+                                                  width: UpdatedDimensions.height10(
                                                           context) *
                                                       7.9,
                                                   margin: const EdgeInsets.only(
@@ -3032,7 +3041,7 @@ class _view_goalsState extends State<view_goals> {
                                                   decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          width: AppDimensions
+                                                          width: UpdatedDimensions
                                                                   .width10(
                                                                       context) *
                                                               0.3,
@@ -3048,7 +3057,7 @@ class _view_goalsState extends State<view_goals> {
                                                         getFormattedDay(next)
                                                             .substring(0, 3),
                                                         style: TextStyle(
-                                                            fontSize: AppDimensions
+                                                            fontSize: UpdatedDimensions
                                                                     .font10(
                                                                         context) *
                                                                 1.2,
@@ -3064,11 +3073,11 @@ class _view_goalsState extends State<view_goals> {
                                                                 Colors.white),
                                                       ),
                                                       Container(
-                                                        height: AppDimensions
+                                                        height: UpdatedDimensions
                                                                 .height10(
                                                                     context) *
                                                             2.7,
-                                                        width: AppDimensions
+                                                        width: UpdatedDimensions
                                                                 .width10(
                                                                     context) *
                                                             2.7,
@@ -3084,11 +3093,11 @@ class _view_goalsState extends State<view_goals> {
                                                                   Colors.white),
                                                         ),
                                                         child: Container(
-                                                            width: AppDimensions
+                                                            width: UpdatedDimensions
                                                                     .height10(
                                                                         context) *
                                                                 1.7,
-                                                            height: AppDimensions
+                                                            height: UpdatedDimensions
                                                                     .height10(
                                                                         context) *
                                                                 1.5,
@@ -3101,7 +3110,7 @@ class _view_goalsState extends State<view_goals> {
                                                               child: Text(
                                                                 '0/2',
                                                                 style: TextStyle(
-                                                                    fontSize: AppDimensions
+                                                                    fontSize: UpdatedDimensions
                                                                         .font10(
                                                                             context),
                                                                     fontWeight:
@@ -3124,7 +3133,7 @@ class _view_goalsState extends State<view_goals> {
                                     // width: 343,
                                     // height: 49,
                                     margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
+                                      top: UpdatedDimensions.height10(context) *
                                           14.9,
                                     ),
                                     child: Center(
@@ -3134,7 +3143,7 @@ class _view_goalsState extends State<view_goals> {
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize:
-                                                AppDimensions.font10(context) *
+                                                UpdatedDimensions.font10(context) *
                                                     3.0,
                                             fontWeight: FontWeight.w700,
                                             fontFamily: 'Laila'),
@@ -3145,7 +3154,7 @@ class _view_goalsState extends State<view_goals> {
                                     // width: 269,
                                     // height: 58,
                                     margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
+                                        top: UpdatedDimensions.height10(context) *
                                             1.8),
                                     child: Center(
                                       child: Text(
@@ -3155,7 +3164,7 @@ class _view_goalsState extends State<view_goals> {
                                             color: Colors.white,
                                             fontFamily: 'Laila',
                                             fontSize:
-                                                AppDimensions.font10(context) *
+                                                UpdatedDimensions.font10(context) *
                                                     1.8,
                                             fontWeight: FontWeight.w600),
                                       ),
@@ -3171,12 +3180,12 @@ class _view_goalsState extends State<view_goals> {
                                     },
                                     child: Container(
                                         height:
-                                            AppDimensions.height10(context) *
+                                            UpdatedDimensions.height10(context) *
                                                 5.0,
-                                        width: AppDimensions.width10(context) *
+                                        width: UpdatedDimensions.width10(context) *
                                             24.3,
                                         margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
+                                            top: UpdatedDimensions.height10(
                                                     context) *
                                                 4.6),
                                         decoration: BoxDecoration(
@@ -3188,7 +3197,7 @@ class _view_goalsState extends State<view_goals> {
                                                 Color(0xffFDA210),
                                               ]),
                                           borderRadius: BorderRadius.circular(
-                                              AppDimensions.height10(context) *
+                                              UpdatedDimensions.height10(context) *
                                                   5.0),
                                         ),
                                         child: Center(
@@ -3196,7 +3205,7 @@ class _view_goalsState extends State<view_goals> {
                                             'View all goals',
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: AppDimensions.font10(
+                                                fontSize: UpdatedDimensions.font10(
                                                         context) *
                                                     1.6,
                                                 fontWeight: FontWeight.w600,
@@ -3218,15 +3227,15 @@ class _view_goalsState extends State<view_goals> {
 //   Widget build(BuildContext context) {
 //     return SizedBox(
 //         width: double.infinity,
-//         height: AppDimensions.height10(context) * 19.2,
+//         height: UpdatedDimensions.height10(context) * 19.2,
 //         child: SingleChildScrollView(
 //             scrollDirection: Axis.vertical,
 //             child: Column(children: [
 //               SingleChildScrollView(
 //                 scrollDirection: Axis.horizontal,
 //                 child: SizedBox(
-//                   height: AppDimensions.height10(context) * 19.2,
-//                   width: AppDimensions.width10(context) * 45.7,
+//                   height: UpdatedDimensions.height10(context) * 19.2,
+//                   width: UpdatedDimensions.width10(context) * 45.7,
 //                   child: Stack(
 //                     children: [
 //                       Align(
@@ -3241,10 +3250,10 @@ class _view_goalsState extends State<view_goals> {
 //                                 )));
 //                           },
 //                           child: Container(
-//                             height: AppDimensions.height10(context) * 7.9,
-//                             width: AppDimensions.width10(context) * 7.9,
+//                             height: UpdatedDimensions.height10(context) * 7.9,
+//                             width: UpdatedDimensions.width10(context) * 7.9,
 //                             margin: EdgeInsets.only(
-//                                 top: AppDimensions.height10(context) * 8.4),
+//                                 top: UpdatedDimensions.height10(context) * 8.4),
 //                             decoration: BoxDecoration(
 //                                 shape: BoxShape.circle,
 //                                 border:
@@ -3257,7 +3266,7 @@ class _view_goalsState extends State<view_goals> {
 //                                   'MON',
 //                                   style: TextStyle(
 //                                       fontSize:
-//                                           AppDimensions.font10(context) * 1.2,
+//                                           UpdatedDimensions.font10(context) * 1.2,
 //                                       fontWeight: FontWeight.w600,
 //                                       color: Colors.white),
 //                                 ),
@@ -3266,8 +3275,8 @@ class _view_goalsState extends State<view_goals> {
 //                                   style: TextStyle(color: Colors.white),
 //                                 ),
 //                                 Container(
-//                                   height: AppDimensions.height10(context) * 2.7,
-//                                   width: AppDimensions.width10(context) * 2.7,
+//                                   height: UpdatedDimensions.height10(context) * 2.7,
+//                                   width: UpdatedDimensions.width10(context) * 2.7,
 //                                   margin: const EdgeInsets.only(top: 3.32),
 //                                   decoration: BoxDecoration(
 //                                     shape: BoxShape.circle,
@@ -3276,11 +3285,11 @@ class _view_goalsState extends State<view_goals> {
 //                                   ),
 //                                   child: Container(
 //                                       width:
-//                                           AppDimensions.height10(context) * 1.7,
+//                                           UpdatedDimensions.height10(context) * 1.7,
 //                                       height:
-//                                           AppDimensions.height10(context) * 1.5,
+//                                           UpdatedDimensions.height10(context) * 1.5,
 //                                       margin: EdgeInsets.only(
-//                                           top: AppDimensions.height10(context) *
+//                                           top: UpdatedDimensions.height10(context) *
 //                                               0.2),
 //                                       // margin: const EdgeInsets.only(left: 1),
 //                                       child: const Center(
@@ -3301,23 +3310,23 @@ class _view_goalsState extends State<view_goals> {
 //                       Align(
 //                         alignment: const Alignment(0, 0),
 //                         child: Container(
-//                           width: AppDimensions.width10(context) * 8.3,
-//                           height: AppDimensions.height10(context) * 8.3,
+//                           width: UpdatedDimensions.width10(context) * 8.3,
+//                           height: UpdatedDimensions.height10(context) * 8.3,
 //                           //  margin: EdgeInsets.only(right: 121, left: 121),
 //                           padding: const EdgeInsets.all(4),
 //                           decoration: BoxDecoration(
 //                               shape: BoxShape.circle,
 //                               border: Border.all(
-//                                   width: AppDimensions.width10(context) * 0.1,
+//                                   width: UpdatedDimensions.width10(context) * 0.1,
 //                                   color: Colors.white),
 //                               color: Colors.transparent),
 //                           child: Container(
-//                             height: AppDimensions.height10(context) * 7.9,
-//                             width: AppDimensions.width10(context) * 7.9,
+//                             height: UpdatedDimensions.height10(context) * 7.9,
+//                             width: UpdatedDimensions.width10(context) * 7.9,
 //                             decoration: BoxDecoration(
 //                                 shape: BoxShape.circle,
 //                                 border: Border.all(
-//                                     width: AppDimensions.width10(context) * 0.3,
+//                                     width: UpdatedDimensions.width10(context) * 0.3,
 //                                     color: Colors.white),
 //                                 color: Colors.transparent),
 //                             child: Stack(children: [
@@ -3330,7 +3339,7 @@ class _view_goalsState extends State<view_goals> {
 //                                       'TUE',
 //                                       style: TextStyle(
 //                                           fontSize:
-//                                               AppDimensions.font10(context) *
+//                                               UpdatedDimensions.font10(context) *
 //                                                   1.4,
 //                                           fontWeight: FontWeight.w600,
 //                                           color: Colors.white),
@@ -3340,18 +3349,18 @@ class _view_goalsState extends State<view_goals> {
 //                                       style: TextStyle(
 //                                           color: Colors.white,
 //                                           fontSize:
-//                                               AppDimensions.font10(context) *
+//                                               UpdatedDimensions.font10(context) *
 //                                                   1.3,
 //                                           fontWeight: FontWeight.w400),
 //                                     ),
 //                                     Container(
 //                                         height:
-//                                             AppDimensions.height10(context) *
+//                                             UpdatedDimensions.height10(context) *
 //                                                 2.5,
-//                                         width: AppDimensions.width10(context) *
+//                                         width: UpdatedDimensions.width10(context) *
 //                                             2.5,
 //                                         margin: EdgeInsets.only(
-//                                             top: AppDimensions.height10(
+//                                             top: UpdatedDimensions.height10(
 //                                                     context) *
 //                                                 0.202),
 //                                         decoration: const BoxDecoration(
@@ -3365,7 +3374,7 @@ class _view_goalsState extends State<view_goals> {
 //                                               '0/0',
 //                                               style: TextStyle(
 //                                                   fontSize:
-//                                                       AppDimensions.height10(
+//                                                       UpdatedDimensions.height10(
 //                                                           context),
 //                                                   fontWeight: FontWeight.w400,
 //                                                   color: Colors.white),
@@ -3391,8 +3400,8 @@ class _view_goalsState extends State<view_goals> {
 //                                 )));
 //                           },
 //                           child: Container(
-//                               height: AppDimensions.height10(context) * 7.9,
-//                               width: AppDimensions.width10(context) * 7.9,
+//                               height: UpdatedDimensions.height10(context) * 7.9,
+//                               width: UpdatedDimensions.width10(context) * 7.9,
 //                               margin: const EdgeInsets.only(
 //                                 top: 84,
 //                               ),
@@ -3400,7 +3409,7 @@ class _view_goalsState extends State<view_goals> {
 //                                   shape: BoxShape.circle,
 //                                   border: Border.all(
 //                                       width:
-//                                           AppDimensions.height10(context) * 0.3,
+//                                           UpdatedDimensions.height10(context) * 0.3,
 //                                       color: Colors.white),
 //                                   color: Colors.transparent),
 //                               child: Container(
@@ -3412,7 +3421,7 @@ class _view_goalsState extends State<view_goals> {
 //                                     'MON',
 //                                     style: TextStyle(
 //                                         fontSize:
-//                                             AppDimensions.font10(context) * 1.2,
+//                                             UpdatedDimensions.font10(context) * 1.2,
 //                                         fontWeight: FontWeight.w600,
 //                                         color: Colors.white),
 //                                   ),
@@ -3422,8 +3431,8 @@ class _view_goalsState extends State<view_goals> {
 //                                   ),
 //                                   Container(
 //                                     height:
-//                                         AppDimensions.height10(context) * 2.7,
-//                                     width: AppDimensions.width10(context) * 2.7,
+//                                         UpdatedDimensions.height10(context) * 2.7,
+//                                     width: UpdatedDimensions.width10(context) * 2.7,
 //                                     margin: const EdgeInsets.only(top: 3.32),
 //                                     decoration: BoxDecoration(
 //                                       shape: BoxShape.circle,
@@ -3431,10 +3440,10 @@ class _view_goalsState extends State<view_goals> {
 //                                           width: 1, color: Colors.white),
 //                                     ),
 //                                     child: Container(
-//                                         width: AppDimensions.width10(context) *
+//                                         width: UpdatedDimensions.width10(context) *
 //                                             1.7,
 //                                         height:
-//                                             AppDimensions.height10(context) *
+//                                             UpdatedDimensions.height10(context) *
 //                                                 1.5,
 //                                         margin:
 //                                             const EdgeInsets.only(top: 3.32),
@@ -3444,7 +3453,7 @@ class _view_goalsState extends State<view_goals> {
 //                                             '0/2',
 //                                             style: TextStyle(
 //                                                 fontSize:
-//                                                     AppDimensions.height10(
+//                                                     UpdatedDimensions.height10(
 //                                                         context),
 //                                                 fontWeight: FontWeight.w400,
 //                                                 color: Colors.white),
@@ -3463,15 +3472,15 @@ class _view_goalsState extends State<view_goals> {
 //                 // width: 343,
 //                 // height: 49,
 //                 margin: EdgeInsets.only(
-//                     top: AppDimensions.height10(context) * 14.9,
-//                     bottom: AppDimensions.height10(context) * 2.2),
+//                     top: UpdatedDimensions.height10(context) * 14.9,
+//                     bottom: UpdatedDimensions.height10(context) * 2.2),
 //                 child: Center(
 //                   child: Text(
 //                     'All your practices are\ninactive',
 //                     textAlign: TextAlign.center,
 //                     style: TextStyle(
 //                         color: Colors.white,
-//                         fontSize: AppDimensions.font10(context) * 3.0,
+//                         fontSize: UpdatedDimensions.font10(context) * 3.0,
 //                         fontWeight: FontWeight.w700,
 //                         fontFamily: 'Laila'),
 //                   ),
@@ -3481,7 +3490,7 @@ class _view_goalsState extends State<view_goals> {
 //                 // width: 269,
 //                 // height: 58,
 //                 margin:
-//                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.2),
+//                     EdgeInsets.only(top: UpdatedDimensions.height10(context) * 3.2),
 //                 child: Center(
 //                   child: Text(
 //                     "You don’t have any active or\nplanned practices. Please view\nyour current goals to manage\nand update your practices.",
@@ -3489,7 +3498,7 @@ class _view_goalsState extends State<view_goals> {
 //                     style: TextStyle(
 //                         color: Colors.white,
 //                         fontFamily: 'Laila',
-//                         fontSize: AppDimensions.font10(context) * 1.8,
+//                         fontSize: UpdatedDimensions.font10(context) * 1.8,
 //                         fontWeight: FontWeight.w600),
 //                   ),
 //                 ),
@@ -3497,10 +3506,10 @@ class _view_goalsState extends State<view_goals> {
 //               AnimatedScaleButton(
 //                 onTap: () {},
 //                 child: Container(
-//                     height: AppDimensions.height10(context) * 5.0,
-//                     width: AppDimensions.width10(context) * 24.3,
+//                     height: UpdatedDimensions.height10(context) * 5.0,
+//                     width: UpdatedDimensions.width10(context) * 24.3,
 //                     margin: EdgeInsets.only(
-//                         top: AppDimensions.height10(context) * 4.6),
+//                         top: UpdatedDimensions.height10(context) * 4.6),
 //                     decoration: BoxDecoration(
 //                       gradient: const LinearGradient(
 //                           begin: Alignment.topCenter,
@@ -3510,14 +3519,14 @@ class _view_goalsState extends State<view_goals> {
 //                             Color(0xffFDA210),
 //                           ]),
 //                       borderRadius: BorderRadius.circular(
-//                           AppDimensions.height10(context) * 5.0),
+//                           UpdatedDimensions.height10(context) * 5.0),
 //                     ),
 //                     child: Center(
 //                       child: Text(
 //                         'View all goals',
 //                         style: TextStyle(
 //                             color: Colors.white,
-//                             fontSize: AppDimensions.font10(context) * 1.6,
+//                             fontSize: UpdatedDimensions.font10(context) * 1.6,
 //                             fontWeight: FontWeight.w600,
 //                             fontFamily: 'Laila'),
 //                       ),

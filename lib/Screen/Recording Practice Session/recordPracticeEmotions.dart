@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeStopwatch.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
@@ -185,15 +184,13 @@ class _emotionsState extends State<emotions> {
                                                   Navigator.pushReplacement(
                                                       context,
                                                       FadePageRouteReverse(
-                                                        page: const dashBoard(
-                                                          saved: false,
-                                                          helpful_tips: false,
-                                                          membership: true,
-                                                          dashboard_ctrl: false,
-                                                          cancel: false,
-                                                          trial: false,
-                                                        ),
-                                                      ));
+                                                          page: const view_goals(
+                                                            missed: false,
+                                                            name: '',
+                                                            update: false,
+                                                            helpfulTips: false,
+                                                            record: 0,
+                                                          )));
                                                 }
                                               } else {
                                                 Navigator.push(

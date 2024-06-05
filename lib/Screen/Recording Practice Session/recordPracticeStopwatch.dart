@@ -13,7 +13,6 @@ import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
-import 'dashboardViewgoals.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -126,14 +125,13 @@ class _clocksState extends State<clocks> {
                                       Navigator.pushReplacement(
                                           context,
                                           FadePageRouteReverse(
-                                              page: const dashBoard(
-                                            saved: false,
-                                            helpful_tips: false,
-                                            membership: true,
-                                            dashboard_ctrl: false,
-                                            cancel: false,
-                                            trial: false,
-                                          )));
+                                              page: const view_goals(
+                                                missed: false,
+                                                name: '',
+                                                update: false,
+                                                helpfulTips: false,
+                                                record: 0,
+                                              )));
                                     } else {
                                       Navigator.push(
                                           context,

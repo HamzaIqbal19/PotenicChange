@@ -1,21 +1,20 @@
 import 'dart:async';
-
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:potenic_app/API/Hurdles.dart';
+import 'package:get/get.dart';
 import 'package:potenic_app/MyServices/Notification/notificationService.dart';
 import 'package:potenic_app/Notifier/GoalNotifier.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:potenic_app/Screen/splash/splash_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import 'MyServices/Notification/notificationController.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -56,34 +55,41 @@ Future<void> main(context) async {
   ]);
 
 
-
-  @pragma("vm:entry-point")
-   Future <void> onActionReceivedMethod(ReceivedAction receivedAction) async {
-
-    // String? route = receivedAction.payload?['name'];
-    // if (route == 'hurdle') {
-    //   navigatorKey.currentState?.push(
-    //     MaterialPageRoute(builder: (context) => landing_hurdles()),
-    //    );
-    // }
-  }
   
   foregroundMessaging();
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
   FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+    print("Message recieced listen");
+    final notificationController notificationsController = Get.find<notificationController>();
+    String? body = message.notification!.body;
+    String? route = message.data['route'];
+    String? id = message.data['id'];
+    String? url = message.data['url'];
+    notificationsController.setNotificationBody(body!);
+    notificationsController.setNotificationRoute(route!);
+    notificationsController.setNotificationId(id!);
+    notificationsController.setNotificationUrl(url!);
+
+  });
+
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
+    print("Message recieced openedApp");
+    final notificationController notificationsController = Get.find<notificationController>();
+    String? body = message.notification!.body;
+    String? route = message.data['route'];
+    String? id = message.data['id'];
+    String? url = message.data['url'];
+    notificationsController.setNotificationBody(body!);
+    notificationsController.setNotificationRoute(route!);
+    notificationsController.setNotificationId(id!);
+    notificationsController.setNotificationUrl(url!);
+
   });
 
 
-  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message)async { 
-    var route = message.data['name'];
-    // if(route == 'hurdle'){
-    //   print("onMessage: hurdle route back}");
-    //   navigatorKey.currentState?.push(
-    //     MaterialPageRoute(builder: (context) => landing_hurdles()),
-    //   );
-    // }
-  });
+
 
   await SentryFlutter.init(
     (options) {
@@ -105,8 +111,7 @@ Future<void> main(context) async {
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print("onMessage background: ${message.data}");
   await Firebase.initializeApp();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  await prefs.setString('navigateTo', message.data['name']);
+
 }
 
 class MyApp extends StatelessWidget with WidgetsBindingObserver {
@@ -115,6 +120,7 @@ class MyApp extends StatelessWidget with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     bool smallScreen = MediaQuery.of(context).size.height < 690;
+    final notificationController controller = Get.put(notificationController());
     return ScreenUtilInit(
         designSize: const Size(360, 660),
         minTextAdapt: true,

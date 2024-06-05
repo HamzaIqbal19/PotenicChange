@@ -184,3 +184,63 @@ class AppDimensions2 {
   static double iconConHeight = screenHeight / 19.25;
   static double iconSize = screenWidth / 17.14;
 }
+
+
+class UpdatedDimensions {
+  static screenHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+  static screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
+
+  // screen height 866.2857142857143
+  // screen width  411.4285714285714
+  double pageView(BuildContext context) => screenHeight(context) / 2.71;
+  double pageViewContainer(BuildContext context) =>
+      screenHeight(context) / 3.94;
+  double pageViewTextContainer(BuildContext context) =>
+      screenHeight(context) / 7.22;
+
+  // dynamic heights
+//Variation 1 7.545 90
+//Variation 2 85
+// Variation 3 8.5 82
+//Variation 4 9 80
+  static check(context) {
+    if (MediaQuery.of(context).size.height < 690) {
+      return ((8.5.h));
+    } else {
+      return (screenHeight(context) / 82.196080);
+    }
+  }
+
+// Variation 1 8.5 90
+// Variation 2 9 88
+// Variation 3 9.5 82
+//Variation 4 10 80
+  static checkWidth(context) {
+    if (MediaQuery.of(context).size.height < 690) {
+      return ((9.5.w));
+    } else {
+      return (screenHeight(context) / 82.196080);
+    }
+  }
+
+//Variation 1 8.22 90
+// Variation 2 8.5 88
+// Variation 3 9 82
+// Variation 4 9.5 80
+  static checkText(context) {
+    if (MediaQuery.of(context).size.height < 690) {
+      return ((9.sp));
+    } else {
+      return (screenHeight(context) / 82.196080);
+    }
+  }
+
+  static double height10(BuildContext context) => check(context);
+  static double font10(BuildContext context) => checkText(context);
+
+  // static double height10(BuildContext context) =>
+  //     screenHeight(context) / 90.196080;
+  static double width10(BuildContext context) => checkWidth(context);
+}
+

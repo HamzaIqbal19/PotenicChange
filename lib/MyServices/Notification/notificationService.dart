@@ -1,14 +1,18 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
-import 'package:potenic_app/main.dart';
+import 'package:get/get.dart';
+import 'notificationController.dart';
 
 void foregroundMessaging() {
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+ // final notificationController notificationsController = Get.find<notificationController>();
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
     String? title = message.notification!.title;
     String? body = message.notification!.body;
-    String? route = message.data['name'];
+    String? route = message.data['route'];
+    String? id = message.data['id'];
+    String? url = message.data['url'];
 
     AwesomeNotifications().createNotification(
         content: NotificationContent(
@@ -24,11 +28,11 @@ void foregroundMessaging() {
             autoDismissible: false,
             notificationLayout: NotificationLayout.BigText,
             backgroundColor: Colors.transparent));
-    // if (route == 'hurdle') {
-    //   navigatorKey.currentState?.push(
-    //     MaterialPageRoute(builder: (context) => landing_hurdles()),
-    //   );
-    // }
+    // notificationsController.setNotificationBody(body??'');
+    // notificationsController.setNotificationRoute(route??'');
+    // notificationsController.setNotificationId(id??"");
+    // notificationsController.setNotificationUrl(url??"");
+
 
   });
 

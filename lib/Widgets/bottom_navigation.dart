@@ -87,160 +87,109 @@ class Navigation_BarState extends State<Navigation_Bar> {
       //       : const BoxDecoration(
       //           shape: BoxShape.rectangle, color: Colors.transparent),
       //   //height: 77,
-      //   // width: AppDimensions.width10(context) * 30.5,
+      //   // width: UpdatedDimensions.width10(context) * 30.5,
       //   padding: EdgeInsets.only(
-      //       bottom: AppDimensions.height10(context) * 2.5,
-      //       left: AppDimensions.width10(context) * 5.4,
-      //       right: AppDimensions.width10(context) * 5.4),
+      //       bottom: UpdatedDimensions.height10(context) * 2.5,
+      //       left: UpdatedDimensions.width10(context) * 5.4,
+      //       right: UpdatedDimensions.width10(context) * 5.4),
       //   child:
       Padding(
         padding: EdgeInsets.only(
-          bottom:  0,
-          left: AppDimensions.width10(context) * 3.5,
-          right: AppDimensions.width10(context) * 3.5,
+          top: UpdatedDimensions.height10(context) * 2,
+          left: UpdatedDimensions.width10(context) * 2,
+          right: UpdatedDimensions.width10(context) * 2,
         ),
-        child: Container(
-          decoration: const BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Color(0xffD9B4B4),
-                // color: Colors.red,
-                blurRadius: 20, // Adjust the blur radius as needed
-                spreadRadius: 2, // Adjust the spread radius as needed
-                offset: Offset(0, -5), // Adjust the offset as needed
-              ),
-            ],
-          ),
-          child: BottomNavigationBar(
-            //selectedIconTheme: null,
-            unselectedItemColor: const Color(0xffFBFBFB),
-            fixedColor: const Color(0xffFBFBFB),
-            unselectedFontSize: 15,
-            selectedFontSize: 15,
-            type: BottomNavigationBarType.fixed,
-            elevation: 0,
-            landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
-            backgroundColor: Colors.transparent,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: AnimatedScaleButton(
-                  onTap: () {
-                   if(widget.subscription == 'active'){
-                     // Navigator.push(context, FadePageRoute(page: const timeline()));
-                    }else{
-                      timelinePopup(context);
-                    }
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 2.0),
-                    width: AppDimensions.width10(context) * 4.0,
-                    height: AppDimensions.height10(context) * 4.0,
-                    child: Container(
-                        height: AppDimensions.height10(context) * 2.612,
-                        width: AppDimensions.width10(context) * 3.318,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                           ),
-                        padding: EdgeInsets.all(
-                            AppDimensions.height10(context) * 0.5),
-                        child: const ImageIcon(
-                          AssetImage('assets/images/timeline_icon.webp'),
-                          color: Colors.white,
-                        )),
+        child: BottomNavigationBar(
+          //selectedIconTheme: null,
+          unselectedItemColor: const Color(0xffFBFBFB),
+          fixedColor: const Color(0xffFBFBFB),
+          unselectedFontSize: 15,
+          selectedFontSize: 15,
+          type: BottomNavigationBarType.fixed,
+          elevation: 0,
+          landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
+          backgroundColor: Colors.transparent,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: AnimatedScaleButton(
+                onTap: () {
+                 if(widget.subscription == 'active'){
+                   // Navigator.push(context, FadePageRoute(page: const timeline()));
+                  }else{
+                    timelinePopup(context);
+                  }
+                },
+                child: Container(
+                  width: UpdatedDimensions.width10(context) * 3.0,
+                  height: UpdatedDimensions.height10(context) * 3.0,
+                  child: const ImageIcon(
+                    AssetImage('assets/images/timeline_icon.webp'),
+                    color: Colors.white,
                   ),
                 ),
-                label: 'Timeline',
               ),
-              BottomNavigationBarItem(
-                  icon: AnimatedScaleButton(
-                    onTap: () {
-                      checkInspiraion();
-                    },
-                    child: Container(
-                      width: AppDimensions.width10(context) * 6.0,
-                      height: AppDimensions.height10(context) * 6.0,
-                      //margin: EdgeInsets.only(right: 30),
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                         ),
-                      child: Container(
-                          height: AppDimensions.height10(context) * 1.889,
-                          width: AppDimensions.width10(context) * 2.444,
-                          padding: EdgeInsets.all(
-                              AppDimensions.height10(context) * 0.7),
-                          child: const ImageIcon(
-                            AssetImage('assets/images/insp (1).webp'),
-                            color: Colors.white,
-                          )),
-                    ),
-                  ),
-                  label: 'Inspiration'),
-              BottomNavigationBarItem(
-                  icon: AnimatedScaleButton(
-                    onTap: () {
-                      checkHurdle();
-                    },
-                    child: Container(
-                      width: AppDimensions.width10(context) * 6.0,
-                      height: AppDimensions.height10(context) * 6.0,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          ),
-                      child: Container(
-                        height: AppDimensions.height10(context) * 2.612,
-                        width: AppDimensions.width10(context) * 3.318,
-                        padding: EdgeInsets.all(
-                            AppDimensions.height10(context) * 0.7),
-                        child: const ImageIcon(
-                          AssetImage('assets/images/hurdle_icon.webp'),
-                          //size: ,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  label: 'Hurdle'),
-              BottomNavigationBarItem(
+              label: 'Timeline',
+            ),
+            BottomNavigationBarItem(
                 icon: AnimatedScaleButton(
                   onTap: () {
-                    Navigator.push(
-                        context, FadePageRoute(page: your_goals_menu()));
+                    checkInspiraion();
                   },
                   child: Container(
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 2.0, right: 0),
-                    width: AppDimensions.width10(context) * 4.0,
-                    height: AppDimensions.height10(context) * 4.0,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                       ),
-                    child: Container(
-                        height: AppDimensions.height10(context) * 2.612,
-                        width: AppDimensions.width10(context) * 3.318,
-                        padding: EdgeInsets.all(
-                            AppDimensions.height10(context) * 1),
-                        child: const ImageIcon(
-                          AssetImage('assets/images/menu_icon.webp'),
-                          color: Colors.white,
-                        )),
+                      width: UpdatedDimensions.width10(context) * 3.0,
+                      height: UpdatedDimensions.height10(context) * 3.0,
+                      
+                      child: const ImageIcon(
+                        AssetImage('assets/images/insp (1).webp'),
+                        color: Colors.white,
+                      )),
+                ),
+                label: 'Inspiration'),
+            BottomNavigationBarItem(
+                icon: AnimatedScaleButton(
+                  onTap: () {
+                    checkHurdle();
+                  },
+                  child: Container(
+                    width: UpdatedDimensions.width10(context) * 3.0,
+                    height: UpdatedDimensions.height10(context) * 3.0,
+                    child: const ImageIcon(
+                      AssetImage('assets/images/hurdle_icon.webp'),
+                      //size: ,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-                label: 'Menu',
+                label: 'Hurdle'),
+            BottomNavigationBarItem(
+              icon: AnimatedScaleButton(
+                onTap: () {
+                  Navigator.push(
+                      context, FadePageRoute(page: your_goals_menu()));
+                },
+                child: Container(
+                    width: UpdatedDimensions.width10(context) * 3.0,
+                    height: UpdatedDimensions.height10(context) * 3.0,
+                    padding: EdgeInsets.all(2),
+                    child: const ImageIcon(
+                      AssetImage('assets/images/menu_icon.webp'),
+                      color: Colors.white,
+                    )),
               ),
-            ],
-            selectedLabelStyle: TextStyle(
-              fontSize: AppDimensions.font10(context) * 1.4,
-              fontWeight: FontWeight.w400,
+              label: 'Menu',
+            ),
+          ],
+          selectedLabelStyle: TextStyle(
+            fontSize: UpdatedDimensions.font10(context) * 1.4,
+            fontWeight: FontWeight.w400,
 
-            ),
-            unselectedLabelStyle: TextStyle(
-              fontSize: AppDimensions.font10(context) * 1.4,
-              fontWeight: FontWeight.w400,
-            ),
-            currentIndex: index,
-            onTap: _onItemTapped,
           ),
+          unselectedLabelStyle: TextStyle(
+            fontSize: UpdatedDimensions.font10(context) * 1.4,
+            fontWeight: FontWeight.w400,
+          ),
+          currentIndex: index,
+          onTap: _onItemTapped,
         ),
       ),
       //  ),

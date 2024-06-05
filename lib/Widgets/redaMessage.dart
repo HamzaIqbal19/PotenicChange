@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
-reda(BuildContext context,  visible){
+reda(BuildContext context, String title , String body, visible){
   return Container(
-        height: AppDimensions
+        height: UpdatedDimensions
             .height10(
             context) *
             14.432,
-        width: AppDimensions
+        width: UpdatedDimensions
             .width10(
             context) *
             36.335,
-        margin: EdgeInsets.only(top: AppDimensions.height10(context)*1),
+        margin: EdgeInsets.only(top: UpdatedDimensions.height10(context)*1),
         decoration:
         const BoxDecoration(
             image:
@@ -41,11 +41,11 @@ reda(BuildContext context,  visible){
           child:
           Image.asset(
             "assets/images/Group.webp",
-            height: AppDimensions
+            height: UpdatedDimensions
                 .height10(
                 context) *
                 5.0,
-            width: AppDimensions
+            width: UpdatedDimensions
                 .width10(
                 context) *
                 5.0,
@@ -58,11 +58,11 @@ reda(BuildContext context,  visible){
             0.93, 0),
         child: Image.asset(
           "assets/images/Vector Smart Object.webp",
-          height: AppDimensions
+          height: UpdatedDimensions
               .height10(
               context) *
               9.296,
-          width: AppDimensions
+          width: UpdatedDimensions
               .width10(
               context) *
               4.16,
@@ -71,7 +71,7 @@ reda(BuildContext context,  visible){
       Container(
         margin:
         EdgeInsets.only(
-          top: AppDimensions
+          top: UpdatedDimensions
               .height10(
               context) *
               2.1,
@@ -79,11 +79,11 @@ reda(BuildContext context,  visible){
         child: Column(
           children: [
             Container(
-              width: AppDimensions
+              width: UpdatedDimensions
                   .width10(
                   context) *
                   28.0,
-              height: AppDimensions
+              height: UpdatedDimensions
                   .width10(
                   context) *
                   2.3,
@@ -92,11 +92,11 @@ reda(BuildContext context,  visible){
                   -0.65,
                   0),
               child: Text(
-                "Hi, it's Reda here",
+                title,
                 style:
                 TextStyle(
                   fontSize:
-                  AppDimensions.font10(context) *
+                  UpdatedDimensions.font10(context) *
                       1.6,
                   fontWeight:
                   FontWeight
@@ -111,16 +111,16 @@ reda(BuildContext context,  visible){
               ),
             ),
             Container(
-              width: AppDimensions
+              width: UpdatedDimensions
                   .width10(
                   context) *
                   5.245,
-              height: AppDimensions
+              height: UpdatedDimensions
                   .width10(
                   context) *
                   1.3,
               margin: EdgeInsets.only(
-                  right: AppDimensions.height10(
+                  right: UpdatedDimensions.height10(
                       context) *
                       17.5),
               child:
@@ -136,25 +136,24 @@ reda(BuildContext context,  visible){
               ),
             ),
             Container(
-              width: AppDimensions
+              width: UpdatedDimensions
                   .width10(
                   context) *
                   26.7,
-              // height: AppDimensions.height10(context) * 5.3,
+              // height: UpdatedDimensions.height10(context) * 5.3,
               margin: EdgeInsets.only(
-                  left: AppDimensions.width10(
+                  left: UpdatedDimensions.width10(
                       context) *
                       3.4,
-                  bottom: AppDimensions.height10(
+                  bottom: UpdatedDimensions.height10(
                       context) *
                       1.2),
               child: Text(
-                "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
+                body,
                 // textAlign: TextAlign.left,
-
                 style: TextStyle(
                     fontSize:
-                    AppDimensions.font10(context) *
+                    UpdatedDimensions.font10(context) *
                         1.4,
                     fontWeight:
                     FontWeight

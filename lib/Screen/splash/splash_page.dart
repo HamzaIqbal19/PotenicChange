@@ -28,27 +28,27 @@ class SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2), _checkForNavigation);
+    Future.delayed(const Duration(seconds: 2), loadData);
 
     super.initState();
   }
-
-  Future _checkForNavigation() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var navigateTo = prefs.getString('navigateTo');
-
-    if (navigateTo != null) {
-      prefs.remove('navigateTo'); // Clear the navigation intent
-      if (navigateTo == 'hurdle') {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => landing_hurdles()),
-        );
-      }
-    } else{
-      loadData();
-    }
-  }
+  //
+  // Future _checkForNavigation() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   var navigateTo = prefs.getString('navigateTo');
+  //
+  //   if (navigateTo != null) {
+  //     prefs.remove('navigateTo'); // Clear the navigation intent
+  //     if (navigateTo == 'hurdle') {
+  //       Navigator.pushReplacement(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => landing_hurdles()),
+  //       );
+  //     }
+  //   } else{
+  //     loadData();
+  //   }
+  // }
 
   Future loadData() async {
     final SharedPreferences prefs = await _prefs;
