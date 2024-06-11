@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 class notificationController extends GetxController {
   // Observable string variable
   var notificationBody = ''.obs;
+  var notificationList = <dynamic>[].obs;
 
   // Getter for the string
   String get getNotificationBody => notificationBody.value;
@@ -10,6 +11,18 @@ class notificationController extends GetxController {
   // Setter for the string
   void setNotificationBody(String value) {
     notificationBody.value = value;
+  }
+
+  void addNotifications(dynamic obj) {
+    notificationList.add(obj);
+  }
+
+  void removeNotifications(int index) {
+    notificationList.removeAt(index);
+  }
+
+  void clearNotifications() {
+    notificationList.clear();
   }
 
   var notificationRoute = ''.obs;

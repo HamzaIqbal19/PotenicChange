@@ -95,7 +95,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
       //   child:
       Padding(
         padding: EdgeInsets.only(
-          top: UpdatedDimensions.height10(context) * 2,
+          top: UpdatedDimensions.height10(context) * 1,
           left: UpdatedDimensions.width10(context) * 2,
           right: UpdatedDimensions.width10(context) * 2,
         ),

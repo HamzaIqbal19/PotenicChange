@@ -7,7 +7,9 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:get/get.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
+import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationController.dart';
+import 'package:potenic_app/Screen/Alerts/message_center.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/dashboard_behaviour_shimmer.dart';
@@ -77,6 +79,7 @@ class _view_goalsState extends State<view_goals> {
   var notificationId;
   var notificationUrl;
   final ScrollController _scrollController = ScrollController();
+  bool isVisible = true;
 
   void _incrementValue() {
     setState(() {
@@ -84,14 +87,18 @@ class _view_goalsState extends State<view_goals> {
     });
   }
 
-  getNotificationData() async {
-    final notificationController controller = Get.find<notificationController>();
-    notificationBody = controller.getNotificationBody;
-    notificationRoute = controller.getNotificationRoute;
-    notificationId = controller.getNotificationId;
-    notificationUrl = controller.getNotificationUrl;
-    print("Natification data: $notificationBody");
-  }
+getUserNotifications(){
+  notificationApi.getUserNotification();
+}
+
+  // getNotificationData() async {
+  //   final notificationController controller = Get.find<notificationController>();
+  //   notificationBody = controller.getNotificationBody;
+  //   notificationRoute = controller.getNotificationRoute;
+  //   notificationId = controller.getNotificationId;
+  //   notificationUrl = controller.getNotificationUrl;
+  //   print("Natification data: $notificationBody");
+  // }
 
   Future<void> getGoalUpdates() async {
     final SharedPreferences prefs = await _prefs;
@@ -152,6 +159,7 @@ class _view_goalsState extends State<view_goals> {
     }
 
     super.initState();
+    getUserNotifications();
 
     // _fetchUserGoal();
     fetchPracticeByDay();
@@ -372,6 +380,7 @@ class _view_goalsState extends State<view_goals> {
   @override
   Widget build(BuildContext context) {
    // getNotificationData();
+    bool smallScreen = MediaQuery.of(context).size.height < 690;
     final notificationController notificationsController = Get.find<notificationController>();
 
     return WillPopScope(
@@ -1254,109 +1263,111 @@ class _view_goalsState extends State<view_goals> {
                                         ],
                                       ),
                                        Positioned(
-                                              top: UpdatedDimensions.height10(
+                                              top:smallScreen? UpdatedDimensions.height10(
+                                                  context) *
+                                                  50.0:UpdatedDimensions.height10(
                                                       context) *
-                                                  55.0,
+                                                  54.0,
                                               left: UpdatedDimensions.height10(
                                                       context) *
                                                   1.3,
                                               child: Stack(
                                                 children: [
-                                                  Obx((){
-                                                    if (notificationsController.getNotificationBody.isEmpty) {
+                                               isVisible?   Obx((){
+                                                    if (notificationsController.getNotificationBody.isEmpty ) {
                                                       return const SizedBox(); // Return an empty widget if the string is empty
                                                     } else {
                                                       return reda(
-                                                          context,"Hi, it's Reda here", notificationsController.getNotificationBody, true);
+                                                          context,"Hi, it's Reda here", notificationsController.getNotificationBody, true, notificationsController.getNotificationRoute, notificationsController.getNotificationUrl, (){
+                                                        setState(() {
+                                                          isVisible = !isVisible;
+                                                        });
+                                                        print("isVisible $isVisible");
+                                                      });
                                                     }
-                                                  }),
-                                                  Obx((){
-                                                    if (notificationsController.getNotificationBody.isEmpty) {
-                                                      return AnimatedScaleButton(
-                                                        onTap: () {
-                                                          //laucherForNotifications().urlLauncher("https://potenic.com/community/");
-
-                                                        },
-                                                        child: Container(
-                                                          width: UpdatedDimensions
-                                                              .height10(
-                                                              context) *
-                                                              4.5,
-                                                          height: UpdatedDimensions
-                                                              .height10(
-                                                              context) *
-                                                              4.5,
-                                                          padding: EdgeInsets.all(
-                                                              UpdatedDimensions
-                                                                  .height10(
-                                                                  context) *
-                                                                  0.4),
-                                                          decoration:
-                                                          const BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              color:
-                                                              Colors.white),
-                                                          child: Container(
-                                                            width: UpdatedDimensions
-                                                                .width10(
-                                                                context) *
-                                                                4.16,
-                                                            height: UpdatedDimensions
-                                                                .height10(
-                                                                context) *
-                                                                4.16,
-                                                            decoration: const BoxDecoration(
-                                                                shape:
-                                                                BoxShape.circle,
-                                                                color: Colors.white,
-                                                                image: DecorationImage(
-                                                                    image: AssetImage(
-                                                                        'assets/images/Smart Object_1.webp'))),
-                                                            child: Align(
-                                                              alignment:
-                                                              const Alignment(
-                                                                  0, 2.8),
-                                                              child: Container(
-                                                                width: UpdatedDimensions
-                                                                    .width10(
-                                                                    context) *
-                                                                    2.1,
-                                                                height: UpdatedDimensions
-                                                                    .height10(
-                                                                    context) *
-                                                                    2.1,
-                                                                decoration:
-                                                                const BoxDecoration(
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                  color:
-                                                                  Colors.white,
-                                                                ),
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    allGoals.length
-                                                                        .toString(),
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                        UpdatedDimensions.font10(context) *
-                                                                            1.2,
-                                                                        fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                        color: const Color(
-                                                                            0xFFFA9934)),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ); // Return an empty widget if the string is empty
-                                                    } else {
-                                                      return const SizedBox();
-                                                    }
-                                                  }),
+                                                  }):AnimatedScaleButton(
+                                                 onTap: () {
+                                                   notifications_sheet(context);
+                                                   setState(() {
+                                                     isVisible = !isVisible;
+                                                   });
+                                                 },
+                                                 child: Container(
+                                                   width: UpdatedDimensions
+                                                       .height10(
+                                                       context) *
+                                                       4,
+                                                   height: UpdatedDimensions
+                                                       .height10(
+                                                       context) *
+                                                       4,
+                                                   padding: EdgeInsets.all(
+                                                       UpdatedDimensions
+                                                           .height10(
+                                                           context) *
+                                                           0.4),
+                                                   decoration:
+                                                   const BoxDecoration(
+                                                       shape: BoxShape
+                                                           .circle,
+                                                       color:
+                                                       Colors.white),
+                                                   child: Container(
+                                                     width: UpdatedDimensions
+                                                         .width10(
+                                                         context) *
+                                                         3.5,
+                                                     height: UpdatedDimensions
+                                                         .height10(
+                                                         context) *
+                                                         3.5,
+                                                     decoration: const BoxDecoration(
+                                                         shape:
+                                                         BoxShape.circle,
+                                                         color: Colors.white,
+                                                         image: DecorationImage(
+                                                             image: AssetImage(
+                                                                 'assets/images/Smart Object_1.webp'))),
+                                                     child: Align(
+                                                       alignment:
+                                                       const Alignment(
+                                                           0, 2.8),
+                                                       child: Container(
+                                                         width: UpdatedDimensions
+                                                             .width10(
+                                                             context) *
+                                                             1.7,
+                                                         height: UpdatedDimensions
+                                                             .height10(
+                                                             context) *
+                                                             1.7,
+                                                         decoration:
+                                                         const BoxDecoration(
+                                                           shape: BoxShape
+                                                               .circle,
+                                                           color:
+                                                           Colors.white,
+                                                         ),
+                                                         child: Center(
+                                                           child: Text(
+                                                             allGoals.length
+                                                                 .toString(),
+                                                             style: TextStyle(
+                                                                 fontSize:
+                                                                 UpdatedDimensions.font10(context) *
+                                                                     1,
+                                                                 fontWeight:
+                                                                 FontWeight
+                                                                     .w500,
+                                                                 color: const Color(
+                                                                     0xFFFA9934)),
+                                                           ),
+                                                         ),
+                                                       ),
+                                                     ),
+                                                   ),
+                                                 ),
+                                               )
 
 
                                                 ],

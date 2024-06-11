@@ -33,12 +33,15 @@ getReminderStatus(){
     print("Reminder status: $value" );
     if(value!=null){
  setState(() {
+
       status= value['receiveNotification'];
       if(status!=false){
       status1= value['beforePractice'];
       if(status1!=false){
         selectedIndex = statements.indexOf(value['beforePracticeTime']);
       }
+
+
       
       status2= value['missedPractice'];
       if(status2!=false){

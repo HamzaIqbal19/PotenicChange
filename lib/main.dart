@@ -78,13 +78,13 @@ Future<void> main(context) async {
     print("Message recieced openedApp");
     final notificationController notificationsController = Get.find<notificationController>();
     String? body = message.notification!.body;
-    String? route = message.data['route'];
+    String? route = message.data['route']??"";
     String? id = message.data['id'];
-    String? url = message.data['url'];
-    notificationsController.setNotificationBody(body!);
-    notificationsController.setNotificationRoute(route!);
-    notificationsController.setNotificationId(id!);
-    notificationsController.setNotificationUrl(url!);
+    String? url = message.data['url']??"";
+    notificationsController.setNotificationBody(body??"");
+    notificationsController.setNotificationRoute(route??"");
+    notificationsController.setNotificationId(id??"");
+    notificationsController.setNotificationUrl(url??"");
 
   });
 

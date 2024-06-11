@@ -85,6 +85,7 @@ dependencies:
   awesome_notifications: ^0.8.2
   flutter_timezone: 1.0.8
   permission_handler: ^11.3.1
+  carousel_slider: ^4.2.1
 
 
 

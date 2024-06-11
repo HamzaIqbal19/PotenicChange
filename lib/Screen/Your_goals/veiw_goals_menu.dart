@@ -1,8 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Alerts/message_center.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
-
 import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Menu&settings/settings.dart';
@@ -235,41 +234,49 @@ class _your_goals_menuState extends State<your_goals_menu> {
                           ),
                         ),
                       ),
-                      Container(
-                        width: AppDimensions.width10(context) * 33.4,
-                        height: AppDimensions.height10(context) * 5.0,
-                        decoration: BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
-                                    color: colorC))),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: AppDimensions.width10(context) * 20.6,
-                              height: AppDimensions.height10(context) * 2.2,
-                              child: Text(
-                                'Messages (00 new)',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                    color: colorC),
+                      GestureDetector(
+                        onTap:(){
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const message_center()));
+                        },
+                        child: Container(
+                          width: AppDimensions.width10(context) * 33.4,
+                          height: AppDimensions.height10(context) * 5.0,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(
+                                      width:
+                                          AppDimensions.height10(context) * 0.1,
+                                      color: colorC))),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: AppDimensions.width10(context) * 20.6,
+                                height: AppDimensions.height10(context) * 2.2,
+                                child: Text(
+                                  'Messages',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.6,
+                                      fontWeight: FontWeight.w500,
+                                      color: colorC),
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                                width: AppDimensions.width10(context) * 2.4,
-                                height: AppDimensions.height10(context) * 1.39,
-                                child: Image.asset(
-                                  'assets/images/BTN Back.webp',
-                                  //width: AppDimensions.width10(context) * 2.6,
-                                  //height: AppDimensions.height10(context) * 2.6,
-                                  color: colorC,
-                                  fit: BoxFit.cover,
-                                ))
-                          ],
+                              SizedBox(
+                                  width: AppDimensions.width10(context) * 2.4,
+                                  height: AppDimensions.height10(context) * 1.39,
+                                  child: Image.asset(
+                                    'assets/images/BTN Back.webp',
+                                    //width: AppDimensions.width10(context) * 2.6,
+                                    //height: AppDimensions.height10(context) * 2.6,
+                                    color: colorC,
+                                    fit: BoxFit.cover,
+                                  ))
+                            ],
+                          ),
                         ),
                       ),
                       Container(
