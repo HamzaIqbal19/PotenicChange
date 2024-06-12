@@ -8,6 +8,7 @@ import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationController.dart';
 import 'package:potenic_app/Screen/Alerts/message_center.dart';
+import 'package:potenic_app/Screen/Alerts/widgets/notificationSheet.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/dashboard_behaviour_shimmer.dart';
@@ -1094,7 +1095,7 @@ getUserNotifications(){
                                                     }
                                                   }):AnimatedScaleButton(
                                                  onTap: () {
-                                                   notifications_sheet(context);
+                                                  // notifications_sheet(context);
                                                    setState(() {
                                                      isVisible = !isVisible;
                                                    });

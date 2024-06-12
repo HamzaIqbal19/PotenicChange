@@ -29,4 +29,7 @@ class AppAssets{
   static const practiceMissed2 = "$_imagesPath/Missed_1.webp";
   static const practiceMissed3 = "$_imagesPath/Missed_2.webp";
   static const practiceMissed4 = "$_imagesPath/Missed_4.webp";
+
+  //checkBox
+  static const checkBox = "$_imagesPath/tick_circle.webp";
 }
