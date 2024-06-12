@@ -1,54 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/goalWidget.dart';
 
 import '../utils/app_dimensions.dart';
 
 class align_circles extends StatelessWidget {
-  final String asset_1;
-  final String asset_2;
-  final String head_text;
-  final String body_text;
-  final double body_text_size;
-  final int body_text_color;
-  final double head_text_size;
-  final int head_text_color;
+  final String goalColor;
+  final String practiceColor;
+  final String practiceStatus;
+  final String headText;
+  final String bodyText;
+  final double bodyTextSize;
+  final double headTextSize;
+  final int headTextColor;
+  final bool isRight;
 
-  final bool enable_icon;
-  final bool is_right;
-
-  final String s_circle_text;
-  final int s_circle_text_col;
+  final String smallCircleText;
   // final VoidCallback? onTap1;
   final Function onTap2;
   final Function onTap1;
 
   const align_circles(
       {super.key,
-      required this.asset_1,
-      required this.s_circle_text,
-      required this.asset_2,
-      required this.head_text,
-      required this.body_text,
-      required this.enable_icon,
-      required this.is_right,
-      required this.body_text_size,
-      required this.body_text_color,
-      required this.head_text_size,
-      required this.head_text_color,
-      required this.s_circle_text_col,
+      required this.goalColor,
+      required this.smallCircleText,
+      required this.headText,
+      required this.bodyText,
+      required this.isRight,
+      required this.bodyTextSize,
+      required this.headTextSize,
+      required this.headTextColor,
       required this.onTap1,
-      required this.onTap2});
+      required this.onTap2, required this.practiceStatus, required this.practiceColor});
 
   @override
   Widget build(BuildContext context) {
     bool smallScreen = MediaQuery.of(context).size.height < 690;
     return SizedBox(
       width: smallScreen
-          ? AppDimensions.width10(context) * 27.8
-          : AppDimensions.width10(context) * 26.8,
+          ? UpdatedDimensions.width10(context) * 27.8
+          : UpdatedDimensions.width10(context) * 26.8,
       height: smallScreen
-          ? AppDimensions.height10(context) * 33.2
-          : AppDimensions.height10(context) * 30.2,
+          ? UpdatedDimensions.height10(context) * 33.2
+          : UpdatedDimensions.height10(context) * 30.2,
       // color: Colors.blue,
       // margin: const EdgeInsets.only(top: 29, bottom: 12, right: 45),
       child: Stack(children: [
@@ -56,109 +50,25 @@ class align_circles extends StatelessWidget {
           alignment: Alignment.center,
           child: AnimatedScaleButton(
             onTap: onTap1,
-            child: Container(
-              width: smallScreen
-                  ? AppDimensions.height10(context) * 29.9
-                  : AppDimensions.height10(context) * 26.8,
-              height: smallScreen
-                  ? AppDimensions.height10(context) * 29.9
-                  : AppDimensions.height10(context) * 26.8,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: AssetImage(asset_1), fit: BoxFit.cover)),
-              child: Stack(
-                children: [
-                  Align(
-                      alignment: const Alignment(0, -0.5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 2.0,
-                                bottom: AppDimensions.height10(context) * 0),
-                            width: AppDimensions.width10(context) * 19.9,
-                            child: Text(
-                              head_text,
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                              style: TextStyle(
-                                  fontSize: head_text_size,
-                                  height:
-                                      AppDimensions.height10(context) * 0.15,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(head_text_color)),
-                            ),
-                          ),
-                        ],
-                      )),
-                  Align(
-                    alignment: const Alignment(0, -0.10),
-                    child: SizedBox(
-                      height: AppDimensions.height10(context) * 4.0,
-                      width: AppDimensions.width10(context) * 22.0,
-                      child: Text(body_text,
-                          maxLines: 2,
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              height: AppDimensions.height10(context) * 0.15,
-                              fontSize: body_text_size,
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.w400,
-                              color: Color(body_text_color))),
-                    ),
-                  )
-                ],
-              ),
+              child: goalWidget(context, smallScreen
+                  ? UpdatedDimensions.height10(context) * 29.9
+                  : UpdatedDimensions.height10(context) * 26.8, smallScreen
+                  ? UpdatedDimensions.height10(context) * 29.9
+                  : UpdatedDimensions.height10(context) * 26.8, goalColor, headText, bodyText, headTextSize, bodyTextSize, Color(headTextColor)),
             ),
-          ),
+
         ),
         Align(
           alignment:
-              is_right ? const Alignment(0.7, 1.3) : const Alignment(-0.45, 1),
+          isRight ? const Alignment(0.7, 1.3) : const Alignment(-0.45, 1),
           child: AnimatedScaleButton(
             onTap: onTap2,
-            child: Container(
-              height: smallScreen
-                  ? AppDimensions.height10(context) * 16.6
-                  : AppDimensions.height10(context) * 14.1,
-              width: smallScreen
-                  ? AppDimensions.height10(context) * 16.6
-                  : AppDimensions.height10(context) * 14.1,
-              padding: EdgeInsets.symmetric(
-                  horizontal: AppDimensions.width10(context)),
-              decoration: BoxDecoration(
-                  //color: Colors.amber,
-                  //shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: AssetImage(asset_2), fit: BoxFit.contain)),
-              child: Stack(children: [
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppDimensions.width10(context),
-                  ),
-                  child: Center(
-                      child: SizedBox(
-                    //height: AppDimensions.height10(context) * 6.064,
-                    width: AppDimensions.width10(context) * 11.225,
-                    child: Text(
-                      s_circle_text,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Color(s_circle_text_col),
-                          height: AppDimensions.height10(context) * 0.14,
-                          fontSize: AppDimensions.font10(context) * 1.8,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  )),
-                ),
-              ]),
-            ),
+              child: practiceWidget(context, smallScreen
+                  ? UpdatedDimensions.height10(context) * 16.6
+                  : UpdatedDimensions.height10(context) * 14.1, smallScreen
+                  ? UpdatedDimensions.height10(context) * 16.6
+                  : UpdatedDimensions.height10(context) * 14.1, practiceColor, smallCircleText, practiceStatus)
+
           ),
         ),
       ]),
