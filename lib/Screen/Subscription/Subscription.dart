@@ -219,7 +219,7 @@ class _SubscriptionState extends State<Subscription>
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: const view_goals(
+                                              page: const ViewDashboard(
                                             missed: false,
                                             name: '',
                                             update: false,
@@ -248,7 +248,7 @@ class _SubscriptionState extends State<Subscription>
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: const view_goals(
+                                              page: const ViewDashboard(
                                             missed: false,
                                             name: '',
                                             update: false,

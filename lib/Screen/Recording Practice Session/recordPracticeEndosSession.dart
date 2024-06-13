@@ -198,7 +198,7 @@ class _endofSessionState extends State<endofSession> {
                                             Navigator.push(
                                                 context,
                                                 FadePageRouteReverse(
-                                                    page: const view_goals(
+                                                    page: const ViewDashboard(
                                                   missed: false,
                                                   name: '',
                                                   update: false,

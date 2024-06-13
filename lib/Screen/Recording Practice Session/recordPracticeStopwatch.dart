@@ -125,7 +125,7 @@ class _clocksState extends State<clocks> {
                                       Navigator.pushReplacement(
                                           context,
                                           FadePageRouteReverse(
-                                              page: const view_goals(
+                                              page: const ViewDashboard(
                                                 missed: false,
                                                 name: '',
                                                 update: false,
@@ -136,7 +136,7 @@ class _clocksState extends State<clocks> {
                                       Navigator.push(
                                           context,
                                           FadePageRouteReverse(
-                                              page: const view_goals(
+                                              page: const ViewDashboard(
                                             missed: false,
                                             name: '',
                                             update: false,

@@ -330,7 +330,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                         FadePageRoute2(
                                           true,
                                           exitPage: const ActivateStar(),
-                                          enterPage: const view_goals(
+                                          enterPage: const ViewDashboard(
                                             missed: false,
                                             name: '',
                                             update: false,
@@ -345,7 +345,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                         FadePageRoute2(
                                           true,
                                           exitPage: const ActivateStar(),
-                                          enterPage: const view_goals(
+                                          enterPage: const ViewDashboard(
                                             missed: false,
                                             name: '',
                                             update: false,
@@ -367,7 +367,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                         FadePageRoute2(
                                           true,
                                           exitPage: const ActivateStar(),
-                                          enterPage: const view_goals(
+                                          enterPage: const ViewDashboard(
                                             missed: false,
                                             name: '',
                                             update: false,

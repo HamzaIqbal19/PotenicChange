@@ -33,6 +33,7 @@ class Buttons {
     context,
     double height,
     double width,
+      String text
   ) {
     return Container(
       width: width,
@@ -42,7 +43,7 @@ class Buttons {
               width: AppDimensions.width10(context) * 0.1,
               color: const Color(0xFFFFFFFF)),
           borderRadius:
-              BorderRadius.circular(AppDimensions.height10(context) * 2.0),
+              BorderRadius.circular(AppDimensions.height10(context) * 4.0),
           color: const Color(0xff464646)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -60,11 +61,11 @@ class Buttons {
             ),
           ),
           SizedBox(
-            width: AppDimensions.width10(context) * 5.3,
+
             height: AppDimensions.height10(context) * 2.2,
             child: Center(
                 child: Text(
-              'Delete',
+              text,
               style: TextStyle(
                   fontSize: AppDimensions.font10(context) * 1.8,
                   fontWeight: FontWeight.w500,

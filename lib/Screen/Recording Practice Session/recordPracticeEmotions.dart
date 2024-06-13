@@ -184,7 +184,7 @@ class _emotionsState extends State<emotions> {
                                                   Navigator.pushReplacement(
                                                       context,
                                                       FadePageRouteReverse(
-                                                          page: const view_goals(
+                                                          page: const ViewDashboard(
                                                             missed: false,
                                                             name: '',
                                                             update: false,
@@ -196,7 +196,7 @@ class _emotionsState extends State<emotions> {
                                                 Navigator.push(
                                                     context,
                                                     FadePageRouteReverse(
-                                                        page: const view_goals(
+                                                        page: const ViewDashboard(
                                                       missed: false,
                                                       name: '',
                                                       update: false,

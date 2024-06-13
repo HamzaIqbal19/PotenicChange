@@ -111,7 +111,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
         Navigator.pushReplacement(
             context,
             FadePageRouteReverse(
-              page: const view_goals(
+              page: const ViewDashboard(
                 missed: false,
                 name: '',
                 update: false,
@@ -133,7 +133,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                     Navigator.pushReplacement(
                         context,
                         FadePageRouteReverse(
-                          page: const view_goals(
+                          page: const ViewDashboard(
                             missed: false,
                             name: '',
                             update: false,
@@ -239,7 +239,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                           Navigator.push(
                               context,
                               FadePageRoute(
-                                  page: const message_center()));
+                                  page: const MessageCenter()));
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 33.4,
@@ -316,7 +316,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                               Navigator.push(
                                                   context,
                                                   FadePageRoute(
-                                                      page: const view_goals(
+                                                      page: const ViewDashboard(
                                                     missed: false,
                                                     name: '',
                                                     update: false,
@@ -1287,7 +1287,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: const view_goals(
+                                              page: const ViewDashboard(
                                             missed: false,
                                             name: '',
                                             update: false,
@@ -1352,7 +1352,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                       Navigator.pushReplacement(
                                           context,
                                           FadePageRoute(
-                                            page: const view_goals(
+                                            page: const ViewDashboard(
                                               missed: false,
                                               name: '',
                                               update: false,

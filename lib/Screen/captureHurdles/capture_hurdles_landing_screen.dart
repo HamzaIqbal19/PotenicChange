@@ -239,7 +239,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
         Navigator.push(
             context,
             FadePageRouteReverse(
-                page: const view_goals(
+                page: const ViewDashboard(
               missed: false,
               name: '',
               update: false,
@@ -269,7 +269,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                     Navigator.push(
                         context,
                         FadePageRouteReverse(
-                            page: const view_goals(
+                            page: const ViewDashboard(
                           missed: false,
                           name: '',
                           update: false,

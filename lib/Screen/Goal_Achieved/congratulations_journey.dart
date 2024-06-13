@@ -1376,7 +1376,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: const view_goals(
+                                        page: const ViewDashboard(
                                       missed: false,
                                       name: '',
                                       update: false,

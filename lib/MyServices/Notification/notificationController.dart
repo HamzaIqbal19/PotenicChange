@@ -8,6 +8,10 @@ class notificationController extends GetxController {
   // Getter for the string
   String get getNotificationBody => notificationBody.value;
 
+  List<dynamic> getAllNotifications() {
+    return notificationList.toList();
+  }
+
   // Setter for the string
   void setNotificationBody(String value) {
     notificationBody.value = value;
@@ -20,6 +24,7 @@ class notificationController extends GetxController {
   void removeNotifications(int index) {
     notificationList.removeAt(index);
   }
+
 
   void clearNotifications() {
     notificationList.clear();

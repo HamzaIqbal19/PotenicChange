@@ -178,7 +178,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
           Navigator.push(
               context,
               FadePageRouteReverse(
-                  page: const view_goals(
+                  page: const ViewDashboard(
                 missed: false,
                 name: '',
                 update: false,
@@ -207,7 +207,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         Navigator.push(
                             context,
                             FadePageRouteReverse(
-                                page: const view_goals(
+                                page: const ViewDashboard(
                               missed: false,
                               name: '',
                               update: false,

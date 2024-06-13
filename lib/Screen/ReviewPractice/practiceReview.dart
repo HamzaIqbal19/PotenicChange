@@ -1627,7 +1627,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                       context,
                                                       FadePageRoute(
                                                           page:
-                                                              const view_goals(
+                                                              const ViewDashboard(
                                                         helpfulTips: false,
                                                         missed: false,
                                                         name: '',

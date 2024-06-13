@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
@@ -142,4 +143,181 @@ messages(BuildContext context,title, body,visible, final VoidCallback onTap){
       ),
     ]),
   );
+}
+
+alertBox(context, final VoidCallback tap1,){
+  return showAnimatedDialog(
+      animationType: DialogTransitionType.fadeScale,
+      curve: Curves.easeInOut,
+      duration: const Duration(seconds: 1),
+      context: context,
+      builder: (BuildContext context) => SizedBox(
+        width:
+        AppDimensionsUpdated.width10(context) * 27.0,
+        height: AppDimensionsUpdated.height10(context) *
+            21.4,
+        child: AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                  AppDimensionsUpdated.height10(
+                      context) *
+                      1.4)),
+          contentPadding: EdgeInsets.zero,
+          actionsPadding: EdgeInsets.zero,
+          titlePadding: EdgeInsets.zero,
+          title: Container(
+              margin: EdgeInsets.only(
+                  top: AppDimensionsUpdated.height10(context) *
+                      1.9,
+                  right: AppDimensionsUpdated.width10(context) *
+                      1.6,
+                  left: AppDimensionsUpdated.width10(context) *
+                      1.6,
+                  bottom:
+                  AppDimensionsUpdated.height10(context) *
+                      1.2),
+              height:
+              AppDimensionsUpdated.height10(context) *
+                  4.4,
+              width: AppDimensionsUpdated.width10(context) *
+                  23.8,
+              child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                      style: TextStyle(
+                          fontFamily: 'laila',
+                          height:
+                          AppDimensionsUpdated.height10(context) *
+                              0.15,
+                          fontSize: AppDimensionsUpdated.font10(context) * 1.6,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xFF000000)),
+                      children: const [
+                        TextSpan(
+                            text:
+                            'Are you sure you want\nto'),
+                        TextSpan(
+                          text: ' delete ',
+                          style: TextStyle(
+                              fontWeight:
+                              FontWeight
+                                  .w700),
+                        ),
+                        TextSpan(
+                            text: 'this alert?')
+                      ]))),
+          content: Container(
+            margin: EdgeInsets.only(
+                bottom:
+                AppDimensionsUpdated.height10(
+                    context) *
+                    1.5,
+                left: AppDimensionsUpdated.height10(
+                    context) *
+                    1.6,
+                right: AppDimensionsUpdated.height10(
+                    context) *
+                    1.6),
+            height:
+            AppDimensionsUpdated.height10(context) *
+                3.2,
+            width:
+            AppDimensionsUpdated.width10(context) *
+                23.8,
+            child: Text(
+              "By clicking 'Yes' you confirm that this\nalert will be deleted. ",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: const Color(0XFF000000),
+                // letterSpacing:
+                //     AppDimensionsUpdated.height10(context) * 0.1,
+                fontSize: AppDimensionsUpdated.font10(
+                    context) *
+                    1.3,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            Column(
+              children: [
+                SizedBox(
+                  height: AppDimensionsUpdated.height10(
+                      context) *
+                      0.1,
+                  child: Divider(
+                    color: const Color(0XFF3C3C43)
+                        .withOpacity(0.29),
+                  ),
+                ),
+                Container(
+                  height: AppDimensionsUpdated.height10(
+                      context) *
+                      4.2,
+                  width: double.infinity,
+                  color: const Color(0xFF007AFF),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'No',
+                      style: TextStyle(
+                          color: const Color(
+                              0xFFFFFFFF),
+                          fontSize: AppDimensions
+                              .font10(
+                              context) *
+                              1.7,
+                          fontFamily: "Laila",
+                          fontWeight:
+                          FontWeight.w400),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: AppDimensionsUpdated.height10(
+                      context) *
+                      0.1,
+                  child: Divider(
+                    color: const Color(0XFF3C3C43)
+                        .withOpacity(0.29),
+                  ),
+                ),
+                SizedBox(
+                  height: AppDimensionsUpdated.height10(
+                      context) *
+                      4.4,
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: tap1,
+                    child: Text(
+                      'Yes',
+                      style: TextStyle(
+                          fontSize: AppDimensions
+                              .font10(
+                              context) *
+                              1.7,
+                          fontFamily: "Laila",
+                          fontWeight:
+                          FontWeight.w400,
+                          color: const Color(
+                              0xFF007AFF)),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: AppDimensionsUpdated.height10(
+                      context) *
+                      0.1,
+                  child: Divider(
+                    color: const Color(0XFF3C3C43)
+                        .withOpacity(0.29),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ));
 }

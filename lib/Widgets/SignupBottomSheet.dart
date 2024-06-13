@@ -70,7 +70,7 @@ void signupSheet(context, String ButtonName, String Route, bool admin) {
                                   Navigator.push(
                                     context,
                                     FadePageRoute(
-                                      page: const view_goals(
+                                      page: const ViewDashboard(
                                           missed: false,
                                           update: false,
                                           name: '',

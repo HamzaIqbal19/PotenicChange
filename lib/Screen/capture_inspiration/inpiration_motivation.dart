@@ -61,7 +61,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                       Navigator.push(
                           context,
                           FadePageRouteReverse(
-                              page: const view_goals(
+                              page: const ViewDashboard(
                             missed: false,
                             name: '',
                             update: false,

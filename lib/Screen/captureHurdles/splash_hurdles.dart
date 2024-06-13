@@ -46,7 +46,7 @@ class hurdles_splashState extends State<hurdles_splash> {
         Navigator.push(
             context,
             FadePageRouteReverse(
-                page: const view_goals(
+                page: const ViewDashboard(
               missed: false,
               name: '',
               update: false,
@@ -77,7 +77,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                       Navigator.push(
                           context,
                           FadePageRouteReverse(
-                              page: const view_goals(
+                              page: const ViewDashboard(
                             missed: false,
                             name: '',
                             update: false,

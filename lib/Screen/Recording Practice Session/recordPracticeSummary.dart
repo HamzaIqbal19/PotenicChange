@@ -154,7 +154,7 @@ class _practice_summaryState extends State<practice_summary> {
                   Navigator.push(
                       context,
                       FadePageRouteReverse(
-                          page: const view_goals(
+                          page: const ViewDashboard(
                         missed: false,
                         name: '',
                         update: false,
@@ -240,7 +240,7 @@ class _practice_summaryState extends State<practice_summary> {
                                               Navigator.pushReplacement(
                                                   context,
                                                   FadePageRouteReverse(
-                                                      page: const view_goals(
+                                                      page: const ViewDashboard(
                                                     missed: false,
                                                     name: '',
                                                     update: false,
@@ -251,7 +251,7 @@ class _practice_summaryState extends State<practice_summary> {
                                               Navigator.push(
                                                   context,
                                                   FadePageRouteReverse(
-                                                      page: const view_goals(
+                                                      page: const ViewDashboard(
                                                     missed: false,
                                                     name: '',
                                                     update: false,
@@ -1176,7 +1176,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                                   context,
                                                                   FadePageRoute(
                                                                       page:
-                                                                          view_goals(
+                                                                      ViewDashboard(
                                                                     missed:
                                                                         false,
                                                                     name: '',
@@ -1276,7 +1276,7 @@ class _practice_summaryState extends State<practice_summary> {
                                           exitPage: practice_summary(
                                             view: widget.view,
                                           ),
-                                          enterPage: view_goals(
+                                          enterPage: ViewDashboard(
                                             missed: false,
                                             name: pracName,
                                             update: true,

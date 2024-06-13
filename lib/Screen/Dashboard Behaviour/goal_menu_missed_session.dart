@@ -132,7 +132,7 @@ class _missed_MenuState extends State<missed_Menu> {
         Navigator.push(
           context,
           FadePageRouteReverse(
-            page: view_goals(
+            page: ViewDashboard(
               missed: false,
               name: '',
               update: false,
@@ -165,7 +165,7 @@ class _missed_MenuState extends State<missed_Menu> {
                       Navigator.push(
                         context,
                         FadePageRouteReverse(
-                          page: view_goals(
+                          page: ViewDashboard(
                             missed: false,
                             name: '',
                             update: false,

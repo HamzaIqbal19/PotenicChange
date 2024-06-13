@@ -507,7 +507,7 @@ subscribedUser(context, bool yearly, String subId) {
                               Navigator.push(
                                   context,
                                   FadePageRoute(
-                                      page: const view_goals(
+                                      page: const ViewDashboard(
                                     missed: false,
                                     name: '',
                                     update: false,
@@ -543,7 +543,7 @@ subscribedUser(context, bool yearly, String subId) {
                         Navigator.push(
                             context,
                             FadePageRoute(
-                                page: const view_goals(
+                                page: const ViewDashboard(
                               missed: false,
                               name: '',
                               update: false,

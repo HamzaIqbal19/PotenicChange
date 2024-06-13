@@ -80,7 +80,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
         Navigator.push(
             context,
             FadePageRoute(
-              page: const view_goals(
+              page: const ViewDashboard(
                 missed: false,
                 name: '',
                 update: false,

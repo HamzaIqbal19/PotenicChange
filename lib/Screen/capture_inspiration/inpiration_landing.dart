@@ -248,7 +248,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                       Navigator.push(
                           context,
                           FadePageRouteReverse(
-                              page: const view_goals(
+                              page: const ViewDashboard(
                             missed: false,
                             name: '',
                             update: false,
@@ -3311,8 +3311,8 @@ class updateBox extends StatefulWidget {
   final String headText;
   final String bodyText;
   final String functionText;
-  final Function onTap1;
-  final Function FadeFunction;
+  final VoidCallback onTap1;
+  final VoidCallback FadeFunction;
   final bool edit;
   const updateBox(
       {super.key,

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationRouting.dart';
+import 'package:potenic_app/Screen/Alerts/widgets/notificationSheet.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-reda(BuildContext context, String title , String body, visible, String route, String url, final VoidCallback onTap){
+reda(BuildContext context, String title ,notificationData, final VoidCallback onTap){
   return AnimatedScaleButton(
     onTap: (){
+      notificationApi.markAsRead(notificationData["id"]);
+      seeMoreSheet(context, notificationData);
 
-      if(route!= ""){
-        navigationRouting(context,route,url);
-      }
     },
     child: Container(
           height: UpdatedDimensions
@@ -21,7 +22,7 @@ reda(BuildContext context, String title , String body, visible, String route, St
               .width10(
               context) *
               35.335,
-          margin: EdgeInsets.only(top: UpdatedDimensions.height10(context)*1),
+          margin: EdgeInsets.only(top: UpdatedDimensions.height10(context)*1, right: UpdatedDimensions.height10(context)*3),
           decoration:
           const BoxDecoration(
               image:
@@ -32,52 +33,6 @@ reda(BuildContext context, String title , String body, visible, String route, St
                 fit: BoxFit.contain,
               )),
       child: Stack(children: [
-        visible? Align(
-          alignment:
-          const Alignment(
-              -0.98,
-              -1.2),
-          child:
-          Container(
-            height: UpdatedDimensions
-                .height10(
-                context) *
-                5.0,
-            width: UpdatedDimensions
-                .width10(
-                context) *
-                5.0,
-            child: Stack(
-              alignment: AlignmentDirectional.center,
-              children: [
-                AnimatedScaleButton(
-                  onTap: onTap,
-                  child:
-                  Image.asset(
-                    "assets/images/Group.webp",
-                    height: UpdatedDimensions
-                        .height10(
-                        context) *
-                        5.0,
-                    width: UpdatedDimensions
-                        .width10(
-                        context) *
-                        5.0,
-                  ),
-                ),
-                Align(
-                  alignment: Alignment(0,1),
-                  child: Container(
-                    height: 17,
-                    width: 17,
-                    decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-                    child: const Center(child: Text("10", style: TextStyle(color: Color(0xFFFA9934), fontSize: 10),),),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ):Container(),
         Align(
           alignment:
           const Alignment(
@@ -100,7 +55,7 @@ reda(BuildContext context, String title , String body, visible, String route, St
             top: UpdatedDimensions
                 .height10(
                 context) *
-                2.7,
+                3.7,
           ),
           child: Column(
             children: [
@@ -175,7 +130,7 @@ reda(BuildContext context, String title , String body, visible, String route, St
                         context) *
                         1.2),
                 child: Text(
-                  body,
+                  notificationData["body"],
                   // textAlign: TextAlign.left,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -203,3 +158,25 @@ reda(BuildContext context, String title , String body, visible, String route, St
 }
 
 
+// NotificationCarousol(BuildContext context){
+//   return Container(
+//     width: MediaQuery.of(context).size.width,
+//     child: CarouselSlider.builder(itemCount: 3,
+//         itemBuilder: (BuildContext context,int itemIndex, int pageViewIndex)=>reda(
+//             context,"Hi, it's Reda here", notificationsController.getNotificationBody, false, notificationsController.getNotificationRoute, notificationsController.getNotificationUrl, (){
+//           setState(() {
+//             isVisible = !isVisible;
+//           });
+//           print("isVisible $isVisible");
+//         }),
+//         options: CarouselOptions(enlargeCenterPage: true, height: 200,)),
+//   );
+// }
+
+// reda(
+// context,"Hi, it's Reda here", notificationsController.getNotificationBody, false, notificationsController.getNotificationRoute, notificationsController.getNotificationUrl, (){
+// setState(() {
+// isVisible = !isVisible;
+// });
+// print("isVisible $isVisible");
+// })

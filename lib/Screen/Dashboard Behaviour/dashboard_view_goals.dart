@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:get/get.dart';
@@ -40,14 +41,14 @@ import 'menu_dashboard_behaviour.dart';
 
 
 
-class view_goals extends StatefulWidget {
+class ViewDashboard extends StatefulWidget {
   final bool missed;
   final bool update;
   final String name;
   final bool helpfulTips;
   final int record;
 
-  const view_goals(
+  const ViewDashboard(
       {super.key,
       required this.missed,
       required this.update,
@@ -56,12 +57,12 @@ class view_goals extends StatefulWidget {
       required this.record});
 
   @override
-  State<view_goals> createState() => _view_goalsState();
+  State<ViewDashboard> createState() => _ViewDashboardState();
 }
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-class _view_goalsState extends State<view_goals> {
+class _ViewDashboardState extends State<ViewDashboard> {
   var allGoals;
   var responseData;
   var allPractice;
@@ -367,6 +368,7 @@ getUserNotifications(){
    // getNotificationData();
     bool smallScreen = MediaQuery.of(context).size.height < 690;
     final notificationController notificationsController = Get.find<notificationController>();
+     var nottificationList = notificationsController.getAllNotifications();
 
     return WillPopScope(
       onWillPop: () {
@@ -1082,101 +1084,105 @@ getUserNotifications(){
                                               child: Stack(
                                                 children: [
                                                isVisible?   Obx((){
-                                                    if (notificationsController.getNotificationBody.isEmpty ) {
+                                                    if (notificationsController.getAllNotifications().isEmpty ) {
                                                       return const SizedBox(); // Return an empty widget if the string is empty
                                                     } else {
-                                                      return reda(
-                                                          context,"Hi, it's Reda here", notificationsController.getNotificationBody, true, notificationsController.getNotificationRoute, notificationsController.getNotificationUrl, (){
-                                                        setState(() {
-                                                          isVisible = !isVisible;
-                                                        });
-                                                        print("isVisible $isVisible");
-                                                      });
+                                                      return Container(
+                                                        width: MediaQuery.of(context).size.width,
+                                                        child: CarouselSlider.builder(itemCount: notificationsController.getAllNotifications().length,
+                                                            itemBuilder: (BuildContext context,int itemIndex, int pageViewIndex)=>reda(
+                                                                context,"Hi, it's Reda here",notificationsController.getAllNotifications()[itemIndex], (){
+                                                              setState(() {
+                                                                isVisible = !isVisible;
+                                                              });
+                                                              print("isVisible $isVisible");
+                                                            }),
+                                                            options: CarouselOptions(enlargeCenterPage: true, height: 200,viewportFraction: 1, enableInfiniteScroll: false)),
+                                                      );
                                                     }
-                                                  }):AnimatedScaleButton(
-                                                 onTap: () {
-                                                  // notifications_sheet(context);
-                                                   setState(() {
-                                                     isVisible = !isVisible;
-                                                   });
-                                                 },
-                                                 child: Container(
-                                                   width: UpdatedDimensions
-                                                       .height10(
-                                                       context) *
-                                                       4,
-                                                   height: UpdatedDimensions
-                                                       .height10(
-                                                       context) *
-                                                       4,
-                                                   padding: EdgeInsets.all(
-                                                       UpdatedDimensions
-                                                           .height10(
-                                                           context) *
-                                                           0.4),
-                                                   decoration:
-                                                   const BoxDecoration(
-                                                       shape: BoxShape
-                                                           .circle,
-                                                       color:
-                                                       Colors.white),
-                                                   child: Container(
-                                                     width: UpdatedDimensions
-                                                         .width10(
-                                                         context) *
-                                                         3.5,
-                                                     height: UpdatedDimensions
-                                                         .height10(
-                                                         context) *
-                                                         3.5,
-                                                     decoration: const BoxDecoration(
-                                                         shape:
-                                                         BoxShape.circle,
-                                                         color: Colors.white,
-                                                         image: DecorationImage(
-                                                             image: AssetImage(
-                                                                 'assets/images/Smart Object_1.webp'))),
-                                                     child: Align(
-                                                       alignment:
-                                                       const Alignment(
-                                                           0, 2.8),
-                                                       child: Container(
-                                                         width: UpdatedDimensions
-                                                             .width10(
-                                                             context) *
-                                                             1.7,
-                                                         height: UpdatedDimensions
-                                                             .height10(
-                                                             context) *
-                                                             1.7,
-                                                         decoration:
-                                                         const BoxDecoration(
-                                                           shape: BoxShape
-                                                               .circle,
-                                                           color:
-                                                           Colors.white,
-                                                         ),
-                                                         child: Center(
-                                                           child: Text(
-                                                             allGoals.length
-                                                                 .toString(),
-                                                             style: TextStyle(
-                                                                 fontSize:
-                                                                 UpdatedDimensions.font10(context) *
-                                                                     1,
-                                                                 fontWeight:
-                                                                 FontWeight
-                                                                     .w500,
-                                                                 color: const Color(
-                                                                     0xFFFA9934)),
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 ),
-                                               )
-
+                                                  }):Container(),
+                                                  AnimatedScaleButton(
+                                                    onTap: () {
+                                                      // notifications_sheet(context);
+                                                      setState(() {
+                                                        isVisible = !isVisible;
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      width: UpdatedDimensions
+                                                          .height10(
+                                                          context) *
+                                                          4,
+                                                      height: UpdatedDimensions
+                                                          .height10(
+                                                          context) *
+                                                          4,
+                                                      padding: EdgeInsets.all(
+                                                          UpdatedDimensions
+                                                              .height10(
+                                                              context) *
+                                                              0.4),
+                                                      decoration:
+                                                      const BoxDecoration(
+                                                          shape: BoxShape
+                                                              .circle,
+                                                          color:
+                                                          Colors.white),
+                                                      child: Container(
+                                                        width: UpdatedDimensions
+                                                            .width10(
+                                                            context) *
+                                                            3.5,
+                                                        height: UpdatedDimensions
+                                                            .height10(
+                                                            context) *
+                                                            3.5,
+                                                        decoration: const BoxDecoration(
+                                                            shape:
+                                                            BoxShape.circle,
+                                                            color: Colors.white,
+                                                            image: DecorationImage(
+                                                                image: AssetImage(
+                                                                    'assets/images/Smart Object_1.webp'))),
+                                                        child: Align(
+                                                          alignment:
+                                                          const Alignment(
+                                                              0, 2.8),
+                                                          child: Container(
+                                                            width: UpdatedDimensions
+                                                                .width10(
+                                                                context) *
+                                                                1.7,
+                                                            height: UpdatedDimensions
+                                                                .height10(
+                                                                context) *
+                                                                1.7,
+                                                            decoration:
+                                                            const BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              color:
+                                                              Colors.white,
+                                                            ),
+                                                            child: Center(
+                                                              child: Text(
+                                                                notificationsController.getAllNotifications().length.toString(),
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                    UpdatedDimensions.font10(context) *
+                                                                        1,
+                                                                    fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                    color: const Color(
+                                                                        0xFFFA9934)),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )
 
                                                 ],
                                               )),

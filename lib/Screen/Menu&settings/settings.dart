@@ -653,7 +653,7 @@ class _SettingsState extends State<Settings> {
                                 Navigator.pushReplacement(
                                     context,
                                     FadePageRoute(
-                                      page: const view_goals(
+                                      page: const ViewDashboard(
                                         missed: false,
                                         name: '',
                                         update: false,
