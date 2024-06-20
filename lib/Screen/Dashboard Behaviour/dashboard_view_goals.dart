@@ -4,11 +4,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationController.dart';
 import 'package:potenic_app/Screen/Alerts/message_center.dart';
+import 'package:potenic_app/Screen/Alerts/widgets/notificationPermissionService.dart';
 import 'package:potenic_app/Screen/Alerts/widgets/notificationSheet.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
@@ -25,15 +27,10 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:intl/intl.dart';
 import 'package:potenic_app/Widgets/redaMessage.dart';
-import 'package:potenic_app/utils/app_texts.dart';
 import 'package:potenic_app/utils/formattedTime.dart';
-import 'package:potenic_app/utils/inappreview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../MyServices/Notification/emailLauncher.dart';
 import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/fading.dart';
-import '../../Widgets/mult_circles.dart';
 import '../../utils/app_dimensions.dart';
 import '../capture_inspiration/inpiration_landing.dart';
 import 'calender_bottom_sheet.dart';
@@ -62,7 +59,7 @@ class ViewDashboard extends StatefulWidget {
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-class _ViewDashboardState extends State<ViewDashboard> {
+class _ViewDashboardState extends State<ViewDashboard> with WidgetsBindingObserver {
   var allGoals;
   var responseData;
   var allPractice;
@@ -88,6 +85,7 @@ class _ViewDashboardState extends State<ViewDashboard> {
   var notificationUrl;
   final ScrollController _scrollController = ScrollController();
   bool isVisible = true;
+  final NotificationPermissionService _notificationPermissionService = NotificationPermissionService();
 
   void _incrementValue() {
     setState(() {
@@ -99,14 +97,27 @@ getUserNotifications(){
   notificationApi.getUserNotification();
 }
 
-  // getNotificationData() async {
-  //   final notificationController controller = Get.find<notificationController>();
-  //   notificationBody = controller.getNotificationBody;
-  //   notificationRoute = controller.getNotificationRoute;
-  //   notificationId = controller.getNotificationId;
-  //   notificationUrl = controller.getNotificationUrl;
-  //   print("Natification data: $notificationBody");
-  // }
+
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        getUserNotifications();
+        break;
+      case AppLifecycleState.paused:
+      case AppLifecycleState.detached:
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.hidden:
+        break;
+    }
+    super.didChangeAppLifecycleState(state);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
 
   Future<void> getGoalUpdates() async {
     final SharedPreferences prefs = await _prefs;
@@ -130,6 +141,10 @@ getUserNotifications(){
       }
       await prefs.setBool('goalLevelUpdate', false);
     }
+  }
+
+  notificationPermissionSerice(){
+    _notificationPermissionService.checkAndRequestNotificationPermission(context);
   }
 
   bool _showOverlay = false;
@@ -165,6 +180,7 @@ getUserNotifications(){
         next = widget.record - 1;
       });
     }
+    notificationPermissionSerice();
 
     super.initState();
     getUserNotifications();
@@ -185,6 +201,7 @@ getUserNotifications(){
       });
     }
     getGoalUpdates();
+    WidgetsBinding.instance.addObserver(this);
 
   }
 

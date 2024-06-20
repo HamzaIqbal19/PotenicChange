@@ -73,7 +73,8 @@ reda(BuildContext context, String title ,notificationData, final VoidCallback on
                     -0.7,
                     0),
                 child: Text(
-                  title,
+                  notificationData["title"],
+                  maxLines: 2,
                   style:
                   TextStyle(
                     fontSize:

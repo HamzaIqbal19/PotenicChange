@@ -1,11 +1,9 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'notificationController.dart';
+import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 
 void foregroundMessaging() {
- // final notificationController notificationsController = Get.find<notificationController>();
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
     String? title = message.notification!.title;
@@ -28,11 +26,7 @@ void foregroundMessaging() {
             autoDismissible: false,
             notificationLayout: NotificationLayout.BigText,
             backgroundColor: Colors.transparent));
-    // notificationsController.setNotificationBody(body??'');
-    // notificationsController.setNotificationRoute(route??'');
-    // notificationsController.setNotificationId(id??"");
-    // notificationsController.setNotificationUrl(url??"");
-
+    notificationApi.getUserNotification();
 
   });
 

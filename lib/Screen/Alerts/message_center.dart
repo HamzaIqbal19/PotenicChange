@@ -267,6 +267,8 @@ class _MessageCenterState extends State<MessageCenter> {
                         }
 
                       });
+                    }else{
+                      seeMoreSheet(context, notifications[index]);
                     }
                   }, longPress: (){
                   setState(() {

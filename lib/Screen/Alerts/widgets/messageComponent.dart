@@ -5,6 +5,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+
 messages(BuildContext context,title, body,visible, final VoidCallback onTap){
   return Container(
     height: UpdatedDimensions
@@ -118,7 +119,8 @@ messages(BuildContext context,title, body,visible, final VoidCallback onTap){
                   bottom: UpdatedDimensions.height10(
                       context) *
                       1.2),
-              child: Text(
+              child:
+              Text(
                 body,
                 // textAlign: TextAlign.left,
                 maxLines: 2,

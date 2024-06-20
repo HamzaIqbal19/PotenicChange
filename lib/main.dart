@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
+import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationService.dart';
 import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:provider/provider.dart';
@@ -61,31 +62,11 @@ Future<void> main(context) async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-    print("Message recieced listen");
-    final notificationController notificationsController = Get.find<notificationController>();
-    String? body = message.notification!.body;
-    String? route = message.data['route'];
-    String? id = message.data['id'];
-    String? url = message.data['url'];
-    notificationsController.setNotificationBody(body!);
-    notificationsController.setNotificationRoute(route!);
-    notificationsController.setNotificationId(id!);
-    notificationsController.setNotificationUrl(url!);
 
   });
 
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
-    print("Message recieced openedApp");
-    final notificationController notificationsController = Get.find<notificationController>();
-    String? body = message.notification!.body;
-    String? route = message.data['route']??"";
-    String? id = message.data['id'];
-    String? url = message.data['url']??"";
-    notificationsController.setNotificationBody(body??"");
-    notificationsController.setNotificationRoute(route??"");
-    notificationsController.setNotificationId(id??"");
-    notificationsController.setNotificationUrl(url??"");
-
+    notificationApi.getUserNotification();
   });
 
 

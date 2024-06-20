@@ -25,11 +25,8 @@ class notificationApi{
       Uri.parse('${URL.BASE_URL}api/user/getUserRedaCenterNotifications/$userId'),
       headers: headers,
     );
-    print("get notifications ${response.statusCode} $userId");
     if (response.statusCode == 200) {
-      print("get notifications ${response.body}");
       var jsonData = jsonDecode(response.body);
-      print("get notifications ${jsonData["data"]}");
       controller.clearNotifications();
       controller.notificationList(jsonData["data"]);
 
