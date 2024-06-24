@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationRouting.dart';
@@ -6,11 +8,13 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-reda(BuildContext context, String title ,notificationData, final VoidCallback onTap){
+reda(BuildContext context,notificationData, final VoidCallback onTap){
   return AnimatedScaleButton(
     onTap: (){
       notificationApi.markAsRead(notificationData["id"]);
+
       seeMoreSheet(context, notificationData);
+      onTap();
 
     },
     child: Container(
@@ -63,18 +67,17 @@ reda(BuildContext context, String title ,notificationData, final VoidCallback on
                 width: UpdatedDimensions
                     .width10(
                     context) *
-                    28.0,
+                    26.7,
+
                 height: UpdatedDimensions
                     .width10(
                     context) *
                     2.3,
-                alignment:
-                const Alignment(
-                    -0.7,
-                    0),
+                margin: EdgeInsets.only(left: UpdatedDimensions.width10(context)*3.4),
                 child: Text(
                   notificationData["title"],
                   maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style:
                   TextStyle(
                     fontSize:

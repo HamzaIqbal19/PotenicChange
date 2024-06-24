@@ -385,7 +385,7 @@ getUserNotifications(){
    // getNotificationData();
     bool smallScreen = MediaQuery.of(context).size.height < 690;
     final notificationController notificationsController = Get.find<notificationController>();
-     var nottificationList = notificationsController.getAllNotifications();
+    var nottificationList = notificationsController.getAllNotifications();
 
     return WillPopScope(
       onWillPop: () {
@@ -1108,12 +1108,14 @@ getUserNotifications(){
                                                         width: MediaQuery.of(context).size.width,
                                                         child: CarouselSlider.builder(itemCount: notificationsController.getAllNotifications().length,
                                                             itemBuilder: (BuildContext context,int itemIndex, int pageViewIndex)=>reda(
-                                                                context,"Hi, it's Reda here",notificationsController.getAllNotifications()[itemIndex], (){
-                                                              setState(() {
-                                                                isVisible = !isVisible;
-                                                              });
-                                                              print("isVisible $isVisible");
-                                                            }),
+                                                                context,notificationsController.getAllNotifications()[itemIndex], (){
+
+
+                                                              Timer(Duration(seconds: 2), () { setState(() {
+
+                                                              });});
+
+                                                           }),
                                                             options: CarouselOptions(enlargeCenterPage: true, height: 200,viewportFraction: 1, enableInfiniteScroll: false)),
                                                       );
                                                     }
@@ -1183,7 +1185,7 @@ getUserNotifications(){
                                                             ),
                                                             child: Center(
                                                               child: Text(
-                                                                notificationsController.getAllNotifications().length.toString(),
+                                                                  notificationsController.getAllNotifications().isEmpty? "": notificationsController.getAllNotifications().length.toString(),
                                                                 style: TextStyle(
                                                                     fontSize:
                                                                     UpdatedDimensions.font10(context) *

@@ -6,7 +6,7 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 
-messages(BuildContext context,title, body,visible, final VoidCallback onTap){
+messages(BuildContext context,title, body,visible, final VoidCallback onTap, int index){
   return Container(
     height: UpdatedDimensions
         .height10(
@@ -27,6 +27,10 @@ messages(BuildContext context,title, body,visible, final VoidCallback onTap){
           fit: BoxFit.contain,
         )),
     child: Stack(children: [
+      Container(
+        margin: EdgeInsets.only(top: 10, left: 7),
+        child: Text(index<2? "New*":"", style: const TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500),),
+      ),
 
       Align(
         alignment:

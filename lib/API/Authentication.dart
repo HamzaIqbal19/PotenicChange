@@ -71,13 +71,11 @@ class Authentication {
       "fcmRegistrationToken": "$fcmToken",
       "email": "$email",
       "password": "$password",
-      //"timeZone": "$currentTimeZone"
+      "timeZone": currentTimeZone
     });
 
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signin'),
         headers: headers, body: body);
-
-    // print("Response: ${request.statusCode}");
 
     var response = jsonDecode(request.body);
 

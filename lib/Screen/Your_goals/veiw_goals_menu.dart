@@ -72,8 +72,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
 
   getSubscriptionData() {
     SubscriptionService().getCustomerData().then((value) => {
-          print(
-              "Subscription data ${value['subscriptions']['data'][0].toString()}"),
+
           setState(() {
             trial = value['subscriptions'] == null
                 ? ''

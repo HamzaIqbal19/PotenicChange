@@ -277,7 +277,7 @@ void seeMoreSheet(context, data) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'In order to build consistent behaviour,\nallow us to gently nudge you to remind you to do\nyour practices and offer helpful tips.',
+                    data["title"],
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -297,7 +297,7 @@ void seeMoreSheet(context, data) {
                   ),
                   SizedBox(height: AppDimensionsUpdated.height10(context),),
                   Text(
-                    'You have been consistently recording your practice for 20 active days now. We’ve put together a progress report for you to review and you can also evaluate your practice.',
+                    data["body"],
                     style: TextStyle(
                         fontSize: AppDimensions.font10(context) * 1.6,
                         height: AppDimensions.height10(context) * 0.15,

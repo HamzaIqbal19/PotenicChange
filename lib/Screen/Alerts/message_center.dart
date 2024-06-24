@@ -92,9 +92,8 @@ class _MessageCenterState extends State<MessageCenter> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         // centerTitle: true,
-        leadingWidth: AppDimensionsUpdated.width10(context) * 9.1,
-        leading: options
-            ? Center(
+        leadingWidth: AppDimensionsUpdated.width10(context) * 13,
+        leading: Center(
                 child: AnimatedScaleButton(
                   onTap: (){
                    setState(() {
@@ -116,12 +115,12 @@ class _MessageCenterState extends State<MessageCenter> {
                         left: AppDimensionsUpdated.width10(context) * 1.6),
                     // color: Colors.amber,
                     child: SizedBox(
-                      width: AppDimensionsUpdated.width10(context) * 7.5,
+                      //width: AppDimensionsUpdated.width10(context) * 9.5,
                       height: AppDimensionsUpdated.height10(context) * 2.4,
 
                       // margin: EdgeInsets.only(left: AppDimensionsUpdated.width10(context) * 1.6),
                       child: Text(
-                        'Delete All',
+                      options?  'Select All': "Mark All as Read",
                         style: TextStyle(
                             fontSize: AppDimensionsUpdated.font10(context) * 1.6,
                             height: AppDimensionsUpdated.height10(context) * 0.16,
@@ -133,7 +132,7 @@ class _MessageCenterState extends State<MessageCenter> {
                   ),
                 ),
               )
-            : Container(),
+            ,
         actions: [
           Center(
             child:
@@ -280,7 +279,7 @@ class _MessageCenterState extends State<MessageCenter> {
                     alignment: AlignmentDirectional.center,
                     children: [
 
-                      messages(context,notifications[index]["title"], notifications[index]["body"],false,(){}),
+                      messages(context,notifications[index]["title"], notifications[index]["body"],false,(){},index),
 
                       options == true?  Positioned(
                         top:22,
