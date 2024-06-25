@@ -39,8 +39,7 @@ Future<void> main(context) async {
       await FirebaseMessaging.instance.requestPermission(provisional: true);
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
 
-  var fcmToken = await FirebaseMessaging.instance.getToken();
-  print("FCM TOKEN : $fcmToken");
+
   AwesomeNotifications().initialize(null, [
     NotificationChannel(
         channelKey: "call_channel",
